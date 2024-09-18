@@ -29,9 +29,7 @@ void QCborArray_Swap(QCborArray* self, QCborArray* other) {
 }
 
 QCborValue* QCborArray_ToCborValue(const QCborArray* self) {
-	QCborValue _ret = self->toCborValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->toCborValue());
 }
 
 size_t QCborArray_Size(const QCborArray* self) {
@@ -47,45 +45,31 @@ void QCborArray_Clear(QCborArray* self) {
 }
 
 QCborValue* QCborArray_At(const QCborArray* self, size_t i) {
-	QCborValue _ret = self->at(static_cast<qsizetype>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->at(static_cast<qsizetype>(i)));
 }
 
 QCborValue* QCborArray_First(const QCborArray* self) {
-	QCborValue _ret = self->first();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->first());
 }
 
 QCborValue* QCborArray_Last(const QCborArray* self) {
-	QCborValue _ret = self->last();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->last());
 }
 
 QCborValue* QCborArray_OperatorSubscript(const QCborArray* self, size_t i) {
-	QCborValue _ret = self->operator[](static_cast<qsizetype>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->operator[](static_cast<qsizetype>(i)));
 }
 
 QCborValueRef* QCborArray_First2(QCborArray* self) {
-	QCborValueRef _ret = self->first();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->first());
 }
 
 QCborValueRef* QCborArray_Last2(QCborArray* self) {
-	QCborValueRef _ret = self->last();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->last());
 }
 
 QCborValueRef* QCborArray_OperatorSubscriptWithQsizetype(QCborArray* self, size_t i) {
-	QCborValueRef _ret = self->operator[](static_cast<qsizetype>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](static_cast<qsizetype>(i)));
 }
 
 void QCborArray_Insert(QCborArray* self, size_t i, QCborValue* value) {
@@ -101,15 +85,11 @@ void QCborArray_Append(QCborArray* self, QCborValue* value) {
 }
 
 QCborValue* QCborArray_Extract(QCborArray* self, QCborArray__ConstIterator* it) {
-	QCborValue _ret = self->extract(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->extract(*it));
 }
 
 QCborValue* QCborArray_ExtractWithIt(QCborArray* self, QCborArray__Iterator* it) {
-	QCborValue _ret = self->extract(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->extract(*it));
 }
 
 void QCborArray_RemoveAt(QCborArray* self, size_t i) {
@@ -117,9 +97,7 @@ void QCborArray_RemoveAt(QCborArray* self, size_t i) {
 }
 
 QCborValue* QCborArray_TakeAt(QCborArray* self, size_t i) {
-	QCborValue _ret = self->takeAt(static_cast<qsizetype>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->takeAt(static_cast<qsizetype>(i)));
 }
 
 void QCborArray_RemoveFirst(QCborArray* self) {
@@ -131,15 +109,11 @@ void QCborArray_RemoveLast(QCborArray* self) {
 }
 
 QCborValue* QCborArray_TakeFirst(QCborArray* self) {
-	QCborValue _ret = self->takeFirst();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->takeFirst());
 }
 
 QCborValue* QCborArray_TakeLast(QCborArray* self) {
-	QCborValue _ret = self->takeLast();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValue*>(new QCborValue(_ret));
+	return new QCborValue(self->takeLast());
 }
 
 bool QCborArray_Contains(const QCborArray* self, QCborValue* value) {
@@ -163,75 +137,51 @@ bool QCborArray_OperatorLesser(const QCborArray* self, QCborArray* other) {
 }
 
 QCborArray__Iterator* QCborArray_Begin(QCborArray* self) {
-	QCborArray::Iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->begin());
 }
 
 QCborArray__ConstIterator* QCborArray_ConstBegin(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->constBegin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->constBegin());
 }
 
 QCborArray__ConstIterator* QCborArray_Begin2(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->begin());
 }
 
 QCborArray__ConstIterator* QCborArray_Cbegin(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->cbegin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->cbegin());
 }
 
 QCborArray__Iterator* QCborArray_End(QCborArray* self) {
-	QCborArray::Iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->end());
 }
 
 QCborArray__ConstIterator* QCborArray_ConstEnd(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->constEnd();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->constEnd());
 }
 
 QCborArray__ConstIterator* QCborArray_End2(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->end());
 }
 
 QCborArray__ConstIterator* QCborArray_Cend(const QCborArray* self) {
-	QCborArray::ConstIterator _ret = self->cend();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->cend());
 }
 
 QCborArray__Iterator* QCborArray_Insert2(QCborArray* self, QCborArray__Iterator* before, QCborValue* value) {
-	QCborArray::Iterator _ret = self->insert(*before, *value);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->insert(*before, *value));
 }
 
 QCborArray__Iterator* QCborArray_Insert3(QCborArray* self, QCborArray__ConstIterator* before, QCborValue* value) {
-	QCborArray::Iterator _ret = self->insert(*before, *value);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->insert(*before, *value));
 }
 
 QCborArray__Iterator* QCborArray_Erase(QCborArray* self, QCborArray__Iterator* it) {
-	QCborArray::Iterator _ret = self->erase(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->erase(*it));
 }
 
 QCborArray__Iterator* QCborArray_EraseWithIt(QCborArray* self, QCborArray__ConstIterator* it) {
-	QCborArray::Iterator _ret = self->erase(*it);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->erase(*it));
 }
 
 void QCborArray_PushBack(QCborArray* self, QCborValue* t) {
@@ -255,9 +205,7 @@ bool QCborArray_Empty(const QCborArray* self) {
 }
 
 QCborArray* QCborArray_OperatorPlus(const QCborArray* self, QCborValue* v) {
-	QCborArray _ret = self->operator+(*v);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray*>(new QCborArray(_ret));
+	return new QCborArray(self->operator+(*v));
 }
 
 QCborArray* QCborArray_OperatorPlusAssign(QCborArray* self, QCborValue* v) {
@@ -272,28 +220,23 @@ QCborArray* QCborArray_OperatorShiftLeft(QCborArray* self, QCborValue* v) {
 	return &_ret;
 }
 
-QCborArray* QCborArray_FromStringList(struct miqt_array* /* of QString */ list) {
+QCborArray* QCborArray_FromStringList(struct miqt_array* /* of struct miqt_string* */ list) {
 	QList<QString> list_QList;
 	list_QList.reserve(list->len);
-	miqt_string** list_arr = static_cast<miqt_string**>(list->data);
+	struct miqt_string** list_arr = static_cast<struct miqt_string**>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {
-		list_QList.push_back(QString::fromUtf8(& list_arr[i]->data, list_arr[i]->len));
+		QString list_arr_i_QString = QString::fromUtf8(&list_arr[i]->data, list_arr[i]->len);
+		list_QList.push_back(list_arr_i_QString);
 	}
-	QCborArray _ret = QCborArray::fromStringList(list_QList);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray*>(new QCborArray(_ret));
+	return new QCborArray(QCborArray::fromStringList(list_QList));
 }
 
 QCborArray* QCborArray_FromJsonArray(QJsonArray* array) {
-	QCborArray _ret = QCborArray::fromJsonArray(*array);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray*>(new QCborArray(_ret));
+	return new QCborArray(QCborArray::fromJsonArray(*array));
 }
 
 QJsonArray* QCborArray_ToJsonArray(const QCborArray* self) {
-	QJsonArray _ret = self->toJsonArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->toJsonArray());
 }
 
 void QCborArray_Delete(QCborArray* self) {
@@ -308,10 +251,12 @@ QCborArray__Iterator* QCborArray__Iterator_new2(QCborArray__Iterator* param1) {
 	return new QCborArray::Iterator(*param1);
 }
 
+void QCborArray__Iterator_OperatorAssign(QCborArray__Iterator* self, QCborArray__Iterator* other) {
+	self->operator=(*other);
+}
+
 QCborValueRef* QCborArray__Iterator_OperatorMultiply(const QCborArray__Iterator* self) {
-	QCborValueRef _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator*());
 }
 
 QCborValueRef* QCborArray__Iterator_OperatorMinusGreater(const QCborArray__Iterator* self) {
@@ -319,9 +264,7 @@ QCborValueRef* QCborArray__Iterator_OperatorMinusGreater(const QCborArray__Itera
 }
 
 QCborValueRef* QCborArray__Iterator_OperatorSubscript(QCborArray__Iterator* self, size_t j) {
-	QCborValueRef _ret = self->operator[](static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](static_cast<qsizetype>(j)));
 }
 
 bool QCborArray__Iterator_OperatorEqual(const QCborArray__Iterator* self, QCborArray__Iterator* o) {
@@ -372,28 +315,44 @@ bool QCborArray__Iterator_OperatorGreaterOrEqualWithOther(const QCborArray__Iter
 	return self->operator>=(*other);
 }
 
-QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlus(QCborArray__Iterator* self, int param1) {
-	QCborArray::Iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlus(QCborArray__Iterator* self) {
+	QCborArray::Iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
-QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinus(QCborArray__Iterator* self, int param1) {
-	QCborArray::Iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlusWithInt(QCborArray__Iterator* self, int param1) {
+	return new QCborArray::Iterator(self->operator++(static_cast<int>(param1)));
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinus(QCborArray__Iterator* self) {
+	QCborArray::Iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinusWithInt(QCborArray__Iterator* self, int param1) {
+	return new QCborArray::Iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusAssign(QCborArray__Iterator* self, size_t j) {
+	QCborArray::Iterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusAssign(QCborArray__Iterator* self, size_t j) {
+	QCborArray::Iterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborArray__Iterator* QCborArray__Iterator_OperatorPlus(const QCborArray__Iterator* self, size_t j) {
-	QCborArray::Iterator _ret = self->operator+(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->operator+(static_cast<qsizetype>(j)));
 }
 
 QCborArray__Iterator* QCborArray__Iterator_OperatorMinus(const QCborArray__Iterator* self, size_t j) {
-	QCborArray::Iterator _ret = self->operator-(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::Iterator*>(new QCborArray::Iterator(_ret));
+	return new QCborArray::Iterator(self->operator-(static_cast<qsizetype>(j)));
 }
 
 size_t QCborArray__Iterator_OperatorMinusWithQCborArrayIterator(const QCborArray__Iterator* self, QCborArray__Iterator* j) {
@@ -412,10 +371,12 @@ QCborArray__ConstIterator* QCborArray__ConstIterator_new2(QCborArray__ConstItera
 	return new QCborArray::ConstIterator(*param1);
 }
 
+void QCborArray__ConstIterator_OperatorAssign(QCborArray__ConstIterator* self, QCborArray__ConstIterator* other) {
+	self->operator=(*other);
+}
+
 QCborValueRef* QCborArray__ConstIterator_OperatorMultiply(const QCborArray__ConstIterator* self) {
-	QCborValueRef _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator*());
 }
 
 QCborValueRef* QCborArray__ConstIterator_OperatorMinusGreater(const QCborArray__ConstIterator* self) {
@@ -423,9 +384,7 @@ QCborValueRef* QCborArray__ConstIterator_OperatorMinusGreater(const QCborArray__
 }
 
 QCborValueRef* QCborArray__ConstIterator_OperatorSubscript(QCborArray__ConstIterator* self, size_t j) {
-	QCborValueRef _ret = self->operator[](static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborValueRef*>(new QCborValueRef(_ret));
+	return new QCborValueRef(self->operator[](static_cast<qsizetype>(j)));
 }
 
 bool QCborArray__ConstIterator_OperatorEqual(const QCborArray__ConstIterator* self, QCborArray__Iterator* o) {
@@ -476,28 +435,44 @@ bool QCborArray__ConstIterator_OperatorGreaterOrEqualWithOther(const QCborArray_
 	return self->operator>=(*other);
 }
 
-QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlus(QCborArray__ConstIterator* self, int param1) {
-	QCborArray::ConstIterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlus(QCborArray__ConstIterator* self) {
+	QCborArray::ConstIterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
-QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinus(QCborArray__ConstIterator* self, int param1) {
-	QCborArray::ConstIterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlusWithInt(QCborArray__ConstIterator* self, int param1) {
+	return new QCborArray::ConstIterator(self->operator++(static_cast<int>(param1)));
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinus(QCborArray__ConstIterator* self) {
+	QCborArray::ConstIterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinusWithInt(QCborArray__ConstIterator* self, int param1) {
+	return new QCborArray::ConstIterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusAssign(QCborArray__ConstIterator* self, size_t j) {
+	QCborArray::ConstIterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusAssign(QCborArray__ConstIterator* self, size_t j) {
+	QCborArray::ConstIterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlus(const QCborArray__ConstIterator* self, size_t j) {
-	QCborArray::ConstIterator _ret = self->operator+(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->operator+(static_cast<qsizetype>(j)));
 }
 
 QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinus(const QCborArray__ConstIterator* self, size_t j) {
-	QCborArray::ConstIterator _ret = self->operator-(static_cast<qsizetype>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCborArray::ConstIterator*>(new QCborArray::ConstIterator(_ret));
+	return new QCborArray::ConstIterator(self->operator-(static_cast<qsizetype>(j)));
 }
 
 size_t QCborArray__ConstIterator_OperatorMinusWithQCborArrayConstIterator(const QCborArray__ConstIterator* self, QCborArray__ConstIterator* j) {

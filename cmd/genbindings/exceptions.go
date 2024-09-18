@@ -90,8 +90,10 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if p.QPairOf() {
 		return ErrTooComplex // e.g. QGradientStop
 	}
-	if p.QSetOf() {
-		return ErrTooComplex // e.g. QStateMachine
+	if t, ok := p.QSetOf(); ok {
+		if err := CheckComplexity(t, isReturnType); err != nil {
+			return err
+		}
 	}
 	if t, ok := p.QListOf(); ok {
 		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
@@ -104,6 +106,18 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	}
 	if strings.HasPrefix(p.ParameterType, "StringResult<") {
 		return ErrTooComplex // e.g. qcborstreamreader.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QScopedPointer<") {
+		return ErrTooComplex // e.g. qbrush.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QExplicitlySharedDataPointer<") {
+		return ErrTooComplex // e.g. qpicture.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QSharedDataPointer<") {
+		return ErrTooComplex // e.g. qurlquery.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QTypedArrayData<") {
+		return ErrTooComplex // e.g. qbitarray.h
 	}
 	if strings.HasPrefix(p.ParameterType, "QGenericMatrix<") {
 		return ErrTooComplex // e.g. qmatrix4x4.h
@@ -119,18 +133,19 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		// std::seed_seq              QRandom
 		return ErrTooComplex
 	}
-	if strings.Contains(p.ParameterType, `::reverse_iterator`) || strings.Contains(p.ParameterType, `::const_reverse_iterator`) {
-		return ErrTooComplex // e.g. qbytearray.h
-	}
 	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
 		return ErrTooComplex // e.g. qcbormap
 	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
 	}
+	if strings.Contains(p.GetQtCppType().ParameterType, `::DataPtr`) {
+		return ErrTooComplex // e.g. QImage::data_ptr()
+	}
 
 	// Some QFoo constructors take a QFooPrivate
-	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") && !isReturnType {
+	// QIcon also returns a QIconPrivate
+	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") {
 		return ErrTooComplex
 	}
 
@@ -169,37 +184,18 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QGenericMatrix", "QMatrix3x3", // extends a template type
 		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
 		"QStringRef",                      // e.g. QLocale::toLongLong and similar overloads. As above
-		"QGradientStop", "QGradientStops", // QPair<>-related types, but we can't see through the typedef to block based on QPair alone
-		"void **",                         // e.g. qobjectdefs.h QMetaObject->Activate()
-		"QGraphicsItem **",                // e.g. QGraphicsItem::IsBlockedByModalPanel() overload
-		"char *&",                         // e.g. QDataStream.operator<<()
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
-		"QStringView::const_pointer",      // e.g. qstringview.h data()
-		"QStringView::const_iterator",     // e.g. qstringview.h
-		"QStringView::value_type",         // e.g. qstringview.h
 		"FILE",                            // e.g. qfile.h constructors
 		"qInternalCallback",               // e.g. qnamespace.h
-		"picture_io_handler",              // e.g. QPictureIO::DefineIOHandler callback function
-		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
-		"QFunctionPointer",                // e.g. QGuiApplication_PlatformFunction
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
-		"QAbstractUndoItem",               // e.g. Defined in qtextdocument.h
-		"QTextObjectInterface",            // e.g. qabstracttextdocumentlayout.h
-		"QUrl::FormattingOptions",         // e.g. QUrl.h. Typedef for a complex template type
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
 		"QXmlStreamAttributes",            // e.g. qxmlstream.h
-		"QVariantMap",                     // e.g. qcbormap.h
-		"QVariantHash",                    // e.g. qcbormap.h
-		"QCborTag",                        // e.g. qcborstreamreader.h.TODO Needs support for enums
-		"QCborSimpleType",                 // e.g. qcborstreamreader.h TODO Needs support for enums
-		"QCborKnownTags",                  // e.g. qcborstreamreader.h TODO Needs support for enums
-		"QCborNegativeInteger",            // e.g. qcborstreamreader.h TODO Needs support for enums
-		"QtMsgType",                       // e.g. qdebug.h TODO Needs support for enums
+		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
 		"QItemSelection",                  // used by qabstractproxymodel.h, also blocked in AllowClass above, class extends a List<T>
@@ -207,6 +203,7 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QException",                      // used by qfutureinterface.h, also blocked in AllowClass above
 		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
 		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
+		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
 		"QPlatformBackingStore",           // e.g. qbackingstore.h, as below
 		"QPlatformMenuBar",                // e.g. qfutureinterface.h, as below
 		"QPlatformOffscreenSurface",       // e.g. qoffscreensurface.h, as below
@@ -230,11 +227,11 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 // generated headers (generated on Linux) with other OSes such as Windows.
 // These methods will be blocked on non-Linux OSes.
 func LinuxWindowsCompatCheck(p CppParameter) bool {
-	if p.TypeAlias == "Q_PID" {
+	if p.GetQtCppType().ParameterType == "Q_PID" {
 		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
 	}
 
-	if p.ParameterType == "QSocketDescriptor::DescriptorType" {
+	if p.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" {
 		return true // uintptr_t-compatible on Linux, void* on Windows
 	}
 	return false

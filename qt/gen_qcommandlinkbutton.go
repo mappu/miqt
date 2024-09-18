@@ -85,8 +85,7 @@ func NewQCommandLinkButton6(text string, description string, parent *QWidget) *Q
 }
 
 func (this *QCommandLinkButton) MetaObject() *QMetaObject {
-	_ret := C.QCommandLinkButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QCommandLinkButton_MetaObject(this.h)))
 }
 
 func QCommandLinkButton_Tr(s string) string {

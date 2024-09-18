@@ -18,7 +18,7 @@ QStateMachine* QStateMachine_new() {
 	return new QStateMachine();
 }
 
-QStateMachine* QStateMachine_new2(uintptr_t childMode) {
+QStateMachine* QStateMachine_new2(int childMode) {
 	return new QStateMachine(static_cast<QState::ChildMode>(childMode));
 }
 
@@ -26,7 +26,7 @@ QStateMachine* QStateMachine_new3(QObject* parent) {
 	return new QStateMachine(parent);
 }
 
-QStateMachine* QStateMachine_new4(uintptr_t childMode, QObject* parent) {
+QStateMachine* QStateMachine_new4(int childMode, QObject* parent) {
 	return new QStateMachine(static_cast<QState::ChildMode>(childMode), parent);
 }
 
@@ -56,9 +56,9 @@ void QStateMachine_RemoveState(QStateMachine* self, QAbstractState* state) {
 	self->removeState(state);
 }
 
-uintptr_t QStateMachine_Error(const QStateMachine* self) {
+int QStateMachine_Error(const QStateMachine* self) {
 	QStateMachine::Error _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QStateMachine_ErrorString(const QStateMachine* self) {
@@ -89,7 +89,7 @@ void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 }
 
 struct miqt_array* QStateMachine_DefaultAnimations(const QStateMachine* self) {
-	QList<QAbstractAnimation*> _ret = self->defaultAnimations();
+	QList<QAbstractAnimation *> _ret = self->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -105,12 +105,12 @@ void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimatio
 	self->removeDefaultAnimation(animation);
 }
 
-uintptr_t QStateMachine_GlobalRestorePolicy(const QStateMachine* self) {
+int QStateMachine_GlobalRestorePolicy(const QStateMachine* self) {
 	QState::RestorePolicy _ret = self->globalRestorePolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, uintptr_t restorePolicy) {
+void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, int restorePolicy) {
 	self->setGlobalRestorePolicy(static_cast<QState::RestorePolicy>(restorePolicy));
 }
 
@@ -124,6 +124,21 @@ int QStateMachine_PostDelayedEvent(QStateMachine* self, QEvent* event, int delay
 
 bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id) {
 	return self->cancelDelayedEvent(static_cast<int>(id));
+}
+
+struct miqt_array* QStateMachine_Configuration(const QStateMachine* self) {
+	QSet<QAbstractState *> _ret = self->configuration();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.size()));
+	int _ctr = 0;
+	QSetIterator<QAbstractState*> _itr(_ret);
+	while (_itr.hasNext()) {
+		_arr[_ctr++] = _itr.next();
+	}
+	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
+	_out->len = _ret.size();
+	_out->data = static_cast<void*>(_arr);
+	return _out;
 }
 
 bool QStateMachine_EventFilter(QStateMachine* self, QObject* watched, QEvent* event) {
@@ -181,7 +196,7 @@ struct miqt_string* QStateMachine_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, uintptr_t priority) {
+void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, int priority) {
 	self->postEvent(event, static_cast<QStateMachine::EventPriority>(priority));
 }
 

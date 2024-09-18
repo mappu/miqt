@@ -38,13 +38,13 @@ struct miqt_string* QPdfWriter_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QPdfWriter_SetPdfVersion(QPdfWriter* self, uintptr_t version) {
+void QPdfWriter_SetPdfVersion(QPdfWriter* self, int version) {
 	self->setPdfVersion(static_cast<QPagedPaintDevice::PdfVersion>(version));
 }
 
-uintptr_t QPdfWriter_PdfVersion(const QPdfWriter* self) {
+int QPdfWriter_PdfVersion(const QPdfWriter* self) {
 	QPagedPaintDevice::PdfVersion _ret = self->pdfVersion();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QPdfWriter_Title(const QPdfWriter* self) {
@@ -88,9 +88,7 @@ void QPdfWriter_SetDocumentXmpMetadata(QPdfWriter* self, QByteArray* xmpMetadata
 }
 
 QByteArray* QPdfWriter_DocumentXmpMetadata(const QPdfWriter* self) {
-	QByteArray _ret = self->documentXmpMetadata();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->documentXmpMetadata());
 }
 
 void QPdfWriter_AddFileAttachment(QPdfWriter* self, struct miqt_string* fileName, QByteArray* data) {
@@ -98,7 +96,7 @@ void QPdfWriter_AddFileAttachment(QPdfWriter* self, struct miqt_string* fileName
 	self->addFileAttachment(fileName_QString, *data);
 }
 
-void QPdfWriter_SetPageSize(QPdfWriter* self, uintptr_t size) {
+void QPdfWriter_SetPageSize(QPdfWriter* self, int size) {
 	self->setPageSize(static_cast<QPagedPaintDevice::PageSize>(size));
 }
 

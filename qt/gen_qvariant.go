@@ -110,7 +110,7 @@ func NewQVariant() *QVariant {
 
 // NewQVariant2 constructs a new QVariant object.
 func NewQVariant2(typeVal QVariant__Type) *QVariant {
-	ret := C.QVariant_new2((C.uintptr_t)(typeVal))
+	ret := C.QVariant_new2((C.int)(typeVal))
 	return newQVariant(ret)
 }
 
@@ -140,13 +140,13 @@ func NewQVariant6(ui uint) *QVariant {
 
 // NewQVariant7 constructs a new QVariant object.
 func NewQVariant7(ll int64) *QVariant {
-	ret := C.QVariant_new7((C.int64_t)(ll))
+	ret := C.QVariant_new7((C.longlong)(ll))
 	return newQVariant(ret)
 }
 
 // NewQVariant8 constructs a new QVariant object.
 func NewQVariant8(ull uint64) *QVariant {
-	ret := C.QVariant_new8((C.uint64_t)(ull))
+	ret := C.QVariant_new8((C.ulonglong)(ull))
 	return newQVariant(ret)
 }
 
@@ -198,13 +198,13 @@ func NewQVariant15(stringVal string) *QVariant {
 
 // NewQVariant16 constructs a new QVariant object.
 func NewQVariant16(stringlist []string) *QVariant {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	stringlist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
 	for i := range stringlist {
-		single_ms := miqt_strdupg(stringlist[i])
-		defer C.free(single_ms)
-		stringlist_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		stringlist_i_ms := miqt_strdupg(stringlist[i])
+		defer C.free(stringlist_i_ms)
+		stringlist_CArray[i] = (*C.struct_miqt_string)(stringlist_i_ms)
 	}
 	stringlist_ma := &C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(stringlist_ma))
@@ -365,13 +365,11 @@ func (this *QVariant) Swap(other *QVariant) {
 }
 
 func (this *QVariant) Type() QVariant__Type {
-	_ret := C.QVariant_Type(this.h)
-	return (QVariant__Type)(_ret)
+	return (QVariant__Type)(C.QVariant_Type(this.h))
 }
 
 func (this *QVariant) UserType() int {
-	_ret := C.QVariant_UserType(this.h)
-	return (int)(_ret)
+	return (int)(C.QVariant_UserType(this.h))
 }
 
 func (this *QVariant) TypeName() unsafe.Pointer {
@@ -380,23 +378,19 @@ func (this *QVariant) TypeName() unsafe.Pointer {
 }
 
 func (this *QVariant) CanConvert(targetTypeId int) bool {
-	_ret := C.QVariant_CanConvert(this.h, (C.int)(targetTypeId))
-	return (bool)(_ret)
+	return (bool)(C.QVariant_CanConvert(this.h, (C.int)(targetTypeId)))
 }
 
 func (this *QVariant) Convert(targetTypeId int) bool {
-	_ret := C.QVariant_Convert(this.h, (C.int)(targetTypeId))
-	return (bool)(_ret)
+	return (bool)(C.QVariant_Convert(this.h, (C.int)(targetTypeId)))
 }
 
 func (this *QVariant) IsValid() bool {
-	_ret := C.QVariant_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVariant_IsValid(this.h))
 }
 
 func (this *QVariant) IsNull() bool {
-	_ret := C.QVariant_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVariant_IsNull(this.h))
 }
 
 func (this *QVariant) Clear() {
@@ -408,48 +402,39 @@ func (this *QVariant) Detach() {
 }
 
 func (this *QVariant) IsDetached() bool {
-	_ret := C.QVariant_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVariant_IsDetached(this.h))
 }
 
 func (this *QVariant) ToInt() int {
-	_ret := C.QVariant_ToInt(this.h)
-	return (int)(_ret)
+	return (int)(C.QVariant_ToInt(this.h))
 }
 
 func (this *QVariant) ToUInt() uint {
-	_ret := C.QVariant_ToUInt(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QVariant_ToUInt(this.h))
 }
 
 func (this *QVariant) ToLongLong() int64 {
-	_ret := C.QVariant_ToLongLong(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QVariant_ToLongLong(this.h))
 }
 
 func (this *QVariant) ToULongLong() uint64 {
-	_ret := C.QVariant_ToULongLong(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QVariant_ToULongLong(this.h))
 }
 
 func (this *QVariant) ToBool() bool {
-	_ret := C.QVariant_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVariant_ToBool(this.h))
 }
 
 func (this *QVariant) ToDouble() float64 {
-	_ret := C.QVariant_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QVariant_ToDouble(this.h))
 }
 
 func (this *QVariant) ToFloat() float32 {
-	_ret := C.QVariant_ToFloat(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVariant_ToFloat(this.h))
 }
 
 func (this *QVariant) ToReal() float64 {
-	_ret := C.QVariant_ToReal(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QVariant_ToReal(this.h))
 }
 
 func (this *QVariant) ToByteArray() *QByteArray {
@@ -478,8 +463,10 @@ func (this *QVariant) ToStringList() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -669,73 +656,59 @@ func QVariant_TypeToName(typeId int) unsafe.Pointer {
 func QVariant_NameToType(name string) QVariant__Type {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	_ret := C.QVariant_NameToType(name_Cstring)
-	return (QVariant__Type)(_ret)
+	return (QVariant__Type)(C.QVariant_NameToType(name_Cstring))
 }
 
 func (this *QVariant) OperatorEqual(v *QVariant) bool {
-	_ret := C.QVariant_OperatorEqual(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorEqual(this.h, v.cPointer()))
 }
 
 func (this *QVariant) OperatorNotEqual(v *QVariant) bool {
-	_ret := C.QVariant_OperatorNotEqual(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorNotEqual(this.h, v.cPointer()))
 }
 
 func (this *QVariant) OperatorLesser(v *QVariant) bool {
-	_ret := C.QVariant_OperatorLesser(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorLesser(this.h, v.cPointer()))
 }
 
 func (this *QVariant) OperatorLesserOrEqual(v *QVariant) bool {
-	_ret := C.QVariant_OperatorLesserOrEqual(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorLesserOrEqual(this.h, v.cPointer()))
 }
 
 func (this *QVariant) OperatorGreater(v *QVariant) bool {
-	_ret := C.QVariant_OperatorGreater(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorGreater(this.h, v.cPointer()))
 }
 
 func (this *QVariant) OperatorGreaterOrEqual(v *QVariant) bool {
-	_ret := C.QVariant_OperatorGreaterOrEqual(this.h, v.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVariant_OperatorGreaterOrEqual(this.h, v.cPointer()))
 }
 
 func (this *QVariant) ToInt1(ok *bool) int {
-	_ret := C.QVariant_ToInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (int)(_ret)
+	return (int)(C.QVariant_ToInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToUInt1(ok *bool) uint {
-	_ret := C.QVariant_ToUInt1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (uint)(_ret)
+	return (uint)(C.QVariant_ToUInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToLongLong1(ok *bool) int64 {
-	_ret := C.QVariant_ToLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (int64)(_ret)
+	return (int64)(C.QVariant_ToLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToULongLong1(ok *bool) uint64 {
-	_ret := C.QVariant_ToULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (uint64)(_ret)
+	return (uint64)(C.QVariant_ToULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToDouble1(ok *bool) float64 {
-	_ret := C.QVariant_ToDouble1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float64)(_ret)
+	return (float64)(C.QVariant_ToDouble1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToFloat1(ok *bool) float32 {
-	_ret := C.QVariant_ToFloat1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float32)(_ret)
+	return (float32)(C.QVariant_ToFloat1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QVariant) ToReal1(ok *bool) float64 {
-	_ret := C.QVariant_ToReal1(this.h, (*C.bool)(unsafe.Pointer(ok)))
-	return (float64)(_ret)
+	return (float64)(C.QVariant_ToReal1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.
@@ -856,13 +829,11 @@ func (this *QSequentialIterable) At(idx int) *QVariant {
 }
 
 func (this *QSequentialIterable) Size() int {
-	_ret := C.QSequentialIterable_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QSequentialIterable_Size(this.h))
 }
 
 func (this *QSequentialIterable) CanReverseIterate() bool {
-	_ret := C.QSequentialIterable_CanReverseIterate(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSequentialIterable_CanReverseIterate(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -942,8 +913,7 @@ func (this *QAssociativeIterable) Value(key *QVariant) *QVariant {
 }
 
 func (this *QAssociativeIterable) Size() int {
-	_ret := C.QAssociativeIterable_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QAssociativeIterable_Size(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1060,6 +1030,10 @@ func NewQSequentialIterable__const_iterator(other *QSequentialIterable__const_it
 	return newQSequentialIterable__const_iterator(ret)
 }
 
+func (this *QSequentialIterable__const_iterator) OperatorAssign(other *QSequentialIterable__const_iterator) {
+	C.QSequentialIterable__const_iterator_OperatorAssign(this.h, other.cPointer())
+}
+
 func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
 	_ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
 	_goptr := newQVariant(_ret)
@@ -1068,27 +1042,41 @@ func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorEqual(o *QSequentialIterable__const_iterator) bool {
-	_ret := C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequentialIterable__const_iterator) bool {
-	_ret := C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
-func (this *QSequentialIterable__const_iterator) OperatorPlusPlus(param1 int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QSequentialIterable__const_iterator) OperatorPlusPlus() *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQSequentialIterable__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QSequentialIterable__const_iterator) OperatorMinusMinus(param1 int) *QSequentialIterable__const_iterator {
-	_ret := C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QSequentialIterable__const_iterator) OperatorMinusMinus() *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQSequentialIterable__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusAssign(j int) *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusAssign(j int) *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
@@ -1147,6 +1135,10 @@ func NewQAssociativeIterable__const_iterator(other *QAssociativeIterable__const_
 	return newQAssociativeIterable__const_iterator(ret)
 }
 
+func (this *QAssociativeIterable__const_iterator) OperatorAssign(other *QAssociativeIterable__const_iterator) {
+	C.QAssociativeIterable__const_iterator_OperatorAssign(this.h, other.cPointer())
+}
+
 func (this *QAssociativeIterable__const_iterator) Key() *QVariant {
 	_ret := C.QAssociativeIterable__const_iterator_Key(this.h)
 	_goptr := newQVariant(_ret)
@@ -1169,27 +1161,41 @@ func (this *QAssociativeIterable__const_iterator) OperatorMultiply() *QVariant {
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorEqual(o *QAssociativeIterable__const_iterator) bool {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociativeIterable__const_iterator) bool {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
-func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus(param1 int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus() *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQAssociativeIterable__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus(param1 int) *QAssociativeIterable__const_iterator {
-	_ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus() *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQAssociativeIterable__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusAssign(j int) *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusAssign(j int) *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {

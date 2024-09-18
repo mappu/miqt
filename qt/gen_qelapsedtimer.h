@@ -20,7 +20,7 @@ typedef struct QElapsedTimer QElapsedTimer;
 #endif
 
 QElapsedTimer* QElapsedTimer_new();
-uintptr_t QElapsedTimer_ClockType();
+int QElapsedTimer_ClockType();
 bool QElapsedTimer_IsMonotonic();
 void QElapsedTimer_Start(QElapsedTimer* self);
 long long QElapsedTimer_Restart(QElapsedTimer* self);

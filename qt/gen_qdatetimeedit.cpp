@@ -68,27 +68,19 @@ struct miqt_string* QDateTimeEdit_TrUtf8(const char* s) {
 }
 
 QDateTime* QDateTimeEdit_DateTime(const QDateTimeEdit* self) {
-	QDateTime _ret = self->dateTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->dateTime());
 }
 
 QDate* QDateTimeEdit_Date(const QDateTimeEdit* self) {
-	QDate _ret = self->date();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->date());
 }
 
 QTime* QDateTimeEdit_Time(const QDateTimeEdit* self) {
-	QTime _ret = self->time();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->time());
 }
 
 QCalendar* QDateTimeEdit_Calendar(const QDateTimeEdit* self) {
-	QCalendar _ret = self->calendar();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCalendar*>(new QCalendar(_ret));
+	return new QCalendar(self->calendar());
 }
 
 void QDateTimeEdit_SetCalendar(QDateTimeEdit* self, QCalendar* calendar) {
@@ -96,9 +88,7 @@ void QDateTimeEdit_SetCalendar(QDateTimeEdit* self, QCalendar* calendar) {
 }
 
 QDateTime* QDateTimeEdit_MinimumDateTime(const QDateTimeEdit* self) {
-	QDateTime _ret = self->minimumDateTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->minimumDateTime());
 }
 
 void QDateTimeEdit_ClearMinimumDateTime(QDateTimeEdit* self) {
@@ -110,9 +100,7 @@ void QDateTimeEdit_SetMinimumDateTime(QDateTimeEdit* self, QDateTime* dt) {
 }
 
 QDateTime* QDateTimeEdit_MaximumDateTime(const QDateTimeEdit* self) {
-	QDateTime _ret = self->maximumDateTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->maximumDateTime());
 }
 
 void QDateTimeEdit_ClearMaximumDateTime(QDateTimeEdit* self) {
@@ -128,9 +116,7 @@ void QDateTimeEdit_SetDateTimeRange(QDateTimeEdit* self, QDateTime* min, QDateTi
 }
 
 QDate* QDateTimeEdit_MinimumDate(const QDateTimeEdit* self) {
-	QDate _ret = self->minimumDate();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->minimumDate());
 }
 
 void QDateTimeEdit_SetMinimumDate(QDateTimeEdit* self, QDate* min) {
@@ -142,9 +128,7 @@ void QDateTimeEdit_ClearMinimumDate(QDateTimeEdit* self) {
 }
 
 QDate* QDateTimeEdit_MaximumDate(const QDateTimeEdit* self) {
-	QDate _ret = self->maximumDate();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->maximumDate());
 }
 
 void QDateTimeEdit_SetMaximumDate(QDateTimeEdit* self, QDate* max) {
@@ -160,9 +144,7 @@ void QDateTimeEdit_SetDateRange(QDateTimeEdit* self, QDate* min, QDate* max) {
 }
 
 QTime* QDateTimeEdit_MinimumTime(const QDateTimeEdit* self) {
-	QTime _ret = self->minimumTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->minimumTime());
 }
 
 void QDateTimeEdit_SetMinimumTime(QDateTimeEdit* self, QTime* min) {
@@ -174,9 +156,7 @@ void QDateTimeEdit_ClearMinimumTime(QDateTimeEdit* self) {
 }
 
 QTime* QDateTimeEdit_MaximumTime(const QDateTimeEdit* self) {
-	QTime _ret = self->maximumTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->maximumTime());
 }
 
 void QDateTimeEdit_SetMaximumTime(QDateTimeEdit* self, QTime* max) {
@@ -196,17 +176,17 @@ int QDateTimeEdit_DisplayedSections(const QDateTimeEdit* self) {
 	return static_cast<int>(_ret);
 }
 
-uintptr_t QDateTimeEdit_CurrentSection(const QDateTimeEdit* self) {
+int QDateTimeEdit_CurrentSection(const QDateTimeEdit* self) {
 	QDateTimeEdit::Section _ret = self->currentSection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QDateTimeEdit_SectionAt(const QDateTimeEdit* self, int index) {
+int QDateTimeEdit_SectionAt(const QDateTimeEdit* self, int index) {
 	QDateTimeEdit::Section _ret = self->sectionAt(static_cast<int>(index));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDateTimeEdit_SetCurrentSection(QDateTimeEdit* self, uintptr_t section) {
+void QDateTimeEdit_SetCurrentSection(QDateTimeEdit* self, int section) {
 	self->setCurrentSection(static_cast<QDateTimeEdit::Section>(section));
 }
 
@@ -230,11 +210,11 @@ int QDateTimeEdit_SectionCount(const QDateTimeEdit* self) {
 	return self->sectionCount();
 }
 
-void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, uintptr_t section) {
+void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, int section) {
 	self->setSelectedSection(static_cast<QDateTimeEdit::Section>(section));
 }
 
-struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, uintptr_t section) {
+struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, int section) {
 	QString _ret = self->sectionText(static_cast<QDateTimeEdit::Section>(section));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -261,19 +241,17 @@ void QDateTimeEdit_SetCalendarPopup(QDateTimeEdit* self, bool enable) {
 	self->setCalendarPopup(enable);
 }
 
-uintptr_t QDateTimeEdit_TimeSpec(const QDateTimeEdit* self) {
+int QDateTimeEdit_TimeSpec(const QDateTimeEdit* self) {
 	Qt::TimeSpec _ret = self->timeSpec();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDateTimeEdit_SetTimeSpec(QDateTimeEdit* self, uintptr_t spec) {
+void QDateTimeEdit_SetTimeSpec(QDateTimeEdit* self, int spec) {
 	self->setTimeSpec(static_cast<Qt::TimeSpec>(spec));
 }
 
 QSize* QDateTimeEdit_SizeHint(const QDateTimeEdit* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QDateTimeEdit_Clear(QDateTimeEdit* self) {

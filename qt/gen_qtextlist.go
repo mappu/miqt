@@ -43,8 +43,7 @@ func NewQTextList(doc *QTextDocument) *QTextList {
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
-	_ret := C.QTextList_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextList_MetaObject(this.h)))
 }
 
 func QTextList_Tr(s string) string {
@@ -66,13 +65,11 @@ func QTextList_TrUtf8(s string) string {
 }
 
 func (this *QTextList) Count() int {
-	_ret := C.QTextList_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextList_Count(this.h))
 }
 
 func (this *QTextList) IsEmpty() bool {
-	_ret := C.QTextList_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextList_IsEmpty(this.h))
 }
 
 func (this *QTextList) Item(i int) *QTextBlock {
@@ -83,8 +80,7 @@ func (this *QTextList) Item(i int) *QTextBlock {
 }
 
 func (this *QTextList) ItemNumber(param1 *QTextBlock) int {
-	_ret := C.QTextList_ItemNumber(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QTextList_ItemNumber(this.h, param1.cPointer()))
 }
 
 func (this *QTextList) ItemText(param1 *QTextBlock) string {

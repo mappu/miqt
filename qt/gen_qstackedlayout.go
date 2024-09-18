@@ -63,8 +63,7 @@ func NewQStackedLayout3(parentLayout *QLayout) *QStackedLayout {
 }
 
 func (this *QStackedLayout) MetaObject() *QMetaObject {
-	_ret := C.QStackedLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStackedLayout_MetaObject(this.h)))
 }
 
 func QStackedLayout_Tr(s string) string {
@@ -86,42 +85,35 @@ func QStackedLayout_TrUtf8(s string) string {
 }
 
 func (this *QStackedLayout) AddWidget(w *QWidget) int {
-	_ret := C.QStackedLayout_AddWidget(this.h, w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStackedLayout_AddWidget(this.h, w.cPointer()))
 }
 
 func (this *QStackedLayout) InsertWidget(index int, w *QWidget) int {
-	_ret := C.QStackedLayout_InsertWidget(this.h, (C.int)(index), w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStackedLayout_InsertWidget(this.h, (C.int)(index), w.cPointer()))
 }
 
 func (this *QStackedLayout) CurrentWidget() *QWidget {
-	_ret := C.QStackedLayout_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QStackedLayout_CurrentWidget(this.h)))
 }
 
 func (this *QStackedLayout) CurrentIndex() int {
-	_ret := C.QStackedLayout_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QStackedLayout_CurrentIndex(this.h))
 }
 
 func (this *QStackedLayout) Widget(param1 int) *QWidget {
-	_ret := C.QStackedLayout_Widget(this.h, (C.int)(param1))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QStackedLayout_Widget(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) Count() int {
-	_ret := C.QStackedLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QStackedLayout_Count(this.h))
 }
 
 func (this *QStackedLayout) StackingMode() QStackedLayout__StackingMode {
-	_ret := C.QStackedLayout_StackingMode(this.h)
-	return (QStackedLayout__StackingMode)(_ret)
+	return (QStackedLayout__StackingMode)(C.QStackedLayout_StackingMode(this.h))
 }
 
 func (this *QStackedLayout) SetStackingMode(stackingMode QStackedLayout__StackingMode) {
-	C.QStackedLayout_SetStackingMode(this.h, (C.uintptr_t)(stackingMode))
+	C.QStackedLayout_SetStackingMode(this.h, (C.int)(stackingMode))
 }
 
 func (this *QStackedLayout) AddItem(item *QLayoutItem) {
@@ -143,13 +135,11 @@ func (this *QStackedLayout) MinimumSize() *QSize {
 }
 
 func (this *QStackedLayout) ItemAt(param1 int) *QLayoutItem {
-	_ret := C.QStackedLayout_ItemAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QStackedLayout_ItemAt(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) TakeAt(param1 int) *QLayoutItem {
-	_ret := C.QStackedLayout_TakeAt(this.h, (C.int)(param1))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QStackedLayout_TakeAt(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) SetGeometry(rect *QRect) {
@@ -157,13 +147,11 @@ func (this *QStackedLayout) SetGeometry(rect *QRect) {
 }
 
 func (this *QStackedLayout) HasHeightForWidth() bool {
-	_ret := C.QStackedLayout_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStackedLayout_HasHeightForWidth(this.h))
 }
 
 func (this *QStackedLayout) HeightForWidth(width int) int {
-	_ret := C.QStackedLayout_HeightForWidth(this.h, (C.int)(width))
-	return (int)(_ret)
+	return (int)(C.QStackedLayout_HeightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QStackedLayout) WidgetRemoved(index int) {
@@ -181,8 +169,7 @@ func miqt_exec_callback_QStackedLayout_WidgetRemoved(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }
@@ -202,8 +189,7 @@ func miqt_exec_callback_QStackedLayout_CurrentChanged(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }

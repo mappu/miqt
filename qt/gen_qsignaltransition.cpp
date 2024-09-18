@@ -53,9 +53,7 @@ void QSignalTransition_SetSenderObject(QSignalTransition* self, QObject* sender)
 }
 
 QByteArray* QSignalTransition_Signal(const QSignalTransition* self) {
-	QByteArray _ret = self->signal();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->signal());
 }
 
 void QSignalTransition_SetSignal(QSignalTransition* self, QByteArray* signal) {

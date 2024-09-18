@@ -177,33 +177,27 @@ func newQPagedPaintDevice_U(h unsafe.Pointer) *QPagedPaintDevice {
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
-	_ret := C.QPagedPaintDevice_NewPage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_NewPage(this.h))
 }
 
 func (this *QPagedPaintDevice) SetPageLayout(pageLayout *QPageLayout) bool {
-	_ret := C.QPagedPaintDevice_SetPageLayout(this.h, pageLayout.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_SetPageLayout(this.h, pageLayout.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageSize(pageSize *QPageSize) bool {
-	_ret := C.QPagedPaintDevice_SetPageSize(this.h, pageSize.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_SetPageSize(this.h, pageSize.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orientation) bool {
-	_ret := C.QPagedPaintDevice_SetPageOrientation(this.h, (C.uintptr_t)(orientation))
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_SetPageOrientation(this.h, (C.int)(orientation)))
 }
 
 func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
-	_ret := C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_SetPageMargins(this.h, margins.cPointer()))
 }
 
 func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
-	_ret := C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.uintptr_t)(units))
-	return (bool)(_ret)
+	return (bool)(C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
@@ -214,12 +208,11 @@ func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
 }
 
 func (this *QPagedPaintDevice) SetPageSizeWithSize(size QPagedPaintDevice__PageSize) {
-	C.QPagedPaintDevice_SetPageSizeWithSize(this.h, (C.uintptr_t)(size))
+	C.QPagedPaintDevice_SetPageSizeWithSize(this.h, (C.int)(size))
 }
 
 func (this *QPagedPaintDevice) PageSize() QPagedPaintDevice__PageSize {
-	_ret := C.QPagedPaintDevice_PageSize(this.h)
-	return (QPagedPaintDevice__PageSize)(_ret)
+	return (QPagedPaintDevice__PageSize)(C.QPagedPaintDevice_PageSize(this.h))
 }
 
 func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {

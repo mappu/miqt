@@ -59,15 +59,11 @@ void QLayout_GetContentsMargins(const QLayout* self, int* left, int* top, int* r
 }
 
 QMargins* QLayout_ContentsMargins(const QLayout* self) {
-	QMargins _ret = self->contentsMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->contentsMargins());
 }
 
 QRect* QLayout_ContentsRect(const QLayout* self) {
-	QRect _ret = self->contentsRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->contentsRect());
 }
 
 bool QLayout_SetAlignment(QLayout* self, QWidget* w, int alignment) {
@@ -78,13 +74,13 @@ bool QLayout_SetAlignment2(QLayout* self, QLayout* l, int alignment) {
 	return self->setAlignment(l, static_cast<Qt::Alignment>(alignment));
 }
 
-void QLayout_SetSizeConstraint(QLayout* self, uintptr_t sizeConstraint) {
+void QLayout_SetSizeConstraint(QLayout* self, int sizeConstraint) {
 	self->setSizeConstraint(static_cast<QLayout::SizeConstraint>(sizeConstraint));
 }
 
-uintptr_t QLayout_SizeConstraint(const QLayout* self) {
+int QLayout_SizeConstraint(const QLayout* self) {
 	QLayout::SizeConstraint _ret = self->sizeConstraint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QLayout_SetMenuBar(QLayout* self, QWidget* w) {
@@ -104,9 +100,7 @@ void QLayout_Invalidate(QLayout* self) {
 }
 
 QRect* QLayout_Geometry(const QLayout* self) {
-	QRect _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->geometry());
 }
 
 bool QLayout_Activate(QLayout* self) {
@@ -139,15 +133,11 @@ int QLayout_ExpandingDirections(const QLayout* self) {
 }
 
 QSize* QLayout_MinimumSize(const QLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QLayout_MaximumSize(const QLayout* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 void QLayout_SetGeometry(QLayout* self, QRect* geometry) {
@@ -192,21 +182,15 @@ int QLayout_TotalHeightForWidth(const QLayout* self, int w) {
 }
 
 QSize* QLayout_TotalMinimumSize(const QLayout* self) {
-	QSize _ret = self->totalMinimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->totalMinimumSize());
 }
 
 QSize* QLayout_TotalMaximumSize(const QLayout* self) {
-	QSize _ret = self->totalMaximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->totalMaximumSize());
 }
 
 QSize* QLayout_TotalSizeHint(const QLayout* self) {
-	QSize _ret = self->totalSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->totalSizeHint());
 }
 
 QLayout* QLayout_Layout(QLayout* self) {
@@ -222,9 +206,7 @@ bool QLayout_IsEnabled(const QLayout* self) {
 }
 
 QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s) {
-	QSize _ret = QLayout::closestAcceptableSize(w, *s);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(QLayout::closestAcceptableSize(w, *s));
 }
 
 struct miqt_string* QLayout_Tr2(const char* s, const char* c) {

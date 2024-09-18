@@ -49,8 +49,7 @@ func NewQStyledItemDelegate2(parent *QObject) *QStyledItemDelegate {
 }
 
 func (this *QStyledItemDelegate) MetaObject() *QMetaObject {
-	_ret := C.QStyledItemDelegate_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStyledItemDelegate_MetaObject(this.h)))
 }
 
 func QStyledItemDelegate_Tr(s string) string {
@@ -83,8 +82,7 @@ func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index *Q
 }
 
 func (this *QStyledItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	_ret := C.QStyledItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QStyledItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
 }
 
 func (this *QStyledItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
@@ -100,8 +98,7 @@ func (this *QStyledItemDelegate) UpdateEditorGeometry(editor *QWidget, option *Q
 }
 
 func (this *QStyledItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	_ret := C.QStyledItemDelegate_ItemEditorFactory(this.h)
-	return newQItemEditorFactory_U(unsafe.Pointer(_ret))
+	return newQItemEditorFactory_U(unsafe.Pointer(C.QStyledItemDelegate_ItemEditorFactory(this.h)))
 }
 
 func (this *QStyledItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {

@@ -43,7 +43,7 @@ void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractStat
 }
 
 struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* self) {
-	QList<QAbstractState*> _ret = self->targetStates();
+	QList<QAbstractState *> _ret = self->targetStates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -65,12 +65,12 @@ void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_
 	self->setTargetStates(targets_QList);
 }
 
-uintptr_t QAbstractTransition_TransitionType(const QAbstractTransition* self) {
+int QAbstractTransition_TransitionType(const QAbstractTransition* self) {
 	QAbstractTransition::TransitionType _ret = self->transitionType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t typeVal) {
+void QAbstractTransition_SetTransitionType(QAbstractTransition* self, int typeVal) {
 	self->setTransitionType(static_cast<QAbstractTransition::TransitionType>(typeVal));
 }
 
@@ -87,7 +87,7 @@ void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAni
 }
 
 struct miqt_array* QAbstractTransition_Animations(const QAbstractTransition* self) {
-	QList<QAbstractAnimation*> _ret = self->animations();
+	QList<QAbstractAnimation *> _ret = self->animations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {

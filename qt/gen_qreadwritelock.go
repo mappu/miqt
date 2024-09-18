@@ -50,7 +50,7 @@ func NewQReadWriteLock() *QReadWriteLock {
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
 func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
-	ret := C.QReadWriteLock_new2((C.uintptr_t)(recursionMode))
+	ret := C.QReadWriteLock_new2((C.int)(recursionMode))
 	return newQReadWriteLock(ret)
 }
 
@@ -59,13 +59,11 @@ func (this *QReadWriteLock) LockForRead() {
 }
 
 func (this *QReadWriteLock) TryLockForRead() bool {
-	_ret := C.QReadWriteLock_TryLockForRead(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QReadWriteLock_TryLockForRead(this.h))
 }
 
 func (this *QReadWriteLock) TryLockForReadWithTimeout(timeout int) bool {
-	_ret := C.QReadWriteLock_TryLockForReadWithTimeout(this.h, (C.int)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QReadWriteLock_TryLockForReadWithTimeout(this.h, (C.int)(timeout)))
 }
 
 func (this *QReadWriteLock) LockForWrite() {
@@ -73,13 +71,11 @@ func (this *QReadWriteLock) LockForWrite() {
 }
 
 func (this *QReadWriteLock) TryLockForWrite() bool {
-	_ret := C.QReadWriteLock_TryLockForWrite(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QReadWriteLock_TryLockForWrite(this.h))
 }
 
 func (this *QReadWriteLock) TryLockForWriteWithTimeout(timeout int) bool {
-	_ret := C.QReadWriteLock_TryLockForWriteWithTimeout(this.h, (C.int)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QReadWriteLock_TryLockForWriteWithTimeout(this.h, (C.int)(timeout)))
 }
 
 func (this *QReadWriteLock) Unlock() {
@@ -137,8 +133,7 @@ func (this *QReadLocker) Relock() {
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	_ret := C.QReadLocker_ReadWriteLock(this.h)
-	return newQReadWriteLock_U(unsafe.Pointer(_ret))
+	return newQReadWriteLock_U(unsafe.Pointer(C.QReadLocker_ReadWriteLock(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -192,8 +187,7 @@ func (this *QWriteLocker) Relock() {
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	_ret := C.QWriteLocker_ReadWriteLock(this.h)
-	return newQReadWriteLock_U(unsafe.Pointer(_ret))
+	return newQReadWriteLock_U(unsafe.Pointer(C.QWriteLocker_ReadWriteLock(this.h)))
 }
 
 // Delete this object from C++ memory.

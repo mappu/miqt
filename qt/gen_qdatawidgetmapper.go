@@ -57,8 +57,7 @@ func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
-	_ret := C.QDataWidgetMapper_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDataWidgetMapper_MetaObject(this.h)))
 }
 
 func QDataWidgetMapper_Tr(s string) string {
@@ -84,8 +83,7 @@ func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	_ret := C.QDataWidgetMapper_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)))
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -93,8 +91,7 @@ func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	_ret := C.QDataWidgetMapper_ItemDelegate(this.h)
-	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
+	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)))
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
@@ -109,21 +106,19 @@ func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
 }
 
 func (this *QDataWidgetMapper) SetOrientation(aOrientation Orientation) {
-	C.QDataWidgetMapper_SetOrientation(this.h, (C.uintptr_t)(aOrientation))
+	C.QDataWidgetMapper_SetOrientation(this.h, (C.int)(aOrientation))
 }
 
 func (this *QDataWidgetMapper) Orientation() Orientation {
-	_ret := C.QDataWidgetMapper_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QDataWidgetMapper_Orientation(this.h))
 }
 
 func (this *QDataWidgetMapper) SetSubmitPolicy(policy QDataWidgetMapper__SubmitPolicy) {
-	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.uintptr_t)(policy))
+	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QDataWidgetMapper) SubmitPolicy() QDataWidgetMapper__SubmitPolicy {
-	_ret := C.QDataWidgetMapper_SubmitPolicy(this.h)
-	return (QDataWidgetMapper__SubmitPolicy)(_ret)
+	return (QDataWidgetMapper__SubmitPolicy)(C.QDataWidgetMapper_SubmitPolicy(this.h))
 }
 
 func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {
@@ -139,8 +134,7 @@ func (this *QDataWidgetMapper) RemoveMapping(widget *QWidget) {
 }
 
 func (this *QDataWidgetMapper) MappedSection(widget *QWidget) int {
-	_ret := C.QDataWidgetMapper_MappedSection(this.h, widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDataWidgetMapper_MappedSection(this.h, widget.cPointer()))
 }
 
 func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) *QByteArray {
@@ -151,8 +145,7 @@ func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) *QByteArray {
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	_ret := C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))))
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {
@@ -160,8 +153,7 @@ func (this *QDataWidgetMapper) ClearMapping() {
 }
 
 func (this *QDataWidgetMapper) CurrentIndex() int {
-	_ret := C.QDataWidgetMapper_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QDataWidgetMapper_CurrentIndex(this.h))
 }
 
 func (this *QDataWidgetMapper) Revert() {
@@ -169,8 +161,7 @@ func (this *QDataWidgetMapper) Revert() {
 }
 
 func (this *QDataWidgetMapper) Submit() bool {
-	_ret := C.QDataWidgetMapper_Submit(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDataWidgetMapper_Submit(this.h))
 }
 
 func (this *QDataWidgetMapper) ToFirst() {
@@ -212,8 +203,7 @@ func miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(cb *C.void, index 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }

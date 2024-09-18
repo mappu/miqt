@@ -45,7 +45,7 @@ func NewQSplitter() *QSplitter {
 
 // NewQSplitter2 constructs a new QSplitter object.
 func NewQSplitter2(param1 Orientation) *QSplitter {
-	ret := C.QSplitter_new2((C.uintptr_t)(param1))
+	ret := C.QSplitter_new2((C.int)(param1))
 	return newQSplitter(ret)
 }
 
@@ -57,13 +57,12 @@ func NewQSplitter3(parent *QWidget) *QSplitter {
 
 // NewQSplitter4 constructs a new QSplitter object.
 func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
-	ret := C.QSplitter_new4((C.uintptr_t)(param1), parent.cPointer())
+	ret := C.QSplitter_new4((C.int)(param1), parent.cPointer())
 	return newQSplitter(ret)
 }
 
 func (this *QSplitter) MetaObject() *QMetaObject {
-	_ret := C.QSplitter_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSplitter_MetaObject(this.h)))
 }
 
 func QSplitter_Tr(s string) string {
@@ -93,17 +92,15 @@ func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
 }
 
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
-	_ret := C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer())))
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
-	C.QSplitter_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QSplitter_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QSplitter) Orientation() Orientation {
-	_ret := C.QSplitter_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QSplitter_Orientation(this.h))
 }
 
 func (this *QSplitter) SetChildrenCollapsible(childrenCollapsible bool) {
@@ -111,8 +108,7 @@ func (this *QSplitter) SetChildrenCollapsible(childrenCollapsible bool) {
 }
 
 func (this *QSplitter) ChildrenCollapsible() bool {
-	_ret := C.QSplitter_ChildrenCollapsible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSplitter_ChildrenCollapsible(this.h))
 }
 
 func (this *QSplitter) SetCollapsible(index int, param2 bool) {
@@ -120,8 +116,7 @@ func (this *QSplitter) SetCollapsible(index int, param2 bool) {
 }
 
 func (this *QSplitter) IsCollapsible(index int) bool {
-	_ret := C.QSplitter_IsCollapsible(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QSplitter_IsCollapsible(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetOpaqueResize() {
@@ -129,8 +124,7 @@ func (this *QSplitter) SetOpaqueResize() {
 }
 
 func (this *QSplitter) OpaqueResize() bool {
-	_ret := C.QSplitter_OpaqueResize(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSplitter_OpaqueResize(this.h))
 }
 
 func (this *QSplitter) Refresh() {
@@ -154,7 +148,7 @@ func (this *QSplitter) MinimumSizeHint() *QSize {
 func (this *QSplitter) Sizes() []int {
 	var _ma *C.struct_miqt_array = C.QSplitter_Sizes(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -182,13 +176,11 @@ func (this *QSplitter) SaveState() *QByteArray {
 }
 
 func (this *QSplitter) RestoreState(state *QByteArray) bool {
-	_ret := C.QSplitter_RestoreState(this.h, state.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSplitter_RestoreState(this.h, state.cPointer()))
 }
 
 func (this *QSplitter) HandleWidth() int {
-	_ret := C.QSplitter_HandleWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QSplitter_HandleWidth(this.h))
 }
 
 func (this *QSplitter) SetHandleWidth(handleWidth int) {
@@ -196,18 +188,15 @@ func (this *QSplitter) SetHandleWidth(handleWidth int) {
 }
 
 func (this *QSplitter) IndexOf(w *QWidget) int {
-	_ret := C.QSplitter_IndexOf(this.h, w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QSplitter_IndexOf(this.h, w.cPointer()))
 }
 
 func (this *QSplitter) Widget(index int) *QWidget {
-	_ret := C.QSplitter_Widget(this.h, (C.int)(index))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QSplitter_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QSplitter) Count() int {
-	_ret := C.QSplitter_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QSplitter_Count(this.h))
 }
 
 func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
@@ -215,8 +204,7 @@ func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
 }
 
 func (this *QSplitter) Handle(index int) *QSplitterHandle {
-	_ret := C.QSplitter_Handle(this.h, (C.int)(index))
-	return newQSplitterHandle_U(unsafe.Pointer(_ret))
+	return newQSplitterHandle_U(unsafe.Pointer(C.QSplitter_Handle(this.h, (C.int)(index))))
 }
 
 func (this *QSplitter) SetStretchFactor(index int, stretch int) {
@@ -238,11 +226,9 @@ func miqt_exec_callback_QSplitter_SplitterMoved(cb *C.void, pos C.int, index C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	pos_ret := pos
-	slotval1 := (int)(pos_ret)
+	slotval1 := (int)(pos)
 
-	index_ret := index
-	slotval2 := (int)(index_ret)
+	slotval2 := (int)(index)
 
 	gofunc(slotval1, slotval2)
 }
@@ -334,13 +320,12 @@ func newQSplitterHandle_U(h unsafe.Pointer) *QSplitterHandle {
 
 // NewQSplitterHandle constructs a new QSplitterHandle object.
 func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
-	ret := C.QSplitterHandle_new((C.uintptr_t)(o), parent.cPointer())
+	ret := C.QSplitterHandle_new((C.int)(o), parent.cPointer())
 	return newQSplitterHandle(ret)
 }
 
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
-	_ret := C.QSplitterHandle_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSplitterHandle_MetaObject(this.h)))
 }
 
 func QSplitterHandle_Tr(s string) string {
@@ -362,22 +347,19 @@ func QSplitterHandle_TrUtf8(s string) string {
 }
 
 func (this *QSplitterHandle) SetOrientation(o Orientation) {
-	C.QSplitterHandle_SetOrientation(this.h, (C.uintptr_t)(o))
+	C.QSplitterHandle_SetOrientation(this.h, (C.int)(o))
 }
 
 func (this *QSplitterHandle) Orientation() Orientation {
-	_ret := C.QSplitterHandle_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QSplitterHandle_Orientation(this.h))
 }
 
 func (this *QSplitterHandle) OpaqueResize() bool {
-	_ret := C.QSplitterHandle_OpaqueResize(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSplitterHandle_OpaqueResize(this.h))
 }
 
 func (this *QSplitterHandle) Splitter() *QSplitter {
-	_ret := C.QSplitterHandle_Splitter(this.h)
-	return newQSplitter_U(unsafe.Pointer(_ret))
+	return newQSplitter_U(unsafe.Pointer(C.QSplitterHandle_Splitter(this.h)))
 }
 
 func (this *QSplitterHandle) SizeHint() *QSize {

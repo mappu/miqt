@@ -93,8 +93,7 @@ func (this *QUndoCommand) SetText(text string) {
 }
 
 func (this *QUndoCommand) IsObsolete() bool {
-	_ret := C.QUndoCommand_IsObsolete(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoCommand_IsObsolete(this.h))
 }
 
 func (this *QUndoCommand) SetObsolete(obsolete bool) {
@@ -102,23 +101,19 @@ func (this *QUndoCommand) SetObsolete(obsolete bool) {
 }
 
 func (this *QUndoCommand) Id() int {
-	_ret := C.QUndoCommand_Id(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoCommand_Id(this.h))
 }
 
 func (this *QUndoCommand) MergeWith(other *QUndoCommand) bool {
-	_ret := C.QUndoCommand_MergeWith(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUndoCommand_MergeWith(this.h, other.cPointer()))
 }
 
 func (this *QUndoCommand) ChildCount() int {
-	_ret := C.QUndoCommand_ChildCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoCommand_ChildCount(this.h))
 }
 
 func (this *QUndoCommand) Child(index int) *QUndoCommand {
-	_ret := C.QUndoCommand_Child(this.h, (C.int)(index))
-	return newQUndoCommand_U(unsafe.Pointer(_ret))
+	return newQUndoCommand_U(unsafe.Pointer(C.QUndoCommand_Child(this.h, (C.int)(index))))
 }
 
 // Delete this object from C++ memory.
@@ -171,8 +166,7 @@ func NewQUndoStack2(parent *QObject) *QUndoStack {
 }
 
 func (this *QUndoStack) MetaObject() *QMetaObject {
-	_ret := C.QUndoStack_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QUndoStack_MetaObject(this.h)))
 }
 
 func QUndoStack_Tr(s string) string {
@@ -202,13 +196,11 @@ func (this *QUndoStack) Push(cmd *QUndoCommand) {
 }
 
 func (this *QUndoStack) CanUndo() bool {
-	_ret := C.QUndoStack_CanUndo(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoStack_CanUndo(this.h))
 }
 
 func (this *QUndoStack) CanRedo() bool {
-	_ret := C.QUndoStack_CanRedo(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoStack_CanRedo(this.h))
 }
 
 func (this *QUndoStack) UndoText() string {
@@ -226,13 +218,11 @@ func (this *QUndoStack) RedoText() string {
 }
 
 func (this *QUndoStack) Count() int {
-	_ret := C.QUndoStack_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoStack_Count(this.h))
 }
 
 func (this *QUndoStack) Index() int {
-	_ret := C.QUndoStack_Index(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoStack_Index(this.h))
 }
 
 func (this *QUndoStack) Text(idx int) string {
@@ -243,28 +233,23 @@ func (this *QUndoStack) Text(idx int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction(parent *QObject) *QAction {
-	_ret := C.QUndoStack_CreateUndoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateUndoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoStack) CreateRedoAction(parent *QObject) *QAction {
-	_ret := C.QUndoStack_CreateRedoAction(this.h, parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateRedoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoStack) IsActive() bool {
-	_ret := C.QUndoStack_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoStack_IsActive(this.h))
 }
 
 func (this *QUndoStack) IsClean() bool {
-	_ret := C.QUndoStack_IsClean(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUndoStack_IsClean(this.h))
 }
 
 func (this *QUndoStack) CleanIndex() int {
-	_ret := C.QUndoStack_CleanIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoStack_CleanIndex(this.h))
 }
 
 func (this *QUndoStack) BeginMacro(text string) {
@@ -282,13 +267,11 @@ func (this *QUndoStack) SetUndoLimit(limit int) {
 }
 
 func (this *QUndoStack) UndoLimit() int {
-	_ret := C.QUndoStack_UndoLimit(this.h)
-	return (int)(_ret)
+	return (int)(C.QUndoStack_UndoLimit(this.h))
 }
 
 func (this *QUndoStack) Command(index int) *QUndoCommand {
-	_ret := C.QUndoStack_Command(this.h, (C.int)(index))
-	return newQUndoCommand_U(unsafe.Pointer(_ret))
+	return newQUndoCommand_U(unsafe.Pointer(C.QUndoStack_Command(this.h, (C.int)(index))))
 }
 
 func (this *QUndoStack) SetClean() {
@@ -330,8 +313,7 @@ func miqt_exec_callback_QUndoStack_IndexChanged(cb *C.void, idx C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	idx_ret := idx
-	slotval1 := (int)(idx_ret)
+	slotval1 := (int)(idx)
 
 	gofunc(slotval1)
 }
@@ -351,8 +333,7 @@ func miqt_exec_callback_QUndoStack_CleanChanged(cb *C.void, clean C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	clean_ret := clean
-	slotval1 := (bool)(clean_ret)
+	slotval1 := (bool)(clean)
 
 	gofunc(slotval1)
 }
@@ -372,8 +353,7 @@ func miqt_exec_callback_QUndoStack_CanUndoChanged(cb *C.void, canUndo C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	canUndo_ret := canUndo
-	slotval1 := (bool)(canUndo_ret)
+	slotval1 := (bool)(canUndo)
 
 	gofunc(slotval1)
 }
@@ -393,8 +373,7 @@ func miqt_exec_callback_QUndoStack_CanRedoChanged(cb *C.void, canRedo C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	canRedo_ret := canRedo
-	slotval1 := (bool)(canRedo_ret)
+	slotval1 := (bool)(canRedo)
 
 	gofunc(slotval1)
 }
@@ -496,15 +475,13 @@ func QUndoStack_TrUtf83(s string, c string, n int) string {
 func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QAction {
 	prefix_ms := miqt_strdupg(prefix)
 	defer C.free(prefix_ms)
-	_ret := C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QAction {
 	prefix_ms := miqt_strdupg(prefix)
 	defer C.free(prefix_ms)
-	_ret := C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 func (this *QUndoStack) SetActive1(active bool) {

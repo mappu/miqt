@@ -60,31 +60,29 @@ func (this *QJsonObject) Keys() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QJsonObject) Size() int {
-	_ret := C.QJsonObject_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QJsonObject_Size(this.h))
 }
 
 func (this *QJsonObject) Count() int {
-	_ret := C.QJsonObject_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QJsonObject_Count(this.h))
 }
 
 func (this *QJsonObject) Length() int {
-	_ret := C.QJsonObject_Length(this.h)
-	return (int)(_ret)
+	return (int)(C.QJsonObject_Length(this.h))
 }
 
 func (this *QJsonObject) IsEmpty() bool {
-	_ret := C.QJsonObject_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject_IsEmpty(this.h))
 }
 
 func (this *QJsonObject) Value(key string) *QJsonValue {
@@ -132,18 +130,15 @@ func (this *QJsonObject) Take(key string) *QJsonValue {
 func (this *QJsonObject) Contains(key string) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QJsonObject_Contains(this.h, (*C.struct_miqt_string)(key_ms))
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject_Contains(this.h, (*C.struct_miqt_string)(key_ms)))
 }
 
 func (this *QJsonObject) OperatorEqual(other *QJsonObject) bool {
-	_ret := C.QJsonObject_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject) OperatorNotEqual(other *QJsonObject) bool {
-	_ret := C.QJsonObject_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject) Begin() *QJsonObject__iterator {
@@ -232,8 +227,7 @@ func (this *QJsonObject) Insert(key string, value *QJsonValue) *QJsonObject__ite
 }
 
 func (this *QJsonObject) Empty() bool {
-	_ret := C.QJsonObject_Empty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject_Empty(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -326,44 +320,46 @@ func (this *QJsonObject__iterator) OperatorSubscript(j int) *QJsonValueRef {
 }
 
 func (this *QJsonObject__iterator) OperatorEqual(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorNotEqual(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorLesser(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorLesserOrEqual(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorGreater(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterOrEqual(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonObject__iterator) OperatorPlusPlus(param1 int) *QJsonObject__iterator {
-	_ret := C.QJsonObject__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QJsonObject__iterator) OperatorPlusPlus() *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QJsonObject__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__iterator {
+	_ret := C.QJsonObject__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonObject__iterator) OperatorMinusMinus(param1 int) *QJsonObject__iterator {
-	_ret := C.QJsonObject__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QJsonObject__iterator) OperatorMinusMinus() *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QJsonObject__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__iterator {
+	_ret := C.QJsonObject__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -383,39 +379,40 @@ func (this *QJsonObject__iterator) OperatorMinus(j int) *QJsonObject__iterator {
 	return _goptr
 }
 
+func (this *QJsonObject__iterator) OperatorPlusAssign(j int) *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QJsonObject__iterator) OperatorMinusAssign(j int) *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+}
+
 func (this *QJsonObject__iterator) OperatorMinusWithQJsonObjectiterator(j QJsonObject__iterator) int {
-	_ret := C.QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(this.h, j.cPointer())
-	return (int)(_ret)
+	return (int)(C.QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(this.h, j.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorEqualWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorNotEqualWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorNotEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorLesserWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorLesserWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorLesserOrEqualWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorGreaterWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__iterator) OperatorGreaterOrEqualWithOther(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -514,44 +511,46 @@ func (this *QJsonObject__const_iterator) OperatorSubscript(j int) *QJsonValue {
 }
 
 func (this *QJsonObject__const_iterator) OperatorEqual(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorNotEqual(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesser(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserOrEqual(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreater(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterOrEqual(other *QJsonObject__const_iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonObject__const_iterator) OperatorPlusPlus(param1 int) *QJsonObject__const_iterator {
-	_ret := C.QJsonObject__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QJsonObject__const_iterator) OperatorPlusPlus() *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QJsonObject__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__const_iterator {
+	_ret := C.QJsonObject__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonObject__const_iterator) OperatorMinusMinus(param1 int) *QJsonObject__const_iterator {
-	_ret := C.QJsonObject__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QJsonObject__const_iterator) OperatorMinusMinus() *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QJsonObject__const_iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__const_iterator {
+	_ret := C.QJsonObject__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -571,39 +570,40 @@ func (this *QJsonObject__const_iterator) OperatorMinus(j int) *QJsonObject__cons
 	return _goptr
 }
 
+func (this *QJsonObject__const_iterator) OperatorPlusAssign(j int) *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QJsonObject__const_iterator) OperatorMinusAssign(j int) *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+}
+
 func (this *QJsonObject__const_iterator) OperatorMinusWithQJsonObjectconstIterator(j QJsonObject__const_iterator) int {
-	_ret := C.QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(this.h, j.cPointer())
-	return (int)(_ret)
+	return (int)(C.QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(this.h, j.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorEqualWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorNotEqualWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorNotEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorNotEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorLesserWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorLesserOrEqualWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorGreaterWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonObject__const_iterator) OperatorGreaterOrEqualWithOther(other *QJsonObject__iterator) bool {
-	_ret := C.QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.

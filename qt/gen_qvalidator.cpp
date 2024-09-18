@@ -38,15 +38,13 @@ void QValidator_SetLocale(QValidator* self, QLocale* locale) {
 }
 
 QLocale* QValidator_Locale(const QValidator* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
-uintptr_t QValidator_Validate(const QValidator* self, struct miqt_string* param1, int* param2) {
+int QValidator_Validate(const QValidator* self, struct miqt_string* param1, int* param2) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QValidator::State _ret = self->validate(param1_QString, static_cast<int&>(*param2));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QValidator_Fixup(const QValidator* self, struct miqt_string* param1) {
@@ -130,10 +128,10 @@ struct miqt_string* QIntValidator_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QIntValidator_Validate(const QIntValidator* self, struct miqt_string* param1, int* param2) {
+int QIntValidator_Validate(const QIntValidator* self, struct miqt_string* param1, int* param2) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QValidator::State _ret = self->validate(param1_QString, static_cast<int&>(*param2));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QIntValidator_Fixup(const QIntValidator* self, struct miqt_string* input) {
@@ -249,10 +247,10 @@ struct miqt_string* QDoubleValidator_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QDoubleValidator_Validate(const QDoubleValidator* self, struct miqt_string* param1, int* param2) {
+int QDoubleValidator_Validate(const QDoubleValidator* self, struct miqt_string* param1, int* param2) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QValidator::State _ret = self->validate(param1_QString, static_cast<int&>(*param2));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDoubleValidator_SetRange(QDoubleValidator* self, double bottom, double top) {
@@ -271,7 +269,7 @@ void QDoubleValidator_SetDecimals(QDoubleValidator* self, int decimals) {
 	self->setDecimals(static_cast<int>(decimals));
 }
 
-void QDoubleValidator_SetNotation(QDoubleValidator* self, uintptr_t notation) {
+void QDoubleValidator_SetNotation(QDoubleValidator* self, int notation) {
 	self->setNotation(static_cast<QDoubleValidator::Notation>(notation));
 }
 
@@ -287,9 +285,9 @@ int QDoubleValidator_Decimals(const QDoubleValidator* self) {
 	return self->decimals();
 }
 
-uintptr_t QDoubleValidator_Notation(const QDoubleValidator* self) {
+int QDoubleValidator_Notation(const QDoubleValidator* self) {
 	QDoubleValidator::Notation _ret = self->notation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDoubleValidator_BottomChanged(QDoubleValidator* self, double bottom) {
@@ -325,14 +323,14 @@ void QDoubleValidator_connect_DecimalsChanged(QDoubleValidator* self, void* slot
 	});
 }
 
-void QDoubleValidator_NotationChanged(QDoubleValidator* self, uintptr_t notation) {
+void QDoubleValidator_NotationChanged(QDoubleValidator* self, int notation) {
 	self->notationChanged(static_cast<QDoubleValidator::Notation>(notation));
 }
 
 void QDoubleValidator_connect_NotationChanged(QDoubleValidator* self, void* slot) {
 	QDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(QDoubleValidator::Notation)>(&QDoubleValidator::notationChanged), self, [=](QDoubleValidator::Notation notation) {
 		QDoubleValidator::Notation notation_ret = notation;
-		uintptr_t sigval1 = static_cast<uintptr_t>(notation_ret);
+		int sigval1 = static_cast<int>(notation_ret);
 		miqt_exec_callback_QDoubleValidator_NotationChanged(slot, sigval1);
 	});
 }
@@ -407,10 +405,10 @@ struct miqt_string* QRegExpValidator_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QRegExpValidator_Validate(const QRegExpValidator* self, struct miqt_string* input, int* pos) {
+int QRegExpValidator_Validate(const QRegExpValidator* self, struct miqt_string* input, int* pos) {
 	QString input_QString = QString::fromUtf8(&input->data, input->len);
 	QValidator::State _ret = self->validate(input_QString, static_cast<int&>(*pos));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QRegExpValidator_SetRegExp(QRegExpValidator* self, QRegExp* rx) {
@@ -502,16 +500,14 @@ struct miqt_string* QRegularExpressionValidator_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QRegularExpressionValidator_Validate(const QRegularExpressionValidator* self, struct miqt_string* input, int* pos) {
+int QRegularExpressionValidator_Validate(const QRegularExpressionValidator* self, struct miqt_string* input, int* pos) {
 	QString input_QString = QString::fromUtf8(&input->data, input->len);
 	QValidator::State _ret = self->validate(input_QString, static_cast<int&>(*pos));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QRegularExpression* QRegularExpressionValidator_RegularExpression(const QRegularExpressionValidator* self) {
-	QRegularExpression _ret = self->regularExpression();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegularExpression*>(new QRegularExpression(_ret));
+	return new QRegularExpression(self->regularExpression());
 }
 
 void QRegularExpressionValidator_SetRegularExpression(QRegularExpressionValidator* self, QRegularExpression* re) {

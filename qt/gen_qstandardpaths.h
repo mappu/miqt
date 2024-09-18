@@ -19,18 +19,18 @@ class QStandardPaths;
 typedef struct QStandardPaths QStandardPaths;
 #endif
 
-struct miqt_string* QStandardPaths_WritableLocation(uintptr_t typeVal);
-struct miqt_array* QStandardPaths_StandardLocations(uintptr_t typeVal);
-struct miqt_string* QStandardPaths_Locate(uintptr_t typeVal, struct miqt_string* fileName);
-struct miqt_array* QStandardPaths_LocateAll(uintptr_t typeVal, struct miqt_string* fileName);
-struct miqt_string* QStandardPaths_DisplayName(uintptr_t typeVal);
+struct miqt_string* QStandardPaths_WritableLocation(int typeVal);
+struct miqt_array* QStandardPaths_StandardLocations(int typeVal);
+struct miqt_string* QStandardPaths_Locate(int typeVal, struct miqt_string* fileName);
+struct miqt_array* QStandardPaths_LocateAll(int typeVal, struct miqt_string* fileName);
+struct miqt_string* QStandardPaths_DisplayName(int typeVal);
 struct miqt_string* QStandardPaths_FindExecutable(struct miqt_string* executableName);
 void QStandardPaths_EnableTestMode(bool testMode);
 void QStandardPaths_SetTestModeEnabled(bool testMode);
 bool QStandardPaths_IsTestModeEnabled();
-struct miqt_string* QStandardPaths_Locate3(uintptr_t typeVal, struct miqt_string* fileName, int options);
-struct miqt_array* QStandardPaths_LocateAll3(uintptr_t typeVal, struct miqt_string* fileName, int options);
-struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executableName, struct miqt_array* /* of QString */ paths);
+struct miqt_string* QStandardPaths_Locate3(int typeVal, struct miqt_string* fileName, int options);
+struct miqt_array* QStandardPaths_LocateAll3(int typeVal, struct miqt_string* fileName, int options);
+struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executableName, struct miqt_array* /* of struct miqt_string* */ paths);
 
 #ifdef __cplusplus
 } /* extern C */

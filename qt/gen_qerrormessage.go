@@ -49,8 +49,7 @@ func NewQErrorMessage2(parent *QWidget) *QErrorMessage {
 }
 
 func (this *QErrorMessage) MetaObject() *QMetaObject {
-	_ret := C.QErrorMessage_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QErrorMessage_MetaObject(this.h)))
 }
 
 func QErrorMessage_Tr(s string) string {
@@ -72,8 +71,7 @@ func QErrorMessage_TrUtf8(s string) string {
 }
 
 func QErrorMessage_QtHandler() *QErrorMessage {
-	_ret := C.QErrorMessage_QtHandler()
-	return newQErrorMessage_U(unsafe.Pointer(_ret))
+	return newQErrorMessage_U(unsafe.Pointer(C.QErrorMessage_QtHandler()))
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {

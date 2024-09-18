@@ -16,7 +16,7 @@ QSplitter* QSplitter_new() {
 	return new QSplitter();
 }
 
-QSplitter* QSplitter_new2(uintptr_t param1) {
+QSplitter* QSplitter_new2(int param1) {
 	return new QSplitter(static_cast<Qt::Orientation>(param1));
 }
 
@@ -24,7 +24,7 @@ QSplitter* QSplitter_new3(QWidget* parent) {
 	return new QSplitter(parent);
 }
 
-QSplitter* QSplitter_new4(uintptr_t param1, QWidget* parent) {
+QSplitter* QSplitter_new4(int param1, QWidget* parent) {
 	return new QSplitter(static_cast<Qt::Orientation>(param1), parent);
 }
 
@@ -58,13 +58,13 @@ QWidget* QSplitter_ReplaceWidget(QSplitter* self, int index, QWidget* widget) {
 	return self->replaceWidget(static_cast<int>(index), widget);
 }
 
-void QSplitter_SetOrientation(QSplitter* self, uintptr_t orientation) {
+void QSplitter_SetOrientation(QSplitter* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QSplitter_Orientation(const QSplitter* self) {
+int QSplitter_Orientation(const QSplitter* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QSplitter_SetChildrenCollapsible(QSplitter* self, bool childrenCollapsible) {
@@ -96,15 +96,11 @@ void QSplitter_Refresh(QSplitter* self) {
 }
 
 QSize* QSplitter_SizeHint(const QSplitter* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QSplitter_MinimumSizeHint(const QSplitter* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 struct miqt_array* QSplitter_Sizes(const QSplitter* self) {
@@ -125,15 +121,13 @@ void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list) {
 	list_QList.reserve(list->len);
 	int* list_arr = static_cast<int*>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {
-		list_QList.push_back(list_arr[i]);
+		list_QList.push_back(static_cast<int>(list_arr[i]));
 	}
 	self->setSizes(list_QList);
 }
 
 QByteArray* QSplitter_SaveState(const QSplitter* self) {
-	QByteArray _ret = self->saveState();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState());
 }
 
 bool QSplitter_RestoreState(QSplitter* self, QByteArray* state) {
@@ -220,7 +214,7 @@ void QSplitter_Delete(QSplitter* self) {
 	delete self;
 }
 
-QSplitterHandle* QSplitterHandle_new(uintptr_t o, QSplitter* parent) {
+QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent) {
 	return new QSplitterHandle(static_cast<Qt::Orientation>(o), parent);
 }
 
@@ -242,13 +236,13 @@ struct miqt_string* QSplitterHandle_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QSplitterHandle_SetOrientation(QSplitterHandle* self, uintptr_t o) {
+void QSplitterHandle_SetOrientation(QSplitterHandle* self, int o) {
 	self->setOrientation(static_cast<Qt::Orientation>(o));
 }
 
-uintptr_t QSplitterHandle_Orientation(const QSplitterHandle* self) {
+int QSplitterHandle_Orientation(const QSplitterHandle* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QSplitterHandle_OpaqueResize(const QSplitterHandle* self) {
@@ -260,9 +254,7 @@ QSplitter* QSplitterHandle_Splitter(const QSplitterHandle* self) {
 }
 
 QSize* QSplitterHandle_SizeHint(const QSplitterHandle* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 struct miqt_string* QSplitterHandle_Tr2(const char* s, const char* c) {

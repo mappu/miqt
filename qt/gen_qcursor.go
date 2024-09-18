@@ -43,7 +43,7 @@ func NewQCursor() *QCursor {
 
 // NewQCursor2 constructs a new QCursor object.
 func NewQCursor2(shape CursorShape) *QCursor {
-	ret := C.QCursor_new2((C.uintptr_t)(shape))
+	ret := C.QCursor_new2((C.int)(shape))
 	return newQCursor(ret)
 }
 
@@ -98,33 +98,30 @@ func (this *QCursor) Swap(other *QCursor) {
 }
 
 func (this *QCursor) Shape() CursorShape {
-	_ret := C.QCursor_Shape(this.h)
-	return (CursorShape)(_ret)
+	return (CursorShape)(C.QCursor_Shape(this.h))
 }
 
 func (this *QCursor) SetShape(newShape CursorShape) {
-	C.QCursor_SetShape(this.h, (C.uintptr_t)(newShape))
+	C.QCursor_SetShape(this.h, (C.int)(newShape))
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	_ret := C.QCursor_Bitmap(this.h)
-	return newQBitmap_U(unsafe.Pointer(_ret))
+	return newQBitmap_U(unsafe.Pointer(C.QCursor_Bitmap(this.h)))
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	_ret := C.QCursor_Mask(this.h)
-	return newQBitmap_U(unsafe.Pointer(_ret))
+	return newQBitmap_U(unsafe.Pointer(C.QCursor_Mask(this.h)))
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_ret := C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.int)(param1))
 	_goptr := newQBitmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_ret := C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.int)(param1))
 	_goptr := newQBitmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -67,8 +67,7 @@ func NewQFileSystemModel2(parent *QObject) *QFileSystemModel {
 }
 
 func (this *QFileSystemModel) MetaObject() *QMetaObject {
-	_ret := C.QFileSystemModel_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFileSystemModel_MetaObject(this.h)))
 }
 
 func QFileSystemModel_Tr(s string) string {
@@ -207,13 +206,11 @@ func (this *QFileSystemModel) Sibling(row int, column int, idx *QModelIndex) *QM
 }
 
 func (this *QFileSystemModel) HasChildren() bool {
-	_ret := C.QFileSystemModel_HasChildren(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_HasChildren(this.h))
 }
 
 func (this *QFileSystemModel) CanFetchMore(parent *QModelIndex) bool {
-	_ret := C.QFileSystemModel_CanFetchMore(this.h, parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_CanFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) FetchMore(parent *QModelIndex) {
@@ -221,13 +218,11 @@ func (this *QFileSystemModel) FetchMore(parent *QModelIndex) {
 }
 
 func (this *QFileSystemModel) RowCount() int {
-	_ret := C.QFileSystemModel_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_RowCount(this.h))
 }
 
 func (this *QFileSystemModel) ColumnCount() int {
-	_ret := C.QFileSystemModel_ColumnCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_ColumnCount(this.h))
 }
 
 func (this *QFileSystemModel) MyComputer() *QVariant {
@@ -245,20 +240,18 @@ func (this *QFileSystemModel) Data(index *QModelIndex) *QVariant {
 }
 
 func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant) bool {
-	_ret := C.QFileSystemModel_SetData(this.h, index.cPointer(), value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
 func (this *QFileSystemModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Flags(index *QModelIndex) int {
-	_ret := C.QFileSystemModel_Flags(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Sort(column int) {
@@ -270,8 +263,10 @@ func (this *QFileSystemModel) MimeTypes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -286,18 +281,15 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	_ret := C.QFileSystemModel_MimeData(this.h, indexes_ma)
-	return newQMimeData_U(unsafe.Pointer(_ret))
+	return newQMimeData_U(unsafe.Pointer(C.QFileSystemModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	_ret := C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QFileSystemModel) SupportedDropActions() int {
-	_ret := C.QFileSystemModel_SupportedDropActions(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_SupportedDropActions(this.h))
 }
 
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
@@ -328,8 +320,7 @@ func (this *QFileSystemModel) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
-	_ret := C.QFileSystemModel_IconProvider(this.h)
-	return newQFileIconProvider_U(unsafe.Pointer(_ret))
+	return newQFileIconProvider_U(unsafe.Pointer(C.QFileSystemModel_IconProvider(this.h)))
 }
 
 func (this *QFileSystemModel) SetFilter(filters int) {
@@ -337,8 +328,7 @@ func (this *QFileSystemModel) SetFilter(filters int) {
 }
 
 func (this *QFileSystemModel) Filter() int {
-	_ret := C.QFileSystemModel_Filter(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_Filter(this.h))
 }
 
 func (this *QFileSystemModel) SetResolveSymlinks(enable bool) {
@@ -346,8 +336,7 @@ func (this *QFileSystemModel) SetResolveSymlinks(enable bool) {
 }
 
 func (this *QFileSystemModel) ResolveSymlinks() bool {
-	_ret := C.QFileSystemModel_ResolveSymlinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_ResolveSymlinks(this.h))
 }
 
 func (this *QFileSystemModel) SetReadOnly(enable bool) {
@@ -355,8 +344,7 @@ func (this *QFileSystemModel) SetReadOnly(enable bool) {
 }
 
 func (this *QFileSystemModel) IsReadOnly() bool {
-	_ret := C.QFileSystemModel_IsReadOnly(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_IsReadOnly(this.h))
 }
 
 func (this *QFileSystemModel) SetNameFilterDisables(enable bool) {
@@ -364,18 +352,17 @@ func (this *QFileSystemModel) SetNameFilterDisables(enable bool) {
 }
 
 func (this *QFileSystemModel) NameFilterDisables() bool {
-	_ret := C.QFileSystemModel_NameFilterDisables(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_NameFilterDisables(this.h))
 }
 
 func (this *QFileSystemModel) SetNameFilters(filters []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
-		single_ms := miqt_strdupg(filters[i])
-		defer C.free(single_ms)
-		filters_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		filters_i_ms := miqt_strdupg(filters[i])
+		defer C.free(filters_i_ms)
+		filters_CArray[i] = (*C.struct_miqt_string)(filters_i_ms)
 	}
 	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
@@ -387,20 +374,21 @@ func (this *QFileSystemModel) NameFilters() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QFileSystemModel) SetOption(option QFileSystemModel__Option) {
-	C.QFileSystemModel_SetOption(this.h, (C.uintptr_t)(option))
+	C.QFileSystemModel_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
-	_ret := C.QFileSystemModel_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QFileSystemModel) SetOptions(options int) {
@@ -408,8 +396,7 @@ func (this *QFileSystemModel) SetOptions(options int) {
 }
 
 func (this *QFileSystemModel) Options() int {
-	_ret := C.QFileSystemModel_Options(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_Options(this.h))
 }
 
 func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
@@ -420,13 +407,11 @@ func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) IsDir(index *QModelIndex) bool {
-	_ret := C.QFileSystemModel_IsDir(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_IsDir(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Size(index *QModelIndex) int64 {
-	_ret := C.QFileSystemModel_Size(this.h, index.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QFileSystemModel_Size(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Type(index *QModelIndex) string {
@@ -453,8 +438,7 @@ func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelInd
 }
 
 func (this *QFileSystemModel) Rmdir(index *QModelIndex) bool {
-	_ret := C.QFileSystemModel_Rmdir(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_Rmdir(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) FileName(index *QModelIndex) string {
@@ -472,8 +456,7 @@ func (this *QFileSystemModel) FileIcon(index *QModelIndex) *QIcon {
 }
 
 func (this *QFileSystemModel) Permissions(index *QModelIndex) int {
-	_ret := C.QFileSystemModel_Permissions(this.h, index.cPointer())
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_Permissions(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {
@@ -484,8 +467,7 @@ func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {
 }
 
 func (this *QFileSystemModel) Remove(index *QModelIndex) bool {
-	_ret := C.QFileSystemModel_Remove(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_Remove(this.h, index.cPointer()))
 }
 
 func QFileSystemModel_Tr2(s string, c string) string {
@@ -549,18 +531,15 @@ func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
 }
 
 func (this *QFileSystemModel) HasChildren1(parent *QModelIndex) bool {
-	_ret := C.QFileSystemModel_HasChildren1(this.h, parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_HasChildren1(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) RowCount1(parent *QModelIndex) int {
-	_ret := C.QFileSystemModel_RowCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_RowCount1(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) ColumnCount1(parent *QModelIndex) int {
-	_ret := C.QFileSystemModel_ColumnCount1(this.h, parent.cPointer())
-	return (int)(_ret)
+	return (int)(C.QFileSystemModel_ColumnCount1(this.h, parent.cPointer()))
 }
 
 func (this *QFileSystemModel) MyComputer1(role int) *QVariant {
@@ -578,23 +557,22 @@ func (this *QFileSystemModel) Data2(index *QModelIndex, role int) *QVariant {
 }
 
 func (this *QFileSystemModel) SetData3(index *QModelIndex, value *QVariant, role int) bool {
-	_ret := C.QFileSystemModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role))
-	return (bool)(_ret)
+	return (bool)(C.QFileSystemModel_SetData3(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QFileSystemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Sort2(column int, order SortOrder) {
-	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on bool) {
-	C.QFileSystemModel_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QFileSystemModel_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.

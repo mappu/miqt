@@ -159,15 +159,11 @@ struct miqt_string* QFileInfo_CanonicalPath(const QFileInfo* self) {
 }
 
 QDir* QFileInfo_Dir(const QFileInfo* self) {
-	QDir _ret = self->dir();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDir*>(new QDir(_ret));
+	return new QDir(self->dir());
 }
 
 QDir* QFileInfo_AbsoluteDir(const QFileInfo* self) {
-	QDir _ret = self->absoluteDir();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDir*>(new QDir(_ret));
+	return new QDir(self->absoluteDir());
 }
 
 bool QFileInfo_IsReadable(const QFileInfo* self) {
@@ -256,7 +252,8 @@ struct miqt_string* QFileInfo_Owner(const QFileInfo* self) {
 }
 
 unsigned int QFileInfo_OwnerId(const QFileInfo* self) {
-	return self->ownerId();
+	uint _ret = self->ownerId();
+	return static_cast<unsigned int>(_ret);
 }
 
 struct miqt_string* QFileInfo_Group(const QFileInfo* self) {
@@ -267,7 +264,8 @@ struct miqt_string* QFileInfo_Group(const QFileInfo* self) {
 }
 
 unsigned int QFileInfo_GroupId(const QFileInfo* self) {
-	return self->groupId();
+	uint _ret = self->groupId();
+	return static_cast<unsigned int>(_ret);
 }
 
 bool QFileInfo_Permission(const QFileInfo* self, int permissions) {
@@ -280,43 +278,32 @@ int QFileInfo_Permissions(const QFileInfo* self) {
 }
 
 long long QFileInfo_Size(const QFileInfo* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 QDateTime* QFileInfo_Created(const QFileInfo* self) {
-	QDateTime _ret = self->created();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->created());
 }
 
 QDateTime* QFileInfo_BirthTime(const QFileInfo* self) {
-	QDateTime _ret = self->birthTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->birthTime());
 }
 
 QDateTime* QFileInfo_MetadataChangeTime(const QFileInfo* self) {
-	QDateTime _ret = self->metadataChangeTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->metadataChangeTime());
 }
 
 QDateTime* QFileInfo_LastModified(const QFileInfo* self) {
-	QDateTime _ret = self->lastModified();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->lastModified());
 }
 
 QDateTime* QFileInfo_LastRead(const QFileInfo* self) {
-	QDateTime _ret = self->lastRead();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->lastRead());
 }
 
-QDateTime* QFileInfo_FileTime(const QFileInfo* self, uintptr_t time) {
-	QDateTime _ret = self->fileTime(static_cast<QFile::FileTime>(time));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QFileInfo_FileTime(const QFileInfo* self, int time) {
+	return new QDateTime(self->fileTime(static_cast<QFile::FileTime>(time)));
 }
 
 bool QFileInfo_Caching(const QFileInfo* self) {

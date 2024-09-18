@@ -42,9 +42,7 @@ struct miqt_string* QToolTip_Text() {
 }
 
 QPalette* QToolTip_Palette() {
-	QPalette _ret = QToolTip::palette();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(QToolTip::palette());
 }
 
 void QToolTip_SetPalette(QPalette* palette) {
@@ -52,9 +50,7 @@ void QToolTip_SetPalette(QPalette* palette) {
 }
 
 QFont* QToolTip_Font() {
-	QFont _ret = QToolTip::font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QToolTip::font());
 }
 
 void QToolTip_SetFont(QFont* font) {

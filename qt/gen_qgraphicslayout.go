@@ -49,8 +49,7 @@ func (this *QGraphicsLayout) Activate() {
 }
 
 func (this *QGraphicsLayout) IsActivated() bool {
-	_ret := C.QGraphicsLayout_IsActivated(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLayout_IsActivated(this.h))
 }
 
 func (this *QGraphicsLayout) Invalidate() {
@@ -66,13 +65,11 @@ func (this *QGraphicsLayout) WidgetEvent(e *QEvent) {
 }
 
 func (this *QGraphicsLayout) Count() int {
-	_ret := C.QGraphicsLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsLayout_Count(this.h))
 }
 
 func (this *QGraphicsLayout) ItemAt(i int) *QGraphicsLayoutItem {
-	_ret := C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))))
 }
 
 func (this *QGraphicsLayout) RemoveAt(index int) {
@@ -84,8 +81,7 @@ func QGraphicsLayout_SetInstantInvalidatePropagation(enable bool) {
 }
 
 func QGraphicsLayout_InstantInvalidatePropagation() bool {
-	_ret := C.QGraphicsLayout_InstantInvalidatePropagation()
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsLayout_InstantInvalidatePropagation())
 }
 
 // Delete this object from C++ memory.

@@ -54,13 +54,13 @@ int QTimer_RemainingTime(const QTimer* self) {
 	return self->remainingTime();
 }
 
-void QTimer_SetTimerType(QTimer* self, uintptr_t atype) {
+void QTimer_SetTimerType(QTimer* self, int atype) {
 	self->setTimerType(static_cast<Qt::TimerType>(atype));
 }
 
-uintptr_t QTimer_TimerType(const QTimer* self) {
+int QTimer_TimerType(const QTimer* self) {
 	Qt::TimerType _ret = self->timerType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTimer_SetSingleShot(QTimer* self, bool singleShot) {

@@ -43,8 +43,7 @@ func NewQWidgetAction(parent *QObject) *QWidgetAction {
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
-	_ret := C.QWidgetAction_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QWidgetAction_MetaObject(this.h)))
 }
 
 func QWidgetAction_Tr(s string) string {
@@ -70,13 +69,11 @@ func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	_ret := C.QWidgetAction_DefaultWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidgetAction_DefaultWidget(this.h)))
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	_ret := C.QWidgetAction_RequestWidget(this.h, parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidgetAction_RequestWidget(this.h, parent.cPointer())))
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {

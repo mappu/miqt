@@ -63,13 +63,11 @@ func (this *QCborArray) ToCborValue() *QCborValue {
 }
 
 func (this *QCborArray) Size() uint64 {
-	_ret := C.QCborArray_Size(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QCborArray_Size(this.h))
 }
 
 func (this *QCborArray) IsEmpty() bool {
-	_ret := C.QCborArray_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_IsEmpty(this.h))
 }
 
 func (this *QCborArray) Clear() {
@@ -185,28 +183,23 @@ func (this *QCborArray) TakeLast() *QCborValue {
 }
 
 func (this *QCborArray) Contains(value *QCborValue) bool {
-	_ret := C.QCborArray_Contains(this.h, value.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_Contains(this.h, value.cPointer()))
 }
 
 func (this *QCborArray) Compare(other *QCborArray) int {
-	_ret := C.QCborArray_Compare(this.h, other.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCborArray_Compare(this.h, other.cPointer()))
 }
 
 func (this *QCborArray) OperatorEqual(other *QCborArray) bool {
-	_ret := C.QCborArray_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray) OperatorNotEqual(other *QCborArray) bool {
-	_ret := C.QCborArray_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray) OperatorLesser(other *QCborArray) bool {
-	_ret := C.QCborArray_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QCborArray) Begin() *QCborArray__Iterator {
@@ -310,8 +303,7 @@ func (this *QCborArray) PopBack() {
 }
 
 func (this *QCborArray) Empty() bool {
-	_ret := C.QCborArray_Empty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborArray_Empty(this.h))
 }
 
 func (this *QCborArray) OperatorPlus(v *QCborValue) *QCborArray {
@@ -322,23 +314,21 @@ func (this *QCborArray) OperatorPlus(v *QCborValue) *QCborArray {
 }
 
 func (this *QCborArray) OperatorPlusAssign(v *QCborValue) *QCborArray {
-	_ret := C.QCborArray_OperatorPlusAssign(this.h, v.cPointer())
-	return newQCborArray_U(unsafe.Pointer(_ret))
+	return newQCborArray_U(unsafe.Pointer(C.QCborArray_OperatorPlusAssign(this.h, v.cPointer())))
 }
 
 func (this *QCborArray) OperatorShiftLeft(v *QCborValue) *QCborArray {
-	_ret := C.QCborArray_OperatorShiftLeft(this.h, v.cPointer())
-	return newQCborArray_U(unsafe.Pointer(_ret))
+	return newQCborArray_U(unsafe.Pointer(C.QCborArray_OperatorShiftLeft(this.h, v.cPointer())))
 }
 
 func QCborArray_FromStringList(list []string) *QCborArray {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		single_ms := miqt_strdupg(list[i])
-		defer C.free(single_ms)
-		list_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		list_i_ms := miqt_strdupg(list[i])
+		defer C.free(list_i_ms)
+		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
 	}
 	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
@@ -410,6 +400,10 @@ func NewQCborArray__Iterator2(param1 *QCborArray__Iterator) *QCborArray__Iterato
 	return newQCborArray__Iterator(ret)
 }
 
+func (this *QCborArray__Iterator) OperatorAssign(other *QCborArray__Iterator) {
+	C.QCborArray__Iterator_OperatorAssign(this.h, other.cPointer())
+}
+
 func (this *QCborArray__Iterator) OperatorMultiply() *QCborValueRef {
 	_ret := C.QCborArray__Iterator_OperatorMultiply(this.h)
 	_goptr := newQCborValueRef(_ret)
@@ -418,8 +412,7 @@ func (this *QCborArray__Iterator) OperatorMultiply() *QCborValueRef {
 }
 
 func (this *QCborArray__Iterator) OperatorMinusGreater() *QCborValueRef {
-	_ret := C.QCborArray__Iterator_OperatorMinusGreater(this.h)
-	return newQCborValueRef_U(unsafe.Pointer(_ret))
+	return newQCborValueRef_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborArray__Iterator) OperatorSubscript(j uint64) *QCborValueRef {
@@ -430,77 +423,81 @@ func (this *QCborArray__Iterator) OperatorSubscript(j uint64) *QCborValueRef {
 }
 
 func (this *QCborArray__Iterator) OperatorEqual(o *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorNotEqual(o *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorLesser(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorLesserOrEqual(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorGreater(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorGreaterOrEqual(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorEqualWithQCborArrayConstIterator(o *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorEqualWithQCborArrayConstIterator(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorEqualWithQCborArrayConstIterator(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorNotEqualWithQCborArrayConstIterator(o *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorNotEqualWithQCborArrayConstIterator(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorNotEqualWithQCborArrayConstIterator(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorLesserWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorLesserWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorLesserOrEqualWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorGreaterWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorGreaterWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorGreaterOrEqualWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__Iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__Iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer()))
 }
 
-func (this *QCborArray__Iterator) OperatorPlusPlus(param1 int) *QCborArray__Iterator {
-	_ret := C.QCborArray__Iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QCborArray__Iterator) OperatorPlusPlus() *QCborArray__Iterator {
+	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QCborArray__Iterator) OperatorPlusPlusWithInt(param1 int) *QCborArray__Iterator {
+	_ret := C.QCborArray__Iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQCborArray__Iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborArray__Iterator) OperatorMinusMinus(param1 int) *QCborArray__Iterator {
-	_ret := C.QCborArray__Iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QCborArray__Iterator) OperatorMinusMinus() *QCborArray__Iterator {
+	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QCborArray__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborArray__Iterator {
+	_ret := C.QCborArray__Iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQCborArray__Iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QCborArray__Iterator) OperatorPlusAssign(j uint64) *QCborArray__Iterator {
+	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusAssign(this.h, (C.size_t)(j))))
+}
+
+func (this *QCborArray__Iterator) OperatorMinusAssign(j uint64) *QCborArray__Iterator {
+	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusAssign(this.h, (C.size_t)(j))))
 }
 
 func (this *QCborArray__Iterator) OperatorPlus(j uint64) *QCborArray__Iterator {
@@ -518,8 +515,7 @@ func (this *QCborArray__Iterator) OperatorMinus(j uint64) *QCborArray__Iterator 
 }
 
 func (this *QCborArray__Iterator) OperatorMinusWithQCborArrayIterator(j QCborArray__Iterator) uint64 {
-	_ret := C.QCborArray__Iterator_OperatorMinusWithQCborArrayIterator(this.h, j.cPointer())
-	return (uint64)(_ret)
+	return (uint64)(C.QCborArray__Iterator_OperatorMinusWithQCborArrayIterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -570,6 +566,10 @@ func NewQCborArray__ConstIterator2(param1 *QCborArray__ConstIterator) *QCborArra
 	return newQCborArray__ConstIterator(ret)
 }
 
+func (this *QCborArray__ConstIterator) OperatorAssign(other *QCborArray__ConstIterator) {
+	C.QCborArray__ConstIterator_OperatorAssign(this.h, other.cPointer())
+}
+
 func (this *QCborArray__ConstIterator) OperatorMultiply() *QCborValueRef {
 	_ret := C.QCborArray__ConstIterator_OperatorMultiply(this.h)
 	_goptr := newQCborValueRef(_ret)
@@ -578,8 +578,7 @@ func (this *QCborArray__ConstIterator) OperatorMultiply() *QCborValueRef {
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusGreater() *QCborValueRef {
-	_ret := C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)
-	return newQCborValueRef_U(unsafe.Pointer(_ret))
+	return newQCborValueRef_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorSubscript(j uint64) *QCborValueRef {
@@ -590,77 +589,81 @@ func (this *QCborArray__ConstIterator) OperatorSubscript(j uint64) *QCborValueRe
 }
 
 func (this *QCborArray__ConstIterator) OperatorEqual(o *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorNotEqual(o *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorNotEqual(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorLesser(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorLesserOrEqual(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorLesserOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorGreater(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorGreater(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorGreaterOrEqual(other *QCborArray__Iterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorGreaterOrEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorEqualWithQCborArrayConstIterator(o *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorEqualWithQCborArrayConstIterator(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorEqualWithQCborArrayConstIterator(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorNotEqualWithQCborArrayConstIterator(o *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorNotEqualWithQCborArrayConstIterator(this.h, o.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorNotEqualWithQCborArrayConstIterator(this.h, o.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorLesserWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorLesserWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorLesserWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorLesserOrEqualWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorGreaterWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorGreaterWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorGreaterWithOther(this.h, other.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorGreaterOrEqualWithOther(other *QCborArray__ConstIterator) bool {
-	_ret := C.QCborArray__ConstIterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborArray__ConstIterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer()))
 }
 
-func (this *QCborArray__ConstIterator) OperatorPlusPlus(param1 int) *QCborArray__ConstIterator {
-	_ret := C.QCborArray__ConstIterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QCborArray__ConstIterator) OperatorPlusPlus() *QCborArray__ConstIterator {
+	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QCborArray__ConstIterator) OperatorPlusPlusWithInt(param1 int) *QCborArray__ConstIterator {
+	_ret := C.QCborArray__ConstIterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQCborArray__ConstIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborArray__ConstIterator) OperatorMinusMinus(param1 int) *QCborArray__ConstIterator {
-	_ret := C.QCborArray__ConstIterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QCborArray__ConstIterator) OperatorMinusMinus() *QCborArray__ConstIterator {
+	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QCborArray__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QCborArray__ConstIterator {
+	_ret := C.QCborArray__ConstIterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQCborArray__ConstIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QCborArray__ConstIterator) OperatorPlusAssign(j uint64) *QCborArray__ConstIterator {
+	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusAssign(this.h, (C.size_t)(j))))
+}
+
+func (this *QCborArray__ConstIterator) OperatorMinusAssign(j uint64) *QCborArray__ConstIterator {
+	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusAssign(this.h, (C.size_t)(j))))
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlus(j uint64) *QCborArray__ConstIterator {
@@ -678,8 +681,7 @@ func (this *QCborArray__ConstIterator) OperatorMinus(j uint64) *QCborArray__Cons
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusWithQCborArrayConstIterator(j QCborArray__ConstIterator) uint64 {
-	_ret := C.QCborArray__ConstIterator_OperatorMinusWithQCborArrayConstIterator(this.h, j.cPointer())
-	return (uint64)(_ret)
+	return (uint64)(C.QCborArray__ConstIterator_OperatorMinusWithQCborArrayConstIterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.

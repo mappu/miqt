@@ -9,7 +9,7 @@
 #include "gen_qcoreevent.h"
 #include "_cgo_export.h"
 
-QEvent* QEvent_new(uintptr_t typeVal) {
+QEvent* QEvent_new(int typeVal) {
 	return new QEvent(static_cast<QEvent::Type>(typeVal));
 }
 
@@ -21,9 +21,9 @@ void QEvent_OperatorAssign(QEvent* self, QEvent* other) {
 	self->operator=(*other);
 }
 
-uintptr_t QEvent_Type(const QEvent* self) {
+int QEvent_Type(const QEvent* self) {
 	QEvent::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QEvent_Spontaneous(const QEvent* self) {
@@ -74,7 +74,7 @@ void QTimerEvent_Delete(QTimerEvent* self) {
 	delete self;
 }
 
-QChildEvent* QChildEvent_new(uintptr_t typeVal, QObject* child) {
+QChildEvent* QChildEvent_new(int typeVal, QObject* child) {
 	return new QChildEvent(static_cast<QEvent::Type>(typeVal), child);
 }
 
@@ -111,9 +111,7 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyCh
 }
 
 QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
-	QByteArray _ret = self->propertyName();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->propertyName());
 }
 
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {

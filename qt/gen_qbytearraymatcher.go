@@ -70,15 +70,13 @@ func (this *QByteArrayMatcher) SetPattern(pattern *QByteArray) {
 }
 
 func (this *QByteArrayMatcher) IndexIn(ba *QByteArray) int {
-	_ret := C.QByteArrayMatcher_IndexIn(this.h, ba.cPointer())
-	return (int)(_ret)
+	return (int)(C.QByteArrayMatcher_IndexIn(this.h, ba.cPointer()))
 }
 
 func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	_ret := C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal))
-	return (int)(_ret)
+	return (int)(C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QByteArrayMatcher) Pattern() *QByteArray {
@@ -89,15 +87,13 @@ func (this *QByteArrayMatcher) Pattern() *QByteArray {
 }
 
 func (this *QByteArrayMatcher) IndexIn22(ba *QByteArray, from int) int {
-	_ret := C.QByteArrayMatcher_IndexIn22(this.h, ba.cPointer(), (C.int)(from))
-	return (int)(_ret)
+	return (int)(C.QByteArrayMatcher_IndexIn22(this.h, ba.cPointer(), (C.int)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	_ret := C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from))
-	return (int)(_ret)
+	return (int)(C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from)))
 }
 
 // Delete this object from C++ memory.

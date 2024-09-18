@@ -56,8 +56,7 @@ func NewQToolBox3(parent *QWidget, f int) *QToolBox {
 }
 
 func (this *QToolBox) MetaObject() *QMetaObject {
-	_ret := C.QToolBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QToolBox_MetaObject(this.h)))
 }
 
 func QToolBox_Tr(s string) string {
@@ -81,29 +80,25 @@ func QToolBox_TrUtf8(s string) string {
 func (this *QToolBox) AddItem(widget *QWidget, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QToolBox_AddItem(this.h, widget.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QToolBox_AddItem(this.h, widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) AddItem2(widget *QWidget, icon *QIcon, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) InsertItem(index int, widget *QWidget, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) InsertItem2(index int, widget *QWidget, icon *QIcon, text string) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return (int)(_ret)
+	return (int)(C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) RemoveItem(index int) {
@@ -115,8 +110,7 @@ func (this *QToolBox) SetItemEnabled(index int, enabled bool) {
 }
 
 func (this *QToolBox) IsItemEnabled(index int) bool {
-	_ret := C.QToolBox_IsItemEnabled(this.h, (C.int)(index))
-	return (bool)(_ret)
+	return (bool)(C.QToolBox_IsItemEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QToolBox) SetItemText(index int, text string) {
@@ -157,28 +151,23 @@ func (this *QToolBox) ItemToolTip(index int) string {
 }
 
 func (this *QToolBox) CurrentIndex() int {
-	_ret := C.QToolBox_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QToolBox_CurrentIndex(this.h))
 }
 
 func (this *QToolBox) CurrentWidget() *QWidget {
-	_ret := C.QToolBox_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)))
 }
 
 func (this *QToolBox) Widget(index int) *QWidget {
-	_ret := C.QToolBox_Widget(this.h, (C.int)(index))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QToolBox) IndexOf(widget *QWidget) int {
-	_ret := C.QToolBox_IndexOf(this.h, widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QToolBox_IndexOf(this.h, widget.cPointer()))
 }
 
 func (this *QToolBox) Count() int {
-	_ret := C.QToolBox_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QToolBox_Count(this.h))
 }
 
 func (this *QToolBox) SetCurrentIndex(index int) {
@@ -204,8 +193,7 @@ func miqt_exec_callback_QToolBox_CurrentChanged(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }

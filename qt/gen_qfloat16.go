@@ -48,28 +48,23 @@ func Newqfloat162(f float32) *qfloat16 {
 }
 
 func (this *qfloat16) IsInf() bool {
-	_ret := C.qfloat16_IsInf(this.h)
-	return (bool)(_ret)
+	return (bool)(C.qfloat16_IsInf(this.h))
 }
 
 func (this *qfloat16) IsNaN() bool {
-	_ret := C.qfloat16_IsNaN(this.h)
-	return (bool)(_ret)
+	return (bool)(C.qfloat16_IsNaN(this.h))
 }
 
 func (this *qfloat16) IsFinite() bool {
-	_ret := C.qfloat16_IsFinite(this.h)
-	return (bool)(_ret)
+	return (bool)(C.qfloat16_IsFinite(this.h))
 }
 
 func (this *qfloat16) FpClassify() int {
-	_ret := C.qfloat16_FpClassify(this.h)
-	return (int)(_ret)
+	return (int)(C.qfloat16_FpClassify(this.h))
 }
 
 func (this *qfloat16) IsNormal() bool {
-	_ret := C.qfloat16_IsNormal(this.h)
-	return (bool)(_ret)
+	return (bool)(C.qfloat16_IsNormal(this.h))
 }
 
 // Delete this object from C++ memory.

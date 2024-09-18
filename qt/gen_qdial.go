@@ -49,8 +49,7 @@ func NewQDial2(parent *QWidget) *QDial {
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
-	_ret := C.QDial_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDial_MetaObject(this.h)))
 }
 
 func QDial_Tr(s string) string {
@@ -72,13 +71,11 @@ func QDial_TrUtf8(s string) string {
 }
 
 func (this *QDial) Wrapping() bool {
-	_ret := C.QDial_Wrapping(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDial_Wrapping(this.h))
 }
 
 func (this *QDial) NotchSize() int {
-	_ret := C.QDial_NotchSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QDial_NotchSize(this.h))
 }
 
 func (this *QDial) SetNotchTarget(target float64) {
@@ -86,13 +83,11 @@ func (this *QDial) SetNotchTarget(target float64) {
 }
 
 func (this *QDial) NotchTarget() float64 {
-	_ret := C.QDial_NotchTarget(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDial_NotchTarget(this.h))
 }
 
 func (this *QDial) NotchesVisible() bool {
-	_ret := C.QDial_NotchesVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDial_NotchesVisible(this.h))
 }
 
 func (this *QDial) SizeHint() *QSize {

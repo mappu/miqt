@@ -73,13 +73,12 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
 	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
-	ret := C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.uintptr_t)(shortcutContext))
+	ret := C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.int)(shortcutContext))
 	return newQShortcut(ret)
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	_ret := C.QShortcut_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QShortcut_MetaObject(this.h)))
 }
 
 func QShortcut_Tr(s string) string {
@@ -116,17 +115,15 @@ func (this *QShortcut) SetEnabled(enable bool) {
 }
 
 func (this *QShortcut) IsEnabled() bool {
-	_ret := C.QShortcut_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QShortcut_IsEnabled(this.h))
 }
 
 func (this *QShortcut) SetContext(context ShortcutContext) {
-	C.QShortcut_SetContext(this.h, (C.uintptr_t)(context))
+	C.QShortcut_SetContext(this.h, (C.int)(context))
 }
 
 func (this *QShortcut) Context() ShortcutContext {
-	_ret := C.QShortcut_Context(this.h)
-	return (ShortcutContext)(_ret)
+	return (ShortcutContext)(C.QShortcut_Context(this.h))
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {
@@ -147,18 +144,15 @@ func (this *QShortcut) SetAutoRepeat(on bool) {
 }
 
 func (this *QShortcut) AutoRepeat() bool {
-	_ret := C.QShortcut_AutoRepeat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QShortcut_AutoRepeat(this.h))
 }
 
 func (this *QShortcut) Id() int {
-	_ret := C.QShortcut_Id(this.h)
-	return (int)(_ret)
+	return (int)(C.QShortcut_Id(this.h))
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	_ret := C.QShortcut_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QShortcut_ParentWidget(this.h)))
 }
 
 func (this *QShortcut) Activated() {

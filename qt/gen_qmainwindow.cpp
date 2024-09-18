@@ -48,21 +48,19 @@ struct miqt_string* QMainWindow_TrUtf8(const char* s) {
 }
 
 QSize* QMainWindow_IconSize(const QMainWindow* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QMainWindow_SetIconSize(QMainWindow* self, QSize* iconSize) {
 	self->setIconSize(*iconSize);
 }
 
-uintptr_t QMainWindow_ToolButtonStyle(const QMainWindow* self) {
+int QMainWindow_ToolButtonStyle(const QMainWindow* self) {
 	Qt::ToolButtonStyle _ret = self->toolButtonStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMainWindow_SetToolButtonStyle(QMainWindow* self, uintptr_t toolButtonStyle) {
+void QMainWindow_SetToolButtonStyle(QMainWindow* self, int toolButtonStyle) {
 	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
@@ -82,21 +80,21 @@ void QMainWindow_SetDocumentMode(QMainWindow* self, bool enabled) {
 	self->setDocumentMode(enabled);
 }
 
-uintptr_t QMainWindow_TabShape(const QMainWindow* self) {
+int QMainWindow_TabShape(const QMainWindow* self) {
 	QTabWidget::TabShape _ret = self->tabShape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMainWindow_SetTabShape(QMainWindow* self, uintptr_t tabShape) {
+void QMainWindow_SetTabShape(QMainWindow* self, int tabShape) {
 	self->setTabShape(static_cast<QTabWidget::TabShape>(tabShape));
 }
 
-uintptr_t QMainWindow_TabPosition(const QMainWindow* self, uintptr_t area) {
+int QMainWindow_TabPosition(const QMainWindow* self, int area) {
 	QTabWidget::TabPosition _ret = self->tabPosition(static_cast<Qt::DockWidgetArea>(area));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMainWindow_SetTabPosition(QMainWindow* self, int areas, uintptr_t tabPosition) {
+void QMainWindow_SetTabPosition(QMainWindow* self, int areas, int tabPosition) {
 	self->setTabPosition(static_cast<Qt::DockWidgetAreas>(areas), static_cast<QTabWidget::TabPosition>(tabPosition));
 }
 
@@ -149,13 +147,13 @@ QWidget* QMainWindow_TakeCentralWidget(QMainWindow* self) {
 	return self->takeCentralWidget();
 }
 
-void QMainWindow_SetCorner(QMainWindow* self, uintptr_t corner, uintptr_t area) {
+void QMainWindow_SetCorner(QMainWindow* self, int corner, int area) {
 	self->setCorner(static_cast<Qt::Corner>(corner), static_cast<Qt::DockWidgetArea>(area));
 }
 
-uintptr_t QMainWindow_Corner(const QMainWindow* self, uintptr_t corner) {
+int QMainWindow_Corner(const QMainWindow* self, int corner) {
 	Qt::DockWidgetArea _ret = self->corner(static_cast<Qt::Corner>(corner));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QMainWindow_AddToolBarBreak(QMainWindow* self) {
@@ -166,7 +164,7 @@ void QMainWindow_InsertToolBarBreak(QMainWindow* self, QToolBar* before) {
 	self->insertToolBarBreak(before);
 }
 
-void QMainWindow_AddToolBar(QMainWindow* self, uintptr_t area, QToolBar* toolbar) {
+void QMainWindow_AddToolBar(QMainWindow* self, int area, QToolBar* toolbar) {
 	self->addToolBar(static_cast<Qt::ToolBarArea>(area), toolbar);
 }
 
@@ -195,24 +193,24 @@ bool QMainWindow_UnifiedTitleAndToolBarOnMac(const QMainWindow* self) {
 	return self->unifiedTitleAndToolBarOnMac();
 }
 
-uintptr_t QMainWindow_ToolBarArea(const QMainWindow* self, QToolBar* toolbar) {
+int QMainWindow_ToolBarArea(const QMainWindow* self, QToolBar* toolbar) {
 	Qt::ToolBarArea _ret = self->toolBarArea(toolbar);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QMainWindow_ToolBarBreak(const QMainWindow* self, QToolBar* toolbar) {
 	return self->toolBarBreak(toolbar);
 }
 
-void QMainWindow_AddDockWidget(QMainWindow* self, uintptr_t area, QDockWidget* dockwidget) {
+void QMainWindow_AddDockWidget(QMainWindow* self, int area, QDockWidget* dockwidget) {
 	self->addDockWidget(static_cast<Qt::DockWidgetArea>(area), dockwidget);
 }
 
-void QMainWindow_AddDockWidget2(QMainWindow* self, uintptr_t area, QDockWidget* dockwidget, uintptr_t orientation) {
+void QMainWindow_AddDockWidget2(QMainWindow* self, int area, QDockWidget* dockwidget, int orientation) {
 	self->addDockWidget(static_cast<Qt::DockWidgetArea>(area), dockwidget, static_cast<Qt::Orientation>(orientation));
 }
 
-void QMainWindow_SplitDockWidget(QMainWindow* self, QDockWidget* after, QDockWidget* dockwidget, uintptr_t orientation) {
+void QMainWindow_SplitDockWidget(QMainWindow* self, QDockWidget* after, QDockWidget* dockwidget, int orientation) {
 	self->splitDockWidget(after, dockwidget, static_cast<Qt::Orientation>(orientation));
 }
 
@@ -221,7 +219,7 @@ void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWi
 }
 
 struct miqt_array* QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget) {
-	QList<QDockWidget*> _ret = self->tabifiedDockWidgets(dockwidget);
+	QList<QDockWidget *> _ret = self->tabifiedDockWidgets(dockwidget);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDockWidget** _arr = static_cast<QDockWidget**>(malloc(sizeof(QDockWidget*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -241,12 +239,12 @@ bool QMainWindow_RestoreDockWidget(QMainWindow* self, QDockWidget* dockwidget) {
 	return self->restoreDockWidget(dockwidget);
 }
 
-uintptr_t QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget) {
+int QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget) {
 	Qt::DockWidgetArea _ret = self->dockWidgetArea(dockwidget);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWidget* */ docks, struct miqt_array* /* of int */ sizes, uintptr_t orientation) {
+void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWidget* */ docks, struct miqt_array* /* of int */ sizes, int orientation) {
 	QList<QDockWidget*> docks_QList;
 	docks_QList.reserve(docks->len);
 	QDockWidget** docks_arr = static_cast<QDockWidget**>(docks->data);
@@ -257,15 +255,13 @@ void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWi
 	sizes_QList.reserve(sizes->len);
 	int* sizes_arr = static_cast<int*>(sizes->data);
 	for(size_t i = 0; i < sizes->len; ++i) {
-		sizes_QList.push_back(sizes_arr[i]);
+		sizes_QList.push_back(static_cast<int>(sizes_arr[i]));
 	}
 	self->resizeDocks(docks_QList, sizes_QList, static_cast<Qt::Orientation>(orientation));
 }
 
 QByteArray* QMainWindow_SaveState(const QMainWindow* self) {
-	QByteArray _ret = self->saveState();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState());
 }
 
 bool QMainWindow_RestoreState(QMainWindow* self, QByteArray* state) {
@@ -301,14 +297,14 @@ void QMainWindow_connect_IconSizeChanged(QMainWindow* self, void* slot) {
 	});
 }
 
-void QMainWindow_ToolButtonStyleChanged(QMainWindow* self, uintptr_t toolButtonStyle) {
+void QMainWindow_ToolButtonStyleChanged(QMainWindow* self, int toolButtonStyle) {
 	self->toolButtonStyleChanged(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
 void QMainWindow_connect_ToolButtonStyleChanged(QMainWindow* self, void* slot) {
 	QMainWindow::connect(self, static_cast<void (QMainWindow::*)(Qt::ToolButtonStyle)>(&QMainWindow::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
 		Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
-		uintptr_t sigval1 = static_cast<uintptr_t>(toolButtonStyle_ret);
+		int sigval1 = static_cast<int>(toolButtonStyle_ret);
 		miqt_exec_callback_QMainWindow_ToolButtonStyleChanged(slot, sigval1);
 	});
 }
@@ -352,14 +348,12 @@ struct miqt_string* QMainWindow_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMainWindow_AddToolBarBreak1(QMainWindow* self, uintptr_t area) {
+void QMainWindow_AddToolBarBreak1(QMainWindow* self, int area) {
 	self->addToolBarBreak(static_cast<Qt::ToolBarArea>(area));
 }
 
 QByteArray* QMainWindow_SaveState1(const QMainWindow* self, int version) {
-	QByteArray _ret = self->saveState(static_cast<int>(version));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->saveState(static_cast<int>(version)));
 }
 
 bool QMainWindow_RestoreState2(QMainWindow* self, QByteArray* state, int version) {

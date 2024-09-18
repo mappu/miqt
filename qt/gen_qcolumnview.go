@@ -50,8 +50,7 @@ func NewQColumnView2(parent *QWidget) *QColumnView {
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
-	_ret := C.QColumnView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QColumnView_MetaObject(this.h)))
 }
 
 func QColumnView_Tr(s string) string {
@@ -87,8 +86,7 @@ func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb *C.void, index *C.QMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -139,13 +137,11 @@ func (this *QColumnView) SetResizeGripsVisible(visible bool) {
 }
 
 func (this *QColumnView) ResizeGripsVisible() bool {
-	_ret := C.QColumnView_ResizeGripsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QColumnView_ResizeGripsVisible(this.h))
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
-	_ret := C.QColumnView_PreviewWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QColumnView_PreviewWidget(this.h)))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
@@ -167,7 +163,7 @@ func (this *QColumnView) SetColumnWidths(list []int) {
 func (this *QColumnView) ColumnWidths() []int {
 	var _ma *C.struct_miqt_array = C.QColumnView_ColumnWidths(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -220,7 +216,7 @@ func QColumnView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QColumnView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QColumnView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QColumnView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

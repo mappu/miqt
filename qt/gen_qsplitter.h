@@ -30,17 +30,17 @@ typedef struct QWidget QWidget;
 #endif
 
 QSplitter* QSplitter_new();
-QSplitter* QSplitter_new2(uintptr_t param1);
+QSplitter* QSplitter_new2(int param1);
 QSplitter* QSplitter_new3(QWidget* parent);
-QSplitter* QSplitter_new4(uintptr_t param1, QWidget* parent);
+QSplitter* QSplitter_new4(int param1, QWidget* parent);
 QMetaObject* QSplitter_MetaObject(const QSplitter* self);
 struct miqt_string* QSplitter_Tr(const char* s);
 struct miqt_string* QSplitter_TrUtf8(const char* s);
 void QSplitter_AddWidget(QSplitter* self, QWidget* widget);
 void QSplitter_InsertWidget(QSplitter* self, int index, QWidget* widget);
 QWidget* QSplitter_ReplaceWidget(QSplitter* self, int index, QWidget* widget);
-void QSplitter_SetOrientation(QSplitter* self, uintptr_t orientation);
-uintptr_t QSplitter_Orientation(const QSplitter* self);
+void QSplitter_SetOrientation(QSplitter* self, int orientation);
+int QSplitter_Orientation(const QSplitter* self);
 void QSplitter_SetChildrenCollapsible(QSplitter* self, bool childrenCollapsible);
 bool QSplitter_ChildrenCollapsible(const QSplitter* self);
 void QSplitter_SetCollapsible(QSplitter* self, int index, bool param2);
@@ -71,12 +71,12 @@ struct miqt_string* QSplitter_TrUtf83(const char* s, const char* c, int n);
 void QSplitter_SetOpaqueResize1(QSplitter* self, bool opaque);
 void QSplitter_Delete(QSplitter* self);
 
-QSplitterHandle* QSplitterHandle_new(uintptr_t o, QSplitter* parent);
+QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self);
 struct miqt_string* QSplitterHandle_Tr(const char* s);
 struct miqt_string* QSplitterHandle_TrUtf8(const char* s);
-void QSplitterHandle_SetOrientation(QSplitterHandle* self, uintptr_t o);
-uintptr_t QSplitterHandle_Orientation(const QSplitterHandle* self);
+void QSplitterHandle_SetOrientation(QSplitterHandle* self, int o);
+int QSplitterHandle_Orientation(const QSplitterHandle* self);
 bool QSplitterHandle_OpaqueResize(const QSplitterHandle* self);
 QSplitter* QSplitterHandle_Splitter(const QSplitterHandle* self);
 QSize* QSplitterHandle_SizeHint(const QSplitterHandle* self);

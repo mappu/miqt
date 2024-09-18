@@ -42,8 +42,8 @@ QWidget* QMdiSubWindow_Widget(const QMdiSubWindow* self);
 QWidget* QMdiSubWindow_MaximizedButtonsWidget(const QMdiSubWindow* self);
 QWidget* QMdiSubWindow_MaximizedSystemMenuIconWidget(const QMdiSubWindow* self);
 bool QMdiSubWindow_IsShaded(const QMdiSubWindow* self);
-void QMdiSubWindow_SetOption(QMdiSubWindow* self, uintptr_t option);
-bool QMdiSubWindow_TestOption(const QMdiSubWindow* self, uintptr_t param1);
+void QMdiSubWindow_SetOption(QMdiSubWindow* self, int option);
+bool QMdiSubWindow_TestOption(const QMdiSubWindow* self, int param1);
 void QMdiSubWindow_SetKeyboardSingleStep(QMdiSubWindow* self, int step);
 int QMdiSubWindow_KeyboardSingleStep(const QMdiSubWindow* self);
 void QMdiSubWindow_SetKeyboardPageStep(QMdiSubWindow* self, int step);
@@ -61,7 +61,7 @@ struct miqt_string* QMdiSubWindow_Tr2(const char* s, const char* c);
 struct miqt_string* QMdiSubWindow_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QMdiSubWindow_TrUtf82(const char* s, const char* c);
 struct miqt_string* QMdiSubWindow_TrUtf83(const char* s, const char* c, int n);
-void QMdiSubWindow_SetOption2(QMdiSubWindow* self, uintptr_t option, bool on);
+void QMdiSubWindow_SetOption2(QMdiSubWindow* self, int option, bool on);
 void QMdiSubWindow_Delete(QMdiSubWindow* self);
 
 #ifdef __cplusplus

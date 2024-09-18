@@ -105,7 +105,7 @@ func NewQUrl3(url string) *QUrl {
 func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 	url_ms := miqt_strdupg(url)
 	defer C.free(url_ms)
-	ret := C.QUrl_new4((*C.struct_miqt_string)(url_ms), (C.uintptr_t)(mode))
+	ret := C.QUrl_new4((*C.struct_miqt_string)(url_ms), (C.int)(mode))
 	return newQUrl(ret)
 }
 
@@ -185,8 +185,7 @@ func QUrl_FromUserInput2(userInput string, workingDirectory string) *QUrl {
 }
 
 func (this *QUrl) IsValid() bool {
-	_ret := C.QUrl_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsValid(this.h))
 }
 
 func (this *QUrl) ErrorString() string {
@@ -197,8 +196,7 @@ func (this *QUrl) ErrorString() string {
 }
 
 func (this *QUrl) IsEmpty() bool {
-	_ret := C.QUrl_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsEmpty(this.h))
 }
 
 func (this *QUrl) Clear() {
@@ -295,8 +293,7 @@ func (this *QUrl) SetPort(port int) {
 }
 
 func (this *QUrl) Port() int {
-	_ret := C.QUrl_Port(this.h)
-	return (int)(_ret)
+	return (int)(C.QUrl_Port(this.h))
 }
 
 func (this *QUrl) SetPath(path string) {
@@ -320,8 +317,7 @@ func (this *QUrl) FileName() string {
 }
 
 func (this *QUrl) HasQuery() bool {
-	_ret := C.QUrl_HasQuery(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_HasQuery(this.h))
 }
 
 func (this *QUrl) SetQuery(query string) {
@@ -342,8 +338,7 @@ func (this *QUrl) Query() string {
 }
 
 func (this *QUrl) HasFragment() bool {
-	_ret := C.QUrl_HasFragment(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_HasFragment(this.h))
 }
 
 func (this *QUrl) Fragment() string {
@@ -367,18 +362,15 @@ func (this *QUrl) Resolved(relative *QUrl) *QUrl {
 }
 
 func (this *QUrl) IsRelative() bool {
-	_ret := C.QUrl_IsRelative(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsRelative(this.h))
 }
 
 func (this *QUrl) IsParentOf(url *QUrl) bool {
-	_ret := C.QUrl_IsParentOf(this.h, url.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsParentOf(this.h, url.cPointer()))
 }
 
 func (this *QUrl) IsLocalFile() bool {
-	_ret := C.QUrl_IsLocalFile(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsLocalFile(this.h))
 }
 
 func QUrl_FromLocalFile(localfile string) *QUrl {
@@ -402,23 +394,19 @@ func (this *QUrl) Detach() {
 }
 
 func (this *QUrl) IsDetached() bool {
-	_ret := C.QUrl_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrl_IsDetached(this.h))
 }
 
 func (this *QUrl) OperatorLesser(url *QUrl) bool {
-	_ret := C.QUrl_OperatorLesser(this.h, url.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrl_OperatorLesser(this.h, url.cPointer()))
 }
 
 func (this *QUrl) OperatorEqual(url *QUrl) bool {
-	_ret := C.QUrl_OperatorEqual(this.h, url.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrl_OperatorEqual(this.h, url.cPointer()))
 }
 
 func (this *QUrl) OperatorNotEqual(url *QUrl) bool {
-	_ret := C.QUrl_OperatorNotEqual(this.h, url.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrl_OperatorNotEqual(this.h, url.cPointer()))
 }
 
 func QUrl_FromPercentEncoding(param1 *QByteArray) string {
@@ -458,8 +446,10 @@ func QUrl_IdnWhitelist() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -478,42 +468,47 @@ func QUrl_ToStringList(uris []QUrl) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QUrl_FromStringList(uris []string) []QUrl {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	uris_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
-		single_ms := miqt_strdupg(uris[i])
-		defer C.free(single_ms)
-		uris_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		uris_i_ms := miqt_strdupg(uris[i])
+		defer C.free(uris_i_ms)
+		uris_CArray[i] = (*C.struct_miqt_string)(uris_i_ms)
 	}
 	uris_ma := &C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(uris_ma))
 	var _ma *C.struct_miqt_array = C.QUrl_FromStringList(uris_ma)
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQUrl(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QUrl_SetIdnWhitelist(idnWhitelist []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	idnWhitelist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(idnWhitelist))))
 	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
 	for i := range idnWhitelist {
-		single_ms := miqt_strdupg(idnWhitelist[i])
-		defer C.free(single_ms)
-		idnWhitelist_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		idnWhitelist_i_ms := miqt_strdupg(idnWhitelist[i])
+		defer C.free(idnWhitelist_i_ms)
+		idnWhitelist_CArray[i] = (*C.struct_miqt_string)(idnWhitelist_i_ms)
 	}
 	idnWhitelist_ma := &C.struct_miqt_array{len: C.size_t(len(idnWhitelist)), data: unsafe.Pointer(idnWhitelist_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(idnWhitelist_ma))
@@ -523,11 +518,11 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 func (this *QUrl) SetUrl2(url string, mode QUrl__ParsingMode) {
 	url_ms := miqt_strdupg(url)
 	defer C.free(url_ms)
-	C.QUrl_SetUrl2(this.h, (*C.struct_miqt_string)(url_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetUrl2(this.h, (*C.struct_miqt_string)(url_ms), (C.int)(mode))
 }
 
 func QUrl_FromEncoded2(url *QByteArray, mode QUrl__ParsingMode) *QUrl {
-	_ret := C.QUrl_FromEncoded2(url.cPointer(), (C.uintptr_t)(mode))
+	_ret := C.QUrl_FromEncoded2(url.cPointer(), (C.int)(mode))
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -547,7 +542,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options int)
 func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
 	authority_ms := miqt_strdupg(authority)
 	defer C.free(authority_ms)
-	C.QUrl_SetAuthority2(this.h, (*C.struct_miqt_string)(authority_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetAuthority2(this.h, (*C.struct_miqt_string)(authority_ms), (C.int)(mode))
 }
 
 func (this *QUrl) Authority1(options int) string {
@@ -560,7 +555,7 @@ func (this *QUrl) Authority1(options int) string {
 func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
 	userInfo_ms := miqt_strdupg(userInfo)
 	defer C.free(userInfo_ms)
-	C.QUrl_SetUserInfo2(this.h, (*C.struct_miqt_string)(userInfo_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetUserInfo2(this.h, (*C.struct_miqt_string)(userInfo_ms), (C.int)(mode))
 }
 
 func (this *QUrl) UserInfo1(options int) string {
@@ -573,7 +568,7 @@ func (this *QUrl) UserInfo1(options int) string {
 func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
 	userName_ms := miqt_strdupg(userName)
 	defer C.free(userName_ms)
-	C.QUrl_SetUserName2(this.h, (*C.struct_miqt_string)(userName_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetUserName2(this.h, (*C.struct_miqt_string)(userName_ms), (C.int)(mode))
 }
 
 func (this *QUrl) UserName1(options int) string {
@@ -586,7 +581,7 @@ func (this *QUrl) UserName1(options int) string {
 func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
 	password_ms := miqt_strdupg(password)
 	defer C.free(password_ms)
-	C.QUrl_SetPassword2(this.h, (*C.struct_miqt_string)(password_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetPassword2(this.h, (*C.struct_miqt_string)(password_ms), (C.int)(mode))
 }
 
 func (this *QUrl) Password1(param1 int) string {
@@ -599,7 +594,7 @@ func (this *QUrl) Password1(param1 int) string {
 func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
 	host_ms := miqt_strdupg(host)
 	defer C.free(host_ms)
-	C.QUrl_SetHost2(this.h, (*C.struct_miqt_string)(host_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetHost2(this.h, (*C.struct_miqt_string)(host_ms), (C.int)(mode))
 }
 
 func (this *QUrl) Host1(param1 int) string {
@@ -617,14 +612,13 @@ func (this *QUrl) TopLevelDomain1(options int) string {
 }
 
 func (this *QUrl) Port1(defaultPort int) int {
-	_ret := C.QUrl_Port1(this.h, (C.int)(defaultPort))
-	return (int)(_ret)
+	return (int)(C.QUrl_Port1(this.h, (C.int)(defaultPort)))
 }
 
 func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	C.QUrl_SetPath2(this.h, (*C.struct_miqt_string)(path_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetPath2(this.h, (*C.struct_miqt_string)(path_ms), (C.int)(mode))
 }
 
 func (this *QUrl) Path1(options int) string {
@@ -644,7 +638,7 @@ func (this *QUrl) FileName1(options int) string {
 func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
 	query_ms := miqt_strdupg(query)
 	defer C.free(query_ms)
-	C.QUrl_SetQuery2(this.h, (*C.struct_miqt_string)(query_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetQuery2(this.h, (*C.struct_miqt_string)(query_ms), (C.int)(mode))
 }
 
 func (this *QUrl) Query1(param1 int) string {
@@ -664,7 +658,7 @@ func (this *QUrl) Fragment1(options int) string {
 func (this *QUrl) SetFragment2(fragment string, mode QUrl__ParsingMode) {
 	fragment_ms := miqt_strdupg(fragment)
 	defer C.free(fragment_ms)
-	C.QUrl_SetFragment2(this.h, (*C.struct_miqt_string)(fragment_ms), (C.uintptr_t)(mode))
+	C.QUrl_SetFragment2(this.h, (*C.struct_miqt_string)(fragment_ms), (C.int)(mode))
 }
 
 func QUrl_ToPercentEncoding2(param1 string, exclude *QByteArray) *QByteArray {
@@ -686,21 +680,24 @@ func QUrl_ToPercentEncoding3(param1 string, exclude *QByteArray, include *QByteA
 }
 
 func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	uris_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
-		single_ms := miqt_strdupg(uris[i])
-		defer C.free(single_ms)
-		uris_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		uris_i_ms := miqt_strdupg(uris[i])
+		defer C.free(uris_i_ms)
+		uris_CArray[i] = (*C.struct_miqt_string)(uris_i_ms)
 	}
 	uris_ma := &C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(uris_ma))
-	var _ma *C.struct_miqt_array = C.QUrl_FromStringList2(uris_ma, (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QUrl_FromStringList2(uris_ma, (C.int)(mode))
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQUrl(_outCast[i])
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

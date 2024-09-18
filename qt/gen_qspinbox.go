@@ -50,8 +50,7 @@ func NewQSpinBox2(parent *QWidget) *QSpinBox {
 }
 
 func (this *QSpinBox) MetaObject() *QMetaObject {
-	_ret := C.QSpinBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSpinBox_MetaObject(this.h)))
 }
 
 func QSpinBox_Tr(s string) string {
@@ -73,8 +72,7 @@ func QSpinBox_TrUtf8(s string) string {
 }
 
 func (this *QSpinBox) Value() int {
-	_ret := C.QSpinBox_Value(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpinBox_Value(this.h))
 }
 
 func (this *QSpinBox) Prefix() string {
@@ -111,8 +109,7 @@ func (this *QSpinBox) CleanText() string {
 }
 
 func (this *QSpinBox) SingleStep() int {
-	_ret := C.QSpinBox_SingleStep(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpinBox_SingleStep(this.h))
 }
 
 func (this *QSpinBox) SetSingleStep(val int) {
@@ -120,8 +117,7 @@ func (this *QSpinBox) SetSingleStep(val int) {
 }
 
 func (this *QSpinBox) Minimum() int {
-	_ret := C.QSpinBox_Minimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpinBox_Minimum(this.h))
 }
 
 func (this *QSpinBox) SetMinimum(min int) {
@@ -129,8 +125,7 @@ func (this *QSpinBox) SetMinimum(min int) {
 }
 
 func (this *QSpinBox) Maximum() int {
-	_ret := C.QSpinBox_Maximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpinBox_Maximum(this.h))
 }
 
 func (this *QSpinBox) SetMaximum(max int) {
@@ -142,17 +137,15 @@ func (this *QSpinBox) SetRange(min int, max int) {
 }
 
 func (this *QSpinBox) StepType() QAbstractSpinBox__StepType {
-	_ret := C.QSpinBox_StepType(this.h)
-	return (QAbstractSpinBox__StepType)(_ret)
+	return (QAbstractSpinBox__StepType)(C.QSpinBox_StepType(this.h))
 }
 
 func (this *QSpinBox) SetStepType(stepType QAbstractSpinBox__StepType) {
-	C.QSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+	C.QSpinBox_SetStepType(this.h, (C.int)(stepType))
 }
 
 func (this *QSpinBox) DisplayIntegerBase() int {
-	_ret := C.QSpinBox_DisplayIntegerBase(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpinBox_DisplayIntegerBase(this.h))
 }
 
 func (this *QSpinBox) SetDisplayIntegerBase(base int) {
@@ -178,8 +171,7 @@ func miqt_exec_callback_QSpinBox_ValueChanged(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -328,8 +320,7 @@ func NewQDoubleSpinBox2(parent *QWidget) *QDoubleSpinBox {
 }
 
 func (this *QDoubleSpinBox) MetaObject() *QMetaObject {
-	_ret := C.QDoubleSpinBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDoubleSpinBox_MetaObject(this.h)))
 }
 
 func QDoubleSpinBox_Tr(s string) string {
@@ -351,8 +342,7 @@ func QDoubleSpinBox_TrUtf8(s string) string {
 }
 
 func (this *QDoubleSpinBox) Value() float64 {
-	_ret := C.QDoubleSpinBox_Value(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleSpinBox_Value(this.h))
 }
 
 func (this *QDoubleSpinBox) Prefix() string {
@@ -389,8 +379,7 @@ func (this *QDoubleSpinBox) CleanText() string {
 }
 
 func (this *QDoubleSpinBox) SingleStep() float64 {
-	_ret := C.QDoubleSpinBox_SingleStep(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleSpinBox_SingleStep(this.h))
 }
 
 func (this *QDoubleSpinBox) SetSingleStep(val float64) {
@@ -398,8 +387,7 @@ func (this *QDoubleSpinBox) SetSingleStep(val float64) {
 }
 
 func (this *QDoubleSpinBox) Minimum() float64 {
-	_ret := C.QDoubleSpinBox_Minimum(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleSpinBox_Minimum(this.h))
 }
 
 func (this *QDoubleSpinBox) SetMinimum(min float64) {
@@ -407,8 +395,7 @@ func (this *QDoubleSpinBox) SetMinimum(min float64) {
 }
 
 func (this *QDoubleSpinBox) Maximum() float64 {
-	_ret := C.QDoubleSpinBox_Maximum(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleSpinBox_Maximum(this.h))
 }
 
 func (this *QDoubleSpinBox) SetMaximum(max float64) {
@@ -420,17 +407,15 @@ func (this *QDoubleSpinBox) SetRange(min float64, max float64) {
 }
 
 func (this *QDoubleSpinBox) StepType() QAbstractSpinBox__StepType {
-	_ret := C.QDoubleSpinBox_StepType(this.h)
-	return (QAbstractSpinBox__StepType)(_ret)
+	return (QAbstractSpinBox__StepType)(C.QDoubleSpinBox_StepType(this.h))
 }
 
 func (this *QDoubleSpinBox) SetStepType(stepType QAbstractSpinBox__StepType) {
-	C.QDoubleSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+	C.QDoubleSpinBox_SetStepType(this.h, (C.int)(stepType))
 }
 
 func (this *QDoubleSpinBox) Decimals() int {
-	_ret := C.QDoubleSpinBox_Decimals(this.h)
-	return (int)(_ret)
+	return (int)(C.QDoubleSpinBox_Decimals(this.h))
 }
 
 func (this *QDoubleSpinBox) SetDecimals(prec int) {
@@ -440,15 +425,13 @@ func (this *QDoubleSpinBox) SetDecimals(prec int) {
 func (this *QDoubleSpinBox) Validate(input string, pos *int) QValidator__State {
 	input_ms := miqt_strdupg(input)
 	defer C.free(input_ms)
-	_ret := C.QDoubleSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QDoubleSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QDoubleSpinBox) ValueFromText(text string) float64 {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QDoubleSpinBox_ValueFromText(this.h, (*C.struct_miqt_string)(text_ms))
-	return (float64)(_ret)
+	return (float64)(C.QDoubleSpinBox_ValueFromText(this.h, (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QDoubleSpinBox) TextFromValue(val float64) string {
@@ -483,8 +466,7 @@ func miqt_exec_callback_QDoubleSpinBox_ValueChanged(cb *C.void, param1 C.double)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (float64)(param1_ret)
+	slotval1 := (float64)(param1)
 
 	gofunc(slotval1)
 }

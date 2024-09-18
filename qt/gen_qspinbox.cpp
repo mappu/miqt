@@ -98,12 +98,12 @@ void QSpinBox_SetRange(QSpinBox* self, int min, int max) {
 	self->setRange(static_cast<int>(min), static_cast<int>(max));
 }
 
-uintptr_t QSpinBox_StepType(const QSpinBox* self) {
+int QSpinBox_StepType(const QSpinBox* self) {
 	QAbstractSpinBox::StepType _ret = self->stepType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSpinBox_SetStepType(QSpinBox* self, uintptr_t stepType) {
+void QSpinBox_SetStepType(QSpinBox* self, int stepType) {
 	self->setStepType(static_cast<QAbstractSpinBox::StepType>(stepType));
 }
 
@@ -281,12 +281,12 @@ void QDoubleSpinBox_SetRange(QDoubleSpinBox* self, double min, double max) {
 	self->setRange(static_cast<double>(min), static_cast<double>(max));
 }
 
-uintptr_t QDoubleSpinBox_StepType(const QDoubleSpinBox* self) {
+int QDoubleSpinBox_StepType(const QDoubleSpinBox* self) {
 	QAbstractSpinBox::StepType _ret = self->stepType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDoubleSpinBox_SetStepType(QDoubleSpinBox* self, uintptr_t stepType) {
+void QDoubleSpinBox_SetStepType(QDoubleSpinBox* self, int stepType) {
 	self->setStepType(static_cast<QAbstractSpinBox::StepType>(stepType));
 }
 
@@ -298,10 +298,10 @@ void QDoubleSpinBox_SetDecimals(QDoubleSpinBox* self, int prec) {
 	self->setDecimals(static_cast<int>(prec));
 }
 
-uintptr_t QDoubleSpinBox_Validate(const QDoubleSpinBox* self, struct miqt_string* input, int* pos) {
+int QDoubleSpinBox_Validate(const QDoubleSpinBox* self, struct miqt_string* input, int* pos) {
 	QString input_QString = QString::fromUtf8(&input->data, input->len);
 	QValidator::State _ret = self->validate(input_QString, static_cast<int&>(*pos));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QDoubleSpinBox_ValueFromText(const QDoubleSpinBox* self, struct miqt_string* text) {

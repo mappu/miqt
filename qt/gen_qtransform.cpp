@@ -12,7 +12,7 @@
 #include "gen_qtransform.h"
 #include "_cgo_export.h"
 
-QTransform* QTransform_new(uintptr_t param1) {
+QTransform* QTransform_new(int param1) {
 	return new QTransform(static_cast<Qt::Initialization>(param1));
 }
 
@@ -68,61 +68,74 @@ bool QTransform_IsTranslating(const QTransform* self) {
 	return self->isTranslating();
 }
 
-uintptr_t QTransform_Type(const QTransform* self) {
+int QTransform_Type(const QTransform* self) {
 	QTransform::TransformationType _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QTransform_Determinant(const QTransform* self) {
-	return self->determinant();
+	qreal _ret = self->determinant();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_Det(const QTransform* self) {
-	return self->det();
+	qreal _ret = self->det();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M11(const QTransform* self) {
-	return self->m11();
+	qreal _ret = self->m11();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M12(const QTransform* self) {
-	return self->m12();
+	qreal _ret = self->m12();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M13(const QTransform* self) {
-	return self->m13();
+	qreal _ret = self->m13();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M21(const QTransform* self) {
-	return self->m21();
+	qreal _ret = self->m21();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M22(const QTransform* self) {
-	return self->m22();
+	qreal _ret = self->m22();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M23(const QTransform* self) {
-	return self->m23();
+	qreal _ret = self->m23();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M31(const QTransform* self) {
-	return self->m31();
+	qreal _ret = self->m31();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M32(const QTransform* self) {
-	return self->m32();
+	qreal _ret = self->m32();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_M33(const QTransform* self) {
-	return self->m33();
+	qreal _ret = self->m33();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_Dx(const QTransform* self) {
-	return self->dx();
+	qreal _ret = self->dx();
+	return static_cast<double>(_ret);
 }
 
 double QTransform_Dy(const QTransform* self) {
-	return self->dy();
+	qreal _ret = self->dy();
+	return static_cast<double>(_ret);
 }
 
 void QTransform_SetMatrix(QTransform* self, double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33) {
@@ -130,21 +143,15 @@ void QTransform_SetMatrix(QTransform* self, double m11, double m12, double m13, 
 }
 
 QTransform* QTransform_Inverted(const QTransform* self) {
-	QTransform _ret = self->inverted();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->inverted());
 }
 
 QTransform* QTransform_Adjoint(const QTransform* self) {
-	QTransform _ret = self->adjoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->adjoint());
 }
 
 QTransform* QTransform_Transposed(const QTransform* self) {
-	QTransform _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transposed());
 }
 
 QTransform* QTransform_Translate(QTransform* self, double dx, double dy) {
@@ -192,9 +199,7 @@ QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* para
 }
 
 QTransform* QTransform_OperatorMultiply(const QTransform* self, QTransform* o) {
-	QTransform _ret = self->operator*(*o);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->operator*(*o));
 }
 
 void QTransform_Reset(QTransform* self) {
@@ -202,51 +207,35 @@ void QTransform_Reset(QTransform* self) {
 }
 
 QPoint* QTransform_Map(const QTransform* self, QPoint* p) {
-	QPoint _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->map(*p));
 }
 
 QPointF* QTransform_MapWithQPointF(const QTransform* self, QPointF* p) {
-	QPointF _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->map(*p));
 }
 
 QLine* QTransform_MapWithQLine(const QTransform* self, QLine* l) {
-	QLine _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(_ret));
+	return new QLine(self->map(*l));
 }
 
 QLineF* QTransform_MapWithQLineF(const QTransform* self, QLineF* l) {
-	QLineF _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(_ret));
+	return new QLineF(self->map(*l));
 }
 
 QRegion* QTransform_MapWithQRegion(const QTransform* self, QRegion* r) {
-	QRegion _ret = self->map(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->map(*r));
 }
 
 QPainterPath* QTransform_MapWithQPainterPath(const QTransform* self, QPainterPath* p) {
-	QPainterPath _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->map(*p));
 }
 
 QRect* QTransform_MapRect(const QTransform* self, QRect* param1) {
-	QRect _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->mapRect(*param1));
 }
 
 QRectF* QTransform_MapRectWithQRectF(const QTransform* self, QRectF* param1) {
-	QRectF _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRect(*param1));
 }
 
 void QTransform_Map2(const QTransform* self, int x, int y, int* tx, int* ty) {
@@ -288,30 +277,24 @@ QTransform* QTransform_OperatorMinusAssign(QTransform* self, double div) {
 }
 
 QTransform* QTransform_FromTranslate(double dx, double dy) {
-	QTransform _ret = QTransform::fromTranslate(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QTransform::fromTranslate(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QTransform* QTransform_FromScale(double dx, double dy) {
-	QTransform _ret = QTransform::fromScale(static_cast<qreal>(dx), static_cast<qreal>(dy));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(QTransform::fromScale(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
 QTransform* QTransform_Inverted1(const QTransform* self, bool* invertible) {
-	QTransform _ret = self->inverted(invertible);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->inverted(invertible));
 }
 
-QTransform* QTransform_Rotate2(QTransform* self, double a, uintptr_t axis) {
+QTransform* QTransform_Rotate2(QTransform* self, double a, int axis) {
 	QTransform& _ret = self->rotate(static_cast<qreal>(a), static_cast<Qt::Axis>(axis));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTransform* QTransform_RotateRadians2(QTransform* self, double a, uintptr_t axis) {
+QTransform* QTransform_RotateRadians2(QTransform* self, double a, int axis) {
 	QTransform& _ret = self->rotateRadians(static_cast<qreal>(a), static_cast<Qt::Axis>(axis));
 	// Cast returned reference into pointer
 	return &_ret;

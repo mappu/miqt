@@ -51,11 +51,11 @@ void QAbstractEventDispatcher_UnregisterSocketNotifier(QAbstractEventDispatcher*
 	self->unregisterSocketNotifier(notifier);
 }
 
-int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int interval, uintptr_t timerType, QObject* object) {
+int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int interval, int timerType, QObject* object) {
 	return self->registerTimer(static_cast<int>(interval), static_cast<Qt::TimerType>(timerType), object);
 }
 
-void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, uintptr_t timerType, QObject* object) {
+void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, int timerType, QObject* object) {
 	self->registerTimer(static_cast<int>(timerId), static_cast<int>(interval), static_cast<Qt::TimerType>(timerType), object);
 }
 
@@ -69,8 +69,8 @@ bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, Q
 
 struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object) {
 	QList<QAbstractEventDispatcher::TimerInfo> _ret = self->registeredTimers(object);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QAbstractEventDispatcher__TimerInfo** _arr = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QAbstractEventDispatcher__TimerInfo** _arr = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QAbstractEventDispatcher::TimerInfo(_ret[i]);
 	}
@@ -168,7 +168,7 @@ void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self) {
 	delete self;
 }
 
-QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, uintptr_t t) {
+QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t) {
 	return new QAbstractEventDispatcher::TimerInfo(static_cast<int>(id), static_cast<int>(i), static_cast<Qt::TimerType>(t));
 }
 

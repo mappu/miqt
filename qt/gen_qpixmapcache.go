@@ -36,8 +36,7 @@ func newQPixmapCache_U(h unsafe.Pointer) *QPixmapCache {
 }
 
 func QPixmapCache_CacheLimit() int {
-	_ret := C.QPixmapCache_CacheLimit()
-	return (int)(_ret)
+	return (int)(C.QPixmapCache_CacheLimit())
 }
 
 func QPixmapCache_SetCacheLimit(cacheLimit int) {
@@ -47,34 +46,29 @@ func QPixmapCache_SetCacheLimit(cacheLimit int) {
 func QPixmapCache_Find(key string) *QPixmap {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QPixmapCache_Find((*C.struct_miqt_string)(key_ms))
-	return newQPixmap_U(unsafe.Pointer(_ret))
+	return newQPixmap_U(unsafe.Pointer(C.QPixmapCache_Find((*C.struct_miqt_string)(key_ms))))
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QPixmapCache_Find2((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache_Find2((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
 
 func QPixmapCache_Find3(key string, pixmap *QPixmap) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QPixmapCache_Find3((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache_Find3((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
 
 func QPixmapCache_Find4(key *QPixmapCache__Key, pixmap *QPixmap) bool {
-	_ret := C.QPixmapCache_Find4(key.cPointer(), pixmap.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache_Find4(key.cPointer(), pixmap.cPointer()))
 }
 
 func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QPixmapCache_Insert((*C.struct_miqt_string)(key_ms), pixmap.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache_Insert((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
 
 func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
@@ -85,8 +79,7 @@ func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
 }
 
 func QPixmapCache_Replace(key *QPixmapCache__Key, pixmap *QPixmap) bool {
-	_ret := C.QPixmapCache_Replace(key.cPointer(), pixmap.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache_Replace(key.cPointer(), pixmap.cPointer()))
 }
 
 func QPixmapCache_Remove(key string) {
@@ -152,13 +145,15 @@ func NewQPixmapCache__Key2(other *QPixmapCache__Key) *QPixmapCache__Key {
 }
 
 func (this *QPixmapCache__Key) OperatorEqual(key *QPixmapCache__Key) bool {
-	_ret := C.QPixmapCache__Key_OperatorEqual(this.h, key.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache__Key_OperatorEqual(this.h, key.cPointer()))
 }
 
 func (this *QPixmapCache__Key) OperatorNotEqual(key *QPixmapCache__Key) bool {
-	_ret := C.QPixmapCache__Key_OperatorNotEqual(this.h, key.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache__Key_OperatorNotEqual(this.h, key.cPointer()))
+}
+
+func (this *QPixmapCache__Key) OperatorAssign(other *QPixmapCache__Key) {
+	C.QPixmapCache__Key_OperatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPixmapCache__Key) Swap(other *QPixmapCache__Key) {
@@ -166,8 +161,7 @@ func (this *QPixmapCache__Key) Swap(other *QPixmapCache__Key) {
 }
 
 func (this *QPixmapCache__Key) IsValid() bool {
-	_ret := C.QPixmapCache__Key_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPixmapCache__Key_IsValid(this.h))
 }
 
 // Delete this object from C++ memory.

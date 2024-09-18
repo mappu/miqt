@@ -66,13 +66,11 @@ func (this *QUrlQuery) OperatorAssign(other *QUrlQuery) {
 }
 
 func (this *QUrlQuery) OperatorEqual(other *QUrlQuery) bool {
-	_ret := C.QUrlQuery_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrlQuery_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QUrlQuery) OperatorNotEqual(other *QUrlQuery) bool {
-	_ret := C.QUrlQuery_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QUrlQuery_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QUrlQuery) Swap(other *QUrlQuery) {
@@ -80,13 +78,11 @@ func (this *QUrlQuery) Swap(other *QUrlQuery) {
 }
 
 func (this *QUrlQuery) IsEmpty() bool {
-	_ret := C.QUrlQuery_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrlQuery_IsEmpty(this.h))
 }
 
 func (this *QUrlQuery) IsDetached() bool {
-	_ret := C.QUrlQuery_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QUrlQuery_IsDetached(this.h))
 }
 
 func (this *QUrlQuery) Clear() {
@@ -134,8 +130,7 @@ func (this *QUrlQuery) QueryPairDelimiter() *QChar {
 func (this *QUrlQuery) HasQueryItem(key string) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QUrlQuery_HasQueryItem(this.h, (*C.struct_miqt_string)(key_ms))
-	return (bool)(_ret)
+	return (bool)(C.QUrlQuery_HasQueryItem(this.h, (*C.struct_miqt_string)(key_ms)))
 }
 
 func (this *QUrlQuery) AddQueryItem(key string, value string) {
@@ -168,8 +163,10 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -225,8 +222,10 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding int) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

@@ -28,9 +28,9 @@ QUuid* QUuid_new4(const char* param1);
 QUuid* QUuid_new5(QByteArray* param1);
 QUuid* QUuid_new6(QUuid* param1);
 struct miqt_string* QUuid_ToString(const QUuid* self);
-struct miqt_string* QUuid_ToStringWithMode(const QUuid* self, uintptr_t mode);
+struct miqt_string* QUuid_ToStringWithMode(const QUuid* self, int mode);
 QByteArray* QUuid_ToByteArray(const QUuid* self);
-QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, uintptr_t mode);
+QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, int mode);
 QByteArray* QUuid_ToRfc4122(const QUuid* self);
 QUuid* QUuid_FromRfc4122(QByteArray* param1);
 bool QUuid_IsNull(const QUuid* self);
@@ -43,8 +43,8 @@ QUuid* QUuid_CreateUuidV3(QUuid* ns, QByteArray* baseData);
 QUuid* QUuid_CreateUuidV5(QUuid* ns, QByteArray* baseData);
 QUuid* QUuid_CreateUuidV32(QUuid* ns, struct miqt_string* baseData);
 QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string* baseData);
-uintptr_t QUuid_Variant(const QUuid* self);
-uintptr_t QUuid_Version(const QUuid* self);
+int QUuid_Variant(const QUuid* self);
+int QUuid_Version(const QUuid* self);
 void QUuid_Delete(QUuid* self);
 
 #ifdef __cplusplus

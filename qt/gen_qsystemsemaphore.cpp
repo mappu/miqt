@@ -16,7 +16,7 @@ QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string* key, int initialValu
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
 }
 
-QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string* key, int initialValue, uintptr_t mode) {
+QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string* key, int initialValue, int mode) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
@@ -41,9 +41,9 @@ bool QSystemSemaphore_Release(QSystemSemaphore* self) {
 	return self->release();
 }
 
-uintptr_t QSystemSemaphore_Error(const QSystemSemaphore* self) {
+int QSystemSemaphore_Error(const QSystemSemaphore* self) {
 	QSystemSemaphore::SystemSemaphoreError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QSystemSemaphore_ErrorString(const QSystemSemaphore* self) {
@@ -58,7 +58,7 @@ void QSystemSemaphore_SetKey2(QSystemSemaphore* self, struct miqt_string* key, i
 	self->setKey(key_QString, static_cast<int>(initialValue));
 }
 
-void QSystemSemaphore_SetKey3(QSystemSemaphore* self, struct miqt_string* key, int initialValue, uintptr_t mode) {
+void QSystemSemaphore_SetKey3(QSystemSemaphore* self, struct miqt_string* key, int initialValue, int mode) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	self->setKey(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }

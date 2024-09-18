@@ -70,8 +70,7 @@ func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
-	_ret := C.QColorDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QColorDialog_MetaObject(this.h)))
 }
 
 func QColorDialog_Tr(s string) string {
@@ -111,12 +110,11 @@ func (this *QColorDialog) SelectedColor() *QColor {
 }
 
 func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
-	C.QColorDialog_SetOption(this.h, (C.uintptr_t)(option))
+	C.QColorDialog_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) bool {
-	_ret := C.QColorDialog_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(_ret)
+	return (bool)(C.QColorDialog_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QColorDialog) SetOptions(options int) {
@@ -124,8 +122,7 @@ func (this *QColorDialog) SetOptions(options int) {
 }
 
 func (this *QColorDialog) Options() int {
-	_ret := C.QColorDialog_Options(this.h)
-	return (int)(_ret)
+	return (int)(C.QColorDialog_Options(this.h))
 }
 
 func (this *QColorDialog) SetVisible(visible bool) {
@@ -140,13 +137,11 @@ func QColorDialog_GetColor() *QColor {
 }
 
 func QColorDialog_GetRgba() uint {
-	_ret := C.QColorDialog_GetRgba()
-	return (uint)(_ret)
+	return (uint)(C.QColorDialog_GetRgba())
 }
 
 func QColorDialog_CustomCount() int {
-	_ret := C.QColorDialog_CustomCount()
-	return (int)(_ret)
+	return (int)(C.QColorDialog_CustomCount())
 }
 
 func QColorDialog_CustomColor(index int) *QColor {
@@ -186,8 +181,7 @@ func miqt_exec_callback_QColorDialog_CurrentColorChanged(cb *C.void, color *C.QC
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_ret := color
-	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+	slotval1 := newQColor_U(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -207,8 +201,7 @@ func miqt_exec_callback_QColorDialog_ColorSelected(cb *C.void, color *C.QColor) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_ret := color
-	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+	slotval1 := newQColor_U(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -258,7 +251,7 @@ func QColorDialog_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on bool) {
-	C.QColorDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QColorDialog_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 func QColorDialog_GetColor1(initial *QColor) *QColor {
@@ -294,18 +287,15 @@ func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, opti
 }
 
 func QColorDialog_GetRgba1(rgba uint) uint {
-	_ret := C.QColorDialog_GetRgba1((C.uint)(rgba))
-	return (uint)(_ret)
+	return (uint)(C.QColorDialog_GetRgba1((C.uint)(rgba)))
 }
 
 func QColorDialog_GetRgba2(rgba uint, ok *bool) uint {
-	_ret := C.QColorDialog_GetRgba2((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)))
-	return (uint)(_ret)
+	return (uint)(C.QColorDialog_GetRgba2((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func QColorDialog_GetRgba3(rgba uint, ok *bool, parent *QWidget) uint {
-	_ret := C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer())
-	return (uint)(_ret)
+	return (uint)(C.QColorDialog_GetRgba3((C.uint)(rgba), (*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 }
 
 // Delete this object from C++ memory.

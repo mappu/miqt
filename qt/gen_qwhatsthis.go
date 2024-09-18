@@ -40,8 +40,7 @@ func QWhatsThis_EnterWhatsThisMode() {
 }
 
 func QWhatsThis_InWhatsThisMode() bool {
-	_ret := C.QWhatsThis_InWhatsThisMode()
-	return (bool)(_ret)
+	return (bool)(C.QWhatsThis_InWhatsThisMode())
 }
 
 func QWhatsThis_LeaveWhatsThisMode() {
@@ -59,8 +58,7 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	_ret := C.QWhatsThis_CreateAction()
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QWhatsThis_CreateAction()))
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
@@ -70,8 +68,7 @@ func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	_ret := C.QWhatsThis_CreateAction1(parent.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())))
 }
 
 // Delete this object from C++ memory.

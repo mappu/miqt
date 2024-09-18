@@ -45,14 +45,12 @@ struct miqt_string* QFileSelector_Select(const QFileSelector* self, struct miqt_
 }
 
 QUrl* QFileSelector_SelectWithFilePath(const QFileSelector* self, QUrl* filePath) {
-	QUrl _ret = self->select(*filePath);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->select(*filePath));
 }
 
 struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
 	QStringList _ret = self->extraSelectors();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -66,19 +64,20 @@ struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
 	return _out;
 }
 
-void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of QString */ list) {
+void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of struct miqt_string* */ list) {
 	QList<QString> list_QList;
 	list_QList.reserve(list->len);
-	miqt_string** list_arr = static_cast<miqt_string**>(list->data);
+	struct miqt_string** list_arr = static_cast<struct miqt_string**>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {
-		list_QList.push_back(QString::fromUtf8(& list_arr[i]->data, list_arr[i]->len));
+		QString list_arr_i_QString = QString::fromUtf8(&list_arr[i]->data, list_arr[i]->len);
+		list_QList.push_back(list_arr_i_QString);
 	}
 	self->setExtraSelectors(list_QList);
 }
 
 struct miqt_array* QFileSelector_AllSelectors(const QFileSelector* self) {
 	QStringList _ret = self->allSelectors();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

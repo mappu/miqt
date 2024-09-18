@@ -48,9 +48,7 @@ void QJsonDocument_Swap(QJsonDocument* self, QJsonDocument* other) {
 }
 
 QJsonDocument* QJsonDocument_FromRawData(const char* data, int size) {
-	QJsonDocument _ret = QJsonDocument::fromRawData(data, static_cast<int>(size));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(QJsonDocument::fromRawData(data, static_cast<int>(size)));
 }
 
 const char* QJsonDocument_RawData(const QJsonDocument* self, int* size) {
@@ -58,45 +56,31 @@ const char* QJsonDocument_RawData(const QJsonDocument* self, int* size) {
 }
 
 QJsonDocument* QJsonDocument_FromBinaryData(QByteArray* data) {
-	QJsonDocument _ret = QJsonDocument::fromBinaryData(*data);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(QJsonDocument::fromBinaryData(*data));
 }
 
 QByteArray* QJsonDocument_ToBinaryData(const QJsonDocument* self) {
-	QByteArray _ret = self->toBinaryData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toBinaryData());
 }
 
 QJsonDocument* QJsonDocument_FromVariant(QVariant* variant) {
-	QJsonDocument _ret = QJsonDocument::fromVariant(*variant);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(QJsonDocument::fromVariant(*variant));
 }
 
 QVariant* QJsonDocument_ToVariant(const QJsonDocument* self) {
-	QVariant _ret = self->toVariant();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->toVariant());
 }
 
 QJsonDocument* QJsonDocument_FromJson(QByteArray* json) {
-	QJsonDocument _ret = QJsonDocument::fromJson(*json);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(QJsonDocument::fromJson(*json));
 }
 
 QByteArray* QJsonDocument_ToJson(const QJsonDocument* self) {
-	QByteArray _ret = self->toJson();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toJson());
 }
 
-QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, uintptr_t format) {
-	QByteArray _ret = self->toJson(static_cast<QJsonDocument::JsonFormat>(format));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, int format) {
+	return new QByteArray(self->toJson(static_cast<QJsonDocument::JsonFormat>(format)));
 }
 
 bool QJsonDocument_IsEmpty(const QJsonDocument* self) {
@@ -112,15 +96,11 @@ bool QJsonDocument_IsObject(const QJsonDocument* self) {
 }
 
 QJsonObject* QJsonDocument_Object(const QJsonDocument* self) {
-	QJsonObject _ret = self->object();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->object());
 }
 
 QJsonArray* QJsonDocument_Array(const QJsonDocument* self) {
-	QJsonArray _ret = self->array();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->array());
 }
 
 void QJsonDocument_SetObject(QJsonDocument* self, QJsonObject* object) {
@@ -133,15 +113,11 @@ void QJsonDocument_SetArray(QJsonDocument* self, QJsonArray* array) {
 
 QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QJsonValue _ret = self->operator[](key_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](key_QString));
 }
 
 QJsonValue* QJsonDocument_OperatorSubscriptWithInt(const QJsonDocument* self, int i) {
-	QJsonValue _ret = self->operator[](static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->operator[](static_cast<int>(i)));
 }
 
 bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other) {
@@ -156,22 +132,16 @@ bool QJsonDocument_IsNull(const QJsonDocument* self) {
 	return self->isNull();
 }
 
-QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, uintptr_t validation) {
-	QJsonDocument _ret = QJsonDocument::fromRawData(data, static_cast<int>(size), static_cast<QJsonDocument::DataValidation>(validation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, int validation) {
+	return new QJsonDocument(QJsonDocument::fromRawData(data, static_cast<int>(size), static_cast<QJsonDocument::DataValidation>(validation)));
 }
 
-QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, uintptr_t validation) {
-	QJsonDocument _ret = QJsonDocument::fromBinaryData(*data, static_cast<QJsonDocument::DataValidation>(validation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, int validation) {
+	return new QJsonDocument(QJsonDocument::fromBinaryData(*data, static_cast<QJsonDocument::DataValidation>(validation)));
 }
 
 QJsonDocument* QJsonDocument_FromJson2(QByteArray* json, QJsonParseError* error) {
-	QJsonDocument _ret = QJsonDocument::fromJson(*json, error);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(QJsonDocument::fromJson(*json, error));
 }
 
 void QJsonDocument_Delete(QJsonDocument* self) {

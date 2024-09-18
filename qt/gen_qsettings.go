@@ -87,7 +87,7 @@ func NewQSettings(organization string) *QSettings {
 func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_ms := miqt_strdupg(organization)
 	defer C.free(organization_ms)
-	ret := C.QSettings_new2((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
+	ret := C.QSettings_new2((C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
@@ -95,7 +95,7 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organization string) *QSettings {
 	organization_ms := miqt_strdupg(organization)
 	defer C.free(organization_ms)
-	ret := C.QSettings_new3((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
+	ret := C.QSettings_new3((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
@@ -103,7 +103,7 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format))
+	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.int)(format))
 	return newQSettings(ret)
 }
 
@@ -115,7 +115,7 @@ func NewQSettings5() *QSettings {
 
 // NewQSettings6 constructs a new QSettings object.
 func NewQSettings6(scope QSettings__Scope) *QSettings {
-	ret := C.QSettings_new6((C.uintptr_t)(scope))
+	ret := C.QSettings_new6((C.int)(scope))
 	return newQSettings(ret)
 }
 
@@ -145,7 +145,7 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new9((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
+	ret := C.QSettings_new9((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
@@ -155,7 +155,7 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new10((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
+	ret := C.QSettings_new10((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -165,7 +165,7 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new11((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
+	ret := C.QSettings_new11((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
@@ -175,7 +175,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new12((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
+	ret := C.QSettings_new12((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -183,7 +183,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format), parent.cPointer())
+	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.int)(format), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -195,13 +195,12 @@ func NewQSettings14(parent *QObject) *QSettings {
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
-	ret := C.QSettings_new15((C.uintptr_t)(scope), parent.cPointer())
+	ret := C.QSettings_new15((C.int)(scope), parent.cPointer())
 	return newQSettings(ret)
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
-	_ret := C.QSettings_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSettings_MetaObject(this.h)))
 }
 
 func QSettings_Tr(s string) string {
@@ -231,13 +230,11 @@ func (this *QSettings) Sync() {
 }
 
 func (this *QSettings) Status() QSettings__Status {
-	_ret := C.QSettings_Status(this.h)
-	return (QSettings__Status)(_ret)
+	return (QSettings__Status)(C.QSettings_Status(this.h))
 }
 
 func (this *QSettings) IsAtomicSyncRequired() bool {
-	_ret := C.QSettings_IsAtomicSyncRequired(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSettings_IsAtomicSyncRequired(this.h))
 }
 
 func (this *QSettings) SetAtomicSyncRequired(enable bool) {
@@ -264,8 +261,7 @@ func (this *QSettings) Group() string {
 func (this *QSettings) BeginReadArray(prefix string) int {
 	prefix_ms := miqt_strdupg(prefix)
 	defer C.free(prefix_ms)
-	_ret := C.QSettings_BeginReadArray(this.h, (*C.struct_miqt_string)(prefix_ms))
-	return (int)(_ret)
+	return (int)(C.QSettings_BeginReadArray(this.h, (*C.struct_miqt_string)(prefix_ms)))
 }
 
 func (this *QSettings) BeginWriteArray(prefix string) {
@@ -287,8 +283,10 @@ func (this *QSettings) AllKeys() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -299,8 +297,10 @@ func (this *QSettings) ChildKeys() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -311,16 +311,17 @@ func (this *QSettings) ChildGroups() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QSettings) IsWritable() bool {
-	_ret := C.QSettings_IsWritable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSettings_IsWritable(this.h))
 }
 
 func (this *QSettings) SetValue(key string, value *QVariant) {
@@ -347,8 +348,7 @@ func (this *QSettings) Remove(key string) {
 func (this *QSettings) Contains(key string) bool {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QSettings_Contains(this.h, (*C.struct_miqt_string)(key_ms))
-	return (bool)(_ret)
+	return (bool)(C.QSettings_Contains(this.h, (*C.struct_miqt_string)(key_ms)))
 }
 
 func (this *QSettings) SetFallbacksEnabled(b bool) {
@@ -356,8 +356,7 @@ func (this *QSettings) SetFallbacksEnabled(b bool) {
 }
 
 func (this *QSettings) FallbacksEnabled() bool {
-	_ret := C.QSettings_FallbacksEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSettings_FallbacksEnabled(this.h))
 }
 
 func (this *QSettings) FileName() string {
@@ -368,13 +367,11 @@ func (this *QSettings) FileName() string {
 }
 
 func (this *QSettings) Format() QSettings__Format {
-	_ret := C.QSettings_Format(this.h)
-	return (QSettings__Format)(_ret)
+	return (QSettings__Format)(C.QSettings_Format(this.h))
 }
 
 func (this *QSettings) Scope() QSettings__Scope {
-	_ret := C.QSettings_Scope(this.h)
-	return (QSettings__Scope)(_ret)
+	return (QSettings__Scope)(C.QSettings_Scope(this.h))
 }
 
 func (this *QSettings) OrganizationName() string {
@@ -402,17 +399,15 @@ func (this *QSettings) SetIniCodecWithCodecName(codecName string) {
 }
 
 func (this *QSettings) IniCodec() *QTextCodec {
-	_ret := C.QSettings_IniCodec(this.h)
-	return newQTextCodec_U(unsafe.Pointer(_ret))
+	return newQTextCodec_U(unsafe.Pointer(C.QSettings_IniCodec(this.h)))
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
-	C.QSettings_SetDefaultFormat((C.uintptr_t)(format))
+	C.QSettings_SetDefaultFormat((C.int)(format))
 }
 
 func QSettings_DefaultFormat() QSettings__Format {
-	_ret := C.QSettings_DefaultFormat()
-	return (QSettings__Format)(_ret)
+	return (QSettings__Format)(C.QSettings_DefaultFormat())
 }
 
 func QSettings_SetSystemIniPath(dir string) {
@@ -430,7 +425,7 @@ func QSettings_SetUserIniPath(dir string) {
 func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	C.QSettings_SetPath((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(path_ms))
+	C.QSettings_SetPath((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(path_ms))
 }
 
 func QSettings_Tr2(s string, c string) string {

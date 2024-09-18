@@ -5,7 +5,7 @@
 #include "gen_qcryptographichash.h"
 #include "_cgo_export.h"
 
-QCryptographicHash* QCryptographicHash_new(uintptr_t method) {
+QCryptographicHash* QCryptographicHash_new(int method) {
 	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
@@ -26,18 +26,14 @@ bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* d
 }
 
 QByteArray* QCryptographicHash_Result(const QCryptographicHash* self) {
-	QByteArray _ret = self->result();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->result());
 }
 
-QByteArray* QCryptographicHash_Hash(QByteArray* data, uintptr_t method) {
-	QByteArray _ret = QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+QByteArray* QCryptographicHash_Hash(QByteArray* data, int method) {
+	return new QByteArray(QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method)));
 }
 
-int QCryptographicHash_HashLength(uintptr_t method) {
+int QCryptographicHash_HashLength(int method) {
 	return QCryptographicHash::hashLength(static_cast<QCryptographicHash::Algorithm>(method));
 }
 

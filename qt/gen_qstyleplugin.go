@@ -37,8 +37,7 @@ func newQStylePlugin_U(h unsafe.Pointer) *QStylePlugin {
 }
 
 func (this *QStylePlugin) MetaObject() *QMetaObject {
-	_ret := C.QStylePlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStylePlugin_MetaObject(this.h)))
 }
 
 func QStylePlugin_Tr(s string) string {
@@ -62,8 +61,7 @@ func QStylePlugin_TrUtf8(s string) string {
 func (this *QStylePlugin) Create(key string) *QStyle {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QStylePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QStylePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))))
 }
 
 func QStylePlugin_Tr2(s string, c string) string {

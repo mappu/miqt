@@ -74,13 +74,13 @@ func NewQRegion5(bitmap *QBitmap) *QRegion {
 
 // NewQRegion6 constructs a new QRegion object.
 func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(t))
+	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t))
 	return newQRegion(ret)
 }
 
 // NewQRegion7 constructs a new QRegion object.
 func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new7(r.cPointer(), (C.uintptr_t)(t))
+	ret := C.QRegion_new7(r.cPointer(), (C.int)(t))
 	return newQRegion(ret)
 }
 
@@ -93,43 +93,35 @@ func (this *QRegion) Swap(other *QRegion) {
 }
 
 func (this *QRegion) IsEmpty() bool {
-	_ret := C.QRegion_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRegion_IsEmpty(this.h))
 }
 
 func (this *QRegion) IsNull() bool {
-	_ret := C.QRegion_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRegion_IsNull(this.h))
 }
 
 func (this *QRegion) Begin() *QRect {
-	_ret := C.QRegion_Begin(this.h)
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRegion_Begin(this.h)))
 }
 
 func (this *QRegion) Cbegin() *QRect {
-	_ret := C.QRegion_Cbegin(this.h)
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRegion_Cbegin(this.h)))
 }
 
 func (this *QRegion) End() *QRect {
-	_ret := C.QRegion_End(this.h)
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRegion_End(this.h)))
 }
 
 func (this *QRegion) Cend() *QRect {
-	_ret := C.QRegion_Cend(this.h)
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRegion_Cend(this.h)))
 }
 
 func (this *QRegion) Contains(p *QPoint) bool {
-	_ret := C.QRegion_Contains(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_Contains(this.h, p.cPointer()))
 }
 
 func (this *QRegion) ContainsWithQRect(r *QRect) bool {
-	_ret := C.QRegion_ContainsWithQRect(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_ContainsWithQRect(this.h, r.cPointer()))
 }
 
 func (this *QRegion) Translate(dx int, dy int) {
@@ -197,13 +189,11 @@ func (this *QRegion) Xored(r *QRegion) *QRegion {
 }
 
 func (this *QRegion) Intersects(r *QRegion) bool {
-	_ret := C.QRegion_Intersects(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_Intersects(this.h, r.cPointer()))
 }
 
 func (this *QRegion) IntersectsWithQRect(r *QRect) bool {
-	_ret := C.QRegion_IntersectsWithQRect(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_IntersectsWithQRect(this.h, r.cPointer()))
 }
 
 func (this *QRegion) BoundingRect() *QRect {
@@ -216,9 +206,12 @@ func (this *QRegion) BoundingRect() *QRect {
 func (this *QRegion) Rects() []QRect {
 	var _ma *C.struct_miqt_array = C.QRegion_Rects(this.h)
 	_ret := make([]QRect, int(_ma.len))
-	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQRect(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQRect(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -229,8 +222,7 @@ func (this *QRegion) SetRects(rect *QRect, num int) {
 }
 
 func (this *QRegion) RectCount() int {
-	_ret := C.QRegion_RectCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QRegion_RectCount(this.h))
 }
 
 func (this *QRegion) OperatorBitwiseOr(r *QRegion) *QRegion {
@@ -287,13 +279,11 @@ func (this *QRegion) OperatorBitwiseOrAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorPlusAssign(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorPlusAssign(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(_ret))
+	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorPlusAssign(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorPlusAssignWithQRect(r *QRect) *QRegion {
-	_ret := C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(_ret))
+	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorBitwiseAndAssign(r *QRegion) {
@@ -305,8 +295,7 @@ func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r *QRect) {
 }
 
 func (this *QRegion) OperatorMinusAssign(r *QRegion) *QRegion {
-	_ret := C.QRegion_OperatorMinusAssign(this.h, r.cPointer())
-	return newQRegion_U(unsafe.Pointer(_ret))
+	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorMinusAssign(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {
@@ -314,13 +303,11 @@ func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorEqual(r *QRegion) bool {
-	_ret := C.QRegion_OperatorEqual(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_OperatorEqual(this.h, r.cPointer()))
 }
 
 func (this *QRegion) OperatorNotEqual(r *QRegion) bool {
-	_ret := C.QRegion_OperatorNotEqual(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRegion_OperatorNotEqual(this.h, r.cPointer()))
 }
 
 // Delete this object from C++ memory.

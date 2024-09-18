@@ -37,9 +37,7 @@ struct miqt_string* QVariantAnimation_TrUtf8(const char* s) {
 }
 
 QVariant* QVariantAnimation_StartValue(const QVariantAnimation* self) {
-	QVariant _ret = self->startValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->startValue());
 }
 
 void QVariantAnimation_SetStartValue(QVariantAnimation* self, QVariant* value) {
@@ -47,9 +45,7 @@ void QVariantAnimation_SetStartValue(QVariantAnimation* self, QVariant* value) {
 }
 
 QVariant* QVariantAnimation_EndValue(const QVariantAnimation* self) {
-	QVariant _ret = self->endValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->endValue());
 }
 
 void QVariantAnimation_SetEndValue(QVariantAnimation* self, QVariant* value) {
@@ -57,9 +53,7 @@ void QVariantAnimation_SetEndValue(QVariantAnimation* self, QVariant* value) {
 }
 
 QVariant* QVariantAnimation_KeyValueAt(const QVariantAnimation* self, double step) {
-	QVariant _ret = self->keyValueAt(static_cast<qreal>(step));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->keyValueAt(static_cast<qreal>(step)));
 }
 
 void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVariant* value) {
@@ -67,9 +61,7 @@ void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVari
 }
 
 QVariant* QVariantAnimation_CurrentValue(const QVariantAnimation* self) {
-	QVariant _ret = self->currentValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->currentValue());
 }
 
 int QVariantAnimation_Duration(const QVariantAnimation* self) {
@@ -81,9 +73,7 @@ void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs) {
 }
 
 QEasingCurve* QVariantAnimation_EasingCurve(const QVariantAnimation* self) {
-	QEasingCurve _ret = self->easingCurve();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QEasingCurve*>(new QEasingCurve(_ret));
+	return new QEasingCurve(self->easingCurve());
 }
 
 void QVariantAnimation_SetEasingCurve(QVariantAnimation* self, QEasingCurve* easing) {

@@ -61,8 +61,7 @@ func NewQBuffer4(buf *QByteArray, parent *QObject) *QBuffer {
 }
 
 func (this *QBuffer) MetaObject() *QMetaObject {
-	_ret := C.QBuffer_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QBuffer_MetaObject(this.h)))
 }
 
 func QBuffer_Tr(s string) string {
@@ -84,13 +83,11 @@ func QBuffer_TrUtf8(s string) string {
 }
 
 func (this *QBuffer) Buffer() *QByteArray {
-	_ret := C.QBuffer_Buffer(this.h)
-	return newQByteArray_U(unsafe.Pointer(_ret))
+	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Buffer(this.h)))
 }
 
 func (this *QBuffer) Buffer2() *QByteArray {
-	_ret := C.QBuffer_Buffer2(this.h)
-	return newQByteArray_U(unsafe.Pointer(_ret))
+	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Buffer2(this.h)))
 }
 
 func (this *QBuffer) SetBuffer(a *QByteArray) {
@@ -108,13 +105,11 @@ func (this *QBuffer) SetData2(data string, lenVal int) {
 }
 
 func (this *QBuffer) Data() *QByteArray {
-	_ret := C.QBuffer_Data(this.h)
-	return newQByteArray_U(unsafe.Pointer(_ret))
+	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Data(this.h)))
 }
 
 func (this *QBuffer) Open(openMode int) bool {
-	_ret := C.QBuffer_Open(this.h, (C.int)(openMode))
-	return (bool)(_ret)
+	return (bool)(C.QBuffer_Open(this.h, (C.int)(openMode)))
 }
 
 func (this *QBuffer) Close() {
@@ -122,28 +117,23 @@ func (this *QBuffer) Close() {
 }
 
 func (this *QBuffer) Size() int64 {
-	_ret := C.QBuffer_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QBuffer_Size(this.h))
 }
 
 func (this *QBuffer) Pos() int64 {
-	_ret := C.QBuffer_Pos(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QBuffer_Pos(this.h))
 }
 
 func (this *QBuffer) Seek(off int64) bool {
-	_ret := C.QBuffer_Seek(this.h, (C.longlong)(off))
-	return (bool)(_ret)
+	return (bool)(C.QBuffer_Seek(this.h, (C.longlong)(off)))
 }
 
 func (this *QBuffer) AtEnd() bool {
-	_ret := C.QBuffer_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBuffer_AtEnd(this.h))
 }
 
 func (this *QBuffer) CanReadLine() bool {
-	_ret := C.QBuffer_CanReadLine(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBuffer_CanReadLine(this.h))
 }
 
 func QBuffer_Tr2(s string, c string) string {

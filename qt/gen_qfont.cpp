@@ -62,7 +62,7 @@ void QFont_SetFamily(QFont* self, struct miqt_string* family) {
 
 struct miqt_array* QFont_Families(const QFont* self) {
 	QStringList _ret = self->families();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -76,12 +76,13 @@ struct miqt_array* QFont_Families(const QFont* self) {
 	return _out;
 }
 
-void QFont_SetFamilies(QFont* self, struct miqt_array* /* of QString */ families) {
+void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string* */ families) {
 	QList<QString> families_QList;
 	families_QList.reserve(families->len);
-	miqt_string** families_arr = static_cast<miqt_string**>(families->data);
+	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
-		families_QList.push_back(QString::fromUtf8(& families_arr[i]->data, families_arr[i]->len));
+		QString families_arr_i_QString = QString::fromUtf8(&families_arr[i]->data, families_arr[i]->len);
+		families_QList.push_back(families_arr_i_QString);
 	}
 	self->setFamilies(families_QList);
 }
@@ -107,7 +108,8 @@ void QFont_SetPointSize(QFont* self, int pointSize) {
 }
 
 double QFont_PointSizeF(const QFont* self) {
-	return self->pointSizeF();
+	qreal _ret = self->pointSizeF();
+	return static_cast<double>(_ret);
 }
 
 void QFont_SetPointSizeF(QFont* self, double pointSizeF) {
@@ -138,13 +140,13 @@ void QFont_SetBold(QFont* self, bool bold) {
 	self->setBold(bold);
 }
 
-void QFont_SetStyle(QFont* self, uintptr_t style) {
+void QFont_SetStyle(QFont* self, int style) {
 	self->setStyle(static_cast<QFont::Style>(style));
 }
 
-uintptr_t QFont_Style(const QFont* self) {
+int QFont_Style(const QFont* self) {
 	QFont::Style _ret = self->style();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QFont_Italic(const QFont* self) {
@@ -195,21 +197,21 @@ void QFont_SetKerning(QFont* self, bool kerning) {
 	self->setKerning(kerning);
 }
 
-uintptr_t QFont_StyleHint(const QFont* self) {
+int QFont_StyleHint(const QFont* self) {
 	QFont::StyleHint _ret = self->styleHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QFont_StyleStrategy(const QFont* self) {
+int QFont_StyleStrategy(const QFont* self) {
 	QFont::StyleStrategy _ret = self->styleStrategy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetStyleHint(QFont* self, uintptr_t param1) {
+void QFont_SetStyleHint(QFont* self, int param1) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1));
 }
 
-void QFont_SetStyleStrategy(QFont* self, uintptr_t s) {
+void QFont_SetStyleStrategy(QFont* self, int s) {
 	self->setStyleStrategy(static_cast<QFont::StyleStrategy>(s));
 }
 
@@ -222,42 +224,44 @@ void QFont_SetStretch(QFont* self, int stretch) {
 }
 
 double QFont_LetterSpacing(const QFont* self) {
-	return self->letterSpacing();
+	qreal _ret = self->letterSpacing();
+	return static_cast<double>(_ret);
 }
 
-uintptr_t QFont_LetterSpacingType(const QFont* self) {
+int QFont_LetterSpacingType(const QFont* self) {
 	QFont::SpacingType _ret = self->letterSpacingType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetLetterSpacing(QFont* self, uintptr_t typeVal, double spacing) {
+void QFont_SetLetterSpacing(QFont* self, int typeVal, double spacing) {
 	self->setLetterSpacing(static_cast<QFont::SpacingType>(typeVal), static_cast<qreal>(spacing));
 }
 
 double QFont_WordSpacing(const QFont* self) {
-	return self->wordSpacing();
+	qreal _ret = self->wordSpacing();
+	return static_cast<double>(_ret);
 }
 
 void QFont_SetWordSpacing(QFont* self, double spacing) {
 	self->setWordSpacing(static_cast<qreal>(spacing));
 }
 
-void QFont_SetCapitalization(QFont* self, uintptr_t capitalization) {
+void QFont_SetCapitalization(QFont* self, int capitalization) {
 	self->setCapitalization(static_cast<QFont::Capitalization>(capitalization));
 }
 
-uintptr_t QFont_Capitalization(const QFont* self) {
+int QFont_Capitalization(const QFont* self) {
 	QFont::Capitalization _ret = self->capitalization();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetHintingPreference(QFont* self, uintptr_t hintingPreference) {
+void QFont_SetHintingPreference(QFont* self, int hintingPreference) {
 	self->setHintingPreference(static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-uintptr_t QFont_HintingPreference(const QFont* self) {
+int QFont_HintingPreference(const QFont* self) {
 	QFont::HintingPreference _ret = self->hintingPreference();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QFont_RawMode(const QFont* self) {
@@ -334,7 +338,7 @@ struct miqt_string* QFont_Substitute(struct miqt_string* param1) {
 struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QStringList _ret = QFont::substitutes(param1_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -350,7 +354,7 @@ struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
 
 struct miqt_array* QFont_Substitutions() {
 	QStringList _ret = QFont::substitutions();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -370,13 +374,14 @@ void QFont_InsertSubstitution(struct miqt_string* param1, struct miqt_string* pa
 	QFont::insertSubstitution(param1_QString, param2_QString);
 }
 
-void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of QString */ param2) {
+void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of struct miqt_string* */ param2) {
 	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
 	QList<QString> param2_QList;
 	param2_QList.reserve(param2->len);
-	miqt_string** param2_arr = static_cast<miqt_string**>(param2->data);
+	struct miqt_string** param2_arr = static_cast<struct miqt_string**>(param2->data);
 	for(size_t i = 0; i < param2->len; ++i) {
-		param2_QList.push_back(QString::fromUtf8(& param2_arr[i]->data, param2_arr[i]->len));
+		QString param2_arr_i_QString = QString::fromUtf8(&param2_arr[i]->data, param2_arr[i]->len);
+		param2_QList.push_back(param2_arr_i_QString);
 	}
 	QFont::insertSubstitutions(param1_QString, param2_QList);
 }
@@ -420,20 +425,19 @@ struct miqt_string* QFont_LastResortFont(const QFont* self) {
 }
 
 QFont* QFont_Resolve(const QFont* self, QFont* param1) {
-	QFont _ret = self->resolve(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->resolve(*param1));
 }
 
 unsigned int QFont_Resolve2(const QFont* self) {
-	return self->resolve();
+	uint _ret = self->resolve();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QFont_ResolveWithMask(QFont* self, unsigned int mask) {
 	self->resolve(static_cast<uint>(mask));
 }
 
-void QFont_SetStyleHint2(QFont* self, uintptr_t param1, uintptr_t param2) {
+void QFont_SetStyleHint2(QFont* self, int param1, int param2) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1), static_cast<QFont::StyleStrategy>(param2));
 }
 

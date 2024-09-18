@@ -63,8 +63,7 @@ func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsWidget {
 }
 
 func (this *QGraphicsWidget) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsWidget_MetaObject(this.h)))
 }
 
 func QGraphicsWidget_Tr(s string) string {
@@ -86,8 +85,7 @@ func QGraphicsWidget_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWidget) Layout() *QGraphicsLayout {
-	_ret := C.QGraphicsWidget_Layout(this.h)
-	return newQGraphicsLayout_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayout_U(unsafe.Pointer(C.QGraphicsWidget_Layout(this.h)))
 }
 
 func (this *QGraphicsWidget) SetLayout(layout *QGraphicsLayout) {
@@ -99,12 +97,11 @@ func (this *QGraphicsWidget) AdjustSize() {
 }
 
 func (this *QGraphicsWidget) LayoutDirection() LayoutDirection {
-	_ret := C.QGraphicsWidget_LayoutDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QGraphicsWidget_LayoutDirection(this.h))
 }
 
 func (this *QGraphicsWidget) SetLayoutDirection(direction LayoutDirection) {
-	C.QGraphicsWidget_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+	C.QGraphicsWidget_SetLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QGraphicsWidget) UnsetLayoutDirection() {
@@ -112,8 +109,7 @@ func (this *QGraphicsWidget) UnsetLayoutDirection() {
 }
 
 func (this *QGraphicsWidget) Style() *QStyle {
-	_ret := C.QGraphicsWidget_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QGraphicsWidget_Style(this.h)))
 }
 
 func (this *QGraphicsWidget) SetStyle(style *QStyle) {
@@ -143,8 +139,7 @@ func (this *QGraphicsWidget) SetPalette(palette *QPalette) {
 }
 
 func (this *QGraphicsWidget) AutoFillBackground() bool {
-	_ret := C.QGraphicsWidget_AutoFillBackground(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsWidget_AutoFillBackground(this.h))
 }
 
 func (this *QGraphicsWidget) SetAutoFillBackground(enabled bool) {
@@ -224,13 +219,11 @@ func (this *QGraphicsWidget) WindowFrameRect() *QRectF {
 }
 
 func (this *QGraphicsWidget) WindowFlags() int {
-	_ret := C.QGraphicsWidget_WindowFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsWidget_WindowFlags(this.h))
 }
 
 func (this *QGraphicsWidget) WindowType() WindowType {
-	_ret := C.QGraphicsWidget_WindowType(this.h)
-	return (WindowType)(_ret)
+	return (WindowType)(C.QGraphicsWidget_WindowType(this.h))
 }
 
 func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
@@ -238,8 +231,7 @@ func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
 }
 
 func (this *QGraphicsWidget) IsActiveWindow() bool {
-	_ret := C.QGraphicsWidget_IsActiveWindow(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsWidget_IsActiveWindow(this.h))
 }
 
 func (this *QGraphicsWidget) SetWindowTitle(title string) {
@@ -256,12 +248,11 @@ func (this *QGraphicsWidget) WindowTitle() string {
 }
 
 func (this *QGraphicsWidget) FocusPolicy() FocusPolicy {
-	_ret := C.QGraphicsWidget_FocusPolicy(this.h)
-	return (FocusPolicy)(_ret)
+	return (FocusPolicy)(C.QGraphicsWidget_FocusPolicy(this.h))
 }
 
 func (this *QGraphicsWidget) SetFocusPolicy(policy FocusPolicy) {
-	C.QGraphicsWidget_SetFocusPolicy(this.h, (C.uintptr_t)(policy))
+	C.QGraphicsWidget_SetFocusPolicy(this.h, (C.int)(policy))
 }
 
 func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget) {
@@ -269,13 +260,11 @@ func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget
 }
 
 func (this *QGraphicsWidget) FocusWidget() *QGraphicsWidget {
-	_ret := C.QGraphicsWidget_FocusWidget(this.h)
-	return newQGraphicsWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsWidget_FocusWidget(this.h)))
 }
 
 func (this *QGraphicsWidget) GrabShortcut(sequence *QKeySequence) int {
-	_ret := C.QGraphicsWidget_GrabShortcut(this.h, sequence.cPointer())
-	return (int)(_ret)
+	return (int)(C.QGraphicsWidget_GrabShortcut(this.h, sequence.cPointer()))
 }
 
 func (this *QGraphicsWidget) ReleaseShortcut(id int) {
@@ -329,26 +318,24 @@ func (this *QGraphicsWidget) RemoveAction(action *QAction) {
 func (this *QGraphicsWidget) Actions() []*QAction {
 	var _ma *C.struct_miqt_array = C.QGraphicsWidget_Actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i])
+		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsWidget) SetAttribute(attribute WidgetAttribute) {
-	C.QGraphicsWidget_SetAttribute(this.h, (C.uintptr_t)(attribute))
+	C.QGraphicsWidget_SetAttribute(this.h, (C.int)(attribute))
 }
 
 func (this *QGraphicsWidget) TestAttribute(attribute WidgetAttribute) bool {
-	_ret := C.QGraphicsWidget_TestAttribute(this.h, (C.uintptr_t)(attribute))
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsWidget_TestAttribute(this.h, (C.int)(attribute)))
 }
 
 func (this *QGraphicsWidget) Type() int {
-	_ret := C.QGraphicsWidget_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsWidget_Type(this.h))
 }
 
 func (this *QGraphicsWidget) Paint(painter *QPainter, option *QStyleOptionGraphicsItem) {
@@ -408,8 +395,7 @@ func miqt_exec_callback_QGraphicsWidget_LayoutChanged(cb *C.void) {
 }
 
 func (this *QGraphicsWidget) Close() bool {
-	_ret := C.QGraphicsWidget_Close(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsWidget_Close(this.h))
 }
 
 func QGraphicsWidget_Tr2(s string, c string) string {
@@ -457,8 +443,7 @@ func QGraphicsWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsWidget) GrabShortcut2(sequence *QKeySequence, context ShortcutContext) int {
-	_ret := C.QGraphicsWidget_GrabShortcut2(this.h, sequence.cPointer(), (C.uintptr_t)(context))
-	return (int)(_ret)
+	return (int)(C.QGraphicsWidget_GrabShortcut2(this.h, sequence.cPointer(), (C.int)(context)))
 }
 
 func (this *QGraphicsWidget) SetShortcutEnabled2(id int, enabled bool) {
@@ -470,7 +455,7 @@ func (this *QGraphicsWidget) SetShortcutAutoRepeat2(id int, enabled bool) {
 }
 
 func (this *QGraphicsWidget) SetAttribute2(attribute WidgetAttribute, on bool) {
-	C.QGraphicsWidget_SetAttribute2(this.h, (C.uintptr_t)(attribute), (C.bool)(on))
+	C.QGraphicsWidget_SetAttribute2(this.h, (C.int)(attribute), (C.bool)(on))
 }
 
 func (this *QGraphicsWidget) Paint3(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {

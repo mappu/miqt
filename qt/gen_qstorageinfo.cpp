@@ -47,21 +47,15 @@ struct miqt_string* QStorageInfo_RootPath(const QStorageInfo* self) {
 }
 
 QByteArray* QStorageInfo_Device(const QStorageInfo* self) {
-	QByteArray _ret = self->device();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->device());
 }
 
 QByteArray* QStorageInfo_Subvolume(const QStorageInfo* self) {
-	QByteArray _ret = self->subvolume();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->subvolume());
 }
 
 QByteArray* QStorageInfo_FileSystemType(const QStorageInfo* self) {
-	QByteArray _ret = self->fileSystemType();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fileSystemType());
 }
 
 struct miqt_string* QStorageInfo_Name(const QStorageInfo* self) {
@@ -79,15 +73,18 @@ struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self) {
 }
 
 long long QStorageInfo_BytesTotal(const QStorageInfo* self) {
-	return self->bytesTotal();
+	qint64 _ret = self->bytesTotal();
+	return static_cast<long long>(_ret);
 }
 
 long long QStorageInfo_BytesFree(const QStorageInfo* self) {
-	return self->bytesFree();
+	qint64 _ret = self->bytesFree();
+	return static_cast<long long>(_ret);
 }
 
 long long QStorageInfo_BytesAvailable(const QStorageInfo* self) {
-	return self->bytesAvailable();
+	qint64 _ret = self->bytesAvailable();
+	return static_cast<long long>(_ret);
 }
 
 int QStorageInfo_BlockSize(const QStorageInfo* self) {
@@ -116,8 +113,8 @@ void QStorageInfo_Refresh(QStorageInfo* self) {
 
 struct miqt_array* QStorageInfo_MountedVolumes() {
 	QList<QStorageInfo> _ret = QStorageInfo::mountedVolumes();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QStorageInfo** _arr = static_cast<QStorageInfo**>(malloc(sizeof(QStorageInfo**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QStorageInfo** _arr = static_cast<QStorageInfo**>(malloc(sizeof(QStorageInfo*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QStorageInfo(_ret[i]);
 	}
@@ -128,9 +125,7 @@ struct miqt_array* QStorageInfo_MountedVolumes() {
 }
 
 QStorageInfo* QStorageInfo_Root() {
-	QStorageInfo _ret = QStorageInfo::root();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QStorageInfo*>(new QStorageInfo(_ret));
+	return new QStorageInfo(QStorageInfo::root());
 }
 
 void QStorageInfo_Delete(QStorageInfo* self) {

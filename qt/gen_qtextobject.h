@@ -133,7 +133,7 @@ QTextBlockFormat* QTextBlock_BlockFormat(const QTextBlock* self);
 int QTextBlock_BlockFormatIndex(const QTextBlock* self);
 QTextCharFormat* QTextBlock_CharFormat(const QTextBlock* self);
 int QTextBlock_CharFormatIndex(const QTextBlock* self);
-uintptr_t QTextBlock_TextDirection(const QTextBlock* self);
+int QTextBlock_TextDirection(const QTextBlock* self);
 struct miqt_string* QTextBlock_Text(const QTextBlock* self);
 struct miqt_array* QTextBlock_TextFormats(const QTextBlock* self);
 QTextDocument* QTextBlock_Document(const QTextBlock* self);
@@ -177,24 +177,30 @@ void QTextFragment_Delete(QTextFragment* self);
 
 QTextFrame__iterator* QTextFrame__iterator_new();
 QTextFrame__iterator* QTextFrame__iterator_new2(QTextFrame__iterator* o);
+void QTextFrame__iterator_OperatorAssign(QTextFrame__iterator* self, QTextFrame__iterator* o);
 QTextFrame* QTextFrame__iterator_ParentFrame(const QTextFrame__iterator* self);
 QTextFrame* QTextFrame__iterator_CurrentFrame(const QTextFrame__iterator* self);
 QTextBlock* QTextFrame__iterator_CurrentBlock(const QTextFrame__iterator* self);
 bool QTextFrame__iterator_AtEnd(const QTextFrame__iterator* self);
 bool QTextFrame__iterator_OperatorEqual(const QTextFrame__iterator* self, QTextFrame__iterator* o);
 bool QTextFrame__iterator_OperatorNotEqual(const QTextFrame__iterator* self, QTextFrame__iterator* o);
-QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlus(QTextFrame__iterator* self, int param1);
-QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinus(QTextFrame__iterator* self, int param1);
+QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlus(QTextFrame__iterator* self);
+QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlusWithInt(QTextFrame__iterator* self, int param1);
+QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinus(QTextFrame__iterator* self);
+QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinusWithInt(QTextFrame__iterator* self, int param1);
 void QTextFrame__iterator_Delete(QTextFrame__iterator* self);
 
 QTextBlock__iterator* QTextBlock__iterator_new();
 QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* o);
+void QTextBlock__iterator_OperatorAssign(QTextBlock__iterator* self, QTextBlock__iterator* o);
 QTextFragment* QTextBlock__iterator_Fragment(const QTextBlock__iterator* self);
 bool QTextBlock__iterator_AtEnd(const QTextBlock__iterator* self);
 bool QTextBlock__iterator_OperatorEqual(const QTextBlock__iterator* self, QTextBlock__iterator* o);
 bool QTextBlock__iterator_OperatorNotEqual(const QTextBlock__iterator* self, QTextBlock__iterator* o);
-QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlus(QTextBlock__iterator* self, int param1);
-QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinus(QTextBlock__iterator* self, int param1);
+QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlus(QTextBlock__iterator* self);
+QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlusWithInt(QTextBlock__iterator* self, int param1);
+QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinus(QTextBlock__iterator* self);
+QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinusWithInt(QTextBlock__iterator* self, int param1);
 void QTextBlock__iterator_Delete(QTextBlock__iterator* self);
 
 #ifdef __cplusplus

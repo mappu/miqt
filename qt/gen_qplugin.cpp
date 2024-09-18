@@ -5,9 +5,7 @@
 #include "_cgo_export.h"
 
 QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {
-	QJsonObject _ret = self->metaData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->metaData());
 }
 
 void QStaticPlugin_Delete(QStaticPlugin* self) {

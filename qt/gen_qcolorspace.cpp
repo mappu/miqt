@@ -10,19 +10,19 @@ QColorSpace* QColorSpace_new() {
 	return new QColorSpace();
 }
 
-QColorSpace* QColorSpace_new2(uintptr_t namedColorSpace) {
+QColorSpace* QColorSpace_new2(int namedColorSpace) {
 	return new QColorSpace(static_cast<QColorSpace::NamedColorSpace>(namedColorSpace));
 }
 
-QColorSpace* QColorSpace_new3(uintptr_t primaries, uintptr_t transferFunction) {
+QColorSpace* QColorSpace_new3(int primaries, int transferFunction) {
 	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
-QColorSpace* QColorSpace_new4(uintptr_t primaries, float gamma) {
+QColorSpace* QColorSpace_new4(int primaries, float gamma) {
 	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, uintptr_t transferFunction) {
+QColorSpace* QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction) {
 	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
@@ -30,11 +30,11 @@ QColorSpace* QColorSpace_new6(QColorSpace* colorSpace) {
 	return new QColorSpace(*colorSpace);
 }
 
-QColorSpace* QColorSpace_new7(uintptr_t primaries, uintptr_t transferFunction, float gamma) {
+QColorSpace* QColorSpace_new7(int primaries, int transferFunction, float gamma) {
 	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, uintptr_t transferFunction, float gamma) {
+QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, float gamma) {
 	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
@@ -46,31 +46,29 @@ void QColorSpace_Swap(QColorSpace* self, QColorSpace* colorSpace) {
 	self->swap(*colorSpace);
 }
 
-uintptr_t QColorSpace_Primaries(const QColorSpace* self) {
+int QColorSpace_Primaries(const QColorSpace* self) {
 	QColorSpace::Primaries _ret = self->primaries();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QColorSpace_TransferFunction(const QColorSpace* self) {
+int QColorSpace_TransferFunction(const QColorSpace* self) {
 	QColorSpace::TransferFunction _ret = self->transferFunction();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 float QColorSpace_Gamma(const QColorSpace* self) {
 	return self->gamma();
 }
 
-void QColorSpace_SetTransferFunction(QColorSpace* self, uintptr_t transferFunction) {
+void QColorSpace_SetTransferFunction(QColorSpace* self, int transferFunction) {
 	self->setTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
-QColorSpace* QColorSpace_WithTransferFunction(const QColorSpace* self, uintptr_t transferFunction) {
-	QColorSpace _ret = self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColorSpace*>(new QColorSpace(_ret));
+QColorSpace* QColorSpace_WithTransferFunction(const QColorSpace* self, int transferFunction) {
+	return new QColorSpace(self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction)));
 }
 
-void QColorSpace_SetPrimaries(QColorSpace* self, uintptr_t primariesId) {
+void QColorSpace_SetPrimaries(QColorSpace* self, int primariesId) {
 	self->setPrimaries(static_cast<QColorSpace::Primaries>(primariesId));
 }
 
@@ -83,31 +81,23 @@ bool QColorSpace_IsValid(const QColorSpace* self) {
 }
 
 QColorSpace* QColorSpace_FromIccProfile(QByteArray* iccProfile) {
-	QColorSpace _ret = QColorSpace::fromIccProfile(*iccProfile);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColorSpace*>(new QColorSpace(_ret));
+	return new QColorSpace(QColorSpace::fromIccProfile(*iccProfile));
 }
 
 QByteArray* QColorSpace_IccProfile(const QColorSpace* self) {
-	QByteArray _ret = self->iccProfile();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->iccProfile());
 }
 
 QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace) {
-	QColorTransform _ret = self->transformationToColorSpace(*colorspace);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColorTransform*>(new QColorTransform(_ret));
+	return new QColorTransform(self->transformationToColorSpace(*colorspace));
 }
 
-void QColorSpace_SetTransferFunction2(QColorSpace* self, uintptr_t transferFunction, float gamma) {
+void QColorSpace_SetTransferFunction2(QColorSpace* self, int transferFunction, float gamma) {
 	self->setTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, uintptr_t transferFunction, float gamma) {
-	QColorSpace _ret = self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColorSpace*>(new QColorSpace(_ret));
+QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int transferFunction, float gamma) {
+	return new QColorSpace(self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma)));
 }
 
 void QColorSpace_Delete(QColorSpace* self) {

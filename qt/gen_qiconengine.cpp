@@ -14,27 +14,23 @@
 #include "gen_qiconengine.h"
 #include "_cgo_export.h"
 
-void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, uintptr_t mode, uintptr_t state) {
+void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mode, int state) {
 	self->paint(painter, *rect, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state) {
-	QSize _ret = self->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, int mode, int state) {
+	return new QSize(self->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state) {
-	QPixmap _ret = self->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, int mode, int state) {
+	return new QPixmap(self->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, uintptr_t mode, uintptr_t state) {
+void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, int mode, int state) {
 	self->addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, uintptr_t mode, uintptr_t state) {
+void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, int mode, int state) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
@@ -60,8 +56,8 @@ bool QIconEngine_Write(const QIconEngine* self, QDataStream* out) {
 
 struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self) {
 	QList<QSize> _ret = self->availableSizes();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QSize(_ret[i]);
 	}
@@ -82,16 +78,14 @@ bool QIconEngine_IsNull(const QIconEngine* self) {
 	return self->isNull();
 }
 
-QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state, double scale) {
-	QPixmap _ret = self->scaledPixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state), static_cast<qreal>(scale));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale) {
+	return new QPixmap(self->scaledPixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state), static_cast<qreal>(scale)));
 }
 
-struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode) {
+struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, int mode) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QSize(_ret[i]);
 	}
@@ -101,10 +95,10 @@ struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_
 	return _out;
 }
 
-struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state) {
+struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QSize(_ret[i]);
 	}
@@ -122,12 +116,20 @@ QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIc
 	return new QIconEngine::AvailableSizesArgument(*param1);
 }
 
+void QIconEngine__AvailableSizesArgument_OperatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1) {
+	self->operator=(*param1);
+}
+
 void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self) {
 	delete self;
 }
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
 	return new QIconEngine::ScaledPixmapArgument(*param1);
+}
+
+void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1) {
+	self->operator=(*param1);
 }
 
 void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self) {

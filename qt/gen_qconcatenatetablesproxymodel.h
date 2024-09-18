@@ -49,12 +49,12 @@ int QConcatenateTablesProxyModel_Flags(const QConcatenateTablesProxyModel* self,
 QModelIndex* QConcatenateTablesProxyModel_Index(const QConcatenateTablesProxyModel* self, int row, int column);
 QModelIndex* QConcatenateTablesProxyModel_Parent(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* self);
-QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation);
+QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, int orientation);
 int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel* self);
 struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes);
-bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
-bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
+bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 QSize* QConcatenateTablesProxyModel_Span(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 struct miqt_string* QConcatenateTablesProxyModel_Tr2(const char* s, const char* c);
 struct miqt_string* QConcatenateTablesProxyModel_Tr3(const char* s, const char* c, int n);
@@ -64,7 +64,7 @@ QVariant* QConcatenateTablesProxyModel_Data2(const QConcatenateTablesProxyModel*
 bool QConcatenateTablesProxyModel_SetData3(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value, int role);
 QModelIndex* QConcatenateTablesProxyModel_Index3(const QConcatenateTablesProxyModel* self, int row, int column, QModelIndex* parent);
 int QConcatenateTablesProxyModel_RowCount1(const QConcatenateTablesProxyModel* self, QModelIndex* parent);
-QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation, int role);
+QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, int orientation, int role);
 int QConcatenateTablesProxyModel_ColumnCount1(const QConcatenateTablesProxyModel* self, QModelIndex* parent);
 void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self);
 

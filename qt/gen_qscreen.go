@@ -38,8 +38,7 @@ func newQScreen_U(h unsafe.Pointer) *QScreen {
 }
 
 func (this *QScreen) MetaObject() *QMetaObject {
-	_ret := C.QScreen_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QScreen_MetaObject(this.h)))
 }
 
 func QScreen_Tr(s string) string {
@@ -89,8 +88,7 @@ func (this *QScreen) SerialNumber() string {
 }
 
 func (this *QScreen) Depth() int {
-	_ret := C.QScreen_Depth(this.h)
-	return (int)(_ret)
+	return (int)(C.QScreen_Depth(this.h))
 }
 
 func (this *QScreen) Size() *QSize {
@@ -115,38 +113,31 @@ func (this *QScreen) PhysicalSize() *QSizeF {
 }
 
 func (this *QScreen) PhysicalDotsPerInchX() float64 {
-	_ret := C.QScreen_PhysicalDotsPerInchX(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_PhysicalDotsPerInchX(this.h))
 }
 
 func (this *QScreen) PhysicalDotsPerInchY() float64 {
-	_ret := C.QScreen_PhysicalDotsPerInchY(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_PhysicalDotsPerInchY(this.h))
 }
 
 func (this *QScreen) PhysicalDotsPerInch() float64 {
-	_ret := C.QScreen_PhysicalDotsPerInch(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_PhysicalDotsPerInch(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInchX() float64 {
-	_ret := C.QScreen_LogicalDotsPerInchX(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_LogicalDotsPerInchX(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInchY() float64 {
-	_ret := C.QScreen_LogicalDotsPerInchY(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_LogicalDotsPerInchY(this.h))
 }
 
 func (this *QScreen) LogicalDotsPerInch() float64 {
-	_ret := C.QScreen_LogicalDotsPerInch(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_LogicalDotsPerInch(this.h))
 }
 
 func (this *QScreen) DevicePixelRatio() float64 {
-	_ret := C.QScreen_DevicePixelRatio(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_DevicePixelRatio(this.h))
 }
 
 func (this *QScreen) AvailableSize() *QSize {
@@ -166,17 +157,16 @@ func (this *QScreen) AvailableGeometry() *QRect {
 func (this *QScreen) VirtualSiblings() []*QScreen {
 	var _ma *C.struct_miqt_array = C.QScreen_VirtualSiblings(this.h)
 	_ret := make([]*QScreen, int(_ma.len))
-	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQScreen(_outCast[i])
+		_ret[i] = newQScreen_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QScreen) VirtualSiblingAt(point QPoint) *QScreen {
-	_ret := C.QScreen_VirtualSiblingAt(this.h, point.cPointer())
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QScreen_VirtualSiblingAt(this.h, point.cPointer())))
 }
 
 func (this *QScreen) VirtualSize() *QSize {
@@ -208,23 +198,19 @@ func (this *QScreen) AvailableVirtualGeometry() *QRect {
 }
 
 func (this *QScreen) PrimaryOrientation() ScreenOrientation {
-	_ret := C.QScreen_PrimaryOrientation(this.h)
-	return (ScreenOrientation)(_ret)
+	return (ScreenOrientation)(C.QScreen_PrimaryOrientation(this.h))
 }
 
 func (this *QScreen) Orientation() ScreenOrientation {
-	_ret := C.QScreen_Orientation(this.h)
-	return (ScreenOrientation)(_ret)
+	return (ScreenOrientation)(C.QScreen_Orientation(this.h))
 }
 
 func (this *QScreen) NativeOrientation() ScreenOrientation {
-	_ret := C.QScreen_NativeOrientation(this.h)
-	return (ScreenOrientation)(_ret)
+	return (ScreenOrientation)(C.QScreen_NativeOrientation(this.h))
 }
 
 func (this *QScreen) OrientationUpdateMask() int {
-	_ret := C.QScreen_OrientationUpdateMask(this.h)
-	return (int)(_ret)
+	return (int)(C.QScreen_OrientationUpdateMask(this.h))
 }
 
 func (this *QScreen) SetOrientationUpdateMask(mask int) {
@@ -232,32 +218,29 @@ func (this *QScreen) SetOrientationUpdateMask(mask int) {
 }
 
 func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int {
-	_ret := C.QScreen_AngleBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b))
-	return (int)(_ret)
+	return (int)(C.QScreen_AngleBetween(this.h, (C.int)(a), (C.int)(b)))
 }
 
 func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target *QRect) *QTransform {
-	_ret := C.QScreen_TransformBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), target.cPointer())
+	_ret := C.QScreen_TransformBetween(this.h, (C.int)(a), (C.int)(b), target.cPointer())
 	_goptr := newQTransform(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *QRect) *QRect {
-	_ret := C.QScreen_MapBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), rect.cPointer())
+	_ret := C.QScreen_MapBetween(this.h, (C.int)(a), (C.int)(b), rect.cPointer())
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) IsPortrait(orientation ScreenOrientation) bool {
-	_ret := C.QScreen_IsPortrait(this.h, (C.uintptr_t)(orientation))
-	return (bool)(_ret)
+	return (bool)(C.QScreen_IsPortrait(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
-	_ret := C.QScreen_IsLandscape(this.h, (C.uintptr_t)(orientation))
-	return (bool)(_ret)
+	return (bool)(C.QScreen_IsLandscape(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) GrabWindow(window uintptr) *QPixmap {
@@ -268,8 +251,7 @@ func (this *QScreen) GrabWindow(window uintptr) *QPixmap {
 }
 
 func (this *QScreen) RefreshRate() float64 {
-	_ret := C.QScreen_RefreshRate(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QScreen_RefreshRate(this.h))
 }
 
 func (this *QScreen) GeometryChanged(geometry *QRect) {
@@ -287,8 +269,7 @@ func miqt_exec_callback_QScreen_GeometryChanged(cb *C.void, geometry *C.QRect) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	geometry_ret := geometry
-	slotval1 := newQRect_U(unsafe.Pointer(geometry_ret))
+	slotval1 := newQRect_U(unsafe.Pointer(geometry))
 
 	gofunc(slotval1)
 }
@@ -308,8 +289,7 @@ func miqt_exec_callback_QScreen_AvailableGeometryChanged(cb *C.void, geometry *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	geometry_ret := geometry
-	slotval1 := newQRect_U(unsafe.Pointer(geometry_ret))
+	slotval1 := newQRect_U(unsafe.Pointer(geometry))
 
 	gofunc(slotval1)
 }
@@ -329,8 +309,7 @@ func miqt_exec_callback_QScreen_PhysicalSizeChanged(cb *C.void, size *C.QSizeF) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	size_ret := size
-	slotval1 := newQSizeF_U(unsafe.Pointer(size_ret))
+	slotval1 := newQSizeF_U(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }
@@ -350,8 +329,7 @@ func miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(cb *C.void, dpi C.dou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	dpi_ret := dpi
-	slotval1 := (float64)(dpi_ret)
+	slotval1 := (float64)(dpi)
 
 	gofunc(slotval1)
 }
@@ -371,8 +349,7 @@ func miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(cb *C.void, dpi C.doub
 	}
 
 	// Convert all CABI parameters to Go parameters
-	dpi_ret := dpi
-	slotval1 := (float64)(dpi_ret)
+	slotval1 := (float64)(dpi)
 
 	gofunc(slotval1)
 }
@@ -392,50 +369,47 @@ func miqt_exec_callback_QScreen_VirtualGeometryChanged(cb *C.void, rect *C.QRect
 	}
 
 	// Convert all CABI parameters to Go parameters
-	rect_ret := rect
-	slotval1 := newQRect_U(unsafe.Pointer(rect_ret))
+	slotval1 := newQRect_U(unsafe.Pointer(rect))
 
 	gofunc(slotval1)
 }
 
 func (this *QScreen) PrimaryOrientationChanged(orientation ScreenOrientation) {
-	C.QScreen_PrimaryOrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QScreen_PrimaryOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnPrimaryOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QScreen_connect_PrimaryOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QScreen_PrimaryOrientationChanged
-func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	orientation_ret := orientation
-	slotval1 := (ScreenOrientation)(orientation_ret)
+	slotval1 := (ScreenOrientation)(orientation)
 
 	gofunc(slotval1)
 }
 
 func (this *QScreen) OrientationChanged(orientation ScreenOrientation) {
-	C.QScreen_OrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QScreen_OrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QScreen_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QScreen_OrientationChanged
-func miqt_exec_callback_QScreen_OrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QScreen_OrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	orientation_ret := orientation
-	slotval1 := (ScreenOrientation)(orientation_ret)
+	slotval1 := (ScreenOrientation)(orientation)
 
 	gofunc(slotval1)
 }
@@ -455,8 +429,7 @@ func miqt_exec_callback_QScreen_RefreshRateChanged(cb *C.void, refreshRate C.dou
 	}
 
 	// Convert all CABI parameters to Go parameters
-	refreshRate_ret := refreshRate
-	slotval1 := (float64)(refreshRate_ret)
+	slotval1 := (float64)(refreshRate)
 
 	gofunc(slotval1)
 }

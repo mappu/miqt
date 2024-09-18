@@ -52,9 +52,7 @@ QObject* QPluginLoader_Instance(QPluginLoader* self) {
 }
 
 QJsonObject* QPluginLoader_MetaData(const QPluginLoader* self) {
-	QJsonObject _ret = self->metaData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->metaData());
 }
 
 struct miqt_array* QPluginLoader_StaticInstances() {
@@ -72,8 +70,8 @@ struct miqt_array* QPluginLoader_StaticInstances() {
 
 struct miqt_array* QPluginLoader_StaticPlugins() {
 	QVector<QStaticPlugin> _ret = QPluginLoader::staticPlugins();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QStaticPlugin** _arr = static_cast<QStaticPlugin**>(malloc(sizeof(QStaticPlugin**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QStaticPlugin** _arr = static_cast<QStaticPlugin**>(malloc(sizeof(QStaticPlugin*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QStaticPlugin(_ret[i]);
 	}

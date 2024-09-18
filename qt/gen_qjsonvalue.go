@@ -113,7 +113,7 @@ func NewQJsonValue10(other *QJsonValue) *QJsonValue {
 
 // NewQJsonValue11 constructs a new QJsonValue object.
 func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
-	ret := C.QJsonValue_new11((C.uintptr_t)(param1))
+	ret := C.QJsonValue_new11((C.int)(param1))
 	return newQJsonValue(ret)
 }
 
@@ -140,58 +140,47 @@ func (this *QJsonValue) ToVariant() *QVariant {
 }
 
 func (this *QJsonValue) Type() QJsonValue__Type {
-	_ret := C.QJsonValue_Type(this.h)
-	return (QJsonValue__Type)(_ret)
+	return (QJsonValue__Type)(C.QJsonValue_Type(this.h))
 }
 
 func (this *QJsonValue) IsNull() bool {
-	_ret := C.QJsonValue_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsNull(this.h))
 }
 
 func (this *QJsonValue) IsBool() bool {
-	_ret := C.QJsonValue_IsBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsBool(this.h))
 }
 
 func (this *QJsonValue) IsDouble() bool {
-	_ret := C.QJsonValue_IsDouble(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsDouble(this.h))
 }
 
 func (this *QJsonValue) IsString() bool {
-	_ret := C.QJsonValue_IsString(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsString(this.h))
 }
 
 func (this *QJsonValue) IsArray() bool {
-	_ret := C.QJsonValue_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsArray(this.h))
 }
 
 func (this *QJsonValue) IsObject() bool {
-	_ret := C.QJsonValue_IsObject(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsObject(this.h))
 }
 
 func (this *QJsonValue) IsUndefined() bool {
-	_ret := C.QJsonValue_IsUndefined(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_IsUndefined(this.h))
 }
 
 func (this *QJsonValue) ToBool() bool {
-	_ret := C.QJsonValue_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_ToBool(this.h))
 }
 
 func (this *QJsonValue) ToInt() int {
-	_ret := C.QJsonValue_ToInt(this.h)
-	return (int)(_ret)
+	return (int)(C.QJsonValue_ToInt(this.h))
 }
 
 func (this *QJsonValue) ToDouble() float64 {
-	_ret := C.QJsonValue_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QJsonValue_ToDouble(this.h))
 }
 
 func (this *QJsonValue) ToString() string {
@@ -255,28 +244,23 @@ func (this *QJsonValue) OperatorSubscriptWithInt(i int) *QJsonValue {
 }
 
 func (this *QJsonValue) OperatorEqual(other *QJsonValue) bool {
-	_ret := C.QJsonValue_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValue) OperatorNotEqual(other *QJsonValue) bool {
-	_ret := C.QJsonValue_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValue) ToBool1(defaultValue bool) bool {
-	_ret := C.QJsonValue_ToBool1(this.h, (C.bool)(defaultValue))
-	return (bool)(_ret)
+	return (bool)(C.QJsonValue_ToBool1(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QJsonValue) ToInt1(defaultValue int) int {
-	_ret := C.QJsonValue_ToInt1(this.h, (C.int)(defaultValue))
-	return (int)(_ret)
+	return (int)(C.QJsonValue_ToInt1(this.h, (C.int)(defaultValue)))
 }
 
 func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
-	_ret := C.QJsonValue_ToDouble1(this.h, (C.double)(defaultValue))
-	return (float64)(_ret)
+	return (float64)(C.QJsonValue_ToDouble1(this.h, (C.double)(defaultValue)))
 }
 
 // Delete this object from C++ memory.
@@ -349,58 +333,47 @@ func (this *QJsonValueRef) ToVariant() *QVariant {
 }
 
 func (this *QJsonValueRef) Type() QJsonValue__Type {
-	_ret := C.QJsonValueRef_Type(this.h)
-	return (QJsonValue__Type)(_ret)
+	return (QJsonValue__Type)(C.QJsonValueRef_Type(this.h))
 }
 
 func (this *QJsonValueRef) IsNull() bool {
-	_ret := C.QJsonValueRef_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsNull(this.h))
 }
 
 func (this *QJsonValueRef) IsBool() bool {
-	_ret := C.QJsonValueRef_IsBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsBool(this.h))
 }
 
 func (this *QJsonValueRef) IsDouble() bool {
-	_ret := C.QJsonValueRef_IsDouble(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsDouble(this.h))
 }
 
 func (this *QJsonValueRef) IsString() bool {
-	_ret := C.QJsonValueRef_IsString(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsString(this.h))
 }
 
 func (this *QJsonValueRef) IsArray() bool {
-	_ret := C.QJsonValueRef_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsArray(this.h))
 }
 
 func (this *QJsonValueRef) IsObject() bool {
-	_ret := C.QJsonValueRef_IsObject(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsObject(this.h))
 }
 
 func (this *QJsonValueRef) IsUndefined() bool {
-	_ret := C.QJsonValueRef_IsUndefined(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_IsUndefined(this.h))
 }
 
 func (this *QJsonValueRef) ToBool() bool {
-	_ret := C.QJsonValueRef_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_ToBool(this.h))
 }
 
 func (this *QJsonValueRef) ToInt() int {
-	_ret := C.QJsonValueRef_ToInt(this.h)
-	return (int)(_ret)
+	return (int)(C.QJsonValueRef_ToInt(this.h))
 }
 
 func (this *QJsonValueRef) ToDouble() float64 {
-	_ret := C.QJsonValueRef_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QJsonValueRef_ToDouble(this.h))
 }
 
 func (this *QJsonValueRef) ToString() string {
@@ -425,18 +398,15 @@ func (this *QJsonValueRef) ToObject() *QJsonObject {
 }
 
 func (this *QJsonValueRef) ToBoolWithDefaultValue(defaultValue bool) bool {
-	_ret := C.QJsonValueRef_ToBoolWithDefaultValue(this.h, (C.bool)(defaultValue))
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_ToBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToIntWithDefaultValue(defaultValue int) int {
-	_ret := C.QJsonValueRef_ToIntWithDefaultValue(this.h, (C.int)(defaultValue))
-	return (int)(_ret)
+	return (int)(C.QJsonValueRef_ToIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
-	_ret := C.QJsonValueRef_ToDoubleWithDefaultValue(this.h, (C.double)(defaultValue))
-	return (float64)(_ret)
+	return (float64)(C.QJsonValueRef_ToDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
 func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
@@ -449,13 +419,11 @@ func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string 
 }
 
 func (this *QJsonValueRef) OperatorEqual(other *QJsonValue) bool {
-	_ret := C.QJsonValueRef_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
-	_ret := C.QJsonValueRef_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonValueRef_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -507,13 +475,11 @@ func NewQJsonValuePtr2(param1 *QJsonValuePtr) *QJsonValuePtr {
 }
 
 func (this *QJsonValuePtr) OperatorMultiply() *QJsonValue {
-	_ret := C.QJsonValuePtr_OperatorMultiply(this.h)
-	return newQJsonValue_U(unsafe.Pointer(_ret))
+	return newQJsonValue_U(unsafe.Pointer(C.QJsonValuePtr_OperatorMultiply(this.h)))
 }
 
 func (this *QJsonValuePtr) OperatorMinusGreater() *QJsonValue {
-	_ret := C.QJsonValuePtr_OperatorMinusGreater(this.h)
-	return newQJsonValue_U(unsafe.Pointer(_ret))
+	return newQJsonValue_U(unsafe.Pointer(C.QJsonValuePtr_OperatorMinusGreater(this.h)))
 }
 
 func (this *QJsonValuePtr) OperatorAssign(param1 *QJsonValuePtr) {
@@ -575,13 +541,11 @@ func NewQJsonValueRefPtr3(param1 *QJsonValueRefPtr) *QJsonValueRefPtr {
 }
 
 func (this *QJsonValueRefPtr) OperatorMultiply() *QJsonValueRef {
-	_ret := C.QJsonValueRefPtr_OperatorMultiply(this.h)
-	return newQJsonValueRef_U(unsafe.Pointer(_ret))
+	return newQJsonValueRef_U(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMultiply(this.h)))
 }
 
 func (this *QJsonValueRefPtr) OperatorMinusGreater() *QJsonValueRef {
-	_ret := C.QJsonValueRefPtr_OperatorMinusGreater(this.h)
-	return newQJsonValueRef_U(unsafe.Pointer(_ret))
+	return newQJsonValueRef_U(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMinusGreater(this.h)))
 }
 
 func (this *QJsonValueRefPtr) OperatorAssign(param1 *QJsonValueRefPtr) {

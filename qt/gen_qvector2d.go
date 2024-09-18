@@ -43,7 +43,7 @@ func NewQVector2D() *QVector2D {
 
 // NewQVector2D2 constructs a new QVector2D object.
 func NewQVector2D2(param1 Initialization) *QVector2D {
-	ret := C.QVector2D_new2((C.uintptr_t)(param1))
+	ret := C.QVector2D_new2((C.int)(param1))
 	return newQVector2D(ret)
 }
 
@@ -84,18 +84,15 @@ func NewQVector2D8(param1 *QVector2D) *QVector2D {
 }
 
 func (this *QVector2D) IsNull() bool {
-	_ret := C.QVector2D_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVector2D_IsNull(this.h))
 }
 
 func (this *QVector2D) X() float32 {
-	_ret := C.QVector2D_X(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_X(this.h))
 }
 
 func (this *QVector2D) Y() float32 {
-	_ret := C.QVector2D_Y(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_Y(this.h))
 }
 
 func (this *QVector2D) SetX(x float32) {
@@ -107,18 +104,15 @@ func (this *QVector2D) SetY(y float32) {
 }
 
 func (this *QVector2D) OperatorSubscript(i int) float32 {
-	_ret := C.QVector2D_OperatorSubscript(this.h, (C.int)(i))
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_OperatorSubscript(this.h, (C.int)(i)))
 }
 
 func (this *QVector2D) Length() float32 {
-	_ret := C.QVector2D_Length(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_Length(this.h))
 }
 
 func (this *QVector2D) LengthSquared() float32 {
-	_ret := C.QVector2D_LengthSquared(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_LengthSquared(this.h))
 }
 
 func (this *QVector2D) Normalized() *QVector2D {
@@ -133,48 +127,39 @@ func (this *QVector2D) Normalize() {
 }
 
 func (this *QVector2D) DistanceToPoint(point *QVector2D) float32 {
-	_ret := C.QVector2D_DistanceToPoint(this.h, point.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_DistanceToPoint(this.h, point.cPointer()))
 }
 
 func (this *QVector2D) DistanceToLine(point *QVector2D, direction *QVector2D) float32 {
-	_ret := C.QVector2D_DistanceToLine(this.h, point.cPointer(), direction.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_DistanceToLine(this.h, point.cPointer(), direction.cPointer()))
 }
 
 func (this *QVector2D) OperatorPlusAssign(vector *QVector2D) *QVector2D {
-	_ret := C.QVector2D_OperatorPlusAssign(this.h, vector.cPointer())
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorPlusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector2D) OperatorMinusAssign(vector *QVector2D) *QVector2D {
-	_ret := C.QVector2D_OperatorMinusAssign(this.h, vector.cPointer())
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorMinusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector2D) OperatorMultiplyAssign(factor float32) *QVector2D {
-	_ret := C.QVector2D_OperatorMultiplyAssign(this.h, (C.float)(factor))
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QVector2D) OperatorMultiplyAssignWithVector(vector *QVector2D) *QVector2D {
-	_ret := C.QVector2D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
 }
 
 func (this *QVector2D) OperatorDivideAssign(divisor float32) *QVector2D {
-	_ret := C.QVector2D_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QVector2D) OperatorDivideAssignWithVector(vector *QVector2D) *QVector2D {
-	_ret := C.QVector2D_OperatorDivideAssignWithVector(this.h, vector.cPointer())
-	return newQVector2D_U(unsafe.Pointer(_ret))
+	return newQVector2D_U(unsafe.Pointer(C.QVector2D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
 }
 
 func QVector2D_DotProduct(v1 *QVector2D, v2 *QVector2D) float32 {
-	_ret := C.QVector2D_DotProduct(v1.cPointer(), v2.cPointer())
-	return (float32)(_ret)
+	return (float32)(C.QVector2D_DotProduct(v1.cPointer(), v2.cPointer()))
 }
 
 func (this *QVector2D) ToVector3D() *QVector3D {

@@ -53,83 +53,67 @@ func newQPaintDevice_U(h unsafe.Pointer) *QPaintDevice {
 }
 
 func (this *QPaintDevice) DevType() int {
-	_ret := C.QPaintDevice_DevType(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_DevType(this.h))
 }
 
 func (this *QPaintDevice) PaintingActive() bool {
-	_ret := C.QPaintDevice_PaintingActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintDevice_PaintingActive(this.h))
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
-	_ret := C.QPaintDevice_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(_ret))
+	return newQPaintEngine_U(unsafe.Pointer(C.QPaintDevice_PaintEngine(this.h)))
 }
 
 func (this *QPaintDevice) Width() int {
-	_ret := C.QPaintDevice_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_Width(this.h))
 }
 
 func (this *QPaintDevice) Height() int {
-	_ret := C.QPaintDevice_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_Height(this.h))
 }
 
 func (this *QPaintDevice) WidthMM() int {
-	_ret := C.QPaintDevice_WidthMM(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_WidthMM(this.h))
 }
 
 func (this *QPaintDevice) HeightMM() int {
-	_ret := C.QPaintDevice_HeightMM(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_HeightMM(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiX() int {
-	_ret := C.QPaintDevice_LogicalDpiX(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_LogicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiY() int {
-	_ret := C.QPaintDevice_LogicalDpiY(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_LogicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiX() int {
-	_ret := C.QPaintDevice_PhysicalDpiX(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_PhysicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiY() int {
-	_ret := C.QPaintDevice_PhysicalDpiY(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_PhysicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatio() int {
-	_ret := C.QPaintDevice_DevicePixelRatio(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_DevicePixelRatio(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatioF() float64 {
-	_ret := C.QPaintDevice_DevicePixelRatioF(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPaintDevice_DevicePixelRatioF(this.h))
 }
 
 func (this *QPaintDevice) ColorCount() int {
-	_ret := C.QPaintDevice_ColorCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_ColorCount(this.h))
 }
 
 func (this *QPaintDevice) Depth() int {
-	_ret := C.QPaintDevice_Depth(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintDevice_Depth(this.h))
 }
 
 func QPaintDevice_DevicePixelRatioFScale() float64 {
-	_ret := C.QPaintDevice_DevicePixelRatioFScale()
-	return (float64)(_ret)
+	return (float64)(C.QPaintDevice_DevicePixelRatioFScale())
 }
 
 // Delete this object from C++ memory.

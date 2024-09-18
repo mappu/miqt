@@ -56,8 +56,8 @@ void QLayoutItem_Delete(QLayoutItem* self);
 
 QSpacerItem* QSpacerItem_new(int w, int h);
 QSpacerItem* QSpacerItem_new2(QSpacerItem* param1);
-QSpacerItem* QSpacerItem_new3(int w, int h, uintptr_t hData);
-QSpacerItem* QSpacerItem_new4(int w, int h, uintptr_t hData, uintptr_t vData);
+QSpacerItem* QSpacerItem_new3(int w, int h, int hData);
+QSpacerItem* QSpacerItem_new4(int w, int h, int hData, int vData);
 void QSpacerItem_ChangeSize(QSpacerItem* self, int w, int h);
 QSize* QSpacerItem_SizeHint(const QSpacerItem* self);
 QSize* QSpacerItem_MinimumSize(const QSpacerItem* self);
@@ -68,8 +68,8 @@ void QSpacerItem_SetGeometry(QSpacerItem* self, QRect* geometry);
 QRect* QSpacerItem_Geometry(const QSpacerItem* self);
 QSpacerItem* QSpacerItem_SpacerItem(QSpacerItem* self);
 QSizePolicy* QSpacerItem_SizePolicy(const QSpacerItem* self);
-void QSpacerItem_ChangeSize3(QSpacerItem* self, int w, int h, uintptr_t hData);
-void QSpacerItem_ChangeSize4(QSpacerItem* self, int w, int h, uintptr_t hData, uintptr_t vData);
+void QSpacerItem_ChangeSize3(QSpacerItem* self, int w, int h, int hData);
+void QSpacerItem_ChangeSize4(QSpacerItem* self, int w, int h, int hData, int vData);
 void QSpacerItem_Delete(QSpacerItem* self);
 
 QWidgetItem* QWidgetItem_new(QWidget* w);

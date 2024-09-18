@@ -41,8 +41,8 @@ QMimeType* QMimeDatabase_MimeTypeForFileNameAndData(const QMimeDatabase* self, s
 QMimeType* QMimeDatabase_MimeTypeForFileNameAndData2(const QMimeDatabase* self, struct miqt_string* fileName, QByteArray* data);
 struct miqt_string* QMimeDatabase_SuffixForFileName(const QMimeDatabase* self, struct miqt_string* fileName);
 struct miqt_array* QMimeDatabase_AllMimeTypes(const QMimeDatabase* self);
-QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string* fileName, uintptr_t mode);
-QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, uintptr_t mode);
+QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string* fileName, int mode);
+QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, int mode);
 void QMimeDatabase_Delete(QMimeDatabase* self);
 
 #ifdef __cplusplus

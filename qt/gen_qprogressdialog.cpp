@@ -89,9 +89,7 @@ int QProgressDialog_Value(const QProgressDialog* self) {
 }
 
 QSize* QProgressDialog_SizeHint(const QProgressDialog* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 struct miqt_string* QProgressDialog_LabelText(const QProgressDialog* self) {

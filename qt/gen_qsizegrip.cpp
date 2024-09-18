@@ -32,9 +32,7 @@ struct miqt_string* QSizeGrip_TrUtf8(const char* s) {
 }
 
 QSize* QSizeGrip_SizeHint(const QSizeGrip* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QSizeGrip_SetVisible(QSizeGrip* self, bool visible) {

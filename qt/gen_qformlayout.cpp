@@ -39,13 +39,13 @@ struct miqt_string* QFormLayout_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy) {
+void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, int policy) {
 	self->setFieldGrowthPolicy(static_cast<QFormLayout::FieldGrowthPolicy>(policy));
 }
 
-uintptr_t QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
+int QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
 	QFormLayout::FieldGrowthPolicy _ret = self->fieldGrowthPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy) {
@@ -164,21 +164,15 @@ void QFormLayout_RemoveRowWithLayout(QFormLayout* self, QLayout* layout) {
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRow(QFormLayout* self, int row) {
-	QFormLayout::TakeRowResult _ret = self->takeRow(static_cast<int>(row));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
+	return new QFormLayout::TakeRowResult(self->takeRow(static_cast<int>(row)));
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRowWithWidget(QFormLayout* self, QWidget* widget) {
-	QFormLayout::TakeRowResult _ret = self->takeRow(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
+	return new QFormLayout::TakeRowResult(self->takeRow(widget));
 }
 
 QFormLayout__TakeRowResult* QFormLayout_TakeRowWithLayout(QFormLayout* self, QLayout* layout) {
-	QFormLayout::TakeRowResult _ret = self->takeRow(layout);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFormLayout::TakeRowResult*>(new QFormLayout::TakeRowResult(_ret));
+	return new QFormLayout::TakeRowResult(self->takeRow(layout));
 }
 
 void QFormLayout_SetItem(QFormLayout* self, int row, int role, QLayoutItem* item) {
@@ -222,15 +216,11 @@ void QFormLayout_SetGeometry(QFormLayout* self, QRect* rect) {
 }
 
 QSize* QFormLayout_MinimumSize(const QFormLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QFormLayout_SizeHint(const QFormLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QFormLayout_Invalidate(QFormLayout* self) {

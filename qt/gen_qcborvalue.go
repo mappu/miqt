@@ -126,7 +126,7 @@ func NewQCborValue() *QCborValue {
 
 // NewQCborValue2 constructs a new QCborValue object.
 func NewQCborValue2(t_ QCborValue__Type) *QCborValue {
-	ret := C.QCborValue_new2((C.uintptr_t)(t_))
+	ret := C.QCborValue_new2((C.int)(t_))
 	return newQCborValue(ret)
 }
 
@@ -161,66 +161,96 @@ func NewQCborValue7(v float64) *QCborValue {
 }
 
 // NewQCborValue8 constructs a new QCborValue object.
-func NewQCborValue8(ba *QByteArray) *QCborValue {
-	ret := C.QCborValue_new8(ba.cPointer())
+func NewQCborValue8(st QCborSimpleType) *QCborValue {
+	ret := C.QCborValue_new8((C.uint8_t)(st))
 	return newQCborValue(ret)
 }
 
 // NewQCborValue9 constructs a new QCborValue object.
-func NewQCborValue9(s string) *QCborValue {
-	s_ms := miqt_strdupg(s)
-	defer C.free(s_ms)
-	ret := C.QCborValue_new9((*C.struct_miqt_string)(s_ms))
+func NewQCborValue9(ba *QByteArray) *QCborValue {
+	ret := C.QCborValue_new9(ba.cPointer())
 	return newQCborValue(ret)
 }
 
 // NewQCborValue10 constructs a new QCborValue object.
 func NewQCborValue10(s string) *QCborValue {
-	s_Cstring := C.CString(s)
-	defer C.free(unsafe.Pointer(s_Cstring))
-	ret := C.QCborValue_new10(s_Cstring)
+	s_ms := miqt_strdupg(s)
+	defer C.free(s_ms)
+	ret := C.QCborValue_new10((*C.struct_miqt_string)(s_ms))
 	return newQCborValue(ret)
 }
 
 // NewQCborValue11 constructs a new QCborValue object.
-func NewQCborValue11(a *QCborArray) *QCborValue {
-	ret := C.QCborValue_new11(a.cPointer())
+func NewQCborValue11(s string) *QCborValue {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	ret := C.QCborValue_new11(s_Cstring)
 	return newQCborValue(ret)
 }
 
 // NewQCborValue12 constructs a new QCborValue object.
-func NewQCborValue12(m *QCborMap) *QCborValue {
-	ret := C.QCborValue_new12(m.cPointer())
+func NewQCborValue12(a *QCborArray) *QCborValue {
+	ret := C.QCborValue_new12(a.cPointer())
 	return newQCborValue(ret)
 }
 
 // NewQCborValue13 constructs a new QCborValue object.
-func NewQCborValue13(dt *QDateTime) *QCborValue {
-	ret := C.QCborValue_new13(dt.cPointer())
+func NewQCborValue13(m *QCborMap) *QCborValue {
+	ret := C.QCborValue_new13(m.cPointer())
 	return newQCborValue(ret)
 }
 
 // NewQCborValue14 constructs a new QCborValue object.
-func NewQCborValue14(url *QUrl) *QCborValue {
-	ret := C.QCborValue_new14(url.cPointer())
+func NewQCborValue14(tag QCborTag) *QCborValue {
+	ret := C.QCborValue_new14((C.uint64_t)(tag))
 	return newQCborValue(ret)
 }
 
 // NewQCborValue15 constructs a new QCborValue object.
-func NewQCborValue15(rx *QRegularExpression) *QCborValue {
-	ret := C.QCborValue_new15(rx.cPointer())
+func NewQCborValue15(t_ QCborKnownTags) *QCborValue {
+	ret := C.QCborValue_new15((C.int)(t_))
 	return newQCborValue(ret)
 }
 
 // NewQCborValue16 constructs a new QCborValue object.
-func NewQCborValue16(uuid *QUuid) *QCborValue {
-	ret := C.QCborValue_new16(uuid.cPointer())
+func NewQCborValue16(dt *QDateTime) *QCborValue {
+	ret := C.QCborValue_new16(dt.cPointer())
 	return newQCborValue(ret)
 }
 
 // NewQCborValue17 constructs a new QCborValue object.
-func NewQCborValue17(other *QCborValue) *QCborValue {
-	ret := C.QCborValue_new17(other.cPointer())
+func NewQCborValue17(url *QUrl) *QCborValue {
+	ret := C.QCborValue_new17(url.cPointer())
+	return newQCborValue(ret)
+}
+
+// NewQCborValue18 constructs a new QCborValue object.
+func NewQCborValue18(rx *QRegularExpression) *QCborValue {
+	ret := C.QCborValue_new18(rx.cPointer())
+	return newQCborValue(ret)
+}
+
+// NewQCborValue19 constructs a new QCborValue object.
+func NewQCborValue19(uuid *QUuid) *QCborValue {
+	ret := C.QCborValue_new19(uuid.cPointer())
+	return newQCborValue(ret)
+}
+
+// NewQCborValue20 constructs a new QCborValue object.
+func NewQCborValue20(other *QCborValue) *QCborValue {
+	ret := C.QCborValue_new20(other.cPointer())
+	return newQCborValue(ret)
+}
+
+// NewQCborValue21 constructs a new QCborValue object.
+func NewQCborValue21(tag QCborTag, taggedValue *QCborValue) *QCborValue {
+	ret := C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer())
+	return newQCborValue(ret)
+}
+
+// NewQCborValue22 constructs a new QCborValue object.
+func NewQCborValue22(t_ QCborKnownTags, tv *QCborValue) *QCborValue {
+	ret := C.QCborValue_new22((C.int)(t_), tv.cPointer())
 	return newQCborValue(ret)
 }
 
@@ -233,118 +263,107 @@ func (this *QCborValue) Swap(other *QCborValue) {
 }
 
 func (this *QCborValue) Type() QCborValue__Type {
-	_ret := C.QCborValue_Type(this.h)
-	return (QCborValue__Type)(_ret)
+	return (QCborValue__Type)(C.QCborValue_Type(this.h))
 }
 
 func (this *QCborValue) IsInteger() bool {
-	_ret := C.QCborValue_IsInteger(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsInteger(this.h))
 }
 
 func (this *QCborValue) IsByteArray() bool {
-	_ret := C.QCborValue_IsByteArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsByteArray(this.h))
 }
 
 func (this *QCborValue) IsString() bool {
-	_ret := C.QCborValue_IsString(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsString(this.h))
 }
 
 func (this *QCborValue) IsArray() bool {
-	_ret := C.QCborValue_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsArray(this.h))
 }
 
 func (this *QCborValue) IsMap() bool {
-	_ret := C.QCborValue_IsMap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsMap(this.h))
 }
 
 func (this *QCborValue) IsTag() bool {
-	_ret := C.QCborValue_IsTag(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsTag(this.h))
 }
 
 func (this *QCborValue) IsFalse() bool {
-	_ret := C.QCborValue_IsFalse(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsFalse(this.h))
 }
 
 func (this *QCborValue) IsTrue() bool {
-	_ret := C.QCborValue_IsTrue(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsTrue(this.h))
 }
 
 func (this *QCborValue) IsBool() bool {
-	_ret := C.QCborValue_IsBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsBool(this.h))
 }
 
 func (this *QCborValue) IsNull() bool {
-	_ret := C.QCborValue_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsNull(this.h))
 }
 
 func (this *QCborValue) IsUndefined() bool {
-	_ret := C.QCborValue_IsUndefined(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsUndefined(this.h))
 }
 
 func (this *QCborValue) IsDouble() bool {
-	_ret := C.QCborValue_IsDouble(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsDouble(this.h))
 }
 
 func (this *QCborValue) IsDateTime() bool {
-	_ret := C.QCborValue_IsDateTime(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsDateTime(this.h))
 }
 
 func (this *QCborValue) IsUrl() bool {
-	_ret := C.QCborValue_IsUrl(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsUrl(this.h))
 }
 
 func (this *QCborValue) IsRegularExpression() bool {
-	_ret := C.QCborValue_IsRegularExpression(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsRegularExpression(this.h))
 }
 
 func (this *QCborValue) IsUuid() bool {
-	_ret := C.QCborValue_IsUuid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsUuid(this.h))
 }
 
 func (this *QCborValue) IsInvalid() bool {
-	_ret := C.QCborValue_IsInvalid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsInvalid(this.h))
 }
 
 func (this *QCborValue) IsContainer() bool {
-	_ret := C.QCborValue_IsContainer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsContainer(this.h))
 }
 
 func (this *QCborValue) IsSimpleType() bool {
-	_ret := C.QCborValue_IsSimpleType(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_IsSimpleType(this.h))
+}
+
+func (this *QCborValue) IsSimpleTypeWithSt(st QCborSimpleType) bool {
+	return (bool)(C.QCborValue_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+}
+
+func (this *QCborValue) ToSimpleType() QCborSimpleType {
+	return (QCborSimpleType)(C.QCborValue_ToSimpleType(this.h))
 }
 
 func (this *QCborValue) ToInteger() int64 {
-	_ret := C.QCborValue_ToInteger(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QCborValue_ToInteger(this.h))
 }
 
 func (this *QCborValue) ToBool() bool {
-	_ret := C.QCborValue_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_ToBool(this.h))
 }
 
 func (this *QCborValue) ToDouble() float64 {
-	_ret := C.QCborValue_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QCborValue_ToDouble(this.h))
+}
+
+func (this *QCborValue) Tag() QCborTag {
+	return (QCborTag)(C.QCborValue_Tag(this.h))
 }
 
 func (this *QCborValue) TaggedValue() *QCborValue {
@@ -457,23 +476,19 @@ func (this *QCborValue) OperatorSubscript5(key string) *QCborValueRef {
 }
 
 func (this *QCborValue) Compare(other *QCborValue) int {
-	_ret := C.QCborValue_Compare(this.h, other.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCborValue_Compare(this.h, other.cPointer()))
 }
 
 func (this *QCborValue) OperatorEqual(other *QCborValue) bool {
-	_ret := C.QCborValue_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborValue) OperatorNotEqual(other *QCborValue) bool {
-	_ret := C.QCborValue_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborValue) OperatorLesser(other *QCborValue) bool {
-	_ret := C.QCborValue_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_OperatorLesser(this.h, other.cPointer()))
 }
 
 func QCborValue_FromVariant(variant *QVariant) *QCborValue {
@@ -552,19 +567,24 @@ func (this *QCborValue) ToDiagnosticNotation() string {
 	return _ret
 }
 
+func (this *QCborValue) ToSimpleType1(defaultValue QCborSimpleType) QCborSimpleType {
+	return (QCborSimpleType)(C.QCborValue_ToSimpleType1(this.h, (C.uint8_t)(defaultValue)))
+}
+
 func (this *QCborValue) ToInteger1(defaultValue int64) int64 {
-	_ret := C.QCborValue_ToInteger1(this.h, (C.longlong)(defaultValue))
-	return (int64)(_ret)
+	return (int64)(C.QCborValue_ToInteger1(this.h, (C.longlong)(defaultValue)))
 }
 
 func (this *QCborValue) ToBool1(defaultValue bool) bool {
-	_ret := C.QCborValue_ToBool1(this.h, (C.bool)(defaultValue))
-	return (bool)(_ret)
+	return (bool)(C.QCborValue_ToBool1(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QCborValue) ToDouble1(defaultValue float64) float64 {
-	_ret := C.QCborValue_ToDouble1(this.h, (C.double)(defaultValue))
-	return (float64)(_ret)
+	return (float64)(C.QCborValue_ToDouble1(this.h, (C.double)(defaultValue)))
+}
+
+func (this *QCborValue) Tag1(defaultValue QCborTag) QCborTag {
+	return (QCborTag)(C.QCborValue_Tag1(this.h, (C.uint64_t)(defaultValue)))
 }
 
 func (this *QCborValue) TaggedValue1(defaultValue *QCborValue) *QCborValue {
@@ -710,103 +730,91 @@ func (this *QCborValueRef) OperatorAssignWithOther(other *QCborValueRef) {
 }
 
 func (this *QCborValueRef) Type() QCborValue__Type {
-	_ret := C.QCborValueRef_Type(this.h)
-	return (QCborValue__Type)(_ret)
+	return (QCborValue__Type)(C.QCborValueRef_Type(this.h))
 }
 
 func (this *QCborValueRef) IsInteger() bool {
-	_ret := C.QCborValueRef_IsInteger(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsInteger(this.h))
 }
 
 func (this *QCborValueRef) IsByteArray() bool {
-	_ret := C.QCborValueRef_IsByteArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsByteArray(this.h))
 }
 
 func (this *QCborValueRef) IsString() bool {
-	_ret := C.QCborValueRef_IsString(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsString(this.h))
 }
 
 func (this *QCborValueRef) IsArray() bool {
-	_ret := C.QCborValueRef_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsArray(this.h))
 }
 
 func (this *QCborValueRef) IsMap() bool {
-	_ret := C.QCborValueRef_IsMap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsMap(this.h))
 }
 
 func (this *QCborValueRef) IsTag() bool {
-	_ret := C.QCborValueRef_IsTag(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsTag(this.h))
 }
 
 func (this *QCborValueRef) IsFalse() bool {
-	_ret := C.QCborValueRef_IsFalse(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsFalse(this.h))
 }
 
 func (this *QCborValueRef) IsTrue() bool {
-	_ret := C.QCborValueRef_IsTrue(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsTrue(this.h))
 }
 
 func (this *QCborValueRef) IsBool() bool {
-	_ret := C.QCborValueRef_IsBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsBool(this.h))
 }
 
 func (this *QCborValueRef) IsNull() bool {
-	_ret := C.QCborValueRef_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsNull(this.h))
 }
 
 func (this *QCborValueRef) IsUndefined() bool {
-	_ret := C.QCborValueRef_IsUndefined(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsUndefined(this.h))
 }
 
 func (this *QCborValueRef) IsDouble() bool {
-	_ret := C.QCborValueRef_IsDouble(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsDouble(this.h))
 }
 
 func (this *QCborValueRef) IsDateTime() bool {
-	_ret := C.QCborValueRef_IsDateTime(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsDateTime(this.h))
 }
 
 func (this *QCborValueRef) IsUrl() bool {
-	_ret := C.QCborValueRef_IsUrl(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsUrl(this.h))
 }
 
 func (this *QCborValueRef) IsRegularExpression() bool {
-	_ret := C.QCborValueRef_IsRegularExpression(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsRegularExpression(this.h))
 }
 
 func (this *QCborValueRef) IsUuid() bool {
-	_ret := C.QCborValueRef_IsUuid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsUuid(this.h))
 }
 
 func (this *QCborValueRef) IsInvalid() bool {
-	_ret := C.QCborValueRef_IsInvalid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsInvalid(this.h))
 }
 
 func (this *QCborValueRef) IsContainer() bool {
-	_ret := C.QCborValueRef_IsContainer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsContainer(this.h))
 }
 
 func (this *QCborValueRef) IsSimpleType() bool {
-	_ret := C.QCborValueRef_IsSimpleType(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_IsSimpleType(this.h))
+}
+
+func (this *QCborValueRef) IsSimpleTypeWithSt(st QCborSimpleType) bool {
+	return (bool)(C.QCborValueRef_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+}
+
+func (this *QCborValueRef) Tag() QCborTag {
+	return (QCborTag)(C.QCborValueRef_Tag(this.h))
 }
 
 func (this *QCborValueRef) TaggedValue() *QCborValue {
@@ -817,18 +825,15 @@ func (this *QCborValueRef) TaggedValue() *QCborValue {
 }
 
 func (this *QCborValueRef) ToInteger() int64 {
-	_ret := C.QCborValueRef_ToInteger(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QCborValueRef_ToInteger(this.h))
 }
 
 func (this *QCborValueRef) ToBool() bool {
-	_ret := C.QCborValueRef_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_ToBool(this.h))
 }
 
 func (this *QCborValueRef) ToDouble() float64 {
-	_ret := C.QCborValueRef_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QCborValueRef_ToDouble(this.h))
 }
 
 func (this *QCborValueRef) ToByteArray() *QByteArray {
@@ -934,23 +939,19 @@ func (this *QCborValueRef) OperatorSubscript5(key string) *QCborValueRef {
 }
 
 func (this *QCborValueRef) Compare(other *QCborValue) int {
-	_ret := C.QCborValueRef_Compare(this.h, other.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCborValueRef_Compare(this.h, other.cPointer()))
 }
 
 func (this *QCborValueRef) OperatorEqual(other *QCborValue) bool {
-	_ret := C.QCborValueRef_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborValueRef) OperatorNotEqual(other *QCborValue) bool {
-	_ret := C.QCborValueRef_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCborValueRef) OperatorLesser(other *QCborValue) bool {
-	_ret := C.QCborValueRef_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QCborValueRef) ToVariant() *QVariant {
@@ -985,6 +986,10 @@ func (this *QCborValueRef) ToDiagnosticNotation() string {
 	return _ret
 }
 
+func (this *QCborValueRef) Tag1(defaultValue QCborTag) QCborTag {
+	return (QCborTag)(C.QCborValueRef_Tag1(this.h, (C.uint64_t)(defaultValue)))
+}
+
 func (this *QCborValueRef) TaggedValue1(defaultValue *QCborValue) *QCborValue {
 	_ret := C.QCborValueRef_TaggedValue1(this.h, defaultValue.cPointer())
 	_goptr := newQCborValue(_ret)
@@ -993,18 +998,15 @@ func (this *QCborValueRef) TaggedValue1(defaultValue *QCborValue) *QCborValue {
 }
 
 func (this *QCborValueRef) ToInteger1(defaultValue int64) int64 {
-	_ret := C.QCborValueRef_ToInteger1(this.h, (C.longlong)(defaultValue))
-	return (int64)(_ret)
+	return (int64)(C.QCborValueRef_ToInteger1(this.h, (C.longlong)(defaultValue)))
 }
 
 func (this *QCborValueRef) ToBool1(defaultValue bool) bool {
-	_ret := C.QCborValueRef_ToBool1(this.h, (C.bool)(defaultValue))
-	return (bool)(_ret)
+	return (bool)(C.QCborValueRef_ToBool1(this.h, (C.bool)(defaultValue)))
 }
 
 func (this *QCborValueRef) ToDouble1(defaultValue float64) float64 {
-	_ret := C.QCborValueRef_ToDouble1(this.h, (C.double)(defaultValue))
-	return (float64)(_ret)
+	return (float64)(C.QCborValueRef_ToDouble1(this.h, (C.double)(defaultValue)))
 }
 
 func (this *QCborValueRef) ToByteArray1(defaultValue *QByteArray) *QByteArray {

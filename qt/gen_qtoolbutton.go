@@ -58,8 +58,7 @@ func NewQToolButton2(parent *QWidget) *QToolButton {
 }
 
 func (this *QToolButton) MetaObject() *QMetaObject {
-	_ret := C.QToolButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QToolButton_MetaObject(this.h)))
 }
 
 func QToolButton_Tr(s string) string {
@@ -95,17 +94,15 @@ func (this *QToolButton) MinimumSizeHint() *QSize {
 }
 
 func (this *QToolButton) ToolButtonStyle() ToolButtonStyle {
-	_ret := C.QToolButton_ToolButtonStyle(this.h)
-	return (ToolButtonStyle)(_ret)
+	return (ToolButtonStyle)(C.QToolButton_ToolButtonStyle(this.h))
 }
 
 func (this *QToolButton) ArrowType() ArrowType {
-	_ret := C.QToolButton_ArrowType(this.h)
-	return (ArrowType)(_ret)
+	return (ArrowType)(C.QToolButton_ArrowType(this.h))
 }
 
 func (this *QToolButton) SetArrowType(typeVal ArrowType) {
-	C.QToolButton_SetArrowType(this.h, (C.uintptr_t)(typeVal))
+	C.QToolButton_SetArrowType(this.h, (C.int)(typeVal))
 }
 
 func (this *QToolButton) SetMenu(menu *QMenu) {
@@ -113,22 +110,19 @@ func (this *QToolButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QToolButton) Menu() *QMenu {
-	_ret := C.QToolButton_Menu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QToolButton_Menu(this.h)))
 }
 
 func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
-	C.QToolButton_SetPopupMode(this.h, (C.uintptr_t)(mode))
+	C.QToolButton_SetPopupMode(this.h, (C.int)(mode))
 }
 
 func (this *QToolButton) PopupMode() QToolButton__ToolButtonPopupMode {
-	_ret := C.QToolButton_PopupMode(this.h)
-	return (QToolButton__ToolButtonPopupMode)(_ret)
+	return (QToolButton__ToolButtonPopupMode)(C.QToolButton_PopupMode(this.h))
 }
 
 func (this *QToolButton) DefaultAction() *QAction {
-	_ret := C.QToolButton_DefaultAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QToolButton_DefaultAction(this.h)))
 }
 
 func (this *QToolButton) SetAutoRaise(enable bool) {
@@ -136,8 +130,7 @@ func (this *QToolButton) SetAutoRaise(enable bool) {
 }
 
 func (this *QToolButton) AutoRaise() bool {
-	_ret := C.QToolButton_AutoRaise(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QToolButton_AutoRaise(this.h))
 }
 
 func (this *QToolButton) ShowMenu() {
@@ -145,7 +138,7 @@ func (this *QToolButton) ShowMenu() {
 }
 
 func (this *QToolButton) SetToolButtonStyle(style ToolButtonStyle) {
-	C.QToolButton_SetToolButtonStyle(this.h, (C.uintptr_t)(style))
+	C.QToolButton_SetToolButtonStyle(this.h, (C.int)(style))
 }
 
 func (this *QToolButton) SetDefaultAction(defaultAction *QAction) {
@@ -167,8 +160,7 @@ func miqt_exec_callback_QToolButton_Triggered(cb *C.void, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

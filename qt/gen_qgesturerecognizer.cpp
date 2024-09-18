@@ -19,12 +19,12 @@ void QGestureRecognizer_Reset(QGestureRecognizer* self, QGesture* state) {
 	self->reset(state);
 }
 
-uintptr_t QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer) {
+int QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer) {
 	Qt::GestureType _ret = QGestureRecognizer::registerRecognizer(recognizer);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGestureRecognizer_UnregisterRecognizer(uintptr_t typeVal) {
+void QGestureRecognizer_UnregisterRecognizer(int typeVal) {
 	QGestureRecognizer::unregisterRecognizer(static_cast<Qt::GestureType>(typeVal));
 }
 

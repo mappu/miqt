@@ -53,8 +53,7 @@ func newQValidator_U(h unsafe.Pointer) *QValidator {
 }
 
 func (this *QValidator) MetaObject() *QMetaObject {
-	_ret := C.QValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QValidator_MetaObject(this.h)))
 }
 
 func QValidator_Tr(s string) string {
@@ -89,8 +88,7 @@ func (this *QValidator) Locale() *QLocale {
 func (this *QValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_ms := miqt_strdupg(param1)
 	defer C.free(param1_ms)
-	_ret := C.QValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2))))
 }
 
 func (this *QValidator) Fixup(param1 string) {
@@ -222,8 +220,7 @@ func NewQIntValidator4(bottom int, top int, parent *QObject) *QIntValidator {
 }
 
 func (this *QIntValidator) MetaObject() *QMetaObject {
-	_ret := C.QIntValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QIntValidator_MetaObject(this.h)))
 }
 
 func QIntValidator_Tr(s string) string {
@@ -247,8 +244,7 @@ func QIntValidator_TrUtf8(s string) string {
 func (this *QIntValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_ms := miqt_strdupg(param1)
 	defer C.free(param1_ms)
-	_ret := C.QIntValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QIntValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2))))
 }
 
 func (this *QIntValidator) Fixup(input string) {
@@ -270,13 +266,11 @@ func (this *QIntValidator) SetRange(bottom int, top int) {
 }
 
 func (this *QIntValidator) Bottom() int {
-	_ret := C.QIntValidator_Bottom(this.h)
-	return (int)(_ret)
+	return (int)(C.QIntValidator_Bottom(this.h))
 }
 
 func (this *QIntValidator) Top() int {
-	_ret := C.QIntValidator_Top(this.h)
-	return (int)(_ret)
+	return (int)(C.QIntValidator_Top(this.h))
 }
 
 func (this *QIntValidator) BottomChanged(bottom int) {
@@ -294,8 +288,7 @@ func miqt_exec_callback_QIntValidator_BottomChanged(cb *C.void, bottom C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	bottom_ret := bottom
-	slotval1 := (int)(bottom_ret)
+	slotval1 := (int)(bottom)
 
 	gofunc(slotval1)
 }
@@ -315,8 +308,7 @@ func miqt_exec_callback_QIntValidator_TopChanged(cb *C.void, top C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	top_ret := top
-	slotval1 := (int)(top_ret)
+	slotval1 := (int)(top)
 
 	gofunc(slotval1)
 }
@@ -427,8 +419,7 @@ func NewQDoubleValidator4(bottom float64, top float64, decimals int, parent *QOb
 }
 
 func (this *QDoubleValidator) MetaObject() *QMetaObject {
-	_ret := C.QDoubleValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDoubleValidator_MetaObject(this.h)))
 }
 
 func QDoubleValidator_Tr(s string) string {
@@ -452,8 +443,7 @@ func QDoubleValidator_TrUtf8(s string) string {
 func (this *QDoubleValidator) Validate(param1 string, param2 *int) QValidator__State {
 	param1_ms := miqt_strdupg(param1)
 	defer C.free(param1_ms)
-	_ret := C.QDoubleValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QDoubleValidator_Validate(this.h, (*C.struct_miqt_string)(param1_ms), (*C.int)(unsafe.Pointer(param2))))
 }
 
 func (this *QDoubleValidator) SetRange(bottom float64, top float64) {
@@ -473,27 +463,23 @@ func (this *QDoubleValidator) SetDecimals(decimals int) {
 }
 
 func (this *QDoubleValidator) SetNotation(notation QDoubleValidator__Notation) {
-	C.QDoubleValidator_SetNotation(this.h, (C.uintptr_t)(notation))
+	C.QDoubleValidator_SetNotation(this.h, (C.int)(notation))
 }
 
 func (this *QDoubleValidator) Bottom() float64 {
-	_ret := C.QDoubleValidator_Bottom(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleValidator_Bottom(this.h))
 }
 
 func (this *QDoubleValidator) Top() float64 {
-	_ret := C.QDoubleValidator_Top(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QDoubleValidator_Top(this.h))
 }
 
 func (this *QDoubleValidator) Decimals() int {
-	_ret := C.QDoubleValidator_Decimals(this.h)
-	return (int)(_ret)
+	return (int)(C.QDoubleValidator_Decimals(this.h))
 }
 
 func (this *QDoubleValidator) Notation() QDoubleValidator__Notation {
-	_ret := C.QDoubleValidator_Notation(this.h)
-	return (QDoubleValidator__Notation)(_ret)
+	return (QDoubleValidator__Notation)(C.QDoubleValidator_Notation(this.h))
 }
 
 func (this *QDoubleValidator) BottomChanged(bottom float64) {
@@ -511,8 +497,7 @@ func miqt_exec_callback_QDoubleValidator_BottomChanged(cb *C.void, bottom C.doub
 	}
 
 	// Convert all CABI parameters to Go parameters
-	bottom_ret := bottom
-	slotval1 := (float64)(bottom_ret)
+	slotval1 := (float64)(bottom)
 
 	gofunc(slotval1)
 }
@@ -532,8 +517,7 @@ func miqt_exec_callback_QDoubleValidator_TopChanged(cb *C.void, top C.double) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	top_ret := top
-	slotval1 := (float64)(top_ret)
+	slotval1 := (float64)(top)
 
 	gofunc(slotval1)
 }
@@ -553,29 +537,27 @@ func miqt_exec_callback_QDoubleValidator_DecimalsChanged(cb *C.void, decimals C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	decimals_ret := decimals
-	slotval1 := (int)(decimals_ret)
+	slotval1 := (int)(decimals)
 
 	gofunc(slotval1)
 }
 
 func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notation) {
-	C.QDoubleValidator_NotationChanged(this.h, (C.uintptr_t)(notation))
+	C.QDoubleValidator_NotationChanged(this.h, (C.int)(notation))
 }
 func (this *QDoubleValidator) OnNotationChanged(slot func(notation QDoubleValidator__Notation)) {
 	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QDoubleValidator_NotationChanged
-func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.uintptr_t) {
+func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(notation QDoubleValidator__Notation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	notation_ret := notation
-	slotval1 := (QDoubleValidator__Notation)(notation_ret)
+	slotval1 := (QDoubleValidator__Notation)(notation)
 
 	gofunc(slotval1)
 }
@@ -690,8 +672,7 @@ func NewQRegExpValidator4(rx *QRegExp, parent *QObject) *QRegExpValidator {
 }
 
 func (this *QRegExpValidator) MetaObject() *QMetaObject {
-	_ret := C.QRegExpValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QRegExpValidator_MetaObject(this.h)))
 }
 
 func QRegExpValidator_Tr(s string) string {
@@ -715,8 +696,7 @@ func QRegExpValidator_TrUtf8(s string) string {
 func (this *QRegExpValidator) Validate(input string, pos *int) QValidator__State {
 	input_ms := miqt_strdupg(input)
 	defer C.free(input_ms)
-	_ret := C.QRegExpValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QRegExpValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
@@ -724,8 +704,7 @@ func (this *QRegExpValidator) SetRegExp(rx *QRegExp) {
 }
 
 func (this *QRegExpValidator) RegExp() *QRegExp {
-	_ret := C.QRegExpValidator_RegExp(this.h)
-	return newQRegExp_U(unsafe.Pointer(_ret))
+	return newQRegExp_U(unsafe.Pointer(C.QRegExpValidator_RegExp(this.h)))
 }
 
 func (this *QRegExpValidator) RegExpChanged(regExp *QRegExp) {
@@ -743,8 +722,7 @@ func miqt_exec_callback_QRegExpValidator_RegExpChanged(cb *C.void, regExp *C.QRe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	regExp_ret := regExp
-	slotval1 := newQRegExp_U(unsafe.Pointer(regExp_ret))
+	slotval1 := newQRegExp_U(unsafe.Pointer(regExp))
 
 	gofunc(slotval1)
 }
@@ -855,8 +833,7 @@ func NewQRegularExpressionValidator4(re *QRegularExpression, parent *QObject) *Q
 }
 
 func (this *QRegularExpressionValidator) MetaObject() *QMetaObject {
-	_ret := C.QRegularExpressionValidator_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QRegularExpressionValidator_MetaObject(this.h)))
 }
 
 func QRegularExpressionValidator_Tr(s string) string {
@@ -880,8 +857,7 @@ func QRegularExpressionValidator_TrUtf8(s string) string {
 func (this *QRegularExpressionValidator) Validate(input string, pos *int) QValidator__State {
 	input_ms := miqt_strdupg(input)
 	defer C.free(input_ms)
-	_ret := C.QRegularExpressionValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos)))
-	return (QValidator__State)(_ret)
+	return (QValidator__State)(C.QRegularExpressionValidator_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QRegularExpressionValidator) RegularExpression() *QRegularExpression {
@@ -910,8 +886,7 @@ func miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	re_ret := re
-	slotval1 := newQRegularExpression_U(unsafe.Pointer(re_ret))
+	slotval1 := newQRegularExpression_U(unsafe.Pointer(re))
 
 	gofunc(slotval1)
 }

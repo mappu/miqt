@@ -57,9 +57,7 @@ struct miqt_string* QGraphicsView_TrUtf8(const char* s) {
 }
 
 QSize* QGraphicsView_SizeHint(const QGraphicsView* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 int QGraphicsView_RenderHints(const QGraphicsView* self) {
@@ -67,7 +65,7 @@ int QGraphicsView_RenderHints(const QGraphicsView* self) {
 	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetRenderHint(QGraphicsView* self, uintptr_t hint) {
+void QGraphicsView_SetRenderHint(QGraphicsView* self, int hint) {
 	self->setRenderHint(static_cast<QPainter::RenderHint>(hint));
 }
 
@@ -84,30 +82,30 @@ void QGraphicsView_SetAlignment(QGraphicsView* self, int alignment) {
 	self->setAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-uintptr_t QGraphicsView_TransformationAnchor(const QGraphicsView* self) {
+int QGraphicsView_TransformationAnchor(const QGraphicsView* self) {
 	QGraphicsView::ViewportAnchor _ret = self->transformationAnchor();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetTransformationAnchor(QGraphicsView* self, uintptr_t anchor) {
+void QGraphicsView_SetTransformationAnchor(QGraphicsView* self, int anchor) {
 	self->setTransformationAnchor(static_cast<QGraphicsView::ViewportAnchor>(anchor));
 }
 
-uintptr_t QGraphicsView_ResizeAnchor(const QGraphicsView* self) {
+int QGraphicsView_ResizeAnchor(const QGraphicsView* self) {
 	QGraphicsView::ViewportAnchor _ret = self->resizeAnchor();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetResizeAnchor(QGraphicsView* self, uintptr_t anchor) {
+void QGraphicsView_SetResizeAnchor(QGraphicsView* self, int anchor) {
 	self->setResizeAnchor(static_cast<QGraphicsView::ViewportAnchor>(anchor));
 }
 
-uintptr_t QGraphicsView_ViewportUpdateMode(const QGraphicsView* self) {
+int QGraphicsView_ViewportUpdateMode(const QGraphicsView* self) {
 	QGraphicsView::ViewportUpdateMode _ret = self->viewportUpdateMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetViewportUpdateMode(QGraphicsView* self, uintptr_t mode) {
+void QGraphicsView_SetViewportUpdateMode(QGraphicsView* self, int mode) {
 	self->setViewportUpdateMode(static_cast<QGraphicsView::ViewportUpdateMode>(mode));
 }
 
@@ -116,7 +114,7 @@ int QGraphicsView_OptimizationFlags(const QGraphicsView* self) {
 	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetOptimizationFlag(QGraphicsView* self, uintptr_t flag) {
+void QGraphicsView_SetOptimizationFlag(QGraphicsView* self, int flag) {
 	self->setOptimizationFlag(static_cast<QGraphicsView::OptimizationFlag>(flag));
 }
 
@@ -124,28 +122,26 @@ void QGraphicsView_SetOptimizationFlags(QGraphicsView* self, int flags) {
 	self->setOptimizationFlags(static_cast<QGraphicsView::OptimizationFlags>(flags));
 }
 
-uintptr_t QGraphicsView_DragMode(const QGraphicsView* self) {
+int QGraphicsView_DragMode(const QGraphicsView* self) {
 	QGraphicsView::DragMode _ret = self->dragMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetDragMode(QGraphicsView* self, uintptr_t mode) {
+void QGraphicsView_SetDragMode(QGraphicsView* self, int mode) {
 	self->setDragMode(static_cast<QGraphicsView::DragMode>(mode));
 }
 
-uintptr_t QGraphicsView_RubberBandSelectionMode(const QGraphicsView* self) {
+int QGraphicsView_RubberBandSelectionMode(const QGraphicsView* self) {
 	Qt::ItemSelectionMode _ret = self->rubberBandSelectionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsView_SetRubberBandSelectionMode(QGraphicsView* self, uintptr_t mode) {
+void QGraphicsView_SetRubberBandSelectionMode(QGraphicsView* self, int mode) {
 	self->setRubberBandSelectionMode(static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 QRect* QGraphicsView_RubberBandRect(const QGraphicsView* self) {
-	QRect _ret = self->rubberBandRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->rubberBandRect());
 }
 
 int QGraphicsView_CacheMode(const QGraphicsView* self) {
@@ -178,9 +174,7 @@ void QGraphicsView_SetScene(QGraphicsView* self, QGraphicsScene* scene) {
 }
 
 QRectF* QGraphicsView_SceneRect(const QGraphicsView* self) {
-	QRectF _ret = self->sceneRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->sceneRect());
 }
 
 void QGraphicsView_SetSceneRect(QGraphicsView* self, QRectF* rect) {
@@ -192,9 +186,7 @@ void QGraphicsView_SetSceneRect2(QGraphicsView* self, double x, double y, double
 }
 
 QMatrix* QGraphicsView_Matrix(const QGraphicsView* self) {
-	QMatrix _ret = self->matrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->matrix());
 }
 
 void QGraphicsView_SetMatrix(QGraphicsView* self, QMatrix* matrix) {
@@ -206,15 +198,11 @@ void QGraphicsView_ResetMatrix(QGraphicsView* self) {
 }
 
 QTransform* QGraphicsView_Transform(const QGraphicsView* self) {
-	QTransform _ret = self->transform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transform());
 }
 
 QTransform* QGraphicsView_ViewportTransform(const QGraphicsView* self) {
-	QTransform _ret = self->viewportTransform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->viewportTransform());
 }
 
 bool QGraphicsView_IsTransformed(const QGraphicsView* self) {
@@ -286,7 +274,7 @@ void QGraphicsView_Render(QGraphicsView* self, QPainter* painter) {
 }
 
 struct miqt_array* QGraphicsView_Items(const QGraphicsView* self) {
-	QList<QGraphicsItem*> _ret = self->items();
+	QList<QGraphicsItem *> _ret = self->items();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -299,7 +287,7 @@ struct miqt_array* QGraphicsView_Items(const QGraphicsView* self) {
 }
 
 struct miqt_array* QGraphicsView_ItemsWithPos(const QGraphicsView* self, QPoint* pos) {
-	QList<QGraphicsItem*> _ret = self->items(*pos);
+	QList<QGraphicsItem *> _ret = self->items(*pos);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -312,7 +300,7 @@ struct miqt_array* QGraphicsView_ItemsWithPos(const QGraphicsView* self, QPoint*
 }
 
 struct miqt_array* QGraphicsView_Items2(const QGraphicsView* self, int x, int y) {
-	QList<QGraphicsItem*> _ret = self->items(static_cast<int>(x), static_cast<int>(y));
+	QList<QGraphicsItem *> _ret = self->items(static_cast<int>(x), static_cast<int>(y));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -325,7 +313,7 @@ struct miqt_array* QGraphicsView_Items2(const QGraphicsView* self, int x, int y)
 }
 
 struct miqt_array* QGraphicsView_ItemsWithRect(const QGraphicsView* self, QRect* rect) {
-	QList<QGraphicsItem*> _ret = self->items(*rect);
+	QList<QGraphicsItem *> _ret = self->items(*rect);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -338,7 +326,7 @@ struct miqt_array* QGraphicsView_ItemsWithRect(const QGraphicsView* self, QRect*
 }
 
 struct miqt_array* QGraphicsView_Items3(const QGraphicsView* self, int x, int y, int w, int h) {
-	QList<QGraphicsItem*> _ret = self->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+	QList<QGraphicsItem *> _ret = self->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -351,7 +339,7 @@ struct miqt_array* QGraphicsView_Items3(const QGraphicsView* self, int x, int y,
 }
 
 struct miqt_array* QGraphicsView_ItemsWithPath(const QGraphicsView* self, QPainterPath* path) {
-	QList<QGraphicsItem*> _ret = self->items(*path);
+	QList<QGraphicsItem *> _ret = self->items(*path);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -372,51 +360,35 @@ QGraphicsItem* QGraphicsView_ItemAt2(const QGraphicsView* self, int x, int y) {
 }
 
 QPointF* QGraphicsView_MapToScene(const QGraphicsView* self, QPoint* point) {
-	QPointF _ret = self->mapToScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(*point));
 }
 
 QPainterPath* QGraphicsView_MapToSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapToScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapToScene(*path));
 }
 
 QPoint* QGraphicsView_MapFromScene(const QGraphicsView* self, QPointF* point) {
-	QPoint _ret = self->mapFromScene(*point);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromScene(*point));
 }
 
 QPainterPath* QGraphicsView_MapFromSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
-	QPainterPath _ret = self->mapFromScene(*path);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->mapFromScene(*path));
 }
 
 QPointF* QGraphicsView_MapToScene2(const QGraphicsView* self, int x, int y) {
-	QPointF _ret = self->mapToScene(static_cast<int>(x), static_cast<int>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->mapToScene(static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPoint* QGraphicsView_MapFromScene2(const QGraphicsView* self, double x, double y) {
-	QPoint _ret = self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QVariant* QGraphicsView_InputMethodQuery(const QGraphicsView* self, uintptr_t query) {
-	QVariant _ret = self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+QVariant* QGraphicsView_InputMethodQuery(const QGraphicsView* self, int query) {
+	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 QBrush* QGraphicsView_BackgroundBrush(const QGraphicsView* self) {
-	QBrush _ret = self->backgroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->backgroundBrush());
 }
 
 void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush) {
@@ -424,16 +396,14 @@ void QGraphicsView_SetBackgroundBrush(QGraphicsView* self, QBrush* brush) {
 }
 
 QBrush* QGraphicsView_ForegroundBrush(const QGraphicsView* self) {
-	QBrush _ret = self->foregroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->foregroundBrush());
 }
 
 void QGraphicsView_SetForegroundBrush(QGraphicsView* self, QBrush* brush) {
 	self->setForegroundBrush(*brush);
 }
 
-void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF */ rects) {
+void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRectF* */ rects) {
 	QList<QRectF> rects_QList;
 	rects_QList.reserve(rects->len);
 	QRectF** rects_arr = static_cast<QRectF**>(rects->data);
@@ -457,15 +427,9 @@ void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, Q
 
 void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, void* slot) {
 	QGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, [=](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
-		QRect viewportRect_ret = viewportRect;
-		// Copy-construct value returned type into heap-allocated copy
-		QRect* sigval1 = static_cast<QRect*>(new QRect(viewportRect_ret));
-		QPointF fromScenePoint_ret = fromScenePoint;
-		// Copy-construct value returned type into heap-allocated copy
-		QPointF* sigval2 = static_cast<QPointF*>(new QPointF(fromScenePoint_ret));
-		QPointF toScenePoint_ret = toScenePoint;
-		// Copy-construct value returned type into heap-allocated copy
-		QPointF* sigval3 = static_cast<QPointF*>(new QPointF(toScenePoint_ret));
+		QRect* sigval1 = new QRect(viewportRect);
+		QPointF* sigval2 = new QPointF(fromScenePoint);
+		QPointF* sigval3 = new QPointF(toScenePoint);
 		miqt_exec_callback_QGraphicsView_RubberBandChanged(slot, sigval1, sigval2, sigval3);
 	});
 }
@@ -498,11 +462,11 @@ struct miqt_string* QGraphicsView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsView_SetRenderHint2(QGraphicsView* self, uintptr_t hint, bool enabled) {
+void QGraphicsView_SetRenderHint2(QGraphicsView* self, int hint, bool enabled) {
 	self->setRenderHint(static_cast<QPainter::RenderHint>(hint), enabled);
 }
 
-void QGraphicsView_SetOptimizationFlag2(QGraphicsView* self, uintptr_t flag, bool enabled) {
+void QGraphicsView_SetOptimizationFlag2(QGraphicsView* self, int flag, bool enabled) {
 	self->setOptimizationFlag(static_cast<QGraphicsView::OptimizationFlag>(flag), enabled);
 }
 
@@ -538,15 +502,15 @@ void QGraphicsView_EnsureVisible32(QGraphicsView* self, QGraphicsItem* item, int
 	self->ensureVisible(item, static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
-void QGraphicsView_FitInView22(QGraphicsView* self, QRectF* rect, uintptr_t aspectRadioMode) {
+void QGraphicsView_FitInView22(QGraphicsView* self, QRectF* rect, int aspectRadioMode) {
 	self->fitInView(*rect, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
-void QGraphicsView_FitInView5(QGraphicsView* self, double x, double y, double w, double h, uintptr_t aspectRadioMode) {
+void QGraphicsView_FitInView5(QGraphicsView* self, double x, double y, double w, double h, int aspectRadioMode) {
 	self->fitInView(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
-void QGraphicsView_FitInView23(QGraphicsView* self, QGraphicsItem* item, uintptr_t aspectRadioMode) {
+void QGraphicsView_FitInView23(QGraphicsView* self, QGraphicsItem* item, int aspectRadioMode) {
 	self->fitInView(item, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
@@ -558,12 +522,12 @@ void QGraphicsView_Render3(QGraphicsView* self, QPainter* painter, QRectF* targe
 	self->render(painter, *target, *source);
 }
 
-void QGraphicsView_Render4(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source, uintptr_t aspectRatioMode) {
+void QGraphicsView_Render4(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source, int aspectRatioMode) {
 	self->render(painter, *target, *source, static_cast<Qt::AspectRatioMode>(aspectRatioMode));
 }
 
-struct miqt_array* QGraphicsView_Items22(const QGraphicsView* self, QRect* rect, uintptr_t mode) {
-	QList<QGraphicsItem*> _ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
+struct miqt_array* QGraphicsView_Items22(const QGraphicsView* self, QRect* rect, int mode) {
+	QList<QGraphicsItem *> _ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -575,8 +539,8 @@ struct miqt_array* QGraphicsView_Items22(const QGraphicsView* self, QRect* rect,
 	return _out;
 }
 
-struct miqt_array* QGraphicsView_Items5(const QGraphicsView* self, int x, int y, int w, int h, uintptr_t mode) {
-	QList<QGraphicsItem*> _ret = self->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::ItemSelectionMode>(mode));
+struct miqt_array* QGraphicsView_Items5(const QGraphicsView* self, int x, int y, int w, int h, int mode) {
+	QList<QGraphicsItem *> _ret = self->items(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -588,8 +552,8 @@ struct miqt_array* QGraphicsView_Items5(const QGraphicsView* self, int x, int y,
 	return _out;
 }
 
-struct miqt_array* QGraphicsView_Items24(const QGraphicsView* self, QPainterPath* path, uintptr_t mode) {
-	QList<QGraphicsItem*> _ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
+struct miqt_array* QGraphicsView_Items24(const QGraphicsView* self, QPainterPath* path, int mode) {
+	QList<QGraphicsItem *> _ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {

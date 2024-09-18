@@ -46,15 +46,11 @@ struct miqt_string* QRadioButton_TrUtf8(const char* s) {
 }
 
 QSize* QRadioButton_SizeHint(const QRadioButton* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QRadioButton_MinimumSizeHint(const QRadioButton* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 struct miqt_string* QRadioButton_Tr2(const char* s, const char* c) {

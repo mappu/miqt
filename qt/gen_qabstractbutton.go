@@ -38,8 +38,7 @@ func newQAbstractButton_U(h unsafe.Pointer) *QAbstractButton {
 }
 
 func (this *QAbstractButton) MetaObject() *QMetaObject {
-	_ret := C.QAbstractButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractButton_MetaObject(this.h)))
 }
 
 func QAbstractButton_Tr(s string) string {
@@ -107,13 +106,11 @@ func (this *QAbstractButton) SetCheckable(checkable bool) {
 }
 
 func (this *QAbstractButton) IsCheckable() bool {
-	_ret := C.QAbstractButton_IsCheckable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractButton_IsCheckable(this.h))
 }
 
 func (this *QAbstractButton) IsChecked() bool {
-	_ret := C.QAbstractButton_IsChecked(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractButton_IsChecked(this.h))
 }
 
 func (this *QAbstractButton) SetDown(down bool) {
@@ -121,8 +118,7 @@ func (this *QAbstractButton) SetDown(down bool) {
 }
 
 func (this *QAbstractButton) IsDown() bool {
-	_ret := C.QAbstractButton_IsDown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractButton_IsDown(this.h))
 }
 
 func (this *QAbstractButton) SetAutoRepeat(autoRepeat bool) {
@@ -130,8 +126,7 @@ func (this *QAbstractButton) SetAutoRepeat(autoRepeat bool) {
 }
 
 func (this *QAbstractButton) AutoRepeat() bool {
-	_ret := C.QAbstractButton_AutoRepeat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractButton_AutoRepeat(this.h))
 }
 
 func (this *QAbstractButton) SetAutoRepeatDelay(autoRepeatDelay int) {
@@ -139,8 +134,7 @@ func (this *QAbstractButton) SetAutoRepeatDelay(autoRepeatDelay int) {
 }
 
 func (this *QAbstractButton) AutoRepeatDelay() int {
-	_ret := C.QAbstractButton_AutoRepeatDelay(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractButton_AutoRepeatDelay(this.h))
 }
 
 func (this *QAbstractButton) SetAutoRepeatInterval(autoRepeatInterval int) {
@@ -148,8 +142,7 @@ func (this *QAbstractButton) SetAutoRepeatInterval(autoRepeatInterval int) {
 }
 
 func (this *QAbstractButton) AutoRepeatInterval() int {
-	_ret := C.QAbstractButton_AutoRepeatInterval(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractButton_AutoRepeatInterval(this.h))
 }
 
 func (this *QAbstractButton) SetAutoExclusive(autoExclusive bool) {
@@ -157,13 +150,11 @@ func (this *QAbstractButton) SetAutoExclusive(autoExclusive bool) {
 }
 
 func (this *QAbstractButton) AutoExclusive() bool {
-	_ret := C.QAbstractButton_AutoExclusive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractButton_AutoExclusive(this.h))
 }
 
 func (this *QAbstractButton) Group() *QButtonGroup {
-	_ret := C.QAbstractButton_Group(this.h)
-	return newQButtonGroup_U(unsafe.Pointer(_ret))
+	return newQButtonGroup_U(unsafe.Pointer(C.QAbstractButton_Group(this.h)))
 }
 
 func (this *QAbstractButton) SetIconSize(size *QSize) {
@@ -252,8 +243,7 @@ func miqt_exec_callback_QAbstractButton_Toggled(cb *C.void, checked C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	checked_ret := checked
-	slotval1 := (bool)(checked_ret)
+	slotval1 := (bool)(checked)
 
 	gofunc(slotval1)
 }
@@ -321,8 +311,7 @@ func miqt_exec_callback_QAbstractButton_Clicked1(cb *C.void, checked C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	checked_ret := checked
-	slotval1 := (bool)(checked_ret)
+	slotval1 := (bool)(checked)
 
 	gofunc(slotval1)
 }

@@ -69,23 +69,19 @@ func (this *QColormap) OperatorAssign(colormap *QColormap) {
 }
 
 func (this *QColormap) Mode() QColormap__Mode {
-	_ret := C.QColormap_Mode(this.h)
-	return (QColormap__Mode)(_ret)
+	return (QColormap__Mode)(C.QColormap_Mode(this.h))
 }
 
 func (this *QColormap) Depth() int {
-	_ret := C.QColormap_Depth(this.h)
-	return (int)(_ret)
+	return (int)(C.QColormap_Depth(this.h))
 }
 
 func (this *QColormap) Size() int {
-	_ret := C.QColormap_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QColormap_Size(this.h))
 }
 
 func (this *QColormap) Pixel(color *QColor) uint {
-	_ret := C.QColormap_Pixel(this.h, color.cPointer())
-	return (uint)(_ret)
+	return (uint)(C.QColormap_Pixel(this.h, color.cPointer()))
 }
 
 func (this *QColormap) ColorAt(pixel uint) *QColor {
@@ -98,9 +94,12 @@ func (this *QColormap) ColorAt(pixel uint) *QColor {
 func (this *QColormap) Colormap() []QColor {
 	var _ma *C.struct_miqt_array = C.QColormap_Colormap(this.h)
 	_ret := make([]QColor, int(_ma.len))
-	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQColor(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQColor(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

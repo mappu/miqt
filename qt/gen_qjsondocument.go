@@ -201,25 +201,22 @@ func (this *QJsonDocument) ToJson() *QByteArray {
 }
 
 func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) *QByteArray {
-	_ret := C.QJsonDocument_ToJsonWithFormat(this.h, (C.uintptr_t)(format))
+	_ret := C.QJsonDocument_ToJsonWithFormat(this.h, (C.int)(format))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonDocument) IsEmpty() bool {
-	_ret := C.QJsonDocument_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsEmpty(this.h))
 }
 
 func (this *QJsonDocument) IsArray() bool {
-	_ret := C.QJsonDocument_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsArray(this.h))
 }
 
 func (this *QJsonDocument) IsObject() bool {
-	_ret := C.QJsonDocument_IsObject(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsObject(this.h))
 }
 
 func (this *QJsonDocument) Object() *QJsonObject {
@@ -261,31 +258,28 @@ func (this *QJsonDocument) OperatorSubscriptWithInt(i int) *QJsonValue {
 }
 
 func (this *QJsonDocument) OperatorEqual(other *QJsonDocument) bool {
-	_ret := C.QJsonDocument_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) OperatorNotEqual(other *QJsonDocument) bool {
-	_ret := C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonDocument) IsNull() bool {
-	_ret := C.QJsonDocument_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QJsonDocument_IsNull(this.h))
 }
 
 func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument__DataValidation) *QJsonDocument {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QJsonDocument_FromRawData3(data_Cstring, (C.int)(size), (C.uintptr_t)(validation))
+	_ret := C.QJsonDocument_FromRawData3(data_Cstring, (C.int)(size), (C.int)(validation))
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QJsonDocument_FromBinaryData2(data *QByteArray, validation QJsonDocument__DataValidation) *QJsonDocument {
-	_ret := C.QJsonDocument_FromBinaryData2(data.cPointer(), (C.uintptr_t)(validation))
+	_ret := C.QJsonDocument_FromBinaryData2(data.cPointer(), (C.int)(validation))
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

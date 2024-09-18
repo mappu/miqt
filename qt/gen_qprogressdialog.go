@@ -86,8 +86,7 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
-	_ret := C.QProgressDialog_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QProgressDialog_MetaObject(this.h)))
 }
 
 func QProgressDialog_Tr(s string) string {
@@ -121,23 +120,19 @@ func (this *QProgressDialog) SetBar(bar *QProgressBar) {
 }
 
 func (this *QProgressDialog) WasCanceled() bool {
-	_ret := C.QProgressDialog_WasCanceled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProgressDialog_WasCanceled(this.h))
 }
 
 func (this *QProgressDialog) Minimum() int {
-	_ret := C.QProgressDialog_Minimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressDialog_Minimum(this.h))
 }
 
 func (this *QProgressDialog) Maximum() int {
-	_ret := C.QProgressDialog_Maximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressDialog_Maximum(this.h))
 }
 
 func (this *QProgressDialog) Value() int {
-	_ret := C.QProgressDialog_Value(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressDialog_Value(this.h))
 }
 
 func (this *QProgressDialog) SizeHint() *QSize {
@@ -155,8 +150,7 @@ func (this *QProgressDialog) LabelText() string {
 }
 
 func (this *QProgressDialog) MinimumDuration() int {
-	_ret := C.QProgressDialog_MinimumDuration(this.h)
-	return (int)(_ret)
+	return (int)(C.QProgressDialog_MinimumDuration(this.h))
 }
 
 func (this *QProgressDialog) SetAutoReset(reset bool) {
@@ -164,8 +158,7 @@ func (this *QProgressDialog) SetAutoReset(reset bool) {
 }
 
 func (this *QProgressDialog) AutoReset() bool {
-	_ret := C.QProgressDialog_AutoReset(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProgressDialog_AutoReset(this.h))
 }
 
 func (this *QProgressDialog) SetAutoClose(close bool) {
@@ -173,8 +166,7 @@ func (this *QProgressDialog) SetAutoClose(close bool) {
 }
 
 func (this *QProgressDialog) AutoClose() bool {
-	_ret := C.QProgressDialog_AutoClose(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProgressDialog_AutoClose(this.h))
 }
 
 func (this *QProgressDialog) Cancel() {

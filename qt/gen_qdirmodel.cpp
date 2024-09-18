@@ -15,12 +15,13 @@
 #include "gen_qdirmodel.h"
 #include "_cgo_export.h"
 
-QDirModel* QDirModel_new(struct miqt_array* /* of QString */ nameFilters, int filters, int sort) {
+QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	miqt_string** nameFilters_arr = static_cast<miqt_string**>(nameFilters->data);
+	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		nameFilters_QList.push_back(QString::fromUtf8(& nameFilters_arr[i]->data, nameFilters_arr[i]->len));
+		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 }
@@ -29,12 +30,13 @@ QDirModel* QDirModel_new2() {
 	return new QDirModel();
 }
 
-QDirModel* QDirModel_new3(struct miqt_array* /* of QString */ nameFilters, int filters, int sort, QObject* parent) {
+QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent) {
 	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	miqt_string** nameFilters_arr = static_cast<miqt_string**>(nameFilters->data);
+	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		nameFilters_QList.push_back(QString::fromUtf8(& nameFilters_arr[i]->data, nameFilters_arr[i]->len));
+		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
 }
@@ -62,15 +64,11 @@ struct miqt_string* QDirModel_TrUtf8(const char* s) {
 }
 
 QModelIndex* QDirModel_Index(const QDirModel* self, int row, int column) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
 }
 
 QModelIndex* QDirModel_Parent(const QDirModel* self, QModelIndex* child) {
-	QModelIndex _ret = self->parent(*child);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->parent(*child));
 }
 
 int QDirModel_RowCount(const QDirModel* self) {
@@ -82,19 +80,15 @@ int QDirModel_ColumnCount(const QDirModel* self) {
 }
 
 QVariant* QDirModel_Data(const QDirModel* self, QModelIndex* index) {
-	QVariant _ret = self->data(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index));
 }
 
 bool QDirModel_SetData(QDirModel* self, QModelIndex* index, QVariant* value) {
 	return self->setData(*index, *value);
 }
 
-QVariant* QDirModel_HeaderData(const QDirModel* self, int section, uintptr_t orientation) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+QVariant* QDirModel_HeaderData(const QDirModel* self, int section, int orientation) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
 bool QDirModel_HasChildren(const QDirModel* self) {
@@ -112,7 +106,7 @@ void QDirModel_Sort(QDirModel* self, int column) {
 
 struct miqt_array* QDirModel_MimeTypes(const QDirModel* self) {
 	QStringList _ret = self->mimeTypes();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -126,7 +120,7 @@ struct miqt_array* QDirModel_MimeTypes(const QDirModel* self) {
 	return _out;
 }
 
-QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
+QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
@@ -136,7 +130,7 @@ QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QM
 	return self->mimeData(indexes_QList);
 }
 
-bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -153,19 +147,20 @@ QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
 	return self->iconProvider();
 }
 
-void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of QString */ filters) {
+void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
 	QList<QString> filters_QList;
 	filters_QList.reserve(filters->len);
-	miqt_string** filters_arr = static_cast<miqt_string**>(filters->data);
+	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		filters_QList.push_back(QString::fromUtf8(& filters_arr[i]->data, filters_arr[i]->len));
+		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
 }
 
 struct miqt_array* QDirModel_NameFilters(const QDirModel* self) {
 	QStringList _ret = self->nameFilters();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -223,9 +218,7 @@ bool QDirModel_LazyChildCount(const QDirModel* self) {
 
 QModelIndex* QDirModel_IndexWithPath(const QDirModel* self, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
-	QModelIndex _ret = self->index(path_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(path_QString));
 }
 
 bool QDirModel_IsDir(const QDirModel* self, QModelIndex* index) {
@@ -234,9 +227,7 @@ bool QDirModel_IsDir(const QDirModel* self, QModelIndex* index) {
 
 QModelIndex* QDirModel_Mkdir(QDirModel* self, QModelIndex* parent, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QModelIndex _ret = self->mkdir(*parent, name_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mkdir(*parent, name_QString));
 }
 
 bool QDirModel_Rmdir(QDirModel* self, QModelIndex* index) {
@@ -262,15 +253,11 @@ struct miqt_string* QDirModel_FileName(const QDirModel* self, QModelIndex* index
 }
 
 QIcon* QDirModel_FileIcon(const QDirModel* self, QModelIndex* index) {
-	QIcon _ret = self->fileIcon(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->fileIcon(*index));
 }
 
 QFileInfo* QDirModel_FileInfo(const QDirModel* self, QModelIndex* index) {
-	QFileInfo _ret = self->fileInfo(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFileInfo*>(new QFileInfo(_ret));
+	return new QFileInfo(self->fileInfo(*index));
 }
 
 void QDirModel_Refresh(QDirModel* self) {
@@ -306,9 +293,7 @@ struct miqt_string* QDirModel_TrUtf83(const char* s, const char* c, int n) {
 }
 
 QModelIndex* QDirModel_Index3(const QDirModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 int QDirModel_RowCount1(const QDirModel* self, QModelIndex* parent) {
@@ -320,34 +305,28 @@ int QDirModel_ColumnCount1(const QDirModel* self, QModelIndex* parent) {
 }
 
 QVariant* QDirModel_Data2(const QDirModel* self, QModelIndex* index, int role) {
-	QVariant _ret = self->data(*index, static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
 bool QDirModel_SetData3(QDirModel* self, QModelIndex* index, QVariant* value, int role) {
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QDirModel_HeaderData3(const QDirModel* self, int section, uintptr_t orientation, int role) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+QVariant* QDirModel_HeaderData3(const QDirModel* self, int section, int orientation, int role) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 bool QDirModel_HasChildren1(const QDirModel* self, QModelIndex* index) {
 	return self->hasChildren(*index);
 }
 
-void QDirModel_Sort2(QDirModel* self, int column, uintptr_t order) {
+void QDirModel_Sort2(QDirModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 QModelIndex* QDirModel_Index2(const QDirModel* self, struct miqt_string* path, int column) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
-	QModelIndex _ret = self->index(path_QString, static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 
 void QDirModel_Refresh1(QDirModel* self, QModelIndex* parent) {

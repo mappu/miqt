@@ -40,13 +40,13 @@ QStylePainter* QStylePainter_new2(QWidget* w);
 QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w);
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w);
 bool QStylePainter_Begin2(QStylePainter* self, QPaintDevice* pd, QWidget* w);
-void QStylePainter_DrawPrimitive(QStylePainter* self, uintptr_t pe, QStyleOption* opt);
-void QStylePainter_DrawControl(QStylePainter* self, uintptr_t ce, QStyleOption* opt);
-void QStylePainter_DrawComplexControl(QStylePainter* self, uintptr_t cc, QStyleOptionComplex* opt);
+void QStylePainter_DrawPrimitive(QStylePainter* self, int pe, QStyleOption* opt);
+void QStylePainter_DrawControl(QStylePainter* self, int ce, QStyleOption* opt);
+void QStylePainter_DrawComplexControl(QStylePainter* self, int cc, QStyleOptionComplex* opt);
 void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text);
 void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
 QStyle* QStylePainter_Style(const QStylePainter* self);
-void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole);
+void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text, int textRole);
 void QStylePainter_Delete(QStylePainter* self);
 
 #ifdef __cplusplus

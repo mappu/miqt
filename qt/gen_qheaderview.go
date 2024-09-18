@@ -49,19 +49,18 @@ func newQHeaderView_U(h unsafe.Pointer) *QHeaderView {
 
 // NewQHeaderView constructs a new QHeaderView object.
 func NewQHeaderView(orientation Orientation) *QHeaderView {
-	ret := C.QHeaderView_new((C.uintptr_t)(orientation))
+	ret := C.QHeaderView_new((C.int)(orientation))
 	return newQHeaderView(ret)
 }
 
 // NewQHeaderView2 constructs a new QHeaderView object.
 func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
-	ret := C.QHeaderView_new2((C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QHeaderView_new2((C.int)(orientation), parent.cPointer())
 	return newQHeaderView(ret)
 }
 
 func (this *QHeaderView) MetaObject() *QMetaObject {
-	_ret := C.QHeaderView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QHeaderView_MetaObject(this.h)))
 }
 
 func QHeaderView_Tr(s string) string {
@@ -87,18 +86,15 @@ func (this *QHeaderView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QHeaderView) Orientation() Orientation {
-	_ret := C.QHeaderView_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QHeaderView_Orientation(this.h))
 }
 
 func (this *QHeaderView) Offset() int {
-	_ret := C.QHeaderView_Offset(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_Offset(this.h))
 }
 
 func (this *QHeaderView) Length() int {
-	_ret := C.QHeaderView_Length(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_Length(this.h))
 }
 
 func (this *QHeaderView) SizeHint() *QSize {
@@ -113,43 +109,35 @@ func (this *QHeaderView) SetVisible(v bool) {
 }
 
 func (this *QHeaderView) SectionSizeHint(logicalIndex int) int {
-	_ret := C.QHeaderView_SectionSizeHint(this.h, (C.int)(logicalIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_SectionSizeHint(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) VisualIndexAt(position int) int {
-	_ret := C.QHeaderView_VisualIndexAt(this.h, (C.int)(position))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_VisualIndexAt(this.h, (C.int)(position)))
 }
 
 func (this *QHeaderView) LogicalIndexAt(position int) int {
-	_ret := C.QHeaderView_LogicalIndexAt(this.h, (C.int)(position))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_LogicalIndexAt(this.h, (C.int)(position)))
 }
 
 func (this *QHeaderView) LogicalIndexAt2(x int, y int) int {
-	_ret := C.QHeaderView_LogicalIndexAt2(this.h, (C.int)(x), (C.int)(y))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_LogicalIndexAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QHeaderView) LogicalIndexAtWithPos(pos *QPoint) int {
-	_ret := C.QHeaderView_LogicalIndexAtWithPos(this.h, pos.cPointer())
-	return (int)(_ret)
+	return (int)(C.QHeaderView_LogicalIndexAtWithPos(this.h, pos.cPointer()))
 }
 
 func (this *QHeaderView) SectionSize(logicalIndex int) int {
-	_ret := C.QHeaderView_SectionSize(this.h, (C.int)(logicalIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_SectionSize(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SectionPosition(logicalIndex int) int {
-	_ret := C.QHeaderView_SectionPosition(this.h, (C.int)(logicalIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_SectionPosition(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SectionViewportPosition(logicalIndex int) int {
-	_ret := C.QHeaderView_SectionViewportPosition(this.h, (C.int)(logicalIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_SectionViewportPosition(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) MoveSection(from int, to int) {
@@ -165,12 +153,11 @@ func (this *QHeaderView) ResizeSection(logicalIndex int, size int) {
 }
 
 func (this *QHeaderView) ResizeSections(mode QHeaderView__ResizeMode) {
-	C.QHeaderView_ResizeSections(this.h, (C.uintptr_t)(mode))
+	C.QHeaderView_ResizeSections(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) IsSectionHidden(logicalIndex int) bool {
-	_ret := C.QHeaderView_IsSectionHidden(this.h, (C.int)(logicalIndex))
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_IsSectionHidden(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SetSectionHidden(logicalIndex int, hide bool) {
@@ -178,8 +165,7 @@ func (this *QHeaderView) SetSectionHidden(logicalIndex int, hide bool) {
 }
 
 func (this *QHeaderView) HiddenSectionCount() int {
-	_ret := C.QHeaderView_HiddenSectionCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_HiddenSectionCount(this.h))
 }
 
 func (this *QHeaderView) HideSection(logicalIndex int) {
@@ -191,18 +177,15 @@ func (this *QHeaderView) ShowSection(logicalIndex int) {
 }
 
 func (this *QHeaderView) Count() int {
-	_ret := C.QHeaderView_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_Count(this.h))
 }
 
 func (this *QHeaderView) VisualIndex(logicalIndex int) int {
-	_ret := C.QHeaderView_VisualIndex(this.h, (C.int)(logicalIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_VisualIndex(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) LogicalIndex(visualIndex int) int {
-	_ret := C.QHeaderView_LogicalIndex(this.h, (C.int)(visualIndex))
-	return (int)(_ret)
+	return (int)(C.QHeaderView_LogicalIndex(this.h, (C.int)(visualIndex)))
 }
 
 func (this *QHeaderView) SetSectionsMovable(movable bool) {
@@ -210,8 +193,7 @@ func (this *QHeaderView) SetSectionsMovable(movable bool) {
 }
 
 func (this *QHeaderView) SectionsMovable() bool {
-	_ret := C.QHeaderView_SectionsMovable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_SectionsMovable(this.h))
 }
 
 func (this *QHeaderView) SetFirstSectionMovable(movable bool) {
@@ -219,8 +201,7 @@ func (this *QHeaderView) SetFirstSectionMovable(movable bool) {
 }
 
 func (this *QHeaderView) IsFirstSectionMovable() bool {
-	_ret := C.QHeaderView_IsFirstSectionMovable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_IsFirstSectionMovable(this.h))
 }
 
 func (this *QHeaderView) SetSectionsClickable(clickable bool) {
@@ -228,8 +209,7 @@ func (this *QHeaderView) SetSectionsClickable(clickable bool) {
 }
 
 func (this *QHeaderView) SectionsClickable() bool {
-	_ret := C.QHeaderView_SectionsClickable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_SectionsClickable(this.h))
 }
 
 func (this *QHeaderView) SetHighlightSections(highlight bool) {
@@ -237,21 +217,19 @@ func (this *QHeaderView) SetHighlightSections(highlight bool) {
 }
 
 func (this *QHeaderView) HighlightSections() bool {
-	_ret := C.QHeaderView_HighlightSections(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_HighlightSections(this.h))
 }
 
 func (this *QHeaderView) SectionResizeMode(logicalIndex int) QHeaderView__ResizeMode {
-	_ret := C.QHeaderView_SectionResizeMode(this.h, (C.int)(logicalIndex))
-	return (QHeaderView__ResizeMode)(_ret)
+	return (QHeaderView__ResizeMode)(C.QHeaderView_SectionResizeMode(this.h, (C.int)(logicalIndex)))
 }
 
 func (this *QHeaderView) SetSectionResizeMode(mode QHeaderView__ResizeMode) {
-	C.QHeaderView_SetSectionResizeMode(this.h, (C.uintptr_t)(mode))
+	C.QHeaderView_SetSectionResizeMode(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) SetSectionResizeMode2(logicalIndex int, mode QHeaderView__ResizeMode) {
-	C.QHeaderView_SetSectionResizeMode2(this.h, (C.int)(logicalIndex), (C.uintptr_t)(mode))
+	C.QHeaderView_SetSectionResizeMode2(this.h, (C.int)(logicalIndex), (C.int)(mode))
 }
 
 func (this *QHeaderView) SetResizeContentsPrecision(precision int) {
@@ -259,13 +237,11 @@ func (this *QHeaderView) SetResizeContentsPrecision(precision int) {
 }
 
 func (this *QHeaderView) ResizeContentsPrecision() int {
-	_ret := C.QHeaderView_ResizeContentsPrecision(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_ResizeContentsPrecision(this.h))
 }
 
 func (this *QHeaderView) StretchSectionCount() int {
-	_ret := C.QHeaderView_StretchSectionCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_StretchSectionCount(this.h))
 }
 
 func (this *QHeaderView) SetSortIndicatorShown(show bool) {
@@ -273,27 +249,23 @@ func (this *QHeaderView) SetSortIndicatorShown(show bool) {
 }
 
 func (this *QHeaderView) IsSortIndicatorShown() bool {
-	_ret := C.QHeaderView_IsSortIndicatorShown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_IsSortIndicatorShown(this.h))
 }
 
 func (this *QHeaderView) SetSortIndicator(logicalIndex int, order SortOrder) {
-	C.QHeaderView_SetSortIndicator(this.h, (C.int)(logicalIndex), (C.uintptr_t)(order))
+	C.QHeaderView_SetSortIndicator(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 
 func (this *QHeaderView) SortIndicatorSection() int {
-	_ret := C.QHeaderView_SortIndicatorSection(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_SortIndicatorSection(this.h))
 }
 
 func (this *QHeaderView) SortIndicatorOrder() SortOrder {
-	_ret := C.QHeaderView_SortIndicatorOrder(this.h)
-	return (SortOrder)(_ret)
+	return (SortOrder)(C.QHeaderView_SortIndicatorOrder(this.h))
 }
 
 func (this *QHeaderView) StretchLastSection() bool {
-	_ret := C.QHeaderView_StretchLastSection(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_StretchLastSection(this.h))
 }
 
 func (this *QHeaderView) SetStretchLastSection(stretch bool) {
@@ -301,8 +273,7 @@ func (this *QHeaderView) SetStretchLastSection(stretch bool) {
 }
 
 func (this *QHeaderView) CascadingSectionResizes() bool {
-	_ret := C.QHeaderView_CascadingSectionResizes(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_CascadingSectionResizes(this.h))
 }
 
 func (this *QHeaderView) SetCascadingSectionResizes(enable bool) {
@@ -310,8 +281,7 @@ func (this *QHeaderView) SetCascadingSectionResizes(enable bool) {
 }
 
 func (this *QHeaderView) DefaultSectionSize() int {
-	_ret := C.QHeaderView_DefaultSectionSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_DefaultSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetDefaultSectionSize(size int) {
@@ -323,8 +293,7 @@ func (this *QHeaderView) ResetDefaultSectionSize() {
 }
 
 func (this *QHeaderView) MinimumSectionSize() int {
-	_ret := C.QHeaderView_MinimumSectionSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_MinimumSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetMinimumSectionSize(size int) {
@@ -332,8 +301,7 @@ func (this *QHeaderView) SetMinimumSectionSize(size int) {
 }
 
 func (this *QHeaderView) MaximumSectionSize() int {
-	_ret := C.QHeaderView_MaximumSectionSize(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_MaximumSectionSize(this.h))
 }
 
 func (this *QHeaderView) SetMaximumSectionSize(size int) {
@@ -341,8 +309,7 @@ func (this *QHeaderView) SetMaximumSectionSize(size int) {
 }
 
 func (this *QHeaderView) DefaultAlignment() int {
-	_ret := C.QHeaderView_DefaultAlignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QHeaderView_DefaultAlignment(this.h))
 }
 
 func (this *QHeaderView) SetDefaultAlignment(alignment int) {
@@ -354,13 +321,11 @@ func (this *QHeaderView) DoItemsLayout() {
 }
 
 func (this *QHeaderView) SectionsMoved() bool {
-	_ret := C.QHeaderView_SectionsMoved(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_SectionsMoved(this.h))
 }
 
 func (this *QHeaderView) SectionsHidden() bool {
-	_ret := C.QHeaderView_SectionsHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_SectionsHidden(this.h))
 }
 
 func (this *QHeaderView) SaveState() *QByteArray {
@@ -371,8 +336,7 @@ func (this *QHeaderView) SaveState() *QByteArray {
 }
 
 func (this *QHeaderView) RestoreState(state *QByteArray) bool {
-	_ret := C.QHeaderView_RestoreState(this.h, state.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QHeaderView_RestoreState(this.h, state.cPointer()))
 }
 
 func (this *QHeaderView) Reset() {
@@ -392,7 +356,7 @@ func (this *QHeaderView) SetOffsetToLastSection() {
 }
 
 func (this *QHeaderView) HeaderDataChanged(orientation Orientation, logicalFirst int, logicalLast int) {
-	C.QHeaderView_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(logicalFirst), (C.int)(logicalLast))
+	C.QHeaderView_HeaderDataChanged(this.h, (C.int)(orientation), (C.int)(logicalFirst), (C.int)(logicalLast))
 }
 
 func (this *QHeaderView) SectionMoved(logicalIndex int, oldVisualIndex int, newVisualIndex int) {
@@ -410,14 +374,11 @@ func miqt_exec_callback_QHeaderView_SectionMoved(cb *C.void, logicalIndex C.int,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
-	oldVisualIndex_ret := oldVisualIndex
-	slotval2 := (int)(oldVisualIndex_ret)
+	slotval2 := (int)(oldVisualIndex)
 
-	newVisualIndex_ret := newVisualIndex
-	slotval3 := (int)(newVisualIndex_ret)
+	slotval3 := (int)(newVisualIndex)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -437,14 +398,11 @@ func miqt_exec_callback_QHeaderView_SectionResized(cb *C.void, logicalIndex C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
-	oldSize_ret := oldSize
-	slotval2 := (int)(oldSize_ret)
+	slotval2 := (int)(oldSize)
 
-	newSize_ret := newSize
-	slotval3 := (int)(newSize_ret)
+	slotval3 := (int)(newSize)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -464,8 +422,7 @@ func miqt_exec_callback_QHeaderView_SectionPressed(cb *C.void, logicalIndex C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
 	gofunc(slotval1)
 }
@@ -485,8 +442,7 @@ func miqt_exec_callback_QHeaderView_SectionClicked(cb *C.void, logicalIndex C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
 	gofunc(slotval1)
 }
@@ -506,8 +462,7 @@ func miqt_exec_callback_QHeaderView_SectionEntered(cb *C.void, logicalIndex C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
 	gofunc(slotval1)
 }
@@ -527,8 +482,7 @@ func miqt_exec_callback_QHeaderView_SectionDoubleClicked(cb *C.void, logicalInde
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
 	gofunc(slotval1)
 }
@@ -548,11 +502,9 @@ func miqt_exec_callback_QHeaderView_SectionCountChanged(cb *C.void, oldCount C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	oldCount_ret := oldCount
-	slotval1 := (int)(oldCount_ret)
+	slotval1 := (int)(oldCount)
 
-	newCount_ret := newCount
-	slotval2 := (int)(newCount_ret)
+	slotval2 := (int)(newCount)
 
 	gofunc(slotval1, slotval2)
 }
@@ -572,8 +524,7 @@ func miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(cb *C.void, logic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
 	gofunc(slotval1)
 }
@@ -596,25 +547,23 @@ func miqt_exec_callback_QHeaderView_GeometriesChanged(cb *C.void) {
 }
 
 func (this *QHeaderView) SortIndicatorChanged(logicalIndex int, order SortOrder) {
-	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.uintptr_t)(order))
+	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 func (this *QHeaderView) OnSortIndicatorChanged(slot func(logicalIndex int, order SortOrder)) {
 	C.QHeaderView_connect_SortIndicatorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QHeaderView_SortIndicatorChanged
-func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.uintptr_t) {
+func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, order SortOrder))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	logicalIndex_ret := logicalIndex
-	slotval1 := (int)(logicalIndex_ret)
+	slotval1 := (int)(logicalIndex)
 
-	order_ret := order
-	slotval2 := (SortOrder)(order_ret)
+	slotval2 := (SortOrder)(order)
 
 	gofunc(slotval1, slotval2)
 }

@@ -36,8 +36,7 @@ func newQItemEditorCreatorBase_U(h unsafe.Pointer) *QItemEditorCreatorBase {
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	_ret := C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())))
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() *QByteArray {
@@ -100,8 +99,7 @@ func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	_ret := C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())))
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) *QByteArray {
@@ -116,8 +114,7 @@ func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEdito
 }
 
 func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
-	_ret := C.QItemEditorFactory_DefaultFactory()
-	return newQItemEditorFactory_U(unsafe.Pointer(_ret))
+	return newQItemEditorFactory_U(unsafe.Pointer(C.QItemEditorFactory_DefaultFactory()))
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {

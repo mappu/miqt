@@ -134,25 +134,23 @@ void QWizard_SetField(QWizard* self, struct miqt_string* name, QVariant* value) 
 
 QVariant* QWizard_Field(const QWizard* self, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QVariant _ret = self->field(name_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->field(name_QString));
 }
 
-void QWizard_SetWizardStyle(QWizard* self, uintptr_t style) {
+void QWizard_SetWizardStyle(QWizard* self, int style) {
 	self->setWizardStyle(static_cast<QWizard::WizardStyle>(style));
 }
 
-uintptr_t QWizard_WizardStyle(const QWizard* self) {
+int QWizard_WizardStyle(const QWizard* self) {
 	QWizard::WizardStyle _ret = self->wizardStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWizard_SetOption(QWizard* self, uintptr_t option) {
+void QWizard_SetOption(QWizard* self, int option) {
 	self->setOption(static_cast<QWizard::WizardOption>(option));
 }
 
-bool QWizard_TestOption(const QWizard* self, uintptr_t option) {
+bool QWizard_TestOption(const QWizard* self, int option) {
 	return self->testOption(static_cast<QWizard::WizardOption>(option));
 }
 
@@ -195,32 +193,30 @@ QAbstractButton* QWizard_Button(const QWizard* self, int which) {
 	return self->button(static_cast<QWizard::WizardButton>(which));
 }
 
-void QWizard_SetTitleFormat(QWizard* self, uintptr_t format) {
+void QWizard_SetTitleFormat(QWizard* self, int format) {
 	self->setTitleFormat(static_cast<Qt::TextFormat>(format));
 }
 
-uintptr_t QWizard_TitleFormat(const QWizard* self) {
+int QWizard_TitleFormat(const QWizard* self) {
 	Qt::TextFormat _ret = self->titleFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWizard_SetSubTitleFormat(QWizard* self, uintptr_t format) {
+void QWizard_SetSubTitleFormat(QWizard* self, int format) {
 	self->setSubTitleFormat(static_cast<Qt::TextFormat>(format));
 }
 
-uintptr_t QWizard_SubTitleFormat(const QWizard* self) {
+int QWizard_SubTitleFormat(const QWizard* self) {
 	Qt::TextFormat _ret = self->subTitleFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWizard_SetPixmap(QWizard* self, uintptr_t which, QPixmap* pixmap) {
+void QWizard_SetPixmap(QWizard* self, int which, QPixmap* pixmap) {
 	self->setPixmap(static_cast<QWizard::WizardPixmap>(which), *pixmap);
 }
 
-QPixmap* QWizard_Pixmap(const QWizard* self, uintptr_t which) {
-	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+QPixmap* QWizard_Pixmap(const QWizard* self, int which) {
+	return new QPixmap(self->pixmap(static_cast<QWizard::WizardPixmap>(which)));
 }
 
 void QWizard_SetSideWidget(QWizard* self, QWidget* widget) {
@@ -240,9 +236,7 @@ void QWizard_SetVisible(QWizard* self, bool visible) {
 }
 
 QSize* QWizard_SizeHint(const QWizard* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QWizard_CurrentIdChanged(QWizard* self, int id) {
@@ -339,7 +333,7 @@ struct miqt_string* QWizard_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizard_SetOption2(QWizard* self, uintptr_t option, bool on) {
+void QWizard_SetOption2(QWizard* self, int option, bool on) {
 	self->setOption(static_cast<QWizard::WizardOption>(option), on);
 }
 
@@ -397,14 +391,12 @@ struct miqt_string* QWizardPage_SubTitle(const QWizardPage* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QWizardPage_SetPixmap(QWizardPage* self, uintptr_t which, QPixmap* pixmap) {
+void QWizardPage_SetPixmap(QWizardPage* self, int which, QPixmap* pixmap) {
 	self->setPixmap(static_cast<QWizard::WizardPixmap>(which), *pixmap);
 }
 
-QPixmap* QWizardPage_Pixmap(const QWizardPage* self, uintptr_t which) {
-	QPixmap _ret = self->pixmap(static_cast<QWizard::WizardPixmap>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+QPixmap* QWizardPage_Pixmap(const QWizardPage* self, int which) {
+	return new QPixmap(self->pixmap(static_cast<QWizard::WizardPixmap>(which)));
 }
 
 void QWizardPage_SetFinalPage(QWizardPage* self, bool finalPage) {

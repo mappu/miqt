@@ -39,8 +39,8 @@ struct miqt_string* QTransposeProxyModel_TrUtf8(const char* s);
 void QTransposeProxyModel_SetSourceModel(QTransposeProxyModel* self, QAbstractItemModel* newSourceModel);
 int QTransposeProxyModel_RowCount(const QTransposeProxyModel* self);
 int QTransposeProxyModel_ColumnCount(const QTransposeProxyModel* self);
-QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, uintptr_t orientation);
-bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value);
+QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, int orientation);
+bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, int orientation, QVariant* value);
 QSize* QTransposeProxyModel_Span(const QTransposeProxyModel* self, QModelIndex* index);
 QModelIndex* QTransposeProxyModel_MapFromSource(const QTransposeProxyModel* self, QModelIndex* sourceIndex);
 QModelIndex* QTransposeProxyModel_MapToSource(const QTransposeProxyModel* self, QModelIndex* proxyIndex);
@@ -59,14 +59,14 @@ struct miqt_string* QTransposeProxyModel_TrUtf82(const char* s, const char* c);
 struct miqt_string* QTransposeProxyModel_TrUtf83(const char* s, const char* c, int n);
 int QTransposeProxyModel_RowCount1(const QTransposeProxyModel* self, QModelIndex* parent);
 int QTransposeProxyModel_ColumnCount1(const QTransposeProxyModel* self, QModelIndex* parent);
-QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, uintptr_t orientation, int role);
-bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role);
+QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, int orientation, int role);
+bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section, int orientation, QVariant* value, int role);
 QModelIndex* QTransposeProxyModel_Index3(const QTransposeProxyModel* self, int row, int column, QModelIndex* parent);
 bool QTransposeProxyModel_InsertRows3(QTransposeProxyModel* self, int row, int count, QModelIndex* parent);
 bool QTransposeProxyModel_RemoveRows3(QTransposeProxyModel* self, int row, int count, QModelIndex* parent);
 bool QTransposeProxyModel_InsertColumns3(QTransposeProxyModel* self, int column, int count, QModelIndex* parent);
 bool QTransposeProxyModel_RemoveColumns3(QTransposeProxyModel* self, int column, int count, QModelIndex* parent);
-void QTransposeProxyModel_Sort2(QTransposeProxyModel* self, int column, uintptr_t order);
+void QTransposeProxyModel_Sort2(QTransposeProxyModel* self, int column, int order);
 void QTransposeProxyModel_Delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus

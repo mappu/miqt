@@ -104,8 +104,7 @@ func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
 }
 
 func (this *QGraphicsView) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsView_MetaObject(this.h)))
 }
 
 func QGraphicsView_Tr(s string) string {
@@ -134,12 +133,11 @@ func (this *QGraphicsView) SizeHint() *QSize {
 }
 
 func (this *QGraphicsView) RenderHints() int {
-	_ret := C.QGraphicsView_RenderHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsView_RenderHints(this.h))
 }
 
 func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
-	C.QGraphicsView_SetRenderHint(this.h, (C.uintptr_t)(hint))
+	C.QGraphicsView_SetRenderHint(this.h, (C.int)(hint))
 }
 
 func (this *QGraphicsView) SetRenderHints(hints int) {
@@ -147,8 +145,7 @@ func (this *QGraphicsView) SetRenderHints(hints int) {
 }
 
 func (this *QGraphicsView) Alignment() int {
-	_ret := C.QGraphicsView_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsView_Alignment(this.h))
 }
 
 func (this *QGraphicsView) SetAlignment(alignment int) {
@@ -156,39 +153,35 @@ func (this *QGraphicsView) SetAlignment(alignment int) {
 }
 
 func (this *QGraphicsView) TransformationAnchor() QGraphicsView__ViewportAnchor {
-	_ret := C.QGraphicsView_TransformationAnchor(this.h)
-	return (QGraphicsView__ViewportAnchor)(_ret)
+	return (QGraphicsView__ViewportAnchor)(C.QGraphicsView_TransformationAnchor(this.h))
 }
 
 func (this *QGraphicsView) SetTransformationAnchor(anchor QGraphicsView__ViewportAnchor) {
-	C.QGraphicsView_SetTransformationAnchor(this.h, (C.uintptr_t)(anchor))
+	C.QGraphicsView_SetTransformationAnchor(this.h, (C.int)(anchor))
 }
 
 func (this *QGraphicsView) ResizeAnchor() QGraphicsView__ViewportAnchor {
-	_ret := C.QGraphicsView_ResizeAnchor(this.h)
-	return (QGraphicsView__ViewportAnchor)(_ret)
+	return (QGraphicsView__ViewportAnchor)(C.QGraphicsView_ResizeAnchor(this.h))
 }
 
 func (this *QGraphicsView) SetResizeAnchor(anchor QGraphicsView__ViewportAnchor) {
-	C.QGraphicsView_SetResizeAnchor(this.h, (C.uintptr_t)(anchor))
+	C.QGraphicsView_SetResizeAnchor(this.h, (C.int)(anchor))
 }
 
 func (this *QGraphicsView) ViewportUpdateMode() QGraphicsView__ViewportUpdateMode {
-	_ret := C.QGraphicsView_ViewportUpdateMode(this.h)
-	return (QGraphicsView__ViewportUpdateMode)(_ret)
+	return (QGraphicsView__ViewportUpdateMode)(C.QGraphicsView_ViewportUpdateMode(this.h))
 }
 
 func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpdateMode) {
-	C.QGraphicsView_SetViewportUpdateMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsView_SetViewportUpdateMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) OptimizationFlags() int {
-	_ret := C.QGraphicsView_OptimizationFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsView_OptimizationFlags(this.h))
 }
 
 func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationFlag) {
-	C.QGraphicsView_SetOptimizationFlag(this.h, (C.uintptr_t)(flag))
+	C.QGraphicsView_SetOptimizationFlag(this.h, (C.int)(flag))
 }
 
 func (this *QGraphicsView) SetOptimizationFlags(flags int) {
@@ -196,21 +189,19 @@ func (this *QGraphicsView) SetOptimizationFlags(flags int) {
 }
 
 func (this *QGraphicsView) DragMode() QGraphicsView__DragMode {
-	_ret := C.QGraphicsView_DragMode(this.h)
-	return (QGraphicsView__DragMode)(_ret)
+	return (QGraphicsView__DragMode)(C.QGraphicsView_DragMode(this.h))
 }
 
 func (this *QGraphicsView) SetDragMode(mode QGraphicsView__DragMode) {
-	C.QGraphicsView_SetDragMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsView_SetDragMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) RubberBandSelectionMode() ItemSelectionMode {
-	_ret := C.QGraphicsView_RubberBandSelectionMode(this.h)
-	return (ItemSelectionMode)(_ret)
+	return (ItemSelectionMode)(C.QGraphicsView_RubberBandSelectionMode(this.h))
 }
 
 func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
-	C.QGraphicsView_SetRubberBandSelectionMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsView_SetRubberBandSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) RubberBandRect() *QRect {
@@ -221,8 +212,7 @@ func (this *QGraphicsView) RubberBandRect() *QRect {
 }
 
 func (this *QGraphicsView) CacheMode() int {
-	_ret := C.QGraphicsView_CacheMode(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsView_CacheMode(this.h))
 }
 
 func (this *QGraphicsView) SetCacheMode(mode int) {
@@ -234,8 +224,7 @@ func (this *QGraphicsView) ResetCachedContent() {
 }
 
 func (this *QGraphicsView) IsInteractive() bool {
-	_ret := C.QGraphicsView_IsInteractive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsView_IsInteractive(this.h))
 }
 
 func (this *QGraphicsView) SetInteractive(allowed bool) {
@@ -243,8 +232,7 @@ func (this *QGraphicsView) SetInteractive(allowed bool) {
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
-	_ret := C.QGraphicsView_Scene(this.h)
-	return newQGraphicsScene_U(unsafe.Pointer(_ret))
+	return newQGraphicsScene_U(unsafe.Pointer(C.QGraphicsView_Scene(this.h)))
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
@@ -296,8 +284,7 @@ func (this *QGraphicsView) ViewportTransform() *QTransform {
 }
 
 func (this *QGraphicsView) IsTransformed() bool {
-	_ret := C.QGraphicsView_IsTransformed(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsView_IsTransformed(this.h))
 }
 
 func (this *QGraphicsView) SetTransform(matrix *QTransform) {
@@ -367,9 +354,9 @@ func (this *QGraphicsView) Render(painter *QPainter) {
 func (this *QGraphicsView) Items() []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_Items(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -378,9 +365,9 @@ func (this *QGraphicsView) Items() []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithPos(this.h, pos.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -389,9 +376,9 @@ func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_Items2(this.h, (C.int)(x), (C.int)(y))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -400,9 +387,9 @@ func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithRect(this.h, rect.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -411,9 +398,9 @@ func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_Items3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -422,22 +409,20 @@ func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	var _ma *C.struct_miqt_array = C.QGraphicsView_ItemsWithPath(this.h, path.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsView) ItemAt(pos *QPoint) *QGraphicsItem {
-	_ret := C.QGraphicsView_ItemAt(this.h, pos.cPointer())
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsView_ItemAt(this.h, pos.cPointer())))
 }
 
 func (this *QGraphicsView) ItemAt2(x int, y int) *QGraphicsItem {
-	_ret := C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QGraphicsView) MapToScene(point *QPoint) *QPointF {
@@ -483,7 +468,7 @@ func (this *QGraphicsView) MapFromScene2(x float64, y float64) *QPoint {
 }
 
 func (this *QGraphicsView) InputMethodQuery(query InputMethodQuery) *QVariant {
-	_ret := C.QGraphicsView_InputMethodQuery(this.h, (C.uintptr_t)(query))
+	_ret := C.QGraphicsView_InputMethodQuery(this.h, (C.int)(query))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -609,11 +594,11 @@ func QGraphicsView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsView) SetRenderHint2(hint QPainter__RenderHint, enabled bool) {
-	C.QGraphicsView_SetRenderHint2(this.h, (C.uintptr_t)(hint), (C.bool)(enabled))
+	C.QGraphicsView_SetRenderHint2(this.h, (C.int)(hint), (C.bool)(enabled))
 }
 
 func (this *QGraphicsView) SetOptimizationFlag2(flag QGraphicsView__OptimizationFlag, enabled bool) {
-	C.QGraphicsView_SetOptimizationFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
+	C.QGraphicsView_SetOptimizationFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
 func (this *QGraphicsView) SetMatrix2(matrix *QMatrix, combine bool) {
@@ -649,15 +634,15 @@ func (this *QGraphicsView) EnsureVisible32(item *QGraphicsItem, xmargin int, yma
 }
 
 func (this *QGraphicsView) FitInView22(rect *QRectF, aspectRadioMode AspectRatioMode) {
-	C.QGraphicsView_FitInView22(this.h, rect.cPointer(), (C.uintptr_t)(aspectRadioMode))
+	C.QGraphicsView_FitInView22(this.h, rect.cPointer(), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) FitInView5(x float64, y float64, w float64, h float64, aspectRadioMode AspectRatioMode) {
-	C.QGraphicsView_FitInView5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.uintptr_t)(aspectRadioMode))
+	C.QGraphicsView_FitInView5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) FitInView23(item *QGraphicsItem, aspectRadioMode AspectRatioMode) {
-	C.QGraphicsView_FitInView23(this.h, item.cPointer(), (C.uintptr_t)(aspectRadioMode))
+	C.QGraphicsView_FitInView23(this.h, item.cPointer(), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) Render2(painter *QPainter, target *QRectF) {
@@ -669,37 +654,37 @@ func (this *QGraphicsView) Render3(painter *QPainter, target *QRectF, source *QR
 }
 
 func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QRect, aspectRatioMode AspectRatioMode) {
-	C.QGraphicsView_Render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.uintptr_t)(aspectRatioMode))
+	C.QGraphicsView_Render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.int)(aspectRatioMode))
 }
 
 func (this *QGraphicsView) Items22(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsView_Items22(this.h, rect.cPointer(), (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items22(this.h, rect.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsView_Items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsView) Items24(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsView_Items24(this.h, path.cPointer(), (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QGraphicsView_Items24(this.h, path.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem(_outCast[i])
+		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

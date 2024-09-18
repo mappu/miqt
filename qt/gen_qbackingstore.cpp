@@ -29,9 +29,7 @@ void QBackingStore_Resize(QBackingStore* self, QSize* size) {
 }
 
 QSize* QBackingStore_Size(const QBackingStore* self) {
-	QSize _ret = self->size();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->size());
 }
 
 bool QBackingStore_Scroll(QBackingStore* self, QRegion* area, int dx, int dy) {
@@ -51,9 +49,7 @@ void QBackingStore_SetStaticContents(QBackingStore* self, QRegion* region) {
 }
 
 QRegion* QBackingStore_StaticContents(const QBackingStore* self) {
-	QRegion _ret = self->staticContents();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->staticContents());
 }
 
 bool QBackingStore_HasStaticContents(const QBackingStore* self) {

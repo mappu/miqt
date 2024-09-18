@@ -49,8 +49,7 @@ func NewQParallelAnimationGroup2(parent *QObject) *QParallelAnimationGroup {
 }
 
 func (this *QParallelAnimationGroup) MetaObject() *QMetaObject {
-	_ret := C.QParallelAnimationGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QParallelAnimationGroup_MetaObject(this.h)))
 }
 
 func QParallelAnimationGroup_Tr(s string) string {
@@ -72,8 +71,7 @@ func QParallelAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QParallelAnimationGroup) Duration() int {
-	_ret := C.QParallelAnimationGroup_Duration(this.h)
-	return (int)(_ret)
+	return (int)(C.QParallelAnimationGroup_Duration(this.h))
 }
 
 func QParallelAnimationGroup_Tr2(s string, c string) string {

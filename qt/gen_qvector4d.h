@@ -28,7 +28,7 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QVector4D* QVector4D_new();
-QVector4D* QVector4D_new2(uintptr_t param1);
+QVector4D* QVector4D_new2(int param1);
 QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos);
 QVector4D* QVector4D_new4(QPoint* point);
 QVector4D* QVector4D_new5(QPointF* point);

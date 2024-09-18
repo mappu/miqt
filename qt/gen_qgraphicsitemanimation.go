@@ -49,8 +49,7 @@ func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsItemAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsItemAnimation_MetaObject(this.h)))
 }
 
 func QGraphicsItemAnimation_Tr(s string) string {
@@ -72,8 +71,7 @@ func QGraphicsItemAnimation_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
-	_ret := C.QGraphicsItemAnimation_Item(this.h)
-	return newQGraphicsItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItemAnimation_Item(this.h)))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
@@ -81,8 +79,7 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	_ret := C.QGraphicsItemAnimation_TimeLine(this.h)
-	return newQTimeLine_U(unsafe.Pointer(_ret))
+	return newQTimeLine_U(unsafe.Pointer(C.QGraphicsItemAnimation_TimeLine(this.h)))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
@@ -115,8 +112,7 @@ func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
 }
 
 func (this *QGraphicsItemAnimation) RotationAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_RotationAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_RotationAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) SetRotationAt(step float64, angle float64) {
@@ -124,13 +120,11 @@ func (this *QGraphicsItemAnimation) SetRotationAt(step float64, angle float64) {
 }
 
 func (this *QGraphicsItemAnimation) XTranslationAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_XTranslationAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_XTranslationAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) YTranslationAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_YTranslationAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_YTranslationAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) SetTranslationAt(step float64, dx float64, dy float64) {
@@ -138,13 +132,11 @@ func (this *QGraphicsItemAnimation) SetTranslationAt(step float64, dx float64, d
 }
 
 func (this *QGraphicsItemAnimation) VerticalScaleAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_VerticalScaleAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_VerticalScaleAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) HorizontalScaleAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_HorizontalScaleAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_HorizontalScaleAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) SetScaleAt(step float64, sx float64, sy float64) {
@@ -152,13 +144,11 @@ func (this *QGraphicsItemAnimation) SetScaleAt(step float64, sx float64, sy floa
 }
 
 func (this *QGraphicsItemAnimation) VerticalShearAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_VerticalShearAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_VerticalShearAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) HorizontalShearAt(step float64) float64 {
-	_ret := C.QGraphicsItemAnimation_HorizontalShearAt(this.h, (C.double)(step))
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsItemAnimation_HorizontalShearAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) SetShearAt(step float64, sh float64, sv float64) {

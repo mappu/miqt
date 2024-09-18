@@ -27,11 +27,11 @@ struct miqt_string* QCommandLineParser_TrUtf8(const char* sourceText) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, uintptr_t parsingMode) {
+void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, int parsingMode) {
 	self->setSingleDashWordOptionMode(static_cast<QCommandLineParser::SingleDashWordOptionMode>(parsingMode));
 }
 
-void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, uintptr_t mode) {
+void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, int mode) {
 	self->setOptionsAfterPositionalArgumentsMode(static_cast<QCommandLineParser::OptionsAfterPositionalArgumentsMode>(mode));
 }
 
@@ -39,7 +39,7 @@ bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* 
 	return self->addOption(*commandLineOption);
 }
 
-bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption */ options) {
+bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption* */ options) {
 	QList<QCommandLineOption> options_QList;
 	options_QList.reserve(options->len);
 	QCommandLineOption** options_arr = static_cast<QCommandLineOption**>(options->data);
@@ -50,15 +50,11 @@ bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* 
 }
 
 QCommandLineOption* QCommandLineParser_AddVersionOption(QCommandLineParser* self) {
-	QCommandLineOption _ret = self->addVersionOption();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCommandLineOption*>(new QCommandLineOption(_ret));
+	return new QCommandLineOption(self->addVersionOption());
 }
 
 QCommandLineOption* QCommandLineParser_AddHelpOption(QCommandLineParser* self) {
-	QCommandLineOption _ret = self->addHelpOption();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCommandLineOption*>(new QCommandLineOption(_ret));
+	return new QCommandLineOption(self->addHelpOption());
 }
 
 void QCommandLineParser_SetApplicationDescription(QCommandLineParser* self, struct miqt_string* description) {
@@ -83,12 +79,13 @@ void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self) {
 	self->clearPositionalArguments();
 }
 
-void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments) {
+void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
-	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
+		QString arguments_arr_i_QString = QString::fromUtf8(&arguments_arr[i]->data, arguments_arr[i]->len);
+		arguments_QList.push_back(arguments_arr_i_QString);
 	}
 	self->process(arguments_QList);
 }
@@ -97,12 +94,13 @@ void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplicatio
 	self->process(*app);
 }
 
-bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of QString */ arguments) {
+bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
 	QList<QString> arguments_QList;
 	arguments_QList.reserve(arguments->len);
-	miqt_string** arguments_arr = static_cast<miqt_string**>(arguments->data);
+	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {
-		arguments_QList.push_back(QString::fromUtf8(& arguments_arr[i]->data, arguments_arr[i]->len));
+		QString arguments_arr_i_QString = QString::fromUtf8(&arguments_arr[i]->data, arguments_arr[i]->len);
+		arguments_QList.push_back(arguments_arr_i_QString);
 	}
 	return self->parse(arguments_QList);
 }
@@ -130,7 +128,7 @@ struct miqt_string* QCommandLineParser_Value(const QCommandLineParser* self, str
 struct miqt_array* QCommandLineParser_Values(const QCommandLineParser* self, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QStringList _ret = self->values(name_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -157,7 +155,7 @@ struct miqt_string* QCommandLineParser_ValueWithOption(const QCommandLineParser*
 
 struct miqt_array* QCommandLineParser_ValuesWithOption(const QCommandLineParser* self, QCommandLineOption* option) {
 	QStringList _ret = self->values(*option);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -173,7 +171,7 @@ struct miqt_array* QCommandLineParser_ValuesWithOption(const QCommandLineParser*
 
 struct miqt_array* QCommandLineParser_PositionalArguments(const QCommandLineParser* self) {
 	QStringList _ret = self->positionalArguments();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -189,7 +187,7 @@ struct miqt_array* QCommandLineParser_PositionalArguments(const QCommandLinePars
 
 struct miqt_array* QCommandLineParser_OptionNames(const QCommandLineParser* self) {
 	QStringList _ret = self->optionNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -205,7 +203,7 @@ struct miqt_array* QCommandLineParser_OptionNames(const QCommandLineParser* self
 
 struct miqt_array* QCommandLineParser_UnknownOptionNames(const QCommandLineParser* self) {
 	QStringList _ret = self->unknownOptionNames();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

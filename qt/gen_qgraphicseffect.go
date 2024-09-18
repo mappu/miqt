@@ -63,8 +63,7 @@ func newQGraphicsEffect_U(h unsafe.Pointer) *QGraphicsEffect {
 }
 
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
 }
 
 func QGraphicsEffect_Tr(s string) string {
@@ -100,8 +99,7 @@ func (this *QGraphicsEffect) BoundingRect() *QRectF {
 }
 
 func (this *QGraphicsEffect) IsEnabled() bool {
-	_ret := C.QGraphicsEffect_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGraphicsEffect_IsEnabled(this.h))
 }
 
 func (this *QGraphicsEffect) SetEnabled(enable bool) {
@@ -127,8 +125,7 @@ func miqt_exec_callback_QGraphicsEffect_EnabledChanged(cb *C.void, enabled C.boo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	enabled_ret := enabled
-	slotval1 := (bool)(enabled_ret)
+	slotval1 := (bool)(enabled)
 
 	gofunc(slotval1)
 }
@@ -227,8 +224,7 @@ func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
 }
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsColorizeEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsColorizeEffect_MetaObject(this.h)))
 }
 
 func QGraphicsColorizeEffect_Tr(s string) string {
@@ -257,8 +253,7 @@ func (this *QGraphicsColorizeEffect) Color() *QColor {
 }
 
 func (this *QGraphicsColorizeEffect) Strength() float64 {
-	_ret := C.QGraphicsColorizeEffect_Strength(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsColorizeEffect_Strength(this.h))
 }
 
 func (this *QGraphicsColorizeEffect) SetColor(c *QColor) {
@@ -284,8 +279,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb *C.void, color *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_ret := color
-	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+	slotval1 := newQColor_U(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -305,8 +299,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(cb *C.void, stre
 	}
 
 	// Convert all CABI parameters to Go parameters
-	strength_ret := strength
-	slotval1 := (float64)(strength_ret)
+	slotval1 := (float64)(strength)
 
 	gofunc(slotval1)
 }
@@ -405,8 +398,7 @@ func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
 }
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsBlurEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsBlurEffect_MetaObject(this.h)))
 }
 
 func QGraphicsBlurEffect_Tr(s string) string {
@@ -435,13 +427,11 @@ func (this *QGraphicsBlurEffect) BoundingRectFor(rect *QRectF) *QRectF {
 }
 
 func (this *QGraphicsBlurEffect) BlurRadius() float64 {
-	_ret := C.QGraphicsBlurEffect_BlurRadius(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsBlurEffect_BlurRadius(this.h))
 }
 
 func (this *QGraphicsBlurEffect) BlurHints() int {
-	_ret := C.QGraphicsBlurEffect_BlurHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsBlurEffect_BlurHints(this.h))
 }
 
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
@@ -467,8 +457,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	blurRadius_ret := blurRadius
-	slotval1 := (float64)(blurRadius_ret)
+	slotval1 := (float64)(blurRadius)
 
 	gofunc(slotval1)
 }
@@ -488,8 +477,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb *C.void, hints C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	hints_ret := hints
-	slotval1 := (int)(hints_ret)
+	slotval1 := (int)(hints)
 
 	gofunc(slotval1)
 }
@@ -588,8 +576,7 @@ func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
 }
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsDropShadowEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsDropShadowEffect_MetaObject(this.h)))
 }
 
 func QGraphicsDropShadowEffect_Tr(s string) string {
@@ -625,18 +612,15 @@ func (this *QGraphicsDropShadowEffect) Offset() *QPointF {
 }
 
 func (this *QGraphicsDropShadowEffect) XOffset() float64 {
-	_ret := C.QGraphicsDropShadowEffect_XOffset(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsDropShadowEffect_XOffset(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) YOffset() float64 {
-	_ret := C.QGraphicsDropShadowEffect_YOffset(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsDropShadowEffect_YOffset(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) BlurRadius() float64 {
-	_ret := C.QGraphicsDropShadowEffect_BlurRadius(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsDropShadowEffect_BlurRadius(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) Color() *QColor {
@@ -689,8 +673,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb *C.void, offs
 	}
 
 	// Convert all CABI parameters to Go parameters
-	offset_ret := offset
-	slotval1 := newQPointF_U(unsafe.Pointer(offset_ret))
+	slotval1 := newQPointF_U(unsafe.Pointer(offset))
 
 	gofunc(slotval1)
 }
@@ -710,8 +693,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(cb *C.void, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	blurRadius_ret := blurRadius
-	slotval1 := (float64)(blurRadius_ret)
+	slotval1 := (float64)(blurRadius)
 
 	gofunc(slotval1)
 }
@@ -731,8 +713,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb *C.void, color
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_ret := color
-	slotval1 := newQColor_U(unsafe.Pointer(color_ret))
+	slotval1 := newQColor_U(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -831,8 +812,7 @@ func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
 }
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsOpacityEffect_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsOpacityEffect_MetaObject(this.h)))
 }
 
 func QGraphicsOpacityEffect_Tr(s string) string {
@@ -854,8 +834,7 @@ func QGraphicsOpacityEffect_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsOpacityEffect) Opacity() float64 {
-	_ret := C.QGraphicsOpacityEffect_Opacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsOpacityEffect_Opacity(this.h))
 }
 
 func (this *QGraphicsOpacityEffect) OpacityMask() *QBrush {
@@ -888,8 +867,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(cb *C.void, opacit
 	}
 
 	// Convert all CABI parameters to Go parameters
-	opacity_ret := opacity
-	slotval1 := (float64)(opacity_ret)
+	slotval1 := (float64)(opacity)
 
 	gofunc(slotval1)
 }
@@ -909,8 +887,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb *C.void, ma
 	}
 
 	// Convert all CABI parameters to Go parameters
-	mask_ret := mask
-	slotval1 := newQBrush_U(unsafe.Pointer(mask_ret))
+	slotval1 := newQBrush_U(unsafe.Pointer(mask))
 
 	gofunc(slotval1)
 }

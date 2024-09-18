@@ -28,9 +28,9 @@ typedef struct QState QState;
 #endif
 
 QHistoryState* QHistoryState_new();
-QHistoryState* QHistoryState_new2(uintptr_t typeVal);
+QHistoryState* QHistoryState_new2(int typeVal);
 QHistoryState* QHistoryState_new3(QState* parent);
-QHistoryState* QHistoryState_new4(uintptr_t typeVal, QState* parent);
+QHistoryState* QHistoryState_new4(int typeVal, QState* parent);
 QMetaObject* QHistoryState_MetaObject(const QHistoryState* self);
 struct miqt_string* QHistoryState_Tr(const char* s);
 struct miqt_string* QHistoryState_TrUtf8(const char* s);
@@ -38,8 +38,8 @@ QAbstractTransition* QHistoryState_DefaultTransition(const QHistoryState* self);
 void QHistoryState_SetDefaultTransition(QHistoryState* self, QAbstractTransition* transition);
 QAbstractState* QHistoryState_DefaultState(const QHistoryState* self);
 void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state);
-uintptr_t QHistoryState_HistoryType(const QHistoryState* self);
-void QHistoryState_SetHistoryType(QHistoryState* self, uintptr_t typeVal);
+int QHistoryState_HistoryType(const QHistoryState* self);
+void QHistoryState_SetHistoryType(QHistoryState* self, int typeVal);
 struct miqt_string* QHistoryState_Tr2(const char* s, const char* c);
 struct miqt_string* QHistoryState_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QHistoryState_TrUtf82(const char* s, const char* c);

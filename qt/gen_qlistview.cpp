@@ -39,22 +39,22 @@ struct miqt_string* QListView_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_SetMovement(QListView* self, uintptr_t movement) {
+void QListView_SetMovement(QListView* self, int movement) {
 	self->setMovement(static_cast<QListView::Movement>(movement));
 }
 
-uintptr_t QListView_Movement(const QListView* self) {
+int QListView_Movement(const QListView* self) {
 	QListView::Movement _ret = self->movement();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QListView_SetFlow(QListView* self, uintptr_t flow) {
+void QListView_SetFlow(QListView* self, int flow) {
 	self->setFlow(static_cast<QListView::Flow>(flow));
 }
 
-uintptr_t QListView_Flow(const QListView* self) {
+int QListView_Flow(const QListView* self) {
 	QListView::Flow _ret = self->flow();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_SetWrapping(QListView* self, bool enable) {
@@ -65,22 +65,22 @@ bool QListView_IsWrapping(const QListView* self) {
 	return self->isWrapping();
 }
 
-void QListView_SetResizeMode(QListView* self, uintptr_t mode) {
+void QListView_SetResizeMode(QListView* self, int mode) {
 	self->setResizeMode(static_cast<QListView::ResizeMode>(mode));
 }
 
-uintptr_t QListView_ResizeMode(const QListView* self) {
+int QListView_ResizeMode(const QListView* self) {
 	QListView::ResizeMode _ret = self->resizeMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QListView_SetLayoutMode(QListView* self, uintptr_t mode) {
+void QListView_SetLayoutMode(QListView* self, int mode) {
 	self->setLayoutMode(static_cast<QListView::LayoutMode>(mode));
 }
 
-uintptr_t QListView_LayoutMode(const QListView* self) {
+int QListView_LayoutMode(const QListView* self) {
 	QListView::LayoutMode _ret = self->layoutMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_SetSpacing(QListView* self, int space) {
@@ -104,18 +104,16 @@ void QListView_SetGridSize(QListView* self, QSize* size) {
 }
 
 QSize* QListView_GridSize(const QListView* self) {
-	QSize _ret = self->gridSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->gridSize());
 }
 
-void QListView_SetViewMode(QListView* self, uintptr_t mode) {
+void QListView_SetViewMode(QListView* self, int mode) {
 	self->setViewMode(static_cast<QListView::ViewMode>(mode));
 }
 
-uintptr_t QListView_ViewMode(const QListView* self) {
+int QListView_ViewMode(const QListView* self) {
 	QListView::ViewMode _ret = self->viewMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_ClearPropertyFlags(QListView* self) {
@@ -172,9 +170,7 @@ int QListView_ItemAlignment(const QListView* self) {
 }
 
 QRect* QListView_VisualRect(const QListView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QListView_ScrollTo(QListView* self, QModelIndex* index) {
@@ -182,9 +178,7 @@ void QListView_ScrollTo(QListView* self, QModelIndex* index) {
 }
 
 QModelIndex* QListView_IndexAt(const QListView* self, QPoint* p) {
-	QModelIndex _ret = self->indexAt(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*p));
 }
 
 void QListView_DoItemsLayout(QListView* self) {
@@ -199,7 +193,7 @@ void QListView_SetRootIndex(QListView* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex */ indexes) {
+void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
@@ -212,8 +206,8 @@ void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelInde
 void QListView_connect_IndexesMoved(QListView* self, void* slot) {
 	QListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
 		const QModelIndexList& indexes_ret = indexes;
-		// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex**) * indexes_ret.length()));
+		// Convert QList<> from C++ memory to manually-managed C memory
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
 		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
 			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
 		}
@@ -253,7 +247,7 @@ struct miqt_string* QListView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_ScrollTo2(QListView* self, QModelIndex* index, uintptr_t hint) {
+void QListView_ScrollTo2(QListView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

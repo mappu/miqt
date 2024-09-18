@@ -30,9 +30,7 @@ void QTextTableCell_SetFormat(QTextTableCell* self, QTextCharFormat* format) {
 }
 
 QTextCharFormat* QTextTableCell_Format(const QTextTableCell* self) {
-	QTextCharFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCharFormat*>(new QTextCharFormat(_ret));
+	return new QTextCharFormat(self->format());
 }
 
 int QTextTableCell_Row(const QTextTableCell* self) {
@@ -56,15 +54,11 @@ bool QTextTableCell_IsValid(const QTextTableCell* self) {
 }
 
 QTextCursor* QTextTableCell_FirstCursorPosition(const QTextTableCell* self) {
-	QTextCursor _ret = self->firstCursorPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->firstCursorPosition());
 }
 
 QTextCursor* QTextTableCell_LastCursorPosition(const QTextTableCell* self) {
-	QTextCursor _ret = self->lastCursorPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->lastCursorPosition());
 }
 
 int QTextTableCell_FirstPosition(const QTextTableCell* self) {
@@ -84,15 +78,11 @@ bool QTextTableCell_OperatorNotEqual(const QTextTableCell* self, QTextTableCell*
 }
 
 QTextFrame__iterator* QTextTableCell_Begin(const QTextTableCell* self) {
-	QTextFrame::iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->begin());
 }
 
 QTextFrame__iterator* QTextTableCell_End(const QTextTableCell* self) {
-	QTextFrame::iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFrame::iterator*>(new QTextFrame::iterator(_ret));
+	return new QTextFrame::iterator(self->end());
 }
 
 int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self) {
@@ -174,33 +164,23 @@ int QTextTable_Columns(const QTextTable* self) {
 }
 
 QTextTableCell* QTextTable_CellAt(const QTextTable* self, int row, int col) {
-	QTextTableCell _ret = self->cellAt(static_cast<int>(row), static_cast<int>(col));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
+	return new QTextTableCell(self->cellAt(static_cast<int>(row), static_cast<int>(col)));
 }
 
 QTextTableCell* QTextTable_CellAtWithPosition(const QTextTable* self, int position) {
-	QTextTableCell _ret = self->cellAt(static_cast<int>(position));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
+	return new QTextTableCell(self->cellAt(static_cast<int>(position)));
 }
 
 QTextTableCell* QTextTable_CellAtWithQTextCursor(const QTextTable* self, QTextCursor* c) {
-	QTextTableCell _ret = self->cellAt(*c);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableCell*>(new QTextTableCell(_ret));
+	return new QTextTableCell(self->cellAt(*c));
 }
 
 QTextCursor* QTextTable_RowStart(const QTextTable* self, QTextCursor* c) {
-	QTextCursor _ret = self->rowStart(*c);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->rowStart(*c));
 }
 
 QTextCursor* QTextTable_RowEnd(const QTextTable* self, QTextCursor* c) {
-	QTextCursor _ret = self->rowEnd(*c);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextCursor*>(new QTextCursor(_ret));
+	return new QTextCursor(self->rowEnd(*c));
 }
 
 void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format) {
@@ -208,9 +188,7 @@ void QTextTable_SetFormat(QTextTable* self, QTextTableFormat* format) {
 }
 
 QTextTableFormat* QTextTable_Format(const QTextTable* self) {
-	QTextTableFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextTableFormat*>(new QTextTableFormat(_ret));
+	return new QTextTableFormat(self->format());
 }
 
 struct miqt_string* QTextTable_Tr2(const char* s, const char* c) {

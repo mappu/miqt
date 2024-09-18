@@ -37,16 +37,17 @@ void QGraphicsAnchor_UnsetSpacing(QGraphicsAnchor* self) {
 }
 
 double QGraphicsAnchor_Spacing(const QGraphicsAnchor* self) {
-	return self->spacing();
+	qreal _ret = self->spacing();
+	return static_cast<double>(_ret);
 }
 
-void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, uintptr_t policy) {
+void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, int policy) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(policy));
 }
 
-uintptr_t QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self) {
+int QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self) {
 	QSizePolicy::Policy _ret = self->sizePolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QGraphicsAnchor_Tr2(const char* s, const char* c) {
@@ -89,15 +90,15 @@ QGraphicsAnchorLayout* QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent) {
 	return new QGraphicsAnchorLayout(parent);
 }
 
-QGraphicsAnchor* QGraphicsAnchorLayout_AddAnchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, uintptr_t firstEdge, QGraphicsLayoutItem* secondItem, uintptr_t secondEdge) {
+QGraphicsAnchor* QGraphicsAnchorLayout_AddAnchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge) {
 	return self->addAnchor(firstItem, static_cast<Qt::AnchorPoint>(firstEdge), secondItem, static_cast<Qt::AnchorPoint>(secondEdge));
 }
 
-QGraphicsAnchor* QGraphicsAnchorLayout_Anchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, uintptr_t firstEdge, QGraphicsLayoutItem* secondItem, uintptr_t secondEdge) {
+QGraphicsAnchor* QGraphicsAnchorLayout_Anchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge) {
 	return self->anchor(firstItem, static_cast<Qt::AnchorPoint>(firstEdge), secondItem, static_cast<Qt::AnchorPoint>(secondEdge));
 }
 
-void QGraphicsAnchorLayout_AddCornerAnchors(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, uintptr_t firstCorner, QGraphicsLayoutItem* secondItem, uintptr_t secondCorner) {
+void QGraphicsAnchorLayout_AddCornerAnchors(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstCorner, QGraphicsLayoutItem* secondItem, int secondCorner) {
 	self->addCornerAnchors(firstItem, static_cast<Qt::Corner>(firstCorner), secondItem, static_cast<Qt::Corner>(secondCorner));
 }
 
@@ -118,11 +119,13 @@ void QGraphicsAnchorLayout_SetSpacing(QGraphicsAnchorLayout* self, double spacin
 }
 
 double QGraphicsAnchorLayout_HorizontalSpacing(const QGraphicsAnchorLayout* self) {
-	return self->horizontalSpacing();
+	qreal _ret = self->horizontalSpacing();
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsAnchorLayout_VerticalSpacing(const QGraphicsAnchorLayout* self) {
-	return self->verticalSpacing();
+	qreal _ret = self->verticalSpacing();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsAnchorLayout_RemoveAt(QGraphicsAnchorLayout* self, int index) {

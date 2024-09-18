@@ -44,7 +44,7 @@ func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
-	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.uintptr_t)(r))
+	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r))
 	return newQAccessibleWidget(ret)
 }
 
@@ -52,33 +52,28 @@ func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.uintptr_t)(r), (*C.struct_miqt_string)(name_ms))
+	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), (*C.struct_miqt_string)(name_ms))
 	return newQAccessibleWidget(ret)
 }
 
 func (this *QAccessibleWidget) IsValid() bool {
-	_ret := C.QAccessibleWidget_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleWidget_IsValid(this.h))
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	_ret := C.QAccessibleWidget_Window(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)))
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
-	_ret := C.QAccessibleWidget_ChildCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleWidget_ChildCount(this.h))
 }
 
 func (this *QAccessibleWidget) IndexOfChild(child *QAccessibleInterface) int {
-	_ret := C.QAccessibleWidget_IndexOfChild(this.h, child.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAccessibleWidget_IndexOfChild(this.h, child.cPointer()))
 }
 
 func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
-	_ret := C.QAccessibleWidget_FocusChild(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_FocusChild(this.h)))
 }
 
 func (this *QAccessibleWidget) Rect() *QRect {
@@ -89,25 +84,22 @@ func (this *QAccessibleWidget) Rect() *QRect {
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
-	_ret := C.QAccessibleWidget_Parent(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_Parent(this.h)))
 }
 
 func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
-	_ret := C.QAccessibleWidget_Child(this.h, (C.int)(index))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.uintptr_t)(t))
+	var _ms *C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.int)(t))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QAccessibleWidget) Role() QAccessible__Role {
-	_ret := C.QAccessibleWidget_Role(this.h)
-	return (QAccessible__Role)(_ret)
+	return (QAccessible__Role)(C.QAccessibleWidget_Role(this.h))
 }
 
 func (this *QAccessibleWidget) State() *QAccessible__State {
@@ -136,8 +128,10 @@ func (this *QAccessibleWidget) ActionNames() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -156,8 +150,10 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

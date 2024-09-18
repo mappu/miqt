@@ -50,8 +50,7 @@ func NewQStatusBar2(parent *QWidget) *QStatusBar {
 }
 
 func (this *QStatusBar) MetaObject() *QMetaObject {
-	_ret := C.QStatusBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStatusBar_MetaObject(this.h)))
 }
 
 func QStatusBar_Tr(s string) string {
@@ -77,8 +76,7 @@ func (this *QStatusBar) AddWidget(widget *QWidget) {
 }
 
 func (this *QStatusBar) InsertWidget(index int, widget *QWidget) int {
-	_ret := C.QStatusBar_InsertWidget(this.h, (C.int)(index), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStatusBar_InsertWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QStatusBar) AddPermanentWidget(widget *QWidget) {
@@ -86,8 +84,7 @@ func (this *QStatusBar) AddPermanentWidget(widget *QWidget) {
 }
 
 func (this *QStatusBar) InsertPermanentWidget(index int, widget *QWidget) int {
-	_ret := C.QStatusBar_InsertPermanentWidget(this.h, (C.int)(index), widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStatusBar_InsertPermanentWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QStatusBar) RemoveWidget(widget *QWidget) {
@@ -99,8 +96,7 @@ func (this *QStatusBar) SetSizeGripEnabled(sizeGripEnabled bool) {
 }
 
 func (this *QStatusBar) IsSizeGripEnabled() bool {
-	_ret := C.QStatusBar_IsSizeGripEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStatusBar_IsSizeGripEnabled(this.h))
 }
 
 func (this *QStatusBar) CurrentMessage() string {
@@ -194,8 +190,7 @@ func (this *QStatusBar) AddWidget2(widget *QWidget, stretch int) {
 }
 
 func (this *QStatusBar) InsertWidget3(index int, widget *QWidget, stretch int) int {
-	_ret := C.QStatusBar_InsertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
-	return (int)(_ret)
+	return (int)(C.QStatusBar_InsertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
@@ -203,8 +198,7 @@ func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
 }
 
 func (this *QStatusBar) InsertPermanentWidget3(index int, widget *QWidget, stretch int) int {
-	_ret := C.QStatusBar_InsertPermanentWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
-	return (int)(_ret)
+	return (int)(C.QStatusBar_InsertPermanentWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {

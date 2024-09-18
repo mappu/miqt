@@ -15,11 +15,11 @@
 #include "gen_qboxlayout.h"
 #include "_cgo_export.h"
 
-QBoxLayout* QBoxLayout_new(uintptr_t param1) {
+QBoxLayout* QBoxLayout_new(int param1) {
 	return new QBoxLayout(static_cast<QBoxLayout::Direction>(param1));
 }
 
-QBoxLayout* QBoxLayout_new2(uintptr_t param1, QWidget* parent) {
+QBoxLayout* QBoxLayout_new2(int param1, QWidget* parent) {
 	return new QBoxLayout(static_cast<QBoxLayout::Direction>(param1), parent);
 }
 
@@ -41,12 +41,12 @@ struct miqt_string* QBoxLayout_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QBoxLayout_Direction(const QBoxLayout* self) {
+int QBoxLayout_Direction(const QBoxLayout* self) {
 	QBoxLayout::Direction _ret = self->direction();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QBoxLayout_SetDirection(QBoxLayout* self, uintptr_t direction) {
+void QBoxLayout_SetDirection(QBoxLayout* self, int direction) {
 	self->setDirection(static_cast<QBoxLayout::Direction>(direction));
 }
 
@@ -127,21 +127,15 @@ int QBoxLayout_Stretch(const QBoxLayout* self, int index) {
 }
 
 QSize* QBoxLayout_SizeHint(const QBoxLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QBoxLayout_MinimumSize(const QBoxLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QSize* QBoxLayout_MaximumSize(const QBoxLayout* self) {
-	QSize _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->maximumSize());
 }
 
 bool QBoxLayout_HasHeightForWidth(const QBoxLayout* self) {

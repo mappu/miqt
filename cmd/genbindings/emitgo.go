@@ -31,6 +31,10 @@ func (p CppParameter) RenderTypeGo() string {
 		return "[]" + t.RenderTypeGo()
 	}
 
+	if t, ok := p.QSetOf(); ok {
+		return "map[" + t.RenderTypeGo() + "]struct{}"
+	}
+
 	ret := ""
 	if p.ByRef || p.Pointer {
 		ret += "*"
@@ -78,23 +82,20 @@ func (p CppParameter) RenderTypeGo() string {
 		} else {
 			ret += "uint64"
 		}
-	case "qintptr", "uintptr_t", "intptr_t", "quintptr":
+	case "qintptr", "uintptr_t", "intptr_t", "quintptr", "QIntegerForSizeof<void *>::Unsigned", "QIntegerForSizeof<void *>::Signed":
 		ret += "uintptr"
 	default:
 
 		if p.IsFlagType() {
 			ret += "int"
 
-		} else if strings.Contains(p.ParameterType, `::`) {
-			if p.IsKnownEnum() {
-				ret += cabiClassName(p.ParameterType)
+		} else if p.IsKnownEnum() {
+			ret += cabiClassName(p.ParameterType)
 
-			} else if p.IsEnum() {
-				ret += "uintptr"
-			} else {
-				// Inner class
-				ret += cabiClassName(p.ParameterType)
-			}
+		} else if strings.Contains(p.ParameterType, `::`) {
+			// Inner class
+			ret += cabiClassName(p.ParameterType)
+
 		} else {
 			// Do not transform this type
 			ret += p.ParameterType
@@ -111,6 +112,10 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	if _, ok := p.QListOf(); ok {
+		return "*C.struct_miqt_array"
+	}
+
+	if _, ok := p.QSetOf(); ok {
 		return "*C.struct_miqt_array"
 	}
 
@@ -178,6 +183,8 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			// QApplication constructor. Convert 'args' into Qt's wanted types
 			// Qt has a warning in the docs saying these pointers must be valid
 			// for the entire lifetype of QApplication, so, malloc + never free
+			// This transformation only affects the Go side. The CABI side is
+			// projected naturally
 
 			preamble += "// Convert []string to long-lived int& argc, char** argv, never call free()\n"
 			preamble += "argc := (*C.int)(C.malloc(8))\n"
@@ -193,94 +200,92 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 			// Skip this parameter, already handled
 			skipNext = false
 
-		} else if p.ParameterType == "QString" {
-			// Go: convert string -> miqt_string*
-			// CABI: convert miqt_string* -> real QString
-
-			preamble += p.ParameterName + "_ms := miqt_strdupg(" + p.ParameterName + ")\n"
-			preamble += "defer C.free(" + p.ParameterName + "_ms)\n"
-			tmp = append(tmp, "(*C.struct_miqt_string)("+p.ParameterName+"_ms)")
-
-		} else if listType, ok := p.QListOf(); ok {
-			// QList<T>
-			// Go: convert T[] -> t* and len
-			// CABI: create a real QList<>
-
-			gfs.imports["runtime"] = struct{}{}
-			gfs.imports["unsafe"] = struct{}{}
-
-			if listType.ParameterType == "QString" {
-				// Combo
-
-				preamble += "// For the C ABI, malloc two C arrays; raw char* pointers and their lengths\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
-				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
-
-				preamble += "for i := range " + p.ParameterName + "{\n"
-				preamble += "single_ms := miqt_strdupg(" + p.ParameterName + "[i])\n"
-				preamble += "defer C.free(single_ms)\n"
-				preamble += p.ParameterName + "_CArray[i] = (*C.struct_miqt_string)(single_ms)\n"
-				preamble += "}\n"
-
-				preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + p.ParameterName + "_CArray)}\n"
-				preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + p.ParameterName + "_ma))\n"
-
-				tmp = append(tmp, p.ParameterName+"_ma")
-
-			} else {
-
-				preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-				preamble += p.ParameterName + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
-				preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_CArray))\n"
-
-				preamble += "for i := range " + p.ParameterName + "{\n"
-				if listType.QtClassType() {
-					preamble += p.ParameterName + "_CArray[i] = " + p.ParameterName + "[i].cPointer()\n"
-				} else {
-					preamble += p.ParameterName + "_CArray[i] = (" + listType.parameterTypeCgo() + ")(" + p.ParameterName + "[i])\n"
-				}
-				preamble += "}\n"
-
-				preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + p.ParameterName + "_CArray)}\n"
-				preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + p.ParameterName + "_ma))\n"
-
-				tmp = append(tmp, p.ParameterName+"_ma")
-			}
-
-		} else if p.Pointer && p.ParameterType == "char" {
-			// Single char* argument
-			gfs.imports["unsafe"] = struct{}{}
-			preamble += p.ParameterName + "_Cstring := C.CString(" + p.ParameterName + ")\n"
-			preamble += "defer C.free(unsafe.Pointer(" + p.ParameterName + "_Cstring))\n"
-			tmp = append(tmp, p.ParameterName+"_Cstring")
-
-		} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
-			// The C++ type is a pointer to Qt class
-			// We want our functions to accept the Go wrapper type, and forward as cPointer()
-			tmp = append(tmp, p.ParameterName+".cPointer()")
-
-		} else if p.IntType() || p.ParameterType == "bool" {
-			if p.Pointer || p.ByRef {
-				gfs.imports["unsafe"] = struct{}{}
-				tmp = append(tmp, "("+p.parameterTypeCgo()+")(unsafe.Pointer("+p.ParameterName+"))") // n.b. This may not work if the integer type conversion was wrong
-			} else {
-				tmp = append(tmp, "("+p.parameterTypeCgo()+")("+p.ParameterName+")")
-			}
-
 		} else {
-			// Default
-			tmp = append(tmp, p.ParameterName)
+			addPreamble, rvalue := gfs.emitParameterGo2CABIForwarding(p)
+
+			preamble += addPreamble
+			tmp = append(tmp, rvalue)
+
 		}
 	}
 
 	return preamble, strings.Join(tmp, ", ")
 }
 
+func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble string, rvalue string) {
+
+	nameprefix := makeNamePrefix(p.ParameterName)
+
+	if p.ParameterType == "QString" {
+		// Go: convert string -> miqt_string*
+		// CABI: convert miqt_string* -> real QString
+
+		preamble += nameprefix + "_ms := miqt_strdupg(" + p.ParameterName + ")\n"
+		preamble += "defer C.free(" + nameprefix + "_ms)\n"
+
+		rvalue = "(*C.struct_miqt_string)(" + nameprefix + "_ms)"
+
+	} else if listType, ok := p.QListOf(); ok {
+		// QList<T>
+		// Go: convert T[] -> t* and len
+		// CABI: create a real QList<>
+
+		gfs.imports["runtime"] = struct{}{}
+		gfs.imports["unsafe"] = struct{}{}
+
+		preamble += "// For the C ABI, malloc a C array of raw pointers\n"
+		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray))\n"
+
+		preamble += "for i := range " + p.ParameterName + "{\n"
+
+		listType.ParameterName = p.ParameterName + "[i]"
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(listType)
+		preamble += addPreamble
+		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
+		preamble += "}\n"
+
+		preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
+		preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + nameprefix + "_ma))\n"
+
+		rvalue = p.ParameterName + "_ma"
+
+	} else if _, ok := p.QSetOf(); ok {
+		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
+
+	} else if p.Pointer && p.ParameterType == "char" {
+		// Single char* argument
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_Cstring := C.CString(" + p.ParameterName + ")\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Cstring))\n"
+		rvalue = nameprefix + "_Cstring"
+
+	} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
+		// The C++ type is a pointer to Qt class
+		// We want our functions to accept the Go wrapper type, and forward as cPointer()
+		rvalue = p.ParameterName + ".cPointer()"
+
+	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() || p.ParameterType == "bool" {
+		if p.Pointer || p.ByRef {
+			gfs.imports["unsafe"] = struct{}{}
+			rvalue = "(" + p.parameterTypeCgo() + ")(unsafe.Pointer(" + p.ParameterName + "))" // n.b. This may not work if the integer type conversion was wrong
+		} else {
+			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.ParameterName + ")"
+		}
+
+	} else {
+		// Default
+		rvalue = p.ParameterName
+	}
+
+	return preamble, rvalue
+}
+
 func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue string) string {
 
 	shouldReturn := "return "
 	afterword := ""
-	namePrefix := rt.ParameterName
+	namePrefix := makeNamePrefix(rt.ParameterName)
 
 	if rt.ParameterType == "void" && !rt.Pointer {
 		shouldReturn = ""
@@ -309,37 +314,33 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
-		if t.ParameterType == "QString" {
-			// Combo
 
-			afterword += namePrefix + "_ret := make([]string, int(" + namePrefix + "_ma.len))\n"
-			afterword += "_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
-			afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
-			afterword += namePrefix + "_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))\n"
-			afterword += "C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*\n"
-			afterword += "}\n"
-			afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
-			afterword += assignExpr + " " + namePrefix + "_ret\n"
+		afterword += namePrefix + "_ret := make([]" + t.RenderTypeGo() + ", int(" + namePrefix + "_ma.len))\n"
+		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
+		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
-		} else {
+		afterword += gfs.emitCabiToGo(namePrefix+"_ret[i] = ", t, namePrefix+"_outCast[i]")
 
-			afterword += "" + namePrefix + "_ret := make([]" + t.RenderTypeGo() + ", int(" + namePrefix + "_ma.len))\n"
-			afterword += "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // mrs jackson\n"
-			afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
-			if t.QtClassType() {
-				if !t.Pointer {
-					// new, but then dereference it
-					afterword += "" + namePrefix + "_ret[i] = *new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
-				} else {
-					afterword += "" + namePrefix + "_ret[i] = new" + cabiClassName(t.ParameterType) + "(_outCast[i])\n"
-				}
-			} else { // plain int type
-				afterword += "" + namePrefix + "_ret[i] = (" + t.RenderTypeGo() + ")(_outCast[i])\n"
-			}
-			afterword += "}\n"
-			afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
-			afterword += assignExpr + " " + namePrefix + "_ret\n"
-		}
+		afterword += "}\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
+		afterword += assignExpr + " " + namePrefix + "_ret\n"
+
+	} else if t, ok := rt.QSetOf(); ok {
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
+
+		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo() + "]struct{}, int(" + namePrefix + "_ma.len))\n"
+		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
+		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
+
+		afterword += gfs.emitCabiToGo(namePrefix+"_element := ", t, namePrefix+"_outCast[i]") + "\n"
+		afterword += namePrefix + "_ret[" + namePrefix + "_element] = struct{}{}\n"
+
+		afterword += "}\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
+		afterword += assignExpr + " " + namePrefix + "_ret\n"
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
@@ -347,7 +348,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		if rt.Pointer || rt.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
-			afterword = assignExpr + " new" + cabiClassName(rt.ParameterType) + "_U(unsafe.Pointer(" + namePrefix + "_ret))"
+			return assignExpr + " new" + cabiClassName(rt.ParameterType) + "_U(unsafe.Pointer(" + rvalue + "))"
 
 		} else {
 			// This is return by value, but CABI has new'd it into a
@@ -369,10 +370,10 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			}
 		}
 
-	} else if rt.IntType() || rt.ParameterType == "bool" {
+	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 		// Need to cast Cgo type to Go int type
-		shouldReturn = "" + namePrefix + "_ret := "
-		afterword += assignExpr + "(" + rt.RenderTypeGo() + ")(" + namePrefix + "_ret)\n"
+		// Optimize assignment to avoid temporary
+		return assignExpr + "(" + rt.RenderTypeGo() + ")(" + rvalue + ")\n"
 
 	}
 
@@ -400,19 +401,26 @@ import "C"
 	}
 
 	for _, e := range src.Enums {
+		if e.EnumName == "" {
+			continue // Removed by transformRedundant AST pass
+		}
+
 		goEnumName := cabiClassName(e.EnumName)
 
 		ret.WriteString(`
-		type ` + goEnumName + ` ` + parseSingleTypeString(e.UnderlyingType).RenderTypeGo() + `
-		
-		const (
+		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo() + `
 		`)
 
-		for _, ee := range e.Entries {
-			ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
-		}
+		if len(e.Entries) > 0 {
 
-		ret.WriteString("\n)\n\n")
+			ret.WriteString("const (\n")
+
+			for _, ee := range e.Entries {
+				ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
+			}
+
+			ret.WriteString("\n)\n\n")
+		}
 	}
 
 	for _, c := range src.Classes {

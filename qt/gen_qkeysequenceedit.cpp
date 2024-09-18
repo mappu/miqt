@@ -44,9 +44,7 @@ struct miqt_string* QKeySequenceEdit_TrUtf8(const char* s) {
 }
 
 QKeySequence* QKeySequenceEdit_KeySequence(const QKeySequenceEdit* self) {
-	QKeySequence _ret = self->keySequence();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->keySequence());
 }
 
 void QKeySequenceEdit_SetKeySequence(QKeySequenceEdit* self, QKeySequence* keySequence) {

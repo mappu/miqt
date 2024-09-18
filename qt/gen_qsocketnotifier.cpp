@@ -9,12 +9,12 @@
 #include "gen_qsocketnotifier.h"
 #include "_cgo_export.h"
 
-QSocketNotifier* QSocketNotifier_new(uintptr_t socket, uintptr_t param2) {
-	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2));
+QSocketNotifier* QSocketNotifier_new(intptr_t socket, int param2) {
+	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
-QSocketNotifier* QSocketNotifier_new2(uintptr_t socket, uintptr_t param2, QObject* parent) {
-	return new QSocketNotifier(static_cast<qptrdiff>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
+QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2, QObject* parent) {
+	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
 QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {
@@ -35,13 +35,14 @@ struct miqt_string* QSocketNotifier_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-ptrdiff_t QSocketNotifier_Socket(const QSocketNotifier* self) {
-	return self->socket();
+intptr_t QSocketNotifier_Socket(const QSocketNotifier* self) {
+	qintptr _ret = self->socket();
+	return static_cast<intptr_t>(_ret);
 }
 
-uintptr_t QSocketNotifier_Type(const QSocketNotifier* self) {
+int QSocketNotifier_Type(const QSocketNotifier* self) {
 	QSocketNotifier::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QSocketNotifier_IsEnabled(const QSocketNotifier* self) {
@@ -92,7 +93,7 @@ QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
 	return new QSocketDescriptor(*param1);
 }
 
-QSocketDescriptor* QSocketDescriptor_new3(uintptr_t descriptor) {
+QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
 #ifdef Q_OS_LINUX
 	return new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
 #else

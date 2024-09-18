@@ -70,8 +70,8 @@ struct miqt_string* QMenuBar_Tr2(const char* s, const char* c);
 struct miqt_string* QMenuBar_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QMenuBar_TrUtf82(const char* s, const char* c);
 struct miqt_string* QMenuBar_TrUtf83(const char* s, const char* c, int n);
-void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, uintptr_t corner);
-QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, uintptr_t corner);
+void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, int corner);
+QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, int corner);
 void QMenuBar_Delete(QMenuBar* self);
 
 #ifdef __cplusplus

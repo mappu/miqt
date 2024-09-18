@@ -60,27 +60,25 @@ void QDataWidgetMapper_SetRootIndex(QDataWidgetMapper* self, QModelIndex* index)
 }
 
 QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self) {
-	QModelIndex _ret = self->rootIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->rootIndex());
 }
 
-void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrientation) {
+void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, int aOrientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(aOrientation));
 }
 
-uintptr_t QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
+int QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy) {
+void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, int policy) {
 	self->setSubmitPolicy(static_cast<QDataWidgetMapper::SubmitPolicy>(policy));
 }
 
-uintptr_t QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
+int QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
 	QDataWidgetMapper::SubmitPolicy _ret = self->submitPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDataWidgetMapper_AddMapping(QDataWidgetMapper* self, QWidget* widget, int section) {
@@ -100,9 +98,7 @@ int QDataWidgetMapper_MappedSection(const QDataWidgetMapper* self, QWidget* widg
 }
 
 QByteArray* QDataWidgetMapper_MappedPropertyName(const QDataWidgetMapper* self, QWidget* widget) {
-	QByteArray _ret = self->mappedPropertyName(widget);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->mappedPropertyName(widget));
 }
 
 QWidget* QDataWidgetMapper_MappedWidgetAt(const QDataWidgetMapper* self, int section) {

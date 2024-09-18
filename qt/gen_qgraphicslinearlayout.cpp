@@ -10,7 +10,7 @@ QGraphicsLinearLayout* QGraphicsLinearLayout_new() {
 	return new QGraphicsLinearLayout();
 }
 
-QGraphicsLinearLayout* QGraphicsLinearLayout_new2(uintptr_t orientation) {
+QGraphicsLinearLayout* QGraphicsLinearLayout_new2(int orientation) {
 	return new QGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation));
 }
 
@@ -18,17 +18,17 @@ QGraphicsLinearLayout* QGraphicsLinearLayout_new3(QGraphicsLayoutItem* parent) {
 	return new QGraphicsLinearLayout(parent);
 }
 
-QGraphicsLinearLayout* QGraphicsLinearLayout_new4(uintptr_t orientation, QGraphicsLayoutItem* parent) {
+QGraphicsLinearLayout* QGraphicsLinearLayout_new4(int orientation, QGraphicsLayoutItem* parent) {
 	return new QGraphicsLinearLayout(static_cast<Qt::Orientation>(orientation), parent);
 }
 
-void QGraphicsLinearLayout_SetOrientation(QGraphicsLinearLayout* self, uintptr_t orientation) {
+void QGraphicsLinearLayout_SetOrientation(QGraphicsLinearLayout* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QGraphicsLinearLayout_Orientation(const QGraphicsLinearLayout* self) {
+int QGraphicsLinearLayout_Orientation(const QGraphicsLinearLayout* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsLinearLayout_AddItem(QGraphicsLinearLayout* self, QGraphicsLayoutItem* item) {
@@ -60,7 +60,8 @@ void QGraphicsLinearLayout_SetSpacing(QGraphicsLinearLayout* self, double spacin
 }
 
 double QGraphicsLinearLayout_Spacing(const QGraphicsLinearLayout* self) {
-	return self->spacing();
+	qreal _ret = self->spacing();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLinearLayout_SetItemSpacing(QGraphicsLinearLayout* self, int index, double spacing) {
@@ -68,7 +69,8 @@ void QGraphicsLinearLayout_SetItemSpacing(QGraphicsLinearLayout* self, int index
 }
 
 double QGraphicsLinearLayout_ItemSpacing(const QGraphicsLinearLayout* self, int index) {
-	return self->itemSpacing(static_cast<int>(index));
+	qreal _ret = self->itemSpacing(static_cast<int>(index));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLinearLayout_SetStretchFactor(QGraphicsLinearLayout* self, QGraphicsLayoutItem* item, int stretch) {
@@ -104,10 +106,8 @@ void QGraphicsLinearLayout_Invalidate(QGraphicsLinearLayout* self) {
 	self->invalidate();
 }
 
-QSizeF* QGraphicsLinearLayout_SizeHint(const QGraphicsLinearLayout* self, uintptr_t which) {
-	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QGraphicsLinearLayout_SizeHint(const QGraphicsLinearLayout* self, int which) {
+	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
 void QGraphicsLinearLayout_Dump(const QGraphicsLinearLayout* self) {
@@ -122,10 +122,8 @@ void QGraphicsLinearLayout_InsertStretch2(QGraphicsLinearLayout* self, int index
 	self->insertStretch(static_cast<int>(index), static_cast<int>(stretch));
 }
 
-QSizeF* QGraphicsLinearLayout_SizeHint2(const QGraphicsLinearLayout* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF _ret = self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QGraphicsLinearLayout_SizeHint2(const QGraphicsLinearLayout* self, int which, QSizeF* constraint) {
+	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
 void QGraphicsLinearLayout_Dump1(const QGraphicsLinearLayout* self, int indent) {

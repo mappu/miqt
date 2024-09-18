@@ -42,8 +42,8 @@ QModelIndex* QIdentityProxyModel_MapFromSource(const QIdentityProxyModel* self, 
 QModelIndex* QIdentityProxyModel_MapToSource(const QIdentityProxyModel* self, QModelIndex* proxyIndex);
 QModelIndex* QIdentityProxyModel_Parent(const QIdentityProxyModel* self, QModelIndex* child);
 int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self);
-QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, uintptr_t orientation);
-bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
+QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, int orientation);
+bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 QModelIndex* QIdentityProxyModel_Sibling(const QIdentityProxyModel* self, int row, int column, QModelIndex* idx);
 struct miqt_array* QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value);
 void QIdentityProxyModel_SetSourceModel(QIdentityProxyModel* self, QAbstractItemModel* sourceModel);
@@ -60,7 +60,7 @@ struct miqt_string* QIdentityProxyModel_TrUtf83(const char* s, const char* c, in
 int QIdentityProxyModel_ColumnCount1(const QIdentityProxyModel* self, QModelIndex* parent);
 QModelIndex* QIdentityProxyModel_Index3(const QIdentityProxyModel* self, int row, int column, QModelIndex* parent);
 int QIdentityProxyModel_RowCount1(const QIdentityProxyModel* self, QModelIndex* parent);
-QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, uintptr_t orientation, int role);
+QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, int orientation, int role);
 struct miqt_array* QIdentityProxyModel_Match4(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits);
 struct miqt_array* QIdentityProxyModel_Match5(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 bool QIdentityProxyModel_InsertColumns3(QIdentityProxyModel* self, int column, int count, QModelIndex* parent);

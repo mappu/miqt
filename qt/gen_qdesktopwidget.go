@@ -44,8 +44,7 @@ func NewQDesktopWidget() *QDesktopWidget {
 }
 
 func (this *QDesktopWidget) MetaObject() *QMetaObject {
-	_ret := C.QDesktopWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDesktopWidget_MetaObject(this.h)))
 }
 
 func QDesktopWidget_Tr(s string) string {
@@ -67,8 +66,7 @@ func QDesktopWidget_TrUtf8(s string) string {
 }
 
 func (this *QDesktopWidget) ScreenNumber() int {
-	_ret := C.QDesktopWidget_ScreenNumber(this.h)
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_ScreenNumber(this.h))
 }
 
 func (this *QDesktopWidget) ScreenGeometry(widget *QWidget) *QRect {
@@ -86,33 +84,27 @@ func (this *QDesktopWidget) AvailableGeometry(widget *QWidget) *QRect {
 }
 
 func (this *QDesktopWidget) IsVirtualDesktop() bool {
-	_ret := C.QDesktopWidget_IsVirtualDesktop(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDesktopWidget_IsVirtualDesktop(this.h))
 }
 
 func (this *QDesktopWidget) NumScreens() int {
-	_ret := C.QDesktopWidget_NumScreens(this.h)
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_NumScreens(this.h))
 }
 
 func (this *QDesktopWidget) ScreenCount() int {
-	_ret := C.QDesktopWidget_ScreenCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_ScreenCount(this.h))
 }
 
 func (this *QDesktopWidget) PrimaryScreen() int {
-	_ret := C.QDesktopWidget_PrimaryScreen(this.h)
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_PrimaryScreen(this.h))
 }
 
 func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 *QPoint) int {
-	_ret := C.QDesktopWidget_ScreenNumberWithQPoint(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_ScreenNumberWithQPoint(this.h, param1.cPointer()))
 }
 
 func (this *QDesktopWidget) Screen() *QWidget {
-	_ret := C.QDesktopWidget_Screen(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDesktopWidget_Screen(this.h)))
 }
 
 func (this *QDesktopWidget) ScreenGeometry2() *QRect {
@@ -158,8 +150,7 @@ func miqt_exec_callback_QDesktopWidget_Resized(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -179,8 +170,7 @@ func miqt_exec_callback_QDesktopWidget_WorkAreaResized(cb *C.void, param1 C.int)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -200,8 +190,7 @@ func miqt_exec_callback_QDesktopWidget_ScreenCountChanged(cb *C.void, param1 C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -268,13 +257,11 @@ func QDesktopWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDesktopWidget) ScreenNumber1(widget *QWidget) int {
-	_ret := C.QDesktopWidget_ScreenNumber1(this.h, widget.cPointer())
-	return (int)(_ret)
+	return (int)(C.QDesktopWidget_ScreenNumber1(this.h, widget.cPointer()))
 }
 
 func (this *QDesktopWidget) Screen1(screen int) *QWidget {
-	_ret := C.QDesktopWidget_Screen1(this.h, (C.int)(screen))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QDesktopWidget_Screen1(this.h, (C.int)(screen))))
 }
 
 func (this *QDesktopWidget) ScreenGeometry1(screen int) *QRect {

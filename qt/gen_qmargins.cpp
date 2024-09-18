@@ -125,19 +125,23 @@ bool QMarginsF_IsNull(const QMarginsF* self) {
 }
 
 double QMarginsF_Left(const QMarginsF* self) {
-	return self->left();
+	qreal _ret = self->left();
+	return static_cast<double>(_ret);
 }
 
 double QMarginsF_Top(const QMarginsF* self) {
-	return self->top();
+	qreal _ret = self->top();
+	return static_cast<double>(_ret);
 }
 
 double QMarginsF_Right(const QMarginsF* self) {
-	return self->right();
+	qreal _ret = self->right();
+	return static_cast<double>(_ret);
 }
 
 double QMarginsF_Bottom(const QMarginsF* self) {
-	return self->bottom();
+	qreal _ret = self->bottom();
+	return static_cast<double>(_ret);
 }
 
 void QMarginsF_SetLeft(QMarginsF* self, double left) {
@@ -193,9 +197,7 @@ QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor) {
 }
 
 QMargins* QMarginsF_ToMargins(const QMarginsF* self) {
-	QMargins _ret = self->toMargins();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMargins*>(new QMargins(_ret));
+	return new QMargins(self->toMargins());
 }
 
 void QMarginsF_Delete(QMarginsF* self) {

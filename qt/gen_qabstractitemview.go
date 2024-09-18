@@ -94,8 +94,7 @@ func newQAbstractItemView_U(h unsafe.Pointer) *QAbstractItemView {
 }
 
 func (this *QAbstractItemView) MetaObject() *QMetaObject {
-	_ret := C.QAbstractItemView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractItemView_MetaObject(this.h)))
 }
 
 func QAbstractItemView_Tr(s string) string {
@@ -121,8 +120,7 @@ func (this *QAbstractItemView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QAbstractItemView) Model() *QAbstractItemModel {
-	_ret := C.QAbstractItemView_Model(this.h)
-	return newQAbstractItemModel_U(unsafe.Pointer(_ret))
+	return newQAbstractItemModel_U(unsafe.Pointer(C.QAbstractItemView_Model(this.h)))
 }
 
 func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -130,8 +128,7 @@ func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionM
 }
 
 func (this *QAbstractItemView) SelectionModel() *QItemSelectionModel {
-	_ret := C.QAbstractItemView_SelectionModel(this.h)
-	return newQItemSelectionModel_U(unsafe.Pointer(_ret))
+	return newQItemSelectionModel_U(unsafe.Pointer(C.QAbstractItemView_SelectionModel(this.h)))
 }
 
 func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -139,26 +136,23 @@ func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
-	_ret := C.QAbstractItemView_ItemDelegate(this.h)
-	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
+	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegate(this.h)))
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
-	C.QAbstractItemView_SetSelectionMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) SelectionMode() QAbstractItemView__SelectionMode {
-	_ret := C.QAbstractItemView_SelectionMode(this.h)
-	return (QAbstractItemView__SelectionMode)(_ret)
+	return (QAbstractItemView__SelectionMode)(C.QAbstractItemView_SelectionMode(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionBehavior(behavior QAbstractItemView__SelectionBehavior) {
-	C.QAbstractItemView_SetSelectionBehavior(this.h, (C.uintptr_t)(behavior))
+	C.QAbstractItemView_SetSelectionBehavior(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) SelectionBehavior() QAbstractItemView__SelectionBehavior {
-	_ret := C.QAbstractItemView_SelectionBehavior(this.h)
-	return (QAbstractItemView__SelectionBehavior)(_ret)
+	return (QAbstractItemView__SelectionBehavior)(C.QAbstractItemView_SelectionBehavior(this.h))
 }
 
 func (this *QAbstractItemView) CurrentIndex() *QModelIndex {
@@ -180,17 +174,15 @@ func (this *QAbstractItemView) SetEditTriggers(triggers int) {
 }
 
 func (this *QAbstractItemView) EditTriggers() int {
-	_ret := C.QAbstractItemView_EditTriggers(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractItemView_EditTriggers(this.h))
 }
 
 func (this *QAbstractItemView) SetVerticalScrollMode(mode QAbstractItemView__ScrollMode) {
-	C.QAbstractItemView_SetVerticalScrollMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetVerticalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) VerticalScrollMode() QAbstractItemView__ScrollMode {
-	_ret := C.QAbstractItemView_VerticalScrollMode(this.h)
-	return (QAbstractItemView__ScrollMode)(_ret)
+	return (QAbstractItemView__ScrollMode)(C.QAbstractItemView_VerticalScrollMode(this.h))
 }
 
 func (this *QAbstractItemView) ResetVerticalScrollMode() {
@@ -198,12 +190,11 @@ func (this *QAbstractItemView) ResetVerticalScrollMode() {
 }
 
 func (this *QAbstractItemView) SetHorizontalScrollMode(mode QAbstractItemView__ScrollMode) {
-	C.QAbstractItemView_SetHorizontalScrollMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetHorizontalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) HorizontalScrollMode() QAbstractItemView__ScrollMode {
-	_ret := C.QAbstractItemView_HorizontalScrollMode(this.h)
-	return (QAbstractItemView__ScrollMode)(_ret)
+	return (QAbstractItemView__ScrollMode)(C.QAbstractItemView_HorizontalScrollMode(this.h))
 }
 
 func (this *QAbstractItemView) ResetHorizontalScrollMode() {
@@ -215,8 +206,7 @@ func (this *QAbstractItemView) SetAutoScroll(enable bool) {
 }
 
 func (this *QAbstractItemView) HasAutoScroll() bool {
-	_ret := C.QAbstractItemView_HasAutoScroll(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_HasAutoScroll(this.h))
 }
 
 func (this *QAbstractItemView) SetAutoScrollMargin(margin int) {
@@ -224,8 +214,7 @@ func (this *QAbstractItemView) SetAutoScrollMargin(margin int) {
 }
 
 func (this *QAbstractItemView) AutoScrollMargin() int {
-	_ret := C.QAbstractItemView_AutoScrollMargin(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractItemView_AutoScrollMargin(this.h))
 }
 
 func (this *QAbstractItemView) SetTabKeyNavigation(enable bool) {
@@ -233,8 +222,7 @@ func (this *QAbstractItemView) SetTabKeyNavigation(enable bool) {
 }
 
 func (this *QAbstractItemView) TabKeyNavigation() bool {
-	_ret := C.QAbstractItemView_TabKeyNavigation(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_TabKeyNavigation(this.h))
 }
 
 func (this *QAbstractItemView) SetDropIndicatorShown(enable bool) {
@@ -242,8 +230,7 @@ func (this *QAbstractItemView) SetDropIndicatorShown(enable bool) {
 }
 
 func (this *QAbstractItemView) ShowDropIndicator() bool {
-	_ret := C.QAbstractItemView_ShowDropIndicator(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_ShowDropIndicator(this.h))
 }
 
 func (this *QAbstractItemView) SetDragEnabled(enable bool) {
@@ -251,8 +238,7 @@ func (this *QAbstractItemView) SetDragEnabled(enable bool) {
 }
 
 func (this *QAbstractItemView) DragEnabled() bool {
-	_ret := C.QAbstractItemView_DragEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_DragEnabled(this.h))
 }
 
 func (this *QAbstractItemView) SetDragDropOverwriteMode(overwrite bool) {
@@ -260,26 +246,23 @@ func (this *QAbstractItemView) SetDragDropOverwriteMode(overwrite bool) {
 }
 
 func (this *QAbstractItemView) DragDropOverwriteMode() bool {
-	_ret := C.QAbstractItemView_DragDropOverwriteMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_DragDropOverwriteMode(this.h))
 }
 
 func (this *QAbstractItemView) SetDragDropMode(behavior QAbstractItemView__DragDropMode) {
-	C.QAbstractItemView_SetDragDropMode(this.h, (C.uintptr_t)(behavior))
+	C.QAbstractItemView_SetDragDropMode(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) DragDropMode() QAbstractItemView__DragDropMode {
-	_ret := C.QAbstractItemView_DragDropMode(this.h)
-	return (QAbstractItemView__DragDropMode)(_ret)
+	return (QAbstractItemView__DragDropMode)(C.QAbstractItemView_DragDropMode(this.h))
 }
 
 func (this *QAbstractItemView) SetDefaultDropAction(dropAction DropAction) {
-	C.QAbstractItemView_SetDefaultDropAction(this.h, (C.uintptr_t)(dropAction))
+	C.QAbstractItemView_SetDefaultDropAction(this.h, (C.int)(dropAction))
 }
 
 func (this *QAbstractItemView) DefaultDropAction() DropAction {
-	_ret := C.QAbstractItemView_DefaultDropAction(this.h)
-	return (DropAction)(_ret)
+	return (DropAction)(C.QAbstractItemView_DefaultDropAction(this.h))
 }
 
 func (this *QAbstractItemView) SetAlternatingRowColors(enable bool) {
@@ -287,8 +270,7 @@ func (this *QAbstractItemView) SetAlternatingRowColors(enable bool) {
 }
 
 func (this *QAbstractItemView) AlternatingRowColors() bool {
-	_ret := C.QAbstractItemView_AlternatingRowColors(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_AlternatingRowColors(this.h))
 }
 
 func (this *QAbstractItemView) SetIconSize(size *QSize) {
@@ -303,12 +285,11 @@ func (this *QAbstractItemView) IconSize() *QSize {
 }
 
 func (this *QAbstractItemView) SetTextElideMode(mode TextElideMode) {
-	C.QAbstractItemView_SetTextElideMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetTextElideMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) TextElideMode() TextElideMode {
-	_ret := C.QAbstractItemView_TextElideMode(this.h)
-	return (TextElideMode)(_ret)
+	return (TextElideMode)(C.QAbstractItemView_TextElideMode(this.h))
 }
 
 func (this *QAbstractItemView) KeyboardSearch(search string) {
@@ -343,13 +324,11 @@ func (this *QAbstractItemView) SizeHintForIndex(index *QModelIndex) *QSize {
 }
 
 func (this *QAbstractItemView) SizeHintForRow(row int) int {
-	_ret := C.QAbstractItemView_SizeHintForRow(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QAbstractItemView_SizeHintForRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemView) SizeHintForColumn(column int) int {
-	_ret := C.QAbstractItemView_SizeHintForColumn(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QAbstractItemView_SizeHintForColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemView) OpenPersistentEditor(index *QModelIndex) {
@@ -361,8 +340,7 @@ func (this *QAbstractItemView) ClosePersistentEditor(index *QModelIndex) {
 }
 
 func (this *QAbstractItemView) IsPersistentEditorOpen(index *QModelIndex) bool {
-	_ret := C.QAbstractItemView_IsPersistentEditorOpen(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QAbstractItemView_IsPersistentEditorOpen(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidget) {
@@ -370,8 +348,7 @@ func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidge
 }
 
 func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	_ret := C.QAbstractItemView_IndexWidget(this.h, index.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QAbstractItemView_IndexWidget(this.h, index.cPointer())))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
@@ -379,8 +356,7 @@ func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstrac
 }
 
 func (this *QAbstractItemView) ItemDelegateForRow(row int) *QAbstractItemDelegate {
-	_ret := C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))
-	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
+	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QAbstractItemDelegate) {
@@ -388,17 +364,15 @@ func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QA
 }
 
 func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemDelegate {
-	_ret := C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))
-	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
+	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))))
 }
 
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	_ret := C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())
-	return newQAbstractItemDelegate_U(unsafe.Pointer(_ret))
+	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())))
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
-	_ret := C.QAbstractItemView_InputMethodQuery(this.h, (C.uintptr_t)(query))
+	_ret := C.QAbstractItemView_InputMethodQuery(this.h, (C.int)(query))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -459,8 +433,7 @@ func miqt_exec_callback_QAbstractItemView_Pressed(cb *C.void, index *C.QModelInd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -480,8 +453,7 @@ func miqt_exec_callback_QAbstractItemView_Clicked(cb *C.void, index *C.QModelInd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -501,8 +473,7 @@ func miqt_exec_callback_QAbstractItemView_DoubleClicked(cb *C.void, index *C.QMo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -522,8 +493,7 @@ func miqt_exec_callback_QAbstractItemView_Activated(cb *C.void, index *C.QModelI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -543,8 +513,7 @@ func miqt_exec_callback_QAbstractItemView_Entered(cb *C.void, index *C.QModelInd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -581,8 +550,7 @@ func miqt_exec_callback_QAbstractItemView_IconSizeChanged(cb *C.void, size *C.QS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	size_ret := size
-	slotval1 := newQSize_U(unsafe.Pointer(size_ret))
+	slotval1 := newQSize_U(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }
@@ -632,7 +600,7 @@ func QAbstractItemView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractItemView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

@@ -42,7 +42,7 @@ void QAbstractTextDocumentLayout_Draw(QAbstractTextDocumentLayout* self, QPainte
 	self->draw(painter, *context);
 }
 
-int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self, QPointF* point, uintptr_t accuracy) {
+int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self, QPointF* point, int accuracy) {
 	return self->hitTest(*point, static_cast<Qt::HitTestAccuracy>(accuracy));
 }
 
@@ -61,15 +61,11 @@ struct miqt_string* QAbstractTextDocumentLayout_ImageAt(const QAbstractTextDocum
 }
 
 QTextFormat* QAbstractTextDocumentLayout_FormatAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextFormat _ret = self->formatAt(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFormat*>(new QTextFormat(_ret));
+	return new QTextFormat(self->formatAt(*pos));
 }
 
 QTextBlock* QAbstractTextDocumentLayout_BlockWithMarkerAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QTextBlock _ret = self->blockWithMarkerAt(*pos);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->blockWithMarkerAt(*pos));
 }
 
 int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* self) {
@@ -77,21 +73,15 @@ int QAbstractTextDocumentLayout_PageCount(const QAbstractTextDocumentLayout* sel
 }
 
 QSizeF* QAbstractTextDocumentLayout_DocumentSize(const QAbstractTextDocumentLayout* self) {
-	QSizeF _ret = self->documentSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->documentSize());
 }
 
 QRectF* QAbstractTextDocumentLayout_FrameBoundingRect(const QAbstractTextDocumentLayout* self, QTextFrame* frame) {
-	QRectF _ret = self->frameBoundingRect(frame);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->frameBoundingRect(frame));
 }
 
 QRectF* QAbstractTextDocumentLayout_BlockBoundingRect(const QAbstractTextDocumentLayout* self, QTextBlock* block) {
-	QRectF _ret = self->blockBoundingRect(*block);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->blockBoundingRect(*block));
 }
 
 void QAbstractTextDocumentLayout_SetPaintDevice(QAbstractTextDocumentLayout* self, QPaintDevice* device) {
@@ -112,6 +102,10 @@ void QAbstractTextDocumentLayout_RegisterHandler(QAbstractTextDocumentLayout* se
 
 void QAbstractTextDocumentLayout_UnregisterHandler(QAbstractTextDocumentLayout* self, int objectType) {
 	self->unregisterHandler(static_cast<int>(objectType));
+}
+
+QTextObjectInterface* QAbstractTextDocumentLayout_HandlerForObject(const QAbstractTextDocumentLayout* self, int objectType) {
+	return self->handlerForObject(static_cast<int>(objectType));
 }
 
 void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self) {
@@ -211,13 +205,15 @@ void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self) {
 }
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
-	QSizeF _ret = self->intrinsicSize(doc, static_cast<int>(posInDocument), *format);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->intrinsicSize(doc, static_cast<int>(posInDocument), *format));
 }
 
 void QTextObjectInterface_DrawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {
 	self->drawObject(painter, *rect, doc, static_cast<int>(posInDocument), *format);
+}
+
+void QTextObjectInterface_OperatorAssign(QTextObjectInterface* self, QTextObjectInterface* param1) {
+	self->operator=(*param1);
 }
 
 void QTextObjectInterface_Delete(QTextObjectInterface* self) {
@@ -226,6 +222,10 @@ void QTextObjectInterface_Delete(QTextObjectInterface* self) {
 
 QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1) {
 	return new QAbstractTextDocumentLayout::Selection(*param1);
+}
+
+void QAbstractTextDocumentLayout__Selection_OperatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
+	self->operator=(*param1);
 }
 
 void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self) {
@@ -238,6 +238,10 @@ QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintCon
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
 	return new QAbstractTextDocumentLayout::PaintContext(*param1);
+}
+
+void QAbstractTextDocumentLayout__PaintContext_OperatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {
+	self->operator=(*param1);
 }
 
 void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self) {

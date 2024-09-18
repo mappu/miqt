@@ -22,15 +22,11 @@ QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
 }
 
 QByteArray* QMetaMethod_MethodSignature(const QMetaMethod* self) {
-	QByteArray _ret = self->methodSignature();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->methodSignature());
 }
 
 QByteArray* QMetaMethod_Name(const QMetaMethod* self) {
-	QByteArray _ret = self->name();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->name());
 }
 
 const char* QMetaMethod_TypeName(const QMetaMethod* self) {
@@ -55,8 +51,8 @@ void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types) {
 
 struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterTypes();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -68,8 +64,8 @@ struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 
 struct miqt_array* QMetaMethod_ParameterNames(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterNames();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -83,14 +79,14 @@ const char* QMetaMethod_Tag(const QMetaMethod* self) {
 	return (const char*) self->tag();
 }
 
-uintptr_t QMetaMethod_Access(const QMetaMethod* self) {
+int QMetaMethod_Access(const QMetaMethod* self) {
 	QMetaMethod::Access _ret = self->access();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMetaMethod_MethodType(const QMetaMethod* self) {
+int QMetaMethod_MethodType(const QMetaMethod* self) {
 	QMetaMethod::MethodType _ret = self->methodType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QMetaMethod_Attributes(const QMetaMethod* self) {
@@ -109,7 +105,7 @@ QMetaObject* QMetaMethod_EnclosingMetaObject(const QMetaMethod* self) {
 	return (QMetaObject*) self->enclosingMetaObject();
 }
 
-bool QMetaMethod_Invoke(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue) {
+bool QMetaMethod_Invoke(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue);
 }
 
@@ -117,7 +113,7 @@ bool QMetaMethod_Invoke2(const QMetaMethod* self, QObject* object, QGenericRetur
 	return self->invoke(object, *returnValue);
 }
 
-bool QMetaMethod_Invoke3(const QMetaMethod* self, QObject* object, uintptr_t connectionType) {
+bool QMetaMethod_Invoke3(const QMetaMethod* self, QObject* object, int connectionType) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType));
 }
 
@@ -129,43 +125,43 @@ bool QMetaMethod_IsValid(const QMetaMethod* self) {
 	return self->isValid();
 }
 
-bool QMetaMethod_Invoke4(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0) {
+bool QMetaMethod_Invoke4(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0);
 }
 
-bool QMetaMethod_Invoke5(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1) {
+bool QMetaMethod_Invoke5(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1);
 }
 
-bool QMetaMethod_Invoke6(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
+bool QMetaMethod_Invoke6(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2);
 }
 
-bool QMetaMethod_Invoke7(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
+bool QMetaMethod_Invoke7(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3);
 }
 
-bool QMetaMethod_Invoke8(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
+bool QMetaMethod_Invoke8(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4);
 }
 
-bool QMetaMethod_Invoke9(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
+bool QMetaMethod_Invoke9(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4, *val5);
 }
 
-bool QMetaMethod_Invoke10(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
+bool QMetaMethod_Invoke10(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6);
 }
 
-bool QMetaMethod_Invoke11(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
+bool QMetaMethod_Invoke11(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
 }
 
-bool QMetaMethod_Invoke12(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
+bool QMetaMethod_Invoke12(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
 }
 
-bool QMetaMethod_Invoke13(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
+bool QMetaMethod_Invoke13(const QMetaMethod* self, QObject* object, int connectionType, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
@@ -209,43 +205,43 @@ bool QMetaMethod_Invoke122(const QMetaMethod* self, QObject* object, QGenericRet
 	return self->invoke(object, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
-bool QMetaMethod_Invoke33(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0) {
+bool QMetaMethod_Invoke33(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0);
 }
 
-bool QMetaMethod_Invoke43(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1) {
+bool QMetaMethod_Invoke43(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1);
 }
 
-bool QMetaMethod_Invoke53(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
+bool QMetaMethod_Invoke53(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2);
 }
 
-bool QMetaMethod_Invoke63(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
+bool QMetaMethod_Invoke63(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3);
 }
 
-bool QMetaMethod_Invoke73(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
+bool QMetaMethod_Invoke73(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4);
 }
 
-bool QMetaMethod_Invoke83(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
+bool QMetaMethod_Invoke83(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4, *val5);
 }
 
-bool QMetaMethod_Invoke93(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
+bool QMetaMethod_Invoke93(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4, *val5, *val6);
 }
 
-bool QMetaMethod_Invoke103(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
+bool QMetaMethod_Invoke103(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
 }
 
-bool QMetaMethod_Invoke113(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
+bool QMetaMethod_Invoke113(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
 }
 
-bool QMetaMethod_Invoke123(const QMetaMethod* self, QObject* object, uintptr_t connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
+bool QMetaMethod_Invoke123(const QMetaMethod* self, QObject* object, int connectionType, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
 	return self->invoke(object, static_cast<Qt::ConnectionType>(connectionType), *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
@@ -346,9 +342,7 @@ int QMetaEnum_KeysToValue(const QMetaEnum* self, const char* keys) {
 }
 
 QByteArray* QMetaEnum_ValueToKeys(const QMetaEnum* self, int value) {
-	QByteArray _ret = self->valueToKeys(static_cast<int>(value));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->valueToKeys(static_cast<int>(value)));
 }
 
 QMetaObject* QMetaEnum_EnclosingMetaObject(const QMetaEnum* self) {
@@ -383,9 +377,9 @@ const char* QMetaProperty_TypeName(const QMetaProperty* self) {
 	return (const char*) self->typeName();
 }
 
-uintptr_t QMetaProperty_Type(const QMetaProperty* self) {
+int QMetaProperty_Type(const QMetaProperty* self) {
 	QVariant::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QMetaProperty_UserType(const QMetaProperty* self) {
@@ -453,9 +447,7 @@ bool QMetaProperty_IsEnumType(const QMetaProperty* self) {
 }
 
 QMetaEnum* QMetaProperty_Enumerator(const QMetaProperty* self) {
-	QMetaEnum _ret = self->enumerator();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaEnum*>(new QMetaEnum(_ret));
+	return new QMetaEnum(self->enumerator());
 }
 
 bool QMetaProperty_HasNotifySignal(const QMetaProperty* self) {
@@ -463,9 +455,7 @@ bool QMetaProperty_HasNotifySignal(const QMetaProperty* self) {
 }
 
 QMetaMethod* QMetaProperty_NotifySignal(const QMetaProperty* self) {
-	QMetaMethod _ret = self->notifySignal();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMetaMethod*>(new QMetaMethod(_ret));
+	return new QMetaMethod(self->notifySignal());
 }
 
 int QMetaProperty_NotifySignalIndex(const QMetaProperty* self) {
@@ -477,9 +467,7 @@ int QMetaProperty_Revision(const QMetaProperty* self) {
 }
 
 QVariant* QMetaProperty_Read(const QMetaProperty* self, QObject* obj) {
-	QVariant _ret = self->read(obj);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->read(obj));
 }
 
 bool QMetaProperty_Write(const QMetaProperty* self, QObject* obj, QVariant* value) {

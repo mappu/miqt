@@ -63,9 +63,9 @@ func NewQTouchDevice() *QTouchDevice {
 func QTouchDevice_Devices() []*QTouchDevice {
 	var _ma *C.struct_miqt_array = C.QTouchDevice_Devices()
 	_ret := make([]*QTouchDevice, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQTouchDevice(_outCast[i])
+		_ret[i] = newQTouchDevice_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -79,18 +79,15 @@ func (this *QTouchDevice) Name() string {
 }
 
 func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
-	_ret := C.QTouchDevice_Type(this.h)
-	return (QTouchDevice__DeviceType)(_ret)
+	return (QTouchDevice__DeviceType)(C.QTouchDevice_Type(this.h))
 }
 
 func (this *QTouchDevice) Capabilities() int {
-	_ret := C.QTouchDevice_Capabilities(this.h)
-	return (int)(_ret)
+	return (int)(C.QTouchDevice_Capabilities(this.h))
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
-	_ret := C.QTouchDevice_MaximumTouchPoints(this.h)
-	return (int)(_ret)
+	return (int)(C.QTouchDevice_MaximumTouchPoints(this.h))
 }
 
 func (this *QTouchDevice) SetName(name string) {
@@ -100,7 +97,7 @@ func (this *QTouchDevice) SetName(name string) {
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
-	C.QTouchDevice_SetType(this.h, (C.uintptr_t)(devType))
+	C.QTouchDevice_SetType(this.h, (C.int)(devType))
 }
 
 func (this *QTouchDevice) SetCapabilities(caps int) {

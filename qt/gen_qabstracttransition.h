@@ -37,8 +37,8 @@ QAbstractState* QAbstractTransition_TargetState(const QAbstractTransition* self)
 void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractState* target);
 struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* self);
 void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array* /* of QAbstractState* */ targets);
-uintptr_t QAbstractTransition_TransitionType(const QAbstractTransition* self);
-void QAbstractTransition_SetTransitionType(QAbstractTransition* self, uintptr_t typeVal);
+int QAbstractTransition_TransitionType(const QAbstractTransition* self);
+void QAbstractTransition_SetTransitionType(QAbstractTransition* self, int typeVal);
 QStateMachine* QAbstractTransition_Machine(const QAbstractTransition* self);
 void QAbstractTransition_AddAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
 void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAnimation* animation);

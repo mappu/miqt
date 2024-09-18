@@ -78,15 +78,11 @@ void QUrlQuery_SetQueryDelimiters(QUrlQuery* self, QChar* valueDelimiter, QChar*
 }
 
 QChar* QUrlQuery_QueryValueDelimiter(const QUrlQuery* self) {
-	QChar _ret = self->queryValueDelimiter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->queryValueDelimiter());
 }
 
 QChar* QUrlQuery_QueryPairDelimiter(const QUrlQuery* self) {
-	QChar _ret = self->queryPairDelimiter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->queryPairDelimiter());
 }
 
 bool QUrlQuery_HasQueryItem(const QUrlQuery* self, struct miqt_string* key) {
@@ -116,7 +112,7 @@ struct miqt_string* QUrlQuery_QueryItemValue(const QUrlQuery* self, struct miqt_
 struct miqt_array* QUrlQuery_AllQueryItemValues(const QUrlQuery* self, struct miqt_string* key) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	QStringList _ret = self->allQueryItemValues(key_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -136,15 +132,11 @@ void QUrlQuery_RemoveAllQueryItems(QUrlQuery* self, struct miqt_string* key) {
 }
 
 QChar* QUrlQuery_DefaultQueryValueDelimiter() {
-	QChar _ret = QUrlQuery::defaultQueryValueDelimiter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(QUrlQuery::defaultQueryValueDelimiter());
 }
 
 QChar* QUrlQuery_DefaultQueryPairDelimiter() {
-	QChar _ret = QUrlQuery::defaultQueryPairDelimiter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(QUrlQuery::defaultQueryPairDelimiter());
 }
 
 struct miqt_string* QUrlQuery_Query1(const QUrlQuery* self, int encoding) {
@@ -172,7 +164,7 @@ struct miqt_string* QUrlQuery_QueryItemValue2(const QUrlQuery* self, struct miqt
 struct miqt_array* QUrlQuery_AllQueryItemValues2(const QUrlQuery* self, struct miqt_string* key, int encoding) {
 	QString key_QString = QString::fromUtf8(&key->data, key->len);
 	QStringList _ret = self->allQueryItemValues(key_QString, static_cast<QUrl::ComponentFormattingOptions>(encoding));
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

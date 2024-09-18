@@ -38,12 +38,12 @@ bool QDataStream_AtEnd(const QDataStream* self) {
 	return self->atEnd();
 }
 
-uintptr_t QDataStream_Status(const QDataStream* self) {
+int QDataStream_Status(const QDataStream* self) {
 	QDataStream::Status _ret = self->status();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDataStream_SetStatus(QDataStream* self, uintptr_t status) {
+void QDataStream_SetStatus(QDataStream* self, int status) {
 	self->setStatus(static_cast<QDataStream::Status>(status));
 }
 
@@ -51,21 +51,21 @@ void QDataStream_ResetStatus(QDataStream* self) {
 	self->resetStatus();
 }
 
-uintptr_t QDataStream_FloatingPointPrecision(const QDataStream* self) {
+int QDataStream_FloatingPointPrecision(const QDataStream* self) {
 	QDataStream::FloatingPointPrecision _ret = self->floatingPointPrecision();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDataStream_SetFloatingPointPrecision(QDataStream* self, uintptr_t precision) {
+void QDataStream_SetFloatingPointPrecision(QDataStream* self, int precision) {
 	self->setFloatingPointPrecision(static_cast<QDataStream::FloatingPointPrecision>(precision));
 }
 
-uintptr_t QDataStream_ByteOrder(const QDataStream* self) {
+int QDataStream_ByteOrder(const QDataStream* self) {
 	QDataStream::ByteOrder _ret = self->byteOrder();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDataStream_SetByteOrder(QDataStream* self, uintptr_t byteOrder) {
+void QDataStream_SetByteOrder(QDataStream* self, int byteOrder) {
 	self->setByteOrder(static_cast<QDataStream::ByteOrder>(byteOrder));
 }
 

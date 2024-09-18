@@ -57,8 +57,7 @@ func NewQAbstractScrollArea2(parent *QWidget) *QAbstractScrollArea {
 }
 
 func (this *QAbstractScrollArea) MetaObject() *QMetaObject {
-	_ret := C.QAbstractScrollArea_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractScrollArea_MetaObject(this.h)))
 }
 
 func QAbstractScrollArea_Tr(s string) string {
@@ -80,17 +79,15 @@ func QAbstractScrollArea_TrUtf8(s string) string {
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBarPolicy() ScrollBarPolicy {
-	_ret := C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h)
-	return (ScrollBarPolicy)(_ret)
+	return (ScrollBarPolicy)(C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.uintptr_t)(verticalScrollBarPolicy))
+	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.int)(verticalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	_ret := C.QAbstractScrollArea_VerticalScrollBar(this.h)
-	return newQScrollBar_U(unsafe.Pointer(_ret))
+	return newQScrollBar_U(unsafe.Pointer(C.QAbstractScrollArea_VerticalScrollBar(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
@@ -98,17 +95,15 @@ func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() ScrollBarPolicy {
-	_ret := C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h)
-	return (ScrollBarPolicy)(_ret)
+	return (ScrollBarPolicy)(C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.uintptr_t)(horizontalScrollBarPolicy))
+	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.int)(horizontalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	_ret := C.QAbstractScrollArea_HorizontalScrollBar(this.h)
-	return newQScrollBar_U(unsafe.Pointer(_ret))
+	return newQScrollBar_U(unsafe.Pointer(C.QAbstractScrollArea_HorizontalScrollBar(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
@@ -116,8 +111,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	_ret := C.QAbstractScrollArea_CornerWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QAbstractScrollArea_CornerWidget(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
@@ -131,17 +125,16 @@ func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment i
 func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
 	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget(_outCast[i])
+		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	_ret := C.QAbstractScrollArea_Viewport(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QAbstractScrollArea_Viewport(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
@@ -174,12 +167,11 @@ func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
 }
 
 func (this *QAbstractScrollArea) SizeAdjustPolicy() QAbstractScrollArea__SizeAdjustPolicy {
-	_ret := C.QAbstractScrollArea_SizeAdjustPolicy(this.h)
-	return (QAbstractScrollArea__SizeAdjustPolicy)(_ret)
+	return (QAbstractScrollArea__SizeAdjustPolicy)(C.QAbstractScrollArea_SizeAdjustPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy QAbstractScrollArea__SizeAdjustPolicy) {
-	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
+	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func QAbstractScrollArea_Tr2(s string, c string) string {

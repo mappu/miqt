@@ -37,8 +37,7 @@ func newQIconEnginePlugin_U(h unsafe.Pointer) *QIconEnginePlugin {
 }
 
 func (this *QIconEnginePlugin) MetaObject() *QMetaObject {
-	_ret := C.QIconEnginePlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QIconEnginePlugin_MetaObject(this.h)))
 }
 
 func QIconEnginePlugin_Tr(s string) string {
@@ -60,8 +59,7 @@ func QIconEnginePlugin_TrUtf8(s string) string {
 }
 
 func (this *QIconEnginePlugin) Create() *QIconEngine {
-	_ret := C.QIconEnginePlugin_Create(this.h)
-	return newQIconEngine_U(unsafe.Pointer(_ret))
+	return newQIconEngine_U(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h)))
 }
 
 func QIconEnginePlugin_Tr2(s string, c string) string {
@@ -111,8 +109,7 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 func (this *QIconEnginePlugin) Create1(filename string) *QIconEngine {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	_ret := C.QIconEnginePlugin_Create1(this.h, (*C.struct_miqt_string)(filename_ms))
-	return newQIconEngine_U(unsafe.Pointer(_ret))
+	return newQIconEngine_U(unsafe.Pointer(C.QIconEnginePlugin_Create1(this.h, (*C.struct_miqt_string)(filename_ms))))
 }
 
 // Delete this object from C++ memory.

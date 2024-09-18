@@ -56,9 +56,7 @@ void QScrollArea_SetWidgetResizable(QScrollArea* self, bool resizable) {
 }
 
 QSize* QScrollArea_SizeHint(const QScrollArea* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 bool QScrollArea_FocusNextPrevChild(QScrollArea* self, bool next) {

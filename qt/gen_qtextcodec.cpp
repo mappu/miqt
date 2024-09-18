@@ -26,8 +26,8 @@ QTextCodec* QTextCodec_CodecForMib(int mib) {
 
 struct miqt_array* QTextCodec_AvailableCodecs() {
 	QList<QByteArray> _ret = QTextCodec::availableCodecs();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -99,9 +99,7 @@ struct miqt_string* QTextCodec_ToUnicodeWithChars(const QTextCodec* self, const 
 
 QByteArray* QTextCodec_FromUnicode(const QTextCodec* self, struct miqt_string* uc) {
 	QString uc_QString = QString::fromUtf8(&uc->data, uc->len);
-	QByteArray _ret = self->fromUnicode(uc_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fromUnicode(uc_QString));
 }
 
 struct miqt_string* QTextCodec_ToUnicode2(const QTextCodec* self, const char* in, int length) {
@@ -112,9 +110,7 @@ struct miqt_string* QTextCodec_ToUnicode2(const QTextCodec* self, const char* in
 }
 
 QByteArray* QTextCodec_FromUnicode2(const QTextCodec* self, QChar* in, int length) {
-	QByteArray _ret = self->fromUnicode(in, static_cast<int>(length));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fromUnicode(in, static_cast<int>(length)));
 }
 
 QTextDecoder* QTextCodec_MakeDecoder(const QTextCodec* self) {
@@ -126,15 +122,13 @@ QTextEncoder* QTextCodec_MakeEncoder(const QTextCodec* self) {
 }
 
 QByteArray* QTextCodec_Name(const QTextCodec* self) {
-	QByteArray _ret = self->name();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->name());
 }
 
 struct miqt_array* QTextCodec_Aliases(const QTextCodec* self) {
 	QList<QByteArray> _ret = self->aliases();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -156,9 +150,7 @@ struct miqt_string* QTextCodec_ToUnicode3(const QTextCodec* self, const char* in
 }
 
 QByteArray* QTextCodec_FromUnicode3(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state) {
-	QByteArray _ret = self->fromUnicode(in, static_cast<int>(length), state);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fromUnicode(in, static_cast<int>(length), state));
 }
 
 QTextDecoder* QTextCodec_MakeDecoder1(const QTextCodec* self, int flags) {
@@ -179,15 +171,11 @@ QTextEncoder* QTextEncoder_new2(QTextCodec* codec, int flags) {
 
 QByteArray* QTextEncoder_FromUnicode(QTextEncoder* self, struct miqt_string* str) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
-	QByteArray _ret = self->fromUnicode(str_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fromUnicode(str_QString));
 }
 
 QByteArray* QTextEncoder_FromUnicode2(QTextEncoder* self, QChar* uc, int lenVal) {
-	QByteArray _ret = self->fromUnicode(uc, static_cast<int>(lenVal));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fromUnicode(uc, static_cast<int>(lenVal)));
 }
 
 bool QTextEncoder_HasFailure(const QTextEncoder* self) {

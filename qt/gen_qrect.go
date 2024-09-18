@@ -66,38 +66,31 @@ func NewQRect5(param1 *QRect) *QRect {
 }
 
 func (this *QRect) IsNull() bool {
-	_ret := C.QRect_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRect_IsNull(this.h))
 }
 
 func (this *QRect) IsEmpty() bool {
-	_ret := C.QRect_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRect_IsEmpty(this.h))
 }
 
 func (this *QRect) IsValid() bool {
-	_ret := C.QRect_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRect_IsValid(this.h))
 }
 
 func (this *QRect) Left() int {
-	_ret := C.QRect_Left(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Left(this.h))
 }
 
 func (this *QRect) Top() int {
-	_ret := C.QRect_Top(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Top(this.h))
 }
 
 func (this *QRect) Right() int {
-	_ret := C.QRect_Right(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Right(this.h))
 }
 
 func (this *QRect) Bottom() int {
-	_ret := C.QRect_Bottom(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Bottom(this.h))
 }
 
 func (this *QRect) Normalized() *QRect {
@@ -108,13 +101,11 @@ func (this *QRect) Normalized() *QRect {
 }
 
 func (this *QRect) X() int {
-	_ret := C.QRect_X(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_X(this.h))
 }
 
 func (this *QRect) Y() int {
-	_ret := C.QRect_Y(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Y(this.h))
 }
 
 func (this *QRect) SetLeft(pos int) {
@@ -300,13 +291,11 @@ func (this *QRect) Size() *QSize {
 }
 
 func (this *QRect) Width() int {
-	_ret := C.QRect_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Width(this.h))
 }
 
 func (this *QRect) Height() int {
-	_ret := C.QRect_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QRect_Height(this.h))
 }
 
 func (this *QRect) SetWidth(w int) {
@@ -344,23 +333,19 @@ func (this *QRect) OperatorBitwiseAndAssign(r *QRect) {
 }
 
 func (this *QRect) Contains(r *QRect) bool {
-	_ret := C.QRect_Contains(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRect_Contains(this.h, r.cPointer()))
 }
 
 func (this *QRect) ContainsWithQPoint(p *QPoint) bool {
-	_ret := C.QRect_ContainsWithQPoint(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRect_ContainsWithQPoint(this.h, p.cPointer()))
 }
 
 func (this *QRect) Contains2(x int, y int) bool {
-	_ret := C.QRect_Contains2(this.h, (C.int)(x), (C.int)(y))
-	return (bool)(_ret)
+	return (bool)(C.QRect_Contains2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QRect) Contains3(x int, y int, proper bool) bool {
-	_ret := C.QRect_Contains3(this.h, (C.int)(x), (C.int)(y), (C.bool)(proper))
-	return (bool)(_ret)
+	return (bool)(C.QRect_Contains3(this.h, (C.int)(x), (C.int)(y), (C.bool)(proper)))
 }
 
 func (this *QRect) United(other *QRect) *QRect {
@@ -378,8 +363,7 @@ func (this *QRect) Intersected(other *QRect) *QRect {
 }
 
 func (this *QRect) Intersects(r *QRect) bool {
-	_ret := C.QRect_Intersects(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRect_Intersects(this.h, r.cPointer()))
 }
 
 func (this *QRect) MarginsAdded(margins *QMargins) *QRect {
@@ -397,23 +381,19 @@ func (this *QRect) MarginsRemoved(margins *QMargins) *QRect {
 }
 
 func (this *QRect) OperatorPlusAssign(margins *QMargins) *QRect {
-	_ret := C.QRect_OperatorPlusAssign(this.h, margins.cPointer())
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRect_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRect) OperatorMinusAssign(margins *QMargins) *QRect {
-	_ret := C.QRect_OperatorMinusAssign(this.h, margins.cPointer())
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QRect_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRect) Contains22(r *QRect, proper bool) bool {
-	_ret := C.QRect_Contains22(this.h, r.cPointer(), (C.bool)(proper))
-	return (bool)(_ret)
+	return (bool)(C.QRect_Contains22(this.h, r.cPointer(), (C.bool)(proper)))
 }
 
 func (this *QRect) Contains23(p *QPoint, proper bool) bool {
-	_ret := C.QRect_Contains23(this.h, p.cPointer(), (C.bool)(proper))
-	return (bool)(_ret)
+	return (bool)(C.QRect_Contains23(this.h, p.cPointer(), (C.bool)(proper)))
 }
 
 // Delete this object from C++ memory.
@@ -489,18 +469,15 @@ func NewQRectF6(param1 *QRectF) *QRectF {
 }
 
 func (this *QRectF) IsNull() bool {
-	_ret := C.QRectF_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRectF_IsNull(this.h))
 }
 
 func (this *QRectF) IsEmpty() bool {
-	_ret := C.QRectF_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRectF_IsEmpty(this.h))
 }
 
 func (this *QRectF) IsValid() bool {
-	_ret := C.QRectF_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QRectF_IsValid(this.h))
 }
 
 func (this *QRectF) Normalized() *QRectF {
@@ -511,33 +488,27 @@ func (this *QRectF) Normalized() *QRectF {
 }
 
 func (this *QRectF) Left() float64 {
-	_ret := C.QRectF_Left(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Left(this.h))
 }
 
 func (this *QRectF) Top() float64 {
-	_ret := C.QRectF_Top(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Top(this.h))
 }
 
 func (this *QRectF) Right() float64 {
-	_ret := C.QRectF_Right(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Right(this.h))
 }
 
 func (this *QRectF) Bottom() float64 {
-	_ret := C.QRectF_Bottom(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Bottom(this.h))
 }
 
 func (this *QRectF) X() float64 {
-	_ret := C.QRectF_X(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_X(this.h))
 }
 
 func (this *QRectF) Y() float64 {
-	_ret := C.QRectF_Y(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Y(this.h))
 }
 
 func (this *QRectF) SetLeft(pos float64) {
@@ -723,13 +694,11 @@ func (this *QRectF) Size() *QSizeF {
 }
 
 func (this *QRectF) Width() float64 {
-	_ret := C.QRectF_Width(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Width(this.h))
 }
 
 func (this *QRectF) Height() float64 {
-	_ret := C.QRectF_Height(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QRectF_Height(this.h))
 }
 
 func (this *QRectF) SetWidth(w float64) {
@@ -767,18 +736,15 @@ func (this *QRectF) OperatorBitwiseAndAssign(r *QRectF) {
 }
 
 func (this *QRectF) Contains(r *QRectF) bool {
-	_ret := C.QRectF_Contains(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRectF_Contains(this.h, r.cPointer()))
 }
 
 func (this *QRectF) ContainsWithQPointF(p *QPointF) bool {
-	_ret := C.QRectF_ContainsWithQPointF(this.h, p.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRectF_ContainsWithQPointF(this.h, p.cPointer()))
 }
 
 func (this *QRectF) Contains2(x float64, y float64) bool {
-	_ret := C.QRectF_Contains2(this.h, (C.double)(x), (C.double)(y))
-	return (bool)(_ret)
+	return (bool)(C.QRectF_Contains2(this.h, (C.double)(x), (C.double)(y)))
 }
 
 func (this *QRectF) United(other *QRectF) *QRectF {
@@ -796,8 +762,7 @@ func (this *QRectF) Intersected(other *QRectF) *QRectF {
 }
 
 func (this *QRectF) Intersects(r *QRectF) bool {
-	_ret := C.QRectF_Intersects(this.h, r.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QRectF_Intersects(this.h, r.cPointer()))
 }
 
 func (this *QRectF) MarginsAdded(margins *QMarginsF) *QRectF {
@@ -815,13 +780,11 @@ func (this *QRectF) MarginsRemoved(margins *QMarginsF) *QRectF {
 }
 
 func (this *QRectF) OperatorPlusAssign(margins *QMarginsF) *QRectF {
-	_ret := C.QRectF_OperatorPlusAssign(this.h, margins.cPointer())
-	return newQRectF_U(unsafe.Pointer(_ret))
+	return newQRectF_U(unsafe.Pointer(C.QRectF_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRectF) OperatorMinusAssign(margins *QMarginsF) *QRectF {
-	_ret := C.QRectF_OperatorMinusAssign(this.h, margins.cPointer())
-	return newQRectF_U(unsafe.Pointer(_ret))
+	return newQRectF_U(unsafe.Pointer(C.QRectF_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRectF) ToRect() *QRect {

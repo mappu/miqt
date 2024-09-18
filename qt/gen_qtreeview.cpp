@@ -215,9 +215,7 @@ void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string* search) {
 }
 
 QRect* QTreeView_VisualRect(const QTreeView* self, QModelIndex* index) {
-	QRect _ret = self->visualRect(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->visualRect(*index));
 }
 
 void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
@@ -225,21 +223,15 @@ void QTreeView_ScrollTo(QTreeView* self, QModelIndex* index) {
 }
 
 QModelIndex* QTreeView_IndexAt(const QTreeView* self, QPoint* p) {
-	QModelIndex _ret = self->indexAt(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAt(*p));
 }
 
 QModelIndex* QTreeView_IndexAbove(const QTreeView* self, QModelIndex* index) {
-	QModelIndex _ret = self->indexAbove(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexAbove(*index));
 }
 
 QModelIndex* QTreeView_IndexBelow(const QTreeView* self, QModelIndex* index) {
-	QModelIndex _ret = self->indexBelow(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->indexBelow(*index));
 }
 
 void QTreeView_DoItemsLayout(QTreeView* self) {
@@ -308,7 +300,7 @@ void QTreeView_SortByColumn(QTreeView* self, int column) {
 	self->sortByColumn(static_cast<int>(column));
 }
 
-void QTreeView_SortByColumn2(QTreeView* self, int column, uintptr_t order) {
+void QTreeView_SortByColumn2(QTreeView* self, int column, int order) {
 	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -356,7 +348,7 @@ struct miqt_string* QTreeView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, uintptr_t hint) {
+void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
@@ -365,7 +357,7 @@ void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* 
 	roles_QList.reserve(roles->len);
 	int* roles_arr = static_cast<int*>(roles->data);
 	for(size_t i = 0; i < roles->len; ++i) {
-		roles_QList.push_back(roles_arr[i]);
+		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
 	self->dataChanged(*topLeft, *bottomRight, roles_QList);
 }

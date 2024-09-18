@@ -55,25 +55,23 @@ func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {
-	_ret := C.QStylePainter_Begin(this.h, w.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStylePainter_Begin(this.h, w.cPointer()))
 }
 
 func (this *QStylePainter) Begin2(pd *QPaintDevice, w *QWidget) bool {
-	_ret := C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStylePainter_Begin2(this.h, pd.cPointer(), w.cPointer()))
 }
 
 func (this *QStylePainter) DrawPrimitive(pe QStyle__PrimitiveElement, opt *QStyleOption) {
-	C.QStylePainter_DrawPrimitive(this.h, (C.uintptr_t)(pe), opt.cPointer())
+	C.QStylePainter_DrawPrimitive(this.h, (C.int)(pe), opt.cPointer())
 }
 
 func (this *QStylePainter) DrawControl(ce QStyle__ControlElement, opt *QStyleOption) {
-	C.QStylePainter_DrawControl(this.h, (C.uintptr_t)(ce), opt.cPointer())
+	C.QStylePainter_DrawControl(this.h, (C.int)(ce), opt.cPointer())
 }
 
 func (this *QStylePainter) DrawComplexControl(cc QStyle__ComplexControl, opt *QStyleOptionComplex) {
-	C.QStylePainter_DrawComplexControl(this.h, (C.uintptr_t)(cc), opt.cPointer())
+	C.QStylePainter_DrawComplexControl(this.h, (C.int)(cc), opt.cPointer())
 }
 
 func (this *QStylePainter) DrawItemText(r *QRect, flags int, pal *QPalette, enabled bool, text string) {
@@ -87,14 +85,13 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	_ret := C.QStylePainter_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QStylePainter_Style(this.h)))
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(textRole))
+	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.int)(textRole))
 }
 
 // Delete this object from C++ memory.

@@ -40,12 +40,12 @@ struct miqt_string* QTabBar_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QTabBar_Shape(const QTabBar* self) {
+int QTabBar_Shape(const QTabBar* self) {
 	QTabBar::Shape _ret = self->shape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetShape(QTabBar* self, uintptr_t shape) {
+void QTabBar_SetShape(QTabBar* self, int shape) {
 	self->setShape(static_cast<QTabBar::Shape>(shape));
 }
 
@@ -106,9 +106,7 @@ void QTabBar_SetTabText(QTabBar* self, int index, struct miqt_string* text) {
 }
 
 QColor* QTabBar_TabTextColor(const QTabBar* self, int index) {
-	QColor _ret = self->tabTextColor(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->tabTextColor(static_cast<int>(index)));
 }
 
 void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
@@ -116,21 +114,19 @@ void QTabBar_SetTabTextColor(QTabBar* self, int index, QColor* color) {
 }
 
 QIcon* QTabBar_TabIcon(const QTabBar* self, int index) {
-	QIcon _ret = self->tabIcon(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->tabIcon(static_cast<int>(index)));
 }
 
 void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
 	self->setTabIcon(static_cast<int>(index), *icon);
 }
 
-uintptr_t QTabBar_ElideMode(const QTabBar* self) {
+int QTabBar_ElideMode(const QTabBar* self) {
 	Qt::TextElideMode _ret = self->elideMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetElideMode(QTabBar* self, uintptr_t mode) {
+void QTabBar_SetElideMode(QTabBar* self, int mode) {
 	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
@@ -163,15 +159,11 @@ void QTabBar_SetTabData(QTabBar* self, int index, QVariant* data) {
 }
 
 QVariant* QTabBar_TabData(const QTabBar* self, int index) {
-	QVariant _ret = self->tabData(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->tabData(static_cast<int>(index)));
 }
 
 QRect* QTabBar_TabRect(const QTabBar* self, int index) {
-	QRect _ret = self->tabRect(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->tabRect(static_cast<int>(index)));
 }
 
 int QTabBar_TabAt(const QTabBar* self, QPoint* pos) {
@@ -187,15 +179,11 @@ int QTabBar_Count(const QTabBar* self) {
 }
 
 QSize* QTabBar_SizeHint(const QTabBar* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QTabBar_MinimumSizeHint(const QTabBar* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QTabBar_SetDrawBase(QTabBar* self, bool drawTheBase) {
@@ -207,9 +195,7 @@ bool QTabBar_DrawBase(const QTabBar* self) {
 }
 
 QSize* QTabBar_IconSize(const QTabBar* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QTabBar_SetIconSize(QTabBar* self, QSize* size) {
@@ -232,20 +218,20 @@ void QTabBar_SetTabsClosable(QTabBar* self, bool closable) {
 	self->setTabsClosable(closable);
 }
 
-void QTabBar_SetTabButton(QTabBar* self, int index, uintptr_t position, QWidget* widget) {
+void QTabBar_SetTabButton(QTabBar* self, int index, int position, QWidget* widget) {
 	self->setTabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position), widget);
 }
 
-QWidget* QTabBar_TabButton(const QTabBar* self, int index, uintptr_t position) {
+QWidget* QTabBar_TabButton(const QTabBar* self, int index, int position) {
 	return self->tabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position));
 }
 
-uintptr_t QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
+int QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
 	QTabBar::SelectionBehavior _ret = self->selectionBehaviorOnRemove();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, uintptr_t behavior) {
+void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, int behavior) {
 	self->setSelectionBehaviorOnRemove(static_cast<QTabBar::SelectionBehavior>(behavior));
 }
 

@@ -41,9 +41,7 @@ void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* pa
 }
 
 QSize* QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	QSize _ret = self->sizeHint(*option, *index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint(*option, *index));
 }
 
 QWidget* QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
@@ -70,7 +68,7 @@ bool QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate* self, QEvent* even
 	return self->editorEvent(event, model, *option, *index);
 }
 
-struct miqt_string* QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, uintptr_t mode, struct miqt_string* text) {
+struct miqt_string* QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, int mode, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QString _ret = QAbstractItemDelegate::elidedText(*fontMetrics, static_cast<int>(width), static_cast<Qt::TextElideMode>(mode), text_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -158,7 +156,7 @@ struct miqt_string* QAbstractItemDelegate_TrUtf83(const char* s, const char* c, 
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, uintptr_t hint) {
+void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, int hint) {
 	self->closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 }
 
@@ -166,7 +164,7 @@ void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, voi
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
 		QWidget* sigval1 = editor;
 		QAbstractItemDelegate::EndEditHint hint_ret = hint;
-		uintptr_t sigval2 = static_cast<uintptr_t>(hint_ret);
+		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(slot, sigval1, sigval2);
 	});
 }

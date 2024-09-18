@@ -49,23 +49,17 @@ struct miqt_string* QTextDocumentFragment_ToHtml(const QTextDocumentFragment* se
 
 QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string* plainText) {
 	QString plainText_QString = QString::fromUtf8(&plainText->data, plainText->len);
-	QTextDocumentFragment _ret = QTextDocumentFragment::fromPlainText(plainText_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
+	return new QTextDocumentFragment(QTextDocumentFragment::fromPlainText(plainText_QString));
 }
 
 QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string* html) {
 	QString html_QString = QString::fromUtf8(&html->data, html->len);
-	QTextDocumentFragment _ret = QTextDocumentFragment::fromHtml(html_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
+	return new QTextDocumentFragment(QTextDocumentFragment::fromHtml(html_QString));
 }
 
 QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string* html, QTextDocument* resourceProvider) {
 	QString html_QString = QString::fromUtf8(&html->data, html->len);
-	QTextDocumentFragment _ret = QTextDocumentFragment::fromHtml(html_QString, resourceProvider);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextDocumentFragment*>(new QTextDocumentFragment(_ret));
+	return new QTextDocumentFragment(QTextDocumentFragment::fromHtml(html_QString, resourceProvider));
 }
 
 struct miqt_string* QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding) {

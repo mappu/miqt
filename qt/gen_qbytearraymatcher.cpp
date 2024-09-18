@@ -38,9 +38,7 @@ int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, i
 }
 
 QByteArray* QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
-	QByteArray _ret = self->pattern();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->pattern());
 }
 
 int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, QByteArray* ba, int from) {

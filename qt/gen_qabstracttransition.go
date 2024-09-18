@@ -44,8 +44,7 @@ func newQAbstractTransition_U(h unsafe.Pointer) *QAbstractTransition {
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
-	_ret := C.QAbstractTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTransition_MetaObject(this.h)))
 }
 
 func QAbstractTransition_Tr(s string) string {
@@ -67,13 +66,11 @@ func QAbstractTransition_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	_ret := C.QAbstractTransition_SourceState(this.h)
-	return newQState_U(unsafe.Pointer(_ret))
+	return newQState_U(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)))
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	_ret := C.QAbstractTransition_TargetState(this.h)
-	return newQAbstractState_U(unsafe.Pointer(_ret))
+	return newQAbstractState_U(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)))
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
@@ -83,9 +80,9 @@ func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
 func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 	var _ma *C.struct_miqt_array = C.QAbstractTransition_TargetStates(this.h)
 	_ret := make([]*QAbstractState, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractState(_outCast[i])
+		_ret[i] = newQAbstractState_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -104,17 +101,15 @@ func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
 }
 
 func (this *QAbstractTransition) TransitionType() QAbstractTransition__TransitionType {
-	_ret := C.QAbstractTransition_TransitionType(this.h)
-	return (QAbstractTransition__TransitionType)(_ret)
+	return (QAbstractTransition__TransitionType)(C.QAbstractTransition_TransitionType(this.h))
 }
 
 func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__TransitionType) {
-	C.QAbstractTransition_SetTransitionType(this.h, (C.uintptr_t)(typeVal))
+	C.QAbstractTransition_SetTransitionType(this.h, (C.int)(typeVal))
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	_ret := C.QAbstractTransition_Machine(this.h)
-	return newQStateMachine_U(unsafe.Pointer(_ret))
+	return newQStateMachine_U(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)))
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
@@ -128,9 +123,9 @@ func (this *QAbstractTransition) RemoveAnimation(animation *QAbstractAnimation) 
 func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
 	var _ma *C.struct_miqt_array = C.QAbstractTransition_Animations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractAnimation(_outCast[i])
+		_ret[i] = newQAbstractAnimation_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

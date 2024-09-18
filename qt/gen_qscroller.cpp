@@ -42,14 +42,14 @@ QScroller* QScroller_ScrollerWithTarget(QObject* target) {
 	return (QScroller*) QScroller::scroller(target);
 }
 
-uintptr_t QScroller_GrabGesture(QObject* target) {
+int QScroller_GrabGesture(QObject* target) {
 	Qt::GestureType _ret = QScroller::grabGesture(target);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QScroller_GrabbedGesture(QObject* target) {
+int QScroller_GrabbedGesture(QObject* target) {
 	Qt::GestureType _ret = QScroller::grabbedGesture(target);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QScroller_UngrabGesture(QObject* target) {
@@ -57,7 +57,7 @@ void QScroller_UngrabGesture(QObject* target) {
 }
 
 struct miqt_array* QScroller_ActiveScrollers() {
-	QList<QScroller*> _ret = QScroller::activeScrollers();
+	QList<QScroller *> _ret = QScroller::activeScrollers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -73,12 +73,12 @@ QObject* QScroller_Target(const QScroller* self) {
 	return self->target();
 }
 
-uintptr_t QScroller_State(const QScroller* self) {
+int QScroller_State(const QScroller* self) {
 	QScroller::State _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-bool QScroller_HandleInput(QScroller* self, uintptr_t input, QPointF* position) {
+bool QScroller_HandleInput(QScroller* self, int input, QPointF* position) {
 	return self->handleInput(static_cast<QScroller::Input>(input), *position);
 }
 
@@ -87,27 +87,19 @@ void QScroller_Stop(QScroller* self) {
 }
 
 QPointF* QScroller_Velocity(const QScroller* self) {
-	QPointF _ret = self->velocity();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->velocity());
 }
 
 QPointF* QScroller_FinalPosition(const QScroller* self) {
-	QPointF _ret = self->finalPosition();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->finalPosition());
 }
 
 QPointF* QScroller_PixelPerMeter(const QScroller* self) {
-	QPointF _ret = self->pixelPerMeter();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->pixelPerMeter());
 }
 
 QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
-	QScrollerProperties _ret = self->scrollerProperties();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QScrollerProperties*>(new QScrollerProperties(_ret));
+	return new QScrollerProperties(self->scrollerProperties());
 }
 
 void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of double */ positions) {
@@ -115,7 +107,7 @@ void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of doubl
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {
-		positions_QList.push_back(positions_arr[i]);
+		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsX(positions_QList);
 }
@@ -129,7 +121,7 @@ void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array* /* of doubl
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {
-		positions_QList.push_back(positions_arr[i]);
+		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsY(positions_QList);
 }
@@ -162,14 +154,14 @@ void QScroller_ResendPrepareEvent(QScroller* self) {
 	self->resendPrepareEvent();
 }
 
-void QScroller_StateChanged(QScroller* self, uintptr_t newstate) {
+void QScroller_StateChanged(QScroller* self, int newstate) {
 	self->stateChanged(static_cast<QScroller::State>(newstate));
 }
 
 void QScroller_connect_StateChanged(QScroller* self, void* slot) {
 	QScroller::connect(self, static_cast<void (QScroller::*)(QScroller::State)>(&QScroller::stateChanged), self, [=](QScroller::State newstate) {
 		QScroller::State newstate_ret = newstate;
-		uintptr_t sigval1 = static_cast<uintptr_t>(newstate_ret);
+		int sigval1 = static_cast<int>(newstate_ret);
 		miqt_exec_callback_QScroller_StateChanged(slot, sigval1);
 	});
 }
@@ -215,12 +207,12 @@ struct miqt_string* QScroller_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QScroller_GrabGesture2(QObject* target, uintptr_t gestureType) {
+int QScroller_GrabGesture2(QObject* target, int gestureType) {
 	Qt::GestureType _ret = QScroller::grabGesture(target, static_cast<QScroller::ScrollerGestureType>(gestureType));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-bool QScroller_HandleInput3(QScroller* self, uintptr_t input, QPointF* position, long long timestamp) {
+bool QScroller_HandleInput3(QScroller* self, int input, QPointF* position, long long timestamp) {
 	return self->handleInput(static_cast<QScroller::Input>(input), *position, static_cast<qint64>(timestamp));
 }
 

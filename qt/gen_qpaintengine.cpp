@@ -26,15 +26,18 @@
 #include "_cgo_export.h"
 
 double QTextItem_Descent(const QTextItem* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QTextItem_Ascent(const QTextItem* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QTextItem_Width(const QTextItem* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 int QTextItem_RenderFlags(const QTextItem* self) {
@@ -50,9 +53,7 @@ struct miqt_string* QTextItem_Text(const QTextItem* self) {
 }
 
 QFont* QTextItem_Font(const QTextItem* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QTextItem_Delete(QTextItem* self) {
@@ -115,11 +116,11 @@ void QPaintEngine_DrawPoints2(QPaintEngine* self, QPoint* points, int pointCount
 	self->drawPoints(points, static_cast<int>(pointCount));
 }
 
-void QPaintEngine_DrawPolygon(QPaintEngine* self, QPointF* points, int pointCount, uintptr_t mode) {
+void QPaintEngine_DrawPolygon(QPaintEngine* self, QPointF* points, int pointCount, int mode) {
 	self->drawPolygon(points, static_cast<int>(pointCount), static_cast<QPaintEngine::PolygonDrawMode>(mode));
 }
 
-void QPaintEngine_DrawPolygon2(QPaintEngine* self, QPoint* points, int pointCount, uintptr_t mode) {
+void QPaintEngine_DrawPolygon2(QPaintEngine* self, QPoint* points, int pointCount, int mode) {
 	self->drawPolygon(points, static_cast<int>(pointCount), static_cast<QPaintEngine::PolygonDrawMode>(mode));
 }
 
@@ -152,9 +153,7 @@ void QPaintEngine_SetSystemClip(QPaintEngine* self, QRegion* baseClip) {
 }
 
 QRegion* QPaintEngine_SystemClip(const QPaintEngine* self) {
-	QRegion _ret = self->systemClip();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->systemClip());
 }
 
 void QPaintEngine_SetSystemRect(QPaintEngine* self, QRect* rect) {
@@ -162,20 +161,16 @@ void QPaintEngine_SetSystemRect(QPaintEngine* self, QRect* rect) {
 }
 
 QRect* QPaintEngine_SystemRect(const QPaintEngine* self) {
-	QRect _ret = self->systemRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->systemRect());
 }
 
 QPoint* QPaintEngine_CoordinateOffset(const QPaintEngine* self) {
-	QPoint _ret = self->coordinateOffset();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->coordinateOffset());
 }
 
-uintptr_t QPaintEngine_Type(const QPaintEngine* self) {
+int QPaintEngine_Type(const QPaintEngine* self) {
 	QPaintEngine::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QPaintEngine_FixNegRect(QPaintEngine* self, int* x, int* y, int* w, int* h) {
@@ -224,67 +219,49 @@ int QPaintEngineState_State(const QPaintEngineState* self) {
 }
 
 QPen* QPaintEngineState_Pen(const QPaintEngineState* self) {
-	QPen _ret = self->pen();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPen*>(new QPen(_ret));
+	return new QPen(self->pen());
 }
 
 QBrush* QPaintEngineState_Brush(const QPaintEngineState* self) {
-	QBrush _ret = self->brush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->brush());
 }
 
 QPointF* QPaintEngineState_BrushOrigin(const QPaintEngineState* self) {
-	QPointF _ret = self->brushOrigin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->brushOrigin());
 }
 
 QBrush* QPaintEngineState_BackgroundBrush(const QPaintEngineState* self) {
-	QBrush _ret = self->backgroundBrush();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBrush*>(new QBrush(_ret));
+	return new QBrush(self->backgroundBrush());
 }
 
-uintptr_t QPaintEngineState_BackgroundMode(const QPaintEngineState* self) {
+int QPaintEngineState_BackgroundMode(const QPaintEngineState* self) {
 	Qt::BGMode _ret = self->backgroundMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QFont* QPaintEngineState_Font(const QPaintEngineState* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 QMatrix* QPaintEngineState_Matrix(const QPaintEngineState* self) {
-	QMatrix _ret = self->matrix();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->matrix());
 }
 
 QTransform* QPaintEngineState_Transform(const QPaintEngineState* self) {
-	QTransform _ret = self->transform();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTransform*>(new QTransform(_ret));
+	return new QTransform(self->transform());
 }
 
-uintptr_t QPaintEngineState_ClipOperation(const QPaintEngineState* self) {
+int QPaintEngineState_ClipOperation(const QPaintEngineState* self) {
 	Qt::ClipOperation _ret = self->clipOperation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QRegion* QPaintEngineState_ClipRegion(const QPaintEngineState* self) {
-	QRegion _ret = self->clipRegion();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->clipRegion());
 }
 
 QPainterPath* QPaintEngineState_ClipPath(const QPaintEngineState* self) {
-	QPainterPath _ret = self->clipPath();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->clipPath());
 }
 
 bool QPaintEngineState_IsClipEnabled(const QPaintEngineState* self) {
@@ -296,13 +273,14 @@ int QPaintEngineState_RenderHints(const QPaintEngineState* self) {
 	return static_cast<int>(_ret);
 }
 
-uintptr_t QPaintEngineState_CompositionMode(const QPaintEngineState* self) {
+int QPaintEngineState_CompositionMode(const QPaintEngineState* self) {
 	QPainter::CompositionMode _ret = self->compositionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QPaintEngineState_Opacity(const QPaintEngineState* self) {
-	return self->opacity();
+	qreal _ret = self->opacity();
+	return static_cast<double>(_ret);
 }
 
 QPainter* QPaintEngineState_Painter(const QPaintEngineState* self) {

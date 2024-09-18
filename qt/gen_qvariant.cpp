@@ -47,7 +47,7 @@ QVariant* QVariant_new() {
 	return new QVariant();
 }
 
-QVariant* QVariant_new2(uintptr_t typeVal) {
+QVariant* QVariant_new2(int typeVal) {
 	return new QVariant(static_cast<QVariant::Type>(typeVal));
 }
 
@@ -67,12 +67,12 @@ QVariant* QVariant_new6(unsigned int ui) {
 	return new QVariant(static_cast<uint>(ui));
 }
 
-QVariant* QVariant_new7(int64_t ll) {
-	return new QVariant((qlonglong)(ll));
+QVariant* QVariant_new7(long long ll) {
+	return new QVariant(static_cast<qlonglong>(ll));
 }
 
-QVariant* QVariant_new8(uint64_t ull) {
-	return new QVariant((qulonglong)(ull));
+QVariant* QVariant_new8(unsigned long long ull) {
+	return new QVariant(static_cast<qulonglong>(ull));
 }
 
 QVariant* QVariant_new9(bool b) {
@@ -104,12 +104,13 @@ QVariant* QVariant_new15(struct miqt_string* stringVal) {
 	return new QVariant(stringVal_QString);
 }
 
-QVariant* QVariant_new16(struct miqt_array* /* of QString */ stringlist) {
+QVariant* QVariant_new16(struct miqt_array* /* of struct miqt_string* */ stringlist) {
 	QList<QString> stringlist_QList;
 	stringlist_QList.reserve(stringlist->len);
-	miqt_string** stringlist_arr = static_cast<miqt_string**>(stringlist->data);
+	struct miqt_string** stringlist_arr = static_cast<struct miqt_string**>(stringlist->data);
 	for(size_t i = 0; i < stringlist->len; ++i) {
-		stringlist_QList.push_back(QString::fromUtf8(& stringlist_arr[i]->data, stringlist_arr[i]->len));
+		QString stringlist_arr_i_QString = QString::fromUtf8(&stringlist_arr[i]->data, stringlist_arr[i]->len);
+		stringlist_QList.push_back(stringlist_arr_i_QString);
 	}
 	return new QVariant(stringlist_QList);
 }
@@ -218,9 +219,9 @@ void QVariant_Swap(QVariant* self, QVariant* other) {
 	self->swap(*other);
 }
 
-uintptr_t QVariant_Type(const QVariant* self) {
+int QVariant_Type(const QVariant* self) {
 	QVariant::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QVariant_UserType(const QVariant* self) {
@@ -264,15 +265,18 @@ int QVariant_ToInt(const QVariant* self) {
 }
 
 unsigned int QVariant_ToUInt(const QVariant* self) {
-	return self->toUInt();
+	uint _ret = self->toUInt();
+	return static_cast<unsigned int>(_ret);
 }
 
-int64_t QVariant_ToLongLong(const QVariant* self) {
-	return self->toLongLong();
+long long QVariant_ToLongLong(const QVariant* self) {
+	qlonglong _ret = self->toLongLong();
+	return static_cast<long long>(_ret);
 }
 
-uint64_t QVariant_ToULongLong(const QVariant* self) {
-	return self->toULongLong();
+unsigned long long QVariant_ToULongLong(const QVariant* self) {
+	qulonglong _ret = self->toULongLong();
+	return static_cast<unsigned long long>(_ret);
 }
 
 bool QVariant_ToBool(const QVariant* self) {
@@ -288,19 +292,16 @@ float QVariant_ToFloat(const QVariant* self) {
 }
 
 double QVariant_ToReal(const QVariant* self) {
-	return self->toReal();
+	qreal _ret = self->toReal();
+	return static_cast<double>(_ret);
 }
 
 QByteArray* QVariant_ToByteArray(const QVariant* self) {
-	QByteArray _ret = self->toByteArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->toByteArray());
 }
 
 QBitArray* QVariant_ToBitArray(const QVariant* self) {
-	QBitArray _ret = self->toBitArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QBitArray*>(new QBitArray(_ret));
+	return new QBitArray(self->toBitArray());
 }
 
 struct miqt_string* QVariant_ToString(const QVariant* self) {
@@ -312,7 +313,7 @@ struct miqt_string* QVariant_ToString(const QVariant* self) {
 
 struct miqt_array* QVariant_ToStringList(const QVariant* self) {
 	QStringList _ret = self->toStringList();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -327,147 +328,99 @@ struct miqt_array* QVariant_ToStringList(const QVariant* self) {
 }
 
 QChar* QVariant_ToChar(const QVariant* self) {
-	QChar _ret = self->toChar();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QChar*>(new QChar(_ret));
+	return new QChar(self->toChar());
 }
 
 QDate* QVariant_ToDate(const QVariant* self) {
-	QDate _ret = self->toDate();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->toDate());
 }
 
 QTime* QVariant_ToTime(const QVariant* self) {
-	QTime _ret = self->toTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->toTime());
 }
 
 QDateTime* QVariant_ToDateTime(const QVariant* self) {
-	QDateTime _ret = self->toDateTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toDateTime());
 }
 
 QPoint* QVariant_ToPoint(const QVariant* self) {
-	QPoint _ret = self->toPoint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->toPoint());
 }
 
 QPointF* QVariant_ToPointF(const QVariant* self) {
-	QPointF _ret = self->toPointF();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->toPointF());
 }
 
 QRect* QVariant_ToRect(const QVariant* self) {
-	QRect _ret = self->toRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->toRect());
 }
 
 QSize* QVariant_ToSize(const QVariant* self) {
-	QSize _ret = self->toSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->toSize());
 }
 
 QSizeF* QVariant_ToSizeF(const QVariant* self) {
-	QSizeF _ret = self->toSizeF();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->toSizeF());
 }
 
 QLine* QVariant_ToLine(const QVariant* self) {
-	QLine _ret = self->toLine();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(_ret));
+	return new QLine(self->toLine());
 }
 
 QLineF* QVariant_ToLineF(const QVariant* self) {
-	QLineF _ret = self->toLineF();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(_ret));
+	return new QLineF(self->toLineF());
 }
 
 QRectF* QVariant_ToRectF(const QVariant* self) {
-	QRectF _ret = self->toRectF();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->toRectF());
 }
 
 QLocale* QVariant_ToLocale(const QVariant* self) {
-	QLocale _ret = self->toLocale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->toLocale());
 }
 
 QRegExp* QVariant_ToRegExp(const QVariant* self) {
-	QRegExp _ret = self->toRegExp();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegExp*>(new QRegExp(_ret));
+	return new QRegExp(self->toRegExp());
 }
 
 QRegularExpression* QVariant_ToRegularExpression(const QVariant* self) {
-	QRegularExpression _ret = self->toRegularExpression();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegularExpression*>(new QRegularExpression(_ret));
+	return new QRegularExpression(self->toRegularExpression());
 }
 
 QEasingCurve* QVariant_ToEasingCurve(const QVariant* self) {
-	QEasingCurve _ret = self->toEasingCurve();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QEasingCurve*>(new QEasingCurve(_ret));
+	return new QEasingCurve(self->toEasingCurve());
 }
 
 QUuid* QVariant_ToUuid(const QVariant* self) {
-	QUuid _ret = self->toUuid();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUuid*>(new QUuid(_ret));
+	return new QUuid(self->toUuid());
 }
 
 QUrl* QVariant_ToUrl(const QVariant* self) {
-	QUrl _ret = self->toUrl();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QUrl*>(new QUrl(_ret));
+	return new QUrl(self->toUrl());
 }
 
 QJsonValue* QVariant_ToJsonValue(const QVariant* self) {
-	QJsonValue _ret = self->toJsonValue();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonValue*>(new QJsonValue(_ret));
+	return new QJsonValue(self->toJsonValue());
 }
 
 QJsonObject* QVariant_ToJsonObject(const QVariant* self) {
-	QJsonObject _ret = self->toJsonObject();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonObject*>(new QJsonObject(_ret));
+	return new QJsonObject(self->toJsonObject());
 }
 
 QJsonArray* QVariant_ToJsonArray(const QVariant* self) {
-	QJsonArray _ret = self->toJsonArray();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonArray*>(new QJsonArray(_ret));
+	return new QJsonArray(self->toJsonArray());
 }
 
 QJsonDocument* QVariant_ToJsonDocument(const QVariant* self) {
-	QJsonDocument _ret = self->toJsonDocument();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QJsonDocument*>(new QJsonDocument(_ret));
+	return new QJsonDocument(self->toJsonDocument());
 }
 
 QModelIndex* QVariant_ToModelIndex(const QVariant* self) {
-	QModelIndex _ret = self->toModelIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->toModelIndex());
 }
 
 QPersistentModelIndex* QVariant_ToPersistentModelIndex(const QVariant* self) {
-	QPersistentModelIndex _ret = self->toPersistentModelIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPersistentModelIndex*>(new QPersistentModelIndex(_ret));
+	return new QPersistentModelIndex(self->toPersistentModelIndex());
 }
 
 void QVariant_Load(QVariant* self, QDataStream* ds) {
@@ -482,9 +435,9 @@ const char* QVariant_TypeToName(int typeId) {
 	return (const char*) QVariant::typeToName(static_cast<int>(typeId));
 }
 
-uintptr_t QVariant_NameToType(const char* name) {
+int QVariant_NameToType(const char* name) {
 	QVariant::Type _ret = QVariant::nameToType(name);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QVariant_OperatorEqual(const QVariant* self, QVariant* v) {
@@ -516,15 +469,18 @@ int QVariant_ToInt1(const QVariant* self, bool* ok) {
 }
 
 unsigned int QVariant_ToUInt1(const QVariant* self, bool* ok) {
-	return self->toUInt(ok);
+	uint _ret = self->toUInt(ok);
+	return static_cast<unsigned int>(_ret);
 }
 
-int64_t QVariant_ToLongLong1(const QVariant* self, bool* ok) {
-	return self->toLongLong(ok);
+long long QVariant_ToLongLong1(const QVariant* self, bool* ok) {
+	qlonglong _ret = self->toLongLong(ok);
+	return static_cast<long long>(_ret);
 }
 
-uint64_t QVariant_ToULongLong1(const QVariant* self, bool* ok) {
-	return self->toULongLong(ok);
+unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok) {
+	qulonglong _ret = self->toULongLong(ok);
+	return static_cast<unsigned long long>(_ret);
 }
 
 double QVariant_ToDouble1(const QVariant* self, bool* ok) {
@@ -536,7 +492,8 @@ float QVariant_ToFloat1(const QVariant* self, bool* ok) {
 }
 
 double QVariant_ToReal1(const QVariant* self, bool* ok) {
-	return self->toReal(ok);
+	qreal _ret = self->toReal(ok);
+	return static_cast<double>(_ret);
 }
 
 void QVariant_Delete(QVariant* self) {
@@ -564,21 +521,15 @@ QSequentialIterable* QSequentialIterable_new2(QSequentialIterable* param1) {
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable_Begin(const QSequentialIterable* self) {
-	QSequentialIterable::const_iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+	return new QSequentialIterable::const_iterator(self->begin());
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable_End(const QSequentialIterable* self) {
-	QSequentialIterable::const_iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+	return new QSequentialIterable::const_iterator(self->end());
 }
 
 QVariant* QSequentialIterable_At(const QSequentialIterable* self, int idx) {
-	QVariant _ret = self->at(static_cast<int>(idx));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->at(static_cast<int>(idx)));
 }
 
 int QSequentialIterable_Size(const QSequentialIterable* self) {
@@ -602,27 +553,19 @@ QAssociativeIterable* QAssociativeIterable_new2(QAssociativeIterable* param1) {
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable_Begin(const QAssociativeIterable* self) {
-	QAssociativeIterable::const_iterator _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+	return new QAssociativeIterable::const_iterator(self->begin());
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable_End(const QAssociativeIterable* self) {
-	QAssociativeIterable::const_iterator _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+	return new QAssociativeIterable::const_iterator(self->end());
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable_Find(const QAssociativeIterable* self, QVariant* key) {
-	QAssociativeIterable::const_iterator _ret = self->find(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+	return new QAssociativeIterable::const_iterator(self->find(*key));
 }
 
 QVariant* QAssociativeIterable_Value(const QAssociativeIterable* self, QVariant* key) {
-	QVariant _ret = self->value(*key);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->value(*key));
 }
 
 int QAssociativeIterable_Size(const QAssociativeIterable* self) {
@@ -645,10 +588,12 @@ QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSe
 	return new QSequentialIterable::const_iterator(*other);
 }
 
+void QSequentialIterable__const_iterator_OperatorAssign(QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* other) {
+	self->operator=(*other);
+}
+
 QVariant* QSequentialIterable__const_iterator_OperatorMultiply(const QSequentialIterable__const_iterator* self) {
-	QVariant _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->operator*());
 }
 
 bool QSequentialIterable__const_iterator_OperatorEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o) {
@@ -659,28 +604,44 @@ bool QSequentialIterable__const_iterator_OperatorNotEqual(const QSequentialItera
 	return self->operator!=(*o);
 }
 
-QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self, int param1) {
-	QSequentialIterable::const_iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
-QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinus(QSequentialIterable__const_iterator* self, int param1) {
-	QSequentialIterable::const_iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(QSequentialIterable__const_iterator* self, int param1) {
+	return new QSequentialIterable::const_iterator(self->operator++(static_cast<int>(param1)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(QSequentialIterable__const_iterator* self, int param1) {
+	return new QSequentialIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlus(const QSequentialIterable__const_iterator* self, int j) {
-	QSequentialIterable::const_iterator _ret = self->operator+(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+	return new QSequentialIterable::const_iterator(self->operator+(static_cast<int>(j)));
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinus(const QSequentialIterable__const_iterator* self, int j) {
-	QSequentialIterable::const_iterator _ret = self->operator-(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSequentialIterable::const_iterator*>(new QSequentialIterable::const_iterator(_ret));
+	return new QSequentialIterable::const_iterator(self->operator-(static_cast<int>(j)));
 }
 
 void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self) {
@@ -691,22 +652,20 @@ QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(Q
 	return new QAssociativeIterable::const_iterator(*other);
 }
 
+void QAssociativeIterable__const_iterator_OperatorAssign(QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* other) {
+	self->operator=(*other);
+}
+
 QVariant* QAssociativeIterable__const_iterator_Key(const QAssociativeIterable__const_iterator* self) {
-	QVariant _ret = self->key();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->key());
 }
 
 QVariant* QAssociativeIterable__const_iterator_Value(const QAssociativeIterable__const_iterator* self) {
-	QVariant _ret = self->value();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->value());
 }
 
 QVariant* QAssociativeIterable__const_iterator_OperatorMultiply(const QAssociativeIterable__const_iterator* self) {
-	QVariant _ret = self->operator*();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->operator*());
 }
 
 bool QAssociativeIterable__const_iterator_OperatorEqual(const QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* o) {
@@ -717,28 +676,44 @@ bool QAssociativeIterable__const_iterator_OperatorNotEqual(const QAssociativeIte
 	return self->operator!=(*o);
 }
 
-QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self, int param1) {
-	QAssociativeIterable::const_iterator _ret = self->operator++(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
-QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinus(QAssociativeIterable__const_iterator* self, int param1) {
-	QAssociativeIterable::const_iterator _ret = self->operator--(static_cast<int>(param1));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
+	return new QAssociativeIterable::const_iterator(self->operator++(static_cast<int>(param1)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
+	return new QAssociativeIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlus(const QAssociativeIterable__const_iterator* self, int j) {
-	QAssociativeIterable::const_iterator _ret = self->operator+(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+	return new QAssociativeIterable::const_iterator(self->operator+(static_cast<int>(j)));
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinus(const QAssociativeIterable__const_iterator* self, int j) {
-	QAssociativeIterable::const_iterator _ret = self->operator-(static_cast<int>(j));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QAssociativeIterable::const_iterator*>(new QAssociativeIterable::const_iterator(_ret));
+	return new QAssociativeIterable::const_iterator(self->operator-(static_cast<int>(j)));
 }
 
 void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self) {

@@ -62,7 +62,7 @@ func NewQStateMachine() *QStateMachine {
 
 // NewQStateMachine2 constructs a new QStateMachine object.
 func NewQStateMachine2(childMode QState__ChildMode) *QStateMachine {
-	ret := C.QStateMachine_new2((C.uintptr_t)(childMode))
+	ret := C.QStateMachine_new2((C.int)(childMode))
 	return newQStateMachine(ret)
 }
 
@@ -74,13 +74,12 @@ func NewQStateMachine3(parent *QObject) *QStateMachine {
 
 // NewQStateMachine4 constructs a new QStateMachine object.
 func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMachine {
-	ret := C.QStateMachine_new4((C.uintptr_t)(childMode), parent.cPointer())
+	ret := C.QStateMachine_new4((C.int)(childMode), parent.cPointer())
 	return newQStateMachine(ret)
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
-	_ret := C.QStateMachine_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStateMachine_MetaObject(this.h)))
 }
 
 func QStateMachine_Tr(s string) string {
@@ -110,8 +109,7 @@ func (this *QStateMachine) RemoveState(state *QAbstractState) {
 }
 
 func (this *QStateMachine) Error() QStateMachine__Error {
-	_ret := C.QStateMachine_Error(this.h)
-	return (QStateMachine__Error)(_ret)
+	return (QStateMachine__Error)(C.QStateMachine_Error(this.h))
 }
 
 func (this *QStateMachine) ErrorString() string {
@@ -126,13 +124,11 @@ func (this *QStateMachine) ClearError() {
 }
 
 func (this *QStateMachine) IsRunning() bool {
-	_ret := C.QStateMachine_IsRunning(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStateMachine_IsRunning(this.h))
 }
 
 func (this *QStateMachine) IsAnimated() bool {
-	_ret := C.QStateMachine_IsAnimated(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QStateMachine_IsAnimated(this.h))
 }
 
 func (this *QStateMachine) SetAnimated(enabled bool) {
@@ -146,9 +142,9 @@ func (this *QStateMachine) AddDefaultAnimation(animation *QAbstractAnimation) {
 func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 	var _ma *C.struct_miqt_array = C.QStateMachine_DefaultAnimations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractAnimation(_outCast[i])
+		_ret[i] = newQAbstractAnimation_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -159,12 +155,11 @@ func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation)
 }
 
 func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
-	_ret := C.QStateMachine_GlobalRestorePolicy(this.h)
-	return (QState__RestorePolicy)(_ret)
+	return (QState__RestorePolicy)(C.QStateMachine_GlobalRestorePolicy(this.h))
 }
 
 func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
-	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.uintptr_t)(restorePolicy))
+	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.int)(restorePolicy))
 }
 
 func (this *QStateMachine) PostEvent(event *QEvent) {
@@ -172,18 +167,27 @@ func (this *QStateMachine) PostEvent(event *QEvent) {
 }
 
 func (this *QStateMachine) PostDelayedEvent(event *QEvent, delay int) int {
-	_ret := C.QStateMachine_PostDelayedEvent(this.h, event.cPointer(), (C.int)(delay))
-	return (int)(_ret)
+	return (int)(C.QStateMachine_PostDelayedEvent(this.h, event.cPointer(), (C.int)(delay)))
 }
 
 func (this *QStateMachine) CancelDelayedEvent(id int) bool {
-	_ret := C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id))
-	return (bool)(_ret)
+	return (bool)(C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id)))
+}
+
+func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
+	var _ma *C.struct_miqt_array = C.QStateMachine_Configuration(this.h)
+	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
+	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_element := newQAbstractState_U(unsafe.Pointer(_outCast[i]))
+		_ret[_element] = struct{}{}
+	}
+	C.free(unsafe.Pointer(_ma))
+	return _ret
 }
 
 func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
-	_ret := C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
 func (this *QStateMachine) Start() {
@@ -213,8 +217,7 @@ func miqt_exec_callback_QStateMachine_RunningChanged(cb *C.void, running C.bool)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	running_ret := running
-	slotval1 := (bool)(running_ret)
+	slotval1 := (bool)(running)
 
 	gofunc(slotval1)
 }
@@ -264,7 +267,7 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
-	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.uintptr_t)(priority))
+	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.int)(priority))
 }
 
 // Delete this object from C++ memory.
@@ -311,13 +314,11 @@ func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMa
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
-	_ret := C.QStateMachine__SignalEvent_Sender(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QStateMachine__SignalEvent_Sender(this.h)))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
-	_ret := C.QStateMachine__SignalEvent_SignalIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QStateMachine__SignalEvent_SignalIndex(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -370,13 +371,11 @@ func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStat
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
-	_ret := C.QStateMachine__WrappedEvent_Object(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QStateMachine__WrappedEvent_Object(this.h)))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
-	_ret := C.QStateMachine__WrappedEvent_Event(this.h)
-	return newQEvent_U(unsafe.Pointer(_ret))
+	return newQEvent_U(unsafe.Pointer(C.QStateMachine__WrappedEvent_Event(this.h)))
 }
 
 // Delete this object from C++ memory.

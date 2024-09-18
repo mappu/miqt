@@ -19,10 +19,10 @@ class QTileRules;
 typedef struct QTileRules QTileRules;
 #endif
 
-QTileRules* QTileRules_new(uintptr_t horizontalRule, uintptr_t verticalRule);
+QTileRules* QTileRules_new(int horizontalRule, int verticalRule);
 QTileRules* QTileRules_new2();
 QTileRules* QTileRules_new3(QTileRules* param1);
-QTileRules* QTileRules_new4(uintptr_t rule);
+QTileRules* QTileRules_new4(int rule);
 void QTileRules_Delete(QTileRules* self);
 
 #ifdef __cplusplus

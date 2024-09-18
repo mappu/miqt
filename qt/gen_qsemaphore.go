@@ -52,13 +52,11 @@ func (this *QSemaphore) Acquire() {
 }
 
 func (this *QSemaphore) TryAcquire() bool {
-	_ret := C.QSemaphore_TryAcquire(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSemaphore_TryAcquire(this.h))
 }
 
 func (this *QSemaphore) TryAcquire2(n int, timeout int) bool {
-	_ret := C.QSemaphore_TryAcquire2(this.h, (C.int)(n), (C.int)(timeout))
-	return (bool)(_ret)
+	return (bool)(C.QSemaphore_TryAcquire2(this.h, (C.int)(n), (C.int)(timeout)))
 }
 
 func (this *QSemaphore) Release() {
@@ -66,8 +64,7 @@ func (this *QSemaphore) Release() {
 }
 
 func (this *QSemaphore) Available() int {
-	_ret := C.QSemaphore_Available(this.h)
-	return (int)(_ret)
+	return (int)(C.QSemaphore_Available(this.h))
 }
 
 func (this *QSemaphore) Acquire1(n int) {
@@ -75,8 +72,7 @@ func (this *QSemaphore) Acquire1(n int) {
 }
 
 func (this *QSemaphore) TryAcquire1(n int) bool {
-	_ret := C.QSemaphore_TryAcquire1(this.h, (C.int)(n))
-	return (bool)(_ret)
+	return (bool)(C.QSemaphore_TryAcquire1(this.h, (C.int)(n)))
 }
 
 func (this *QSemaphore) Release1(n int) {
@@ -154,13 +150,11 @@ func (this *QSemaphoreReleaser) Swap(other *QSemaphoreReleaser) {
 }
 
 func (this *QSemaphoreReleaser) Semaphore() *QSemaphore {
-	_ret := C.QSemaphoreReleaser_Semaphore(this.h)
-	return newQSemaphore_U(unsafe.Pointer(_ret))
+	return newQSemaphore_U(unsafe.Pointer(C.QSemaphoreReleaser_Semaphore(this.h)))
 }
 
 func (this *QSemaphoreReleaser) Cancel() *QSemaphore {
-	_ret := C.QSemaphoreReleaser_Cancel(this.h)
-	return newQSemaphore_U(unsafe.Pointer(_ret))
+	return newQSemaphore_U(unsafe.Pointer(C.QSemaphoreReleaser_Cancel(this.h)))
 }
 
 // Delete this object from C++ memory.

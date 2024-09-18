@@ -67,9 +67,7 @@ void QGroupBox_SetAlignment(QGroupBox* self, int alignment) {
 }
 
 QSize* QGroupBox_MinimumSizeHint(const QGroupBox* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 bool QGroupBox_IsFlat(const QGroupBox* self) {

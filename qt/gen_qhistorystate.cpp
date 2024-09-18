@@ -14,7 +14,7 @@ QHistoryState* QHistoryState_new() {
 	return new QHistoryState();
 }
 
-QHistoryState* QHistoryState_new2(uintptr_t typeVal) {
+QHistoryState* QHistoryState_new2(int typeVal) {
 	return new QHistoryState(static_cast<QHistoryState::HistoryType>(typeVal));
 }
 
@@ -22,7 +22,7 @@ QHistoryState* QHistoryState_new3(QState* parent) {
 	return new QHistoryState(parent);
 }
 
-QHistoryState* QHistoryState_new4(uintptr_t typeVal, QState* parent) {
+QHistoryState* QHistoryState_new4(int typeVal, QState* parent) {
 	return new QHistoryState(static_cast<QHistoryState::HistoryType>(typeVal), parent);
 }
 
@@ -60,12 +60,12 @@ void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state) {
 	self->setDefaultState(state);
 }
 
-uintptr_t QHistoryState_HistoryType(const QHistoryState* self) {
+int QHistoryState_HistoryType(const QHistoryState* self) {
 	QHistoryState::HistoryType _ret = self->historyType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QHistoryState_SetHistoryType(QHistoryState* self, uintptr_t typeVal) {
+void QHistoryState_SetHistoryType(QHistoryState* self, int typeVal) {
 	self->setHistoryType(static_cast<QHistoryState::HistoryType>(typeVal));
 }
 

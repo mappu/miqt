@@ -107,18 +107,15 @@ func (this *QProcessEnvironment) Swap(other *QProcessEnvironment) {
 }
 
 func (this *QProcessEnvironment) OperatorEqual(other *QProcessEnvironment) bool {
-	_ret := C.QProcessEnvironment_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QProcessEnvironment_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QProcessEnvironment) OperatorNotEqual(other *QProcessEnvironment) bool {
-	_ret := C.QProcessEnvironment_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QProcessEnvironment_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QProcessEnvironment) IsEmpty() bool {
-	_ret := C.QProcessEnvironment_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcessEnvironment_IsEmpty(this.h))
 }
 
 func (this *QProcessEnvironment) Clear() {
@@ -128,8 +125,7 @@ func (this *QProcessEnvironment) Clear() {
 func (this *QProcessEnvironment) Contains(name string) bool {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	_ret := C.QProcessEnvironment_Contains(this.h, (*C.struct_miqt_string)(name_ms))
-	return (bool)(_ret)
+	return (bool)(C.QProcessEnvironment_Contains(this.h, (*C.struct_miqt_string)(name_ms)))
 }
 
 func (this *QProcessEnvironment) Insert(name string, value string) {
@@ -160,8 +156,10 @@ func (this *QProcessEnvironment) ToStringList() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -172,8 +170,10 @@ func (this *QProcessEnvironment) Keys() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -251,8 +251,7 @@ func NewQProcess2(parent *QObject) *QProcess {
 }
 
 func (this *QProcess) MetaObject() *QMetaObject {
-	_ret := C.QProcess_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QProcess_MetaObject(this.h)))
 }
 
 func QProcess_Tr(s string) string {
@@ -276,13 +275,13 @@ func QProcess_TrUtf8(s string) string {
 func (this *QProcess) Start(program string, arguments []string) {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
@@ -300,13 +299,11 @@ func (this *QProcess) Start2() {
 }
 
 func (this *QProcess) StartDetached() bool {
-	_ret := C.QProcess_StartDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetached(this.h))
 }
 
 func (this *QProcess) Open() bool {
-	_ret := C.QProcess_Open(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_Open(this.h))
 }
 
 func (this *QProcess) Program() string {
@@ -327,21 +324,23 @@ func (this *QProcess) Arguments() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QProcess) SetArguments(arguments []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
@@ -349,43 +348,39 @@ func (this *QProcess) SetArguments(arguments []string) {
 }
 
 func (this *QProcess) ReadChannelMode() QProcess__ProcessChannelMode {
-	_ret := C.QProcess_ReadChannelMode(this.h)
-	return (QProcess__ProcessChannelMode)(_ret)
+	return (QProcess__ProcessChannelMode)(C.QProcess_ReadChannelMode(this.h))
 }
 
 func (this *QProcess) SetReadChannelMode(mode QProcess__ProcessChannelMode) {
-	C.QProcess_SetReadChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetReadChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ProcessChannelMode() QProcess__ProcessChannelMode {
-	_ret := C.QProcess_ProcessChannelMode(this.h)
-	return (QProcess__ProcessChannelMode)(_ret)
+	return (QProcess__ProcessChannelMode)(C.QProcess_ProcessChannelMode(this.h))
 }
 
 func (this *QProcess) SetProcessChannelMode(mode QProcess__ProcessChannelMode) {
-	C.QProcess_SetProcessChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetProcessChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) InputChannelMode() QProcess__InputChannelMode {
-	_ret := C.QProcess_InputChannelMode(this.h)
-	return (QProcess__InputChannelMode)(_ret)
+	return (QProcess__InputChannelMode)(C.QProcess_InputChannelMode(this.h))
 }
 
 func (this *QProcess) SetInputChannelMode(mode QProcess__InputChannelMode) {
-	C.QProcess_SetInputChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetInputChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ReadChannel() QProcess__ProcessChannel {
-	_ret := C.QProcess_ReadChannel(this.h)
-	return (QProcess__ProcessChannel)(_ret)
+	return (QProcess__ProcessChannel)(C.QProcess_ReadChannel(this.h))
 }
 
 func (this *QProcess) SetReadChannel(channel QProcess__ProcessChannel) {
-	C.QProcess_SetReadChannel(this.h, (C.uintptr_t)(channel))
+	C.QProcess_SetReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseReadChannel(channel QProcess__ProcessChannel) {
-	C.QProcess_CloseReadChannel(this.h, (C.uintptr_t)(channel))
+	C.QProcess_CloseReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseWriteChannel() {
@@ -428,13 +423,13 @@ func (this *QProcess) SetWorkingDirectory(dir string) {
 }
 
 func (this *QProcess) SetEnvironment(environment []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	environment_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(environment))))
 	defer C.free(unsafe.Pointer(environment_CArray))
 	for i := range environment {
-		single_ms := miqt_strdupg(environment[i])
-		defer C.free(single_ms)
-		environment_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		environment_i_ms := miqt_strdupg(environment[i])
+		defer C.free(environment_i_ms)
+		environment_CArray[i] = (*C.struct_miqt_string)(environment_i_ms)
 	}
 	environment_ma := &C.struct_miqt_array{len: C.size_t(len(environment)), data: unsafe.Pointer(environment_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(environment_ma))
@@ -446,8 +441,10 @@ func (this *QProcess) Environment() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -465,13 +462,11 @@ func (this *QProcess) ProcessEnvironment() *QProcessEnvironment {
 }
 
 func (this *QProcess) Error() QProcess__ProcessError {
-	_ret := C.QProcess_Error(this.h)
-	return (QProcess__ProcessError)(_ret)
+	return (QProcess__ProcessError)(C.QProcess_Error(this.h))
 }
 
 func (this *QProcess) State() QProcess__ProcessState {
-	_ret := C.QProcess_State(this.h)
-	return (QProcess__ProcessState)(_ret)
+	return (QProcess__ProcessState)(C.QProcess_State(this.h))
 }
 
 func (this *QProcess) Pid() int64 {
@@ -479,33 +474,27 @@ func (this *QProcess) Pid() int64 {
 		panic("Unsupported OS")
 	}
 
-	_ret := C.QProcess_Pid(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QProcess_Pid(this.h))
 }
 
 func (this *QProcess) ProcessId() int64 {
-	_ret := C.QProcess_ProcessId(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QProcess_ProcessId(this.h))
 }
 
 func (this *QProcess) WaitForStarted() bool {
-	_ret := C.QProcess_WaitForStarted(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForStarted(this.h))
 }
 
 func (this *QProcess) WaitForReadyRead() bool {
-	_ret := C.QProcess_WaitForReadyRead(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForReadyRead(this.h))
 }
 
 func (this *QProcess) WaitForBytesWritten() bool {
-	_ret := C.QProcess_WaitForBytesWritten(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForBytesWritten(this.h))
 }
 
 func (this *QProcess) WaitForFinished() bool {
-	_ret := C.QProcess_WaitForFinished(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForFinished(this.h))
 }
 
 func (this *QProcess) ReadAllStandardOutput() *QByteArray {
@@ -523,33 +512,27 @@ func (this *QProcess) ReadAllStandardError() *QByteArray {
 }
 
 func (this *QProcess) ExitCode() int {
-	_ret := C.QProcess_ExitCode(this.h)
-	return (int)(_ret)
+	return (int)(C.QProcess_ExitCode(this.h))
 }
 
 func (this *QProcess) ExitStatus() QProcess__ExitStatus {
-	_ret := C.QProcess_ExitStatus(this.h)
-	return (QProcess__ExitStatus)(_ret)
+	return (QProcess__ExitStatus)(C.QProcess_ExitStatus(this.h))
 }
 
 func (this *QProcess) BytesAvailable() int64 {
-	_ret := C.QProcess_BytesAvailable(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QProcess_BytesAvailable(this.h))
 }
 
 func (this *QProcess) BytesToWrite() int64 {
-	_ret := C.QProcess_BytesToWrite(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QProcess_BytesToWrite(this.h))
 }
 
 func (this *QProcess) IsSequential() bool {
-	_ret := C.QProcess_IsSequential(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_IsSequential(this.h))
 }
 
 func (this *QProcess) CanReadLine() bool {
-	_ret := C.QProcess_CanReadLine(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_CanReadLine(this.h))
 }
 
 func (this *QProcess) Close() {
@@ -557,75 +540,69 @@ func (this *QProcess) Close() {
 }
 
 func (this *QProcess) AtEnd() bool {
-	_ret := C.QProcess_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_AtEnd(this.h))
 }
 
 func QProcess_Execute(program string, arguments []string) int {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
-	_ret := C.QProcess_Execute((*C.struct_miqt_string)(program_ms), arguments_ma)
-	return (int)(_ret)
+	return (int)(C.QProcess_Execute((*C.struct_miqt_string)(program_ms), arguments_ma))
 }
 
 func QProcess_ExecuteWithCommand(command string) int {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
-	_ret := C.QProcess_ExecuteWithCommand((*C.struct_miqt_string)(command_ms))
-	return (int)(_ret)
+	return (int)(C.QProcess_ExecuteWithCommand((*C.struct_miqt_string)(command_ms)))
 }
 
 func QProcess_StartDetached2(program string, arguments []string, workingDirectory string) bool {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
 	workingDirectory_ms := miqt_strdupg(workingDirectory)
 	defer C.free(workingDirectory_ms)
-	_ret := C.QProcess_StartDetached2((*C.struct_miqt_string)(program_ms), arguments_ma, (*C.struct_miqt_string)(workingDirectory_ms))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetached2((*C.struct_miqt_string)(program_ms), arguments_ma, (*C.struct_miqt_string)(workingDirectory_ms)))
 }
 
 func QProcess_StartDetached3(program string, arguments []string) bool {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
-	_ret := C.QProcess_StartDetached3((*C.struct_miqt_string)(program_ms), arguments_ma)
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetached3((*C.struct_miqt_string)(program_ms), arguments_ma))
 }
 
 func QProcess_StartDetachedWithCommand(command string) bool {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
-	_ret := C.QProcess_StartDetachedWithCommand((*C.struct_miqt_string)(command_ms))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetachedWithCommand((*C.struct_miqt_string)(command_ms)))
 }
 
 func QProcess_SystemEnvironment() []string {
@@ -633,8 +610,10 @@ func QProcess_SystemEnvironment() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -670,74 +649,69 @@ func miqt_exec_callback_QProcess_Finished(cb *C.void, exitCode C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	exitCode_ret := exitCode
-	slotval1 := (int)(exitCode_ret)
+	slotval1 := (int)(exitCode)
 
 	gofunc(slotval1)
 }
 
 func (this *QProcess) Finished2(exitCode int, exitStatus QProcess__ExitStatus) {
-	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.uintptr_t)(exitStatus))
+	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.int)(exitStatus))
 }
 func (this *QProcess) OnFinished2(slot func(exitCode int, exitStatus QProcess__ExitStatus)) {
 	C.QProcess_connect_Finished2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_Finished2
-func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatus C.uintptr_t) {
+func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatus C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(exitCode int, exitStatus QProcess__ExitStatus))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	exitCode_ret := exitCode
-	slotval1 := (int)(exitCode_ret)
+	slotval1 := (int)(exitCode)
 
-	exitStatus_ret := exitStatus
-	slotval2 := (QProcess__ExitStatus)(exitStatus_ret)
+	slotval2 := (QProcess__ExitStatus)(exitStatus)
 
 	gofunc(slotval1, slotval2)
 }
 
 func (this *QProcess) ErrorWithError(error QProcess__ProcessError) {
-	C.QProcess_ErrorWithError(this.h, (C.uintptr_t)(error))
+	C.QProcess_ErrorWithError(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorWithError(slot func(error QProcess__ProcessError)) {
 	C.QProcess_connect_ErrorWithError(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_ErrorWithError
-func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.uintptr_t) {
+func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	error_ret := error
-	slotval1 := (QProcess__ProcessError)(error_ret)
+	slotval1 := (QProcess__ProcessError)(error)
 
 	gofunc(slotval1)
 }
 
 func (this *QProcess) ErrorOccurred(error QProcess__ProcessError) {
-	C.QProcess_ErrorOccurred(this.h, (C.uintptr_t)(error))
+	C.QProcess_ErrorOccurred(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorOccurred(slot func(error QProcess__ProcessError)) {
 	C.QProcess_connect_ErrorOccurred(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_ErrorOccurred
-func miqt_exec_callback_QProcess_ErrorOccurred(cb *C.void, error C.uintptr_t) {
+func miqt_exec_callback_QProcess_ErrorOccurred(cb *C.void, error C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	error_ret := error
-	slotval1 := (QProcess__ProcessError)(error_ret)
+	slotval1 := (QProcess__ProcessError)(error)
 
 	gofunc(slotval1)
 }
@@ -789,13 +763,13 @@ func QProcess_TrUtf83(s string, c string, n int) string {
 func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
@@ -813,13 +787,11 @@ func (this *QProcess) Start1(mode int) {
 }
 
 func (this *QProcess) StartDetached1(pid *int64) bool {
-	_ret := C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid)))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
 func (this *QProcess) Open1(mode int) bool {
-	_ret := C.QProcess_Open1(this.h, (C.int)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
@@ -835,42 +807,37 @@ func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
 }
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {
-	_ret := C.QProcess_WaitForStarted1(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForStarted1(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForReadyRead1(msecs int) bool {
-	_ret := C.QProcess_WaitForReadyRead1(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForReadyRead1(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForBytesWritten1(msecs int) bool {
-	_ret := C.QProcess_WaitForBytesWritten1(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForBytesWritten1(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForFinished1(msecs int) bool {
-	_ret := C.QProcess_WaitForFinished1(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_WaitForFinished1(this.h, (C.int)(msecs)))
 }
 
 func QProcess_StartDetached4(program string, arguments []string, workingDirectory string, pid *int64) bool {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		single_ms := miqt_strdupg(arguments[i])
-		defer C.free(single_ms)
-		arguments_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		arguments_i_ms := miqt_strdupg(arguments[i])
+		defer C.free(arguments_i_ms)
+		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
 	workingDirectory_ms := miqt_strdupg(workingDirectory)
 	defer C.free(workingDirectory_ms)
-	_ret := C.QProcess_StartDetached4((*C.struct_miqt_string)(program_ms), arguments_ma, (*C.struct_miqt_string)(workingDirectory_ms), (*C.longlong)(unsafe.Pointer(pid)))
-	return (bool)(_ret)
+	return (bool)(C.QProcess_StartDetached4((*C.struct_miqt_string)(program_ms), arguments_ma, (*C.struct_miqt_string)(workingDirectory_ms), (*C.longlong)(unsafe.Pointer(pid))))
 }
 
 // Delete this object from C++ memory.

@@ -47,13 +47,13 @@ void QDialog_SetVisible(QDialog* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QDialog_SetOrientation(QDialog* self, uintptr_t orientation) {
+void QDialog_SetOrientation(QDialog* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QDialog_Orientation(const QDialog* self) {
+int QDialog_Orientation(const QDialog* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDialog_SetExtension(QDialog* self, QWidget* extension) {
@@ -65,15 +65,11 @@ QWidget* QDialog_Extension(const QDialog* self) {
 }
 
 QSize* QDialog_SizeHint(const QDialog* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QDialog_MinimumSizeHint(const QDialog* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QDialog_SetSizeGripEnabled(QDialog* self, bool sizeGripEnabled) {

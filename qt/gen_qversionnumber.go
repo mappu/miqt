@@ -74,28 +74,23 @@ func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
 }
 
 func (this *QVersionNumber) IsNull() bool {
-	_ret := C.QVersionNumber_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVersionNumber_IsNull(this.h))
 }
 
 func (this *QVersionNumber) IsNormalized() bool {
-	_ret := C.QVersionNumber_IsNormalized(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QVersionNumber_IsNormalized(this.h))
 }
 
 func (this *QVersionNumber) MajorVersion() int {
-	_ret := C.QVersionNumber_MajorVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_MajorVersion(this.h))
 }
 
 func (this *QVersionNumber) MinorVersion() int {
-	_ret := C.QVersionNumber_MinorVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_MinorVersion(this.h))
 }
 
 func (this *QVersionNumber) MicroVersion() int {
-	_ret := C.QVersionNumber_MicroVersion(this.h)
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_MicroVersion(this.h))
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
@@ -108,7 +103,7 @@ func (this *QVersionNumber) Normalized() *QVersionNumber {
 func (this *QVersionNumber) Segments() []int {
 	var _ma *C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -117,23 +112,19 @@ func (this *QVersionNumber) Segments() []int {
 }
 
 func (this *QVersionNumber) SegmentAt(index int) int {
-	_ret := C.QVersionNumber_SegmentAt(this.h, (C.int)(index))
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_SegmentAt(this.h, (C.int)(index)))
 }
 
 func (this *QVersionNumber) SegmentCount() int {
-	_ret := C.QVersionNumber_SegmentCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_SegmentCount(this.h))
 }
 
 func (this *QVersionNumber) IsPrefixOf(other *QVersionNumber) bool {
-	_ret := C.QVersionNumber_IsPrefixOf(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QVersionNumber_IsPrefixOf(this.h, other.cPointer()))
 }
 
 func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
-	_ret := C.QVersionNumber_Compare(v1.cPointer(), v2.cPointer())
-	return (int)(_ret)
+	return (int)(C.QVersionNumber_Compare(v1.cPointer(), v2.cPointer()))
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {

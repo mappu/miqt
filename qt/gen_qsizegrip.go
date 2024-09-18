@@ -43,8 +43,7 @@ func NewQSizeGrip(parent *QWidget) *QSizeGrip {
 }
 
 func (this *QSizeGrip) MetaObject() *QMetaObject {
-	_ret := C.QSizeGrip_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSizeGrip_MetaObject(this.h)))
 }
 
 func QSizeGrip_Tr(s string) string {

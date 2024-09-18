@@ -29,30 +29,32 @@ bool QTextInlineObject_IsValid(const QTextInlineObject* self) {
 }
 
 QRectF* QTextInlineObject_Rect(const QTextInlineObject* self) {
-	QRectF _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect());
 }
 
 double QTextInlineObject_Width(const QTextInlineObject* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Ascent(const QTextInlineObject* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Descent(const QTextInlineObject* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Height(const QTextInlineObject* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
-uintptr_t QTextInlineObject_TextDirection(const QTextInlineObject* self) {
+int QTextInlineObject_TextDirection(const QTextInlineObject* self) {
 	Qt::LayoutDirection _ret = self->textDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextInlineObject_SetWidth(QTextInlineObject* self, double w) {
@@ -76,9 +78,7 @@ int QTextInlineObject_FormatIndex(const QTextInlineObject* self) {
 }
 
 QTextFormat* QTextInlineObject_Format(const QTextInlineObject* self) {
-	QTextFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextFormat*>(new QTextFormat(_ret));
+	return new QTextFormat(self->format());
 }
 
 void QTextInlineObject_Delete(QTextInlineObject* self) {
@@ -113,9 +113,7 @@ void QTextLayout_SetFont(QTextLayout* self, QFont* f) {
 }
 
 QFont* QTextLayout_Font(const QTextLayout* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QTextLayout_SetRawFont(QTextLayout* self, QRawFont* rawFont) {
@@ -160,7 +158,7 @@ struct miqt_string* QTextLayout_PreeditAreaText(const QTextLayout* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange */ overrides) {
+void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange* */ overrides) {
 	QList<QTextLayout::FormatRange> overrides_QList;
 	overrides_QList.reserve(overrides->len);
 	QTextLayout__FormatRange** overrides_arr = static_cast<QTextLayout__FormatRange**>(overrides->data);
@@ -172,8 +170,8 @@ void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* o
 
 struct miqt_array* QTextLayout_AdditionalFormats(const QTextLayout* self) {
 	QList<QTextLayout::FormatRange> _ret = self->additionalFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextLayout::FormatRange(_ret[i]);
 	}
@@ -187,7 +185,7 @@ void QTextLayout_ClearAdditionalFormats(QTextLayout* self) {
 	self->clearAdditionalFormats();
 }
 
-void QTextLayout_SetFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange */ overrides) {
+void QTextLayout_SetFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange* */ overrides) {
 	QVector<QTextLayout::FormatRange> overrides_QList;
 	overrides_QList.reserve(overrides->len);
 	QTextLayout__FormatRange** overrides_arr = static_cast<QTextLayout__FormatRange**>(overrides->data);
@@ -199,8 +197,8 @@ void QTextLayout_SetFormats(QTextLayout* self, struct miqt_array* /* of QTextLay
 
 struct miqt_array* QTextLayout_Formats(const QTextLayout* self) {
 	QVector<QTextLayout::FormatRange> _ret = self->formats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextLayout::FormatRange(_ret[i]);
 	}
@@ -222,13 +220,13 @@ bool QTextLayout_CacheEnabled(const QTextLayout* self) {
 	return self->cacheEnabled();
 }
 
-void QTextLayout_SetCursorMoveStyle(QTextLayout* self, uintptr_t style) {
+void QTextLayout_SetCursorMoveStyle(QTextLayout* self, int style) {
 	self->setCursorMoveStyle(static_cast<Qt::CursorMoveStyle>(style));
 }
 
-uintptr_t QTextLayout_CursorMoveStyle(const QTextLayout* self) {
+int QTextLayout_CursorMoveStyle(const QTextLayout* self) {
 	Qt::CursorMoveStyle _ret = self->cursorMoveStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextLayout_BeginLayout(QTextLayout* self) {
@@ -244,9 +242,7 @@ void QTextLayout_ClearLayout(QTextLayout* self) {
 }
 
 QTextLine* QTextLayout_CreateLine(QTextLayout* self) {
-	QTextLine _ret = self->createLine();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLine*>(new QTextLine(_ret));
+	return new QTextLine(self->createLine());
 }
 
 int QTextLayout_LineCount(const QTextLayout* self) {
@@ -254,15 +250,11 @@ int QTextLayout_LineCount(const QTextLayout* self) {
 }
 
 QTextLine* QTextLayout_LineAt(const QTextLayout* self, int i) {
-	QTextLine _ret = self->lineAt(static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLine*>(new QTextLine(_ret));
+	return new QTextLine(self->lineAt(static_cast<int>(i)));
 }
 
 QTextLine* QTextLayout_LineForTextPosition(const QTextLayout* self, int pos) {
-	QTextLine _ret = self->lineForTextPosition(static_cast<int>(pos));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextLine*>(new QTextLine(_ret));
+	return new QTextLine(self->lineForTextPosition(static_cast<int>(pos)));
 }
 
 bool QTextLayout_IsValidCursorPosition(const QTextLayout* self, int pos) {
@@ -298,9 +290,7 @@ void QTextLayout_DrawCursor2(const QTextLayout* self, QPainter* p, QPointF* pos,
 }
 
 QPointF* QTextLayout_Position(const QTextLayout* self) {
-	QPointF _ret = self->position();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->position());
 }
 
 void QTextLayout_SetPosition(QTextLayout* self, QPointF* p) {
@@ -308,23 +298,23 @@ void QTextLayout_SetPosition(QTextLayout* self, QPointF* p) {
 }
 
 QRectF* QTextLayout_BoundingRect(const QTextLayout* self) {
-	QRectF _ret = self->boundingRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect());
 }
 
 double QTextLayout_MinimumWidth(const QTextLayout* self) {
-	return self->minimumWidth();
+	qreal _ret = self->minimumWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextLayout_MaximumWidth(const QTextLayout* self) {
-	return self->maximumWidth();
+	qreal _ret = self->maximumWidth();
+	return static_cast<double>(_ret);
 }
 
 struct miqt_array* QTextLayout_GlyphRuns(const QTextLayout* self) {
 	QList<QGlyphRun> _ret = self->glyphRuns();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -338,15 +328,15 @@ void QTextLayout_SetFlags(QTextLayout* self, int flags) {
 	self->setFlags(static_cast<int>(flags));
 }
 
-int QTextLayout_NextCursorPosition2(const QTextLayout* self, int oldPos, uintptr_t mode) {
+int QTextLayout_NextCursorPosition2(const QTextLayout* self, int oldPos, int mode) {
 	return self->nextCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-int QTextLayout_PreviousCursorPosition2(const QTextLayout* self, int oldPos, uintptr_t mode) {
+int QTextLayout_PreviousCursorPosition2(const QTextLayout* self, int oldPos, int mode) {
 	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange */ selections) {
+void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange* */ selections) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections->data);
@@ -356,7 +346,7 @@ void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 	self->draw(p, *pos, selections_QList);
 }
 
-void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange */ selections, QRectF* clip) {
+void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array* /* of QTextLayout__FormatRange* */ selections, QRectF* clip) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections->len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections->data);
@@ -368,8 +358,8 @@ void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 
 struct miqt_array* QTextLayout_GlyphRuns1(const QTextLayout* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -381,8 +371,8 @@ struct miqt_array* QTextLayout_GlyphRuns1(const QTextLayout* self, int from) {
 
 struct miqt_array* QTextLayout_GlyphRuns2(const QTextLayout* self, int from, int length) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -405,37 +395,42 @@ bool QTextLine_IsValid(const QTextLine* self) {
 }
 
 QRectF* QTextLine_Rect(const QTextLine* self) {
-	QRectF _ret = self->rect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->rect());
 }
 
 double QTextLine_X(const QTextLine* self) {
-	return self->x();
+	qreal _ret = self->x();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Y(const QTextLine* self) {
-	return self->y();
+	qreal _ret = self->y();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Width(const QTextLine* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Ascent(const QTextLine* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Descent(const QTextLine* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Height(const QTextLine* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Leading(const QTextLine* self) {
-	return self->leading();
+	qreal _ret = self->leading();
+	return static_cast<double>(_ret);
 }
 
 void QTextLine_SetLeadingIncluded(QTextLine* self, bool included) {
@@ -447,25 +442,27 @@ bool QTextLine_LeadingIncluded(const QTextLine* self) {
 }
 
 double QTextLine_NaturalTextWidth(const QTextLine* self) {
-	return self->naturalTextWidth();
+	qreal _ret = self->naturalTextWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_HorizontalAdvance(const QTextLine* self) {
-	return self->horizontalAdvance();
+	qreal _ret = self->horizontalAdvance();
+	return static_cast<double>(_ret);
 }
 
 QRectF* QTextLine_NaturalTextRect(const QTextLine* self) {
-	QRectF _ret = self->naturalTextRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->naturalTextRect());
 }
 
 double QTextLine_CursorToX(const QTextLine* self, int* cursorPos) {
-	return self->cursorToX(static_cast<int*>(cursorPos));
+	qreal _ret = self->cursorToX(static_cast<int*>(cursorPos));
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_CursorToXWithCursorPos(const QTextLine* self, int cursorPos) {
-	return self->cursorToX(static_cast<int>(cursorPos));
+	qreal _ret = self->cursorToX(static_cast<int>(cursorPos));
+	return static_cast<double>(_ret);
 }
 
 int QTextLine_XToCursor(const QTextLine* self, double x) {
@@ -489,9 +486,7 @@ void QTextLine_SetPosition(QTextLine* self, QPointF* pos) {
 }
 
 QPointF* QTextLine_Position(const QTextLine* self) {
-	QPointF _ret = self->position();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->position());
 }
 
 int QTextLine_TextStart(const QTextLine* self) {
@@ -512,8 +507,8 @@ void QTextLine_Draw(const QTextLine* self, QPainter* p, QPointF* point) {
 
 struct miqt_array* QTextLine_GlyphRuns(const QTextLine* self) {
 	QList<QGlyphRun> _ret = self->glyphRuns();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -523,15 +518,17 @@ struct miqt_array* QTextLine_GlyphRuns(const QTextLine* self) {
 	return _out;
 }
 
-double QTextLine_CursorToX2(const QTextLine* self, int* cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
+double QTextLine_CursorToX2(const QTextLine* self, int* cursorPos, int edge) {
+	qreal _ret = self->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return static_cast<double>(_ret);
 }
 
-double QTextLine_CursorToX22(const QTextLine* self, int cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
+double QTextLine_CursorToX22(const QTextLine* self, int cursorPos, int edge) {
+	qreal _ret = self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return static_cast<double>(_ret);
 }
 
-int QTextLine_XToCursor2(const QTextLine* self, double x, uintptr_t param2) {
+int QTextLine_XToCursor2(const QTextLine* self, double x, int param2) {
 	return self->xToCursor(static_cast<qreal>(x), static_cast<QTextLine::CursorPosition>(param2));
 }
 
@@ -541,8 +538,8 @@ void QTextLine_Draw3(const QTextLine* self, QPainter* p, QPointF* point, QTextLa
 
 struct miqt_array* QTextLine_GlyphRuns1(const QTextLine* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}
@@ -554,8 +551,8 @@ struct miqt_array* QTextLine_GlyphRuns1(const QTextLine* self, int from) {
 
 struct miqt_array* QTextLine_GlyphRuns2(const QTextLine* self, int from, int length) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QGlyphRun(_ret[i]);
 	}

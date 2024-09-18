@@ -28,7 +28,7 @@ typedef struct QScreen QScreen;
 #endif
 
 QCursor* QCursor_new();
-QCursor* QCursor_new2(uintptr_t shape);
+QCursor* QCursor_new2(int shape);
 QCursor* QCursor_new3(QBitmap* bitmap, QBitmap* mask);
 QCursor* QCursor_new4(QPixmap* pixmap);
 QCursor* QCursor_new5(QCursor* cursor);
@@ -38,12 +38,12 @@ QCursor* QCursor_new8(QPixmap* pixmap, int hotX);
 QCursor* QCursor_new9(QPixmap* pixmap, int hotX, int hotY);
 void QCursor_OperatorAssign(QCursor* self, QCursor* cursor);
 void QCursor_Swap(QCursor* self, QCursor* other);
-uintptr_t QCursor_Shape(const QCursor* self);
-void QCursor_SetShape(QCursor* self, uintptr_t newShape);
+int QCursor_Shape(const QCursor* self);
+void QCursor_SetShape(QCursor* self, int newShape);
 QBitmap* QCursor_Bitmap(const QCursor* self);
 QBitmap* QCursor_Mask(const QCursor* self);
-QBitmap* QCursor_BitmapWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1);
-QBitmap* QCursor_MaskWithQtReturnByValueConstant(const QCursor* self, uintptr_t param1);
+QBitmap* QCursor_BitmapWithQtReturnByValueConstant(const QCursor* self, int param1);
+QBitmap* QCursor_MaskWithQtReturnByValueConstant(const QCursor* self, int param1);
 QPixmap* QCursor_Pixmap(const QCursor* self);
 QPoint* QCursor_HotSpot(const QCursor* self);
 QPoint* QCursor_Pos();

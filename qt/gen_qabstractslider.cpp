@@ -34,9 +34,9 @@ struct miqt_string* QAbstractSlider_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QAbstractSlider_Orientation(const QAbstractSlider* self) {
+int QAbstractSlider_Orientation(const QAbstractSlider* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractSlider_SetMinimum(QAbstractSlider* self, int minimum) {
@@ -115,7 +115,7 @@ int QAbstractSlider_Value(const QAbstractSlider* self) {
 	return self->value();
 }
 
-void QAbstractSlider_TriggerAction(QAbstractSlider* self, uintptr_t action) {
+void QAbstractSlider_TriggerAction(QAbstractSlider* self, int action) {
 	self->triggerAction(static_cast<QAbstractSlider::SliderAction>(action));
 }
 
@@ -123,7 +123,7 @@ void QAbstractSlider_SetValue(QAbstractSlider* self, int value) {
 	self->setValue(static_cast<int>(value));
 }
 
-void QAbstractSlider_SetOrientation(QAbstractSlider* self, uintptr_t orientation) {
+void QAbstractSlider_SetOrientation(QAbstractSlider* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 

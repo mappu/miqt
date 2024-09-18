@@ -65,8 +65,7 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
-	_ret := C.QRadioButton_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QRadioButton_MetaObject(this.h)))
 }
 
 func QRadioButton_Tr(s string) string {

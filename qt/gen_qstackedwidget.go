@@ -50,8 +50,7 @@ func NewQStackedWidget2(parent *QWidget) *QStackedWidget {
 }
 
 func (this *QStackedWidget) MetaObject() *QMetaObject {
-	_ret := C.QStackedWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QStackedWidget_MetaObject(this.h)))
 }
 
 func QStackedWidget_Tr(s string) string {
@@ -73,13 +72,11 @@ func QStackedWidget_TrUtf8(s string) string {
 }
 
 func (this *QStackedWidget) AddWidget(w *QWidget) int {
-	_ret := C.QStackedWidget_AddWidget(this.h, w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStackedWidget_AddWidget(this.h, w.cPointer()))
 }
 
 func (this *QStackedWidget) InsertWidget(index int, w *QWidget) int {
-	_ret := C.QStackedWidget_InsertWidget(this.h, (C.int)(index), w.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStackedWidget_InsertWidget(this.h, (C.int)(index), w.cPointer()))
 }
 
 func (this *QStackedWidget) RemoveWidget(w *QWidget) {
@@ -87,28 +84,23 @@ func (this *QStackedWidget) RemoveWidget(w *QWidget) {
 }
 
 func (this *QStackedWidget) CurrentWidget() *QWidget {
-	_ret := C.QStackedWidget_CurrentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QStackedWidget_CurrentWidget(this.h)))
 }
 
 func (this *QStackedWidget) CurrentIndex() int {
-	_ret := C.QStackedWidget_CurrentIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QStackedWidget_CurrentIndex(this.h))
 }
 
 func (this *QStackedWidget) IndexOf(param1 *QWidget) int {
-	_ret := C.QStackedWidget_IndexOf(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QStackedWidget_IndexOf(this.h, param1.cPointer()))
 }
 
 func (this *QStackedWidget) Widget(param1 int) *QWidget {
-	_ret := C.QStackedWidget_Widget(this.h, (C.int)(param1))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QStackedWidget_Widget(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedWidget) Count() int {
-	_ret := C.QStackedWidget_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QStackedWidget_Count(this.h))
 }
 
 func (this *QStackedWidget) SetCurrentIndex(index int) {
@@ -134,8 +126,7 @@ func miqt_exec_callback_QStackedWidget_CurrentChanged(cb *C.void, param1 C.int) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -155,8 +146,7 @@ func miqt_exec_callback_QStackedWidget_WidgetRemoved(cb *C.void, index C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := (int)(index_ret)
+	slotval1 := (int)(index)
 
 	gofunc(slotval1)
 }

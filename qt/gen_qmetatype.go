@@ -306,32 +306,27 @@ func NewQMetaType2(typeVal int) *QMetaType {
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {
-	_ret := C.QMetaType_UnregisterType((C.int)(typeVal))
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_UnregisterType((C.int)(typeVal)))
 }
 
 func QMetaType_RegisterTypedef(typeName string, aliasId int) int {
 	typeName_Cstring := C.CString(typeName)
 	defer C.free(unsafe.Pointer(typeName_Cstring))
-	_ret := C.QMetaType_RegisterTypedef(typeName_Cstring, (C.int)(aliasId))
-	return (int)(_ret)
+	return (int)(C.QMetaType_RegisterTypedef(typeName_Cstring, (C.int)(aliasId)))
 }
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName *QByteArray, aliasId int) int {
-	_ret := C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName.cPointer(), (C.int)(aliasId))
-	return (int)(_ret)
+	return (int)(C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName.cPointer(), (C.int)(aliasId)))
 }
 
 func QMetaType_Type(typeName string) int {
 	typeName_Cstring := C.CString(typeName)
 	defer C.free(unsafe.Pointer(typeName_Cstring))
-	_ret := C.QMetaType_Type(typeName_Cstring)
-	return (int)(_ret)
+	return (int)(C.QMetaType_Type(typeName_Cstring))
 }
 
 func QMetaType_TypeWithTypeName(typeName *QByteArray) int {
-	_ret := C.QMetaType_TypeWithTypeName(typeName.cPointer())
-	return (int)(_ret)
+	return (int)(C.QMetaType_TypeWithTypeName(typeName.cPointer()))
 }
 
 func QMetaType_TypeName(typeVal int) unsafe.Pointer {
@@ -340,53 +335,43 @@ func QMetaType_TypeName(typeVal int) unsafe.Pointer {
 }
 
 func QMetaType_SizeOf(typeVal int) int {
-	_ret := C.QMetaType_SizeOf((C.int)(typeVal))
-	return (int)(_ret)
+	return (int)(C.QMetaType_SizeOf((C.int)(typeVal)))
 }
 
 func QMetaType_TypeFlags(typeVal int) int {
-	_ret := C.QMetaType_TypeFlags((C.int)(typeVal))
-	return (int)(_ret)
+	return (int)(C.QMetaType_TypeFlags((C.int)(typeVal)))
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	_ret := C.QMetaType_MetaObjectForType((C.int)(typeVal))
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
 }
 
 func QMetaType_IsRegistered(typeVal int) bool {
-	_ret := C.QMetaType_IsRegistered((C.int)(typeVal))
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_IsRegistered((C.int)(typeVal)))
 }
 
 func (this *QMetaType) IsValid() bool {
-	_ret := C.QMetaType_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_IsValid(this.h))
 }
 
 func (this *QMetaType) IsRegistered2() bool {
-	_ret := C.QMetaType_IsRegistered2(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_IsRegistered2(this.h))
 }
 
 func (this *QMetaType) Id() int {
-	_ret := C.QMetaType_Id(this.h)
-	return (int)(_ret)
+	return (int)(C.QMetaType_Id(this.h))
 }
 
 func (this *QMetaType) SizeOf2() int {
-	_ret := C.QMetaType_SizeOf2(this.h)
-	return (int)(_ret)
+	return (int)(C.QMetaType_SizeOf2(this.h))
 }
 
 func (this *QMetaType) Flags() int {
-	_ret := C.QMetaType_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QMetaType_Flags(this.h))
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	_ret := C.QMetaType_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
 }
 
 func (this *QMetaType) Name() *QByteArray {
@@ -397,18 +382,15 @@ func (this *QMetaType) Name() *QByteArray {
 }
 
 func QMetaType_HasRegisteredComparators(typeId int) bool {
-	_ret := C.QMetaType_HasRegisteredComparators((C.int)(typeId))
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_HasRegisteredComparators((C.int)(typeId)))
 }
 
 func QMetaType_HasRegisteredDebugStreamOperator(typeId int) bool {
-	_ret := C.QMetaType_HasRegisteredDebugStreamOperator((C.int)(typeId))
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_HasRegisteredDebugStreamOperator((C.int)(typeId)))
 }
 
 func QMetaType_HasRegisteredConverterFunction(fromTypeId int, toTypeId int) bool {
-	_ret := C.QMetaType_HasRegisteredConverterFunction((C.int)(fromTypeId), (C.int)(toTypeId))
-	return (bool)(_ret)
+	return (bool)(C.QMetaType_HasRegisteredConverterFunction((C.int)(fromTypeId), (C.int)(toTypeId)))
 }
 
 // Delete this object from C++ memory.
@@ -538,18 +520,15 @@ func NewQtMetaTypePrivate__QSequentialIterableImpl2(param1 *QtMetaTypePrivate__Q
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) IteratorCapabilities() QtMetaTypePrivate__IteratorCapability {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(this.h)
-	return (QtMetaTypePrivate__IteratorCapability)(_ret)
+	return (QtMetaTypePrivate__IteratorCapability)(C.QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(this.h))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Revision() uint {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_Revision(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QtMetaTypePrivate__QSequentialIterableImpl_Revision(this.h))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) ContainerCapabilities() uint {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_ContainerCapabilities(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QtMetaTypePrivate__QSequentialIterableImpl_ContainerCapabilities(this.h))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) MoveToBegin() {
@@ -561,8 +540,11 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) MoveToEnd() {
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Equal(other *QtMetaTypePrivate__QSequentialIterableImpl) bool {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_Equal(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QtMetaTypePrivate__QSequentialIterableImpl_Equal(this.h, other.cPointer()))
+}
+
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) Advance(i int) *QtMetaTypePrivate__QSequentialIterableImpl {
+	return newQtMetaTypePrivate__QSequentialIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) GetCurrent() *QtMetaTypePrivate__VariantData {
@@ -580,8 +562,7 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) At(idx int) *QtMetaTypeP
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Size() int {
-	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QtMetaTypePrivate__QSequentialIterableImpl_Size(this.h))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) DestroyIter() {
@@ -590,6 +571,10 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) DestroyIter() {
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Copy(other *QtMetaTypePrivate__QSequentialIterableImpl) {
 	C.QtMetaTypePrivate__QSequentialIterableImpl_Copy(this.h, other.cPointer())
+}
+
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QSequentialIterableImpl) {
+	C.QtMetaTypePrivate__QSequentialIterableImpl_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -649,8 +634,11 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) End() {
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Equal(other *QtMetaTypePrivate__QAssociativeIterableImpl) bool {
-	_ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_Equal(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QtMetaTypePrivate__QAssociativeIterableImpl_Equal(this.h, other.cPointer()))
+}
+
+func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Advance(i int) *QtMetaTypePrivate__QAssociativeIterableImpl {
+	return newQtMetaTypePrivate__QAssociativeIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QAssociativeIterableImpl_Advance(this.h, (C.int)(i))))
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) DestroyIter() {
@@ -676,12 +664,15 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Find(key *QtMetaTypePri
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Size() int {
-	_ret := C.QtMetaTypePrivate__QAssociativeIterableImpl_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QtMetaTypePrivate__QAssociativeIterableImpl_Size(this.h))
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Copy(other *QtMetaTypePrivate__QAssociativeIterableImpl) {
 	C.QtMetaTypePrivate__QAssociativeIterableImpl_Copy(this.h, other.cPointer())
+}
+
+func (this *QtMetaTypePrivate__QAssociativeIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QAssociativeIterableImpl) {
+	C.QtMetaTypePrivate__QAssociativeIterableImpl_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

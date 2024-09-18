@@ -41,7 +41,7 @@ struct miqt_string* QConcatenateTablesProxyModel_TrUtf8(const char* s) {
 }
 
 struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self) {
-	QList<QAbstractItemModel*> _ret = self->sourceModels();
+	QList<QAbstractItemModel *> _ret = self->sourceModels();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractItemModel** _arr = static_cast<QAbstractItemModel**>(malloc(sizeof(QAbstractItemModel*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -62,21 +62,15 @@ void QConcatenateTablesProxyModel_RemoveSourceModel(QConcatenateTablesProxyModel
 }
 
 QModelIndex* QConcatenateTablesProxyModel_MapFromSource(const QConcatenateTablesProxyModel* self, QModelIndex* sourceIndex) {
-	QModelIndex _ret = self->mapFromSource(*sourceIndex);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mapFromSource(*sourceIndex));
 }
 
 QModelIndex* QConcatenateTablesProxyModel_MapToSource(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex) {
-	QModelIndex _ret = self->mapToSource(*proxyIndex);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->mapToSource(*proxyIndex));
 }
 
 QVariant* QConcatenateTablesProxyModel_Data(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	QVariant _ret = self->data(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index));
 }
 
 bool QConcatenateTablesProxyModel_SetData(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value) {
@@ -89,25 +83,19 @@ int QConcatenateTablesProxyModel_Flags(const QConcatenateTablesProxyModel* self,
 }
 
 QModelIndex* QConcatenateTablesProxyModel_Index(const QConcatenateTablesProxyModel* self, int row, int column) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
 }
 
 QModelIndex* QConcatenateTablesProxyModel_Parent(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	QModelIndex _ret = self->parent(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->parent(*index));
 }
 
 int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* self) {
 	return self->rowCount();
 }
 
-QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, int orientation) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
 int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel* self) {
@@ -116,7 +104,7 @@ int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel*
 
 struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -130,7 +118,7 @@ struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTabl
 	return _out;
 }
 
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex */ indexes) {
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
 	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
@@ -140,18 +128,16 @@ QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyMo
 	return self->mimeData(indexes_QList);
 }
 
-bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 QSize* QConcatenateTablesProxyModel_Span(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	QSize _ret = self->span(*index);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->span(*index));
 }
 
 struct miqt_string* QConcatenateTablesProxyModel_Tr2(const char* s, const char* c) {
@@ -183,9 +169,7 @@ struct miqt_string* QConcatenateTablesProxyModel_TrUtf83(const char* s, const ch
 }
 
 QVariant* QConcatenateTablesProxyModel_Data2(const QConcatenateTablesProxyModel* self, QModelIndex* index, int role) {
-	QVariant _ret = self->data(*index, static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
 bool QConcatenateTablesProxyModel_SetData3(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value, int role) {
@@ -193,19 +177,15 @@ bool QConcatenateTablesProxyModel_SetData3(QConcatenateTablesProxyModel* self, Q
 }
 
 QModelIndex* QConcatenateTablesProxyModel_Index3(const QConcatenateTablesProxyModel* self, int row, int column, QModelIndex* parent) {
-	QModelIndex _ret = self->index(static_cast<int>(row), static_cast<int>(column), *parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 int QConcatenateTablesProxyModel_RowCount1(const QConcatenateTablesProxyModel* self, QModelIndex* parent) {
 	return self->rowCount(*parent);
 }
 
-QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation, int role) {
-	QVariant _ret = self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, int orientation, int role) {
+	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 int QConcatenateTablesProxyModel_ColumnCount1(const QConcatenateTablesProxyModel* self, QModelIndex* parent) {

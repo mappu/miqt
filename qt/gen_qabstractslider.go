@@ -63,8 +63,7 @@ func NewQAbstractSlider2(parent *QWidget) *QAbstractSlider {
 }
 
 func (this *QAbstractSlider) MetaObject() *QMetaObject {
-	_ret := C.QAbstractSlider_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractSlider_MetaObject(this.h)))
 }
 
 func QAbstractSlider_Tr(s string) string {
@@ -86,8 +85,7 @@ func QAbstractSlider_TrUtf8(s string) string {
 }
 
 func (this *QAbstractSlider) Orientation() Orientation {
-	_ret := C.QAbstractSlider_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QAbstractSlider_Orientation(this.h))
 }
 
 func (this *QAbstractSlider) SetMinimum(minimum int) {
@@ -95,8 +93,7 @@ func (this *QAbstractSlider) SetMinimum(minimum int) {
 }
 
 func (this *QAbstractSlider) Minimum() int {
-	_ret := C.QAbstractSlider_Minimum(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_Minimum(this.h))
 }
 
 func (this *QAbstractSlider) SetMaximum(maximum int) {
@@ -104,8 +101,7 @@ func (this *QAbstractSlider) SetMaximum(maximum int) {
 }
 
 func (this *QAbstractSlider) Maximum() int {
-	_ret := C.QAbstractSlider_Maximum(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_Maximum(this.h))
 }
 
 func (this *QAbstractSlider) SetSingleStep(singleStep int) {
@@ -113,8 +109,7 @@ func (this *QAbstractSlider) SetSingleStep(singleStep int) {
 }
 
 func (this *QAbstractSlider) SingleStep() int {
-	_ret := C.QAbstractSlider_SingleStep(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_SingleStep(this.h))
 }
 
 func (this *QAbstractSlider) SetPageStep(pageStep int) {
@@ -122,8 +117,7 @@ func (this *QAbstractSlider) SetPageStep(pageStep int) {
 }
 
 func (this *QAbstractSlider) PageStep() int {
-	_ret := C.QAbstractSlider_PageStep(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_PageStep(this.h))
 }
 
 func (this *QAbstractSlider) SetTracking(enable bool) {
@@ -131,8 +125,7 @@ func (this *QAbstractSlider) SetTracking(enable bool) {
 }
 
 func (this *QAbstractSlider) HasTracking() bool {
-	_ret := C.QAbstractSlider_HasTracking(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSlider_HasTracking(this.h))
 }
 
 func (this *QAbstractSlider) SetSliderDown(sliderDown bool) {
@@ -140,8 +133,7 @@ func (this *QAbstractSlider) SetSliderDown(sliderDown bool) {
 }
 
 func (this *QAbstractSlider) IsSliderDown() bool {
-	_ret := C.QAbstractSlider_IsSliderDown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSlider_IsSliderDown(this.h))
 }
 
 func (this *QAbstractSlider) SetSliderPosition(sliderPosition int) {
@@ -149,8 +141,7 @@ func (this *QAbstractSlider) SetSliderPosition(sliderPosition int) {
 }
 
 func (this *QAbstractSlider) SliderPosition() int {
-	_ret := C.QAbstractSlider_SliderPosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_SliderPosition(this.h))
 }
 
 func (this *QAbstractSlider) SetInvertedAppearance(invertedAppearance bool) {
@@ -158,8 +149,7 @@ func (this *QAbstractSlider) SetInvertedAppearance(invertedAppearance bool) {
 }
 
 func (this *QAbstractSlider) InvertedAppearance() bool {
-	_ret := C.QAbstractSlider_InvertedAppearance(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSlider_InvertedAppearance(this.h))
 }
 
 func (this *QAbstractSlider) SetInvertedControls(invertedControls bool) {
@@ -167,17 +157,15 @@ func (this *QAbstractSlider) SetInvertedControls(invertedControls bool) {
 }
 
 func (this *QAbstractSlider) InvertedControls() bool {
-	_ret := C.QAbstractSlider_InvertedControls(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractSlider_InvertedControls(this.h))
 }
 
 func (this *QAbstractSlider) Value() int {
-	_ret := C.QAbstractSlider_Value(this.h)
-	return (int)(_ret)
+	return (int)(C.QAbstractSlider_Value(this.h))
 }
 
 func (this *QAbstractSlider) TriggerAction(action QAbstractSlider__SliderAction) {
-	C.QAbstractSlider_TriggerAction(this.h, (C.uintptr_t)(action))
+	C.QAbstractSlider_TriggerAction(this.h, (C.int)(action))
 }
 
 func (this *QAbstractSlider) SetValue(value int) {
@@ -185,7 +173,7 @@ func (this *QAbstractSlider) SetValue(value int) {
 }
 
 func (this *QAbstractSlider) SetOrientation(orientation Orientation) {
-	C.QAbstractSlider_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QAbstractSlider_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QAbstractSlider) SetRange(min int, max int) {
@@ -207,8 +195,7 @@ func miqt_exec_callback_QAbstractSlider_ValueChanged(cb *C.void, value C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	value_ret := value
-	slotval1 := (int)(value_ret)
+	slotval1 := (int)(value)
 
 	gofunc(slotval1)
 }
@@ -245,8 +232,7 @@ func miqt_exec_callback_QAbstractSlider_SliderMoved(cb *C.void, position C.int) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	position_ret := position
-	slotval1 := (int)(position_ret)
+	slotval1 := (int)(position)
 
 	gofunc(slotval1)
 }
@@ -283,11 +269,9 @@ func miqt_exec_callback_QAbstractSlider_RangeChanged(cb *C.void, min C.int, max 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	min_ret := min
-	slotval1 := (int)(min_ret)
+	slotval1 := (int)(min)
 
-	max_ret := max
-	slotval2 := (int)(max_ret)
+	slotval2 := (int)(max)
 
 	gofunc(slotval1, slotval2)
 }
@@ -307,8 +291,7 @@ func miqt_exec_callback_QAbstractSlider_ActionTriggered(cb *C.void, action C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := (int)(action_ret)
+	slotval1 := (int)(action)
 
 	gofunc(slotval1)
 }

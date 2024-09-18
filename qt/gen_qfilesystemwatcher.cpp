@@ -13,12 +13,13 @@ QFileSystemWatcher* QFileSystemWatcher_new() {
 	return new QFileSystemWatcher();
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of QString */ paths) {
+QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of struct miqt_string* */ paths) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
-	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
+		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		paths_QList.push_back(paths_arr_i_QString);
 	}
 	return new QFileSystemWatcher(paths_QList);
 }
@@ -27,12 +28,13 @@ QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent) {
 	return new QFileSystemWatcher(parent);
 }
 
-QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of QString */ paths, QObject* parent) {
+QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of struct miqt_string* */ paths, QObject* parent) {
 	QList<QString> paths_QList;
 	paths_QList.reserve(paths->len);
-	miqt_string** paths_arr = static_cast<miqt_string**>(paths->data);
+	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		paths_QList.push_back(QString::fromUtf8(& paths_arr[i]->data, paths_arr[i]->len));
+		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		paths_QList.push_back(paths_arr_i_QString);
 	}
 	return new QFileSystemWatcher(paths_QList, parent);
 }
@@ -60,15 +62,16 @@ bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, struct miqt_string* fi
 	return self->addPath(file_QString);
 }
 
-struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
+struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
-	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
+	struct miqt_string** files_arr = static_cast<struct miqt_string**>(files->data);
 	for(size_t i = 0; i < files->len; ++i) {
-		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
+		QString files_arr_i_QString = QString::fromUtf8(&files_arr[i]->data, files_arr[i]->len);
+		files_QList.push_back(files_arr_i_QString);
 	}
 	QStringList _ret = self->addPaths(files_QList);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -87,15 +90,16 @@ bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, struct miqt_string*
 	return self->removePath(file_QString);
 }
 
-struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of QString */ files) {
+struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
 	QList<QString> files_QList;
 	files_QList.reserve(files->len);
-	miqt_string** files_arr = static_cast<miqt_string**>(files->data);
+	struct miqt_string** files_arr = static_cast<struct miqt_string**>(files->data);
 	for(size_t i = 0; i < files->len; ++i) {
-		files_QList.push_back(QString::fromUtf8(& files_arr[i]->data, files_arr[i]->len));
+		QString files_arr_i_QString = QString::fromUtf8(&files_arr[i]->data, files_arr[i]->len);
+		files_QList.push_back(files_arr_i_QString);
 	}
 	QStringList _ret = self->removePaths(files_QList);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -111,7 +115,7 @@ struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, stru
 
 struct miqt_array* QFileSystemWatcher_Files(const QFileSystemWatcher* self) {
 	QStringList _ret = self->files();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -127,7 +131,7 @@ struct miqt_array* QFileSystemWatcher_Files(const QFileSystemWatcher* self) {
 
 struct miqt_array* QFileSystemWatcher_Directories(const QFileSystemWatcher* self) {
 	QStringList _ret = self->directories();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

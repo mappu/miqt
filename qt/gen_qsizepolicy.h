@@ -20,15 +20,15 @@ typedef struct QSizePolicy QSizePolicy;
 #endif
 
 QSizePolicy* QSizePolicy_new();
-QSizePolicy* QSizePolicy_new2(uintptr_t horizontal, uintptr_t vertical);
+QSizePolicy* QSizePolicy_new2(int horizontal, int vertical);
 QSizePolicy* QSizePolicy_new3(QSizePolicy* param1);
-QSizePolicy* QSizePolicy_new4(uintptr_t horizontal, uintptr_t vertical, uintptr_t typeVal);
-uintptr_t QSizePolicy_HorizontalPolicy(const QSizePolicy* self);
-uintptr_t QSizePolicy_VerticalPolicy(const QSizePolicy* self);
-uintptr_t QSizePolicy_ControlType(const QSizePolicy* self);
-void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, uintptr_t d);
-void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, uintptr_t d);
-void QSizePolicy_SetControlType(QSizePolicy* self, uintptr_t typeVal);
+QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int typeVal);
+int QSizePolicy_HorizontalPolicy(const QSizePolicy* self);
+int QSizePolicy_VerticalPolicy(const QSizePolicy* self);
+int QSizePolicy_ControlType(const QSizePolicy* self);
+void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, int d);
+void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, int d);
+void QSizePolicy_SetControlType(QSizePolicy* self, int typeVal);
 int QSizePolicy_ExpandingDirections(const QSizePolicy* self);
 void QSizePolicy_SetHeightForWidth(QSizePolicy* self, bool b);
 bool QSizePolicy_HasHeightForWidth(const QSizePolicy* self);

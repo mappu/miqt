@@ -116,8 +116,7 @@ func NewQWizard3(parent *QWidget, flags int) *QWizard {
 }
 
 func (this *QWizard) MetaObject() *QMetaObject {
-	_ret := C.QWizard_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QWizard_MetaObject(this.h)))
 }
 
 func QWizard_Tr(s string) string {
@@ -139,8 +138,7 @@ func QWizard_TrUtf8(s string) string {
 }
 
 func (this *QWizard) AddPage(page *QWizardPage) int {
-	_ret := C.QWizard_AddPage(this.h, page.cPointer())
-	return (int)(_ret)
+	return (int)(C.QWizard_AddPage(this.h, page.cPointer()))
 }
 
 func (this *QWizard) SetPage(id int, page *QWizardPage) {
@@ -152,19 +150,17 @@ func (this *QWizard) RemovePage(id int) {
 }
 
 func (this *QWizard) Page(id int) *QWizardPage {
-	_ret := C.QWizard_Page(this.h, (C.int)(id))
-	return newQWizardPage_U(unsafe.Pointer(_ret))
+	return newQWizardPage_U(unsafe.Pointer(C.QWizard_Page(this.h, (C.int)(id))))
 }
 
 func (this *QWizard) HasVisitedPage(id int) bool {
-	_ret := C.QWizard_HasVisitedPage(this.h, (C.int)(id))
-	return (bool)(_ret)
+	return (bool)(C.QWizard_HasVisitedPage(this.h, (C.int)(id)))
 }
 
 func (this *QWizard) VisitedPages() []int {
 	var _ma *C.struct_miqt_array = C.QWizard_VisitedPages(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -175,7 +171,7 @@ func (this *QWizard) VisitedPages() []int {
 func (this *QWizard) VisitedIds() []int {
 	var _ma *C.struct_miqt_array = C.QWizard_VisitedIds(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -186,7 +182,7 @@ func (this *QWizard) VisitedIds() []int {
 func (this *QWizard) PageIds() []int {
 	var _ma *C.struct_miqt_array = C.QWizard_PageIds(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -199,28 +195,23 @@ func (this *QWizard) SetStartId(id int) {
 }
 
 func (this *QWizard) StartId() int {
-	_ret := C.QWizard_StartId(this.h)
-	return (int)(_ret)
+	return (int)(C.QWizard_StartId(this.h))
 }
 
 func (this *QWizard) CurrentPage() *QWizardPage {
-	_ret := C.QWizard_CurrentPage(this.h)
-	return newQWizardPage_U(unsafe.Pointer(_ret))
+	return newQWizardPage_U(unsafe.Pointer(C.QWizard_CurrentPage(this.h)))
 }
 
 func (this *QWizard) CurrentId() int {
-	_ret := C.QWizard_CurrentId(this.h)
-	return (int)(_ret)
+	return (int)(C.QWizard_CurrentId(this.h))
 }
 
 func (this *QWizard) ValidateCurrentPage() bool {
-	_ret := C.QWizard_ValidateCurrentPage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWizard_ValidateCurrentPage(this.h))
 }
 
 func (this *QWizard) NextId() int {
-	_ret := C.QWizard_NextId(this.h)
-	return (int)(_ret)
+	return (int)(C.QWizard_NextId(this.h))
 }
 
 func (this *QWizard) SetField(name string, value *QVariant) {
@@ -239,21 +230,19 @@ func (this *QWizard) Field(name string) *QVariant {
 }
 
 func (this *QWizard) SetWizardStyle(style QWizard__WizardStyle) {
-	C.QWizard_SetWizardStyle(this.h, (C.uintptr_t)(style))
+	C.QWizard_SetWizardStyle(this.h, (C.int)(style))
 }
 
 func (this *QWizard) WizardStyle() QWizard__WizardStyle {
-	_ret := C.QWizard_WizardStyle(this.h)
-	return (QWizard__WizardStyle)(_ret)
+	return (QWizard__WizardStyle)(C.QWizard_WizardStyle(this.h))
 }
 
 func (this *QWizard) SetOption(option QWizard__WizardOption) {
-	C.QWizard_SetOption(this.h, (C.uintptr_t)(option))
+	C.QWizard_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
-	_ret := C.QWizard_TestOption(this.h, (C.uintptr_t)(option))
-	return (bool)(_ret)
+	return (bool)(C.QWizard_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QWizard) SetOptions(options int) {
@@ -261,8 +250,7 @@ func (this *QWizard) SetOptions(options int) {
 }
 
 func (this *QWizard) Options() int {
-	_ret := C.QWizard_Options(this.h)
-	return (int)(_ret)
+	return (int)(C.QWizard_Options(this.h))
 }
 
 func (this *QWizard) SetButtonText(which int, text string) {
@@ -295,34 +283,31 @@ func (this *QWizard) SetButton(which int, button *QAbstractButton) {
 }
 
 func (this *QWizard) Button(which int) *QAbstractButton {
-	_ret := C.QWizard_Button(this.h, (C.int)(which))
-	return newQAbstractButton_U(unsafe.Pointer(_ret))
+	return newQAbstractButton_U(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))))
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
-	C.QWizard_SetTitleFormat(this.h, (C.uintptr_t)(format))
+	C.QWizard_SetTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) TitleFormat() TextFormat {
-	_ret := C.QWizard_TitleFormat(this.h)
-	return (TextFormat)(_ret)
+	return (TextFormat)(C.QWizard_TitleFormat(this.h))
 }
 
 func (this *QWizard) SetSubTitleFormat(format TextFormat) {
-	C.QWizard_SetSubTitleFormat(this.h, (C.uintptr_t)(format))
+	C.QWizard_SetSubTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) SubTitleFormat() TextFormat {
-	_ret := C.QWizard_SubTitleFormat(this.h)
-	return (TextFormat)(_ret)
+	return (TextFormat)(C.QWizard_SubTitleFormat(this.h))
 }
 
 func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
-	C.QWizard_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+	C.QWizard_SetPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizard) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizard_Pixmap(this.h, (C.uintptr_t)(which))
+	_ret := C.QWizard_Pixmap(this.h, (C.int)(which))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -333,8 +318,7 @@ func (this *QWizard) SetSideWidget(widget *QWidget) {
 }
 
 func (this *QWizard) SideWidget() *QWidget {
-	_ret := C.QWizard_SideWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWizard_SideWidget(this.h)))
 }
 
 func (this *QWizard) SetDefaultProperty(className string, property string, changedSignal string) {
@@ -373,8 +357,7 @@ func miqt_exec_callback_QWizard_CurrentIdChanged(cb *C.void, id C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	id_ret := id
-	slotval1 := (int)(id_ret)
+	slotval1 := (int)(id)
 
 	gofunc(slotval1)
 }
@@ -411,8 +394,7 @@ func miqt_exec_callback_QWizard_CustomButtonClicked(cb *C.void, which C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	which_ret := which
-	slotval1 := (int)(which_ret)
+	slotval1 := (int)(which)
 
 	gofunc(slotval1)
 }
@@ -432,8 +414,7 @@ func miqt_exec_callback_QWizard_PageAdded(cb *C.void, id C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	id_ret := id
-	slotval1 := (int)(id_ret)
+	slotval1 := (int)(id)
 
 	gofunc(slotval1)
 }
@@ -453,8 +434,7 @@ func miqt_exec_callback_QWizard_PageRemoved(cb *C.void, id C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	id_ret := id
-	slotval1 := (int)(id_ret)
+	slotval1 := (int)(id)
 
 	gofunc(slotval1)
 }
@@ -516,7 +496,7 @@ func QWizard_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWizard) SetOption2(option QWizard__WizardOption, on bool) {
-	C.QWizard_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QWizard_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.
@@ -569,8 +549,7 @@ func NewQWizardPage2(parent *QWidget) *QWizardPage {
 }
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
-	_ret := C.QWizardPage_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QWizardPage_MetaObject(this.h)))
 }
 
 func QWizardPage_Tr(s string) string {
@@ -618,11 +597,11 @@ func (this *QWizardPage) SubTitle() string {
 }
 
 func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
-	C.QWizardPage_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+	C.QWizardPage_SetPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizardPage) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizardPage_Pixmap(this.h, (C.uintptr_t)(which))
+	_ret := C.QWizardPage_Pixmap(this.h, (C.int)(which))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -633,8 +612,7 @@ func (this *QWizardPage) SetFinalPage(finalPage bool) {
 }
 
 func (this *QWizardPage) IsFinalPage() bool {
-	_ret := C.QWizardPage_IsFinalPage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWizardPage_IsFinalPage(this.h))
 }
 
 func (this *QWizardPage) SetCommitPage(commitPage bool) {
@@ -642,8 +620,7 @@ func (this *QWizardPage) SetCommitPage(commitPage bool) {
 }
 
 func (this *QWizardPage) IsCommitPage() bool {
-	_ret := C.QWizardPage_IsCommitPage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWizardPage_IsCommitPage(this.h))
 }
 
 func (this *QWizardPage) SetButtonText(which int, text string) {
@@ -668,18 +645,15 @@ func (this *QWizardPage) CleanupPage() {
 }
 
 func (this *QWizardPage) ValidatePage() bool {
-	_ret := C.QWizardPage_ValidatePage(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWizardPage_ValidatePage(this.h))
 }
 
 func (this *QWizardPage) IsComplete() bool {
-	_ret := C.QWizardPage_IsComplete(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWizardPage_IsComplete(this.h))
 }
 
 func (this *QWizardPage) NextId() int {
-	_ret := C.QWizardPage_NextId(this.h)
-	return (int)(_ret)
+	return (int)(C.QWizardPage_NextId(this.h))
 }
 
 func (this *QWizardPage) CompleteChanged() {

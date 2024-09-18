@@ -102,8 +102,7 @@ func NewQDateTimeEdit8(t *QTime, parent *QWidget) *QDateTimeEdit {
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
-	_ret := C.QDateTimeEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDateTimeEdit_MetaObject(this.h)))
 }
 
 func QDateTimeEdit_Tr(s string) string {
@@ -259,27 +258,23 @@ func (this *QDateTimeEdit) SetTimeRange(min *QTime, max *QTime) {
 }
 
 func (this *QDateTimeEdit) DisplayedSections() int {
-	_ret := C.QDateTimeEdit_DisplayedSections(this.h)
-	return (int)(_ret)
+	return (int)(C.QDateTimeEdit_DisplayedSections(this.h))
 }
 
 func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {
-	_ret := C.QDateTimeEdit_CurrentSection(this.h)
-	return (QDateTimeEdit__Section)(_ret)
+	return (QDateTimeEdit__Section)(C.QDateTimeEdit_CurrentSection(this.h))
 }
 
 func (this *QDateTimeEdit) SectionAt(index int) QDateTimeEdit__Section {
-	_ret := C.QDateTimeEdit_SectionAt(this.h, (C.int)(index))
-	return (QDateTimeEdit__Section)(_ret)
+	return (QDateTimeEdit__Section)(C.QDateTimeEdit_SectionAt(this.h, (C.int)(index)))
 }
 
 func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
-	C.QDateTimeEdit_SetCurrentSection(this.h, (C.uintptr_t)(section))
+	C.QDateTimeEdit_SetCurrentSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) CurrentSectionIndex() int {
-	_ret := C.QDateTimeEdit_CurrentSectionIndex(this.h)
-	return (int)(_ret)
+	return (int)(C.QDateTimeEdit_CurrentSectionIndex(this.h))
 }
 
 func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
@@ -287,8 +282,7 @@ func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	_ret := C.QDateTimeEdit_CalendarWidget(this.h)
-	return newQCalendarWidget_U(unsafe.Pointer(_ret))
+	return newQCalendarWidget_U(unsafe.Pointer(C.QDateTimeEdit_CalendarWidget(this.h)))
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
@@ -296,16 +290,15 @@ func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
 }
 
 func (this *QDateTimeEdit) SectionCount() int {
-	_ret := C.QDateTimeEdit_SectionCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QDateTimeEdit_SectionCount(this.h))
 }
 
 func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
-	C.QDateTimeEdit_SetSelectedSection(this.h, (C.uintptr_t)(section))
+	C.QDateTimeEdit_SetSelectedSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
-	var _ms *C.struct_miqt_string = C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section))
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_SectionText(this.h, (C.int)(section))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -325,8 +318,7 @@ func (this *QDateTimeEdit) SetDisplayFormat(format string) {
 }
 
 func (this *QDateTimeEdit) CalendarPopup() bool {
-	_ret := C.QDateTimeEdit_CalendarPopup(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDateTimeEdit_CalendarPopup(this.h))
 }
 
 func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
@@ -334,12 +326,11 @@ func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
 }
 
 func (this *QDateTimeEdit) TimeSpec() TimeSpec {
-	_ret := C.QDateTimeEdit_TimeSpec(this.h)
-	return (TimeSpec)(_ret)
+	return (TimeSpec)(C.QDateTimeEdit_TimeSpec(this.h))
 }
 
 func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
-	C.QDateTimeEdit_SetTimeSpec(this.h, (C.uintptr_t)(spec))
+	C.QDateTimeEdit_SetTimeSpec(this.h, (C.int)(spec))
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {
@@ -358,8 +349,7 @@ func (this *QDateTimeEdit) StepBy(steps int) {
 }
 
 func (this *QDateTimeEdit) Event(event *QEvent) bool {
-	_ret := C.QDateTimeEdit_Event(this.h, event.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QDateTimeEdit_Event(this.h, event.cPointer()))
 }
 
 func (this *QDateTimeEdit) DateTimeChanged(dateTime *QDateTime) {
@@ -377,8 +367,7 @@ func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb *C.void, dateTime *C.QD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	dateTime_ret := dateTime
-	slotval1 := newQDateTime_U(unsafe.Pointer(dateTime_ret))
+	slotval1 := newQDateTime_U(unsafe.Pointer(dateTime))
 
 	gofunc(slotval1)
 }
@@ -398,8 +387,7 @@ func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb *C.void, time *C.QTime) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	time_ret := time
-	slotval1 := newQTime_U(unsafe.Pointer(time_ret))
+	slotval1 := newQTime_U(unsafe.Pointer(time))
 
 	gofunc(slotval1)
 }
@@ -419,8 +407,7 @@ func miqt_exec_callback_QDateTimeEdit_DateChanged(cb *C.void, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+	slotval1 := newQDate_U(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }
@@ -543,8 +530,7 @@ func NewQTimeEdit4(time *QTime, parent *QWidget) *QTimeEdit {
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
-	_ret := C.QTimeEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTimeEdit_MetaObject(this.h)))
 }
 
 func QTimeEdit_Tr(s string) string {
@@ -580,8 +566,7 @@ func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb *C.void, time *C.QTime) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	time_ret := time
-	slotval1 := newQTime_U(unsafe.Pointer(time_ret))
+	slotval1 := newQTime_U(unsafe.Pointer(time))
 
 	gofunc(slotval1)
 }
@@ -692,8 +677,7 @@ func NewQDateEdit4(date *QDate, parent *QWidget) *QDateEdit {
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
-	_ret := C.QDateEdit_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDateEdit_MetaObject(this.h)))
 }
 
 func QDateEdit_Tr(s string) string {
@@ -729,8 +713,7 @@ func miqt_exec_callback_QDateEdit_UserDateChanged(cb *C.void, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	date_ret := date
-	slotval1 := newQDate_U(unsafe.Pointer(date_ret))
+	slotval1 := newQDate_U(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }

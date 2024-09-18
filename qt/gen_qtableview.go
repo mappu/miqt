@@ -49,8 +49,7 @@ func NewQTableView2(parent *QWidget) *QTableView {
 }
 
 func (this *QTableView) MetaObject() *QMetaObject {
-	_ret := C.QTableView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTableView_MetaObject(this.h)))
 }
 
 func QTableView_Tr(s string) string {
@@ -88,13 +87,11 @@ func (this *QTableView) DoItemsLayout() {
 }
 
 func (this *QTableView) HorizontalHeader() *QHeaderView {
-	_ret := C.QTableView_HorizontalHeader(this.h)
-	return newQHeaderView_U(unsafe.Pointer(_ret))
+	return newQHeaderView_U(unsafe.Pointer(C.QTableView_HorizontalHeader(this.h)))
 }
 
 func (this *QTableView) VerticalHeader() *QHeaderView {
-	_ret := C.QTableView_VerticalHeader(this.h)
-	return newQHeaderView_U(unsafe.Pointer(_ret))
+	return newQHeaderView_U(unsafe.Pointer(C.QTableView_VerticalHeader(this.h)))
 }
 
 func (this *QTableView) SetHorizontalHeader(header *QHeaderView) {
@@ -106,13 +103,11 @@ func (this *QTableView) SetVerticalHeader(header *QHeaderView) {
 }
 
 func (this *QTableView) RowViewportPosition(row int) int {
-	_ret := C.QTableView_RowViewportPosition(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QTableView_RowViewportPosition(this.h, (C.int)(row)))
 }
 
 func (this *QTableView) RowAt(y int) int {
-	_ret := C.QTableView_RowAt(this.h, (C.int)(y))
-	return (int)(_ret)
+	return (int)(C.QTableView_RowAt(this.h, (C.int)(y)))
 }
 
 func (this *QTableView) SetRowHeight(row int, height int) {
@@ -120,18 +115,15 @@ func (this *QTableView) SetRowHeight(row int, height int) {
 }
 
 func (this *QTableView) RowHeight(row int) int {
-	_ret := C.QTableView_RowHeight(this.h, (C.int)(row))
-	return (int)(_ret)
+	return (int)(C.QTableView_RowHeight(this.h, (C.int)(row)))
 }
 
 func (this *QTableView) ColumnViewportPosition(column int) int {
-	_ret := C.QTableView_ColumnViewportPosition(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTableView_ColumnViewportPosition(this.h, (C.int)(column)))
 }
 
 func (this *QTableView) ColumnAt(x int) int {
-	_ret := C.QTableView_ColumnAt(this.h, (C.int)(x))
-	return (int)(_ret)
+	return (int)(C.QTableView_ColumnAt(this.h, (C.int)(x)))
 }
 
 func (this *QTableView) SetColumnWidth(column int, width int) {
@@ -139,13 +131,11 @@ func (this *QTableView) SetColumnWidth(column int, width int) {
 }
 
 func (this *QTableView) ColumnWidth(column int) int {
-	_ret := C.QTableView_ColumnWidth(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTableView_ColumnWidth(this.h, (C.int)(column)))
 }
 
 func (this *QTableView) IsRowHidden(row int) bool {
-	_ret := C.QTableView_IsRowHidden(this.h, (C.int)(row))
-	return (bool)(_ret)
+	return (bool)(C.QTableView_IsRowHidden(this.h, (C.int)(row)))
 }
 
 func (this *QTableView) SetRowHidden(row int, hide bool) {
@@ -153,8 +143,7 @@ func (this *QTableView) SetRowHidden(row int, hide bool) {
 }
 
 func (this *QTableView) IsColumnHidden(column int) bool {
-	_ret := C.QTableView_IsColumnHidden(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QTableView_IsColumnHidden(this.h, (C.int)(column)))
 }
 
 func (this *QTableView) SetColumnHidden(column int, hide bool) {
@@ -166,22 +155,19 @@ func (this *QTableView) SetSortingEnabled(enable bool) {
 }
 
 func (this *QTableView) IsSortingEnabled() bool {
-	_ret := C.QTableView_IsSortingEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTableView_IsSortingEnabled(this.h))
 }
 
 func (this *QTableView) ShowGrid() bool {
-	_ret := C.QTableView_ShowGrid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTableView_ShowGrid(this.h))
 }
 
 func (this *QTableView) GridStyle() PenStyle {
-	_ret := C.QTableView_GridStyle(this.h)
-	return (PenStyle)(_ret)
+	return (PenStyle)(C.QTableView_GridStyle(this.h))
 }
 
 func (this *QTableView) SetGridStyle(style PenStyle) {
-	C.QTableView_SetGridStyle(this.h, (C.uintptr_t)(style))
+	C.QTableView_SetGridStyle(this.h, (C.int)(style))
 }
 
 func (this *QTableView) SetWordWrap(on bool) {
@@ -189,8 +175,7 @@ func (this *QTableView) SetWordWrap(on bool) {
 }
 
 func (this *QTableView) WordWrap() bool {
-	_ret := C.QTableView_WordWrap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTableView_WordWrap(this.h))
 }
 
 func (this *QTableView) SetCornerButtonEnabled(enable bool) {
@@ -198,8 +183,7 @@ func (this *QTableView) SetCornerButtonEnabled(enable bool) {
 }
 
 func (this *QTableView) IsCornerButtonEnabled() bool {
-	_ret := C.QTableView_IsCornerButtonEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTableView_IsCornerButtonEnabled(this.h))
 }
 
 func (this *QTableView) VisualRect(index *QModelIndex) *QRect {
@@ -225,13 +209,11 @@ func (this *QTableView) SetSpan(row int, column int, rowSpan int, columnSpan int
 }
 
 func (this *QTableView) RowSpan(row int, column int) int {
-	_ret := C.QTableView_RowSpan(this.h, (C.int)(row), (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTableView_RowSpan(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableView) ColumnSpan(row int, column int) int {
-	_ret := C.QTableView_ColumnSpan(this.h, (C.int)(row), (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTableView_ColumnSpan(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QTableView) ClearSpans() {
@@ -283,7 +265,7 @@ func (this *QTableView) SortByColumn(column int) {
 }
 
 func (this *QTableView) SortByColumn2(column int, order SortOrder) {
-	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTableView) SetShowGrid(show bool) {
@@ -335,7 +317,7 @@ func QTableView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTableView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

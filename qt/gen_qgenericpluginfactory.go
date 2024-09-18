@@ -40,8 +40,10 @@ func QGenericPluginFactory_Keys() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -52,8 +54,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 	defer C.free(param1_ms)
 	param2_ms := miqt_strdupg(param2)
 	defer C.free(param2_ms)
-	_ret := C.QGenericPluginFactory_Create((*C.struct_miqt_string)(param1_ms), (*C.struct_miqt_string)(param2_ms))
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QGenericPluginFactory_Create((*C.struct_miqt_string)(param1_ms), (*C.struct_miqt_string)(param2_ms))))
 }
 
 // Delete this object from C++ memory.

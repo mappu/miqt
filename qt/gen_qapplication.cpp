@@ -67,15 +67,11 @@ void QApplication_SetColorSpec(int colorSpec) {
 }
 
 QPalette* QApplication_Palette(QWidget* param1) {
-	QPalette _ret = QApplication::palette(param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(QApplication::palette(param1));
 }
 
 QPalette* QApplication_PaletteWithClassName(const char* className) {
-	QPalette _ret = QApplication::palette(className);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPalette*>(new QPalette(_ret));
+	return new QPalette(QApplication::palette(className));
 }
 
 void QApplication_SetPalette(QPalette* param1) {
@@ -83,21 +79,15 @@ void QApplication_SetPalette(QPalette* param1) {
 }
 
 QFont* QApplication_Font() {
-	QFont _ret = QApplication::font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QApplication::font());
 }
 
 QFont* QApplication_FontWithQWidget(QWidget* param1) {
-	QFont _ret = QApplication::font(param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QApplication::font(param1));
 }
 
 QFont* QApplication_FontWithClassName(const char* className) {
-	QFont _ret = QApplication::font(className);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QApplication::font(className));
 }
 
 void QApplication_SetFont(QFont* param1) {
@@ -105,9 +95,7 @@ void QApplication_SetFont(QFont* param1) {
 }
 
 QFontMetrics* QApplication_FontMetrics() {
-	QFontMetrics _ret = QApplication::fontMetrics();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFontMetrics*>(new QFontMetrics(_ret));
+	return new QFontMetrics(QApplication::fontMetrics());
 }
 
 void QApplication_SetWindowIcon(QIcon* icon) {
@@ -115,9 +103,7 @@ void QApplication_SetWindowIcon(QIcon* icon) {
 }
 
 QIcon* QApplication_WindowIcon() {
-	QIcon _ret = QApplication::windowIcon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(QApplication::windowIcon());
 }
 
 struct miqt_array* QApplication_AllWidgets() {
@@ -231,9 +217,7 @@ void QApplication_SetGlobalStrut(QSize* globalStrut) {
 }
 
 QSize* QApplication_GlobalStrut() {
-	QSize _ret = QApplication::globalStrut();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(QApplication::globalStrut());
 }
 
 void QApplication_SetStartDragTime(int ms) {
@@ -252,11 +236,11 @@ int QApplication_StartDragDistance() {
 	return QApplication::startDragDistance();
 }
 
-bool QApplication_IsEffectEnabled(uintptr_t param1) {
+bool QApplication_IsEffectEnabled(int param1) {
 	return QApplication::isEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
-void QApplication_SetEffectEnabled(uintptr_t param1) {
+void QApplication_SetEffectEnabled(int param1) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
@@ -348,7 +332,7 @@ void QApplication_Alert2(QWidget* widget, int duration) {
 	QApplication::alert(widget, static_cast<int>(duration));
 }
 
-void QApplication_SetEffectEnabled2(uintptr_t param1, bool enable) {
+void QApplication_SetEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 

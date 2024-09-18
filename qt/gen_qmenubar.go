@@ -50,8 +50,7 @@ func NewQMenuBar2(parent *QWidget) *QMenuBar {
 }
 
 func (this *QMenuBar) MetaObject() *QMetaObject {
-	_ret := C.QMenuBar_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMenuBar_MetaObject(this.h)))
 }
 
 func QMenuBar_Tr(s string) string {
@@ -75,42 +74,35 @@ func QMenuBar_TrUtf8(s string) string {
 func (this *QMenuBar) AddAction(text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QMenuBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
-	_ret := C.QMenuBar_AddMenu(this.h, menu.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddMenu(this.h, menu.cPointer())))
 }
 
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QMenuBar_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QMenuBar_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QMenuBar_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenuBar) AddSeparator() *QAction {
-	_ret := C.QMenuBar_AddSeparator(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddSeparator(this.h)))
 }
 
 func (this *QMenuBar) InsertSeparator(before *QAction) *QAction {
-	_ret := C.QMenuBar_InsertSeparator(this.h, before.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_InsertSeparator(this.h, before.cPointer())))
 }
 
 func (this *QMenuBar) InsertMenu(before *QAction, menu *QMenu) *QAction {
-	_ret := C.QMenuBar_InsertMenu(this.h, before.cPointer(), menu.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_InsertMenu(this.h, before.cPointer(), menu.cPointer())))
 }
 
 func (this *QMenuBar) Clear() {
@@ -118,8 +110,7 @@ func (this *QMenuBar) Clear() {
 }
 
 func (this *QMenuBar) ActiveAction() *QAction {
-	_ret := C.QMenuBar_ActiveAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_ActiveAction(this.h)))
 }
 
 func (this *QMenuBar) SetActiveAction(action *QAction) {
@@ -131,8 +122,7 @@ func (this *QMenuBar) SetDefaultUp(defaultUp bool) {
 }
 
 func (this *QMenuBar) IsDefaultUp() bool {
-	_ret := C.QMenuBar_IsDefaultUp(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenuBar_IsDefaultUp(this.h))
 }
 
 func (this *QMenuBar) SizeHint() *QSize {
@@ -150,8 +140,7 @@ func (this *QMenuBar) MinimumSizeHint() *QSize {
 }
 
 func (this *QMenuBar) HeightForWidth(param1 int) int {
-	_ret := C.QMenuBar_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QMenuBar_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
@@ -162,8 +151,7 @@ func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
 }
 
 func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
-	_ret := C.QMenuBar_ActionAt(this.h, param1.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QMenuBar_ActionAt(this.h, param1.cPointer())))
 }
 
 func (this *QMenuBar) SetCornerWidget(w *QWidget) {
@@ -171,13 +159,11 @@ func (this *QMenuBar) SetCornerWidget(w *QWidget) {
 }
 
 func (this *QMenuBar) CornerWidget() *QWidget {
-	_ret := C.QMenuBar_CornerWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget(this.h)))
 }
 
 func (this *QMenuBar) IsNativeMenuBar() bool {
-	_ret := C.QMenuBar_IsNativeMenuBar(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMenuBar_IsNativeMenuBar(this.h))
 }
 
 func (this *QMenuBar) SetNativeMenuBar(nativeMenuBar bool) {
@@ -203,8 +189,7 @@ func miqt_exec_callback_QMenuBar_Triggered(cb *C.void, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := newQAction_U(unsafe.Pointer(action_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -224,8 +209,7 @@ func miqt_exec_callback_QMenuBar_Hovered(cb *C.void, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	action_ret := action
-	slotval1 := newQAction_U(unsafe.Pointer(action_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -275,12 +259,11 @@ func QMenuBar_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
-	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
+	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
 func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
-	_ret := C.QMenuBar_CornerWidget1(this.h, (C.uintptr_t)(corner))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget1(this.h, (C.int)(corner))))
 }
 
 // Delete this object from C++ memory.

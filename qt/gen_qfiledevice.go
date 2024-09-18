@@ -97,8 +97,7 @@ func newQFileDevice_U(h unsafe.Pointer) *QFileDevice {
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
-	_ret := C.QFileDevice_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFileDevice_MetaObject(this.h)))
 }
 
 func QFileDevice_Tr(s string) string {
@@ -120,8 +119,7 @@ func QFileDevice_TrUtf8(s string) string {
 }
 
 func (this *QFileDevice) Error() QFileDevice__FileError {
-	_ret := C.QFileDevice_Error(this.h)
-	return (QFileDevice__FileError)(_ret)
+	return (QFileDevice__FileError)(C.QFileDevice_Error(this.h))
 }
 
 func (this *QFileDevice) UnsetError() {
@@ -133,13 +131,11 @@ func (this *QFileDevice) Close() {
 }
 
 func (this *QFileDevice) IsSequential() bool {
-	_ret := C.QFileDevice_IsSequential(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_IsSequential(this.h))
 }
 
 func (this *QFileDevice) Handle() int {
-	_ret := C.QFileDevice_Handle(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileDevice_Handle(this.h))
 }
 
 func (this *QFileDevice) FileName() string {
@@ -150,65 +146,54 @@ func (this *QFileDevice) FileName() string {
 }
 
 func (this *QFileDevice) Pos() int64 {
-	_ret := C.QFileDevice_Pos(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QFileDevice_Pos(this.h))
 }
 
 func (this *QFileDevice) Seek(offset int64) bool {
-	_ret := C.QFileDevice_Seek(this.h, (C.longlong)(offset))
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_Seek(this.h, (C.longlong)(offset)))
 }
 
 func (this *QFileDevice) AtEnd() bool {
-	_ret := C.QFileDevice_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_AtEnd(this.h))
 }
 
 func (this *QFileDevice) Flush() bool {
-	_ret := C.QFileDevice_Flush(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_Flush(this.h))
 }
 
 func (this *QFileDevice) Size() int64 {
-	_ret := C.QFileDevice_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QFileDevice_Size(this.h))
 }
 
 func (this *QFileDevice) Resize(sz int64) bool {
-	_ret := C.QFileDevice_Resize(this.h, (C.longlong)(sz))
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_Resize(this.h, (C.longlong)(sz)))
 }
 
 func (this *QFileDevice) Permissions() int {
-	_ret := C.QFileDevice_Permissions(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileDevice_Permissions(this.h))
 }
 
 func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
-	_ret := C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec))
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec)))
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {
-	_ret := C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size))
-	return (*byte)(_ret)
+	return (*byte)(C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size)))
 }
 
 func (this *QFileDevice) Unmap(address *byte) bool {
-	_ret := C.QFileDevice_Unmap(this.h, (*C.uchar)(unsafe.Pointer(address)))
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_Unmap(this.h, (*C.uchar)(unsafe.Pointer(address))))
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileDevice_FileTime(this.h, (C.uintptr_t)(time))
+	_ret := C.QFileDevice_FileTime(this.h, (C.int)(time))
 	_goptr := newQDateTime(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileDevice) SetFileTime(newDate *QDateTime, fileTime QFileDevice__FileTime) bool {
-	_ret := C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.uintptr_t)(fileTime))
-	return (bool)(_ret)
+	return (bool)(C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.int)(fileTime)))
 }
 
 func QFileDevice_Tr2(s string, c string) string {
@@ -256,8 +241,7 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
-	_ret := C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.uintptr_t)(flags))
-	return (*byte)(_ret)
+	return (*byte)(C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags)))
 }
 
 // Delete this object from C++ memory.

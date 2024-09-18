@@ -82,11 +82,13 @@ void QBuffer_Close(QBuffer* self) {
 }
 
 long long QBuffer_Size(const QBuffer* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 long long QBuffer_Pos(const QBuffer* self) {
-	return self->pos();
+	qint64 _ret = self->pos();
+	return static_cast<long long>(_ret);
 }
 
 bool QBuffer_Seek(QBuffer* self, long long off) {

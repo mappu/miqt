@@ -49,13 +49,13 @@ void QThread_YieldCurrentThread() {
 	QThread::yieldCurrentThread();
 }
 
-void QThread_SetPriority(QThread* self, uintptr_t priority) {
+void QThread_SetPriority(QThread* self, int priority) {
 	self->setPriority(static_cast<QThread::Priority>(priority));
 }
 
-uintptr_t QThread_Priority(const QThread* self) {
+int QThread_Priority(const QThread* self) {
 	QThread::Priority _ret = self->priority();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QThread_IsFinished(const QThread* self) {
@@ -79,7 +79,8 @@ void QThread_SetStackSize(QThread* self, unsigned int stackSize) {
 }
 
 unsigned int QThread_StackSize(const QThread* self) {
-	return self->stackSize();
+	uint _ret = self->stackSize();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QThread_Exit(QThread* self) {
@@ -166,7 +167,7 @@ void QThread_Exit1(QThread* self, int retcode) {
 	self->exit(static_cast<int>(retcode));
 }
 
-void QThread_Start1(QThread* self, uintptr_t param1) {
+void QThread_Start1(QThread* self, int param1) {
 	self->start(static_cast<QThread::Priority>(param1));
 }
 

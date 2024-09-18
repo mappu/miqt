@@ -64,6 +64,7 @@ QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_ResultAt(const QtPriva
 bool QtPrivate__ResultStoreBase_Contains(const QtPrivate__ResultStoreBase* self, int index);
 int QtPrivate__ResultStoreBase_Count(const QtPrivate__ResultStoreBase* self);
 int QtPrivate__ResultStoreBase_AddCanceledResult(QtPrivate__ResultStoreBase* self, int index);
+void QtPrivate__ResultStoreBase_OperatorAssign(QtPrivate__ResultStoreBase* self, QtPrivate__ResultStoreBase* param1);
 void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self);
 
 #ifdef __cplusplus

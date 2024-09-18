@@ -59,9 +59,7 @@ void QFile_SetFileName(QFile* self, struct miqt_string* name) {
 
 QByteArray* QFile_EncodeName(struct miqt_string* fileName) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
-	QByteArray _ret = QFile::encodeName(fileName_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(QFile::encodeName(fileName_QString));
 }
 
 struct miqt_string* QFile_DecodeName(QByteArray* localFileName) {
@@ -177,7 +175,8 @@ bool QFile_Open3(QFile* self, int fd, int ioFlags) {
 }
 
 long long QFile_Size(const QFile* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 bool QFile_Resize(QFile* self, long long sz) {

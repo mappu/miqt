@@ -44,7 +44,7 @@ func NewQMouseEventTransition() *QMouseEventTransition {
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition2(object *QObject, typeVal QEvent__Type, button MouseButton) *QMouseEventTransition {
-	ret := C.QMouseEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button))
+	ret := C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button))
 	return newQMouseEventTransition(ret)
 }
 
@@ -56,13 +56,12 @@ func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
 
 // NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button MouseButton, sourceState *QState) *QMouseEventTransition {
-	ret := C.QMouseEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.uintptr_t)(button), sourceState.cPointer())
+	ret := C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer())
 	return newQMouseEventTransition(ret)
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
-	_ret := C.QMouseEventTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
 }
 
 func QMouseEventTransition_Tr(s string) string {
@@ -84,17 +83,15 @@ func QMouseEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QMouseEventTransition) Button() MouseButton {
-	_ret := C.QMouseEventTransition_Button(this.h)
-	return (MouseButton)(_ret)
+	return (MouseButton)(C.QMouseEventTransition_Button(this.h))
 }
 
 func (this *QMouseEventTransition) SetButton(button MouseButton) {
-	C.QMouseEventTransition_SetButton(this.h, (C.uintptr_t)(button))
+	C.QMouseEventTransition_SetButton(this.h, (C.int)(button))
 }
 
 func (this *QMouseEventTransition) ModifierMask() int {
-	_ret := C.QMouseEventTransition_ModifierMask(this.h)
-	return (int)(_ret)
+	return (int)(C.QMouseEventTransition_ModifierMask(this.h))
 }
 
 func (this *QMouseEventTransition) SetModifierMask(modifiers int) {

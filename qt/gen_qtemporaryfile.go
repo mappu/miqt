@@ -65,8 +65,7 @@ func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 }
 
 func (this *QTemporaryFile) MetaObject() *QMetaObject {
-	_ret := C.QTemporaryFile_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTemporaryFile_MetaObject(this.h)))
 }
 
 func QTemporaryFile_Tr(s string) string {
@@ -88,8 +87,7 @@ func QTemporaryFile_TrUtf8(s string) string {
 }
 
 func (this *QTemporaryFile) AutoRemove() bool {
-	_ret := C.QTemporaryFile_AutoRemove(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryFile_AutoRemove(this.h))
 }
 
 func (this *QTemporaryFile) SetAutoRemove(b bool) {
@@ -97,8 +95,7 @@ func (this *QTemporaryFile) SetAutoRemove(b bool) {
 }
 
 func (this *QTemporaryFile) Open() bool {
-	_ret := C.QTemporaryFile_Open(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryFile_Open(this.h))
 }
 
 func (this *QTemporaryFile) FileName() string {
@@ -124,32 +121,27 @@ func (this *QTemporaryFile) SetFileTemplate(name string) {
 func (this *QTemporaryFile) Rename(newName string) bool {
 	newName_ms := miqt_strdupg(newName)
 	defer C.free(newName_ms)
-	_ret := C.QTemporaryFile_Rename(this.h, (*C.struct_miqt_string)(newName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QTemporaryFile_Rename(this.h, (*C.struct_miqt_string)(newName_ms)))
 }
 
 func QTemporaryFile_CreateLocalFile(fileName string) *QTemporaryFile {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QTemporaryFile_CreateLocalFile((*C.struct_miqt_string)(fileName_ms))
-	return newQTemporaryFile_U(unsafe.Pointer(_ret))
+	return newQTemporaryFile_U(unsafe.Pointer(C.QTemporaryFile_CreateLocalFile((*C.struct_miqt_string)(fileName_ms))))
 }
 
 func QTemporaryFile_CreateLocalFileWithFile(file *QFile) *QTemporaryFile {
-	_ret := C.QTemporaryFile_CreateLocalFileWithFile(file.cPointer())
-	return newQTemporaryFile_U(unsafe.Pointer(_ret))
+	return newQTemporaryFile_U(unsafe.Pointer(C.QTemporaryFile_CreateLocalFileWithFile(file.cPointer())))
 }
 
 func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	_ret := C.QTemporaryFile_CreateNativeFile((*C.struct_miqt_string)(fileName_ms))
-	return newQTemporaryFile_U(unsafe.Pointer(_ret))
+	return newQTemporaryFile_U(unsafe.Pointer(C.QTemporaryFile_CreateNativeFile((*C.struct_miqt_string)(fileName_ms))))
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
-	_ret := C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer())
-	return newQTemporaryFile_U(unsafe.Pointer(_ret))
+	return newQTemporaryFile_U(unsafe.Pointer(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer())))
 }
 
 func QTemporaryFile_Tr2(s string, c string) string {

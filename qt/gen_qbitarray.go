@@ -68,28 +68,23 @@ func (this *QBitArray) Swap(other *QBitArray) {
 }
 
 func (this *QBitArray) Size() int {
-	_ret := C.QBitArray_Size(this.h)
-	return (int)(_ret)
+	return (int)(C.QBitArray_Size(this.h))
 }
 
 func (this *QBitArray) Count() int {
-	_ret := C.QBitArray_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QBitArray_Count(this.h))
 }
 
 func (this *QBitArray) CountWithOn(on bool) int {
-	_ret := C.QBitArray_CountWithOn(this.h, (C.bool)(on))
-	return (int)(_ret)
+	return (int)(C.QBitArray_CountWithOn(this.h, (C.bool)(on)))
 }
 
 func (this *QBitArray) IsEmpty() bool {
-	_ret := C.QBitArray_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_IsEmpty(this.h))
 }
 
 func (this *QBitArray) IsNull() bool {
-	_ret := C.QBitArray_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_IsNull(this.h))
 }
 
 func (this *QBitArray) Resize(size int) {
@@ -101,8 +96,7 @@ func (this *QBitArray) Detach() {
 }
 
 func (this *QBitArray) IsDetached() bool {
-	_ret := C.QBitArray_IsDetached(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_IsDetached(this.h))
 }
 
 func (this *QBitArray) Clear() {
@@ -110,8 +104,7 @@ func (this *QBitArray) Clear() {
 }
 
 func (this *QBitArray) TestBit(i int) bool {
-	_ret := C.QBitArray_TestBit(this.h, (C.int)(i))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_TestBit(this.h, (C.int)(i)))
 }
 
 func (this *QBitArray) SetBit(i int) {
@@ -127,13 +120,11 @@ func (this *QBitArray) ClearBit(i int) {
 }
 
 func (this *QBitArray) ToggleBit(i int) bool {
-	_ret := C.QBitArray_ToggleBit(this.h, (C.int)(i))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_ToggleBit(this.h, (C.int)(i)))
 }
 
 func (this *QBitArray) At(i int) bool {
-	_ret := C.QBitArray_At(this.h, (C.int)(i))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_At(this.h, (C.int)(i)))
 }
 
 func (this *QBitArray) OperatorSubscript(i int) *QBitRef {
@@ -144,8 +135,7 @@ func (this *QBitArray) OperatorSubscript(i int) *QBitRef {
 }
 
 func (this *QBitArray) OperatorSubscriptWithInt(i int) bool {
-	_ret := C.QBitArray_OperatorSubscriptWithInt(this.h, (C.int)(i))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_OperatorSubscriptWithInt(this.h, (C.int)(i)))
 }
 
 func (this *QBitArray) OperatorSubscriptWithUint(i uint) *QBitRef {
@@ -156,8 +146,7 @@ func (this *QBitArray) OperatorSubscriptWithUint(i uint) *QBitRef {
 }
 
 func (this *QBitArray) OperatorSubscript2(i uint) bool {
-	_ret := C.QBitArray_OperatorSubscript2(this.h, (C.uint)(i))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_OperatorSubscript2(this.h, (C.uint)(i)))
 }
 
 func (this *QBitArray) OperatorBitwiseAndAssign(param1 *QBitArray) {
@@ -180,18 +169,15 @@ func (this *QBitArray) OperatorBitwiseXor() *QBitArray {
 }
 
 func (this *QBitArray) OperatorEqual(other *QBitArray) bool {
-	_ret := C.QBitArray_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QBitArray) OperatorNotEqual(other *QBitArray) bool {
-	_ret := C.QBitArray_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QBitArray) Fill(val bool) bool {
-	_ret := C.QBitArray_Fill(this.h, (C.bool)(val))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_Fill(this.h, (C.bool)(val)))
 }
 
 func (this *QBitArray) Fill2(val bool, first int, last int) {
@@ -217,8 +203,7 @@ func QBitArray_FromBits(data string, lenVal uint64) *QBitArray {
 }
 
 func (this *QBitArray) Fill22(val bool, size int) bool {
-	_ret := C.QBitArray_Fill22(this.h, (C.bool)(val), (C.int)(size))
-	return (bool)(_ret)
+	return (bool)(C.QBitArray_Fill22(this.h, (C.bool)(val), (C.int)(size)))
 }
 
 // Delete this object from C++ memory.
@@ -264,8 +249,7 @@ func NewQBitRef(param1 *QBitRef) *QBitRef {
 }
 
 func (this *QBitRef) OperatorNot() bool {
-	_ret := C.QBitRef_OperatorNot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBitRef_OperatorNot(this.h))
 }
 
 func (this *QBitRef) OperatorAssign(val *QBitRef) {

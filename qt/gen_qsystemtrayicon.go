@@ -81,8 +81,7 @@ func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	_ret := C.QSystemTrayIcon_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSystemTrayIcon_MetaObject(this.h)))
 }
 
 func QSystemTrayIcon_Tr(s string) string {
@@ -108,8 +107,7 @@ func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	_ret := C.QSystemTrayIcon_ContextMenu(this.h)
-	return newQMenu_U(unsafe.Pointer(_ret))
+	return newQMenu_U(unsafe.Pointer(C.QSystemTrayIcon_ContextMenu(this.h)))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
@@ -137,13 +135,11 @@ func (this *QSystemTrayIcon) SetToolTip(tip string) {
 }
 
 func QSystemTrayIcon_IsSystemTrayAvailable() bool {
-	_ret := C.QSystemTrayIcon_IsSystemTrayAvailable()
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_IsSystemTrayAvailable())
 }
 
 func QSystemTrayIcon_SupportsMessages() bool {
-	_ret := C.QSystemTrayIcon_SupportsMessages()
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_SupportsMessages())
 }
 
 func (this *QSystemTrayIcon) Geometry() *QRect {
@@ -154,8 +150,7 @@ func (this *QSystemTrayIcon) Geometry() *QRect {
 }
 
 func (this *QSystemTrayIcon) IsVisible() bool {
-	_ret := C.QSystemTrayIcon_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSystemTrayIcon_IsVisible(this.h))
 }
 
 func (this *QSystemTrayIcon) SetVisible(visible bool) {
@@ -187,22 +182,21 @@ func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
 }
 
 func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason) {
-	C.QSystemTrayIcon_Activated(this.h, (C.uintptr_t)(reason))
+	C.QSystemTrayIcon_Activated(this.h, (C.int)(reason))
 }
 func (this *QSystemTrayIcon) OnActivated(slot func(reason QSystemTrayIcon__ActivationReason)) {
 	C.QSystemTrayIcon_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QSystemTrayIcon_Activated
-func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.uintptr_t) {
+func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(reason QSystemTrayIcon__ActivationReason))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	reason_ret := reason
-	slotval1 := (QSystemTrayIcon__ActivationReason)(reason_ret)
+	slotval1 := (QSystemTrayIcon__ActivationReason)(reason)
 
 	gofunc(slotval1)
 }
@@ -281,7 +275,7 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystem
 	defer C.free(title_ms)
 	msg_ms := miqt_strdupg(msg)
 	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.uintptr_t)(icon))
+	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
@@ -289,7 +283,7 @@ func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSyste
 	defer C.free(title_ms)
 	msg_ms := miqt_strdupg(msg)
 	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.uintptr_t)(icon), (C.int)(msecs))
+	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon), (C.int)(msecs))
 }
 
 // Delete this object from C++ memory.

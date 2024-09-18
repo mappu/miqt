@@ -5,11 +5,11 @@
 #include "gen_qmessageauthenticationcode.h"
 #include "_cgo_export.h"
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new(uintptr_t method) {
+QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method) {
 	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new2(uintptr_t method, QByteArray* key) {
+QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, QByteArray* key) {
 	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), *key);
 }
 
@@ -34,15 +34,11 @@ bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* se
 }
 
 QByteArray* QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self) {
-	QByteArray _ret = self->result();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->result());
 }
 
-QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, uintptr_t method) {
-	QByteArray _ret = QMessageAuthenticationCode::hash(*message, *key, static_cast<QCryptographicHash::Algorithm>(method));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, int method) {
+	return new QByteArray(QMessageAuthenticationCode::hash(*message, *key, static_cast<QCryptographicHash::Algorithm>(method)));
 }
 
 void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self) {

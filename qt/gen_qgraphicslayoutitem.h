@@ -28,7 +28,7 @@ typedef struct QSizePolicy QSizePolicy;
 #endif
 
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy);
-void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy);
+void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, int hPolicy, int vPolicy);
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(const QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_SetMinimumSize(QGraphicsLayoutItem* self, QSizeF* size);
 void QGraphicsLayoutItem_SetMinimumSize2(QGraphicsLayoutItem* self, double w, double h);
@@ -55,15 +55,15 @@ void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect);
 QRectF* QGraphicsLayoutItem_Geometry(const QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem* self, double* left, double* top, double* right, double* bottom);
 QRectF* QGraphicsLayoutItem_ContentsRect(const QGraphicsLayoutItem* self);
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, uintptr_t which);
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, int which);
 void QGraphicsLayoutItem_UpdateGeometry(QGraphicsLayoutItem* self);
 QGraphicsLayoutItem* QGraphicsLayoutItem_ParentLayoutItem(const QGraphicsLayoutItem* self);
 void QGraphicsLayoutItem_SetParentLayoutItem(QGraphicsLayoutItem* self, QGraphicsLayoutItem* parent);
 bool QGraphicsLayoutItem_IsLayout(const QGraphicsLayoutItem* self);
 QGraphicsItem* QGraphicsLayoutItem_GraphicsItem(const QGraphicsLayoutItem* self);
 bool QGraphicsLayoutItem_OwnedByLayout(const QGraphicsLayoutItem* self);
-void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy, uintptr_t controlType);
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint);
+void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, int vPolicy, int controlType);
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint);
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self);
 
 #ifdef __cplusplus

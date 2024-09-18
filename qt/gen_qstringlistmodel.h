@@ -28,9 +28,9 @@ typedef struct QVariant QVariant;
 #endif
 
 QStringListModel* QStringListModel_new();
-QStringListModel* QStringListModel_new2(struct miqt_array* /* of QString */ strings);
+QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string* */ strings);
 QStringListModel* QStringListModel_new3(QObject* parent);
-QStringListModel* QStringListModel_new4(struct miqt_array* /* of QString */ strings, QObject* parent);
+QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string* */ strings, QObject* parent);
 QMetaObject* QStringListModel_MetaObject(const QStringListModel* self);
 struct miqt_string* QStringListModel_Tr(const char* s);
 struct miqt_string* QStringListModel_TrUtf8(const char* s);
@@ -44,7 +44,7 @@ bool QStringListModel_RemoveRows(QStringListModel* self, int row, int count);
 bool QStringListModel_MoveRows(QStringListModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
 void QStringListModel_Sort(QStringListModel* self, int column);
 struct miqt_array* QStringListModel_StringList(const QStringListModel* self);
-void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of QString */ strings);
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string* */ strings);
 int QStringListModel_SupportedDropActions(const QStringListModel* self);
 struct miqt_string* QStringListModel_Tr2(const char* s, const char* c);
 struct miqt_string* QStringListModel_Tr3(const char* s, const char* c, int n);
@@ -55,7 +55,7 @@ QVariant* QStringListModel_Data2(const QStringListModel* self, QModelIndex* inde
 bool QStringListModel_SetData3(QStringListModel* self, QModelIndex* index, QVariant* value, int role);
 bool QStringListModel_InsertRows3(QStringListModel* self, int row, int count, QModelIndex* parent);
 bool QStringListModel_RemoveRows3(QStringListModel* self, int row, int count, QModelIndex* parent);
-void QStringListModel_Sort2(QStringListModel* self, int column, uintptr_t order);
+void QStringListModel_Sort2(QStringListModel* self, int column, int order);
 void QStringListModel_Delete(QStringListModel* self);
 
 #ifdef __cplusplus

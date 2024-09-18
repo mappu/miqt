@@ -49,8 +49,7 @@ func newQLayout_U(h unsafe.Pointer) *QLayout {
 }
 
 func (this *QLayout) MetaObject() *QMetaObject {
-	_ret := C.QLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QLayout_MetaObject(this.h)))
 }
 
 func QLayout_Tr(s string) string {
@@ -72,8 +71,7 @@ func QLayout_TrUtf8(s string) string {
 }
 
 func (this *QLayout) Margin() int {
-	_ret := C.QLayout_Margin(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayout_Margin(this.h))
 }
 
 func (this *QLayout) SetMargin(margin int) {
@@ -81,8 +79,7 @@ func (this *QLayout) SetMargin(margin int) {
 }
 
 func (this *QLayout) Spacing() int {
-	_ret := C.QLayout_Spacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayout_Spacing(this.h))
 }
 
 func (this *QLayout) SetSpacing(spacing int) {
@@ -116,22 +113,19 @@ func (this *QLayout) ContentsRect() *QRect {
 }
 
 func (this *QLayout) SetAlignment(w *QWidget, alignment int) bool {
-	_ret := C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment))
-	return (bool)(_ret)
+	return (bool)(C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment)))
 }
 
 func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
-	_ret := C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment))
-	return (bool)(_ret)
+	return (bool)(C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment)))
 }
 
 func (this *QLayout) SetSizeConstraint(sizeConstraint QLayout__SizeConstraint) {
-	C.QLayout_SetSizeConstraint(this.h, (C.uintptr_t)(sizeConstraint))
+	C.QLayout_SetSizeConstraint(this.h, (C.int)(sizeConstraint))
 }
 
 func (this *QLayout) SizeConstraint() QLayout__SizeConstraint {
-	_ret := C.QLayout_SizeConstraint(this.h)
-	return (QLayout__SizeConstraint)(_ret)
+	return (QLayout__SizeConstraint)(C.QLayout_SizeConstraint(this.h))
 }
 
 func (this *QLayout) SetMenuBar(w *QWidget) {
@@ -139,13 +133,11 @@ func (this *QLayout) SetMenuBar(w *QWidget) {
 }
 
 func (this *QLayout) MenuBar() *QWidget {
-	_ret := C.QLayout_MenuBar(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QLayout_MenuBar(this.h)))
 }
 
 func (this *QLayout) ParentWidget() *QWidget {
-	_ret := C.QLayout_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QLayout_ParentWidget(this.h)))
 }
 
 func (this *QLayout) Invalidate() {
@@ -160,8 +152,7 @@ func (this *QLayout) Geometry() *QRect {
 }
 
 func (this *QLayout) Activate() bool {
-	_ret := C.QLayout_Activate(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLayout_Activate(this.h))
 }
 
 func (this *QLayout) Update() {
@@ -185,8 +176,7 @@ func (this *QLayout) RemoveItem(param1 *QLayoutItem) {
 }
 
 func (this *QLayout) ExpandingDirections() int {
-	_ret := C.QLayout_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayout_ExpandingDirections(this.h))
 }
 
 func (this *QLayout) MinimumSize() *QSize {
@@ -208,48 +198,39 @@ func (this *QLayout) SetGeometry(geometry *QRect) {
 }
 
 func (this *QLayout) ItemAt(index int) *QLayoutItem {
-	_ret := C.QLayout_ItemAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QLayout) TakeAt(index int) *QLayoutItem {
-	_ret := C.QLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QLayout) IndexOf(param1 *QWidget) int {
-	_ret := C.QLayout_IndexOf(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QLayout_IndexOf(this.h, param1.cPointer()))
 }
 
 func (this *QLayout) IndexOfWithQLayoutItem(param1 *QLayoutItem) int {
-	_ret := C.QLayout_IndexOfWithQLayoutItem(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QLayout_IndexOfWithQLayoutItem(this.h, param1.cPointer()))
 }
 
 func (this *QLayout) Count() int {
-	_ret := C.QLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayout_Count(this.h))
 }
 
 func (this *QLayout) IsEmpty() bool {
-	_ret := C.QLayout_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLayout_IsEmpty(this.h))
 }
 
 func (this *QLayout) ControlTypes() int {
-	_ret := C.QLayout_ControlTypes(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayout_ControlTypes(this.h))
 }
 
 func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
-	_ret := C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())))
 }
 
 func (this *QLayout) TotalHeightForWidth(w int) int {
-	_ret := C.QLayout_TotalHeightForWidth(this.h, (C.int)(w))
-	return (int)(_ret)
+	return (int)(C.QLayout_TotalHeightForWidth(this.h, (C.int)(w)))
 }
 
 func (this *QLayout) TotalMinimumSize() *QSize {
@@ -274,8 +255,7 @@ func (this *QLayout) TotalSizeHint() *QSize {
 }
 
 func (this *QLayout) Layout() *QLayout {
-	_ret := C.QLayout_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(_ret))
+	return newQLayout_U(unsafe.Pointer(C.QLayout_Layout(this.h)))
 }
 
 func (this *QLayout) SetEnabled(enabled bool) {
@@ -283,8 +263,7 @@ func (this *QLayout) SetEnabled(enabled bool) {
 }
 
 func (this *QLayout) IsEnabled() bool {
-	_ret := C.QLayout_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLayout_IsEnabled(this.h))
 }
 
 func QLayout_ClosestAcceptableSize(w *QWidget, s *QSize) *QSize {
@@ -339,8 +318,7 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options int) *QLayoutItem {
-	_ret := C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
 }
 
 // Delete this object from C++ memory.

@@ -82,7 +82,7 @@ double QGraphicsRotation_Angle(const QGraphicsRotation* self);
 void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle);
 QVector3D* QGraphicsRotation_Axis(const QGraphicsRotation* self);
 void QGraphicsRotation_SetAxis(QGraphicsRotation* self, QVector3D* axis);
-void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, uintptr_t axis);
+void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, int axis);
 void QGraphicsRotation_ApplyTo(const QGraphicsRotation* self, QMatrix4x4* matrix);
 void QGraphicsRotation_OriginChanged(QGraphicsRotation* self);
 void QGraphicsRotation_connect_OriginChanged(QGraphicsRotation* self, void* slot);

@@ -37,13 +37,13 @@ typedef struct QVBoxLayout QVBoxLayout;
 typedef struct QWidget QWidget;
 #endif
 
-QBoxLayout* QBoxLayout_new(uintptr_t param1);
-QBoxLayout* QBoxLayout_new2(uintptr_t param1, QWidget* parent);
+QBoxLayout* QBoxLayout_new(int param1);
+QBoxLayout* QBoxLayout_new2(int param1, QWidget* parent);
 QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self);
 struct miqt_string* QBoxLayout_Tr(const char* s);
 struct miqt_string* QBoxLayout_TrUtf8(const char* s);
-uintptr_t QBoxLayout_Direction(const QBoxLayout* self);
-void QBoxLayout_SetDirection(QBoxLayout* self, uintptr_t direction);
+int QBoxLayout_Direction(const QBoxLayout* self);
+void QBoxLayout_SetDirection(QBoxLayout* self, int direction);
 void QBoxLayout_AddSpacing(QBoxLayout* self, int size);
 void QBoxLayout_AddStretch(QBoxLayout* self);
 void QBoxLayout_AddSpacerItem(QBoxLayout* self, QSpacerItem* spacerItem);

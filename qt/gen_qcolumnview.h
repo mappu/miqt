@@ -60,7 +60,7 @@ struct miqt_string* QColumnView_Tr2(const char* s, const char* c);
 struct miqt_string* QColumnView_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QColumnView_TrUtf82(const char* s, const char* c);
 struct miqt_string* QColumnView_TrUtf83(const char* s, const char* c, int n);
-void QColumnView_ScrollTo2(QColumnView* self, QModelIndex* index, uintptr_t hint);
+void QColumnView_ScrollTo2(QColumnView* self, QModelIndex* index, int hint);
 void QColumnView_Delete(QColumnView* self);
 
 #ifdef __cplusplus

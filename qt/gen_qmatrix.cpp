@@ -11,7 +11,7 @@
 #include "gen_qmatrix.h"
 #include "_cgo_export.h"
 
-QMatrix* QMatrix_new(uintptr_t param1) {
+QMatrix* QMatrix_new(int param1) {
 	return new QMatrix(static_cast<Qt::Initialization>(param1));
 }
 
@@ -36,27 +36,33 @@ void QMatrix_SetMatrix(QMatrix* self, double m11, double m12, double m21, double
 }
 
 double QMatrix_M11(const QMatrix* self) {
-	return self->m11();
+	qreal _ret = self->m11();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M12(const QMatrix* self) {
-	return self->m12();
+	qreal _ret = self->m12();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M21(const QMatrix* self) {
-	return self->m21();
+	qreal _ret = self->m21();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M22(const QMatrix* self) {
-	return self->m22();
+	qreal _ret = self->m22();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_Dx(const QMatrix* self) {
-	return self->dx();
+	qreal _ret = self->dx();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_Dy(const QMatrix* self) {
-	return self->dy();
+	qreal _ret = self->dy();
+	return static_cast<double>(_ret);
 }
 
 void QMatrix_Map(const QMatrix* self, int x, int y, int* tx, int* ty) {
@@ -68,51 +74,35 @@ void QMatrix_Map2(const QMatrix* self, double x, double y, double* tx, double* t
 }
 
 QRect* QMatrix_MapRect(const QMatrix* self, QRect* param1) {
-	QRect _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->mapRect(*param1));
 }
 
 QRectF* QMatrix_MapRectWithQRectF(const QMatrix* self, QRectF* param1) {
-	QRectF _ret = self->mapRect(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->mapRect(*param1));
 }
 
 QPoint* QMatrix_MapWithQPoint(const QMatrix* self, QPoint* p) {
-	QPoint _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPoint*>(new QPoint(_ret));
+	return new QPoint(self->map(*p));
 }
 
 QPointF* QMatrix_MapWithQPointF(const QMatrix* self, QPointF* p) {
-	QPointF _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPointF*>(new QPointF(_ret));
+	return new QPointF(self->map(*p));
 }
 
 QLine* QMatrix_MapWithQLine(const QMatrix* self, QLine* l) {
-	QLine _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLine*>(new QLine(_ret));
+	return new QLine(self->map(*l));
 }
 
 QLineF* QMatrix_MapWithQLineF(const QMatrix* self, QLineF* l) {
-	QLineF _ret = self->map(*l);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLineF*>(new QLineF(_ret));
+	return new QLineF(self->map(*l));
 }
 
 QRegion* QMatrix_MapWithQRegion(const QMatrix* self, QRegion* r) {
-	QRegion _ret = self->map(*r);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRegion*>(new QRegion(_ret));
+	return new QRegion(self->map(*r));
 }
 
 QPainterPath* QMatrix_MapWithQPainterPath(const QMatrix* self, QPainterPath* p) {
-	QPainterPath _ret = self->map(*p);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->map(*p));
 }
 
 void QMatrix_Reset(QMatrix* self) {
@@ -152,13 +142,12 @@ bool QMatrix_IsInvertible(const QMatrix* self) {
 }
 
 double QMatrix_Determinant(const QMatrix* self) {
-	return self->determinant();
+	qreal _ret = self->determinant();
+	return static_cast<double>(_ret);
 }
 
 QMatrix* QMatrix_Inverted(const QMatrix* self) {
-	QMatrix _ret = self->inverted();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->inverted());
 }
 
 bool QMatrix_OperatorEqual(const QMatrix* self, QMatrix* param1) {
@@ -176,15 +165,11 @@ QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1) {
 }
 
 QMatrix* QMatrix_OperatorMultiply(const QMatrix* self, QMatrix* o) {
-	QMatrix _ret = self->operator*(*o);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->operator*(*o));
 }
 
 QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible) {
-	QMatrix _ret = self->inverted(invertible);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QMatrix*>(new QMatrix(_ret));
+	return new QMatrix(self->inverted(invertible));
 }
 
 void QMatrix_Delete(QMatrix* self) {

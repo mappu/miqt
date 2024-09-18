@@ -111,8 +111,7 @@ func NewQWidget3(parent *QWidget, f int) *QWidget {
 }
 
 func (this *QWidget) MetaObject() *QMetaObject {
-	_ret := C.QWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QWidget_MetaObject(this.h)))
 }
 
 func QWidget_Tr(s string) string {
@@ -134,13 +133,11 @@ func QWidget_TrUtf8(s string) string {
 }
 
 func (this *QWidget) DevType() int {
-	_ret := C.QWidget_DevType(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_DevType(this.h))
 }
 
 func (this *QWidget) WinId() uintptr {
-	_ret := C.QWidget_WinId(this.h)
-	return (uintptr)(_ret)
+	return (uintptr)(C.QWidget_WinId(this.h))
 }
 
 func (this *QWidget) CreateWinId() {
@@ -148,18 +145,15 @@ func (this *QWidget) CreateWinId() {
 }
 
 func (this *QWidget) InternalWinId() uintptr {
-	_ret := C.QWidget_InternalWinId(this.h)
-	return (uintptr)(_ret)
+	return (uintptr)(C.QWidget_InternalWinId(this.h))
 }
 
 func (this *QWidget) EffectiveWinId() uintptr {
-	_ret := C.QWidget_EffectiveWinId(this.h)
-	return (uintptr)(_ret)
+	return (uintptr)(C.QWidget_EffectiveWinId(this.h))
 }
 
 func (this *QWidget) Style() *QStyle {
-	_ret := C.QWidget_Style(this.h)
-	return newQStyle_U(unsafe.Pointer(_ret))
+	return newQStyle_U(unsafe.Pointer(C.QWidget_Style(this.h)))
 }
 
 func (this *QWidget) SetStyle(style *QStyle) {
@@ -167,42 +161,35 @@ func (this *QWidget) SetStyle(style *QStyle) {
 }
 
 func (this *QWidget) IsTopLevel() bool {
-	_ret := C.QWidget_IsTopLevel(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsTopLevel(this.h))
 }
 
 func (this *QWidget) IsWindow() bool {
-	_ret := C.QWidget_IsWindow(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsWindow(this.h))
 }
 
 func (this *QWidget) IsModal() bool {
-	_ret := C.QWidget_IsModal(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsModal(this.h))
 }
 
 func (this *QWidget) WindowModality() WindowModality {
-	_ret := C.QWidget_WindowModality(this.h)
-	return (WindowModality)(_ret)
+	return (WindowModality)(C.QWidget_WindowModality(this.h))
 }
 
 func (this *QWidget) SetWindowModality(windowModality WindowModality) {
-	C.QWidget_SetWindowModality(this.h, (C.uintptr_t)(windowModality))
+	C.QWidget_SetWindowModality(this.h, (C.int)(windowModality))
 }
 
 func (this *QWidget) IsEnabled() bool {
-	_ret := C.QWidget_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsEnabled(this.h))
 }
 
 func (this *QWidget) IsEnabledTo(param1 *QWidget) bool {
-	_ret := C.QWidget_IsEnabledTo(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsEnabledTo(this.h, param1.cPointer()))
 }
 
 func (this *QWidget) IsEnabledToTLW() bool {
-	_ret := C.QWidget_IsEnabledToTLW(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsEnabledToTLW(this.h))
 }
 
 func (this *QWidget) SetEnabled(enabled bool) {
@@ -225,8 +212,7 @@ func (this *QWidget) FrameGeometry() *QRect {
 }
 
 func (this *QWidget) Geometry() *QRect {
-	_ret := C.QWidget_Geometry(this.h)
-	return newQRect_U(unsafe.Pointer(_ret))
+	return newQRect_U(unsafe.Pointer(C.QWidget_Geometry(this.h)))
 }
 
 func (this *QWidget) NormalGeometry() *QRect {
@@ -237,13 +223,11 @@ func (this *QWidget) NormalGeometry() *QRect {
 }
 
 func (this *QWidget) X() int {
-	_ret := C.QWidget_X(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_X(this.h))
 }
 
 func (this *QWidget) Y() int {
-	_ret := C.QWidget_Y(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_Y(this.h))
 }
 
 func (this *QWidget) Pos() *QPoint {
@@ -268,13 +252,11 @@ func (this *QWidget) Size() *QSize {
 }
 
 func (this *QWidget) Width() int {
-	_ret := C.QWidget_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_Width(this.h))
 }
 
 func (this *QWidget) Height() int {
-	_ret := C.QWidget_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_Height(this.h))
 }
 
 func (this *QWidget) Rect() *QRect {
@@ -313,23 +295,19 @@ func (this *QWidget) MaximumSize() *QSize {
 }
 
 func (this *QWidget) MinimumWidth() int {
-	_ret := C.QWidget_MinimumWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_MinimumWidth(this.h))
 }
 
 func (this *QWidget) MinimumHeight() int {
-	_ret := C.QWidget_MinimumHeight(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_MinimumHeight(this.h))
 }
 
 func (this *QWidget) MaximumWidth() int {
-	_ret := C.QWidget_MaximumWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_MaximumWidth(this.h))
 }
 
 func (this *QWidget) MaximumHeight() int {
-	_ret := C.QWidget_MaximumHeight(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_MaximumHeight(this.h))
 }
 
 func (this *QWidget) SetMinimumSize(minimumSize *QSize) {
@@ -453,23 +431,19 @@ func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
 }
 
 func (this *QWidget) Window() *QWidget {
-	_ret := C.QWidget_Window(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_Window(this.h)))
 }
 
 func (this *QWidget) NativeParentWidget() *QWidget {
-	_ret := C.QWidget_NativeParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_NativeParentWidget(this.h)))
 }
 
 func (this *QWidget) TopLevelWidget() *QWidget {
-	_ret := C.QWidget_TopLevelWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_TopLevelWidget(this.h)))
 }
 
 func (this *QWidget) Palette() *QPalette {
-	_ret := C.QWidget_Palette(this.h)
-	return newQPalette_U(unsafe.Pointer(_ret))
+	return newQPalette_U(unsafe.Pointer(C.QWidget_Palette(this.h)))
 }
 
 func (this *QWidget) SetPalette(palette *QPalette) {
@@ -477,26 +451,23 @@ func (this *QWidget) SetPalette(palette *QPalette) {
 }
 
 func (this *QWidget) SetBackgroundRole(backgroundRole QPalette__ColorRole) {
-	C.QWidget_SetBackgroundRole(this.h, (C.uintptr_t)(backgroundRole))
+	C.QWidget_SetBackgroundRole(this.h, (C.int)(backgroundRole))
 }
 
 func (this *QWidget) BackgroundRole() QPalette__ColorRole {
-	_ret := C.QWidget_BackgroundRole(this.h)
-	return (QPalette__ColorRole)(_ret)
+	return (QPalette__ColorRole)(C.QWidget_BackgroundRole(this.h))
 }
 
 func (this *QWidget) SetForegroundRole(foregroundRole QPalette__ColorRole) {
-	C.QWidget_SetForegroundRole(this.h, (C.uintptr_t)(foregroundRole))
+	C.QWidget_SetForegroundRole(this.h, (C.int)(foregroundRole))
 }
 
 func (this *QWidget) ForegroundRole() QPalette__ColorRole {
-	_ret := C.QWidget_ForegroundRole(this.h)
-	return (QPalette__ColorRole)(_ret)
+	return (QPalette__ColorRole)(C.QWidget_ForegroundRole(this.h))
 }
 
 func (this *QWidget) Font() *QFont {
-	_ret := C.QWidget_Font(this.h)
-	return newQFont_U(unsafe.Pointer(_ret))
+	return newQFont_U(unsafe.Pointer(C.QWidget_Font(this.h)))
 }
 
 func (this *QWidget) SetFont(font *QFont) {
@@ -537,13 +508,11 @@ func (this *QWidget) SetMouseTracking(enable bool) {
 }
 
 func (this *QWidget) HasMouseTracking() bool {
-	_ret := C.QWidget_HasMouseTracking(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_HasMouseTracking(this.h))
 }
 
 func (this *QWidget) UnderMouse() bool {
-	_ret := C.QWidget_UnderMouse(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_UnderMouse(this.h))
 }
 
 func (this *QWidget) SetTabletTracking(enable bool) {
@@ -551,8 +520,7 @@ func (this *QWidget) SetTabletTracking(enable bool) {
 }
 
 func (this *QWidget) HasTabletTracking() bool {
-	_ret := C.QWidget_HasTabletTracking(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_HasTabletTracking(this.h))
 }
 
 func (this *QWidget) SetMask(mask *QBitmap) {
@@ -590,8 +558,7 @@ func (this *QWidget) Grab() *QPixmap {
 }
 
 func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
-	_ret := C.QWidget_GraphicsEffect(this.h)
-	return newQGraphicsEffect_U(unsafe.Pointer(_ret))
+	return newQGraphicsEffect_U(unsafe.Pointer(C.QWidget_GraphicsEffect(this.h)))
 }
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -599,11 +566,11 @@ func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
 }
 
 func (this *QWidget) GrabGesture(typeVal GestureType) {
-	C.QWidget_GrabGesture(this.h, (C.uintptr_t)(typeVal))
+	C.QWidget_GrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) UngrabGesture(typeVal GestureType) {
-	C.QWidget_UngrabGesture(this.h, (C.uintptr_t)(typeVal))
+	C.QWidget_UngrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
@@ -687,13 +654,11 @@ func (this *QWidget) SetWindowOpacity(level float64) {
 }
 
 func (this *QWidget) WindowOpacity() float64 {
-	_ret := C.QWidget_WindowOpacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QWidget_WindowOpacity(this.h))
 }
 
 func (this *QWidget) IsWindowModified() bool {
-	_ret := C.QWidget_IsWindowModified(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsWindowModified(this.h))
 }
 
 func (this *QWidget) SetToolTip(toolTip string) {
@@ -714,8 +679,7 @@ func (this *QWidget) SetToolTipDuration(msec int) {
 }
 
 func (this *QWidget) ToolTipDuration() int {
-	_ret := C.QWidget_ToolTipDuration(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_ToolTipDuration(this.h))
 }
 
 func (this *QWidget) SetStatusTip(statusTip string) {
@@ -771,12 +735,11 @@ func (this *QWidget) SetAccessibleDescription(description string) {
 }
 
 func (this *QWidget) SetLayoutDirection(direction LayoutDirection) {
-	C.QWidget_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+	C.QWidget_SetLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QWidget) LayoutDirection() LayoutDirection {
-	_ret := C.QWidget_LayoutDirection(this.h)
-	return (LayoutDirection)(_ret)
+	return (LayoutDirection)(C.QWidget_LayoutDirection(this.h))
 }
 
 func (this *QWidget) UnsetLayoutDirection() {
@@ -799,13 +762,11 @@ func (this *QWidget) UnsetLocale() {
 }
 
 func (this *QWidget) IsRightToLeft() bool {
-	_ret := C.QWidget_IsRightToLeft(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsRightToLeft(this.h))
 }
 
 func (this *QWidget) IsLeftToRight() bool {
-	_ret := C.QWidget_IsLeftToRight(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsLeftToRight(this.h))
 }
 
 func (this *QWidget) SetFocus() {
@@ -813,8 +774,7 @@ func (this *QWidget) SetFocus() {
 }
 
 func (this *QWidget) IsActiveWindow() bool {
-	_ret := C.QWidget_IsActiveWindow(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsActiveWindow(this.h))
 }
 
 func (this *QWidget) ActivateWindow() {
@@ -826,21 +786,19 @@ func (this *QWidget) ClearFocus() {
 }
 
 func (this *QWidget) SetFocusWithReason(reason FocusReason) {
-	C.QWidget_SetFocusWithReason(this.h, (C.uintptr_t)(reason))
+	C.QWidget_SetFocusWithReason(this.h, (C.int)(reason))
 }
 
 func (this *QWidget) FocusPolicy() FocusPolicy {
-	_ret := C.QWidget_FocusPolicy(this.h)
-	return (FocusPolicy)(_ret)
+	return (FocusPolicy)(C.QWidget_FocusPolicy(this.h))
 }
 
 func (this *QWidget) SetFocusPolicy(policy FocusPolicy) {
-	C.QWidget_SetFocusPolicy(this.h, (C.uintptr_t)(policy))
+	C.QWidget_SetFocusPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWidget) HasFocus() bool {
-	_ret := C.QWidget_HasFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_HasFocus(this.h))
 }
 
 func QWidget_SetTabOrder(param1 *QWidget, param2 *QWidget) {
@@ -852,17 +810,15 @@ func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
 }
 
 func (this *QWidget) FocusProxy() *QWidget {
-	_ret := C.QWidget_FocusProxy(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_FocusProxy(this.h)))
 }
 
 func (this *QWidget) ContextMenuPolicy() ContextMenuPolicy {
-	_ret := C.QWidget_ContextMenuPolicy(this.h)
-	return (ContextMenuPolicy)(_ret)
+	return (ContextMenuPolicy)(C.QWidget_ContextMenuPolicy(this.h))
 }
 
 func (this *QWidget) SetContextMenuPolicy(policy ContextMenuPolicy) {
-	C.QWidget_SetContextMenuPolicy(this.h, (C.uintptr_t)(policy))
+	C.QWidget_SetContextMenuPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWidget) GrabMouse() {
@@ -886,8 +842,7 @@ func (this *QWidget) ReleaseKeyboard() {
 }
 
 func (this *QWidget) GrabShortcut(key *QKeySequence) int {
-	_ret := C.QWidget_GrabShortcut(this.h, key.cPointer())
-	return (int)(_ret)
+	return (int)(C.QWidget_GrabShortcut(this.h, key.cPointer()))
 }
 
 func (this *QWidget) ReleaseShortcut(id int) {
@@ -903,18 +858,15 @@ func (this *QWidget) SetShortcutAutoRepeat(id int) {
 }
 
 func QWidget_MouseGrabber() *QWidget {
-	_ret := C.QWidget_MouseGrabber()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_MouseGrabber()))
 }
 
 func QWidget_KeyboardGrabber() *QWidget {
-	_ret := C.QWidget_KeyboardGrabber()
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_KeyboardGrabber()))
 }
 
 func (this *QWidget) UpdatesEnabled() bool {
-	_ret := C.QWidget_UpdatesEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_UpdatesEnabled(this.h))
 }
 
 func (this *QWidget) SetUpdatesEnabled(enable bool) {
@@ -922,8 +874,7 @@ func (this *QWidget) SetUpdatesEnabled(enable bool) {
 }
 
 func (this *QWidget) GraphicsProxyWidget() *QGraphicsProxyWidget {
-	_ret := C.QWidget_GraphicsProxyWidget(this.h)
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(_ret))
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QWidget_GraphicsProxyWidget(this.h)))
 }
 
 func (this *QWidget) Update() {
@@ -991,8 +942,7 @@ func (this *QWidget) ShowNormal() {
 }
 
 func (this *QWidget) Close() bool {
-	_ret := C.QWidget_Close(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_Close(this.h))
 }
 
 func (this *QWidget) Raise() {
@@ -1039,8 +989,7 @@ func (this *QWidget) SaveGeometry() *QByteArray {
 }
 
 func (this *QWidget) RestoreGeometry(geometry *QByteArray) bool {
-	_ret := C.QWidget_RestoreGeometry(this.h, geometry.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWidget_RestoreGeometry(this.h, geometry.cPointer()))
 }
 
 func (this *QWidget) AdjustSize() {
@@ -1048,38 +997,31 @@ func (this *QWidget) AdjustSize() {
 }
 
 func (this *QWidget) IsVisible() bool {
-	_ret := C.QWidget_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsVisible(this.h))
 }
 
 func (this *QWidget) IsVisibleTo(param1 *QWidget) bool {
-	_ret := C.QWidget_IsVisibleTo(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsVisibleTo(this.h, param1.cPointer()))
 }
 
 func (this *QWidget) IsHidden() bool {
-	_ret := C.QWidget_IsHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsHidden(this.h))
 }
 
 func (this *QWidget) IsMinimized() bool {
-	_ret := C.QWidget_IsMinimized(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsMinimized(this.h))
 }
 
 func (this *QWidget) IsMaximized() bool {
-	_ret := C.QWidget_IsMaximized(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsMaximized(this.h))
 }
 
 func (this *QWidget) IsFullScreen() bool {
-	_ret := C.QWidget_IsFullScreen(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsFullScreen(this.h))
 }
 
 func (this *QWidget) WindowState() int {
-	_ret := C.QWidget_WindowState(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_WindowState(this.h))
 }
 
 func (this *QWidget) SetWindowState(state int) {
@@ -1116,17 +1058,15 @@ func (this *QWidget) SetSizePolicy(sizePolicy QSizePolicy) {
 }
 
 func (this *QWidget) SetSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) {
-	C.QWidget_SetSizePolicy2(this.h, (C.uintptr_t)(horizontal), (C.uintptr_t)(vertical))
+	C.QWidget_SetSizePolicy2(this.h, (C.int)(horizontal), (C.int)(vertical))
 }
 
 func (this *QWidget) HeightForWidth(param1 int) int {
-	_ret := C.QWidget_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QWidget_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QWidget) HasHeightForWidth() bool {
-	_ret := C.QWidget_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_HasHeightForWidth(this.h))
 }
 
 func (this *QWidget) VisibleRegion() *QRegion {
@@ -1163,8 +1103,7 @@ func (this *QWidget) ContentsRect() *QRect {
 }
 
 func (this *QWidget) Layout() *QLayout {
-	_ret := C.QWidget_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(_ret))
+	return newQLayout_U(unsafe.Pointer(C.QWidget_Layout(this.h)))
 }
 
 func (this *QWidget) SetLayout(layout *QLayout) {
@@ -1192,23 +1131,19 @@ func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
-	_ret := C.QWidget_FocusWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_FocusWidget(this.h)))
 }
 
 func (this *QWidget) NextInFocusChain() *QWidget {
-	_ret := C.QWidget_NextInFocusChain(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_NextInFocusChain(this.h)))
 }
 
 func (this *QWidget) PreviousInFocusChain() *QWidget {
-	_ret := C.QWidget_PreviousInFocusChain(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_PreviousInFocusChain(this.h)))
 }
 
 func (this *QWidget) AcceptDrops() bool {
-	_ret := C.QWidget_AcceptDrops(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_AcceptDrops(this.h))
 }
 
 func (this *QWidget) SetAcceptDrops(on bool) {
@@ -1254,17 +1189,16 @@ func (this *QWidget) RemoveAction(action *QAction) {
 func (this *QWidget) Actions() []*QAction {
 	var _ma *C.struct_miqt_array = C.QWidget_Actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i])
+		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QWidget) ParentWidget() *QWidget {
-	_ret := C.QWidget_ParentWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_ParentWidget(this.h)))
 }
 
 func (this *QWidget) SetWindowFlags(typeVal int) {
@@ -1272,12 +1206,11 @@ func (this *QWidget) SetWindowFlags(typeVal int) {
 }
 
 func (this *QWidget) WindowFlags() int {
-	_ret := C.QWidget_WindowFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_WindowFlags(this.h))
 }
 
 func (this *QWidget) SetWindowFlag(param1 WindowType) {
-	C.QWidget_SetWindowFlag(this.h, (C.uintptr_t)(param1))
+	C.QWidget_SetWindowFlag(this.h, (C.int)(param1))
 }
 
 func (this *QWidget) OverrideWindowFlags(typeVal int) {
@@ -1285,37 +1218,31 @@ func (this *QWidget) OverrideWindowFlags(typeVal int) {
 }
 
 func (this *QWidget) WindowType() WindowType {
-	_ret := C.QWidget_WindowType(this.h)
-	return (WindowType)(_ret)
+	return (WindowType)(C.QWidget_WindowType(this.h))
 }
 
 func QWidget_Find(param1 uintptr) *QWidget {
-	_ret := C.QWidget_Find((C.uintptr_t)(param1))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_Find((C.uintptr_t)(param1))))
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {
-	_ret := C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	_ret := C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
-	C.QWidget_SetAttribute(this.h, (C.uintptr_t)(param1))
+	C.QWidget_SetAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QWidget) TestAttribute(param1 WidgetAttribute) bool {
-	_ret := C.QWidget_TestAttribute(this.h, (C.uintptr_t)(param1))
-	return (bool)(_ret)
+	return (bool)(C.QWidget_TestAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QWidget) PaintEngine() *QPaintEngine {
-	_ret := C.QWidget_PaintEngine(this.h)
-	return newQPaintEngine_U(unsafe.Pointer(_ret))
+	return newQPaintEngine_U(unsafe.Pointer(C.QWidget_PaintEngine(this.h)))
 }
 
 func (this *QWidget) EnsurePolished() {
@@ -1323,13 +1250,11 @@ func (this *QWidget) EnsurePolished() {
 }
 
 func (this *QWidget) IsAncestorOf(child *QWidget) bool {
-	_ret := C.QWidget_IsAncestorOf(this.h, child.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWidget_IsAncestorOf(this.h, child.cPointer()))
 }
 
 func (this *QWidget) AutoFillBackground() bool {
-	_ret := C.QWidget_AutoFillBackground(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidget_AutoFillBackground(this.h))
 }
 
 func (this *QWidget) SetAutoFillBackground(enabled bool) {
@@ -1337,23 +1262,19 @@ func (this *QWidget) SetAutoFillBackground(enabled bool) {
 }
 
 func (this *QWidget) BackingStore() *QBackingStore {
-	_ret := C.QWidget_BackingStore(this.h)
-	return newQBackingStore_U(unsafe.Pointer(_ret))
+	return newQBackingStore_U(unsafe.Pointer(C.QWidget_BackingStore(this.h)))
 }
 
 func (this *QWidget) WindowHandle() *QWindow {
-	_ret := C.QWidget_WindowHandle(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QWidget_WindowHandle(this.h)))
 }
 
 func (this *QWidget) Screen() *QScreen {
-	_ret := C.QWidget_Screen(this.h)
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QWidget_Screen(this.h)))
 }
 
 func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
-	_ret := C.QWidget_CreateWindowContainer(window.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer(window.cPointer())))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
@@ -1396,8 +1317,7 @@ func miqt_exec_callback_QWidget_WindowIconChanged(cb *C.void, icon *C.QIcon) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	icon_ret := icon
-	slotval1 := newQIcon_U(unsafe.Pointer(icon_ret))
+	slotval1 := newQIcon_U(unsafe.Pointer(icon))
 
 	gofunc(slotval1)
 }
@@ -1442,22 +1362,20 @@ func miqt_exec_callback_QWidget_CustomContextMenuRequested(cb *C.void, pos *C.QP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	pos_ret := pos
-	slotval1 := newQPoint_U(unsafe.Pointer(pos_ret))
+	slotval1 := newQPoint_U(unsafe.Pointer(pos))
 
 	gofunc(slotval1)
 }
 
 func (this *QWidget) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QWidget_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_ret := C.QWidget_InputMethodQuery(this.h, (C.int)(param1))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) InputMethodHints() int {
-	_ret := C.QWidget_InputMethodHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidget_InputMethodHints(this.h))
 }
 
 func (this *QWidget) SetInputMethodHints(hints int) {
@@ -1540,12 +1458,11 @@ func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
 }
 
 func (this *QWidget) GrabGesture2(typeVal GestureType, flags int) {
-	C.QWidget_GrabGesture2(this.h, (C.uintptr_t)(typeVal), (C.int)(flags))
+	C.QWidget_GrabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
 func (this *QWidget) GrabShortcut2(key *QKeySequence, context ShortcutContext) int {
-	_ret := C.QWidget_GrabShortcut2(this.h, key.cPointer(), (C.uintptr_t)(context))
-	return (int)(_ret)
+	return (int)(C.QWidget_GrabShortcut2(this.h, key.cPointer(), (C.int)(context)))
 }
 
 func (this *QWidget) SetShortcutEnabled2(id int, enable bool) {
@@ -1557,21 +1474,19 @@ func (this *QWidget) SetShortcutAutoRepeat2(id int, enable bool) {
 }
 
 func (this *QWidget) SetWindowFlag2(param1 WindowType, on bool) {
-	C.QWidget_SetWindowFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+	C.QWidget_SetWindowFlag2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QWidget) SetAttribute2(param1 WidgetAttribute, on bool) {
-	C.QWidget_SetAttribute2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+	C.QWidget_SetAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
-	_ret := C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())))
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags int) *QWidget {
-	_ret := C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))))
 }
 
 // Delete this object from C++ memory.

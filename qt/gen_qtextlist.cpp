@@ -41,9 +41,7 @@ bool QTextList_IsEmpty(const QTextList* self) {
 }
 
 QTextBlock* QTextList_Item(const QTextList* self, int i) {
-	QTextBlock _ret = self->item(static_cast<int>(i));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextBlock*>(new QTextBlock(_ret));
+	return new QTextBlock(self->item(static_cast<int>(i)));
 }
 
 int QTextList_ItemNumber(const QTextList* self, QTextBlock* param1) {
@@ -74,9 +72,7 @@ void QTextList_SetFormat(QTextList* self, QTextListFormat* format) {
 }
 
 QTextListFormat* QTextList_Format(const QTextList* self) {
-	QTextListFormat _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTextListFormat*>(new QTextListFormat(_ret));
+	return new QTextListFormat(self->format());
 }
 
 struct miqt_string* QTextList_Tr2(const char* s, const char* c) {

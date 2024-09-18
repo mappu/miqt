@@ -124,23 +124,19 @@ func newQTextItem_U(h unsafe.Pointer) *QTextItem {
 }
 
 func (this *QTextItem) Descent() float64 {
-	_ret := C.QTextItem_Descent(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextItem_Descent(this.h))
 }
 
 func (this *QTextItem) Ascent() float64 {
-	_ret := C.QTextItem_Ascent(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextItem_Ascent(this.h))
 }
 
 func (this *QTextItem) Width() float64 {
-	_ret := C.QTextItem_Width(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QTextItem_Width(this.h))
 }
 
 func (this *QTextItem) RenderFlags() int {
-	_ret := C.QTextItem_RenderFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextItem_RenderFlags(this.h))
 }
 
 func (this *QTextItem) Text() string {
@@ -194,8 +190,7 @@ func newQPaintEngine_U(h unsafe.Pointer) *QPaintEngine {
 }
 
 func (this *QPaintEngine) IsActive() bool {
-	_ret := C.QPaintEngine_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_IsActive(this.h))
 }
 
 func (this *QPaintEngine) SetActive(newState bool) {
@@ -203,13 +198,11 @@ func (this *QPaintEngine) SetActive(newState bool) {
 }
 
 func (this *QPaintEngine) Begin(pdev *QPaintDevice) bool {
-	_ret := C.QPaintEngine_Begin(this.h, pdev.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_Begin(this.h, pdev.cPointer()))
 }
 
 func (this *QPaintEngine) End() bool {
-	_ret := C.QPaintEngine_End(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_End(this.h))
 }
 
 func (this *QPaintEngine) UpdateState(state *QPaintEngineState) {
@@ -253,11 +246,11 @@ func (this *QPaintEngine) DrawPoints2(points *QPoint, pointCount int) {
 }
 
 func (this *QPaintEngine) DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
-	C.QPaintEngine_DrawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+	C.QPaintEngine_DrawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
-	C.QPaintEngine_DrawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+	C.QPaintEngine_DrawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPixmap(r *QRectF, pm *QPixmap, sr *QRectF) {
@@ -281,8 +274,7 @@ func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
-	_ret := C.QPaintEngine_PaintDevice(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QPaintEngine_PaintDevice(this.h)))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
@@ -315,8 +307,7 @@ func (this *QPaintEngine) CoordinateOffset() *QPoint {
 }
 
 func (this *QPaintEngine) Type() QPaintEngine__Type {
-	_ret := C.QPaintEngine_Type(this.h)
-	return (QPaintEngine__Type)(_ret)
+	return (QPaintEngine__Type)(C.QPaintEngine_Type(this.h))
 }
 
 func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
@@ -324,8 +315,7 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 }
 
 func (this *QPaintEngine) TestDirty(df int) bool {
-	_ret := C.QPaintEngine_TestDirty(this.h, (C.int)(df))
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_TestDirty(this.h, (C.int)(df)))
 }
 
 func (this *QPaintEngine) SetDirty(df int) {
@@ -337,13 +327,11 @@ func (this *QPaintEngine) ClearDirty(df int) {
 }
 
 func (this *QPaintEngine) HasFeature(feature int) bool {
-	_ret := C.QPaintEngine_HasFeature(this.h, (C.int)(feature))
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_HasFeature(this.h, (C.int)(feature)))
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
-	_ret := C.QPaintEngine_Painter(this.h)
-	return newQPainter_U(unsafe.Pointer(_ret))
+	return newQPainter_U(unsafe.Pointer(C.QPaintEngine_Painter(this.h)))
 }
 
 func (this *QPaintEngine) SyncState() {
@@ -351,8 +339,7 @@ func (this *QPaintEngine) SyncState() {
 }
 
 func (this *QPaintEngine) IsExtended() bool {
-	_ret := C.QPaintEngine_IsExtended(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 
 func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
@@ -396,8 +383,7 @@ func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
 }
 
 func (this *QPaintEngineState) State() int {
-	_ret := C.QPaintEngineState_State(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintEngineState_State(this.h))
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
@@ -429,8 +415,7 @@ func (this *QPaintEngineState) BackgroundBrush() *QBrush {
 }
 
 func (this *QPaintEngineState) BackgroundMode() BGMode {
-	_ret := C.QPaintEngineState_BackgroundMode(this.h)
-	return (BGMode)(_ret)
+	return (BGMode)(C.QPaintEngineState_BackgroundMode(this.h))
 }
 
 func (this *QPaintEngineState) Font() *QFont {
@@ -455,8 +440,7 @@ func (this *QPaintEngineState) Transform() *QTransform {
 }
 
 func (this *QPaintEngineState) ClipOperation() ClipOperation {
-	_ret := C.QPaintEngineState_ClipOperation(this.h)
-	return (ClipOperation)(_ret)
+	return (ClipOperation)(C.QPaintEngineState_ClipOperation(this.h))
 }
 
 func (this *QPaintEngineState) ClipRegion() *QRegion {
@@ -474,38 +458,31 @@ func (this *QPaintEngineState) ClipPath() *QPainterPath {
 }
 
 func (this *QPaintEngineState) IsClipEnabled() bool {
-	_ret := C.QPaintEngineState_IsClipEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngineState_IsClipEnabled(this.h))
 }
 
 func (this *QPaintEngineState) RenderHints() int {
-	_ret := C.QPaintEngineState_RenderHints(this.h)
-	return (int)(_ret)
+	return (int)(C.QPaintEngineState_RenderHints(this.h))
 }
 
 func (this *QPaintEngineState) CompositionMode() QPainter__CompositionMode {
-	_ret := C.QPaintEngineState_CompositionMode(this.h)
-	return (QPainter__CompositionMode)(_ret)
+	return (QPainter__CompositionMode)(C.QPaintEngineState_CompositionMode(this.h))
 }
 
 func (this *QPaintEngineState) Opacity() float64 {
-	_ret := C.QPaintEngineState_Opacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPaintEngineState_Opacity(this.h))
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
-	_ret := C.QPaintEngineState_Painter(this.h)
-	return newQPainter_U(unsafe.Pointer(_ret))
+	return newQPainter_U(unsafe.Pointer(C.QPaintEngineState_Painter(this.h)))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {
-	_ret := C.QPaintEngineState_BrushNeedsResolving(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngineState_BrushNeedsResolving(this.h))
 }
 
 func (this *QPaintEngineState) PenNeedsResolving() bool {
-	_ret := C.QPaintEngineState_PenNeedsResolving(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QPaintEngineState_PenNeedsResolving(this.h))
 }
 
 // Delete this object from C++ memory.

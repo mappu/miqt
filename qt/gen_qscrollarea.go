@@ -49,8 +49,7 @@ func NewQScrollArea2(parent *QWidget) *QScrollArea {
 }
 
 func (this *QScrollArea) MetaObject() *QMetaObject {
-	_ret := C.QScrollArea_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QScrollArea_MetaObject(this.h)))
 }
 
 func QScrollArea_Tr(s string) string {
@@ -72,8 +71,7 @@ func QScrollArea_TrUtf8(s string) string {
 }
 
 func (this *QScrollArea) Widget() *QWidget {
-	_ret := C.QScrollArea_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QScrollArea_Widget(this.h)))
 }
 
 func (this *QScrollArea) SetWidget(widget *QWidget) {
@@ -81,13 +79,11 @@ func (this *QScrollArea) SetWidget(widget *QWidget) {
 }
 
 func (this *QScrollArea) TakeWidget() *QWidget {
-	_ret := C.QScrollArea_TakeWidget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QScrollArea_TakeWidget(this.h)))
 }
 
 func (this *QScrollArea) WidgetResizable() bool {
-	_ret := C.QScrollArea_WidgetResizable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QScrollArea_WidgetResizable(this.h))
 }
 
 func (this *QScrollArea) SetWidgetResizable(resizable bool) {
@@ -102,13 +98,11 @@ func (this *QScrollArea) SizeHint() *QSize {
 }
 
 func (this *QScrollArea) FocusNextPrevChild(next bool) bool {
-	_ret := C.QScrollArea_FocusNextPrevChild(this.h, (C.bool)(next))
-	return (bool)(_ret)
+	return (bool)(C.QScrollArea_FocusNextPrevChild(this.h, (C.bool)(next)))
 }
 
 func (this *QScrollArea) Alignment() int {
-	_ret := C.QScrollArea_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QScrollArea_Alignment(this.h))
 }
 
 func (this *QScrollArea) SetAlignment(alignment int) {

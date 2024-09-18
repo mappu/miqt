@@ -48,22 +48,18 @@ void QFontDialog_SetCurrentFont(QFontDialog* self, QFont* font) {
 }
 
 QFont* QFontDialog_CurrentFont(const QFontDialog* self) {
-	QFont _ret = self->currentFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->currentFont());
 }
 
 QFont* QFontDialog_SelectedFont(const QFontDialog* self) {
-	QFont _ret = self->selectedFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->selectedFont());
 }
 
-void QFontDialog_SetOption(QFontDialog* self, uintptr_t option) {
+void QFontDialog_SetOption(QFontDialog* self, int option) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
-bool QFontDialog_TestOption(const QFontDialog* self, uintptr_t option) {
+bool QFontDialog_TestOption(const QFontDialog* self, int option) {
 	return self->testOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
@@ -81,15 +77,11 @@ void QFontDialog_SetVisible(QFontDialog* self, bool visible) {
 }
 
 QFont* QFontDialog_GetFont(bool* ok) {
-	QFont _ret = QFontDialog::getFont(ok);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok));
 }
 
 QFont* QFontDialog_GetFont2(bool* ok, QFont* initial) {
-	QFont _ret = QFontDialog::getFont(ok, *initial);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok, *initial));
 }
 
 void QFontDialog_CurrentFontChanged(QFontDialog* self, QFont* font) {
@@ -146,34 +138,26 @@ struct miqt_string* QFontDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontDialog_SetOption2(QFontDialog* self, uintptr_t option, bool on) {
+void QFontDialog_SetOption2(QFontDialog* self, int option, bool on) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option), on);
 }
 
 QFont* QFontDialog_GetFont22(bool* ok, QWidget* parent) {
-	QFont _ret = QFontDialog::getFont(ok, parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok, parent));
 }
 
 QFont* QFontDialog_GetFont3(bool* ok, QFont* initial, QWidget* parent) {
-	QFont _ret = QFontDialog::getFont(ok, *initial, parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok, *initial, parent));
 }
 
 QFont* QFontDialog_GetFont4(bool* ok, QFont* initial, QWidget* parent, struct miqt_string* title) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QFont _ret = QFontDialog::getFont(ok, *initial, parent, title_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString));
 }
 
 QFont* QFontDialog_GetFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string* title, int options) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QFont _ret = QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options)));
 }
 
 void QFontDialog_Delete(QFontDialog* self) {

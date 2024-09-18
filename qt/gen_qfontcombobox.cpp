@@ -36,13 +36,13 @@ struct miqt_string* QFontComboBox_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem) {
+void QFontComboBox_SetWritingSystem(QFontComboBox* self, int writingSystem) {
 	self->setWritingSystem(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 }
 
-uintptr_t QFontComboBox_WritingSystem(const QFontComboBox* self) {
+int QFontComboBox_WritingSystem(const QFontComboBox* self) {
 	QFontDatabase::WritingSystem _ret = self->writingSystem();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters) {
@@ -55,15 +55,11 @@ int QFontComboBox_FontFilters(const QFontComboBox* self) {
 }
 
 QFont* QFontComboBox_CurrentFont(const QFontComboBox* self) {
-	QFont _ret = self->currentFont();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->currentFont());
 }
 
 QSize* QFontComboBox_SizeHint(const QFontComboBox* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 void QFontComboBox_SetCurrentFont(QFontComboBox* self, QFont* f) {

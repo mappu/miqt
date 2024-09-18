@@ -56,8 +56,7 @@ func (this *QColorTransform) Swap(other *QColorTransform) {
 }
 
 func (this *QColorTransform) Map(argb uint) uint {
-	_ret := C.QColorTransform_Map(this.h, (C.uint)(argb))
-	return (uint)(_ret)
+	return (uint)(C.QColorTransform_Map(this.h, (C.uint)(argb)))
 }
 
 func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) *QRgba64 {

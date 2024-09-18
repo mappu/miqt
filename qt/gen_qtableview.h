@@ -63,8 +63,8 @@ void QTableView_SetColumnHidden(QTableView* self, int column, bool hide);
 void QTableView_SetSortingEnabled(QTableView* self, bool enable);
 bool QTableView_IsSortingEnabled(const QTableView* self);
 bool QTableView_ShowGrid(const QTableView* self);
-uintptr_t QTableView_GridStyle(const QTableView* self);
-void QTableView_SetGridStyle(QTableView* self, uintptr_t style);
+int QTableView_GridStyle(const QTableView* self);
+void QTableView_SetGridStyle(QTableView* self, int style);
 void QTableView_SetWordWrap(QTableView* self, bool on);
 bool QTableView_WordWrap(const QTableView* self);
 void QTableView_SetCornerButtonEnabled(QTableView* self, bool enable);
@@ -87,13 +87,13 @@ void QTableView_ResizeRowsToContents(QTableView* self);
 void QTableView_ResizeColumnToContents(QTableView* self, int column);
 void QTableView_ResizeColumnsToContents(QTableView* self);
 void QTableView_SortByColumn(QTableView* self, int column);
-void QTableView_SortByColumn2(QTableView* self, int column, uintptr_t order);
+void QTableView_SortByColumn2(QTableView* self, int column, int order);
 void QTableView_SetShowGrid(QTableView* self, bool show);
 struct miqt_string* QTableView_Tr2(const char* s, const char* c);
 struct miqt_string* QTableView_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QTableView_TrUtf82(const char* s, const char* c);
 struct miqt_string* QTableView_TrUtf83(const char* s, const char* c, int n);
-void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, uintptr_t hint);
+void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, int hint);
 void QTableView_Delete(QTableView* self);
 
 #ifdef __cplusplus

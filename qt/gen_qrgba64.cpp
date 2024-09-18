@@ -12,27 +12,19 @@ QRgba64* QRgba64_new2(QRgba64* param1) {
 }
 
 QRgba64* QRgba64_FromRgba64(unsigned long long c) {
-	QRgba64 _ret = QRgba64::fromRgba64(static_cast<quint64>(c));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(QRgba64::fromRgba64(static_cast<quint64>(c)));
 }
 
 QRgba64* QRgba64_FromRgba642(uint16_t red, uint16_t green, uint16_t blue, uint16_t alpha) {
-	QRgba64 _ret = QRgba64::fromRgba64(static_cast<quint16>(red), static_cast<quint16>(green), static_cast<quint16>(blue), static_cast<quint16>(alpha));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(QRgba64::fromRgba64(static_cast<quint16>(red), static_cast<quint16>(green), static_cast<quint16>(blue), static_cast<quint16>(alpha)));
 }
 
 QRgba64* QRgba64_FromRgba(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha) {
-	QRgba64 _ret = QRgba64::fromRgba(static_cast<quint8>(red), static_cast<quint8>(green), static_cast<quint8>(blue), static_cast<quint8>(alpha));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(QRgba64::fromRgba(static_cast<quint8>(red), static_cast<quint8>(green), static_cast<quint8>(blue), static_cast<quint8>(alpha)));
 }
 
 QRgba64* QRgba64_FromArgb32(unsigned int rgb) {
-	QRgba64 _ret = QRgba64::fromArgb32(static_cast<uint>(rgb));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(QRgba64::fromArgb32(static_cast<uint>(rgb)));
 }
 
 bool QRgba64_IsOpaque(const QRgba64* self) {
@@ -44,19 +36,23 @@ bool QRgba64_IsTransparent(const QRgba64* self) {
 }
 
 uint16_t QRgba64_Red(const QRgba64* self) {
-	return self->red();
+	quint16 _ret = self->red();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Green(const QRgba64* self) {
-	return self->green();
+	quint16 _ret = self->green();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Blue(const QRgba64* self) {
-	return self->blue();
+	quint16 _ret = self->blue();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Alpha(const QRgba64* self) {
-	return self->alpha();
+	quint16 _ret = self->alpha();
+	return static_cast<uint16_t>(_ret);
 }
 
 void QRgba64_SetRed(QRgba64* self, uint16_t _red) {
@@ -76,39 +72,41 @@ void QRgba64_SetAlpha(QRgba64* self, uint16_t _alpha) {
 }
 
 unsigned char QRgba64_Red8(const QRgba64* self) {
-	return self->red8();
+	quint8 _ret = self->red8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Green8(const QRgba64* self) {
-	return self->green8();
+	quint8 _ret = self->green8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Blue8(const QRgba64* self) {
-	return self->blue8();
+	quint8 _ret = self->blue8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Alpha8(const QRgba64* self) {
-	return self->alpha8();
+	quint8 _ret = self->alpha8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned int QRgba64_ToArgb32(const QRgba64* self) {
-	return self->toArgb32();
+	uint _ret = self->toArgb32();
+	return static_cast<unsigned int>(_ret);
 }
 
 uint16_t QRgba64_ToRgb16(const QRgba64* self) {
-	return self->toRgb16();
+	ushort _ret = self->toRgb16();
+	return static_cast<uint16_t>(_ret);
 }
 
 QRgba64* QRgba64_Premultiplied(const QRgba64* self) {
-	QRgba64 _ret = self->premultiplied();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(self->premultiplied());
 }
 
 QRgba64* QRgba64_Unpremultiplied(const QRgba64* self) {
-	QRgba64 _ret = self->unpremultiplied();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRgba64*>(new QRgba64(_ret));
+	return new QRgba64(self->unpremultiplied());
 }
 
 void QRgba64_OperatorAssign(QRgba64* self, unsigned long long _rgba) {

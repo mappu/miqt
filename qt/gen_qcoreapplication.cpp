@@ -41,7 +41,7 @@ struct miqt_string* QCoreApplication_TrUtf8(const char* s) {
 
 struct miqt_array* QCoreApplication_Arguments() {
 	QStringList _ret = QCoreApplication::arguments();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -55,11 +55,11 @@ struct miqt_array* QCoreApplication_Arguments() {
 	return _out;
 }
 
-void QCoreApplication_SetAttribute(uintptr_t attribute) {
+void QCoreApplication_SetAttribute(int attribute) {
 	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(attribute));
 }
 
-bool QCoreApplication_TestAttribute(uintptr_t attribute) {
+bool QCoreApplication_TestAttribute(int attribute) {
 	return QCoreApplication::testAttribute(static_cast<Qt::ApplicationAttribute>(attribute));
 }
 
@@ -194,22 +194,24 @@ struct miqt_string* QCoreApplication_ApplicationFilePath() {
 }
 
 long long QCoreApplication_ApplicationPid() {
-	return QCoreApplication::applicationPid();
+	qint64 _ret = QCoreApplication::applicationPid();
+	return static_cast<long long>(_ret);
 }
 
-void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of QString */ libraryPaths) {
+void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
 	QList<QString> libraryPaths_QList;
 	libraryPaths_QList.reserve(libraryPaths->len);
-	miqt_string** libraryPaths_arr = static_cast<miqt_string**>(libraryPaths->data);
+	struct miqt_string** libraryPaths_arr = static_cast<struct miqt_string**>(libraryPaths->data);
 	for(size_t i = 0; i < libraryPaths->len; ++i) {
-		libraryPaths_QList.push_back(QString::fromUtf8(& libraryPaths_arr[i]->data, libraryPaths_arr[i]->len));
+		QString libraryPaths_arr_i_QString = QString::fromUtf8(&libraryPaths_arr[i]->data, libraryPaths_arr[i]->len);
+		libraryPaths_QList.push_back(libraryPaths_arr_i_QString);
 	}
 	QCoreApplication::setLibraryPaths(libraryPaths_QList);
 }
 
 struct miqt_array* QCoreApplication_LibraryPaths() {
 	QStringList _ret = QCoreApplication::libraryPaths();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -340,7 +342,7 @@ struct miqt_string* QCoreApplication_TrUtf83(const char* s, const char* c, int n
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCoreApplication_SetAttribute2(uintptr_t attribute, bool on) {
+void QCoreApplication_SetAttribute2(int attribute, bool on) {
 	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(attribute), on);
 }
 

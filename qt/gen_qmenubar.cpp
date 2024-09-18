@@ -92,15 +92,11 @@ bool QMenuBar_IsDefaultUp(const QMenuBar* self) {
 }
 
 QSize* QMenuBar_SizeHint(const QMenuBar* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QMenuBar_MinimumSizeHint(const QMenuBar* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 int QMenuBar_HeightForWidth(const QMenuBar* self, int param1) {
@@ -108,9 +104,7 @@ int QMenuBar_HeightForWidth(const QMenuBar* self, int param1) {
 }
 
 QRect* QMenuBar_ActionGeometry(const QMenuBar* self, QAction* param1) {
-	QRect _ret = self->actionGeometry(param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->actionGeometry(param1));
 }
 
 QAction* QMenuBar_ActionAt(const QMenuBar* self, QPoint* param1) {
@@ -187,11 +181,11 @@ struct miqt_string* QMenuBar_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, uintptr_t corner) {
+void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, int corner) {
 	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
 }
 
-QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, uintptr_t corner) {
+QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 

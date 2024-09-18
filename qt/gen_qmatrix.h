@@ -35,7 +35,7 @@ typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
 #endif
 
-QMatrix* QMatrix_new(uintptr_t param1);
+QMatrix* QMatrix_new(int param1);
 QMatrix* QMatrix_new2();
 QMatrix* QMatrix_new3(double m11, double m12, double m21, double m22, double dx, double dy);
 QMatrix* QMatrix_new4(QMatrix* other);

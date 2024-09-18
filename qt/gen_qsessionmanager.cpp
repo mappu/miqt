@@ -56,28 +56,29 @@ void QSessionManager_Cancel(QSessionManager* self) {
 	self->cancel();
 }
 
-void QSessionManager_SetRestartHint(QSessionManager* self, uintptr_t restartHint) {
+void QSessionManager_SetRestartHint(QSessionManager* self, int restartHint) {
 	self->setRestartHint(static_cast<QSessionManager::RestartHint>(restartHint));
 }
 
-uintptr_t QSessionManager_RestartHint(const QSessionManager* self) {
+int QSessionManager_RestartHint(const QSessionManager* self) {
 	QSessionManager::RestartHint _ret = self->restartHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of QString */ restartCommand) {
+void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ restartCommand) {
 	QList<QString> restartCommand_QList;
 	restartCommand_QList.reserve(restartCommand->len);
-	miqt_string** restartCommand_arr = static_cast<miqt_string**>(restartCommand->data);
+	struct miqt_string** restartCommand_arr = static_cast<struct miqt_string**>(restartCommand->data);
 	for(size_t i = 0; i < restartCommand->len; ++i) {
-		restartCommand_QList.push_back(QString::fromUtf8(& restartCommand_arr[i]->data, restartCommand_arr[i]->len));
+		QString restartCommand_arr_i_QString = QString::fromUtf8(&restartCommand_arr[i]->data, restartCommand_arr[i]->len);
+		restartCommand_QList.push_back(restartCommand_arr_i_QString);
 	}
 	self->setRestartCommand(restartCommand_QList);
 }
 
 struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 	QStringList _ret = self->restartCommand();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -91,19 +92,20 @@ struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 	return _out;
 }
 
-void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of QString */ discardCommand) {
+void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ discardCommand) {
 	QList<QString> discardCommand_QList;
 	discardCommand_QList.reserve(discardCommand->len);
-	miqt_string** discardCommand_arr = static_cast<miqt_string**>(discardCommand->data);
+	struct miqt_string** discardCommand_arr = static_cast<struct miqt_string**>(discardCommand->data);
 	for(size_t i = 0; i < discardCommand->len; ++i) {
-		discardCommand_QList.push_back(QString::fromUtf8(& discardCommand_arr[i]->data, discardCommand_arr[i]->len));
+		QString discardCommand_arr_i_QString = QString::fromUtf8(&discardCommand_arr[i]->data, discardCommand_arr[i]->len);
+		discardCommand_QList.push_back(discardCommand_arr_i_QString);
 	}
 	self->setDiscardCommand(discardCommand_QList);
 }
 
 struct miqt_array* QSessionManager_DiscardCommand(const QSessionManager* self) {
 	QStringList _ret = self->discardCommand();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
@@ -123,13 +125,14 @@ void QSessionManager_SetManagerProperty(QSessionManager* self, struct miqt_strin
 	self->setManagerProperty(name_QString, value_QString);
 }
 
-void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string* name, struct miqt_array* /* of QString */ value) {
+void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string* name, struct miqt_array* /* of struct miqt_string* */ value) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	QList<QString> value_QList;
 	value_QList.reserve(value->len);
-	miqt_string** value_arr = static_cast<miqt_string**>(value->data);
+	struct miqt_string** value_arr = static_cast<struct miqt_string**>(value->data);
 	for(size_t i = 0; i < value->len; ++i) {
-		value_QList.push_back(QString::fromUtf8(& value_arr[i]->data, value_arr[i]->len));
+		QString value_arr_i_QString = QString::fromUtf8(&value_arr[i]->data, value_arr[i]->len);
+		value_QList.push_back(value_arr_i_QString);
 	}
 	self->setManagerProperty(name_QString, value_QList);
 }

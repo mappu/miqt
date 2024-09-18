@@ -57,8 +57,7 @@ func (this *QLayoutItem) MaximumSize() *QSize {
 }
 
 func (this *QLayoutItem) ExpandingDirections() int {
-	_ret := C.QLayoutItem_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayoutItem_ExpandingDirections(this.h))
 }
 
 func (this *QLayoutItem) SetGeometry(geometry *QRect) {
@@ -73,23 +72,19 @@ func (this *QLayoutItem) Geometry() *QRect {
 }
 
 func (this *QLayoutItem) IsEmpty() bool {
-	_ret := C.QLayoutItem_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLayoutItem_IsEmpty(this.h))
 }
 
 func (this *QLayoutItem) HasHeightForWidth() bool {
-	_ret := C.QLayoutItem_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QLayoutItem_HasHeightForWidth(this.h))
 }
 
 func (this *QLayoutItem) HeightForWidth(param1 int) int {
-	_ret := C.QLayoutItem_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QLayoutItem_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLayoutItem) MinimumHeightForWidth(param1 int) int {
-	_ret := C.QLayoutItem_MinimumHeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QLayoutItem_MinimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLayoutItem) Invalidate() {
@@ -97,23 +92,19 @@ func (this *QLayoutItem) Invalidate() {
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
-	_ret := C.QLayoutItem_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QLayoutItem_Widget(this.h)))
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
-	_ret := C.QLayoutItem_Layout(this.h)
-	return newQLayout_U(unsafe.Pointer(_ret))
+	return newQLayout_U(unsafe.Pointer(C.QLayoutItem_Layout(this.h)))
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
-	_ret := C.QLayoutItem_SpacerItem(this.h)
-	return newQSpacerItem_U(unsafe.Pointer(_ret))
+	return newQSpacerItem_U(unsafe.Pointer(C.QLayoutItem_SpacerItem(this.h)))
 }
 
 func (this *QLayoutItem) Alignment() int {
-	_ret := C.QLayoutItem_Alignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayoutItem_Alignment(this.h))
 }
 
 func (this *QLayoutItem) SetAlignment(a int) {
@@ -121,8 +112,7 @@ func (this *QLayoutItem) SetAlignment(a int) {
 }
 
 func (this *QLayoutItem) ControlTypes() int {
-	_ret := C.QLayoutItem_ControlTypes(this.h)
-	return (int)(_ret)
+	return (int)(C.QLayoutItem_ControlTypes(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -176,13 +166,13 @@ func NewQSpacerItem2(param1 *QSpacerItem) *QSpacerItem {
 
 // NewQSpacerItem3 constructs a new QSpacerItem object.
 func NewQSpacerItem3(w int, h int, hData QSizePolicy__Policy) *QSpacerItem {
-	ret := C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
+	ret := C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.int)(hData))
 	return newQSpacerItem(ret)
 }
 
 // NewQSpacerItem4 constructs a new QSpacerItem object.
 func NewQSpacerItem4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) *QSpacerItem {
-	ret := C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
+	ret := C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 	return newQSpacerItem(ret)
 }
 
@@ -212,13 +202,11 @@ func (this *QSpacerItem) MaximumSize() *QSize {
 }
 
 func (this *QSpacerItem) ExpandingDirections() int {
-	_ret := C.QSpacerItem_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QSpacerItem_ExpandingDirections(this.h))
 }
 
 func (this *QSpacerItem) IsEmpty() bool {
-	_ret := C.QSpacerItem_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSpacerItem_IsEmpty(this.h))
 }
 
 func (this *QSpacerItem) SetGeometry(geometry *QRect) {
@@ -233,8 +221,7 @@ func (this *QSpacerItem) Geometry() *QRect {
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
-	_ret := C.QSpacerItem_SpacerItem(this.h)
-	return newQSpacerItem_U(unsafe.Pointer(_ret))
+	return newQSpacerItem_U(unsafe.Pointer(C.QSpacerItem_SpacerItem(this.h)))
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
@@ -245,11 +232,11 @@ func (this *QSpacerItem) SizePolicy() *QSizePolicy {
 }
 
 func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy) {
-	C.QSpacerItem_ChangeSize3(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
+	C.QSpacerItem_ChangeSize3(this.h, (C.int)(w), (C.int)(h), (C.int)(hData))
 }
 
 func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
-	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
+	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 }
 
 // Delete this object from C++ memory.
@@ -317,13 +304,11 @@ func (this *QWidgetItem) MaximumSize() *QSize {
 }
 
 func (this *QWidgetItem) ExpandingDirections() int {
-	_ret := C.QWidgetItem_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidgetItem_ExpandingDirections(this.h))
 }
 
 func (this *QWidgetItem) IsEmpty() bool {
-	_ret := C.QWidgetItem_IsEmpty(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidgetItem_IsEmpty(this.h))
 }
 
 func (this *QWidgetItem) SetGeometry(geometry *QRect) {
@@ -338,23 +323,19 @@ func (this *QWidgetItem) Geometry() *QRect {
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
-	_ret := C.QWidgetItem_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QWidgetItem_Widget(this.h)))
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
-	_ret := C.QWidgetItem_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWidgetItem_HasHeightForWidth(this.h))
 }
 
 func (this *QWidgetItem) HeightForWidth(param1 int) int {
-	_ret := C.QWidgetItem_HeightForWidth(this.h, (C.int)(param1))
-	return (int)(_ret)
+	return (int)(C.QWidgetItem_HeightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QWidgetItem) ControlTypes() int {
-	_ret := C.QWidgetItem_ControlTypes(this.h)
-	return (int)(_ret)
+	return (int)(C.QWidgetItem_ControlTypes(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -422,8 +403,7 @@ func (this *QWidgetItemV2) MaximumSize() *QSize {
 }
 
 func (this *QWidgetItemV2) HeightForWidth(width int) int {
-	_ret := C.QWidgetItemV2_HeightForWidth(this.h, (C.int)(width))
-	return (int)(_ret)
+	return (int)(C.QWidgetItemV2_HeightForWidth(this.h, (C.int)(width)))
 }
 
 // Delete this object from C++ memory.

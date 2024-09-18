@@ -37,7 +37,7 @@ func newQMatrix_U(h unsafe.Pointer) *QMatrix {
 
 // NewQMatrix constructs a new QMatrix object.
 func NewQMatrix(param1 Initialization) *QMatrix {
-	ret := C.QMatrix_new((C.uintptr_t)(param1))
+	ret := C.QMatrix_new((C.int)(param1))
 	return newQMatrix(ret)
 }
 
@@ -68,33 +68,27 @@ func (this *QMatrix) SetMatrix(m11 float64, m12 float64, m21 float64, m22 float6
 }
 
 func (this *QMatrix) M11() float64 {
-	_ret := C.QMatrix_M11(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_M11(this.h))
 }
 
 func (this *QMatrix) M12() float64 {
-	_ret := C.QMatrix_M12(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_M12(this.h))
 }
 
 func (this *QMatrix) M21() float64 {
-	_ret := C.QMatrix_M21(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_M21(this.h))
 }
 
 func (this *QMatrix) M22() float64 {
-	_ret := C.QMatrix_M22(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_M22(this.h))
 }
 
 func (this *QMatrix) Dx() float64 {
-	_ret := C.QMatrix_Dx(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_Dx(this.h))
 }
 
 func (this *QMatrix) Dy() float64 {
-	_ret := C.QMatrix_Dy(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_Dy(this.h))
 }
 
 func (this *QMatrix) Map(x int, y int, tx *int, ty *int) {
@@ -166,38 +160,31 @@ func (this *QMatrix) Reset() {
 }
 
 func (this *QMatrix) IsIdentity() bool {
-	_ret := C.QMatrix_IsIdentity(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMatrix_IsIdentity(this.h))
 }
 
 func (this *QMatrix) Translate(dx float64, dy float64) *QMatrix {
-	_ret := C.QMatrix_Translate(this.h, (C.double)(dx), (C.double)(dy))
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Translate(this.h, (C.double)(dx), (C.double)(dy))))
 }
 
 func (this *QMatrix) Scale(sx float64, sy float64) *QMatrix {
-	_ret := C.QMatrix_Scale(this.h, (C.double)(sx), (C.double)(sy))
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Scale(this.h, (C.double)(sx), (C.double)(sy))))
 }
 
 func (this *QMatrix) Shear(sh float64, sv float64) *QMatrix {
-	_ret := C.QMatrix_Shear(this.h, (C.double)(sh), (C.double)(sv))
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Shear(this.h, (C.double)(sh), (C.double)(sv))))
 }
 
 func (this *QMatrix) Rotate(a float64) *QMatrix {
-	_ret := C.QMatrix_Rotate(this.h, (C.double)(a))
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Rotate(this.h, (C.double)(a))))
 }
 
 func (this *QMatrix) IsInvertible() bool {
-	_ret := C.QMatrix_IsInvertible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMatrix_IsInvertible(this.h))
 }
 
 func (this *QMatrix) Determinant() float64 {
-	_ret := C.QMatrix_Determinant(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix_Determinant(this.h))
 }
 
 func (this *QMatrix) Inverted() *QMatrix {
@@ -208,18 +195,15 @@ func (this *QMatrix) Inverted() *QMatrix {
 }
 
 func (this *QMatrix) OperatorEqual(param1 *QMatrix) bool {
-	_ret := C.QMatrix_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMatrix_OperatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QMatrix) OperatorNotEqual(param1 *QMatrix) bool {
-	_ret := C.QMatrix_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMatrix_OperatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QMatrix) OperatorMultiplyAssign(param1 *QMatrix) *QMatrix {
-	_ret := C.QMatrix_OperatorMultiplyAssign(this.h, param1.cPointer())
-	return newQMatrix_U(unsafe.Pointer(_ret))
+	return newQMatrix_U(unsafe.Pointer(C.QMatrix_OperatorMultiplyAssign(this.h, param1.cPointer())))
 }
 
 func (this *QMatrix) OperatorMultiply(o *QMatrix) *QMatrix {

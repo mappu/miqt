@@ -63,6 +63,7 @@ typedef struct QVariant QVariant;
 
 void QAbstractUndoItem_Undo(QAbstractUndoItem* self);
 void QAbstractUndoItem_Redo(QAbstractUndoItem* self);
+void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1);
 void QAbstractUndoItem_Delete(QAbstractUndoItem* self);
 
 QTextDocument* QTextDocument_new();
@@ -84,8 +85,8 @@ int QTextDocument_AvailableRedoSteps(const QTextDocument* self);
 int QTextDocument_Revision(const QTextDocument* self);
 void QTextDocument_SetDocumentLayout(QTextDocument* self, QAbstractTextDocumentLayout* layout);
 QAbstractTextDocumentLayout* QTextDocument_DocumentLayout(const QTextDocument* self);
-void QTextDocument_SetMetaInformation(QTextDocument* self, uintptr_t info, struct miqt_string* param2);
-struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, uintptr_t info);
+void QTextDocument_SetMetaInformation(QTextDocument* self, int info, struct miqt_string* param2);
+struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, int info);
 struct miqt_string* QTextDocument_ToHtml(const QTextDocument* self);
 void QTextDocument_SetHtml(QTextDocument* self, struct miqt_string* html);
 struct miqt_string* QTextDocument_ToMarkdown(const QTextDocument* self);
@@ -148,8 +149,8 @@ QTextOption* QTextDocument_DefaultTextOption(const QTextDocument* self);
 void QTextDocument_SetDefaultTextOption(QTextDocument* self, QTextOption* option);
 QUrl* QTextDocument_BaseUrl(const QTextDocument* self);
 void QTextDocument_SetBaseUrl(QTextDocument* self, QUrl* url);
-uintptr_t QTextDocument_DefaultCursorMoveStyle(const QTextDocument* self);
-void QTextDocument_SetDefaultCursorMoveStyle(QTextDocument* self, uintptr_t style);
+int QTextDocument_DefaultCursorMoveStyle(const QTextDocument* self);
+void QTextDocument_SetDefaultCursorMoveStyle(QTextDocument* self, int style);
 void QTextDocument_ContentsChange(QTextDocument* self, int from, int charsRemoved, int charsAdded);
 void QTextDocument_connect_ContentsChange(QTextDocument* self, void* slot);
 void QTextDocument_ContentsChanged(QTextDocument* self);
@@ -172,6 +173,7 @@ void QTextDocument_DocumentLayoutChanged(QTextDocument* self);
 void QTextDocument_connect_DocumentLayoutChanged(QTextDocument* self, void* slot);
 void QTextDocument_Undo2(QTextDocument* self);
 void QTextDocument_Redo2(QTextDocument* self);
+void QTextDocument_AppendUndoItem(QTextDocument* self, QAbstractUndoItem* param1);
 void QTextDocument_SetModified(QTextDocument* self);
 struct miqt_string* QTextDocument_Tr2(const char* s, const char* c);
 struct miqt_string* QTextDocument_Tr3(const char* s, const char* c, int n);
@@ -191,7 +193,7 @@ QTextCursor* QTextDocument_Find24(const QTextDocument* self, QRegularExpression*
 QTextCursor* QTextDocument_Find36(const QTextDocument* self, QRegularExpression* expr, int from, int options);
 QTextCursor* QTextDocument_Find37(const QTextDocument* self, QRegularExpression* expr, QTextCursor* cursor, int options);
 void QTextDocument_DrawContents2(QTextDocument* self, QPainter* painter, QRectF* rect);
-void QTextDocument_ClearUndoRedoStacks1(QTextDocument* self, uintptr_t historyToClear);
+void QTextDocument_ClearUndoRedoStacks1(QTextDocument* self, int historyToClear);
 void QTextDocument_SetModified1(QTextDocument* self, bool m);
 void QTextDocument_Delete(QTextDocument* self);
 

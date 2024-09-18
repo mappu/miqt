@@ -43,7 +43,7 @@ func NewQMatrix4x4() *QMatrix4x4 {
 
 // NewQMatrix4x42 constructs a new QMatrix4x4 object.
 func NewQMatrix4x42(param1 Initialization) *QMatrix4x4 {
-	ret := C.QMatrix4x4_new2((C.uintptr_t)(param1))
+	ret := C.QMatrix4x4_new2((C.int)(param1))
 	return newQMatrix4x4(ret)
 }
 
@@ -106,13 +106,11 @@ func (this *QMatrix4x4) SetRow(index int, value *QVector4D) {
 }
 
 func (this *QMatrix4x4) IsAffine() bool {
-	_ret := C.QMatrix4x4_IsAffine(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMatrix4x4_IsAffine(this.h))
 }
 
 func (this *QMatrix4x4) IsIdentity() bool {
-	_ret := C.QMatrix4x4_IsIdentity(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMatrix4x4_IsIdentity(this.h))
 }
 
 func (this *QMatrix4x4) SetToIdentity() {
@@ -124,8 +122,7 @@ func (this *QMatrix4x4) Fill(value float32) {
 }
 
 func (this *QMatrix4x4) Determinant() float64 {
-	_ret := C.QMatrix4x4_Determinant(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QMatrix4x4_Determinant(this.h))
 }
 
 func (this *QMatrix4x4) Inverted() *QMatrix4x4 {
@@ -143,38 +140,31 @@ func (this *QMatrix4x4) Transposed() *QMatrix4x4 {
 }
 
 func (this *QMatrix4x4) OperatorPlusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(_ret))
+	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMinusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(_ret))
+	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssign(other *QMatrix4x4) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())
-	return newQMatrix4x4_U(unsafe.Pointer(_ret))
+	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssignWithFactor(factor float32) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))
-	return newQMatrix4x4_U(unsafe.Pointer(_ret))
+	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))))
 }
 
 func (this *QMatrix4x4) OperatorDivideAssign(divisor float32) *QMatrix4x4 {
-	_ret := C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))
-	return newQMatrix4x4_U(unsafe.Pointer(_ret))
+	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QMatrix4x4) OperatorEqual(other *QMatrix4x4) bool {
-	_ret := C.QMatrix4x4_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMatrix4x4_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorNotEqual(other *QMatrix4x4) bool {
-	_ret := C.QMatrix4x4_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMatrix4x4_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) Scale(vector *QVector3D) {
@@ -328,18 +318,15 @@ func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
 }
 
 func (this *QMatrix4x4) Data() *float32 {
-	_ret := C.QMatrix4x4_Data(this.h)
-	return (*float32)(_ret)
+	return (*float32)(C.QMatrix4x4_Data(this.h))
 }
 
 func (this *QMatrix4x4) Data2() *float32 {
-	_ret := C.QMatrix4x4_Data2(this.h)
-	return (*float32)(_ret)
+	return (*float32)(C.QMatrix4x4_Data2(this.h))
 }
 
 func (this *QMatrix4x4) ConstData() *float32 {
-	_ret := C.QMatrix4x4_ConstData(this.h)
-	return (*float32)(_ret)
+	return (*float32)(C.QMatrix4x4_ConstData(this.h))
 }
 
 func (this *QMatrix4x4) Optimize() {

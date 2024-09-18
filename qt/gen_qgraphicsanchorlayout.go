@@ -37,8 +37,7 @@ func newQGraphicsAnchor_U(h unsafe.Pointer) *QGraphicsAnchor {
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	_ret := C.QGraphicsAnchor_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsAnchor_MetaObject(this.h)))
 }
 
 func QGraphicsAnchor_Tr(s string) string {
@@ -68,17 +67,15 @@ func (this *QGraphicsAnchor) UnsetSpacing() {
 }
 
 func (this *QGraphicsAnchor) Spacing() float64 {
-	_ret := C.QGraphicsAnchor_Spacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsAnchor_Spacing(this.h))
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
-	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.uintptr_t)(policy))
+	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
-	_ret := C.QGraphicsAnchor_SizePolicy(this.h)
-	return (QSizePolicy__Policy)(_ret)
+	return (QSizePolicy__Policy)(C.QGraphicsAnchor_SizePolicy(this.h))
 }
 
 func QGraphicsAnchor_Tr2(s string, c string) string {
@@ -175,17 +172,15 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	_ret := C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
-	return newQGraphicsAnchor_U(unsafe.Pointer(_ret))
+	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	_ret := C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))
-	return newQGraphicsAnchor_U(unsafe.Pointer(_ret))
+	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
-	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.uintptr_t)(firstCorner), secondItem.cPointer(), (C.uintptr_t)(secondCorner))
+	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.int)(firstCorner), secondItem.cPointer(), (C.int)(secondCorner))
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem) {
@@ -205,13 +200,11 @@ func (this *QGraphicsAnchorLayout) SetSpacing(spacing float64) {
 }
 
 func (this *QGraphicsAnchorLayout) HorizontalSpacing() float64 {
-	_ret := C.QGraphicsAnchorLayout_HorizontalSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsAnchorLayout_HorizontalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) VerticalSpacing() float64 {
-	_ret := C.QGraphicsAnchorLayout_VerticalSpacing(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QGraphicsAnchorLayout_VerticalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) RemoveAt(index int) {
@@ -223,13 +216,11 @@ func (this *QGraphicsAnchorLayout) SetGeometry(rect *QRectF) {
 }
 
 func (this *QGraphicsAnchorLayout) Count() int {
-	_ret := C.QGraphicsAnchorLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QGraphicsAnchorLayout_Count(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	_ret := C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(_ret))
+	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {

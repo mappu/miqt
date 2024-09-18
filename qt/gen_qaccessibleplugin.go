@@ -37,8 +37,7 @@ func newQAccessiblePlugin_U(h unsafe.Pointer) *QAccessiblePlugin {
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
-	_ret := C.QAccessiblePlugin_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAccessiblePlugin_MetaObject(this.h)))
 }
 
 func QAccessiblePlugin_Tr(s string) string {
@@ -62,8 +61,7 @@ func QAccessiblePlugin_TrUtf8(s string) string {
 func (this *QAccessiblePlugin) Create(key string, object *QObject) *QAccessibleInterface {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	_ret := C.QAccessiblePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms), object.cPointer())
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessiblePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms), object.cPointer())))
 }
 
 func QAccessiblePlugin_Tr2(s string, c string) string {

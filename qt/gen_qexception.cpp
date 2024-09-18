@@ -29,9 +29,7 @@ bool QtPrivate__ExceptionStore_HasException(const QtPrivate__ExceptionStore* sel
 }
 
 QtPrivate__ExceptionHolder* QtPrivate__ExceptionStore_Exception(QtPrivate__ExceptionStore* self) {
-	QtPrivate::ExceptionHolder _ret = self->exception();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ExceptionHolder*>(new QtPrivate::ExceptionHolder(_ret));
+	return new QtPrivate::ExceptionHolder(self->exception());
 }
 
 void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore* self) {
@@ -40,6 +38,10 @@ void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore*
 
 bool QtPrivate__ExceptionStore_HasThrown(const QtPrivate__ExceptionStore* self) {
 	return self->hasThrown();
+}
+
+void QtPrivate__ExceptionStore_OperatorAssign(QtPrivate__ExceptionStore* self, QtPrivate__ExceptionStore* param1) {
+	self->operator=(*param1);
 }
 
 void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self) {

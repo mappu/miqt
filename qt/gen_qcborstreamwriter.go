@@ -52,8 +52,7 @@ func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *QIODevice {
-	_ret := C.QCborStreamWriter_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {
@@ -64,8 +63,24 @@ func (this *QCborStreamWriter) AppendWithQint64(i int64) {
 	C.QCborStreamWriter_AppendWithQint64(this.h, (C.longlong)(i))
 }
 
+func (this *QCborStreamWriter) AppendWithQCborNegativeInteger(n QCborNegativeInteger) {
+	C.QCborStreamWriter_AppendWithQCborNegativeInteger(this.h, (C.uint64_t)(n))
+}
+
 func (this *QCborStreamWriter) AppendWithBa(ba *QByteArray) {
 	C.QCborStreamWriter_AppendWithBa(this.h, ba.cPointer())
+}
+
+func (this *QCborStreamWriter) AppendWithTag(tag QCborTag) {
+	C.QCborStreamWriter_AppendWithTag(this.h, (C.uint64_t)(tag))
+}
+
+func (this *QCborStreamWriter) Append3(tag QCborKnownTags) {
+	C.QCborStreamWriter_Append3(this.h, (C.int)(tag))
+}
+
+func (this *QCborStreamWriter) AppendWithSt(st QCborSimpleType) {
+	C.QCborStreamWriter_AppendWithSt(this.h, (C.uint8_t)(st))
 }
 
 func (this *QCborStreamWriter) AppendWithFloat(f float32) {
@@ -123,8 +138,7 @@ func (this *QCborStreamWriter) StartArrayWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndArray() bool {
-	_ret := C.QCborStreamWriter_EndArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamWriter_EndArray(this.h))
 }
 
 func (this *QCborStreamWriter) StartMap() {
@@ -136,8 +150,7 @@ func (this *QCborStreamWriter) StartMapWithCount(count uint64) {
 }
 
 func (this *QCborStreamWriter) EndMap() bool {
-	_ret := C.QCborStreamWriter_EndMap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamWriter_EndMap(this.h))
 }
 
 func (this *QCborStreamWriter) Append22(str string, size uint64) {

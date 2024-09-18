@@ -82,8 +82,7 @@ func QLibraryInfo_Build() unsafe.Pointer {
 }
 
 func QLibraryInfo_IsDebugBuild() bool {
-	_ret := C.QLibraryInfo_IsDebugBuild()
-	return (bool)(_ret)
+	return (bool)(C.QLibraryInfo_IsDebugBuild())
 }
 
 func QLibraryInfo_Version() *QVersionNumber {
@@ -94,7 +93,7 @@ func QLibraryInfo_Version() *QVersionNumber {
 }
 
 func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
-	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.uintptr_t)(param1))
+	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -107,8 +106,10 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

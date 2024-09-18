@@ -84,7 +84,7 @@ func NewQSizePolicy() *QSizePolicy {
 
 // NewQSizePolicy2 constructs a new QSizePolicy object.
 func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) *QSizePolicy {
-	ret := C.QSizePolicy_new2((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical))
+	ret := C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical))
 	return newQSizePolicy(ret)
 }
 
@@ -96,40 +96,36 @@ func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
 
 // NewQSizePolicy4 constructs a new QSizePolicy object.
 func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy, typeVal QSizePolicy__ControlType) *QSizePolicy {
-	ret := C.QSizePolicy_new4((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical), (C.uintptr_t)(typeVal))
+	ret := C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal))
 	return newQSizePolicy(ret)
 }
 
 func (this *QSizePolicy) HorizontalPolicy() QSizePolicy__Policy {
-	_ret := C.QSizePolicy_HorizontalPolicy(this.h)
-	return (QSizePolicy__Policy)(_ret)
+	return (QSizePolicy__Policy)(C.QSizePolicy_HorizontalPolicy(this.h))
 }
 
 func (this *QSizePolicy) VerticalPolicy() QSizePolicy__Policy {
-	_ret := C.QSizePolicy_VerticalPolicy(this.h)
-	return (QSizePolicy__Policy)(_ret)
+	return (QSizePolicy__Policy)(C.QSizePolicy_VerticalPolicy(this.h))
 }
 
 func (this *QSizePolicy) ControlType() QSizePolicy__ControlType {
-	_ret := C.QSizePolicy_ControlType(this.h)
-	return (QSizePolicy__ControlType)(_ret)
+	return (QSizePolicy__ControlType)(C.QSizePolicy_ControlType(this.h))
 }
 
 func (this *QSizePolicy) SetHorizontalPolicy(d QSizePolicy__Policy) {
-	C.QSizePolicy_SetHorizontalPolicy(this.h, (C.uintptr_t)(d))
+	C.QSizePolicy_SetHorizontalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetVerticalPolicy(d QSizePolicy__Policy) {
-	C.QSizePolicy_SetVerticalPolicy(this.h, (C.uintptr_t)(d))
+	C.QSizePolicy_SetVerticalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
-	C.QSizePolicy_SetControlType(this.h, (C.uintptr_t)(typeVal))
+	C.QSizePolicy_SetControlType(this.h, (C.int)(typeVal))
 }
 
 func (this *QSizePolicy) ExpandingDirections() int {
-	_ret := C.QSizePolicy_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QSizePolicy_ExpandingDirections(this.h))
 }
 
 func (this *QSizePolicy) SetHeightForWidth(b bool) {
@@ -137,8 +133,7 @@ func (this *QSizePolicy) SetHeightForWidth(b bool) {
 }
 
 func (this *QSizePolicy) HasHeightForWidth() bool {
-	_ret := C.QSizePolicy_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizePolicy_HasHeightForWidth(this.h))
 }
 
 func (this *QSizePolicy) SetWidthForHeight(b bool) {
@@ -146,28 +141,23 @@ func (this *QSizePolicy) SetWidthForHeight(b bool) {
 }
 
 func (this *QSizePolicy) HasWidthForHeight() bool {
-	_ret := C.QSizePolicy_HasWidthForHeight(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizePolicy_HasWidthForHeight(this.h))
 }
 
 func (this *QSizePolicy) OperatorEqual(s *QSizePolicy) bool {
-	_ret := C.QSizePolicy_OperatorEqual(this.h, s.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSizePolicy_OperatorEqual(this.h, s.cPointer()))
 }
 
 func (this *QSizePolicy) OperatorNotEqual(s *QSizePolicy) bool {
-	_ret := C.QSizePolicy_OperatorNotEqual(this.h, s.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QSizePolicy_OperatorNotEqual(this.h, s.cPointer()))
 }
 
 func (this *QSizePolicy) HorizontalStretch() int {
-	_ret := C.QSizePolicy_HorizontalStretch(this.h)
-	return (int)(_ret)
+	return (int)(C.QSizePolicy_HorizontalStretch(this.h))
 }
 
 func (this *QSizePolicy) VerticalStretch() int {
-	_ret := C.QSizePolicy_VerticalStretch(this.h)
-	return (int)(_ret)
+	return (int)(C.QSizePolicy_VerticalStretch(this.h))
 }
 
 func (this *QSizePolicy) SetHorizontalStretch(stretchFactor int) {
@@ -179,8 +169,7 @@ func (this *QSizePolicy) SetVerticalStretch(stretchFactor int) {
 }
 
 func (this *QSizePolicy) RetainSizeWhenHidden() bool {
-	_ret := C.QSizePolicy_RetainSizeWhenHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSizePolicy_RetainSizeWhenHidden(this.h))
 }
 
 func (this *QSizePolicy) SetRetainSizeWhenHidden(retainSize bool) {

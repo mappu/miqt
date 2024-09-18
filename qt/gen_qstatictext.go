@@ -84,12 +84,11 @@ func (this *QStaticText) Text() string {
 }
 
 func (this *QStaticText) SetTextFormat(textFormat TextFormat) {
-	C.QStaticText_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
+	C.QStaticText_SetTextFormat(this.h, (C.int)(textFormat))
 }
 
 func (this *QStaticText) TextFormat() TextFormat {
-	_ret := C.QStaticText_TextFormat(this.h)
-	return (TextFormat)(_ret)
+	return (TextFormat)(C.QStaticText_TextFormat(this.h))
 }
 
 func (this *QStaticText) SetTextWidth(textWidth float64) {
@@ -97,8 +96,7 @@ func (this *QStaticText) SetTextWidth(textWidth float64) {
 }
 
 func (this *QStaticText) TextWidth() float64 {
-	_ret := C.QStaticText_TextWidth(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QStaticText_TextWidth(this.h))
 }
 
 func (this *QStaticText) SetTextOption(textOption *QTextOption) {
@@ -124,22 +122,19 @@ func (this *QStaticText) Prepare() {
 }
 
 func (this *QStaticText) SetPerformanceHint(performanceHint QStaticText__PerformanceHint) {
-	C.QStaticText_SetPerformanceHint(this.h, (C.uintptr_t)(performanceHint))
+	C.QStaticText_SetPerformanceHint(this.h, (C.int)(performanceHint))
 }
 
 func (this *QStaticText) PerformanceHint() QStaticText__PerformanceHint {
-	_ret := C.QStaticText_PerformanceHint(this.h)
-	return (QStaticText__PerformanceHint)(_ret)
+	return (QStaticText__PerformanceHint)(C.QStaticText_PerformanceHint(this.h))
 }
 
 func (this *QStaticText) OperatorEqual(param1 *QStaticText) bool {
-	_ret := C.QStaticText_OperatorEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStaticText_OperatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QStaticText) OperatorNotEqual(param1 *QStaticText) bool {
-	_ret := C.QStaticText_OperatorNotEqual(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QStaticText_OperatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QStaticText) Prepare1(matrix *QTransform) {

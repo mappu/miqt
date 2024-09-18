@@ -13,7 +13,7 @@ QEventTransition* QEventTransition_new() {
 	return new QEventTransition();
 }
 
-QEventTransition* QEventTransition_new2(QObject* object, uintptr_t typeVal) {
+QEventTransition* QEventTransition_new2(QObject* object, int typeVal) {
 	return new QEventTransition(object, static_cast<QEvent::Type>(typeVal));
 }
 
@@ -21,7 +21,7 @@ QEventTransition* QEventTransition_new3(QState* sourceState) {
 	return new QEventTransition(sourceState);
 }
 
-QEventTransition* QEventTransition_new4(QObject* object, uintptr_t typeVal, QState* sourceState) {
+QEventTransition* QEventTransition_new4(QObject* object, int typeVal, QState* sourceState) {
 	return new QEventTransition(object, static_cast<QEvent::Type>(typeVal), sourceState);
 }
 
@@ -51,12 +51,12 @@ void QEventTransition_SetEventSource(QEventTransition* self, QObject* object) {
 	self->setEventSource(object);
 }
 
-uintptr_t QEventTransition_EventType(const QEventTransition* self) {
+int QEventTransition_EventType(const QEventTransition* self) {
 	QEvent::Type _ret = self->eventType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QEventTransition_SetEventType(QEventTransition* self, uintptr_t typeVal) {
+void QEventTransition_SetEventType(QEventTransition* self, int typeVal) {
 	self->setEventType(static_cast<QEvent::Type>(typeVal));
 }
 

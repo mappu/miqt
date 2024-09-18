@@ -44,10 +44,10 @@ void QDataWidgetMapper_SetItemDelegate(QDataWidgetMapper* self, QAbstractItemDel
 QAbstractItemDelegate* QDataWidgetMapper_ItemDelegate(const QDataWidgetMapper* self);
 void QDataWidgetMapper_SetRootIndex(QDataWidgetMapper* self, QModelIndex* index);
 QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self);
-void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrientation);
-uintptr_t QDataWidgetMapper_Orientation(const QDataWidgetMapper* self);
-void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy);
-uintptr_t QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self);
+void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, int aOrientation);
+int QDataWidgetMapper_Orientation(const QDataWidgetMapper* self);
+void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, int policy);
+int QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self);
 void QDataWidgetMapper_AddMapping(QDataWidgetMapper* self, QWidget* widget, int section);
 void QDataWidgetMapper_AddMapping2(QDataWidgetMapper* self, QWidget* widget, int section, QByteArray* propertyName);
 void QDataWidgetMapper_RemoveMapping(QDataWidgetMapper* self, QWidget* widget);

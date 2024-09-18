@@ -97,28 +97,23 @@ func (this *QResource) Locale() *QLocale {
 }
 
 func (this *QResource) IsValid() bool {
-	_ret := C.QResource_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QResource_IsValid(this.h))
 }
 
 func (this *QResource) CompressionAlgorithm() QResource__Compression {
-	_ret := C.QResource_CompressionAlgorithm(this.h)
-	return (QResource__Compression)(_ret)
+	return (QResource__Compression)(C.QResource_CompressionAlgorithm(this.h))
 }
 
 func (this *QResource) Size() int64 {
-	_ret := C.QResource_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QResource_Size(this.h))
 }
 
 func (this *QResource) Data() *byte {
-	_ret := C.QResource_Data(this.h)
-	return (*byte)(_ret)
+	return (*byte)(C.QResource_Data(this.h))
 }
 
 func (this *QResource) UncompressedSize() int64 {
-	_ret := C.QResource_UncompressedSize(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QResource_UncompressedSize(this.h))
 }
 
 func (this *QResource) UncompressedData() *QByteArray {
@@ -146,40 +141,37 @@ func QResource_SearchPaths() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QResource) IsCompressed() bool {
-	_ret := C.QResource_IsCompressed(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QResource_IsCompressed(this.h))
 }
 
 func QResource_RegisterResource(rccFilename string) bool {
 	rccFilename_ms := miqt_strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
-	_ret := C.QResource_RegisterResource((*C.struct_miqt_string)(rccFilename_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_RegisterResource((*C.struct_miqt_string)(rccFilename_ms)))
 }
 
 func QResource_UnregisterResource(rccFilename string) bool {
 	rccFilename_ms := miqt_strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
-	_ret := C.QResource_UnregisterResource((*C.struct_miqt_string)(rccFilename_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_UnregisterResource((*C.struct_miqt_string)(rccFilename_ms)))
 }
 
 func QResource_RegisterResourceWithRccData(rccData *byte) bool {
-	_ret := C.QResource_RegisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData)))
-	return (bool)(_ret)
+	return (bool)(C.QResource_RegisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
 }
 
 func QResource_UnregisterResourceWithRccData(rccData *byte) bool {
-	_ret := C.QResource_UnregisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData)))
-	return (bool)(_ret)
+	return (bool)(C.QResource_UnregisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
 }
 
 func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
@@ -187,8 +179,7 @@ func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
 	defer C.free(rccFilename_ms)
 	resourceRoot_ms := miqt_strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
-	_ret := C.QResource_RegisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_RegisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool {
@@ -196,22 +187,19 @@ func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool
 	defer C.free(rccFilename_ms)
 	resourceRoot_ms := miqt_strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
-	_ret := C.QResource_UnregisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_UnregisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms := miqt_strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
-	_ret := C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms := miqt_strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
-	_ret := C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms))
-	return (bool)(_ret)
+	return (bool)(C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 // Delete this object from C++ memory.

@@ -73,8 +73,7 @@ func NewQFormLayout2(parent *QWidget) *QFormLayout {
 }
 
 func (this *QFormLayout) MetaObject() *QMetaObject {
-	_ret := C.QFormLayout_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFormLayout_MetaObject(this.h)))
 }
 
 func QFormLayout_Tr(s string) string {
@@ -96,12 +95,11 @@ func QFormLayout_TrUtf8(s string) string {
 }
 
 func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
-	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.uintptr_t)(policy))
+	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
-	_ret := C.QFormLayout_FieldGrowthPolicy(this.h)
-	return (QFormLayout__FieldGrowthPolicy)(_ret)
+	return (QFormLayout__FieldGrowthPolicy)(C.QFormLayout_FieldGrowthPolicy(this.h))
 }
 
 func (this *QFormLayout) SetRowWrapPolicy(policy int) {
@@ -109,8 +107,7 @@ func (this *QFormLayout) SetRowWrapPolicy(policy int) {
 }
 
 func (this *QFormLayout) RowWrapPolicy() int {
-	_ret := C.QFormLayout_RowWrapPolicy(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_RowWrapPolicy(this.h))
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment int) {
@@ -118,8 +115,7 @@ func (this *QFormLayout) SetLabelAlignment(alignment int) {
 }
 
 func (this *QFormLayout) LabelAlignment() int {
-	_ret := C.QFormLayout_LabelAlignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_LabelAlignment(this.h))
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment int) {
@@ -127,8 +123,7 @@ func (this *QFormLayout) SetFormAlignment(alignment int) {
 }
 
 func (this *QFormLayout) FormAlignment() int {
-	_ret := C.QFormLayout_FormAlignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_FormAlignment(this.h))
 }
 
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
@@ -136,8 +131,7 @@ func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
 }
 
 func (this *QFormLayout) HorizontalSpacing() int {
-	_ret := C.QFormLayout_HorizontalSpacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_HorizontalSpacing(this.h))
 }
 
 func (this *QFormLayout) SetVerticalSpacing(spacing int) {
@@ -145,13 +139,11 @@ func (this *QFormLayout) SetVerticalSpacing(spacing int) {
 }
 
 func (this *QFormLayout) VerticalSpacing() int {
-	_ret := C.QFormLayout_VerticalSpacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_VerticalSpacing(this.h))
 }
 
 func (this *QFormLayout) Spacing() int {
-	_ret := C.QFormLayout_Spacing(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_Spacing(this.h))
 }
 
 func (this *QFormLayout) SetSpacing(spacing int) {
@@ -260,18 +252,15 @@ func (this *QFormLayout) SetLayout(row int, role int, layout *QLayout) {
 }
 
 func (this *QFormLayout) ItemAt(row int, role int) *QLayoutItem {
-	_ret := C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
-	_ret := C.QFormLayout_LabelForField(this.h, field.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QFormLayout_LabelForField(this.h, field.cPointer())))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
-	_ret := C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
@@ -279,13 +268,11 @@ func (this *QFormLayout) AddItem(item *QLayoutItem) {
 }
 
 func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
-	_ret := C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))))
 }
 
 func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
-	_ret := C.QFormLayout_TakeAt(this.h, (C.int)(index))
-	return newQLayoutItem_U(unsafe.Pointer(_ret))
+	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QFormLayout) SetGeometry(rect *QRect) {
@@ -311,28 +298,23 @@ func (this *QFormLayout) Invalidate() {
 }
 
 func (this *QFormLayout) HasHeightForWidth() bool {
-	_ret := C.QFormLayout_HasHeightForWidth(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFormLayout_HasHeightForWidth(this.h))
 }
 
 func (this *QFormLayout) HeightForWidth(width int) int {
-	_ret := C.QFormLayout_HeightForWidth(this.h, (C.int)(width))
-	return (int)(_ret)
+	return (int)(C.QFormLayout_HeightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QFormLayout) ExpandingDirections() int {
-	_ret := C.QFormLayout_ExpandingDirections(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_ExpandingDirections(this.h))
 }
 
 func (this *QFormLayout) Count() int {
-	_ret := C.QFormLayout_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_Count(this.h))
 }
 
 func (this *QFormLayout) RowCount() int {
-	_ret := C.QFormLayout_RowCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QFormLayout_RowCount(this.h))
 }
 
 func QFormLayout_Tr2(s string, c string) string {

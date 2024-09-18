@@ -75,8 +75,7 @@ func NewQWindow3(screen *QScreen) *QWindow {
 }
 
 func (this *QWindow) MetaObject() *QMetaObject {
-	_ret := C.QWindow_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QWindow_MetaObject(this.h)))
 }
 
 func QWindow_Tr(s string) string {
@@ -98,26 +97,23 @@ func QWindow_TrUtf8(s string) string {
 }
 
 func (this *QWindow) SetSurfaceType(surfaceType QSurface__SurfaceType) {
-	C.QWindow_SetSurfaceType(this.h, (C.uintptr_t)(surfaceType))
+	C.QWindow_SetSurfaceType(this.h, (C.int)(surfaceType))
 }
 
 func (this *QWindow) SurfaceType() QSurface__SurfaceType {
-	_ret := C.QWindow_SurfaceType(this.h)
-	return (QSurface__SurfaceType)(_ret)
+	return (QSurface__SurfaceType)(C.QWindow_SurfaceType(this.h))
 }
 
 func (this *QWindow) IsVisible() bool {
-	_ret := C.QWindow_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsVisible(this.h))
 }
 
 func (this *QWindow) Visibility() QWindow__Visibility {
-	_ret := C.QWindow_Visibility(this.h)
-	return (QWindow__Visibility)(_ret)
+	return (QWindow__Visibility)(C.QWindow_Visibility(this.h))
 }
 
 func (this *QWindow) SetVisibility(v QWindow__Visibility) {
-	C.QWindow_SetVisibility(this.h, (C.uintptr_t)(v))
+	C.QWindow_SetVisibility(this.h, (C.int)(v))
 }
 
 func (this *QWindow) Create() {
@@ -125,18 +121,15 @@ func (this *QWindow) Create() {
 }
 
 func (this *QWindow) WinId() uintptr {
-	_ret := C.QWindow_WinId(this.h)
-	return (uintptr)(_ret)
+	return (uintptr)(C.QWindow_WinId(this.h))
 }
 
 func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
-	_ret := C.QWindow_Parent(this.h, (C.uintptr_t)(mode))
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent(this.h, (C.int)(mode))))
 }
 
 func (this *QWindow) Parent2() *QWindow {
-	_ret := C.QWindow_Parent2(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent2(this.h)))
 }
 
 func (this *QWindow) SetParent(parent *QWindow) {
@@ -144,22 +137,19 @@ func (this *QWindow) SetParent(parent *QWindow) {
 }
 
 func (this *QWindow) IsTopLevel() bool {
-	_ret := C.QWindow_IsTopLevel(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsTopLevel(this.h))
 }
 
 func (this *QWindow) IsModal() bool {
-	_ret := C.QWindow_IsModal(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsModal(this.h))
 }
 
 func (this *QWindow) Modality() WindowModality {
-	_ret := C.QWindow_Modality(this.h)
-	return (WindowModality)(_ret)
+	return (WindowModality)(C.QWindow_Modality(this.h))
 }
 
 func (this *QWindow) SetModality(modality WindowModality) {
-	C.QWindow_SetModality(this.h, (C.uintptr_t)(modality))
+	C.QWindow_SetModality(this.h, (C.int)(modality))
 }
 
 func (this *QWindow) SetFormat(format *QSurfaceFormat) {
@@ -185,17 +175,15 @@ func (this *QWindow) SetFlags(flags int) {
 }
 
 func (this *QWindow) Flags() int {
-	_ret := C.QWindow_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_Flags(this.h))
 }
 
 func (this *QWindow) SetFlag(param1 WindowType) {
-	C.QWindow_SetFlag(this.h, (C.uintptr_t)(param1))
+	C.QWindow_SetFlag(this.h, (C.int)(param1))
 }
 
 func (this *QWindow) Type() WindowType {
-	_ret := C.QWindow_Type(this.h)
-	return (WindowType)(_ret)
+	return (WindowType)(C.QWindow_Type(this.h))
 }
 
 func (this *QWindow) Title() string {
@@ -210,8 +198,7 @@ func (this *QWindow) SetOpacity(level float64) {
 }
 
 func (this *QWindow) Opacity() float64 {
-	_ret := C.QWindow_Opacity(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QWindow_Opacity(this.h))
 }
 
 func (this *QWindow) SetMask(region *QRegion) {
@@ -226,36 +213,31 @@ func (this *QWindow) Mask() *QRegion {
 }
 
 func (this *QWindow) IsActive() bool {
-	_ret := C.QWindow_IsActive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsActive(this.h))
 }
 
 func (this *QWindow) ReportContentOrientationChange(orientation ScreenOrientation) {
-	C.QWindow_ReportContentOrientationChange(this.h, (C.uintptr_t)(orientation))
+	C.QWindow_ReportContentOrientationChange(this.h, (C.int)(orientation))
 }
 
 func (this *QWindow) ContentOrientation() ScreenOrientation {
-	_ret := C.QWindow_ContentOrientation(this.h)
-	return (ScreenOrientation)(_ret)
+	return (ScreenOrientation)(C.QWindow_ContentOrientation(this.h))
 }
 
 func (this *QWindow) DevicePixelRatio() float64 {
-	_ret := C.QWindow_DevicePixelRatio(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QWindow_DevicePixelRatio(this.h))
 }
 
 func (this *QWindow) WindowState() WindowState {
-	_ret := C.QWindow_WindowState(this.h)
-	return (WindowState)(_ret)
+	return (WindowState)(C.QWindow_WindowState(this.h))
 }
 
 func (this *QWindow) WindowStates() int {
-	_ret := C.QWindow_WindowStates(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_WindowStates(this.h))
 }
 
 func (this *QWindow) SetWindowState(state WindowState) {
-	C.QWindow_SetWindowState(this.h, (C.uintptr_t)(state))
+	C.QWindow_SetWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWindow) SetWindowStates(states int) {
@@ -267,38 +249,31 @@ func (this *QWindow) SetTransientParent(parent *QWindow) {
 }
 
 func (this *QWindow) TransientParent() *QWindow {
-	_ret := C.QWindow_TransientParent(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QWindow_TransientParent(this.h)))
 }
 
 func (this *QWindow) IsAncestorOf(child *QWindow) bool {
-	_ret := C.QWindow_IsAncestorOf(this.h, child.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsAncestorOf(this.h, child.cPointer()))
 }
 
 func (this *QWindow) IsExposed() bool {
-	_ret := C.QWindow_IsExposed(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsExposed(this.h))
 }
 
 func (this *QWindow) MinimumWidth() int {
-	_ret := C.QWindow_MinimumWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_MinimumWidth(this.h))
 }
 
 func (this *QWindow) MinimumHeight() int {
-	_ret := C.QWindow_MinimumHeight(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_MinimumHeight(this.h))
 }
 
 func (this *QWindow) MaximumWidth() int {
-	_ret := C.QWindow_MaximumWidth(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_MaximumWidth(this.h))
 }
 
 func (this *QWindow) MaximumHeight() int {
-	_ret := C.QWindow_MaximumHeight(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_MaximumHeight(this.h))
 }
 
 func (this *QWindow) MinimumSize() *QSize {
@@ -378,23 +353,19 @@ func (this *QWindow) SetFramePosition(point *QPoint) {
 }
 
 func (this *QWindow) Width() int {
-	_ret := C.QWindow_Width(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_Width(this.h))
 }
 
 func (this *QWindow) Height() int {
-	_ret := C.QWindow_Height(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_Height(this.h))
 }
 
 func (this *QWindow) X() int {
-	_ret := C.QWindow_X(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_X(this.h))
 }
 
 func (this *QWindow) Y() int {
-	_ret := C.QWindow_Y(this.h)
-	return (int)(_ret)
+	return (int)(C.QWindow_Y(this.h))
 }
 
 func (this *QWindow) Size() *QSize {
@@ -456,18 +427,15 @@ func (this *QWindow) Destroy() {
 }
 
 func (this *QWindow) SetKeyboardGrabEnabled(grab bool) bool {
-	_ret := C.QWindow_SetKeyboardGrabEnabled(this.h, (C.bool)(grab))
-	return (bool)(_ret)
+	return (bool)(C.QWindow_SetKeyboardGrabEnabled(this.h, (C.bool)(grab)))
 }
 
 func (this *QWindow) SetMouseGrabEnabled(grab bool) bool {
-	_ret := C.QWindow_SetMouseGrabEnabled(this.h, (C.bool)(grab))
-	return (bool)(_ret)
+	return (bool)(C.QWindow_SetMouseGrabEnabled(this.h, (C.bool)(grab)))
 }
 
 func (this *QWindow) Screen() *QScreen {
-	_ret := C.QWindow_Screen(this.h)
-	return newQScreen_U(unsafe.Pointer(_ret))
+	return newQScreen_U(unsafe.Pointer(C.QWindow_Screen(this.h)))
 }
 
 func (this *QWindow) SetScreen(screen *QScreen) {
@@ -475,13 +443,11 @@ func (this *QWindow) SetScreen(screen *QScreen) {
 }
 
 func (this *QWindow) AccessibleRoot() *QAccessibleInterface {
-	_ret := C.QWindow_AccessibleRoot(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QWindow_AccessibleRoot(this.h)))
 }
 
 func (this *QWindow) FocusObject() *QObject {
-	_ret := C.QWindow_FocusObject(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QWindow_FocusObject(this.h)))
 }
 
 func (this *QWindow) MapToGlobal(pos *QPoint) *QPoint {
@@ -514,8 +480,7 @@ func (this *QWindow) UnsetCursor() {
 }
 
 func QWindow_FromWinId(id uintptr) *QWindow {
-	_ret := C.QWindow_FromWinId((C.uintptr_t)(id))
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QWindow_FromWinId((C.uintptr_t)(id))))
 }
 
 func (this *QWindow) RequestActivate() {
@@ -551,8 +516,7 @@ func (this *QWindow) ShowNormal() {
 }
 
 func (this *QWindow) Close() bool {
-	_ret := C.QWindow_Close(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_Close(this.h))
 }
 
 func (this *QWindow) Raise() {
@@ -564,13 +528,11 @@ func (this *QWindow) Lower() {
 }
 
 func (this *QWindow) StartSystemResize(edges int) bool {
-	_ret := C.QWindow_StartSystemResize(this.h, (C.int)(edges))
-	return (bool)(_ret)
+	return (bool)(C.QWindow_StartSystemResize(this.h, (C.int)(edges)))
 }
 
 func (this *QWindow) StartSystemMove() bool {
-	_ret := C.QWindow_StartSystemMove(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QWindow_StartSystemMove(this.h))
 }
 
 func (this *QWindow) SetTitle(title string) {
@@ -642,50 +604,47 @@ func miqt_exec_callback_QWindow_ScreenChanged(cb *C.void, screen *C.QScreen) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	screen_ret := screen
-	slotval1 := newQScreen_U(unsafe.Pointer(screen_ret))
+	slotval1 := newQScreen_U(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }
 
 func (this *QWindow) ModalityChanged(modality WindowModality) {
-	C.QWindow_ModalityChanged(this.h, (C.uintptr_t)(modality))
+	C.QWindow_ModalityChanged(this.h, (C.int)(modality))
 }
 func (this *QWindow) OnModalityChanged(slot func(modality WindowModality)) {
 	C.QWindow_connect_ModalityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_ModalityChanged
-func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.uintptr_t) {
+func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(modality WindowModality))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	modality_ret := modality
-	slotval1 := (WindowModality)(modality_ret)
+	slotval1 := (WindowModality)(modality)
 
 	gofunc(slotval1)
 }
 
 func (this *QWindow) WindowStateChanged(windowState WindowState) {
-	C.QWindow_WindowStateChanged(this.h, (C.uintptr_t)(windowState))
+	C.QWindow_WindowStateChanged(this.h, (C.int)(windowState))
 }
 func (this *QWindow) OnWindowStateChanged(slot func(windowState WindowState)) {
 	C.QWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_WindowStateChanged
-func miqt_exec_callback_QWindow_WindowStateChanged(cb *C.void, windowState C.uintptr_t) {
+func miqt_exec_callback_QWindow_WindowStateChanged(cb *C.void, windowState C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(windowState WindowState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	windowState_ret := windowState
-	slotval1 := (WindowState)(windowState_ret)
+	slotval1 := (WindowState)(windowState)
 
 	gofunc(slotval1)
 }
@@ -730,8 +689,7 @@ func miqt_exec_callback_QWindow_XChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -751,8 +709,7 @@ func miqt_exec_callback_QWindow_YChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -772,8 +729,7 @@ func miqt_exec_callback_QWindow_WidthChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -793,8 +749,7 @@ func miqt_exec_callback_QWindow_HeightChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -814,8 +769,7 @@ func miqt_exec_callback_QWindow_MinimumWidthChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -835,8 +789,7 @@ func miqt_exec_callback_QWindow_MinimumHeightChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -856,8 +809,7 @@ func miqt_exec_callback_QWindow_MaximumWidthChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -877,8 +829,7 @@ func miqt_exec_callback_QWindow_MaximumHeightChanged(cb *C.void, arg C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (int)(arg_ret)
+	slotval1 := (int)(arg)
 
 	gofunc(slotval1)
 }
@@ -898,29 +849,27 @@ func miqt_exec_callback_QWindow_VisibleChanged(cb *C.void, arg C.bool) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	arg_ret := arg
-	slotval1 := (bool)(arg_ret)
+	slotval1 := (bool)(arg)
 
 	gofunc(slotval1)
 }
 
 func (this *QWindow) VisibilityChanged(visibility QWindow__Visibility) {
-	C.QWindow_VisibilityChanged(this.h, (C.uintptr_t)(visibility))
+	C.QWindow_VisibilityChanged(this.h, (C.int)(visibility))
 }
 func (this *QWindow) OnVisibilityChanged(slot func(visibility QWindow__Visibility)) {
 	C.QWindow_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_VisibilityChanged
-func miqt_exec_callback_QWindow_VisibilityChanged(cb *C.void, visibility C.uintptr_t) {
+func miqt_exec_callback_QWindow_VisibilityChanged(cb *C.void, visibility C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visibility QWindow__Visibility))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	visibility_ret := visibility
-	slotval1 := (QWindow__Visibility)(visibility_ret)
+	slotval1 := (QWindow__Visibility)(visibility)
 
 	gofunc(slotval1)
 }
@@ -943,22 +892,21 @@ func miqt_exec_callback_QWindow_ActiveChanged(cb *C.void) {
 }
 
 func (this *QWindow) ContentOrientationChanged(orientation ScreenOrientation) {
-	C.QWindow_ContentOrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QWindow_ContentOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QWindow) OnContentOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QWindow_connect_ContentOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_ContentOrientationChanged
-func miqt_exec_callback_QWindow_ContentOrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QWindow_ContentOrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	orientation_ret := orientation
-	slotval1 := (ScreenOrientation)(orientation_ret)
+	slotval1 := (ScreenOrientation)(orientation)
 
 	gofunc(slotval1)
 }
@@ -978,8 +926,7 @@ func miqt_exec_callback_QWindow_FocusObjectChanged(cb *C.void, object *C.QObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	object_ret := object
-	slotval1 := newQObject_U(unsafe.Pointer(object_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(object))
 
 	gofunc(slotval1)
 }
@@ -999,8 +946,7 @@ func miqt_exec_callback_QWindow_OpacityChanged(cb *C.void, opacity C.double) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	opacity_ret := opacity
-	slotval1 := (float64)(opacity_ret)
+	slotval1 := (float64)(opacity)
 
 	gofunc(slotval1)
 }
@@ -1020,8 +966,7 @@ func miqt_exec_callback_QWindow_TransientParentChanged(cb *C.void, transientPare
 	}
 
 	// Convert all CABI parameters to Go parameters
-	transientParent_ret := transientParent
-	slotval1 := newQWindow_U(unsafe.Pointer(transientParent_ret))
+	slotval1 := newQWindow_U(unsafe.Pointer(transientParent))
 
 	gofunc(slotval1)
 }
@@ -1071,12 +1016,11 @@ func QWindow_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWindow) SetFlag2(param1 WindowType, on bool) {
-	C.QWindow_SetFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+	C.QWindow_SetFlag2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QWindow) IsAncestorOf2(child *QWindow, mode QWindow__AncestorMode) bool {
-	_ret := C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.uintptr_t)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.int)(mode)))
 }
 
 // Delete this object from C++ memory.

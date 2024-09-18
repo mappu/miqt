@@ -177,15 +177,11 @@ QAction* QMenu_Exec2(struct miqt_array* /* of QAction* */ actions, QPoint* pos) 
 }
 
 QSize* QMenu_SizeHint(const QMenu* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QRect* QMenu_ActionGeometry(const QMenu* self, QAction* param1) {
-	QRect _ret = self->actionGeometry(param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->actionGeometry(param1));
 }
 
 QAction* QMenu_ActionAt(const QMenu* self, QPoint* param1) {
@@ -209,9 +205,7 @@ void QMenu_SetTitle(QMenu* self, struct miqt_string* title) {
 }
 
 QIcon* QMenu_Icon(const QMenu* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QMenu_SetIcon(QMenu* self, QIcon* icon) {

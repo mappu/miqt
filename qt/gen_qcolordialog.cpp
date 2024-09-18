@@ -48,22 +48,18 @@ void QColorDialog_SetCurrentColor(QColorDialog* self, QColor* color) {
 }
 
 QColor* QColorDialog_CurrentColor(const QColorDialog* self) {
-	QColor _ret = self->currentColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->currentColor());
 }
 
 QColor* QColorDialog_SelectedColor(const QColorDialog* self) {
-	QColor _ret = self->selectedColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->selectedColor());
 }
 
-void QColorDialog_SetOption(QColorDialog* self, uintptr_t option) {
+void QColorDialog_SetOption(QColorDialog* self, int option) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
-bool QColorDialog_TestOption(const QColorDialog* self, uintptr_t option) {
+bool QColorDialog_TestOption(const QColorDialog* self, int option) {
 	return self->testOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
@@ -81,13 +77,12 @@ void QColorDialog_SetVisible(QColorDialog* self, bool visible) {
 }
 
 QColor* QColorDialog_GetColor() {
-	QColor _ret = QColorDialog::getColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::getColor());
 }
 
 unsigned int QColorDialog_GetRgba() {
-	return QColorDialog::getRgba();
+	QRgb _ret = QColorDialog::getRgba();
+	return static_cast<unsigned int>(_ret);
 }
 
 int QColorDialog_CustomCount() {
@@ -95,9 +90,7 @@ int QColorDialog_CustomCount() {
 }
 
 QColor* QColorDialog_CustomColor(int index) {
-	QColor _ret = QColorDialog::customColor(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::customColor(static_cast<int>(index)));
 }
 
 void QColorDialog_SetCustomColor(int index, QColor* color) {
@@ -105,9 +98,7 @@ void QColorDialog_SetCustomColor(int index, QColor* color) {
 }
 
 QColor* QColorDialog_StandardColor(int index) {
-	QColor _ret = QColorDialog::standardColor(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::standardColor(static_cast<int>(index)));
 }
 
 void QColorDialog_SetStandardColor(int index, QColor* color) {
@@ -168,46 +159,41 @@ struct miqt_string* QColorDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColorDialog_SetOption2(QColorDialog* self, uintptr_t option, bool on) {
+void QColorDialog_SetOption2(QColorDialog* self, int option, bool on) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option), on);
 }
 
 QColor* QColorDialog_GetColor1(QColor* initial) {
-	QColor _ret = QColorDialog::getColor(*initial);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::getColor(*initial));
 }
 
 QColor* QColorDialog_GetColor2(QColor* initial, QWidget* parent) {
-	QColor _ret = QColorDialog::getColor(*initial, parent);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::getColor(*initial, parent));
 }
 
 QColor* QColorDialog_GetColor3(QColor* initial, QWidget* parent, struct miqt_string* title) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QColor _ret = QColorDialog::getColor(*initial, parent, title_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::getColor(*initial, parent, title_QString));
 }
 
 QColor* QColorDialog_GetColor4(QColor* initial, QWidget* parent, struct miqt_string* title, int options) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QColor _ret = QColorDialog::getColor(*initial, parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(QColorDialog::getColor(*initial, parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options)));
 }
 
 unsigned int QColorDialog_GetRgba1(unsigned int rgba) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba));
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba));
+	return static_cast<unsigned int>(_ret);
 }
 
 unsigned int QColorDialog_GetRgba2(unsigned int rgba, bool* ok) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba), ok);
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba), ok);
+	return static_cast<unsigned int>(_ret);
 }
 
 unsigned int QColorDialog_GetRgba3(unsigned int rgba, bool* ok, QWidget* parent) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba), ok, parent);
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba), ok, parent);
+	return static_cast<unsigned int>(_ret);
 }
 
 void QColorDialog_Delete(QColorDialog* self) {

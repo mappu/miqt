@@ -66,12 +66,12 @@ int QStackedLayout_Count(const QStackedLayout* self) {
 	return self->count();
 }
 
-uintptr_t QStackedLayout_StackingMode(const QStackedLayout* self) {
+int QStackedLayout_StackingMode(const QStackedLayout* self) {
 	QStackedLayout::StackingMode _ret = self->stackingMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QStackedLayout_SetStackingMode(QStackedLayout* self, uintptr_t stackingMode) {
+void QStackedLayout_SetStackingMode(QStackedLayout* self, int stackingMode) {
 	self->setStackingMode(static_cast<QStackedLayout::StackingMode>(stackingMode));
 }
 
@@ -80,15 +80,11 @@ void QStackedLayout_AddItem(QStackedLayout* self, QLayoutItem* item) {
 }
 
 QSize* QStackedLayout_SizeHint(const QStackedLayout* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QStackedLayout_MinimumSize(const QStackedLayout* self) {
-	QSize _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSize());
 }
 
 QLayoutItem* QStackedLayout_ItemAt(const QStackedLayout* self, int param1) {

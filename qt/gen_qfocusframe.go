@@ -49,8 +49,7 @@ func NewQFocusFrame2(parent *QWidget) *QFocusFrame {
 }
 
 func (this *QFocusFrame) MetaObject() *QMetaObject {
-	_ret := C.QFocusFrame_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QFocusFrame_MetaObject(this.h)))
 }
 
 func QFocusFrame_Tr(s string) string {
@@ -76,8 +75,7 @@ func (this *QFocusFrame) SetWidget(widget *QWidget) {
 }
 
 func (this *QFocusFrame) Widget() *QWidget {
-	_ret := C.QFocusFrame_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QFocusFrame_Widget(this.h)))
 }
 
 func QFocusFrame_Tr2(s string, c string) string {

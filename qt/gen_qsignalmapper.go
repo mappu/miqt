@@ -50,8 +50,7 @@ func NewQSignalMapper2(parent *QObject) *QSignalMapper {
 }
 
 func (this *QSignalMapper) MetaObject() *QMetaObject {
-	_ret := C.QSignalMapper_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSignalMapper_MetaObject(this.h)))
 }
 
 func QSignalMapper_Tr(s string) string {
@@ -95,25 +94,21 @@ func (this *QSignalMapper) RemoveMappings(sender *QObject) {
 }
 
 func (this *QSignalMapper) Mapping(id int) *QObject {
-	_ret := C.QSignalMapper_Mapping(this.h, (C.int)(id))
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QSignalMapper_Mapping(this.h, (C.int)(id))))
 }
 
 func (this *QSignalMapper) MappingWithText(text string) *QObject {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QSignalMapper_MappingWithText(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QSignalMapper_MappingWithText(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QSignalMapper) MappingWithWidget(widget *QWidget) *QObject {
-	_ret := C.QSignalMapper_MappingWithWidget(this.h, widget.cPointer())
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QSignalMapper_MappingWithWidget(this.h, widget.cPointer())))
 }
 
 func (this *QSignalMapper) MappingWithObject(object *QObject) *QObject {
-	_ret := C.QSignalMapper_MappingWithObject(this.h, object.cPointer())
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QSignalMapper_MappingWithObject(this.h, object.cPointer())))
 }
 
 func (this *QSignalMapper) Mapped(param1 int) {
@@ -131,8 +126,7 @@ func miqt_exec_callback_QSignalMapper_Mapped(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -177,8 +171,7 @@ func miqt_exec_callback_QSignalMapper_MappedWithQWidget(cb *C.void, param1 *C.QW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQWidget_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQWidget_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -198,8 +191,7 @@ func miqt_exec_callback_QSignalMapper_MappedWithQObject(cb *C.void, param1 *C.QO
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQObject_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -219,8 +211,7 @@ func miqt_exec_callback_QSignalMapper_MappedInt(cb *C.void, param1 C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (int)(param1_ret)
+	slotval1 := (int)(param1)
 
 	gofunc(slotval1)
 }
@@ -265,8 +256,7 @@ func miqt_exec_callback_QSignalMapper_MappedWidget(cb *C.void, param1 *C.QWidget
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQWidget_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQWidget_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -286,8 +276,7 @@ func miqt_exec_callback_QSignalMapper_MappedObject(cb *C.void, param1 *C.QObject
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQObject_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQObject_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

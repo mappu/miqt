@@ -50,8 +50,7 @@ func (this *QCollatorSortKey) Swap(other *QCollatorSortKey) {
 }
 
 func (this *QCollatorSortKey) Compare(key *QCollatorSortKey) int {
-	_ret := C.QCollatorSortKey_Compare(this.h, key.cPointer())
-	return (int)(_ret)
+	return (int)(C.QCollatorSortKey_Compare(this.h, key.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -128,12 +127,11 @@ func (this *QCollator) Locale() *QLocale {
 }
 
 func (this *QCollator) CaseSensitivity() CaseSensitivity {
-	_ret := C.QCollator_CaseSensitivity(this.h)
-	return (CaseSensitivity)(_ret)
+	return (CaseSensitivity)(C.QCollator_CaseSensitivity(this.h))
 }
 
 func (this *QCollator) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QCollator_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QCollator_SetCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QCollator) SetNumericMode(on bool) {
@@ -141,8 +139,7 @@ func (this *QCollator) SetNumericMode(on bool) {
 }
 
 func (this *QCollator) NumericMode() bool {
-	_ret := C.QCollator_NumericMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCollator_NumericMode(this.h))
 }
 
 func (this *QCollator) SetIgnorePunctuation(on bool) {
@@ -150,8 +147,7 @@ func (this *QCollator) SetIgnorePunctuation(on bool) {
 }
 
 func (this *QCollator) IgnorePunctuation() bool {
-	_ret := C.QCollator_IgnorePunctuation(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCollator_IgnorePunctuation(this.h))
 }
 
 func (this *QCollator) Compare(s1 string, s2 string) int {
@@ -159,13 +155,11 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 	defer C.free(s1_ms)
 	s2_ms := miqt_strdupg(s2)
 	defer C.free(s2_ms)
-	_ret := C.QCollator_Compare(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms))
-	return (int)(_ret)
+	return (int)(C.QCollator_Compare(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
-	_ret := C.QCollator_Compare3(this.h, s1.cPointer(), (C.int)(len1), s2.cPointer(), (C.int)(len2))
-	return (int)(_ret)
+	return (int)(C.QCollator_Compare3(this.h, s1.cPointer(), (C.int)(len1), s2.cPointer(), (C.int)(len2)))
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
@@ -173,8 +167,7 @@ func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
 	defer C.free(s1_ms)
 	s2_ms := miqt_strdupg(s2)
 	defer C.free(s2_ms)
-	_ret := C.QCollator_OperatorCall(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms))
-	return (bool)(_ret)
+	return (bool)(C.QCollator_OperatorCall(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {

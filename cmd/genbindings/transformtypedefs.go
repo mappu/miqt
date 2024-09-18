@@ -6,19 +6,28 @@ import (
 
 func applyTypedefs(p CppParameter) CppParameter {
 
-	if td, ok := KnownTypedefs[p.ParameterType]; ok {
-		p = td.UnderlyingType.CopyWithAlias(p)
+	for {
+		td, ok := KnownTypedefs[p.ParameterType]
+		if !ok {
+			break
+		}
+		p.ApplyTypedef(td.UnderlyingType)
 	}
 
 	if t, ok := p.QListOf(); ok {
 		t2 := applyTypedefs(t) // recursive
 
 		// Wipe out so that RenderTypeQtCpp() does not see it
-		t2.TypeAlias = ""
+		t2.QtCppOriginalType = nil
 
 		// QListOf returns for either QList< or QVector<
 		// Patch it up to the first < position and last character
 		bpos := strings.Index(p.ParameterType, `<`)
+
+		if p.QtCppOriginalType == nil {
+			tmp := p // copy
+			p.QtCppOriginalType = &tmp
+		}
 		p.ParameterType = p.ParameterType[0:bpos] + `<` + t2.RenderTypeQtCpp() + `>`
 	}
 
@@ -65,5 +74,11 @@ func astTransformTypedefs(parsed *CppParsedHeader) {
 			c.Ctors[j] = m
 		}
 		parsed.Classes[i] = c
+	}
+
+	// Enum underlying types
+	for i, e := range parsed.Enums {
+		e.UnderlyingType = applyTypedefs(e.UnderlyingType)
+		parsed.Enums[i] = e
 	}
 }

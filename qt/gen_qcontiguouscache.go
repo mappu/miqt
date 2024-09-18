@@ -36,8 +36,7 @@ func newQContiguousCacheData_U(h unsafe.Pointer) *QContiguousCacheData {
 }
 
 func QContiguousCacheData_AllocateData(size int, alignment int) *QContiguousCacheData {
-	_ret := C.QContiguousCacheData_AllocateData((C.int)(size), (C.int)(alignment))
-	return newQContiguousCacheData_U(unsafe.Pointer(_ret))
+	return newQContiguousCacheData_U(unsafe.Pointer(C.QContiguousCacheData_AllocateData((C.int)(size), (C.int)(alignment))))
 }
 
 func QContiguousCacheData_FreeData(data *QContiguousCacheData) {

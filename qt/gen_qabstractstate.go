@@ -38,8 +38,7 @@ func newQAbstractState_U(h unsafe.Pointer) *QAbstractState {
 }
 
 func (this *QAbstractState) MetaObject() *QMetaObject {
-	_ret := C.QAbstractState_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QAbstractState_MetaObject(this.h)))
 }
 
 func QAbstractState_Tr(s string) string {
@@ -61,18 +60,15 @@ func QAbstractState_TrUtf8(s string) string {
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	_ret := C.QAbstractState_ParentState(this.h)
-	return newQState_U(unsafe.Pointer(_ret))
+	return newQState_U(unsafe.Pointer(C.QAbstractState_ParentState(this.h)))
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	_ret := C.QAbstractState_Machine(this.h)
-	return newQStateMachine_U(unsafe.Pointer(_ret))
+	return newQStateMachine_U(unsafe.Pointer(C.QAbstractState_Machine(this.h)))
 }
 
 func (this *QAbstractState) Active() bool {
-	_ret := C.QAbstractState_Active(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAbstractState_Active(this.h))
 }
 
 func (this *QAbstractState) ActiveChanged(active bool) {
@@ -90,8 +86,7 @@ func miqt_exec_callback_QAbstractState_ActiveChanged(cb *C.void, active C.bool) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	active_ret := active
-	slotval1 := (bool)(active_ret)
+	slotval1 := (bool)(active)
 
 	gofunc(slotval1)
 }

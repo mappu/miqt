@@ -54,17 +54,15 @@ void QCollator_SetLocale(QCollator* self, QLocale* locale) {
 }
 
 QLocale* QCollator_Locale(const QCollator* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
-uintptr_t QCollator_CaseSensitivity(const QCollator* self) {
+int QCollator_CaseSensitivity(const QCollator* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCollator_SetCaseSensitivity(QCollator* self, uintptr_t cs) {
+void QCollator_SetCaseSensitivity(QCollator* self, int cs) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
@@ -102,9 +100,7 @@ bool QCollator_OperatorCall(const QCollator* self, struct miqt_string* s1, struc
 
 QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	QCollatorSortKey _ret = self->sortKey(stringVal_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QCollatorSortKey*>(new QCollatorSortKey(_ret));
+	return new QCollatorSortKey(self->sortKey(stringVal_QString));
 }
 
 void QCollator_Delete(QCollator* self) {

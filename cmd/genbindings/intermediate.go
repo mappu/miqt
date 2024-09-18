@@ -25,38 +25,42 @@ func init() {
 	// QString is deleted from this binding
 	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
 
+	// Not sure why this isn't picked up automatically
+	// FIXME because QFile inherits QFileDevice(!!) and the name refers to its parent class
+	KnownTypedefs["QFile::FileTime"] = CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}
+
+	// n.b. Qt 5 only
+	KnownTypedefs["QLineF::IntersectionType"] = CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}
+
+	// Not sure the reason for this one
+	KnownTypedefs["QSocketDescriptor::DescriptorType"] = CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}
 }
 
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
-	TypeAlias     string // If we rewrote QStringList->QList<String>, this field contains the original QStringList
 	Const         bool
 	Pointer       bool
 	PointerCount  int
 	ByRef         bool
 	Optional      bool
+
+	QtCppOriginalType *CppParameter // If we rewrote QStringList->QList<String>, this field contains the original QStringList. Otherwise, it's blank
 }
 
-func (p *CppParameter) AssignAlias(newType string) {
-	if p.TypeAlias == "" {
-		p.TypeAlias = p.ParameterType // Overwrite once only, at the earliest base type
+func (p *CppParameter) ApplyTypedef(matchedUnderlyingType CppParameter) {
+	if p.QtCppOriginalType == nil {
+		tmp := *p                  // Copy
+		p.QtCppOriginalType = &tmp // Overwrite once only, at the earliest base type
 	}
-	p.ParameterType = newType
-}
-
-func (p *CppParameter) CopyWithAlias(alias CppParameter) CppParameter {
-	ret := *p // copy
-	ret.ParameterName = alias.ParameterName
-	ret.TypeAlias = alias.ParameterType
+	p.ParameterType = matchedUnderlyingType.ParameterType
 
 	// If this was a pointer to a typedef'd type, or a typedef of a pointer type, we need to preserve that
-	// WARNING: This can't work for double indirection
-	ret.Const = ret.Const || alias.Const
-	ret.Pointer = ret.Pointer || alias.Pointer
-	ret.PointerCount += alias.PointerCount
-	ret.ByRef = ret.ByRef || alias.ByRef
-	return ret
+	p.Const = p.Const || matchedUnderlyingType.Const
+	p.Pointer = p.Pointer || matchedUnderlyingType.Pointer
+	p.PointerCount += matchedUnderlyingType.PointerCount
+	p.ByRef = p.ByRef || matchedUnderlyingType.ByRef
+	p.Optional = p.Optional || matchedUnderlyingType.Optional
 }
 
 func (p *CppParameter) PointerTo() CppParameter {
@@ -72,16 +76,17 @@ func (p *CppParameter) ConstCast(isConst bool) CppParameter {
 	return ret
 }
 
-func (p *CppParameter) UnderlyingType() string {
-	if p.TypeAlias != "" {
-		return p.TypeAlias
+func (p *CppParameter) GetQtCppType() *CppParameter {
+	if p.QtCppOriginalType != nil {
+		return p.QtCppOriginalType
 	}
 
-	return p.ParameterType
+	return p
 }
 
 func (p CppParameter) IsFlagType() bool {
-	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) ||
+		strings.HasPrefix(p.GetQtCppType().ParameterType, `QFlags<`) {
 		return true // This catches most cases through the typedef system
 	}
 
@@ -116,21 +121,6 @@ func (p CppParameter) IsKnownEnum() bool {
 	return ok
 }
 
-func (p CppParameter) IsEnum() bool {
-	if strings.Contains(p.ParameterType, `::`) {
-		if _, ok := KnownClassnames[p.ParameterType]; ok {
-			// It's an inner class
-			return false
-		} else {
-			// Enum
-			return true
-		}
-	}
-
-	// Top-level enums aren't supported yet
-	return false
-}
-
 func (p CppParameter) QListOf() (CppParameter, bool) {
 	if strings.HasPrefix(p.ParameterType, "QList<") && strings.HasSuffix(p.ParameterType, `>`) {
 		ret := parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1])
@@ -156,13 +146,19 @@ func (p CppParameter) QPairOf() bool {
 	return strings.HasPrefix(p.ParameterType, `QPair<`) // TODO support this
 }
 
-func (p CppParameter) QSetOf() bool {
-	return strings.HasPrefix(p.ParameterType, `QSet<`) // TODO support this
+func (p CppParameter) QSetOf() (CppParameter, bool) {
+	if strings.HasPrefix(p.ParameterType, `QSet<`) {
+		ret := parseSingleTypeString(p.ParameterType[5 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_sv"
+		return ret, true
+	}
+
+	return CppParameter{}, false
 }
 
 func (p CppParameter) IntType() bool {
 
-	if p.IsEnum() {
+	if p.IsKnownEnum() {
 		return true
 	}
 
@@ -175,6 +171,8 @@ func (p CppParameter) IntType() bool {
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
+		"QIntegerForSizeof<void *>::Unsigned",
+		"QIntegerForSizeof<void *>::Signed",
 		"qptrdiff", "ptrdiff_t",
 		"double", "float", "qreal":
 		return true
@@ -320,7 +318,7 @@ type CppEnumEntry struct {
 
 type CppEnum struct {
 	EnumName       string
-	UnderlyingType string
+	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
 }
 

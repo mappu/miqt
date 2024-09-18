@@ -23,7 +23,7 @@ typedef struct QPointF QPointF;
 
 QEasingCurve* QEasingCurve_new();
 QEasingCurve* QEasingCurve_new2(QEasingCurve* other);
-QEasingCurve* QEasingCurve_new3(uintptr_t typeVal);
+QEasingCurve* QEasingCurve_new3(int typeVal);
 void QEasingCurve_OperatorAssign(QEasingCurve* self, QEasingCurve* other);
 void QEasingCurve_Swap(QEasingCurve* self, QEasingCurve* other);
 bool QEasingCurve_OperatorEqual(const QEasingCurve* self, QEasingCurve* other);
@@ -37,8 +37,8 @@ void QEasingCurve_SetOvershoot(QEasingCurve* self, double overshoot);
 void QEasingCurve_AddCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint);
 void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b);
 struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self);
-uintptr_t QEasingCurve_Type(const QEasingCurve* self);
-void QEasingCurve_SetType(QEasingCurve* self, uintptr_t typeVal);
+int QEasingCurve_Type(const QEasingCurve* self);
+void QEasingCurve_SetType(QEasingCurve* self, int typeVal);
 double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress);
 void QEasingCurve_Delete(QEasingCurve* self);
 

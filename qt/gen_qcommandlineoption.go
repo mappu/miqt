@@ -52,13 +52,13 @@ func NewQCommandLineOption(name string) *QCommandLineOption {
 
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
 func NewQCommandLineOption2(names []string) *QCommandLineOption {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		single_ms := miqt_strdupg(names[i])
-		defer C.free(single_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		names_i_ms := miqt_strdupg(names[i])
+		defer C.free(names_i_ms)
+		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -78,13 +78,13 @@ func NewQCommandLineOption3(name string, description string) *QCommandLineOption
 
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
 func NewQCommandLineOption4(names []string, description string) *QCommandLineOption {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		single_ms := miqt_strdupg(names[i])
-		defer C.free(single_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		names_i_ms := miqt_strdupg(names[i])
+		defer C.free(names_i_ms)
+		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -128,13 +128,13 @@ func NewQCommandLineOption7(name string, description string, valueName string, d
 
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
 func NewQCommandLineOption8(names []string, description string, valueName string) *QCommandLineOption {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		single_ms := miqt_strdupg(names[i])
-		defer C.free(single_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		names_i_ms := miqt_strdupg(names[i])
+		defer C.free(names_i_ms)
+		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -148,13 +148,13 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
 func NewQCommandLineOption9(names []string, description string, valueName string, defaultValue string) *QCommandLineOption {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		single_ms := miqt_strdupg(names[i])
-		defer C.free(single_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		names_i_ms := miqt_strdupg(names[i])
+		defer C.free(names_i_ms)
+		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -181,8 +181,10 @@ func (this *QCommandLineOption) Names() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -221,13 +223,13 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	defaultValues_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(defaultValues))))
 	defer C.free(unsafe.Pointer(defaultValues_CArray))
 	for i := range defaultValues {
-		single_ms := miqt_strdupg(defaultValues[i])
-		defer C.free(single_ms)
-		defaultValues_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		defaultValues_i_ms := miqt_strdupg(defaultValues[i])
+		defer C.free(defaultValues_i_ms)
+		defaultValues_CArray[i] = (*C.struct_miqt_string)(defaultValues_i_ms)
 	}
 	defaultValues_ma := &C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(defaultValues_ma))
@@ -239,16 +241,17 @@ func (this *QCommandLineOption) DefaultValues() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QCommandLineOption) Flags() int {
-	_ret := C.QCommandLineOption_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QCommandLineOption_Flags(this.h))
 }
 
 func (this *QCommandLineOption) SetFlags(aflags int) {
@@ -260,8 +263,7 @@ func (this *QCommandLineOption) SetHidden(hidden bool) {
 }
 
 func (this *QCommandLineOption) IsHidden() bool {
-	_ret := C.QCommandLineOption_IsHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCommandLineOption_IsHidden(this.h))
 }
 
 // Delete this object from C++ memory.

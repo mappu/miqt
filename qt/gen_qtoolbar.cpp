@@ -66,17 +66,17 @@ int QToolBar_AllowedAreas(const QToolBar* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QToolBar_IsAreaAllowed(const QToolBar* self, uintptr_t area) {
+bool QToolBar_IsAreaAllowed(const QToolBar* self, int area) {
 	return self->isAreaAllowed(static_cast<Qt::ToolBarArea>(area));
 }
 
-void QToolBar_SetOrientation(QToolBar* self, uintptr_t orientation) {
+void QToolBar_SetOrientation(QToolBar* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QToolBar_Orientation(const QToolBar* self) {
+int QToolBar_Orientation(const QToolBar* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QToolBar_Clear(QToolBar* self) {
@@ -110,9 +110,7 @@ QAction* QToolBar_InsertWidget(QToolBar* self, QAction* before, QWidget* widget)
 }
 
 QRect* QToolBar_ActionGeometry(const QToolBar* self, QAction* action) {
-	QRect _ret = self->actionGeometry(action);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->actionGeometry(action));
 }
 
 QAction* QToolBar_ActionAt(const QToolBar* self, QPoint* p) {
@@ -128,14 +126,12 @@ QAction* QToolBar_ToggleViewAction(const QToolBar* self) {
 }
 
 QSize* QToolBar_IconSize(const QToolBar* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
-uintptr_t QToolBar_ToolButtonStyle(const QToolBar* self) {
+int QToolBar_ToolButtonStyle(const QToolBar* self) {
 	Qt::ToolButtonStyle _ret = self->toolButtonStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QWidget* QToolBar_WidgetForAction(const QToolBar* self, QAction* action) {
@@ -158,7 +154,7 @@ void QToolBar_SetIconSize(QToolBar* self, QSize* iconSize) {
 	self->setIconSize(*iconSize);
 }
 
-void QToolBar_SetToolButtonStyle(QToolBar* self, uintptr_t toolButtonStyle) {
+void QToolBar_SetToolButtonStyle(QToolBar* self, int toolButtonStyle) {
 	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
@@ -196,14 +192,14 @@ void QToolBar_connect_AllowedAreasChanged(QToolBar* self, void* slot) {
 	});
 }
 
-void QToolBar_OrientationChanged(QToolBar* self, uintptr_t orientation) {
+void QToolBar_OrientationChanged(QToolBar* self, int orientation) {
 	self->orientationChanged(static_cast<Qt::Orientation>(orientation));
 }
 
 void QToolBar_connect_OrientationChanged(QToolBar* self, void* slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::Orientation)>(&QToolBar::orientationChanged), self, [=](Qt::Orientation orientation) {
 		Qt::Orientation orientation_ret = orientation;
-		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		int sigval1 = static_cast<int>(orientation_ret);
 		miqt_exec_callback_QToolBar_OrientationChanged(slot, sigval1);
 	});
 }
@@ -221,14 +217,14 @@ void QToolBar_connect_IconSizeChanged(QToolBar* self, void* slot) {
 	});
 }
 
-void QToolBar_ToolButtonStyleChanged(QToolBar* self, uintptr_t toolButtonStyle) {
+void QToolBar_ToolButtonStyleChanged(QToolBar* self, int toolButtonStyle) {
 	self->toolButtonStyleChanged(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
 void QToolBar_connect_ToolButtonStyleChanged(QToolBar* self, void* slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolButtonStyle)>(&QToolBar::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
 		Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
-		uintptr_t sigval1 = static_cast<uintptr_t>(toolButtonStyle_ret);
+		int sigval1 = static_cast<int>(toolButtonStyle_ret);
 		miqt_exec_callback_QToolBar_ToolButtonStyleChanged(slot, sigval1);
 	});
 }

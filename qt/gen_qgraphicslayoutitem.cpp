@@ -11,14 +11,12 @@ void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* p
 	self->setSizePolicy(*policy);
 }
 
-void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy) {
+void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, int hPolicy, int vPolicy) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(hPolicy), static_cast<QSizePolicy::Policy>(vPolicy));
 }
 
 QSizePolicy* QGraphicsLayoutItem_SizePolicy(const QGraphicsLayoutItem* self) {
-	QSizePolicy _ret = self->sizePolicy();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizePolicy*>(new QSizePolicy(_ret));
+	return new QSizePolicy(self->sizePolicy());
 }
 
 void QGraphicsLayoutItem_SetMinimumSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -30,9 +28,7 @@ void QGraphicsLayoutItem_SetMinimumSize2(QGraphicsLayoutItem* self, double w, do
 }
 
 QSizeF* QGraphicsLayoutItem_MinimumSize(const QGraphicsLayoutItem* self) {
-	QSizeF _ret = self->minimumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->minimumSize());
 }
 
 void QGraphicsLayoutItem_SetMinimumWidth(QGraphicsLayoutItem* self, double width) {
@@ -40,7 +36,8 @@ void QGraphicsLayoutItem_SetMinimumWidth(QGraphicsLayoutItem* self, double width
 }
 
 double QGraphicsLayoutItem_MinimumWidth(const QGraphicsLayoutItem* self) {
-	return self->minimumWidth();
+	qreal _ret = self->minimumWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMinimumHeight(QGraphicsLayoutItem* self, double height) {
@@ -48,7 +45,8 @@ void QGraphicsLayoutItem_SetMinimumHeight(QGraphicsLayoutItem* self, double heig
 }
 
 double QGraphicsLayoutItem_MinimumHeight(const QGraphicsLayoutItem* self) {
-	return self->minimumHeight();
+	qreal _ret = self->minimumHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetPreferredSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -60,9 +58,7 @@ void QGraphicsLayoutItem_SetPreferredSize2(QGraphicsLayoutItem* self, double w, 
 }
 
 QSizeF* QGraphicsLayoutItem_PreferredSize(const QGraphicsLayoutItem* self) {
-	QSizeF _ret = self->preferredSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->preferredSize());
 }
 
 void QGraphicsLayoutItem_SetPreferredWidth(QGraphicsLayoutItem* self, double width) {
@@ -70,7 +66,8 @@ void QGraphicsLayoutItem_SetPreferredWidth(QGraphicsLayoutItem* self, double wid
 }
 
 double QGraphicsLayoutItem_PreferredWidth(const QGraphicsLayoutItem* self) {
-	return self->preferredWidth();
+	qreal _ret = self->preferredWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetPreferredHeight(QGraphicsLayoutItem* self, double height) {
@@ -78,7 +75,8 @@ void QGraphicsLayoutItem_SetPreferredHeight(QGraphicsLayoutItem* self, double he
 }
 
 double QGraphicsLayoutItem_PreferredHeight(const QGraphicsLayoutItem* self) {
-	return self->preferredHeight();
+	qreal _ret = self->preferredHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMaximumSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -90,9 +88,7 @@ void QGraphicsLayoutItem_SetMaximumSize2(QGraphicsLayoutItem* self, double w, do
 }
 
 QSizeF* QGraphicsLayoutItem_MaximumSize(const QGraphicsLayoutItem* self) {
-	QSizeF _ret = self->maximumSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->maximumSize());
 }
 
 void QGraphicsLayoutItem_SetMaximumWidth(QGraphicsLayoutItem* self, double width) {
@@ -100,7 +96,8 @@ void QGraphicsLayoutItem_SetMaximumWidth(QGraphicsLayoutItem* self, double width
 }
 
 double QGraphicsLayoutItem_MaximumWidth(const QGraphicsLayoutItem* self) {
-	return self->maximumWidth();
+	qreal _ret = self->maximumWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMaximumHeight(QGraphicsLayoutItem* self, double height) {
@@ -108,7 +105,8 @@ void QGraphicsLayoutItem_SetMaximumHeight(QGraphicsLayoutItem* self, double heig
 }
 
 double QGraphicsLayoutItem_MaximumHeight(const QGraphicsLayoutItem* self) {
-	return self->maximumHeight();
+	qreal _ret = self->maximumHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect) {
@@ -116,9 +114,7 @@ void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect) {
 }
 
 QRectF* QGraphicsLayoutItem_Geometry(const QGraphicsLayoutItem* self) {
-	QRectF _ret = self->geometry();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->geometry());
 }
 
 void QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem* self, double* left, double* top, double* right, double* bottom) {
@@ -126,15 +122,11 @@ void QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem* self, dou
 }
 
 QRectF* QGraphicsLayoutItem_ContentsRect(const QGraphicsLayoutItem* self) {
-	QRectF _ret = self->contentsRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->contentsRect());
 }
 
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, uintptr_t which) {
-	QSizeF _ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, int which) {
+	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
 void QGraphicsLayoutItem_UpdateGeometry(QGraphicsLayoutItem* self) {
@@ -161,14 +153,12 @@ bool QGraphicsLayoutItem_OwnedByLayout(const QGraphicsLayoutItem* self) {
 	return self->ownedByLayout();
 }
 
-void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy, uintptr_t controlType) {
+void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, int vPolicy, int controlType) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(hPolicy), static_cast<QSizePolicy::Policy>(vPolicy), static_cast<QSizePolicy::ControlType>(controlType));
 }
 
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint) {
-	QSizeF _ret = self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint) {
+	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self) {

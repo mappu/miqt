@@ -50,9 +50,9 @@ void QArrayData_Delete(QArrayData* self) {
 	delete self;
 }
 
-uintptr_t QtPrivate__QContainerImplHelper_Mid(int originalLength, int* position, int* length) {
+int QtPrivate__QContainerImplHelper_Mid(int originalLength, int* position, int* length) {
 	QtPrivate::QContainerImplHelper::CutResult _ret = QtPrivate::QContainerImplHelper::mid(static_cast<int>(originalLength), static_cast<int*>(position), static_cast<int*>(length));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QtPrivate__QContainerImplHelper_Delete(QtPrivate__QContainerImplHelper* self) {

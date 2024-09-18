@@ -13,7 +13,7 @@ import (
 	"unsafe"
 )
 
-type QCborStreamReader__Type int
+type QCborStreamReader__Type byte
 
 const (
 	QCborStreamReader__Type__UnsignedInteger QCborStreamReader__Type = 0
@@ -100,8 +100,7 @@ func (this *QCborStreamReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamReader) Device() *QIODevice {
-	_ret := C.QCborStreamReader_Device(this.h)
-	return newQIODevice_U(unsafe.Pointer(_ret))
+	return newQIODevice_U(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
 }
 
 func (this *QCborStreamReader) AddData(data *QByteArray) {
@@ -138,188 +137,167 @@ func (this *QCborStreamReader) LastError() *QCborError {
 }
 
 func (this *QCborStreamReader) CurrentOffset() int64 {
-	_ret := C.QCborStreamReader_CurrentOffset(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QCborStreamReader_CurrentOffset(this.h))
 }
 
 func (this *QCborStreamReader) IsValid() bool {
-	_ret := C.QCborStreamReader_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsValid(this.h))
 }
 
 func (this *QCborStreamReader) ContainerDepth() int {
-	_ret := C.QCborStreamReader_ContainerDepth(this.h)
-	return (int)(_ret)
+	return (int)(C.QCborStreamReader_ContainerDepth(this.h))
 }
 
 func (this *QCborStreamReader) ParentContainerType() QCborStreamReader__Type {
-	_ret := C.QCborStreamReader_ParentContainerType(this.h)
-	return (QCborStreamReader__Type)(_ret)
+	return (QCborStreamReader__Type)(C.QCborStreamReader_ParentContainerType(this.h))
 }
 
 func (this *QCborStreamReader) HasNext() bool {
-	_ret := C.QCborStreamReader_HasNext(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_HasNext(this.h))
 }
 
 func (this *QCborStreamReader) Next() bool {
-	_ret := C.QCborStreamReader_Next(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_Next(this.h))
 }
 
 func (this *QCborStreamReader) Type() QCborStreamReader__Type {
-	_ret := C.QCborStreamReader_Type(this.h)
-	return (QCborStreamReader__Type)(_ret)
+	return (QCborStreamReader__Type)(C.QCborStreamReader_Type(this.h))
 }
 
 func (this *QCborStreamReader) IsUnsignedInteger() bool {
-	_ret := C.QCborStreamReader_IsUnsignedInteger(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsUnsignedInteger(this.h))
 }
 
 func (this *QCborStreamReader) IsNegativeInteger() bool {
-	_ret := C.QCborStreamReader_IsNegativeInteger(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsNegativeInteger(this.h))
 }
 
 func (this *QCborStreamReader) IsInteger() bool {
-	_ret := C.QCborStreamReader_IsInteger(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsInteger(this.h))
 }
 
 func (this *QCborStreamReader) IsByteArray() bool {
-	_ret := C.QCborStreamReader_IsByteArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsByteArray(this.h))
 }
 
 func (this *QCborStreamReader) IsString() bool {
-	_ret := C.QCborStreamReader_IsString(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsString(this.h))
 }
 
 func (this *QCborStreamReader) IsArray() bool {
-	_ret := C.QCborStreamReader_IsArray(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsArray(this.h))
 }
 
 func (this *QCborStreamReader) IsMap() bool {
-	_ret := C.QCborStreamReader_IsMap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsMap(this.h))
 }
 
 func (this *QCborStreamReader) IsTag() bool {
-	_ret := C.QCborStreamReader_IsTag(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsTag(this.h))
 }
 
 func (this *QCborStreamReader) IsSimpleType() bool {
-	_ret := C.QCborStreamReader_IsSimpleType(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsSimpleType(this.h))
 }
 
 func (this *QCborStreamReader) IsFloat16() bool {
-	_ret := C.QCborStreamReader_IsFloat16(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsFloat16(this.h))
 }
 
 func (this *QCborStreamReader) IsFloat() bool {
-	_ret := C.QCborStreamReader_IsFloat(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsFloat(this.h))
 }
 
 func (this *QCborStreamReader) IsDouble() bool {
-	_ret := C.QCborStreamReader_IsDouble(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsDouble(this.h))
 }
 
 func (this *QCborStreamReader) IsInvalid() bool {
-	_ret := C.QCborStreamReader_IsInvalid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsInvalid(this.h))
+}
+
+func (this *QCborStreamReader) IsSimpleTypeWithSt(st QCborSimpleType) bool {
+	return (bool)(C.QCborStreamReader_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
 }
 
 func (this *QCborStreamReader) IsFalse() bool {
-	_ret := C.QCborStreamReader_IsFalse(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsFalse(this.h))
 }
 
 func (this *QCborStreamReader) IsTrue() bool {
-	_ret := C.QCborStreamReader_IsTrue(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsTrue(this.h))
 }
 
 func (this *QCborStreamReader) IsBool() bool {
-	_ret := C.QCborStreamReader_IsBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsBool(this.h))
 }
 
 func (this *QCborStreamReader) IsNull() bool {
-	_ret := C.QCborStreamReader_IsNull(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsNull(this.h))
 }
 
 func (this *QCborStreamReader) IsUndefined() bool {
-	_ret := C.QCborStreamReader_IsUndefined(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsUndefined(this.h))
 }
 
 func (this *QCborStreamReader) IsLengthKnown() bool {
-	_ret := C.QCborStreamReader_IsLengthKnown(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsLengthKnown(this.h))
 }
 
 func (this *QCborStreamReader) Length() uint64 {
-	_ret := C.QCborStreamReader_Length(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QCborStreamReader_Length(this.h))
 }
 
 func (this *QCborStreamReader) IsContainer() bool {
-	_ret := C.QCborStreamReader_IsContainer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_IsContainer(this.h))
 }
 
 func (this *QCborStreamReader) EnterContainer() bool {
-	_ret := C.QCborStreamReader_EnterContainer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_EnterContainer(this.h))
 }
 
 func (this *QCborStreamReader) LeaveContainer() bool {
-	_ret := C.QCborStreamReader_LeaveContainer(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_LeaveContainer(this.h))
 }
 
 func (this *QCborStreamReader) CurrentStringChunkSize() uint64 {
-	_ret := C.QCborStreamReader_CurrentStringChunkSize(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QCborStreamReader_CurrentStringChunkSize(this.h))
 }
 
 func (this *QCborStreamReader) ToBool() bool {
-	_ret := C.QCborStreamReader_ToBool(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_ToBool(this.h))
+}
+
+func (this *QCborStreamReader) ToTag() QCborTag {
+	return (QCborTag)(C.QCborStreamReader_ToTag(this.h))
 }
 
 func (this *QCborStreamReader) ToUnsignedInteger() uint64 {
-	_ret := C.QCborStreamReader_ToUnsignedInteger(this.h)
-	return (uint64)(_ret)
+	return (uint64)(C.QCborStreamReader_ToUnsignedInteger(this.h))
+}
+
+func (this *QCborStreamReader) ToNegativeInteger() QCborNegativeInteger {
+	return (QCborNegativeInteger)(C.QCborStreamReader_ToNegativeInteger(this.h))
+}
+
+func (this *QCborStreamReader) ToSimpleType() QCborSimpleType {
+	return (QCborSimpleType)(C.QCborStreamReader_ToSimpleType(this.h))
 }
 
 func (this *QCborStreamReader) ToFloat() float32 {
-	_ret := C.QCborStreamReader_ToFloat(this.h)
-	return (float32)(_ret)
+	return (float32)(C.QCborStreamReader_ToFloat(this.h))
 }
 
 func (this *QCborStreamReader) ToDouble() float64 {
-	_ret := C.QCborStreamReader_ToDouble(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QCborStreamReader_ToDouble(this.h))
 }
 
 func (this *QCborStreamReader) ToInteger() int64 {
-	_ret := C.QCborStreamReader_ToInteger(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QCborStreamReader_ToInteger(this.h))
 }
 
 func (this *QCborStreamReader) Next1(maxRecursion int) bool {
-	_ret := C.QCborStreamReader_Next1(this.h, (C.int)(maxRecursion))
-	return (bool)(_ret)
+	return (bool)(C.QCborStreamReader_Next1(this.h, (C.int)(maxRecursion)))
 }
 
 // Delete this object from C++ memory.

@@ -52,8 +52,7 @@ func NewQActionGroup(parent *QObject) *QActionGroup {
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	_ret := C.QActionGroup_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QActionGroup_MetaObject(this.h)))
 }
 
 func QActionGroup_Tr(s string) string {
@@ -75,22 +74,19 @@ func QActionGroup_TrUtf8(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	_ret := C.QActionGroup_AddAction(this.h, a.cPointer())
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddAction(this.h, a.cPointer())))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QActionGroup_AddActionWithText(this.h, (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddActionWithText(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QActionGroup_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -100,37 +96,32 @@ func (this *QActionGroup) RemoveAction(a *QAction) {
 func (this *QActionGroup) Actions() []*QAction {
 	var _ma *C.struct_miqt_array = C.QActionGroup_Actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction(_outCast[i])
+		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	_ret := C.QActionGroup_CheckedAction(this.h)
-	return newQAction_U(unsafe.Pointer(_ret))
+	return newQAction_U(unsafe.Pointer(C.QActionGroup_CheckedAction(this.h)))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
-	_ret := C.QActionGroup_IsExclusive(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QActionGroup_IsExclusive(this.h))
 }
 
 func (this *QActionGroup) IsEnabled() bool {
-	_ret := C.QActionGroup_IsEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QActionGroup_IsEnabled(this.h))
 }
 
 func (this *QActionGroup) IsVisible() bool {
-	_ret := C.QActionGroup_IsVisible(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QActionGroup_IsVisible(this.h))
 }
 
 func (this *QActionGroup) ExclusionPolicy() QActionGroup__ExclusionPolicy {
-	_ret := C.QActionGroup_ExclusionPolicy(this.h)
-	return (QActionGroup__ExclusionPolicy)(_ret)
+	return (QActionGroup__ExclusionPolicy)(C.QActionGroup_ExclusionPolicy(this.h))
 }
 
 func (this *QActionGroup) SetEnabled(enabled bool) {
@@ -150,7 +141,7 @@ func (this *QActionGroup) SetExclusive(exclusive bool) {
 }
 
 func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolicy) {
-	C.QActionGroup_SetExclusionPolicy(this.h, (C.uintptr_t)(policy))
+	C.QActionGroup_SetExclusionPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QActionGroup) Triggered(param1 *QAction) {
@@ -168,8 +159,7 @@ func miqt_exec_callback_QActionGroup_Triggered(cb *C.void, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -189,8 +179,7 @@ func miqt_exec_callback_QActionGroup_Hovered(cb *C.void, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQAction_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQAction_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

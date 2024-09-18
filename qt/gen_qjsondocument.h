@@ -48,7 +48,7 @@ QJsonDocument* QJsonDocument_FromVariant(QVariant* variant);
 QVariant* QJsonDocument_ToVariant(const QJsonDocument* self);
 QJsonDocument* QJsonDocument_FromJson(QByteArray* json);
 QByteArray* QJsonDocument_ToJson(const QJsonDocument* self);
-QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, uintptr_t format);
+QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, int format);
 bool QJsonDocument_IsEmpty(const QJsonDocument* self);
 bool QJsonDocument_IsArray(const QJsonDocument* self);
 bool QJsonDocument_IsObject(const QJsonDocument* self);
@@ -61,8 +61,8 @@ QJsonValue* QJsonDocument_OperatorSubscriptWithInt(const QJsonDocument* self, in
 bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_OperatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_IsNull(const QJsonDocument* self);
-QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, uintptr_t validation);
-QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, uintptr_t validation);
+QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, int validation);
+QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, int validation);
 QJsonDocument* QJsonDocument_FromJson2(QByteArray* json, QJsonParseError* error);
 void QJsonDocument_Delete(QJsonDocument* self);
 

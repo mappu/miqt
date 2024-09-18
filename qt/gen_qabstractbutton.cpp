@@ -46,15 +46,11 @@ void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
 }
 
 QIcon* QAbstractButton_Icon(const QAbstractButton* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 QSize* QAbstractButton_IconSize(const QAbstractButton* self) {
-	QSize _ret = self->iconSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->iconSize());
 }
 
 void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
@@ -62,9 +58,7 @@ void QAbstractButton_SetShortcut(QAbstractButton* self, QKeySequence* key) {
 }
 
 QKeySequence* QAbstractButton_Shortcut(const QAbstractButton* self) {
-	QKeySequence _ret = self->shortcut();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->shortcut());
 }
 
 void QAbstractButton_SetCheckable(QAbstractButton* self, bool checkable) {

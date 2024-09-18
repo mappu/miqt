@@ -50,8 +50,7 @@ func NewQTextBrowser2(parent *QWidget) *QTextBrowser {
 }
 
 func (this *QTextBrowser) MetaObject() *QMetaObject {
-	_ret := C.QTextBrowser_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTextBrowser_MetaObject(this.h)))
 }
 
 func QTextBrowser_Tr(s string) string {
@@ -80,8 +79,7 @@ func (this *QTextBrowser) Source() *QUrl {
 }
 
 func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
-	_ret := C.QTextBrowser_SourceType(this.h)
-	return (QTextDocument__ResourceType)(_ret)
+	return (QTextDocument__ResourceType)(C.QTextBrowser_SourceType(this.h))
 }
 
 func (this *QTextBrowser) SearchPaths() []string {
@@ -89,21 +87,23 @@ func (this *QTextBrowser) SearchPaths() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		single_ms := miqt_strdupg(paths[i])
-		defer C.free(single_ms)
-		paths_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		paths_i_ms := miqt_strdupg(paths[i])
+		defer C.free(paths_i_ms)
+		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
 	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
@@ -118,13 +118,11 @@ func (this *QTextBrowser) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextBrowser) IsBackwardAvailable() bool {
-	_ret := C.QTextBrowser_IsBackwardAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBrowser_IsBackwardAvailable(this.h))
 }
 
 func (this *QTextBrowser) IsForwardAvailable() bool {
-	_ret := C.QTextBrowser_IsForwardAvailable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBrowser_IsForwardAvailable(this.h))
 }
 
 func (this *QTextBrowser) ClearHistory() {
@@ -146,18 +144,15 @@ func (this *QTextBrowser) HistoryUrl(param1 int) *QUrl {
 }
 
 func (this *QTextBrowser) BackwardHistoryCount() int {
-	_ret := C.QTextBrowser_BackwardHistoryCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBrowser_BackwardHistoryCount(this.h))
 }
 
 func (this *QTextBrowser) ForwardHistoryCount() int {
-	_ret := C.QTextBrowser_ForwardHistoryCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QTextBrowser_ForwardHistoryCount(this.h))
 }
 
 func (this *QTextBrowser) OpenExternalLinks() bool {
-	_ret := C.QTextBrowser_OpenExternalLinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBrowser_OpenExternalLinks(this.h))
 }
 
 func (this *QTextBrowser) SetOpenExternalLinks(open bool) {
@@ -165,8 +160,7 @@ func (this *QTextBrowser) SetOpenExternalLinks(open bool) {
 }
 
 func (this *QTextBrowser) OpenLinks() bool {
-	_ret := C.QTextBrowser_OpenLinks(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTextBrowser_OpenLinks(this.h))
 }
 
 func (this *QTextBrowser) SetOpenLinks(open bool) {
@@ -178,7 +172,7 @@ func (this *QTextBrowser) SetSource(name *QUrl) {
 }
 
 func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
-	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.uintptr_t)(typeVal))
+	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.int)(typeVal))
 }
 
 func (this *QTextBrowser) Backward() {
@@ -212,8 +206,7 @@ func miqt_exec_callback_QTextBrowser_BackwardAvailable(cb *C.void, param1 C.bool
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -233,8 +226,7 @@ func miqt_exec_callback_QTextBrowser_ForwardAvailable(cb *C.void, param1 C.bool)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := (bool)(param1_ret)
+	slotval1 := (bool)(param1)
 
 	gofunc(slotval1)
 }
@@ -271,8 +263,7 @@ func miqt_exec_callback_QTextBrowser_SourceChanged(cb *C.void, param1 *C.QUrl) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQUrl_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQUrl_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -292,8 +283,7 @@ func miqt_exec_callback_QTextBrowser_Highlighted(cb *C.void, param1 *C.QUrl) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQUrl_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQUrl_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -338,8 +328,7 @@ func miqt_exec_callback_QTextBrowser_AnchorClicked(cb *C.void, param1 *C.QUrl) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQUrl_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQUrl_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

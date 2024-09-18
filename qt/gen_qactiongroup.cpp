@@ -52,7 +52,7 @@ void QActionGroup_RemoveAction(QActionGroup* self, QAction* a) {
 }
 
 struct miqt_array* QActionGroup_Actions(const QActionGroup* self) {
-	QList<QAction*> _ret = self->actions();
+	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -80,9 +80,9 @@ bool QActionGroup_IsVisible(const QActionGroup* self) {
 	return self->isVisible();
 }
 
-uintptr_t QActionGroup_ExclusionPolicy(const QActionGroup* self) {
+int QActionGroup_ExclusionPolicy(const QActionGroup* self) {
 	QActionGroup::ExclusionPolicy _ret = self->exclusionPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QActionGroup_SetEnabled(QActionGroup* self, bool enabled) {
@@ -101,7 +101,7 @@ void QActionGroup_SetExclusive(QActionGroup* self, bool exclusive) {
 	self->setExclusive(exclusive);
 }
 
-void QActionGroup_SetExclusionPolicy(QActionGroup* self, uintptr_t policy) {
+void QActionGroup_SetExclusionPolicy(QActionGroup* self, int policy) {
 	self->setExclusionPolicy(static_cast<QActionGroup::ExclusionPolicy>(policy));
 }
 

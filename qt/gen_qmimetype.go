@@ -56,23 +56,19 @@ func (this *QMimeType) Swap(other *QMimeType) {
 }
 
 func (this *QMimeType) OperatorEqual(other *QMimeType) bool {
-	_ret := C.QMimeType_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMimeType_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) OperatorNotEqual(other *QMimeType) bool {
-	_ret := C.QMimeType_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QMimeType_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) IsValid() bool {
-	_ret := C.QMimeType_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeType_IsValid(this.h))
 }
 
 func (this *QMimeType) IsDefault() bool {
-	_ret := C.QMimeType_IsDefault(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMimeType_IsDefault(this.h))
 }
 
 func (this *QMimeType) Name() string {
@@ -108,8 +104,10 @@ func (this *QMimeType) GlobPatterns() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -120,8 +118,10 @@ func (this *QMimeType) ParentMimeTypes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -132,8 +132,10 @@ func (this *QMimeType) AllAncestors() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -144,8 +146,10 @@ func (this *QMimeType) Aliases() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -156,8 +160,10 @@ func (this *QMimeType) Suffixes() []string {
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = C.GoStringN(&_outCast[i].data, C.int(int64(_outCast[i].len)))
-		C.free(unsafe.Pointer(_outCast[i])) // free the inner miqt_string*
+		var _lv_ms *C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -173,8 +179,7 @@ func (this *QMimeType) PreferredSuffix() string {
 func (this *QMimeType) Inherits(mimeTypeName string) bool {
 	mimeTypeName_ms := miqt_strdupg(mimeTypeName)
 	defer C.free(mimeTypeName_ms)
-	_ret := C.QMimeType_Inherits(this.h, (*C.struct_miqt_string)(mimeTypeName_ms))
-	return (bool)(_ret)
+	return (bool)(C.QMimeType_Inherits(this.h, (*C.struct_miqt_string)(mimeTypeName_ms)))
 }
 
 func (this *QMimeType) FilterString() string {

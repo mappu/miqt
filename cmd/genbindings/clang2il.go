@@ -94,9 +94,12 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			if err != nil {
 				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
 			}
-			if len(en.Entries) > 0 { // e.g. qmetatype's version of QCborSimpleType (the real one is in qcborcommon)
-				ret.Enums = append(ret.Enums, en)
-			}
+
+			// n.b. In some cases we may produce multiple "copies" of an enum
+			// (e.g. qcborcommon and qmetatype both define QCborSimpleType)
+			// Allow, but use a transform pass to avoid multiple definitions of
+			// it
+			ret.Enums = append(ret.Enums, en)
 
 		case "VarDecl":
 			// TODO e.g. qmath.h
@@ -480,8 +483,16 @@ var (
 
 func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
 	var ret CppEnum
-	ret.UnderlyingType = "int" // FIXME
 
+	// Underlying type
+	ret.UnderlyingType = parseSingleTypeString("int")
+	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
+		if nodequal, ok := nodefut["qualType"].(string); ok {
+			ret.UnderlyingType = parseSingleTypeString(nodequal)
+		}
+	}
+
+	// Name
 	nodename, ok := node["name"].(string)
 	if !ok {
 		// An unnamed enum is possible (e.g. qcalendar.h)
@@ -492,6 +503,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 		ret.EnumName = addNamePrefix + nodename
 	}
 
+	// Entries
 	inner, ok := node["inner"].([]interface{})
 	if !ok {
 		// An enum with no entries? We're done
@@ -565,7 +577,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 
 		var err error
 		if cee.EntryValue == "true" || cee.EntryValue == "false" {
-			ret.UnderlyingType = "bool"
+			ret.UnderlyingType = parseSingleTypeString("bool")
 
 		} else {
 			lastImplicitValue, err = strconv.ParseInt(cee.EntryValue, 10, 64)

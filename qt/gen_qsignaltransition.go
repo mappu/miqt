@@ -65,8 +65,7 @@ func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) 
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
-	_ret := C.QSignalTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSignalTransition_MetaObject(this.h)))
 }
 
 func QSignalTransition_Tr(s string) string {
@@ -88,8 +87,7 @@ func QSignalTransition_TrUtf8(s string) string {
 }
 
 func (this *QSignalTransition) SenderObject() *QObject {
-	_ret := C.QSignalTransition_SenderObject(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QSignalTransition_SenderObject(this.h)))
 }
 
 func (this *QSignalTransition) SetSenderObject(sender *QObject) {

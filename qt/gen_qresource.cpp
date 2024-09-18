@@ -48,42 +48,39 @@ void QResource_SetLocale(QResource* self, QLocale* locale) {
 }
 
 QLocale* QResource_Locale(const QResource* self) {
-	QLocale _ret = self->locale();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QLocale*>(new QLocale(_ret));
+	return new QLocale(self->locale());
 }
 
 bool QResource_IsValid(const QResource* self) {
 	return self->isValid();
 }
 
-uintptr_t QResource_CompressionAlgorithm(const QResource* self) {
+int QResource_CompressionAlgorithm(const QResource* self) {
 	QResource::Compression _ret = self->compressionAlgorithm();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 long long QResource_Size(const QResource* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 const unsigned char* QResource_Data(const QResource* self) {
-	return (const unsigned char*) self->data();
+	const uchar* _ret = self->data();
+	return static_cast<const unsigned char*>(_ret);
 }
 
 long long QResource_UncompressedSize(const QResource* self) {
-	return self->uncompressedSize();
+	qint64 _ret = self->uncompressedSize();
+	return static_cast<long long>(_ret);
 }
 
 QByteArray* QResource_UncompressedData(const QResource* self) {
-	QByteArray _ret = self->uncompressedData();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->uncompressedData());
 }
 
 QDateTime* QResource_LastModified(const QResource* self) {
-	QDateTime _ret = self->lastModified();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->lastModified());
 }
 
 void QResource_AddSearchPath(struct miqt_string* path) {
@@ -93,7 +90,7 @@ void QResource_AddSearchPath(struct miqt_string* path) {
 
 struct miqt_array* QResource_SearchPaths() {
 	QStringList _ret = QResource::searchPaths();
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

@@ -25,7 +25,7 @@ QShortcut* QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member
 	return new QShortcut(*key, parent, member, ambiguousMember);
 }
 
-QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, uintptr_t shortcutContext) {
+QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext) {
 	return new QShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(shortcutContext));
 }
 
@@ -52,9 +52,7 @@ void QShortcut_SetKey(QShortcut* self, QKeySequence* key) {
 }
 
 QKeySequence* QShortcut_Key(const QShortcut* self) {
-	QKeySequence _ret = self->key();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->key());
 }
 
 void QShortcut_SetEnabled(QShortcut* self, bool enable) {
@@ -65,13 +63,13 @@ bool QShortcut_IsEnabled(const QShortcut* self) {
 	return self->isEnabled();
 }
 
-void QShortcut_SetContext(QShortcut* self, uintptr_t context) {
+void QShortcut_SetContext(QShortcut* self, int context) {
 	self->setContext(static_cast<Qt::ShortcutContext>(context));
 }
 
-uintptr_t QShortcut_Context(const QShortcut* self) {
+int QShortcut_Context(const QShortcut* self) {
 	Qt::ShortcutContext _ret = self->context();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QShortcut_SetWhatsThis(QShortcut* self, struct miqt_string* text) {

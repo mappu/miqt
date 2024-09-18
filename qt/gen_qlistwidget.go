@@ -116,13 +116,11 @@ func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeV
 }
 
 func (this *QListWidgetItem) Clone() *QListWidgetItem {
-	_ret := C.QListWidgetItem_Clone(this.h)
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidgetItem_Clone(this.h)))
 }
 
 func (this *QListWidgetItem) ListWidget() *QListWidget {
-	_ret := C.QListWidgetItem_ListWidget(this.h)
-	return newQListWidget_U(unsafe.Pointer(_ret))
+	return newQListWidget_U(unsafe.Pointer(C.QListWidgetItem_ListWidget(this.h)))
 }
 
 func (this *QListWidgetItem) SetSelected(selectVal bool) {
@@ -130,8 +128,7 @@ func (this *QListWidgetItem) SetSelected(selectVal bool) {
 }
 
 func (this *QListWidgetItem) IsSelected() bool {
-	_ret := C.QListWidgetItem_IsSelected(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListWidgetItem_IsSelected(this.h))
 }
 
 func (this *QListWidgetItem) SetHidden(hide bool) {
@@ -139,13 +136,11 @@ func (this *QListWidgetItem) SetHidden(hide bool) {
 }
 
 func (this *QListWidgetItem) IsHidden() bool {
-	_ret := C.QListWidgetItem_IsHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListWidgetItem_IsHidden(this.h))
 }
 
 func (this *QListWidgetItem) Flags() int {
-	_ret := C.QListWidgetItem_Flags(this.h)
-	return (int)(_ret)
+	return (int)(C.QListWidgetItem_Flags(this.h))
 }
 
 func (this *QListWidgetItem) SetFlags(flags int) {
@@ -227,8 +222,7 @@ func (this *QListWidgetItem) SetFont(font *QFont) {
 }
 
 func (this *QListWidgetItem) TextAlignment() int {
-	_ret := C.QListWidgetItem_TextAlignment(this.h)
-	return (int)(_ret)
+	return (int)(C.QListWidgetItem_TextAlignment(this.h))
 }
 
 func (this *QListWidgetItem) SetTextAlignment(alignment int) {
@@ -280,12 +274,11 @@ func (this *QListWidgetItem) SetForeground(brush *QBrush) {
 }
 
 func (this *QListWidgetItem) CheckState() CheckState {
-	_ret := C.QListWidgetItem_CheckState(this.h)
-	return (CheckState)(_ret)
+	return (CheckState)(C.QListWidgetItem_CheckState(this.h))
 }
 
 func (this *QListWidgetItem) SetCheckState(state CheckState) {
-	C.QListWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
+	C.QListWidgetItem_SetCheckState(this.h, (C.int)(state))
 }
 
 func (this *QListWidgetItem) SizeHint() *QSize {
@@ -311,8 +304,7 @@ func (this *QListWidgetItem) SetData(role int, value *QVariant) {
 }
 
 func (this *QListWidgetItem) OperatorLesser(other *QListWidgetItem) bool {
-	_ret := C.QListWidgetItem_OperatorLesser(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QListWidgetItem_OperatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QListWidgetItem) Read(in *QDataStream) {
@@ -328,8 +320,7 @@ func (this *QListWidgetItem) OperatorAssign(other *QListWidgetItem) {
 }
 
 func (this *QListWidgetItem) Type() int {
-	_ret := C.QListWidgetItem_Type(this.h)
-	return (int)(_ret)
+	return (int)(C.QListWidgetItem_Type(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -382,8 +373,7 @@ func NewQListWidget2(parent *QWidget) *QListWidget {
 }
 
 func (this *QListWidget) MetaObject() *QMetaObject {
-	_ret := C.QListWidget_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QListWidget_MetaObject(this.h)))
 }
 
 func QListWidget_Tr(s string) string {
@@ -409,13 +399,11 @@ func (this *QListWidget) SetSelectionModel(selectionModel *QItemSelectionModel) 
 }
 
 func (this *QListWidget) Item(row int) *QListWidgetItem {
-	_ret := C.QListWidget_Item(this.h, (C.int)(row))
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_Item(this.h, (C.int)(row))))
 }
 
 func (this *QListWidget) Row(item *QListWidgetItem) int {
-	_ret := C.QListWidget_Row(this.h, item.cPointer())
-	return (int)(_ret)
+	return (int)(C.QListWidget_Row(this.h, item.cPointer()))
 }
 
 func (this *QListWidget) InsertItem(row int, item *QListWidgetItem) {
@@ -429,13 +417,13 @@ func (this *QListWidget) InsertItem2(row int, label string) {
 }
 
 func (this *QListWidget) InsertItems(row int, labels []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		single_ms := miqt_strdupg(labels[i])
-		defer C.free(single_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		labels_i_ms := miqt_strdupg(labels[i])
+		defer C.free(labels_i_ms)
+		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -453,13 +441,13 @@ func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) AddItems(labels []string) {
-	// For the C ABI, malloc two C arrays; raw char* pointers and their lengths
+	// For the C ABI, malloc a C array of raw pointers
 	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		single_ms := miqt_strdupg(labels[i])
-		defer C.free(single_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(single_ms)
+		labels_i_ms := miqt_strdupg(labels[i])
+		defer C.free(labels_i_ms)
+		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -467,18 +455,15 @@ func (this *QListWidget) AddItems(labels []string) {
 }
 
 func (this *QListWidget) TakeItem(row int) *QListWidgetItem {
-	_ret := C.QListWidget_TakeItem(this.h, (C.int)(row))
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_TakeItem(this.h, (C.int)(row))))
 }
 
 func (this *QListWidget) Count() int {
-	_ret := C.QListWidget_Count(this.h)
-	return (int)(_ret)
+	return (int)(C.QListWidget_Count(this.h))
 }
 
 func (this *QListWidget) CurrentItem() *QListWidgetItem {
-	_ret := C.QListWidget_CurrentItem(this.h)
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_CurrentItem(this.h)))
 }
 
 func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
@@ -490,8 +475,7 @@ func (this *QListWidget) SetCurrentItem2(item *QListWidgetItem, command int) {
 }
 
 func (this *QListWidget) CurrentRow() int {
-	_ret := C.QListWidget_CurrentRow(this.h)
-	return (int)(_ret)
+	return (int)(C.QListWidget_CurrentRow(this.h))
 }
 
 func (this *QListWidget) SetCurrentRow(row int) {
@@ -503,13 +487,11 @@ func (this *QListWidget) SetCurrentRow2(row int, command int) {
 }
 
 func (this *QListWidget) ItemAt(p *QPoint) *QListWidgetItem {
-	_ret := C.QListWidget_ItemAt(this.h, p.cPointer())
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_ItemAt(this.h, p.cPointer())))
 }
 
 func (this *QListWidget) ItemAt2(x int, y int) *QListWidgetItem {
-	_ret := C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))
-	return newQListWidgetItem_U(unsafe.Pointer(_ret))
+	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QListWidget) VisualItemRect(item *QListWidgetItem) *QRect {
@@ -528,8 +510,7 @@ func (this *QListWidget) SetSortingEnabled(enable bool) {
 }
 
 func (this *QListWidget) IsSortingEnabled() bool {
-	_ret := C.QListWidget_IsSortingEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QListWidget_IsSortingEnabled(this.h))
 }
 
 func (this *QListWidget) EditItem(item *QListWidgetItem) {
@@ -545,13 +526,11 @@ func (this *QListWidget) ClosePersistentEditor(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) IsPersistentEditorOpen(item *QListWidgetItem) bool {
-	_ret := C.QListWidget_IsPersistentEditorOpen(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QListWidget_IsPersistentEditorOpen(this.h, item.cPointer()))
 }
 
 func (this *QListWidget) ItemWidget(item *QListWidgetItem) *QWidget {
-	_ret := C.QListWidget_ItemWidget(this.h, item.cPointer())
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QListWidget_ItemWidget(this.h, item.cPointer())))
 }
 
 func (this *QListWidget) SetItemWidget(item *QListWidgetItem, widget *QWidget) {
@@ -563,8 +542,7 @@ func (this *QListWidget) RemoveItemWidget(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) IsItemSelected(item *QListWidgetItem) bool {
-	_ret := C.QListWidget_IsItemSelected(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QListWidget_IsItemSelected(this.h, item.cPointer()))
 }
 
 func (this *QListWidget) SetItemSelected(item *QListWidgetItem, selectVal bool) {
@@ -574,9 +552,9 @@ func (this *QListWidget) SetItemSelected(item *QListWidgetItem, selectVal bool) 
 func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 	var _ma *C.struct_miqt_array = C.QListWidget_SelectedItems(this.h)
 	_ret := make([]*QListWidgetItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQListWidgetItem(_outCast[i])
+		_ret[i] = newQListWidgetItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -587,17 +565,16 @@ func (this *QListWidget) FindItems(text string, flags int) []*QListWidgetItem {
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
 	_ret := make([]*QListWidgetItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQListWidgetItem(_outCast[i])
+		_ret[i] = newQListWidgetItem_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QListWidget) IsItemHidden(item *QListWidgetItem) bool {
-	_ret := C.QListWidget_IsItemHidden(this.h, item.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QListWidget_IsItemHidden(this.h, item.cPointer()))
 }
 
 func (this *QListWidget) SetItemHidden(item *QListWidgetItem, hide bool) {
@@ -631,8 +608,7 @@ func miqt_exec_callback_QListWidget_ItemPressed(cb *C.void, item *C.QListWidgetI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -652,8 +628,7 @@ func miqt_exec_callback_QListWidget_ItemClicked(cb *C.void, item *C.QListWidgetI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -673,8 +648,7 @@ func miqt_exec_callback_QListWidget_ItemDoubleClicked(cb *C.void, item *C.QListW
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -694,8 +668,7 @@ func miqt_exec_callback_QListWidget_ItemActivated(cb *C.void, item *C.QListWidge
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -715,8 +688,7 @@ func miqt_exec_callback_QListWidget_ItemEntered(cb *C.void, item *C.QListWidgetI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -736,8 +708,7 @@ func miqt_exec_callback_QListWidget_ItemChanged(cb *C.void, item *C.QListWidgetI
 	}
 
 	// Convert all CABI parameters to Go parameters
-	item_ret := item
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -757,10 +728,8 @@ func miqt_exec_callback_QListWidget_CurrentItemChanged(cb *C.void, current *C.QL
 	}
 
 	// Convert all CABI parameters to Go parameters
-	current_ret := current
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(current_ret))
-	previous_ret := previous
-	slotval2 := newQListWidgetItem_U(unsafe.Pointer(previous_ret))
+	slotval1 := newQListWidgetItem_U(unsafe.Pointer(current))
+	slotval2 := newQListWidgetItem_U(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -805,8 +774,7 @@ func miqt_exec_callback_QListWidget_CurrentRowChanged(cb *C.void, currentRow C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	currentRow_ret := currentRow
-	slotval1 := (int)(currentRow_ret)
+	slotval1 := (int)(currentRow)
 
 	gofunc(slotval1)
 }
@@ -873,11 +841,11 @@ func QListWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QListWidget) SortItems1(order SortOrder) {
-	C.QListWidget_SortItems1(this.h, (C.uintptr_t)(order))
+	C.QListWidget_SortItems1(this.h, (C.int)(order))
 }
 
 func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint QAbstractItemView__ScrollHint) {
-	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
+	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

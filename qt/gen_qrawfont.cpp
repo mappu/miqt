@@ -32,12 +32,12 @@ QRawFont* QRawFont_new4(QRawFont* other) {
 	return new QRawFont(*other);
 }
 
-QRawFont* QRawFont_new5(struct miqt_string* fileName, double pixelSize, uintptr_t hintingPreference) {
+QRawFont* QRawFont_new5(struct miqt_string* fileName, double pixelSize, int hintingPreference) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-QRawFont* QRawFont_new6(QByteArray* fontData, double pixelSize, uintptr_t hintingPreference) {
+QRawFont* QRawFont_new6(QByteArray* fontData, double pixelSize, int hintingPreference) {
 	return new QRawFont(*fontData, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
@@ -75,9 +75,9 @@ struct miqt_string* QRawFont_StyleName(const QRawFont* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QRawFont_Style(const QRawFont* self) {
+int QRawFont_Style(const QRawFont* self) {
 	QFont::Style _ret = self->style();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QRawFont_Weight(const QRawFont* self) {
@@ -86,7 +86,7 @@ int QRawFont_Weight(const QRawFont* self) {
 
 struct miqt_array* QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QVector<unsigned int> _ret = self->glyphIndexesForString(text_QString);
+	QVector<quint32> _ret = self->glyphIndexesForString(text_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -103,11 +103,11 @@ struct miqt_array* QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
+		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
 	QVector<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList);
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
@@ -122,11 +122,11 @@ struct miqt_array* QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struc
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
-		glyphIndexes_QList.push_back(glyphIndexes_arr[i]);
+		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
 	QVector<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList, static_cast<QRawFont::LayoutFlags>(layoutFlags));
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
@@ -149,21 +149,15 @@ bool QRawFont_AdvancesForGlyphIndexes4(const QRawFont* self, const unsigned int*
 }
 
 QImage* QRawFont_AlphaMapForGlyph(const QRawFont* self, unsigned int glyphIndex) {
-	QImage _ret = self->alphaMapForGlyph(static_cast<quint32>(glyphIndex));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->alphaMapForGlyph(static_cast<quint32>(glyphIndex)));
 }
 
 QPainterPath* QRawFont_PathForGlyph(const QRawFont* self, unsigned int glyphIndex) {
-	QPainterPath _ret = self->pathForGlyph(static_cast<quint32>(glyphIndex));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPainterPath*>(new QPainterPath(_ret));
+	return new QPainterPath(self->pathForGlyph(static_cast<quint32>(glyphIndex)));
 }
 
 QRectF* QRawFont_BoundingRect(const QRawFont* self, unsigned int glyphIndex) {
-	QRectF _ret = self->boundingRect(static_cast<quint32>(glyphIndex));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRectF*>(new QRectF(_ret));
+	return new QRectF(self->boundingRect(static_cast<quint32>(glyphIndex)));
 }
 
 void QRawFont_SetPixelSize(QRawFont* self, double pixelSize) {
@@ -171,60 +165,71 @@ void QRawFont_SetPixelSize(QRawFont* self, double pixelSize) {
 }
 
 double QRawFont_PixelSize(const QRawFont* self) {
-	return self->pixelSize();
+	qreal _ret = self->pixelSize();
+	return static_cast<double>(_ret);
 }
 
-uintptr_t QRawFont_HintingPreference(const QRawFont* self) {
+int QRawFont_HintingPreference(const QRawFont* self) {
 	QFont::HintingPreference _ret = self->hintingPreference();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QRawFont_Ascent(const QRawFont* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_CapHeight(const QRawFont* self) {
-	return self->capHeight();
+	qreal _ret = self->capHeight();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_Descent(const QRawFont* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_Leading(const QRawFont* self) {
-	return self->leading();
+	qreal _ret = self->leading();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_XHeight(const QRawFont* self) {
-	return self->xHeight();
+	qreal _ret = self->xHeight();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_AverageCharWidth(const QRawFont* self) {
-	return self->averageCharWidth();
+	qreal _ret = self->averageCharWidth();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_MaxCharWidth(const QRawFont* self) {
-	return self->maxCharWidth();
+	qreal _ret = self->maxCharWidth();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_LineThickness(const QRawFont* self) {
-	return self->lineThickness();
+	qreal _ret = self->lineThickness();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_UnderlinePosition(const QRawFont* self) {
-	return self->underlinePosition();
+	qreal _ret = self->underlinePosition();
+	return static_cast<double>(_ret);
 }
 
 double QRawFont_UnitsPerEm(const QRawFont* self) {
-	return self->unitsPerEm();
+	qreal _ret = self->unitsPerEm();
+	return static_cast<double>(_ret);
 }
 
-void QRawFont_LoadFromFile(QRawFont* self, struct miqt_string* fileName, double pixelSize, uintptr_t hintingPreference) {
+void QRawFont_LoadFromFile(QRawFont* self, struct miqt_string* fileName, double pixelSize, int hintingPreference) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	self->loadFromFile(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-void QRawFont_LoadFromData(QRawFont* self, QByteArray* fontData, double pixelSize, uintptr_t hintingPreference) {
+void QRawFont_LoadFromData(QRawFont* self, QByteArray* fontData, double pixelSize, int hintingPreference) {
 	self->loadFromData(*fontData, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
@@ -239,9 +244,10 @@ bool QRawFont_SupportsCharacterWithCharacter(const QRawFont* self, QChar* charac
 struct miqt_array* QRawFont_SupportedWritingSystems(const QRawFont* self) {
 	QList<QFontDatabase::WritingSystem> _ret = self->supportedWritingSystems();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	uintptr_t* _arr = static_cast<uintptr_t*>(malloc(sizeof(uintptr_t) * _ret.length()));
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = _ret[i];
+		QFontDatabase::WritingSystem _lv_ret = _ret[i];
+		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -250,33 +256,23 @@ struct miqt_array* QRawFont_SupportedWritingSystems(const QRawFont* self) {
 }
 
 QByteArray* QRawFont_FontTable(const QRawFont* self, const char* tagName) {
-	QByteArray _ret = self->fontTable(tagName);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->fontTable(tagName));
 }
 
 QRawFont* QRawFont_FromFont(QFont* font) {
-	QRawFont _ret = QRawFont::fromFont(*font);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRawFont*>(new QRawFont(_ret));
+	return new QRawFont(QRawFont::fromFont(*font));
 }
 
-QImage* QRawFont_AlphaMapForGlyph2(const QRawFont* self, unsigned int glyphIndex, uintptr_t antialiasingType) {
-	QImage _ret = self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+QImage* QRawFont_AlphaMapForGlyph2(const QRawFont* self, unsigned int glyphIndex, int antialiasingType) {
+	return new QImage(self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType)));
 }
 
-QImage* QRawFont_AlphaMapForGlyph3(const QRawFont* self, unsigned int glyphIndex, uintptr_t antialiasingType, QTransform* transform) {
-	QImage _ret = self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType), *transform);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+QImage* QRawFont_AlphaMapForGlyph3(const QRawFont* self, unsigned int glyphIndex, int antialiasingType, QTransform* transform) {
+	return new QImage(self->alphaMapForGlyph(static_cast<quint32>(glyphIndex), static_cast<QRawFont::AntialiasingType>(antialiasingType), *transform));
 }
 
-QRawFont* QRawFont_FromFont2(QFont* font, uintptr_t writingSystem) {
-	QRawFont _ret = QRawFont::fromFont(*font, static_cast<QFontDatabase::WritingSystem>(writingSystem));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRawFont*>(new QRawFont(_ret));
+QRawFont* QRawFont_FromFont2(QFont* font, int writingSystem) {
+	return new QRawFont(QRawFont::fromFont(*font, static_cast<QFontDatabase::WritingSystem>(writingSystem)));
 }
 
 void QRawFont_Delete(QRawFont* self) {

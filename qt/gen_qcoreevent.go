@@ -214,7 +214,7 @@ func newQEvent_U(h unsafe.Pointer) *QEvent {
 
 // NewQEvent constructs a new QEvent object.
 func NewQEvent(typeVal QEvent__Type) *QEvent {
-	ret := C.QEvent_new((C.uintptr_t)(typeVal))
+	ret := C.QEvent_new((C.int)(typeVal))
 	return newQEvent(ret)
 }
 
@@ -229,13 +229,11 @@ func (this *QEvent) OperatorAssign(other *QEvent) {
 }
 
 func (this *QEvent) Type() QEvent__Type {
-	_ret := C.QEvent_Type(this.h)
-	return (QEvent__Type)(_ret)
+	return (QEvent__Type)(C.QEvent_Type(this.h))
 }
 
 func (this *QEvent) Spontaneous() bool {
-	_ret := C.QEvent_Spontaneous(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QEvent_Spontaneous(this.h))
 }
 
 func (this *QEvent) SetAccepted(accepted bool) {
@@ -243,8 +241,7 @@ func (this *QEvent) SetAccepted(accepted bool) {
 }
 
 func (this *QEvent) IsAccepted() bool {
-	_ret := C.QEvent_IsAccepted(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QEvent_IsAccepted(this.h))
 }
 
 func (this *QEvent) Accept() {
@@ -256,13 +253,11 @@ func (this *QEvent) Ignore() {
 }
 
 func QEvent_RegisterEventType() int {
-	_ret := C.QEvent_RegisterEventType()
-	return (int)(_ret)
+	return (int)(C.QEvent_RegisterEventType())
 }
 
 func QEvent_RegisterEventType1(hint int) int {
-	_ret := C.QEvent_RegisterEventType1((C.int)(hint))
-	return (int)(_ret)
+	return (int)(C.QEvent_RegisterEventType1((C.int)(hint)))
 }
 
 // Delete this object from C++ memory.
@@ -315,8 +310,7 @@ func NewQTimerEvent2(param1 *QTimerEvent) *QTimerEvent {
 }
 
 func (this *QTimerEvent) TimerId() int {
-	_ret := C.QTimerEvent_TimerId(this.h)
-	return (int)(_ret)
+	return (int)(C.QTimerEvent_TimerId(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -358,7 +352,7 @@ func newQChildEvent_U(h unsafe.Pointer) *QChildEvent {
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
-	ret := C.QChildEvent_new((C.uintptr_t)(typeVal), child.cPointer())
+	ret := C.QChildEvent_new((C.int)(typeVal), child.cPointer())
 	return newQChildEvent(ret)
 }
 
@@ -369,23 +363,19 @@ func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
 }
 
 func (this *QChildEvent) Child() *QObject {
-	_ret := C.QChildEvent_Child(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QChildEvent_Child(this.h)))
 }
 
 func (this *QChildEvent) Added() bool {
-	_ret := C.QChildEvent_Added(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QChildEvent_Added(this.h))
 }
 
 func (this *QChildEvent) Polished() bool {
-	_ret := C.QChildEvent_Polished(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QChildEvent_Polished(this.h))
 }
 
 func (this *QChildEvent) Removed() bool {
-	_ret := C.QChildEvent_Removed(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QChildEvent_Removed(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -494,8 +484,7 @@ func NewQDeferredDeleteEvent2(param1 *QDeferredDeleteEvent) *QDeferredDeleteEven
 }
 
 func (this *QDeferredDeleteEvent) LoopLevel() int {
-	_ret := C.QDeferredDeleteEvent_LoopLevel(this.h)
-	return (int)(_ret)
+	return (int)(C.QDeferredDeleteEvent_LoopLevel(this.h))
 }
 
 // Delete this object from C++ memory.

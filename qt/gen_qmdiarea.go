@@ -71,8 +71,7 @@ func NewQMdiArea2(parent *QWidget) *QMdiArea {
 }
 
 func (this *QMdiArea) MetaObject() *QMetaObject {
-	_ret := C.QMdiArea_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QMdiArea_MetaObject(this.h)))
 }
 
 func QMdiArea_Tr(s string) string {
@@ -108,29 +107,26 @@ func (this *QMdiArea) MinimumSizeHint() *QSize {
 }
 
 func (this *QMdiArea) CurrentSubWindow() *QMdiSubWindow {
-	_ret := C.QMdiArea_CurrentSubWindow(this.h)
-	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
+	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_CurrentSubWindow(this.h)))
 }
 
 func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
-	_ret := C.QMdiArea_ActiveSubWindow(this.h)
-	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
+	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_ActiveSubWindow(this.h)))
 }
 
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
 	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList(this.h)
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQMdiSubWindow(_outCast[i])
+		_ret[i] = newQMdiSubWindow_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow(widget *QWidget) *QMdiSubWindow {
-	_ret := C.QMdiArea_AddSubWindow(this.h, widget.cPointer())
-	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
+	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow(this.h, widget.cPointer())))
 }
 
 func (this *QMdiArea) RemoveSubWindow(widget *QWidget) {
@@ -149,35 +145,31 @@ func (this *QMdiArea) SetBackground(background *QBrush) {
 }
 
 func (this *QMdiArea) ActivationOrder() QMdiArea__WindowOrder {
-	_ret := C.QMdiArea_ActivationOrder(this.h)
-	return (QMdiArea__WindowOrder)(_ret)
+	return (QMdiArea__WindowOrder)(C.QMdiArea_ActivationOrder(this.h))
 }
 
 func (this *QMdiArea) SetActivationOrder(order QMdiArea__WindowOrder) {
-	C.QMdiArea_SetActivationOrder(this.h, (C.uintptr_t)(order))
+	C.QMdiArea_SetActivationOrder(this.h, (C.int)(order))
 }
 
 func (this *QMdiArea) SetOption(option QMdiArea__AreaOption) {
-	C.QMdiArea_SetOption(this.h, (C.uintptr_t)(option))
+	C.QMdiArea_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QMdiArea) TestOption(opton QMdiArea__AreaOption) bool {
-	_ret := C.QMdiArea_TestOption(this.h, (C.uintptr_t)(opton))
-	return (bool)(_ret)
+	return (bool)(C.QMdiArea_TestOption(this.h, (C.int)(opton)))
 }
 
 func (this *QMdiArea) SetViewMode(mode QMdiArea__ViewMode) {
-	C.QMdiArea_SetViewMode(this.h, (C.uintptr_t)(mode))
+	C.QMdiArea_SetViewMode(this.h, (C.int)(mode))
 }
 
 func (this *QMdiArea) ViewMode() QMdiArea__ViewMode {
-	_ret := C.QMdiArea_ViewMode(this.h)
-	return (QMdiArea__ViewMode)(_ret)
+	return (QMdiArea__ViewMode)(C.QMdiArea_ViewMode(this.h))
 }
 
 func (this *QMdiArea) DocumentMode() bool {
-	_ret := C.QMdiArea_DocumentMode(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMdiArea_DocumentMode(this.h))
 }
 
 func (this *QMdiArea) SetDocumentMode(enabled bool) {
@@ -189,8 +181,7 @@ func (this *QMdiArea) SetTabsClosable(closable bool) {
 }
 
 func (this *QMdiArea) TabsClosable() bool {
-	_ret := C.QMdiArea_TabsClosable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMdiArea_TabsClosable(this.h))
 }
 
 func (this *QMdiArea) SetTabsMovable(movable bool) {
@@ -198,26 +189,23 @@ func (this *QMdiArea) SetTabsMovable(movable bool) {
 }
 
 func (this *QMdiArea) TabsMovable() bool {
-	_ret := C.QMdiArea_TabsMovable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QMdiArea_TabsMovable(this.h))
 }
 
 func (this *QMdiArea) SetTabShape(shape QTabWidget__TabShape) {
-	C.QMdiArea_SetTabShape(this.h, (C.uintptr_t)(shape))
+	C.QMdiArea_SetTabShape(this.h, (C.int)(shape))
 }
 
 func (this *QMdiArea) TabShape() QTabWidget__TabShape {
-	_ret := C.QMdiArea_TabShape(this.h)
-	return (QTabWidget__TabShape)(_ret)
+	return (QTabWidget__TabShape)(C.QMdiArea_TabShape(this.h))
 }
 
 func (this *QMdiArea) SetTabPosition(position QTabWidget__TabPosition) {
-	C.QMdiArea_SetTabPosition(this.h, (C.uintptr_t)(position))
+	C.QMdiArea_SetTabPosition(this.h, (C.int)(position))
 }
 
 func (this *QMdiArea) TabPosition() QTabWidget__TabPosition {
-	_ret := C.QMdiArea_TabPosition(this.h)
-	return (QTabWidget__TabPosition)(_ret)
+	return (QTabWidget__TabPosition)(C.QMdiArea_TabPosition(this.h))
 }
 
 func (this *QMdiArea) SubWindowActivated(param1 *QMdiSubWindow) {
@@ -235,8 +223,7 @@ func miqt_exec_callback_QMdiArea_SubWindowActivated(cb *C.void, param1 *C.QMdiSu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := newQMdiSubWindow_U(unsafe.Pointer(param1_ret))
+	slotval1 := newQMdiSubWindow_U(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -314,23 +301,22 @@ func QMdiArea_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWindow {
-	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList1(this.h, (C.uintptr_t)(order))
+	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList1(this.h, (C.int)(order))
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQMdiSubWindow(_outCast[i])
+		_ret[i] = newQMdiSubWindow_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
-	_ret := C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))
-	return newQMdiSubWindow_U(unsafe.Pointer(_ret))
+	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
 }
 
 func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {
-	C.QMdiArea_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QMdiArea_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.

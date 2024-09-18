@@ -42,13 +42,11 @@ func NewQBackingStore(window *QWindow) *QBackingStore {
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	_ret := C.QBackingStore_Window(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QBackingStore_Window(this.h)))
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
-	_ret := C.QBackingStore_PaintDevice(this.h)
-	return newQPaintDevice_U(unsafe.Pointer(_ret))
+	return newQPaintDevice_U(unsafe.Pointer(C.QBackingStore_PaintDevice(this.h)))
 }
 
 func (this *QBackingStore) Flush(region *QRegion) {
@@ -67,8 +65,7 @@ func (this *QBackingStore) Size() *QSize {
 }
 
 func (this *QBackingStore) Scroll(area *QRegion, dx int, dy int) bool {
-	_ret := C.QBackingStore_Scroll(this.h, area.cPointer(), (C.int)(dx), (C.int)(dy))
-	return (bool)(_ret)
+	return (bool)(C.QBackingStore_Scroll(this.h, area.cPointer(), (C.int)(dx), (C.int)(dy)))
 }
 
 func (this *QBackingStore) BeginPaint(param1 *QRegion) {
@@ -91,8 +88,7 @@ func (this *QBackingStore) StaticContents() *QRegion {
 }
 
 func (this *QBackingStore) HasStaticContents() bool {
-	_ret := C.QBackingStore_HasStaticContents(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QBackingStore_HasStaticContents(this.h))
 }
 
 func (this *QBackingStore) Flush2(region *QRegion, window *QWindow) {

@@ -76,9 +76,7 @@ void QAction_SetIcon(QAction* self, QIcon* icon) {
 }
 
 QIcon* QAction_Icon(const QAction* self) {
-	QIcon _ret = self->icon();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QIcon*>(new QIcon(_ret));
+	return new QIcon(self->icon());
 }
 
 void QAction_SetText(QAction* self, struct miqt_string* text) {
@@ -141,13 +139,13 @@ struct miqt_string* QAction_WhatsThis(const QAction* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAction_SetPriority(QAction* self, uintptr_t priority) {
+void QAction_SetPriority(QAction* self, int priority) {
 	self->setPriority(static_cast<QAction::Priority>(priority));
 }
 
-uintptr_t QAction_Priority(const QAction* self) {
+int QAction_Priority(const QAction* self) {
 	QAction::Priority _ret = self->priority();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QMenu* QAction_Menu(const QAction* self) {
@@ -171,12 +169,10 @@ void QAction_SetShortcut(QAction* self, QKeySequence* shortcut) {
 }
 
 QKeySequence* QAction_Shortcut(const QAction* self) {
-	QKeySequence _ret = self->shortcut();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QKeySequence*>(new QKeySequence(_ret));
+	return new QKeySequence(self->shortcut());
 }
 
-void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence */ shortcuts) {
+void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence* */ shortcuts) {
 	QList<QKeySequence> shortcuts_QList;
 	shortcuts_QList.reserve(shortcuts->len);
 	QKeySequence** shortcuts_arr = static_cast<QKeySequence**>(shortcuts->data);
@@ -186,14 +182,14 @@ void QAction_SetShortcuts(QAction* self, struct miqt_array* /* of QKeySequence *
 	self->setShortcuts(shortcuts_QList);
 }
 
-void QAction_SetShortcutsWithShortcuts(QAction* self, uintptr_t shortcuts) {
+void QAction_SetShortcutsWithShortcuts(QAction* self, int shortcuts) {
 	self->setShortcuts(static_cast<QKeySequence::StandardKey>(shortcuts));
 }
 
 struct miqt_array* QAction_Shortcuts(const QAction* self) {
 	QList<QKeySequence> _ret = self->shortcuts();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QKeySequence(_ret[i]);
 	}
@@ -203,13 +199,13 @@ struct miqt_array* QAction_Shortcuts(const QAction* self) {
 	return _out;
 }
 
-void QAction_SetShortcutContext(QAction* self, uintptr_t context) {
+void QAction_SetShortcutContext(QAction* self, int context) {
 	self->setShortcutContext(static_cast<Qt::ShortcutContext>(context));
 }
 
-uintptr_t QAction_ShortcutContext(const QAction* self) {
+int QAction_ShortcutContext(const QAction* self) {
 	Qt::ShortcutContext _ret = self->shortcutContext();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAction_SetAutoRepeat(QAction* self, bool autoRepeat) {
@@ -225,9 +221,7 @@ void QAction_SetFont(QAction* self, QFont* font) {
 }
 
 QFont* QAction_Font(const QAction* self) {
-	QFont _ret = self->font();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QFont*>(new QFont(_ret));
+	return new QFont(self->font());
 }
 
 void QAction_SetCheckable(QAction* self, bool checkable) {
@@ -239,9 +233,7 @@ bool QAction_IsCheckable(const QAction* self) {
 }
 
 QVariant* QAction_Data(const QAction* self) {
-	QVariant _ret = self->data();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QVariant*>(new QVariant(_ret));
+	return new QVariant(self->data());
 }
 
 void QAction_SetData(QAction* self, QVariant* varVal) {
@@ -260,7 +252,7 @@ bool QAction_IsVisible(const QAction* self) {
 	return self->isVisible();
 }
 
-void QAction_Activate(QAction* self, uintptr_t event) {
+void QAction_Activate(QAction* self, int event) {
 	self->activate(static_cast<QAction::ActionEvent>(event));
 }
 
@@ -268,13 +260,13 @@ bool QAction_ShowStatusText(QAction* self) {
 	return self->showStatusText();
 }
 
-void QAction_SetMenuRole(QAction* self, uintptr_t menuRole) {
+void QAction_SetMenuRole(QAction* self, int menuRole) {
 	self->setMenuRole(static_cast<QAction::MenuRole>(menuRole));
 }
 
-uintptr_t QAction_MenuRole(const QAction* self) {
+int QAction_MenuRole(const QAction* self) {
 	QAction::MenuRole _ret = self->menuRole();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAction_SetIconVisibleInMenu(QAction* self, bool visible) {
@@ -298,7 +290,7 @@ QWidget* QAction_ParentWidget(const QAction* self) {
 }
 
 struct miqt_array* QAction_AssociatedWidgets(const QAction* self) {
-	QList<QWidget*> _ret = self->associatedWidgets();
+	QList<QWidget *> _ret = self->associatedWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -311,7 +303,7 @@ struct miqt_array* QAction_AssociatedWidgets(const QAction* self) {
 }
 
 struct miqt_array* QAction_AssociatedGraphicsWidgets(const QAction* self) {
-	QList<QGraphicsWidget*> _ret = self->associatedGraphicsWidgets();
+	QList<QGraphicsWidget *> _ret = self->associatedGraphicsWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsWidget** _arr = static_cast<QGraphicsWidget**>(malloc(sizeof(QGraphicsWidget*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {

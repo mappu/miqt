@@ -44,7 +44,7 @@ func NewQKeyEventTransition() *QKeyEventTransition {
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition2(object *QObject, typeVal QEvent__Type, key int) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key))
+	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key))
 	return newQKeyEventTransition(ret)
 }
 
@@ -56,13 +56,12 @@ func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
 
 // NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sourceState *QState) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key), sourceState.cPointer())
+	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer())
 	return newQKeyEventTransition(ret)
 }
 
 func (this *QKeyEventTransition) MetaObject() *QMetaObject {
-	_ret := C.QKeyEventTransition_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QKeyEventTransition_MetaObject(this.h)))
 }
 
 func QKeyEventTransition_Tr(s string) string {
@@ -84,8 +83,7 @@ func QKeyEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QKeyEventTransition) Key() int {
-	_ret := C.QKeyEventTransition_Key(this.h)
-	return (int)(_ret)
+	return (int)(C.QKeyEventTransition_Key(this.h))
 }
 
 func (this *QKeyEventTransition) SetKey(key int) {
@@ -93,8 +91,7 @@ func (this *QKeyEventTransition) SetKey(key int) {
 }
 
 func (this *QKeyEventTransition) ModifierMask() int {
-	_ret := C.QKeyEventTransition_ModifierMask(this.h)
-	return (int)(_ret)
+	return (int)(C.QKeyEventTransition_ModifierMask(this.h))
 }
 
 func (this *QKeyEventTransition) SetModifierMask(modifiers int) {

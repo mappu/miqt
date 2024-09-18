@@ -50,8 +50,7 @@ func NewQTreeView2(parent *QWidget) *QTreeView {
 }
 
 func (this *QTreeView) MetaObject() *QMetaObject {
-	_ret := C.QTreeView_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTreeView_MetaObject(this.h)))
 }
 
 func QTreeView_Tr(s string) string {
@@ -85,8 +84,7 @@ func (this *QTreeView) SetSelectionModel(selectionModel *QItemSelectionModel) {
 }
 
 func (this *QTreeView) Header() *QHeaderView {
-	_ret := C.QTreeView_Header(this.h)
-	return newQHeaderView_U(unsafe.Pointer(_ret))
+	return newQHeaderView_U(unsafe.Pointer(C.QTreeView_Header(this.h)))
 }
 
 func (this *QTreeView) SetHeader(header *QHeaderView) {
@@ -94,8 +92,7 @@ func (this *QTreeView) SetHeader(header *QHeaderView) {
 }
 
 func (this *QTreeView) AutoExpandDelay() int {
-	_ret := C.QTreeView_AutoExpandDelay(this.h)
-	return (int)(_ret)
+	return (int)(C.QTreeView_AutoExpandDelay(this.h))
 }
 
 func (this *QTreeView) SetAutoExpandDelay(delay int) {
@@ -103,8 +100,7 @@ func (this *QTreeView) SetAutoExpandDelay(delay int) {
 }
 
 func (this *QTreeView) Indentation() int {
-	_ret := C.QTreeView_Indentation(this.h)
-	return (int)(_ret)
+	return (int)(C.QTreeView_Indentation(this.h))
 }
 
 func (this *QTreeView) SetIndentation(i int) {
@@ -116,8 +112,7 @@ func (this *QTreeView) ResetIndentation() {
 }
 
 func (this *QTreeView) RootIsDecorated() bool {
-	_ret := C.QTreeView_RootIsDecorated(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_RootIsDecorated(this.h))
 }
 
 func (this *QTreeView) SetRootIsDecorated(show bool) {
@@ -125,8 +120,7 @@ func (this *QTreeView) SetRootIsDecorated(show bool) {
 }
 
 func (this *QTreeView) UniformRowHeights() bool {
-	_ret := C.QTreeView_UniformRowHeights(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_UniformRowHeights(this.h))
 }
 
 func (this *QTreeView) SetUniformRowHeights(uniform bool) {
@@ -134,8 +128,7 @@ func (this *QTreeView) SetUniformRowHeights(uniform bool) {
 }
 
 func (this *QTreeView) ItemsExpandable() bool {
-	_ret := C.QTreeView_ItemsExpandable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_ItemsExpandable(this.h))
 }
 
 func (this *QTreeView) SetItemsExpandable(enable bool) {
@@ -143,8 +136,7 @@ func (this *QTreeView) SetItemsExpandable(enable bool) {
 }
 
 func (this *QTreeView) ExpandsOnDoubleClick() bool {
-	_ret := C.QTreeView_ExpandsOnDoubleClick(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_ExpandsOnDoubleClick(this.h))
 }
 
 func (this *QTreeView) SetExpandsOnDoubleClick(enable bool) {
@@ -152,13 +144,11 @@ func (this *QTreeView) SetExpandsOnDoubleClick(enable bool) {
 }
 
 func (this *QTreeView) ColumnViewportPosition(column int) int {
-	_ret := C.QTreeView_ColumnViewportPosition(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTreeView_ColumnViewportPosition(this.h, (C.int)(column)))
 }
 
 func (this *QTreeView) ColumnWidth(column int) int {
-	_ret := C.QTreeView_ColumnWidth(this.h, (C.int)(column))
-	return (int)(_ret)
+	return (int)(C.QTreeView_ColumnWidth(this.h, (C.int)(column)))
 }
 
 func (this *QTreeView) SetColumnWidth(column int, width int) {
@@ -166,13 +156,11 @@ func (this *QTreeView) SetColumnWidth(column int, width int) {
 }
 
 func (this *QTreeView) ColumnAt(x int) int {
-	_ret := C.QTreeView_ColumnAt(this.h, (C.int)(x))
-	return (int)(_ret)
+	return (int)(C.QTreeView_ColumnAt(this.h, (C.int)(x)))
 }
 
 func (this *QTreeView) IsColumnHidden(column int) bool {
-	_ret := C.QTreeView_IsColumnHidden(this.h, (C.int)(column))
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsColumnHidden(this.h, (C.int)(column)))
 }
 
 func (this *QTreeView) SetColumnHidden(column int, hide bool) {
@@ -180,8 +168,7 @@ func (this *QTreeView) SetColumnHidden(column int, hide bool) {
 }
 
 func (this *QTreeView) IsHeaderHidden() bool {
-	_ret := C.QTreeView_IsHeaderHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsHeaderHidden(this.h))
 }
 
 func (this *QTreeView) SetHeaderHidden(hide bool) {
@@ -189,8 +176,7 @@ func (this *QTreeView) SetHeaderHidden(hide bool) {
 }
 
 func (this *QTreeView) IsRowHidden(row int, parent *QModelIndex) bool {
-	_ret := C.QTreeView_IsRowHidden(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsRowHidden(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QTreeView) SetRowHidden(row int, parent *QModelIndex, hide bool) {
@@ -198,8 +184,7 @@ func (this *QTreeView) SetRowHidden(row int, parent *QModelIndex, hide bool) {
 }
 
 func (this *QTreeView) IsFirstColumnSpanned(row int, parent *QModelIndex) bool {
-	_ret := C.QTreeView_IsFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QTreeView) SetFirstColumnSpanned(row int, parent *QModelIndex, span bool) {
@@ -207,8 +192,7 @@ func (this *QTreeView) SetFirstColumnSpanned(row int, parent *QModelIndex, span 
 }
 
 func (this *QTreeView) IsExpanded(index *QModelIndex) bool {
-	_ret := C.QTreeView_IsExpanded(this.h, index.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsExpanded(this.h, index.cPointer()))
 }
 
 func (this *QTreeView) SetExpanded(index *QModelIndex, expand bool) {
@@ -220,8 +204,7 @@ func (this *QTreeView) SetSortingEnabled(enable bool) {
 }
 
 func (this *QTreeView) IsSortingEnabled() bool {
-	_ret := C.QTreeView_IsSortingEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsSortingEnabled(this.h))
 }
 
 func (this *QTreeView) SetAnimated(enable bool) {
@@ -229,8 +212,7 @@ func (this *QTreeView) SetAnimated(enable bool) {
 }
 
 func (this *QTreeView) IsAnimated() bool {
-	_ret := C.QTreeView_IsAnimated(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_IsAnimated(this.h))
 }
 
 func (this *QTreeView) SetAllColumnsShowFocus(enable bool) {
@@ -238,8 +220,7 @@ func (this *QTreeView) SetAllColumnsShowFocus(enable bool) {
 }
 
 func (this *QTreeView) AllColumnsShowFocus() bool {
-	_ret := C.QTreeView_AllColumnsShowFocus(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_AllColumnsShowFocus(this.h))
 }
 
 func (this *QTreeView) SetWordWrap(on bool) {
@@ -247,8 +228,7 @@ func (this *QTreeView) SetWordWrap(on bool) {
 }
 
 func (this *QTreeView) WordWrap() bool {
-	_ret := C.QTreeView_WordWrap(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QTreeView_WordWrap(this.h))
 }
 
 func (this *QTreeView) SetTreePosition(logicalIndex int) {
@@ -256,8 +236,7 @@ func (this *QTreeView) SetTreePosition(logicalIndex int) {
 }
 
 func (this *QTreeView) TreePosition() int {
-	_ret := C.QTreeView_TreePosition(this.h)
-	return (int)(_ret)
+	return (int)(C.QTreeView_TreePosition(this.h))
 }
 
 func (this *QTreeView) KeyboardSearch(search string) {
@@ -329,8 +308,7 @@ func miqt_exec_callback_QTreeView_Expanded(cb *C.void, index *C.QModelIndex) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -350,8 +328,7 @@ func miqt_exec_callback_QTreeView_Collapsed(cb *C.void, index *C.QModelIndex) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	index_ret := index
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index_ret))
+	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -381,7 +358,7 @@ func (this *QTreeView) SortByColumn(column int) {
 }
 
 func (this *QTreeView) SortByColumn2(column int, order SortOrder) {
-	C.QTreeView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QTreeView_SortByColumn2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTreeView) ExpandAll() {
@@ -445,7 +422,7 @@ func QTreeView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTreeView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QTreeView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QTreeView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {

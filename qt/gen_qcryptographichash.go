@@ -61,7 +61,7 @@ func newQCryptographicHash_U(h unsafe.Pointer) *QCryptographicHash {
 
 // NewQCryptographicHash constructs a new QCryptographicHash object.
 func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographicHash {
-	ret := C.QCryptographicHash_new((C.uintptr_t)(method))
+	ret := C.QCryptographicHash_new((C.int)(method))
 	return newQCryptographicHash(ret)
 }
 
@@ -80,8 +80,7 @@ func (this *QCryptographicHash) AddDataWithData(data *QByteArray) {
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
-	_ret := C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QCryptographicHash) Result() *QByteArray {
@@ -92,15 +91,14 @@ func (this *QCryptographicHash) Result() *QByteArray {
 }
 
 func QCryptographicHash_Hash(data *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	_ret := C.QCryptographicHash_Hash(data.cPointer(), (C.uintptr_t)(method))
+	_ret := C.QCryptographicHash_Hash(data.cPointer(), (C.int)(method))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
-	_ret := C.QCryptographicHash_HashLength((C.uintptr_t)(method))
-	return (int)(_ret)
+	return (int)(C.QCryptographicHash_HashLength((C.int)(method)))
 }
 
 // Delete this object from C++ memory.

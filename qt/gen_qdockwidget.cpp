@@ -96,7 +96,7 @@ QWidget* QDockWidget_TitleBarWidget(const QDockWidget* self) {
 	return self->titleBarWidget();
 }
 
-bool QDockWidget_IsAreaAllowed(const QDockWidget* self, uintptr_t area) {
+bool QDockWidget_IsAreaAllowed(const QDockWidget* self, int area) {
 	return self->isAreaAllowed(static_cast<Qt::DockWidgetArea>(area));
 }
 
@@ -150,14 +150,14 @@ void QDockWidget_connect_VisibilityChanged(QDockWidget* self, void* slot) {
 	});
 }
 
-void QDockWidget_DockLocationChanged(QDockWidget* self, uintptr_t area) {
+void QDockWidget_DockLocationChanged(QDockWidget* self, int area) {
 	self->dockLocationChanged(static_cast<Qt::DockWidgetArea>(area));
 }
 
 void QDockWidget_connect_DockLocationChanged(QDockWidget* self, void* slot) {
 	QDockWidget::connect(self, static_cast<void (QDockWidget::*)(Qt::DockWidgetArea)>(&QDockWidget::dockLocationChanged), self, [=](Qt::DockWidgetArea area) {
 		Qt::DockWidgetArea area_ret = area;
-		uintptr_t sigval1 = static_cast<uintptr_t>(area_ret);
+		int sigval1 = static_cast<int>(area_ret);
 		miqt_exec_callback_QDockWidget_DockLocationChanged(slot, sigval1);
 	});
 }

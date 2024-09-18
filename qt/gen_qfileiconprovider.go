@@ -60,7 +60,7 @@ func NewQFileIconProvider() *QFileIconProvider {
 }
 
 func (this *QFileIconProvider) Icon(typeVal QFileIconProvider__IconType) *QIcon {
-	_ret := C.QFileIconProvider_Icon(this.h, (C.uintptr_t)(typeVal))
+	_ret := C.QFileIconProvider_Icon(this.h, (C.int)(typeVal))
 	_goptr := newQIcon(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -85,8 +85,7 @@ func (this *QFileIconProvider) SetOptions(options int) {
 }
 
 func (this *QFileIconProvider) Options() int {
-	_ret := C.QFileIconProvider_Options(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileIconProvider_Options(this.h))
 }
 
 // Delete this object from C++ memory.

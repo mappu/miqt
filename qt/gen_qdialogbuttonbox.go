@@ -97,7 +97,7 @@ func NewQDialogButtonBox() *QDialogButtonBox {
 
 // NewQDialogButtonBox2 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox2(orientation Orientation) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new2((C.uintptr_t)(orientation))
+	ret := C.QDialogButtonBox_new2((C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
 
@@ -109,7 +109,7 @@ func NewQDialogButtonBox3(buttons int) *QDialogButtonBox {
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox4(buttons int, orientation Orientation) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.uintptr_t)(orientation))
+	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
 
@@ -121,7 +121,7 @@ func NewQDialogButtonBox5(parent *QWidget) *QDialogButtonBox {
 
 // NewQDialogButtonBox6 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new6((C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QDialogButtonBox_new6((C.int)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
@@ -133,13 +133,12 @@ func NewQDialogButtonBox7(buttons int, parent *QWidget) *QDialogButtonBox {
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox8(buttons int, orientation Orientation, parent *QWidget) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new8((C.int)(buttons), (C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
 func (this *QDialogButtonBox) MetaObject() *QMetaObject {
-	_ret := C.QDialogButtonBox_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QDialogButtonBox_MetaObject(this.h)))
 }
 
 func QDialogButtonBox_Tr(s string) string {
@@ -161,28 +160,25 @@ func QDialogButtonBox_TrUtf8(s string) string {
 }
 
 func (this *QDialogButtonBox) SetOrientation(orientation Orientation) {
-	C.QDialogButtonBox_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QDialogButtonBox_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QDialogButtonBox) Orientation() Orientation {
-	_ret := C.QDialogButtonBox_Orientation(this.h)
-	return (Orientation)(_ret)
+	return (Orientation)(C.QDialogButtonBox_Orientation(this.h))
 }
 
 func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogButtonBox__ButtonRole) {
-	C.QDialogButtonBox_AddButton(this.h, button.cPointer(), (C.uintptr_t)(role))
+	C.QDialogButtonBox_AddButton(this.h, button.cPointer(), (C.int)(role))
 }
 
 func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__ButtonRole) *QPushButton {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	_ret := C.QDialogButtonBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(role))
-	return newQPushButton_U(unsafe.Pointer(_ret))
+	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(role))))
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
-	_ret := C.QDialogButtonBox_AddButtonWithButton(this.h, (C.uintptr_t)(button))
-	return newQPushButton_U(unsafe.Pointer(_ret))
+	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button))))
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
@@ -196,17 +192,16 @@ func (this *QDialogButtonBox) Clear() {
 func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 	var _ma *C.struct_miqt_array = C.QDialogButtonBox_Buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractButton(_outCast[i])
+		_ret[i] = newQAbstractButton_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonBox__ButtonRole {
-	_ret := C.QDialogButtonBox_ButtonRole(this.h, button.cPointer())
-	return (QDialogButtonBox__ButtonRole)(_ret)
+	return (QDialogButtonBox__ButtonRole)(C.QDialogButtonBox_ButtonRole(this.h, button.cPointer()))
 }
 
 func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
@@ -214,18 +209,15 @@ func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
 }
 
 func (this *QDialogButtonBox) StandardButtons() int {
-	_ret := C.QDialogButtonBox_StandardButtons(this.h)
-	return (int)(_ret)
+	return (int)(C.QDialogButtonBox_StandardButtons(this.h))
 }
 
 func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogButtonBox__StandardButton {
-	_ret := C.QDialogButtonBox_StandardButton(this.h, button.cPointer())
-	return (QDialogButtonBox__StandardButton)(_ret)
+	return (QDialogButtonBox__StandardButton)(C.QDialogButtonBox_StandardButton(this.h, button.cPointer()))
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
-	_ret := C.QDialogButtonBox_Button(this.h, (C.uintptr_t)(which))
-	return newQPushButton_U(unsafe.Pointer(_ret))
+	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_Button(this.h, (C.int)(which))))
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
@@ -233,8 +225,7 @@ func (this *QDialogButtonBox) SetCenterButtons(center bool) {
 }
 
 func (this *QDialogButtonBox) CenterButtons() bool {
-	_ret := C.QDialogButtonBox_CenterButtons(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QDialogButtonBox_CenterButtons(this.h))
 }
 
 func (this *QDialogButtonBox) Clicked(button *QAbstractButton) {
@@ -252,8 +243,7 @@ func miqt_exec_callback_QDialogButtonBox_Clicked(cb *C.void, button *C.QAbstract
 	}
 
 	// Convert all CABI parameters to Go parameters
-	button_ret := button
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(button_ret))
+	slotval1 := newQAbstractButton_U(unsafe.Pointer(button))
 
 	gofunc(slotval1)
 }

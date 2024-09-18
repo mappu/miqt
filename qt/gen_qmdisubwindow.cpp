@@ -42,15 +42,11 @@ struct miqt_string* QMdiSubWindow_TrUtf8(const char* s) {
 }
 
 QSize* QMdiSubWindow_SizeHint(const QMdiSubWindow* self) {
-	QSize _ret = self->sizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->sizeHint());
 }
 
 QSize* QMdiSubWindow_MinimumSizeHint(const QMdiSubWindow* self) {
-	QSize _ret = self->minimumSizeHint();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->minimumSizeHint());
 }
 
 void QMdiSubWindow_SetWidget(QMdiSubWindow* self, QWidget* widget) {
@@ -73,11 +69,11 @@ bool QMdiSubWindow_IsShaded(const QMdiSubWindow* self) {
 	return self->isShaded();
 }
 
-void QMdiSubWindow_SetOption(QMdiSubWindow* self, uintptr_t option) {
+void QMdiSubWindow_SetOption(QMdiSubWindow* self, int option) {
 	self->setOption(static_cast<QMdiSubWindow::SubWindowOption>(option));
 }
 
-bool QMdiSubWindow_TestOption(const QMdiSubWindow* self, uintptr_t param1) {
+bool QMdiSubWindow_TestOption(const QMdiSubWindow* self, int param1) {
 	return self->testOption(static_cast<QMdiSubWindow::SubWindowOption>(param1));
 }
 
@@ -169,7 +165,7 @@ struct miqt_string* QMdiSubWindow_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMdiSubWindow_SetOption2(QMdiSubWindow* self, uintptr_t option, bool on) {
+void QMdiSubWindow_SetOption2(QMdiSubWindow* self, int option, bool on) {
 	self->setOption(static_cast<QMdiSubWindow::SubWindowOption>(option), on);
 }
 

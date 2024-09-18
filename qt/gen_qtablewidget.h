@@ -94,8 +94,8 @@ QColor* QTableWidgetItem_TextColor(const QTableWidgetItem* self);
 void QTableWidgetItem_SetTextColor(QTableWidgetItem* self, QColor* color);
 QBrush* QTableWidgetItem_Foreground(const QTableWidgetItem* self);
 void QTableWidgetItem_SetForeground(QTableWidgetItem* self, QBrush* brush);
-uintptr_t QTableWidgetItem_CheckState(const QTableWidgetItem* self);
-void QTableWidgetItem_SetCheckState(QTableWidgetItem* self, uintptr_t state);
+int QTableWidgetItem_CheckState(const QTableWidgetItem* self);
+void QTableWidgetItem_SetCheckState(QTableWidgetItem* self, int state);
 QSize* QTableWidgetItem_SizeHint(const QTableWidgetItem* self);
 void QTableWidgetItem_SetSizeHint(QTableWidgetItem* self, QSize* size);
 QVariant* QTableWidgetItem_Data(const QTableWidgetItem* self, int role);
@@ -129,8 +129,8 @@ QTableWidgetItem* QTableWidget_TakeVerticalHeaderItem(QTableWidget* self, int ro
 QTableWidgetItem* QTableWidget_HorizontalHeaderItem(const QTableWidget* self, int column);
 void QTableWidget_SetHorizontalHeaderItem(QTableWidget* self, int column, QTableWidgetItem* item);
 QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int column);
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of QString */ labels);
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels);
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels);
 int QTableWidget_CurrentRow(const QTableWidget* self);
 int QTableWidget_CurrentColumn(const QTableWidget* self);
 QTableWidgetItem* QTableWidget_CurrentItem(const QTableWidget* self);
@@ -202,8 +202,8 @@ struct miqt_string* QTableWidget_Tr2(const char* s, const char* c);
 struct miqt_string* QTableWidget_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QTableWidget_TrUtf82(const char* s, const char* c);
 struct miqt_string* QTableWidget_TrUtf83(const char* s, const char* c, int n);
-void QTableWidget_SortItems2(QTableWidget* self, int column, uintptr_t order);
-void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, uintptr_t hint);
+void QTableWidget_SortItems2(QTableWidget* self, int column, int order);
+void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, int hint);
 void QTableWidget_Delete(QTableWidget* self);
 
 #ifdef __cplusplus

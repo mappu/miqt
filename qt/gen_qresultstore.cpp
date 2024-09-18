@@ -38,9 +38,7 @@ int QtPrivate__ResultIteratorBase_ResultIndex(const QtPrivate__ResultIteratorBas
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultIteratorBase_OperatorPlusPlus(QtPrivate__ResultIteratorBase* self) {
-	QtPrivate::ResultIteratorBase _ret = self->operator++();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
+	return new QtPrivate::ResultIteratorBase(self->operator++());
 }
 
 int QtPrivate__ResultIteratorBase_BatchSize(const QtPrivate__ResultIteratorBase* self) {
@@ -88,15 +86,11 @@ bool QtPrivate__ResultStoreBase_FilterMode(const QtPrivate__ResultStoreBase* sel
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_Begin(const QtPrivate__ResultStoreBase* self) {
-	QtPrivate::ResultIteratorBase _ret = self->begin();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
+	return new QtPrivate::ResultIteratorBase(self->begin());
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_End(const QtPrivate__ResultStoreBase* self) {
-	QtPrivate::ResultIteratorBase _ret = self->end();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
+	return new QtPrivate::ResultIteratorBase(self->end());
 }
 
 bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* self) {
@@ -104,9 +98,7 @@ bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* 
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_ResultAt(const QtPrivate__ResultStoreBase* self, int index) {
-	QtPrivate::ResultIteratorBase _ret = self->resultAt(static_cast<int>(index));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QtPrivate::ResultIteratorBase*>(new QtPrivate::ResultIteratorBase(_ret));
+	return new QtPrivate::ResultIteratorBase(self->resultAt(static_cast<int>(index)));
 }
 
 bool QtPrivate__ResultStoreBase_Contains(const QtPrivate__ResultStoreBase* self, int index) {
@@ -119,6 +111,10 @@ int QtPrivate__ResultStoreBase_Count(const QtPrivate__ResultStoreBase* self) {
 
 int QtPrivate__ResultStoreBase_AddCanceledResult(QtPrivate__ResultStoreBase* self, int index) {
 	return self->addCanceledResult(static_cast<int>(index));
+}
+
+void QtPrivate__ResultStoreBase_OperatorAssign(QtPrivate__ResultStoreBase* self, QtPrivate__ResultStoreBase* param1) {
+	self->operator=(*param1);
 }
 
 void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self) {

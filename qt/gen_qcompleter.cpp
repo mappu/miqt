@@ -22,12 +22,13 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 	return new QCompleter(model);
 }
 
-QCompleter* QCompleter_new3(struct miqt_array* /* of QString */ completions) {
+QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
-	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);
+	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		completions_QList.push_back(QString::fromUtf8(& completions_arr[i]->data, completions_arr[i]->len));
+		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList);
 }
@@ -40,12 +41,13 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 	return new QCompleter(model, parent);
 }
 
-QCompleter* QCompleter_new6(struct miqt_array* /* of QString */ completions, QObject* parent) {
+QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent) {
 	QList<QString> completions_QList;
 	completions_QList.reserve(completions->len);
-	miqt_string** completions_arr = static_cast<miqt_string**>(completions->data);
+	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		completions_QList.push_back(QString::fromUtf8(& completions_arr[i]->data, completions_arr[i]->len));
+		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList, parent);
 }
@@ -84,13 +86,13 @@ QAbstractItemModel* QCompleter_Model(const QCompleter* self) {
 	return self->model();
 }
 
-void QCompleter_SetCompletionMode(QCompleter* self, uintptr_t mode) {
+void QCompleter_SetCompletionMode(QCompleter* self, int mode) {
 	self->setCompletionMode(static_cast<QCompleter::CompletionMode>(mode));
 }
 
-uintptr_t QCompleter_CompletionMode(const QCompleter* self) {
+int QCompleter_CompletionMode(const QCompleter* self) {
 	QCompleter::CompletionMode _ret = self->completionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QCompleter_SetFilterMode(QCompleter* self, int filterMode) {
@@ -110,22 +112,22 @@ void QCompleter_SetPopup(QCompleter* self, QAbstractItemView* popup) {
 	self->setPopup(popup);
 }
 
-void QCompleter_SetCaseSensitivity(QCompleter* self, uintptr_t caseSensitivity) {
+void QCompleter_SetCaseSensitivity(QCompleter* self, int caseSensitivity) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(caseSensitivity));
 }
 
-uintptr_t QCompleter_CaseSensitivity(const QCompleter* self) {
+int QCompleter_CaseSensitivity(const QCompleter* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCompleter_SetModelSorting(QCompleter* self, uintptr_t sorting) {
+void QCompleter_SetModelSorting(QCompleter* self, int sorting) {
 	self->setModelSorting(static_cast<QCompleter::ModelSorting>(sorting));
 }
 
-uintptr_t QCompleter_ModelSorting(const QCompleter* self) {
+int QCompleter_ModelSorting(const QCompleter* self) {
 	QCompleter::ModelSorting _ret = self->modelSorting();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QCompleter_SetCompletionColumn(QCompleter* self, int column) {
@@ -169,9 +171,7 @@ int QCompleter_CurrentRow(const QCompleter* self) {
 }
 
 QModelIndex* QCompleter_CurrentIndex(const QCompleter* self) {
-	QModelIndex _ret = self->currentIndex();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QModelIndex*>(new QModelIndex(_ret));
+	return new QModelIndex(self->currentIndex());
 }
 
 struct miqt_string* QCompleter_CurrentCompletion(const QCompleter* self) {
@@ -215,7 +215,7 @@ struct miqt_string* QCompleter_PathFromIndex(const QCompleter* self, QModelIndex
 struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	QStringList _ret = self->splitPath(path_QString);
-	// Convert QStringList from C++ memory to manually-managed C memory
+	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];

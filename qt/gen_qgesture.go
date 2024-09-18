@@ -74,8 +74,7 @@ func NewQGesture2(parent *QObject) *QGesture {
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
-	_ret := C.QGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QGesture_MetaObject(this.h)))
 }
 
 func QGesture_Tr(s string) string {
@@ -97,13 +96,11 @@ func QGesture_TrUtf8(s string) string {
 }
 
 func (this *QGesture) GestureType() GestureType {
-	_ret := C.QGesture_GestureType(this.h)
-	return (GestureType)(_ret)
+	return (GestureType)(C.QGesture_GestureType(this.h))
 }
 
 func (this *QGesture) State() GestureState {
-	_ret := C.QGesture_State(this.h)
-	return (GestureState)(_ret)
+	return (GestureState)(C.QGesture_State(this.h))
 }
 
 func (this *QGesture) HotSpot() *QPointF {
@@ -118,8 +115,7 @@ func (this *QGesture) SetHotSpot(value *QPointF) {
 }
 
 func (this *QGesture) HasHotSpot() bool {
-	_ret := C.QGesture_HasHotSpot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QGesture_HasHotSpot(this.h))
 }
 
 func (this *QGesture) UnsetHotSpot() {
@@ -127,12 +123,11 @@ func (this *QGesture) UnsetHotSpot() {
 }
 
 func (this *QGesture) SetGestureCancelPolicy(policy QGesture__GestureCancelPolicy) {
-	C.QGesture_SetGestureCancelPolicy(this.h, (C.uintptr_t)(policy))
+	C.QGesture_SetGestureCancelPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGesture) GestureCancelPolicy() QGesture__GestureCancelPolicy {
-	_ret := C.QGesture_GestureCancelPolicy(this.h)
-	return (QGesture__GestureCancelPolicy)(_ret)
+	return (QGesture__GestureCancelPolicy)(C.QGesture_GestureCancelPolicy(this.h))
 }
 
 func QGesture_Tr2(s string, c string) string {
@@ -229,8 +224,7 @@ func NewQPanGesture2(parent *QObject) *QPanGesture {
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
-	_ret := C.QPanGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPanGesture_MetaObject(this.h)))
 }
 
 func QPanGesture_Tr(s string) string {
@@ -273,8 +267,7 @@ func (this *QPanGesture) Delta() *QPointF {
 }
 
 func (this *QPanGesture) Acceleration() float64 {
-	_ret := C.QPanGesture_Acceleration(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPanGesture_Acceleration(this.h))
 }
 
 func (this *QPanGesture) SetLastOffset(value *QPointF) {
@@ -383,8 +376,7 @@ func NewQPinchGesture2(parent *QObject) *QPinchGesture {
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
-	_ret := C.QPinchGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPinchGesture_MetaObject(this.h)))
 }
 
 func QPinchGesture_Tr(s string) string {
@@ -406,8 +398,7 @@ func QPinchGesture_TrUtf8(s string) string {
 }
 
 func (this *QPinchGesture) TotalChangeFlags() int {
-	_ret := C.QPinchGesture_TotalChangeFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QPinchGesture_TotalChangeFlags(this.h))
 }
 
 func (this *QPinchGesture) SetTotalChangeFlags(value int) {
@@ -415,8 +406,7 @@ func (this *QPinchGesture) SetTotalChangeFlags(value int) {
 }
 
 func (this *QPinchGesture) ChangeFlags() int {
-	_ret := C.QPinchGesture_ChangeFlags(this.h)
-	return (int)(_ret)
+	return (int)(C.QPinchGesture_ChangeFlags(this.h))
 }
 
 func (this *QPinchGesture) SetChangeFlags(value int) {
@@ -457,18 +447,15 @@ func (this *QPinchGesture) SetCenterPoint(value *QPointF) {
 }
 
 func (this *QPinchGesture) TotalScaleFactor() float64 {
-	_ret := C.QPinchGesture_TotalScaleFactor(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_TotalScaleFactor(this.h))
 }
 
 func (this *QPinchGesture) LastScaleFactor() float64 {
-	_ret := C.QPinchGesture_LastScaleFactor(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_LastScaleFactor(this.h))
 }
 
 func (this *QPinchGesture) ScaleFactor() float64 {
-	_ret := C.QPinchGesture_ScaleFactor(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_ScaleFactor(this.h))
 }
 
 func (this *QPinchGesture) SetTotalScaleFactor(value float64) {
@@ -484,18 +471,15 @@ func (this *QPinchGesture) SetScaleFactor(value float64) {
 }
 
 func (this *QPinchGesture) TotalRotationAngle() float64 {
-	_ret := C.QPinchGesture_TotalRotationAngle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_TotalRotationAngle(this.h))
 }
 
 func (this *QPinchGesture) LastRotationAngle() float64 {
-	_ret := C.QPinchGesture_LastRotationAngle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_LastRotationAngle(this.h))
 }
 
 func (this *QPinchGesture) RotationAngle() float64 {
-	_ret := C.QPinchGesture_RotationAngle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QPinchGesture_RotationAngle(this.h))
 }
 
 func (this *QPinchGesture) SetTotalRotationAngle(value float64) {
@@ -604,8 +588,7 @@ func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
-	_ret := C.QSwipeGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QSwipeGesture_MetaObject(this.h)))
 }
 
 func QSwipeGesture_Tr(s string) string {
@@ -627,18 +610,15 @@ func QSwipeGesture_TrUtf8(s string) string {
 }
 
 func (this *QSwipeGesture) HorizontalDirection() QSwipeGesture__SwipeDirection {
-	_ret := C.QSwipeGesture_HorizontalDirection(this.h)
-	return (QSwipeGesture__SwipeDirection)(_ret)
+	return (QSwipeGesture__SwipeDirection)(C.QSwipeGesture_HorizontalDirection(this.h))
 }
 
 func (this *QSwipeGesture) VerticalDirection() QSwipeGesture__SwipeDirection {
-	_ret := C.QSwipeGesture_VerticalDirection(this.h)
-	return (QSwipeGesture__SwipeDirection)(_ret)
+	return (QSwipeGesture__SwipeDirection)(C.QSwipeGesture_VerticalDirection(this.h))
 }
 
 func (this *QSwipeGesture) SwipeAngle() float64 {
-	_ret := C.QSwipeGesture_SwipeAngle(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QSwipeGesture_SwipeAngle(this.h))
 }
 
 func (this *QSwipeGesture) SetSwipeAngle(value float64) {
@@ -739,8 +719,7 @@ func NewQTapGesture2(parent *QObject) *QTapGesture {
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
-	_ret := C.QTapGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTapGesture_MetaObject(this.h)))
 }
 
 func QTapGesture_Tr(s string) string {
@@ -866,8 +845,7 @@ func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
-	_ret := C.QTapAndHoldGesture_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QTapAndHoldGesture_MetaObject(this.h)))
 }
 
 func QTapAndHoldGesture_Tr(s string) string {
@@ -904,8 +882,7 @@ func QTapAndHoldGesture_SetTimeout(msecs int) {
 }
 
 func QTapAndHoldGesture_Timeout() int {
-	_ret := C.QTapAndHoldGesture_Timeout()
-	return (int)(_ret)
+	return (int)(C.QTapAndHoldGesture_Timeout())
 }
 
 func QTapAndHoldGesture_Tr2(s string, c string) string {
@@ -1012,25 +989,24 @@ func NewQGestureEvent2(param1 *QGestureEvent) *QGestureEvent {
 func (this *QGestureEvent) Gestures() []*QGesture {
 	var _ma *C.struct_miqt_array = C.QGestureEvent_Gestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture(_outCast[i])
+		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	_ret := C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))
-	return newQGesture_U(unsafe.Pointer(_ret))
+	return newQGesture_U(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))))
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	var _ma *C.struct_miqt_array = C.QGestureEvent_ActiveGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture(_outCast[i])
+		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1039,9 +1015,9 @@ func (this *QGestureEvent) ActiveGestures() []*QGesture {
 func (this *QGestureEvent) CanceledGestures() []*QGesture {
 	var _ma *C.struct_miqt_array = C.QGestureEvent_CanceledGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture(_outCast[i])
+		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1060,25 +1036,23 @@ func (this *QGestureEvent) Ignore(param1 *QGesture) {
 }
 
 func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
-	_ret := C.QGestureEvent_IsAccepted(this.h, param1.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QGestureEvent_IsAccepted(this.h, param1.cPointer()))
 }
 
 func (this *QGestureEvent) SetAccepted2(param1 GestureType, param2 bool) {
-	C.QGestureEvent_SetAccepted2(this.h, (C.uintptr_t)(param1), (C.bool)(param2))
+	C.QGestureEvent_SetAccepted2(this.h, (C.int)(param1), (C.bool)(param2))
 }
 
 func (this *QGestureEvent) AcceptWithQtGestureType(param1 GestureType) {
-	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.uintptr_t)(param1))
+	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.int)(param1))
 }
 
 func (this *QGestureEvent) IgnoreWithQtGestureType(param1 GestureType) {
-	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.uintptr_t)(param1))
+	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.int)(param1))
 }
 
 func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 GestureType) bool {
-	_ret := C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1))
-	return (bool)(_ret)
+	return (bool)(C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.int)(param1)))
 }
 
 func (this *QGestureEvent) SetWidget(widget *QWidget) {
@@ -1086,8 +1060,7 @@ func (this *QGestureEvent) SetWidget(widget *QWidget) {
 }
 
 func (this *QGestureEvent) Widget() *QWidget {
-	_ret := C.QGestureEvent_Widget(this.h)
-	return newQWidget_U(unsafe.Pointer(_ret))
+	return newQWidget_U(unsafe.Pointer(C.QGestureEvent_Widget(this.h)))
 }
 
 func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {

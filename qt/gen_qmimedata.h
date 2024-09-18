@@ -32,7 +32,7 @@ QMetaObject* QMimeData_MetaObject(const QMimeData* self);
 struct miqt_string* QMimeData_Tr(const char* s);
 struct miqt_string* QMimeData_TrUtf8(const char* s);
 struct miqt_array* QMimeData_Urls(const QMimeData* self);
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl */ urls);
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl* */ urls);
 bool QMimeData_HasUrls(const QMimeData* self);
 struct miqt_string* QMimeData_Text(const QMimeData* self);
 void QMimeData_SetText(QMimeData* self, struct miqt_string* text);

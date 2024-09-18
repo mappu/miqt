@@ -32,7 +32,7 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QVector3D* QVector3D_new();
-QVector3D* QVector3D_new2(uintptr_t param1);
+QVector3D* QVector3D_new2(int param1);
 QVector3D* QVector3D_new3(float xpos, float ypos, float zpos);
 QVector3D* QVector3D_new4(QPoint* point);
 QVector3D* QVector3D_new5(QPointF* point);

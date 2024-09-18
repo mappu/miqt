@@ -71,8 +71,8 @@ struct miqt_string* QMovie_TrUtf8(const char* s) {
 
 struct miqt_array* QMovie_SupportedFormats() {
 	QList<QByteArray> _ret = QMovie::supportedFormats();
-	// Convert QList<> from C++ memory to manually-managed C memory of copy-constructed pointers
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray**) * _ret.length()));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QByteArray(_ret[i]);
 	}
@@ -107,9 +107,7 @@ void QMovie_SetFormat(QMovie* self, QByteArray* format) {
 }
 
 QByteArray* QMovie_Format(const QMovie* self) {
-	QByteArray _ret = self->format();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QByteArray*>(new QByteArray(_ret));
+	return new QByteArray(self->format());
 }
 
 void QMovie_SetBackgroundColor(QMovie* self, QColor* color) {
@@ -117,41 +115,33 @@ void QMovie_SetBackgroundColor(QMovie* self, QColor* color) {
 }
 
 QColor* QMovie_BackgroundColor(const QMovie* self) {
-	QColor _ret = self->backgroundColor();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QColor*>(new QColor(_ret));
+	return new QColor(self->backgroundColor());
 }
 
-uintptr_t QMovie_State(const QMovie* self) {
+int QMovie_State(const QMovie* self) {
 	QMovie::MovieState _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QRect* QMovie_FrameRect(const QMovie* self) {
-	QRect _ret = self->frameRect();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QRect*>(new QRect(_ret));
+	return new QRect(self->frameRect());
 }
 
 QImage* QMovie_CurrentImage(const QMovie* self) {
-	QImage _ret = self->currentImage();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QImage*>(new QImage(_ret));
+	return new QImage(self->currentImage());
 }
 
 QPixmap* QMovie_CurrentPixmap(const QMovie* self) {
-	QPixmap _ret = self->currentPixmap();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QPixmap*>(new QPixmap(_ret));
+	return new QPixmap(self->currentPixmap());
 }
 
 bool QMovie_IsValid(const QMovie* self) {
 	return self->isValid();
 }
 
-uintptr_t QMovie_LastError(const QMovie* self) {
+int QMovie_LastError(const QMovie* self) {
 	QImageReader::ImageReaderError _ret = self->lastError();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QMovie_LastErrorString(const QMovie* self) {
@@ -186,21 +176,19 @@ int QMovie_Speed(const QMovie* self) {
 }
 
 QSize* QMovie_ScaledSize(QMovie* self) {
-	QSize _ret = self->scaledSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->scaledSize());
 }
 
 void QMovie_SetScaledSize(QMovie* self, QSize* size) {
 	self->setScaledSize(*size);
 }
 
-uintptr_t QMovie_CacheMode(const QMovie* self) {
+int QMovie_CacheMode(const QMovie* self) {
 	QMovie::CacheMode _ret = self->cacheMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMovie_SetCacheMode(QMovie* self, uintptr_t mode) {
+void QMovie_SetCacheMode(QMovie* self, int mode) {
 	self->setCacheMode(static_cast<QMovie::CacheMode>(mode));
 }
 
@@ -240,26 +228,26 @@ void QMovie_connect_Updated(QMovie* self, void* slot) {
 	});
 }
 
-void QMovie_StateChanged(QMovie* self, uintptr_t state) {
+void QMovie_StateChanged(QMovie* self, int state) {
 	self->stateChanged(static_cast<QMovie::MovieState>(state));
 }
 
 void QMovie_connect_StateChanged(QMovie* self, void* slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, [=](QMovie::MovieState state) {
 		QMovie::MovieState state_ret = state;
-		uintptr_t sigval1 = static_cast<uintptr_t>(state_ret);
+		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QMovie_StateChanged(slot, sigval1);
 	});
 }
 
-void QMovie_Error(QMovie* self, uintptr_t error) {
+void QMovie_Error(QMovie* self, int error) {
 	self->error(static_cast<QImageReader::ImageReaderError>(error));
 }
 
 void QMovie_connect_Error(QMovie* self, void* slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, [=](QImageReader::ImageReaderError error) {
 		QImageReader::ImageReaderError error_ret = error;
-		uintptr_t sigval1 = static_cast<uintptr_t>(error_ret);
+		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QMovie_Error(slot, sigval1);
 	});
 }

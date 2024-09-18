@@ -30,7 +30,7 @@ typedef struct QLocale QLocale;
 #endif
 
 QCalendar* QCalendar_new();
-QCalendar* QCalendar_new2(uintptr_t system);
+QCalendar* QCalendar_new2(int system);
 bool QCalendar_IsValid(const QCalendar* self);
 int QCalendar_DaysInMonth(const QCalendar* self, int month);
 int QCalendar_DaysInYear(const QCalendar* self, int year);
@@ -58,11 +58,11 @@ struct miqt_string* QCalendar_StandaloneWeekDayName(const QCalendar* self, QLoca
 struct miqt_array* QCalendar_AvailableCalendars();
 int QCalendar_DaysInMonth2(const QCalendar* self, int month, int year);
 struct miqt_string* QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year);
-struct miqt_string* QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format);
+struct miqt_string* QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format);
 struct miqt_string* QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year);
-struct miqt_string* QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, uintptr_t format);
-struct miqt_string* QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format);
-struct miqt_string* QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, uintptr_t format);
+struct miqt_string* QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format);
+struct miqt_string* QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, int format);
+struct miqt_string* QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, int format);
 void QCalendar_Delete(QCalendar* self);
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new();

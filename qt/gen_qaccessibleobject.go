@@ -37,13 +37,11 @@ func newQAccessibleObject_U(h unsafe.Pointer) *QAccessibleObject {
 }
 
 func (this *QAccessibleObject) IsValid() bool {
-	_ret := C.QAccessibleObject_IsValid(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QAccessibleObject_IsValid(this.h))
 }
 
 func (this *QAccessibleObject) Object() *QObject {
-	_ret := C.QAccessibleObject_Object(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QAccessibleObject_Object(this.h)))
 }
 
 func (this *QAccessibleObject) Rect() *QRect {
@@ -56,12 +54,11 @@ func (this *QAccessibleObject) Rect() *QRect {
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), (*C.struct_miqt_string)(text_ms))
+	C.QAccessibleObject_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
-	_ret := C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 type QAccessibleApplication struct {
@@ -94,45 +91,38 @@ func NewQAccessibleApplication() *QAccessibleApplication {
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
-	_ret := C.QAccessibleApplication_Window(this.h)
-	return newQWindow_U(unsafe.Pointer(_ret))
+	return newQWindow_U(unsafe.Pointer(C.QAccessibleApplication_Window(this.h)))
 }
 
 func (this *QAccessibleApplication) ChildCount() int {
-	_ret := C.QAccessibleApplication_ChildCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QAccessibleApplication_ChildCount(this.h))
 }
 
 func (this *QAccessibleApplication) IndexOfChild(param1 *QAccessibleInterface) int {
-	_ret := C.QAccessibleApplication_IndexOfChild(this.h, param1.cPointer())
-	return (int)(_ret)
+	return (int)(C.QAccessibleApplication_IndexOfChild(this.h, param1.cPointer()))
 }
 
 func (this *QAccessibleApplication) FocusChild() *QAccessibleInterface {
-	_ret := C.QAccessibleApplication_FocusChild(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_FocusChild(this.h)))
 }
 
 func (this *QAccessibleApplication) Parent() *QAccessibleInterface {
-	_ret := C.QAccessibleApplication_Parent(this.h)
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_Parent(this.h)))
 }
 
 func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
-	_ret := C.QAccessibleApplication_Child(this.h, (C.int)(index))
-	return newQAccessibleInterface_U(unsafe.Pointer(_ret))
+	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.uintptr_t)(t))
+	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.int)(t))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QAccessibleApplication) Role() QAccessible__Role {
-	_ret := C.QAccessibleApplication_Role(this.h)
-	return (QAccessible__Role)(_ret)
+	return (QAccessible__Role)(C.QAccessibleApplication_Role(this.h))
 }
 
 func (this *QAccessibleApplication) State() *QAccessible__State {

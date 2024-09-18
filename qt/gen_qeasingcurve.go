@@ -103,7 +103,7 @@ func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
 
 // NewQEasingCurve3 constructs a new QEasingCurve object.
 func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
-	ret := C.QEasingCurve_new3((C.uintptr_t)(typeVal))
+	ret := C.QEasingCurve_new3((C.int)(typeVal))
 	return newQEasingCurve(ret)
 }
 
@@ -116,18 +116,15 @@ func (this *QEasingCurve) Swap(other *QEasingCurve) {
 }
 
 func (this *QEasingCurve) OperatorEqual(other *QEasingCurve) bool {
-	_ret := C.QEasingCurve_OperatorEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QEasingCurve_OperatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) OperatorNotEqual(other *QEasingCurve) bool {
-	_ret := C.QEasingCurve_OperatorNotEqual(this.h, other.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QEasingCurve_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) Amplitude() float64 {
-	_ret := C.QEasingCurve_Amplitude(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QEasingCurve_Amplitude(this.h))
 }
 
 func (this *QEasingCurve) SetAmplitude(amplitude float64) {
@@ -135,8 +132,7 @@ func (this *QEasingCurve) SetAmplitude(amplitude float64) {
 }
 
 func (this *QEasingCurve) Period() float64 {
-	_ret := C.QEasingCurve_Period(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QEasingCurve_Period(this.h))
 }
 
 func (this *QEasingCurve) SetPeriod(period float64) {
@@ -144,8 +140,7 @@ func (this *QEasingCurve) SetPeriod(period float64) {
 }
 
 func (this *QEasingCurve) Overshoot() float64 {
-	_ret := C.QEasingCurve_Overshoot(this.h)
-	return (float64)(_ret)
+	return (float64)(C.QEasingCurve_Overshoot(this.h))
 }
 
 func (this *QEasingCurve) SetOvershoot(overshoot float64) {
@@ -163,26 +158,27 @@ func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
 	var _ma *C.struct_miqt_array = C.QEasingCurve_ToCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // mrs jackson
+	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = *newQPointF(_outCast[i])
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQPointF(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QEasingCurve) Type() QEasingCurve__Type {
-	_ret := C.QEasingCurve_Type(this.h)
-	return (QEasingCurve__Type)(_ret)
+	return (QEasingCurve__Type)(C.QEasingCurve_Type(this.h))
 }
 
 func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
-	C.QEasingCurve_SetType(this.h, (C.uintptr_t)(typeVal))
+	C.QEasingCurve_SetType(this.h, (C.int)(typeVal))
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
-	_ret := C.QEasingCurve_ValueForProgress(this.h, (C.double)(progress))
-	return (float64)(_ret)
+	return (float64)(C.QEasingCurve_ValueForProgress(this.h, (C.double)(progress)))
 }
 
 // Delete this object from C++ memory.

@@ -54,8 +54,7 @@ func newQSurface_U(h unsafe.Pointer) *QSurface {
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
-	_ret := C.QSurface_SurfaceClass(this.h)
-	return (QSurface__SurfaceClass)(_ret)
+	return (QSurface__SurfaceClass)(C.QSurface_SurfaceClass(this.h))
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
@@ -66,13 +65,11 @@ func (this *QSurface) Format() *QSurfaceFormat {
 }
 
 func (this *QSurface) SurfaceType() QSurface__SurfaceType {
-	_ret := C.QSurface_SurfaceType(this.h)
-	return (QSurface__SurfaceType)(_ret)
+	return (QSurface__SurfaceType)(C.QSurface_SurfaceType(this.h))
 }
 
 func (this *QSurface) SupportsOpenGL() bool {
-	_ret := C.QSurface_SupportsOpenGL(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QSurface_SupportsOpenGL(this.h))
 }
 
 func (this *QSurface) Size() *QSize {

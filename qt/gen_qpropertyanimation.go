@@ -61,8 +61,7 @@ func NewQPropertyAnimation4(target *QObject, propertyName *QByteArray, parent *Q
 }
 
 func (this *QPropertyAnimation) MetaObject() *QMetaObject {
-	_ret := C.QPropertyAnimation_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QPropertyAnimation_MetaObject(this.h)))
 }
 
 func QPropertyAnimation_Tr(s string) string {
@@ -84,8 +83,7 @@ func QPropertyAnimation_TrUtf8(s string) string {
 }
 
 func (this *QPropertyAnimation) TargetObject() *QObject {
-	_ret := C.QPropertyAnimation_TargetObject(this.h)
-	return newQObject_U(unsafe.Pointer(_ret))
+	return newQObject_U(unsafe.Pointer(C.QPropertyAnimation_TargetObject(this.h)))
 }
 
 func (this *QPropertyAnimation) SetTargetObject(target *QObject) {

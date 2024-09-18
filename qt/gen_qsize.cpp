@@ -51,53 +51,39 @@ void QSize_Transpose(QSize* self) {
 }
 
 QSize* QSize_Transposed(const QSize* self) {
-	QSize _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->transposed());
 }
 
-void QSize_Scale(QSize* self, int w, int h, uintptr_t mode) {
+void QSize_Scale(QSize* self, int w, int h, int mode) {
 	self->scale(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSize_Scale2(QSize* self, QSize* s, uintptr_t mode) {
+void QSize_Scale2(QSize* self, QSize* s, int mode) {
 	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSize* QSize_Scaled(const QSize* self, int w, int h, uintptr_t mode) {
-	QSize _ret = self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+QSize* QSize_Scaled(const QSize* self, int w, int h, int mode) {
+	return new QSize(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSize* QSize_Scaled2(const QSize* self, QSize* s, uintptr_t mode) {
-	QSize _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+QSize* QSize_Scaled2(const QSize* self, QSize* s, int mode) {
+	return new QSize(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
 }
 
 QSize* QSize_ExpandedTo(const QSize* self, QSize* param1) {
-	QSize _ret = self->expandedTo(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->expandedTo(*param1));
 }
 
 QSize* QSize_BoundedTo(const QSize* self, QSize* param1) {
-	QSize _ret = self->boundedTo(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->boundedTo(*param1));
 }
 
 QSize* QSize_GrownBy(const QSize* self, QMargins* m) {
-	QSize _ret = self->grownBy(*m);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->grownBy(*m));
 }
 
 QSize* QSize_ShrunkBy(const QSize* self, QMargins* m) {
-	QSize _ret = self->shrunkBy(*m);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->shrunkBy(*m));
 }
 
 QSize* QSize_OperatorPlusAssign(QSize* self, QSize* param1) {
@@ -157,11 +143,13 @@ bool QSizeF_IsValid(const QSizeF* self) {
 }
 
 double QSizeF_Width(const QSizeF* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QSizeF_Height(const QSizeF* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 void QSizeF_SetWidth(QSizeF* self, double w) {
@@ -177,53 +165,39 @@ void QSizeF_Transpose(QSizeF* self) {
 }
 
 QSizeF* QSizeF_Transposed(const QSizeF* self) {
-	QSizeF _ret = self->transposed();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->transposed());
 }
 
-void QSizeF_Scale(QSizeF* self, double w, double h, uintptr_t mode) {
+void QSizeF_Scale(QSizeF* self, double w, double h, int mode) {
 	self->scale(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSizeF_Scale2(QSizeF* self, QSizeF* s, uintptr_t mode) {
+void QSizeF_Scale2(QSizeF* self, QSizeF* s, int mode) {
 	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSizeF* QSizeF_Scaled(const QSizeF* self, double w, double h, uintptr_t mode) {
-	QSizeF _ret = self->scaled(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QSizeF_Scaled(const QSizeF* self, double w, double h, int mode) {
+	return new QSizeF(self->scaled(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSizeF* QSizeF_Scaled2(const QSizeF* self, QSizeF* s, uintptr_t mode) {
-	QSizeF _ret = self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+QSizeF* QSizeF_Scaled2(const QSizeF* self, QSizeF* s, int mode) {
+	return new QSizeF(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
 }
 
 QSizeF* QSizeF_ExpandedTo(const QSizeF* self, QSizeF* param1) {
-	QSizeF _ret = self->expandedTo(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->expandedTo(*param1));
 }
 
 QSizeF* QSizeF_BoundedTo(const QSizeF* self, QSizeF* param1) {
-	QSizeF _ret = self->boundedTo(*param1);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->boundedTo(*param1));
 }
 
 QSizeF* QSizeF_GrownBy(const QSizeF* self, QMarginsF* m) {
-	QSizeF _ret = self->grownBy(*m);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->grownBy(*m));
 }
 
 QSizeF* QSizeF_ShrunkBy(const QSizeF* self, QMarginsF* m) {
-	QSizeF _ret = self->shrunkBy(*m);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSizeF*>(new QSizeF(_ret));
+	return new QSizeF(self->shrunkBy(*m));
 }
 
 QSizeF* QSizeF_OperatorPlusAssign(QSizeF* self, QSizeF* param1) {
@@ -251,9 +225,7 @@ QSizeF* QSizeF_OperatorDivideAssign(QSizeF* self, double c) {
 }
 
 QSize* QSizeF_ToSize(const QSizeF* self) {
-	QSize _ret = self->toSize();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QSize*>(new QSize(_ret));
+	return new QSize(self->toSize());
 }
 
 void QSizeF_Delete(QSizeF* self) {

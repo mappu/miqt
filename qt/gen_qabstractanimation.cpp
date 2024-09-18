@@ -28,21 +28,21 @@ struct miqt_string* QAbstractAnimation_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QAbstractAnimation_State(const QAbstractAnimation* self) {
+int QAbstractAnimation_State(const QAbstractAnimation* self) {
 	QAbstractAnimation::State _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QAnimationGroup* QAbstractAnimation_Group(const QAbstractAnimation* self) {
 	return self->group();
 }
 
-uintptr_t QAbstractAnimation_Direction(const QAbstractAnimation* self) {
+int QAbstractAnimation_Direction(const QAbstractAnimation* self) {
 	QAbstractAnimation::Direction _ret = self->direction();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractAnimation_SetDirection(QAbstractAnimation* self, uintptr_t direction) {
+void QAbstractAnimation_SetDirection(QAbstractAnimation* self, int direction) {
 	self->setDirection(static_cast<QAbstractAnimation::Direction>(direction));
 }
 
@@ -84,16 +84,16 @@ void QAbstractAnimation_connect_Finished(QAbstractAnimation* self, void* slot) {
 	});
 }
 
-void QAbstractAnimation_StateChanged(QAbstractAnimation* self, uintptr_t newState, uintptr_t oldState) {
+void QAbstractAnimation_StateChanged(QAbstractAnimation* self, int newState, int oldState) {
 	self->stateChanged(static_cast<QAbstractAnimation::State>(newState), static_cast<QAbstractAnimation::State>(oldState));
 }
 
 void QAbstractAnimation_connect_StateChanged(QAbstractAnimation* self, void* slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)(QAbstractAnimation::State, QAbstractAnimation::State)>(&QAbstractAnimation::stateChanged), self, [=](QAbstractAnimation::State newState, QAbstractAnimation::State oldState) {
 		QAbstractAnimation::State newState_ret = newState;
-		uintptr_t sigval1 = static_cast<uintptr_t>(newState_ret);
+		int sigval1 = static_cast<int>(newState_ret);
 		QAbstractAnimation::State oldState_ret = oldState;
-		uintptr_t sigval2 = static_cast<uintptr_t>(oldState_ret);
+		int sigval2 = static_cast<int>(oldState_ret);
 		miqt_exec_callback_QAbstractAnimation_StateChanged(slot, sigval1, sigval2);
 	});
 }
@@ -109,14 +109,14 @@ void QAbstractAnimation_connect_CurrentLoopChanged(QAbstractAnimation* self, voi
 	});
 }
 
-void QAbstractAnimation_DirectionChanged(QAbstractAnimation* self, uintptr_t param1) {
+void QAbstractAnimation_DirectionChanged(QAbstractAnimation* self, int param1) {
 	self->directionChanged(static_cast<QAbstractAnimation::Direction>(param1));
 }
 
 void QAbstractAnimation_connect_DirectionChanged(QAbstractAnimation* self, void* slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)(QAbstractAnimation::Direction)>(&QAbstractAnimation::directionChanged), self, [=](QAbstractAnimation::Direction param1) {
 		QAbstractAnimation::Direction param1_ret = param1;
-		uintptr_t sigval1 = static_cast<uintptr_t>(param1_ret);
+		int sigval1 = static_cast<int>(param1_ret);
 		miqt_exec_callback_QAbstractAnimation_DirectionChanged(slot, sigval1);
 	});
 }
@@ -173,7 +173,7 @@ struct miqt_string* QAbstractAnimation_TrUtf83(const char* s, const char* c, int
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractAnimation_Start1(QAbstractAnimation* self, uintptr_t policy) {
+void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
@@ -224,7 +224,8 @@ bool QAnimationDriver_IsRunning(const QAnimationDriver* self) {
 }
 
 long long QAnimationDriver_Elapsed(const QAnimationDriver* self) {
-	return self->elapsed();
+	qint64 _ret = self->elapsed();
+	return static_cast<long long>(_ret);
 }
 
 void QAnimationDriver_SetStartTime(QAnimationDriver* self, long long startTime) {
@@ -232,7 +233,8 @@ void QAnimationDriver_SetStartTime(QAnimationDriver* self, long long startTime) 
 }
 
 long long QAnimationDriver_StartTime(const QAnimationDriver* self) {
-	return self->startTime();
+	qint64 _ret = self->startTime();
+	return static_cast<long long>(_ret);
 }
 
 void QAnimationDriver_Started(QAnimationDriver* self) {

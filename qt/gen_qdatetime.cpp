@@ -95,27 +95,19 @@ int QDate_DaysInYearWithCal(const QDate* self, QCalendar* cal) {
 }
 
 QDateTime* QDate_StartOfDay(const QDate* self) {
-	QDateTime _ret = self->startOfDay();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->startOfDay());
 }
 
 QDateTime* QDate_EndOfDay(const QDate* self) {
-	QDateTime _ret = self->endOfDay();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->endOfDay());
 }
 
 QDateTime* QDate_StartOfDayWithZone(const QDate* self, QTimeZone* zone) {
-	QDateTime _ret = self->startOfDay(*zone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->startOfDay(*zone));
 }
 
 QDateTime* QDate_EndOfDayWithZone(const QDate* self, QTimeZone* zone) {
-	QDateTime _ret = self->endOfDay(*zone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->endOfDay(*zone));
 }
 
 struct miqt_string* QDate_ShortMonthName(int month) {
@@ -153,7 +145,7 @@ struct miqt_string* QDate_ToString(const QDate* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QDate_ToString2(const QDate* self, uintptr_t format, QCalendar* cal) {
+struct miqt_string* QDate_ToString2(const QDate* self, int format, QCalendar* cal) {
 	QString _ret = self->toString(static_cast<Qt::DateFormat>(format), *cal);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -193,37 +185,28 @@ void QDate_GetDate2(const QDate* self, int* year, int* month, int* day) {
 }
 
 QDate* QDate_AddDays(const QDate* self, long long days) {
-	QDate _ret = self->addDays(static_cast<qint64>(days));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->addDays(static_cast<qint64>(days)));
 }
 
 QDate* QDate_AddMonths(const QDate* self, int months) {
-	QDate _ret = self->addMonths(static_cast<int>(months));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->addMonths(static_cast<int>(months)));
 }
 
 QDate* QDate_AddYears(const QDate* self, int years) {
-	QDate _ret = self->addYears(static_cast<int>(years));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->addYears(static_cast<int>(years)));
 }
 
 QDate* QDate_AddMonths2(const QDate* self, int months, QCalendar* cal) {
-	QDate _ret = self->addMonths(static_cast<int>(months), *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->addMonths(static_cast<int>(months), *cal));
 }
 
 QDate* QDate_AddYears2(const QDate* self, int years, QCalendar* cal) {
-	QDate _ret = self->addYears(static_cast<int>(years), *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->addYears(static_cast<int>(years), *cal));
 }
 
 long long QDate_DaysTo(const QDate* self, QDate* param1) {
-	return self->daysTo(*param1);
+	qint64 _ret = self->daysTo(*param1);
+	return static_cast<long long>(_ret);
 }
 
 bool QDate_OperatorEqual(const QDate* self, QDate* other) {
@@ -251,32 +234,24 @@ bool QDate_OperatorGreaterOrEqual(const QDate* self, QDate* other) {
 }
 
 QDate* QDate_CurrentDate() {
-	QDate _ret = QDate::currentDate();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::currentDate());
 }
 
 QDate* QDate_FromString(struct miqt_string* s) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QDate _ret = QDate::fromString(s_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::fromString(s_QString));
 }
 
 QDate* QDate_FromString2(struct miqt_string* s, struct miqt_string* format) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDate _ret = QDate::fromString(s_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::fromString(s_QString, format_QString));
 }
 
 QDate* QDate_FromString3(struct miqt_string* s, struct miqt_string* format, QCalendar* cal) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDate _ret = QDate::fromString(s_QString, format_QString, *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::fromString(s_QString, format_QString, *cal));
 }
 
 bool QDate_IsValid2(int y, int m, int d) {
@@ -288,83 +263,72 @@ bool QDate_IsLeapYear(int year) {
 }
 
 QDate* QDate_FromJulianDay(long long jd_) {
-	QDate _ret = QDate::fromJulianDay(static_cast<qint64>(jd_));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::fromJulianDay(static_cast<qint64>(jd_)));
 }
 
 long long QDate_ToJulianDay(const QDate* self) {
-	return self->toJulianDay();
+	qint64 _ret = self->toJulianDay();
+	return static_cast<long long>(_ret);
 }
 
 int QDate_WeekNumber1(const QDate* self, int* yearNum) {
 	return self->weekNumber(static_cast<int*>(yearNum));
 }
 
-QDateTime* QDate_StartOfDay1(const QDate* self, uintptr_t spec) {
-	QDateTime _ret = self->startOfDay(static_cast<Qt::TimeSpec>(spec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDate_StartOfDay1(const QDate* self, int spec) {
+	return new QDateTime(self->startOfDay(static_cast<Qt::TimeSpec>(spec)));
 }
 
-QDateTime* QDate_StartOfDay2(const QDate* self, uintptr_t spec, int offsetSeconds) {
-	QDateTime _ret = self->startOfDay(static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDate_StartOfDay2(const QDate* self, int spec, int offsetSeconds) {
+	return new QDateTime(self->startOfDay(static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds)));
 }
 
-QDateTime* QDate_EndOfDay1(const QDate* self, uintptr_t spec) {
-	QDateTime _ret = self->endOfDay(static_cast<Qt::TimeSpec>(spec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDate_EndOfDay1(const QDate* self, int spec) {
+	return new QDateTime(self->endOfDay(static_cast<Qt::TimeSpec>(spec)));
 }
 
-QDateTime* QDate_EndOfDay2(const QDate* self, uintptr_t spec, int offsetSeconds) {
-	QDateTime _ret = self->endOfDay(static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDate_EndOfDay2(const QDate* self, int spec, int offsetSeconds) {
+	return new QDateTime(self->endOfDay(static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds)));
 }
 
-struct miqt_string* QDate_ShortMonthName2(int month, uintptr_t typeVal) {
+struct miqt_string* QDate_ShortMonthName2(int month, int typeVal) {
 	QString _ret = QDate::shortMonthName(static_cast<int>(month), static_cast<QDate::MonthNameType>(typeVal));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QDate_ShortDayName2(int weekday, uintptr_t typeVal) {
+struct miqt_string* QDate_ShortDayName2(int weekday, int typeVal) {
 	QString _ret = QDate::shortDayName(static_cast<int>(weekday), static_cast<QDate::MonthNameType>(typeVal));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QDate_LongMonthName2(int month, uintptr_t typeVal) {
+struct miqt_string* QDate_LongMonthName2(int month, int typeVal) {
 	QString _ret = QDate::longMonthName(static_cast<int>(month), static_cast<QDate::MonthNameType>(typeVal));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QDate_LongDayName2(int weekday, uintptr_t typeVal) {
+struct miqt_string* QDate_LongDayName2(int weekday, int typeVal) {
 	QString _ret = QDate::longDayName(static_cast<int>(weekday), static_cast<QDate::MonthNameType>(typeVal));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QDate_ToString1(const QDate* self, uintptr_t format) {
+struct miqt_string* QDate_ToString1(const QDate* self, int format) {
 	QString _ret = self->toString(static_cast<Qt::DateFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-QDate* QDate_FromString22(struct miqt_string* s, uintptr_t f) {
+QDate* QDate_FromString22(struct miqt_string* s, int f) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QDate _ret = QDate::fromString(s_QString, static_cast<Qt::DateFormat>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(QDate::fromString(s_QString, static_cast<Qt::DateFormat>(f)));
 }
 
 void QDate_Delete(QDate* self) {
@@ -435,9 +399,7 @@ bool QTime_SetHMS(QTime* self, int h, int m, int s) {
 }
 
 QTime* QTime_AddSecs(const QTime* self, int secs) {
-	QTime _ret = self->addSecs(static_cast<int>(secs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->addSecs(static_cast<int>(secs)));
 }
 
 int QTime_SecsTo(const QTime* self, QTime* param1) {
@@ -445,9 +407,7 @@ int QTime_SecsTo(const QTime* self, QTime* param1) {
 }
 
 QTime* QTime_AddMSecs(const QTime* self, int ms) {
-	QTime _ret = self->addMSecs(static_cast<int>(ms));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->addMSecs(static_cast<int>(ms)));
 }
 
 int QTime_MsecsTo(const QTime* self, QTime* param1) {
@@ -479,9 +439,7 @@ bool QTime_OperatorGreaterOrEqual(const QTime* self, QTime* other) {
 }
 
 QTime* QTime_FromMSecsSinceStartOfDay(int msecs) {
-	QTime _ret = QTime::fromMSecsSinceStartOfDay(static_cast<int>(msecs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(QTime::fromMSecsSinceStartOfDay(static_cast<int>(msecs)));
 }
 
 int QTime_MsecsSinceStartOfDay(const QTime* self) {
@@ -489,24 +447,18 @@ int QTime_MsecsSinceStartOfDay(const QTime* self) {
 }
 
 QTime* QTime_CurrentTime() {
-	QTime _ret = QTime::currentTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(QTime::currentTime());
 }
 
 QTime* QTime_FromString(struct miqt_string* s) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QTime _ret = QTime::fromString(s_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(QTime::fromString(s_QString));
 }
 
 QTime* QTime_FromString2(struct miqt_string* s, struct miqt_string* format) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QTime _ret = QTime::fromString(s_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(QTime::fromString(s_QString, format_QString));
 }
 
 bool QTime_IsValid2(int h, int m, int s) {
@@ -525,7 +477,7 @@ int QTime_Elapsed(const QTime* self) {
 	return self->elapsed();
 }
 
-struct miqt_string* QTime_ToString1(const QTime* self, uintptr_t f) {
+struct miqt_string* QTime_ToString1(const QTime* self, int f) {
 	QString _ret = self->toString(static_cast<Qt::DateFormat>(f));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -536,11 +488,9 @@ bool QTime_SetHMS4(QTime* self, int h, int m, int s, int ms) {
 	return self->setHMS(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s), static_cast<int>(ms));
 }
 
-QTime* QTime_FromString22(struct miqt_string* s, uintptr_t f) {
+QTime* QTime_FromString22(struct miqt_string* s, int f) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QTime _ret = QTime::fromString(s_QString, static_cast<Qt::DateFormat>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(QTime::fromString(s_QString, static_cast<Qt::DateFormat>(f)));
 }
 
 bool QTime_IsValid4(int h, int m, int s, int ms) {
@@ -559,7 +509,7 @@ QDateTime* QDateTime_new2(QDate* param1, QTime* param2) {
 	return new QDateTime(*param1, *param2);
 }
 
-QDateTime* QDateTime_new3(QDate* date, QTime* time, uintptr_t spec, int offsetSeconds) {
+QDateTime* QDateTime_new3(QDate* date, QTime* time, int spec, int offsetSeconds) {
 	return new QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
 }
 
@@ -571,7 +521,7 @@ QDateTime* QDateTime_new5(QDateTime* other) {
 	return new QDateTime(*other);
 }
 
-QDateTime* QDateTime_new6(QDate* param1, QTime* param2, uintptr_t spec) {
+QDateTime* QDateTime_new6(QDate* param1, QTime* param2, int spec) {
 	return new QDateTime(*param1, *param2, static_cast<Qt::TimeSpec>(spec));
 }
 
@@ -592,20 +542,16 @@ bool QDateTime_IsValid(const QDateTime* self) {
 }
 
 QDate* QDateTime_Date(const QDateTime* self) {
-	QDate _ret = self->date();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDate*>(new QDate(_ret));
+	return new QDate(self->date());
 }
 
 QTime* QDateTime_Time(const QDateTime* self) {
-	QTime _ret = self->time();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTime*>(new QTime(_ret));
+	return new QTime(self->time());
 }
 
-uintptr_t QDateTime_TimeSpec(const QDateTime* self) {
+int QDateTime_TimeSpec(const QDateTime* self) {
 	Qt::TimeSpec _ret = self->timeSpec();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QDateTime_OffsetFromUtc(const QDateTime* self) {
@@ -613,9 +559,7 @@ int QDateTime_OffsetFromUtc(const QDateTime* self) {
 }
 
 QTimeZone* QDateTime_TimeZone(const QDateTime* self) {
-	QTimeZone _ret = self->timeZone();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QTimeZone*>(new QTimeZone(_ret));
+	return new QTimeZone(self->timeZone());
 }
 
 struct miqt_string* QDateTime_TimeZoneAbbreviation(const QDateTime* self) {
@@ -630,11 +574,13 @@ bool QDateTime_IsDaylightTime(const QDateTime* self) {
 }
 
 long long QDateTime_ToMSecsSinceEpoch(const QDateTime* self) {
-	return self->toMSecsSinceEpoch();
+	qint64 _ret = self->toMSecsSinceEpoch();
+	return static_cast<long long>(_ret);
 }
 
 long long QDateTime_ToSecsSinceEpoch(const QDateTime* self) {
-	return self->toSecsSinceEpoch();
+	qint64 _ret = self->toSecsSinceEpoch();
+	return static_cast<long long>(_ret);
 }
 
 void QDateTime_SetDate(QDateTime* self, QDate* date) {
@@ -645,7 +591,7 @@ void QDateTime_SetTime(QDateTime* self, QTime* time) {
 	self->setTime(*time);
 }
 
-void QDateTime_SetTimeSpec(QDateTime* self, uintptr_t spec) {
+void QDateTime_SetTimeSpec(QDateTime* self, int spec) {
 	self->setTimeSpec(static_cast<Qt::TimeSpec>(spec));
 }
 
@@ -689,75 +635,58 @@ struct miqt_string* QDateTime_ToString2(const QDateTime* self, struct miqt_strin
 }
 
 QDateTime* QDateTime_AddDays(const QDateTime* self, long long days) {
-	QDateTime _ret = self->addDays(static_cast<qint64>(days));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->addDays(static_cast<qint64>(days)));
 }
 
 QDateTime* QDateTime_AddMonths(const QDateTime* self, int months) {
-	QDateTime _ret = self->addMonths(static_cast<int>(months));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->addMonths(static_cast<int>(months)));
 }
 
 QDateTime* QDateTime_AddYears(const QDateTime* self, int years) {
-	QDateTime _ret = self->addYears(static_cast<int>(years));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->addYears(static_cast<int>(years)));
 }
 
 QDateTime* QDateTime_AddSecs(const QDateTime* self, long long secs) {
-	QDateTime _ret = self->addSecs(static_cast<qint64>(secs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->addSecs(static_cast<qint64>(secs)));
 }
 
 QDateTime* QDateTime_AddMSecs(const QDateTime* self, long long msecs) {
-	QDateTime _ret = self->addMSecs(static_cast<qint64>(msecs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->addMSecs(static_cast<qint64>(msecs)));
 }
 
-QDateTime* QDateTime_ToTimeSpec(const QDateTime* self, uintptr_t spec) {
-	QDateTime _ret = self->toTimeSpec(static_cast<Qt::TimeSpec>(spec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_ToTimeSpec(const QDateTime* self, int spec) {
+	return new QDateTime(self->toTimeSpec(static_cast<Qt::TimeSpec>(spec)));
 }
 
 QDateTime* QDateTime_ToLocalTime(const QDateTime* self) {
-	QDateTime _ret = self->toLocalTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toLocalTime());
 }
 
 QDateTime* QDateTime_ToUTC(const QDateTime* self) {
-	QDateTime _ret = self->toUTC();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toUTC());
 }
 
 QDateTime* QDateTime_ToOffsetFromUtc(const QDateTime* self, int offsetSeconds) {
-	QDateTime _ret = self->toOffsetFromUtc(static_cast<int>(offsetSeconds));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toOffsetFromUtc(static_cast<int>(offsetSeconds)));
 }
 
 QDateTime* QDateTime_ToTimeZone(const QDateTime* self, QTimeZone* toZone) {
-	QDateTime _ret = self->toTimeZone(*toZone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(self->toTimeZone(*toZone));
 }
 
 long long QDateTime_DaysTo(const QDateTime* self, QDateTime* param1) {
-	return self->daysTo(*param1);
+	qint64 _ret = self->daysTo(*param1);
+	return static_cast<long long>(_ret);
 }
 
 long long QDateTime_SecsTo(const QDateTime* self, QDateTime* param1) {
-	return self->secsTo(*param1);
+	qint64 _ret = self->secsTo(*param1);
+	return static_cast<long long>(_ret);
 }
 
 long long QDateTime_MsecsTo(const QDateTime* self, QDateTime* param1) {
-	return self->msecsTo(*param1);
+	qint64 _ret = self->msecsTo(*param1);
+	return static_cast<long long>(_ret);
 }
 
 bool QDateTime_OperatorEqual(const QDateTime* self, QDateTime* other) {
@@ -793,42 +722,33 @@ int QDateTime_UtcOffset(const QDateTime* self) {
 }
 
 QDateTime* QDateTime_CurrentDateTime() {
-	QDateTime _ret = QDateTime::currentDateTime();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::currentDateTime());
 }
 
 QDateTime* QDateTime_CurrentDateTimeUtc() {
-	QDateTime _ret = QDateTime::currentDateTimeUtc();
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::currentDateTimeUtc());
 }
 
 QDateTime* QDateTime_FromString(struct miqt_string* s) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QDateTime _ret = QDateTime::fromString(s_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromString(s_QString));
 }
 
 QDateTime* QDateTime_FromString2(struct miqt_string* s, struct miqt_string* format) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDateTime _ret = QDateTime::fromString(s_QString, format_QString);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromString(s_QString, format_QString));
 }
 
 QDateTime* QDateTime_FromString3(struct miqt_string* s, struct miqt_string* format, QCalendar* cal) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
 	QString format_QString = QString::fromUtf8(&format->data, format->len);
-	QDateTime _ret = QDateTime::fromString(s_QString, format_QString, *cal);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromString(s_QString, format_QString, *cal));
 }
 
 unsigned int QDateTime_ToTimeT(const QDateTime* self) {
-	return self->toTime_t();
+	uint _ret = self->toTime_t();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QDateTime_SetTimeT(QDateTime* self, unsigned int secsSince1Jan1970UTC) {
@@ -836,97 +756,73 @@ void QDateTime_SetTimeT(QDateTime* self, unsigned int secsSince1Jan1970UTC) {
 }
 
 QDateTime* QDateTime_FromTimeT(unsigned int secsSince1Jan1970UTC) {
-	QDateTime _ret = QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC)));
 }
 
-QDateTime* QDateTime_FromTimeT2(unsigned int secsSince1Jan1970UTC, uintptr_t spec) {
-	QDateTime _ret = QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), static_cast<Qt::TimeSpec>(spec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromTimeT2(unsigned int secsSince1Jan1970UTC, int spec) {
+	return new QDateTime(QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), static_cast<Qt::TimeSpec>(spec)));
 }
 
 QDateTime* QDateTime_FromTimeT3(unsigned int secsSince1Jan1970UTC, QTimeZone* timeZone) {
-	QDateTime _ret = QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), *timeZone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), *timeZone));
 }
 
 QDateTime* QDateTime_FromMSecsSinceEpoch(long long msecs) {
-	QDateTime _ret = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs)));
 }
 
-QDateTime* QDateTime_FromMSecsSinceEpoch2(long long msecs, uintptr_t spec) {
-	QDateTime _ret = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), static_cast<Qt::TimeSpec>(spec));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromMSecsSinceEpoch2(long long msecs, int spec) {
+	return new QDateTime(QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), static_cast<Qt::TimeSpec>(spec)));
 }
 
 QDateTime* QDateTime_FromSecsSinceEpoch(long long secs) {
-	QDateTime _ret = QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs)));
 }
 
 QDateTime* QDateTime_FromMSecsSinceEpoch3(long long msecs, QTimeZone* timeZone) {
-	QDateTime _ret = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), *timeZone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), *timeZone));
 }
 
 QDateTime* QDateTime_FromSecsSinceEpoch2(long long secs, QTimeZone* timeZone) {
-	QDateTime _ret = QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), *timeZone);
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), *timeZone));
 }
 
 long long QDateTime_CurrentMSecsSinceEpoch() {
-	return QDateTime::currentMSecsSinceEpoch();
+	qint64 _ret = QDateTime::currentMSecsSinceEpoch();
+	return static_cast<long long>(_ret);
 }
 
 long long QDateTime_CurrentSecsSinceEpoch() {
-	return QDateTime::currentSecsSinceEpoch();
+	qint64 _ret = QDateTime::currentSecsSinceEpoch();
+	return static_cast<long long>(_ret);
 }
 
-struct miqt_string* QDateTime_ToString1(const QDateTime* self, uintptr_t format) {
+struct miqt_string* QDateTime_ToString1(const QDateTime* self, int format) {
 	QString _ret = self->toString(static_cast<Qt::DateFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-QDateTime* QDateTime_FromString22(struct miqt_string* s, uintptr_t f) {
+QDateTime* QDateTime_FromString22(struct miqt_string* s, int f) {
 	QString s_QString = QString::fromUtf8(&s->data, s->len);
-	QDateTime _ret = QDateTime::fromString(s_QString, static_cast<Qt::DateFormat>(f));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+	return new QDateTime(QDateTime::fromString(s_QString, static_cast<Qt::DateFormat>(f)));
 }
 
-QDateTime* QDateTime_FromTimeT32(unsigned int secsSince1Jan1970UTC, uintptr_t spec, int offsetFromUtc) {
-	QDateTime _ret = QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromTimeT32(unsigned int secsSince1Jan1970UTC, int spec, int offsetFromUtc) {
+	return new QDateTime(QDateTime::fromTime_t(static_cast<uint>(secsSince1Jan1970UTC), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc)));
 }
 
-QDateTime* QDateTime_FromMSecsSinceEpoch32(long long msecs, uintptr_t spec, int offsetFromUtc) {
-	QDateTime _ret = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromMSecsSinceEpoch32(long long msecs, int spec, int offsetFromUtc) {
+	return new QDateTime(QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(msecs), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc)));
 }
 
-QDateTime* QDateTime_FromSecsSinceEpoch22(long long secs, uintptr_t spe) {
-	QDateTime _ret = QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spe));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromSecsSinceEpoch22(long long secs, int spe) {
+	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spe)));
 }
 
-QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, uintptr_t spe, int offsetFromUtc) {
-	QDateTime _ret = QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spe), static_cast<int>(offsetFromUtc));
-	// Copy-construct value returned type into heap-allocated copy
-	return static_cast<QDateTime*>(new QDateTime(_ret));
+QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, int spe, int offsetFromUtc) {
+	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spe), static_cast<int>(offsetFromUtc)));
 }
 
 void QDateTime_Delete(QDateTime* self) {

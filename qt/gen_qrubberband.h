@@ -29,12 +29,12 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QRubberBand* QRubberBand_new(uintptr_t param1);
-QRubberBand* QRubberBand_new2(uintptr_t param1, QWidget* param2);
+QRubberBand* QRubberBand_new(int param1);
+QRubberBand* QRubberBand_new2(int param1, QWidget* param2);
 QMetaObject* QRubberBand_MetaObject(const QRubberBand* self);
 struct miqt_string* QRubberBand_Tr(const char* s);
 struct miqt_string* QRubberBand_TrUtf8(const char* s);
-uintptr_t QRubberBand_Shape(const QRubberBand* self);
+int QRubberBand_Shape(const QRubberBand* self);
 void QRubberBand_SetGeometry(QRubberBand* self, QRect* r);
 void QRubberBand_SetGeometry2(QRubberBand* self, int x, int y, int w, int h);
 void QRubberBand_Move(QRubberBand* self, int x, int y);

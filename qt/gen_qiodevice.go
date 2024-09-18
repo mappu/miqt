@@ -53,8 +53,7 @@ func newQIODevice_U(h unsafe.Pointer) *QIODevice {
 }
 
 func (this *QIODevice) MetaObject() *QMetaObject {
-	_ret := C.QIODevice_MetaObject(this.h)
-	return newQMetaObject_U(unsafe.Pointer(_ret))
+	return newQMetaObject_U(unsafe.Pointer(C.QIODevice_MetaObject(this.h)))
 }
 
 func QIODevice_Tr(s string) string {
@@ -76,8 +75,7 @@ func QIODevice_TrUtf8(s string) string {
 }
 
 func (this *QIODevice) OpenMode() int {
-	_ret := C.QIODevice_OpenMode(this.h)
-	return (int)(_ret)
+	return (int)(C.QIODevice_OpenMode(this.h))
 }
 
 func (this *QIODevice) SetTextModeEnabled(enabled bool) {
@@ -85,43 +83,35 @@ func (this *QIODevice) SetTextModeEnabled(enabled bool) {
 }
 
 func (this *QIODevice) IsTextModeEnabled() bool {
-	_ret := C.QIODevice_IsTextModeEnabled(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsTextModeEnabled(this.h))
 }
 
 func (this *QIODevice) IsOpen() bool {
-	_ret := C.QIODevice_IsOpen(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsOpen(this.h))
 }
 
 func (this *QIODevice) IsReadable() bool {
-	_ret := C.QIODevice_IsReadable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsReadable(this.h))
 }
 
 func (this *QIODevice) IsWritable() bool {
-	_ret := C.QIODevice_IsWritable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsWritable(this.h))
 }
 
 func (this *QIODevice) IsSequential() bool {
-	_ret := C.QIODevice_IsSequential(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsSequential(this.h))
 }
 
 func (this *QIODevice) ReadChannelCount() int {
-	_ret := C.QIODevice_ReadChannelCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QIODevice_ReadChannelCount(this.h))
 }
 
 func (this *QIODevice) WriteChannelCount() int {
-	_ret := C.QIODevice_WriteChannelCount(this.h)
-	return (int)(_ret)
+	return (int)(C.QIODevice_WriteChannelCount(this.h))
 }
 
 func (this *QIODevice) CurrentReadChannel() int {
-	_ret := C.QIODevice_CurrentReadChannel(this.h)
-	return (int)(_ret)
+	return (int)(C.QIODevice_CurrentReadChannel(this.h))
 }
 
 func (this *QIODevice) SetCurrentReadChannel(channel int) {
@@ -129,8 +119,7 @@ func (this *QIODevice) SetCurrentReadChannel(channel int) {
 }
 
 func (this *QIODevice) CurrentWriteChannel() int {
-	_ret := C.QIODevice_CurrentWriteChannel(this.h)
-	return (int)(_ret)
+	return (int)(C.QIODevice_CurrentWriteChannel(this.h))
 }
 
 func (this *QIODevice) SetCurrentWriteChannel(channel int) {
@@ -138,8 +127,7 @@ func (this *QIODevice) SetCurrentWriteChannel(channel int) {
 }
 
 func (this *QIODevice) Open(mode int) bool {
-	_ret := C.QIODevice_Open(this.h, (C.int)(mode))
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_Open(this.h, (C.int)(mode)))
 }
 
 func (this *QIODevice) Close() {
@@ -147,45 +135,37 @@ func (this *QIODevice) Close() {
 }
 
 func (this *QIODevice) Pos() int64 {
-	_ret := C.QIODevice_Pos(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Pos(this.h))
 }
 
 func (this *QIODevice) Size() int64 {
-	_ret := C.QIODevice_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Size(this.h))
 }
 
 func (this *QIODevice) Seek(pos int64) bool {
-	_ret := C.QIODevice_Seek(this.h, (C.longlong)(pos))
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_Seek(this.h, (C.longlong)(pos)))
 }
 
 func (this *QIODevice) AtEnd() bool {
-	_ret := C.QIODevice_AtEnd(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_AtEnd(this.h))
 }
 
 func (this *QIODevice) Reset() bool {
-	_ret := C.QIODevice_Reset(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_Reset(this.h))
 }
 
 func (this *QIODevice) BytesAvailable() int64 {
-	_ret := C.QIODevice_BytesAvailable(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_BytesAvailable(this.h))
 }
 
 func (this *QIODevice) BytesToWrite() int64 {
-	_ret := C.QIODevice_BytesToWrite(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_BytesToWrite(this.h))
 }
 
 func (this *QIODevice) Read(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) ReadWithMaxlen(maxlen int64) *QByteArray {
@@ -205,8 +185,7 @@ func (this *QIODevice) ReadAll() *QByteArray {
 func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) ReadLine2() *QByteArray {
@@ -217,8 +196,7 @@ func (this *QIODevice) ReadLine2() *QByteArray {
 }
 
 func (this *QIODevice) CanReadLine() bool {
-	_ret := C.QIODevice_CanReadLine(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_CanReadLine(this.h))
 }
 
 func (this *QIODevice) StartTransaction() {
@@ -234,34 +212,29 @@ func (this *QIODevice) RollbackTransaction() {
 }
 
 func (this *QIODevice) IsTransactionStarted() bool {
-	_ret := C.QIODevice_IsTransactionStarted(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_IsTransactionStarted(this.h))
 }
 
 func (this *QIODevice) Write(data string, lenVal int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QIODevice_Write(this.h, data_Cstring, (C.longlong)(lenVal))
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Write(this.h, data_Cstring, (C.longlong)(lenVal)))
 }
 
 func (this *QIODevice) WriteWithData(data string) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QIODevice_WriteWithData(this.h, data_Cstring)
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_WriteWithData(this.h, data_Cstring))
 }
 
 func (this *QIODevice) Write2(data *QByteArray) int64 {
-	_ret := C.QIODevice_Write2(this.h, data.cPointer())
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Write2(this.h, data.cPointer()))
 }
 
 func (this *QIODevice) Peek(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen))
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
 func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
@@ -272,18 +245,15 @@ func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
 }
 
 func (this *QIODevice) Skip(maxSize int64) int64 {
-	_ret := C.QIODevice_Skip(this.h, (C.longlong)(maxSize))
-	return (int64)(_ret)
+	return (int64)(C.QIODevice_Skip(this.h, (C.longlong)(maxSize)))
 }
 
 func (this *QIODevice) WaitForReadyRead(msecs int) bool {
-	_ret := C.QIODevice_WaitForReadyRead(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_WaitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QIODevice) WaitForBytesWritten(msecs int) bool {
-	_ret := C.QIODevice_WaitForBytesWritten(this.h, (C.int)(msecs))
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_WaitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QIODevice) UngetChar(c byte) {
@@ -291,15 +261,13 @@ func (this *QIODevice) UngetChar(c byte) {
 }
 
 func (this *QIODevice) PutChar(c byte) bool {
-	_ret := C.QIODevice_PutChar(this.h, (C.char)(c))
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_PutChar(this.h, (C.char)(c)))
 }
 
 func (this *QIODevice) GetChar(c string) bool {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	_ret := C.QIODevice_GetChar(this.h, c_Cstring)
-	return (bool)(_ret)
+	return (bool)(C.QIODevice_GetChar(this.h, c_Cstring))
 }
 
 func (this *QIODevice) ErrorString() string {
@@ -341,8 +309,7 @@ func miqt_exec_callback_QIODevice_ChannelReadyRead(cb *C.void, channel C.int) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	channel_ret := channel
-	slotval1 := (int)(channel_ret)
+	slotval1 := (int)(channel)
 
 	gofunc(slotval1)
 }
@@ -362,8 +329,7 @@ func miqt_exec_callback_QIODevice_BytesWritten(cb *C.void, bytes C.longlong) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	bytes_ret := bytes
-	slotval1 := (int64)(bytes_ret)
+	slotval1 := (int64)(bytes)
 
 	gofunc(slotval1)
 }
@@ -383,11 +349,9 @@ func miqt_exec_callback_QIODevice_ChannelBytesWritten(cb *C.void, channel C.int,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	channel_ret := channel
-	slotval1 := (int)(channel_ret)
+	slotval1 := (int)(channel)
 
-	bytes_ret := bytes
-	slotval2 := (int64)(bytes_ret)
+	slotval2 := (int64)(bytes)
 
 	gofunc(slotval1, slotval2)
 }

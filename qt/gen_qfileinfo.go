@@ -78,13 +78,11 @@ func (this *QFileInfo) Swap(other *QFileInfo) {
 }
 
 func (this *QFileInfo) OperatorEqual(fileinfo *QFileInfo) bool {
-	_ret := C.QFileInfo_OperatorEqual(this.h, fileinfo.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_OperatorEqual(this.h, fileinfo.cPointer()))
 }
 
 func (this *QFileInfo) OperatorNotEqual(fileinfo *QFileInfo) bool {
-	_ret := C.QFileInfo_OperatorNotEqual(this.h, fileinfo.cPointer())
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_OperatorNotEqual(this.h, fileinfo.cPointer()))
 }
 
 func (this *QFileInfo) SetFile(file string) {
@@ -104,15 +102,13 @@ func (this *QFileInfo) SetFile2(dir *QDir, file string) {
 }
 
 func (this *QFileInfo) Exists() bool {
-	_ret := C.QFileInfo_Exists(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_Exists(this.h))
 }
 
 func QFileInfo_ExistsWithFile(file string) bool {
 	file_ms := miqt_strdupg(file)
 	defer C.free(file_ms)
-	_ret := C.QFileInfo_ExistsWithFile((*C.struct_miqt_string)(file_ms))
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_ExistsWithFile((*C.struct_miqt_string)(file_ms)))
 }
 
 func (this *QFileInfo) Refresh() {
@@ -218,83 +214,67 @@ func (this *QFileInfo) AbsoluteDir() *QDir {
 }
 
 func (this *QFileInfo) IsReadable() bool {
-	_ret := C.QFileInfo_IsReadable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsReadable(this.h))
 }
 
 func (this *QFileInfo) IsWritable() bool {
-	_ret := C.QFileInfo_IsWritable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsWritable(this.h))
 }
 
 func (this *QFileInfo) IsExecutable() bool {
-	_ret := C.QFileInfo_IsExecutable(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsExecutable(this.h))
 }
 
 func (this *QFileInfo) IsHidden() bool {
-	_ret := C.QFileInfo_IsHidden(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsHidden(this.h))
 }
 
 func (this *QFileInfo) IsNativePath() bool {
-	_ret := C.QFileInfo_IsNativePath(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsNativePath(this.h))
 }
 
 func (this *QFileInfo) IsRelative() bool {
-	_ret := C.QFileInfo_IsRelative(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsRelative(this.h))
 }
 
 func (this *QFileInfo) IsAbsolute() bool {
-	_ret := C.QFileInfo_IsAbsolute(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsAbsolute(this.h))
 }
 
 func (this *QFileInfo) MakeAbsolute() bool {
-	_ret := C.QFileInfo_MakeAbsolute(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_MakeAbsolute(this.h))
 }
 
 func (this *QFileInfo) IsFile() bool {
-	_ret := C.QFileInfo_IsFile(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsFile(this.h))
 }
 
 func (this *QFileInfo) IsDir() bool {
-	_ret := C.QFileInfo_IsDir(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsDir(this.h))
 }
 
 func (this *QFileInfo) IsSymLink() bool {
-	_ret := C.QFileInfo_IsSymLink(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsSymLink(this.h))
 }
 
 func (this *QFileInfo) IsSymbolicLink() bool {
-	_ret := C.QFileInfo_IsSymbolicLink(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsSymbolicLink(this.h))
 }
 
 func (this *QFileInfo) IsShortcut() bool {
-	_ret := C.QFileInfo_IsShortcut(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsShortcut(this.h))
 }
 
 func (this *QFileInfo) IsJunction() bool {
-	_ret := C.QFileInfo_IsJunction(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsJunction(this.h))
 }
 
 func (this *QFileInfo) IsRoot() bool {
-	_ret := C.QFileInfo_IsRoot(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsRoot(this.h))
 }
 
 func (this *QFileInfo) IsBundle() bool {
-	_ret := C.QFileInfo_IsBundle(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_IsBundle(this.h))
 }
 
 func (this *QFileInfo) ReadLink() string {
@@ -319,8 +299,7 @@ func (this *QFileInfo) Owner() string {
 }
 
 func (this *QFileInfo) OwnerId() uint {
-	_ret := C.QFileInfo_OwnerId(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QFileInfo_OwnerId(this.h))
 }
 
 func (this *QFileInfo) Group() string {
@@ -331,23 +310,19 @@ func (this *QFileInfo) Group() string {
 }
 
 func (this *QFileInfo) GroupId() uint {
-	_ret := C.QFileInfo_GroupId(this.h)
-	return (uint)(_ret)
+	return (uint)(C.QFileInfo_GroupId(this.h))
 }
 
 func (this *QFileInfo) Permission(permissions int) bool {
-	_ret := C.QFileInfo_Permission(this.h, (C.int)(permissions))
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_Permission(this.h, (C.int)(permissions)))
 }
 
 func (this *QFileInfo) Permissions() int {
-	_ret := C.QFileInfo_Permissions(this.h)
-	return (int)(_ret)
+	return (int)(C.QFileInfo_Permissions(this.h))
 }
 
 func (this *QFileInfo) Size() int64 {
-	_ret := C.QFileInfo_Size(this.h)
-	return (int64)(_ret)
+	return (int64)(C.QFileInfo_Size(this.h))
 }
 
 func (this *QFileInfo) Created() *QDateTime {
@@ -385,16 +360,15 @@ func (this *QFileInfo) LastRead() *QDateTime {
 	return _goptr
 }
 
-func (this *QFileInfo) FileTime(time uintptr) *QDateTime {
-	_ret := C.QFileInfo_FileTime(this.h, (C.uintptr_t)(time))
+func (this *QFileInfo) FileTime(time QFileDevice__FileTime) *QDateTime {
+	_ret := C.QFileInfo_FileTime(this.h, (C.int)(time))
 	_goptr := newQDateTime(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileInfo) Caching() bool {
-	_ret := C.QFileInfo_Caching(this.h)
-	return (bool)(_ret)
+	return (bool)(C.QFileInfo_Caching(this.h))
 }
 
 func (this *QFileInfo) SetCaching(on bool) {
