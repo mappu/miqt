@@ -96,7 +96,7 @@ func QThread_YieldCurrentThread() {
 }
 
 func (this *QThread) SetPriority(priority QThread__Priority) {
-	C.QThread_SetPriority(this.h, (C.uintptr_t)(priority))
+	C.QThread_SetPriority(this.h, (C.int)(priority))
 }
 
 func (this *QThread) Priority() QThread__Priority {
@@ -228,7 +228,7 @@ func (this *QThread) Exit1(retcode int) {
 }
 
 func (this *QThread) Start1(param1 QThread__Priority) {
-	C.QThread_Start1(this.h, (C.uintptr_t)(param1))
+	C.QThread_Start1(this.h, (C.int)(param1))
 }
 
 func (this *QThread) Wait1(deadline QDeadlineTimer) bool {

@@ -182,7 +182,8 @@ struct miqt_array* QObject_DynamicPropertyNames(const QObject* self) {
 }
 
 unsigned int QObject_RegisterUserData() {
-	return QObject::registerUserData();
+	uint _ret = QObject::registerUserData();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QObject_SetUserData(QObject* self, unsigned int id, QObjectUserData* data) {
@@ -243,15 +244,15 @@ struct miqt_string* QObject_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-int QObject_StartTimer2(QObject* self, int interval, uintptr_t timerType) {
+int QObject_StartTimer2(QObject* self, int interval, int timerType) {
 	return self->startTimer(static_cast<int>(interval), static_cast<Qt::TimerType>(timerType));
 }
 
-QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, uintptr_t typeVal) {
+QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int typeVal) {
 	return new QMetaObject::Connection(QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(typeVal)));
 }
 
-QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, uintptr_t typeVal) {
+QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int typeVal) {
 	return new QMetaObject::Connection(self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(typeVal)));
 }
 

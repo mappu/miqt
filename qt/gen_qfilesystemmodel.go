@@ -244,7 +244,7 @@ func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant) bool 
 }
 
 func (this *QFileSystemModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -285,7 +285,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QFileSystemModel) SupportedDropActions() int {
@@ -324,7 +324,7 @@ func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
 }
 
 func (this *QFileSystemModel) SetFilter(filters int) {
-	C.QFileSystemModel_SetFilter(this.h, (C.int)(filters))
+	C.QFileSystemModel_SetFilter(this.h, filters)
 }
 
 func (this *QFileSystemModel) Filter() int {
@@ -384,15 +384,15 @@ func (this *QFileSystemModel) NameFilters() []string {
 }
 
 func (this *QFileSystemModel) SetOption(option QFileSystemModel__Option) {
-	C.QFileSystemModel_SetOption(this.h, (C.uintptr_t)(option))
+	C.QFileSystemModel_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
-	return (bool)(C.QFileSystemModel_TestOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QFileSystemModel_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QFileSystemModel) SetOptions(options int) {
-	C.QFileSystemModel_SetOptions(this.h, (C.int)(options))
+	C.QFileSystemModel_SetOptions(this.h, options)
 }
 
 func (this *QFileSystemModel) Options() int {
@@ -561,18 +561,18 @@ func (this *QFileSystemModel) SetData3(index *QModelIndex, value *QVariant, role
 }
 
 func (this *QFileSystemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QFileSystemModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Sort2(column int, order SortOrder) {
-	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QFileSystemModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on bool) {
-	C.QFileSystemModel_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QFileSystemModel_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.

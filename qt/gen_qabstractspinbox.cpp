@@ -37,22 +37,22 @@ struct miqt_string* QAbstractSpinBox_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self) {
+int QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self) {
 	QAbstractSpinBox::ButtonSymbols _ret = self->buttonSymbols();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractSpinBox_SetButtonSymbols(QAbstractSpinBox* self, uintptr_t bs) {
+void QAbstractSpinBox_SetButtonSymbols(QAbstractSpinBox* self, int bs) {
 	self->setButtonSymbols(static_cast<QAbstractSpinBox::ButtonSymbols>(bs));
 }
 
-void QAbstractSpinBox_SetCorrectionMode(QAbstractSpinBox* self, uintptr_t cm) {
+void QAbstractSpinBox_SetCorrectionMode(QAbstractSpinBox* self, int cm) {
 	self->setCorrectionMode(static_cast<QAbstractSpinBox::CorrectionMode>(cm));
 }
 
-uintptr_t QAbstractSpinBox_CorrectionMode(const QAbstractSpinBox* self) {
+int QAbstractSpinBox_CorrectionMode(const QAbstractSpinBox* self) {
 	QAbstractSpinBox::CorrectionMode _ret = self->correctionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QAbstractSpinBox_HasAcceptableInput(const QAbstractSpinBox* self) {
@@ -151,14 +151,14 @@ bool QAbstractSpinBox_Event(QAbstractSpinBox* self, QEvent* event) {
 	return self->event(event);
 }
 
-QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, uintptr_t param1) {
+QVariant* QAbstractSpinBox_InputMethodQuery(const QAbstractSpinBox* self, int param1) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
-uintptr_t QAbstractSpinBox_Validate(const QAbstractSpinBox* self, struct miqt_string* input, int* pos) {
+int QAbstractSpinBox_Validate(const QAbstractSpinBox* self, struct miqt_string* input, int* pos) {
 	QString input_QString = QString::fromUtf8(&input->data, input->len);
 	QValidator::State _ret = self->validate(input_QString, static_cast<int&>(*pos));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractSpinBox_Fixup(const QAbstractSpinBox* self, struct miqt_string* input) {

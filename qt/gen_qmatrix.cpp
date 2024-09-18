@@ -11,7 +11,7 @@
 #include "gen_qmatrix.h"
 #include "_cgo_export.h"
 
-QMatrix* QMatrix_new(uintptr_t param1) {
+QMatrix* QMatrix_new(int param1) {
 	return new QMatrix(static_cast<Qt::Initialization>(param1));
 }
 
@@ -36,27 +36,33 @@ void QMatrix_SetMatrix(QMatrix* self, double m11, double m12, double m21, double
 }
 
 double QMatrix_M11(const QMatrix* self) {
-	return self->m11();
+	qreal _ret = self->m11();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M12(const QMatrix* self) {
-	return self->m12();
+	qreal _ret = self->m12();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M21(const QMatrix* self) {
-	return self->m21();
+	qreal _ret = self->m21();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_M22(const QMatrix* self) {
-	return self->m22();
+	qreal _ret = self->m22();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_Dx(const QMatrix* self) {
-	return self->dx();
+	qreal _ret = self->dx();
+	return static_cast<double>(_ret);
 }
 
 double QMatrix_Dy(const QMatrix* self) {
-	return self->dy();
+	qreal _ret = self->dy();
+	return static_cast<double>(_ret);
 }
 
 void QMatrix_Map(const QMatrix* self, int x, int y, int* tx, int* ty) {
@@ -136,7 +142,8 @@ bool QMatrix_IsInvertible(const QMatrix* self) {
 }
 
 double QMatrix_Determinant(const QMatrix* self) {
-	return self->determinant();
+	qreal _ret = self->determinant();
+	return static_cast<double>(_ret);
 }
 
 QMatrix* QMatrix_Inverted(const QMatrix* self) {

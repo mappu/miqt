@@ -75,7 +75,7 @@ func (this *QMapNodeBase) Color() QMapNodeBase__Color {
 }
 
 func (this *QMapNodeBase) SetColor(c QMapNodeBase__Color) {
-	C.QMapNodeBase_SetColor(this.h, (C.uintptr_t)(c))
+	C.QMapNodeBase_SetColor(this.h, (C.int)(c))
 }
 
 func (this *QMapNodeBase) Parent() *QMapNodeBase {

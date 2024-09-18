@@ -12,11 +12,11 @@
 #include "gen_qheaderview.h"
 #include "_cgo_export.h"
 
-QHeaderView* QHeaderView_new(uintptr_t orientation) {
+QHeaderView* QHeaderView_new(int orientation) {
 	return new QHeaderView(static_cast<Qt::Orientation>(orientation));
 }
 
-QHeaderView* QHeaderView_new2(uintptr_t orientation, QWidget* parent) {
+QHeaderView* QHeaderView_new2(int orientation, QWidget* parent) {
 	return new QHeaderView(static_cast<Qt::Orientation>(orientation), parent);
 }
 
@@ -42,9 +42,9 @@ void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model) {
 	self->setModel(model);
 }
 
-uintptr_t QHeaderView_Orientation(const QHeaderView* self) {
+int QHeaderView_Orientation(const QHeaderView* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QHeaderView_Offset(const QHeaderView* self) {
@@ -107,7 +107,7 @@ void QHeaderView_ResizeSection(QHeaderView* self, int logicalIndex, int size) {
 	self->resizeSection(static_cast<int>(logicalIndex), static_cast<int>(size));
 }
 
-void QHeaderView_ResizeSections(QHeaderView* self, uintptr_t mode) {
+void QHeaderView_ResizeSections(QHeaderView* self, int mode) {
 	self->resizeSections(static_cast<QHeaderView::ResizeMode>(mode));
 }
 
@@ -175,16 +175,16 @@ bool QHeaderView_HighlightSections(const QHeaderView* self) {
 	return self->highlightSections();
 }
 
-uintptr_t QHeaderView_SectionResizeMode(const QHeaderView* self, int logicalIndex) {
+int QHeaderView_SectionResizeMode(const QHeaderView* self, int logicalIndex) {
 	QHeaderView::ResizeMode _ret = self->sectionResizeMode(static_cast<int>(logicalIndex));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QHeaderView_SetSectionResizeMode(QHeaderView* self, uintptr_t mode) {
+void QHeaderView_SetSectionResizeMode(QHeaderView* self, int mode) {
 	self->setSectionResizeMode(static_cast<QHeaderView::ResizeMode>(mode));
 }
 
-void QHeaderView_SetSectionResizeMode2(QHeaderView* self, int logicalIndex, uintptr_t mode) {
+void QHeaderView_SetSectionResizeMode2(QHeaderView* self, int logicalIndex, int mode) {
 	self->setSectionResizeMode(static_cast<int>(logicalIndex), static_cast<QHeaderView::ResizeMode>(mode));
 }
 
@@ -208,7 +208,7 @@ bool QHeaderView_IsSortIndicatorShown(const QHeaderView* self) {
 	return self->isSortIndicatorShown();
 }
 
-void QHeaderView_SetSortIndicator(QHeaderView* self, int logicalIndex, uintptr_t order) {
+void QHeaderView_SetSortIndicator(QHeaderView* self, int logicalIndex, int order) {
 	self->setSortIndicator(static_cast<int>(logicalIndex), static_cast<Qt::SortOrder>(order));
 }
 
@@ -216,9 +216,9 @@ int QHeaderView_SortIndicatorSection(const QHeaderView* self) {
 	return self->sortIndicatorSection();
 }
 
-uintptr_t QHeaderView_SortIndicatorOrder(const QHeaderView* self) {
+int QHeaderView_SortIndicatorOrder(const QHeaderView* self) {
 	Qt::SortOrder _ret = self->sortIndicatorOrder();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QHeaderView_StretchLastSection(const QHeaderView* self) {
@@ -310,7 +310,7 @@ void QHeaderView_SetOffsetToLastSection(QHeaderView* self) {
 	self->setOffsetToLastSection();
 }
 
-void QHeaderView_HeaderDataChanged(QHeaderView* self, uintptr_t orientation, int logicalFirst, int logicalLast) {
+void QHeaderView_HeaderDataChanged(QHeaderView* self, int orientation, int logicalFirst, int logicalLast) {
 	self->headerDataChanged(static_cast<Qt::Orientation>(orientation), static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
 }
 
@@ -417,7 +417,7 @@ void QHeaderView_connect_GeometriesChanged(QHeaderView* self, void* slot) {
 	});
 }
 
-void QHeaderView_SortIndicatorChanged(QHeaderView* self, int logicalIndex, uintptr_t order) {
+void QHeaderView_SortIndicatorChanged(QHeaderView* self, int logicalIndex, int order) {
 	self->sortIndicatorChanged(static_cast<int>(logicalIndex), static_cast<Qt::SortOrder>(order));
 }
 
@@ -425,7 +425,7 @@ void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, void* slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, Qt::SortOrder)>(&QHeaderView::sortIndicatorChanged), self, [=](int logicalIndex, Qt::SortOrder order) {
 		int sigval1 = logicalIndex;
 		Qt::SortOrder order_ret = order;
-		uintptr_t sigval2 = static_cast<uintptr_t>(order_ret);
+		int sigval2 = static_cast<int>(order_ret);
 		miqt_exec_callback_QHeaderView_SortIndicatorChanged(slot, sigval1, sigval2);
 	});
 }

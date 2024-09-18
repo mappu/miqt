@@ -55,7 +55,7 @@ QMdiSubWindow* QMdiArea_ActiveSubWindow(const QMdiArea* self) {
 }
 
 struct miqt_array* QMdiArea_SubWindowList(const QMdiArea* self) {
-	QList<QMdiSubWindow*> _ret = self->subWindowList();
+	QList<QMdiSubWindow *> _ret = self->subWindowList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** _arr = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -83,30 +83,30 @@ void QMdiArea_SetBackground(QMdiArea* self, QBrush* background) {
 	self->setBackground(*background);
 }
 
-uintptr_t QMdiArea_ActivationOrder(const QMdiArea* self) {
+int QMdiArea_ActivationOrder(const QMdiArea* self) {
 	QMdiArea::WindowOrder _ret = self->activationOrder();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMdiArea_SetActivationOrder(QMdiArea* self, uintptr_t order) {
+void QMdiArea_SetActivationOrder(QMdiArea* self, int order) {
 	self->setActivationOrder(static_cast<QMdiArea::WindowOrder>(order));
 }
 
-void QMdiArea_SetOption(QMdiArea* self, uintptr_t option) {
+void QMdiArea_SetOption(QMdiArea* self, int option) {
 	self->setOption(static_cast<QMdiArea::AreaOption>(option));
 }
 
-bool QMdiArea_TestOption(const QMdiArea* self, uintptr_t opton) {
+bool QMdiArea_TestOption(const QMdiArea* self, int opton) {
 	return self->testOption(static_cast<QMdiArea::AreaOption>(opton));
 }
 
-void QMdiArea_SetViewMode(QMdiArea* self, uintptr_t mode) {
+void QMdiArea_SetViewMode(QMdiArea* self, int mode) {
 	self->setViewMode(static_cast<QMdiArea::ViewMode>(mode));
 }
 
-uintptr_t QMdiArea_ViewMode(const QMdiArea* self) {
+int QMdiArea_ViewMode(const QMdiArea* self) {
 	QMdiArea::ViewMode _ret = self->viewMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QMdiArea_DocumentMode(const QMdiArea* self) {
@@ -133,22 +133,22 @@ bool QMdiArea_TabsMovable(const QMdiArea* self) {
 	return self->tabsMovable();
 }
 
-void QMdiArea_SetTabShape(QMdiArea* self, uintptr_t shape) {
+void QMdiArea_SetTabShape(QMdiArea* self, int shape) {
 	self->setTabShape(static_cast<QTabWidget::TabShape>(shape));
 }
 
-uintptr_t QMdiArea_TabShape(const QMdiArea* self) {
+int QMdiArea_TabShape(const QMdiArea* self) {
 	QTabWidget::TabShape _ret = self->tabShape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMdiArea_SetTabPosition(QMdiArea* self, uintptr_t position) {
+void QMdiArea_SetTabPosition(QMdiArea* self, int position) {
 	self->setTabPosition(static_cast<QTabWidget::TabPosition>(position));
 }
 
-uintptr_t QMdiArea_TabPosition(const QMdiArea* self) {
+int QMdiArea_TabPosition(const QMdiArea* self) {
 	QTabWidget::TabPosition _ret = self->tabPosition();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QMdiArea_SubWindowActivated(QMdiArea* self, QMdiSubWindow* param1) {
@@ -218,8 +218,8 @@ struct miqt_string* QMdiArea_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_array* QMdiArea_SubWindowList1(const QMdiArea* self, uintptr_t order) {
-	QList<QMdiSubWindow*> _ret = self->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
+struct miqt_array* QMdiArea_SubWindowList1(const QMdiArea* self, int order) {
+	QList<QMdiSubWindow *> _ret = self->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** _arr = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -235,7 +235,7 @@ QMdiSubWindow* QMdiArea_AddSubWindow2(QMdiArea* self, QWidget* widget, int flags
 	return self->addSubWindow(widget, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QMdiArea_SetOption2(QMdiArea* self, uintptr_t option, bool on) {
+void QMdiArea_SetOption2(QMdiArea* self, int option, bool on) {
 	self->setOption(static_cast<QMdiArea::AreaOption>(option), on);
 }
 

@@ -87,8 +87,8 @@ QColor* QListWidgetItem_TextColor(const QListWidgetItem* self);
 void QListWidgetItem_SetTextColor(QListWidgetItem* self, QColor* color);
 QBrush* QListWidgetItem_Foreground(const QListWidgetItem* self);
 void QListWidgetItem_SetForeground(QListWidgetItem* self, QBrush* brush);
-uintptr_t QListWidgetItem_CheckState(const QListWidgetItem* self);
-void QListWidgetItem_SetCheckState(QListWidgetItem* self, uintptr_t state);
+int QListWidgetItem_CheckState(const QListWidgetItem* self);
+void QListWidgetItem_SetCheckState(QListWidgetItem* self, int state);
 QSize* QListWidgetItem_SizeHint(const QListWidgetItem* self);
 void QListWidgetItem_SetSizeHint(QListWidgetItem* self, QSize* size);
 QVariant* QListWidgetItem_Data(const QListWidgetItem* self, int role);
@@ -168,8 +168,8 @@ struct miqt_string* QListWidget_Tr2(const char* s, const char* c);
 struct miqt_string* QListWidget_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QListWidget_TrUtf82(const char* s, const char* c);
 struct miqt_string* QListWidget_TrUtf83(const char* s, const char* c, int n);
-void QListWidget_SortItems1(QListWidget* self, uintptr_t order);
-void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, uintptr_t hint);
+void QListWidget_SortItems1(QListWidget* self, int order);
+void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, int hint);
 void QListWidget_Delete(QListWidget* self);
 
 #ifdef __cplusplus

@@ -77,7 +77,7 @@ void QTextCursor_InsertText2(QTextCursor* self, struct miqt_string* text, QTextC
 	self->insertText(text_QString, *format);
 }
 
-bool QTextCursor_MovePosition(QTextCursor* self, uintptr_t op) {
+bool QTextCursor_MovePosition(QTextCursor* self, int op) {
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op));
 }
 
@@ -113,7 +113,7 @@ void QTextCursor_DeletePreviousChar(QTextCursor* self) {
 	self->deletePreviousChar();
 }
 
-void QTextCursor_Select(QTextCursor* self, uintptr_t selection) {
+void QTextCursor_Select(QTextCursor* self, int selection) {
 	self->select(static_cast<QTextCursor::SelectionType>(selection));
 }
 
@@ -228,7 +228,7 @@ QTextList* QTextCursor_InsertList(QTextCursor* self, QTextListFormat* format) {
 	return self->insertList(*format);
 }
 
-QTextList* QTextCursor_InsertListWithStyle(QTextCursor* self, uintptr_t style) {
+QTextList* QTextCursor_InsertListWithStyle(QTextCursor* self, int style) {
 	return self->insertList(static_cast<QTextListFormat::Style>(style));
 }
 
@@ -236,7 +236,7 @@ QTextList* QTextCursor_CreateList(QTextCursor* self, QTextListFormat* format) {
 	return self->createList(*format);
 }
 
-QTextList* QTextCursor_CreateListWithStyle(QTextCursor* self, uintptr_t style) {
+QTextList* QTextCursor_CreateListWithStyle(QTextCursor* self, int style) {
 	return self->createList(static_cast<QTextListFormat::Style>(style));
 }
 
@@ -273,7 +273,7 @@ void QTextCursor_InsertHtml(QTextCursor* self, struct miqt_string* html) {
 	self->insertHtml(html_QString);
 }
 
-void QTextCursor_InsertImage(QTextCursor* self, QTextImageFormat* format, uintptr_t alignment) {
+void QTextCursor_InsertImage(QTextCursor* self, QTextImageFormat* format, int alignment) {
 	self->insertImage(*format, static_cast<QTextFrameFormat::Position>(alignment));
 }
 
@@ -342,15 +342,15 @@ QTextDocument* QTextCursor_Document(const QTextCursor* self) {
 	return self->document();
 }
 
-void QTextCursor_SetPosition2(QTextCursor* self, int pos, uintptr_t mode) {
+void QTextCursor_SetPosition2(QTextCursor* self, int pos, int mode) {
 	self->setPosition(static_cast<int>(pos), static_cast<QTextCursor::MoveMode>(mode));
 }
 
-bool QTextCursor_MovePosition2(QTextCursor* self, uintptr_t op, uintptr_t param2) {
+bool QTextCursor_MovePosition2(QTextCursor* self, int op, int param2) {
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op), static_cast<QTextCursor::MoveMode>(param2));
 }
 
-bool QTextCursor_MovePosition3(QTextCursor* self, uintptr_t op, uintptr_t param2, int n) {
+bool QTextCursor_MovePosition3(QTextCursor* self, int op, int param2, int n) {
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op), static_cast<QTextCursor::MoveMode>(param2), static_cast<int>(n));
 }
 

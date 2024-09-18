@@ -123,7 +123,7 @@ func (this *QGesture) UnsetHotSpot() {
 }
 
 func (this *QGesture) SetGestureCancelPolicy(policy QGesture__GestureCancelPolicy) {
-	C.QGesture_SetGestureCancelPolicy(this.h, (C.uintptr_t)(policy))
+	C.QGesture_SetGestureCancelPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGesture) GestureCancelPolicy() QGesture__GestureCancelPolicy {
@@ -402,7 +402,7 @@ func (this *QPinchGesture) TotalChangeFlags() int {
 }
 
 func (this *QPinchGesture) SetTotalChangeFlags(value int) {
-	C.QPinchGesture_SetTotalChangeFlags(this.h, (C.int)(value))
+	C.QPinchGesture_SetTotalChangeFlags(this.h, value)
 }
 
 func (this *QPinchGesture) ChangeFlags() int {
@@ -410,7 +410,7 @@ func (this *QPinchGesture) ChangeFlags() int {
 }
 
 func (this *QPinchGesture) SetChangeFlags(value int) {
-	C.QPinchGesture_SetChangeFlags(this.h, (C.int)(value))
+	C.QPinchGesture_SetChangeFlags(this.h, value)
 }
 
 func (this *QPinchGesture) StartCenterPoint() *QPointF {
@@ -998,7 +998,7 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	return newQGesture_U(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.uintptr_t)(typeVal))))
+	return newQGesture_U(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))))
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
@@ -1040,19 +1040,19 @@ func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
 }
 
 func (this *QGestureEvent) SetAccepted2(param1 GestureType, param2 bool) {
-	C.QGestureEvent_SetAccepted2(this.h, (C.uintptr_t)(param1), (C.bool)(param2))
+	C.QGestureEvent_SetAccepted2(this.h, (C.int)(param1), (C.bool)(param2))
 }
 
 func (this *QGestureEvent) AcceptWithQtGestureType(param1 GestureType) {
-	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.uintptr_t)(param1))
+	C.QGestureEvent_AcceptWithQtGestureType(this.h, (C.int)(param1))
 }
 
 func (this *QGestureEvent) IgnoreWithQtGestureType(param1 GestureType) {
-	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.uintptr_t)(param1))
+	C.QGestureEvent_IgnoreWithQtGestureType(this.h, (C.int)(param1))
 }
 
 func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 GestureType) bool {
-	return (bool)(C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.uintptr_t)(param1)))
+	return (bool)(C.QGestureEvent_IsAcceptedWithQtGestureType(this.h, (C.int)(param1)))
 }
 
 func (this *QGestureEvent) SetWidget(widget *QWidget) {

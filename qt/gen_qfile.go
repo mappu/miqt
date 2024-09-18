@@ -229,11 +229,11 @@ func QFile_Copy2(fileName string, newName string) bool {
 }
 
 func (this *QFile) Open(flags int) bool {
-	return (bool)(C.QFile_Open(this.h, (C.int)(flags)))
+	return (bool)(C.QFile_Open(this.h, flags))
 }
 
 func (this *QFile) Open3(fd int, ioFlags int) bool {
-	return (bool)(C.QFile_Open3(this.h, (C.int)(fd), (C.int)(ioFlags)))
+	return (bool)(C.QFile_Open3(this.h, (C.int)(fd), ioFlags))
 }
 
 func (this *QFile) Size() int64 {
@@ -261,13 +261,13 @@ func QFile_PermissionsWithFilename(filename string) int {
 }
 
 func (this *QFile) SetPermissions(permissionSpec int) bool {
-	return (bool)(C.QFile_SetPermissions(this.h, (C.int)(permissionSpec)))
+	return (bool)(C.QFile_SetPermissions(this.h, permissionSpec))
 }
 
 func QFile_SetPermissions2(filename string, permissionSpec int) bool {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	return (bool)(C.QFile_SetPermissions2((*C.struct_miqt_string)(filename_ms), (C.int)(permissionSpec)))
+	return (bool)(C.QFile_SetPermissions2((*C.struct_miqt_string)(filename_ms), permissionSpec))
 }
 
 func QFile_Tr2(s string, c string) string {
@@ -315,7 +315,7 @@ func QFile_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFile) Open33(fd int, ioFlags int, handleFlags int) bool {
-	return (bool)(C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
+	return (bool)(C.QFile_Open33(this.h, (C.int)(fd), ioFlags, handleFlags))
 }
 
 // Delete this object from C++ memory.

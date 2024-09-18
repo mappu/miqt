@@ -11,7 +11,7 @@ QVector2D* QVector2D_new() {
 	return new QVector2D();
 }
 
-QVector2D* QVector2D_new2(uintptr_t param1) {
+QVector2D* QVector2D_new2(int param1) {
 	return new QVector2D(static_cast<Qt::Initialization>(param1));
 }
 

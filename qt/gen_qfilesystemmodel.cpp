@@ -147,7 +147,7 @@ bool QFileSystemModel_SetData(QFileSystemModel* self, QModelIndex* index, QVaria
 	return self->setData(*index, *value);
 }
 
-QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, uintptr_t orientation) {
+QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
@@ -186,7 +186,7 @@ QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_a
 	return self->mimeData(indexes_QList);
 }
 
-bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -279,11 +279,11 @@ struct miqt_array* QFileSystemModel_NameFilters(const QFileSystemModel* self) {
 	return _out;
 }
 
-void QFileSystemModel_SetOption(QFileSystemModel* self, uintptr_t option) {
+void QFileSystemModel_SetOption(QFileSystemModel* self, int option) {
 	self->setOption(static_cast<QFileSystemModel::Option>(option));
 }
 
-bool QFileSystemModel_TestOption(const QFileSystemModel* self, uintptr_t option) {
+bool QFileSystemModel_TestOption(const QFileSystemModel* self, int option) {
 	return self->testOption(static_cast<QFileSystemModel::Option>(option));
 }
 
@@ -308,7 +308,8 @@ bool QFileSystemModel_IsDir(const QFileSystemModel* self, QModelIndex* index) {
 }
 
 long long QFileSystemModel_Size(const QFileSystemModel* self, QModelIndex* index) {
-	return self->size(*index);
+	qint64 _ret = self->size(*index);
+	return static_cast<long long>(_ret);
 }
 
 struct miqt_string* QFileSystemModel_Type(const QFileSystemModel* self, QModelIndex* index) {
@@ -416,15 +417,15 @@ bool QFileSystemModel_SetData3(QFileSystemModel* self, QModelIndex* index, QVari
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QFileSystemModel_HeaderData3(const QFileSystemModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QFileSystemModel_HeaderData3(const QFileSystemModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-void QFileSystemModel_Sort2(QFileSystemModel* self, int column, uintptr_t order) {
+void QFileSystemModel_Sort2(QFileSystemModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-void QFileSystemModel_SetOption2(QFileSystemModel* self, uintptr_t option, bool on) {
+void QFileSystemModel_SetOption2(QFileSystemModel* self, int option, bool on) {
 	self->setOption(static_cast<QFileSystemModel::Option>(option), on);
 }
 

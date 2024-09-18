@@ -111,7 +111,7 @@ func NewQWizard2(parent *QWidget) *QWizard {
 
 // NewQWizard3 constructs a new QWizard object.
 func NewQWizard3(parent *QWidget, flags int) *QWizard {
-	ret := C.QWizard_new3(parent.cPointer(), (C.int)(flags))
+	ret := C.QWizard_new3(parent.cPointer(), flags)
 	return newQWizard(ret)
 }
 
@@ -230,7 +230,7 @@ func (this *QWizard) Field(name string) *QVariant {
 }
 
 func (this *QWizard) SetWizardStyle(style QWizard__WizardStyle) {
-	C.QWizard_SetWizardStyle(this.h, (C.uintptr_t)(style))
+	C.QWizard_SetWizardStyle(this.h, (C.int)(style))
 }
 
 func (this *QWizard) WizardStyle() QWizard__WizardStyle {
@@ -238,15 +238,15 @@ func (this *QWizard) WizardStyle() QWizard__WizardStyle {
 }
 
 func (this *QWizard) SetOption(option QWizard__WizardOption) {
-	C.QWizard_SetOption(this.h, (C.uintptr_t)(option))
+	C.QWizard_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
-	return (bool)(C.QWizard_TestOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QWizard_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QWizard) SetOptions(options int) {
-	C.QWizard_SetOptions(this.h, (C.int)(options))
+	C.QWizard_SetOptions(this.h, options)
 }
 
 func (this *QWizard) Options() int {
@@ -287,7 +287,7 @@ func (this *QWizard) Button(which int) *QAbstractButton {
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
-	C.QWizard_SetTitleFormat(this.h, (C.uintptr_t)(format))
+	C.QWizard_SetTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) TitleFormat() TextFormat {
@@ -295,7 +295,7 @@ func (this *QWizard) TitleFormat() TextFormat {
 }
 
 func (this *QWizard) SetSubTitleFormat(format TextFormat) {
-	C.QWizard_SetSubTitleFormat(this.h, (C.uintptr_t)(format))
+	C.QWizard_SetSubTitleFormat(this.h, (C.int)(format))
 }
 
 func (this *QWizard) SubTitleFormat() TextFormat {
@@ -303,11 +303,11 @@ func (this *QWizard) SubTitleFormat() TextFormat {
 }
 
 func (this *QWizard) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
-	C.QWizard_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+	C.QWizard_SetPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizard) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizard_Pixmap(this.h, (C.uintptr_t)(which))
+	_ret := C.QWizard_Pixmap(this.h, (C.int)(which))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -496,7 +496,7 @@ func QWizard_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWizard) SetOption2(option QWizard__WizardOption, on bool) {
-	C.QWizard_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QWizard_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.
@@ -597,11 +597,11 @@ func (this *QWizardPage) SubTitle() string {
 }
 
 func (this *QWizardPage) SetPixmap(which QWizard__WizardPixmap, pixmap *QPixmap) {
-	C.QWizardPage_SetPixmap(this.h, (C.uintptr_t)(which), pixmap.cPointer())
+	C.QWizardPage_SetPixmap(this.h, (C.int)(which), pixmap.cPointer())
 }
 
 func (this *QWizardPage) Pixmap(which QWizard__WizardPixmap) *QPixmap {
-	_ret := C.QWizardPage_Pixmap(this.h, (C.uintptr_t)(which))
+	_ret := C.QWizardPage_Pixmap(this.h, (C.int)(which))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

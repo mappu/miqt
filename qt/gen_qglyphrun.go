@@ -174,11 +174,11 @@ func (this *QGlyphRun) IsRightToLeft() bool {
 }
 
 func (this *QGlyphRun) SetFlag(flag QGlyphRun__GlyphRunFlag) {
-	C.QGlyphRun_SetFlag(this.h, (C.uintptr_t)(flag))
+	C.QGlyphRun_SetFlag(this.h, (C.int)(flag))
 }
 
 func (this *QGlyphRun) SetFlags(flags int) {
-	C.QGlyphRun_SetFlags(this.h, (C.int)(flags))
+	C.QGlyphRun_SetFlags(this.h, flags)
 }
 
 func (this *QGlyphRun) Flags() int {
@@ -201,7 +201,7 @@ func (this *QGlyphRun) IsEmpty() bool {
 }
 
 func (this *QGlyphRun) SetFlag2(flag QGlyphRun__GlyphRunFlag, enabled bool) {
-	C.QGlyphRun_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
+	C.QGlyphRun_SetFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
 // Delete this object from C++ memory.

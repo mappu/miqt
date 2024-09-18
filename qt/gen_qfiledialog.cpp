@@ -222,31 +222,31 @@ void QFileDialog_SetFilter(QFileDialog* self, int filters) {
 	self->setFilter(static_cast<QDir::Filters>(filters));
 }
 
-void QFileDialog_SetViewMode(QFileDialog* self, uintptr_t mode) {
+void QFileDialog_SetViewMode(QFileDialog* self, int mode) {
 	self->setViewMode(static_cast<QFileDialog::ViewMode>(mode));
 }
 
-uintptr_t QFileDialog_ViewMode(const QFileDialog* self) {
+int QFileDialog_ViewMode(const QFileDialog* self) {
 	QFileDialog::ViewMode _ret = self->viewMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFileDialog_SetFileMode(QFileDialog* self, uintptr_t mode) {
+void QFileDialog_SetFileMode(QFileDialog* self, int mode) {
 	self->setFileMode(static_cast<QFileDialog::FileMode>(mode));
 }
 
-uintptr_t QFileDialog_FileMode(const QFileDialog* self) {
+int QFileDialog_FileMode(const QFileDialog* self) {
 	QFileDialog::FileMode _ret = self->fileMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFileDialog_SetAcceptMode(QFileDialog* self, uintptr_t mode) {
+void QFileDialog_SetAcceptMode(QFileDialog* self, int mode) {
 	self->setAcceptMode(static_cast<QFileDialog::AcceptMode>(mode));
 }
 
-uintptr_t QFileDialog_AcceptMode(const QFileDialog* self) {
+int QFileDialog_AcceptMode(const QFileDialog* self) {
 	QFileDialog::AcceptMode _ret = self->acceptMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFileDialog_SetReadOnly(QFileDialog* self, bool enabled) {
@@ -359,12 +359,12 @@ QFileIconProvider* QFileDialog_IconProvider(const QFileDialog* self) {
 	return self->iconProvider();
 }
 
-void QFileDialog_SetLabelText(QFileDialog* self, uintptr_t label, struct miqt_string* text) {
+void QFileDialog_SetLabelText(QFileDialog* self, int label, struct miqt_string* text) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->setLabelText(static_cast<QFileDialog::DialogLabel>(label), text_QString);
 }
 
-struct miqt_string* QFileDialog_LabelText(const QFileDialog* self, uintptr_t label) {
+struct miqt_string* QFileDialog_LabelText(const QFileDialog* self, int label) {
 	QString _ret = self->labelText(static_cast<QFileDialog::DialogLabel>(label));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -406,11 +406,11 @@ QAbstractProxyModel* QFileDialog_ProxyModel(const QFileDialog* self) {
 	return self->proxyModel();
 }
 
-void QFileDialog_SetOption(QFileDialog* self, uintptr_t option) {
+void QFileDialog_SetOption(QFileDialog* self, int option) {
 	self->setOption(static_cast<QFileDialog::Option>(option));
 }
 
-bool QFileDialog_TestOption(const QFileDialog* self, uintptr_t option) {
+bool QFileDialog_TestOption(const QFileDialog* self, int option) {
 	return self->testOption(static_cast<QFileDialog::Option>(option));
 }
 
@@ -676,7 +676,7 @@ struct miqt_string* QFileDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFileDialog_SetOption2(QFileDialog* self, uintptr_t option, bool on) {
+void QFileDialog_SetOption2(QFileDialog* self, int option, bool on) {
 	self->setOption(static_cast<QFileDialog::Option>(option), on);
 }
 

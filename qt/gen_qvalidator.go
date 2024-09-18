@@ -463,7 +463,7 @@ func (this *QDoubleValidator) SetDecimals(decimals int) {
 }
 
 func (this *QDoubleValidator) SetNotation(notation QDoubleValidator__Notation) {
-	C.QDoubleValidator_SetNotation(this.h, (C.uintptr_t)(notation))
+	C.QDoubleValidator_SetNotation(this.h, (C.int)(notation))
 }
 
 func (this *QDoubleValidator) Bottom() float64 {
@@ -543,14 +543,14 @@ func miqt_exec_callback_QDoubleValidator_DecimalsChanged(cb *C.void, decimals C.
 }
 
 func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notation) {
-	C.QDoubleValidator_NotationChanged(this.h, (C.uintptr_t)(notation))
+	C.QDoubleValidator_NotationChanged(this.h, (C.int)(notation))
 }
 func (this *QDoubleValidator) OnNotationChanged(slot func(notation QDoubleValidator__Notation)) {
 	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QDoubleValidator_NotationChanged
-func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.uintptr_t) {
+func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(notation QDoubleValidator__Notation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

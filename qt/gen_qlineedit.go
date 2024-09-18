@@ -159,7 +159,7 @@ func (this *QLineEdit) EchoMode() QLineEdit__EchoMode {
 }
 
 func (this *QLineEdit) SetEchoMode(echoMode QLineEdit__EchoMode) {
-	C.QLineEdit_SetEchoMode(this.h, (C.uintptr_t)(echoMode))
+	C.QLineEdit_SetEchoMode(this.h, (C.int)(echoMode))
 }
 
 func (this *QLineEdit) IsReadOnly() bool {
@@ -213,7 +213,7 @@ func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
 }
 
 func (this *QLineEdit) SetAlignment(flag int) {
-	C.QLineEdit_SetAlignment(this.h, (C.int)(flag))
+	C.QLineEdit_SetAlignment(this.h, flag)
 }
 
 func (this *QLineEdit) Alignment() int {
@@ -304,7 +304,7 @@ func (this *QLineEdit) DragEnabled() bool {
 }
 
 func (this *QLineEdit) SetCursorMoveStyle(style CursorMoveStyle) {
-	C.QLineEdit_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
+	C.QLineEdit_SetCursorMoveStyle(this.h, (C.int)(style))
 }
 
 func (this *QLineEdit) CursorMoveStyle() CursorMoveStyle {
@@ -348,11 +348,11 @@ func (this *QLineEdit) TextMargins() *QMargins {
 }
 
 func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosition) {
-	C.QLineEdit_AddAction(this.h, action.cPointer(), (C.uintptr_t)(position))
+	C.QLineEdit_AddAction(this.h, action.cPointer(), (C.int)(position))
 }
 
 func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.uintptr_t)(position))))
+	return newQAction_U(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position))))
 }
 
 func (this *QLineEdit) SetText(text string) {
@@ -544,14 +544,14 @@ func miqt_exec_callback_QLineEdit_InputRejected(cb *C.void) {
 }
 
 func (this *QLineEdit) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QLineEdit_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_ret := C.QLineEdit_InputMethodQuery(this.h, (C.int)(param1))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) InputMethodQuery2(property InputMethodQuery, argument QVariant) *QVariant {
-	_ret := C.QLineEdit_InputMethodQuery2(this.h, (C.uintptr_t)(property), argument.cPointer())
+	_ret := C.QLineEdit_InputMethodQuery2(this.h, (C.int)(property), argument.cPointer())
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

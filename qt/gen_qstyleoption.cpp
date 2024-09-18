@@ -361,7 +361,8 @@ QStyleOptionGraphicsItem* QStyleOptionGraphicsItem_new2(QStyleOptionGraphicsItem
 }
 
 double QStyleOptionGraphicsItem_LevelOfDetailFromTransform(QTransform* worldTransform) {
-	return QStyleOptionGraphicsItem::levelOfDetailFromTransform(*worldTransform);
+	qreal _ret = QStyleOptionGraphicsItem::levelOfDetailFromTransform(*worldTransform);
+	return static_cast<double>(_ret);
 }
 
 void QStyleOptionGraphicsItem_Delete(QStyleOptionGraphicsItem* self) {

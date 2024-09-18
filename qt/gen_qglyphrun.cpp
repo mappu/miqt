@@ -36,7 +36,7 @@ void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, 
 }
 
 struct miqt_array* QGlyphRun_GlyphIndexes(const QGlyphRun* self) {
-	QVector<unsigned int> _ret = self->glyphIndexes();
+	QVector<quint32> _ret = self->glyphIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -125,7 +125,7 @@ bool QGlyphRun_IsRightToLeft(const QGlyphRun* self) {
 	return self->isRightToLeft();
 }
 
-void QGlyphRun_SetFlag(QGlyphRun* self, uintptr_t flag) {
+void QGlyphRun_SetFlag(QGlyphRun* self, int flag) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag));
 }
 
@@ -150,7 +150,7 @@ bool QGlyphRun_IsEmpty(const QGlyphRun* self) {
 	return self->isEmpty();
 }
 
-void QGlyphRun_SetFlag2(QGlyphRun* self, uintptr_t flag, bool enabled) {
+void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag), enabled);
 }
 

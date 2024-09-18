@@ -61,12 +61,12 @@ bool QCheckBox_IsTristate(const QCheckBox* self) {
 	return self->isTristate();
 }
 
-uintptr_t QCheckBox_CheckState(const QCheckBox* self) {
+int QCheckBox_CheckState(const QCheckBox* self) {
 	Qt::CheckState _ret = self->checkState();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCheckBox_SetCheckState(QCheckBox* self, uintptr_t state) {
+void QCheckBox_SetCheckState(QCheckBox* self, int state) {
 	self->setCheckState(static_cast<Qt::CheckState>(state));
 }
 

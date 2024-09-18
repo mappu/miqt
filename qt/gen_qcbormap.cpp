@@ -275,6 +275,10 @@ QCborMap__Iterator* QCborMap__Iterator_new2(QCborMap__Iterator* param1) {
 	return new QCborMap::Iterator(*param1);
 }
 
+void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Iterator* other) {
+	self->operator=(*other);
+}
+
 QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator* self) {
 	return self->operator->();
 }
@@ -335,12 +339,36 @@ bool QCborMap__Iterator_OperatorGreaterOrEqualWithOther(const QCborMap__Iterator
 	return self->operator>=(*other);
 }
 
-QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlus(QCborMap__Iterator* self, int param1) {
+QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlus(QCborMap__Iterator* self) {
+	QCborMap::Iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlusWithInt(QCborMap__Iterator* self, int param1) {
 	return new QCborMap::Iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinus(QCborMap__Iterator* self, int param1) {
+QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinus(QCborMap__Iterator* self) {
+	QCborMap::Iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinusWithInt(QCborMap__Iterator* self, int param1) {
 	return new QCborMap::Iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborMap__Iterator* QCborMap__Iterator_OperatorPlusAssign(QCborMap__Iterator* self, size_t j) {
+	QCborMap::Iterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__Iterator* QCborMap__Iterator_OperatorMinusAssign(QCborMap__Iterator* self, size_t j) {
+	QCborMap::Iterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborMap__Iterator* QCborMap__Iterator_OperatorPlus(const QCborMap__Iterator* self, size_t j) {
@@ -365,6 +393,10 @@ QCborMap__ConstIterator* QCborMap__ConstIterator_new() {
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1) {
 	return new QCborMap::ConstIterator(*param1);
+}
+
+void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCborMap__ConstIterator* other) {
+	self->operator=(*other);
 }
 
 QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self) {
@@ -427,12 +459,36 @@ bool QCborMap__ConstIterator_OperatorGreaterOrEqualWithOther(const QCborMap__Con
 	return self->operator>=(*other);
 }
 
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlus(QCborMap__ConstIterator* self, int param1) {
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlus(QCborMap__ConstIterator* self) {
+	QCborMap::ConstIterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlusWithInt(QCborMap__ConstIterator* self, int param1) {
 	return new QCborMap::ConstIterator(self->operator++(static_cast<int>(param1)));
 }
 
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinus(QCborMap__ConstIterator* self, int param1) {
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinus(QCborMap__ConstIterator* self) {
+	QCborMap::ConstIterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinusWithInt(QCborMap__ConstIterator* self, int param1) {
 	return new QCborMap::ConstIterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusAssign(QCborMap__ConstIterator* self, size_t j) {
+	QCborMap::ConstIterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusAssign(QCborMap__ConstIterator* self, size_t j) {
+	QCborMap::ConstIterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlus(const QCborMap__ConstIterator* self, size_t j) {

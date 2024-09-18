@@ -17,13 +17,13 @@ QMessageBox* QMessageBox_new() {
 	return new QMessageBox();
 }
 
-QMessageBox* QMessageBox_new2(uintptr_t icon, struct miqt_string* title, struct miqt_string* text) {
+QMessageBox* QMessageBox_new2(int icon, struct miqt_string* title, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
 }
 
-QMessageBox* QMessageBox_new3(struct miqt_string* title, struct miqt_string* text, uintptr_t icon, int button0, int button1, int button2) {
+QMessageBox* QMessageBox_new3(struct miqt_string* title, struct miqt_string* text, int icon, int button0, int button1, int button2) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
@@ -33,31 +33,31 @@ QMessageBox* QMessageBox_new4(QWidget* parent) {
 	return new QMessageBox(parent);
 }
 
-QMessageBox* QMessageBox_new5(uintptr_t icon, struct miqt_string* title, struct miqt_string* text, int buttons) {
+QMessageBox* QMessageBox_new5(int icon, struct miqt_string* title, struct miqt_string* text, int buttons) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
 }
 
-QMessageBox* QMessageBox_new6(uintptr_t icon, struct miqt_string* title, struct miqt_string* text, int buttons, QWidget* parent) {
+QMessageBox* QMessageBox_new6(int icon, struct miqt_string* title, struct miqt_string* text, int buttons, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent);
 }
 
-QMessageBox* QMessageBox_new7(uintptr_t icon, struct miqt_string* title, struct miqt_string* text, int buttons, QWidget* parent, int flags) {
+QMessageBox* QMessageBox_new7(int icon, struct miqt_string* title, struct miqt_string* text, int buttons, QWidget* parent, int flags) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QMessageBox* QMessageBox_new8(struct miqt_string* title, struct miqt_string* text, uintptr_t icon, int button0, int button1, int button2, QWidget* parent) {
+QMessageBox* QMessageBox_new8(struct miqt_string* title, struct miqt_string* text, int icon, int button0, int button1, int button2, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent);
 }
 
-QMessageBox* QMessageBox_new9(struct miqt_string* title, struct miqt_string* text, uintptr_t icon, int button0, int button1, int button2, QWidget* parent, int f) {
+QMessageBox* QMessageBox_new9(struct miqt_string* title, struct miqt_string* text, int icon, int button0, int button1, int button2, QWidget* parent, int f) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return new QMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
@@ -81,16 +81,16 @@ struct miqt_string* QMessageBox_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMessageBox_AddButton(QMessageBox* self, QAbstractButton* button, uintptr_t role) {
+void QMessageBox_AddButton(QMessageBox* self, QAbstractButton* button, int role) {
 	self->addButton(button, static_cast<QMessageBox::ButtonRole>(role));
 }
 
-QPushButton* QMessageBox_AddButton2(QMessageBox* self, struct miqt_string* text, uintptr_t role) {
+QPushButton* QMessageBox_AddButton2(QMessageBox* self, struct miqt_string* text, int role) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return self->addButton(text_QString, static_cast<QMessageBox::ButtonRole>(role));
 }
 
-QPushButton* QMessageBox_AddButtonWithButton(QMessageBox* self, uintptr_t button) {
+QPushButton* QMessageBox_AddButtonWithButton(QMessageBox* self, int button) {
 	return self->addButton(static_cast<QMessageBox::StandardButton>(button));
 }
 
@@ -99,7 +99,7 @@ void QMessageBox_RemoveButton(QMessageBox* self, QAbstractButton* button) {
 }
 
 struct miqt_array* QMessageBox_Buttons(const QMessageBox* self) {
-	QList<QAbstractButton*> _ret = self->buttons();
+	QList<QAbstractButton *> _ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** _arr = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -111,9 +111,9 @@ struct miqt_array* QMessageBox_Buttons(const QMessageBox* self) {
 	return _out;
 }
 
-uintptr_t QMessageBox_ButtonRole(const QMessageBox* self, QAbstractButton* button) {
+int QMessageBox_ButtonRole(const QMessageBox* self, QAbstractButton* button) {
 	QMessageBox::ButtonRole _ret = self->buttonRole(button);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QMessageBox_SetStandardButtons(QMessageBox* self, int buttons) {
@@ -125,12 +125,12 @@ int QMessageBox_StandardButtons(const QMessageBox* self) {
 	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_StandardButton(const QMessageBox* self, QAbstractButton* button) {
+int QMessageBox_StandardButton(const QMessageBox* self, QAbstractButton* button) {
 	QMessageBox::StandardButton _ret = self->standardButton(button);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-QAbstractButton* QMessageBox_Button(const QMessageBox* self, uintptr_t which) {
+QAbstractButton* QMessageBox_Button(const QMessageBox* self, int which) {
 	return self->button(static_cast<QMessageBox::StandardButton>(which));
 }
 
@@ -142,7 +142,7 @@ void QMessageBox_SetDefaultButton(QMessageBox* self, QPushButton* button) {
 	self->setDefaultButton(button);
 }
 
-void QMessageBox_SetDefaultButtonWithButton(QMessageBox* self, uintptr_t button) {
+void QMessageBox_SetDefaultButtonWithButton(QMessageBox* self, int button) {
 	self->setDefaultButton(static_cast<QMessageBox::StandardButton>(button));
 }
 
@@ -154,7 +154,7 @@ void QMessageBox_SetEscapeButton(QMessageBox* self, QAbstractButton* button) {
 	self->setEscapeButton(button);
 }
 
-void QMessageBox_SetEscapeButtonWithButton(QMessageBox* self, uintptr_t button) {
+void QMessageBox_SetEscapeButtonWithButton(QMessageBox* self, int button) {
 	self->setEscapeButton(static_cast<QMessageBox::StandardButton>(button));
 }
 
@@ -174,12 +174,12 @@ void QMessageBox_SetText(QMessageBox* self, struct miqt_string* text) {
 	self->setText(text_QString);
 }
 
-uintptr_t QMessageBox_Icon(const QMessageBox* self) {
+int QMessageBox_Icon(const QMessageBox* self) {
 	QMessageBox::Icon _ret = self->icon();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMessageBox_SetIcon(QMessageBox* self, uintptr_t icon) {
+void QMessageBox_SetIcon(QMessageBox* self, int icon) {
 	self->setIcon(static_cast<QMessageBox::Icon>(icon));
 }
 
@@ -191,12 +191,12 @@ void QMessageBox_SetIconPixmap(QMessageBox* self, QPixmap* pixmap) {
 	self->setIconPixmap(*pixmap);
 }
 
-uintptr_t QMessageBox_TextFormat(const QMessageBox* self) {
+int QMessageBox_TextFormat(const QMessageBox* self) {
 	Qt::TextFormat _ret = self->textFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMessageBox_SetTextFormat(QMessageBox* self, uintptr_t format) {
+void QMessageBox_SetTextFormat(QMessageBox* self, int format) {
 	self->setTextFormat(static_cast<Qt::TextFormat>(format));
 }
 
@@ -217,32 +217,32 @@ QCheckBox* QMessageBox_CheckBox(const QMessageBox* self) {
 	return self->checkBox();
 }
 
-uintptr_t QMessageBox_Information(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
+int QMessageBox_Information(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::information(parent, title_QString, text_QString);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Question(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
+int QMessageBox_Question(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::question(parent, title_QString, text_QString);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Warning(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
+int QMessageBox_Warning(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::warning(parent, title_QString, text_QString);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Critical(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
+int QMessageBox_Critical(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::critical(parent, title_QString, text_QString);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QMessageBox_About(QWidget* parent, struct miqt_string* title, struct miqt_string* text) {
@@ -268,11 +268,11 @@ int QMessageBox_Information3(QWidget* parent, struct miqt_string* title, struct 
 	return QMessageBox::information(parent, title_QString, text_QString, button0Text_QString);
 }
 
-uintptr_t QMessageBox_Information4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, uintptr_t button0) {
+int QMessageBox_Information4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::information(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QMessageBox_Question2(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0) {
@@ -288,7 +288,7 @@ int QMessageBox_Question3(QWidget* parent, struct miqt_string* title, struct miq
 	return QMessageBox::question(parent, title_QString, text_QString, button0Text_QString);
 }
 
-int QMessageBox_Question4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, uintptr_t button0, uintptr_t button1) {
+int QMessageBox_Question4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0, int button1) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return QMessageBox::question(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0), static_cast<QMessageBox::StandardButton>(button1));
@@ -307,7 +307,7 @@ int QMessageBox_Warning3(QWidget* parent, struct miqt_string* title, struct miqt
 	return QMessageBox::warning(parent, title_QString, text_QString, button0Text_QString);
 }
 
-int QMessageBox_Warning4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, uintptr_t button0, uintptr_t button1) {
+int QMessageBox_Warning4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0, int button1) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return QMessageBox::warning(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0), static_cast<QMessageBox::StandardButton>(button1));
@@ -326,7 +326,7 @@ int QMessageBox_Critical3(QWidget* parent, struct miqt_string* title, struct miq
 	return QMessageBox::critical(parent, title_QString, text_QString, button0Text_QString);
 }
 
-int QMessageBox_Critical4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, uintptr_t button0, uintptr_t button1) {
+int QMessageBox_Critical4(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0, int button1) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	return QMessageBox::critical(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0), static_cast<QMessageBox::StandardButton>(button1));
@@ -373,11 +373,11 @@ void QMessageBox_SetWindowTitle(QMessageBox* self, struct miqt_string* title) {
 	self->setWindowTitle(title_QString);
 }
 
-void QMessageBox_SetWindowModality(QMessageBox* self, uintptr_t windowModality) {
+void QMessageBox_SetWindowModality(QMessageBox* self, int windowModality) {
 	self->setWindowModality(static_cast<Qt::WindowModality>(windowModality));
 }
 
-QPixmap* QMessageBox_StandardIcon(uintptr_t icon) {
+QPixmap* QMessageBox_StandardIcon(int icon) {
 	return new QPixmap(QMessageBox::standardIcon(static_cast<QMessageBox::Icon>(icon)));
 }
 
@@ -420,60 +420,60 @@ struct miqt_string* QMessageBox_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QMessageBox_Information42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
+int QMessageBox_Information42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::information(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Information5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, uintptr_t defaultButton) {
+int QMessageBox_Information5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, int defaultButton) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::information(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), static_cast<QMessageBox::StandardButton>(defaultButton));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Question42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
+int QMessageBox_Question42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::question(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Question5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, uintptr_t defaultButton) {
+int QMessageBox_Question5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, int defaultButton) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::question(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), static_cast<QMessageBox::StandardButton>(defaultButton));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Warning42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
+int QMessageBox_Warning42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::warning(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Warning5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, uintptr_t defaultButton) {
+int QMessageBox_Warning5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, int defaultButton) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::warning(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), static_cast<QMessageBox::StandardButton>(defaultButton));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Critical42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
+int QMessageBox_Critical42(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::critical(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QMessageBox_Critical5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, uintptr_t defaultButton) {
+int QMessageBox_Critical5(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int buttons, int defaultButton) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::critical(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), static_cast<QMessageBox::StandardButton>(defaultButton));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QMessageBox_AboutQt2(QWidget* parent, struct miqt_string* title) {
@@ -528,11 +528,11 @@ int QMessageBox_Information8(QWidget* parent, struct miqt_string* title, struct 
 	return QMessageBox::information(parent, title_QString, text_QString, button0Text_QString, button1Text_QString, button2Text_QString, static_cast<int>(defaultButtonNumber), static_cast<int>(escapeButtonNumber));
 }
 
-uintptr_t QMessageBox_Information54(QWidget* parent, struct miqt_string* title, struct miqt_string* text, uintptr_t button0, uintptr_t button1) {
+int QMessageBox_Information54(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0, int button1) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QMessageBox::StandardButton _ret = QMessageBox::information(parent, title_QString, text_QString, static_cast<QMessageBox::StandardButton>(button0), static_cast<QMessageBox::StandardButton>(button1));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QMessageBox_Question52(QWidget* parent, struct miqt_string* title, struct miqt_string* text, int button0, int button1) {

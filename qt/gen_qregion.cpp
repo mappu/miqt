@@ -27,11 +27,11 @@ QRegion* QRegion_new5(QBitmap* bitmap) {
 	return new QRegion(*bitmap);
 }
 
-QRegion* QRegion_new6(int x, int y, int w, int h, uintptr_t t) {
+QRegion* QRegion_new6(int x, int y, int w, int h, int t) {
 	return new QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<QRegion::RegionType>(t));
 }
 
-QRegion* QRegion_new7(QRect* r, uintptr_t t) {
+QRegion* QRegion_new7(QRect* r, int t) {
 	return new QRegion(*r, static_cast<QRegion::RegionType>(t));
 }
 
@@ -52,19 +52,23 @@ bool QRegion_IsNull(const QRegion* self) {
 }
 
 QRect* QRegion_Begin(const QRegion* self) {
-	return (QRect*) self->begin();
+	const QRegion::const_iterator* _ret = self->begin();
+	return static_cast<QRect*>(_ret);
 }
 
 QRect* QRegion_Cbegin(const QRegion* self) {
-	return (QRect*) self->cbegin();
+	const QRegion::const_iterator* _ret = self->cbegin();
+	return static_cast<QRect*>(_ret);
 }
 
 QRect* QRegion_End(const QRegion* self) {
-	return (QRect*) self->end();
+	const QRegion::const_iterator* _ret = self->end();
+	return static_cast<QRect*>(_ret);
 }
 
 QRect* QRegion_Cend(const QRegion* self) {
-	return (QRect*) self->cend();
+	const QRegion::const_iterator* _ret = self->cend();
+	return static_cast<QRect*>(_ret);
 }
 
 bool QRegion_Contains(const QRegion* self, QPoint* p) {

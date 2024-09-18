@@ -279,7 +279,7 @@ func NewQTextLength() *QTextLength {
 
 // NewQTextLength2 constructs a new QTextLength object.
 func NewQTextLength2(typeVal QTextLength__Type, value float64) *QTextLength {
-	ret := C.QTextLength_new2((C.uintptr_t)(typeVal), (C.double)(value))
+	ret := C.QTextLength_new2((C.int)(typeVal), (C.double)(value))
 	return newQTextLength(ret)
 }
 
@@ -585,7 +585,7 @@ func (this *QTextFormat) OperatorNotEqual(rhs *QTextFormat) bool {
 }
 
 func (this *QTextFormat) SetLayoutDirection(direction LayoutDirection) {
-	C.QTextFormat_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+	C.QTextFormat_SetLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QTextFormat) LayoutDirection() LayoutDirection {
@@ -676,7 +676,7 @@ func (this *QTextCharFormat) IsValid() bool {
 }
 
 func (this *QTextCharFormat) SetFont(font *QFont, behavior QTextCharFormat__FontPropertiesInheritanceBehavior) {
-	C.QTextCharFormat_SetFont(this.h, font.cPointer(), (C.uintptr_t)(behavior))
+	C.QTextCharFormat_SetFont(this.h, font.cPointer(), (C.int)(behavior))
 }
 
 func (this *QTextCharFormat) SetFontWithFont(font *QFont) {
@@ -762,7 +762,7 @@ func (this *QTextCharFormat) FontItalic() bool {
 }
 
 func (this *QTextCharFormat) SetFontCapitalization(capitalization QFont__Capitalization) {
-	C.QTextCharFormat_SetFontCapitalization(this.h, (C.uintptr_t)(capitalization))
+	C.QTextCharFormat_SetFontCapitalization(this.h, (C.int)(capitalization))
 }
 
 func (this *QTextCharFormat) FontCapitalization() QFont__Capitalization {
@@ -770,7 +770,7 @@ func (this *QTextCharFormat) FontCapitalization() QFont__Capitalization {
 }
 
 func (this *QTextCharFormat) SetFontLetterSpacingType(letterSpacingType QFont__SpacingType) {
-	C.QTextCharFormat_SetFontLetterSpacingType(this.h, (C.uintptr_t)(letterSpacingType))
+	C.QTextCharFormat_SetFontLetterSpacingType(this.h, (C.int)(letterSpacingType))
 }
 
 func (this *QTextCharFormat) FontLetterSpacingType() QFont__SpacingType {
@@ -845,11 +845,11 @@ func (this *QTextCharFormat) FontStretch() int {
 }
 
 func (this *QTextCharFormat) SetFontStyleHint(hint QFont__StyleHint) {
-	C.QTextCharFormat_SetFontStyleHint(this.h, (C.uintptr_t)(hint))
+	C.QTextCharFormat_SetFontStyleHint(this.h, (C.int)(hint))
 }
 
 func (this *QTextCharFormat) SetFontStyleStrategy(strategy QFont__StyleStrategy) {
-	C.QTextCharFormat_SetFontStyleStrategy(this.h, (C.uintptr_t)(strategy))
+	C.QTextCharFormat_SetFontStyleStrategy(this.h, (C.int)(strategy))
 }
 
 func (this *QTextCharFormat) FontStyleHint() QFont__StyleHint {
@@ -861,7 +861,7 @@ func (this *QTextCharFormat) FontStyleStrategy() QFont__StyleStrategy {
 }
 
 func (this *QTextCharFormat) SetFontHintingPreference(hintingPreference QFont__HintingPreference) {
-	C.QTextCharFormat_SetFontHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
+	C.QTextCharFormat_SetFontHintingPreference(this.h, (C.int)(hintingPreference))
 }
 
 func (this *QTextCharFormat) FontHintingPreference() QFont__HintingPreference {
@@ -877,7 +877,7 @@ func (this *QTextCharFormat) FontKerning() bool {
 }
 
 func (this *QTextCharFormat) SetUnderlineStyle(style QTextCharFormat__UnderlineStyle) {
-	C.QTextCharFormat_SetUnderlineStyle(this.h, (C.uintptr_t)(style))
+	C.QTextCharFormat_SetUnderlineStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextCharFormat) UnderlineStyle() QTextCharFormat__UnderlineStyle {
@@ -885,7 +885,7 @@ func (this *QTextCharFormat) UnderlineStyle() QTextCharFormat__UnderlineStyle {
 }
 
 func (this *QTextCharFormat) SetVerticalAlignment(alignment QTextCharFormat__VerticalAlignment) {
-	C.QTextCharFormat_SetVerticalAlignment(this.h, (C.uintptr_t)(alignment))
+	C.QTextCharFormat_SetVerticalAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextCharFormat) VerticalAlignment() QTextCharFormat__VerticalAlignment {
@@ -995,7 +995,7 @@ func (this *QTextCharFormat) TableCellColumnSpan() int {
 }
 
 func (this *QTextCharFormat) SetFontStyleHint2(hint QFont__StyleHint, strategy QFont__StyleStrategy) {
-	C.QTextCharFormat_SetFontStyleHint2(this.h, (C.uintptr_t)(hint), (C.uintptr_t)(strategy))
+	C.QTextCharFormat_SetFontStyleHint2(this.h, (C.int)(hint), (C.int)(strategy))
 }
 
 // Delete this object from C++ memory.
@@ -1052,7 +1052,7 @@ func (this *QTextBlockFormat) IsValid() bool {
 }
 
 func (this *QTextBlockFormat) SetAlignment(alignment int) {
-	C.QTextBlockFormat_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextBlockFormat_SetAlignment(this.h, alignment)
 }
 
 func (this *QTextBlockFormat) Alignment() int {
@@ -1140,7 +1140,7 @@ func (this *QTextBlockFormat) NonBreakableLines() bool {
 }
 
 func (this *QTextBlockFormat) SetPageBreakPolicy(flags int) {
-	C.QTextBlockFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+	C.QTextBlockFormat_SetPageBreakPolicy(this.h, flags)
 }
 
 func (this *QTextBlockFormat) PageBreakPolicy() int {
@@ -1174,7 +1174,7 @@ func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 }
 
 func (this *QTextBlockFormat) SetMarker(marker QTextBlockFormat__MarkerType) {
-	C.QTextBlockFormat_SetMarker(this.h, (C.uintptr_t)(marker))
+	C.QTextBlockFormat_SetMarker(this.h, (C.int)(marker))
 }
 
 func (this *QTextBlockFormat) Marker() QTextBlockFormat__MarkerType {
@@ -1235,7 +1235,7 @@ func (this *QTextListFormat) IsValid() bool {
 }
 
 func (this *QTextListFormat) SetStyle(style QTextListFormat__Style) {
-	C.QTextListFormat_SetStyle(this.h, (C.uintptr_t)(style))
+	C.QTextListFormat_SetStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextListFormat) Style() QTextListFormat__Style {
@@ -1418,7 +1418,7 @@ func (this *QTextFrameFormat) IsValid() bool {
 }
 
 func (this *QTextFrameFormat) SetPosition(f QTextFrameFormat__Position) {
-	C.QTextFrameFormat_SetPosition(this.h, (C.uintptr_t)(f))
+	C.QTextFrameFormat_SetPosition(this.h, (C.int)(f))
 }
 
 func (this *QTextFrameFormat) Position() QTextFrameFormat__Position {
@@ -1445,7 +1445,7 @@ func (this *QTextFrameFormat) BorderBrush() *QBrush {
 }
 
 func (this *QTextFrameFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextFrameFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextFrameFormat_SetBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextFrameFormat) BorderStyle() QTextFrameFormat__BorderStyle {
@@ -1531,7 +1531,7 @@ func (this *QTextFrameFormat) Height() *QTextLength {
 }
 
 func (this *QTextFrameFormat) SetPageBreakPolicy(flags int) {
-	C.QTextFrameFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+	C.QTextFrameFormat_SetPageBreakPolicy(this.h, flags)
 }
 
 func (this *QTextFrameFormat) PageBreakPolicy() int {
@@ -1640,7 +1640,7 @@ func (this *QTextTableFormat) SetCellPadding(padding float64) {
 }
 
 func (this *QTextTableFormat) SetAlignment(alignment int) {
-	C.QTextTableFormat_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextTableFormat_SetAlignment(this.h, alignment)
 }
 
 func (this *QTextTableFormat) Alignment() int {
@@ -1783,7 +1783,7 @@ func (this *QTextTableCellFormat) SetBorder(width float64) {
 }
 
 func (this *QTextTableCellFormat) SetTopBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetTopBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextTableCellFormat_SetTopBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) TopBorderStyle() QTextFrameFormat__BorderStyle {
@@ -1791,7 +1791,7 @@ func (this *QTextTableCellFormat) TopBorderStyle() QTextFrameFormat__BorderStyle
 }
 
 func (this *QTextTableCellFormat) SetBottomBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetBottomBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextTableCellFormat_SetBottomBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) BottomBorderStyle() QTextFrameFormat__BorderStyle {
@@ -1799,7 +1799,7 @@ func (this *QTextTableCellFormat) BottomBorderStyle() QTextFrameFormat__BorderSt
 }
 
 func (this *QTextTableCellFormat) SetLeftBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetLeftBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextTableCellFormat_SetLeftBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) LeftBorderStyle() QTextFrameFormat__BorderStyle {
@@ -1807,7 +1807,7 @@ func (this *QTextTableCellFormat) LeftBorderStyle() QTextFrameFormat__BorderStyl
 }
 
 func (this *QTextTableCellFormat) SetRightBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetRightBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextTableCellFormat_SetRightBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) RightBorderStyle() QTextFrameFormat__BorderStyle {
@@ -1815,7 +1815,7 @@ func (this *QTextTableCellFormat) RightBorderStyle() QTextFrameFormat__BorderSty
 }
 
 func (this *QTextTableCellFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetBorderStyle(this.h, (C.uintptr_t)(style))
+	C.QTextTableCellFormat_SetBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) SetTopBorderBrush(brush *QBrush) {

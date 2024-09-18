@@ -74,7 +74,7 @@ func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
 func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__AccessMode) *QSystemSemaphore {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	ret := C.QSystemSemaphore_new3((*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.uintptr_t)(mode))
+	ret := C.QSystemSemaphore_new3((*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.int)(mode))
 	return newQSystemSemaphore(ret)
 }
 
@@ -119,7 +119,7 @@ func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
 func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystemSemaphore__AccessMode) {
 	key_ms := miqt_strdupg(key)
 	defer C.free(key_ms)
-	C.QSystemSemaphore_SetKey3(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.uintptr_t)(mode))
+	C.QSystemSemaphore_SetKey3(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.int)(mode))
 }
 
 func (this *QSystemSemaphore) Release1(n int) bool {

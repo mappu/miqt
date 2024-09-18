@@ -71,25 +71,25 @@ func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVal string) *QTextBoundaryFinder {
 	stringVal_ms := miqt_strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	ret := C.QTextBoundaryFinder_new3((C.uintptr_t)(typeVal), (*C.struct_miqt_string)(stringVal_ms))
+	ret := C.QTextBoundaryFinder_new3((C.int)(typeVal), (*C.struct_miqt_string)(stringVal_ms))
 	return newQTextBoundaryFinder(ret)
 }
 
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new4((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length))
+	ret := C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.int)(length))
 	return newQTextBoundaryFinder(ret)
 }
 
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int, buffer *byte) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new5((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)))
+	ret := C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)))
 	return newQTextBoundaryFinder(ret)
 }
 
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int, buffer *byte, bufferSize int) *QTextBoundaryFinder {
-	ret := C.QTextBoundaryFinder_new6((C.uintptr_t)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.int)(bufferSize))
+	ret := C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.int)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.int)(bufferSize))
 	return newQTextBoundaryFinder(ret)
 }
 

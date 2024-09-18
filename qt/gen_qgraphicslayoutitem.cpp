@@ -11,7 +11,7 @@ void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* p
 	self->setSizePolicy(*policy);
 }
 
-void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy) {
+void QGraphicsLayoutItem_SetSizePolicy2(QGraphicsLayoutItem* self, int hPolicy, int vPolicy) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(hPolicy), static_cast<QSizePolicy::Policy>(vPolicy));
 }
 
@@ -36,7 +36,8 @@ void QGraphicsLayoutItem_SetMinimumWidth(QGraphicsLayoutItem* self, double width
 }
 
 double QGraphicsLayoutItem_MinimumWidth(const QGraphicsLayoutItem* self) {
-	return self->minimumWidth();
+	qreal _ret = self->minimumWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMinimumHeight(QGraphicsLayoutItem* self, double height) {
@@ -44,7 +45,8 @@ void QGraphicsLayoutItem_SetMinimumHeight(QGraphicsLayoutItem* self, double heig
 }
 
 double QGraphicsLayoutItem_MinimumHeight(const QGraphicsLayoutItem* self) {
-	return self->minimumHeight();
+	qreal _ret = self->minimumHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetPreferredSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -64,7 +66,8 @@ void QGraphicsLayoutItem_SetPreferredWidth(QGraphicsLayoutItem* self, double wid
 }
 
 double QGraphicsLayoutItem_PreferredWidth(const QGraphicsLayoutItem* self) {
-	return self->preferredWidth();
+	qreal _ret = self->preferredWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetPreferredHeight(QGraphicsLayoutItem* self, double height) {
@@ -72,7 +75,8 @@ void QGraphicsLayoutItem_SetPreferredHeight(QGraphicsLayoutItem* self, double he
 }
 
 double QGraphicsLayoutItem_PreferredHeight(const QGraphicsLayoutItem* self) {
-	return self->preferredHeight();
+	qreal _ret = self->preferredHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMaximumSize(QGraphicsLayoutItem* self, QSizeF* size) {
@@ -92,7 +96,8 @@ void QGraphicsLayoutItem_SetMaximumWidth(QGraphicsLayoutItem* self, double width
 }
 
 double QGraphicsLayoutItem_MaximumWidth(const QGraphicsLayoutItem* self) {
-	return self->maximumWidth();
+	qreal _ret = self->maximumWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetMaximumHeight(QGraphicsLayoutItem* self, double height) {
@@ -100,7 +105,8 @@ void QGraphicsLayoutItem_SetMaximumHeight(QGraphicsLayoutItem* self, double heig
 }
 
 double QGraphicsLayoutItem_MaximumHeight(const QGraphicsLayoutItem* self) {
-	return self->maximumHeight();
+	qreal _ret = self->maximumHeight();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem* self, QRectF* rect) {
@@ -119,7 +125,7 @@ QRectF* QGraphicsLayoutItem_ContentsRect(const QGraphicsLayoutItem* self) {
 	return new QRectF(self->contentsRect());
 }
 
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, uintptr_t which) {
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint(const QGraphicsLayoutItem* self, int which) {
 	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
@@ -147,11 +153,11 @@ bool QGraphicsLayoutItem_OwnedByLayout(const QGraphicsLayoutItem* self) {
 	return self->ownedByLayout();
 }
 
-void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, uintptr_t hPolicy, uintptr_t vPolicy, uintptr_t controlType) {
+void QGraphicsLayoutItem_SetSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, int vPolicy, int controlType) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(hPolicy), static_cast<QSizePolicy::Policy>(vPolicy), static_cast<QSizePolicy::ControlType>(controlType));
 }
 
-QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, uintptr_t which, QSizeF* constraint) {
+QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint) {
 	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 

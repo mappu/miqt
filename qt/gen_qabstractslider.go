@@ -165,7 +165,7 @@ func (this *QAbstractSlider) Value() int {
 }
 
 func (this *QAbstractSlider) TriggerAction(action QAbstractSlider__SliderAction) {
-	C.QAbstractSlider_TriggerAction(this.h, (C.uintptr_t)(action))
+	C.QAbstractSlider_TriggerAction(this.h, (C.int)(action))
 }
 
 func (this *QAbstractSlider) SetValue(value int) {
@@ -173,7 +173,7 @@ func (this *QAbstractSlider) SetValue(value int) {
 }
 
 func (this *QAbstractSlider) SetOrientation(orientation Orientation) {
-	C.QAbstractSlider_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QAbstractSlider_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QAbstractSlider) SetRange(min int, max int) {

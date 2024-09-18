@@ -217,11 +217,11 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_Create2(this.h, (C.int)(size), (C.uintptr_t)(mode)))
+	return (bool)(C.QSharedMemory_Create2(this.h, (C.int)(size), (C.int)(mode)))
 }
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_Attach1(this.h, (C.uintptr_t)(mode)))
+	return (bool)(C.QSharedMemory_Attach1(this.h, (C.int)(mode)))
 }
 
 // Delete this object from C++ memory.

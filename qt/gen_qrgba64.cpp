@@ -36,19 +36,23 @@ bool QRgba64_IsTransparent(const QRgba64* self) {
 }
 
 uint16_t QRgba64_Red(const QRgba64* self) {
-	return self->red();
+	quint16 _ret = self->red();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Green(const QRgba64* self) {
-	return self->green();
+	quint16 _ret = self->green();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Blue(const QRgba64* self) {
-	return self->blue();
+	quint16 _ret = self->blue();
+	return static_cast<uint16_t>(_ret);
 }
 
 uint16_t QRgba64_Alpha(const QRgba64* self) {
-	return self->alpha();
+	quint16 _ret = self->alpha();
+	return static_cast<uint16_t>(_ret);
 }
 
 void QRgba64_SetRed(QRgba64* self, uint16_t _red) {
@@ -68,27 +72,33 @@ void QRgba64_SetAlpha(QRgba64* self, uint16_t _alpha) {
 }
 
 unsigned char QRgba64_Red8(const QRgba64* self) {
-	return self->red8();
+	quint8 _ret = self->red8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Green8(const QRgba64* self) {
-	return self->green8();
+	quint8 _ret = self->green8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Blue8(const QRgba64* self) {
-	return self->blue8();
+	quint8 _ret = self->blue8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned char QRgba64_Alpha8(const QRgba64* self) {
-	return self->alpha8();
+	quint8 _ret = self->alpha8();
+	return static_cast<unsigned char>(_ret);
 }
 
 unsigned int QRgba64_ToArgb32(const QRgba64* self) {
-	return self->toArgb32();
+	uint _ret = self->toArgb32();
+	return static_cast<unsigned int>(_ret);
 }
 
 uint16_t QRgba64_ToRgb16(const QRgba64* self) {
-	return self->toRgb16();
+	ushort _ret = self->toRgb16();
+	return static_cast<uint16_t>(_ret);
 }
 
 QRgba64* QRgba64_Premultiplied(const QRgba64* self) {

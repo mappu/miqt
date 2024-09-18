@@ -102,10 +102,10 @@ QAccessibleInterface* QAccessibleInterface_Parent(const QAccessibleInterface* se
 QAccessibleInterface* QAccessibleInterface_Child(const QAccessibleInterface* self, int index);
 int QAccessibleInterface_ChildCount(const QAccessibleInterface* self);
 int QAccessibleInterface_IndexOfChild(const QAccessibleInterface* self, QAccessibleInterface* param1);
-struct miqt_string* QAccessibleInterface_Text(const QAccessibleInterface* self, uintptr_t t);
-void QAccessibleInterface_SetText(QAccessibleInterface* self, uintptr_t t, struct miqt_string* text);
+struct miqt_string* QAccessibleInterface_Text(const QAccessibleInterface* self, int t);
+void QAccessibleInterface_SetText(QAccessibleInterface* self, int t, struct miqt_string* text);
 QRect* QAccessibleInterface_Rect(const QAccessibleInterface* self);
-uintptr_t QAccessibleInterface_Role(const QAccessibleInterface* self);
+int QAccessibleInterface_Role(const QAccessibleInterface* self);
 QAccessible__State* QAccessibleInterface_State(const QAccessibleInterface* self);
 QColor* QAccessibleInterface_ForegroundColor(const QAccessibleInterface* self);
 QColor* QAccessibleInterface_BackgroundColor(const QAccessibleInterface* self);
@@ -125,9 +125,9 @@ void QAccessibleTextInterface_SetSelection(QAccessibleTextInterface* self, int s
 int QAccessibleTextInterface_CursorPosition(const QAccessibleTextInterface* self);
 void QAccessibleTextInterface_SetCursorPosition(QAccessibleTextInterface* self, int position);
 struct miqt_string* QAccessibleTextInterface_Text(const QAccessibleTextInterface* self, int startOffset, int endOffset);
-struct miqt_string* QAccessibleTextInterface_TextBeforeOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset);
-struct miqt_string* QAccessibleTextInterface_TextAfterOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset);
-struct miqt_string* QAccessibleTextInterface_TextAtOffset(const QAccessibleTextInterface* self, int offset, uintptr_t boundaryType, int* startOffset, int* endOffset);
+struct miqt_string* QAccessibleTextInterface_TextBeforeOffset(const QAccessibleTextInterface* self, int offset, int boundaryType, int* startOffset, int* endOffset);
+struct miqt_string* QAccessibleTextInterface_TextAfterOffset(const QAccessibleTextInterface* self, int offset, int boundaryType, int* startOffset, int* endOffset);
+struct miqt_string* QAccessibleTextInterface_TextAtOffset(const QAccessibleTextInterface* self, int offset, int boundaryType, int* startOffset, int* endOffset);
 int QAccessibleTextInterface_CharacterCount(const QAccessibleTextInterface* self);
 QRect* QAccessibleTextInterface_CharacterRect(const QAccessibleTextInterface* self, int offset);
 int QAccessibleTextInterface_OffsetAtPoint(const QAccessibleTextInterface* self, QPoint* point);
@@ -215,9 +215,9 @@ QPoint* QAccessibleImageInterface_ImagePosition(const QAccessibleImageInterface*
 void QAccessibleImageInterface_OperatorAssign(QAccessibleImageInterface* self, QAccessibleImageInterface* param1);
 void QAccessibleImageInterface_Delete(QAccessibleImageInterface* self);
 
-QAccessibleEvent* QAccessibleEvent_new(QObject* obj, uintptr_t typ);
-QAccessibleEvent* QAccessibleEvent_new2(QAccessibleInterface* iface, uintptr_t typ);
-uintptr_t QAccessibleEvent_Type(const QAccessibleEvent* self);
+QAccessibleEvent* QAccessibleEvent_new(QObject* obj, int typ);
+QAccessibleEvent* QAccessibleEvent_new2(QAccessibleInterface* iface, int typ);
+int QAccessibleEvent_Type(const QAccessibleEvent* self);
 QObject* QAccessibleEvent_Object(const QAccessibleEvent* self);
 unsigned int QAccessibleEvent_UniqueId(const QAccessibleEvent* self);
 void QAccessibleEvent_SetChild(QAccessibleEvent* self, int chld);
@@ -268,10 +268,10 @@ void QAccessibleValueChangeEvent_SetValue(QAccessibleValueChangeEvent* self, QVa
 QVariant* QAccessibleValueChangeEvent_Value(const QAccessibleValueChangeEvent* self);
 void QAccessibleValueChangeEvent_Delete(QAccessibleValueChangeEvent* self);
 
-QAccessibleTableModelChangeEvent* QAccessibleTableModelChangeEvent_new(QObject* obj, uintptr_t changeType);
-QAccessibleTableModelChangeEvent* QAccessibleTableModelChangeEvent_new2(QAccessibleInterface* iface, uintptr_t changeType);
-void QAccessibleTableModelChangeEvent_SetModelChangeType(QAccessibleTableModelChangeEvent* self, uintptr_t changeType);
-uintptr_t QAccessibleTableModelChangeEvent_ModelChangeType(const QAccessibleTableModelChangeEvent* self);
+QAccessibleTableModelChangeEvent* QAccessibleTableModelChangeEvent_new(QObject* obj, int changeType);
+QAccessibleTableModelChangeEvent* QAccessibleTableModelChangeEvent_new2(QAccessibleInterface* iface, int changeType);
+void QAccessibleTableModelChangeEvent_SetModelChangeType(QAccessibleTableModelChangeEvent* self, int changeType);
+int QAccessibleTableModelChangeEvent_ModelChangeType(const QAccessibleTableModelChangeEvent* self);
 void QAccessibleTableModelChangeEvent_SetFirstRow(QAccessibleTableModelChangeEvent* self, int row);
 void QAccessibleTableModelChangeEvent_SetFirstColumn(QAccessibleTableModelChangeEvent* self, int col);
 void QAccessibleTableModelChangeEvent_SetLastRow(QAccessibleTableModelChangeEvent* self, int row);
@@ -287,6 +287,7 @@ QAccessible__State* QAccessible__State_new2(QAccessible__State* param1);
 void QAccessible__State_Delete(QAccessible__State* self);
 
 void QAccessible__ActivationObserver_AccessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active);
+void QAccessible__ActivationObserver_OperatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1);
 void QAccessible__ActivationObserver_Delete(QAccessible__ActivationObserver* self);
 
 #ifdef __cplusplus

@@ -39,9 +39,9 @@ struct miqt_string* QTimeLine_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QTimeLine_State(const QTimeLine* self) {
+int QTimeLine_State(const QTimeLine* self) {
 	QTimeLine::State _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QTimeLine_LoopCount(const QTimeLine* self) {
@@ -52,12 +52,12 @@ void QTimeLine_SetLoopCount(QTimeLine* self, int count) {
 	self->setLoopCount(static_cast<int>(count));
 }
 
-uintptr_t QTimeLine_Direction(const QTimeLine* self) {
+int QTimeLine_Direction(const QTimeLine* self) {
 	QTimeLine::Direction _ret = self->direction();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTimeLine_SetDirection(QTimeLine* self, uintptr_t direction) {
+void QTimeLine_SetDirection(QTimeLine* self, int direction) {
 	self->setDirection(static_cast<QTimeLine::Direction>(direction));
 }
 
@@ -97,12 +97,12 @@ void QTimeLine_SetUpdateInterval(QTimeLine* self, int interval) {
 	self->setUpdateInterval(static_cast<int>(interval));
 }
 
-uintptr_t QTimeLine_CurveShape(const QTimeLine* self) {
+int QTimeLine_CurveShape(const QTimeLine* self) {
 	QTimeLine::CurveShape _ret = self->curveShape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTimeLine_SetCurveShape(QTimeLine* self, uintptr_t shape) {
+void QTimeLine_SetCurveShape(QTimeLine* self, int shape) {
 	self->setCurveShape(static_cast<QTimeLine::CurveShape>(shape));
 }
 
@@ -123,7 +123,8 @@ int QTimeLine_CurrentFrame(const QTimeLine* self) {
 }
 
 double QTimeLine_CurrentValue(const QTimeLine* self) {
-	return self->currentValue();
+	qreal _ret = self->currentValue();
+	return static_cast<double>(_ret);
 }
 
 int QTimeLine_FrameForTime(const QTimeLine* self, int msec) {
@@ -131,7 +132,8 @@ int QTimeLine_FrameForTime(const QTimeLine* self, int msec) {
 }
 
 double QTimeLine_ValueForTime(const QTimeLine* self, int msec) {
-	return self->valueForTime(static_cast<int>(msec));
+	qreal _ret = self->valueForTime(static_cast<int>(msec));
+	return static_cast<double>(_ret);
 }
 
 void QTimeLine_Start(QTimeLine* self) {

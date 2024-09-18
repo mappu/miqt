@@ -106,7 +106,7 @@ func (this *QScrollArea) Alignment() int {
 }
 
 func (this *QScrollArea) SetAlignment(alignment int) {
-	C.QScrollArea_SetAlignment(this.h, (C.int)(alignment))
+	C.QScrollArea_SetAlignment(this.h, alignment)
 }
 
 func (this *QScrollArea) EnsureVisible(x int, y int) {

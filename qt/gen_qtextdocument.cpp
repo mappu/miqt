@@ -128,12 +128,12 @@ QAbstractTextDocumentLayout* QTextDocument_DocumentLayout(const QTextDocument* s
 	return self->documentLayout();
 }
 
-void QTextDocument_SetMetaInformation(QTextDocument* self, uintptr_t info, struct miqt_string* param2) {
+void QTextDocument_SetMetaInformation(QTextDocument* self, int info, struct miqt_string* param2) {
 	QString param2_QString = QString::fromUtf8(&param2->data, param2->len);
 	self->setMetaInformation(static_cast<QTextDocument::MetaInformation>(info), param2_QString);
 }
 
-struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, uintptr_t info) {
+struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, int info) {
 	QString _ret = self->metaInformation(static_cast<QTextDocument::MetaInformation>(info));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -327,15 +327,18 @@ void QTextDocument_SetTextWidth(QTextDocument* self, double width) {
 }
 
 double QTextDocument_TextWidth(const QTextDocument* self) {
-	return self->textWidth();
+	qreal _ret = self->textWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextDocument_IdealWidth(const QTextDocument* self) {
-	return self->idealWidth();
+	qreal _ret = self->idealWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextDocument_IndentWidth(const QTextDocument* self) {
-	return self->indentWidth();
+	qreal _ret = self->indentWidth();
+	return static_cast<double>(_ret);
 }
 
 void QTextDocument_SetIndentWidth(QTextDocument* self, double width) {
@@ -343,7 +346,8 @@ void QTextDocument_SetIndentWidth(QTextDocument* self, double width) {
 }
 
 double QTextDocument_DocumentMargin(const QTextDocument* self) {
-	return self->documentMargin();
+	qreal _ret = self->documentMargin();
+	return static_cast<double>(_ret);
 }
 
 void QTextDocument_SetDocumentMargin(QTextDocument* self, double margin) {
@@ -418,12 +422,12 @@ void QTextDocument_SetBaseUrl(QTextDocument* self, QUrl* url) {
 	self->setBaseUrl(*url);
 }
 
-uintptr_t QTextDocument_DefaultCursorMoveStyle(const QTextDocument* self) {
+int QTextDocument_DefaultCursorMoveStyle(const QTextDocument* self) {
 	Qt::CursorMoveStyle _ret = self->defaultCursorMoveStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTextDocument_SetDefaultCursorMoveStyle(QTextDocument* self, uintptr_t style) {
+void QTextDocument_SetDefaultCursorMoveStyle(QTextDocument* self, int style) {
 	self->setDefaultCursorMoveStyle(static_cast<Qt::CursorMoveStyle>(style));
 }
 
@@ -650,7 +654,7 @@ void QTextDocument_DrawContents2(QTextDocument* self, QPainter* painter, QRectF*
 	self->drawContents(painter, *rect);
 }
 
-void QTextDocument_ClearUndoRedoStacks1(QTextDocument* self, uintptr_t historyToClear) {
+void QTextDocument_ClearUndoRedoStacks1(QTextDocument* self, int historyToClear) {
 	self->clearUndoRedoStacks(static_cast<QTextDocument::Stacks>(historyToClear));
 }
 

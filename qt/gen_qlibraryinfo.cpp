@@ -39,7 +39,7 @@ QVersionNumber* QLibraryInfo_Version() {
 	return new QVersionNumber(QLibraryInfo::version());
 }
 
-struct miqt_string* QLibraryInfo_Location(uintptr_t param1) {
+struct miqt_string* QLibraryInfo_Location(int param1) {
 	QString _ret = QLibraryInfo::location(static_cast<QLibraryInfo::LibraryLocation>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

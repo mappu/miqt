@@ -99,10 +99,10 @@ void QXmlStreamReader_AddDataWithData(QXmlStreamReader* self, struct miqt_string
 void QXmlStreamReader_AddData2(QXmlStreamReader* self, const char* data);
 void QXmlStreamReader_Clear(QXmlStreamReader* self);
 bool QXmlStreamReader_AtEnd(const QXmlStreamReader* self);
-uintptr_t QXmlStreamReader_ReadNext(QXmlStreamReader* self);
+int QXmlStreamReader_ReadNext(QXmlStreamReader* self);
 bool QXmlStreamReader_ReadNextStartElement(QXmlStreamReader* self);
 void QXmlStreamReader_SkipCurrentElement(QXmlStreamReader* self);
-uintptr_t QXmlStreamReader_TokenType(const QXmlStreamReader* self);
+int QXmlStreamReader_TokenType(const QXmlStreamReader* self);
 struct miqt_string* QXmlStreamReader_TokenString(const QXmlStreamReader* self);
 void QXmlStreamReader_SetNamespaceProcessing(QXmlStreamReader* self, bool namespaceProcessing);
 bool QXmlStreamReader_NamespaceProcessing(const QXmlStreamReader* self);
@@ -131,11 +131,11 @@ int QXmlStreamReader_EntityExpansionLimit(const QXmlStreamReader* self);
 void QXmlStreamReader_SetEntityExpansionLimit(QXmlStreamReader* self, int limit);
 void QXmlStreamReader_RaiseError(QXmlStreamReader* self);
 struct miqt_string* QXmlStreamReader_ErrorString(const QXmlStreamReader* self);
-uintptr_t QXmlStreamReader_Error(const QXmlStreamReader* self);
+int QXmlStreamReader_Error(const QXmlStreamReader* self);
 bool QXmlStreamReader_HasError(const QXmlStreamReader* self);
 void QXmlStreamReader_SetEntityResolver(QXmlStreamReader* self, QXmlStreamEntityResolver* resolver);
 QXmlStreamEntityResolver* QXmlStreamReader_EntityResolver(const QXmlStreamReader* self);
-struct miqt_string* QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, uintptr_t behaviour);
+struct miqt_string* QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, int behaviour);
 void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string* message);
 void QXmlStreamReader_Delete(QXmlStreamReader* self);
 

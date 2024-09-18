@@ -61,7 +61,7 @@ func NewQDirIterator2(path string) *QDirIterator {
 func NewQDirIterator3(path string, filter int) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	ret := C.QDirIterator_new3((*C.struct_miqt_string)(path_ms), (C.int)(filter))
+	ret := C.QDirIterator_new3((*C.struct_miqt_string)(path_ms), filter)
 	return newQDirIterator(ret)
 }
 
@@ -85,7 +85,7 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 
 // NewQDirIterator5 constructs a new QDirIterator object.
 func NewQDirIterator5(dir *QDir, flags int) *QDirIterator {
-	ret := C.QDirIterator_new5(dir.cPointer(), (C.int)(flags))
+	ret := C.QDirIterator_new5(dir.cPointer(), flags)
 	return newQDirIterator(ret)
 }
 
@@ -93,7 +93,7 @@ func NewQDirIterator5(dir *QDir, flags int) *QDirIterator {
 func NewQDirIterator6(path string, flags int) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	ret := C.QDirIterator_new6((*C.struct_miqt_string)(path_ms), (C.int)(flags))
+	ret := C.QDirIterator_new6((*C.struct_miqt_string)(path_ms), flags)
 	return newQDirIterator(ret)
 }
 
@@ -101,7 +101,7 @@ func NewQDirIterator6(path string, flags int) *QDirIterator {
 func NewQDirIterator7(path string, filter int, flags int) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	ret := C.QDirIterator_new7((*C.struct_miqt_string)(path_ms), (C.int)(filter), (C.int)(flags))
+	ret := C.QDirIterator_new7((*C.struct_miqt_string)(path_ms), filter, flags)
 	return newQDirIterator(ret)
 }
 
@@ -119,7 +119,7 @@ func NewQDirIterator8(path string, nameFilters []string, filters int) *QDirItera
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirIterator_new8((*C.struct_miqt_string)(path_ms), nameFilters_ma, (C.int)(filters))
+	ret := C.QDirIterator_new8((*C.struct_miqt_string)(path_ms), nameFilters_ma, filters)
 	return newQDirIterator(ret)
 }
 
@@ -137,7 +137,7 @@ func NewQDirIterator9(path string, nameFilters []string, filters int, flags int)
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirIterator_new9((*C.struct_miqt_string)(path_ms), nameFilters_ma, (C.int)(filters), (C.int)(flags))
+	ret := C.QDirIterator_new9((*C.struct_miqt_string)(path_ms), nameFilters_ma, filters, flags)
 	return newQDirIterator(ret)
 }
 

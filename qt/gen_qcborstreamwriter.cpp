@@ -29,24 +29,24 @@ void QCborStreamWriter_AppendWithQint64(QCborStreamWriter* self, long long i) {
 	self->append(static_cast<qint64>(i));
 }
 
-void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, QCborNegativeInteger n) {
-	self->append(n);
+void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, uint64_t n) {
+	self->append(static_cast<QCborNegativeInteger>(n));
 }
 
 void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, QByteArray* ba) {
 	self->append(*ba);
 }
 
-void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, QCborTag tag) {
-	self->append(tag);
+void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, uint64_t tag) {
+	self->append(static_cast<QCborTag>(tag));
 }
 
-void QCborStreamWriter_Append3(QCborStreamWriter* self, QCborKnownTags tag) {
-	self->append(tag);
+void QCborStreamWriter_Append3(QCborStreamWriter* self, int tag) {
+	self->append(static_cast<QCborKnownTags>(tag));
 }
 
-void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, QCborSimpleType st) {
-	self->append(st);
+void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, uint8_t st) {
+	self->append(static_cast<QCborSimpleType>(st));
 }
 
 void QCborStreamWriter_AppendWithFloat(QCborStreamWriter* self, float f) {

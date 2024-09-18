@@ -33,24 +33,28 @@ QRectF* QTextInlineObject_Rect(const QTextInlineObject* self) {
 }
 
 double QTextInlineObject_Width(const QTextInlineObject* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Ascent(const QTextInlineObject* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Descent(const QTextInlineObject* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QTextInlineObject_Height(const QTextInlineObject* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
-uintptr_t QTextInlineObject_TextDirection(const QTextInlineObject* self) {
+int QTextInlineObject_TextDirection(const QTextInlineObject* self) {
 	Qt::LayoutDirection _ret = self->textDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextInlineObject_SetWidth(QTextInlineObject* self, double w) {
@@ -216,13 +220,13 @@ bool QTextLayout_CacheEnabled(const QTextLayout* self) {
 	return self->cacheEnabled();
 }
 
-void QTextLayout_SetCursorMoveStyle(QTextLayout* self, uintptr_t style) {
+void QTextLayout_SetCursorMoveStyle(QTextLayout* self, int style) {
 	self->setCursorMoveStyle(static_cast<Qt::CursorMoveStyle>(style));
 }
 
-uintptr_t QTextLayout_CursorMoveStyle(const QTextLayout* self) {
+int QTextLayout_CursorMoveStyle(const QTextLayout* self) {
 	Qt::CursorMoveStyle _ret = self->cursorMoveStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextLayout_BeginLayout(QTextLayout* self) {
@@ -298,11 +302,13 @@ QRectF* QTextLayout_BoundingRect(const QTextLayout* self) {
 }
 
 double QTextLayout_MinimumWidth(const QTextLayout* self) {
-	return self->minimumWidth();
+	qreal _ret = self->minimumWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextLayout_MaximumWidth(const QTextLayout* self) {
-	return self->maximumWidth();
+	qreal _ret = self->maximumWidth();
+	return static_cast<double>(_ret);
 }
 
 struct miqt_array* QTextLayout_GlyphRuns(const QTextLayout* self) {
@@ -322,11 +328,11 @@ void QTextLayout_SetFlags(QTextLayout* self, int flags) {
 	self->setFlags(static_cast<int>(flags));
 }
 
-int QTextLayout_NextCursorPosition2(const QTextLayout* self, int oldPos, uintptr_t mode) {
+int QTextLayout_NextCursorPosition2(const QTextLayout* self, int oldPos, int mode) {
 	return self->nextCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-int QTextLayout_PreviousCursorPosition2(const QTextLayout* self, int oldPos, uintptr_t mode) {
+int QTextLayout_PreviousCursorPosition2(const QTextLayout* self, int oldPos, int mode) {
 	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
@@ -393,31 +399,38 @@ QRectF* QTextLine_Rect(const QTextLine* self) {
 }
 
 double QTextLine_X(const QTextLine* self) {
-	return self->x();
+	qreal _ret = self->x();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Y(const QTextLine* self) {
-	return self->y();
+	qreal _ret = self->y();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Width(const QTextLine* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Ascent(const QTextLine* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Descent(const QTextLine* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Height(const QTextLine* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_Leading(const QTextLine* self) {
-	return self->leading();
+	qreal _ret = self->leading();
+	return static_cast<double>(_ret);
 }
 
 void QTextLine_SetLeadingIncluded(QTextLine* self, bool included) {
@@ -429,11 +442,13 @@ bool QTextLine_LeadingIncluded(const QTextLine* self) {
 }
 
 double QTextLine_NaturalTextWidth(const QTextLine* self) {
-	return self->naturalTextWidth();
+	qreal _ret = self->naturalTextWidth();
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_HorizontalAdvance(const QTextLine* self) {
-	return self->horizontalAdvance();
+	qreal _ret = self->horizontalAdvance();
+	return static_cast<double>(_ret);
 }
 
 QRectF* QTextLine_NaturalTextRect(const QTextLine* self) {
@@ -441,11 +456,13 @@ QRectF* QTextLine_NaturalTextRect(const QTextLine* self) {
 }
 
 double QTextLine_CursorToX(const QTextLine* self, int* cursorPos) {
-	return self->cursorToX(static_cast<int*>(cursorPos));
+	qreal _ret = self->cursorToX(static_cast<int*>(cursorPos));
+	return static_cast<double>(_ret);
 }
 
 double QTextLine_CursorToXWithCursorPos(const QTextLine* self, int cursorPos) {
-	return self->cursorToX(static_cast<int>(cursorPos));
+	qreal _ret = self->cursorToX(static_cast<int>(cursorPos));
+	return static_cast<double>(_ret);
 }
 
 int QTextLine_XToCursor(const QTextLine* self, double x) {
@@ -501,15 +518,17 @@ struct miqt_array* QTextLine_GlyphRuns(const QTextLine* self) {
 	return _out;
 }
 
-double QTextLine_CursorToX2(const QTextLine* self, int* cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
+double QTextLine_CursorToX2(const QTextLine* self, int* cursorPos, int edge) {
+	qreal _ret = self->cursorToX(static_cast<int*>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return static_cast<double>(_ret);
 }
 
-double QTextLine_CursorToX22(const QTextLine* self, int cursorPos, uintptr_t edge) {
-	return self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
+double QTextLine_CursorToX22(const QTextLine* self, int cursorPos, int edge) {
+	qreal _ret = self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
+	return static_cast<double>(_ret);
 }
 
-int QTextLine_XToCursor2(const QTextLine* self, double x, uintptr_t param2) {
+int QTextLine_XToCursor2(const QTextLine* self, double x, int param2) {
 	return self->xToCursor(static_cast<qreal>(x), static_cast<QTextLine::CursorPosition>(param2));
 }
 

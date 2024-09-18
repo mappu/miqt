@@ -42,7 +42,7 @@ QMutex* QMutex_new() {
 	return new QMutex();
 }
 
-QMutex* QMutex_new2(uintptr_t mode) {
+QMutex* QMutex_new2(int mode) {
 	return new QMutex(static_cast<QMutex::RecursionMode>(mode));
 }
 

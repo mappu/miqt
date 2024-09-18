@@ -176,7 +176,7 @@ bool QStringListModel_RemoveRows3(QStringListModel* self, int row, int count, QM
 	return self->removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
-void QStringListModel_Sort2(QStringListModel* self, int column, uintptr_t order) {
+void QStringListModel_Sort2(QStringListModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 

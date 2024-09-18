@@ -45,31 +45,31 @@ func newQIconEngine_U(h unsafe.Pointer) *QIconEngine {
 }
 
 func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State) {
-	C.QIconEngine_Paint(this.h, painter.cPointer(), rect.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	C.QIconEngine_Paint(this.h, painter.cPointer(), rect.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	_ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_ret := C.QIconEngine_ActualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
 	_goptr := newQSize(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	_ret := C.QIconEngine_Pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIcon__State) {
-	C.QIconEngine_AddPixmap(this.h, pixmap.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	C.QIconEngine_AddPixmap(this.h, pixmap.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	C.QIconEngine_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	C.QIconEngine_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) Key() string {
@@ -117,14 +117,14 @@ func (this *QIconEngine) IsNull() bool {
 }
 
 func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
-	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.uintptr_t)(mode), (C.uintptr_t)(state), (C.double)(scale))
+	_ret := C.QIconEngine_ScaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -138,7 +138,7 @@ func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 }
 
 func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.uintptr_t)(mode), (C.uintptr_t)(state))
+	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -193,6 +193,10 @@ func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesA
 	return newQIconEngine__AvailableSizesArgument(ret)
 }
 
+func (this *QIconEngine__AvailableSizesArgument) OperatorAssign(param1 *QIconEngine__AvailableSizesArgument) {
+	C.QIconEngine__AvailableSizesArgument_OperatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QIconEngine__AvailableSizesArgument) Delete() {
 	C.QIconEngine__AvailableSizesArgument_Delete(this.h)
@@ -233,6 +237,10 @@ func newQIconEngine__ScaledPixmapArgument_U(h unsafe.Pointer) *QIconEngine__Scal
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
 	ret := C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer())
 	return newQIconEngine__ScaledPixmapArgument(ret)
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngine__ScaledPixmapArgument) {
+	C.QIconEngine__ScaledPixmapArgument_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

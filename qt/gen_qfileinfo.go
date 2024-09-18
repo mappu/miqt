@@ -314,7 +314,7 @@ func (this *QFileInfo) GroupId() uint {
 }
 
 func (this *QFileInfo) Permission(permissions int) bool {
-	return (bool)(C.QFileInfo_Permission(this.h, (C.int)(permissions)))
+	return (bool)(C.QFileInfo_Permission(this.h, permissions))
 }
 
 func (this *QFileInfo) Permissions() int {
@@ -360,8 +360,8 @@ func (this *QFileInfo) LastRead() *QDateTime {
 	return _goptr
 }
 
-func (this *QFileInfo) FileTime(time uintptr) *QDateTime {
-	_ret := C.QFileInfo_FileTime(this.h, (C.uintptr_t)(time))
+func (this *QFileInfo) FileTime(time QFileDevice__FileTime) *QDateTime {
+	_ret := C.QFileInfo_FileTime(this.h, (C.int)(time))
 	_goptr := newQDateTime(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -59,7 +59,7 @@ func NewQLabel3(parent *QWidget) *QLabel {
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f int) *QLabel {
-	ret := C.QLabel_new4(parent.cPointer(), (C.int)(f))
+	ret := C.QLabel_new4(parent.cPointer(), f)
 	return newQLabel(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 func NewQLabel6(text string, parent *QWidget, f int) *QLabel {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), (C.int)(f))
+	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), f)
 	return newQLabel(ret)
 }
 
@@ -113,7 +113,7 @@ func (this *QLabel) Pixmap() *QPixmap {
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
-	_ret := C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_ret := C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.int)(param1))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -124,7 +124,7 @@ func (this *QLabel) Picture() *QPicture {
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
-	_ret := C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.uintptr_t)(param1))
+	_ret := C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.int)(param1))
 	_goptr := newQPicture(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -139,7 +139,7 @@ func (this *QLabel) TextFormat() TextFormat {
 }
 
 func (this *QLabel) SetTextFormat(textFormat TextFormat) {
-	C.QLabel_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
+	C.QLabel_SetTextFormat(this.h, (C.int)(textFormat))
 }
 
 func (this *QLabel) Alignment() int {
@@ -147,7 +147,7 @@ func (this *QLabel) Alignment() int {
 }
 
 func (this *QLabel) SetAlignment(alignment int) {
-	C.QLabel_SetAlignment(this.h, (C.int)(alignment))
+	C.QLabel_SetAlignment(this.h, alignment)
 }
 
 func (this *QLabel) SetWordWrap(on bool) {
@@ -217,7 +217,7 @@ func (this *QLabel) SetOpenExternalLinks(open bool) {
 }
 
 func (this *QLabel) SetTextInteractionFlags(flags int) {
-	C.QLabel_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QLabel_SetTextInteractionFlags(this.h, flags)
 }
 
 func (this *QLabel) TextInteractionFlags() int {

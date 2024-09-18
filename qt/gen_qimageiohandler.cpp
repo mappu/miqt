@@ -49,15 +49,15 @@ bool QImageIOHandler_Write(QImageIOHandler* self, QImage* image) {
 	return self->write(*image);
 }
 
-QVariant* QImageIOHandler_Option(const QImageIOHandler* self, uintptr_t option) {
+QVariant* QImageIOHandler_Option(const QImageIOHandler* self, int option) {
 	return new QVariant(self->option(static_cast<QImageIOHandler::ImageOption>(option)));
 }
 
-void QImageIOHandler_SetOption(QImageIOHandler* self, uintptr_t option, QVariant* value) {
+void QImageIOHandler_SetOption(QImageIOHandler* self, int option, QVariant* value) {
 	self->setOption(static_cast<QImageIOHandler::ImageOption>(option), *value);
 }
 
-bool QImageIOHandler_SupportsOption(const QImageIOHandler* self, uintptr_t option) {
+bool QImageIOHandler_SupportsOption(const QImageIOHandler* self, int option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 

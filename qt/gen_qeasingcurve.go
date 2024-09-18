@@ -103,7 +103,7 @@ func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
 
 // NewQEasingCurve3 constructs a new QEasingCurve object.
 func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
-	ret := C.QEasingCurve_new3((C.uintptr_t)(typeVal))
+	ret := C.QEasingCurve_new3((C.int)(typeVal))
 	return newQEasingCurve(ret)
 }
 
@@ -174,7 +174,7 @@ func (this *QEasingCurve) Type() QEasingCurve__Type {
 }
 
 func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
-	C.QEasingCurve_SetType(this.h, (C.uintptr_t)(typeVal))
+	C.QEasingCurve_SetType(this.h, (C.int)(typeVal))
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {

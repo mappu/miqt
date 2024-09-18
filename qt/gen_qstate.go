@@ -58,7 +58,7 @@ func NewQState() *QState {
 
 // NewQState2 constructs a new QState object.
 func NewQState2(childMode QState__ChildMode) *QState {
-	ret := C.QState_new2((C.uintptr_t)(childMode))
+	ret := C.QState_new2((C.int)(childMode))
 	return newQState(ret)
 }
 
@@ -70,7 +70,7 @@ func NewQState3(parent *QState) *QState {
 
 // NewQState4 constructs a new QState object.
 func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
-	ret := C.QState_new4((C.uintptr_t)(childMode), parent.cPointer())
+	ret := C.QState_new4((C.int)(childMode), parent.cPointer())
 	return newQState(ret)
 }
 
@@ -146,7 +146,7 @@ func (this *QState) ChildMode() QState__ChildMode {
 }
 
 func (this *QState) SetChildMode(mode QState__ChildMode) {
-	C.QState_SetChildMode(this.h, (C.uintptr_t)(mode))
+	C.QState_SetChildMode(this.h, (C.int)(mode))
 }
 
 func (this *QState) AssignProperty(object *QObject, name string, value *QVariant) {

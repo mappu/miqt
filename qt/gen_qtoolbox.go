@@ -51,7 +51,7 @@ func NewQToolBox2(parent *QWidget) *QToolBox {
 
 // NewQToolBox3 constructs a new QToolBox object.
 func NewQToolBox3(parent *QWidget, f int) *QToolBox {
-	ret := C.QToolBox_new3(parent.cPointer(), (C.int)(f))
+	ret := C.QToolBox_new3(parent.cPointer(), f)
 	return newQToolBox(ret)
 }
 

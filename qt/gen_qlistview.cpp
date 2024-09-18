@@ -39,22 +39,22 @@ struct miqt_string* QListView_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_SetMovement(QListView* self, uintptr_t movement) {
+void QListView_SetMovement(QListView* self, int movement) {
 	self->setMovement(static_cast<QListView::Movement>(movement));
 }
 
-uintptr_t QListView_Movement(const QListView* self) {
+int QListView_Movement(const QListView* self) {
 	QListView::Movement _ret = self->movement();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QListView_SetFlow(QListView* self, uintptr_t flow) {
+void QListView_SetFlow(QListView* self, int flow) {
 	self->setFlow(static_cast<QListView::Flow>(flow));
 }
 
-uintptr_t QListView_Flow(const QListView* self) {
+int QListView_Flow(const QListView* self) {
 	QListView::Flow _ret = self->flow();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_SetWrapping(QListView* self, bool enable) {
@@ -65,22 +65,22 @@ bool QListView_IsWrapping(const QListView* self) {
 	return self->isWrapping();
 }
 
-void QListView_SetResizeMode(QListView* self, uintptr_t mode) {
+void QListView_SetResizeMode(QListView* self, int mode) {
 	self->setResizeMode(static_cast<QListView::ResizeMode>(mode));
 }
 
-uintptr_t QListView_ResizeMode(const QListView* self) {
+int QListView_ResizeMode(const QListView* self) {
 	QListView::ResizeMode _ret = self->resizeMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QListView_SetLayoutMode(QListView* self, uintptr_t mode) {
+void QListView_SetLayoutMode(QListView* self, int mode) {
 	self->setLayoutMode(static_cast<QListView::LayoutMode>(mode));
 }
 
-uintptr_t QListView_LayoutMode(const QListView* self) {
+int QListView_LayoutMode(const QListView* self) {
 	QListView::LayoutMode _ret = self->layoutMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_SetSpacing(QListView* self, int space) {
@@ -107,13 +107,13 @@ QSize* QListView_GridSize(const QListView* self) {
 	return new QSize(self->gridSize());
 }
 
-void QListView_SetViewMode(QListView* self, uintptr_t mode) {
+void QListView_SetViewMode(QListView* self, int mode) {
 	self->setViewMode(static_cast<QListView::ViewMode>(mode));
 }
 
-uintptr_t QListView_ViewMode(const QListView* self) {
+int QListView_ViewMode(const QListView* self) {
 	QListView::ViewMode _ret = self->viewMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QListView_ClearPropertyFlags(QListView* self) {
@@ -247,7 +247,7 @@ struct miqt_string* QListView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListView_ScrollTo2(QListView* self, QModelIndex* index, uintptr_t hint) {
+void QListView_ScrollTo2(QListView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

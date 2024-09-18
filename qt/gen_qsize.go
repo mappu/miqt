@@ -93,22 +93,22 @@ func (this *QSize) Transposed() *QSize {
 }
 
 func (this *QSize) Scale(w int, h int, mode AspectRatioMode) {
-	C.QSize_Scale(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	C.QSize_Scale(this.h, (C.int)(w), (C.int)(h), (C.int)(mode))
 }
 
 func (this *QSize) Scale2(s *QSize, mode AspectRatioMode) {
-	C.QSize_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+	C.QSize_Scale2(this.h, s.cPointer(), (C.int)(mode))
 }
 
 func (this *QSize) Scaled(w int, h int, mode AspectRatioMode) *QSize {
-	_ret := C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(mode))
+	_ret := C.QSize_Scaled(this.h, (C.int)(w), (C.int)(h), (C.int)(mode))
 	_goptr := newQSize(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSize) Scaled2(s *QSize, mode AspectRatioMode) *QSize {
-	_ret := C.QSize_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+	_ret := C.QSize_Scaled2(this.h, s.cPointer(), (C.int)(mode))
 	_goptr := newQSize(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -258,22 +258,22 @@ func (this *QSizeF) Transposed() *QSizeF {
 }
 
 func (this *QSizeF) Scale(w float64, h float64, mode AspectRatioMode) {
-	C.QSizeF_Scale(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
+	C.QSizeF_Scale(this.h, (C.double)(w), (C.double)(h), (C.int)(mode))
 }
 
 func (this *QSizeF) Scale2(s *QSizeF, mode AspectRatioMode) {
-	C.QSizeF_Scale2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+	C.QSizeF_Scale2(this.h, s.cPointer(), (C.int)(mode))
 }
 
 func (this *QSizeF) Scaled(w float64, h float64, mode AspectRatioMode) *QSizeF {
-	_ret := C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.uintptr_t)(mode))
+	_ret := C.QSizeF_Scaled(this.h, (C.double)(w), (C.double)(h), (C.int)(mode))
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeF) Scaled2(s *QSizeF, mode AspectRatioMode) *QSizeF {
-	_ret := C.QSizeF_Scaled2(this.h, s.cPointer(), (C.uintptr_t)(mode))
+	_ret := C.QSizeF_Scaled2(this.h, s.cPointer(), (C.int)(mode))
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

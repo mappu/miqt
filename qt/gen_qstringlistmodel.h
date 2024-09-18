@@ -55,7 +55,7 @@ QVariant* QStringListModel_Data2(const QStringListModel* self, QModelIndex* inde
 bool QStringListModel_SetData3(QStringListModel* self, QModelIndex* index, QVariant* value, int role);
 bool QStringListModel_InsertRows3(QStringListModel* self, int row, int count, QModelIndex* parent);
 bool QStringListModel_RemoveRows3(QStringListModel* self, int row, int count, QModelIndex* parent);
-void QStringListModel_Sort2(QStringListModel* self, int column, uintptr_t order);
+void QStringListModel_Sort2(QStringListModel* self, int column, int order);
 void QStringListModel_Delete(QStringListModel* self);
 
 #ifdef __cplusplus

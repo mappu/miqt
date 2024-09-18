@@ -79,7 +79,7 @@ QByteArray* QJsonDocument_ToJson(const QJsonDocument* self) {
 	return new QByteArray(self->toJson());
 }
 
-QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, uintptr_t format) {
+QByteArray* QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, int format) {
 	return new QByteArray(self->toJson(static_cast<QJsonDocument::JsonFormat>(format)));
 }
 
@@ -132,11 +132,11 @@ bool QJsonDocument_IsNull(const QJsonDocument* self) {
 	return self->isNull();
 }
 
-QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, uintptr_t validation) {
+QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, int validation) {
 	return new QJsonDocument(QJsonDocument::fromRawData(data, static_cast<int>(size), static_cast<QJsonDocument::DataValidation>(validation)));
 }
 
-QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, uintptr_t validation) {
+QJsonDocument* QJsonDocument_FromBinaryData2(QByteArray* data, int validation) {
 	return new QJsonDocument(QJsonDocument::fromBinaryData(*data, static_cast<QJsonDocument::DataValidation>(validation)));
 }
 

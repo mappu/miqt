@@ -214,11 +214,23 @@ bool QJsonObject__iterator_OperatorGreaterOrEqual(const QJsonObject__iterator* s
 	return self->operator>=(*other);
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorPlusPlus(QJsonObject__iterator* self, int param1) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorPlusPlus(QJsonObject__iterator* self) {
+	QJsonObject::iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__iterator* QJsonObject__iterator_OperatorPlusPlusWithInt(QJsonObject__iterator* self, int param1) {
 	return new QJsonObject::iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorMinusMinus(QJsonObject__iterator* self, int param1) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorMinusMinus(QJsonObject__iterator* self) {
+	QJsonObject::iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__iterator* QJsonObject__iterator_OperatorMinusMinusWithInt(QJsonObject__iterator* self, int param1) {
 	return new QJsonObject::iterator(self->operator--(static_cast<int>(param1)));
 }
 
@@ -228,6 +240,18 @@ QJsonObject__iterator* QJsonObject__iterator_OperatorPlus(const QJsonObject__ite
 
 QJsonObject__iterator* QJsonObject__iterator_OperatorMinus(const QJsonObject__iterator* self, int j) {
 	return new QJsonObject::iterator(self->operator-(static_cast<int>(j)));
+}
+
+QJsonObject__iterator* QJsonObject__iterator_OperatorPlusAssign(QJsonObject__iterator* self, int j) {
+	QJsonObject::iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__iterator* QJsonObject__iterator_OperatorMinusAssign(QJsonObject__iterator* self, int j) {
+	QJsonObject::iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 int QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(const QJsonObject__iterator* self, QJsonObject__iterator* j) {
@@ -325,11 +349,23 @@ bool QJsonObject__const_iterator_OperatorGreaterOrEqual(const QJsonObject__const
 	return self->operator>=(*other);
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusPlus(QJsonObject__const_iterator* self, int param1) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusPlus(QJsonObject__const_iterator* self) {
+	QJsonObject::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusPlusWithInt(QJsonObject__const_iterator* self, int param1) {
 	return new QJsonObject::const_iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusMinus(QJsonObject__const_iterator* self, int param1) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusMinus(QJsonObject__const_iterator* self) {
+	QJsonObject::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusMinusWithInt(QJsonObject__const_iterator* self, int param1) {
 	return new QJsonObject::const_iterator(self->operator--(static_cast<int>(param1)));
 }
 
@@ -339,6 +375,18 @@ QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlus(const QJso
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinus(const QJsonObject__const_iterator* self, int j) {
 	return new QJsonObject::const_iterator(self->operator-(static_cast<int>(j)));
+}
+
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusAssign(QJsonObject__const_iterator* self, int j) {
+	QJsonObject::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusAssign(QJsonObject__const_iterator* self, int j) {
+	QJsonObject::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 int QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* j) {

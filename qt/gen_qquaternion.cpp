@@ -9,7 +9,7 @@ QQuaternion* QQuaternion_new() {
 	return new QQuaternion();
 }
 
-QQuaternion* QQuaternion_new2(uintptr_t param1) {
+QQuaternion* QQuaternion_new2(int param1) {
 	return new QQuaternion(static_cast<Qt::Initialization>(param1));
 }
 

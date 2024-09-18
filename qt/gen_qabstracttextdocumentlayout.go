@@ -64,7 +64,7 @@ func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstr
 }
 
 func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
-	return (int)(C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.uintptr_t)(accuracy)))
+	return (int)(C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.int)(accuracy)))
 }
 
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
@@ -382,6 +382,10 @@ func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayo
 	return newQAbstractTextDocumentLayout__Selection(ret)
 }
 
+func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbstractTextDocumentLayout__Selection) {
+	C.QAbstractTextDocumentLayout__Selection_OperatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__Selection) Delete() {
 	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
@@ -428,6 +432,10 @@ func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout
 func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
 	ret := C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer())
 	return newQAbstractTextDocumentLayout__PaintContext(ret)
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QAbstractTextDocumentLayout__PaintContext) {
+	C.QAbstractTextDocumentLayout__PaintContext_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

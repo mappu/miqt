@@ -359,27 +359,33 @@ QRectF* QRectF_Normalized(const QRectF* self) {
 }
 
 double QRectF_Left(const QRectF* self) {
-	return self->left();
+	qreal _ret = self->left();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_Top(const QRectF* self) {
-	return self->top();
+	qreal _ret = self->top();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_Right(const QRectF* self) {
-	return self->right();
+	qreal _ret = self->right();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_Bottom(const QRectF* self) {
-	return self->bottom();
+	qreal _ret = self->bottom();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_X(const QRectF* self) {
-	return self->x();
+	qreal _ret = self->x();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_Y(const QRectF* self) {
-	return self->y();
+	qreal _ret = self->y();
+	return static_cast<double>(_ret);
 }
 
 void QRectF_SetLeft(QRectF* self, double pos) {
@@ -535,11 +541,13 @@ QSizeF* QRectF_Size(const QRectF* self) {
 }
 
 double QRectF_Width(const QRectF* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QRectF_Height(const QRectF* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 void QRectF_SetWidth(QRectF* self, double w) {

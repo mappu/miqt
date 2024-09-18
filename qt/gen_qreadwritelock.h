@@ -24,7 +24,7 @@ typedef struct QWriteLocker QWriteLocker;
 #endif
 
 QReadWriteLock* QReadWriteLock_new();
-QReadWriteLock* QReadWriteLock_new2(uintptr_t recursionMode);
+QReadWriteLock* QReadWriteLock_new2(int recursionMode);
 void QReadWriteLock_LockForRead(QReadWriteLock* self);
 bool QReadWriteLock_TryLockForRead(QReadWriteLock* self);
 bool QReadWriteLock_TryLockForReadWithTimeout(QReadWriteLock* self, int timeout);

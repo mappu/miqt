@@ -26,9 +26,9 @@ struct miqt_string* QFileDevice_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QFileDevice_Error(const QFileDevice* self) {
+int QFileDevice_Error(const QFileDevice* self) {
 	QFileDevice::FileError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFileDevice_UnsetError(QFileDevice* self) {
@@ -55,7 +55,8 @@ struct miqt_string* QFileDevice_FileName(const QFileDevice* self) {
 }
 
 long long QFileDevice_Pos(const QFileDevice* self) {
-	return self->pos();
+	qint64 _ret = self->pos();
+	return static_cast<long long>(_ret);
 }
 
 bool QFileDevice_Seek(QFileDevice* self, long long offset) {
@@ -71,7 +72,8 @@ bool QFileDevice_Flush(QFileDevice* self) {
 }
 
 long long QFileDevice_Size(const QFileDevice* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 bool QFileDevice_Resize(QFileDevice* self, long long sz) {
@@ -88,18 +90,19 @@ bool QFileDevice_SetPermissions(QFileDevice* self, int permissionSpec) {
 }
 
 unsigned char* QFileDevice_Map(QFileDevice* self, long long offset, long long size) {
-	return self->map(static_cast<qint64>(offset), static_cast<qint64>(size));
+	uchar* _ret = self->map(static_cast<qint64>(offset), static_cast<qint64>(size));
+	return static_cast<unsigned char*>(_ret);
 }
 
 bool QFileDevice_Unmap(QFileDevice* self, unsigned char* address) {
 	return self->unmap(static_cast<uchar*>(address));
 }
 
-QDateTime* QFileDevice_FileTime(const QFileDevice* self, uintptr_t time) {
+QDateTime* QFileDevice_FileTime(const QFileDevice* self, int time) {
 	return new QDateTime(self->fileTime(static_cast<QFileDevice::FileTime>(time)));
 }
 
-bool QFileDevice_SetFileTime(QFileDevice* self, QDateTime* newDate, uintptr_t fileTime) {
+bool QFileDevice_SetFileTime(QFileDevice* self, QDateTime* newDate, int fileTime) {
 	return self->setFileTime(*newDate, static_cast<QFileDevice::FileTime>(fileTime));
 }
 
@@ -131,8 +134,9 @@ struct miqt_string* QFileDevice_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long size, uintptr_t flags) {
-	return self->map(static_cast<qint64>(offset), static_cast<qint64>(size), static_cast<QFileDevice::MemoryMapFlags>(flags));
+unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long size, int flags) {
+	uchar* _ret = self->map(static_cast<qint64>(offset), static_cast<qint64>(size), static_cast<QFileDevice::MemoryMapFlags>(flags));
+	return static_cast<unsigned char*>(_ret);
 }
 
 void QFileDevice_Delete(QFileDevice* self) {

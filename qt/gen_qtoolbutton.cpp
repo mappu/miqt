@@ -45,17 +45,17 @@ QSize* QToolButton_MinimumSizeHint(const QToolButton* self) {
 	return new QSize(self->minimumSizeHint());
 }
 
-uintptr_t QToolButton_ToolButtonStyle(const QToolButton* self) {
+int QToolButton_ToolButtonStyle(const QToolButton* self) {
 	Qt::ToolButtonStyle _ret = self->toolButtonStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QToolButton_ArrowType(const QToolButton* self) {
+int QToolButton_ArrowType(const QToolButton* self) {
 	Qt::ArrowType _ret = self->arrowType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QToolButton_SetArrowType(QToolButton* self, uintptr_t typeVal) {
+void QToolButton_SetArrowType(QToolButton* self, int typeVal) {
 	self->setArrowType(static_cast<Qt::ArrowType>(typeVal));
 }
 
@@ -67,13 +67,13 @@ QMenu* QToolButton_Menu(const QToolButton* self) {
 	return self->menu();
 }
 
-void QToolButton_SetPopupMode(QToolButton* self, uintptr_t mode) {
+void QToolButton_SetPopupMode(QToolButton* self, int mode) {
 	self->setPopupMode(static_cast<QToolButton::ToolButtonPopupMode>(mode));
 }
 
-uintptr_t QToolButton_PopupMode(const QToolButton* self) {
+int QToolButton_PopupMode(const QToolButton* self) {
 	QToolButton::ToolButtonPopupMode _ret = self->popupMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QAction* QToolButton_DefaultAction(const QToolButton* self) {
@@ -92,7 +92,7 @@ void QToolButton_ShowMenu(QToolButton* self) {
 	self->showMenu();
 }
 
-void QToolButton_SetToolButtonStyle(QToolButton* self, uintptr_t style) {
+void QToolButton_SetToolButtonStyle(QToolButton* self, int style) {
 	self->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(style));
 }
 

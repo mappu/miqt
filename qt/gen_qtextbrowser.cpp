@@ -41,9 +41,9 @@ QUrl* QTextBrowser_Source(const QTextBrowser* self) {
 	return new QUrl(self->source());
 }
 
-uintptr_t QTextBrowser_SourceType(const QTextBrowser* self) {
+int QTextBrowser_SourceType(const QTextBrowser* self) {
 	QTextDocument::ResourceType _ret = self->sourceType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
@@ -128,7 +128,7 @@ void QTextBrowser_SetSource(QTextBrowser* self, QUrl* name) {
 	self->setSource(*name);
 }
 
-void QTextBrowser_SetSource2(QTextBrowser* self, QUrl* name, uintptr_t typeVal) {
+void QTextBrowser_SetSource2(QTextBrowser* self, QUrl* name, int typeVal) {
 	self->setSource(*name, static_cast<QTextDocument::ResourceType>(typeVal));
 }
 

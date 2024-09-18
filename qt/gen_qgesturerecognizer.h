@@ -28,8 +28,8 @@ typedef struct QObject QObject;
 QGesture* QGestureRecognizer_Create(QGestureRecognizer* self, QObject* target);
 int QGestureRecognizer_Recognize(QGestureRecognizer* self, QGesture* state, QObject* watched, QEvent* event);
 void QGestureRecognizer_Reset(QGestureRecognizer* self, QGesture* state);
-uintptr_t QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer);
-void QGestureRecognizer_UnregisterRecognizer(uintptr_t typeVal);
+int QGestureRecognizer_RegisterRecognizer(QGestureRecognizer* recognizer);
+void QGestureRecognizer_UnregisterRecognizer(int typeVal);
 void QGestureRecognizer_OperatorAssign(QGestureRecognizer* self, QGestureRecognizer* param1);
 void QGestureRecognizer_Delete(QGestureRecognizer* self);
 

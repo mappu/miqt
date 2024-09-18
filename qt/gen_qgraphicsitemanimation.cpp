@@ -72,7 +72,8 @@ QTransform* QGraphicsItemAnimation_TransformAt(const QGraphicsItemAnimation* sel
 }
 
 double QGraphicsItemAnimation_RotationAt(const QGraphicsItemAnimation* self, double step) {
-	return self->rotationAt(static_cast<qreal>(step));
+	qreal _ret = self->rotationAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItemAnimation_SetRotationAt(QGraphicsItemAnimation* self, double step, double angle) {
@@ -80,11 +81,13 @@ void QGraphicsItemAnimation_SetRotationAt(QGraphicsItemAnimation* self, double s
 }
 
 double QGraphicsItemAnimation_XTranslationAt(const QGraphicsItemAnimation* self, double step) {
-	return self->xTranslationAt(static_cast<qreal>(step));
+	qreal _ret = self->xTranslationAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsItemAnimation_YTranslationAt(const QGraphicsItemAnimation* self, double step) {
-	return self->yTranslationAt(static_cast<qreal>(step));
+	qreal _ret = self->yTranslationAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItemAnimation_SetTranslationAt(QGraphicsItemAnimation* self, double step, double dx, double dy) {
@@ -92,11 +95,13 @@ void QGraphicsItemAnimation_SetTranslationAt(QGraphicsItemAnimation* self, doubl
 }
 
 double QGraphicsItemAnimation_VerticalScaleAt(const QGraphicsItemAnimation* self, double step) {
-	return self->verticalScaleAt(static_cast<qreal>(step));
+	qreal _ret = self->verticalScaleAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsItemAnimation_HorizontalScaleAt(const QGraphicsItemAnimation* self, double step) {
-	return self->horizontalScaleAt(static_cast<qreal>(step));
+	qreal _ret = self->horizontalScaleAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItemAnimation_SetScaleAt(QGraphicsItemAnimation* self, double step, double sx, double sy) {
@@ -104,11 +109,13 @@ void QGraphicsItemAnimation_SetScaleAt(QGraphicsItemAnimation* self, double step
 }
 
 double QGraphicsItemAnimation_VerticalShearAt(const QGraphicsItemAnimation* self, double step) {
-	return self->verticalShearAt(static_cast<qreal>(step));
+	qreal _ret = self->verticalShearAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsItemAnimation_HorizontalShearAt(const QGraphicsItemAnimation* self, double step) {
-	return self->horizontalShearAt(static_cast<qreal>(step));
+	qreal _ret = self->horizontalShearAt(static_cast<qreal>(step));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step, double sh, double sv) {

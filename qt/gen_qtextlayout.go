@@ -314,7 +314,7 @@ func (this *QTextLayout) CacheEnabled() bool {
 }
 
 func (this *QTextLayout) SetCursorMoveStyle(style CursorMoveStyle) {
-	C.QTextLayout_SetCursorMoveStyle(this.h, (C.uintptr_t)(style))
+	C.QTextLayout_SetCursorMoveStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextLayout) CursorMoveStyle() CursorMoveStyle {
@@ -435,11 +435,11 @@ func (this *QTextLayout) SetFlags(flags int) {
 }
 
 func (this *QTextLayout) NextCursorPosition2(oldPos int, mode QTextLayout__CursorMode) int {
-	return (int)(C.QTextLayout_NextCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode)))
+	return (int)(C.QTextLayout_NextCursorPosition2(this.h, (C.int)(oldPos), (C.int)(mode)))
 }
 
 func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__CursorMode) int {
-	return (int)(C.QTextLayout_PreviousCursorPosition2(this.h, (C.int)(oldPos), (C.uintptr_t)(mode)))
+	return (int)(C.QTextLayout_PreviousCursorPosition2(this.h, (C.int)(oldPos), (C.int)(mode)))
 }
 
 func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
@@ -664,15 +664,15 @@ func (this *QTextLine) GlyphRuns() []QGlyphRun {
 }
 
 func (this *QTextLine) CursorToX2(cursorPos *int, edge QTextLine__Edge) float64 {
-	return (float64)(C.QTextLine_CursorToX2(this.h, (*C.int)(unsafe.Pointer(cursorPos)), (C.uintptr_t)(edge)))
+	return (float64)(C.QTextLine_CursorToX2(this.h, (*C.int)(unsafe.Pointer(cursorPos)), (C.int)(edge)))
 }
 
 func (this *QTextLine) CursorToX22(cursorPos int, edge QTextLine__Edge) float64 {
-	return (float64)(C.QTextLine_CursorToX22(this.h, (C.int)(cursorPos), (C.uintptr_t)(edge)))
+	return (float64)(C.QTextLine_CursorToX22(this.h, (C.int)(cursorPos), (C.int)(edge)))
 }
 
 func (this *QTextLine) XToCursor2(x float64, param2 QTextLine__CursorPosition) int {
-	return (int)(C.QTextLine_XToCursor2(this.h, (C.double)(x), (C.uintptr_t)(param2)))
+	return (int)(C.QTextLine_XToCursor2(this.h, (C.double)(x), (C.int)(param2)))
 }
 
 func (this *QTextLine) Draw3(p *QPainter, point *QPointF, selection *QTextLayout__FormatRange) {

@@ -315,7 +315,7 @@ func (this *QFont) SetBold(bold bool) {
 }
 
 func (this *QFont) SetStyle(style QFont__Style) {
-	C.QFont_SetStyle(this.h, (C.uintptr_t)(style))
+	C.QFont_SetStyle(this.h, (C.int)(style))
 }
 
 func (this *QFont) Style() QFont__Style {
@@ -379,11 +379,11 @@ func (this *QFont) StyleStrategy() QFont__StyleStrategy {
 }
 
 func (this *QFont) SetStyleHint(param1 QFont__StyleHint) {
-	C.QFont_SetStyleHint(this.h, (C.uintptr_t)(param1))
+	C.QFont_SetStyleHint(this.h, (C.int)(param1))
 }
 
 func (this *QFont) SetStyleStrategy(s QFont__StyleStrategy) {
-	C.QFont_SetStyleStrategy(this.h, (C.uintptr_t)(s))
+	C.QFont_SetStyleStrategy(this.h, (C.int)(s))
 }
 
 func (this *QFont) Stretch() int {
@@ -403,7 +403,7 @@ func (this *QFont) LetterSpacingType() QFont__SpacingType {
 }
 
 func (this *QFont) SetLetterSpacing(typeVal QFont__SpacingType, spacing float64) {
-	C.QFont_SetLetterSpacing(this.h, (C.uintptr_t)(typeVal), (C.double)(spacing))
+	C.QFont_SetLetterSpacing(this.h, (C.int)(typeVal), (C.double)(spacing))
 }
 
 func (this *QFont) WordSpacing() float64 {
@@ -415,7 +415,7 @@ func (this *QFont) SetWordSpacing(spacing float64) {
 }
 
 func (this *QFont) SetCapitalization(capitalization QFont__Capitalization) {
-	C.QFont_SetCapitalization(this.h, (C.uintptr_t)(capitalization))
+	C.QFont_SetCapitalization(this.h, (C.int)(capitalization))
 }
 
 func (this *QFont) Capitalization() QFont__Capitalization {
@@ -423,7 +423,7 @@ func (this *QFont) Capitalization() QFont__Capitalization {
 }
 
 func (this *QFont) SetHintingPreference(hintingPreference QFont__HintingPreference) {
-	C.QFont_SetHintingPreference(this.h, (C.uintptr_t)(hintingPreference))
+	C.QFont_SetHintingPreference(this.h, (C.int)(hintingPreference))
 }
 
 func (this *QFont) HintingPreference() QFont__HintingPreference {
@@ -613,7 +613,7 @@ func (this *QFont) ResolveWithMask(mask uint) {
 }
 
 func (this *QFont) SetStyleHint2(param1 QFont__StyleHint, param2 QFont__StyleStrategy) {
-	C.QFont_SetStyleHint2(this.h, (C.uintptr_t)(param1), (C.uintptr_t)(param2))
+	C.QFont_SetStyleHint2(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 // Delete this object from C++ memory.

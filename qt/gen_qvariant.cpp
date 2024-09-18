@@ -47,7 +47,7 @@ QVariant* QVariant_new() {
 	return new QVariant();
 }
 
-QVariant* QVariant_new2(uintptr_t typeVal) {
+QVariant* QVariant_new2(int typeVal) {
 	return new QVariant(static_cast<QVariant::Type>(typeVal));
 }
 
@@ -67,12 +67,12 @@ QVariant* QVariant_new6(unsigned int ui) {
 	return new QVariant(static_cast<uint>(ui));
 }
 
-QVariant* QVariant_new7(int64_t ll) {
-	return new QVariant((qlonglong)(ll));
+QVariant* QVariant_new7(long long ll) {
+	return new QVariant(static_cast<qlonglong>(ll));
 }
 
-QVariant* QVariant_new8(uint64_t ull) {
-	return new QVariant((qulonglong)(ull));
+QVariant* QVariant_new8(unsigned long long ull) {
+	return new QVariant(static_cast<qulonglong>(ull));
 }
 
 QVariant* QVariant_new9(bool b) {
@@ -219,9 +219,9 @@ void QVariant_Swap(QVariant* self, QVariant* other) {
 	self->swap(*other);
 }
 
-uintptr_t QVariant_Type(const QVariant* self) {
+int QVariant_Type(const QVariant* self) {
 	QVariant::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QVariant_UserType(const QVariant* self) {
@@ -265,15 +265,18 @@ int QVariant_ToInt(const QVariant* self) {
 }
 
 unsigned int QVariant_ToUInt(const QVariant* self) {
-	return self->toUInt();
+	uint _ret = self->toUInt();
+	return static_cast<unsigned int>(_ret);
 }
 
-int64_t QVariant_ToLongLong(const QVariant* self) {
-	return self->toLongLong();
+long long QVariant_ToLongLong(const QVariant* self) {
+	qlonglong _ret = self->toLongLong();
+	return static_cast<long long>(_ret);
 }
 
-uint64_t QVariant_ToULongLong(const QVariant* self) {
-	return self->toULongLong();
+unsigned long long QVariant_ToULongLong(const QVariant* self) {
+	qulonglong _ret = self->toULongLong();
+	return static_cast<unsigned long long>(_ret);
 }
 
 bool QVariant_ToBool(const QVariant* self) {
@@ -289,7 +292,8 @@ float QVariant_ToFloat(const QVariant* self) {
 }
 
 double QVariant_ToReal(const QVariant* self) {
-	return self->toReal();
+	qreal _ret = self->toReal();
+	return static_cast<double>(_ret);
 }
 
 QByteArray* QVariant_ToByteArray(const QVariant* self) {
@@ -431,9 +435,9 @@ const char* QVariant_TypeToName(int typeId) {
 	return (const char*) QVariant::typeToName(static_cast<int>(typeId));
 }
 
-uintptr_t QVariant_NameToType(const char* name) {
+int QVariant_NameToType(const char* name) {
 	QVariant::Type _ret = QVariant::nameToType(name);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QVariant_OperatorEqual(const QVariant* self, QVariant* v) {
@@ -465,15 +469,18 @@ int QVariant_ToInt1(const QVariant* self, bool* ok) {
 }
 
 unsigned int QVariant_ToUInt1(const QVariant* self, bool* ok) {
-	return self->toUInt(ok);
+	uint _ret = self->toUInt(ok);
+	return static_cast<unsigned int>(_ret);
 }
 
-int64_t QVariant_ToLongLong1(const QVariant* self, bool* ok) {
-	return self->toLongLong(ok);
+long long QVariant_ToLongLong1(const QVariant* self, bool* ok) {
+	qlonglong _ret = self->toLongLong(ok);
+	return static_cast<long long>(_ret);
 }
 
-uint64_t QVariant_ToULongLong1(const QVariant* self, bool* ok) {
-	return self->toULongLong(ok);
+unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok) {
+	qulonglong _ret = self->toULongLong(ok);
+	return static_cast<unsigned long long>(_ret);
 }
 
 double QVariant_ToDouble1(const QVariant* self, bool* ok) {
@@ -485,7 +492,8 @@ float QVariant_ToFloat1(const QVariant* self, bool* ok) {
 }
 
 double QVariant_ToReal1(const QVariant* self, bool* ok) {
-	return self->toReal(ok);
+	qreal _ret = self->toReal(ok);
+	return static_cast<double>(_ret);
 }
 
 void QVariant_Delete(QVariant* self) {
@@ -580,6 +588,10 @@ QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSe
 	return new QSequentialIterable::const_iterator(*other);
 }
 
+void QSequentialIterable__const_iterator_OperatorAssign(QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* other) {
+	self->operator=(*other);
+}
+
 QVariant* QSequentialIterable__const_iterator_OperatorMultiply(const QSequentialIterable__const_iterator* self) {
 	return new QVariant(self->operator*());
 }
@@ -592,12 +604,36 @@ bool QSequentialIterable__const_iterator_OperatorNotEqual(const QSequentialItera
 	return self->operator!=(*o);
 }
 
-QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self, int param1) {
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(QSequentialIterable__const_iterator* self, int param1) {
 	return new QSequentialIterable::const_iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinus(QSequentialIterable__const_iterator* self, int param1) {
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(QSequentialIterable__const_iterator* self, int param1) {
 	return new QSequentialIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlus(const QSequentialIterable__const_iterator* self, int j) {
@@ -614,6 +650,10 @@ void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_itera
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other) {
 	return new QAssociativeIterable::const_iterator(*other);
+}
+
+void QAssociativeIterable__const_iterator_OperatorAssign(QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* other) {
+	self->operator=(*other);
 }
 
 QVariant* QAssociativeIterable__const_iterator_Key(const QAssociativeIterable__const_iterator* self) {
@@ -636,12 +676,36 @@ bool QAssociativeIterable__const_iterator_OperatorNotEqual(const QAssociativeIte
 	return self->operator!=(*o);
 }
 
-QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self, int param1) {
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
 	return new QAssociativeIterable::const_iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinus(QAssociativeIterable__const_iterator* self, int param1) {
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
 	return new QAssociativeIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlus(const QAssociativeIterable__const_iterator* self, int j) {

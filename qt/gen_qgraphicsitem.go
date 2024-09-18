@@ -265,11 +265,11 @@ func (this *QGraphicsItem) Flags() int {
 }
 
 func (this *QGraphicsItem) SetFlag(flag QGraphicsItem__GraphicsItemFlag) {
-	C.QGraphicsItem_SetFlag(this.h, (C.uintptr_t)(flag))
+	C.QGraphicsItem_SetFlag(this.h, (C.int)(flag))
 }
 
 func (this *QGraphicsItem) SetFlags(flags int) {
-	C.QGraphicsItem_SetFlags(this.h, (C.int)(flags))
+	C.QGraphicsItem_SetFlags(this.h, flags)
 }
 
 func (this *QGraphicsItem) CacheMode() QGraphicsItem__CacheMode {
@@ -277,7 +277,7 @@ func (this *QGraphicsItem) CacheMode() QGraphicsItem__CacheMode {
 }
 
 func (this *QGraphicsItem) SetCacheMode(mode QGraphicsItem__CacheMode) {
-	C.QGraphicsItem_SetCacheMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsItem_SetCacheMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsItem) PanelModality() QGraphicsItem__PanelModality {
@@ -285,7 +285,7 @@ func (this *QGraphicsItem) PanelModality() QGraphicsItem__PanelModality {
 }
 
 func (this *QGraphicsItem) SetPanelModality(panelModality QGraphicsItem__PanelModality) {
-	C.QGraphicsItem_SetPanelModality(this.h, (C.uintptr_t)(panelModality))
+	C.QGraphicsItem_SetPanelModality(this.h, (C.int)(panelModality))
 }
 
 func (this *QGraphicsItem) IsBlockedByModalPanel() bool {
@@ -393,7 +393,7 @@ func (this *QGraphicsItem) AcceptedMouseButtons() int {
 }
 
 func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
-	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, (C.int)(buttons))
+	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, buttons)
 }
 
 func (this *QGraphicsItem) AcceptHoverEvents() bool {
@@ -1008,7 +1008,7 @@ func (this *QGraphicsItem) InputMethodHints() int {
 }
 
 func (this *QGraphicsItem) SetInputMethodHints(hints int) {
-	C.QGraphicsItem_SetInputMethodHints(this.h, (C.int)(hints))
+	C.QGraphicsItem_SetInputMethodHints(this.h, hints)
 }
 
 func (this *QGraphicsItem) Type() int {
@@ -1024,15 +1024,15 @@ func (this *QGraphicsItem) RemoveSceneEventFilter(filterItem *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) SetFlag2(flag QGraphicsItem__GraphicsItemFlag, enabled bool) {
-	C.QGraphicsItem_SetFlag2(this.h, (C.uintptr_t)(flag), (C.bool)(enabled))
+	C.QGraphicsItem_SetFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
 func (this *QGraphicsItem) SetCacheMode2(mode QGraphicsItem__CacheMode, cacheSize *QSize) {
-	C.QGraphicsItem_SetCacheMode2(this.h, (C.uintptr_t)(mode), cacheSize.cPointer())
+	C.QGraphicsItem_SetCacheMode2(this.h, (C.int)(mode), cacheSize.cPointer())
 }
 
 func (this *QGraphicsItem) SetFocus1(focusReason FocusReason) {
-	C.QGraphicsItem_SetFocus1(this.h, (C.uintptr_t)(focusReason))
+	C.QGraphicsItem_SetFocus1(this.h, (C.int)(focusReason))
 }
 
 func (this *QGraphicsItem) EnsureVisible1(rect *QRectF) {
@@ -1071,15 +1071,15 @@ func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 }
 
 func (this *QGraphicsItem) CollidesWithItem2(other *QGraphicsItem, mode ItemSelectionMode) bool {
-	return (bool)(C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.uintptr_t)(mode)))
+	return (bool)(C.QGraphicsItem_CollidesWithItem2(this.h, other.cPointer(), (C.int)(mode)))
 }
 
 func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode ItemSelectionMode) bool {
-	return (bool)(C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.uintptr_t)(mode)))
+	return (bool)(C.QGraphicsItem_CollidesWithPath2(this.h, path.cPointer(), (C.int)(mode)))
 }
 
 func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems1(this.h, (C.uintptr_t)(mode))
+	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems1(this.h, (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1166,11 +1166,11 @@ func QGraphicsObject_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsObject) GrabGesture(typeVal GestureType) {
-	C.QGraphicsObject_GrabGesture(this.h, (C.uintptr_t)(typeVal))
+	C.QGraphicsObject_GrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QGraphicsObject) UngrabGesture(typeVal GestureType) {
-	C.QGraphicsObject_UngrabGesture(this.h, (C.uintptr_t)(typeVal))
+	C.QGraphicsObject_UngrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QGraphicsObject) ParentChanged() {
@@ -1422,7 +1422,7 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags int) {
-	C.QGraphicsObject_GrabGesture2(this.h, (C.uintptr_t)(typeVal), (C.int)(flags))
+	C.QGraphicsObject_GrabGesture2(this.h, (C.int)(typeVal), flags)
 }
 
 // Delete this object from C++ memory.
@@ -1936,7 +1936,7 @@ func (this *QGraphicsPolygonItem) FillRule() FillRule {
 }
 
 func (this *QGraphicsPolygonItem) SetFillRule(rule FillRule) {
-	C.QGraphicsPolygonItem_SetFillRule(this.h, (C.uintptr_t)(rule))
+	C.QGraphicsPolygonItem_SetFillRule(this.h, (C.int)(rule))
 }
 
 func (this *QGraphicsPolygonItem) BoundingRect() *QRectF {
@@ -2197,7 +2197,7 @@ func (this *QGraphicsPixmapItem) TransformationMode() TransformationMode {
 }
 
 func (this *QGraphicsPixmapItem) SetTransformationMode(mode TransformationMode) {
-	C.QGraphicsPixmapItem_SetTransformationMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsPixmapItem_SetTransformationMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsPixmapItem) Offset() *QPointF {
@@ -2257,7 +2257,7 @@ func (this *QGraphicsPixmapItem) ShapeMode() QGraphicsPixmapItem__ShapeMode {
 }
 
 func (this *QGraphicsPixmapItem) SetShapeMode(mode QGraphicsPixmapItem__ShapeMode) {
-	C.QGraphicsPixmapItem_SetShapeMode(this.h, (C.uintptr_t)(mode))
+	C.QGraphicsPixmapItem_SetShapeMode(this.h, (C.int)(mode))
 }
 
 // Delete this object from C++ memory.
@@ -2453,7 +2453,7 @@ func (this *QGraphicsTextItem) Document() *QTextDocument {
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
-	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, flags)
 }
 
 func (this *QGraphicsTextItem) TextInteractionFlags() int {

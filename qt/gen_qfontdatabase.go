@@ -105,7 +105,7 @@ func QFontDatabase_StandardSizes() []int {
 func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
 	var _ma *C.struct_miqt_array = C.QFontDatabase_WritingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
@@ -118,7 +118,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 	defer C.free(family_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_WritingSystemsWithFamily(this.h, (*C.struct_miqt_string)(family_ms))
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.uintptr_t)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
@@ -270,14 +270,14 @@ func (this *QFontDatabase) IsPrivateFamily(family string) bool {
 }
 
 func QFontDatabase_WritingSystemName(writingSystem QFontDatabase__WritingSystem) string {
-	var _ms *C.struct_miqt_string = C.QFontDatabase_WritingSystemName((C.uintptr_t)(writingSystem))
+	var _ms *C.struct_miqt_string = C.QFontDatabase_WritingSystemName((C.int)(writingSystem))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func QFontDatabase_WritingSystemSample(writingSystem QFontDatabase__WritingSystem) string {
-	var _ms *C.struct_miqt_string = C.QFontDatabase_WritingSystemSample((C.uintptr_t)(writingSystem))
+	var _ms *C.struct_miqt_string = C.QFontDatabase_WritingSystemSample((C.int)(writingSystem))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -320,14 +320,14 @@ func QFontDatabase_SupportsThreadedFontRendering() bool {
 }
 
 func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
-	_ret := C.QFontDatabase_SystemFont((C.uintptr_t)(typeVal))
+	_ret := C.QFontDatabase_SystemFont((C.int)(typeVal))
 	_goptr := newQFont(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontDatabase) Families1(writingSystem QFontDatabase__WritingSystem) []string {
-	var _ma *C.struct_miqt_array = C.QFontDatabase_Families1(this.h, (C.uintptr_t)(writingSystem))
+	var _ma *C.struct_miqt_array = C.QFontDatabase_Families1(this.h, (C.int)(writingSystem))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

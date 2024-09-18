@@ -32,7 +32,7 @@ void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj) {
 	self->start(static_cast<int>(msec), obj);
 }
 
-void QBasicTimer_Start2(QBasicTimer* self, int msec, uintptr_t timerType, QObject* obj) {
+void QBasicTimer_Start2(QBasicTimer* self, int msec, int timerType, QObject* obj) {
 	self->start(static_cast<int>(msec), static_cast<Qt::TimerType>(timerType), obj);
 }
 

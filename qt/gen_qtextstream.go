@@ -97,13 +97,13 @@ func NewQTextStream4(array *QByteArray) *QTextStream {
 
 // NewQTextStream5 constructs a new QTextStream object.
 func NewQTextStream5(array *QByteArray, openMode int) *QTextStream {
-	ret := C.QTextStream_new5(array.cPointer(), (C.int)(openMode))
+	ret := C.QTextStream_new5(array.cPointer(), openMode)
 	return newQTextStream(ret)
 }
 
 // NewQTextStream6 constructs a new QTextStream object.
 func NewQTextStream6(array *QByteArray, openMode int) *QTextStream {
-	ret := C.QTextStream_new6(array.cPointer(), (C.int)(openMode))
+	ret := C.QTextStream_new6(array.cPointer(), openMode)
 	return newQTextStream(ret)
 }
 
@@ -168,7 +168,7 @@ func (this *QTextStream) Status() QTextStream__Status {
 }
 
 func (this *QTextStream) SetStatus(status QTextStream__Status) {
-	C.QTextStream_SetStatus(this.h, (C.uintptr_t)(status))
+	C.QTextStream_SetStatus(this.h, (C.int)(status))
 }
 
 func (this *QTextStream) ResetStatus() {
@@ -221,7 +221,7 @@ func (this *QTextStream) Read(maxlen int64) string {
 }
 
 func (this *QTextStream) SetFieldAlignment(alignment QTextStream__FieldAlignment) {
-	C.QTextStream_SetFieldAlignment(this.h, (C.uintptr_t)(alignment))
+	C.QTextStream_SetFieldAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextStream) FieldAlignment() QTextStream__FieldAlignment {
@@ -248,7 +248,7 @@ func (this *QTextStream) FieldWidth() int {
 }
 
 func (this *QTextStream) SetNumberFlags(flags int) {
-	C.QTextStream_SetNumberFlags(this.h, (C.int)(flags))
+	C.QTextStream_SetNumberFlags(this.h, flags)
 }
 
 func (this *QTextStream) NumberFlags() int {
@@ -264,7 +264,7 @@ func (this *QTextStream) IntegerBase() int {
 }
 
 func (this *QTextStream) SetRealNumberNotation(notation QTextStream__RealNumberNotation) {
-	C.QTextStream_SetRealNumberNotation(this.h, (C.uintptr_t)(notation))
+	C.QTextStream_SetRealNumberNotation(this.h, (C.int)(notation))
 }
 
 func (this *QTextStream) RealNumberNotation() QTextStream__RealNumberNotation {
@@ -312,11 +312,11 @@ func (this *QTextStream) OperatorShiftRightWithUnsignedlong(i *uint64) *QTextStr
 }
 
 func (this *QTextStream) OperatorShiftRightWithQlonglong(i *int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQlonglong(this.h, (*C.int64_t)(unsafe.Pointer(i)))))
+	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQlonglong(this.h, (*C.longlong)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithQulonglong(i *uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQulonglong(this.h, (*C.uint64_t)(unsafe.Pointer(i)))))
+	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQulonglong(this.h, (*C.ulonglong)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithFloat(f *float32) *QTextStream {
@@ -376,11 +376,11 @@ func (this *QTextStream) OperatorShiftLeftWithUnsignedlong(i uint64) *QTextStrea
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQlonglong(i int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQlonglong(this.h, (C.int64_t)(i))))
+	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQlonglong(this.h, (C.longlong)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQulonglong(i uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQulonglong(this.h, (C.uint64_t)(i))))
+	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQulonglong(this.h, (C.ulonglong)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithFloat(f float32) *QTextStream {

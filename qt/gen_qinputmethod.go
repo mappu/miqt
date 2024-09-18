@@ -139,7 +139,7 @@ func (this *QInputMethod) InputDirection() LayoutDirection {
 }
 
 func QInputMethod_QueryFocusObject(query InputMethodQuery, argument QVariant) *QVariant {
-	_ret := C.QInputMethod_QueryFocusObject((C.uintptr_t)(query), argument.cPointer())
+	_ret := C.QInputMethod_QueryFocusObject((C.int)(query), argument.cPointer())
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -154,7 +154,7 @@ func (this *QInputMethod) Hide() {
 }
 
 func (this *QInputMethod) Update(queries int) {
-	C.QInputMethod_Update(this.h, (C.int)(queries))
+	C.QInputMethod_Update(this.h, queries)
 }
 
 func (this *QInputMethod) Reset() {
@@ -166,7 +166,7 @@ func (this *QInputMethod) Commit() {
 }
 
 func (this *QInputMethod) InvokeAction(a QInputMethod__Action, cursorPosition int) {
-	C.QInputMethod_InvokeAction(this.h, (C.uintptr_t)(a), (C.int)(cursorPosition))
+	C.QInputMethod_InvokeAction(this.h, (C.int)(a), (C.int)(cursorPosition))
 }
 
 func (this *QInputMethod) CursorRectangleChanged() {
@@ -289,14 +289,14 @@ func miqt_exec_callback_QInputMethod_LocaleChanged(cb *C.void) {
 }
 
 func (this *QInputMethod) InputDirectionChanged(newDirection LayoutDirection) {
-	C.QInputMethod_InputDirectionChanged(this.h, (C.uintptr_t)(newDirection))
+	C.QInputMethod_InputDirectionChanged(this.h, (C.int)(newDirection))
 }
 func (this *QInputMethod) OnInputDirectionChanged(slot func(newDirection LayoutDirection)) {
 	C.QInputMethod_connect_InputDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QInputMethod_InputDirectionChanged
-func miqt_exec_callback_QInputMethod_InputDirectionChanged(cb *C.void, newDirection C.uintptr_t) {
+func miqt_exec_callback_QInputMethod_InputDirectionChanged(cb *C.void, newDirection C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newDirection LayoutDirection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

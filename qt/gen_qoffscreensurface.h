@@ -35,7 +35,7 @@ QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen);
 QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self);
 struct miqt_string* QOffscreenSurface_Tr(const char* s);
 struct miqt_string* QOffscreenSurface_TrUtf8(const char* s);
-uintptr_t QOffscreenSurface_SurfaceType(const QOffscreenSurface* self);
+int QOffscreenSurface_SurfaceType(const QOffscreenSurface* self);
 void QOffscreenSurface_Create(QOffscreenSurface* self);
 void QOffscreenSurface_Destroy(QOffscreenSurface* self);
 bool QOffscreenSurface_IsValid(const QOffscreenSurface* self);

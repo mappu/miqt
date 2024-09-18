@@ -252,7 +252,8 @@ struct miqt_string* QFileInfo_Owner(const QFileInfo* self) {
 }
 
 unsigned int QFileInfo_OwnerId(const QFileInfo* self) {
-	return self->ownerId();
+	uint _ret = self->ownerId();
+	return static_cast<unsigned int>(_ret);
 }
 
 struct miqt_string* QFileInfo_Group(const QFileInfo* self) {
@@ -263,7 +264,8 @@ struct miqt_string* QFileInfo_Group(const QFileInfo* self) {
 }
 
 unsigned int QFileInfo_GroupId(const QFileInfo* self) {
-	return self->groupId();
+	uint _ret = self->groupId();
+	return static_cast<unsigned int>(_ret);
 }
 
 bool QFileInfo_Permission(const QFileInfo* self, int permissions) {
@@ -276,7 +278,8 @@ int QFileInfo_Permissions(const QFileInfo* self) {
 }
 
 long long QFileInfo_Size(const QFileInfo* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 QDateTime* QFileInfo_Created(const QFileInfo* self) {
@@ -299,7 +302,7 @@ QDateTime* QFileInfo_LastRead(const QFileInfo* self) {
 	return new QDateTime(self->lastRead());
 }
 
-QDateTime* QFileInfo_FileTime(const QFileInfo* self, uintptr_t time) {
+QDateTime* QFileInfo_FileTime(const QFileInfo* self, int time) {
 	return new QDateTime(self->fileTime(static_cast<QFile::FileTime>(time)));
 }
 

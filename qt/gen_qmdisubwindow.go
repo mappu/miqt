@@ -60,7 +60,7 @@ func NewQMdiSubWindow2(parent *QWidget) *QMdiSubWindow {
 
 // NewQMdiSubWindow3 constructs a new QMdiSubWindow object.
 func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
-	ret := C.QMdiSubWindow_new3(parent.cPointer(), (C.int)(flags))
+	ret := C.QMdiSubWindow_new3(parent.cPointer(), flags)
 	return newQMdiSubWindow(ret)
 }
 
@@ -121,11 +121,11 @@ func (this *QMdiSubWindow) IsShaded() bool {
 }
 
 func (this *QMdiSubWindow) SetOption(option QMdiSubWindow__SubWindowOption) {
-	C.QMdiSubWindow_SetOption(this.h, (C.uintptr_t)(option))
+	C.QMdiSubWindow_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QMdiSubWindow) TestOption(param1 QMdiSubWindow__SubWindowOption) bool {
-	return (bool)(C.QMdiSubWindow_TestOption(this.h, (C.uintptr_t)(param1)))
+	return (bool)(C.QMdiSubWindow_TestOption(this.h, (C.int)(param1)))
 }
 
 func (this *QMdiSubWindow) SetKeyboardSingleStep(step int) {
@@ -157,7 +157,7 @@ func (this *QMdiSubWindow) MdiArea() *QMdiArea {
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
-	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
+	C.QMdiSubWindow_WindowStateChanged(this.h, oldState, newState)
 }
 func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState int, newState int)) {
 	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
@@ -248,7 +248,7 @@ func QMdiSubWindow_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMdiSubWindow) SetOption2(option QMdiSubWindow__SubWindowOption, on bool) {
-	C.QMdiSubWindow_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QMdiSubWindow_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 // Delete this object from C++ memory.

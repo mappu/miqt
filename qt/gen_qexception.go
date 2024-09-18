@@ -112,6 +112,10 @@ func (this *QtPrivate__ExceptionStore) HasThrown() bool {
 	return (bool)(C.QtPrivate__ExceptionStore_HasThrown(this.h))
 }
 
+func (this *QtPrivate__ExceptionStore) OperatorAssign(param1 *QtPrivate__ExceptionStore) {
+	C.QtPrivate__ExceptionStore_OperatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionStore) Delete() {
 	C.QtPrivate__ExceptionStore_Delete(this.h)

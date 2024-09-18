@@ -107,7 +107,7 @@ func NewQMessageBox2(icon QMessageBox__Icon, title string, text string) *QMessag
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new2((C.uintptr_t)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms))
+	ret := C.QMessageBox_new2((C.int)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms))
 	return newQMessageBox(ret)
 }
 
@@ -117,7 +117,7 @@ func NewQMessageBox3(title string, text string, icon QMessageBox__Icon, button0 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new3((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_new3((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return newQMessageBox(ret)
 }
 
@@ -133,7 +133,7 @@ func NewQMessageBox5(icon QMessageBox__Icon, title string, text string, buttons 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new5((C.uintptr_t)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons))
+	ret := C.QMessageBox_new5((C.int)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons)
 	return newQMessageBox(ret)
 }
 
@@ -143,7 +143,7 @@ func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new6((C.uintptr_t)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), parent.cPointer())
+	ret := C.QMessageBox_new6((C.int)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, parent.cPointer())
 	return newQMessageBox(ret)
 }
 
@@ -153,7 +153,7 @@ func NewQMessageBox7(icon QMessageBox__Icon, title string, text string, buttons 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new7((C.uintptr_t)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), parent.cPointer(), (C.int)(flags))
+	ret := C.QMessageBox_new7((C.int)(icon), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, parent.cPointer(), flags)
 	return newQMessageBox(ret)
 }
 
@@ -163,7 +163,7 @@ func NewQMessageBox8(title string, text string, icon QMessageBox__Icon, button0 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new8((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer())
+	ret := C.QMessageBox_new8((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer())
 	return newQMessageBox(ret)
 }
 
@@ -173,7 +173,7 @@ func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QMessageBox_new9((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer(), (C.int)(f))
+	ret := C.QMessageBox_new9((*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2), parent.cPointer(), f)
 	return newQMessageBox(ret)
 }
 
@@ -200,17 +200,17 @@ func QMessageBox_TrUtf8(s string) string {
 }
 
 func (this *QMessageBox) AddButton(button *QAbstractButton, role QMessageBox__ButtonRole) {
-	C.QMessageBox_AddButton(this.h, button.cPointer(), (C.uintptr_t)(role))
+	C.QMessageBox_AddButton(this.h, button.cPointer(), (C.int)(role))
 }
 
 func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *QPushButton {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return newQPushButton_U(unsafe.Pointer(C.QMessageBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(role))))
+	return newQPushButton_U(unsafe.Pointer(C.QMessageBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(role))))
 }
 
 func (this *QMessageBox) AddButtonWithButton(button QMessageBox__StandardButton) *QPushButton {
-	return newQPushButton_U(unsafe.Pointer(C.QMessageBox_AddButtonWithButton(this.h, (C.uintptr_t)(button))))
+	return newQPushButton_U(unsafe.Pointer(C.QMessageBox_AddButtonWithButton(this.h, (C.int)(button))))
 }
 
 func (this *QMessageBox) RemoveButton(button *QAbstractButton) {
@@ -233,7 +233,7 @@ func (this *QMessageBox) ButtonRole(button *QAbstractButton) QMessageBox__Button
 }
 
 func (this *QMessageBox) SetStandardButtons(buttons int) {
-	C.QMessageBox_SetStandardButtons(this.h, (C.int)(buttons))
+	C.QMessageBox_SetStandardButtons(this.h, buttons)
 }
 
 func (this *QMessageBox) StandardButtons() int {
@@ -245,7 +245,7 @@ func (this *QMessageBox) StandardButton(button *QAbstractButton) QMessageBox__St
 }
 
 func (this *QMessageBox) Button(which QMessageBox__StandardButton) *QAbstractButton {
-	return newQAbstractButton_U(unsafe.Pointer(C.QMessageBox_Button(this.h, (C.uintptr_t)(which))))
+	return newQAbstractButton_U(unsafe.Pointer(C.QMessageBox_Button(this.h, (C.int)(which))))
 }
 
 func (this *QMessageBox) DefaultButton() *QPushButton {
@@ -257,7 +257,7 @@ func (this *QMessageBox) SetDefaultButton(button *QPushButton) {
 }
 
 func (this *QMessageBox) SetDefaultButtonWithButton(button QMessageBox__StandardButton) {
-	C.QMessageBox_SetDefaultButtonWithButton(this.h, (C.uintptr_t)(button))
+	C.QMessageBox_SetDefaultButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) EscapeButton() *QAbstractButton {
@@ -269,7 +269,7 @@ func (this *QMessageBox) SetEscapeButton(button *QAbstractButton) {
 }
 
 func (this *QMessageBox) SetEscapeButtonWithButton(button QMessageBox__StandardButton) {
-	C.QMessageBox_SetEscapeButtonWithButton(this.h, (C.uintptr_t)(button))
+	C.QMessageBox_SetEscapeButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) ClickedButton() *QAbstractButton {
@@ -294,7 +294,7 @@ func (this *QMessageBox) Icon() QMessageBox__Icon {
 }
 
 func (this *QMessageBox) SetIcon(icon QMessageBox__Icon) {
-	C.QMessageBox_SetIcon(this.h, (C.uintptr_t)(icon))
+	C.QMessageBox_SetIcon(this.h, (C.int)(icon))
 }
 
 func (this *QMessageBox) IconPixmap() *QPixmap {
@@ -313,11 +313,11 @@ func (this *QMessageBox) TextFormat() TextFormat {
 }
 
 func (this *QMessageBox) SetTextFormat(format TextFormat) {
-	C.QMessageBox_SetTextFormat(this.h, (C.uintptr_t)(format))
+	C.QMessageBox_SetTextFormat(this.h, (C.int)(format))
 }
 
 func (this *QMessageBox) SetTextInteractionFlags(flags int) {
-	C.QMessageBox_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QMessageBox_SetTextInteractionFlags(this.h, flags)
 }
 
 func (this *QMessageBox) TextInteractionFlags() int {
@@ -399,7 +399,7 @@ func QMessageBox_Information4(parent *QWidget, title string, text string, button
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(button0)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Information4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(button0)))
 }
 
 func QMessageBox_Question2(parent *QWidget, title string, text string, button0 int) int {
@@ -425,7 +425,7 @@ func QMessageBox_Question4(parent *QWidget, title string, text string, button0 Q
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (int)(C.QMessageBox_Question4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(button0), (C.uintptr_t)(button1)))
+	return (int)(C.QMessageBox_Question4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -451,7 +451,7 @@ func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 QM
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (int)(C.QMessageBox_Warning4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(button0), (C.uintptr_t)(button1)))
+	return (int)(C.QMessageBox_Warning4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -477,7 +477,7 @@ func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 Q
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (int)(C.QMessageBox_Critical4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(button0), (C.uintptr_t)(button1)))
+	return (int)(C.QMessageBox_Critical4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(button0), (C.int)(button1)))
 }
 
 func (this *QMessageBox) ButtonText(button int) string {
@@ -526,11 +526,11 @@ func (this *QMessageBox) SetWindowTitle(title string) {
 }
 
 func (this *QMessageBox) SetWindowModality(windowModality WindowModality) {
-	C.QMessageBox_SetWindowModality(this.h, (C.uintptr_t)(windowModality))
+	C.QMessageBox_SetWindowModality(this.h, (C.int)(windowModality))
 }
 
 func QMessageBox_StandardIcon(icon QMessageBox__Icon) *QPixmap {
-	_ret := C.QMessageBox_StandardIcon((C.uintptr_t)(icon))
+	_ret := C.QMessageBox_StandardIcon((C.int)(icon))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -605,7 +605,7 @@ func QMessageBox_Information42(parent *QWidget, title string, text string, butto
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Information42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons))
 }
 
 func QMessageBox_Information5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -613,7 +613,7 @@ func QMessageBox_Information5(parent *QWidget, title string, text string, button
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.uintptr_t)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Information5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, (C.int)(defaultButton)))
 }
 
 func QMessageBox_Question42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
@@ -621,7 +621,7 @@ func QMessageBox_Question42(parent *QWidget, title string, text string, buttons 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Question42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Question42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons))
 }
 
 func QMessageBox_Question5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -629,7 +629,7 @@ func QMessageBox_Question5(parent *QWidget, title string, text string, buttons i
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Question5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.uintptr_t)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Question5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, (C.int)(defaultButton)))
 }
 
 func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
@@ -637,7 +637,7 @@ func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons i
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Warning42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Warning42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons))
 }
 
 func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -645,7 +645,7 @@ func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons in
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Warning5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.uintptr_t)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Warning5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, (C.int)(defaultButton)))
 }
 
 func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
@@ -653,7 +653,7 @@ func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons 
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Critical42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Critical42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons))
 }
 
 func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -661,7 +661,7 @@ func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons i
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Critical5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.uintptr_t)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Critical5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), buttons, (C.int)(defaultButton)))
 }
 
 func QMessageBox_AboutQt2(parent *QWidget, title string) {
@@ -745,7 +745,7 @@ func QMessageBox_Information54(parent *QWidget, title string, text string, butto
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information54(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(button0), (C.uintptr_t)(button1)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_Information54(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Question52(parent *QWidget, title string, text string, button0 int, button1 int) int {

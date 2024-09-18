@@ -172,7 +172,7 @@ func (this *QTextBrowser) SetSource(name *QUrl) {
 }
 
 func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
-	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.uintptr_t)(typeVal))
+	C.QTextBrowser_SetSource2(this.h, name.cPointer(), (C.int)(typeVal))
 }
 
 func (this *QTextBrowser) Backward() {

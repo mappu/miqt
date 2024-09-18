@@ -59,7 +59,7 @@ QVariant* QAbstractProxyModel_Data(const QAbstractProxyModel* self, QModelIndex*
 	return new QVariant(self->data(*proxyIndex));
 }
 
-QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, uintptr_t orientation) {
+QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
@@ -72,7 +72,7 @@ bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, 
 	return self->setData(*index, *value);
 }
 
-bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, uintptr_t orientation, QVariant* value) {
+bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
@@ -114,11 +114,11 @@ QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct 
 	return self->mimeData(indexes_QList);
 }
 
-bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -180,7 +180,7 @@ QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex
 	return new QVariant(self->data(*proxyIndex, static_cast<int>(role)));
 }
 
-QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
@@ -188,11 +188,11 @@ bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index,
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-bool QAbstractProxyModel_SetHeaderData4(QAbstractProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
+bool QAbstractProxyModel_SetHeaderData4(QAbstractProxyModel* self, int section, int orientation, QVariant* value, int role) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
-void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, uintptr_t order) {
+void QAbstractProxyModel_Sort2(QAbstractProxyModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 

@@ -251,6 +251,10 @@ QCborArray__Iterator* QCborArray__Iterator_new2(QCborArray__Iterator* param1) {
 	return new QCborArray::Iterator(*param1);
 }
 
+void QCborArray__Iterator_OperatorAssign(QCborArray__Iterator* self, QCborArray__Iterator* other) {
+	self->operator=(*other);
+}
+
 QCborValueRef* QCborArray__Iterator_OperatorMultiply(const QCborArray__Iterator* self) {
 	return new QCborValueRef(self->operator*());
 }
@@ -311,12 +315,36 @@ bool QCborArray__Iterator_OperatorGreaterOrEqualWithOther(const QCborArray__Iter
 	return self->operator>=(*other);
 }
 
-QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlus(QCborArray__Iterator* self, int param1) {
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlus(QCborArray__Iterator* self) {
+	QCborArray::Iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusPlusWithInt(QCborArray__Iterator* self, int param1) {
 	return new QCborArray::Iterator(self->operator++(static_cast<int>(param1)));
 }
 
-QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinus(QCborArray__Iterator* self, int param1) {
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinus(QCborArray__Iterator* self) {
+	QCborArray::Iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusMinusWithInt(QCborArray__Iterator* self, int param1) {
 	return new QCborArray::Iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorPlusAssign(QCborArray__Iterator* self, size_t j) {
+	QCborArray::Iterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__Iterator* QCborArray__Iterator_OperatorMinusAssign(QCborArray__Iterator* self, size_t j) {
+	QCborArray::Iterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborArray__Iterator* QCborArray__Iterator_OperatorPlus(const QCborArray__Iterator* self, size_t j) {
@@ -341,6 +369,10 @@ QCborArray__ConstIterator* QCborArray__ConstIterator_new() {
 
 QCborArray__ConstIterator* QCborArray__ConstIterator_new2(QCborArray__ConstIterator* param1) {
 	return new QCborArray::ConstIterator(*param1);
+}
+
+void QCborArray__ConstIterator_OperatorAssign(QCborArray__ConstIterator* self, QCborArray__ConstIterator* other) {
+	self->operator=(*other);
 }
 
 QCborValueRef* QCborArray__ConstIterator_OperatorMultiply(const QCborArray__ConstIterator* self) {
@@ -403,12 +435,36 @@ bool QCborArray__ConstIterator_OperatorGreaterOrEqualWithOther(const QCborArray_
 	return self->operator>=(*other);
 }
 
-QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlus(QCborArray__ConstIterator* self, int param1) {
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlus(QCborArray__ConstIterator* self) {
+	QCborArray::ConstIterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusPlusWithInt(QCborArray__ConstIterator* self, int param1) {
 	return new QCborArray::ConstIterator(self->operator++(static_cast<int>(param1)));
 }
 
-QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinus(QCborArray__ConstIterator* self, int param1) {
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinus(QCborArray__ConstIterator* self) {
+	QCborArray::ConstIterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusMinusWithInt(QCborArray__ConstIterator* self, int param1) {
 	return new QCborArray::ConstIterator(self->operator--(static_cast<int>(param1)));
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlusAssign(QCborArray__ConstIterator* self, size_t j) {
+	QCborArray::ConstIterator& _ret = self->operator+=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorMinusAssign(QCborArray__ConstIterator* self, size_t j) {
+	QCborArray::ConstIterator& _ret = self->operator-=(static_cast<qsizetype>(j));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QCborArray__ConstIterator* QCborArray__ConstIterator_OperatorPlus(const QCborArray__ConstIterator* self, size_t j) {

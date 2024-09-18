@@ -45,7 +45,7 @@ QBitmap* QBitmap_FromData(QSize* size, const unsigned char* bits);
 QBitmap* QBitmap_Transformed(const QBitmap* self, QMatrix* param1);
 QBitmap* QBitmap_TransformedWithMatrix(const QBitmap* self, QTransform* matrix);
 QBitmap* QBitmap_FromImage2(QImage* image, int flags);
-QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, uintptr_t monoFormat);
+QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, int monoFormat);
 void QBitmap_Delete(QBitmap* self);
 
 #ifdef __cplusplus

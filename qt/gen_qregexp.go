@@ -78,7 +78,7 @@ func NewQRegExp3(rx *QRegExp) *QRegExp {
 func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 	pattern_ms := miqt_strdupg(pattern)
 	defer C.free(pattern_ms)
-	ret := C.QRegExp_new4((*C.struct_miqt_string)(pattern_ms), (C.uintptr_t)(cs))
+	ret := C.QRegExp_new4((*C.struct_miqt_string)(pattern_ms), (C.int)(cs))
 	return newQRegExp(ret)
 }
 
@@ -86,7 +86,7 @@ func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSyntax) *QRegExp {
 	pattern_ms := miqt_strdupg(pattern)
 	defer C.free(pattern_ms)
-	ret := C.QRegExp_new5((*C.struct_miqt_string)(pattern_ms), (C.uintptr_t)(cs), (C.uintptr_t)(syntax))
+	ret := C.QRegExp_new5((*C.struct_miqt_string)(pattern_ms), (C.int)(cs), (C.int)(syntax))
 	return newQRegExp(ret)
 }
 
@@ -132,7 +132,7 @@ func (this *QRegExp) CaseSensitivity() CaseSensitivity {
 }
 
 func (this *QRegExp) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QRegExp_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QRegExp_SetCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QRegExp) PatternSyntax() QRegExp__PatternSyntax {
@@ -140,7 +140,7 @@ func (this *QRegExp) PatternSyntax() QRegExp__PatternSyntax {
 }
 
 func (this *QRegExp) SetPatternSyntax(syntax QRegExp__PatternSyntax) {
-	C.QRegExp_SetPatternSyntax(this.h, (C.uintptr_t)(syntax))
+	C.QRegExp_SetPatternSyntax(this.h, (C.int)(syntax))
 }
 
 func (this *QRegExp) IsMinimal() bool {
@@ -259,7 +259,7 @@ func (this *QRegExp) IndexIn2(str string, offset int) int {
 func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	return (int)(C.QRegExp_IndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode)))
+	return (int)(C.QRegExp_IndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.int)(caretMode)))
 }
 
 func (this *QRegExp) LastIndexIn2(str string, offset int) int {
@@ -271,7 +271,7 @@ func (this *QRegExp) LastIndexIn2(str string, offset int) int {
 func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
 	str_ms := miqt_strdupg(str)
 	defer C.free(str_ms)
-	return (int)(C.QRegExp_LastIndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.uintptr_t)(caretMode)))
+	return (int)(C.QRegExp_LastIndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.int)(caretMode)))
 }
 
 func (this *QRegExp) Cap1(nth int) string {

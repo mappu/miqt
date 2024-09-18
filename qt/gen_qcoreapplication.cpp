@@ -55,11 +55,11 @@ struct miqt_array* QCoreApplication_Arguments() {
 	return _out;
 }
 
-void QCoreApplication_SetAttribute(uintptr_t attribute) {
+void QCoreApplication_SetAttribute(int attribute) {
 	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(attribute));
 }
 
-bool QCoreApplication_TestAttribute(uintptr_t attribute) {
+bool QCoreApplication_TestAttribute(int attribute) {
 	return QCoreApplication::testAttribute(static_cast<Qt::ApplicationAttribute>(attribute));
 }
 
@@ -194,7 +194,8 @@ struct miqt_string* QCoreApplication_ApplicationFilePath() {
 }
 
 long long QCoreApplication_ApplicationPid() {
-	return QCoreApplication::applicationPid();
+	qint64 _ret = QCoreApplication::applicationPid();
+	return static_cast<long long>(_ret);
 }
 
 void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
@@ -341,7 +342,7 @@ struct miqt_string* QCoreApplication_TrUtf83(const char* s, const char* c, int n
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCoreApplication_SetAttribute2(uintptr_t attribute, bool on) {
+void QCoreApplication_SetAttribute2(int attribute, bool on) {
 	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(attribute), on);
 }
 

@@ -74,12 +74,12 @@ void QCalendarWidget_SetMaximumDate(QCalendarWidget* self, QDate* date) {
 	self->setMaximumDate(*date);
 }
 
-uintptr_t QCalendarWidget_FirstDayOfWeek(const QCalendarWidget* self) {
+int QCalendarWidget_FirstDayOfWeek(const QCalendarWidget* self) {
 	Qt::DayOfWeek _ret = self->firstDayOfWeek();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCalendarWidget_SetFirstDayOfWeek(QCalendarWidget* self, uintptr_t dayOfWeek) {
+void QCalendarWidget_SetFirstDayOfWeek(QCalendarWidget* self, int dayOfWeek) {
 	self->setFirstDayOfWeek(static_cast<Qt::DayOfWeek>(dayOfWeek));
 }
 
@@ -99,30 +99,30 @@ void QCalendarWidget_SetCalendar(QCalendarWidget* self, QCalendar* calendar) {
 	self->setCalendar(*calendar);
 }
 
-uintptr_t QCalendarWidget_SelectionMode(const QCalendarWidget* self) {
+int QCalendarWidget_SelectionMode(const QCalendarWidget* self) {
 	QCalendarWidget::SelectionMode _ret = self->selectionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCalendarWidget_SetSelectionMode(QCalendarWidget* self, uintptr_t mode) {
+void QCalendarWidget_SetSelectionMode(QCalendarWidget* self, int mode) {
 	self->setSelectionMode(static_cast<QCalendarWidget::SelectionMode>(mode));
 }
 
-uintptr_t QCalendarWidget_HorizontalHeaderFormat(const QCalendarWidget* self) {
+int QCalendarWidget_HorizontalHeaderFormat(const QCalendarWidget* self) {
 	QCalendarWidget::HorizontalHeaderFormat _ret = self->horizontalHeaderFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCalendarWidget_SetHorizontalHeaderFormat(QCalendarWidget* self, uintptr_t format) {
+void QCalendarWidget_SetHorizontalHeaderFormat(QCalendarWidget* self, int format) {
 	self->setHorizontalHeaderFormat(static_cast<QCalendarWidget::HorizontalHeaderFormat>(format));
 }
 
-uintptr_t QCalendarWidget_VerticalHeaderFormat(const QCalendarWidget* self) {
+int QCalendarWidget_VerticalHeaderFormat(const QCalendarWidget* self) {
 	QCalendarWidget::VerticalHeaderFormat _ret = self->verticalHeaderFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCalendarWidget_SetVerticalHeaderFormat(QCalendarWidget* self, uintptr_t format) {
+void QCalendarWidget_SetVerticalHeaderFormat(QCalendarWidget* self, int format) {
 	self->setVerticalHeaderFormat(static_cast<QCalendarWidget::VerticalHeaderFormat>(format));
 }
 
@@ -134,11 +134,11 @@ void QCalendarWidget_SetHeaderTextFormat(QCalendarWidget* self, QTextCharFormat*
 	self->setHeaderTextFormat(*format);
 }
 
-QTextCharFormat* QCalendarWidget_WeekdayTextFormat(const QCalendarWidget* self, uintptr_t dayOfWeek) {
+QTextCharFormat* QCalendarWidget_WeekdayTextFormat(const QCalendarWidget* self, int dayOfWeek) {
 	return new QTextCharFormat(self->weekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek)));
 }
 
-void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, uintptr_t dayOfWeek, QTextCharFormat* format) {
+void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, int dayOfWeek, QTextCharFormat* format) {
 	self->setWeekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek), *format);
 }
 

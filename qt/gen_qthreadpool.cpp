@@ -73,7 +73,8 @@ void QThreadPool_SetStackSize(QThreadPool* self, unsigned int stackSize) {
 }
 
 unsigned int QThreadPool_StackSize(const QThreadPool* self) {
-	return self->stackSize();
+	uint _ret = self->stackSize();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QThreadPool_ReserveThread(QThreadPool* self) {

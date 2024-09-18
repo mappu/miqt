@@ -101,7 +101,8 @@ void QGraphicsScale_SetOrigin(QGraphicsScale* self, QVector3D* point) {
 }
 
 double QGraphicsScale_XScale(const QGraphicsScale* self) {
-	return self->xScale();
+	qreal _ret = self->xScale();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
@@ -109,7 +110,8 @@ void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
 }
 
 double QGraphicsScale_YScale(const QGraphicsScale* self) {
-	return self->yScale();
+	qreal _ret = self->yScale();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
@@ -117,7 +119,8 @@ void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
 }
 
 double QGraphicsScale_ZScale(const QGraphicsScale* self) {
-	return self->zScale();
+	qreal _ret = self->zScale();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsScale_SetZScale(QGraphicsScale* self, double zScale) {
@@ -245,7 +248,8 @@ void QGraphicsRotation_SetOrigin(QGraphicsRotation* self, QVector3D* point) {
 }
 
 double QGraphicsRotation_Angle(const QGraphicsRotation* self) {
-	return self->angle();
+	qreal _ret = self->angle();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
@@ -260,7 +264,7 @@ void QGraphicsRotation_SetAxis(QGraphicsRotation* self, QVector3D* axis) {
 	self->setAxis(*axis);
 }
 
-void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, uintptr_t axis) {
+void QGraphicsRotation_SetAxisWithAxis(QGraphicsRotation* self, int axis) {
 	self->setAxis(static_cast<Qt::Axis>(axis));
 }
 

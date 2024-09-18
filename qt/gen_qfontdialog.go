@@ -113,15 +113,15 @@ func (this *QFontDialog) SelectedFont() *QFont {
 }
 
 func (this *QFontDialog) SetOption(option QFontDialog__FontDialogOption) {
-	C.QFontDialog_SetOption(this.h, (C.uintptr_t)(option))
+	C.QFontDialog_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
-	return (bool)(C.QFontDialog_TestOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QFontDialog_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QFontDialog) SetOptions(options int) {
-	C.QFontDialog_SetOptions(this.h, (C.int)(options))
+	C.QFontDialog_SetOptions(this.h, options)
 }
 
 func (this *QFontDialog) Options() int {
@@ -231,7 +231,7 @@ func QFontDialog_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFontDialog) SetOption2(option QFontDialog__FontDialogOption, on bool) {
-	C.QFontDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QFontDialog_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 func QFontDialog_GetFont22(ok *bool, parent *QWidget) *QFont {
@@ -260,7 +260,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options int) *QFont {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
+	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), options)
 	_goptr := newQFont(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -80,7 +80,7 @@ void QGraphicsItem_SetParentItem(QGraphicsItem* self, QGraphicsItem* parent) {
 }
 
 struct miqt_array* QGraphicsItem_ChildItems(const QGraphicsItem* self) {
-	QList<QGraphicsItem*> _ret = self->childItems();
+	QList<QGraphicsItem *> _ret = self->childItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -125,7 +125,7 @@ int QGraphicsItem_Flags(const QGraphicsItem* self) {
 	return static_cast<int>(_ret);
 }
 
-void QGraphicsItem_SetFlag(QGraphicsItem* self, uintptr_t flag) {
+void QGraphicsItem_SetFlag(QGraphicsItem* self, int flag) {
 	self->setFlag(static_cast<QGraphicsItem::GraphicsItemFlag>(flag));
 }
 
@@ -133,21 +133,21 @@ void QGraphicsItem_SetFlags(QGraphicsItem* self, int flags) {
 	self->setFlags(static_cast<QGraphicsItem::GraphicsItemFlags>(flags));
 }
 
-uintptr_t QGraphicsItem_CacheMode(const QGraphicsItem* self) {
+int QGraphicsItem_CacheMode(const QGraphicsItem* self) {
 	QGraphicsItem::CacheMode _ret = self->cacheMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsItem_SetCacheMode(QGraphicsItem* self, uintptr_t mode) {
+void QGraphicsItem_SetCacheMode(QGraphicsItem* self, int mode) {
 	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode));
 }
 
-uintptr_t QGraphicsItem_PanelModality(const QGraphicsItem* self) {
+int QGraphicsItem_PanelModality(const QGraphicsItem* self) {
 	QGraphicsItem::PanelModality _ret = self->panelModality();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsItem_SetPanelModality(QGraphicsItem* self, uintptr_t panelModality) {
+void QGraphicsItem_SetPanelModality(QGraphicsItem* self, int panelModality) {
 	self->setPanelModality(static_cast<QGraphicsItem::PanelModality>(panelModality));
 }
 
@@ -228,11 +228,13 @@ void QGraphicsItem_SetAcceptDrops(QGraphicsItem* self, bool on) {
 }
 
 double QGraphicsItem_Opacity(const QGraphicsItem* self) {
-	return self->opacity();
+	qreal _ret = self->opacity();
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsItem_EffectiveOpacity(const QGraphicsItem* self) {
-	return self->effectiveOpacity();
+	qreal _ret = self->effectiveOpacity();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetOpacity(QGraphicsItem* self, double opacity) {
@@ -345,7 +347,8 @@ QPointF* QGraphicsItem_Pos(const QGraphicsItem* self) {
 }
 
 double QGraphicsItem_X(const QGraphicsItem* self) {
-	return self->x();
+	qreal _ret = self->x();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetX(QGraphicsItem* self, double x) {
@@ -353,7 +356,8 @@ void QGraphicsItem_SetX(QGraphicsItem* self, double x) {
 }
 
 double QGraphicsItem_Y(const QGraphicsItem* self) {
-	return self->y();
+	qreal _ret = self->y();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetY(QGraphicsItem* self, double y) {
@@ -429,7 +433,8 @@ void QGraphicsItem_SetRotation(QGraphicsItem* self, double angle) {
 }
 
 double QGraphicsItem_Rotation(const QGraphicsItem* self) {
-	return self->rotation();
+	qreal _ret = self->rotation();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetScale(QGraphicsItem* self, double scale) {
@@ -437,11 +442,12 @@ void QGraphicsItem_SetScale(QGraphicsItem* self, double scale) {
 }
 
 double QGraphicsItem_Scale(const QGraphicsItem* self) {
-	return self->scale();
+	qreal _ret = self->scale();
+	return static_cast<double>(_ret);
 }
 
 struct miqt_array* QGraphicsItem_Transformations(const QGraphicsItem* self) {
-	QList<QGraphicsTransform*> _ret = self->transformations();
+	QList<QGraphicsTransform *> _ret = self->transformations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsTransform** _arr = static_cast<QGraphicsTransform**>(malloc(sizeof(QGraphicsTransform*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -480,7 +486,8 @@ void QGraphicsItem_Advance(QGraphicsItem* self, int phase) {
 }
 
 double QGraphicsItem_ZValue(const QGraphicsItem* self) {
-	return self->zValue();
+	qreal _ret = self->zValue();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetZValue(QGraphicsItem* self, double z) {
@@ -528,7 +535,7 @@ bool QGraphicsItem_CollidesWithPath(const QGraphicsItem* self, QPainterPath* pat
 }
 
 struct miqt_array* QGraphicsItem_CollidingItems(const QGraphicsItem* self) {
-	QList<QGraphicsItem*> _ret = self->collidingItems();
+	QList<QGraphicsItem *> _ret = self->collidingItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -561,7 +568,8 @@ QRegion* QGraphicsItem_BoundingRegion(const QGraphicsItem* self, QTransform* ite
 }
 
 double QGraphicsItem_BoundingRegionGranularity(const QGraphicsItem* self) {
-	return self->boundingRegionGranularity();
+	qreal _ret = self->boundingRegionGranularity();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsItem_SetBoundingRegionGranularity(QGraphicsItem* self, double granularity) {
@@ -745,15 +753,15 @@ void QGraphicsItem_RemoveSceneEventFilter(QGraphicsItem* self, QGraphicsItem* fi
 	self->removeSceneEventFilter(filterItem);
 }
 
-void QGraphicsItem_SetFlag2(QGraphicsItem* self, uintptr_t flag, bool enabled) {
+void QGraphicsItem_SetFlag2(QGraphicsItem* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGraphicsItem::GraphicsItemFlag>(flag), enabled);
 }
 
-void QGraphicsItem_SetCacheMode2(QGraphicsItem* self, uintptr_t mode, QSize* cacheSize) {
+void QGraphicsItem_SetCacheMode2(QGraphicsItem* self, int mode, QSize* cacheSize) {
 	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode), *cacheSize);
 }
 
-void QGraphicsItem_SetFocus1(QGraphicsItem* self, uintptr_t focusReason) {
+void QGraphicsItem_SetFocus1(QGraphicsItem* self, int focusReason) {
 	self->setFocus(static_cast<Qt::FocusReason>(focusReason));
 }
 
@@ -789,16 +797,16 @@ void QGraphicsItem_SetTransform2(QGraphicsItem* self, QTransform* matrix, bool c
 	self->setTransform(*matrix, combine);
 }
 
-bool QGraphicsItem_CollidesWithItem2(const QGraphicsItem* self, QGraphicsItem* other, uintptr_t mode) {
+bool QGraphicsItem_CollidesWithItem2(const QGraphicsItem* self, QGraphicsItem* other, int mode) {
 	return self->collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-bool QGraphicsItem_CollidesWithPath2(const QGraphicsItem* self, QPainterPath* path, uintptr_t mode) {
+bool QGraphicsItem_CollidesWithPath2(const QGraphicsItem* self, QPainterPath* path, int mode) {
 	return self->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-struct miqt_array* QGraphicsItem_CollidingItems1(const QGraphicsItem* self, uintptr_t mode) {
-	QList<QGraphicsItem*> _ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
+struct miqt_array* QGraphicsItem_CollidingItems1(const QGraphicsItem* self, int mode) {
+	QList<QGraphicsItem *> _ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -848,11 +856,11 @@ struct miqt_string* QGraphicsObject_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsObject_GrabGesture(QGraphicsObject* self, uintptr_t typeVal) {
+void QGraphicsObject_GrabGesture(QGraphicsObject* self, int typeVal) {
 	self->grabGesture(static_cast<Qt::GestureType>(typeVal));
 }
 
-void QGraphicsObject_UngrabGesture(QGraphicsObject* self, uintptr_t typeVal) {
+void QGraphicsObject_UngrabGesture(QGraphicsObject* self, int typeVal) {
 	self->ungrabGesture(static_cast<Qt::GestureType>(typeVal));
 }
 
@@ -1004,7 +1012,7 @@ struct miqt_string* QGraphicsObject_TrUtf83(const char* s, const char* c, int n)
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QGraphicsObject_GrabGesture2(QGraphicsObject* self, uintptr_t typeVal, int flags) {
+void QGraphicsObject_GrabGesture2(QGraphicsObject* self, int typeVal, int flags) {
 	self->grabGesture(static_cast<Qt::GestureType>(typeVal), static_cast<Qt::GestureFlags>(flags));
 }
 
@@ -1268,12 +1276,12 @@ QGraphicsPolygonItem* QGraphicsPolygonItem_new2(QGraphicsItem* parent) {
 	return new QGraphicsPolygonItem(parent);
 }
 
-uintptr_t QGraphicsPolygonItem_FillRule(const QGraphicsPolygonItem* self) {
+int QGraphicsPolygonItem_FillRule(const QGraphicsPolygonItem* self) {
 	Qt::FillRule _ret = self->fillRule();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsPolygonItem_SetFillRule(QGraphicsPolygonItem* self, uintptr_t rule) {
+void QGraphicsPolygonItem_SetFillRule(QGraphicsPolygonItem* self, int rule) {
 	self->setFillRule(static_cast<Qt::FillRule>(rule));
 }
 
@@ -1417,12 +1425,12 @@ void QGraphicsPixmapItem_SetPixmap(QGraphicsPixmapItem* self, QPixmap* pixmap) {
 	self->setPixmap(*pixmap);
 }
 
-uintptr_t QGraphicsPixmapItem_TransformationMode(const QGraphicsPixmapItem* self) {
+int QGraphicsPixmapItem_TransformationMode(const QGraphicsPixmapItem* self) {
 	Qt::TransformationMode _ret = self->transformationMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsPixmapItem_SetTransformationMode(QGraphicsPixmapItem* self, uintptr_t mode) {
+void QGraphicsPixmapItem_SetTransformationMode(QGraphicsPixmapItem* self, int mode) {
 	self->setTransformationMode(static_cast<Qt::TransformationMode>(mode));
 }
 
@@ -1466,12 +1474,12 @@ int QGraphicsPixmapItem_Type(const QGraphicsPixmapItem* self) {
 	return self->type();
 }
 
-uintptr_t QGraphicsPixmapItem_ShapeMode(const QGraphicsPixmapItem* self) {
+int QGraphicsPixmapItem_ShapeMode(const QGraphicsPixmapItem* self) {
 	QGraphicsPixmapItem::ShapeMode _ret = self->shapeMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsPixmapItem_SetShapeMode(QGraphicsPixmapItem* self, uintptr_t mode) {
+void QGraphicsPixmapItem_SetShapeMode(QGraphicsPixmapItem* self, int mode) {
 	self->setShapeMode(static_cast<QGraphicsPixmapItem::ShapeMode>(mode));
 }
 
@@ -1588,7 +1596,8 @@ void QGraphicsTextItem_SetTextWidth(QGraphicsTextItem* self, double width) {
 }
 
 double QGraphicsTextItem_TextWidth(const QGraphicsTextItem* self) {
-	return self->textWidth();
+	qreal _ret = self->textWidth();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsTextItem_AdjustSize(QGraphicsTextItem* self) {

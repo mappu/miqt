@@ -40,13 +40,13 @@ struct miqt_string* QInputDialog_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QInputDialog_SetInputMode(QInputDialog* self, uintptr_t mode) {
+void QInputDialog_SetInputMode(QInputDialog* self, int mode) {
 	self->setInputMode(static_cast<QInputDialog::InputMode>(mode));
 }
 
-uintptr_t QInputDialog_InputMode(const QInputDialog* self) {
+int QInputDialog_InputMode(const QInputDialog* self) {
 	QInputDialog::InputMode _ret = self->inputMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QInputDialog_SetLabelText(QInputDialog* self, struct miqt_string* text) {
@@ -61,11 +61,11 @@ struct miqt_string* QInputDialog_LabelText(const QInputDialog* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QInputDialog_SetOption(QInputDialog* self, uintptr_t option) {
+void QInputDialog_SetOption(QInputDialog* self, int option) {
 	self->setOption(static_cast<QInputDialog::InputDialogOption>(option));
 }
 
-bool QInputDialog_TestOption(const QInputDialog* self, uintptr_t option) {
+bool QInputDialog_TestOption(const QInputDialog* self, int option) {
 	return self->testOption(static_cast<QInputDialog::InputDialogOption>(option));
 }
 
@@ -90,13 +90,13 @@ struct miqt_string* QInputDialog_TextValue(const QInputDialog* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QInputDialog_SetTextEchoMode(QInputDialog* self, uintptr_t mode) {
+void QInputDialog_SetTextEchoMode(QInputDialog* self, int mode) {
 	self->setTextEchoMode(static_cast<QLineEdit::EchoMode>(mode));
 }
 
-uintptr_t QInputDialog_TextEchoMode(const QInputDialog* self) {
+int QInputDialog_TextEchoMode(const QInputDialog* self) {
 	QLineEdit::EchoMode _ret = self->textEchoMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QInputDialog_SetComboBoxEditable(QInputDialog* self, bool editable) {
@@ -408,11 +408,11 @@ struct miqt_string* QInputDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QInputDialog_SetOption2(QInputDialog* self, uintptr_t option, bool on) {
+void QInputDialog_SetOption2(QInputDialog* self, int option, bool on) {
 	self->setOption(static_cast<QInputDialog::InputDialogOption>(option), on);
 }
 
-struct miqt_string* QInputDialog_GetText4(QWidget* parent, struct miqt_string* title, struct miqt_string* label, uintptr_t echo) {
+struct miqt_string* QInputDialog_GetText4(QWidget* parent, struct miqt_string* title, struct miqt_string* label, int echo) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	QString _ret = QInputDialog::getText(parent, title_QString, label_QString, static_cast<QLineEdit::EchoMode>(echo));
@@ -421,7 +421,7 @@ struct miqt_string* QInputDialog_GetText4(QWidget* parent, struct miqt_string* t
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QInputDialog_GetText5(QWidget* parent, struct miqt_string* title, struct miqt_string* label, uintptr_t echo, struct miqt_string* text) {
+struct miqt_string* QInputDialog_GetText5(QWidget* parent, struct miqt_string* title, struct miqt_string* label, int echo, struct miqt_string* text) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
@@ -431,7 +431,7 @@ struct miqt_string* QInputDialog_GetText5(QWidget* parent, struct miqt_string* t
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QInputDialog_GetText6(QWidget* parent, struct miqt_string* title, struct miqt_string* label, uintptr_t echo, struct miqt_string* text, bool* ok) {
+struct miqt_string* QInputDialog_GetText6(QWidget* parent, struct miqt_string* title, struct miqt_string* label, int echo, struct miqt_string* text, bool* ok) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
@@ -441,7 +441,7 @@ struct miqt_string* QInputDialog_GetText6(QWidget* parent, struct miqt_string* t
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QInputDialog_GetText7(QWidget* parent, struct miqt_string* title, struct miqt_string* label, uintptr_t echo, struct miqt_string* text, bool* ok, int flags) {
+struct miqt_string* QInputDialog_GetText7(QWidget* parent, struct miqt_string* title, struct miqt_string* label, int echo, struct miqt_string* text, bool* ok, int flags) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
@@ -451,7 +451,7 @@ struct miqt_string* QInputDialog_GetText7(QWidget* parent, struct miqt_string* t
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QInputDialog_GetText8(QWidget* parent, struct miqt_string* title, struct miqt_string* label, uintptr_t echo, struct miqt_string* text, bool* ok, int flags, int inputMethodHints) {
+struct miqt_string* QInputDialog_GetText8(QWidget* parent, struct miqt_string* title, struct miqt_string* label, int echo, struct miqt_string* text, bool* ok, int flags, int inputMethodHints) {
 	QString title_QString = QString::fromUtf8(&title->data, title->len);
 	QString label_QString = QString::fromUtf8(&label->data, label->len);
 	QString text_QString = QString::fromUtf8(&text->data, text->len);

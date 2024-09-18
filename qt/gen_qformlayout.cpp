@@ -39,13 +39,13 @@ struct miqt_string* QFormLayout_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, uintptr_t policy) {
+void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, int policy) {
 	self->setFieldGrowthPolicy(static_cast<QFormLayout::FieldGrowthPolicy>(policy));
 }
 
-uintptr_t QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
+int QFormLayout_FieldGrowthPolicy(const QFormLayout* self) {
 	QFormLayout::FieldGrowthPolicy _ret = self->fieldGrowthPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFormLayout_SetRowWrapPolicy(QFormLayout* self, int policy) {

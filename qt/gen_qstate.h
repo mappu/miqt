@@ -32,9 +32,9 @@ typedef struct QVariant QVariant;
 #endif
 
 QState* QState_new();
-QState* QState_new2(uintptr_t childMode);
+QState* QState_new2(int childMode);
 QState* QState_new3(QState* parent);
-QState* QState_new4(uintptr_t childMode, QState* parent);
+QState* QState_new4(int childMode, QState* parent);
 QMetaObject* QState_MetaObject(const QState* self);
 struct miqt_string* QState_Tr(const char* s);
 struct miqt_string* QState_TrUtf8(const char* s);
@@ -47,8 +47,8 @@ void QState_RemoveTransition(QState* self, QAbstractTransition* transition);
 struct miqt_array* QState_Transitions(const QState* self);
 QAbstractState* QState_InitialState(const QState* self);
 void QState_SetInitialState(QState* self, QAbstractState* state);
-uintptr_t QState_ChildMode(const QState* self);
-void QState_SetChildMode(QState* self, uintptr_t mode);
+int QState_ChildMode(const QState* self);
+void QState_SetChildMode(QState* self, int mode);
 void QState_AssignProperty(QState* self, QObject* object, const char* name, QVariant* value);
 struct miqt_string* QState_Tr2(const char* s, const char* c);
 struct miqt_string* QState_Tr3(const char* s, const char* c, int n);

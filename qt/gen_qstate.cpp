@@ -17,7 +17,7 @@ QState* QState_new() {
 	return new QState();
 }
 
-QState* QState_new2(uintptr_t childMode) {
+QState* QState_new2(int childMode) {
 	return new QState(static_cast<QState::ChildMode>(childMode));
 }
 
@@ -25,7 +25,7 @@ QState* QState_new3(QState* parent) {
 	return new QState(parent);
 }
 
-QState* QState_new4(uintptr_t childMode, QState* parent) {
+QState* QState_new4(int childMode, QState* parent) {
 	return new QState(static_cast<QState::ChildMode>(childMode), parent);
 }
 
@@ -72,7 +72,7 @@ void QState_RemoveTransition(QState* self, QAbstractTransition* transition) {
 }
 
 struct miqt_array* QState_Transitions(const QState* self) {
-	QList<QAbstractTransition*> _ret = self->transitions();
+	QList<QAbstractTransition *> _ret = self->transitions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractTransition** _arr = static_cast<QAbstractTransition**>(malloc(sizeof(QAbstractTransition*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -92,12 +92,12 @@ void QState_SetInitialState(QState* self, QAbstractState* state) {
 	self->setInitialState(state);
 }
 
-uintptr_t QState_ChildMode(const QState* self) {
+int QState_ChildMode(const QState* self) {
 	QState::ChildMode _ret = self->childMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QState_SetChildMode(QState* self, uintptr_t mode) {
+void QState_SetChildMode(QState* self, int mode) {
 	self->setChildMode(static_cast<QState::ChildMode>(mode));
 }
 

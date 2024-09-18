@@ -63,11 +63,11 @@ int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self) {
 	return self->rowCount();
 }
 
-QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, uintptr_t orientation) {
+QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
-bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -156,7 +156,7 @@ int QIdentityProxyModel_RowCount1(const QIdentityProxyModel* self, QModelIndex* 
 	return self->rowCount(*parent);
 }
 
-QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QIdentityProxyModel_HeaderData3(const QIdentityProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 

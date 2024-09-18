@@ -151,7 +151,7 @@ QRect* QFontMetrics_TightBoundingRect(const QFontMetrics* self, struct miqt_stri
 	return new QRect(self->tightBoundingRect(text_QString));
 }
 
-struct miqt_string* QFontMetrics_ElidedText(const QFontMetrics* self, struct miqt_string* text, uintptr_t mode, int width) {
+struct miqt_string* QFontMetrics_ElidedText(const QFontMetrics* self, struct miqt_string* text, int mode, int width) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<int>(width));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -176,7 +176,8 @@ int QFontMetrics_LineWidth(const QFontMetrics* self) {
 }
 
 double QFontMetrics_FontDpi(const QFontMetrics* self) {
-	return self->fontDpi();
+	qreal _ret = self->fontDpi();
+	return static_cast<double>(_ret);
 }
 
 bool QFontMetrics_OperatorEqual(const QFontMetrics* self, QFontMetrics* other) {
@@ -227,7 +228,7 @@ QSize* QFontMetrics_Size4(const QFontMetrics* self, int flags, struct miqt_strin
 	return new QSize(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-struct miqt_string* QFontMetrics_ElidedText4(const QFontMetrics* self, struct miqt_string* text, uintptr_t mode, int width, int flags) {
+struct miqt_string* QFontMetrics_ElidedText4(const QFontMetrics* self, struct miqt_string* text, int mode, int width, int flags) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<int>(width), static_cast<int>(flags));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -268,47 +269,58 @@ void QFontMetricsF_Swap(QFontMetricsF* self, QFontMetricsF* other) {
 }
 
 double QFontMetricsF_Ascent(const QFontMetricsF* self) {
-	return self->ascent();
+	qreal _ret = self->ascent();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_CapHeight(const QFontMetricsF* self) {
-	return self->capHeight();
+	qreal _ret = self->capHeight();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_Descent(const QFontMetricsF* self) {
-	return self->descent();
+	qreal _ret = self->descent();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_Height(const QFontMetricsF* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_Leading(const QFontMetricsF* self) {
-	return self->leading();
+	qreal _ret = self->leading();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_LineSpacing(const QFontMetricsF* self) {
-	return self->lineSpacing();
+	qreal _ret = self->lineSpacing();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_MinLeftBearing(const QFontMetricsF* self) {
-	return self->minLeftBearing();
+	qreal _ret = self->minLeftBearing();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_MinRightBearing(const QFontMetricsF* self) {
-	return self->minRightBearing();
+	qreal _ret = self->minRightBearing();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_MaxWidth(const QFontMetricsF* self) {
-	return self->maxWidth();
+	qreal _ret = self->maxWidth();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_XHeight(const QFontMetricsF* self) {
-	return self->xHeight();
+	qreal _ret = self->xHeight();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_AverageCharWidth(const QFontMetricsF* self) {
-	return self->averageCharWidth();
+	qreal _ret = self->averageCharWidth();
+	return static_cast<double>(_ret);
 }
 
 bool QFontMetricsF_InFont(const QFontMetricsF* self, QChar* param1) {
@@ -320,29 +332,35 @@ bool QFontMetricsF_InFontUcs4(const QFontMetricsF* self, unsigned int ucs4) {
 }
 
 double QFontMetricsF_LeftBearing(const QFontMetricsF* self, QChar* param1) {
-	return self->leftBearing(*param1);
+	qreal _ret = self->leftBearing(*param1);
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_RightBearing(const QFontMetricsF* self, QChar* param1) {
-	return self->rightBearing(*param1);
+	qreal _ret = self->rightBearing(*param1);
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_Width(const QFontMetricsF* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	return self->width(stringVal_QString);
+	qreal _ret = self->width(stringVal_QString);
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_WidthWithQChar(const QFontMetricsF* self, QChar* param1) {
-	return self->width(*param1);
+	qreal _ret = self->width(*param1);
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_HorizontalAdvance(const QFontMetricsF* self, struct miqt_string* stringVal) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	return self->horizontalAdvance(stringVal_QString);
+	qreal _ret = self->horizontalAdvance(stringVal_QString);
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_HorizontalAdvanceWithQChar(const QFontMetricsF* self, QChar* param1) {
-	return self->horizontalAdvance(*param1);
+	qreal _ret = self->horizontalAdvance(*param1);
+	return static_cast<double>(_ret);
 }
 
 QRectF* QFontMetricsF_BoundingRect(const QFontMetricsF* self, struct miqt_string* stringVal) {
@@ -369,7 +387,7 @@ QRectF* QFontMetricsF_TightBoundingRect(const QFontMetricsF* self, struct miqt_s
 	return new QRectF(self->tightBoundingRect(text_QString));
 }
 
-struct miqt_string* QFontMetricsF_ElidedText(const QFontMetricsF* self, struct miqt_string* text, uintptr_t mode, double width) {
+struct miqt_string* QFontMetricsF_ElidedText(const QFontMetricsF* self, struct miqt_string* text, int mode, double width) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<qreal>(width));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -378,23 +396,28 @@ struct miqt_string* QFontMetricsF_ElidedText(const QFontMetricsF* self, struct m
 }
 
 double QFontMetricsF_UnderlinePos(const QFontMetricsF* self) {
-	return self->underlinePos();
+	qreal _ret = self->underlinePos();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_OverlinePos(const QFontMetricsF* self) {
-	return self->overlinePos();
+	qreal _ret = self->overlinePos();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_StrikeOutPos(const QFontMetricsF* self) {
-	return self->strikeOutPos();
+	qreal _ret = self->strikeOutPos();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_LineWidth(const QFontMetricsF* self) {
-	return self->lineWidth();
+	qreal _ret = self->lineWidth();
+	return static_cast<double>(_ret);
 }
 
 double QFontMetricsF_FontDpi(const QFontMetricsF* self) {
-	return self->fontDpi();
+	qreal _ret = self->fontDpi();
+	return static_cast<double>(_ret);
 }
 
 bool QFontMetricsF_OperatorEqual(const QFontMetricsF* self, QFontMetricsF* other) {
@@ -407,7 +430,8 @@ bool QFontMetricsF_OperatorNotEqual(const QFontMetricsF* self, QFontMetricsF* ot
 
 double QFontMetricsF_HorizontalAdvance2(const QFontMetricsF* self, struct miqt_string* stringVal, int length) {
 	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
-	return self->horizontalAdvance(stringVal_QString, static_cast<int>(length));
+	qreal _ret = self->horizontalAdvance(stringVal_QString, static_cast<int>(length));
+	return static_cast<double>(_ret);
 }
 
 QRectF* QFontMetricsF_BoundingRect4(const QFontMetricsF* self, QRectF* r, int flags, struct miqt_string* stringVal, int tabstops) {
@@ -430,7 +454,7 @@ QSizeF* QFontMetricsF_Size4(const QFontMetricsF* self, int flags, struct miqt_st
 	return new QSizeF(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-struct miqt_string* QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct miqt_string* text, uintptr_t mode, double width, int flags) {
+struct miqt_string* QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct miqt_string* text, int mode, double width, int flags) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<qreal>(width), static_cast<int>(flags));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

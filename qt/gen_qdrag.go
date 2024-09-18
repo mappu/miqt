@@ -112,15 +112,15 @@ func (this *QDrag) Exec() DropAction {
 }
 
 func (this *QDrag) Exec2(supportedActions int, defaultAction DropAction) DropAction {
-	return (DropAction)(C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.uintptr_t)(defaultAction)))
+	return (DropAction)(C.QDrag_Exec2(this.h, supportedActions, (C.int)(defaultAction)))
 }
 
 func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
-	C.QDrag_SetDragCursor(this.h, cursor.cPointer(), (C.uintptr_t)(action))
+	C.QDrag_SetDragCursor(this.h, cursor.cPointer(), (C.int)(action))
 }
 
 func (this *QDrag) DragCursor(action DropAction) *QPixmap {
-	_ret := C.QDrag_DragCursor(this.h, (C.uintptr_t)(action))
+	_ret := C.QDrag_DragCursor(this.h, (C.int)(action))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -139,14 +139,14 @@ func QDrag_Cancel() {
 }
 
 func (this *QDrag) ActionChanged(action DropAction) {
-	C.QDrag_ActionChanged(this.h, (C.uintptr_t)(action))
+	C.QDrag_ActionChanged(this.h, (C.int)(action))
 }
 func (this *QDrag) OnActionChanged(slot func(action DropAction)) {
 	C.QDrag_connect_ActionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QDrag_ActionChanged
-func miqt_exec_callback_QDrag_ActionChanged(cb *C.void, action C.uintptr_t) {
+func miqt_exec_callback_QDrag_ActionChanged(cb *C.void, action C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action DropAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -223,11 +223,11 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDrag) Start1(supportedActions int) DropAction {
-	return (DropAction)(C.QDrag_Start1(this.h, (C.int)(supportedActions)))
+	return (DropAction)(C.QDrag_Start1(this.h, supportedActions))
 }
 
 func (this *QDrag) Exec1(supportedActions int) DropAction {
-	return (DropAction)(C.QDrag_Exec1(this.h, (C.int)(supportedActions)))
+	return (DropAction)(C.QDrag_Exec1(this.h, supportedActions))
 }
 
 // Delete this object from C++ memory.

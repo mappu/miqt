@@ -150,7 +150,7 @@ func (this *QCalendarWidget) FirstDayOfWeek() DayOfWeek {
 }
 
 func (this *QCalendarWidget) SetFirstDayOfWeek(dayOfWeek DayOfWeek) {
-	C.QCalendarWidget_SetFirstDayOfWeek(this.h, (C.uintptr_t)(dayOfWeek))
+	C.QCalendarWidget_SetFirstDayOfWeek(this.h, (C.int)(dayOfWeek))
 }
 
 func (this *QCalendarWidget) IsNavigationBarVisible() bool {
@@ -177,7 +177,7 @@ func (this *QCalendarWidget) SelectionMode() QCalendarWidget__SelectionMode {
 }
 
 func (this *QCalendarWidget) SetSelectionMode(mode QCalendarWidget__SelectionMode) {
-	C.QCalendarWidget_SetSelectionMode(this.h, (C.uintptr_t)(mode))
+	C.QCalendarWidget_SetSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__HorizontalHeaderFormat {
@@ -185,7 +185,7 @@ func (this *QCalendarWidget) HorizontalHeaderFormat() QCalendarWidget__Horizonta
 }
 
 func (this *QCalendarWidget) SetHorizontalHeaderFormat(format QCalendarWidget__HorizontalHeaderFormat) {
-	C.QCalendarWidget_SetHorizontalHeaderFormat(this.h, (C.uintptr_t)(format))
+	C.QCalendarWidget_SetHorizontalHeaderFormat(this.h, (C.int)(format))
 }
 
 func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHeaderFormat {
@@ -193,7 +193,7 @@ func (this *QCalendarWidget) VerticalHeaderFormat() QCalendarWidget__VerticalHea
 }
 
 func (this *QCalendarWidget) SetVerticalHeaderFormat(format QCalendarWidget__VerticalHeaderFormat) {
-	C.QCalendarWidget_SetVerticalHeaderFormat(this.h, (C.uintptr_t)(format))
+	C.QCalendarWidget_SetVerticalHeaderFormat(this.h, (C.int)(format))
 }
 
 func (this *QCalendarWidget) HeaderTextFormat() *QTextCharFormat {
@@ -208,14 +208,14 @@ func (this *QCalendarWidget) SetHeaderTextFormat(format *QTextCharFormat) {
 }
 
 func (this *QCalendarWidget) WeekdayTextFormat(dayOfWeek DayOfWeek) *QTextCharFormat {
-	_ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek))
+	_ret := C.QCalendarWidget_WeekdayTextFormat(this.h, (C.int)(dayOfWeek))
 	_goptr := newQTextCharFormat(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *QTextCharFormat) {
-	C.QCalendarWidget_SetWeekdayTextFormat(this.h, (C.uintptr_t)(dayOfWeek), format.cPointer())
+	C.QCalendarWidget_SetWeekdayTextFormat(this.h, (C.int)(dayOfWeek), format.cPointer())
 }
 
 func (this *QCalendarWidget) DateTextFormatWithDate(date *QDate) *QTextCharFormat {

@@ -97,11 +97,11 @@ func (this *QTouchDevice) SetName(name string) {
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
-	C.QTouchDevice_SetType(this.h, (C.uintptr_t)(devType))
+	C.QTouchDevice_SetType(this.h, (C.int)(devType))
 }
 
 func (this *QTouchDevice) SetCapabilities(caps int) {
-	C.QTouchDevice_SetCapabilities(this.h, (C.int)(caps))
+	C.QTouchDevice_SetCapabilities(this.h, caps)
 }
 
 func (this *QTouchDevice) SetMaximumTouchPoints(max int) {

@@ -96,9 +96,9 @@ bool QSharedMemory_Unlock(QSharedMemory* self) {
 	return self->unlock();
 }
 
-uintptr_t QSharedMemory_Error(const QSharedMemory* self) {
+int QSharedMemory_Error(const QSharedMemory* self) {
 	QSharedMemory::SharedMemoryError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QSharedMemory_ErrorString(const QSharedMemory* self) {
@@ -136,11 +136,11 @@ struct miqt_string* QSharedMemory_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-bool QSharedMemory_Create2(QSharedMemory* self, int size, uintptr_t mode) {
+bool QSharedMemory_Create2(QSharedMemory* self, int size, int mode) {
 	return self->create(static_cast<int>(size), static_cast<QSharedMemory::AccessMode>(mode));
 }
 
-bool QSharedMemory_Attach1(QSharedMemory* self, uintptr_t mode) {
+bool QSharedMemory_Attach1(QSharedMemory* self, int mode) {
 	return self->attach(static_cast<QSharedMemory::AccessMode>(mode));
 }
 

@@ -70,21 +70,21 @@ void QSortFilterProxyModel_SetFilterKeyColumn(QSortFilterProxyModel* self, int c
 	self->setFilterKeyColumn(static_cast<int>(column));
 }
 
-uintptr_t QSortFilterProxyModel_FilterCaseSensitivity(const QSortFilterProxyModel* self) {
+int QSortFilterProxyModel_FilterCaseSensitivity(const QSortFilterProxyModel* self) {
 	Qt::CaseSensitivity _ret = self->filterCaseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSortFilterProxyModel_SetFilterCaseSensitivity(QSortFilterProxyModel* self, uintptr_t cs) {
+void QSortFilterProxyModel_SetFilterCaseSensitivity(QSortFilterProxyModel* self, int cs) {
 	self->setFilterCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
-uintptr_t QSortFilterProxyModel_SortCaseSensitivity(const QSortFilterProxyModel* self) {
+int QSortFilterProxyModel_SortCaseSensitivity(const QSortFilterProxyModel* self) {
 	Qt::CaseSensitivity _ret = self->sortCaseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSortFilterProxyModel_SetSortCaseSensitivity(QSortFilterProxyModel* self, uintptr_t cs) {
+void QSortFilterProxyModel_SetSortCaseSensitivity(QSortFilterProxyModel* self, int cs) {
 	self->setSortCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
@@ -100,9 +100,9 @@ int QSortFilterProxyModel_SortColumn(const QSortFilterProxyModel* self) {
 	return self->sortColumn();
 }
 
-uintptr_t QSortFilterProxyModel_SortOrder(const QSortFilterProxyModel* self) {
+int QSortFilterProxyModel_SortOrder(const QSortFilterProxyModel* self) {
 	Qt::SortOrder _ret = self->sortOrder();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QSortFilterProxyModel_DynamicSortFilter(const QSortFilterProxyModel* self) {
@@ -205,11 +205,11 @@ bool QSortFilterProxyModel_SetData(QSortFilterProxyModel* self, QModelIndex* ind
 	return self->setData(*index, *value);
 }
 
-QVariant* QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel* self, int section, uintptr_t orientation) {
+QVariant* QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
-bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int section, uintptr_t orientation, QVariant* value) {
+bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int section, int orientation, QVariant* value) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
@@ -223,7 +223,7 @@ QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, str
 	return self->mimeData(indexes_QList);
 }
 
-bool QSortFilterProxyModel_DropMimeData(QSortFilterProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QSortFilterProxyModel_DropMimeData(QSortFilterProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -313,26 +313,26 @@ void QSortFilterProxyModel_connect_DynamicSortFilterChanged(QSortFilterProxyMode
 	});
 }
 
-void QSortFilterProxyModel_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, uintptr_t filterCaseSensitivity) {
+void QSortFilterProxyModel_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, int filterCaseSensitivity) {
 	self->filterCaseSensitivityChanged(static_cast<Qt::CaseSensitivity>(filterCaseSensitivity));
 }
 
 void QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::filterCaseSensitivityChanged), self, [=](Qt::CaseSensitivity filterCaseSensitivity) {
 		Qt::CaseSensitivity filterCaseSensitivity_ret = filterCaseSensitivity;
-		uintptr_t sigval1 = static_cast<uintptr_t>(filterCaseSensitivity_ret);
+		int sigval1 = static_cast<int>(filterCaseSensitivity_ret);
 		miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(slot, sigval1);
 	});
 }
 
-void QSortFilterProxyModel_SortCaseSensitivityChanged(QSortFilterProxyModel* self, uintptr_t sortCaseSensitivity) {
+void QSortFilterProxyModel_SortCaseSensitivityChanged(QSortFilterProxyModel* self, int sortCaseSensitivity) {
 	self->sortCaseSensitivityChanged(static_cast<Qt::CaseSensitivity>(sortCaseSensitivity));
 }
 
 void QSortFilterProxyModel_connect_SortCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::sortCaseSensitivityChanged), self, [=](Qt::CaseSensitivity sortCaseSensitivity) {
 		Qt::CaseSensitivity sortCaseSensitivity_ret = sortCaseSensitivity;
-		uintptr_t sigval1 = static_cast<uintptr_t>(sortCaseSensitivity_ret);
+		int sigval1 = static_cast<int>(sortCaseSensitivity_ret);
 		miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(slot, sigval1);
 	});
 }
@@ -433,11 +433,11 @@ bool QSortFilterProxyModel_SetData3(QSortFilterProxyModel* self, QModelIndex* in
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QSortFilterProxyModel_HeaderData3(const QSortFilterProxyModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QSortFilterProxyModel_HeaderData3(const QSortFilterProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QSortFilterProxyModel_SetHeaderData4(QSortFilterProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
+bool QSortFilterProxyModel_SetHeaderData4(QSortFilterProxyModel* self, int section, int orientation, QVariant* value, int role) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
@@ -483,7 +483,7 @@ struct miqt_array* QSortFilterProxyModel_Match5(const QSortFilterProxyModel* sel
 	return _out;
 }
 
-void QSortFilterProxyModel_Sort2(QSortFilterProxyModel* self, int column, uintptr_t order) {
+void QSortFilterProxyModel_Sort2(QSortFilterProxyModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 

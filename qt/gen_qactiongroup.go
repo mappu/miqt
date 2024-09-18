@@ -141,7 +141,7 @@ func (this *QActionGroup) SetExclusive(exclusive bool) {
 }
 
 func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolicy) {
-	C.QActionGroup_SetExclusionPolicy(this.h, (C.uintptr_t)(policy))
+	C.QActionGroup_SetExclusionPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QActionGroup) Triggered(param1 *QAction) {

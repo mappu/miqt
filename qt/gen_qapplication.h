@@ -91,8 +91,8 @@ void QApplication_SetStartDragTime(int ms);
 int QApplication_StartDragTime();
 void QApplication_SetStartDragDistance(int l);
 int QApplication_StartDragDistance();
-bool QApplication_IsEffectEnabled(uintptr_t param1);
-void QApplication_SetEffectEnabled(uintptr_t param1);
+bool QApplication_IsEffectEnabled(int param1);
+void QApplication_SetEffectEnabled(int param1);
 int QApplication_Exec();
 bool QApplication_Notify(QApplication* self, QObject* param1, QEvent* param2);
 void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now);
@@ -110,7 +110,7 @@ struct miqt_string* QApplication_TrUtf83(const char* s, const char* c, int n);
 void QApplication_SetPalette2(QPalette* param1, const char* className);
 void QApplication_SetFont2(QFont* param1, const char* className);
 void QApplication_Alert2(QWidget* widget, int duration);
-void QApplication_SetEffectEnabled2(uintptr_t param1, bool enable);
+void QApplication_SetEffectEnabled2(int param1, bool enable);
 void QApplication_Delete(QApplication* self);
 
 #ifdef __cplusplus

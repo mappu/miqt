@@ -113,7 +113,7 @@ func (this *QUuid) ToString() string {
 }
 
 func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
-	var _ms *C.struct_miqt_string = C.QUuid_ToStringWithMode(this.h, (C.uintptr_t)(mode))
+	var _ms *C.struct_miqt_string = C.QUuid_ToStringWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -127,7 +127,7 @@ func (this *QUuid) ToByteArray() *QByteArray {
 }
 
 func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) *QByteArray {
-	_ret := C.QUuid_ToByteArrayWithMode(this.h, (C.uintptr_t)(mode))
+	_ret := C.QUuid_ToByteArrayWithMode(this.h, (C.int)(mode))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

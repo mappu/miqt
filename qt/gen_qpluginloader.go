@@ -155,7 +155,7 @@ func (this *QPluginLoader) ErrorString() string {
 }
 
 func (this *QPluginLoader) SetLoadHints(loadHints int) {
-	C.QPluginLoader_SetLoadHints(this.h, (C.int)(loadHints))
+	C.QPluginLoader_SetLoadHints(this.h, loadHints)
 }
 
 func (this *QPluginLoader) LoadHints() int {

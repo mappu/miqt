@@ -36,13 +36,13 @@ struct miqt_string* QFontComboBox_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontComboBox_SetWritingSystem(QFontComboBox* self, uintptr_t writingSystem) {
+void QFontComboBox_SetWritingSystem(QFontComboBox* self, int writingSystem) {
 	self->setWritingSystem(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 }
 
-uintptr_t QFontComboBox_WritingSystem(const QFontComboBox* self) {
+int QFontComboBox_WritingSystem(const QFontComboBox* self) {
 	QFontDatabase::WritingSystem _ret = self->writingSystem();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QFontComboBox_SetFontFilters(QFontComboBox* self, int filters) {

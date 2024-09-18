@@ -174,7 +174,7 @@ func (this *QFileDevice) Permissions() int {
 }
 
 func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
-	return (bool)(C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec)))
+	return (bool)(C.QFileDevice_SetPermissions(this.h, permissionSpec))
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {
@@ -186,14 +186,14 @@ func (this *QFileDevice) Unmap(address *byte) bool {
 }
 
 func (this *QFileDevice) FileTime(time QFileDevice__FileTime) *QDateTime {
-	_ret := C.QFileDevice_FileTime(this.h, (C.uintptr_t)(time))
+	_ret := C.QFileDevice_FileTime(this.h, (C.int)(time))
 	_goptr := newQDateTime(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileDevice) SetFileTime(newDate *QDateTime, fileTime QFileDevice__FileTime) bool {
-	return (bool)(C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.uintptr_t)(fileTime)))
+	return (bool)(C.QFileDevice_SetFileTime(this.h, newDate.cPointer(), (C.int)(fileTime)))
 }
 
 func QFileDevice_Tr2(s string, c string) string {
@@ -241,7 +241,7 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
-	return (*byte)(C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.uintptr_t)(flags)))
+	return (*byte)(C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags)))
 }
 
 // Delete this object from C++ memory.

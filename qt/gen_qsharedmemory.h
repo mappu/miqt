@@ -41,14 +41,14 @@ bool QSharedMemory_IsAttached(const QSharedMemory* self);
 bool QSharedMemory_Detach(QSharedMemory* self);
 bool QSharedMemory_Lock(QSharedMemory* self);
 bool QSharedMemory_Unlock(QSharedMemory* self);
-uintptr_t QSharedMemory_Error(const QSharedMemory* self);
+int QSharedMemory_Error(const QSharedMemory* self);
 struct miqt_string* QSharedMemory_ErrorString(const QSharedMemory* self);
 struct miqt_string* QSharedMemory_Tr2(const char* s, const char* c);
 struct miqt_string* QSharedMemory_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QSharedMemory_TrUtf82(const char* s, const char* c);
 struct miqt_string* QSharedMemory_TrUtf83(const char* s, const char* c, int n);
-bool QSharedMemory_Create2(QSharedMemory* self, int size, uintptr_t mode);
-bool QSharedMemory_Attach1(QSharedMemory* self, uintptr_t mode);
+bool QSharedMemory_Create2(QSharedMemory* self, int size, int mode);
+bool QSharedMemory_Attach1(QSharedMemory* self, int mode);
 void QSharedMemory_Delete(QSharedMemory* self);
 
 #ifdef __cplusplus

@@ -58,22 +58,22 @@ QAbstractItemDelegate* QAbstractItemView_ItemDelegate(const QAbstractItemView* s
 	return self->itemDelegate();
 }
 
-void QAbstractItemView_SetSelectionMode(QAbstractItemView* self, uintptr_t mode) {
+void QAbstractItemView_SetSelectionMode(QAbstractItemView* self, int mode) {
 	self->setSelectionMode(static_cast<QAbstractItemView::SelectionMode>(mode));
 }
 
-uintptr_t QAbstractItemView_SelectionMode(const QAbstractItemView* self) {
+int QAbstractItemView_SelectionMode(const QAbstractItemView* self) {
 	QAbstractItemView::SelectionMode _ret = self->selectionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractItemView_SetSelectionBehavior(QAbstractItemView* self, uintptr_t behavior) {
+void QAbstractItemView_SetSelectionBehavior(QAbstractItemView* self, int behavior) {
 	self->setSelectionBehavior(static_cast<QAbstractItemView::SelectionBehavior>(behavior));
 }
 
-uintptr_t QAbstractItemView_SelectionBehavior(const QAbstractItemView* self) {
+int QAbstractItemView_SelectionBehavior(const QAbstractItemView* self) {
 	QAbstractItemView::SelectionBehavior _ret = self->selectionBehavior();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QModelIndex* QAbstractItemView_CurrentIndex(const QAbstractItemView* self) {
@@ -93,26 +93,26 @@ int QAbstractItemView_EditTriggers(const QAbstractItemView* self) {
 	return static_cast<int>(_ret);
 }
 
-void QAbstractItemView_SetVerticalScrollMode(QAbstractItemView* self, uintptr_t mode) {
+void QAbstractItemView_SetVerticalScrollMode(QAbstractItemView* self, int mode) {
 	self->setVerticalScrollMode(static_cast<QAbstractItemView::ScrollMode>(mode));
 }
 
-uintptr_t QAbstractItemView_VerticalScrollMode(const QAbstractItemView* self) {
+int QAbstractItemView_VerticalScrollMode(const QAbstractItemView* self) {
 	QAbstractItemView::ScrollMode _ret = self->verticalScrollMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractItemView_ResetVerticalScrollMode(QAbstractItemView* self) {
 	self->resetVerticalScrollMode();
 }
 
-void QAbstractItemView_SetHorizontalScrollMode(QAbstractItemView* self, uintptr_t mode) {
+void QAbstractItemView_SetHorizontalScrollMode(QAbstractItemView* self, int mode) {
 	self->setHorizontalScrollMode(static_cast<QAbstractItemView::ScrollMode>(mode));
 }
 
-uintptr_t QAbstractItemView_HorizontalScrollMode(const QAbstractItemView* self) {
+int QAbstractItemView_HorizontalScrollMode(const QAbstractItemView* self) {
 	QAbstractItemView::ScrollMode _ret = self->horizontalScrollMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractItemView_ResetHorizontalScrollMode(QAbstractItemView* self) {
@@ -167,22 +167,22 @@ bool QAbstractItemView_DragDropOverwriteMode(const QAbstractItemView* self) {
 	return self->dragDropOverwriteMode();
 }
 
-void QAbstractItemView_SetDragDropMode(QAbstractItemView* self, uintptr_t behavior) {
+void QAbstractItemView_SetDragDropMode(QAbstractItemView* self, int behavior) {
 	self->setDragDropMode(static_cast<QAbstractItemView::DragDropMode>(behavior));
 }
 
-uintptr_t QAbstractItemView_DragDropMode(const QAbstractItemView* self) {
+int QAbstractItemView_DragDropMode(const QAbstractItemView* self) {
 	QAbstractItemView::DragDropMode _ret = self->dragDropMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractItemView_SetDefaultDropAction(QAbstractItemView* self, uintptr_t dropAction) {
+void QAbstractItemView_SetDefaultDropAction(QAbstractItemView* self, int dropAction) {
 	self->setDefaultDropAction(static_cast<Qt::DropAction>(dropAction));
 }
 
-uintptr_t QAbstractItemView_DefaultDropAction(const QAbstractItemView* self) {
+int QAbstractItemView_DefaultDropAction(const QAbstractItemView* self) {
 	Qt::DropAction _ret = self->defaultDropAction();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractItemView_SetAlternatingRowColors(QAbstractItemView* self, bool enable) {
@@ -201,13 +201,13 @@ QSize* QAbstractItemView_IconSize(const QAbstractItemView* self) {
 	return new QSize(self->iconSize());
 }
 
-void QAbstractItemView_SetTextElideMode(QAbstractItemView* self, uintptr_t mode) {
+void QAbstractItemView_SetTextElideMode(QAbstractItemView* self, int mode) {
 	self->setTextElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
-uintptr_t QAbstractItemView_TextElideMode(const QAbstractItemView* self) {
+int QAbstractItemView_TextElideMode(const QAbstractItemView* self) {
 	Qt::TextElideMode _ret = self->textElideMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, struct miqt_string* search) {
@@ -279,7 +279,7 @@ QAbstractItemDelegate* QAbstractItemView_ItemDelegateWithIndex(const QAbstractIt
 	return self->itemDelegate(*index);
 }
 
-QVariant* QAbstractItemView_InputMethodQuery(const QAbstractItemView* self, uintptr_t query) {
+QVariant* QAbstractItemView_InputMethodQuery(const QAbstractItemView* self, int query) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
@@ -439,7 +439,7 @@ struct miqt_string* QAbstractItemView_TrUtf83(const char* s, const char* c, int 
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QAbstractItemView_ScrollTo2(QAbstractItemView* self, QModelIndex* index, uintptr_t hint) {
+void QAbstractItemView_ScrollTo2(QAbstractItemView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

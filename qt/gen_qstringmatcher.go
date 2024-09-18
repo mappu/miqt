@@ -65,13 +65,13 @@ func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 	pattern_ms := miqt_strdupg(pattern)
 	defer C.free(pattern_ms)
-	ret := C.QStringMatcher_new5((*C.struct_miqt_string)(pattern_ms), (C.uintptr_t)(cs))
+	ret := C.QStringMatcher_new5((*C.struct_miqt_string)(pattern_ms), (C.int)(cs))
 	return newQStringMatcher(ret)
 }
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int, cs CaseSensitivity) *QStringMatcher {
-	ret := C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.uintptr_t)(cs))
+	ret := C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs))
 	return newQStringMatcher(ret)
 }
 
@@ -86,7 +86,7 @@ func (this *QStringMatcher) SetPattern(pattern string) {
 }
 
 func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QStringMatcher_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QStringMatcher_SetCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QStringMatcher) IndexIn(str string) int {

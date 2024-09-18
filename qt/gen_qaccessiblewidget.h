@@ -36,8 +36,8 @@ typedef struct QWindow QWindow;
 #endif
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o);
-QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, uintptr_t r);
-QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, struct miqt_string* name);
+QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, int r);
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string* name);
 bool QAccessibleWidget_IsValid(const QAccessibleWidget* self);
 QWindow* QAccessibleWidget_Window(const QAccessibleWidget* self);
 int QAccessibleWidget_ChildCount(const QAccessibleWidget* self);
@@ -46,8 +46,8 @@ QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self
 QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_Child(const QAccessibleWidget* self, int index);
-struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t);
-uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self);
+struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, int t);
+int QAccessibleWidget_Role(const QAccessibleWidget* self);
 QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self);

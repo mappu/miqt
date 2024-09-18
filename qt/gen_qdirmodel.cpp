@@ -87,7 +87,7 @@ bool QDirModel_SetData(QDirModel* self, QModelIndex* index, QVariant* value) {
 	return self->setData(*index, *value);
 }
 
-QVariant* QDirModel_HeaderData(const QDirModel* self, int section, uintptr_t orientation) {
+QVariant* QDirModel_HeaderData(const QDirModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
@@ -130,7 +130,7 @@ QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QM
 	return self->mimeData(indexes_QList);
 }
 
-bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -312,7 +312,7 @@ bool QDirModel_SetData3(QDirModel* self, QModelIndex* index, QVariant* value, in
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QDirModel_HeaderData3(const QDirModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QDirModel_HeaderData3(const QDirModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
@@ -320,7 +320,7 @@ bool QDirModel_HasChildren1(const QDirModel* self, QModelIndex* index) {
 	return self->hasChildren(*index);
 }
 
-void QDirModel_Sort2(QDirModel* self, int column, uintptr_t order) {
+void QDirModel_Sort2(QDirModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 

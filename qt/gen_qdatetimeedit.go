@@ -270,7 +270,7 @@ func (this *QDateTimeEdit) SectionAt(index int) QDateTimeEdit__Section {
 }
 
 func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
-	C.QDateTimeEdit_SetCurrentSection(this.h, (C.uintptr_t)(section))
+	C.QDateTimeEdit_SetCurrentSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) CurrentSectionIndex() int {
@@ -294,11 +294,11 @@ func (this *QDateTimeEdit) SectionCount() int {
 }
 
 func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
-	C.QDateTimeEdit_SetSelectedSection(this.h, (C.uintptr_t)(section))
+	C.QDateTimeEdit_SetSelectedSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
-	var _ms *C.struct_miqt_string = C.QDateTimeEdit_SectionText(this.h, (C.uintptr_t)(section))
+	var _ms *C.struct_miqt_string = C.QDateTimeEdit_SectionText(this.h, (C.int)(section))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -330,7 +330,7 @@ func (this *QDateTimeEdit) TimeSpec() TimeSpec {
 }
 
 func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
-	C.QDateTimeEdit_SetTimeSpec(this.h, (C.uintptr_t)(spec))
+	C.QDateTimeEdit_SetTimeSpec(this.h, (C.int)(spec))
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {

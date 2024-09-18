@@ -241,11 +241,11 @@ bool QAbstractItemModel_SetData(QAbstractItemModel* self, QModelIndex* index, QV
 	return self->setData(*index, *value);
 }
 
-QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, uintptr_t orientation) {
+QVariant* QAbstractItemModel_HeaderData(const QAbstractItemModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
-bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, uintptr_t orientation, QVariant* value) {
+bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, int orientation, QVariant* value) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
@@ -275,11 +275,11 @@ QMimeData* QAbstractItemModel_MimeData(const QAbstractItemModel* self, struct mi
 	return self->mimeData(indexes_QList);
 }
 
-bool QAbstractItemModel_CanDropMimeData(const QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractItemModel_CanDropMimeData(const QAbstractItemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-bool QAbstractItemModel_DropMimeData(QAbstractItemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractItemModel_DropMimeData(QAbstractItemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -399,14 +399,14 @@ void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, void* slot
 	});
 }
 
-void QAbstractItemModel_HeaderDataChanged(QAbstractItemModel* self, uintptr_t orientation, int first, int last) {
+void QAbstractItemModel_HeaderDataChanged(QAbstractItemModel* self, int orientation, int first, int last) {
 	self->headerDataChanged(static_cast<Qt::Orientation>(orientation), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, void* slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(Qt::Orientation, int, int)>(&QAbstractItemModel::headerDataChanged), self, [=](Qt::Orientation orientation, int first, int last) {
 		Qt::Orientation orientation_ret = orientation;
-		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		int sigval1 = static_cast<int>(orientation_ret);
 		int sigval2 = first;
 		int sigval3 = last;
 		miqt_exec_callback_QAbstractItemModel_HeaderDataChanged(slot, sigval1, sigval2, sigval3);
@@ -497,11 +497,11 @@ bool QAbstractItemModel_SetData3(QAbstractItemModel* self, QModelIndex* index, Q
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QAbstractItemModel_HeaderData3(const QAbstractItemModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QAbstractItemModel_HeaderData3(const QAbstractItemModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QAbstractItemModel_SetHeaderData4(QAbstractItemModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
+bool QAbstractItemModel_SetHeaderData4(QAbstractItemModel* self, int section, int orientation, QVariant* value, int role) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
@@ -537,7 +537,7 @@ bool QAbstractItemModel_RemoveColumn2(QAbstractItemModel* self, int column, QMod
 	return self->removeColumn(static_cast<int>(column), *parent);
 }
 
-void QAbstractItemModel_Sort2(QAbstractItemModel* self, int column, uintptr_t order) {
+void QAbstractItemModel_Sort2(QAbstractItemModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -629,7 +629,7 @@ void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* s
 	});
 }
 
-void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint) {
+void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, int hint) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);
@@ -652,7 +652,7 @@ void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* s
 		parents_out->data = static_cast<void*>(parents_arr);
 		struct miqt_array* sigval1 = parents_out;
 		QAbstractItemModel::LayoutChangeHint hint_ret = hint;
-		uintptr_t sigval2 = static_cast<uintptr_t>(hint_ret);
+		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QAbstractItemModel_LayoutChanged2(slot, sigval1, sigval2);
 	});
 }
@@ -683,7 +683,7 @@ void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self
 	});
 }
 
-void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, uintptr_t hint) {
+void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, int hint) {
 	QList<QPersistentModelIndex> parents_QList;
 	parents_QList.reserve(parents->len);
 	QPersistentModelIndex** parents_arr = static_cast<QPersistentModelIndex**>(parents->data);
@@ -706,7 +706,7 @@ void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self
 		parents_out->data = static_cast<void*>(parents_arr);
 		struct miqt_array* sigval1 = parents_out;
 		QAbstractItemModel::LayoutChangeHint hint_ret = hint;
-		uintptr_t sigval2 = static_cast<uintptr_t>(hint_ret);
+		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(slot, sigval1, sigval2);
 	});
 }
@@ -741,7 +741,7 @@ QModelIndex* QAbstractTableModel_Sibling(const QAbstractTableModel* self, int ro
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-bool QAbstractTableModel_DropMimeData(QAbstractTableModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractTableModel_DropMimeData(QAbstractTableModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -812,7 +812,7 @@ QModelIndex* QAbstractListModel_Sibling(const QAbstractListModel* self, int row,
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-bool QAbstractListModel_DropMimeData(QAbstractListModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QAbstractListModel_DropMimeData(QAbstractListModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 

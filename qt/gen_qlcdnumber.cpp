@@ -63,21 +63,21 @@ bool QLCDNumber_CheckOverflowWithNum(const QLCDNumber* self, int num) {
 	return self->checkOverflow(static_cast<int>(num));
 }
 
-uintptr_t QLCDNumber_Mode(const QLCDNumber* self) {
+int QLCDNumber_Mode(const QLCDNumber* self) {
 	QLCDNumber::Mode _ret = self->mode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QLCDNumber_SetMode(QLCDNumber* self, uintptr_t mode) {
+void QLCDNumber_SetMode(QLCDNumber* self, int mode) {
 	self->setMode(static_cast<QLCDNumber::Mode>(mode));
 }
 
-uintptr_t QLCDNumber_SegmentStyle(const QLCDNumber* self) {
+int QLCDNumber_SegmentStyle(const QLCDNumber* self) {
 	QLCDNumber::SegmentStyle _ret = self->segmentStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QLCDNumber_SetSegmentStyle(QLCDNumber* self, uintptr_t segmentStyle) {
+void QLCDNumber_SetSegmentStyle(QLCDNumber* self, int segmentStyle) {
 	self->setSegmentStyle(static_cast<QLCDNumber::SegmentStyle>(segmentStyle));
 }
 

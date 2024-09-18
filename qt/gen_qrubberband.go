@@ -45,13 +45,13 @@ func newQRubberBand_U(h unsafe.Pointer) *QRubberBand {
 
 // NewQRubberBand constructs a new QRubberBand object.
 func NewQRubberBand(param1 QRubberBand__Shape) *QRubberBand {
-	ret := C.QRubberBand_new((C.uintptr_t)(param1))
+	ret := C.QRubberBand_new((C.int)(param1))
 	return newQRubberBand(ret)
 }
 
 // NewQRubberBand2 constructs a new QRubberBand object.
 func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
-	ret := C.QRubberBand_new2((C.uintptr_t)(param1), param2.cPointer())
+	ret := C.QRubberBand_new2((C.int)(param1), param2.cPointer())
 	return newQRubberBand(ret)
 }
 

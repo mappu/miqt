@@ -24,7 +24,7 @@ typedef struct QVector4D QVector4D;
 #endif
 
 QQuaternion* QQuaternion_new();
-QQuaternion* QQuaternion_new2(uintptr_t param1);
+QQuaternion* QQuaternion_new2(int param1);
 QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos);
 QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector);
 QQuaternion* QQuaternion_new5(QVector4D* vector);

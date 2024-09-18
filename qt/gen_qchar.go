@@ -471,7 +471,7 @@ func NewQChar6(rc int) *QChar {
 
 // NewQChar7 constructs a new QChar object.
 func NewQChar7(s QChar__SpecialCharacter) *QChar {
-	ret := C.QChar_new7((C.uintptr_t)(s))
+	ret := C.QChar_new7((C.int)(s))
 	return newQChar(ret)
 }
 

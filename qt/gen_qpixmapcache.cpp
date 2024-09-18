@@ -81,6 +81,10 @@ bool QPixmapCache__Key_OperatorNotEqual(const QPixmapCache__Key* self, QPixmapCa
 	return self->operator!=(*key);
 }
 
+void QPixmapCache__Key_OperatorAssign(QPixmapCache__Key* self, QPixmapCache__Key* other) {
+	self->operator=(*other);
+}
+
 void QPixmapCache__Key_Swap(QPixmapCache__Key* self, QPixmapCache__Key* other) {
 	self->swap(*other);
 }

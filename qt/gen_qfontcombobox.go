@@ -82,7 +82,7 @@ func QFontComboBox_TrUtf8(s string) string {
 }
 
 func (this *QFontComboBox) SetWritingSystem(writingSystem QFontDatabase__WritingSystem) {
-	C.QFontComboBox_SetWritingSystem(this.h, (C.uintptr_t)(writingSystem))
+	C.QFontComboBox_SetWritingSystem(this.h, (C.int)(writingSystem))
 }
 
 func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
@@ -90,7 +90,7 @@ func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
 }
 
 func (this *QFontComboBox) SetFontFilters(filters int) {
-	C.QFontComboBox_SetFontFilters(this.h, (C.int)(filters))
+	C.QFontComboBox_SetFontFilters(this.h, filters)
 }
 
 func (this *QFontComboBox) FontFilters() int {

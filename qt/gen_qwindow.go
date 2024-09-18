@@ -97,7 +97,7 @@ func QWindow_TrUtf8(s string) string {
 }
 
 func (this *QWindow) SetSurfaceType(surfaceType QSurface__SurfaceType) {
-	C.QWindow_SetSurfaceType(this.h, (C.uintptr_t)(surfaceType))
+	C.QWindow_SetSurfaceType(this.h, (C.int)(surfaceType))
 }
 
 func (this *QWindow) SurfaceType() QSurface__SurfaceType {
@@ -113,7 +113,7 @@ func (this *QWindow) Visibility() QWindow__Visibility {
 }
 
 func (this *QWindow) SetVisibility(v QWindow__Visibility) {
-	C.QWindow_SetVisibility(this.h, (C.uintptr_t)(v))
+	C.QWindow_SetVisibility(this.h, (C.int)(v))
 }
 
 func (this *QWindow) Create() {
@@ -125,7 +125,7 @@ func (this *QWindow) WinId() uintptr {
 }
 
 func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent(this.h, (C.uintptr_t)(mode))))
+	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent(this.h, (C.int)(mode))))
 }
 
 func (this *QWindow) Parent2() *QWindow {
@@ -149,7 +149,7 @@ func (this *QWindow) Modality() WindowModality {
 }
 
 func (this *QWindow) SetModality(modality WindowModality) {
-	C.QWindow_SetModality(this.h, (C.uintptr_t)(modality))
+	C.QWindow_SetModality(this.h, (C.int)(modality))
 }
 
 func (this *QWindow) SetFormat(format *QSurfaceFormat) {
@@ -171,7 +171,7 @@ func (this *QWindow) RequestedFormat() *QSurfaceFormat {
 }
 
 func (this *QWindow) SetFlags(flags int) {
-	C.QWindow_SetFlags(this.h, (C.int)(flags))
+	C.QWindow_SetFlags(this.h, flags)
 }
 
 func (this *QWindow) Flags() int {
@@ -179,7 +179,7 @@ func (this *QWindow) Flags() int {
 }
 
 func (this *QWindow) SetFlag(param1 WindowType) {
-	C.QWindow_SetFlag(this.h, (C.uintptr_t)(param1))
+	C.QWindow_SetFlag(this.h, (C.int)(param1))
 }
 
 func (this *QWindow) Type() WindowType {
@@ -217,7 +217,7 @@ func (this *QWindow) IsActive() bool {
 }
 
 func (this *QWindow) ReportContentOrientationChange(orientation ScreenOrientation) {
-	C.QWindow_ReportContentOrientationChange(this.h, (C.uintptr_t)(orientation))
+	C.QWindow_ReportContentOrientationChange(this.h, (C.int)(orientation))
 }
 
 func (this *QWindow) ContentOrientation() ScreenOrientation {
@@ -237,11 +237,11 @@ func (this *QWindow) WindowStates() int {
 }
 
 func (this *QWindow) SetWindowState(state WindowState) {
-	C.QWindow_SetWindowState(this.h, (C.uintptr_t)(state))
+	C.QWindow_SetWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWindow) SetWindowStates(states int) {
-	C.QWindow_SetWindowStates(this.h, (C.int)(states))
+	C.QWindow_SetWindowStates(this.h, states)
 }
 
 func (this *QWindow) SetTransientParent(parent *QWindow) {
@@ -528,7 +528,7 @@ func (this *QWindow) Lower() {
 }
 
 func (this *QWindow) StartSystemResize(edges int) bool {
-	return (bool)(C.QWindow_StartSystemResize(this.h, (C.int)(edges)))
+	return (bool)(C.QWindow_StartSystemResize(this.h, edges))
 }
 
 func (this *QWindow) StartSystemMove() bool {
@@ -610,14 +610,14 @@ func miqt_exec_callback_QWindow_ScreenChanged(cb *C.void, screen *C.QScreen) {
 }
 
 func (this *QWindow) ModalityChanged(modality WindowModality) {
-	C.QWindow_ModalityChanged(this.h, (C.uintptr_t)(modality))
+	C.QWindow_ModalityChanged(this.h, (C.int)(modality))
 }
 func (this *QWindow) OnModalityChanged(slot func(modality WindowModality)) {
 	C.QWindow_connect_ModalityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_ModalityChanged
-func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.uintptr_t) {
+func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(modality WindowModality))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -630,14 +630,14 @@ func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.uintptr_t
 }
 
 func (this *QWindow) WindowStateChanged(windowState WindowState) {
-	C.QWindow_WindowStateChanged(this.h, (C.uintptr_t)(windowState))
+	C.QWindow_WindowStateChanged(this.h, (C.int)(windowState))
 }
 func (this *QWindow) OnWindowStateChanged(slot func(windowState WindowState)) {
 	C.QWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_WindowStateChanged
-func miqt_exec_callback_QWindow_WindowStateChanged(cb *C.void, windowState C.uintptr_t) {
+func miqt_exec_callback_QWindow_WindowStateChanged(cb *C.void, windowState C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(windowState WindowState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -855,14 +855,14 @@ func miqt_exec_callback_QWindow_VisibleChanged(cb *C.void, arg C.bool) {
 }
 
 func (this *QWindow) VisibilityChanged(visibility QWindow__Visibility) {
-	C.QWindow_VisibilityChanged(this.h, (C.uintptr_t)(visibility))
+	C.QWindow_VisibilityChanged(this.h, (C.int)(visibility))
 }
 func (this *QWindow) OnVisibilityChanged(slot func(visibility QWindow__Visibility)) {
 	C.QWindow_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_VisibilityChanged
-func miqt_exec_callback_QWindow_VisibilityChanged(cb *C.void, visibility C.uintptr_t) {
+func miqt_exec_callback_QWindow_VisibilityChanged(cb *C.void, visibility C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visibility QWindow__Visibility))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -892,14 +892,14 @@ func miqt_exec_callback_QWindow_ActiveChanged(cb *C.void) {
 }
 
 func (this *QWindow) ContentOrientationChanged(orientation ScreenOrientation) {
-	C.QWindow_ContentOrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QWindow_ContentOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QWindow) OnContentOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QWindow_connect_ContentOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QWindow_ContentOrientationChanged
-func miqt_exec_callback_QWindow_ContentOrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QWindow_ContentOrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1016,11 +1016,11 @@ func QWindow_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWindow) SetFlag2(param1 WindowType, on bool) {
-	C.QWindow_SetFlag2(this.h, (C.uintptr_t)(param1), (C.bool)(on))
+	C.QWindow_SetFlag2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QWindow) IsAncestorOf2(child *QWindow, mode QWindow__AncestorMode) bool {
-	return (bool)(C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.uintptr_t)(mode)))
+	return (bool)(C.QWindow_IsAncestorOf2(this.h, child.cPointer(), (C.int)(mode)))
 }
 
 // Delete this object from C++ memory.

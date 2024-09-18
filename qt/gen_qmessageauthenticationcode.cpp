@@ -5,11 +5,11 @@
 #include "gen_qmessageauthenticationcode.h"
 #include "_cgo_export.h"
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new(uintptr_t method) {
+QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method) {
 	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
-QMessageAuthenticationCode* QMessageAuthenticationCode_new2(uintptr_t method, QByteArray* key) {
+QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, QByteArray* key) {
 	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), *key);
 }
 
@@ -37,7 +37,7 @@ QByteArray* QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* 
 	return new QByteArray(self->result());
 }
 
-QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, uintptr_t method) {
+QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, int method) {
 	return new QByteArray(QMessageAuthenticationCode::hash(*message, *key, static_cast<QCryptographicHash::Algorithm>(method)));
 }
 

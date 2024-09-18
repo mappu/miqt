@@ -148,7 +148,7 @@ func (this *QCompleter) Model() *QAbstractItemModel {
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
-	C.QCompleter_SetCompletionMode(this.h, (C.uintptr_t)(mode))
+	C.QCompleter_SetCompletionMode(this.h, (C.int)(mode))
 }
 
 func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
@@ -156,7 +156,7 @@ func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
 }
 
 func (this *QCompleter) SetFilterMode(filterMode int) {
-	C.QCompleter_SetFilterMode(this.h, (C.int)(filterMode))
+	C.QCompleter_SetFilterMode(this.h, filterMode)
 }
 
 func (this *QCompleter) FilterMode() int {
@@ -172,7 +172,7 @@ func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
 }
 
 func (this *QCompleter) SetCaseSensitivity(caseSensitivity CaseSensitivity) {
-	C.QCompleter_SetCaseSensitivity(this.h, (C.uintptr_t)(caseSensitivity))
+	C.QCompleter_SetCaseSensitivity(this.h, (C.int)(caseSensitivity))
 }
 
 func (this *QCompleter) CaseSensitivity() CaseSensitivity {
@@ -180,7 +180,7 @@ func (this *QCompleter) CaseSensitivity() CaseSensitivity {
 }
 
 func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
-	C.QCompleter_SetModelSorting(this.h, (C.uintptr_t)(sorting))
+	C.QCompleter_SetModelSorting(this.h, (C.int)(sorting))
 }
 
 func (this *QCompleter) ModelSorting() QCompleter__ModelSorting {

@@ -60,15 +60,15 @@ void QProxyStyle_SetBaseStyle(QProxyStyle* self, QStyle* style) {
 	self->setBaseStyle(style);
 }
 
-void QProxyStyle_DrawPrimitive(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter) {
+void QProxyStyle_DrawPrimitive(const QProxyStyle* self, int element, QStyleOption* option, QPainter* painter) {
 	self->drawPrimitive(static_cast<QStyle::PrimitiveElement>(element), option, painter);
 }
 
-void QProxyStyle_DrawControl(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter) {
+void QProxyStyle_DrawControl(const QProxyStyle* self, int element, QStyleOption* option, QPainter* painter) {
 	self->drawControl(static_cast<QStyle::ControlElement>(element), option, painter);
 }
 
-void QProxyStyle_DrawComplexControl(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPainter* painter) {
+void QProxyStyle_DrawComplexControl(const QProxyStyle* self, int control, QStyleOptionComplex* option, QPainter* painter) {
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter);
 }
 
@@ -81,15 +81,15 @@ void QProxyStyle_DrawItemPixmap(const QProxyStyle* self, QPainter* painter, QRec
 	self->drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
 }
 
-QSize* QProxyStyle_SizeFromContents(const QProxyStyle* self, uintptr_t typeVal, QStyleOption* option, QSize* size, QWidget* widget) {
+QSize* QProxyStyle_SizeFromContents(const QProxyStyle* self, int typeVal, QStyleOption* option, QSize* size, QWidget* widget) {
 	return new QSize(self->sizeFromContents(static_cast<QStyle::ContentsType>(typeVal), option, *size, widget));
 }
 
-QRect* QProxyStyle_SubElementRect(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QWidget* widget) {
+QRect* QProxyStyle_SubElementRect(const QProxyStyle* self, int element, QStyleOption* option, QWidget* widget) {
 	return new QRect(self->subElementRect(static_cast<QStyle::SubElement>(element), option, widget));
 }
 
-QRect* QProxyStyle_SubControlRect(const QProxyStyle* self, uintptr_t cc, QStyleOptionComplex* opt, uintptr_t sc, QWidget* widget) {
+QRect* QProxyStyle_SubControlRect(const QProxyStyle* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* widget) {
 	return new QRect(self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget));
 }
 
@@ -102,32 +102,32 @@ QRect* QProxyStyle_ItemPixmapRect(const QProxyStyle* self, QRect* r, int flags, 
 	return new QRect(self->itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
 }
 
-uintptr_t QProxyStyle_HitTestComplexControl(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos) {
+int QProxyStyle_HitTestComplexControl(const QProxyStyle* self, int control, QStyleOptionComplex* option, QPoint* pos) {
 	QStyle::SubControl _ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(control), option, *pos);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-int QProxyStyle_StyleHint(const QProxyStyle* self, uintptr_t hint) {
+int QProxyStyle_StyleHint(const QProxyStyle* self, int hint) {
 	return self->styleHint(static_cast<QStyle::StyleHint>(hint));
 }
 
-int QProxyStyle_PixelMetric(const QProxyStyle* self, uintptr_t metric) {
+int QProxyStyle_PixelMetric(const QProxyStyle* self, int metric) {
 	return self->pixelMetric(static_cast<QStyle::PixelMetric>(metric));
 }
 
-int QProxyStyle_LayoutSpacing(const QProxyStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation) {
+int QProxyStyle_LayoutSpacing(const QProxyStyle* self, int control1, int control2, int orientation) {
 	return self->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation));
 }
 
-QIcon* QProxyStyle_StandardIcon(const QProxyStyle* self, uintptr_t standardIcon) {
+QIcon* QProxyStyle_StandardIcon(const QProxyStyle* self, int standardIcon) {
 	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon)));
 }
 
-QPixmap* QProxyStyle_StandardPixmap(const QProxyStyle* self, uintptr_t standardPixmap, QStyleOption* opt) {
+QPixmap* QProxyStyle_StandardPixmap(const QProxyStyle* self, int standardPixmap, QStyleOption* opt) {
 	return new QPixmap(self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt));
 }
 
-QPixmap* QProxyStyle_GeneratedIconPixmap(const QProxyStyle* self, uintptr_t iconMode, QPixmap* pixmap, QStyleOption* opt) {
+QPixmap* QProxyStyle_GeneratedIconPixmap(const QProxyStyle* self, int iconMode, QPixmap* pixmap, QStyleOption* opt) {
 	return new QPixmap(self->generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
 }
 
@@ -183,65 +183,65 @@ struct miqt_string* QProxyStyle_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QProxyStyle_DrawPrimitive4(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget) {
+void QProxyStyle_DrawPrimitive4(const QProxyStyle* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget) {
 	self->drawPrimitive(static_cast<QStyle::PrimitiveElement>(element), option, painter, widget);
 }
 
-void QProxyStyle_DrawControl4(const QProxyStyle* self, uintptr_t element, QStyleOption* option, QPainter* painter, QWidget* widget) {
+void QProxyStyle_DrawControl4(const QProxyStyle* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget) {
 	self->drawControl(static_cast<QStyle::ControlElement>(element), option, painter, widget);
 }
 
-void QProxyStyle_DrawComplexControl4(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget) {
+void QProxyStyle_DrawComplexControl4(const QProxyStyle* self, int control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget) {
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter, widget);
 }
 
-void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, uintptr_t textRole) {
+void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, int textRole) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
 	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
-uintptr_t QProxyStyle_HitTestComplexControl4(const QProxyStyle* self, uintptr_t control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget) {
+int QProxyStyle_HitTestComplexControl4(const QProxyStyle* self, int control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget) {
 	QStyle::SubControl _ret = self->hitTestComplexControl(static_cast<QStyle::ComplexControl>(control), option, *pos, widget);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-int QProxyStyle_StyleHint2(const QProxyStyle* self, uintptr_t hint, QStyleOption* option) {
+int QProxyStyle_StyleHint2(const QProxyStyle* self, int hint, QStyleOption* option) {
 	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option);
 }
 
-int QProxyStyle_StyleHint3(const QProxyStyle* self, uintptr_t hint, QStyleOption* option, QWidget* widget) {
+int QProxyStyle_StyleHint3(const QProxyStyle* self, int hint, QStyleOption* option, QWidget* widget) {
 	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget);
 }
 
-int QProxyStyle_StyleHint4(const QProxyStyle* self, uintptr_t hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData) {
+int QProxyStyle_StyleHint4(const QProxyStyle* self, int hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData) {
 	return self->styleHint(static_cast<QStyle::StyleHint>(hint), option, widget, returnData);
 }
 
-int QProxyStyle_PixelMetric2(const QProxyStyle* self, uintptr_t metric, QStyleOption* option) {
+int QProxyStyle_PixelMetric2(const QProxyStyle* self, int metric, QStyleOption* option) {
 	return self->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option);
 }
 
-int QProxyStyle_PixelMetric3(const QProxyStyle* self, uintptr_t metric, QStyleOption* option, QWidget* widget) {
+int QProxyStyle_PixelMetric3(const QProxyStyle* self, int metric, QStyleOption* option, QWidget* widget) {
 	return self->pixelMetric(static_cast<QStyle::PixelMetric>(metric), option, widget);
 }
 
-int QProxyStyle_LayoutSpacing4(const QProxyStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation, QStyleOption* option) {
+int QProxyStyle_LayoutSpacing4(const QProxyStyle* self, int control1, int control2, int orientation, QStyleOption* option) {
 	return self->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option);
 }
 
-int QProxyStyle_LayoutSpacing5(const QProxyStyle* self, uintptr_t control1, uintptr_t control2, uintptr_t orientation, QStyleOption* option, QWidget* widget) {
+int QProxyStyle_LayoutSpacing5(const QProxyStyle* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) {
 	return self->layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
 }
 
-QIcon* QProxyStyle_StandardIcon2(const QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option) {
+QIcon* QProxyStyle_StandardIcon2(const QProxyStyle* self, int standardIcon, QStyleOption* option) {
 	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option));
 }
 
-QIcon* QProxyStyle_StandardIcon3(const QProxyStyle* self, uintptr_t standardIcon, QStyleOption* option, QWidget* widget) {
+QIcon* QProxyStyle_StandardIcon3(const QProxyStyle* self, int standardIcon, QStyleOption* option, QWidget* widget) {
 	return new QIcon(self->standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget));
 }
 
-QPixmap* QProxyStyle_StandardPixmap3(const QProxyStyle* self, uintptr_t standardPixmap, QStyleOption* opt, QWidget* widget) {
+QPixmap* QProxyStyle_StandardPixmap3(const QProxyStyle* self, int standardPixmap, QStyleOption* opt, QWidget* widget) {
 	return new QPixmap(self->standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget));
 }
 

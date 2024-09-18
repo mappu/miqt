@@ -94,7 +94,7 @@ func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
 }
 
 func (this *QAbstractAnimation) SetDirection(direction QAbstractAnimation__Direction) {
-	C.QAbstractAnimation_SetDirection(this.h, (C.uintptr_t)(direction))
+	C.QAbstractAnimation_SetDirection(this.h, (C.int)(direction))
 }
 
 func (this *QAbstractAnimation) CurrentTime() int {
@@ -143,14 +143,14 @@ func miqt_exec_callback_QAbstractAnimation_Finished(cb *C.void) {
 }
 
 func (this *QAbstractAnimation) StateChanged(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
-	C.QAbstractAnimation_StateChanged(this.h, (C.uintptr_t)(newState), (C.uintptr_t)(oldState))
+	C.QAbstractAnimation_StateChanged(this.h, (C.int)(newState), (C.int)(oldState))
 }
 func (this *QAbstractAnimation) OnStateChanged(slot func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
 	C.QAbstractAnimation_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_StateChanged
-func miqt_exec_callback_QAbstractAnimation_StateChanged(cb *C.void, newState C.uintptr_t, oldState C.uintptr_t) {
+func miqt_exec_callback_QAbstractAnimation_StateChanged(cb *C.void, newState C.int, oldState C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -185,14 +185,14 @@ func miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(cb *C.void, curren
 }
 
 func (this *QAbstractAnimation) DirectionChanged(param1 QAbstractAnimation__Direction) {
-	C.QAbstractAnimation_DirectionChanged(this.h, (C.uintptr_t)(param1))
+	C.QAbstractAnimation_DirectionChanged(this.h, (C.int)(param1))
 }
 func (this *QAbstractAnimation) OnDirectionChanged(slot func(param1 QAbstractAnimation__Direction)) {
 	C.QAbstractAnimation_connect_DirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_DirectionChanged
-func miqt_exec_callback_QAbstractAnimation_DirectionChanged(cb *C.void, param1 C.uintptr_t) {
+func miqt_exec_callback_QAbstractAnimation_DirectionChanged(cb *C.void, param1 C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 QAbstractAnimation__Direction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -273,7 +273,7 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy) {
-	C.QAbstractAnimation_Start1(this.h, (C.uintptr_t)(policy))
+	C.QAbstractAnimation_Start1(this.h, (C.int)(policy))
 }
 
 // Delete this object from C++ memory.

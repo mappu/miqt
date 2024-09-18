@@ -215,7 +215,7 @@ func (this *QAction) WhatsThis() string {
 }
 
 func (this *QAction) SetPriority(priority QAction__Priority) {
-	C.QAction_SetPriority(this.h, (C.uintptr_t)(priority))
+	C.QAction_SetPriority(this.h, (C.int)(priority))
 }
 
 func (this *QAction) Priority() QAction__Priority {
@@ -262,7 +262,7 @@ func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
 }
 
 func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardKey) {
-	C.QAction_SetShortcutsWithShortcuts(this.h, (C.uintptr_t)(shortcuts))
+	C.QAction_SetShortcutsWithShortcuts(this.h, (C.int)(shortcuts))
 }
 
 func (this *QAction) Shortcuts() []QKeySequence {
@@ -280,7 +280,7 @@ func (this *QAction) Shortcuts() []QKeySequence {
 }
 
 func (this *QAction) SetShortcutContext(context ShortcutContext) {
-	C.QAction_SetShortcutContext(this.h, (C.uintptr_t)(context))
+	C.QAction_SetShortcutContext(this.h, (C.int)(context))
 }
 
 func (this *QAction) ShortcutContext() ShortcutContext {
@@ -338,7 +338,7 @@ func (this *QAction) IsVisible() bool {
 }
 
 func (this *QAction) Activate(event QAction__ActionEvent) {
-	C.QAction_Activate(this.h, (C.uintptr_t)(event))
+	C.QAction_Activate(this.h, (C.int)(event))
 }
 
 func (this *QAction) ShowStatusText() bool {
@@ -346,7 +346,7 @@ func (this *QAction) ShowStatusText() bool {
 }
 
 func (this *QAction) SetMenuRole(menuRole QAction__MenuRole) {
-	C.QAction_SetMenuRole(this.h, (C.uintptr_t)(menuRole))
+	C.QAction_SetMenuRole(this.h, (C.int)(menuRole))
 }
 
 func (this *QAction) MenuRole() QAction__MenuRole {

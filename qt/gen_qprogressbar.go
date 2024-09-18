@@ -110,7 +110,7 @@ func (this *QProgressBar) Alignment() int {
 }
 
 func (this *QProgressBar) SetAlignment(alignment int) {
-	C.QProgressBar_SetAlignment(this.h, (C.int)(alignment))
+	C.QProgressBar_SetAlignment(this.h, alignment)
 }
 
 func (this *QProgressBar) SizeHint() *QSize {
@@ -140,7 +140,7 @@ func (this *QProgressBar) InvertedAppearance() bool {
 }
 
 func (this *QProgressBar) SetTextDirection(textDirection QProgressBar__Direction) {
-	C.QProgressBar_SetTextDirection(this.h, (C.uintptr_t)(textDirection))
+	C.QProgressBar_SetTextDirection(this.h, (C.int)(textDirection))
 }
 
 func (this *QProgressBar) TextDirection() QProgressBar__Direction {
@@ -185,7 +185,7 @@ func (this *QProgressBar) SetValue(value int) {
 }
 
 func (this *QProgressBar) SetOrientation(orientation Orientation) {
-	C.QProgressBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QProgressBar_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QProgressBar) ValueChanged(value int) {

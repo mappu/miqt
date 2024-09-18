@@ -64,12 +64,12 @@ void QGraphicsWidget_AdjustSize(QGraphicsWidget* self) {
 	self->adjustSize();
 }
 
-uintptr_t QGraphicsWidget_LayoutDirection(const QGraphicsWidget* self) {
+int QGraphicsWidget_LayoutDirection(const QGraphicsWidget* self) {
 	Qt::LayoutDirection _ret = self->layoutDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsWidget_SetLayoutDirection(QGraphicsWidget* self, uintptr_t direction) {
+void QGraphicsWidget_SetLayoutDirection(QGraphicsWidget* self, int direction) {
 	self->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
@@ -174,9 +174,9 @@ int QGraphicsWidget_WindowFlags(const QGraphicsWidget* self) {
 	return static_cast<int>(_ret);
 }
 
-uintptr_t QGraphicsWidget_WindowType(const QGraphicsWidget* self) {
+int QGraphicsWidget_WindowType(const QGraphicsWidget* self) {
 	Qt::WindowType _ret = self->windowType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QGraphicsWidget_SetWindowFlags(QGraphicsWidget* self, int wFlags) {
@@ -199,12 +199,12 @@ struct miqt_string* QGraphicsWidget_WindowTitle(const QGraphicsWidget* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QGraphicsWidget_FocusPolicy(const QGraphicsWidget* self) {
+int QGraphicsWidget_FocusPolicy(const QGraphicsWidget* self) {
 	Qt::FocusPolicy _ret = self->focusPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGraphicsWidget_SetFocusPolicy(QGraphicsWidget* self, uintptr_t policy) {
+void QGraphicsWidget_SetFocusPolicy(QGraphicsWidget* self, int policy) {
 	self->setFocusPolicy(static_cast<Qt::FocusPolicy>(policy));
 }
 
@@ -265,7 +265,7 @@ void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action) {
 }
 
 struct miqt_array* QGraphicsWidget_Actions(const QGraphicsWidget* self) {
-	QList<QAction*> _ret = self->actions();
+	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -277,11 +277,11 @@ struct miqt_array* QGraphicsWidget_Actions(const QGraphicsWidget* self) {
 	return _out;
 }
 
-void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, uintptr_t attribute) {
+void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, int attribute) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute));
 }
 
-bool QGraphicsWidget_TestAttribute(const QGraphicsWidget* self, uintptr_t attribute) {
+bool QGraphicsWidget_TestAttribute(const QGraphicsWidget* self, int attribute) {
 	return self->testAttribute(static_cast<Qt::WidgetAttribute>(attribute));
 }
 
@@ -357,7 +357,7 @@ struct miqt_string* QGraphicsWidget_TrUtf83(const char* s, const char* c, int n)
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-int QGraphicsWidget_GrabShortcut2(QGraphicsWidget* self, QKeySequence* sequence, uintptr_t context) {
+int QGraphicsWidget_GrabShortcut2(QGraphicsWidget* self, QKeySequence* sequence, int context) {
 	return self->grabShortcut(*sequence, static_cast<Qt::ShortcutContext>(context));
 }
 
@@ -369,7 +369,7 @@ void QGraphicsWidget_SetShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool 
 	self->setShortcutAutoRepeat(static_cast<int>(id), enabled);
 }
 
-void QGraphicsWidget_SetAttribute2(QGraphicsWidget* self, uintptr_t attribute, bool on) {
+void QGraphicsWidget_SetAttribute2(QGraphicsWidget* self, int attribute, bool on) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute), on);
 }
 

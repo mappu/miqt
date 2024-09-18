@@ -104,12 +104,12 @@ bool QLineEdit_IsClearButtonEnabled(const QLineEdit* self) {
 	return self->isClearButtonEnabled();
 }
 
-uintptr_t QLineEdit_EchoMode(const QLineEdit* self) {
+int QLineEdit_EchoMode(const QLineEdit* self) {
 	QLineEdit::EchoMode _ret = self->echoMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QLineEdit_SetEchoMode(QLineEdit* self, uintptr_t echoMode) {
+void QLineEdit_SetEchoMode(QLineEdit* self, int echoMode) {
 	self->setEchoMode(static_cast<QLineEdit::EchoMode>(echoMode));
 }
 
@@ -249,13 +249,13 @@ bool QLineEdit_DragEnabled(const QLineEdit* self) {
 	return self->dragEnabled();
 }
 
-void QLineEdit_SetCursorMoveStyle(QLineEdit* self, uintptr_t style) {
+void QLineEdit_SetCursorMoveStyle(QLineEdit* self, int style) {
 	self->setCursorMoveStyle(static_cast<Qt::CursorMoveStyle>(style));
 }
 
-uintptr_t QLineEdit_CursorMoveStyle(const QLineEdit* self) {
+int QLineEdit_CursorMoveStyle(const QLineEdit* self) {
 	Qt::CursorMoveStyle _ret = self->cursorMoveStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QLineEdit_InputMask(const QLineEdit* self) {
@@ -290,11 +290,11 @@ QMargins* QLineEdit_TextMargins(const QLineEdit* self) {
 	return new QMargins(self->textMargins());
 }
 
-void QLineEdit_AddAction(QLineEdit* self, QAction* action, uintptr_t position) {
+void QLineEdit_AddAction(QLineEdit* self, QAction* action, int position) {
 	self->addAction(action, static_cast<QLineEdit::ActionPosition>(position));
 }
 
-QAction* QLineEdit_AddAction2(QLineEdit* self, QIcon* icon, uintptr_t position) {
+QAction* QLineEdit_AddAction2(QLineEdit* self, QIcon* icon, int position) {
 	return self->addAction(*icon, static_cast<QLineEdit::ActionPosition>(position));
 }
 
@@ -426,11 +426,11 @@ void QLineEdit_connect_InputRejected(QLineEdit* self, void* slot) {
 	});
 }
 
-QVariant* QLineEdit_InputMethodQuery(const QLineEdit* self, uintptr_t param1) {
+QVariant* QLineEdit_InputMethodQuery(const QLineEdit* self, int param1) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
-QVariant* QLineEdit_InputMethodQuery2(const QLineEdit* self, uintptr_t property, QVariant* argument) {
+QVariant* QLineEdit_InputMethodQuery2(const QLineEdit* self, int property, QVariant* argument) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property), *argument));
 }
 

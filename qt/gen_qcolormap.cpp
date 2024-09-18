@@ -25,9 +25,9 @@ void QColormap_OperatorAssign(QColormap* self, QColormap* colormap) {
 	self->operator=(*colormap);
 }
 
-uintptr_t QColormap_Mode(const QColormap* self) {
+int QColormap_Mode(const QColormap* self) {
 	QColormap::Mode _ret = self->mode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QColormap_Depth(const QColormap* self) {
@@ -39,7 +39,8 @@ int QColormap_Size(const QColormap* self) {
 }
 
 unsigned int QColormap_Pixel(const QColormap* self, QColor* color) {
-	return self->pixel(*color);
+	uint _ret = self->pixel(*color);
+	return static_cast<unsigned int>(_ret);
 }
 
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel) {

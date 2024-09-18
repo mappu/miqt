@@ -40,12 +40,12 @@ struct miqt_string* QTabBar_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QTabBar_Shape(const QTabBar* self) {
+int QTabBar_Shape(const QTabBar* self) {
 	QTabBar::Shape _ret = self->shape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetShape(QTabBar* self, uintptr_t shape) {
+void QTabBar_SetShape(QTabBar* self, int shape) {
 	self->setShape(static_cast<QTabBar::Shape>(shape));
 }
 
@@ -121,12 +121,12 @@ void QTabBar_SetTabIcon(QTabBar* self, int index, QIcon* icon) {
 	self->setTabIcon(static_cast<int>(index), *icon);
 }
 
-uintptr_t QTabBar_ElideMode(const QTabBar* self) {
+int QTabBar_ElideMode(const QTabBar* self) {
 	Qt::TextElideMode _ret = self->elideMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetElideMode(QTabBar* self, uintptr_t mode) {
+void QTabBar_SetElideMode(QTabBar* self, int mode) {
 	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
@@ -218,20 +218,20 @@ void QTabBar_SetTabsClosable(QTabBar* self, bool closable) {
 	self->setTabsClosable(closable);
 }
 
-void QTabBar_SetTabButton(QTabBar* self, int index, uintptr_t position, QWidget* widget) {
+void QTabBar_SetTabButton(QTabBar* self, int index, int position, QWidget* widget) {
 	self->setTabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position), widget);
 }
 
-QWidget* QTabBar_TabButton(const QTabBar* self, int index, uintptr_t position) {
+QWidget* QTabBar_TabButton(const QTabBar* self, int index, int position) {
 	return self->tabButton(static_cast<int>(index), static_cast<QTabBar::ButtonPosition>(position));
 }
 
-uintptr_t QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
+int QTabBar_SelectionBehaviorOnRemove(const QTabBar* self) {
 	QTabBar::SelectionBehavior _ret = self->selectionBehaviorOnRemove();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, uintptr_t behavior) {
+void QTabBar_SetSelectionBehaviorOnRemove(QTabBar* self, int behavior) {
 	self->setSelectionBehaviorOnRemove(static_cast<QTabBar::SelectionBehavior>(behavior));
 }
 

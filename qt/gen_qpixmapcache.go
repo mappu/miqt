@@ -152,6 +152,10 @@ func (this *QPixmapCache__Key) OperatorNotEqual(key *QPixmapCache__Key) bool {
 	return (bool)(C.QPixmapCache__Key_OperatorNotEqual(this.h, key.cPointer()))
 }
 
+func (this *QPixmapCache__Key) OperatorAssign(other *QPixmapCache__Key) {
+	C.QPixmapCache__Key_OperatorAssign(this.h, other.cPointer())
+}
+
 func (this *QPixmapCache__Key) Swap(other *QPixmapCache__Key) {
 	C.QPixmapCache__Key_Swap(this.h, other.cPointer())
 }

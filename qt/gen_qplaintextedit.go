@@ -135,7 +135,7 @@ func (this *QPlainTextEdit) SetReadOnly(ro bool) {
 }
 
 func (this *QPlainTextEdit) SetTextInteractionFlags(flags int) {
-	C.QPlainTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QPlainTextEdit_SetTextInteractionFlags(this.h, flags)
 }
 
 func (this *QPlainTextEdit) TextInteractionFlags() int {
@@ -199,7 +199,7 @@ func (this *QPlainTextEdit) LineWrapMode() QPlainTextEdit__LineWrapMode {
 }
 
 func (this *QPlainTextEdit) SetLineWrapMode(mode QPlainTextEdit__LineWrapMode) {
-	C.QPlainTextEdit_SetLineWrapMode(this.h, (C.uintptr_t)(mode))
+	C.QPlainTextEdit_SetLineWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QPlainTextEdit) WordWrapMode() QTextOption__WrapMode {
@@ -207,7 +207,7 @@ func (this *QPlainTextEdit) WordWrapMode() QTextOption__WrapMode {
 }
 
 func (this *QPlainTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
-	C.QPlainTextEdit_SetWordWrapMode(this.h, (C.uintptr_t)(policy))
+	C.QPlainTextEdit_SetWordWrapMode(this.h, (C.int)(policy))
 }
 
 func (this *QPlainTextEdit) SetBackgroundVisible(visible bool) {
@@ -353,7 +353,7 @@ func (this *QPlainTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 }
 
 func (this *QPlainTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
-	C.QPlainTextEdit_MoveCursor(this.h, (C.uintptr_t)(operation))
+	C.QPlainTextEdit_MoveCursor(this.h, (C.int)(operation))
 }
 
 func (this *QPlainTextEdit) CanPaste() bool {
@@ -369,14 +369,14 @@ func (this *QPlainTextEdit) BlockCount() int {
 }
 
 func (this *QPlainTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
-	_ret := C.QPlainTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
+	_ret := C.QPlainTextEdit_InputMethodQuery(this.h, (C.int)(property))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPlainTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
-	_ret := C.QPlainTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	_ret := C.QPlainTextEdit_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer())
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -665,19 +665,19 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QPlainTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
+	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), options))
 }
 
 func (this *QPlainTextEdit) Find23(exp *QRegExp, options int) bool {
-	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
+	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), options))
 }
 
 func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
+	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), options))
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
-	C.QPlainTextEdit_MoveCursor2(this.h, (C.uintptr_t)(operation), (C.uintptr_t)(mode))
+	C.QPlainTextEdit_MoveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
 func (this *QPlainTextEdit) ZoomIn1(rangeVal int) {
@@ -758,7 +758,7 @@ func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTe
 }
 
 func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
-	return (int)(C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.uintptr_t)(param2)))
+	return (int)(C.QPlainTextDocumentLayout_HitTest(this.h, param1.cPointer(), (C.int)(param2)))
 }
 
 func (this *QPlainTextDocumentLayout) PageCount() int {

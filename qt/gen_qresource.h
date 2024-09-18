@@ -34,7 +34,7 @@ struct miqt_string* QResource_AbsoluteFilePath(const QResource* self);
 void QResource_SetLocale(QResource* self, QLocale* locale);
 QLocale* QResource_Locale(const QResource* self);
 bool QResource_IsValid(const QResource* self);
-uintptr_t QResource_CompressionAlgorithm(const QResource* self);
+int QResource_CompressionAlgorithm(const QResource* self);
 long long QResource_Size(const QResource* self);
 const unsigned char* QResource_Data(const QResource* self);
 long long QResource_UncompressedSize(const QResource* self);

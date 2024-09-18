@@ -84,7 +84,7 @@ func NewQSizePolicy() *QSizePolicy {
 
 // NewQSizePolicy2 constructs a new QSizePolicy object.
 func NewQSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) *QSizePolicy {
-	ret := C.QSizePolicy_new2((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical))
+	ret := C.QSizePolicy_new2((C.int)(horizontal), (C.int)(vertical))
 	return newQSizePolicy(ret)
 }
 
@@ -96,7 +96,7 @@ func NewQSizePolicy3(param1 *QSizePolicy) *QSizePolicy {
 
 // NewQSizePolicy4 constructs a new QSizePolicy object.
 func NewQSizePolicy4(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy, typeVal QSizePolicy__ControlType) *QSizePolicy {
-	ret := C.QSizePolicy_new4((C.uintptr_t)(horizontal), (C.uintptr_t)(vertical), (C.uintptr_t)(typeVal))
+	ret := C.QSizePolicy_new4((C.int)(horizontal), (C.int)(vertical), (C.int)(typeVal))
 	return newQSizePolicy(ret)
 }
 
@@ -113,15 +113,15 @@ func (this *QSizePolicy) ControlType() QSizePolicy__ControlType {
 }
 
 func (this *QSizePolicy) SetHorizontalPolicy(d QSizePolicy__Policy) {
-	C.QSizePolicy_SetHorizontalPolicy(this.h, (C.uintptr_t)(d))
+	C.QSizePolicy_SetHorizontalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetVerticalPolicy(d QSizePolicy__Policy) {
-	C.QSizePolicy_SetVerticalPolicy(this.h, (C.uintptr_t)(d))
+	C.QSizePolicy_SetVerticalPolicy(this.h, (C.int)(d))
 }
 
 func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
-	C.QSizePolicy_SetControlType(this.h, (C.uintptr_t)(typeVal))
+	C.QSizePolicy_SetControlType(this.h, (C.int)(typeVal))
 }
 
 func (this *QSizePolicy) ExpandingDirections() int {

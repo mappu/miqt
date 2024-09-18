@@ -106,11 +106,11 @@ func QCoreApplication_Arguments() []string {
 }
 
 func QCoreApplication_SetAttribute(attribute ApplicationAttribute) {
-	C.QCoreApplication_SetAttribute((C.uintptr_t)(attribute))
+	C.QCoreApplication_SetAttribute((C.int)(attribute))
 }
 
 func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
-	return (bool)(C.QCoreApplication_TestAttribute((C.uintptr_t)(attribute)))
+	return (bool)(C.QCoreApplication_TestAttribute((C.int)(attribute)))
 }
 
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
@@ -186,7 +186,7 @@ func QCoreApplication_ProcessEvents() {
 }
 
 func QCoreApplication_ProcessEvents2(flags int, maxtime int) {
-	C.QCoreApplication_ProcessEvents2((C.int)(flags), (C.int)(maxtime))
+	C.QCoreApplication_ProcessEvents2(flags, (C.int)(maxtime))
 }
 
 func QCoreApplication_Exit() {
@@ -447,11 +447,11 @@ func QCoreApplication_TrUtf83(s string, c string, n int) string {
 }
 
 func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
-	C.QCoreApplication_SetAttribute2((C.uintptr_t)(attribute), (C.bool)(on))
+	C.QCoreApplication_SetAttribute2((C.int)(attribute), (C.bool)(on))
 }
 
 func QCoreApplication_ProcessEvents1(flags int) {
-	C.QCoreApplication_ProcessEvents1((C.int)(flags))
+	C.QCoreApplication_ProcessEvents1(flags)
 }
 
 func QCoreApplication_Exit1(retcode int) {

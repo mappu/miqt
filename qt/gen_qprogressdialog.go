@@ -61,7 +61,7 @@ func NewQProgressDialog3(parent *QWidget) *QProgressDialog {
 
 // NewQProgressDialog4 constructs a new QProgressDialog object.
 func NewQProgressDialog4(parent *QWidget, flags int) *QProgressDialog {
-	ret := C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags))
+	ret := C.QProgressDialog_new4(parent.cPointer(), flags)
 	return newQProgressDialog(ret)
 }
 
@@ -81,7 +81,7 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 	defer C.free(labelText_ms)
 	cancelButtonText_ms := miqt_strdupg(cancelButtonText)
 	defer C.free(cancelButtonText_ms)
-	ret := C.QProgressDialog_new6((*C.struct_miqt_string)(labelText_ms), (*C.struct_miqt_string)(cancelButtonText_ms), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags))
+	ret := C.QProgressDialog_new6((*C.struct_miqt_string)(labelText_ms), (*C.struct_miqt_string)(cancelButtonText_ms), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), flags)
 	return newQProgressDialog(ret)
 }
 

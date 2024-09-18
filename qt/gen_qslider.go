@@ -55,7 +55,7 @@ func NewQSlider() *QSlider {
 
 // NewQSlider2 constructs a new QSlider object.
 func NewQSlider2(orientation Orientation) *QSlider {
-	ret := C.QSlider_new2((C.uintptr_t)(orientation))
+	ret := C.QSlider_new2((C.int)(orientation))
 	return newQSlider(ret)
 }
 
@@ -67,7 +67,7 @@ func NewQSlider3(parent *QWidget) *QSlider {
 
 // NewQSlider4 constructs a new QSlider object.
 func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
-	ret := C.QSlider_new4((C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QSlider_new4((C.int)(orientation), parent.cPointer())
 	return newQSlider(ret)
 }
 
@@ -108,7 +108,7 @@ func (this *QSlider) MinimumSizeHint() *QSize {
 }
 
 func (this *QSlider) SetTickPosition(position QSlider__TickPosition) {
-	C.QSlider_SetTickPosition(this.h, (C.uintptr_t)(position))
+	C.QSlider_SetTickPosition(this.h, (C.int)(position))
 }
 
 func (this *QSlider) TickPosition() QSlider__TickPosition {

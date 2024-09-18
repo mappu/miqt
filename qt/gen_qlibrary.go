@@ -185,7 +185,7 @@ func (this *QLibrary) ErrorString() string {
 }
 
 func (this *QLibrary) SetLoadHints(hints int) {
-	C.QLibrary_SetLoadHints(this.h, (C.int)(hints))
+	C.QLibrary_SetLoadHints(this.h, hints)
 }
 
 func (this *QLibrary) LoadHints() int {

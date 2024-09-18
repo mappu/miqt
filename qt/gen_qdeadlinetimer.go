@@ -49,7 +49,7 @@ func NewQDeadlineTimer() *QDeadlineTimer {
 
 // NewQDeadlineTimer2 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer2(param1 QDeadlineTimer__ForeverConstant) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new2((C.uintptr_t)(param1))
+	ret := C.QDeadlineTimer_new2((C.int)(param1))
 	return newQDeadlineTimer(ret)
 }
 
@@ -67,19 +67,19 @@ func NewQDeadlineTimer4(param1 *QDeadlineTimer) *QDeadlineTimer {
 
 // NewQDeadlineTimer5 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer5(type_ TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new5((C.uintptr_t)(type_))
+	ret := C.QDeadlineTimer_new5((C.int)(type_))
 	return newQDeadlineTimer(ret)
 }
 
 // NewQDeadlineTimer6 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer6(param1 QDeadlineTimer__ForeverConstant, type_ TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new6((C.uintptr_t)(param1), (C.uintptr_t)(type_))
+	ret := C.QDeadlineTimer_new6((C.int)(param1), (C.int)(type_))
 	return newQDeadlineTimer(ret)
 }
 
 // NewQDeadlineTimer7 constructs a new QDeadlineTimer object.
 func NewQDeadlineTimer7(msecs int64, typeVal TimerType) *QDeadlineTimer {
-	ret := C.QDeadlineTimer_new7((C.longlong)(msecs), (C.uintptr_t)(typeVal))
+	ret := C.QDeadlineTimer_new7((C.longlong)(msecs), (C.int)(typeVal))
 	return newQDeadlineTimer(ret)
 }
 
@@ -100,7 +100,7 @@ func (this *QDeadlineTimer) TimerType() TimerType {
 }
 
 func (this *QDeadlineTimer) SetTimerType(typeVal TimerType) {
-	C.QDeadlineTimer_SetTimerType(this.h, (C.uintptr_t)(typeVal))
+	C.QDeadlineTimer_SetTimerType(this.h, (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) RemainingTime() int64 {
@@ -162,7 +162,7 @@ func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
 }
 
 func (this *QDeadlineTimer) SetRemainingTime2(msecs int64, typeVal TimerType) {
-	C.QDeadlineTimer_SetRemainingTime2(this.h, (C.longlong)(msecs), (C.uintptr_t)(typeVal))
+	C.QDeadlineTimer_SetRemainingTime2(this.h, (C.longlong)(msecs), (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) SetPreciseRemainingTime2(secs int64, nsecs int64) {
@@ -170,11 +170,11 @@ func (this *QDeadlineTimer) SetPreciseRemainingTime2(secs int64, nsecs int64) {
 }
 
 func (this *QDeadlineTimer) SetPreciseRemainingTime3(secs int64, nsecs int64, typeVal TimerType) {
-	C.QDeadlineTimer_SetPreciseRemainingTime3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.uintptr_t)(typeVal))
+	C.QDeadlineTimer_SetPreciseRemainingTime3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.int)(typeVal))
 }
 
 func (this *QDeadlineTimer) SetDeadline2(msecs int64, timerType TimerType) {
-	C.QDeadlineTimer_SetDeadline2(this.h, (C.longlong)(msecs), (C.uintptr_t)(timerType))
+	C.QDeadlineTimer_SetDeadline2(this.h, (C.longlong)(msecs), (C.int)(timerType))
 }
 
 func (this *QDeadlineTimer) SetPreciseDeadline2(secs int64, nsecs int64) {
@@ -182,11 +182,11 @@ func (this *QDeadlineTimer) SetPreciseDeadline2(secs int64, nsecs int64) {
 }
 
 func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal TimerType) {
-	C.QDeadlineTimer_SetPreciseDeadline3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.uintptr_t)(typeVal))
+	C.QDeadlineTimer_SetPreciseDeadline3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.int)(typeVal))
 }
 
 func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
-	_ret := C.QDeadlineTimer_Current1((C.uintptr_t)(timerType))
+	_ret := C.QDeadlineTimer_Current1((C.int)(timerType))
 	_goptr := newQDeadlineTimer(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

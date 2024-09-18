@@ -128,7 +128,8 @@ QColor* QGraphicsColorizeEffect_Color(const QGraphicsColorizeEffect* self) {
 }
 
 double QGraphicsColorizeEffect_Strength(const QGraphicsColorizeEffect* self) {
-	return self->strength();
+	qreal _ret = self->strength();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsColorizeEffect_SetColor(QGraphicsColorizeEffect* self, QColor* c) {
@@ -158,7 +159,8 @@ void QGraphicsColorizeEffect_StrengthChanged(QGraphicsColorizeEffect* self, doub
 
 void QGraphicsColorizeEffect_connect_StrengthChanged(QGraphicsColorizeEffect* self, void* slot) {
 	QGraphicsColorizeEffect::connect(self, static_cast<void (QGraphicsColorizeEffect::*)(qreal)>(&QGraphicsColorizeEffect::strengthChanged), self, [=](qreal strength) {
-		double sigval1 = strength;
+		qreal strength_ret = strength;
+		double sigval1 = static_cast<double>(strength_ret);
 		miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(slot, sigval1);
 	});
 }
@@ -226,7 +228,8 @@ QRectF* QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect* self, QRe
 }
 
 double QGraphicsBlurEffect_BlurRadius(const QGraphicsBlurEffect* self) {
-	return self->blurRadius();
+	qreal _ret = self->blurRadius();
+	return static_cast<double>(_ret);
 }
 
 int QGraphicsBlurEffect_BlurHints(const QGraphicsBlurEffect* self) {
@@ -248,7 +251,8 @@ void QGraphicsBlurEffect_BlurRadiusChanged(QGraphicsBlurEffect* self, double blu
 
 void QGraphicsBlurEffect_connect_BlurRadiusChanged(QGraphicsBlurEffect* self, void* slot) {
 	QGraphicsBlurEffect::connect(self, static_cast<void (QGraphicsBlurEffect::*)(qreal)>(&QGraphicsBlurEffect::blurRadiusChanged), self, [=](qreal blurRadius) {
-		double sigval1 = blurRadius;
+		qreal blurRadius_ret = blurRadius;
+		double sigval1 = static_cast<double>(blurRadius_ret);
 		miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(slot, sigval1);
 	});
 }
@@ -332,15 +336,18 @@ QPointF* QGraphicsDropShadowEffect_Offset(const QGraphicsDropShadowEffect* self)
 }
 
 double QGraphicsDropShadowEffect_XOffset(const QGraphicsDropShadowEffect* self) {
-	return self->xOffset();
+	qreal _ret = self->xOffset();
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsDropShadowEffect_YOffset(const QGraphicsDropShadowEffect* self) {
-	return self->yOffset();
+	qreal _ret = self->yOffset();
+	return static_cast<double>(_ret);
 }
 
 double QGraphicsDropShadowEffect_BlurRadius(const QGraphicsDropShadowEffect* self) {
-	return self->blurRadius();
+	qreal _ret = self->blurRadius();
+	return static_cast<double>(_ret);
 }
 
 QColor* QGraphicsDropShadowEffect_Color(const QGraphicsDropShadowEffect* self) {
@@ -394,7 +401,8 @@ void QGraphicsDropShadowEffect_BlurRadiusChanged(QGraphicsDropShadowEffect* self
 
 void QGraphicsDropShadowEffect_connect_BlurRadiusChanged(QGraphicsDropShadowEffect* self, void* slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(qreal)>(&QGraphicsDropShadowEffect::blurRadiusChanged), self, [=](qreal blurRadius) {
-		double sigval1 = blurRadius;
+		qreal blurRadius_ret = blurRadius;
+		double sigval1 = static_cast<double>(blurRadius_ret);
 		miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(slot, sigval1);
 	});
 }
@@ -471,7 +479,8 @@ struct miqt_string* QGraphicsOpacityEffect_TrUtf8(const char* s) {
 }
 
 double QGraphicsOpacityEffect_Opacity(const QGraphicsOpacityEffect* self) {
-	return self->opacity();
+	qreal _ret = self->opacity();
+	return static_cast<double>(_ret);
 }
 
 QBrush* QGraphicsOpacityEffect_OpacityMask(const QGraphicsOpacityEffect* self) {
@@ -492,7 +501,8 @@ void QGraphicsOpacityEffect_OpacityChanged(QGraphicsOpacityEffect* self, double 
 
 void QGraphicsOpacityEffect_connect_OpacityChanged(QGraphicsOpacityEffect* self, void* slot) {
 	QGraphicsOpacityEffect::connect(self, static_cast<void (QGraphicsOpacityEffect::*)(qreal)>(&QGraphicsOpacityEffect::opacityChanged), self, [=](qreal opacity) {
-		double sigval1 = opacity;
+		qreal opacity_ret = opacity;
+		double sigval1 = static_cast<double>(opacity_ret);
 		miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(slot, sigval1);
 	});
 }

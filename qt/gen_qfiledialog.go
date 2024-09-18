@@ -86,7 +86,7 @@ func newQFileDialog_U(h unsafe.Pointer) *QFileDialog {
 
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget, f int) *QFileDialog {
-	ret := C.QFileDialog_new(parent.cPointer(), (C.int)(f))
+	ret := C.QFileDialog_new(parent.cPointer(), f)
 	return newQFileDialog(ret)
 }
 
@@ -321,11 +321,11 @@ func (this *QFileDialog) Filter() int {
 }
 
 func (this *QFileDialog) SetFilter(filters int) {
-	C.QFileDialog_SetFilter(this.h, (C.int)(filters))
+	C.QFileDialog_SetFilter(this.h, filters)
 }
 
 func (this *QFileDialog) SetViewMode(mode QFileDialog__ViewMode) {
-	C.QFileDialog_SetViewMode(this.h, (C.uintptr_t)(mode))
+	C.QFileDialog_SetViewMode(this.h, (C.int)(mode))
 }
 
 func (this *QFileDialog) ViewMode() QFileDialog__ViewMode {
@@ -333,7 +333,7 @@ func (this *QFileDialog) ViewMode() QFileDialog__ViewMode {
 }
 
 func (this *QFileDialog) SetFileMode(mode QFileDialog__FileMode) {
-	C.QFileDialog_SetFileMode(this.h, (C.uintptr_t)(mode))
+	C.QFileDialog_SetFileMode(this.h, (C.int)(mode))
 }
 
 func (this *QFileDialog) FileMode() QFileDialog__FileMode {
@@ -341,7 +341,7 @@ func (this *QFileDialog) FileMode() QFileDialog__FileMode {
 }
 
 func (this *QFileDialog) SetAcceptMode(mode QFileDialog__AcceptMode) {
-	C.QFileDialog_SetAcceptMode(this.h, (C.uintptr_t)(mode))
+	C.QFileDialog_SetAcceptMode(this.h, (C.int)(mode))
 }
 
 func (this *QFileDialog) AcceptMode() QFileDialog__AcceptMode {
@@ -469,11 +469,11 @@ func (this *QFileDialog) IconProvider() *QFileIconProvider {
 func (this *QFileDialog) SetLabelText(label QFileDialog__DialogLabel, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	C.QFileDialog_SetLabelText(this.h, (C.uintptr_t)(label), (*C.struct_miqt_string)(text_ms))
+	C.QFileDialog_SetLabelText(this.h, (C.int)(label), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QFileDialog) LabelText(label QFileDialog__DialogLabel) string {
-	var _ms *C.struct_miqt_string = C.QFileDialog_LabelText(this.h, (C.uintptr_t)(label))
+	var _ms *C.struct_miqt_string = C.QFileDialog_LabelText(this.h, (C.int)(label))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -516,15 +516,15 @@ func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
 }
 
 func (this *QFileDialog) SetOption(option QFileDialog__Option) {
-	C.QFileDialog_SetOption(this.h, (C.uintptr_t)(option))
+	C.QFileDialog_SetOption(this.h, (C.int)(option))
 }
 
 func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
-	return (bool)(C.QFileDialog_TestOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QFileDialog_TestOption(this.h, (C.int)(option)))
 }
 
 func (this *QFileDialog) SetOptions(options int) {
-	C.QFileDialog_SetOptions(this.h, (C.int)(options))
+	C.QFileDialog_SetOptions(this.h, options)
 }
 
 func (this *QFileDialog) Options() int {
@@ -892,7 +892,7 @@ func QFileDialog_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFileDialog) SetOption2(option QFileDialog__Option, on bool) {
-	C.QFileDialog_SetOption2(this.h, (C.uintptr_t)(option), (C.bool)(on))
+	C.QFileDialog_SetOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 func QFileDialog_GetOpenFileName1(parent *QWidget) string {
@@ -1079,7 +1079,7 @@ func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir stri
 	defer C.free(caption_ms)
 	dir_ms := miqt_strdupg(dir)
 	defer C.free(dir_ms)
-	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (C.int)(options))
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), options)
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -1113,7 +1113,7 @@ func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *
 func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options int) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
-	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options))
+	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), options)
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1132,7 +1132,7 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 	}
 	supportedSchemes_ma := &C.struct_miqt_array{len: C.size_t(len(supportedSchemes)), data: unsafe.Pointer(supportedSchemes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(supportedSchemes_ma))
-	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options), supportedSchemes_ma)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), options, supportedSchemes_ma)
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

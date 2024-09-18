@@ -79,9 +79,9 @@ QSize* QProgressBar_MinimumSizeHint(const QProgressBar* self) {
 	return new QSize(self->minimumSizeHint());
 }
 
-uintptr_t QProgressBar_Orientation(const QProgressBar* self) {
+int QProgressBar_Orientation(const QProgressBar* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QProgressBar_SetInvertedAppearance(QProgressBar* self, bool invert) {
@@ -92,13 +92,13 @@ bool QProgressBar_InvertedAppearance(const QProgressBar* self) {
 	return self->invertedAppearance();
 }
 
-void QProgressBar_SetTextDirection(QProgressBar* self, uintptr_t textDirection) {
+void QProgressBar_SetTextDirection(QProgressBar* self, int textDirection) {
 	self->setTextDirection(static_cast<QProgressBar::Direction>(textDirection));
 }
 
-uintptr_t QProgressBar_TextDirection(const QProgressBar* self) {
+int QProgressBar_TextDirection(const QProgressBar* self) {
 	QProgressBar::Direction _ret = self->textDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QProgressBar_SetFormat(QProgressBar* self, struct miqt_string* format) {
@@ -137,7 +137,7 @@ void QProgressBar_SetValue(QProgressBar* self, int value) {
 	self->setValue(static_cast<int>(value));
 }
 
-void QProgressBar_SetOrientation(QProgressBar* self, uintptr_t orientation) {
+void QProgressBar_SetOrientation(QProgressBar* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 

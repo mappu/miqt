@@ -221,7 +221,8 @@ void QDir_SetSorting(QDir* self, int sort) {
 }
 
 unsigned int QDir_Count(const QDir* self) {
-	return self->count();
+	uint _ret = self->count();
+	return static_cast<unsigned int>(_ret);
 }
 
 bool QDir_IsEmpty(const QDir* self) {

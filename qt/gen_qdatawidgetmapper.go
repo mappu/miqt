@@ -106,7 +106,7 @@ func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
 }
 
 func (this *QDataWidgetMapper) SetOrientation(aOrientation Orientation) {
-	C.QDataWidgetMapper_SetOrientation(this.h, (C.uintptr_t)(aOrientation))
+	C.QDataWidgetMapper_SetOrientation(this.h, (C.int)(aOrientation))
 }
 
 func (this *QDataWidgetMapper) Orientation() Orientation {
@@ -114,7 +114,7 @@ func (this *QDataWidgetMapper) Orientation() Orientation {
 }
 
 func (this *QDataWidgetMapper) SetSubmitPolicy(policy QDataWidgetMapper__SubmitPolicy) {
-	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.uintptr_t)(policy))
+	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QDataWidgetMapper) SubmitPolicy() QDataWidgetMapper__SubmitPolicy {

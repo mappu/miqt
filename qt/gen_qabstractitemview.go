@@ -140,7 +140,7 @@ func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
-	C.QAbstractItemView_SetSelectionMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) SelectionMode() QAbstractItemView__SelectionMode {
@@ -148,7 +148,7 @@ func (this *QAbstractItemView) SelectionMode() QAbstractItemView__SelectionMode 
 }
 
 func (this *QAbstractItemView) SetSelectionBehavior(behavior QAbstractItemView__SelectionBehavior) {
-	C.QAbstractItemView_SetSelectionBehavior(this.h, (C.uintptr_t)(behavior))
+	C.QAbstractItemView_SetSelectionBehavior(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) SelectionBehavior() QAbstractItemView__SelectionBehavior {
@@ -170,7 +170,7 @@ func (this *QAbstractItemView) RootIndex() *QModelIndex {
 }
 
 func (this *QAbstractItemView) SetEditTriggers(triggers int) {
-	C.QAbstractItemView_SetEditTriggers(this.h, (C.int)(triggers))
+	C.QAbstractItemView_SetEditTriggers(this.h, triggers)
 }
 
 func (this *QAbstractItemView) EditTriggers() int {
@@ -178,7 +178,7 @@ func (this *QAbstractItemView) EditTriggers() int {
 }
 
 func (this *QAbstractItemView) SetVerticalScrollMode(mode QAbstractItemView__ScrollMode) {
-	C.QAbstractItemView_SetVerticalScrollMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetVerticalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) VerticalScrollMode() QAbstractItemView__ScrollMode {
@@ -190,7 +190,7 @@ func (this *QAbstractItemView) ResetVerticalScrollMode() {
 }
 
 func (this *QAbstractItemView) SetHorizontalScrollMode(mode QAbstractItemView__ScrollMode) {
-	C.QAbstractItemView_SetHorizontalScrollMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetHorizontalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) HorizontalScrollMode() QAbstractItemView__ScrollMode {
@@ -250,7 +250,7 @@ func (this *QAbstractItemView) DragDropOverwriteMode() bool {
 }
 
 func (this *QAbstractItemView) SetDragDropMode(behavior QAbstractItemView__DragDropMode) {
-	C.QAbstractItemView_SetDragDropMode(this.h, (C.uintptr_t)(behavior))
+	C.QAbstractItemView_SetDragDropMode(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) DragDropMode() QAbstractItemView__DragDropMode {
@@ -258,7 +258,7 @@ func (this *QAbstractItemView) DragDropMode() QAbstractItemView__DragDropMode {
 }
 
 func (this *QAbstractItemView) SetDefaultDropAction(dropAction DropAction) {
-	C.QAbstractItemView_SetDefaultDropAction(this.h, (C.uintptr_t)(dropAction))
+	C.QAbstractItemView_SetDefaultDropAction(this.h, (C.int)(dropAction))
 }
 
 func (this *QAbstractItemView) DefaultDropAction() DropAction {
@@ -285,7 +285,7 @@ func (this *QAbstractItemView) IconSize() *QSize {
 }
 
 func (this *QAbstractItemView) SetTextElideMode(mode TextElideMode) {
-	C.QAbstractItemView_SetTextElideMode(this.h, (C.uintptr_t)(mode))
+	C.QAbstractItemView_SetTextElideMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) TextElideMode() TextElideMode {
@@ -372,7 +372,7 @@ func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstr
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
-	_ret := C.QAbstractItemView_InputMethodQuery(this.h, (C.uintptr_t)(query))
+	_ret := C.QAbstractItemView_InputMethodQuery(this.h, (C.int)(query))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -600,7 +600,7 @@ func QAbstractItemView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractItemView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QAbstractItemView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

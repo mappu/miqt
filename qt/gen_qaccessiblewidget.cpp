@@ -17,11 +17,11 @@ QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {
 	return new QAccessibleWidget(o);
 }
 
-QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, uintptr_t r) {
+QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, int r) {
 	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
 }
 
-QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, uintptr_t r, struct miqt_string* name) {
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string* name) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
 	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
 }
@@ -58,16 +58,16 @@ QAccessibleInterface* QAccessibleWidget_Child(const QAccessibleWidget* self, int
 	return self->child(static_cast<int>(index));
 }
 
-struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, uintptr_t t) {
+struct miqt_string* QAccessibleWidget_Text(const QAccessibleWidget* self, int t) {
 	QString _ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QAccessibleWidget_Role(const QAccessibleWidget* self) {
+int QAccessibleWidget_Role(const QAccessibleWidget* self) {
 	QAccessible::Role _ret = self->role();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self) {

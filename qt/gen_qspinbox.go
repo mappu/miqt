@@ -141,7 +141,7 @@ func (this *QSpinBox) StepType() QAbstractSpinBox__StepType {
 }
 
 func (this *QSpinBox) SetStepType(stepType QAbstractSpinBox__StepType) {
-	C.QSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+	C.QSpinBox_SetStepType(this.h, (C.int)(stepType))
 }
 
 func (this *QSpinBox) DisplayIntegerBase() int {
@@ -411,7 +411,7 @@ func (this *QDoubleSpinBox) StepType() QAbstractSpinBox__StepType {
 }
 
 func (this *QDoubleSpinBox) SetStepType(stepType QAbstractSpinBox__StepType) {
-	C.QDoubleSpinBox_SetStepType(this.h, (C.uintptr_t)(stepType))
+	C.QDoubleSpinBox_SetStepType(this.h, (C.int)(stepType))
 }
 
 func (this *QDoubleSpinBox) Decimals() int {

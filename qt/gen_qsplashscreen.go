@@ -63,7 +63,7 @@ func NewQSplashScreen4(pixmap *QPixmap) *QSplashScreen {
 
 // NewQSplashScreen5 constructs a new QSplashScreen object.
 func NewQSplashScreen5(pixmap *QPixmap, f int) *QSplashScreen {
-	ret := C.QSplashScreen_new5(pixmap.cPointer(), (C.int)(f))
+	ret := C.QSplashScreen_new5(pixmap.cPointer(), f)
 	return newQSplashScreen(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQSplashScreen6(screen *QScreen, pixmap *QPixmap) *QSplashScreen {
 
 // NewQSplashScreen7 constructs a new QSplashScreen object.
 func NewQSplashScreen7(screen *QScreen, pixmap *QPixmap, f int) *QSplashScreen {
-	ret := C.QSplashScreen_new7(screen.cPointer(), pixmap.cPointer(), (C.int)(f))
+	ret := C.QSplashScreen_new7(screen.cPointer(), pixmap.cPointer(), f)
 	return newQSplashScreen(ret)
 }
 
@@ -87,7 +87,7 @@ func NewQSplashScreen8(parent *QWidget, pixmap *QPixmap) *QSplashScreen {
 
 // NewQSplashScreen9 constructs a new QSplashScreen object.
 func NewQSplashScreen9(parent *QWidget, pixmap *QPixmap, f int) *QSplashScreen {
-	ret := C.QSplashScreen_new9(parent.cPointer(), pixmap.cPointer(), (C.int)(f))
+	ret := C.QSplashScreen_new9(parent.cPointer(), pixmap.cPointer(), f)
 	return newQSplashScreen(ret)
 }
 

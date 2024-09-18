@@ -14,7 +14,7 @@ QMouseEventTransition* QMouseEventTransition_new() {
 	return new QMouseEventTransition();
 }
 
-QMouseEventTransition* QMouseEventTransition_new2(QObject* object, uintptr_t typeVal, uintptr_t button) {
+QMouseEventTransition* QMouseEventTransition_new2(QObject* object, int typeVal, int button) {
 	return new QMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button));
 }
 
@@ -22,7 +22,7 @@ QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState) {
 	return new QMouseEventTransition(sourceState);
 }
 
-QMouseEventTransition* QMouseEventTransition_new4(QObject* object, uintptr_t typeVal, uintptr_t button, QState* sourceState) {
+QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState) {
 	return new QMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button), sourceState);
 }
 
@@ -44,12 +44,12 @@ struct miqt_string* QMouseEventTransition_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QMouseEventTransition_Button(const QMouseEventTransition* self) {
+int QMouseEventTransition_Button(const QMouseEventTransition* self) {
 	Qt::MouseButton _ret = self->button();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMouseEventTransition_SetButton(QMouseEventTransition* self, uintptr_t button) {
+void QMouseEventTransition_SetButton(QMouseEventTransition* self, int button) {
 	self->setButton(static_cast<Qt::MouseButton>(button));
 }
 

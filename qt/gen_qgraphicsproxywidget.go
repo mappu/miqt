@@ -56,7 +56,7 @@ func NewQGraphicsProxyWidget2(parent *QGraphicsItem) *QGraphicsProxyWidget {
 
 // NewQGraphicsProxyWidget3 constructs a new QGraphicsProxyWidget object.
 func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsProxyWidget {
-	ret := C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags))
+	ret := C.QGraphicsProxyWidget_new3(parent.cPointer(), wFlags)
 	return newQGraphicsProxyWidget(ret)
 }
 

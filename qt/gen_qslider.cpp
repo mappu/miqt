@@ -14,7 +14,7 @@ QSlider* QSlider_new() {
 	return new QSlider();
 }
 
-QSlider* QSlider_new2(uintptr_t orientation) {
+QSlider* QSlider_new2(int orientation) {
 	return new QSlider(static_cast<Qt::Orientation>(orientation));
 }
 
@@ -22,7 +22,7 @@ QSlider* QSlider_new3(QWidget* parent) {
 	return new QSlider(parent);
 }
 
-QSlider* QSlider_new4(uintptr_t orientation, QWidget* parent) {
+QSlider* QSlider_new4(int orientation, QWidget* parent) {
 	return new QSlider(static_cast<Qt::Orientation>(orientation), parent);
 }
 
@@ -52,13 +52,13 @@ QSize* QSlider_MinimumSizeHint(const QSlider* self) {
 	return new QSize(self->minimumSizeHint());
 }
 
-void QSlider_SetTickPosition(QSlider* self, uintptr_t position) {
+void QSlider_SetTickPosition(QSlider* self, int position) {
 	self->setTickPosition(static_cast<QSlider::TickPosition>(position));
 }
 
-uintptr_t QSlider_TickPosition(const QSlider* self) {
+int QSlider_TickPosition(const QSlider* self) {
 	QSlider::TickPosition _ret = self->tickPosition();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QSlider_SetTickInterval(QSlider* self, int ti) {

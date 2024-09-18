@@ -39,7 +39,7 @@ struct miqt_string* QUuid_ToString(const QUuid* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QUuid_ToStringWithMode(const QUuid* self, uintptr_t mode) {
+struct miqt_string* QUuid_ToStringWithMode(const QUuid* self, int mode) {
 	QString _ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -50,7 +50,7 @@ QByteArray* QUuid_ToByteArray(const QUuid* self) {
 	return new QByteArray(self->toByteArray());
 }
 
-QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, uintptr_t mode) {
+QByteArray* QUuid_ToByteArrayWithMode(const QUuid* self, int mode) {
 	return new QByteArray(self->toByteArray(static_cast<QUuid::StringFormat>(mode)));
 }
 
@@ -104,14 +104,14 @@ QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string* baseData) {
 	return new QUuid(QUuid::createUuidV5(*ns, baseData_QString));
 }
 
-uintptr_t QUuid_Variant(const QUuid* self) {
+int QUuid_Variant(const QUuid* self) {
 	QUuid::Variant _ret = self->variant();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QUuid_Version(const QUuid* self) {
+int QUuid_Version(const QUuid* self) {
 	QUuid::Version _ret = self->version();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QUuid_Delete(QUuid* self) {

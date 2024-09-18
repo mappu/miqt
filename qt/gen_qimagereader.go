@@ -334,7 +334,7 @@ func (this *QImageReader) ErrorString() string {
 }
 
 func (this *QImageReader) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	return (bool)(C.QImageReader_SupportsOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QImageReader_SupportsOption(this.h, (C.int)(option)))
 }
 
 func QImageReader_ImageFormatWithFileName(fileName string) *QByteArray {

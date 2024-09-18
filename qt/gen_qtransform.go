@@ -48,7 +48,7 @@ func newQTransform_U(h unsafe.Pointer) *QTransform {
 
 // NewQTransform constructs a new QTransform object.
 func NewQTransform(param1 Initialization) *QTransform {
-	ret := C.QTransform_new((C.uintptr_t)(param1))
+	ret := C.QTransform_new((C.int)(param1))
 	return newQTransform(ret)
 }
 
@@ -346,11 +346,11 @@ func (this *QTransform) Inverted1(invertible *bool) *QTransform {
 }
 
 func (this *QTransform) Rotate2(a float64, axis Axis) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate2(this.h, (C.double)(a), (C.uintptr_t)(axis))))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate2(this.h, (C.double)(a), (C.int)(axis))))
 }
 
 func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.uintptr_t)(axis))))
+	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.int)(axis))))
 }
 
 // Delete this object from C++ memory.

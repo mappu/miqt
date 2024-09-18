@@ -41,9 +41,9 @@ struct miqt_string* QOffscreenSurface_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QOffscreenSurface_SurfaceType(const QOffscreenSurface* self) {
+int QOffscreenSurface_SurfaceType(const QOffscreenSurface* self) {
 	QSurface::SurfaceType _ret = self->surfaceType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QOffscreenSurface_Create(QOffscreenSurface* self) {

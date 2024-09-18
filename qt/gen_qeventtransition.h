@@ -26,16 +26,16 @@ typedef struct QState QState;
 #endif
 
 QEventTransition* QEventTransition_new();
-QEventTransition* QEventTransition_new2(QObject* object, uintptr_t typeVal);
+QEventTransition* QEventTransition_new2(QObject* object, int typeVal);
 QEventTransition* QEventTransition_new3(QState* sourceState);
-QEventTransition* QEventTransition_new4(QObject* object, uintptr_t typeVal, QState* sourceState);
+QEventTransition* QEventTransition_new4(QObject* object, int typeVal, QState* sourceState);
 QMetaObject* QEventTransition_MetaObject(const QEventTransition* self);
 struct miqt_string* QEventTransition_Tr(const char* s);
 struct miqt_string* QEventTransition_TrUtf8(const char* s);
 QObject* QEventTransition_EventSource(const QEventTransition* self);
 void QEventTransition_SetEventSource(QEventTransition* self, QObject* object);
-uintptr_t QEventTransition_EventType(const QEventTransition* self);
-void QEventTransition_SetEventType(QEventTransition* self, uintptr_t typeVal);
+int QEventTransition_EventType(const QEventTransition* self);
+void QEventTransition_SetEventType(QEventTransition* self, int typeVal);
 struct miqt_string* QEventTransition_Tr2(const char* s, const char* c);
 struct miqt_string* QEventTransition_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QEventTransition_TrUtf82(const char* s, const char* c);

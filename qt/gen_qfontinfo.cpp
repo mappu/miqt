@@ -46,16 +46,17 @@ int QFontInfo_PointSize(const QFontInfo* self) {
 }
 
 double QFontInfo_PointSizeF(const QFontInfo* self) {
-	return self->pointSizeF();
+	qreal _ret = self->pointSizeF();
+	return static_cast<double>(_ret);
 }
 
 bool QFontInfo_Italic(const QFontInfo* self) {
 	return self->italic();
 }
 
-uintptr_t QFontInfo_Style(const QFontInfo* self) {
+int QFontInfo_Style(const QFontInfo* self) {
 	QFont::Style _ret = self->style();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QFontInfo_Weight(const QFontInfo* self) {
@@ -82,9 +83,9 @@ bool QFontInfo_FixedPitch(const QFontInfo* self) {
 	return self->fixedPitch();
 }
 
-uintptr_t QFontInfo_StyleHint(const QFontInfo* self) {
+int QFontInfo_StyleHint(const QFontInfo* self) {
 	QFont::StyleHint _ret = self->styleHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QFontInfo_RawMode(const QFontInfo* self) {

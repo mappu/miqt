@@ -37,13 +37,13 @@ func newQMessageAuthenticationCode_U(h unsafe.Pointer) *QMessageAuthenticationCo
 
 // NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessageAuthenticationCode {
-	ret := C.QMessageAuthenticationCode_new((C.uintptr_t)(method))
+	ret := C.QMessageAuthenticationCode_new((C.int)(method))
 	return newQMessageAuthenticationCode(ret)
 }
 
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key *QByteArray) *QMessageAuthenticationCode {
-	ret := C.QMessageAuthenticationCode_new2((C.uintptr_t)(method), key.cPointer())
+	ret := C.QMessageAuthenticationCode_new2((C.int)(method), key.cPointer())
 	return newQMessageAuthenticationCode(ret)
 }
 
@@ -77,7 +77,7 @@ func (this *QMessageAuthenticationCode) Result() *QByteArray {
 }
 
 func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	_ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.uintptr_t)(method))
+	_ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.int)(method))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

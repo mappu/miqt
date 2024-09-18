@@ -87,12 +87,12 @@ struct miqt_array* QMimeDatabase_AllMimeTypes(const QMimeDatabase* self) {
 	return _out;
 }
 
-QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string* fileName, uintptr_t mode) {
+QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string* fileName, int mode) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QMimeType(self->mimeTypeForFile(fileName_QString, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 
-QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, uintptr_t mode) {
+QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, int mode) {
 	return new QMimeType(self->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 

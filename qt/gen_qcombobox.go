@@ -125,7 +125,7 @@ func (this *QComboBox) AutoCompletionCaseSensitivity() CaseSensitivity {
 }
 
 func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity CaseSensitivity) {
-	C.QComboBox_SetAutoCompletionCaseSensitivity(this.h, (C.uintptr_t)(sensitivity))
+	C.QComboBox_SetAutoCompletionCaseSensitivity(this.h, (C.int)(sensitivity))
 }
 
 func (this *QComboBox) DuplicatesEnabled() bool {
@@ -159,7 +159,7 @@ func (this *QComboBox) InsertPolicy() QComboBox__InsertPolicy {
 }
 
 func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
-	C.QComboBox_SetInsertPolicy(this.h, (C.uintptr_t)(policy))
+	C.QComboBox_SetInsertPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
@@ -167,7 +167,7 @@ func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
 }
 
 func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
-	C.QComboBox_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
+	C.QComboBox_SetSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) MinimumContentsLength() int {
@@ -417,14 +417,14 @@ func (this *QComboBox) Event(event *QEvent) bool {
 }
 
 func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QComboBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_ret := C.QComboBox_InputMethodQuery(this.h, (C.int)(param1))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
-	_ret := C.QComboBox_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	_ret := C.QComboBox_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer())
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -736,7 +736,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 func (this *QComboBox) FindText2(text string, flags int) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags)))
+	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), flags))
 }
 
 func (this *QComboBox) FindData2(data *QVariant, role int) int {
@@ -744,7 +744,7 @@ func (this *QComboBox) FindData2(data *QVariant, role int) int {
 }
 
 func (this *QComboBox) FindData3(data *QVariant, role int, flags int) int {
-	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
+	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), flags))
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {

@@ -91,7 +91,7 @@ func (this *QTimer) RemainingTime() int {
 }
 
 func (this *QTimer) SetTimerType(atype TimerType) {
-	C.QTimer_SetTimerType(this.h, (C.uintptr_t)(atype))
+	C.QTimer_SetTimerType(this.h, (C.int)(atype))
 }
 
 func (this *QTimer) TimerType() TimerType {

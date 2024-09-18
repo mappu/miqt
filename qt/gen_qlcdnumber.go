@@ -125,7 +125,7 @@ func (this *QLCDNumber) Mode() QLCDNumber__Mode {
 }
 
 func (this *QLCDNumber) SetMode(mode QLCDNumber__Mode) {
-	C.QLCDNumber_SetMode(this.h, (C.uintptr_t)(mode))
+	C.QLCDNumber_SetMode(this.h, (C.int)(mode))
 }
 
 func (this *QLCDNumber) SegmentStyle() QLCDNumber__SegmentStyle {
@@ -133,7 +133,7 @@ func (this *QLCDNumber) SegmentStyle() QLCDNumber__SegmentStyle {
 }
 
 func (this *QLCDNumber) SetSegmentStyle(segmentStyle QLCDNumber__SegmentStyle) {
-	C.QLCDNumber_SetSegmentStyle(this.h, (C.uintptr_t)(segmentStyle))
+	C.QLCDNumber_SetSegmentStyle(this.h, (C.int)(segmentStyle))
 }
 
 func (this *QLCDNumber) Value() float64 {

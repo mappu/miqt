@@ -131,7 +131,7 @@ func (this *QCollator) CaseSensitivity() CaseSensitivity {
 }
 
 func (this *QCollator) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QCollator_SetCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QCollator_SetCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QCollator) SetNumericMode(on bool) {

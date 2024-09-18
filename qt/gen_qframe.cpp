@@ -56,21 +56,21 @@ QSize* QFrame_SizeHint(const QFrame* self) {
 	return new QSize(self->sizeHint());
 }
 
-uintptr_t QFrame_FrameShape(const QFrame* self) {
+int QFrame_FrameShape(const QFrame* self) {
 	QFrame::Shape _ret = self->frameShape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFrame_SetFrameShape(QFrame* self, uintptr_t frameShape) {
+void QFrame_SetFrameShape(QFrame* self, int frameShape) {
 	self->setFrameShape(static_cast<QFrame::Shape>(frameShape));
 }
 
-uintptr_t QFrame_FrameShadow(const QFrame* self) {
+int QFrame_FrameShadow(const QFrame* self) {
 	QFrame::Shadow _ret = self->frameShadow();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFrame_SetFrameShadow(QFrame* self, uintptr_t frameShadow) {
+void QFrame_SetFrameShadow(QFrame* self, int frameShadow) {
 	self->setFrameShadow(static_cast<QFrame::Shadow>(frameShadow));
 }
 

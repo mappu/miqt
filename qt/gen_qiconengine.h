@@ -41,11 +41,11 @@ typedef struct QRect QRect;
 typedef struct QSize QSize;
 #endif
 
-void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, uintptr_t mode, uintptr_t state);
-QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state);
-QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state);
-void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, uintptr_t mode, uintptr_t state);
-void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, uintptr_t mode, uintptr_t state);
+void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mode, int state);
+QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, int mode, int state);
+QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, int mode, int state);
+void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, int mode, int state);
+void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, int mode, int state);
 struct miqt_string* QIconEngine_Key(const QIconEngine* self);
 QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
@@ -53,15 +53,17 @@ bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
 struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self);
 struct miqt_string* QIconEngine_IconName(const QIconEngine* self);
 bool QIconEngine_IsNull(const QIconEngine* self);
-QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, uintptr_t mode, uintptr_t state, double scale);
-struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, uintptr_t mode);
-struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, uintptr_t mode, uintptr_t state);
+QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale);
+struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, int mode);
+struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state);
 void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);
+void QIconEngine__AvailableSizesArgument_OperatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1);
 void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self);
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
+void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self);
 
 #ifdef __cplusplus

@@ -57,12 +57,12 @@ QLocale* QCollator_Locale(const QCollator* self) {
 	return new QLocale(self->locale());
 }
 
-uintptr_t QCollator_CaseSensitivity(const QCollator* self) {
+int QCollator_CaseSensitivity(const QCollator* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCollator_SetCaseSensitivity(QCollator* self, uintptr_t cs) {
+void QCollator_SetCaseSensitivity(QCollator* self, int cs) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 

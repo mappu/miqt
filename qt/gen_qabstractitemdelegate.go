@@ -107,7 +107,7 @@ func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractIt
 func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode TextElideMode, text string) string {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.uintptr_t)(mode), (*C.struct_miqt_string)(text_ms))
+	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.int)(mode), (*C.struct_miqt_string)(text_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -233,14 +233,14 @@ func QAbstractItemDelegate_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
-	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.uintptr_t)(hint))
+	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.int)(hint))
 }
 func (this *QAbstractItemDelegate) OnCloseEditor2(slot func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
 	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractItemDelegate_CloseEditor2
-func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb *C.void, editor *C.QWidget, hint C.uintptr_t) {
+func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb *C.void, editor *C.QWidget, hint C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

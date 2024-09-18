@@ -11,7 +11,7 @@ QVector4D* QVector4D_new() {
 	return new QVector4D();
 }
 
-QVector4D* QVector4D_new2(uintptr_t param1) {
+QVector4D* QVector4D_new2(int param1) {
 	return new QVector4D(static_cast<Qt::Initialization>(param1));
 }
 

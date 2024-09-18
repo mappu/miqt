@@ -12,7 +12,7 @@ QColor* QColor_new() {
 	return new QColor();
 }
 
-QColor* QColor_new2(uintptr_t color) {
+QColor* QColor_new2(int color) {
 	return new QColor(static_cast<Qt::GlobalColor>(color));
 }
 
@@ -37,7 +37,7 @@ QColor* QColor_new7(const char* aname) {
 	return new QColor(aname);
 }
 
-QColor* QColor_new8(uintptr_t spec) {
+QColor* QColor_new8(int spec) {
 	return new QColor(static_cast<QColor::Spec>(spec));
 }
 
@@ -45,7 +45,7 @@ QColor* QColor_new9(QColor* color) {
 	return new QColor(*color);
 }
 
-QColor* QColor_new10(uintptr_t spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4) {
+QColor* QColor_new10(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
 }
 
@@ -53,7 +53,7 @@ QColor* QColor_new11(int r, int g, int b, int a) {
 	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
-QColor* QColor_new12(uintptr_t spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5) {
+QColor* QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
 }
 
@@ -61,7 +61,7 @@ void QColor_OperatorAssign(QColor* self, QColor* param1) {
 	self->operator=(*param1);
 }
 
-void QColor_OperatorAssignWithColor(QColor* self, uintptr_t color) {
+void QColor_OperatorAssignWithColor(QColor* self, int color) {
 	self->operator=(static_cast<Qt::GlobalColor>(color));
 }
 
@@ -76,7 +76,7 @@ struct miqt_string* QColor_Name(const QColor* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QColor_NameWithFormat(const QColor* self, uintptr_t format) {
+struct miqt_string* QColor_NameWithFormat(const QColor* self, int format) {
 	QString _ret = self->name(static_cast<QColor::NameFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -104,9 +104,9 @@ struct miqt_array* QColor_ColorNames() {
 	return _out;
 }
 
-uintptr_t QColor_Spec(const QColor* self) {
+int QColor_Spec(const QColor* self) {
 	QColor::Spec _ret = self->spec();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QColor_Alpha(const QColor* self) {
@@ -118,7 +118,8 @@ void QColor_SetAlpha(QColor* self, int alpha) {
 }
 
 double QColor_AlphaF(const QColor* self) {
-	return self->alphaF();
+	qreal _ret = self->alphaF();
+	return static_cast<double>(_ret);
 }
 
 void QColor_SetAlphaF(QColor* self, double alpha) {
@@ -150,15 +151,18 @@ void QColor_SetBlue(QColor* self, int blue) {
 }
 
 double QColor_RedF(const QColor* self) {
-	return self->redF();
+	qreal _ret = self->redF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_GreenF(const QColor* self) {
-	return self->greenF();
+	qreal _ret = self->greenF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_BlueF(const QColor* self) {
-	return self->blueF();
+	qreal _ret = self->blueF();
+	return static_cast<double>(_ret);
 }
 
 void QColor_SetRedF(QColor* self, double red) {
@@ -198,7 +202,8 @@ void QColor_SetRgba64(QColor* self, QRgba64* rgba) {
 }
 
 unsigned int QColor_Rgba(const QColor* self) {
-	return self->rgba();
+	QRgb _ret = self->rgba();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QColor_SetRgba(QColor* self, unsigned int rgba) {
@@ -206,7 +211,8 @@ void QColor_SetRgba(QColor* self, unsigned int rgba) {
 }
 
 unsigned int QColor_Rgb(const QColor* self) {
-	return self->rgb();
+	QRgb _ret = self->rgb();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QColor_SetRgbWithRgb(QColor* self, unsigned int rgb) {
@@ -234,23 +240,28 @@ int QColor_Value(const QColor* self) {
 }
 
 double QColor_HueF(const QColor* self) {
-	return self->hueF();
+	qreal _ret = self->hueF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_SaturationF(const QColor* self) {
-	return self->saturationF();
+	qreal _ret = self->saturationF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_HsvHueF(const QColor* self) {
-	return self->hsvHueF();
+	qreal _ret = self->hsvHueF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_HsvSaturationF(const QColor* self) {
-	return self->hsvSaturationF();
+	qreal _ret = self->hsvSaturationF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_ValueF(const QColor* self) {
-	return self->valueF();
+	qreal _ret = self->valueF();
+	return static_cast<double>(_ret);
 }
 
 void QColor_GetHsv(const QColor* self, int* h, int* s, int* v) {
@@ -286,19 +297,23 @@ int QColor_Black(const QColor* self) {
 }
 
 double QColor_CyanF(const QColor* self) {
-	return self->cyanF();
+	qreal _ret = self->cyanF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_MagentaF(const QColor* self) {
-	return self->magentaF();
+	qreal _ret = self->magentaF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_YellowF(const QColor* self) {
-	return self->yellowF();
+	qreal _ret = self->yellowF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_BlackF(const QColor* self) {
-	return self->blackF();
+	qreal _ret = self->blackF();
+	return static_cast<double>(_ret);
 }
 
 void QColor_GetCmyk(QColor* self, int* c, int* m, int* y, int* k) {
@@ -338,15 +353,18 @@ int QColor_Lightness(const QColor* self) {
 }
 
 double QColor_HslHueF(const QColor* self) {
-	return self->hslHueF();
+	qreal _ret = self->hslHueF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_HslSaturationF(const QColor* self) {
-	return self->hslSaturationF();
+	qreal _ret = self->hslSaturationF();
+	return static_cast<double>(_ret);
 }
 
 double QColor_LightnessF(const QColor* self) {
-	return self->lightnessF();
+	qreal _ret = self->lightnessF();
+	return static_cast<double>(_ret);
 }
 
 void QColor_GetHsl(const QColor* self, int* h, int* s, int* l) {
@@ -385,7 +403,7 @@ QColor* QColor_ToExtendedRgb(const QColor* self) {
 	return new QColor(self->toExtendedRgb());
 }
 
-QColor* QColor_ConvertTo(const QColor* self, uintptr_t colorSpec) {
+QColor* QColor_ConvertTo(const QColor* self, int colorSpec) {
 	return new QColor(self->convertTo(static_cast<QColor::Spec>(colorSpec)));
 }
 

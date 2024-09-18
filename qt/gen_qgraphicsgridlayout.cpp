@@ -27,7 +27,8 @@ void QGraphicsGridLayout_SetHorizontalSpacing(QGraphicsGridLayout* self, double 
 }
 
 double QGraphicsGridLayout_HorizontalSpacing(const QGraphicsGridLayout* self) {
-	return self->horizontalSpacing();
+	qreal _ret = self->horizontalSpacing();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetVerticalSpacing(QGraphicsGridLayout* self, double spacing) {
@@ -35,7 +36,8 @@ void QGraphicsGridLayout_SetVerticalSpacing(QGraphicsGridLayout* self, double sp
 }
 
 double QGraphicsGridLayout_VerticalSpacing(const QGraphicsGridLayout* self) {
-	return self->verticalSpacing();
+	qreal _ret = self->verticalSpacing();
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetSpacing(QGraphicsGridLayout* self, double spacing) {
@@ -47,7 +49,8 @@ void QGraphicsGridLayout_SetRowSpacing(QGraphicsGridLayout* self, int row, doubl
 }
 
 double QGraphicsGridLayout_RowSpacing(const QGraphicsGridLayout* self, int row) {
-	return self->rowSpacing(static_cast<int>(row));
+	qreal _ret = self->rowSpacing(static_cast<int>(row));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetColumnSpacing(QGraphicsGridLayout* self, int column, double spacing) {
@@ -55,7 +58,8 @@ void QGraphicsGridLayout_SetColumnSpacing(QGraphicsGridLayout* self, int column,
 }
 
 double QGraphicsGridLayout_ColumnSpacing(const QGraphicsGridLayout* self, int column) {
-	return self->columnSpacing(static_cast<int>(column));
+	qreal _ret = self->columnSpacing(static_cast<int>(column));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetRowStretchFactor(QGraphicsGridLayout* self, int row, int stretch) {
@@ -79,7 +83,8 @@ void QGraphicsGridLayout_SetRowMinimumHeight(QGraphicsGridLayout* self, int row,
 }
 
 double QGraphicsGridLayout_RowMinimumHeight(const QGraphicsGridLayout* self, int row) {
-	return self->rowMinimumHeight(static_cast<int>(row));
+	qreal _ret = self->rowMinimumHeight(static_cast<int>(row));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetRowPreferredHeight(QGraphicsGridLayout* self, int row, double height) {
@@ -87,7 +92,8 @@ void QGraphicsGridLayout_SetRowPreferredHeight(QGraphicsGridLayout* self, int ro
 }
 
 double QGraphicsGridLayout_RowPreferredHeight(const QGraphicsGridLayout* self, int row) {
-	return self->rowPreferredHeight(static_cast<int>(row));
+	qreal _ret = self->rowPreferredHeight(static_cast<int>(row));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetRowMaximumHeight(QGraphicsGridLayout* self, int row, double height) {
@@ -95,7 +101,8 @@ void QGraphicsGridLayout_SetRowMaximumHeight(QGraphicsGridLayout* self, int row,
 }
 
 double QGraphicsGridLayout_RowMaximumHeight(const QGraphicsGridLayout* self, int row) {
-	return self->rowMaximumHeight(static_cast<int>(row));
+	qreal _ret = self->rowMaximumHeight(static_cast<int>(row));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetRowFixedHeight(QGraphicsGridLayout* self, int row, double height) {
@@ -107,7 +114,8 @@ void QGraphicsGridLayout_SetColumnMinimumWidth(QGraphicsGridLayout* self, int co
 }
 
 double QGraphicsGridLayout_ColumnMinimumWidth(const QGraphicsGridLayout* self, int column) {
-	return self->columnMinimumWidth(static_cast<int>(column));
+	qreal _ret = self->columnMinimumWidth(static_cast<int>(column));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetColumnPreferredWidth(QGraphicsGridLayout* self, int column, double width) {
@@ -115,7 +123,8 @@ void QGraphicsGridLayout_SetColumnPreferredWidth(QGraphicsGridLayout* self, int 
 }
 
 double QGraphicsGridLayout_ColumnPreferredWidth(const QGraphicsGridLayout* self, int column) {
-	return self->columnPreferredWidth(static_cast<int>(column));
+	qreal _ret = self->columnPreferredWidth(static_cast<int>(column));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetColumnMaximumWidth(QGraphicsGridLayout* self, int column, double width) {
@@ -123,7 +132,8 @@ void QGraphicsGridLayout_SetColumnMaximumWidth(QGraphicsGridLayout* self, int co
 }
 
 double QGraphicsGridLayout_ColumnMaximumWidth(const QGraphicsGridLayout* self, int column) {
-	return self->columnMaximumWidth(static_cast<int>(column));
+	qreal _ret = self->columnMaximumWidth(static_cast<int>(column));
+	return static_cast<double>(_ret);
 }
 
 void QGraphicsGridLayout_SetColumnFixedWidth(QGraphicsGridLayout* self, int column, double width) {
@@ -193,7 +203,7 @@ void QGraphicsGridLayout_SetGeometry(QGraphicsGridLayout* self, QRectF* rect) {
 	self->setGeometry(*rect);
 }
 
-QSizeF* QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout* self, uintptr_t which) {
+QSizeF* QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout* self, int which) {
 	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
@@ -205,7 +215,7 @@ void QGraphicsGridLayout_AddItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<Qt::Alignment>(alignment));
 }
 
-QSizeF* QGraphicsGridLayout_SizeHint2(const QGraphicsGridLayout* self, uintptr_t which, QSizeF* constraint) {
+QSizeF* QGraphicsGridLayout_SizeHint2(const QGraphicsGridLayout* self, int which, QSizeF* constraint) {
 	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 

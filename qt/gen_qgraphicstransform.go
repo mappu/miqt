@@ -448,7 +448,7 @@ func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
 }
 
 func (this *QGraphicsRotation) SetAxisWithAxis(axis Axis) {
-	C.QGraphicsRotation_SetAxisWithAxis(this.h, (C.uintptr_t)(axis))
+	C.QGraphicsRotation_SetAxisWithAxis(this.h, (C.int)(axis))
 }
 
 func (this *QGraphicsRotation) ApplyTo(matrix *QMatrix4x4) {

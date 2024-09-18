@@ -244,7 +244,7 @@ func (this *QStringListModel) RemoveRows3(row int, count int, parent *QModelInde
 }
 
 func (this *QStringListModel) Sort2(column int, order SortOrder) {
-	C.QStringListModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QStringListModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 // Delete this object from C++ memory.

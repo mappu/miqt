@@ -29,7 +29,7 @@ QDate* QLibraryInfo_BuildDate();
 const char* QLibraryInfo_Build();
 bool QLibraryInfo_IsDebugBuild();
 QVersionNumber* QLibraryInfo_Version();
-struct miqt_string* QLibraryInfo_Location(uintptr_t param1);
+struct miqt_string* QLibraryInfo_Location(int param1);
 struct miqt_array* QLibraryInfo_PlatformPluginArguments(struct miqt_string* platformName);
 void QLibraryInfo_Delete(QLibraryInfo* self);
 

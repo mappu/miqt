@@ -86,13 +86,13 @@ QAbstractItemModel* QCompleter_Model(const QCompleter* self) {
 	return self->model();
 }
 
-void QCompleter_SetCompletionMode(QCompleter* self, uintptr_t mode) {
+void QCompleter_SetCompletionMode(QCompleter* self, int mode) {
 	self->setCompletionMode(static_cast<QCompleter::CompletionMode>(mode));
 }
 
-uintptr_t QCompleter_CompletionMode(const QCompleter* self) {
+int QCompleter_CompletionMode(const QCompleter* self) {
 	QCompleter::CompletionMode _ret = self->completionMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QCompleter_SetFilterMode(QCompleter* self, int filterMode) {
@@ -112,22 +112,22 @@ void QCompleter_SetPopup(QCompleter* self, QAbstractItemView* popup) {
 	self->setPopup(popup);
 }
 
-void QCompleter_SetCaseSensitivity(QCompleter* self, uintptr_t caseSensitivity) {
+void QCompleter_SetCaseSensitivity(QCompleter* self, int caseSensitivity) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(caseSensitivity));
 }
 
-uintptr_t QCompleter_CaseSensitivity(const QCompleter* self) {
+int QCompleter_CaseSensitivity(const QCompleter* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QCompleter_SetModelSorting(QCompleter* self, uintptr_t sorting) {
+void QCompleter_SetModelSorting(QCompleter* self, int sorting) {
 	self->setModelSorting(static_cast<QCompleter::ModelSorting>(sorting));
 }
 
-uintptr_t QCompleter_ModelSorting(const QCompleter* self) {
+int QCompleter_ModelSorting(const QCompleter* self) {
 	QCompleter::ModelSorting _ret = self->modelSorting();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QCompleter_SetCompletionColumn(QCompleter* self, int column) {

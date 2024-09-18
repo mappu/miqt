@@ -119,7 +119,7 @@ func (this *QTimeLine) Direction() QTimeLine__Direction {
 }
 
 func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
-	C.QTimeLine_SetDirection(this.h, (C.uintptr_t)(direction))
+	C.QTimeLine_SetDirection(this.h, (C.int)(direction))
 }
 
 func (this *QTimeLine) Duration() int {
@@ -163,7 +163,7 @@ func (this *QTimeLine) CurveShape() QTimeLine__CurveShape {
 }
 
 func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
-	C.QTimeLine_SetCurveShape(this.h, (C.uintptr_t)(shape))
+	C.QTimeLine_SetCurveShape(this.h, (C.int)(shape))
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {

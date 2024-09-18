@@ -44,7 +44,7 @@ func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
-	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.uintptr_t)(r))
+	ret := C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r))
 	return newQAccessibleWidget(ret)
 }
 
@@ -52,7 +52,7 @@ func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
 	name_ms := miqt_strdupg(name)
 	defer C.free(name_ms)
-	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.uintptr_t)(r), (*C.struct_miqt_string)(name_ms))
+	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), (*C.struct_miqt_string)(name_ms))
 	return newQAccessibleWidget(ret)
 }
 
@@ -92,7 +92,7 @@ func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.uintptr_t)(t))
+	var _ms *C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.int)(t))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

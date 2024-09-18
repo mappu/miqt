@@ -22,7 +22,7 @@ QUrl* QUrl_new3(struct miqt_string* url) {
 	return new QUrl(url_QString);
 }
 
-QUrl* QUrl_new4(struct miqt_string* url, uintptr_t mode) {
+QUrl* QUrl_new4(struct miqt_string* url, int mode) {
 	QString url_QString = QString::fromUtf8(&url->data, url->len);
 	return new QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -387,12 +387,12 @@ void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string* */ idnWhi
 	QUrl::setIdnWhitelist(idnWhitelist_QList);
 }
 
-void QUrl_SetUrl2(QUrl* self, struct miqt_string* url, uintptr_t mode) {
+void QUrl_SetUrl2(QUrl* self, struct miqt_string* url, int mode) {
 	QString url_QString = QString::fromUtf8(&url->data, url->len);
 	self->setUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-QUrl* QUrl_FromEncoded2(QByteArray* url, uintptr_t mode) {
+QUrl* QUrl_FromEncoded2(QByteArray* url, int mode) {
 	return new QUrl(QUrl::fromEncoded(*url, static_cast<QUrl::ParsingMode>(mode)));
 }
 
@@ -402,7 +402,7 @@ QUrl* QUrl_FromUserInput3(struct miqt_string* userInput, struct miqt_string* wor
 	return new QUrl(QUrl::fromUserInput(userInput_QString, workingDirectory_QString, static_cast<QUrl::UserInputResolutionOptions>(options)));
 }
 
-void QUrl_SetAuthority2(QUrl* self, struct miqt_string* authority, uintptr_t mode) {
+void QUrl_SetAuthority2(QUrl* self, struct miqt_string* authority, int mode) {
 	QString authority_QString = QString::fromUtf8(&authority->data, authority->len);
 	self->setAuthority(authority_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -414,7 +414,7 @@ struct miqt_string* QUrl_Authority1(const QUrl* self, int options) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetUserInfo2(QUrl* self, struct miqt_string* userInfo, uintptr_t mode) {
+void QUrl_SetUserInfo2(QUrl* self, struct miqt_string* userInfo, int mode) {
 	QString userInfo_QString = QString::fromUtf8(&userInfo->data, userInfo->len);
 	self->setUserInfo(userInfo_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -426,7 +426,7 @@ struct miqt_string* QUrl_UserInfo1(const QUrl* self, int options) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetUserName2(QUrl* self, struct miqt_string* userName, uintptr_t mode) {
+void QUrl_SetUserName2(QUrl* self, struct miqt_string* userName, int mode) {
 	QString userName_QString = QString::fromUtf8(&userName->data, userName->len);
 	self->setUserName(userName_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -438,7 +438,7 @@ struct miqt_string* QUrl_UserName1(const QUrl* self, int options) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetPassword2(QUrl* self, struct miqt_string* password, uintptr_t mode) {
+void QUrl_SetPassword2(QUrl* self, struct miqt_string* password, int mode) {
 	QString password_QString = QString::fromUtf8(&password->data, password->len);
 	self->setPassword(password_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -450,7 +450,7 @@ struct miqt_string* QUrl_Password1(const QUrl* self, int param1) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetHost2(QUrl* self, struct miqt_string* host, uintptr_t mode) {
+void QUrl_SetHost2(QUrl* self, struct miqt_string* host, int mode) {
 	QString host_QString = QString::fromUtf8(&host->data, host->len);
 	self->setHost(host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -473,7 +473,7 @@ int QUrl_Port1(const QUrl* self, int defaultPort) {
 	return self->port(static_cast<int>(defaultPort));
 }
 
-void QUrl_SetPath2(QUrl* self, struct miqt_string* path, uintptr_t mode) {
+void QUrl_SetPath2(QUrl* self, struct miqt_string* path, int mode) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	self->setPath(path_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -492,7 +492,7 @@ struct miqt_string* QUrl_FileName1(const QUrl* self, int options) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetQuery2(QUrl* self, struct miqt_string* query, uintptr_t mode) {
+void QUrl_SetQuery2(QUrl* self, struct miqt_string* query, int mode) {
 	QString query_QString = QString::fromUtf8(&query->data, query->len);
 	self->setQuery(query_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -511,7 +511,7 @@ struct miqt_string* QUrl_Fragment1(const QUrl* self, int options) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QUrl_SetFragment2(QUrl* self, struct miqt_string* fragment, uintptr_t mode) {
+void QUrl_SetFragment2(QUrl* self, struct miqt_string* fragment, int mode) {
 	QString fragment_QString = QString::fromUtf8(&fragment->data, fragment->len);
 	self->setFragment(fragment_QString, static_cast<QUrl::ParsingMode>(mode));
 }
@@ -526,7 +526,7 @@ QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* excl
 	return new QByteArray(QUrl::toPercentEncoding(param1_QString, *exclude, *include));
 }
 
-struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, uintptr_t mode) {
+struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, int mode) {
 	QList<QString> uris_QList;
 	uris_QList.reserve(uris->len);
 	struct miqt_string** uris_arr = static_cast<struct miqt_string**>(uris->data);

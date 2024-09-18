@@ -175,7 +175,8 @@ bool QFile_Open3(QFile* self, int fd, int ioFlags) {
 }
 
 long long QFile_Size(const QFile* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 bool QFile_Resize(QFile* self, long long sz) {

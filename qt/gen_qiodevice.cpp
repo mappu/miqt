@@ -88,11 +88,13 @@ void QIODevice_Close(QIODevice* self) {
 }
 
 long long QIODevice_Pos(const QIODevice* self) {
-	return self->pos();
+	qint64 _ret = self->pos();
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_Size(const QIODevice* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 bool QIODevice_Seek(QIODevice* self, long long pos) {
@@ -108,15 +110,18 @@ bool QIODevice_Reset(QIODevice* self) {
 }
 
 long long QIODevice_BytesAvailable(const QIODevice* self) {
-	return self->bytesAvailable();
+	qint64 _ret = self->bytesAvailable();
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_BytesToWrite(const QIODevice* self) {
-	return self->bytesToWrite();
+	qint64 _ret = self->bytesToWrite();
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_Read(QIODevice* self, char* data, long long maxlen) {
-	return self->read(data, static_cast<qint64>(maxlen));
+	qint64 _ret = self->read(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
 }
 
 QByteArray* QIODevice_ReadWithMaxlen(QIODevice* self, long long maxlen) {
@@ -128,7 +133,8 @@ QByteArray* QIODevice_ReadAll(QIODevice* self) {
 }
 
 long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
-	return self->readLine(data, static_cast<qint64>(maxlen));
+	qint64 _ret = self->readLine(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
 }
 
 QByteArray* QIODevice_ReadLine2(QIODevice* self) {
@@ -156,19 +162,23 @@ bool QIODevice_IsTransactionStarted(const QIODevice* self) {
 }
 
 long long QIODevice_Write(QIODevice* self, const char* data, long long lenVal) {
-	return self->write(data, static_cast<qint64>(lenVal));
+	qint64 _ret = self->write(data, static_cast<qint64>(lenVal));
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_WriteWithData(QIODevice* self, const char* data) {
-	return self->write(data);
+	qint64 _ret = self->write(data);
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_Write2(QIODevice* self, QByteArray* data) {
-	return self->write(*data);
+	qint64 _ret = self->write(*data);
+	return static_cast<long long>(_ret);
 }
 
 long long QIODevice_Peek(QIODevice* self, char* data, long long maxlen) {
-	return self->peek(data, static_cast<qint64>(maxlen));
+	qint64 _ret = self->peek(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
 }
 
 QByteArray* QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
@@ -176,7 +186,8 @@ QByteArray* QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
 }
 
 long long QIODevice_Skip(QIODevice* self, long long maxSize) {
-	return self->skip(static_cast<qint64>(maxSize));
+	qint64 _ret = self->skip(static_cast<qint64>(maxSize));
+	return static_cast<long long>(_ret);
 }
 
 bool QIODevice_WaitForReadyRead(QIODevice* self, int msecs) {
@@ -233,7 +244,8 @@ void QIODevice_BytesWritten(QIODevice* self, long long bytes) {
 
 void QIODevice_connect_BytesWritten(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(qint64)>(&QIODevice::bytesWritten), self, [=](qint64 bytes) {
-		long long sigval1 = bytes;
+		qint64 bytes_ret = bytes;
+		long long sigval1 = static_cast<long long>(bytes_ret);
 		miqt_exec_callback_QIODevice_BytesWritten(slot, sigval1);
 	});
 }
@@ -245,7 +257,8 @@ void QIODevice_ChannelBytesWritten(QIODevice* self, int channel, long long bytes
 void QIODevice_connect_ChannelBytesWritten(QIODevice* self, void* slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(int, qint64)>(&QIODevice::channelBytesWritten), self, [=](int channel, qint64 bytes) {
 		int sigval1 = channel;
-		long long sigval2 = bytes;
+		qint64 bytes_ret = bytes;
+		long long sigval2 = static_cast<long long>(bytes_ret);
 		miqt_exec_callback_QIODevice_ChannelBytesWritten(slot, sigval1, sigval2);
 	});
 }

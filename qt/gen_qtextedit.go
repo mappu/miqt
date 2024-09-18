@@ -145,7 +145,7 @@ func (this *QTextEdit) SetReadOnly(ro bool) {
 }
 
 func (this *QTextEdit) SetTextInteractionFlags(flags int) {
-	C.QTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QTextEdit_SetTextInteractionFlags(this.h, flags)
 }
 
 func (this *QTextEdit) TextInteractionFlags() int {
@@ -220,7 +220,7 @@ func (this *QTextEdit) AutoFormatting() int {
 }
 
 func (this *QTextEdit) SetAutoFormatting(features int) {
-	C.QTextEdit_SetAutoFormatting(this.h, (C.int)(features))
+	C.QTextEdit_SetAutoFormatting(this.h, features)
 }
 
 func (this *QTextEdit) TabChangesFocus() bool {
@@ -257,7 +257,7 @@ func (this *QTextEdit) LineWrapMode() QTextEdit__LineWrapMode {
 }
 
 func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
-	C.QTextEdit_SetLineWrapMode(this.h, (C.uintptr_t)(mode))
+	C.QTextEdit_SetLineWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QTextEdit) LineWrapColumnOrWidth() int {
@@ -273,7 +273,7 @@ func (this *QTextEdit) WordWrapMode() QTextOption__WrapMode {
 }
 
 func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
-	C.QTextEdit_SetWordWrapMode(this.h, (C.uintptr_t)(policy))
+	C.QTextEdit_SetWordWrapMode(this.h, (C.int)(policy))
 }
 
 func (this *QTextEdit) Find(exp string) bool {
@@ -425,7 +425,7 @@ func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 }
 
 func (this *QTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
-	C.QTextEdit_MoveCursor(this.h, (C.uintptr_t)(operation))
+	C.QTextEdit_MoveCursor(this.h, (C.int)(operation))
 }
 
 func (this *QTextEdit) CanPaste() bool {
@@ -437,14 +437,14 @@ func (this *QTextEdit) Print(printer *QPagedPaintDevice) {
 }
 
 func (this *QTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
-	_ret := C.QTextEdit_InputMethodQuery(this.h, (C.uintptr_t)(property))
+	_ret := C.QTextEdit_InputMethodQuery(this.h, (C.int)(property))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
-	_ret := C.QTextEdit_InputMethodQuery2(this.h, (C.uintptr_t)(query), argument.cPointer())
+	_ret := C.QTextEdit_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer())
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -485,7 +485,7 @@ func (this *QTextEdit) SetCurrentFont(f *QFont) {
 }
 
 func (this *QTextEdit) SetAlignment(a int) {
-	C.QTextEdit_SetAlignment(this.h, (C.int)(a))
+	C.QTextEdit_SetAlignment(this.h, a)
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
@@ -750,26 +750,26 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
+	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), options))
 }
 
 func (this *QTextEdit) Find23(exp *QRegExp, options int) bool {
-	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
+	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), options))
 }
 
 func (this *QTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
+	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), options))
 }
 
 func (this *QTextEdit) ToMarkdown1(features int) string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
+	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, features)
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
-	C.QTextEdit_MoveCursor2(this.h, (C.uintptr_t)(operation), (C.uintptr_t)(mode))
+	C.QTextEdit_MoveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
 func (this *QTextEdit) ZoomIn1(rangeVal int) {
@@ -820,6 +820,10 @@ func newQTextEdit__ExtraSelection_U(h unsafe.Pointer) *QTextEdit__ExtraSelection
 func NewQTextEdit__ExtraSelection(param1 *QTextEdit__ExtraSelection) *QTextEdit__ExtraSelection {
 	ret := C.QTextEdit__ExtraSelection_new(param1.cPointer())
 	return newQTextEdit__ExtraSelection(ret)
+}
+
+func (this *QTextEdit__ExtraSelection) OperatorAssign(param1 *QTextEdit__ExtraSelection) {
+	C.QTextEdit__ExtraSelection_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

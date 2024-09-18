@@ -13,7 +13,7 @@ QVector3D* QVector3D_new() {
 	return new QVector3D();
 }
 
-QVector3D* QVector3D_new2(uintptr_t param1) {
+QVector3D* QVector3D_new2(int param1) {
 	return new QVector3D(static_cast<Qt::Initialization>(param1));
 }
 

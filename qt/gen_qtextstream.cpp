@@ -86,12 +86,12 @@ struct miqt_string* QTextStream_String(const QTextStream* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QTextStream_Status(const QTextStream* self) {
+int QTextStream_Status(const QTextStream* self) {
 	QTextStream::Status _ret = self->status();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTextStream_SetStatus(QTextStream* self, uintptr_t status) {
+void QTextStream_SetStatus(QTextStream* self, int status) {
 	self->setStatus(static_cast<QTextStream::Status>(status));
 }
 
@@ -116,7 +116,8 @@ bool QTextStream_Seek(QTextStream* self, long long pos) {
 }
 
 long long QTextStream_Pos(const QTextStream* self) {
-	return self->pos();
+	qint64 _ret = self->pos();
+	return static_cast<long long>(_ret);
 }
 
 void QTextStream_SkipWhiteSpace(QTextStream* self) {
@@ -144,13 +145,13 @@ struct miqt_string* QTextStream_Read(QTextStream* self, long long maxlen) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextStream_SetFieldAlignment(QTextStream* self, uintptr_t alignment) {
+void QTextStream_SetFieldAlignment(QTextStream* self, int alignment) {
 	self->setFieldAlignment(static_cast<QTextStream::FieldAlignment>(alignment));
 }
 
-uintptr_t QTextStream_FieldAlignment(const QTextStream* self) {
+int QTextStream_FieldAlignment(const QTextStream* self) {
 	QTextStream::FieldAlignment _ret = self->fieldAlignment();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextStream_SetPadChar(QTextStream* self, QChar* ch) {
@@ -186,13 +187,13 @@ int QTextStream_IntegerBase(const QTextStream* self) {
 	return self->integerBase();
 }
 
-void QTextStream_SetRealNumberNotation(QTextStream* self, uintptr_t notation) {
+void QTextStream_SetRealNumberNotation(QTextStream* self, int notation) {
 	self->setRealNumberNotation(static_cast<QTextStream::RealNumberNotation>(notation));
 }
 
-uintptr_t QTextStream_RealNumberNotation(const QTextStream* self) {
+int QTextStream_RealNumberNotation(const QTextStream* self) {
 	QTextStream::RealNumberNotation _ret = self->realNumberNotation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QTextStream_SetRealNumberPrecision(QTextStream* self, int precision) {
@@ -251,14 +252,14 @@ QTextStream* QTextStream_OperatorShiftRightWithUnsignedlong(QTextStream* self, u
 	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftRightWithQlonglong(QTextStream* self, int64_t* i) {
-	QTextStream& _ret = self->operator>>((qlonglong&)(*i));
+QTextStream* QTextStream_OperatorShiftRightWithQlonglong(QTextStream* self, long long* i) {
+	QTextStream& _ret = self->operator>>(static_cast<qlonglong&>(*i));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftRightWithQulonglong(QTextStream* self, uint64_t* i) {
-	QTextStream& _ret = self->operator>>((qulonglong&)(*i));
+QTextStream* QTextStream_OperatorShiftRightWithQulonglong(QTextStream* self, unsigned long long* i) {
+	QTextStream& _ret = self->operator>>(static_cast<qulonglong&>(*i));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -342,14 +343,14 @@ QTextStream* QTextStream_OperatorShiftLeftWithUnsignedlong(QTextStream* self, un
 	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftLeftWithQlonglong(QTextStream* self, int64_t i) {
-	QTextStream& _ret = self->operator<<((qlonglong)(i));
+QTextStream* QTextStream_OperatorShiftLeftWithQlonglong(QTextStream* self, long long i) {
+	QTextStream& _ret = self->operator<<(static_cast<qlonglong>(i));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTextStream* QTextStream_OperatorShiftLeftWithQulonglong(QTextStream* self, uint64_t i) {
-	QTextStream& _ret = self->operator<<((qulonglong)(i));
+QTextStream* QTextStream_OperatorShiftLeftWithQulonglong(QTextStream* self, unsigned long long i) {
+	QTextStream& _ret = self->operator<<(static_cast<qulonglong>(i));
 	// Cast returned reference into pointer
 	return &_ret;
 }

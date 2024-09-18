@@ -115,7 +115,8 @@ QChar* QStyleHints_PasswordMaskCharacter(const QStyleHints* self) {
 }
 
 double QStyleHints_FontSmoothingGamma(const QStyleHints* self) {
-	return self->fontSmoothingGamma();
+	qreal _ret = self->fontSmoothingGamma();
+	return static_cast<double>(_ret);
 }
 
 bool QStyleHints_UseRtlExtensions(const QStyleHints* self) {
@@ -126,12 +127,12 @@ bool QStyleHints_SetFocusOnTouchRelease(const QStyleHints* self) {
 	return self->setFocusOnTouchRelease();
 }
 
-uintptr_t QStyleHints_TabFocusBehavior(const QStyleHints* self) {
+int QStyleHints_TabFocusBehavior(const QStyleHints* self) {
 	Qt::TabFocusBehavior _ret = self->tabFocusBehavior();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QStyleHints_SetTabFocusBehavior(QStyleHints* self, uintptr_t tabFocusBehavior) {
+void QStyleHints_SetTabFocusBehavior(QStyleHints* self, int tabFocusBehavior) {
 	self->setTabFocusBehavior(static_cast<Qt::TabFocusBehavior>(tabFocusBehavior));
 }
 
@@ -229,14 +230,14 @@ void QStyleHints_connect_StartDragTimeChanged(QStyleHints* self, void* slot) {
 	});
 }
 
-void QStyleHints_TabFocusBehaviorChanged(QStyleHints* self, uintptr_t tabFocusBehavior) {
+void QStyleHints_TabFocusBehaviorChanged(QStyleHints* self, int tabFocusBehavior) {
 	self->tabFocusBehaviorChanged(static_cast<Qt::TabFocusBehavior>(tabFocusBehavior));
 }
 
 void QStyleHints_connect_TabFocusBehaviorChanged(QStyleHints* self, void* slot) {
 	QStyleHints::connect(self, static_cast<void (QStyleHints::*)(Qt::TabFocusBehavior)>(&QStyleHints::tabFocusBehaviorChanged), self, [=](Qt::TabFocusBehavior tabFocusBehavior) {
 		Qt::TabFocusBehavior tabFocusBehavior_ret = tabFocusBehavior;
-		uintptr_t sigval1 = static_cast<uintptr_t>(tabFocusBehavior_ret);
+		int sigval1 = static_cast<int>(tabFocusBehavior_ret);
 		miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged(slot, sigval1);
 	});
 }

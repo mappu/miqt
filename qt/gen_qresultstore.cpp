@@ -113,6 +113,10 @@ int QtPrivate__ResultStoreBase_AddCanceledResult(QtPrivate__ResultStoreBase* sel
 	return self->addCanceledResult(static_cast<int>(index));
 }
 
+void QtPrivate__ResultStoreBase_OperatorAssign(QtPrivate__ResultStoreBase* self, QtPrivate__ResultStoreBase* param1) {
+	self->operator=(*param1);
+}
+
 void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self) {
 	delete self;
 }

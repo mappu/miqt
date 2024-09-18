@@ -204,12 +204,12 @@ void QListWidgetItem_SetForeground(QListWidgetItem* self, QBrush* brush) {
 	self->setForeground(*brush);
 }
 
-uintptr_t QListWidgetItem_CheckState(const QListWidgetItem* self) {
+int QListWidgetItem_CheckState(const QListWidgetItem* self) {
 	Qt::CheckState _ret = self->checkState();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QListWidgetItem_SetCheckState(QListWidgetItem* self, uintptr_t state) {
+void QListWidgetItem_SetCheckState(QListWidgetItem* self, int state) {
 	self->setCheckState(static_cast<Qt::CheckState>(state));
 }
 
@@ -424,7 +424,7 @@ void QListWidget_SetItemSelected(QListWidget* self, QListWidgetItem* item, bool 
 }
 
 struct miqt_array* QListWidget_SelectedItems(const QListWidget* self) {
-	QList<QListWidgetItem*> _ret = self->selectedItems();
+	QList<QListWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** _arr = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -438,7 +438,7 @@ struct miqt_array* QListWidget_SelectedItems(const QListWidget* self) {
 
 struct miqt_array* QListWidget_FindItems(const QListWidget* self, struct miqt_string* text, int flags) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QList<QListWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
+	QList<QListWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** _arr = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -612,11 +612,11 @@ struct miqt_string* QListWidget_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QListWidget_SortItems1(QListWidget* self, uintptr_t order) {
+void QListWidget_SortItems1(QListWidget* self, int order) {
 	self->sortItems(static_cast<Qt::SortOrder>(order));
 }
 
-void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, uintptr_t hint) {
+void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, int hint) {
 	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

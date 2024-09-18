@@ -105,7 +105,7 @@ func (this *QAbstractTransition) TransitionType() QAbstractTransition__Transitio
 }
 
 func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__TransitionType) {
-	C.QAbstractTransition_SetTransitionType(this.h, (C.uintptr_t)(typeVal))
+	C.QAbstractTransition_SetTransitionType(this.h, (C.int)(typeVal))
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {

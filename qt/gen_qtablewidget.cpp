@@ -233,12 +233,12 @@ void QTableWidgetItem_SetForeground(QTableWidgetItem* self, QBrush* brush) {
 	self->setForeground(*brush);
 }
 
-uintptr_t QTableWidgetItem_CheckState(const QTableWidgetItem* self) {
+int QTableWidgetItem_CheckState(const QTableWidgetItem* self) {
 	Qt::CheckState _ret = self->checkState();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTableWidgetItem_SetCheckState(QTableWidgetItem* self, uintptr_t state) {
+void QTableWidgetItem_SetCheckState(QTableWidgetItem* self, int state) {
 	self->setCheckState(static_cast<Qt::CheckState>(state));
 }
 
@@ -492,7 +492,7 @@ struct miqt_array* QTableWidget_SelectedRanges(const QTableWidget* self) {
 }
 
 struct miqt_array* QTableWidget_SelectedItems(const QTableWidget* self) {
-	QList<QTableWidgetItem*> _ret = self->selectedItems();
+	QList<QTableWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetItem** _arr = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -506,7 +506,7 @@ struct miqt_array* QTableWidget_SelectedItems(const QTableWidget* self) {
 
 struct miqt_array* QTableWidget_FindItems(const QTableWidget* self, struct miqt_string* text, int flags) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QList<QTableWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
+	QList<QTableWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetItem** _arr = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -776,11 +776,11 @@ struct miqt_string* QTableWidget_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTableWidget_SortItems2(QTableWidget* self, int column, uintptr_t order) {
+void QTableWidget_SortItems2(QTableWidget* self, int column, int order) {
 	self->sortItems(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, uintptr_t hint) {
+void QTableWidget_ScrollToItem2(QTableWidget* self, QTableWidgetItem* item, int hint) {
 	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

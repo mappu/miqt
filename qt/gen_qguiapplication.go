@@ -245,7 +245,7 @@ func QGuiApplication_MouseButtons() int {
 }
 
 func QGuiApplication_SetLayoutDirection(direction LayoutDirection) {
-	C.QGuiApplication_SetLayoutDirection((C.uintptr_t)(direction))
+	C.QGuiApplication_SetLayoutDirection((C.int)(direction))
 }
 
 func QGuiApplication_LayoutDirection() LayoutDirection {
@@ -289,7 +289,7 @@ func QGuiApplication_ApplicationState() ApplicationState {
 }
 
 func QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(policy HighDpiScaleFactorRoundingPolicy) {
-	C.QGuiApplication_SetHighDpiScaleFactorRoundingPolicy((C.uintptr_t)(policy))
+	C.QGuiApplication_SetHighDpiScaleFactorRoundingPolicy((C.int)(policy))
 }
 
 func QGuiApplication_HighDpiScaleFactorRoundingPolicy() HighDpiScaleFactorRoundingPolicy {
@@ -473,14 +473,14 @@ func miqt_exec_callback_QGuiApplication_FocusWindowChanged(cb *C.void, focusWind
 }
 
 func (this *QGuiApplication) ApplicationStateChanged(state ApplicationState) {
-	C.QGuiApplication_ApplicationStateChanged(this.h, (C.uintptr_t)(state))
+	C.QGuiApplication_ApplicationStateChanged(this.h, (C.int)(state))
 }
 func (this *QGuiApplication) OnApplicationStateChanged(slot func(state ApplicationState)) {
 	C.QGuiApplication_connect_ApplicationStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QGuiApplication_ApplicationStateChanged
-func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb *C.void, state C.uintptr_t) {
+func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb *C.void, state C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(state ApplicationState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -493,14 +493,14 @@ func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb *C.void, stat
 }
 
 func (this *QGuiApplication) LayoutDirectionChanged(direction LayoutDirection) {
-	C.QGuiApplication_LayoutDirectionChanged(this.h, (C.uintptr_t)(direction))
+	C.QGuiApplication_LayoutDirectionChanged(this.h, (C.int)(direction))
 }
 func (this *QGuiApplication) OnLayoutDirectionChanged(slot func(direction LayoutDirection)) {
 	C.QGuiApplication_connect_LayoutDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QGuiApplication_LayoutDirectionChanged
-func miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(cb *C.void, direction C.uintptr_t) {
+func miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(cb *C.void, direction C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(direction LayoutDirection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

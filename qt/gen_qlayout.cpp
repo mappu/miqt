@@ -74,13 +74,13 @@ bool QLayout_SetAlignment2(QLayout* self, QLayout* l, int alignment) {
 	return self->setAlignment(l, static_cast<Qt::Alignment>(alignment));
 }
 
-void QLayout_SetSizeConstraint(QLayout* self, uintptr_t sizeConstraint) {
+void QLayout_SetSizeConstraint(QLayout* self, int sizeConstraint) {
 	self->setSizeConstraint(static_cast<QLayout::SizeConstraint>(sizeConstraint));
 }
 
-uintptr_t QLayout_SizeConstraint(const QLayout* self) {
+int QLayout_SizeConstraint(const QLayout* self) {
 	QLayout::SizeConstraint _ret = self->sizeConstraint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QLayout_SetMenuBar(QLayout* self, QWidget* w) {

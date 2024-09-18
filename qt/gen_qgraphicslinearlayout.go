@@ -44,7 +44,7 @@ func NewQGraphicsLinearLayout() *QGraphicsLinearLayout {
 
 // NewQGraphicsLinearLayout2 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout2(orientation Orientation) *QGraphicsLinearLayout {
-	ret := C.QGraphicsLinearLayout_new2((C.uintptr_t)(orientation))
+	ret := C.QGraphicsLinearLayout_new2((C.int)(orientation))
 	return newQGraphicsLinearLayout(ret)
 }
 
@@ -56,12 +56,12 @@ func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayo
 
 // NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout4(orientation Orientation, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
-	ret := C.QGraphicsLinearLayout_new4((C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer())
 	return newQGraphicsLinearLayout(ret)
 }
 
 func (this *QGraphicsLinearLayout) SetOrientation(orientation Orientation) {
-	C.QGraphicsLinearLayout_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QGraphicsLinearLayout_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QGraphicsLinearLayout) Orientation() Orientation {
@@ -117,7 +117,7 @@ func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int 
 }
 
 func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
-	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
+	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), alignment)
 }
 
 func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) int {
@@ -141,7 +141,7 @@ func (this *QGraphicsLinearLayout) Invalidate() {
 }
 
 func (this *QGraphicsLinearLayout) SizeHint(which SizeHint) *QSizeF {
-	_ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.uintptr_t)(which))
+	_ret := C.QGraphicsLinearLayout_SizeHint(this.h, (C.int)(which))
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -160,7 +160,7 @@ func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
 }
 
 func (this *QGraphicsLinearLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
-	_ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	_ret := C.QGraphicsLinearLayout_SizeHint2(this.h, (C.int)(which), constraint.cPointer())
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -113,7 +113,7 @@ func NewQDir5(path string, nameFilter string, sort int) *QDir {
 	defer C.free(path_ms)
 	nameFilter_ms := miqt_strdupg(nameFilter)
 	defer C.free(nameFilter_ms)
-	ret := C.QDir_new5((*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(nameFilter_ms), (C.int)(sort))
+	ret := C.QDir_new5((*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(nameFilter_ms), sort)
 	return newQDir(ret)
 }
 
@@ -123,7 +123,7 @@ func NewQDir6(path string, nameFilter string, sort int, filter int) *QDir {
 	defer C.free(path_ms)
 	nameFilter_ms := miqt_strdupg(nameFilter)
 	defer C.free(nameFilter_ms)
-	ret := C.QDir_new6((*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(nameFilter_ms), (C.int)(sort), (C.int)(filter))
+	ret := C.QDir_new6((*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(nameFilter_ms), sort, filter)
 	return newQDir(ret)
 }
 
@@ -309,7 +309,7 @@ func (this *QDir) Filter() int {
 }
 
 func (this *QDir) SetFilter(filter int) {
-	C.QDir_SetFilter(this.h, (C.int)(filter))
+	C.QDir_SetFilter(this.h, filter)
 }
 
 func (this *QDir) Sorting() int {
@@ -317,7 +317,7 @@ func (this *QDir) Sorting() int {
 }
 
 func (this *QDir) SetSorting(sort int) {
-	C.QDir_SetSorting(this.h, (C.int)(sort))
+	C.QDir_SetSorting(this.h, sort)
 }
 
 func (this *QDir) Count() uint {
@@ -647,11 +647,11 @@ func (this *QDir) Refresh() {
 }
 
 func (this *QDir) IsEmpty1(filters int) bool {
-	return (bool)(C.QDir_IsEmpty1(this.h, (C.int)(filters)))
+	return (bool)(C.QDir_IsEmpty1(this.h, filters))
 }
 
 func (this *QDir) EntryList1(filters int) []string {
-	var _ma *C.struct_miqt_array = C.QDir_EntryList1(this.h, (C.int)(filters))
+	var _ma *C.struct_miqt_array = C.QDir_EntryList1(this.h, filters)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -665,7 +665,7 @@ func (this *QDir) EntryList1(filters int) []string {
 }
 
 func (this *QDir) EntryList2(filters int, sort int) []string {
-	var _ma *C.struct_miqt_array = C.QDir_EntryList2(this.h, (C.int)(filters), (C.int)(sort))
+	var _ma *C.struct_miqt_array = C.QDir_EntryList2(this.h, filters, sort)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -689,7 +689,7 @@ func (this *QDir) EntryList22(nameFilters []string, filters int) []string {
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryList22(this.h, nameFilters_ma, (C.int)(filters))
+	var _ma *C.struct_miqt_array = C.QDir_EntryList22(this.h, nameFilters_ma, filters)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -713,7 +713,7 @@ func (this *QDir) EntryList3(nameFilters []string, filters int, sort int) []stri
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
+	var _ma *C.struct_miqt_array = C.QDir_EntryList3(this.h, nameFilters_ma, filters, sort)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -727,7 +727,7 @@ func (this *QDir) EntryList3(nameFilters []string, filters int, sort int) []stri
 }
 
 func (this *QDir) EntryInfoList1(filters int) []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList1(this.h, (C.int)(filters))
+	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList1(this.h, filters)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -741,7 +741,7 @@ func (this *QDir) EntryInfoList1(filters int) []QFileInfo {
 }
 
 func (this *QDir) EntryInfoList2(filters int, sort int) []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList2(this.h, (C.int)(filters), (C.int)(sort))
+	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList2(this.h, filters, sort)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -765,7 +765,7 @@ func (this *QDir) EntryInfoList22(nameFilters []string, filters int) []QFileInfo
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList22(this.h, nameFilters_ma, (C.int)(filters))
+	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList22(this.h, nameFilters_ma, filters)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -789,7 +789,7 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters int, sort int) []
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
+	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList3(this.h, nameFilters_ma, filters, sort)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

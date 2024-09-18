@@ -53,7 +53,8 @@ int QPaintDevice_DevicePixelRatio(const QPaintDevice* self) {
 }
 
 double QPaintDevice_DevicePixelRatioF(const QPaintDevice* self) {
-	return self->devicePixelRatioF();
+	qreal _ret = self->devicePixelRatioF();
+	return static_cast<double>(_ret);
 }
 
 int QPaintDevice_ColorCount(const QPaintDevice* self) {
@@ -65,7 +66,8 @@ int QPaintDevice_Depth(const QPaintDevice* self) {
 }
 
 double QPaintDevice_DevicePixelRatioFScale() {
-	return QPaintDevice::devicePixelRatioFScale();
+	qreal _ret = QPaintDevice::devicePixelRatioFScale();
+	return static_cast<double>(_ret);
 }
 
 void QPaintDevice_Delete(QPaintDevice* self) {

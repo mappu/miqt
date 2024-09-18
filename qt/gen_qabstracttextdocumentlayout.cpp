@@ -42,7 +42,7 @@ void QAbstractTextDocumentLayout_Draw(QAbstractTextDocumentLayout* self, QPainte
 	self->draw(painter, *context);
 }
 
-int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self, QPointF* point, uintptr_t accuracy) {
+int QAbstractTextDocumentLayout_HitTest(const QAbstractTextDocumentLayout* self, QPointF* point, int accuracy) {
 	return self->hitTest(*point, static_cast<Qt::HitTestAccuracy>(accuracy));
 }
 
@@ -224,6 +224,10 @@ QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_n
 	return new QAbstractTextDocumentLayout::Selection(*param1);
 }
 
+void QAbstractTextDocumentLayout__Selection_OperatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
+	self->operator=(*param1);
+}
+
 void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self) {
 	delete self;
 }
@@ -234,6 +238,10 @@ QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintCon
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
 	return new QAbstractTextDocumentLayout::PaintContext(*param1);
+}
+
+void QAbstractTextDocumentLayout__PaintContext_OperatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {
+	self->operator=(*param1);
 }
 
 void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self) {

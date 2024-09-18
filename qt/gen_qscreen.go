@@ -214,33 +214,33 @@ func (this *QScreen) OrientationUpdateMask() int {
 }
 
 func (this *QScreen) SetOrientationUpdateMask(mask int) {
-	C.QScreen_SetOrientationUpdateMask(this.h, (C.int)(mask))
+	C.QScreen_SetOrientationUpdateMask(this.h, mask)
 }
 
 func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int {
-	return (int)(C.QScreen_AngleBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b)))
+	return (int)(C.QScreen_AngleBetween(this.h, (C.int)(a), (C.int)(b)))
 }
 
 func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target *QRect) *QTransform {
-	_ret := C.QScreen_TransformBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), target.cPointer())
+	_ret := C.QScreen_TransformBetween(this.h, (C.int)(a), (C.int)(b), target.cPointer())
 	_goptr := newQTransform(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *QRect) *QRect {
-	_ret := C.QScreen_MapBetween(this.h, (C.uintptr_t)(a), (C.uintptr_t)(b), rect.cPointer())
+	_ret := C.QScreen_MapBetween(this.h, (C.int)(a), (C.int)(b), rect.cPointer())
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScreen) IsPortrait(orientation ScreenOrientation) bool {
-	return (bool)(C.QScreen_IsPortrait(this.h, (C.uintptr_t)(orientation)))
+	return (bool)(C.QScreen_IsPortrait(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
-	return (bool)(C.QScreen_IsLandscape(this.h, (C.uintptr_t)(orientation)))
+	return (bool)(C.QScreen_IsLandscape(this.h, (C.int)(orientation)))
 }
 
 func (this *QScreen) GrabWindow(window uintptr) *QPixmap {
@@ -375,14 +375,14 @@ func miqt_exec_callback_QScreen_VirtualGeometryChanged(cb *C.void, rect *C.QRect
 }
 
 func (this *QScreen) PrimaryOrientationChanged(orientation ScreenOrientation) {
-	C.QScreen_PrimaryOrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QScreen_PrimaryOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnPrimaryOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QScreen_connect_PrimaryOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QScreen_PrimaryOrientationChanged
-func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -395,14 +395,14 @@ func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientatio
 }
 
 func (this *QScreen) OrientationChanged(orientation ScreenOrientation) {
-	C.QScreen_OrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QScreen_OrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnOrientationChanged(slot func(orientation ScreenOrientation)) {
 	C.QScreen_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QScreen_OrientationChanged
-func miqt_exec_callback_QScreen_OrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QScreen_OrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

@@ -75,35 +75,35 @@ int QSurfaceFormat_Samples(const QSurfaceFormat* self) {
 	return self->samples();
 }
 
-void QSurfaceFormat_SetSwapBehavior(QSurfaceFormat* self, uintptr_t behavior) {
+void QSurfaceFormat_SetSwapBehavior(QSurfaceFormat* self, int behavior) {
 	self->setSwapBehavior(static_cast<QSurfaceFormat::SwapBehavior>(behavior));
 }
 
-uintptr_t QSurfaceFormat_SwapBehavior(const QSurfaceFormat* self) {
+int QSurfaceFormat_SwapBehavior(const QSurfaceFormat* self) {
 	QSurfaceFormat::SwapBehavior _ret = self->swapBehavior();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QSurfaceFormat_HasAlpha(const QSurfaceFormat* self) {
 	return self->hasAlpha();
 }
 
-void QSurfaceFormat_SetProfile(QSurfaceFormat* self, uintptr_t profile) {
+void QSurfaceFormat_SetProfile(QSurfaceFormat* self, int profile) {
 	self->setProfile(static_cast<QSurfaceFormat::OpenGLContextProfile>(profile));
 }
 
-uintptr_t QSurfaceFormat_Profile(const QSurfaceFormat* self) {
+int QSurfaceFormat_Profile(const QSurfaceFormat* self) {
 	QSurfaceFormat::OpenGLContextProfile _ret = self->profile();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSurfaceFormat_SetRenderableType(QSurfaceFormat* self, uintptr_t typeVal) {
+void QSurfaceFormat_SetRenderableType(QSurfaceFormat* self, int typeVal) {
 	self->setRenderableType(static_cast<QSurfaceFormat::RenderableType>(typeVal));
 }
 
-uintptr_t QSurfaceFormat_RenderableType(const QSurfaceFormat* self) {
+int QSurfaceFormat_RenderableType(const QSurfaceFormat* self) {
 	QSurfaceFormat::RenderableType _ret = self->renderableType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QSurfaceFormat_SetMajorVersion(QSurfaceFormat* self, int majorVersion) {
@@ -146,11 +146,11 @@ void QSurfaceFormat_SetOptions(QSurfaceFormat* self, int options) {
 	self->setOptions(static_cast<QSurfaceFormat::FormatOptions>(options));
 }
 
-void QSurfaceFormat_SetOptionWithOption(QSurfaceFormat* self, uintptr_t option) {
+void QSurfaceFormat_SetOptionWithOption(QSurfaceFormat* self, int option) {
 	self->setOption(static_cast<QSurfaceFormat::FormatOption>(option));
 }
 
-bool QSurfaceFormat_TestOptionWithOption(const QSurfaceFormat* self, uintptr_t option) {
+bool QSurfaceFormat_TestOptionWithOption(const QSurfaceFormat* self, int option) {
 	return self->testOption(static_cast<QSurfaceFormat::FormatOption>(option));
 }
 
@@ -167,12 +167,12 @@ void QSurfaceFormat_SetSwapInterval(QSurfaceFormat* self, int interval) {
 	self->setSwapInterval(static_cast<int>(interval));
 }
 
-uintptr_t QSurfaceFormat_ColorSpace(const QSurfaceFormat* self) {
+int QSurfaceFormat_ColorSpace(const QSurfaceFormat* self) {
 	QSurfaceFormat::ColorSpace _ret = self->colorSpace();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSurfaceFormat_SetColorSpace(QSurfaceFormat* self, uintptr_t colorSpace) {
+void QSurfaceFormat_SetColorSpace(QSurfaceFormat* self, int colorSpace) {
 	self->setColorSpace(static_cast<QSurfaceFormat::ColorSpace>(colorSpace));
 }
 
@@ -184,7 +184,7 @@ QSurfaceFormat* QSurfaceFormat_DefaultFormat() {
 	return new QSurfaceFormat(QSurfaceFormat::defaultFormat());
 }
 
-void QSurfaceFormat_SetOption2(QSurfaceFormat* self, uintptr_t option, bool on) {
+void QSurfaceFormat_SetOption2(QSurfaceFormat* self, int option, bool on) {
 	self->setOption(static_cast<QSurfaceFormat::FormatOption>(option), on);
 }
 

@@ -151,17 +151,19 @@ QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterab
 	return new QtMetaTypePrivate::QSequentialIterableImpl(*param1);
 }
 
-uintptr_t QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(QtMetaTypePrivate__QSequentialIterableImpl* self) {
+int QtMetaTypePrivate__QSequentialIterableImpl_IteratorCapabilities(QtMetaTypePrivate__QSequentialIterableImpl* self) {
 	QtMetaTypePrivate::IteratorCapability _ret = self->iteratorCapabilities();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 unsigned int QtMetaTypePrivate__QSequentialIterableImpl_Revision(QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	return self->revision();
+	uint _ret = self->revision();
+	return static_cast<unsigned int>(_ret);
 }
 
 unsigned int QtMetaTypePrivate__QSequentialIterableImpl_ContainerCapabilities(QtMetaTypePrivate__QSequentialIterableImpl* self) {
-	return self->containerCapabilities();
+	uint _ret = self->containerCapabilities();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QtMetaTypePrivate__QSequentialIterableImpl_MoveToBegin(QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -174,6 +176,12 @@ void QtMetaTypePrivate__QSequentialIterableImpl_MoveToEnd(QtMetaTypePrivate__QSe
 
 bool QtMetaTypePrivate__QSequentialIterableImpl_Equal(const QtMetaTypePrivate__QSequentialIterableImpl* self, QtMetaTypePrivate__QSequentialIterableImpl* other) {
 	return self->equal(*other);
+}
+
+QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterableImpl_Advance(QtMetaTypePrivate__QSequentialIterableImpl* self, int i) {
+	QtMetaTypePrivate::QSequentialIterableImpl& _ret = self->advance(static_cast<int>(i));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(const QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -194,6 +202,10 @@ void QtMetaTypePrivate__QSequentialIterableImpl_DestroyIter(QtMetaTypePrivate__Q
 
 void QtMetaTypePrivate__QSequentialIterableImpl_Copy(QtMetaTypePrivate__QSequentialIterableImpl* self, QtMetaTypePrivate__QSequentialIterableImpl* other) {
 	self->copy(*other);
+}
+
+void QtMetaTypePrivate__QSequentialIterableImpl_OperatorAssign(QtMetaTypePrivate__QSequentialIterableImpl* self, QtMetaTypePrivate__QSequentialIterableImpl* param1) {
+	self->operator=(*param1);
 }
 
 void QtMetaTypePrivate__QSequentialIterableImpl_Delete(QtMetaTypePrivate__QSequentialIterableImpl* self) {
@@ -220,6 +232,12 @@ bool QtMetaTypePrivate__QAssociativeIterableImpl_Equal(const QtMetaTypePrivate__
 	return self->equal(*other);
 }
 
+QtMetaTypePrivate__QAssociativeIterableImpl* QtMetaTypePrivate__QAssociativeIterableImpl_Advance(QtMetaTypePrivate__QAssociativeIterableImpl* self, int i) {
+	QtMetaTypePrivate::QAssociativeIterableImpl& _ret = self->advance(static_cast<int>(i));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
 void QtMetaTypePrivate__QAssociativeIterableImpl_DestroyIter(QtMetaTypePrivate__QAssociativeIterableImpl* self) {
 	self->destroyIter();
 }
@@ -242,6 +260,10 @@ int QtMetaTypePrivate__QAssociativeIterableImpl_Size(const QtMetaTypePrivate__QA
 
 void QtMetaTypePrivate__QAssociativeIterableImpl_Copy(QtMetaTypePrivate__QAssociativeIterableImpl* self, QtMetaTypePrivate__QAssociativeIterableImpl* other) {
 	self->copy(*other);
+}
+
+void QtMetaTypePrivate__QAssociativeIterableImpl_OperatorAssign(QtMetaTypePrivate__QAssociativeIterableImpl* self, QtMetaTypePrivate__QAssociativeIterableImpl* param1) {
+	self->operator=(*param1);
 }
 
 void QtMetaTypePrivate__QAssociativeIterableImpl_Delete(QtMetaTypePrivate__QAssociativeIterableImpl* self) {

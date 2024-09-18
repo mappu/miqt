@@ -49,19 +49,19 @@ func newQOperatingSystemVersion_U(h unsafe.Pointer) *QOperatingSystemVersion {
 
 // NewQOperatingSystemVersion constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion(osType QOperatingSystemVersion__OSType, vmajor int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new((C.uintptr_t)(osType), (C.int)(vmajor))
+	ret := C.QOperatingSystemVersion_new((C.int)(osType), (C.int)(vmajor))
 	return newQOperatingSystemVersion(ret)
 }
 
 // NewQOperatingSystemVersion2 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion2(osType QOperatingSystemVersion__OSType, vmajor int, vminor int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new2((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor))
+	ret := C.QOperatingSystemVersion_new2((C.int)(osType), (C.int)(vmajor), (C.int)(vminor))
 	return newQOperatingSystemVersion(ret)
 }
 
 // NewQOperatingSystemVersion3 constructs a new QOperatingSystemVersion object.
 func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor int, vminor int, vmicro int) *QOperatingSystemVersion {
-	ret := C.QOperatingSystemVersion_new3((C.uintptr_t)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro))
+	ret := C.QOperatingSystemVersion_new3((C.int)(osType), (C.int)(vmajor), (C.int)(vminor), (C.int)(vmicro))
 	return newQOperatingSystemVersion(ret)
 }
 

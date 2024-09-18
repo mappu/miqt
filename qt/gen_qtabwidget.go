@@ -206,7 +206,7 @@ func (this *QTabWidget) TabPosition() QTabWidget__TabPosition {
 }
 
 func (this *QTabWidget) SetTabPosition(position QTabWidget__TabPosition) {
-	C.QTabWidget_SetTabPosition(this.h, (C.uintptr_t)(position))
+	C.QTabWidget_SetTabPosition(this.h, (C.int)(position))
 }
 
 func (this *QTabWidget) TabsClosable() bool {
@@ -230,7 +230,7 @@ func (this *QTabWidget) TabShape() QTabWidget__TabShape {
 }
 
 func (this *QTabWidget) SetTabShape(s QTabWidget__TabShape) {
-	C.QTabWidget_SetTabShape(this.h, (C.uintptr_t)(s))
+	C.QTabWidget_SetTabShape(this.h, (C.int)(s))
 }
 
 func (this *QTabWidget) SizeHint() *QSize {
@@ -268,7 +268,7 @@ func (this *QTabWidget) ElideMode() TextElideMode {
 }
 
 func (this *QTabWidget) SetElideMode(mode TextElideMode) {
-	C.QTabWidget_SetElideMode(this.h, (C.uintptr_t)(mode))
+	C.QTabWidget_SetElideMode(this.h, (C.int)(mode))
 }
 
 func (this *QTabWidget) IconSize() *QSize {
@@ -447,11 +447,11 @@ func QTabWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
-	C.QTabWidget_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
+	C.QTabWidget_SetCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
 func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget1(this.h, (C.uintptr_t)(corner))))
+	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget1(this.h, (C.int)(corner))))
 }
 
 // Delete this object from C++ memory.

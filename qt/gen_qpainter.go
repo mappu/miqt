@@ -129,7 +129,7 @@ func (this *QPainter) InitFrom(device *QPaintDevice) {
 }
 
 func (this *QPainter) SetCompositionMode(mode QPainter__CompositionMode) {
-	C.QPainter_SetCompositionMode(this.h, (C.uintptr_t)(mode))
+	C.QPainter_SetCompositionMode(this.h, (C.int)(mode))
 }
 
 func (this *QPainter) CompositionMode() QPainter__CompositionMode {
@@ -167,7 +167,7 @@ func (this *QPainter) SetPenWithPen(pen *QPen) {
 }
 
 func (this *QPainter) SetPenWithStyle(style PenStyle) {
-	C.QPainter_SetPenWithStyle(this.h, (C.uintptr_t)(style))
+	C.QPainter_SetPenWithStyle(this.h, (C.int)(style))
 }
 
 func (this *QPainter) Pen() *QPen {
@@ -179,7 +179,7 @@ func (this *QPainter) SetBrush(brush *QBrush) {
 }
 
 func (this *QPainter) SetBrushWithStyle(style BrushStyle) {
-	C.QPainter_SetBrushWithStyle(this.h, (C.uintptr_t)(style))
+	C.QPainter_SetBrushWithStyle(this.h, (C.int)(style))
 }
 
 func (this *QPainter) Brush() *QBrush {
@@ -187,7 +187,7 @@ func (this *QPainter) Brush() *QBrush {
 }
 
 func (this *QPainter) SetBackgroundMode(mode BGMode) {
-	C.QPainter_SetBackgroundMode(this.h, (C.uintptr_t)(mode))
+	C.QPainter_SetBackgroundMode(this.h, (C.int)(mode))
 }
 
 func (this *QPainter) BackgroundMode() BGMode {
@@ -799,7 +799,7 @@ func (this *QPainter) DrawImage9(x int, y int, image *QImage) {
 }
 
 func (this *QPainter) SetLayoutDirection(direction LayoutDirection) {
-	C.QPainter_SetLayoutDirection(this.h, (C.uintptr_t)(direction))
+	C.QPainter_SetLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QPainter) LayoutDirection() LayoutDirection {
@@ -943,39 +943,39 @@ func (this *QPainter) FillRect6(param1 *QRect, color *QColor) {
 }
 
 func (this *QPainter) FillRect7(x int, y int, w int, h int, c GlobalColor) {
-	C.QPainter_FillRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(c))
+	C.QPainter_FillRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(c))
 }
 
 func (this *QPainter) FillRect8(r *QRect, c GlobalColor) {
-	C.QPainter_FillRect8(this.h, r.cPointer(), (C.uintptr_t)(c))
+	C.QPainter_FillRect8(this.h, r.cPointer(), (C.int)(c))
 }
 
 func (this *QPainter) FillRect9(r *QRectF, c GlobalColor) {
-	C.QPainter_FillRect9(this.h, r.cPointer(), (C.uintptr_t)(c))
+	C.QPainter_FillRect9(this.h, r.cPointer(), (C.int)(c))
 }
 
 func (this *QPainter) FillRect10(x int, y int, w int, h int, style BrushStyle) {
-	C.QPainter_FillRect10(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(style))
+	C.QPainter_FillRect10(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(style))
 }
 
 func (this *QPainter) FillRect11(r *QRect, style BrushStyle) {
-	C.QPainter_FillRect11(this.h, r.cPointer(), (C.uintptr_t)(style))
+	C.QPainter_FillRect11(this.h, r.cPointer(), (C.int)(style))
 }
 
 func (this *QPainter) FillRect12(r *QRectF, style BrushStyle) {
-	C.QPainter_FillRect12(this.h, r.cPointer(), (C.uintptr_t)(style))
+	C.QPainter_FillRect12(this.h, r.cPointer(), (C.int)(style))
 }
 
 func (this *QPainter) FillRect13(x int, y int, w int, h int, preset QGradient__Preset) {
-	C.QPainter_FillRect13(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(preset))
+	C.QPainter_FillRect13(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(preset))
 }
 
 func (this *QPainter) FillRect14(r *QRect, preset QGradient__Preset) {
-	C.QPainter_FillRect14(this.h, r.cPointer(), (C.uintptr_t)(preset))
+	C.QPainter_FillRect14(this.h, r.cPointer(), (C.int)(preset))
 }
 
 func (this *QPainter) FillRect15(r *QRectF, preset QGradient__Preset) {
-	C.QPainter_FillRect15(this.h, r.cPointer(), (C.uintptr_t)(preset))
+	C.QPainter_FillRect15(this.h, r.cPointer(), (C.int)(preset))
 }
 
 func (this *QPainter) EraseRect(param1 *QRectF) {
@@ -991,11 +991,11 @@ func (this *QPainter) EraseRectWithQRect(param1 *QRect) {
 }
 
 func (this *QPainter) SetRenderHint(hint QPainter__RenderHint) {
-	C.QPainter_SetRenderHint(this.h, (C.uintptr_t)(hint))
+	C.QPainter_SetRenderHint(this.h, (C.int)(hint))
 }
 
 func (this *QPainter) SetRenderHints(hints int) {
-	C.QPainter_SetRenderHints(this.h, (C.int)(hints))
+	C.QPainter_SetRenderHints(this.h, hints)
 }
 
 func (this *QPainter) RenderHints() int {
@@ -1003,7 +1003,7 @@ func (this *QPainter) RenderHints() int {
 }
 
 func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
-	return (bool)(C.QPainter_TestRenderHint(this.h, (C.uintptr_t)(hint)))
+	return (bool)(C.QPainter_TestRenderHint(this.h, (C.int)(hint)))
 }
 
 func (this *QPainter) PaintEngine() *QPaintEngine {
@@ -1031,23 +1031,23 @@ func (this *QPainter) EndNativePainting() {
 }
 
 func (this *QPainter) SetClipRect22(param1 *QRectF, op ClipOperation) {
-	C.QPainter_SetClipRect22(this.h, param1.cPointer(), (C.uintptr_t)(op))
+	C.QPainter_SetClipRect22(this.h, param1.cPointer(), (C.int)(op))
 }
 
 func (this *QPainter) SetClipRect23(param1 *QRect, op ClipOperation) {
-	C.QPainter_SetClipRect23(this.h, param1.cPointer(), (C.uintptr_t)(op))
+	C.QPainter_SetClipRect23(this.h, param1.cPointer(), (C.int)(op))
 }
 
 func (this *QPainter) SetClipRect5(x int, y int, w int, h int, op ClipOperation) {
-	C.QPainter_SetClipRect5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(op))
+	C.QPainter_SetClipRect5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(op))
 }
 
 func (this *QPainter) SetClipRegion2(param1 *QRegion, op ClipOperation) {
-	C.QPainter_SetClipRegion2(this.h, param1.cPointer(), (C.uintptr_t)(op))
+	C.QPainter_SetClipRegion2(this.h, param1.cPointer(), (C.int)(op))
 }
 
 func (this *QPainter) SetClipPath2(path *QPainterPath, op ClipOperation) {
-	C.QPainter_SetClipPath2(this.h, path.cPointer(), (C.uintptr_t)(op))
+	C.QPainter_SetClipPath2(this.h, path.cPointer(), (C.int)(op))
 }
 
 func (this *QPainter) SetMatrix2(matrix *QMatrix, combine bool) {
@@ -1067,23 +1067,23 @@ func (this *QPainter) SetWorldTransform2(matrix *QTransform, combine bool) {
 }
 
 func (this *QPainter) DrawPolygon32(points *QPointF, pointCount int, fillRule FillRule) {
-	C.QPainter_DrawPolygon32(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(fillRule))
+	C.QPainter_DrawPolygon32(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
 }
 
 func (this *QPainter) DrawPolygon33(points *QPoint, pointCount int, fillRule FillRule) {
-	C.QPainter_DrawPolygon33(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(fillRule))
+	C.QPainter_DrawPolygon33(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
 }
 
 func (this *QPainter) DrawRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainter_DrawRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
+	C.QPainter_DrawRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 func (this *QPainter) DrawRoundedRect7(x int, y int, w int, h int, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainter_DrawRoundedRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
+	C.QPainter_DrawRoundedRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 func (this *QPainter) DrawRoundedRect42(rect *QRect, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainter_DrawRoundedRect42(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
+	C.QPainter_DrawRoundedRect42(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 func (this *QPainter) DrawRoundRect22(r *QRectF, xround int) {
@@ -1127,23 +1127,23 @@ func (this *QPainter) DrawTiledPixmap33(param1 *QRect, param2 *QPixmap, param3 *
 }
 
 func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints int) {
-	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
+	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), hints)
 }
 
 func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags int) {
-	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
+	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), flags)
 }
 
 func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags int) {
-	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
+	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), flags)
 }
 
 func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags int) {
-	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
+	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), flags)
 }
 
 func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags int) {
-	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
+	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), flags)
 }
 
 func (this *QPainter) DrawImage46(x int, y int, image *QImage, sx int) {
@@ -1163,7 +1163,7 @@ func (this *QPainter) DrawImage72(x int, y int, image *QImage, sx int, sy int, s
 }
 
 func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags int) {
-	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
+	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), flags)
 }
 
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
@@ -1200,11 +1200,11 @@ func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) 
 }
 
 func (this *QPainter) SetRenderHint2(hint QPainter__RenderHint, on bool) {
-	C.QPainter_SetRenderHint2(this.h, (C.uintptr_t)(hint), (C.bool)(on))
+	C.QPainter_SetRenderHint2(this.h, (C.int)(hint), (C.bool)(on))
 }
 
 func (this *QPainter) SetRenderHints2(hints int, on bool) {
-	C.QPainter_SetRenderHints2(this.h, (C.int)(hints), (C.bool)(on))
+	C.QPainter_SetRenderHints2(this.h, hints, (C.bool)(on))
 }
 
 func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, offset *QPoint) {

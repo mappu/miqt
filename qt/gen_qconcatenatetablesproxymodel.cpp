@@ -41,7 +41,7 @@ struct miqt_string* QConcatenateTablesProxyModel_TrUtf8(const char* s) {
 }
 
 struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self) {
-	QList<QAbstractItemModel*> _ret = self->sourceModels();
+	QList<QAbstractItemModel *> _ret = self->sourceModels();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractItemModel** _arr = static_cast<QAbstractItemModel**>(malloc(sizeof(QAbstractItemModel*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -94,7 +94,7 @@ int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* se
 	return self->rowCount();
 }
 
-QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation) {
+QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
@@ -128,11 +128,11 @@ QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyMo
 	return self->mimeData(indexes_QList);
 }
 
-bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent) {
+bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
@@ -184,7 +184,7 @@ int QConcatenateTablesProxyModel_RowCount1(const QConcatenateTablesProxyModel* s
 	return self->rowCount(*parent);
 }
 
-QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QConcatenateTablesProxyModel_HeaderData3(const QConcatenateTablesProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 

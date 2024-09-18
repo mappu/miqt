@@ -105,8 +105,8 @@ func (this *QRandomGenerator) Generate2(begin *uint, end *uint) {
 	C.QRandomGenerator_Generate2(this.h, (*C.uint)(unsafe.Pointer(begin)), (*C.uint)(unsafe.Pointer(end)))
 }
 
-func (this *QRandomGenerator) OperatorCall() uint32 {
-	return (uint32)(C.QRandomGenerator_OperatorCall(this.h))
+func (this *QRandomGenerator) OperatorCall() uint {
+	return (uint)(C.QRandomGenerator_OperatorCall(this.h))
 }
 
 func (this *QRandomGenerator) Seed() {
@@ -117,12 +117,12 @@ func (this *QRandomGenerator) Discard(z uint64) {
 	C.QRandomGenerator_Discard(this.h, (C.ulonglong)(z))
 }
 
-func QRandomGenerator_Min() uint32 {
-	return (uint32)(C.QRandomGenerator_Min())
+func QRandomGenerator_Min() uint {
+	return (uint)(C.QRandomGenerator_Min())
 }
 
-func QRandomGenerator_Max() uint32 {
-	return (uint32)(C.QRandomGenerator_Max())
+func QRandomGenerator_Max() uint {
+	return (uint)(C.QRandomGenerator_Max())
 }
 
 func QRandomGenerator_System() *QRandomGenerator {

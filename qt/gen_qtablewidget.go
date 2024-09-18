@@ -204,7 +204,7 @@ func (this *QTableWidgetItem) Flags() int {
 }
 
 func (this *QTableWidgetItem) SetFlags(flags int) {
-	C.QTableWidgetItem_SetFlags(this.h, (C.int)(flags))
+	C.QTableWidgetItem_SetFlags(this.h, flags)
 }
 
 func (this *QTableWidgetItem) Text() string {
@@ -338,7 +338,7 @@ func (this *QTableWidgetItem) CheckState() CheckState {
 }
 
 func (this *QTableWidgetItem) SetCheckState(state CheckState) {
-	C.QTableWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
+	C.QTableWidgetItem_SetCheckState(this.h, (C.int)(state))
 }
 
 func (this *QTableWidgetItem) SizeHint() *QSize {
@@ -571,7 +571,7 @@ func (this *QTableWidget) SetCurrentItem(item *QTableWidgetItem) {
 }
 
 func (this *QTableWidget) SetCurrentItem2(item *QTableWidgetItem, command int) {
-	C.QTableWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
+	C.QTableWidget_SetCurrentItem2(this.h, item.cPointer(), command)
 }
 
 func (this *QTableWidget) SetCurrentCell(row int, column int) {
@@ -579,7 +579,7 @@ func (this *QTableWidget) SetCurrentCell(row int, column int) {
 }
 
 func (this *QTableWidget) SetCurrentCell2(row int, column int, command int) {
-	C.QTableWidget_SetCurrentCell2(this.h, (C.int)(row), (C.int)(column), (C.int)(command))
+	C.QTableWidget_SetCurrentCell2(this.h, (C.int)(row), (C.int)(column), command)
 }
 
 func (this *QTableWidget) SortItems(column int) {
@@ -662,7 +662,7 @@ func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
 func (this *QTableWidget) FindItems(text string, flags int) []*QTableWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), flags)
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1092,11 +1092,11 @@ func QTableWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTableWidget) SortItems2(column int, order SortOrder) {
-	C.QTableWidget_SortItems2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QTableWidget_SortItems2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTableWidget) ScrollToItem2(item *QTableWidgetItem, hint QAbstractItemView__ScrollHint) {
-	C.QTableWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
+	C.QTableWidget_ScrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

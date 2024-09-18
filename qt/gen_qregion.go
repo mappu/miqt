@@ -74,13 +74,13 @@ func NewQRegion5(bitmap *QBitmap) *QRegion {
 
 // NewQRegion6 constructs a new QRegion object.
 func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.uintptr_t)(t))
+	ret := C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t))
 	return newQRegion(ret)
 }
 
 // NewQRegion7 constructs a new QRegion object.
 func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
-	ret := C.QRegion_new7(r.cPointer(), (C.uintptr_t)(t))
+	ret := C.QRegion_new7(r.cPointer(), (C.int)(t))
 	return newQRegion(ret)
 }
 

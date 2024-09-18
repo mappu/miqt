@@ -204,12 +204,12 @@ QRectF* QPainterPath_ControlPointRect(const QPainterPath* self) {
 	return new QRectF(self->controlPointRect());
 }
 
-uintptr_t QPainterPath_FillRule(const QPainterPath* self) {
+int QPainterPath_FillRule(const QPainterPath* self) {
 	Qt::FillRule _ret = self->fillRule();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QPainterPath_SetFillRule(QPainterPath* self, uintptr_t fillRule) {
+void QPainterPath_SetFillRule(QPainterPath* self, int fillRule) {
 	self->setFillRule(static_cast<Qt::FillRule>(fillRule));
 }
 
@@ -234,11 +234,13 @@ void QPainterPath_SetElementPositionAt(QPainterPath* self, int i, double x, doub
 }
 
 double QPainterPath_Length(const QPainterPath* self) {
-	return self->length();
+	qreal _ret = self->length();
+	return static_cast<double>(_ret);
 }
 
 double QPainterPath_PercentAtLength(const QPainterPath* self, double t) {
-	return self->percentAtLength(static_cast<qreal>(t));
+	qreal _ret = self->percentAtLength(static_cast<qreal>(t));
+	return static_cast<double>(_ret);
 }
 
 QPointF* QPainterPath_PointAtPercent(const QPainterPath* self, double t) {
@@ -246,11 +248,13 @@ QPointF* QPainterPath_PointAtPercent(const QPainterPath* self, double t) {
 }
 
 double QPainterPath_AngleAtPercent(const QPainterPath* self, double t) {
-	return self->angleAtPercent(static_cast<qreal>(t));
+	qreal _ret = self->angleAtPercent(static_cast<qreal>(t));
+	return static_cast<double>(_ret);
 }
 
 double QPainterPath_SlopeAtPercent(const QPainterPath* self, double t) {
-	return self->slopeAtPercent(static_cast<qreal>(t));
+	qreal _ret = self->slopeAtPercent(static_cast<qreal>(t));
+	return static_cast<double>(_ret);
 }
 
 bool QPainterPath_IntersectsWithQPainterPath(const QPainterPath* self, QPainterPath* p) {
@@ -325,11 +329,11 @@ QPainterPath* QPainterPath_OperatorMinusAssign(QPainterPath* self, QPainterPath*
 	return &_ret;
 }
 
-void QPainterPath_AddRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, uintptr_t mode) {
+void QPainterPath_AddRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode) {
 	self->addRoundedRect(*rect, static_cast<qreal>(xRadius), static_cast<qreal>(yRadius), static_cast<Qt::SizeMode>(mode));
 }
 
-void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, uintptr_t mode) {
+void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode) {
 	self->addRoundedRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<qreal>(xRadius), static_cast<qreal>(yRadius), static_cast<Qt::SizeMode>(mode));
 }
 
@@ -350,25 +354,26 @@ void QPainterPathStroker_SetWidth(QPainterPathStroker* self, double width) {
 }
 
 double QPainterPathStroker_Width(const QPainterPathStroker* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
-void QPainterPathStroker_SetCapStyle(QPainterPathStroker* self, uintptr_t style) {
+void QPainterPathStroker_SetCapStyle(QPainterPathStroker* self, int style) {
 	self->setCapStyle(static_cast<Qt::PenCapStyle>(style));
 }
 
-uintptr_t QPainterPathStroker_CapStyle(const QPainterPathStroker* self) {
+int QPainterPathStroker_CapStyle(const QPainterPathStroker* self) {
 	Qt::PenCapStyle _ret = self->capStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QPainterPathStroker_SetJoinStyle(QPainterPathStroker* self, uintptr_t style) {
+void QPainterPathStroker_SetJoinStyle(QPainterPathStroker* self, int style) {
 	self->setJoinStyle(static_cast<Qt::PenJoinStyle>(style));
 }
 
-uintptr_t QPainterPathStroker_JoinStyle(const QPainterPathStroker* self) {
+int QPainterPathStroker_JoinStyle(const QPainterPathStroker* self) {
 	Qt::PenJoinStyle _ret = self->joinStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QPainterPathStroker_SetMiterLimit(QPainterPathStroker* self, double length) {
@@ -376,7 +381,8 @@ void QPainterPathStroker_SetMiterLimit(QPainterPathStroker* self, double length)
 }
 
 double QPainterPathStroker_MiterLimit(const QPainterPathStroker* self) {
-	return self->miterLimit();
+	qreal _ret = self->miterLimit();
+	return static_cast<double>(_ret);
 }
 
 void QPainterPathStroker_SetCurveThreshold(QPainterPathStroker* self, double threshold) {
@@ -384,10 +390,11 @@ void QPainterPathStroker_SetCurveThreshold(QPainterPathStroker* self, double thr
 }
 
 double QPainterPathStroker_CurveThreshold(const QPainterPathStroker* self) {
-	return self->curveThreshold();
+	qreal _ret = self->curveThreshold();
+	return static_cast<double>(_ret);
 }
 
-void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, uintptr_t dashPattern) {
+void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, int dashPattern) {
 	self->setDashPattern(static_cast<Qt::PenStyle>(dashPattern));
 }
 
@@ -402,7 +409,7 @@ void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self
 }
 
 struct miqt_array* QPainterPathStroker_DashPattern(const QPainterPathStroker* self) {
-	QVector<double> _ret = self->dashPattern();
+	QVector<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -419,7 +426,8 @@ void QPainterPathStroker_SetDashOffset(QPainterPathStroker* self, double offset)
 }
 
 double QPainterPathStroker_DashOffset(const QPainterPathStroker* self) {
-	return self->dashOffset();
+	qreal _ret = self->dashOffset();
+	return static_cast<double>(_ret);
 }
 
 QPainterPath* QPainterPathStroker_CreateStroke(const QPainterPathStroker* self, QPainterPath* path) {

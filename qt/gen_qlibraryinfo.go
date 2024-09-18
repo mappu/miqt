@@ -93,7 +93,7 @@ func QLibraryInfo_Version() *QVersionNumber {
 }
 
 func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
-	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.uintptr_t)(param1))
+	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

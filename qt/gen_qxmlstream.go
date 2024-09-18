@@ -746,7 +746,7 @@ func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
 }
 
 func (this *QXmlStreamReader) ReadElementText1(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
-	var _ms *C.struct_miqt_string = C.QXmlStreamReader_ReadElementText1(this.h, (C.uintptr_t)(behaviour))
+	var _ms *C.struct_miqt_string = C.QXmlStreamReader_ReadElementText1(this.h, (C.int)(behaviour))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

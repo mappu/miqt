@@ -3,7 +3,7 @@
 #include "gen_qdrawutil.h"
 #include "_cgo_export.h"
 
-QTileRules* QTileRules_new(uintptr_t horizontalRule, uintptr_t verticalRule) {
+QTileRules* QTileRules_new(int horizontalRule, int verticalRule) {
 	return new QTileRules(static_cast<Qt::TileRule>(horizontalRule), static_cast<Qt::TileRule>(verticalRule));
 }
 
@@ -15,7 +15,7 @@ QTileRules* QTileRules_new3(QTileRules* param1) {
 	return new QTileRules(*param1);
 }
 
-QTileRules* QTileRules_new4(uintptr_t rule) {
+QTileRules* QTileRules_new4(int rule) {
 	return new QTileRules(static_cast<Qt::TileRule>(rule));
 }
 

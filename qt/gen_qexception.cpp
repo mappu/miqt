@@ -40,6 +40,10 @@ bool QtPrivate__ExceptionStore_HasThrown(const QtPrivate__ExceptionStore* self) 
 	return self->hasThrown();
 }
 
+void QtPrivate__ExceptionStore_OperatorAssign(QtPrivate__ExceptionStore* self, QtPrivate__ExceptionStore* param1) {
+	self->operator=(*param1);
+}
+
 void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self) {
 	delete self;
 }

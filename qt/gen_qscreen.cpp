@@ -77,31 +77,38 @@ QSizeF* QScreen_PhysicalSize(const QScreen* self) {
 }
 
 double QScreen_PhysicalDotsPerInchX(const QScreen* self) {
-	return self->physicalDotsPerInchX();
+	qreal _ret = self->physicalDotsPerInchX();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_PhysicalDotsPerInchY(const QScreen* self) {
-	return self->physicalDotsPerInchY();
+	qreal _ret = self->physicalDotsPerInchY();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_PhysicalDotsPerInch(const QScreen* self) {
-	return self->physicalDotsPerInch();
+	qreal _ret = self->physicalDotsPerInch();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_LogicalDotsPerInchX(const QScreen* self) {
-	return self->logicalDotsPerInchX();
+	qreal _ret = self->logicalDotsPerInchX();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_LogicalDotsPerInchY(const QScreen* self) {
-	return self->logicalDotsPerInchY();
+	qreal _ret = self->logicalDotsPerInchY();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_LogicalDotsPerInch(const QScreen* self) {
-	return self->logicalDotsPerInch();
+	qreal _ret = self->logicalDotsPerInch();
+	return static_cast<double>(_ret);
 }
 
 double QScreen_DevicePixelRatio(const QScreen* self) {
-	return self->devicePixelRatio();
+	qreal _ret = self->devicePixelRatio();
+	return static_cast<double>(_ret);
 }
 
 QSize* QScreen_AvailableSize(const QScreen* self) {
@@ -113,7 +120,7 @@ QRect* QScreen_AvailableGeometry(const QScreen* self) {
 }
 
 struct miqt_array* QScreen_VirtualSiblings(const QScreen* self) {
-	QList<QScreen*> _ret = self->virtualSiblings();
+	QList<QScreen *> _ret = self->virtualSiblings();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -145,19 +152,19 @@ QRect* QScreen_AvailableVirtualGeometry(const QScreen* self) {
 	return new QRect(self->availableVirtualGeometry());
 }
 
-uintptr_t QScreen_PrimaryOrientation(const QScreen* self) {
+int QScreen_PrimaryOrientation(const QScreen* self) {
 	Qt::ScreenOrientation _ret = self->primaryOrientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QScreen_Orientation(const QScreen* self) {
+int QScreen_Orientation(const QScreen* self) {
 	Qt::ScreenOrientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QScreen_NativeOrientation(const QScreen* self) {
+int QScreen_NativeOrientation(const QScreen* self) {
 	Qt::ScreenOrientation _ret = self->nativeOrientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QScreen_OrientationUpdateMask(const QScreen* self) {
@@ -169,32 +176,33 @@ void QScreen_SetOrientationUpdateMask(QScreen* self, int mask) {
 	self->setOrientationUpdateMask(static_cast<Qt::ScreenOrientations>(mask));
 }
 
-int QScreen_AngleBetween(const QScreen* self, uintptr_t a, uintptr_t b) {
+int QScreen_AngleBetween(const QScreen* self, int a, int b) {
 	return self->angleBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b));
 }
 
-QTransform* QScreen_TransformBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* target) {
+QTransform* QScreen_TransformBetween(const QScreen* self, int a, int b, QRect* target) {
 	return new QTransform(self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target));
 }
 
-QRect* QScreen_MapBetween(const QScreen* self, uintptr_t a, uintptr_t b, QRect* rect) {
+QRect* QScreen_MapBetween(const QScreen* self, int a, int b, QRect* rect) {
 	return new QRect(self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect));
 }
 
-bool QScreen_IsPortrait(const QScreen* self, uintptr_t orientation) {
+bool QScreen_IsPortrait(const QScreen* self, int orientation) {
 	return self->isPortrait(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
-bool QScreen_IsLandscape(const QScreen* self, uintptr_t orientation) {
+bool QScreen_IsLandscape(const QScreen* self, int orientation) {
 	return self->isLandscape(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
 QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window) {
-	return new QPixmap(self->grabWindow(static_cast<quintptr>(window)));
+	return new QPixmap(self->grabWindow(static_cast<WId>(window)));
 }
 
 double QScreen_RefreshRate(const QScreen* self) {
-	return self->refreshRate();
+	qreal _ret = self->refreshRate();
+	return static_cast<double>(_ret);
 }
 
 void QScreen_GeometryChanged(QScreen* self, QRect* geometry) {
@@ -242,7 +250,8 @@ void QScreen_PhysicalDotsPerInchChanged(QScreen* self, double dpi) {
 
 void QScreen_connect_PhysicalDotsPerInchChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::physicalDotsPerInchChanged), self, [=](qreal dpi) {
-		double sigval1 = dpi;
+		qreal dpi_ret = dpi;
+		double sigval1 = static_cast<double>(dpi_ret);
 		miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(slot, sigval1);
 	});
 }
@@ -253,7 +262,8 @@ void QScreen_LogicalDotsPerInchChanged(QScreen* self, double dpi) {
 
 void QScreen_connect_LogicalDotsPerInchChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::logicalDotsPerInchChanged), self, [=](qreal dpi) {
-		double sigval1 = dpi;
+		qreal dpi_ret = dpi;
+		double sigval1 = static_cast<double>(dpi_ret);
 		miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(slot, sigval1);
 	});
 }
@@ -271,26 +281,26 @@ void QScreen_connect_VirtualGeometryChanged(QScreen* self, void* slot) {
 	});
 }
 
-void QScreen_PrimaryOrientationChanged(QScreen* self, uintptr_t orientation) {
+void QScreen_PrimaryOrientationChanged(QScreen* self, int orientation) {
 	self->primaryOrientationChanged(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
 void QScreen_connect_PrimaryOrientationChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(Qt::ScreenOrientation)>(&QScreen::primaryOrientationChanged), self, [=](Qt::ScreenOrientation orientation) {
 		Qt::ScreenOrientation orientation_ret = orientation;
-		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		int sigval1 = static_cast<int>(orientation_ret);
 		miqt_exec_callback_QScreen_PrimaryOrientationChanged(slot, sigval1);
 	});
 }
 
-void QScreen_OrientationChanged(QScreen* self, uintptr_t orientation) {
+void QScreen_OrientationChanged(QScreen* self, int orientation) {
 	self->orientationChanged(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
 void QScreen_connect_OrientationChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(Qt::ScreenOrientation)>(&QScreen::orientationChanged), self, [=](Qt::ScreenOrientation orientation) {
 		Qt::ScreenOrientation orientation_ret = orientation;
-		uintptr_t sigval1 = static_cast<uintptr_t>(orientation_ret);
+		int sigval1 = static_cast<int>(orientation_ret);
 		miqt_exec_callback_QScreen_OrientationChanged(slot, sigval1);
 	});
 }
@@ -301,7 +311,8 @@ void QScreen_RefreshRateChanged(QScreen* self, double refreshRate) {
 
 void QScreen_connect_RefreshRateChanged(QScreen* self, void* slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(qreal)>(&QScreen::refreshRateChanged), self, [=](qreal refreshRate) {
-		double sigval1 = refreshRate;
+		qreal refreshRate_ret = refreshRate;
+		double sigval1 = static_cast<double>(refreshRate_ret);
 		miqt_exec_callback_QScreen_RefreshRateChanged(slot, sigval1);
 	});
 }
@@ -335,19 +346,19 @@ struct miqt_string* QScreen_TrUtf83(const char* s, const char* c, int n) {
 }
 
 QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x) {
-	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x)));
+	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x)));
 }
 
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y) {
-	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y)));
+	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w) {
-	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
+	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
 QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h) {
-	return new QPixmap(self->grabWindow(static_cast<quintptr>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
+	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 void QScreen_Delete(QScreen* self) {

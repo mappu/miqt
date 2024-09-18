@@ -351,11 +351,11 @@ func QObject_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
-	return (int)(C.QObject_StartTimer2(this.h, (C.int)(interval), (C.uintptr_t)(timerType)))
+	return (int)(C.QObject_StartTimer2(this.h, (C.int)(interval), (C.int)(timerType)))
 }
 
 func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
-	_ret := C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.uintptr_t)(typeVal))
+	_ret := C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal))
 	_goptr := newQMetaObject__Connection(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -366,7 +366,7 @@ func (this *QObject) Connect4(sender *QObject, signal string, member string, typ
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
-	_ret := C.QObject_Connect4(this.h, sender.cPointer(), signal_Cstring, member_Cstring, (C.uintptr_t)(typeVal))
+	_ret := C.QObject_Connect4(this.h, sender.cPointer(), signal_Cstring, member_Cstring, (C.int)(typeVal))
 	_goptr := newQMetaObject__Connection(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

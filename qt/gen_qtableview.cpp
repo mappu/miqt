@@ -132,12 +132,12 @@ bool QTableView_ShowGrid(const QTableView* self) {
 	return self->showGrid();
 }
 
-uintptr_t QTableView_GridStyle(const QTableView* self) {
+int QTableView_GridStyle(const QTableView* self) {
 	Qt::PenStyle _ret = self->gridStyle();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTableView_SetGridStyle(QTableView* self, uintptr_t style) {
+void QTableView_SetGridStyle(QTableView* self, int style) {
 	self->setGridStyle(static_cast<Qt::PenStyle>(style));
 }
 
@@ -229,7 +229,7 @@ void QTableView_SortByColumn(QTableView* self, int column) {
 	self->sortByColumn(static_cast<int>(column));
 }
 
-void QTableView_SortByColumn2(QTableView* self, int column, uintptr_t order) {
+void QTableView_SortByColumn2(QTableView* self, int column, int order) {
 	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -265,7 +265,7 @@ struct miqt_string* QTableView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, uintptr_t hint) {
+void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

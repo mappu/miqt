@@ -13,7 +13,7 @@ QEasingCurve* QEasingCurve_new2(QEasingCurve* other) {
 	return new QEasingCurve(*other);
 }
 
-QEasingCurve* QEasingCurve_new3(uintptr_t typeVal) {
+QEasingCurve* QEasingCurve_new3(int typeVal) {
 	return new QEasingCurve(static_cast<QEasingCurve::Type>(typeVal));
 }
 
@@ -34,7 +34,8 @@ bool QEasingCurve_OperatorNotEqual(const QEasingCurve* self, QEasingCurve* other
 }
 
 double QEasingCurve_Amplitude(const QEasingCurve* self) {
-	return self->amplitude();
+	qreal _ret = self->amplitude();
+	return static_cast<double>(_ret);
 }
 
 void QEasingCurve_SetAmplitude(QEasingCurve* self, double amplitude) {
@@ -42,7 +43,8 @@ void QEasingCurve_SetAmplitude(QEasingCurve* self, double amplitude) {
 }
 
 double QEasingCurve_Period(const QEasingCurve* self) {
-	return self->period();
+	qreal _ret = self->period();
+	return static_cast<double>(_ret);
 }
 
 void QEasingCurve_SetPeriod(QEasingCurve* self, double period) {
@@ -50,7 +52,8 @@ void QEasingCurve_SetPeriod(QEasingCurve* self, double period) {
 }
 
 double QEasingCurve_Overshoot(const QEasingCurve* self) {
-	return self->overshoot();
+	qreal _ret = self->overshoot();
+	return static_cast<double>(_ret);
 }
 
 void QEasingCurve_SetOvershoot(QEasingCurve* self, double overshoot) {
@@ -78,17 +81,18 @@ struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self) {
 	return _out;
 }
 
-uintptr_t QEasingCurve_Type(const QEasingCurve* self) {
+int QEasingCurve_Type(const QEasingCurve* self) {
 	QEasingCurve::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QEasingCurve_SetType(QEasingCurve* self, uintptr_t typeVal) {
+void QEasingCurve_SetType(QEasingCurve* self, int typeVal) {
 	self->setType(static_cast<QEasingCurve::Type>(typeVal));
 }
 
 double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress) {
-	return self->valueForProgress(static_cast<qreal>(progress));
+	qreal _ret = self->valueForProgress(static_cast<qreal>(progress));
+	return static_cast<double>(_ret);
 }
 
 void QEasingCurve_Delete(QEasingCurve* self) {

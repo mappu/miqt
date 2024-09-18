@@ -167,7 +167,7 @@ func (this *QTableView) GridStyle() PenStyle {
 }
 
 func (this *QTableView) SetGridStyle(style PenStyle) {
-	C.QTableView_SetGridStyle(this.h, (C.uintptr_t)(style))
+	C.QTableView_SetGridStyle(this.h, (C.int)(style))
 }
 
 func (this *QTableView) SetWordWrap(on bool) {
@@ -265,7 +265,7 @@ func (this *QTableView) SortByColumn(column int) {
 }
 
 func (this *QTableView) SortByColumn2(column int, order SortOrder) {
-	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QTableView_SortByColumn2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTableView) SetShowGrid(show bool) {
@@ -317,7 +317,7 @@ func QTableView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTableView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QTableView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

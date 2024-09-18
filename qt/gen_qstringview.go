@@ -52,6 +52,10 @@ func (this *QStringView) Size() uint64 {
 	return (uint64)(C.QStringView_Size(this.h))
 }
 
+func (this *QStringView) Data() *QChar {
+	return newQChar_U(unsafe.Pointer(C.QStringView_Data(this.h)))
+}
+
 func (this *QStringView) OperatorSubscript(n uint64) *QChar {
 	_ret := C.QStringView_OperatorSubscript(this.h, (C.size_t)(n))
 	_goptr := newQChar(_ret)
@@ -111,7 +115,7 @@ func (this *QStringView) CompareWithQChar(c QChar) int {
 }
 
 func (this *QStringView) Compare2(c QChar, cs CaseSensitivity) int {
-	return (int)(C.QStringView_Compare2(this.h, c.cPointer(), (C.uintptr_t)(cs)))
+	return (int)(C.QStringView_Compare2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
 func (this *QStringView) StartsWithWithQChar(c QChar) bool {
@@ -119,7 +123,7 @@ func (this *QStringView) StartsWithWithQChar(c QChar) bool {
 }
 
 func (this *QStringView) StartsWith2(c QChar, cs CaseSensitivity) bool {
-	return (bool)(C.QStringView_StartsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs)))
+	return (bool)(C.QStringView_StartsWith2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
 func (this *QStringView) EndsWithWithQChar(c QChar) bool {
@@ -127,7 +131,7 @@ func (this *QStringView) EndsWithWithQChar(c QChar) bool {
 }
 
 func (this *QStringView) EndsWith2(c QChar, cs CaseSensitivity) bool {
-	return (bool)(C.QStringView_EndsWith2(this.h, c.cPointer(), (C.uintptr_t)(cs)))
+	return (bool)(C.QStringView_EndsWith2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
 func (this *QStringView) IndexOf(c QChar) uint64 {
@@ -194,6 +198,22 @@ func (this *QStringView) ToDouble() float64 {
 	return (float64)(C.QStringView_ToDouble(this.h))
 }
 
+func (this *QStringView) Begin() *QChar {
+	return newQChar_U(unsafe.Pointer(C.QStringView_Begin(this.h)))
+}
+
+func (this *QStringView) End() *QChar {
+	return newQChar_U(unsafe.Pointer(C.QStringView_End(this.h)))
+}
+
+func (this *QStringView) Cbegin() *QChar {
+	return newQChar_U(unsafe.Pointer(C.QStringView_Cbegin(this.h)))
+}
+
+func (this *QStringView) Cend() *QChar {
+	return newQChar_U(unsafe.Pointer(C.QStringView_Cend(this.h)))
+}
+
 func (this *QStringView) Empty() bool {
 	return (bool)(C.QStringView_Empty(this.h))
 }
@@ -243,15 +263,15 @@ func (this *QStringView) IndexOf2(c QChar, from uint64) uint64 {
 }
 
 func (this *QStringView) IndexOf3(c QChar, from uint64, cs CaseSensitivity) uint64 {
-	return (uint64)(C.QStringView_IndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs)))
+	return (uint64)(C.QStringView_IndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.int)(cs)))
 }
 
 func (this *QStringView) Contains2(c QChar, cs CaseSensitivity) bool {
-	return (bool)(C.QStringView_Contains2(this.h, c.cPointer(), (C.uintptr_t)(cs)))
+	return (bool)(C.QStringView_Contains2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
 func (this *QStringView) Count2(c QChar, cs CaseSensitivity) uint64 {
-	return (uint64)(C.QStringView_Count2(this.h, c.cPointer(), (C.uintptr_t)(cs)))
+	return (uint64)(C.QStringView_Count2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
 func (this *QStringView) LastIndexOf2(c QChar, from uint64) uint64 {
@@ -259,7 +279,7 @@ func (this *QStringView) LastIndexOf2(c QChar, from uint64) uint64 {
 }
 
 func (this *QStringView) LastIndexOf3(c QChar, from uint64, cs CaseSensitivity) uint64 {
-	return (uint64)(C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.uintptr_t)(cs)))
+	return (uint64)(C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.size_t)(from), (C.int)(cs)))
 }
 
 func (this *QStringView) ToShort1(ok *bool) int16 {

@@ -62,7 +62,7 @@ func NewQStateMachine() *QStateMachine {
 
 // NewQStateMachine2 constructs a new QStateMachine object.
 func NewQStateMachine2(childMode QState__ChildMode) *QStateMachine {
-	ret := C.QStateMachine_new2((C.uintptr_t)(childMode))
+	ret := C.QStateMachine_new2((C.int)(childMode))
 	return newQStateMachine(ret)
 }
 
@@ -74,7 +74,7 @@ func NewQStateMachine3(parent *QObject) *QStateMachine {
 
 // NewQStateMachine4 constructs a new QStateMachine object.
 func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMachine {
-	ret := C.QStateMachine_new4((C.uintptr_t)(childMode), parent.cPointer())
+	ret := C.QStateMachine_new4((C.int)(childMode), parent.cPointer())
 	return newQStateMachine(ret)
 }
 
@@ -159,7 +159,7 @@ func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
 }
 
 func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
-	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.uintptr_t)(restorePolicy))
+	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.int)(restorePolicy))
 }
 
 func (this *QStateMachine) PostEvent(event *QEvent) {
@@ -267,7 +267,7 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
-	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.uintptr_t)(priority))
+	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.int)(priority))
 }
 
 // Delete this object from C++ memory.

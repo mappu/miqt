@@ -6,6 +6,7 @@
 #include <cstring>
 #include <QThreadPool>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
+#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase
 #include "qfutureinterface.h"
 #include "gen_qfutureinterface.h"
 #include "_cgo_export.h"
@@ -18,7 +19,7 @@ QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other) {
 	return new QFutureInterfaceBase(*other);
 }
 
-QFutureInterfaceBase* QFutureInterfaceBase_new3(uintptr_t initialState) {
+QFutureInterfaceBase* QFutureInterfaceBase_new3(int initialState) {
 	return new QFutureInterfaceBase(static_cast<QFutureInterfaceBase::State>(initialState));
 }
 
@@ -98,7 +99,7 @@ int QFutureInterfaceBase_ResultCount(const QFutureInterfaceBase* self) {
 	return self->resultCount();
 }
 
-bool QFutureInterfaceBase_QueryState(const QFutureInterfaceBase* self, uintptr_t state) {
+bool QFutureInterfaceBase_QueryState(const QFutureInterfaceBase* self, int state) {
 	return self->queryState(static_cast<QFutureInterfaceBase::State>(state));
 }
 
@@ -176,6 +177,18 @@ QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceB
 	QtPrivate::ExceptionStore& _ret = self->exceptionStore();
 	// Cast returned reference into pointer
 	return &_ret;
+}
+
+QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase(QFutureInterfaceBase* self) {
+	QtPrivate::ResultStoreBase& _ret = self->resultStoreBase();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase2(const QFutureInterfaceBase* self) {
+	const QtPrivate::ResultStoreBase& _ret = self->resultStoreBase();
+	// Cast returned reference into pointer
+	return const_cast<QtPrivate::ResultStoreBase*>(&_ret);
 }
 
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other) {

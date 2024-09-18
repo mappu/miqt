@@ -44,7 +44,7 @@ func NewQKeyEventTransition() *QKeyEventTransition {
 
 // NewQKeyEventTransition2 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition2(object *QObject, typeVal QEvent__Type, key int) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key))
+	ret := C.QKeyEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(key))
 	return newQKeyEventTransition(ret)
 }
 
@@ -56,7 +56,7 @@ func NewQKeyEventTransition3(sourceState *QState) *QKeyEventTransition {
 
 // NewQKeyEventTransition4 constructs a new QKeyEventTransition object.
 func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sourceState *QState) *QKeyEventTransition {
-	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.uintptr_t)(typeVal), (C.int)(key), sourceState.cPointer())
+	ret := C.QKeyEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(key), sourceState.cPointer())
 	return newQKeyEventTransition(ret)
 }
 
@@ -95,7 +95,7 @@ func (this *QKeyEventTransition) ModifierMask() int {
 }
 
 func (this *QKeyEventTransition) SetModifierMask(modifiers int) {
-	C.QKeyEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
+	C.QKeyEventTransition_SetModifierMask(this.h, modifiers)
 }
 
 func QKeyEventTransition_Tr2(s string, c string) string {

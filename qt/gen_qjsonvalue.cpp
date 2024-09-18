@@ -53,7 +53,7 @@ QJsonValue* QJsonValue_new10(QJsonValue* other) {
 	return new QJsonValue(*other);
 }
 
-QJsonValue* QJsonValue_new11(uintptr_t param1) {
+QJsonValue* QJsonValue_new11(int param1) {
 	return new QJsonValue(static_cast<QJsonValue::Type>(param1));
 }
 
@@ -73,9 +73,9 @@ QVariant* QJsonValue_ToVariant(const QJsonValue* self) {
 	return new QVariant(self->toVariant());
 }
 
-uintptr_t QJsonValue_Type(const QJsonValue* self) {
+int QJsonValue_Type(const QJsonValue* self) {
 	QJsonValue::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QJsonValue_IsNull(const QJsonValue* self) {
@@ -206,9 +206,9 @@ QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self) {
 	return new QVariant(self->toVariant());
 }
 
-uintptr_t QJsonValueRef_Type(const QJsonValueRef* self) {
+int QJsonValueRef_Type(const QJsonValueRef* self) {
 	QJsonValue::Type _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QJsonValueRef_IsNull(const QJsonValueRef* self) {

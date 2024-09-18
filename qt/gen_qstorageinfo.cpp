@@ -73,15 +73,18 @@ struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self) {
 }
 
 long long QStorageInfo_BytesTotal(const QStorageInfo* self) {
-	return self->bytesTotal();
+	qint64 _ret = self->bytesTotal();
+	return static_cast<long long>(_ret);
 }
 
 long long QStorageInfo_BytesFree(const QStorageInfo* self) {
-	return self->bytesFree();
+	qint64 _ret = self->bytesFree();
+	return static_cast<long long>(_ret);
 }
 
 long long QStorageInfo_BytesAvailable(const QStorageInfo* self) {
-	return self->bytesAvailable();
+	qint64 _ret = self->bytesAvailable();
+	return static_cast<long long>(_ret);
 }
 
 int QStorageInfo_BlockSize(const QStorageInfo* self) {

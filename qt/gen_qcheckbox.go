@@ -114,7 +114,7 @@ func (this *QCheckBox) CheckState() CheckState {
 }
 
 func (this *QCheckBox) SetCheckState(state CheckState) {
-	C.QCheckBox_SetCheckState(this.h, (C.uintptr_t)(state))
+	C.QCheckBox_SetCheckState(this.h, (C.int)(state))
 }
 
 func (this *QCheckBox) StateChanged(param1 int) {

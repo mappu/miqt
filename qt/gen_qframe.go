@@ -77,7 +77,7 @@ func NewQFrame2(parent *QWidget) *QFrame {
 
 // NewQFrame3 constructs a new QFrame object.
 func NewQFrame3(parent *QWidget, f int) *QFrame {
-	ret := C.QFrame_new3(parent.cPointer(), (C.int)(f))
+	ret := C.QFrame_new3(parent.cPointer(), f)
 	return newQFrame(ret)
 }
 
@@ -127,7 +127,7 @@ func (this *QFrame) FrameShape() QFrame__Shape {
 }
 
 func (this *QFrame) SetFrameShape(frameShape QFrame__Shape) {
-	C.QFrame_SetFrameShape(this.h, (C.uintptr_t)(frameShape))
+	C.QFrame_SetFrameShape(this.h, (C.int)(frameShape))
 }
 
 func (this *QFrame) FrameShadow() QFrame__Shadow {
@@ -135,7 +135,7 @@ func (this *QFrame) FrameShadow() QFrame__Shadow {
 }
 
 func (this *QFrame) SetFrameShadow(frameShadow QFrame__Shadow) {
-	C.QFrame_SetFrameShadow(this.h, (C.uintptr_t)(frameShadow))
+	C.QFrame_SetFrameShadow(this.h, (C.int)(frameShadow))
 }
 
 func (this *QFrame) LineWidth() int {

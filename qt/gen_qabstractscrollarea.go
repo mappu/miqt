@@ -83,7 +83,7 @@ func (this *QAbstractScrollArea) VerticalScrollBarPolicy() ScrollBarPolicy {
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.uintptr_t)(verticalScrollBarPolicy))
+	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.int)(verticalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
@@ -99,7 +99,7 @@ func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() ScrollBarPolicy {
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.uintptr_t)(horizontalScrollBarPolicy))
+	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.int)(horizontalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
@@ -119,11 +119,11 @@ func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
 }
 
 func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment int) {
-	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
+	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), alignment)
 }
 
 func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
-	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
+	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, alignment)
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -171,7 +171,7 @@ func (this *QAbstractScrollArea) SizeAdjustPolicy() QAbstractScrollArea__SizeAdj
 }
 
 func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy QAbstractScrollArea__SizeAdjustPolicy) {
-	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.uintptr_t)(policy))
+	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func QAbstractScrollArea_Tr2(s string, c string) string {

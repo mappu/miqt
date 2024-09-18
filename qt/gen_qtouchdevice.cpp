@@ -12,7 +12,7 @@ QTouchDevice* QTouchDevice_new() {
 }
 
 struct miqt_array* QTouchDevice_Devices() {
-	QList<const QTouchDevice*> _ret = QTouchDevice::devices();
+	QList<const QTouchDevice *> _ret = QTouchDevice::devices();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTouchDevice** _arr = static_cast<QTouchDevice**>(malloc(sizeof(QTouchDevice*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -31,9 +31,9 @@ struct miqt_string* QTouchDevice_Name(const QTouchDevice* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QTouchDevice_Type(const QTouchDevice* self) {
+int QTouchDevice_Type(const QTouchDevice* self) {
 	QTouchDevice::DeviceType _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QTouchDevice_Capabilities(const QTouchDevice* self) {
@@ -50,7 +50,7 @@ void QTouchDevice_SetName(QTouchDevice* self, struct miqt_string* name) {
 	self->setName(name_QString);
 }
 
-void QTouchDevice_SetType(QTouchDevice* self, uintptr_t devType) {
+void QTouchDevice_SetType(QTouchDevice* self, int devType) {
 	self->setType(static_cast<QTouchDevice::DeviceType>(devType));
 }
 

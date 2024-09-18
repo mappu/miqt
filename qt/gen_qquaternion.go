@@ -43,7 +43,7 @@ func NewQQuaternion() *QQuaternion {
 
 // NewQQuaternion2 constructs a new QQuaternion object.
 func NewQQuaternion2(param1 Initialization) *QQuaternion {
-	ret := C.QQuaternion_new2((C.uintptr_t)(param1))
+	ret := C.QQuaternion_new2((C.int)(param1))
 	return newQQuaternion(ret)
 }
 

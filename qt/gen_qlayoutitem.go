@@ -108,7 +108,7 @@ func (this *QLayoutItem) Alignment() int {
 }
 
 func (this *QLayoutItem) SetAlignment(a int) {
-	C.QLayoutItem_SetAlignment(this.h, (C.int)(a))
+	C.QLayoutItem_SetAlignment(this.h, a)
 }
 
 func (this *QLayoutItem) ControlTypes() int {
@@ -166,13 +166,13 @@ func NewQSpacerItem2(param1 *QSpacerItem) *QSpacerItem {
 
 // NewQSpacerItem3 constructs a new QSpacerItem object.
 func NewQSpacerItem3(w int, h int, hData QSizePolicy__Policy) *QSpacerItem {
-	ret := C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
+	ret := C.QSpacerItem_new3((C.int)(w), (C.int)(h), (C.int)(hData))
 	return newQSpacerItem(ret)
 }
 
 // NewQSpacerItem4 constructs a new QSpacerItem object.
 func NewQSpacerItem4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) *QSpacerItem {
-	ret := C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
+	ret := C.QSpacerItem_new4((C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 	return newQSpacerItem(ret)
 }
 
@@ -232,11 +232,11 @@ func (this *QSpacerItem) SizePolicy() *QSizePolicy {
 }
 
 func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy) {
-	C.QSpacerItem_ChangeSize3(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData))
+	C.QSpacerItem_ChangeSize3(this.h, (C.int)(w), (C.int)(h), (C.int)(hData))
 }
 
 func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
-	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.uintptr_t)(hData), (C.uintptr_t)(vData))
+	C.QSpacerItem_ChangeSize4(this.h, (C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 }
 
 // Delete this object from C++ memory.

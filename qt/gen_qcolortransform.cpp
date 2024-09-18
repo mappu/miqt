@@ -22,7 +22,8 @@ void QColorTransform_Swap(QColorTransform* self, QColorTransform* other) {
 }
 
 unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb) {
-	return self->map(static_cast<QRgb>(argb));
+	QRgb _ret = self->map(static_cast<QRgb>(argb));
+	return static_cast<unsigned int>(_ret);
 }
 
 QRgba64* QColorTransform_MapWithRgba64(const QColorTransform* self, QRgba64* rgba64) {

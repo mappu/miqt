@@ -65,7 +65,7 @@ func QGestureRecognizer_RegisterRecognizer(recognizer *QGestureRecognizer) Gestu
 }
 
 func QGestureRecognizer_UnregisterRecognizer(typeVal GestureType) {
-	C.QGestureRecognizer_UnregisterRecognizer((C.uintptr_t)(typeVal))
+	C.QGestureRecognizer_UnregisterRecognizer((C.int)(typeVal))
 }
 
 func (this *QGestureRecognizer) OperatorAssign(param1 *QGestureRecognizer) {

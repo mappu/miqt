@@ -50,7 +50,7 @@ func NewQReadWriteLock() *QReadWriteLock {
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
 func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
-	ret := C.QReadWriteLock_new2((C.uintptr_t)(recursionMode))
+	ret := C.QReadWriteLock_new2((C.int)(recursionMode))
 	return newQReadWriteLock(ret)
 }
 

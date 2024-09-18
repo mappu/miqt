@@ -176,17 +176,17 @@ int QDateTimeEdit_DisplayedSections(const QDateTimeEdit* self) {
 	return static_cast<int>(_ret);
 }
 
-uintptr_t QDateTimeEdit_CurrentSection(const QDateTimeEdit* self) {
+int QDateTimeEdit_CurrentSection(const QDateTimeEdit* self) {
 	QDateTimeEdit::Section _ret = self->currentSection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QDateTimeEdit_SectionAt(const QDateTimeEdit* self, int index) {
+int QDateTimeEdit_SectionAt(const QDateTimeEdit* self, int index) {
 	QDateTimeEdit::Section _ret = self->sectionAt(static_cast<int>(index));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDateTimeEdit_SetCurrentSection(QDateTimeEdit* self, uintptr_t section) {
+void QDateTimeEdit_SetCurrentSection(QDateTimeEdit* self, int section) {
 	self->setCurrentSection(static_cast<QDateTimeEdit::Section>(section));
 }
 
@@ -210,11 +210,11 @@ int QDateTimeEdit_SectionCount(const QDateTimeEdit* self) {
 	return self->sectionCount();
 }
 
-void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, uintptr_t section) {
+void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, int section) {
 	self->setSelectedSection(static_cast<QDateTimeEdit::Section>(section));
 }
 
-struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, uintptr_t section) {
+struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, int section) {
 	QString _ret = self->sectionText(static_cast<QDateTimeEdit::Section>(section));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -241,12 +241,12 @@ void QDateTimeEdit_SetCalendarPopup(QDateTimeEdit* self, bool enable) {
 	self->setCalendarPopup(enable);
 }
 
-uintptr_t QDateTimeEdit_TimeSpec(const QDateTimeEdit* self) {
+int QDateTimeEdit_TimeSpec(const QDateTimeEdit* self) {
 	Qt::TimeSpec _ret = self->timeSpec();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDateTimeEdit_SetTimeSpec(QDateTimeEdit* self, uintptr_t spec) {
+void QDateTimeEdit_SetTimeSpec(QDateTimeEdit* self, int spec) {
 	self->setTimeSpec(static_cast<Qt::TimeSpec>(spec));
 }
 

@@ -27,11 +27,11 @@ struct miqt_string* QCommandLineParser_TrUtf8(const char* sourceText) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, uintptr_t parsingMode) {
+void QCommandLineParser_SetSingleDashWordOptionMode(QCommandLineParser* self, int parsingMode) {
 	self->setSingleDashWordOptionMode(static_cast<QCommandLineParser::SingleDashWordOptionMode>(parsingMode));
 }
 
-void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, uintptr_t mode) {
+void QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(QCommandLineParser* self, int mode) {
 	self->setOptionsAfterPositionalArgumentsMode(static_cast<QCommandLineParser::OptionsAfterPositionalArgumentsMode>(mode));
 }
 

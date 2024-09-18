@@ -51,7 +51,7 @@ void QSystemTrayIcon_Show(QSystemTrayIcon* self);
 void QSystemTrayIcon_Hide(QSystemTrayIcon* self);
 void QSystemTrayIcon_ShowMessage(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, QIcon* icon);
 void QSystemTrayIcon_ShowMessage2(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg);
-void QSystemTrayIcon_Activated(QSystemTrayIcon* self, uintptr_t reason);
+void QSystemTrayIcon_Activated(QSystemTrayIcon* self, int reason);
 void QSystemTrayIcon_connect_Activated(QSystemTrayIcon* self, void* slot);
 void QSystemTrayIcon_MessageClicked(QSystemTrayIcon* self);
 void QSystemTrayIcon_connect_MessageClicked(QSystemTrayIcon* self, void* slot);
@@ -60,8 +60,8 @@ struct miqt_string* QSystemTrayIcon_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QSystemTrayIcon_TrUtf82(const char* s, const char* c);
 struct miqt_string* QSystemTrayIcon_TrUtf83(const char* s, const char* c, int n);
 void QSystemTrayIcon_ShowMessage4(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, QIcon* icon, int msecs);
-void QSystemTrayIcon_ShowMessage3(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, uintptr_t icon);
-void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, uintptr_t icon, int msecs);
+void QSystemTrayIcon_ShowMessage3(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, int icon);
+void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, int icon, int msecs);
 void QSystemTrayIcon_Delete(QSystemTrayIcon* self);
 
 #ifdef __cplusplus

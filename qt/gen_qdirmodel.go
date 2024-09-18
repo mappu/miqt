@@ -56,7 +56,7 @@ func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirModel_new(nameFilters_ma, (C.int)(filters), (C.int)(sort))
+	ret := C.QDirModel_new(nameFilters_ma, filters, sort)
 	return newQDirModel(ret)
 }
 
@@ -78,7 +78,7 @@ func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject)
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirModel_new3(nameFilters_ma, (C.int)(filters), (C.int)(sort), parent.cPointer())
+	ret := C.QDirModel_new3(nameFilters_ma, filters, sort, parent.cPointer())
 	return newQDirModel(ret)
 }
 
@@ -144,7 +144,7 @@ func (this *QDirModel) SetData(index *QModelIndex, value *QVariant) bool {
 }
 
 func (this *QDirModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QDirModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QDirModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -189,7 +189,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QDirModel) SupportedDropActions() int {
@@ -233,7 +233,7 @@ func (this *QDirModel) NameFilters() []string {
 }
 
 func (this *QDirModel) SetFilter(filters int) {
-	C.QDirModel_SetFilter(this.h, (C.int)(filters))
+	C.QDirModel_SetFilter(this.h, filters)
 }
 
 func (this *QDirModel) Filter() int {
@@ -241,7 +241,7 @@ func (this *QDirModel) Filter() int {
 }
 
 func (this *QDirModel) SetSorting(sort int) {
-	C.QDirModel_SetSorting(this.h, (C.int)(sort))
+	C.QDirModel_SetSorting(this.h, sort)
 }
 
 func (this *QDirModel) Sorting() int {
@@ -405,7 +405,7 @@ func (this *QDirModel) SetData3(index *QModelIndex, value *QVariant, role int) b
 }
 
 func (this *QDirModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QDirModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QDirModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -416,7 +416,7 @@ func (this *QDirModel) HasChildren1(index *QModelIndex) bool {
 }
 
 func (this *QDirModel) Sort2(column int, order SortOrder) {
-	C.QDirModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QDirModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QDirModel) Index2(path string, column int) *QModelIndex {

@@ -352,7 +352,7 @@ func (this *QProcess) ReadChannelMode() QProcess__ProcessChannelMode {
 }
 
 func (this *QProcess) SetReadChannelMode(mode QProcess__ProcessChannelMode) {
-	C.QProcess_SetReadChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetReadChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ProcessChannelMode() QProcess__ProcessChannelMode {
@@ -360,7 +360,7 @@ func (this *QProcess) ProcessChannelMode() QProcess__ProcessChannelMode {
 }
 
 func (this *QProcess) SetProcessChannelMode(mode QProcess__ProcessChannelMode) {
-	C.QProcess_SetProcessChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetProcessChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) InputChannelMode() QProcess__InputChannelMode {
@@ -368,7 +368,7 @@ func (this *QProcess) InputChannelMode() QProcess__InputChannelMode {
 }
 
 func (this *QProcess) SetInputChannelMode(mode QProcess__InputChannelMode) {
-	C.QProcess_SetInputChannelMode(this.h, (C.uintptr_t)(mode))
+	C.QProcess_SetInputChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ReadChannel() QProcess__ProcessChannel {
@@ -376,11 +376,11 @@ func (this *QProcess) ReadChannel() QProcess__ProcessChannel {
 }
 
 func (this *QProcess) SetReadChannel(channel QProcess__ProcessChannel) {
-	C.QProcess_SetReadChannel(this.h, (C.uintptr_t)(channel))
+	C.QProcess_SetReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseReadChannel(channel QProcess__ProcessChannel) {
-	C.QProcess_CloseReadChannel(this.h, (C.uintptr_t)(channel))
+	C.QProcess_CloseReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseWriteChannel() {
@@ -655,14 +655,14 @@ func miqt_exec_callback_QProcess_Finished(cb *C.void, exitCode C.int) {
 }
 
 func (this *QProcess) Finished2(exitCode int, exitStatus QProcess__ExitStatus) {
-	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.uintptr_t)(exitStatus))
+	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.int)(exitStatus))
 }
 func (this *QProcess) OnFinished2(slot func(exitCode int, exitStatus QProcess__ExitStatus)) {
 	C.QProcess_connect_Finished2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_Finished2
-func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatus C.uintptr_t) {
+func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatus C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(exitCode int, exitStatus QProcess__ExitStatus))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -677,14 +677,14 @@ func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatu
 }
 
 func (this *QProcess) ErrorWithError(error QProcess__ProcessError) {
-	C.QProcess_ErrorWithError(this.h, (C.uintptr_t)(error))
+	C.QProcess_ErrorWithError(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorWithError(slot func(error QProcess__ProcessError)) {
 	C.QProcess_connect_ErrorWithError(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_ErrorWithError
-func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.uintptr_t) {
+func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -697,14 +697,14 @@ func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.uintptr_t) {
 }
 
 func (this *QProcess) ErrorOccurred(error QProcess__ProcessError) {
-	C.QProcess_ErrorOccurred(this.h, (C.uintptr_t)(error))
+	C.QProcess_ErrorOccurred(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorOccurred(slot func(error QProcess__ProcessError)) {
 	C.QProcess_connect_ErrorOccurred(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QProcess_ErrorOccurred
-func miqt_exec_callback_QProcess_ErrorOccurred(cb *C.void, error C.uintptr_t) {
+func miqt_exec_callback_QProcess_ErrorOccurred(cb *C.void, error C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -773,17 +773,17 @@ func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
-	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, (C.int)(mode))
+	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, mode)
 }
 
 func (this *QProcess) Start22(command string, mode int) {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
-	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), (C.int)(mode))
+	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), mode)
 }
 
 func (this *QProcess) Start1(mode int) {
-	C.QProcess_Start1(this.h, (C.int)(mode))
+	C.QProcess_Start1(this.h, mode)
 }
 
 func (this *QProcess) StartDetached1(pid *int64) bool {
@@ -791,19 +791,19 @@ func (this *QProcess) StartDetached1(pid *int64) bool {
 }
 
 func (this *QProcess) Open1(mode int) bool {
-	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
+	return (bool)(C.QProcess_Open1(this.h, mode))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
+	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), mode)
 }
 
 func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
+	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), mode)
 }
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {

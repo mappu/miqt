@@ -55,21 +55,24 @@ bool QResource_IsValid(const QResource* self) {
 	return self->isValid();
 }
 
-uintptr_t QResource_CompressionAlgorithm(const QResource* self) {
+int QResource_CompressionAlgorithm(const QResource* self) {
 	QResource::Compression _ret = self->compressionAlgorithm();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 long long QResource_Size(const QResource* self) {
-	return self->size();
+	qint64 _ret = self->size();
+	return static_cast<long long>(_ret);
 }
 
 const unsigned char* QResource_Data(const QResource* self) {
-	return (const unsigned char*) self->data();
+	const uchar* _ret = self->data();
+	return static_cast<const unsigned char*>(_ret);
 }
 
 long long QResource_UncompressedSize(const QResource* self) {
-	return self->uncompressedSize();
+	qint64 _ret = self->uncompressedSize();
+	return static_cast<long long>(_ret);
 }
 
 QByteArray* QResource_UncompressedData(const QResource* self) {

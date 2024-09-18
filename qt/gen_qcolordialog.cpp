@@ -55,11 +55,11 @@ QColor* QColorDialog_SelectedColor(const QColorDialog* self) {
 	return new QColor(self->selectedColor());
 }
 
-void QColorDialog_SetOption(QColorDialog* self, uintptr_t option) {
+void QColorDialog_SetOption(QColorDialog* self, int option) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
-bool QColorDialog_TestOption(const QColorDialog* self, uintptr_t option) {
+bool QColorDialog_TestOption(const QColorDialog* self, int option) {
 	return self->testOption(static_cast<QColorDialog::ColorDialogOption>(option));
 }
 
@@ -81,7 +81,8 @@ QColor* QColorDialog_GetColor() {
 }
 
 unsigned int QColorDialog_GetRgba() {
-	return QColorDialog::getRgba();
+	QRgb _ret = QColorDialog::getRgba();
+	return static_cast<unsigned int>(_ret);
 }
 
 int QColorDialog_CustomCount() {
@@ -158,7 +159,7 @@ struct miqt_string* QColorDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QColorDialog_SetOption2(QColorDialog* self, uintptr_t option, bool on) {
+void QColorDialog_SetOption2(QColorDialog* self, int option, bool on) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option), on);
 }
 
@@ -181,15 +182,18 @@ QColor* QColorDialog_GetColor4(QColor* initial, QWidget* parent, struct miqt_str
 }
 
 unsigned int QColorDialog_GetRgba1(unsigned int rgba) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba));
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba));
+	return static_cast<unsigned int>(_ret);
 }
 
 unsigned int QColorDialog_GetRgba2(unsigned int rgba, bool* ok) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba), ok);
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba), ok);
+	return static_cast<unsigned int>(_ret);
 }
 
 unsigned int QColorDialog_GetRgba3(unsigned int rgba, bool* ok, QWidget* parent) {
-	return QColorDialog::getRgba(static_cast<QRgb>(rgba), ok, parent);
+	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba), ok, parent);
+	return static_cast<unsigned int>(_ret);
 }
 
 void QColorDialog_Delete(QColorDialog* self) {

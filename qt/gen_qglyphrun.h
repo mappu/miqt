@@ -47,13 +47,13 @@ void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut);
 bool QGlyphRun_StrikeOut(const QGlyphRun* self);
 void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on);
 bool QGlyphRun_IsRightToLeft(const QGlyphRun* self);
-void QGlyphRun_SetFlag(QGlyphRun* self, uintptr_t flag);
+void QGlyphRun_SetFlag(QGlyphRun* self, int flag);
 void QGlyphRun_SetFlags(QGlyphRun* self, int flags);
 int QGlyphRun_Flags(const QGlyphRun* self);
 void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect);
 QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self);
 bool QGlyphRun_IsEmpty(const QGlyphRun* self);
-void QGlyphRun_SetFlag2(QGlyphRun* self, uintptr_t flag, bool enabled);
+void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled);
 void QGlyphRun_Delete(QGlyphRun* self);
 
 #ifdef __cplusplus

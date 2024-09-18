@@ -54,19 +54,19 @@ QSize* QSize_Transposed(const QSize* self) {
 	return new QSize(self->transposed());
 }
 
-void QSize_Scale(QSize* self, int w, int h, uintptr_t mode) {
+void QSize_Scale(QSize* self, int w, int h, int mode) {
 	self->scale(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSize_Scale2(QSize* self, QSize* s, uintptr_t mode) {
+void QSize_Scale2(QSize* self, QSize* s, int mode) {
 	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSize* QSize_Scaled(const QSize* self, int w, int h, uintptr_t mode) {
+QSize* QSize_Scaled(const QSize* self, int w, int h, int mode) {
 	return new QSize(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSize* QSize_Scaled2(const QSize* self, QSize* s, uintptr_t mode) {
+QSize* QSize_Scaled2(const QSize* self, QSize* s, int mode) {
 	return new QSize(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
 }
 
@@ -143,11 +143,13 @@ bool QSizeF_IsValid(const QSizeF* self) {
 }
 
 double QSizeF_Width(const QSizeF* self) {
-	return self->width();
+	qreal _ret = self->width();
+	return static_cast<double>(_ret);
 }
 
 double QSizeF_Height(const QSizeF* self) {
-	return self->height();
+	qreal _ret = self->height();
+	return static_cast<double>(_ret);
 }
 
 void QSizeF_SetWidth(QSizeF* self, double w) {
@@ -166,19 +168,19 @@ QSizeF* QSizeF_Transposed(const QSizeF* self) {
 	return new QSizeF(self->transposed());
 }
 
-void QSizeF_Scale(QSizeF* self, double w, double h, uintptr_t mode) {
+void QSizeF_Scale(QSizeF* self, double w, double h, int mode) {
 	self->scale(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSizeF_Scale2(QSizeF* self, QSizeF* s, uintptr_t mode) {
+void QSizeF_Scale2(QSizeF* self, QSizeF* s, int mode) {
 	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSizeF* QSizeF_Scaled(const QSizeF* self, double w, double h, uintptr_t mode) {
+QSizeF* QSizeF_Scaled(const QSizeF* self, double w, double h, int mode) {
 	return new QSizeF(self->scaled(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSizeF* QSizeF_Scaled2(const QSizeF* self, QSizeF* s, uintptr_t mode) {
+QSizeF* QSizeF_Scaled2(const QSizeF* self, QSizeF* s, int mode) {
 	return new QSizeF(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
 }
 

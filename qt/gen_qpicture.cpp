@@ -34,7 +34,8 @@ int QPicture_DevType(const QPicture* self) {
 }
 
 unsigned int QPicture_Size(const QPicture* self) {
-	return self->size();
+	uint _ret = self->size();
+	return static_cast<unsigned int>(_ret);
 }
 
 const char* QPicture_Data(const QPicture* self) {

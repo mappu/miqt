@@ -236,11 +236,11 @@ int QApplication_StartDragDistance() {
 	return QApplication::startDragDistance();
 }
 
-bool QApplication_IsEffectEnabled(uintptr_t param1) {
+bool QApplication_IsEffectEnabled(int param1) {
 	return QApplication::isEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
-void QApplication_SetEffectEnabled(uintptr_t param1) {
+void QApplication_SetEffectEnabled(int param1) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
@@ -332,7 +332,7 @@ void QApplication_Alert2(QWidget* widget, int duration) {
 	QApplication::alert(widget, static_cast<int>(duration));
 }
 
-void QApplication_SetEffectEnabled2(uintptr_t param1, bool enable) {
+void QApplication_SetEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 

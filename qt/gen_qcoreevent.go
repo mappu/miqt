@@ -214,7 +214,7 @@ func newQEvent_U(h unsafe.Pointer) *QEvent {
 
 // NewQEvent constructs a new QEvent object.
 func NewQEvent(typeVal QEvent__Type) *QEvent {
-	ret := C.QEvent_new((C.uintptr_t)(typeVal))
+	ret := C.QEvent_new((C.int)(typeVal))
 	return newQEvent(ret)
 }
 
@@ -352,7 +352,7 @@ func newQChildEvent_U(h unsafe.Pointer) *QChildEvent {
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
-	ret := C.QChildEvent_new((C.uintptr_t)(typeVal), child.cPointer())
+	ret := C.QChildEvent_new((C.int)(typeVal), child.cPointer())
 	return newQChildEvent(ret)
 }
 

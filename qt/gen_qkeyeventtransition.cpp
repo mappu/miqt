@@ -13,7 +13,7 @@ QKeyEventTransition* QKeyEventTransition_new() {
 	return new QKeyEventTransition();
 }
 
-QKeyEventTransition* QKeyEventTransition_new2(QObject* object, uintptr_t typeVal, int key) {
+QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int key) {
 	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
 }
 
@@ -21,7 +21,7 @@ QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState) {
 	return new QKeyEventTransition(sourceState);
 }
 
-QKeyEventTransition* QKeyEventTransition_new4(QObject* object, uintptr_t typeVal, int key, QState* sourceState) {
+QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState) {
 	return new QKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
 }
 

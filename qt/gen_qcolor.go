@@ -61,7 +61,7 @@ func NewQColor() *QColor {
 
 // NewQColor2 constructs a new QColor object.
 func NewQColor2(color GlobalColor) *QColor {
-	ret := C.QColor_new2((C.uintptr_t)(color))
+	ret := C.QColor_new2((C.int)(color))
 	return newQColor(ret)
 }
 
@@ -101,7 +101,7 @@ func NewQColor7(aname string) *QColor {
 
 // NewQColor8 constructs a new QColor object.
 func NewQColor8(spec QColor__Spec) *QColor {
-	ret := C.QColor_new8((C.uintptr_t)(spec))
+	ret := C.QColor_new8((C.int)(spec))
 	return newQColor(ret)
 }
 
@@ -113,7 +113,7 @@ func NewQColor9(color *QColor) *QColor {
 
 // NewQColor10 constructs a new QColor object.
 func NewQColor10(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
-	ret := C.QColor_new10((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4))
+	ret := C.QColor_new10((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4))
 	return newQColor(ret)
 }
 
@@ -125,7 +125,7 @@ func NewQColor11(r int, g int, b int, a int) *QColor {
 
 // NewQColor12 constructs a new QColor object.
 func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
-	ret := C.QColor_new12((C.uintptr_t)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5))
+	ret := C.QColor_new12((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5))
 	return newQColor(ret)
 }
 
@@ -134,7 +134,7 @@ func (this *QColor) OperatorAssign(param1 *QColor) {
 }
 
 func (this *QColor) OperatorAssignWithColor(color GlobalColor) {
-	C.QColor_OperatorAssignWithColor(this.h, (C.uintptr_t)(color))
+	C.QColor_OperatorAssignWithColor(this.h, (C.int)(color))
 }
 
 func (this *QColor) IsValid() bool {
@@ -149,7 +149,7 @@ func (this *QColor) Name() string {
 }
 
 func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
-	var _ms *C.struct_miqt_string = C.QColor_NameWithFormat(this.h, (C.uintptr_t)(format))
+	var _ms *C.struct_miqt_string = C.QColor_NameWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -474,7 +474,7 @@ func (this *QColor) ToExtendedRgb() *QColor {
 }
 
 func (this *QColor) ConvertTo(colorSpec QColor__Spec) *QColor {
-	_ret := C.QColor_ConvertTo(this.h, (C.uintptr_t)(colorSpec))
+	_ret := C.QColor_ConvertTo(this.h, (C.int)(colorSpec))
 	_goptr := newQColor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

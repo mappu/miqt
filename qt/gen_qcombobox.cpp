@@ -74,12 +74,12 @@ void QComboBox_SetAutoCompletion(QComboBox* self, bool enable) {
 	self->setAutoCompletion(enable);
 }
 
-uintptr_t QComboBox_AutoCompletionCaseSensitivity(const QComboBox* self) {
+int QComboBox_AutoCompletionCaseSensitivity(const QComboBox* self) {
 	Qt::CaseSensitivity _ret = self->autoCompletionCaseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QComboBox_SetAutoCompletionCaseSensitivity(QComboBox* self, uintptr_t sensitivity) {
+void QComboBox_SetAutoCompletionCaseSensitivity(QComboBox* self, int sensitivity) {
 	self->setAutoCompletionCaseSensitivity(static_cast<Qt::CaseSensitivity>(sensitivity));
 }
 
@@ -108,21 +108,21 @@ int QComboBox_FindData(const QComboBox* self, QVariant* data) {
 	return self->findData(*data);
 }
 
-uintptr_t QComboBox_InsertPolicy(const QComboBox* self) {
+int QComboBox_InsertPolicy(const QComboBox* self) {
 	QComboBox::InsertPolicy _ret = self->insertPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QComboBox_SetInsertPolicy(QComboBox* self, uintptr_t policy) {
+void QComboBox_SetInsertPolicy(QComboBox* self, int policy) {
 	self->setInsertPolicy(static_cast<QComboBox::InsertPolicy>(policy));
 }
 
-uintptr_t QComboBox_SizeAdjustPolicy(const QComboBox* self) {
+int QComboBox_SizeAdjustPolicy(const QComboBox* self) {
 	QComboBox::SizeAdjustPolicy _ret = self->sizeAdjustPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QComboBox_SetSizeAdjustPolicy(QComboBox* self, uintptr_t policy) {
+void QComboBox_SetSizeAdjustPolicy(QComboBox* self, int policy) {
 	self->setSizeAdjustPolicy(static_cast<QComboBox::SizeAdjustPolicy>(policy));
 }
 
@@ -339,11 +339,11 @@ bool QComboBox_Event(QComboBox* self, QEvent* event) {
 	return self->event(event);
 }
 
-QVariant* QComboBox_InputMethodQuery(const QComboBox* self, uintptr_t param1) {
+QVariant* QComboBox_InputMethodQuery(const QComboBox* self, int param1) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
-QVariant* QComboBox_InputMethodQuery2(const QComboBox* self, uintptr_t query, QVariant* argument) {
+QVariant* QComboBox_InputMethodQuery2(const QComboBox* self, int query, QVariant* argument) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 

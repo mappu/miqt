@@ -49,13 +49,13 @@ func newQHeaderView_U(h unsafe.Pointer) *QHeaderView {
 
 // NewQHeaderView constructs a new QHeaderView object.
 func NewQHeaderView(orientation Orientation) *QHeaderView {
-	ret := C.QHeaderView_new((C.uintptr_t)(orientation))
+	ret := C.QHeaderView_new((C.int)(orientation))
 	return newQHeaderView(ret)
 }
 
 // NewQHeaderView2 constructs a new QHeaderView object.
 func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
-	ret := C.QHeaderView_new2((C.uintptr_t)(orientation), parent.cPointer())
+	ret := C.QHeaderView_new2((C.int)(orientation), parent.cPointer())
 	return newQHeaderView(ret)
 }
 
@@ -153,7 +153,7 @@ func (this *QHeaderView) ResizeSection(logicalIndex int, size int) {
 }
 
 func (this *QHeaderView) ResizeSections(mode QHeaderView__ResizeMode) {
-	C.QHeaderView_ResizeSections(this.h, (C.uintptr_t)(mode))
+	C.QHeaderView_ResizeSections(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) IsSectionHidden(logicalIndex int) bool {
@@ -225,11 +225,11 @@ func (this *QHeaderView) SectionResizeMode(logicalIndex int) QHeaderView__Resize
 }
 
 func (this *QHeaderView) SetSectionResizeMode(mode QHeaderView__ResizeMode) {
-	C.QHeaderView_SetSectionResizeMode(this.h, (C.uintptr_t)(mode))
+	C.QHeaderView_SetSectionResizeMode(this.h, (C.int)(mode))
 }
 
 func (this *QHeaderView) SetSectionResizeMode2(logicalIndex int, mode QHeaderView__ResizeMode) {
-	C.QHeaderView_SetSectionResizeMode2(this.h, (C.int)(logicalIndex), (C.uintptr_t)(mode))
+	C.QHeaderView_SetSectionResizeMode2(this.h, (C.int)(logicalIndex), (C.int)(mode))
 }
 
 func (this *QHeaderView) SetResizeContentsPrecision(precision int) {
@@ -253,7 +253,7 @@ func (this *QHeaderView) IsSortIndicatorShown() bool {
 }
 
 func (this *QHeaderView) SetSortIndicator(logicalIndex int, order SortOrder) {
-	C.QHeaderView_SetSortIndicator(this.h, (C.int)(logicalIndex), (C.uintptr_t)(order))
+	C.QHeaderView_SetSortIndicator(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 
 func (this *QHeaderView) SortIndicatorSection() int {
@@ -313,7 +313,7 @@ func (this *QHeaderView) DefaultAlignment() int {
 }
 
 func (this *QHeaderView) SetDefaultAlignment(alignment int) {
-	C.QHeaderView_SetDefaultAlignment(this.h, (C.int)(alignment))
+	C.QHeaderView_SetDefaultAlignment(this.h, alignment)
 }
 
 func (this *QHeaderView) DoItemsLayout() {
@@ -356,7 +356,7 @@ func (this *QHeaderView) SetOffsetToLastSection() {
 }
 
 func (this *QHeaderView) HeaderDataChanged(orientation Orientation, logicalFirst int, logicalLast int) {
-	C.QHeaderView_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(logicalFirst), (C.int)(logicalLast))
+	C.QHeaderView_HeaderDataChanged(this.h, (C.int)(orientation), (C.int)(logicalFirst), (C.int)(logicalLast))
 }
 
 func (this *QHeaderView) SectionMoved(logicalIndex int, oldVisualIndex int, newVisualIndex int) {
@@ -547,14 +547,14 @@ func miqt_exec_callback_QHeaderView_GeometriesChanged(cb *C.void) {
 }
 
 func (this *QHeaderView) SortIndicatorChanged(logicalIndex int, order SortOrder) {
-	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.uintptr_t)(order))
+	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 func (this *QHeaderView) OnSortIndicatorChanged(slot func(logicalIndex int, order SortOrder)) {
 	C.QHeaderView_connect_SortIndicatorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QHeaderView_SortIndicatorChanged
-func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.uintptr_t) {
+func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, order SortOrder))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

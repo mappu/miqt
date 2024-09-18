@@ -113,7 +113,8 @@ void QPixmap_SetMask(QPixmap* self, QBitmap* mask) {
 }
 
 double QPixmap_DevicePixelRatio(const QPixmap* self) {
-	return self->devicePixelRatio();
+	qreal _ret = self->devicePixelRatio();
+	return static_cast<double>(_ret);
 }
 
 void QPixmap_SetDevicePixelRatio(QPixmap* self, double scaleFactor) {
@@ -137,7 +138,7 @@ QBitmap* QPixmap_CreateMaskFromColor(const QPixmap* self, QColor* maskColor) {
 }
 
 QPixmap* QPixmap_GrabWindow(uintptr_t param1) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1)));
+	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1)));
 }
 
 QPixmap* QPixmap_GrabWidget(QObject* widget, QRect* rect) {
@@ -235,7 +236,8 @@ void QPixmap_Scroll2(QPixmap* self, int dx, int dy, QRect* rect) {
 }
 
 long long QPixmap_CacheKey(const QPixmap* self) {
-	return self->cacheKey();
+	qint64 _ret = self->cacheKey();
+	return static_cast<long long>(_ret);
 }
 
 bool QPixmap_IsDetached(const QPixmap* self) {
@@ -266,24 +268,24 @@ QBitmap* QPixmap_CreateHeuristicMask1(const QPixmap* self, bool clipTight) {
 	return new QBitmap(self->createHeuristicMask(clipTight));
 }
 
-QBitmap* QPixmap_CreateMaskFromColor2(const QPixmap* self, QColor* maskColor, uintptr_t mode) {
+QBitmap* QPixmap_CreateMaskFromColor2(const QPixmap* self, QColor* maskColor, int mode) {
 	return new QBitmap(self->createMaskFromColor(*maskColor, static_cast<Qt::MaskMode>(mode)));
 }
 
 QPixmap* QPixmap_GrabWindow2(uintptr_t param1, int x) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x)));
+	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x)));
 }
 
 QPixmap* QPixmap_GrabWindow3(uintptr_t param1, int x, int y) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y)));
+	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y)));
 }
 
 QPixmap* QPixmap_GrabWindow4(uintptr_t param1, int x, int y, int w) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
+	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
 QPixmap* QPixmap_GrabWindow5(uintptr_t param1, int x, int y, int w, int h) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<quintptr>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
+	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_GrabWidget2(QObject* widget, int x) {
@@ -302,35 +304,35 @@ QPixmap* QPixmap_GrabWidget5(QObject* widget, int x, int y, int w, int h) {
 	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
-QPixmap* QPixmap_Scaled3(const QPixmap* self, int w, int h, uintptr_t aspectMode) {
+QPixmap* QPixmap_Scaled3(const QPixmap* self, int w, int h, int aspectMode) {
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QPixmap* QPixmap_Scaled4(const QPixmap* self, int w, int h, uintptr_t aspectMode, uintptr_t mode) {
+QPixmap* QPixmap_Scaled4(const QPixmap* self, int w, int h, int aspectMode, int mode) {
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_Scaled2(const QPixmap* self, QSize* s, uintptr_t aspectMode) {
+QPixmap* QPixmap_Scaled2(const QPixmap* self, QSize* s, int aspectMode) {
 	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QPixmap* QPixmap_Scaled32(const QPixmap* self, QSize* s, uintptr_t aspectMode, uintptr_t mode) {
+QPixmap* QPixmap_Scaled32(const QPixmap* self, QSize* s, int aspectMode, int mode) {
 	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_ScaledToWidth2(const QPixmap* self, int w, uintptr_t mode) {
+QPixmap* QPixmap_ScaledToWidth2(const QPixmap* self, int w, int mode) {
 	return new QPixmap(self->scaledToWidth(static_cast<int>(w), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_ScaledToHeight2(const QPixmap* self, int h, uintptr_t mode) {
+QPixmap* QPixmap_ScaledToHeight2(const QPixmap* self, int h, int mode) {
 	return new QPixmap(self->scaledToHeight(static_cast<int>(h), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_Transformed2(const QPixmap* self, QMatrix* param1, uintptr_t mode) {
+QPixmap* QPixmap_Transformed2(const QPixmap* self, QMatrix* param1, int mode) {
 	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_Transformed22(const QPixmap* self, QTransform* param1, uintptr_t mode) {
+QPixmap* QPixmap_Transformed22(const QPixmap* self, QTransform* param1, int mode) {
 	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 

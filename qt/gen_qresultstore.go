@@ -227,6 +227,10 @@ func (this *QtPrivate__ResultStoreBase) AddCanceledResult(index int) int {
 	return (int)(C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index)))
 }
 
+func (this *QtPrivate__ResultStoreBase) OperatorAssign(param1 *QtPrivate__ResultStoreBase) {
+	C.QtPrivate__ResultStoreBase_OperatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QtPrivate__ResultStoreBase) Delete() {
 	C.QtPrivate__ResultStoreBase_Delete(this.h)

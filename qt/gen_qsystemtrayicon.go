@@ -182,14 +182,14 @@ func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
 }
 
 func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason) {
-	C.QSystemTrayIcon_Activated(this.h, (C.uintptr_t)(reason))
+	C.QSystemTrayIcon_Activated(this.h, (C.int)(reason))
 }
 func (this *QSystemTrayIcon) OnActivated(slot func(reason QSystemTrayIcon__ActivationReason)) {
 	C.QSystemTrayIcon_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QSystemTrayIcon_Activated
-func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.uintptr_t) {
+func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(reason QSystemTrayIcon__ActivationReason))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -275,7 +275,7 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystem
 	defer C.free(title_ms)
 	msg_ms := miqt_strdupg(msg)
 	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.uintptr_t)(icon))
+	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
@@ -283,7 +283,7 @@ func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSyste
 	defer C.free(title_ms)
 	msg_ms := miqt_strdupg(msg)
 	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.uintptr_t)(icon), (C.int)(msecs))
+	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon), (C.int)(msecs))
 }
 
 // Delete this object from C++ memory.

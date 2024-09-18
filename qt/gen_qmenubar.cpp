@@ -181,11 +181,11 @@ struct miqt_string* QMenuBar_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, uintptr_t corner) {
+void QMenuBar_SetCornerWidget2(QMenuBar* self, QWidget* w, int corner) {
 	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
 }
 
-QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, uintptr_t corner) {
+QWidget* QMenuBar_CornerWidget1(const QMenuBar* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 

@@ -54,7 +54,7 @@ func (this *QAccessibleObject) Rect() *QRect {
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	C.QAccessibleObject_SetText(this.h, (C.uintptr_t)(t), (*C.struct_miqt_string)(text_ms))
+	C.QAccessibleObject_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
@@ -115,7 +115,7 @@ func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.uintptr_t)(t))
+	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.int)(t))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

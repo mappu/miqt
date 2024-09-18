@@ -64,7 +64,7 @@ func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags int) bool {
-	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags)))
+	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, flags))
 }
 
 func (this *QAbstractEventDispatcher) HasPendingEvents() bool {
@@ -80,11 +80,11 @@ func (this *QAbstractEventDispatcher) UnregisterSocketNotifier(notifier *QSocket
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer(interval int, timerType TimerType, object *QObject) int {
-	return (int)(C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer()))
+	return (int)(C.QAbstractEventDispatcher_RegisterTimer(this.h, (C.int)(interval), (C.int)(timerType), object.cPointer()))
 }
 
 func (this *QAbstractEventDispatcher) RegisterTimer2(timerId int, interval int, timerType TimerType, object *QObject) {
-	C.QAbstractEventDispatcher_RegisterTimer2(this.h, (C.int)(timerId), (C.int)(interval), (C.uintptr_t)(timerType), object.cPointer())
+	C.QAbstractEventDispatcher_RegisterTimer2(this.h, (C.int)(timerId), (C.int)(interval), (C.int)(timerType), object.cPointer())
 }
 
 func (this *QAbstractEventDispatcher) UnregisterTimer(timerId int) bool {
@@ -261,7 +261,7 @@ func newQAbstractEventDispatcher__TimerInfo_U(h unsafe.Pointer) *QAbstractEventD
 
 // NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
 func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstractEventDispatcher__TimerInfo {
-	ret := C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.uintptr_t)(t))
+	ret := C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t))
 	return newQAbstractEventDispatcher__TimerInfo(ret)
 }
 

@@ -106,11 +106,11 @@ func (this *QAbstractSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
 }
 
 func (this *QAbstractSpinBox) SetButtonSymbols(bs QAbstractSpinBox__ButtonSymbols) {
-	C.QAbstractSpinBox_SetButtonSymbols(this.h, (C.uintptr_t)(bs))
+	C.QAbstractSpinBox_SetButtonSymbols(this.h, (C.int)(bs))
 }
 
 func (this *QAbstractSpinBox) SetCorrectionMode(cm QAbstractSpinBox__CorrectionMode) {
-	C.QAbstractSpinBox_SetCorrectionMode(this.h, (C.uintptr_t)(cm))
+	C.QAbstractSpinBox_SetCorrectionMode(this.h, (C.int)(cm))
 }
 
 func (this *QAbstractSpinBox) CorrectionMode() QAbstractSpinBox__CorrectionMode {
@@ -166,7 +166,7 @@ func (this *QAbstractSpinBox) KeyboardTracking() bool {
 }
 
 func (this *QAbstractSpinBox) SetAlignment(flag int) {
-	C.QAbstractSpinBox_SetAlignment(this.h, (C.int)(flag))
+	C.QAbstractSpinBox_SetAlignment(this.h, flag)
 }
 
 func (this *QAbstractSpinBox) Alignment() int {
@@ -220,7 +220,7 @@ func (this *QAbstractSpinBox) Event(event *QEvent) bool {
 }
 
 func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.uintptr_t)(param1))
+	_ret := C.QAbstractSpinBox_InputMethodQuery(this.h, (C.int)(param1))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

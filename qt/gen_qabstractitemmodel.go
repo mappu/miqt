@@ -403,14 +403,14 @@ func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant) boo
 }
 
 func (this *QAbstractItemModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QAbstractItemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	return (bool)(C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer()))
+	return (bool)(C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer()))
 }
 
 func (this *QAbstractItemModel) MimeTypes() []string {
@@ -440,11 +440,11 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_CanDropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractItemModel_CanDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractItemModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) SupportedDropActions() int {
@@ -573,14 +573,14 @@ func miqt_exec_callback_QAbstractItemModel_DataChanged(cb *C.void, topLeft *C.QM
 }
 
 func (this *QAbstractItemModel) HeaderDataChanged(orientation Orientation, first int, last int) {
-	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.uintptr_t)(orientation), (C.int)(first), (C.int)(last))
+	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.int)(orientation), (C.int)(first), (C.int)(last))
 }
 func (this *QAbstractItemModel) OnHeaderDataChanged(slot func(orientation Orientation, first int, last int)) {
 	C.QAbstractItemModel_connect_HeaderDataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_HeaderDataChanged
-func miqt_exec_callback_QAbstractItemModel_HeaderDataChanged(cb *C.void, orientation C.uintptr_t, first C.int, last C.int) {
+func miqt_exec_callback_QAbstractItemModel_HeaderDataChanged(cb *C.void, orientation C.int, first C.int, last C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation Orientation, first int, last int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,14 +717,14 @@ func (this *QAbstractItemModel) SetData3(index *QModelIndex, value *QVariant, ro
 }
 
 func (this *QAbstractItemModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QAbstractItemModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QAbstractItemModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractItemModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QAbstractItemModel_SetHeaderData4(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractItemModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
@@ -760,7 +760,7 @@ func (this *QAbstractItemModel) RemoveColumn2(column int, parent *QModelIndex) b
 }
 
 func (this *QAbstractItemModel) Sort2(column int, order SortOrder) {
-	C.QAbstractItemModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QAbstractItemModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
@@ -778,7 +778,7 @@ func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVar
 }
 
 func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), flags)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -792,7 +792,7 @@ func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVar
 }
 
 func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options int) bool {
-	return (bool)(C.QAbstractItemModel_CheckIndex2(this.h, index.cPointer(), (C.int)(options)))
+	return (bool)(C.QAbstractItemModel_CheckIndex2(this.h, index.cPointer(), options))
 }
 
 func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
@@ -879,14 +879,14 @@ func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, 
 	}
 	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
-	C.QAbstractItemModel_LayoutChanged2(this.h, parents_ma, (C.uintptr_t)(hint))
+	C.QAbstractItemModel_LayoutChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
 	C.QAbstractItemModel_connect_LayoutChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.uintptr_t) {
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -957,14 +957,14 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentMod
 	}
 	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
-	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, parents_ma, (C.uintptr_t)(hint))
+	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
 	C.QAbstractItemModel_connect_LayoutAboutToBeChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.uintptr_t) {
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1062,7 +1062,7 @@ func (this *QAbstractTableModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractTableModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractTableModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractTableModel) Flags(index *QModelIndex) int {
@@ -1194,7 +1194,7 @@ func (this *QAbstractListModel) Sibling(row int, column int, idx *QModelIndex) *
 }
 
 func (this *QAbstractListModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractListModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractListModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractListModel) Flags(index *QModelIndex) int {

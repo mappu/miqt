@@ -12,7 +12,7 @@ QFileIconProvider* QFileIconProvider_new() {
 	return new QFileIconProvider();
 }
 
-QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, uintptr_t typeVal) {
+QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, int typeVal) {
 	return new QIcon(self->icon(static_cast<QFileIconProvider::IconType>(typeVal)));
 }
 

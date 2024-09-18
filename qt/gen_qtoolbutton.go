@@ -102,7 +102,7 @@ func (this *QToolButton) ArrowType() ArrowType {
 }
 
 func (this *QToolButton) SetArrowType(typeVal ArrowType) {
-	C.QToolButton_SetArrowType(this.h, (C.uintptr_t)(typeVal))
+	C.QToolButton_SetArrowType(this.h, (C.int)(typeVal))
 }
 
 func (this *QToolButton) SetMenu(menu *QMenu) {
@@ -114,7 +114,7 @@ func (this *QToolButton) Menu() *QMenu {
 }
 
 func (this *QToolButton) SetPopupMode(mode QToolButton__ToolButtonPopupMode) {
-	C.QToolButton_SetPopupMode(this.h, (C.uintptr_t)(mode))
+	C.QToolButton_SetPopupMode(this.h, (C.int)(mode))
 }
 
 func (this *QToolButton) PopupMode() QToolButton__ToolButtonPopupMode {
@@ -138,7 +138,7 @@ func (this *QToolButton) ShowMenu() {
 }
 
 func (this *QToolButton) SetToolButtonStyle(style ToolButtonStyle) {
-	C.QToolButton_SetToolButtonStyle(this.h, (C.uintptr_t)(style))
+	C.QToolButton_SetToolButtonStyle(this.h, (C.int)(style))
 }
 
 func (this *QToolButton) SetDefaultAction(defaultAction *QAction) {

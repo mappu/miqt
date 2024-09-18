@@ -113,7 +113,7 @@ func (this *QStackedLayout) StackingMode() QStackedLayout__StackingMode {
 }
 
 func (this *QStackedLayout) SetStackingMode(stackingMode QStackedLayout__StackingMode) {
-	C.QStackedLayout_SetStackingMode(this.h, (C.uintptr_t)(stackingMode))
+	C.QStackedLayout_SetStackingMode(this.h, (C.int)(stackingMode))
 }
 
 func (this *QStackedLayout) AddItem(item *QLayoutItem) {

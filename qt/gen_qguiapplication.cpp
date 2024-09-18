@@ -133,7 +133,7 @@ QScreen* QGuiApplication_PrimaryScreen() {
 }
 
 struct miqt_array* QGuiApplication_Screens() {
-	QList<QScreen*> _ret = QGuiApplication::screens();
+	QList<QScreen *> _ret = QGuiApplication::screens();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -150,7 +150,8 @@ QScreen* QGuiApplication_ScreenAt(QPoint* point) {
 }
 
 double QGuiApplication_DevicePixelRatio(const QGuiApplication* self) {
-	return self->devicePixelRatio();
+	qreal _ret = self->devicePixelRatio();
+	return static_cast<double>(_ret);
 }
 
 QCursor* QGuiApplication_OverrideCursor() {
@@ -204,13 +205,13 @@ int QGuiApplication_MouseButtons() {
 	return static_cast<int>(_ret);
 }
 
-void QGuiApplication_SetLayoutDirection(uintptr_t direction) {
+void QGuiApplication_SetLayoutDirection(int direction) {
 	QGuiApplication::setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
-uintptr_t QGuiApplication_LayoutDirection() {
+int QGuiApplication_LayoutDirection() {
 	Qt::LayoutDirection _ret = QGuiApplication::layoutDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QGuiApplication_IsRightToLeft() {
@@ -245,18 +246,18 @@ bool QGuiApplication_QuitOnLastWindowClosed() {
 	return QGuiApplication::quitOnLastWindowClosed();
 }
 
-uintptr_t QGuiApplication_ApplicationState() {
+int QGuiApplication_ApplicationState() {
 	Qt::ApplicationState _ret = QGuiApplication::applicationState();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(uintptr_t policy) {
+void QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(int policy) {
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy));
 }
 
-uintptr_t QGuiApplication_HighDpiScaleFactorRoundingPolicy() {
+int QGuiApplication_HighDpiScaleFactorRoundingPolicy() {
 	Qt::HighDpiScaleFactorRoundingPolicy _ret = QGuiApplication::highDpiScaleFactorRoundingPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QGuiApplication_Exec() {
@@ -376,26 +377,26 @@ void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, void* slo
 	});
 }
 
-void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, uintptr_t state) {
+void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, int state) {
 	self->applicationStateChanged(static_cast<Qt::ApplicationState>(state));
 }
 
 void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
 		Qt::ApplicationState state_ret = state;
-		uintptr_t sigval1 = static_cast<uintptr_t>(state_ret);
+		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QGuiApplication_ApplicationStateChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, uintptr_t direction) {
+void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, int direction) {
 	self->layoutDirectionChanged(static_cast<Qt::LayoutDirection>(direction));
 }
 
 void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, void* slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
 		Qt::LayoutDirection direction_ret = direction;
-		uintptr_t sigval1 = static_cast<uintptr_t>(direction_ret);
+		int sigval1 = static_cast<int>(direction_ret);
 		miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(slot, sigval1);
 	});
 }

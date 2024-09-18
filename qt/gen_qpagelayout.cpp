@@ -12,7 +12,7 @@ QPageLayout* QPageLayout_new() {
 	return new QPageLayout();
 }
 
-QPageLayout* QPageLayout_new2(QPageSize* pageSize, uintptr_t orientation, QMarginsF* margins) {
+QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins) {
 	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
 }
 
@@ -20,11 +20,11 @@ QPageLayout* QPageLayout_new3(QPageLayout* other) {
 	return new QPageLayout(*other);
 }
 
-QPageLayout* QPageLayout_new4(QPageSize* pageSize, uintptr_t orientation, QMarginsF* margins, uintptr_t units) {
+QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units) {
 	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
 }
 
-QPageLayout* QPageLayout_new5(QPageSize* pageSize, uintptr_t orientation, QMarginsF* margins, uintptr_t units, QMarginsF* minMargins) {
+QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins) {
 	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
 }
 
@@ -44,13 +44,13 @@ bool QPageLayout_IsValid(const QPageLayout* self) {
 	return self->isValid();
 }
 
-void QPageLayout_SetMode(QPageLayout* self, uintptr_t mode) {
+void QPageLayout_SetMode(QPageLayout* self, int mode) {
 	self->setMode(static_cast<QPageLayout::Mode>(mode));
 }
 
-uintptr_t QPageLayout_Mode(const QPageLayout* self) {
+int QPageLayout_Mode(const QPageLayout* self) {
 	QPageLayout::Mode _ret = self->mode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QPageLayout_SetPageSize(QPageLayout* self, QPageSize* pageSize) {
@@ -61,22 +61,22 @@ QPageSize* QPageLayout_PageSize(const QPageLayout* self) {
 	return new QPageSize(self->pageSize());
 }
 
-void QPageLayout_SetOrientation(QPageLayout* self, uintptr_t orientation) {
+void QPageLayout_SetOrientation(QPageLayout* self, int orientation) {
 	self->setOrientation(static_cast<QPageLayout::Orientation>(orientation));
 }
 
-uintptr_t QPageLayout_Orientation(const QPageLayout* self) {
+int QPageLayout_Orientation(const QPageLayout* self) {
 	QPageLayout::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QPageLayout_SetUnits(QPageLayout* self, uintptr_t units) {
+void QPageLayout_SetUnits(QPageLayout* self, int units) {
 	self->setUnits(static_cast<QPageLayout::Unit>(units));
 }
 
-uintptr_t QPageLayout_Units(const QPageLayout* self) {
+int QPageLayout_Units(const QPageLayout* self) {
 	QPageLayout::Unit _ret = self->units();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QPageLayout_SetMargins(QPageLayout* self, QMarginsF* margins) {
@@ -103,7 +103,7 @@ QMarginsF* QPageLayout_Margins(const QPageLayout* self) {
 	return new QMarginsF(self->margins());
 }
 
-QMarginsF* QPageLayout_MarginsWithUnits(const QPageLayout* self, uintptr_t units) {
+QMarginsF* QPageLayout_MarginsWithUnits(const QPageLayout* self, int units) {
 	return new QMarginsF(self->margins(static_cast<QPageLayout::Unit>(units)));
 }
 
@@ -131,7 +131,7 @@ QRectF* QPageLayout_FullRect(const QPageLayout* self) {
 	return new QRectF(self->fullRect());
 }
 
-QRectF* QPageLayout_FullRectWithUnits(const QPageLayout* self, uintptr_t units) {
+QRectF* QPageLayout_FullRectWithUnits(const QPageLayout* self, int units) {
 	return new QRectF(self->fullRect(static_cast<QPageLayout::Unit>(units)));
 }
 
@@ -147,7 +147,7 @@ QRectF* QPageLayout_PaintRect(const QPageLayout* self) {
 	return new QRectF(self->paintRect());
 }
 
-QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, uintptr_t units) {
+QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, int units) {
 	return new QRectF(self->paintRect(static_cast<QPageLayout::Unit>(units)));
 }
 

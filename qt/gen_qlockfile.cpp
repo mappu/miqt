@@ -39,9 +39,9 @@ bool QLockFile_RemoveStaleLockFile(QLockFile* self) {
 	return self->removeStaleLockFile();
 }
 
-uintptr_t QLockFile_Error(const QLockFile* self) {
+int QLockFile_Error(const QLockFile* self) {
 	QLockFile::LockError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QLockFile_TryLock1(QLockFile* self, int timeout) {

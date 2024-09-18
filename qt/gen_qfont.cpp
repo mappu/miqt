@@ -108,7 +108,8 @@ void QFont_SetPointSize(QFont* self, int pointSize) {
 }
 
 double QFont_PointSizeF(const QFont* self) {
-	return self->pointSizeF();
+	qreal _ret = self->pointSizeF();
+	return static_cast<double>(_ret);
 }
 
 void QFont_SetPointSizeF(QFont* self, double pointSizeF) {
@@ -139,13 +140,13 @@ void QFont_SetBold(QFont* self, bool bold) {
 	self->setBold(bold);
 }
 
-void QFont_SetStyle(QFont* self, uintptr_t style) {
+void QFont_SetStyle(QFont* self, int style) {
 	self->setStyle(static_cast<QFont::Style>(style));
 }
 
-uintptr_t QFont_Style(const QFont* self) {
+int QFont_Style(const QFont* self) {
 	QFont::Style _ret = self->style();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QFont_Italic(const QFont* self) {
@@ -196,21 +197,21 @@ void QFont_SetKerning(QFont* self, bool kerning) {
 	self->setKerning(kerning);
 }
 
-uintptr_t QFont_StyleHint(const QFont* self) {
+int QFont_StyleHint(const QFont* self) {
 	QFont::StyleHint _ret = self->styleHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QFont_StyleStrategy(const QFont* self) {
+int QFont_StyleStrategy(const QFont* self) {
 	QFont::StyleStrategy _ret = self->styleStrategy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetStyleHint(QFont* self, uintptr_t param1) {
+void QFont_SetStyleHint(QFont* self, int param1) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1));
 }
 
-void QFont_SetStyleStrategy(QFont* self, uintptr_t s) {
+void QFont_SetStyleStrategy(QFont* self, int s) {
 	self->setStyleStrategy(static_cast<QFont::StyleStrategy>(s));
 }
 
@@ -223,42 +224,44 @@ void QFont_SetStretch(QFont* self, int stretch) {
 }
 
 double QFont_LetterSpacing(const QFont* self) {
-	return self->letterSpacing();
+	qreal _ret = self->letterSpacing();
+	return static_cast<double>(_ret);
 }
 
-uintptr_t QFont_LetterSpacingType(const QFont* self) {
+int QFont_LetterSpacingType(const QFont* self) {
 	QFont::SpacingType _ret = self->letterSpacingType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetLetterSpacing(QFont* self, uintptr_t typeVal, double spacing) {
+void QFont_SetLetterSpacing(QFont* self, int typeVal, double spacing) {
 	self->setLetterSpacing(static_cast<QFont::SpacingType>(typeVal), static_cast<qreal>(spacing));
 }
 
 double QFont_WordSpacing(const QFont* self) {
-	return self->wordSpacing();
+	qreal _ret = self->wordSpacing();
+	return static_cast<double>(_ret);
 }
 
 void QFont_SetWordSpacing(QFont* self, double spacing) {
 	self->setWordSpacing(static_cast<qreal>(spacing));
 }
 
-void QFont_SetCapitalization(QFont* self, uintptr_t capitalization) {
+void QFont_SetCapitalization(QFont* self, int capitalization) {
 	self->setCapitalization(static_cast<QFont::Capitalization>(capitalization));
 }
 
-uintptr_t QFont_Capitalization(const QFont* self) {
+int QFont_Capitalization(const QFont* self) {
 	QFont::Capitalization _ret = self->capitalization();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QFont_SetHintingPreference(QFont* self, uintptr_t hintingPreference) {
+void QFont_SetHintingPreference(QFont* self, int hintingPreference) {
 	self->setHintingPreference(static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-uintptr_t QFont_HintingPreference(const QFont* self) {
+int QFont_HintingPreference(const QFont* self) {
 	QFont::HintingPreference _ret = self->hintingPreference();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QFont_RawMode(const QFont* self) {
@@ -426,14 +429,15 @@ QFont* QFont_Resolve(const QFont* self, QFont* param1) {
 }
 
 unsigned int QFont_Resolve2(const QFont* self) {
-	return self->resolve();
+	uint _ret = self->resolve();
+	return static_cast<unsigned int>(_ret);
 }
 
 void QFont_ResolveWithMask(QFont* self, unsigned int mask) {
 	self->resolve(static_cast<uint>(mask));
 }
 
-void QFont_SetStyleHint2(QFont* self, uintptr_t param1, uintptr_t param2) {
+void QFont_SetStyleHint2(QFont* self, int param1, int param2) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1), static_cast<QFont::StyleStrategy>(param2));
 }
 

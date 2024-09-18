@@ -50,11 +50,11 @@ int QTransposeProxyModel_ColumnCount(const QTransposeProxyModel* self) {
 	return self->columnCount();
 }
 
-QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, uintptr_t orientation) {
+QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, int orientation) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
-bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value) {
+bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, int orientation, QVariant* value) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
@@ -142,11 +142,11 @@ int QTransposeProxyModel_ColumnCount1(const QTransposeProxyModel* self, QModelIn
 	return self->columnCount(*parent);
 }
 
-QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, uintptr_t orientation, int role) {
+QVariant* QTransposeProxyModel_HeaderData3(const QTransposeProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section, uintptr_t orientation, QVariant* value, int role) {
+bool QTransposeProxyModel_SetHeaderData4(QTransposeProxyModel* self, int section, int orientation, QVariant* value, int role) {
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
@@ -170,7 +170,7 @@ bool QTransposeProxyModel_RemoveColumns3(QTransposeProxyModel* self, int column,
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-void QTransposeProxyModel_Sort2(QTransposeProxyModel* self, int column, uintptr_t order) {
+void QTransposeProxyModel_Sort2(QTransposeProxyModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 

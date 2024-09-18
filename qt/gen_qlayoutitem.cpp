@@ -94,11 +94,11 @@ QSpacerItem* QSpacerItem_new2(QSpacerItem* param1) {
 	return new QSpacerItem(*param1);
 }
 
-QSpacerItem* QSpacerItem_new3(int w, int h, uintptr_t hData) {
+QSpacerItem* QSpacerItem_new3(int w, int h, int hData) {
 	return new QSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData));
 }
 
-QSpacerItem* QSpacerItem_new4(int w, int h, uintptr_t hData, uintptr_t vData) {
+QSpacerItem* QSpacerItem_new4(int w, int h, int hData, int vData) {
 	return new QSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
 }
 
@@ -143,11 +143,11 @@ QSizePolicy* QSpacerItem_SizePolicy(const QSpacerItem* self) {
 	return new QSizePolicy(self->sizePolicy());
 }
 
-void QSpacerItem_ChangeSize3(QSpacerItem* self, int w, int h, uintptr_t hData) {
+void QSpacerItem_ChangeSize3(QSpacerItem* self, int w, int h, int hData) {
 	self->changeSize(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData));
 }
 
-void QSpacerItem_ChangeSize4(QSpacerItem* self, int w, int h, uintptr_t hData, uintptr_t vData) {
+void QSpacerItem_ChangeSize4(QSpacerItem* self, int w, int h, int hData, int vData) {
 	self->changeSize(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
 }
 

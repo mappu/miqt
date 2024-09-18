@@ -37,7 +37,7 @@ func newQMatrix_U(h unsafe.Pointer) *QMatrix {
 
 // NewQMatrix constructs a new QMatrix object.
 func NewQMatrix(param1 Initialization) *QMatrix {
-	ret := C.QMatrix_new((C.uintptr_t)(param1))
+	ret := C.QMatrix_new((C.int)(param1))
 	return newQMatrix(ret)
 }
 

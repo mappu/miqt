@@ -58,7 +58,7 @@ func NewQDialog2(parent *QWidget) *QDialog {
 
 // NewQDialog3 constructs a new QDialog object.
 func NewQDialog3(parent *QWidget, f int) *QDialog {
-	ret := C.QDialog_new3(parent.cPointer(), (C.int)(f))
+	ret := C.QDialog_new3(parent.cPointer(), f)
 	return newQDialog(ret)
 }
 
@@ -93,7 +93,7 @@ func (this *QDialog) SetVisible(visible bool) {
 }
 
 func (this *QDialog) SetOrientation(orientation Orientation) {
-	C.QDialog_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QDialog_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QDialog) Orientation() Orientation {

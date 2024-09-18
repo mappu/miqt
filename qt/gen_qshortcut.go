@@ -73,7 +73,7 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 	defer C.free(unsafe.Pointer(member_Cstring))
 	ambiguousMember_Cstring := C.CString(ambiguousMember)
 	defer C.free(unsafe.Pointer(ambiguousMember_Cstring))
-	ret := C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.uintptr_t)(shortcutContext))
+	ret := C.QShortcut_new5(key.cPointer(), parent.cPointer(), member_Cstring, ambiguousMember_Cstring, (C.int)(shortcutContext))
 	return newQShortcut(ret)
 }
 
@@ -119,7 +119,7 @@ func (this *QShortcut) IsEnabled() bool {
 }
 
 func (this *QShortcut) SetContext(context ShortcutContext) {
-	C.QShortcut_SetContext(this.h, (C.uintptr_t)(context))
+	C.QShortcut_SetContext(this.h, (C.int)(context))
 }
 
 func (this *QShortcut) Context() ShortcutContext {

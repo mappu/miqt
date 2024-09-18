@@ -74,11 +74,11 @@ func QCommandLineParser_TrUtf8(sourceText string) string {
 }
 
 func (this *QCommandLineParser) SetSingleDashWordOptionMode(parsingMode QCommandLineParser__SingleDashWordOptionMode) {
-	C.QCommandLineParser_SetSingleDashWordOptionMode(this.h, (C.uintptr_t)(parsingMode))
+	C.QCommandLineParser_SetSingleDashWordOptionMode(this.h, (C.int)(parsingMode))
 }
 
 func (this *QCommandLineParser) SetOptionsAfterPositionalArgumentsMode(mode QCommandLineParser__OptionsAfterPositionalArgumentsMode) {
-	C.QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(this.h, (C.uintptr_t)(mode))
+	C.QCommandLineParser_SetOptionsAfterPositionalArgumentsMode(this.h, (C.int)(mode))
 }
 
 func (this *QCommandLineParser) AddOption(commandLineOption *QCommandLineOption) bool {

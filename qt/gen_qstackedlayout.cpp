@@ -66,12 +66,12 @@ int QStackedLayout_Count(const QStackedLayout* self) {
 	return self->count();
 }
 
-uintptr_t QStackedLayout_StackingMode(const QStackedLayout* self) {
+int QStackedLayout_StackingMode(const QStackedLayout* self) {
 	QStackedLayout::StackingMode _ret = self->stackingMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QStackedLayout_SetStackingMode(QStackedLayout* self, uintptr_t stackingMode) {
+void QStackedLayout_SetStackingMode(QStackedLayout* self, int stackingMode) {
 	self->setStackingMode(static_cast<QStackedLayout::StackingMode>(stackingMode));
 }
 

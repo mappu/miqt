@@ -108,7 +108,7 @@ func QListView_TrUtf8(s string) string {
 }
 
 func (this *QListView) SetMovement(movement QListView__Movement) {
-	C.QListView_SetMovement(this.h, (C.uintptr_t)(movement))
+	C.QListView_SetMovement(this.h, (C.int)(movement))
 }
 
 func (this *QListView) Movement() QListView__Movement {
@@ -116,7 +116,7 @@ func (this *QListView) Movement() QListView__Movement {
 }
 
 func (this *QListView) SetFlow(flow QListView__Flow) {
-	C.QListView_SetFlow(this.h, (C.uintptr_t)(flow))
+	C.QListView_SetFlow(this.h, (C.int)(flow))
 }
 
 func (this *QListView) Flow() QListView__Flow {
@@ -132,7 +132,7 @@ func (this *QListView) IsWrapping() bool {
 }
 
 func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
-	C.QListView_SetResizeMode(this.h, (C.uintptr_t)(mode))
+	C.QListView_SetResizeMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) ResizeMode() QListView__ResizeMode {
@@ -140,7 +140,7 @@ func (this *QListView) ResizeMode() QListView__ResizeMode {
 }
 
 func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
-	C.QListView_SetLayoutMode(this.h, (C.uintptr_t)(mode))
+	C.QListView_SetLayoutMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) LayoutMode() QListView__LayoutMode {
@@ -175,7 +175,7 @@ func (this *QListView) GridSize() *QSize {
 }
 
 func (this *QListView) SetViewMode(mode QListView__ViewMode) {
-	C.QListView_SetViewMode(this.h, (C.uintptr_t)(mode))
+	C.QListView_SetViewMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) ViewMode() QListView__ViewMode {
@@ -227,7 +227,7 @@ func (this *QListView) IsSelectionRectVisible() bool {
 }
 
 func (this *QListView) SetItemAlignment(alignment int) {
-	C.QListView_SetItemAlignment(this.h, (C.int)(alignment))
+	C.QListView_SetItemAlignment(this.h, alignment)
 }
 
 func (this *QListView) ItemAlignment() int {
@@ -347,7 +347,7 @@ func QListView_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QListView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	C.QListView_ScrollTo2(this.h, index.cPointer(), (C.uintptr_t)(hint))
+	C.QListView_ScrollTo2(this.h, index.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

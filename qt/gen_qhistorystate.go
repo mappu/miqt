@@ -51,7 +51,7 @@ func NewQHistoryState() *QHistoryState {
 
 // NewQHistoryState2 constructs a new QHistoryState object.
 func NewQHistoryState2(typeVal QHistoryState__HistoryType) *QHistoryState {
-	ret := C.QHistoryState_new2((C.uintptr_t)(typeVal))
+	ret := C.QHistoryState_new2((C.int)(typeVal))
 	return newQHistoryState(ret)
 }
 
@@ -63,7 +63,7 @@ func NewQHistoryState3(parent *QState) *QHistoryState {
 
 // NewQHistoryState4 constructs a new QHistoryState object.
 func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHistoryState {
-	ret := C.QHistoryState_new4((C.uintptr_t)(typeVal), parent.cPointer())
+	ret := C.QHistoryState_new4((C.int)(typeVal), parent.cPointer())
 	return newQHistoryState(ret)
 }
 
@@ -110,7 +110,7 @@ func (this *QHistoryState) HistoryType() QHistoryState__HistoryType {
 }
 
 func (this *QHistoryState) SetHistoryType(typeVal QHistoryState__HistoryType) {
-	C.QHistoryState_SetHistoryType(this.h, (C.uintptr_t)(typeVal))
+	C.QHistoryState_SetHistoryType(this.h, (C.int)(typeVal))
 }
 
 func QHistoryState_Tr2(s string, c string) string {

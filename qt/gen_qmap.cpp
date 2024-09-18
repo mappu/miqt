@@ -24,12 +24,12 @@ QMapNodeBase* QMapNodeBase_PreviousNode2(QMapNodeBase* self) {
 	return self->previousNode();
 }
 
-uintptr_t QMapNodeBase_Color(const QMapNodeBase* self) {
+int QMapNodeBase_Color(const QMapNodeBase* self) {
 	QMapNodeBase::Color _ret = self->color();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QMapNodeBase_SetColor(QMapNodeBase* self, uintptr_t c) {
+void QMapNodeBase_SetColor(QMapNodeBase* self, int c) {
 	self->setColor(static_cast<QMapNodeBase::Color>(c));
 }
 

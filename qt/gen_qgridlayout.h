@@ -66,15 +66,15 @@ void QGridLayout_AddWidget2(QGridLayout* self, QWidget* param1, int row, int col
 void QGridLayout_AddWidget3(QGridLayout* self, QWidget* param1, int row, int column, int rowSpan, int columnSpan);
 void QGridLayout_AddLayout(QGridLayout* self, QLayout* param1, int row, int column);
 void QGridLayout_AddLayout2(QGridLayout* self, QLayout* param1, int row, int column, int rowSpan, int columnSpan);
-void QGridLayout_SetOriginCorner(QGridLayout* self, uintptr_t originCorner);
-uintptr_t QGridLayout_OriginCorner(const QGridLayout* self);
+void QGridLayout_SetOriginCorner(QGridLayout* self, int originCorner);
+int QGridLayout_OriginCorner(const QGridLayout* self);
 QLayoutItem* QGridLayout_ItemAt(const QGridLayout* self, int index);
 QLayoutItem* QGridLayout_ItemAtPosition(const QGridLayout* self, int row, int column);
 QLayoutItem* QGridLayout_TakeAt(QGridLayout* self, int index);
 int QGridLayout_Count(const QGridLayout* self);
 void QGridLayout_SetGeometry(QGridLayout* self, QRect* geometry);
 void QGridLayout_AddItem(QGridLayout* self, QLayoutItem* item, int row, int column);
-void QGridLayout_SetDefaultPositioning(QGridLayout* self, int n, uintptr_t orient);
+void QGridLayout_SetDefaultPositioning(QGridLayout* self, int n, int orient);
 void QGridLayout_GetItemPosition(const QGridLayout* self, int idx, int* row, int* column, int* rowSpan, int* columnSpan);
 struct miqt_string* QGridLayout_Tr2(const char* s, const char* c);
 struct miqt_string* QGridLayout_Tr3(const char* s, const char* c, int n);

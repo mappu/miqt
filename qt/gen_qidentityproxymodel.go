@@ -107,14 +107,14 @@ func (this *QIdentityProxyModel) RowCount() int {
 }
 
 func (this *QIdentityProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QIdentityProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QIdentityProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QIdentityProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QIdentityProxyModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
@@ -226,7 +226,7 @@ func (this *QIdentityProxyModel) RowCount1(parent *QModelIndex) int {
 }
 
 func (this *QIdentityProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QIdentityProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QIdentityProxyModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -247,7 +247,7 @@ func (this *QIdentityProxyModel) Match4(start *QModelIndex, role int, value *QVa
 }
 
 func (this *QIdentityProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), flags)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

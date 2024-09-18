@@ -84,7 +84,7 @@ func (this *QStaticText) Text() string {
 }
 
 func (this *QStaticText) SetTextFormat(textFormat TextFormat) {
-	C.QStaticText_SetTextFormat(this.h, (C.uintptr_t)(textFormat))
+	C.QStaticText_SetTextFormat(this.h, (C.int)(textFormat))
 }
 
 func (this *QStaticText) TextFormat() TextFormat {
@@ -122,7 +122,7 @@ func (this *QStaticText) Prepare() {
 }
 
 func (this *QStaticText) SetPerformanceHint(performanceHint QStaticText__PerformanceHint) {
-	C.QStaticText_SetPerformanceHint(this.h, (C.uintptr_t)(performanceHint))
+	C.QStaticText_SetPerformanceHint(this.h, (C.int)(performanceHint))
 }
 
 func (this *QStaticText) PerformanceHint() QStaticText__PerformanceHint {

@@ -310,11 +310,11 @@ func QApplication_StartDragDistance() int {
 }
 
 func QApplication_IsEffectEnabled(param1 UIEffect) bool {
-	return (bool)(C.QApplication_IsEffectEnabled((C.uintptr_t)(param1)))
+	return (bool)(C.QApplication_IsEffectEnabled((C.int)(param1)))
 }
 
 func QApplication_SetEffectEnabled(param1 UIEffect) {
-	C.QApplication_SetEffectEnabled((C.uintptr_t)(param1))
+	C.QApplication_SetEffectEnabled((C.int)(param1))
 }
 
 func QApplication_Exec() int {
@@ -436,7 +436,7 @@ func QApplication_Alert2(widget *QWidget, duration int) {
 }
 
 func QApplication_SetEffectEnabled2(param1 UIEffect, enable bool) {
-	C.QApplication_SetEffectEnabled2((C.uintptr_t)(param1), (C.bool)(enable))
+	C.QApplication_SetEffectEnabled2((C.int)(param1), (C.bool)(enable))
 }
 
 // Delete this object from C++ memory.

@@ -246,11 +246,11 @@ func (this *QPaintEngine) DrawPoints2(points *QPoint, pointCount int) {
 }
 
 func (this *QPaintEngine) DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
-	C.QPaintEngine_DrawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+	C.QPaintEngine_DrawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
-	C.QPaintEngine_DrawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.uintptr_t)(mode))
+	C.QPaintEngine_DrawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPixmap(r *QRectF, pm *QPixmap, sr *QRectF) {
@@ -315,19 +315,19 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 }
 
 func (this *QPaintEngine) TestDirty(df int) bool {
-	return (bool)(C.QPaintEngine_TestDirty(this.h, (C.int)(df)))
+	return (bool)(C.QPaintEngine_TestDirty(this.h, df))
 }
 
 func (this *QPaintEngine) SetDirty(df int) {
-	C.QPaintEngine_SetDirty(this.h, (C.int)(df))
+	C.QPaintEngine_SetDirty(this.h, df)
 }
 
 func (this *QPaintEngine) ClearDirty(df int) {
-	C.QPaintEngine_ClearDirty(this.h, (C.int)(df))
+	C.QPaintEngine_ClearDirty(this.h, df)
 }
 
 func (this *QPaintEngine) HasFeature(feature int) bool {
-	return (bool)(C.QPaintEngine_HasFeature(this.h, (C.int)(feature)))
+	return (bool)(C.QPaintEngine_HasFeature(this.h, feature))
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
@@ -343,7 +343,7 @@ func (this *QPaintEngine) IsExtended() bool {
 }
 
 func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
-	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
+	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), flags)
 }
 
 // Delete this object from C++ memory.

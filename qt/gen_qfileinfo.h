@@ -84,7 +84,7 @@ QDateTime* QFileInfo_BirthTime(const QFileInfo* self);
 QDateTime* QFileInfo_MetadataChangeTime(const QFileInfo* self);
 QDateTime* QFileInfo_LastModified(const QFileInfo* self);
 QDateTime* QFileInfo_LastRead(const QFileInfo* self);
-QDateTime* QFileInfo_FileTime(const QFileInfo* self, uintptr_t time);
+QDateTime* QFileInfo_FileTime(const QFileInfo* self, int time);
 bool QFileInfo_Caching(const QFileInfo* self);
 void QFileInfo_SetCaching(QFileInfo* self, bool on);
 void QFileInfo_Delete(QFileInfo* self);

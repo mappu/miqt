@@ -45,7 +45,7 @@ func NewQSplitter() *QSplitter {
 
 // NewQSplitter2 constructs a new QSplitter object.
 func NewQSplitter2(param1 Orientation) *QSplitter {
-	ret := C.QSplitter_new2((C.uintptr_t)(param1))
+	ret := C.QSplitter_new2((C.int)(param1))
 	return newQSplitter(ret)
 }
 
@@ -57,7 +57,7 @@ func NewQSplitter3(parent *QWidget) *QSplitter {
 
 // NewQSplitter4 constructs a new QSplitter object.
 func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
-	ret := C.QSplitter_new4((C.uintptr_t)(param1), parent.cPointer())
+	ret := C.QSplitter_new4((C.int)(param1), parent.cPointer())
 	return newQSplitter(ret)
 }
 
@@ -96,7 +96,7 @@ func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
-	C.QSplitter_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QSplitter_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QSplitter) Orientation() Orientation {
@@ -320,7 +320,7 @@ func newQSplitterHandle_U(h unsafe.Pointer) *QSplitterHandle {
 
 // NewQSplitterHandle constructs a new QSplitterHandle object.
 func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
-	ret := C.QSplitterHandle_new((C.uintptr_t)(o), parent.cPointer())
+	ret := C.QSplitterHandle_new((C.int)(o), parent.cPointer())
 	return newQSplitterHandle(ret)
 }
 
@@ -347,7 +347,7 @@ func QSplitterHandle_TrUtf8(s string) string {
 }
 
 func (this *QSplitterHandle) SetOrientation(o Orientation) {
-	C.QSplitterHandle_SetOrientation(this.h, (C.uintptr_t)(o))
+	C.QSplitterHandle_SetOrientation(this.h, (C.int)(o))
 }
 
 func (this *QSplitterHandle) Orientation() Orientation {

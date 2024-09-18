@@ -97,9 +97,9 @@ QSize* QImageReader_Size(const QImageReader* self) {
 	return new QSize(self->size());
 }
 
-uintptr_t QImageReader_ImageFormat(const QImageReader* self) {
+int QImageReader_ImageFormat(const QImageReader* self) {
 	QImage::Format _ret = self->imageFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_array* QImageReader_TextKeys(const QImageReader* self) {
@@ -248,9 +248,9 @@ QRect* QImageReader_CurrentImageRect(const QImageReader* self) {
 	return new QRect(self->currentImageRect());
 }
 
-uintptr_t QImageReader_Error(const QImageReader* self) {
+int QImageReader_Error(const QImageReader* self) {
 	QImageReader::ImageReaderError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QImageReader_ErrorString(const QImageReader* self) {
@@ -260,7 +260,7 @@ struct miqt_string* QImageReader_ErrorString(const QImageReader* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-bool QImageReader_SupportsOption(const QImageReader* self, uintptr_t option) {
+bool QImageReader_SupportsOption(const QImageReader* self, int option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 

@@ -16,17 +16,17 @@ QSettings* QSettings_new(struct miqt_string* organization) {
 	return new QSettings(organization_QString);
 }
 
-QSettings* QSettings_new2(uintptr_t scope, struct miqt_string* organization) {
+QSettings* QSettings_new2(int scope, struct miqt_string* organization) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-QSettings* QSettings_new3(uintptr_t format, uintptr_t scope, struct miqt_string* organization) {
+QSettings* QSettings_new3(int format, int scope, struct miqt_string* organization) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
-QSettings* QSettings_new4(struct miqt_string* fileName, uintptr_t format) {
+QSettings* QSettings_new4(struct miqt_string* fileName, int format) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QSettings(fileName_QString, static_cast<QSettings::Format>(format));
 }
@@ -35,7 +35,7 @@ QSettings* QSettings_new5() {
 	return new QSettings();
 }
 
-QSettings* QSettings_new6(uintptr_t scope) {
+QSettings* QSettings_new6(int scope) {
 	return new QSettings(static_cast<QSettings::Scope>(scope));
 }
 
@@ -51,31 +51,31 @@ QSettings* QSettings_new8(struct miqt_string* organization, struct miqt_string* 
 	return new QSettings(organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new9(uintptr_t scope, struct miqt_string* organization, struct miqt_string* application) {
+QSettings* QSettings_new9(int scope, struct miqt_string* organization, struct miqt_string* application) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-QSettings* QSettings_new10(uintptr_t scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
+QSettings* QSettings_new10(int scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new11(uintptr_t format, uintptr_t scope, struct miqt_string* organization, struct miqt_string* application) {
+QSettings* QSettings_new11(int format, int scope, struct miqt_string* organization, struct miqt_string* application) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
-QSettings* QSettings_new12(uintptr_t format, uintptr_t scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
+QSettings* QSettings_new12(int format, int scope, struct miqt_string* organization, struct miqt_string* application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(&organization->data, organization->len);
 	QString application_QString = QString::fromUtf8(&application->data, application->len);
 	return new QSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
-QSettings* QSettings_new13(struct miqt_string* fileName, uintptr_t format, QObject* parent) {
+QSettings* QSettings_new13(struct miqt_string* fileName, int format, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
 	return new QSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
 }
@@ -84,7 +84,7 @@ QSettings* QSettings_new14(QObject* parent) {
 	return new QSettings(parent);
 }
 
-QSettings* QSettings_new15(uintptr_t scope, QObject* parent) {
+QSettings* QSettings_new15(int scope, QObject* parent) {
 	return new QSettings(static_cast<QSettings::Scope>(scope), parent);
 }
 
@@ -114,9 +114,9 @@ void QSettings_Sync(QSettings* self) {
 	self->sync();
 }
 
-uintptr_t QSettings_Status(const QSettings* self) {
+int QSettings_Status(const QSettings* self) {
 	QSettings::Status _ret = self->status();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QSettings_IsAtomicSyncRequired(const QSettings* self) {
@@ -248,14 +248,14 @@ struct miqt_string* QSettings_FileName(const QSettings* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QSettings_Format(const QSettings* self) {
+int QSettings_Format(const QSettings* self) {
 	QSettings::Format _ret = self->format();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QSettings_Scope(const QSettings* self) {
+int QSettings_Scope(const QSettings* self) {
 	QSettings::Scope _ret = self->scope();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QSettings_OrganizationName(const QSettings* self) {
@@ -284,13 +284,13 @@ QTextCodec* QSettings_IniCodec(const QSettings* self) {
 	return self->iniCodec();
 }
 
-void QSettings_SetDefaultFormat(uintptr_t format) {
+void QSettings_SetDefaultFormat(int format) {
 	QSettings::setDefaultFormat(static_cast<QSettings::Format>(format));
 }
 
-uintptr_t QSettings_DefaultFormat() {
+int QSettings_DefaultFormat() {
 	QSettings::Format _ret = QSettings::defaultFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QSettings_SetSystemIniPath(struct miqt_string* dir) {
@@ -303,7 +303,7 @@ void QSettings_SetUserIniPath(struct miqt_string* dir) {
 	QSettings::setUserIniPath(dir_QString);
 }
 
-void QSettings_SetPath(uintptr_t format, uintptr_t scope, struct miqt_string* path) {
+void QSettings_SetPath(int format, int scope, struct miqt_string* path) {
 	QString path_QString = QString::fromUtf8(&path->data, path->len);
 	QSettings::setPath(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), path_QString);
 }

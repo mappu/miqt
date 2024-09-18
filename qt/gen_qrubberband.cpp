@@ -11,11 +11,11 @@
 #include "gen_qrubberband.h"
 #include "_cgo_export.h"
 
-QRubberBand* QRubberBand_new(uintptr_t param1) {
+QRubberBand* QRubberBand_new(int param1) {
 	return new QRubberBand(static_cast<QRubberBand::Shape>(param1));
 }
 
-QRubberBand* QRubberBand_new2(uintptr_t param1, QWidget* param2) {
+QRubberBand* QRubberBand_new2(int param1, QWidget* param2) {
 	return new QRubberBand(static_cast<QRubberBand::Shape>(param1), param2);
 }
 
@@ -37,9 +37,9 @@ struct miqt_string* QRubberBand_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QRubberBand_Shape(const QRubberBand* self) {
+int QRubberBand_Shape(const QRubberBand* self) {
 	QRubberBand::Shape _ret = self->shape();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QRubberBand_SetGeometry(QRubberBand* self, QRect* r) {

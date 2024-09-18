@@ -124,18 +124,18 @@ func (this *QImageIOHandler) Write(image *QImage) bool {
 }
 
 func (this *QImageIOHandler) Option(option QImageIOHandler__ImageOption) *QVariant {
-	_ret := C.QImageIOHandler_Option(this.h, (C.uintptr_t)(option))
+	_ret := C.QImageIOHandler_Option(this.h, (C.int)(option))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImageIOHandler) SetOption(option QImageIOHandler__ImageOption, value *QVariant) {
-	C.QImageIOHandler_SetOption(this.h, (C.uintptr_t)(option), value.cPointer())
+	C.QImageIOHandler_SetOption(this.h, (C.int)(option), value.cPointer())
 }
 
 func (this *QImageIOHandler) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	return (bool)(C.QImageIOHandler_SupportsOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QImageIOHandler_SupportsOption(this.h, (C.int)(option)))
 }
 
 func (this *QImageIOHandler) JumpToNextImage() bool {

@@ -158,21 +158,21 @@ int QPlainTextEdit_MaximumBlockCount(const QPlainTextEdit* self) {
 	return self->maximumBlockCount();
 }
 
-uintptr_t QPlainTextEdit_LineWrapMode(const QPlainTextEdit* self) {
+int QPlainTextEdit_LineWrapMode(const QPlainTextEdit* self) {
 	QPlainTextEdit::LineWrapMode _ret = self->lineWrapMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QPlainTextEdit_SetLineWrapMode(QPlainTextEdit* self, uintptr_t mode) {
+void QPlainTextEdit_SetLineWrapMode(QPlainTextEdit* self, int mode) {
 	self->setLineWrapMode(static_cast<QPlainTextEdit::LineWrapMode>(mode));
 }
 
-uintptr_t QPlainTextEdit_WordWrapMode(const QPlainTextEdit* self) {
+int QPlainTextEdit_WordWrapMode(const QPlainTextEdit* self) {
 	QTextOption::WrapMode _ret = self->wordWrapMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QPlainTextEdit_SetWordWrapMode(QPlainTextEdit* self, uintptr_t policy) {
+void QPlainTextEdit_SetWordWrapMode(QPlainTextEdit* self, int policy) {
 	self->setWordWrapMode(static_cast<QTextOption::WrapMode>(policy));
 }
 
@@ -264,7 +264,8 @@ void QPlainTextEdit_SetTabStopWidth(QPlainTextEdit* self, int width) {
 }
 
 double QPlainTextEdit_TabStopDistance(const QPlainTextEdit* self) {
-	return self->tabStopDistance();
+	qreal _ret = self->tabStopDistance();
+	return static_cast<double>(_ret);
 }
 
 void QPlainTextEdit_SetTabStopDistance(QPlainTextEdit* self, double distance) {
@@ -302,7 +303,7 @@ struct miqt_array* QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self) {
 	return _out;
 }
 
-void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, uintptr_t operation) {
+void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, int operation) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation));
 }
 
@@ -318,11 +319,11 @@ int QPlainTextEdit_BlockCount(const QPlainTextEdit* self) {
 	return self->blockCount();
 }
 
-QVariant* QPlainTextEdit_InputMethodQuery(const QPlainTextEdit* self, uintptr_t property) {
+QVariant* QPlainTextEdit_InputMethodQuery(const QPlainTextEdit* self, int property) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
 }
 
-QVariant* QPlainTextEdit_InputMethodQuery2(const QPlainTextEdit* self, uintptr_t query, QVariant* argument) {
+QVariant* QPlainTextEdit_InputMethodQuery2(const QPlainTextEdit* self, int query, QVariant* argument) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
@@ -526,7 +527,7 @@ bool QPlainTextEdit_Find24(QPlainTextEdit* self, QRegularExpression* exp, int op
 	return self->find(*exp, static_cast<QTextDocument::FindFlags>(options));
 }
 
-void QPlainTextEdit_MoveCursor2(QPlainTextEdit* self, uintptr_t operation, uintptr_t mode) {
+void QPlainTextEdit_MoveCursor2(QPlainTextEdit* self, int operation, int mode) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation), static_cast<QTextCursor::MoveMode>(mode));
 }
 
@@ -568,7 +569,7 @@ void QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout* self, QPainter* par
 	self->draw(param1, *param2);
 }
 
-int QPlainTextDocumentLayout_HitTest(const QPlainTextDocumentLayout* self, QPointF* param1, uintptr_t param2) {
+int QPlainTextDocumentLayout_HitTest(const QPlainTextDocumentLayout* self, QPointF* param1, int param2) {
 	return self->hitTest(*param1, static_cast<Qt::HitTestAccuracy>(param2));
 }
 

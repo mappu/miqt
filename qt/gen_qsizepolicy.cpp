@@ -7,7 +7,7 @@ QSizePolicy* QSizePolicy_new() {
 	return new QSizePolicy();
 }
 
-QSizePolicy* QSizePolicy_new2(uintptr_t horizontal, uintptr_t vertical) {
+QSizePolicy* QSizePolicy_new2(int horizontal, int vertical) {
 	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
 }
 
@@ -15,34 +15,34 @@ QSizePolicy* QSizePolicy_new3(QSizePolicy* param1) {
 	return new QSizePolicy(*param1);
 }
 
-QSizePolicy* QSizePolicy_new4(uintptr_t horizontal, uintptr_t vertical, uintptr_t typeVal) {
+QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int typeVal) {
 	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical), static_cast<QSizePolicy::ControlType>(typeVal));
 }
 
-uintptr_t QSizePolicy_HorizontalPolicy(const QSizePolicy* self) {
+int QSizePolicy_HorizontalPolicy(const QSizePolicy* self) {
 	QSizePolicy::Policy _ret = self->horizontalPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QSizePolicy_VerticalPolicy(const QSizePolicy* self) {
+int QSizePolicy_VerticalPolicy(const QSizePolicy* self) {
 	QSizePolicy::Policy _ret = self->verticalPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QSizePolicy_ControlType(const QSizePolicy* self) {
+int QSizePolicy_ControlType(const QSizePolicy* self) {
 	QSizePolicy::ControlType _ret = self->controlType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, uintptr_t d) {
+void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, int d) {
 	self->setHorizontalPolicy(static_cast<QSizePolicy::Policy>(d));
 }
 
-void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, uintptr_t d) {
+void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, int d) {
 	self->setVerticalPolicy(static_cast<QSizePolicy::Policy>(d));
 }
 
-void QSizePolicy_SetControlType(QSizePolicy* self, uintptr_t typeVal) {
+void QSizePolicy_SetControlType(QSizePolicy* self, int typeVal) {
 	self->setControlType(static_cast<QSizePolicy::ControlType>(typeVal));
 }
 

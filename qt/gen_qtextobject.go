@@ -866,6 +866,10 @@ func NewQTextFrame__iterator2(o *QTextFrame__iterator) *QTextFrame__iterator {
 	return newQTextFrame__iterator(ret)
 }
 
+func (this *QTextFrame__iterator) OperatorAssign(o *QTextFrame__iterator) {
+	C.QTextFrame__iterator_OperatorAssign(this.h, o.cPointer())
+}
+
 func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
 	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame__iterator_ParentFrame(this.h)))
 }
@@ -893,15 +897,23 @@ func (this *QTextFrame__iterator) OperatorNotEqual(o *QTextFrame__iterator) bool
 	return (bool)(C.QTextFrame__iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
-func (this *QTextFrame__iterator) OperatorPlusPlus(param1 int) *QTextFrame__iterator {
-	_ret := C.QTextFrame__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QTextFrame__iterator) OperatorPlusPlus() *QTextFrame__iterator {
+	return newQTextFrame__iterator_U(unsafe.Pointer(C.QTextFrame__iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QTextFrame__iterator) OperatorPlusPlusWithInt(param1 int) *QTextFrame__iterator {
+	_ret := C.QTextFrame__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQTextFrame__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextFrame__iterator) OperatorMinusMinus(param1 int) *QTextFrame__iterator {
-	_ret := C.QTextFrame__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QTextFrame__iterator) OperatorMinusMinus() *QTextFrame__iterator {
+	return newQTextFrame__iterator_U(unsafe.Pointer(C.QTextFrame__iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QTextFrame__iterator) OperatorMinusMinusWithInt(param1 int) *QTextFrame__iterator {
+	_ret := C.QTextFrame__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQTextFrame__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -955,6 +967,10 @@ func NewQTextBlock__iterator2(o *QTextBlock__iterator) *QTextBlock__iterator {
 	return newQTextBlock__iterator(ret)
 }
 
+func (this *QTextBlock__iterator) OperatorAssign(o *QTextBlock__iterator) {
+	C.QTextBlock__iterator_OperatorAssign(this.h, o.cPointer())
+}
+
 func (this *QTextBlock__iterator) Fragment() *QTextFragment {
 	_ret := C.QTextBlock__iterator_Fragment(this.h)
 	_goptr := newQTextFragment(_ret)
@@ -974,15 +990,23 @@ func (this *QTextBlock__iterator) OperatorNotEqual(o *QTextBlock__iterator) bool
 	return (bool)(C.QTextBlock__iterator_OperatorNotEqual(this.h, o.cPointer()))
 }
 
-func (this *QTextBlock__iterator) OperatorPlusPlus(param1 int) *QTextBlock__iterator {
-	_ret := C.QTextBlock__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QTextBlock__iterator) OperatorPlusPlus() *QTextBlock__iterator {
+	return newQTextBlock__iterator_U(unsafe.Pointer(C.QTextBlock__iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QTextBlock__iterator) OperatorPlusPlusWithInt(param1 int) *QTextBlock__iterator {
+	_ret := C.QTextBlock__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQTextBlock__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextBlock__iterator) OperatorMinusMinus(param1 int) *QTextBlock__iterator {
-	_ret := C.QTextBlock__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QTextBlock__iterator) OperatorMinusMinus() *QTextBlock__iterator {
+	return newQTextBlock__iterator_U(unsafe.Pointer(C.QTextBlock__iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QTextBlock__iterator) OperatorMinusMinusWithInt(param1 int) *QTextBlock__iterator {
+	_ret := C.QTextBlock__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQTextBlock__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

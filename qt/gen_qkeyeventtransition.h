@@ -26,9 +26,9 @@ typedef struct QState QState;
 #endif
 
 QKeyEventTransition* QKeyEventTransition_new();
-QKeyEventTransition* QKeyEventTransition_new2(QObject* object, uintptr_t typeVal, int key);
+QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int key);
 QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState);
-QKeyEventTransition* QKeyEventTransition_new4(QObject* object, uintptr_t typeVal, int key, QState* sourceState);
+QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState);
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self);
 struct miqt_string* QKeyEventTransition_Tr(const char* s);
 struct miqt_string* QKeyEventTransition_TrUtf8(const char* s);

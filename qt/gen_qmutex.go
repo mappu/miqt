@@ -117,7 +117,7 @@ func NewQMutex() *QMutex {
 
 // NewQMutex2 constructs a new QMutex object.
 func NewQMutex2(mode QMutex__RecursionMode) *QMutex {
-	ret := C.QMutex_new2((C.uintptr_t)(mode))
+	ret := C.QMutex_new2((C.int)(mode))
 	return newQMutex(ret)
 }
 

@@ -129,7 +129,7 @@ func (this *QScroller) State() QScroller__State {
 }
 
 func (this *QScroller) HandleInput(input QScroller__Input, position *QPointF) bool {
-	return (bool)(C.QScroller_HandleInput(this.h, (C.uintptr_t)(input), position.cPointer()))
+	return (bool)(C.QScroller_HandleInput(this.h, (C.int)(input), position.cPointer()))
 }
 
 func (this *QScroller) Stop() {
@@ -221,14 +221,14 @@ func (this *QScroller) ResendPrepareEvent() {
 }
 
 func (this *QScroller) StateChanged(newstate QScroller__State) {
-	C.QScroller_StateChanged(this.h, (C.uintptr_t)(newstate))
+	C.QScroller_StateChanged(this.h, (C.int)(newstate))
 }
 func (this *QScroller) OnStateChanged(slot func(newstate QScroller__State)) {
 	C.QScroller_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QScroller_StateChanged
-func miqt_exec_callback_QScroller_StateChanged(cb *C.void, newstate C.uintptr_t) {
+func miqt_exec_callback_QScroller_StateChanged(cb *C.void, newstate C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newstate QScroller__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -305,9 +305,9 @@ func QScroller_TrUtf83(s string, c string, n int) string {
 }
 
 func QScroller_GrabGesture2(target *QObject, gestureType QScroller__ScrollerGestureType) GestureType {
-	return (GestureType)(C.QScroller_GrabGesture2(target.cPointer(), (C.uintptr_t)(gestureType)))
+	return (GestureType)(C.QScroller_GrabGesture2(target.cPointer(), (C.int)(gestureType)))
 }
 
 func (this *QScroller) HandleInput3(input QScroller__Input, position *QPointF, timestamp int64) bool {
-	return (bool)(C.QScroller_HandleInput3(this.h, (C.uintptr_t)(input), position.cPointer(), (C.longlong)(timestamp)))
+	return (bool)(C.QScroller_HandleInput3(this.h, (C.int)(input), position.cPointer(), (C.longlong)(timestamp)))
 }

@@ -74,7 +74,7 @@ func QPdfWriter_TrUtf8(s string) string {
 }
 
 func (this *QPdfWriter) SetPdfVersion(version QPagedPaintDevice__PdfVersion) {
-	C.QPdfWriter_SetPdfVersion(this.h, (C.uintptr_t)(version))
+	C.QPdfWriter_SetPdfVersion(this.h, (C.int)(version))
 }
 
 func (this *QPdfWriter) PdfVersion() QPagedPaintDevice__PdfVersion {
@@ -137,7 +137,7 @@ func (this *QPdfWriter) AddFileAttachment(fileName string, data *QByteArray) {
 }
 
 func (this *QPdfWriter) SetPageSize(size QPagedPaintDevice__PageSize) {
-	C.QPdfWriter_SetPageSize(this.h, (C.uintptr_t)(size))
+	C.QPdfWriter_SetPageSize(this.h, (C.int)(size))
 }
 
 func (this *QPdfWriter) SetPageSizeMM(size *QSizeF) {

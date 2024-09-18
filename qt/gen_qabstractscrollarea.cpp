@@ -37,12 +37,12 @@ struct miqt_string* QAbstractScrollArea_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QAbstractScrollArea_VerticalScrollBarPolicy(const QAbstractScrollArea* self) {
+int QAbstractScrollArea_VerticalScrollBarPolicy(const QAbstractScrollArea* self) {
 	Qt::ScrollBarPolicy _ret = self->verticalScrollBarPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractScrollArea_SetVerticalScrollBarPolicy(QAbstractScrollArea* self, uintptr_t verticalScrollBarPolicy) {
+void QAbstractScrollArea_SetVerticalScrollBarPolicy(QAbstractScrollArea* self, int verticalScrollBarPolicy) {
 	self->setVerticalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(verticalScrollBarPolicy));
 }
 
@@ -54,12 +54,12 @@ void QAbstractScrollArea_SetVerticalScrollBar(QAbstractScrollArea* self, QScroll
 	self->setVerticalScrollBar(scrollbar);
 }
 
-uintptr_t QAbstractScrollArea_HorizontalScrollBarPolicy(const QAbstractScrollArea* self) {
+int QAbstractScrollArea_HorizontalScrollBarPolicy(const QAbstractScrollArea* self) {
 	Qt::ScrollBarPolicy _ret = self->horizontalScrollBarPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractScrollArea_SetHorizontalScrollBarPolicy(QAbstractScrollArea* self, uintptr_t horizontalScrollBarPolicy) {
+void QAbstractScrollArea_SetHorizontalScrollBarPolicy(QAbstractScrollArea* self, int horizontalScrollBarPolicy) {
 	self->setHorizontalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(horizontalScrollBarPolicy));
 }
 
@@ -120,12 +120,12 @@ void QAbstractScrollArea_SetupViewport(QAbstractScrollArea* self, QWidget* viewp
 	self->setupViewport(viewport);
 }
 
-uintptr_t QAbstractScrollArea_SizeAdjustPolicy(const QAbstractScrollArea* self) {
+int QAbstractScrollArea_SizeAdjustPolicy(const QAbstractScrollArea* self) {
 	QAbstractScrollArea::SizeAdjustPolicy _ret = self->sizeAdjustPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QAbstractScrollArea_SetSizeAdjustPolicy(QAbstractScrollArea* self, uintptr_t policy) {
+void QAbstractScrollArea_SetSizeAdjustPolicy(QAbstractScrollArea* self, int policy) {
 	self->setSizeAdjustPolicy(static_cast<QAbstractScrollArea::SizeAdjustPolicy>(policy));
 }
 

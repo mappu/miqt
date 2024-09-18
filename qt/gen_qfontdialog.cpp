@@ -55,11 +55,11 @@ QFont* QFontDialog_SelectedFont(const QFontDialog* self) {
 	return new QFont(self->selectedFont());
 }
 
-void QFontDialog_SetOption(QFontDialog* self, uintptr_t option) {
+void QFontDialog_SetOption(QFontDialog* self, int option) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
-bool QFontDialog_TestOption(const QFontDialog* self, uintptr_t option) {
+bool QFontDialog_TestOption(const QFontDialog* self, int option) {
 	return self->testOption(static_cast<QFontDialog::FontDialogOption>(option));
 }
 
@@ -138,7 +138,7 @@ struct miqt_string* QFontDialog_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QFontDialog_SetOption2(QFontDialog* self, uintptr_t option, bool on) {
+void QFontDialog_SetOption2(QFontDialog* self, int option, bool on) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option), on);
 }
 

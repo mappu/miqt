@@ -71,10 +71,10 @@ void QGraphicsGridLayout_RemoveAt(QGraphicsGridLayout* self, int index);
 void QGraphicsGridLayout_RemoveItem(QGraphicsGridLayout* self, QGraphicsLayoutItem* item);
 void QGraphicsGridLayout_Invalidate(QGraphicsGridLayout* self);
 void QGraphicsGridLayout_SetGeometry(QGraphicsGridLayout* self, QRectF* rect);
-QSizeF* QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout* self, uintptr_t which);
+QSizeF* QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout* self, int which);
 void QGraphicsGridLayout_AddItem6(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int alignment);
 void QGraphicsGridLayout_AddItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int alignment);
-QSizeF* QGraphicsGridLayout_SizeHint2(const QGraphicsGridLayout* self, uintptr_t which, QSizeF* constraint);
+QSizeF* QGraphicsGridLayout_SizeHint2(const QGraphicsGridLayout* self, int which, QSizeF* constraint);
 void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self);
 
 #ifdef __cplusplus

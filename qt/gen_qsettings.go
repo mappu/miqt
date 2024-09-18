@@ -87,7 +87,7 @@ func NewQSettings(organization string) *QSettings {
 func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_ms := miqt_strdupg(organization)
 	defer C.free(organization_ms)
-	ret := C.QSettings_new2((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
+	ret := C.QSettings_new2((C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
@@ -95,7 +95,7 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organization string) *QSettings {
 	organization_ms := miqt_strdupg(organization)
 	defer C.free(organization_ms)
-	ret := C.QSettings_new3((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms))
+	ret := C.QSettings_new3((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
 }
 
@@ -103,7 +103,7 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format))
+	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.int)(format))
 	return newQSettings(ret)
 }
 
@@ -115,7 +115,7 @@ func NewQSettings5() *QSettings {
 
 // NewQSettings6 constructs a new QSettings object.
 func NewQSettings6(scope QSettings__Scope) *QSettings {
-	ret := C.QSettings_new6((C.uintptr_t)(scope))
+	ret := C.QSettings_new6((C.int)(scope))
 	return newQSettings(ret)
 }
 
@@ -145,7 +145,7 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new9((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
+	ret := C.QSettings_new9((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
@@ -155,7 +155,7 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new10((C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
+	ret := C.QSettings_new10((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -165,7 +165,7 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new11((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
+	ret := C.QSettings_new11((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
 }
 
@@ -175,7 +175,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 	defer C.free(organization_ms)
 	application_ms := miqt_strdupg(application)
 	defer C.free(application_ms)
-	ret := C.QSettings_new12((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
+	ret := C.QSettings_new12((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -183,7 +183,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.uintptr_t)(format), parent.cPointer())
+	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.int)(format), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -195,7 +195,7 @@ func NewQSettings14(parent *QObject) *QSettings {
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
-	ret := C.QSettings_new15((C.uintptr_t)(scope), parent.cPointer())
+	ret := C.QSettings_new15((C.int)(scope), parent.cPointer())
 	return newQSettings(ret)
 }
 
@@ -403,7 +403,7 @@ func (this *QSettings) IniCodec() *QTextCodec {
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
-	C.QSettings_SetDefaultFormat((C.uintptr_t)(format))
+	C.QSettings_SetDefaultFormat((C.int)(format))
 }
 
 func QSettings_DefaultFormat() QSettings__Format {
@@ -425,7 +425,7 @@ func QSettings_SetUserIniPath(dir string) {
 func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
-	C.QSettings_SetPath((C.uintptr_t)(format), (C.uintptr_t)(scope), (*C.struct_miqt_string)(path_ms))
+	C.QSettings_SetPath((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(path_ms))
 }
 
 func QSettings_Tr2(s string, c string) string {

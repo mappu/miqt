@@ -77,12 +77,12 @@ QLocale* QInputMethod_Locale(const QInputMethod* self) {
 	return new QLocale(self->locale());
 }
 
-uintptr_t QInputMethod_InputDirection(const QInputMethod* self) {
+int QInputMethod_InputDirection(const QInputMethod* self) {
 	Qt::LayoutDirection _ret = self->inputDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-QVariant* QInputMethod_QueryFocusObject(uintptr_t query, QVariant* argument) {
+QVariant* QInputMethod_QueryFocusObject(int query, QVariant* argument) {
 	return new QVariant(QInputMethod::queryFocusObject(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
@@ -106,7 +106,7 @@ void QInputMethod_Commit(QInputMethod* self) {
 	self->commit();
 }
 
-void QInputMethod_InvokeAction(QInputMethod* self, uintptr_t a, int cursorPosition) {
+void QInputMethod_InvokeAction(QInputMethod* self, int a, int cursorPosition) {
 	self->invokeAction(static_cast<QInputMethod::Action>(a), static_cast<int>(cursorPosition));
 }
 
@@ -180,14 +180,14 @@ void QInputMethod_connect_LocaleChanged(QInputMethod* self, void* slot) {
 	});
 }
 
-void QInputMethod_InputDirectionChanged(QInputMethod* self, uintptr_t newDirection) {
+void QInputMethod_InputDirectionChanged(QInputMethod* self, int newDirection) {
 	self->inputDirectionChanged(static_cast<Qt::LayoutDirection>(newDirection));
 }
 
 void QInputMethod_connect_InputDirectionChanged(QInputMethod* self, void* slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)(Qt::LayoutDirection)>(&QInputMethod::inputDirectionChanged), self, [=](Qt::LayoutDirection newDirection) {
 		Qt::LayoutDirection newDirection_ret = newDirection;
-		uintptr_t sigval1 = static_cast<uintptr_t>(newDirection_ret);
+		int sigval1 = static_cast<int>(newDirection_ret);
 		miqt_exec_callback_QInputMethod_InputDirectionChanged(slot, sigval1);
 	});
 }

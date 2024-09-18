@@ -46,13 +46,13 @@ func newQSocketNotifier_U(h unsafe.Pointer) *QSocketNotifier {
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
 func NewQSocketNotifier(socket uintptr, param2 QSocketNotifier__Type) *QSocketNotifier {
-	ret := C.QSocketNotifier_new((C.uintptr_t)(socket), (C.uintptr_t)(param2))
+	ret := C.QSocketNotifier_new(socket, (C.int)(param2))
 	return newQSocketNotifier(ret)
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
 func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
-	ret := C.QSocketNotifier_new2((C.uintptr_t)(socket), (C.uintptr_t)(param2), parent.cPointer())
+	ret := C.QSocketNotifier_new2(socket, (C.int)(param2), parent.cPointer())
 	return newQSocketNotifier(ret)
 }
 
@@ -78,8 +78,8 @@ func QSocketNotifier_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QSocketNotifier) Socket() uint64 {
-	return (uint64)(C.QSocketNotifier_Socket(this.h))
+func (this *QSocketNotifier) Socket() uintptr {
+	return (uintptr)(C.QSocketNotifier_Socket(this.h))
 }
 
 func (this *QSocketNotifier) Type() QSocketNotifier__Type {
@@ -187,9 +187,9 @@ func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
 }
 
 // NewQSocketDescriptor3 constructs a new QSocketDescriptor object.
-func NewQSocketDescriptor3(descriptor uintptr) *QSocketDescriptor {
+func NewQSocketDescriptor3(descriptor QSocketNotifier__Type) *QSocketDescriptor {
 	if runtime.GOOS == "linux" {
-		ret := C.QSocketDescriptor_new3((C.uintptr_t)(descriptor))
+		ret := C.QSocketDescriptor_new3((C.int)(descriptor))
 		return newQSocketDescriptor(ret)
 	} else {
 		panic("Unsupported OS")

@@ -139,7 +139,7 @@ func NewQByteArray3(size int, c byte) *QByteArray {
 
 // NewQByteArray4 constructs a new QByteArray object.
 func NewQByteArray4(size int, param2 Initialization) *QByteArray {
-	ret := C.QByteArray_new4((C.int)(size), (C.uintptr_t)(param2))
+	ret := C.QByteArray_new4((C.int)(size), (C.int)(param2))
 	return newQByteArray(ret)
 }
 
@@ -764,7 +764,7 @@ func (this *QByteArray) ToDouble() float64 {
 }
 
 func (this *QByteArray) ToBase64(options int) *QByteArray {
-	_ret := C.QByteArray_ToBase64(this.h, (C.int)(options))
+	_ret := C.QByteArray_ToBase64(this.h, options)
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -888,7 +888,7 @@ func QByteArray_FromBase64Encoding(base64 *QByteArray) *QByteArray__FromBase64Re
 }
 
 func QByteArray_FromBase64(base64 *QByteArray, options int) *QByteArray {
-	_ret := C.QByteArray_FromBase64(base64.cPointer(), (C.int)(options))
+	_ret := C.QByteArray_FromBase64(base64.cPointer(), options)
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1034,11 +1034,11 @@ func (this *QByteArray) LastIndexOf23(a *QByteArray, from int) int {
 func (this *QByteArray) Compare2(c string, cs CaseSensitivity) int {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	return (int)(C.QByteArray_Compare2(this.h, c_Cstring, (C.uintptr_t)(cs)))
+	return (int)(C.QByteArray_Compare2(this.h, c_Cstring, (C.int)(cs)))
 }
 
 func (this *QByteArray) Compare22(a *QByteArray, cs CaseSensitivity) int {
-	return (int)(C.QByteArray_Compare22(this.h, a.cPointer(), (C.uintptr_t)(cs)))
+	return (int)(C.QByteArray_Compare22(this.h, a.cPointer(), (C.int)(cs)))
 }
 
 func (this *QByteArray) Mid2(index int, lenVal int) *QByteArray {
@@ -1264,7 +1264,7 @@ func QByteArray_Number3(param1 float64, f byte, prec int) *QByteArray {
 }
 
 func QByteArray_FromBase64Encoding2(base64 *QByteArray, options int) *QByteArray__FromBase64Result {
-	_ret := C.QByteArray_FromBase64Encoding2(base64.cPointer(), (C.int)(options))
+	_ret := C.QByteArray_FromBase64Encoding2(base64.cPointer(), options)
 	_goptr := newQByteArray__FromBase64Result(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1403,6 +1403,10 @@ func (this *QByteArray__FromBase64Result) OperatorMultiply() *QByteArray {
 
 func (this *QByteArray__FromBase64Result) OperatorMultiply2() *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray__FromBase64Result_OperatorMultiply2(this.h)))
+}
+
+func (this *QByteArray__FromBase64Result) OperatorAssign(param1 *QByteArray__FromBase64Result) {
+	C.QByteArray__FromBase64Result_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

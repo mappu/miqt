@@ -178,13 +178,13 @@ bool QTreeWidgetItem_IsDisabled(const QTreeWidgetItem* self) {
 	return self->isDisabled();
 }
 
-void QTreeWidgetItem_SetChildIndicatorPolicy(QTreeWidgetItem* self, uintptr_t policy) {
+void QTreeWidgetItem_SetChildIndicatorPolicy(QTreeWidgetItem* self, int policy) {
 	self->setChildIndicatorPolicy(static_cast<QTreeWidgetItem::ChildIndicatorPolicy>(policy));
 }
 
-uintptr_t QTreeWidgetItem_ChildIndicatorPolicy(const QTreeWidgetItem* self) {
+int QTreeWidgetItem_ChildIndicatorPolicy(const QTreeWidgetItem* self) {
 	QTreeWidgetItem::ChildIndicatorPolicy _ret = self->childIndicatorPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QTreeWidgetItem_Flags(const QTreeWidgetItem* self) {
@@ -300,12 +300,12 @@ void QTreeWidgetItem_SetForeground(QTreeWidgetItem* self, int column, QBrush* br
 	self->setForeground(static_cast<int>(column), *brush);
 }
 
-uintptr_t QTreeWidgetItem_CheckState(const QTreeWidgetItem* self, int column) {
+int QTreeWidgetItem_CheckState(const QTreeWidgetItem* self, int column) {
 	Qt::CheckState _ret = self->checkState(static_cast<int>(column));
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTreeWidgetItem_SetCheckState(QTreeWidgetItem* self, int column, uintptr_t state) {
+void QTreeWidgetItem_SetCheckState(QTreeWidgetItem* self, int column, int state) {
 	self->setCheckState(static_cast<int>(column), static_cast<Qt::CheckState>(state));
 }
 
@@ -398,7 +398,7 @@ void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miq
 }
 
 struct miqt_array* QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self) {
-	QList<QTreeWidgetItem*> _ret = self->takeChildren();
+	QList<QTreeWidgetItem *> _ret = self->takeChildren();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -414,7 +414,7 @@ int QTreeWidgetItem_Type(const QTreeWidgetItem* self) {
 	return self->type();
 }
 
-void QTreeWidgetItem_SortChildren(QTreeWidgetItem* self, int column, uintptr_t order) {
+void QTreeWidgetItem_SortChildren(QTreeWidgetItem* self, int column, int order) {
 	self->sortChildren(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -564,7 +564,7 @@ int QTreeWidget_SortColumn(const QTreeWidget* self) {
 	return self->sortColumn();
 }
 
-void QTreeWidget_SortItems(QTreeWidget* self, int column, uintptr_t order) {
+void QTreeWidget_SortItems(QTreeWidget* self, int column, int order) {
 	self->sortItems(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -605,7 +605,7 @@ void QTreeWidget_SetItemSelected(QTreeWidget* self, QTreeWidgetItem* item, bool 
 }
 
 struct miqt_array* QTreeWidget_SelectedItems(const QTreeWidget* self) {
-	QList<QTreeWidgetItem*> _ret = self->selectedItems();
+	QList<QTreeWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -619,7 +619,7 @@ struct miqt_array* QTreeWidget_SelectedItems(const QTreeWidget* self) {
 
 struct miqt_array* QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string* text, int flags) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QList<QTreeWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
+	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -845,7 +845,7 @@ bool QTreeWidget_IsPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 
 struct miqt_array* QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string* text, int flags, int column) {
 	QString text_QString = QString::fromUtf8(&text->data, text->len);
-	QList<QTreeWidgetItem*> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
+	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -857,7 +857,7 @@ struct miqt_array* QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_s
 	return _out;
 }
 
-void QTreeWidget_ScrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, uintptr_t hint) {
+void QTreeWidget_ScrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint) {
 	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

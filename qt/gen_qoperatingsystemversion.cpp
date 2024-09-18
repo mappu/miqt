@@ -6,15 +6,15 @@
 #include "gen_qoperatingsystemversion.h"
 #include "_cgo_export.h"
 
-QOperatingSystemVersion* QOperatingSystemVersion_new(uintptr_t osType, int vmajor) {
+QOperatingSystemVersion* QOperatingSystemVersion_new(int osType, int vmajor) {
 	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor));
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_new2(uintptr_t osType, int vmajor, int vminor) {
+QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor, int vminor) {
 	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_new3(uintptr_t osType, int vmajor, int vminor, int vmicro) {
+QOperatingSystemVersion* QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro) {
 	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
 }
 
@@ -22,9 +22,9 @@ QOperatingSystemVersion* QOperatingSystemVersion_Current() {
 	return new QOperatingSystemVersion(QOperatingSystemVersion::current());
 }
 
-uintptr_t QOperatingSystemVersion_CurrentType() {
+int QOperatingSystemVersion_CurrentType() {
 	QOperatingSystemVersion::OSType _ret = QOperatingSystemVersion::currentType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self) {
@@ -43,9 +43,9 @@ int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self) {
 	return self->segmentCount();
 }
 
-uintptr_t QOperatingSystemVersion_Type(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_Type(const QOperatingSystemVersion* self) {
 	QOperatingSystemVersion::OSType _ret = self->type();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QOperatingSystemVersion_Name(const QOperatingSystemVersion* self) {

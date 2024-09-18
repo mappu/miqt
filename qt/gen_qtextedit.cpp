@@ -105,7 +105,8 @@ int QTextEdit_TextInteractionFlags(const QTextEdit* self) {
 }
 
 double QTextEdit_FontPointSize(const QTextEdit* self) {
-	return self->fontPointSize();
+	qreal _ret = self->fontPointSize();
+	return static_cast<double>(_ret);
 }
 
 struct miqt_string* QTextEdit_FontFamily(const QTextEdit* self) {
@@ -193,12 +194,12 @@ void QTextEdit_SetUndoRedoEnabled(QTextEdit* self, bool enable) {
 	self->setUndoRedoEnabled(enable);
 }
 
-uintptr_t QTextEdit_LineWrapMode(const QTextEdit* self) {
+int QTextEdit_LineWrapMode(const QTextEdit* self) {
 	QTextEdit::LineWrapMode _ret = self->lineWrapMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTextEdit_SetLineWrapMode(QTextEdit* self, uintptr_t mode) {
+void QTextEdit_SetLineWrapMode(QTextEdit* self, int mode) {
 	self->setLineWrapMode(static_cast<QTextEdit::LineWrapMode>(mode));
 }
 
@@ -210,12 +211,12 @@ void QTextEdit_SetLineWrapColumnOrWidth(QTextEdit* self, int w) {
 	self->setLineWrapColumnOrWidth(static_cast<int>(w));
 }
 
-uintptr_t QTextEdit_WordWrapMode(const QTextEdit* self) {
+int QTextEdit_WordWrapMode(const QTextEdit* self) {
 	QTextOption::WrapMode _ret = self->wordWrapMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QTextEdit_SetWordWrapMode(QTextEdit* self, uintptr_t policy) {
+void QTextEdit_SetWordWrapMode(QTextEdit* self, int policy) {
 	self->setWordWrapMode(static_cast<QTextOption::WrapMode>(policy));
 }
 
@@ -305,7 +306,8 @@ void QTextEdit_SetTabStopWidth(QTextEdit* self, int width) {
 }
 
 double QTextEdit_TabStopDistance(const QTextEdit* self) {
-	return self->tabStopDistance();
+	qreal _ret = self->tabStopDistance();
+	return static_cast<double>(_ret);
 }
 
 void QTextEdit_SetTabStopDistance(QTextEdit* self, double distance) {
@@ -351,7 +353,7 @@ struct miqt_array* QTextEdit_ExtraSelections(const QTextEdit* self) {
 	return _out;
 }
 
-void QTextEdit_MoveCursor(QTextEdit* self, uintptr_t operation) {
+void QTextEdit_MoveCursor(QTextEdit* self, int operation) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation));
 }
 
@@ -363,11 +365,11 @@ void QTextEdit_Print(const QTextEdit* self, QPagedPaintDevice* printer) {
 	self->print(printer);
 }
 
-QVariant* QTextEdit_InputMethodQuery(const QTextEdit* self, uintptr_t property) {
+QVariant* QTextEdit_InputMethodQuery(const QTextEdit* self, int property) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
 }
 
-QVariant* QTextEdit_InputMethodQuery2(const QTextEdit* self, uintptr_t query, QVariant* argument) {
+QVariant* QTextEdit_InputMethodQuery2(const QTextEdit* self, int query, QVariant* argument) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
@@ -608,7 +610,7 @@ struct miqt_string* QTextEdit_ToMarkdown1(const QTextEdit* self, int features) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTextEdit_MoveCursor2(QTextEdit* self, uintptr_t operation, uintptr_t mode) {
+void QTextEdit_MoveCursor2(QTextEdit* self, int operation, int mode) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation), static_cast<QTextCursor::MoveMode>(mode));
 }
 
@@ -626,6 +628,10 @@ void QTextEdit_Delete(QTextEdit* self) {
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1) {
 	return new QTextEdit::ExtraSelection(*param1);
+}
+
+void QTextEdit__ExtraSelection_OperatorAssign(QTextEdit__ExtraSelection* self, QTextEdit__ExtraSelection* param1) {
+	self->operator=(*param1);
 }
 
 void QTextEdit__ExtraSelection_Delete(QTextEdit__ExtraSelection* self) {

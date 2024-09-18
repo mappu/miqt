@@ -16,7 +16,7 @@ QMatrix4x4* QMatrix4x4_new() {
 	return new QMatrix4x4();
 }
 
-QMatrix4x4* QMatrix4x4_new2(uintptr_t param1) {
+QMatrix4x4* QMatrix4x4_new2(int param1) {
 	return new QMatrix4x4(static_cast<Qt::Initialization>(param1));
 }
 

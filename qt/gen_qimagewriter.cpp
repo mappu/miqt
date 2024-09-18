@@ -166,9 +166,9 @@ bool QImageWriter_Write(QImageWriter* self, QImage* image) {
 	return self->write(*image);
 }
 
-uintptr_t QImageWriter_Error(const QImageWriter* self) {
+int QImageWriter_Error(const QImageWriter* self) {
 	QImageWriter::ImageWriterError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QImageWriter_ErrorString(const QImageWriter* self) {
@@ -178,7 +178,7 @@ struct miqt_string* QImageWriter_ErrorString(const QImageWriter* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-bool QImageWriter_SupportsOption(const QImageWriter* self, uintptr_t option) {
+bool QImageWriter_SupportsOption(const QImageWriter* self, int option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 

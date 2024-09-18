@@ -47,13 +47,13 @@ void QDialog_SetVisible(QDialog* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QDialog_SetOrientation(QDialog* self, uintptr_t orientation) {
+void QDialog_SetOrientation(QDialog* self, int orientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
-uintptr_t QDialog_Orientation(const QDialog* self) {
+int QDialog_Orientation(const QDialog* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDialog_SetExtension(QDialog* self, QWidget* extension) {

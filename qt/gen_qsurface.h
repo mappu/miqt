@@ -23,9 +23,9 @@ typedef struct QSurface QSurface;
 typedef struct QSurfaceFormat QSurfaceFormat;
 #endif
 
-uintptr_t QSurface_SurfaceClass(const QSurface* self);
+int QSurface_SurfaceClass(const QSurface* self);
 QSurfaceFormat* QSurface_Format(const QSurface* self);
-uintptr_t QSurface_SurfaceType(const QSurface* self);
+int QSurface_SurfaceType(const QSurface* self);
 bool QSurface_SupportsOpenGL(const QSurface* self);
 QSize* QSurface_Size(const QSurface* self);
 void QSurface_Delete(QSurface* self);

@@ -300,7 +300,7 @@ void QTreeView_SortByColumn(QTreeView* self, int column) {
 	self->sortByColumn(static_cast<int>(column));
 }
 
-void QTreeView_SortByColumn2(QTreeView* self, int column, uintptr_t order) {
+void QTreeView_SortByColumn2(QTreeView* self, int column, int order) {
 	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
@@ -348,7 +348,7 @@ struct miqt_string* QTreeView_TrUtf83(const char* s, const char* c, int n) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, uintptr_t hint) {
+void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 

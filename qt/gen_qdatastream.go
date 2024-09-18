@@ -110,7 +110,7 @@ func NewQDataStream2(param1 *QIODevice) *QDataStream {
 
 // NewQDataStream3 constructs a new QDataStream object.
 func NewQDataStream3(param1 *QByteArray, flags int) *QDataStream {
-	ret := C.QDataStream_new3(param1.cPointer(), (C.int)(flags))
+	ret := C.QDataStream_new3(param1.cPointer(), flags)
 	return newQDataStream(ret)
 }
 
@@ -141,7 +141,7 @@ func (this *QDataStream) Status() QDataStream__Status {
 }
 
 func (this *QDataStream) SetStatus(status QDataStream__Status) {
-	C.QDataStream_SetStatus(this.h, (C.uintptr_t)(status))
+	C.QDataStream_SetStatus(this.h, (C.int)(status))
 }
 
 func (this *QDataStream) ResetStatus() {
@@ -153,7 +153,7 @@ func (this *QDataStream) FloatingPointPrecision() QDataStream__FloatingPointPrec
 }
 
 func (this *QDataStream) SetFloatingPointPrecision(precision QDataStream__FloatingPointPrecision) {
-	C.QDataStream_SetFloatingPointPrecision(this.h, (C.uintptr_t)(precision))
+	C.QDataStream_SetFloatingPointPrecision(this.h, (C.int)(precision))
 }
 
 func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
@@ -161,7 +161,7 @@ func (this *QDataStream) ByteOrder() QDataStream__ByteOrder {
 }
 
 func (this *QDataStream) SetByteOrder(byteOrder QDataStream__ByteOrder) {
-	C.QDataStream_SetByteOrder(this.h, (C.uintptr_t)(byteOrder))
+	C.QDataStream_SetByteOrder(this.h, (C.int)(byteOrder))
 }
 
 func (this *QDataStream) Version() int {

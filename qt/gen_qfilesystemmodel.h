@@ -62,12 +62,12 @@ int QFileSystemModel_ColumnCount(const QFileSystemModel* self);
 QVariant* QFileSystemModel_MyComputer(const QFileSystemModel* self);
 QVariant* QFileSystemModel_Data(const QFileSystemModel* self, QModelIndex* index);
 bool QFileSystemModel_SetData(QFileSystemModel* self, QModelIndex* index, QVariant* value);
-QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, uintptr_t orientation);
+QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, int orientation);
 int QFileSystemModel_Flags(const QFileSystemModel* self, QModelIndex* index);
 void QFileSystemModel_Sort(QFileSystemModel* self, int column);
 struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self);
 QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
-bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, uintptr_t action, int row, int column, QModelIndex* parent);
+bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self);
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string* path);
 struct miqt_string* QFileSystemModel_RootPath(const QFileSystemModel* self);
@@ -84,8 +84,8 @@ void QFileSystemModel_SetNameFilterDisables(QFileSystemModel* self, bool enable)
 bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self);
 void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string* */ filters);
 struct miqt_array* QFileSystemModel_NameFilters(const QFileSystemModel* self);
-void QFileSystemModel_SetOption(QFileSystemModel* self, uintptr_t option);
-bool QFileSystemModel_TestOption(const QFileSystemModel* self, uintptr_t option);
+void QFileSystemModel_SetOption(QFileSystemModel* self, int option);
+bool QFileSystemModel_TestOption(const QFileSystemModel* self, int option);
 void QFileSystemModel_SetOptions(QFileSystemModel* self, int options);
 int QFileSystemModel_Options(const QFileSystemModel* self);
 struct miqt_string* QFileSystemModel_FilePath(const QFileSystemModel* self, QModelIndex* index);
@@ -112,9 +112,9 @@ int QFileSystemModel_ColumnCount1(const QFileSystemModel* self, QModelIndex* par
 QVariant* QFileSystemModel_MyComputer1(const QFileSystemModel* self, int role);
 QVariant* QFileSystemModel_Data2(const QFileSystemModel* self, QModelIndex* index, int role);
 bool QFileSystemModel_SetData3(QFileSystemModel* self, QModelIndex* index, QVariant* value, int role);
-QVariant* QFileSystemModel_HeaderData3(const QFileSystemModel* self, int section, uintptr_t orientation, int role);
-void QFileSystemModel_Sort2(QFileSystemModel* self, int column, uintptr_t order);
-void QFileSystemModel_SetOption2(QFileSystemModel* self, uintptr_t option, bool on);
+QVariant* QFileSystemModel_HeaderData3(const QFileSystemModel* self, int section, int orientation, int role);
+void QFileSystemModel_Sort2(QFileSystemModel* self, int column, int order);
+void QFileSystemModel_SetOption2(QFileSystemModel* self, int option, bool on);
 void QFileSystemModel_Delete(QFileSystemModel* self);
 
 #ifdef __cplusplus

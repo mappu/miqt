@@ -98,7 +98,7 @@ func (this *QSessionManager) Cancel() {
 }
 
 func (this *QSessionManager) SetRestartHint(restartHint QSessionManager__RestartHint) {
-	C.QSessionManager_SetRestartHint(this.h, (C.uintptr_t)(restartHint))
+	C.QSessionManager_SetRestartHint(this.h, (C.int)(restartHint))
 }
 
 func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {

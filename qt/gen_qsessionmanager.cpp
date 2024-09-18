@@ -56,13 +56,13 @@ void QSessionManager_Cancel(QSessionManager* self) {
 	self->cancel();
 }
 
-void QSessionManager_SetRestartHint(QSessionManager* self, uintptr_t restartHint) {
+void QSessionManager_SetRestartHint(QSessionManager* self, int restartHint) {
 	self->setRestartHint(static_cast<QSessionManager::RestartHint>(restartHint));
 }
 
-uintptr_t QSessionManager_RestartHint(const QSessionManager* self) {
+int QSessionManager_RestartHint(const QSessionManager* self) {
 	QSessionManager::RestartHint _ret = self->restartHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ restartCommand) {

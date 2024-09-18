@@ -48,7 +48,8 @@ void QDial_SetNotchTarget(QDial* self, double target) {
 }
 
 double QDial_NotchTarget(const QDial* self) {
-	return self->notchTarget();
+	qreal _ret = self->notchTarget();
+	return static_cast<double>(_ret);
 }
 
 bool QDial_NotchesVisible(const QDial* self) {

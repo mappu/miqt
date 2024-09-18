@@ -214,43 +214,43 @@ void QProcess_SetArguments(QProcess* self, struct miqt_array* /* of struct miqt_
 	self->setArguments(arguments_QList);
 }
 
-uintptr_t QProcess_ReadChannelMode(const QProcess* self) {
+int QProcess_ReadChannelMode(const QProcess* self) {
 	QProcess::ProcessChannelMode _ret = self->readChannelMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QProcess_SetReadChannelMode(QProcess* self, uintptr_t mode) {
+void QProcess_SetReadChannelMode(QProcess* self, int mode) {
 	self->setReadChannelMode(static_cast<QProcess::ProcessChannelMode>(mode));
 }
 
-uintptr_t QProcess_ProcessChannelMode(const QProcess* self) {
+int QProcess_ProcessChannelMode(const QProcess* self) {
 	QProcess::ProcessChannelMode _ret = self->processChannelMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QProcess_SetProcessChannelMode(QProcess* self, uintptr_t mode) {
+void QProcess_SetProcessChannelMode(QProcess* self, int mode) {
 	self->setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(mode));
 }
 
-uintptr_t QProcess_InputChannelMode(const QProcess* self) {
+int QProcess_InputChannelMode(const QProcess* self) {
 	QProcess::InputChannelMode _ret = self->inputChannelMode();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QProcess_SetInputChannelMode(QProcess* self, uintptr_t mode) {
+void QProcess_SetInputChannelMode(QProcess* self, int mode) {
 	self->setInputChannelMode(static_cast<QProcess::InputChannelMode>(mode));
 }
 
-uintptr_t QProcess_ReadChannel(const QProcess* self) {
+int QProcess_ReadChannel(const QProcess* self) {
 	QProcess::ProcessChannel _ret = self->readChannel();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QProcess_SetReadChannel(QProcess* self, uintptr_t channel) {
+void QProcess_SetReadChannel(QProcess* self, int channel) {
 	self->setReadChannel(static_cast<QProcess::ProcessChannel>(channel));
 }
 
-void QProcess_CloseReadChannel(QProcess* self, uintptr_t channel) {
+void QProcess_CloseReadChannel(QProcess* self, int channel) {
 	self->closeReadChannel(static_cast<QProcess::ProcessChannel>(channel));
 }
 
@@ -324,27 +324,29 @@ QProcessEnvironment* QProcess_ProcessEnvironment(const QProcess* self) {
 	return new QProcessEnvironment(self->processEnvironment());
 }
 
-uintptr_t QProcess_Error(const QProcess* self) {
+int QProcess_Error(const QProcess* self) {
 	QProcess::ProcessError _ret = self->error();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QProcess_State(const QProcess* self) {
+int QProcess_State(const QProcess* self) {
 	QProcess::ProcessState _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-int64_t QProcess_Pid(const QProcess* self) {
+long long QProcess_Pid(const QProcess* self) {
 #ifdef Q_OS_LINUX
-	return self->pid();
+	Q_PID _ret = self->pid();
+	return static_cast<long long>(_ret);
 #else
-	int64_t _ret_invalidOS;
+	long long _ret_invalidOS;
 	return _ret_invalidOS;
 #endif
 }
 
 long long QProcess_ProcessId(const QProcess* self) {
-	return self->processId();
+	qint64 _ret = self->processId();
+	return static_cast<long long>(_ret);
 }
 
 bool QProcess_WaitForStarted(QProcess* self) {
@@ -375,17 +377,19 @@ int QProcess_ExitCode(const QProcess* self) {
 	return self->exitCode();
 }
 
-uintptr_t QProcess_ExitStatus(const QProcess* self) {
+int QProcess_ExitStatus(const QProcess* self) {
 	QProcess::ExitStatus _ret = self->exitStatus();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 long long QProcess_BytesAvailable(const QProcess* self) {
-	return self->bytesAvailable();
+	qint64 _ret = self->bytesAvailable();
+	return static_cast<long long>(_ret);
 }
 
 long long QProcess_BytesToWrite(const QProcess* self) {
-	return self->bytesToWrite();
+	qint64 _ret = self->bytesToWrite();
+	return static_cast<long long>(_ret);
 }
 
 bool QProcess_IsSequential(const QProcess* self) {
@@ -493,7 +497,7 @@ void QProcess_connect_Finished(QProcess* self, void* slot) {
 	});
 }
 
-void QProcess_Finished2(QProcess* self, int exitCode, uintptr_t exitStatus) {
+void QProcess_Finished2(QProcess* self, int exitCode, int exitStatus) {
 	self->finished(static_cast<int>(exitCode), static_cast<QProcess::ExitStatus>(exitStatus));
 }
 
@@ -501,31 +505,31 @@ void QProcess_connect_Finished2(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
 		int sigval1 = exitCode;
 		QProcess::ExitStatus exitStatus_ret = exitStatus;
-		uintptr_t sigval2 = static_cast<uintptr_t>(exitStatus_ret);
+		int sigval2 = static_cast<int>(exitStatus_ret);
 		miqt_exec_callback_QProcess_Finished2(slot, sigval1, sigval2);
 	});
 }
 
-void QProcess_ErrorWithError(QProcess* self, uintptr_t error) {
+void QProcess_ErrorWithError(QProcess* self, int error) {
 	self->error(static_cast<QProcess::ProcessError>(error));
 }
 
 void QProcess_connect_ErrorWithError(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), self, [=](QProcess::ProcessError error) {
 		QProcess::ProcessError error_ret = error;
-		uintptr_t sigval1 = static_cast<uintptr_t>(error_ret);
+		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QProcess_ErrorWithError(slot, sigval1);
 	});
 }
 
-void QProcess_ErrorOccurred(QProcess* self, uintptr_t error) {
+void QProcess_ErrorOccurred(QProcess* self, int error) {
 	self->errorOccurred(static_cast<QProcess::ProcessError>(error));
 }
 
 void QProcess_connect_ErrorOccurred(QProcess* self, void* slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
 		QProcess::ProcessError error_ret = error;
-		uintptr_t sigval1 = static_cast<uintptr_t>(error_ret);
+		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QProcess_ErrorOccurred(slot, sigval1);
 	});
 }

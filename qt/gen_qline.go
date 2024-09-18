@@ -311,8 +311,8 @@ func (this *QLineF) NormalVector() *QLineF {
 	return _goptr
 }
 
-func (this *QLineF) Intersects(l *QLineF, intersectionPoint *QPointF) uintptr {
-	return (uintptr)(C.QLineF_Intersects(this.h, l.cPointer(), intersectionPoint.cPointer()))
+func (this *QLineF) Intersects(l *QLineF, intersectionPoint *QPointF) QLineF__IntersectType {
+	return (QLineF__IntersectType)(C.QLineF_Intersects(this.h, l.cPointer(), intersectionPoint.cPointer()))
 }
 
 func (this *QLineF) Intersect(l *QLineF, intersectionPoint *QPointF) QLineF__IntersectType {

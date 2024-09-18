@@ -20,12 +20,12 @@ QRegExp* QRegExp_new3(QRegExp* rx) {
 	return new QRegExp(*rx);
 }
 
-QRegExp* QRegExp_new4(struct miqt_string* pattern, uintptr_t cs) {
+QRegExp* QRegExp_new4(struct miqt_string* pattern, int cs) {
 	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-QRegExp* QRegExp_new5(struct miqt_string* pattern, uintptr_t cs, uintptr_t syntax) {
+QRegExp* QRegExp_new5(struct miqt_string* pattern, int cs, int syntax) {
 	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
 }
@@ -66,21 +66,21 @@ void QRegExp_SetPattern(QRegExp* self, struct miqt_string* pattern) {
 	self->setPattern(pattern_QString);
 }
 
-uintptr_t QRegExp_CaseSensitivity(const QRegExp* self) {
+int QRegExp_CaseSensitivity(const QRegExp* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QRegExp_SetCaseSensitivity(QRegExp* self, uintptr_t cs) {
+void QRegExp_SetCaseSensitivity(QRegExp* self, int cs) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
-uintptr_t QRegExp_PatternSyntax(const QRegExp* self) {
+int QRegExp_PatternSyntax(const QRegExp* self) {
 	QRegExp::PatternSyntax _ret = self->patternSyntax();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QRegExp_SetPatternSyntax(QRegExp* self, uintptr_t syntax) {
+void QRegExp_SetPatternSyntax(QRegExp* self, int syntax) {
 	self->setPatternSyntax(static_cast<QRegExp::PatternSyntax>(syntax));
 }
 
@@ -196,7 +196,7 @@ int QRegExp_IndexIn2(const QRegExp* self, struct miqt_string* str, int offset) {
 	return self->indexIn(str_QString, static_cast<int>(offset));
 }
 
-int QRegExp_IndexIn3(const QRegExp* self, struct miqt_string* str, int offset, uintptr_t caretMode) {
+int QRegExp_IndexIn3(const QRegExp* self, struct miqt_string* str, int offset, int caretMode) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
 	return self->indexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
@@ -206,7 +206,7 @@ int QRegExp_LastIndexIn2(const QRegExp* self, struct miqt_string* str, int offse
 	return self->lastIndexIn(str_QString, static_cast<int>(offset));
 }
 
-int QRegExp_LastIndexIn3(const QRegExp* self, struct miqt_string* str, int offset, uintptr_t caretMode) {
+int QRegExp_LastIndexIn3(const QRegExp* self, struct miqt_string* str, int offset, int caretMode) {
 	QString str_QString = QString::fromUtf8(&str->data, str->len);
 	return self->lastIndexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }

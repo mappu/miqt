@@ -40,7 +40,7 @@ func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy2(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy) {
-	C.QGraphicsLayoutItem_SetSizePolicy2(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy))
+	C.QGraphicsLayoutItem_SetSizePolicy2(this.h, (C.int)(hPolicy), (C.int)(vPolicy))
 }
 
 func (this *QGraphicsLayoutItem) SizePolicy() *QSizePolicy {
@@ -166,7 +166,7 @@ func (this *QGraphicsLayoutItem) ContentsRect() *QRectF {
 }
 
 func (this *QGraphicsLayoutItem) EffectiveSizeHint(which SizeHint) *QSizeF {
-	_ret := C.QGraphicsLayoutItem_EffectiveSizeHint(this.h, (C.uintptr_t)(which))
+	_ret := C.QGraphicsLayoutItem_EffectiveSizeHint(this.h, (C.int)(which))
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -197,11 +197,11 @@ func (this *QGraphicsLayoutItem) OwnedByLayout() bool {
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy, controlType QSizePolicy__ControlType) {
-	C.QGraphicsLayoutItem_SetSizePolicy3(this.h, (C.uintptr_t)(hPolicy), (C.uintptr_t)(vPolicy), (C.uintptr_t)(controlType))
+	C.QGraphicsLayoutItem_SetSizePolicy3(this.h, (C.int)(hPolicy), (C.int)(vPolicy), (C.int)(controlType))
 }
 
 func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
-	_ret := C.QGraphicsLayoutItem_EffectiveSizeHint2(this.h, (C.uintptr_t)(which), constraint.cPointer())
+	_ret := C.QGraphicsLayoutItem_EffectiveSizeHint2(this.h, (C.int)(which), constraint.cPointer())
 	_goptr := newQSizeF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

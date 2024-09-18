@@ -43,14 +43,14 @@ struct miqt_string* QGesture_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QGesture_GestureType(const QGesture* self) {
+int QGesture_GestureType(const QGesture* self) {
 	Qt::GestureType _ret = self->gestureType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QGesture_State(const QGesture* self) {
+int QGesture_State(const QGesture* self) {
 	Qt::GestureState _ret = self->state();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QPointF* QGesture_HotSpot(const QGesture* self) {
@@ -69,13 +69,13 @@ void QGesture_UnsetHotSpot(QGesture* self) {
 	self->unsetHotSpot();
 }
 
-void QGesture_SetGestureCancelPolicy(QGesture* self, uintptr_t policy) {
+void QGesture_SetGestureCancelPolicy(QGesture* self, int policy) {
 	self->setGestureCancelPolicy(static_cast<QGesture::GestureCancelPolicy>(policy));
 }
 
-uintptr_t QGesture_GestureCancelPolicy(const QGesture* self) {
+int QGesture_GestureCancelPolicy(const QGesture* self) {
 	QGesture::GestureCancelPolicy _ret = self->gestureCancelPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 struct miqt_string* QGesture_Tr2(const char* s, const char* c) {
@@ -149,7 +149,8 @@ QPointF* QPanGesture_Delta(const QPanGesture* self) {
 }
 
 double QPanGesture_Acceleration(const QPanGesture* self) {
-	return self->acceleration();
+	qreal _ret = self->acceleration();
+	return static_cast<double>(_ret);
 }
 
 void QPanGesture_SetLastOffset(QPanGesture* self, QPointF* value) {
@@ -265,15 +266,18 @@ void QPinchGesture_SetCenterPoint(QPinchGesture* self, QPointF* value) {
 }
 
 double QPinchGesture_TotalScaleFactor(const QPinchGesture* self) {
-	return self->totalScaleFactor();
+	qreal _ret = self->totalScaleFactor();
+	return static_cast<double>(_ret);
 }
 
 double QPinchGesture_LastScaleFactor(const QPinchGesture* self) {
-	return self->lastScaleFactor();
+	qreal _ret = self->lastScaleFactor();
+	return static_cast<double>(_ret);
 }
 
 double QPinchGesture_ScaleFactor(const QPinchGesture* self) {
-	return self->scaleFactor();
+	qreal _ret = self->scaleFactor();
+	return static_cast<double>(_ret);
 }
 
 void QPinchGesture_SetTotalScaleFactor(QPinchGesture* self, double value) {
@@ -289,15 +293,18 @@ void QPinchGesture_SetScaleFactor(QPinchGesture* self, double value) {
 }
 
 double QPinchGesture_TotalRotationAngle(const QPinchGesture* self) {
-	return self->totalRotationAngle();
+	qreal _ret = self->totalRotationAngle();
+	return static_cast<double>(_ret);
 }
 
 double QPinchGesture_LastRotationAngle(const QPinchGesture* self) {
-	return self->lastRotationAngle();
+	qreal _ret = self->lastRotationAngle();
+	return static_cast<double>(_ret);
 }
 
 double QPinchGesture_RotationAngle(const QPinchGesture* self) {
-	return self->rotationAngle();
+	qreal _ret = self->rotationAngle();
+	return static_cast<double>(_ret);
 }
 
 void QPinchGesture_SetTotalRotationAngle(QPinchGesture* self, double value) {
@@ -370,18 +377,19 @@ struct miqt_string* QSwipeGesture_TrUtf8(const char* s) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QSwipeGesture_HorizontalDirection(const QSwipeGesture* self) {
+int QSwipeGesture_HorizontalDirection(const QSwipeGesture* self) {
 	QSwipeGesture::SwipeDirection _ret = self->horizontalDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QSwipeGesture_VerticalDirection(const QSwipeGesture* self) {
+int QSwipeGesture_VerticalDirection(const QSwipeGesture* self) {
 	QSwipeGesture::SwipeDirection _ret = self->verticalDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QSwipeGesture_SwipeAngle(const QSwipeGesture* self) {
-	return self->swipeAngle();
+	qreal _ret = self->swipeAngle();
+	return static_cast<double>(_ret);
 }
 
 void QSwipeGesture_SetSwipeAngle(QSwipeGesture* self, double value) {
@@ -575,7 +583,7 @@ QGestureEvent* QGestureEvent_new2(QGestureEvent* param1) {
 }
 
 struct miqt_array* QGestureEvent_Gestures(const QGestureEvent* self) {
-	QList<QGesture*> _ret = self->gestures();
+	QList<QGesture *> _ret = self->gestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -587,12 +595,12 @@ struct miqt_array* QGestureEvent_Gestures(const QGestureEvent* self) {
 	return _out;
 }
 
-QGesture* QGestureEvent_Gesture(const QGestureEvent* self, uintptr_t typeVal) {
+QGesture* QGestureEvent_Gesture(const QGestureEvent* self, int typeVal) {
 	return self->gesture(static_cast<Qt::GestureType>(typeVal));
 }
 
 struct miqt_array* QGestureEvent_ActiveGestures(const QGestureEvent* self) {
-	QList<QGesture*> _ret = self->activeGestures();
+	QList<QGesture *> _ret = self->activeGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -605,7 +613,7 @@ struct miqt_array* QGestureEvent_ActiveGestures(const QGestureEvent* self) {
 }
 
 struct miqt_array* QGestureEvent_CanceledGestures(const QGestureEvent* self) {
-	QList<QGesture*> _ret = self->canceledGestures();
+	QList<QGesture *> _ret = self->canceledGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -633,19 +641,19 @@ bool QGestureEvent_IsAccepted(const QGestureEvent* self, QGesture* param1) {
 	return self->isAccepted(param1);
 }
 
-void QGestureEvent_SetAccepted2(QGestureEvent* self, uintptr_t param1, bool param2) {
+void QGestureEvent_SetAccepted2(QGestureEvent* self, int param1, bool param2) {
 	self->setAccepted(static_cast<Qt::GestureType>(param1), param2);
 }
 
-void QGestureEvent_AcceptWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
+void QGestureEvent_AcceptWithQtGestureType(QGestureEvent* self, int param1) {
 	self->accept(static_cast<Qt::GestureType>(param1));
 }
 
-void QGestureEvent_IgnoreWithQtGestureType(QGestureEvent* self, uintptr_t param1) {
+void QGestureEvent_IgnoreWithQtGestureType(QGestureEvent* self, int param1) {
 	self->ignore(static_cast<Qt::GestureType>(param1));
 }
 
-bool QGestureEvent_IsAcceptedWithQtGestureType(const QGestureEvent* self, uintptr_t param1) {
+bool QGestureEvent_IsAcceptedWithQtGestureType(const QGestureEvent* self, int param1) {
 	return self->isAccepted(static_cast<Qt::GestureType>(param1));
 }
 

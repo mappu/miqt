@@ -105,7 +105,8 @@ QPointF* QPointF_new4(QPointF* param1) {
 }
 
 double QPointF_ManhattanLength(const QPointF* self) {
-	return self->manhattanLength();
+	qreal _ret = self->manhattanLength();
+	return static_cast<double>(_ret);
 }
 
 bool QPointF_IsNull(const QPointF* self) {
@@ -113,11 +114,13 @@ bool QPointF_IsNull(const QPointF* self) {
 }
 
 double QPointF_X(const QPointF* self) {
-	return self->x();
+	qreal _ret = self->x();
+	return static_cast<double>(_ret);
 }
 
 double QPointF_Y(const QPointF* self) {
-	return self->y();
+	qreal _ret = self->y();
+	return static_cast<double>(_ret);
 }
 
 void QPointF_SetX(QPointF* self, double x) {
@@ -157,7 +160,8 @@ QPointF* QPointF_OperatorDivideAssign(QPointF* self, double c) {
 }
 
 double QPointF_DotProduct(QPointF* p1, QPointF* p2) {
-	return QPointF::dotProduct(*p1, *p2);
+	qreal _ret = QPointF::dotProduct(*p1, *p2);
+	return static_cast<double>(_ret);
 }
 
 QPoint* QPointF_ToPoint(const QPointF* self) {

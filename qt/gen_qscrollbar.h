@@ -28,9 +28,9 @@ typedef struct QWidget QWidget;
 #endif
 
 QScrollBar* QScrollBar_new();
-QScrollBar* QScrollBar_new2(uintptr_t param1);
+QScrollBar* QScrollBar_new2(int param1);
 QScrollBar* QScrollBar_new3(QWidget* parent);
-QScrollBar* QScrollBar_new4(uintptr_t param1, QWidget* parent);
+QScrollBar* QScrollBar_new4(int param1, QWidget* parent);
 QMetaObject* QScrollBar_MetaObject(const QScrollBar* self);
 struct miqt_string* QScrollBar_Tr(const char* s);
 struct miqt_string* QScrollBar_TrUtf8(const char* s);

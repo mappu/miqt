@@ -259,11 +259,11 @@ func QMenuBar_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
-	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.uintptr_t)(corner))
+	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
 func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget1(this.h, (C.uintptr_t)(corner))))
+	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget1(this.h, (C.int)(corner))))
 }
 
 // Delete this object from C++ memory.

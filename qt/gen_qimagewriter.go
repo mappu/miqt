@@ -192,7 +192,7 @@ func (this *QImageWriter) Transformation() int {
 }
 
 func (this *QImageWriter) SetTransformation(orientation int) {
-	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
+	C.QImageWriter_SetTransformation(this.h, orientation)
 }
 
 func (this *QImageWriter) SetDescription(description string) {
@@ -236,7 +236,7 @@ func (this *QImageWriter) ErrorString() string {
 }
 
 func (this *QImageWriter) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	return (bool)(C.QImageWriter_SupportsOption(this.h, (C.uintptr_t)(option)))
+	return (bool)(C.QImageWriter_SupportsOption(this.h, (C.int)(option)))
 }
 
 func QImageWriter_SupportedImageFormats() []QByteArray {

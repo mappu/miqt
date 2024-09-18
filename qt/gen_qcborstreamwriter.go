@@ -64,7 +64,7 @@ func (this *QCborStreamWriter) AppendWithQint64(i int64) {
 }
 
 func (this *QCborStreamWriter) AppendWithQCborNegativeInteger(n QCborNegativeInteger) {
-	C.QCborStreamWriter_AppendWithQCborNegativeInteger(this.h, n)
+	C.QCborStreamWriter_AppendWithQCborNegativeInteger(this.h, (C.uint64_t)(n))
 }
 
 func (this *QCborStreamWriter) AppendWithBa(ba *QByteArray) {
@@ -72,15 +72,15 @@ func (this *QCborStreamWriter) AppendWithBa(ba *QByteArray) {
 }
 
 func (this *QCborStreamWriter) AppendWithTag(tag QCborTag) {
-	C.QCborStreamWriter_AppendWithTag(this.h, tag)
+	C.QCborStreamWriter_AppendWithTag(this.h, (C.uint64_t)(tag))
 }
 
 func (this *QCborStreamWriter) Append3(tag QCborKnownTags) {
-	C.QCborStreamWriter_Append3(this.h, tag)
+	C.QCborStreamWriter_Append3(this.h, (C.int)(tag))
 }
 
 func (this *QCborStreamWriter) AppendWithSt(st QCborSimpleType) {
-	C.QCborStreamWriter_AppendWithSt(this.h, st)
+	C.QCborStreamWriter_AppendWithSt(this.h, (C.uint8_t)(st))
 }
 
 func (this *QCborStreamWriter) AppendWithFloat(f float32) {

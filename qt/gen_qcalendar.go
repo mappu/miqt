@@ -61,7 +61,7 @@ func NewQCalendar() *QCalendar {
 
 // NewQCalendar2 constructs a new QCalendar object.
 func NewQCalendar2(system QCalendar__System) *QCalendar {
-	ret := C.QCalendar_new2((C.uintptr_t)(system))
+	ret := C.QCalendar_new2((C.int)(system))
 	return newQCalendar(ret)
 }
 
@@ -211,7 +211,7 @@ func (this *QCalendar) MonthName3(locale *QLocale, month int, year int) string {
 }
 
 func (this *QCalendar) MonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
-	var _ms *C.struct_miqt_string = C.QCalendar_MonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format))
+	var _ms *C.struct_miqt_string = C.QCalendar_MonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -225,21 +225,21 @@ func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int
 }
 
 func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
-	var _ms *C.struct_miqt_string = C.QCalendar_StandaloneMonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.uintptr_t)(format))
+	var _ms *C.struct_miqt_string = C.QCalendar_StandaloneMonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
-	var _ms *C.struct_miqt_string = C.QCalendar_WeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format))
+	var _ms *C.struct_miqt_string = C.QCalendar_WeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
-	var _ms *C.struct_miqt_string = C.QCalendar_StandaloneWeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.uintptr_t)(format))
+	var _ms *C.struct_miqt_string = C.QCalendar_StandaloneWeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

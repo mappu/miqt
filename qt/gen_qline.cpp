@@ -143,31 +143,38 @@ QPointF* QLineF_P2(const QLineF* self) {
 }
 
 double QLineF_X1(const QLineF* self) {
-	return self->x1();
+	qreal _ret = self->x1();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_Y1(const QLineF* self) {
-	return self->y1();
+	qreal _ret = self->y1();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_X2(const QLineF* self) {
-	return self->x2();
+	qreal _ret = self->x2();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_Y2(const QLineF* self) {
-	return self->y2();
+	qreal _ret = self->y2();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_Dx(const QLineF* self) {
-	return self->dx();
+	qreal _ret = self->dx();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_Dy(const QLineF* self) {
-	return self->dy();
+	qreal _ret = self->dy();
+	return static_cast<double>(_ret);
 }
 
 double QLineF_Length(const QLineF* self) {
-	return self->length();
+	qreal _ret = self->length();
+	return static_cast<double>(_ret);
 }
 
 void QLineF_SetLength(QLineF* self, double lenVal) {
@@ -175,7 +182,8 @@ void QLineF_SetLength(QLineF* self, double lenVal) {
 }
 
 double QLineF_Angle(const QLineF* self) {
-	return self->angle();
+	qreal _ret = self->angle();
+	return static_cast<double>(_ret);
 }
 
 void QLineF_SetAngle(QLineF* self, double angle) {
@@ -183,7 +191,8 @@ void QLineF_SetAngle(QLineF* self, double angle) {
 }
 
 double QLineF_AngleTo(const QLineF* self, QLineF* l) {
-	return self->angleTo(*l);
+	qreal _ret = self->angleTo(*l);
+	return static_cast<double>(_ret);
 }
 
 QLineF* QLineF_UnitVector(const QLineF* self) {
@@ -194,18 +203,19 @@ QLineF* QLineF_NormalVector(const QLineF* self) {
 	return new QLineF(self->normalVector());
 }
 
-uintptr_t QLineF_Intersects(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
+int QLineF_Intersects(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
 	QLineF::IntersectionType _ret = self->intersects(*l, intersectionPoint);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-uintptr_t QLineF_Intersect(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
+int QLineF_Intersect(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
 	QLineF::IntersectType _ret = self->intersect(*l, intersectionPoint);
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 double QLineF_AngleWithQLineF(const QLineF* self, QLineF* l) {
-	return self->angle(*l);
+	qreal _ret = self->angle(*l);
+	return static_cast<double>(_ret);
 }
 
 QPointF* QLineF_PointAt(const QLineF* self, double t) {

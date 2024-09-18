@@ -24,12 +24,12 @@ QStringMatcher* QStringMatcher_new4(QStringMatcher* other) {
 	return new QStringMatcher(*other);
 }
 
-QStringMatcher* QStringMatcher_new5(struct miqt_string* pattern, uintptr_t cs) {
+QStringMatcher* QStringMatcher_new5(struct miqt_string* pattern, int cs) {
 	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
 	return new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-QStringMatcher* QStringMatcher_new6(QChar* uc, int lenVal, uintptr_t cs) {
+QStringMatcher* QStringMatcher_new6(QChar* uc, int lenVal, int cs) {
 	return new QStringMatcher(uc, static_cast<int>(lenVal), static_cast<Qt::CaseSensitivity>(cs));
 }
 
@@ -42,7 +42,7 @@ void QStringMatcher_SetPattern(QStringMatcher* self, struct miqt_string* pattern
 	self->setPattern(pattern_QString);
 }
 
-void QStringMatcher_SetCaseSensitivity(QStringMatcher* self, uintptr_t cs) {
+void QStringMatcher_SetCaseSensitivity(QStringMatcher* self, int cs) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
@@ -62,9 +62,9 @@ struct miqt_string* QStringMatcher_Pattern(const QStringMatcher* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-uintptr_t QStringMatcher_CaseSensitivity(const QStringMatcher* self) {
+int QStringMatcher_CaseSensitivity(const QStringMatcher* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 int QStringMatcher_IndexIn22(const QStringMatcher* self, struct miqt_string* str, int from) {

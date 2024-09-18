@@ -208,7 +208,7 @@ func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
 func (this *QFontMetrics) ElidedText(text string, mode TextElideMode, width int) string {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QFontMetrics_ElidedText(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(mode), (C.int)(width))
+	var _ms *C.struct_miqt_string = C.QFontMetrics_ElidedText(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(mode), (C.int)(width))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -311,7 +311,7 @@ func (this *QFontMetrics) Size4(flags int, str string, tabstops int, tabarray *i
 func (this *QFontMetrics) ElidedText4(text string, mode TextElideMode, width int, flags int) string {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QFontMetrics_ElidedText4(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(mode), (C.int)(width), (C.int)(flags))
+	var _ms *C.struct_miqt_string = C.QFontMetrics_ElidedText4(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(mode), (C.int)(width), (C.int)(flags))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -515,7 +515,7 @@ func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
 func (this *QFontMetricsF) ElidedText(text string, mode TextElideMode, width float64) string {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QFontMetricsF_ElidedText(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(mode), (C.double)(width))
+	var _ms *C.struct_miqt_string = C.QFontMetricsF_ElidedText(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(mode), (C.double)(width))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -594,7 +594,7 @@ func (this *QFontMetricsF) Size4(flags int, str string, tabstops int, tabarray *
 func (this *QFontMetricsF) ElidedText4(text string, mode TextElideMode, width float64, flags int) string {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QFontMetricsF_ElidedText4(this.h, (*C.struct_miqt_string)(text_ms), (C.uintptr_t)(mode), (C.double)(width), (C.int)(flags))
+	var _ms *C.struct_miqt_string = C.QFontMetricsF_ElidedText4(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(mode), (C.double)(width), (C.int)(flags))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

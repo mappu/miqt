@@ -262,7 +262,7 @@ func (this *QPainterPath) FillRule() FillRule {
 }
 
 func (this *QPainterPath) SetFillRule(fillRule FillRule) {
-	C.QPainterPath_SetFillRule(this.h, (C.uintptr_t)(fillRule))
+	C.QPainterPath_SetFillRule(this.h, (C.int)(fillRule))
 }
 
 func (this *QPainterPath) IsEmpty() bool {
@@ -410,11 +410,11 @@ func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath
 }
 
 func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainterPath_AddRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
+	C.QPainterPath_AddRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainterPath_AddRoundedRect7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.uintptr_t)(mode))
+	C.QPainterPath_AddRoundedRect7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 // Delete this object from C++ memory.
@@ -474,7 +474,7 @@ func (this *QPainterPathStroker) Width() float64 {
 }
 
 func (this *QPainterPathStroker) SetCapStyle(style PenCapStyle) {
-	C.QPainterPathStroker_SetCapStyle(this.h, (C.uintptr_t)(style))
+	C.QPainterPathStroker_SetCapStyle(this.h, (C.int)(style))
 }
 
 func (this *QPainterPathStroker) CapStyle() PenCapStyle {
@@ -482,7 +482,7 @@ func (this *QPainterPathStroker) CapStyle() PenCapStyle {
 }
 
 func (this *QPainterPathStroker) SetJoinStyle(style PenJoinStyle) {
-	C.QPainterPathStroker_SetJoinStyle(this.h, (C.uintptr_t)(style))
+	C.QPainterPathStroker_SetJoinStyle(this.h, (C.int)(style))
 }
 
 func (this *QPainterPathStroker) JoinStyle() PenJoinStyle {
@@ -506,7 +506,7 @@ func (this *QPainterPathStroker) CurveThreshold() float64 {
 }
 
 func (this *QPainterPathStroker) SetDashPattern(dashPattern PenStyle) {
-	C.QPainterPathStroker_SetDashPattern(this.h, (C.uintptr_t)(dashPattern))
+	C.QPainterPathStroker_SetDashPattern(this.h, (C.int)(dashPattern))
 }
 
 func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []float64) {

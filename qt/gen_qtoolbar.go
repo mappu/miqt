@@ -96,7 +96,7 @@ func (this *QToolBar) IsMovable() bool {
 }
 
 func (this *QToolBar) SetAllowedAreas(areas int) {
-	C.QToolBar_SetAllowedAreas(this.h, (C.int)(areas))
+	C.QToolBar_SetAllowedAreas(this.h, areas)
 }
 
 func (this *QToolBar) AllowedAreas() int {
@@ -104,11 +104,11 @@ func (this *QToolBar) AllowedAreas() int {
 }
 
 func (this *QToolBar) IsAreaAllowed(area ToolBarArea) bool {
-	return (bool)(C.QToolBar_IsAreaAllowed(this.h, (C.uintptr_t)(area)))
+	return (bool)(C.QToolBar_IsAreaAllowed(this.h, (C.int)(area)))
 }
 
 func (this *QToolBar) SetOrientation(orientation Orientation) {
-	C.QToolBar_SetOrientation(this.h, (C.uintptr_t)(orientation))
+	C.QToolBar_SetOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QToolBar) Orientation() Orientation {
@@ -198,7 +198,7 @@ func (this *QToolBar) SetIconSize(iconSize *QSize) {
 }
 
 func (this *QToolBar) SetToolButtonStyle(toolButtonStyle ToolButtonStyle) {
-	C.QToolBar_SetToolButtonStyle(this.h, (C.uintptr_t)(toolButtonStyle))
+	C.QToolBar_SetToolButtonStyle(this.h, (C.int)(toolButtonStyle))
 }
 
 func (this *QToolBar) ActionTriggered(action *QAction) {
@@ -242,7 +242,7 @@ func miqt_exec_callback_QToolBar_MovableChanged(cb *C.void, movable C.bool) {
 }
 
 func (this *QToolBar) AllowedAreasChanged(allowedAreas int) {
-	C.QToolBar_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
+	C.QToolBar_AllowedAreasChanged(this.h, allowedAreas)
 }
 func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas int)) {
 	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
@@ -262,14 +262,14 @@ func miqt_exec_callback_QToolBar_AllowedAreasChanged(cb *C.void, allowedAreas C.
 }
 
 func (this *QToolBar) OrientationChanged(orientation Orientation) {
-	C.QToolBar_OrientationChanged(this.h, (C.uintptr_t)(orientation))
+	C.QToolBar_OrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QToolBar) OnOrientationChanged(slot func(orientation Orientation)) {
 	C.QToolBar_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QToolBar_OrientationChanged
-func miqt_exec_callback_QToolBar_OrientationChanged(cb *C.void, orientation C.uintptr_t) {
+func miqt_exec_callback_QToolBar_OrientationChanged(cb *C.void, orientation C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation Orientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -302,14 +302,14 @@ func miqt_exec_callback_QToolBar_IconSizeChanged(cb *C.void, iconSize *C.QSize) 
 }
 
 func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle ToolButtonStyle) {
-	C.QToolBar_ToolButtonStyleChanged(this.h, (C.uintptr_t)(toolButtonStyle))
+	C.QToolBar_ToolButtonStyleChanged(this.h, (C.int)(toolButtonStyle))
 }
 func (this *QToolBar) OnToolButtonStyleChanged(slot func(toolButtonStyle ToolButtonStyle)) {
 	C.QToolBar_connect_ToolButtonStyleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QToolBar_ToolButtonStyleChanged
-func miqt_exec_callback_QToolBar_ToolButtonStyleChanged(cb *C.void, toolButtonStyle C.uintptr_t) {
+func miqt_exec_callback_QToolBar_ToolButtonStyleChanged(cb *C.void, toolButtonStyle C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(toolButtonStyle ToolButtonStyle))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

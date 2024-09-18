@@ -543,6 +543,10 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) Equal(other *QtMetaTypeP
 	return (bool)(C.QtMetaTypePrivate__QSequentialIterableImpl_Equal(this.h, other.cPointer()))
 }
 
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) Advance(i int) *QtMetaTypePrivate__QSequentialIterableImpl {
+	return newQtMetaTypePrivate__QSequentialIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
+}
+
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) GetCurrent() *QtMetaTypePrivate__VariantData {
 	_ret := C.QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(this.h)
 	_goptr := newQtMetaTypePrivate__VariantData(_ret)
@@ -567,6 +571,10 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) DestroyIter() {
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Copy(other *QtMetaTypePrivate__QSequentialIterableImpl) {
 	C.QtMetaTypePrivate__QSequentialIterableImpl_Copy(this.h, other.cPointer())
+}
+
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QSequentialIterableImpl) {
+	C.QtMetaTypePrivate__QSequentialIterableImpl_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -629,6 +637,10 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Equal(other *QtMetaType
 	return (bool)(C.QtMetaTypePrivate__QAssociativeIterableImpl_Equal(this.h, other.cPointer()))
 }
 
+func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Advance(i int) *QtMetaTypePrivate__QAssociativeIterableImpl {
+	return newQtMetaTypePrivate__QAssociativeIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QAssociativeIterableImpl_Advance(this.h, (C.int)(i))))
+}
+
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) DestroyIter() {
 	C.QtMetaTypePrivate__QAssociativeIterableImpl_DestroyIter(this.h)
 }
@@ -657,6 +669,10 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Size() int {
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Copy(other *QtMetaTypePrivate__QAssociativeIterableImpl) {
 	C.QtMetaTypePrivate__QAssociativeIterableImpl_Copy(this.h, other.cPointer())
+}
+
+func (this *QtMetaTypePrivate__QAssociativeIterableImpl) OperatorAssign(param1 *QtMetaTypePrivate__QAssociativeIterableImpl) {
+	C.QtMetaTypePrivate__QAssociativeIterableImpl_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

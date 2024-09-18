@@ -343,15 +343,23 @@ func (this *QJsonObject__iterator) OperatorGreaterOrEqual(other *QJsonObject__it
 	return (bool)(C.QJsonObject__iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonObject__iterator) OperatorPlusPlus(param1 int) *QJsonObject__iterator {
-	_ret := C.QJsonObject__iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QJsonObject__iterator) OperatorPlusPlus() *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QJsonObject__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__iterator {
+	_ret := C.QJsonObject__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonObject__iterator) OperatorMinusMinus(param1 int) *QJsonObject__iterator {
-	_ret := C.QJsonObject__iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QJsonObject__iterator) OperatorMinusMinus() *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QJsonObject__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__iterator {
+	_ret := C.QJsonObject__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -369,6 +377,14 @@ func (this *QJsonObject__iterator) OperatorMinus(j int) *QJsonObject__iterator {
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QJsonObject__iterator) OperatorPlusAssign(j int) *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QJsonObject__iterator) OperatorMinusAssign(j int) *QJsonObject__iterator {
+	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__iterator) OperatorMinusWithQJsonObjectiterator(j QJsonObject__iterator) int {
@@ -518,15 +534,23 @@ func (this *QJsonObject__const_iterator) OperatorGreaterOrEqual(other *QJsonObje
 	return (bool)(C.QJsonObject__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonObject__const_iterator) OperatorPlusPlus(param1 int) *QJsonObject__const_iterator {
-	_ret := C.QJsonObject__const_iterator_OperatorPlusPlus(this.h, (C.int)(param1))
+func (this *QJsonObject__const_iterator) OperatorPlusPlus() *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QJsonObject__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__const_iterator {
+	_ret := C.QJsonObject__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonObject__const_iterator) OperatorMinusMinus(param1 int) *QJsonObject__const_iterator {
-	_ret := C.QJsonObject__const_iterator_OperatorMinusMinus(this.h, (C.int)(param1))
+func (this *QJsonObject__const_iterator) OperatorMinusMinus() *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QJsonObject__const_iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__const_iterator {
+	_ret := C.QJsonObject__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -544,6 +568,14 @@ func (this *QJsonObject__const_iterator) OperatorMinus(j int) *QJsonObject__cons
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QJsonObject__const_iterator) OperatorPlusAssign(j int) *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QJsonObject__const_iterator) OperatorMinusAssign(j int) *QJsonObject__const_iterator {
+	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusWithQJsonObjectconstIterator(j QJsonObject__const_iterator) int {

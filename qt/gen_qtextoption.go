@@ -73,7 +73,7 @@ func NewQTextOption() *QTextOption {
 
 // NewQTextOption2 constructs a new QTextOption object.
 func NewQTextOption2(alignment int) *QTextOption {
-	ret := C.QTextOption_new2((C.int)(alignment))
+	ret := C.QTextOption_new2(alignment)
 	return newQTextOption(ret)
 }
 
@@ -88,7 +88,7 @@ func (this *QTextOption) OperatorAssign(o *QTextOption) {
 }
 
 func (this *QTextOption) SetAlignment(alignment int) {
-	C.QTextOption_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextOption_SetAlignment(this.h, alignment)
 }
 
 func (this *QTextOption) Alignment() int {
@@ -96,7 +96,7 @@ func (this *QTextOption) Alignment() int {
 }
 
 func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
-	C.QTextOption_SetTextDirection(this.h, (C.uintptr_t)(aDirection))
+	C.QTextOption_SetTextDirection(this.h, (C.int)(aDirection))
 }
 
 func (this *QTextOption) TextDirection() LayoutDirection {
@@ -104,7 +104,7 @@ func (this *QTextOption) TextDirection() LayoutDirection {
 }
 
 func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
-	C.QTextOption_SetWrapMode(this.h, (C.uintptr_t)(wrap))
+	C.QTextOption_SetWrapMode(this.h, (C.int)(wrap))
 }
 
 func (this *QTextOption) WrapMode() QTextOption__WrapMode {
@@ -112,7 +112,7 @@ func (this *QTextOption) WrapMode() QTextOption__WrapMode {
 }
 
 func (this *QTextOption) SetFlags(flags int) {
-	C.QTextOption_SetFlags(this.h, (C.int)(flags))
+	C.QTextOption_SetFlags(this.h, flags)
 }
 
 func (this *QTextOption) Flags() int {
@@ -236,7 +236,7 @@ func NewQTextOption__Tab() *QTextOption__Tab {
 
 // NewQTextOption__Tab2 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab2(pos float64, tabType QTextOption__TabType) *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new2((C.double)(pos), (C.uintptr_t)(tabType))
+	ret := C.QTextOption__Tab_new2((C.double)(pos), (C.int)(tabType))
 	return newQTextOption__Tab(ret)
 }
 
@@ -248,7 +248,7 @@ func NewQTextOption__Tab3(param1 *QTextOption__Tab) *QTextOption__Tab {
 
 // NewQTextOption__Tab4 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab4(pos float64, tabType QTextOption__TabType, delim QChar) *QTextOption__Tab {
-	ret := C.QTextOption__Tab_new4((C.double)(pos), (C.uintptr_t)(tabType), delim.cPointer())
+	ret := C.QTextOption__Tab_new4((C.double)(pos), (C.int)(tabType), delim.cPointer())
 	return newQTextOption__Tab(ret)
 }
 

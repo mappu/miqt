@@ -116,7 +116,7 @@ func (this *QSortFilterProxyModel) FilterCaseSensitivity() CaseSensitivity {
 }
 
 func (this *QSortFilterProxyModel) SetFilterCaseSensitivity(cs CaseSensitivity) {
-	C.QSortFilterProxyModel_SetFilterCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QSortFilterProxyModel_SetFilterCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivity() CaseSensitivity {
@@ -124,7 +124,7 @@ func (this *QSortFilterProxyModel) SortCaseSensitivity() CaseSensitivity {
 }
 
 func (this *QSortFilterProxyModel) SetSortCaseSensitivity(cs CaseSensitivity) {
-	C.QSortFilterProxyModel_SetSortCaseSensitivity(this.h, (C.uintptr_t)(cs))
+	C.QSortFilterProxyModel_SetSortCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) IsSortLocaleAware() bool {
@@ -260,14 +260,14 @@ func (this *QSortFilterProxyModel) SetData(index *QModelIndex, value *QVariant) 
 }
 
 func (this *QSortFilterProxyModel) HeaderData(section int, orientation Orientation) *QVariant {
-	_ret := C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation))
+	_ret := C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
-	return (bool)(C.QSortFilterProxyModel_SetHeaderData(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
@@ -283,7 +283,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_DropMimeData(this.h, data.cPointer(), (C.uintptr_t)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) InsertRows(row int, count int) bool {
@@ -385,14 +385,14 @@ func miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(cb *C.voi
 }
 
 func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensitivity CaseSensitivity) {
-	C.QSortFilterProxyModel_FilterCaseSensitivityChanged(this.h, (C.uintptr_t)(filterCaseSensitivity))
+	C.QSortFilterProxyModel_FilterCaseSensitivityChanged(this.h, (C.int)(filterCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnFilterCaseSensitivityChanged(slot func(filterCaseSensitivity CaseSensitivity)) {
 	C.QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb *C.void, filterCaseSensitivity C.uintptr_t) {
+func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb *C.void, filterCaseSensitivity C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(filterCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -405,14 +405,14 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb *C
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivity CaseSensitivity) {
-	C.QSortFilterProxyModel_SortCaseSensitivityChanged(this.h, (C.uintptr_t)(sortCaseSensitivity))
+	C.QSortFilterProxyModel_SortCaseSensitivityChanged(this.h, (C.int)(sortCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnSortCaseSensitivityChanged(slot func(sortCaseSensitivity CaseSensitivity)) {
 	C.QSortFilterProxyModel_connect_SortCaseSensitivityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb *C.void, sortCaseSensitivity C.uintptr_t) {
+func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb *C.void, sortCaseSensitivity C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sortCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -579,14 +579,14 @@ func (this *QSortFilterProxyModel) SetData3(index *QModelIndex, value *QVariant,
 }
 
 func (this *QSortFilterProxyModel) HeaderData3(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QSortFilterProxyModel_HeaderData3(this.h, (C.int)(section), (C.uintptr_t)(orientation), (C.int)(role))
+	_ret := C.QSortFilterProxyModel_HeaderData3(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
 	_goptr := newQVariant(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetHeaderData4(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QSortFilterProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.uintptr_t)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QSortFilterProxyModel_SetHeaderData4(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QSortFilterProxyModel) InsertRows3(row int, count int, parent *QModelIndex) bool {
@@ -620,7 +620,7 @@ func (this *QSortFilterProxyModel) Match4(start *QModelIndex, role int, value *Q
 }
 
 func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), flags)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -634,7 +634,7 @@ func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *Q
 }
 
 func (this *QSortFilterProxyModel) Sort2(column int, order SortOrder) {
-	C.QSortFilterProxyModel_Sort2(this.h, (C.int)(column), (C.uintptr_t)(order))
+	C.QSortFilterProxyModel_Sort2(this.h, (C.int)(column), (C.int)(order))
 }
 
 // Delete this object from C++ memory.

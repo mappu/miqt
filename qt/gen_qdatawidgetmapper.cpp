@@ -63,22 +63,22 @@ QModelIndex* QDataWidgetMapper_RootIndex(const QDataWidgetMapper* self) {
 	return new QModelIndex(self->rootIndex());
 }
 
-void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, uintptr_t aOrientation) {
+void QDataWidgetMapper_SetOrientation(QDataWidgetMapper* self, int aOrientation) {
 	self->setOrientation(static_cast<Qt::Orientation>(aOrientation));
 }
 
-uintptr_t QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
+int QDataWidgetMapper_Orientation(const QDataWidgetMapper* self) {
 	Qt::Orientation _ret = self->orientation();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, uintptr_t policy) {
+void QDataWidgetMapper_SetSubmitPolicy(QDataWidgetMapper* self, int policy) {
 	self->setSubmitPolicy(static_cast<QDataWidgetMapper::SubmitPolicy>(policy));
 }
 
-uintptr_t QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
+int QDataWidgetMapper_SubmitPolicy(const QDataWidgetMapper* self) {
 	QDataWidgetMapper::SubmitPolicy _ret = self->submitPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QDataWidgetMapper_AddMapping(QDataWidgetMapper* self, QWidget* widget, int section) {

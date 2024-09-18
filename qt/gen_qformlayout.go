@@ -95,7 +95,7 @@ func QFormLayout_TrUtf8(s string) string {
 }
 
 func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
-	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.uintptr_t)(policy))
+	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
@@ -111,7 +111,7 @@ func (this *QFormLayout) RowWrapPolicy() int {
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment int) {
-	C.QFormLayout_SetLabelAlignment(this.h, (C.int)(alignment))
+	C.QFormLayout_SetLabelAlignment(this.h, alignment)
 }
 
 func (this *QFormLayout) LabelAlignment() int {
@@ -119,7 +119,7 @@ func (this *QFormLayout) LabelAlignment() int {
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment int) {
-	C.QFormLayout_SetFormAlignment(this.h, (C.int)(alignment))
+	C.QFormLayout_SetFormAlignment(this.h, alignment)
 }
 
 func (this *QFormLayout) FormAlignment() int {

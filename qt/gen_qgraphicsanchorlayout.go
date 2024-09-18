@@ -71,7 +71,7 @@ func (this *QGraphicsAnchor) Spacing() float64 {
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
-	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.uintptr_t)(policy))
+	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
@@ -172,15 +172,15 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))))
+	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.uintptr_t)(firstEdge), secondItem.cPointer(), (C.uintptr_t)(secondEdge))))
+	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
-	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.uintptr_t)(firstCorner), secondItem.cPointer(), (C.uintptr_t)(secondCorner))
+	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.int)(firstCorner), secondItem.cPointer(), (C.int)(secondCorner))
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem) {
@@ -228,7 +228,7 @@ func (this *QGraphicsAnchorLayout) Invalidate() {
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations int) {
-	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
+	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), orientations)
 }
 
 // Delete this object from C++ memory.

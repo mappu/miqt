@@ -144,7 +144,7 @@ func (this *QListWidgetItem) Flags() int {
 }
 
 func (this *QListWidgetItem) SetFlags(flags int) {
-	C.QListWidgetItem_SetFlags(this.h, (C.int)(flags))
+	C.QListWidgetItem_SetFlags(this.h, flags)
 }
 
 func (this *QListWidgetItem) Text() string {
@@ -278,7 +278,7 @@ func (this *QListWidgetItem) CheckState() CheckState {
 }
 
 func (this *QListWidgetItem) SetCheckState(state CheckState) {
-	C.QListWidgetItem_SetCheckState(this.h, (C.uintptr_t)(state))
+	C.QListWidgetItem_SetCheckState(this.h, (C.int)(state))
 }
 
 func (this *QListWidgetItem) SizeHint() *QSize {
@@ -471,7 +471,7 @@ func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) SetCurrentItem2(item *QListWidgetItem, command int) {
-	C.QListWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
+	C.QListWidget_SetCurrentItem2(this.h, item.cPointer(), command)
 }
 
 func (this *QListWidget) CurrentRow() int {
@@ -483,7 +483,7 @@ func (this *QListWidget) SetCurrentRow(row int) {
 }
 
 func (this *QListWidget) SetCurrentRow2(row int, command int) {
-	C.QListWidget_SetCurrentRow2(this.h, (C.int)(row), (C.int)(command))
+	C.QListWidget_SetCurrentRow2(this.h, (C.int)(row), command)
 }
 
 func (this *QListWidget) ItemAt(p *QPoint) *QListWidgetItem {
@@ -563,7 +563,7 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 func (this *QListWidget) FindItems(text string, flags int) []*QListWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), flags)
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -841,11 +841,11 @@ func QListWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QListWidget) SortItems1(order SortOrder) {
-	C.QListWidget_SortItems1(this.h, (C.uintptr_t)(order))
+	C.QListWidget_SortItems1(this.h, (C.int)(order))
 }
 
 func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint QAbstractItemView__ScrollHint) {
-	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.uintptr_t)(hint))
+	C.QListWidget_ScrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
 // Delete this object from C++ memory.

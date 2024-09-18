@@ -28,16 +28,16 @@ typedef struct QWidget QWidget;
 #endif
 
 QSlider* QSlider_new();
-QSlider* QSlider_new2(uintptr_t orientation);
+QSlider* QSlider_new2(int orientation);
 QSlider* QSlider_new3(QWidget* parent);
-QSlider* QSlider_new4(uintptr_t orientation, QWidget* parent);
+QSlider* QSlider_new4(int orientation, QWidget* parent);
 QMetaObject* QSlider_MetaObject(const QSlider* self);
 struct miqt_string* QSlider_Tr(const char* s);
 struct miqt_string* QSlider_TrUtf8(const char* s);
 QSize* QSlider_SizeHint(const QSlider* self);
 QSize* QSlider_MinimumSizeHint(const QSlider* self);
-void QSlider_SetTickPosition(QSlider* self, uintptr_t position);
-uintptr_t QSlider_TickPosition(const QSlider* self);
+void QSlider_SetTickPosition(QSlider* self, int position);
+int QSlider_TickPosition(const QSlider* self);
 void QSlider_SetTickInterval(QSlider* self, int ti);
 int QSlider_TickInterval(const QSlider* self);
 bool QSlider_Event(QSlider* self, QEvent* event);

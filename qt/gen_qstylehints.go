@@ -167,7 +167,7 @@ func (this *QStyleHints) TabFocusBehavior() TabFocusBehavior {
 }
 
 func (this *QStyleHints) SetTabFocusBehavior(tabFocusBehavior TabFocusBehavior) {
-	C.QStyleHints_SetTabFocusBehavior(this.h, (C.uintptr_t)(tabFocusBehavior))
+	C.QStyleHints_SetTabFocusBehavior(this.h, (C.int)(tabFocusBehavior))
 }
 
 func (this *QStyleHints) SingleClickActivation() bool {
@@ -319,14 +319,14 @@ func miqt_exec_callback_QStyleHints_StartDragTimeChanged(cb *C.void, startDragTi
 }
 
 func (this *QStyleHints) TabFocusBehaviorChanged(tabFocusBehavior TabFocusBehavior) {
-	C.QStyleHints_TabFocusBehaviorChanged(this.h, (C.uintptr_t)(tabFocusBehavior))
+	C.QStyleHints_TabFocusBehaviorChanged(this.h, (C.int)(tabFocusBehavior))
 }
 func (this *QStyleHints) OnTabFocusBehaviorChanged(slot func(tabFocusBehavior TabFocusBehavior)) {
 	C.QStyleHints_connect_TabFocusBehaviorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged
-func miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged(cb *C.void, tabFocusBehavior C.uintptr_t) {
+func miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged(cb *C.void, tabFocusBehavior C.int) {
 	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(tabFocusBehavior TabFocusBehavior))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

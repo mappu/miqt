@@ -43,7 +43,7 @@ func NewQVector4D() *QVector4D {
 
 // NewQVector4D2 constructs a new QVector4D object.
 func NewQVector4D2(param1 Initialization) *QVector4D {
-	ret := C.QVector4D_new2((C.uintptr_t)(param1))
+	ret := C.QVector4D_new2((C.int)(param1))
 	return newQVector4D(ret)
 }
 

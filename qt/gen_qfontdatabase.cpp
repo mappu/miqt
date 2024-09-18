@@ -30,10 +30,10 @@ struct miqt_array* QFontDatabase_StandardSizes() {
 struct miqt_array* QFontDatabase_WritingSystems(const QFontDatabase* self) {
 	QList<QFontDatabase::WritingSystem> _ret = self->writingSystems();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	uintptr_t* _arr = static_cast<uintptr_t*>(malloc(sizeof(uintptr_t) * _ret.length()));
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QFontDatabase::WritingSystem _lv_ret = _ret[i];
-		_arr[i] = static_cast<uintptr_t>(_lv_ret);
+		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -45,10 +45,10 @@ struct miqt_array* QFontDatabase_WritingSystemsWithFamily(const QFontDatabase* s
 	QString family_QString = QString::fromUtf8(&family->data, family->len);
 	QList<QFontDatabase::WritingSystem> _ret = self->writingSystems(family_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	uintptr_t* _arr = static_cast<uintptr_t*>(malloc(sizeof(uintptr_t) * _ret.length()));
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QFontDatabase::WritingSystem _lv_ret = _ret[i];
-		_arr[i] = static_cast<uintptr_t>(_lv_ret);
+		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -186,14 +186,14 @@ bool QFontDatabase_IsPrivateFamily(const QFontDatabase* self, struct miqt_string
 	return self->isPrivateFamily(family_QString);
 }
 
-struct miqt_string* QFontDatabase_WritingSystemName(uintptr_t writingSystem) {
+struct miqt_string* QFontDatabase_WritingSystemName(int writingSystem) {
 	QString _ret = QFontDatabase::writingSystemName(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-struct miqt_string* QFontDatabase_WritingSystemSample(uintptr_t writingSystem) {
+struct miqt_string* QFontDatabase_WritingSystemSample(int writingSystem) {
 	QString _ret = QFontDatabase::writingSystemSample(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -237,11 +237,11 @@ bool QFontDatabase_SupportsThreadedFontRendering() {
 	return QFontDatabase::supportsThreadedFontRendering();
 }
 
-QFont* QFontDatabase_SystemFont(uintptr_t typeVal) {
+QFont* QFontDatabase_SystemFont(int typeVal) {
 	return new QFont(QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(typeVal)));
 }
 
-struct miqt_array* QFontDatabase_Families1(const QFontDatabase* self, uintptr_t writingSystem) {
+struct miqt_array* QFontDatabase_Families1(const QFontDatabase* self, int writingSystem) {
 	QStringList _ret = self->families(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));

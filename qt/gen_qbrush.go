@@ -250,7 +250,7 @@ func NewQBrush() *QBrush {
 
 // NewQBrush2 constructs a new QBrush object.
 func NewQBrush2(bs BrushStyle) *QBrush {
-	ret := C.QBrush_new2((C.uintptr_t)(bs))
+	ret := C.QBrush_new2((C.int)(bs))
 	return newQBrush(ret)
 }
 
@@ -262,7 +262,7 @@ func NewQBrush3(color *QColor) *QBrush {
 
 // NewQBrush4 constructs a new QBrush object.
 func NewQBrush4(color GlobalColor) *QBrush {
-	ret := C.QBrush_new4((C.uintptr_t)(color))
+	ret := C.QBrush_new4((C.int)(color))
 	return newQBrush(ret)
 }
 
@@ -274,7 +274,7 @@ func NewQBrush5(color *QColor, pixmap *QPixmap) *QBrush {
 
 // NewQBrush6 constructs a new QBrush object.
 func NewQBrush6(color GlobalColor, pixmap *QPixmap) *QBrush {
-	ret := C.QBrush_new6((C.uintptr_t)(color), pixmap.cPointer())
+	ret := C.QBrush_new6((C.int)(color), pixmap.cPointer())
 	return newQBrush(ret)
 }
 
@@ -304,13 +304,13 @@ func NewQBrush10(gradient *QGradient) *QBrush {
 
 // NewQBrush11 constructs a new QBrush object.
 func NewQBrush11(color *QColor, bs BrushStyle) *QBrush {
-	ret := C.QBrush_new11(color.cPointer(), (C.uintptr_t)(bs))
+	ret := C.QBrush_new11(color.cPointer(), (C.int)(bs))
 	return newQBrush(ret)
 }
 
 // NewQBrush12 constructs a new QBrush object.
 func NewQBrush12(color GlobalColor, bs BrushStyle) *QBrush {
-	ret := C.QBrush_new12((C.uintptr_t)(color), (C.uintptr_t)(bs))
+	ret := C.QBrush_new12((C.int)(color), (C.int)(bs))
 	return newQBrush(ret)
 }
 
@@ -327,7 +327,7 @@ func (this *QBrush) Style() BrushStyle {
 }
 
 func (this *QBrush) SetStyle(style BrushStyle) {
-	C.QBrush_SetStyle(this.h, (C.uintptr_t)(style))
+	C.QBrush_SetStyle(this.h, (C.int)(style))
 }
 
 func (this *QBrush) Matrix() *QMatrix {
@@ -380,7 +380,7 @@ func (this *QBrush) SetColor(color *QColor) {
 }
 
 func (this *QBrush) SetColorWithColor(color GlobalColor) {
-	C.QBrush_SetColorWithColor(this.h, (C.uintptr_t)(color))
+	C.QBrush_SetColorWithColor(this.h, (C.int)(color))
 }
 
 func (this *QBrush) Gradient() *QGradient {
@@ -493,7 +493,7 @@ func NewQGradient() *QGradient {
 
 // NewQGradient2 constructs a new QGradient object.
 func NewQGradient2(param1 QGradient__Preset) *QGradient {
-	ret := C.QGradient_new2((C.uintptr_t)(param1))
+	ret := C.QGradient_new2((C.int)(param1))
 	return newQGradient(ret)
 }
 
@@ -508,7 +508,7 @@ func (this *QGradient) Type() QGradient__Type {
 }
 
 func (this *QGradient) SetSpread(spread QGradient__Spread) {
-	C.QGradient_SetSpread(this.h, (C.uintptr_t)(spread))
+	C.QGradient_SetSpread(this.h, (C.int)(spread))
 }
 
 func (this *QGradient) Spread() QGradient__Spread {
@@ -524,7 +524,7 @@ func (this *QGradient) CoordinateMode() QGradient__CoordinateMode {
 }
 
 func (this *QGradient) SetCoordinateMode(mode QGradient__CoordinateMode) {
-	C.QGradient_SetCoordinateMode(this.h, (C.uintptr_t)(mode))
+	C.QGradient_SetCoordinateMode(this.h, (C.int)(mode))
 }
 
 func (this *QGradient) InterpolationMode() QGradient__InterpolationMode {
@@ -532,7 +532,7 @@ func (this *QGradient) InterpolationMode() QGradient__InterpolationMode {
 }
 
 func (this *QGradient) SetInterpolationMode(mode QGradient__InterpolationMode) {
-	C.QGradient_SetInterpolationMode(this.h, (C.uintptr_t)(mode))
+	C.QGradient_SetInterpolationMode(this.h, (C.int)(mode))
 }
 
 func (this *QGradient) OperatorEqual(gradient *QGradient) bool {
@@ -897,6 +897,10 @@ func newQGradient__QGradientData_U(h unsafe.Pointer) *QGradient__QGradientData {
 func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__QGradientData {
 	ret := C.QGradient__QGradientData_new(param1.cPointer())
 	return newQGradient__QGradientData(ret)
+}
+
+func (this *QGradient__QGradientData) OperatorAssign(param1 *QGradient__QGradientData) {
+	C.QGradient__QGradientData_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

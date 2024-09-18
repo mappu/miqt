@@ -43,13 +43,13 @@ struct miqt_string* QStaticText_Text(const QStaticText* self) {
 	return miqt_strdup(_b.data(), _b.length());
 }
 
-void QStaticText_SetTextFormat(QStaticText* self, uintptr_t textFormat) {
+void QStaticText_SetTextFormat(QStaticText* self, int textFormat) {
 	self->setTextFormat(static_cast<Qt::TextFormat>(textFormat));
 }
 
-uintptr_t QStaticText_TextFormat(const QStaticText* self) {
+int QStaticText_TextFormat(const QStaticText* self) {
 	Qt::TextFormat _ret = self->textFormat();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QStaticText_SetTextWidth(QStaticText* self, double textWidth) {
@@ -57,7 +57,8 @@ void QStaticText_SetTextWidth(QStaticText* self, double textWidth) {
 }
 
 double QStaticText_TextWidth(const QStaticText* self) {
-	return self->textWidth();
+	qreal _ret = self->textWidth();
+	return static_cast<double>(_ret);
 }
 
 void QStaticText_SetTextOption(QStaticText* self, QTextOption* textOption) {
@@ -76,13 +77,13 @@ void QStaticText_Prepare(QStaticText* self) {
 	self->prepare();
 }
 
-void QStaticText_SetPerformanceHint(QStaticText* self, uintptr_t performanceHint) {
+void QStaticText_SetPerformanceHint(QStaticText* self, int performanceHint) {
 	self->setPerformanceHint(static_cast<QStaticText::PerformanceHint>(performanceHint));
 }
 
-uintptr_t QStaticText_PerformanceHint(const QStaticText* self) {
+int QStaticText_PerformanceHint(const QStaticText* self) {
 	QStaticText::PerformanceHint _ret = self->performanceHint();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 bool QStaticText_OperatorEqual(const QStaticText* self, QStaticText* param1) {

@@ -49,13 +49,13 @@ func newQBoxLayout_U(h unsafe.Pointer) *QBoxLayout {
 
 // NewQBoxLayout constructs a new QBoxLayout object.
 func NewQBoxLayout(param1 QBoxLayout__Direction) *QBoxLayout {
-	ret := C.QBoxLayout_new((C.uintptr_t)(param1))
+	ret := C.QBoxLayout_new((C.int)(param1))
 	return newQBoxLayout(ret)
 }
 
 // NewQBoxLayout2 constructs a new QBoxLayout object.
 func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
-	ret := C.QBoxLayout_new2((C.uintptr_t)(param1), parent.cPointer())
+	ret := C.QBoxLayout_new2((C.int)(param1), parent.cPointer())
 	return newQBoxLayout(ret)
 }
 
@@ -86,7 +86,7 @@ func (this *QBoxLayout) Direction() QBoxLayout__Direction {
 }
 
 func (this *QBoxLayout) SetDirection(direction QBoxLayout__Direction) {
-	C.QBoxLayout_SetDirection(this.h, (C.uintptr_t)(direction))
+	C.QBoxLayout_SetDirection(this.h, (C.int)(direction))
 }
 
 func (this *QBoxLayout) AddSpacing(size int) {
@@ -275,7 +275,7 @@ func (this *QBoxLayout) AddWidget2(param1 *QWidget, stretch int) {
 }
 
 func (this *QBoxLayout) AddWidget3(param1 *QWidget, stretch int, alignment int) {
-	C.QBoxLayout_AddWidget3(this.h, param1.cPointer(), (C.int)(stretch), (C.int)(alignment))
+	C.QBoxLayout_AddWidget3(this.h, param1.cPointer(), (C.int)(stretch), alignment)
 }
 
 func (this *QBoxLayout) AddLayout2(layout *QLayout, stretch int) {
@@ -291,7 +291,7 @@ func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int) {
 }
 
 func (this *QBoxLayout) InsertWidget4(index int, widget *QWidget, stretch int, alignment int) {
-	C.QBoxLayout_InsertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
+	C.QBoxLayout_InsertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), alignment)
 }
 
 func (this *QBoxLayout) InsertLayout3(index int, layout *QLayout, stretch int) {

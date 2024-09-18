@@ -42,15 +42,15 @@ typedef struct QStateMachine__WrappedEvent QStateMachine__WrappedEvent;
 #endif
 
 QStateMachine* QStateMachine_new();
-QStateMachine* QStateMachine_new2(uintptr_t childMode);
+QStateMachine* QStateMachine_new2(int childMode);
 QStateMachine* QStateMachine_new3(QObject* parent);
-QStateMachine* QStateMachine_new4(uintptr_t childMode, QObject* parent);
+QStateMachine* QStateMachine_new4(int childMode, QObject* parent);
 QMetaObject* QStateMachine_MetaObject(const QStateMachine* self);
 struct miqt_string* QStateMachine_Tr(const char* s);
 struct miqt_string* QStateMachine_TrUtf8(const char* s);
 void QStateMachine_AddState(QStateMachine* self, QAbstractState* state);
 void QStateMachine_RemoveState(QStateMachine* self, QAbstractState* state);
-uintptr_t QStateMachine_Error(const QStateMachine* self);
+int QStateMachine_Error(const QStateMachine* self);
 struct miqt_string* QStateMachine_ErrorString(const QStateMachine* self);
 void QStateMachine_ClearError(QStateMachine* self);
 bool QStateMachine_IsRunning(const QStateMachine* self);
@@ -59,8 +59,8 @@ void QStateMachine_SetAnimated(QStateMachine* self, bool enabled);
 void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* animation);
 struct miqt_array* QStateMachine_DefaultAnimations(const QStateMachine* self);
 void QStateMachine_RemoveDefaultAnimation(QStateMachine* self, QAbstractAnimation* animation);
-uintptr_t QStateMachine_GlobalRestorePolicy(const QStateMachine* self);
-void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, uintptr_t restorePolicy);
+int QStateMachine_GlobalRestorePolicy(const QStateMachine* self);
+void QStateMachine_SetGlobalRestorePolicy(QStateMachine* self, int restorePolicy);
 void QStateMachine_PostEvent(QStateMachine* self, QEvent* event);
 int QStateMachine_PostDelayedEvent(QStateMachine* self, QEvent* event, int delay);
 bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id);
@@ -75,7 +75,7 @@ struct miqt_string* QStateMachine_Tr2(const char* s, const char* c);
 struct miqt_string* QStateMachine_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QStateMachine_TrUtf82(const char* s, const char* c);
 struct miqt_string* QStateMachine_TrUtf83(const char* s, const char* c, int n);
-void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, uintptr_t priority);
+void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, int priority);
 void QStateMachine_Delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);

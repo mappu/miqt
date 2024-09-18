@@ -90,7 +90,7 @@ func NewQPalette2(button *QColor) *QPalette {
 
 // NewQPalette3 constructs a new QPalette object.
 func NewQPalette3(button GlobalColor) *QPalette {
-	ret := C.QPalette_new3((C.uintptr_t)(button))
+	ret := C.QPalette_new3((C.int)(button))
 	return newQPalette(ret)
 }
 
@@ -131,51 +131,51 @@ func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
 }
 
 func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
-	C.QPalette_SetCurrentColorGroup(this.h, (C.uintptr_t)(cg))
+	C.QPalette_SetCurrentColorGroup(this.h, (C.int)(cg))
 }
 
 func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
-	return newQColor_U(unsafe.Pointer(C.QPalette_Color(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))))
+	return newQColor_U(unsafe.Pointer(C.QPalette_Color(this.h, (C.int)(cg), (C.int)(cr))))
 }
 
 func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
-	return newQBrush_U(unsafe.Pointer(C.QPalette_Brush(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr))))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_Brush(this.h, (C.int)(cg), (C.int)(cr))))
 }
 
 func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
-	C.QPalette_SetColor(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), color.cPointer())
+	C.QPalette_SetColor(this.h, (C.int)(cg), (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetColor2(cr QPalette__ColorRole, color *QColor) {
-	C.QPalette_SetColor2(this.h, (C.uintptr_t)(cr), color.cPointer())
+	C.QPalette_SetColor2(this.h, (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
-	C.QPalette_SetBrush(this.h, (C.uintptr_t)(cr), brush.cPointer())
+	C.QPalette_SetBrush(this.h, (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) IsBrushSet(cg QPalette__ColorGroup, cr QPalette__ColorRole) bool {
-	return (bool)(C.QPalette_IsBrushSet(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr)))
+	return (bool)(C.QPalette_IsBrushSet(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) SetBrush2(cg QPalette__ColorGroup, cr QPalette__ColorRole, brush *QBrush) {
-	C.QPalette_SetBrush2(this.h, (C.uintptr_t)(cg), (C.uintptr_t)(cr), brush.cPointer())
+	C.QPalette_SetBrush2(this.h, (C.int)(cg), (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) SetColorGroup(cr QPalette__ColorGroup, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
-	C.QPalette_SetColorGroup(this.h, (C.uintptr_t)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
+	C.QPalette_SetColorGroup(this.h, (C.int)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
 }
 
 func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup) bool {
-	return (bool)(C.QPalette_IsEqual(this.h, (C.uintptr_t)(cr1), (C.uintptr_t)(cr2)))
+	return (bool)(C.QPalette_IsEqual(this.h, (C.int)(cr1), (C.int)(cr2)))
 }
 
 func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
-	return newQColor_U(unsafe.Pointer(C.QPalette_ColorWithCr(this.h, (C.uintptr_t)(cr))))
+	return newQColor_U(unsafe.Pointer(C.QPalette_ColorWithCr(this.h, (C.int)(cr))))
 }
 
 func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
-	return newQBrush_U(unsafe.Pointer(C.QPalette_BrushWithCr(this.h, (C.uintptr_t)(cr))))
+	return newQBrush_U(unsafe.Pointer(C.QPalette_BrushWithCr(this.h, (C.int)(cr))))
 }
 
 func (this *QPalette) WindowText() *QBrush {

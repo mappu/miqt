@@ -43,8 +43,8 @@ bool QAbstractEventDispatcher_ProcessEvents(QAbstractEventDispatcher* self, int 
 bool QAbstractEventDispatcher_HasPendingEvents(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_RegisterSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
 void QAbstractEventDispatcher_UnregisterSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
-int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int interval, uintptr_t timerType, QObject* object);
-void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, uintptr_t timerType, QObject* object);
+int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int interval, int timerType, QObject* object);
+void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, int timerType, QObject* object);
 bool QAbstractEventDispatcher_UnregisterTimer(QAbstractEventDispatcher* self, int timerId);
 bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, QObject* object);
 struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object);
@@ -67,7 +67,7 @@ struct miqt_string* QAbstractEventDispatcher_TrUtf83(const char* s, const char* 
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread);
 void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self);
 
-QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, uintptr_t t);
+QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t);
 void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self);
 
 #ifdef __cplusplus

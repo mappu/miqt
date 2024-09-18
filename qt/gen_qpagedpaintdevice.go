@@ -189,7 +189,7 @@ func (this *QPagedPaintDevice) SetPageSize(pageSize *QPageSize) bool {
 }
 
 func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orientation) bool {
-	return (bool)(C.QPagedPaintDevice_SetPageOrientation(this.h, (C.uintptr_t)(orientation)))
+	return (bool)(C.QPagedPaintDevice_SetPageOrientation(this.h, (C.int)(orientation)))
 }
 
 func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
@@ -197,7 +197,7 @@ func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
 }
 
 func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
-	return (bool)(C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.uintptr_t)(units)))
+	return (bool)(C.QPagedPaintDevice_SetPageMargins2(this.h, margins.cPointer(), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
@@ -208,7 +208,7 @@ func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
 }
 
 func (this *QPagedPaintDevice) SetPageSizeWithSize(size QPagedPaintDevice__PageSize) {
-	C.QPagedPaintDevice_SetPageSizeWithSize(this.h, (C.uintptr_t)(size))
+	C.QPagedPaintDevice_SetPageSizeWithSize(this.h, (C.int)(size))
 }
 
 func (this *QPagedPaintDevice) PageSize() QPagedPaintDevice__PageSize {

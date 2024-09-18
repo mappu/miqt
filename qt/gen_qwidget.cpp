@@ -85,7 +85,8 @@ int QWidget_DevType(const QWidget* self) {
 }
 
 uintptr_t QWidget_WinId(const QWidget* self) {
-	return self->winId();
+	WId _ret = self->winId();
+	return static_cast<uintptr_t>(_ret);
 }
 
 void QWidget_CreateWinId(QWidget* self) {
@@ -93,11 +94,13 @@ void QWidget_CreateWinId(QWidget* self) {
 }
 
 uintptr_t QWidget_InternalWinId(const QWidget* self) {
-	return self->internalWinId();
+	WId _ret = self->internalWinId();
+	return static_cast<uintptr_t>(_ret);
 }
 
 uintptr_t QWidget_EffectiveWinId(const QWidget* self) {
-	return self->effectiveWinId();
+	WId _ret = self->effectiveWinId();
+	return static_cast<uintptr_t>(_ret);
 }
 
 QStyle* QWidget_Style(const QWidget* self) {
@@ -120,12 +123,12 @@ bool QWidget_IsModal(const QWidget* self) {
 	return self->isModal();
 }
 
-uintptr_t QWidget_WindowModality(const QWidget* self) {
+int QWidget_WindowModality(const QWidget* self) {
 	Qt::WindowModality _ret = self->windowModality();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWidget_SetWindowModality(QWidget* self, uintptr_t windowModality) {
+void QWidget_SetWindowModality(QWidget* self, int windowModality) {
 	self->setWindowModality(static_cast<Qt::WindowModality>(windowModality));
 }
 
@@ -349,22 +352,22 @@ void QWidget_SetPalette(QWidget* self, QPalette* palette) {
 	self->setPalette(*palette);
 }
 
-void QWidget_SetBackgroundRole(QWidget* self, uintptr_t backgroundRole) {
+void QWidget_SetBackgroundRole(QWidget* self, int backgroundRole) {
 	self->setBackgroundRole(static_cast<QPalette::ColorRole>(backgroundRole));
 }
 
-uintptr_t QWidget_BackgroundRole(const QWidget* self) {
+int QWidget_BackgroundRole(const QWidget* self) {
 	QPalette::ColorRole _ret = self->backgroundRole();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWidget_SetForegroundRole(QWidget* self, uintptr_t foregroundRole) {
+void QWidget_SetForegroundRole(QWidget* self, int foregroundRole) {
 	self->setForegroundRole(static_cast<QPalette::ColorRole>(foregroundRole));
 }
 
-uintptr_t QWidget_ForegroundRole(const QWidget* self) {
+int QWidget_ForegroundRole(const QWidget* self) {
 	QPalette::ColorRole _ret = self->foregroundRole();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QFont* QWidget_Font(const QWidget* self) {
@@ -453,11 +456,11 @@ void QWidget_SetGraphicsEffect(QWidget* self, QGraphicsEffect* effect) {
 	self->setGraphicsEffect(effect);
 }
 
-void QWidget_GrabGesture(QWidget* self, uintptr_t typeVal) {
+void QWidget_GrabGesture(QWidget* self, int typeVal) {
 	self->grabGesture(static_cast<Qt::GestureType>(typeVal));
 }
 
-void QWidget_UngrabGesture(QWidget* self, uintptr_t typeVal) {
+void QWidget_UngrabGesture(QWidget* self, int typeVal) {
 	self->ungrabGesture(static_cast<Qt::GestureType>(typeVal));
 }
 
@@ -534,7 +537,8 @@ void QWidget_SetWindowOpacity(QWidget* self, double level) {
 }
 
 double QWidget_WindowOpacity(const QWidget* self) {
-	return self->windowOpacity();
+	qreal _ret = self->windowOpacity();
+	return static_cast<double>(_ret);
 }
 
 bool QWidget_IsWindowModified(const QWidget* self) {
@@ -609,13 +613,13 @@ void QWidget_SetAccessibleDescription(QWidget* self, struct miqt_string* descrip
 	self->setAccessibleDescription(description_QString);
 }
 
-void QWidget_SetLayoutDirection(QWidget* self, uintptr_t direction) {
+void QWidget_SetLayoutDirection(QWidget* self, int direction) {
 	self->setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
-uintptr_t QWidget_LayoutDirection(const QWidget* self) {
+int QWidget_LayoutDirection(const QWidget* self) {
 	Qt::LayoutDirection _ret = self->layoutDirection();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 void QWidget_UnsetLayoutDirection(QWidget* self) {
@@ -658,16 +662,16 @@ void QWidget_ClearFocus(QWidget* self) {
 	self->clearFocus();
 }
 
-void QWidget_SetFocusWithReason(QWidget* self, uintptr_t reason) {
+void QWidget_SetFocusWithReason(QWidget* self, int reason) {
 	self->setFocus(static_cast<Qt::FocusReason>(reason));
 }
 
-uintptr_t QWidget_FocusPolicy(const QWidget* self) {
+int QWidget_FocusPolicy(const QWidget* self) {
 	Qt::FocusPolicy _ret = self->focusPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWidget_SetFocusPolicy(QWidget* self, uintptr_t policy) {
+void QWidget_SetFocusPolicy(QWidget* self, int policy) {
 	self->setFocusPolicy(static_cast<Qt::FocusPolicy>(policy));
 }
 
@@ -687,12 +691,12 @@ QWidget* QWidget_FocusProxy(const QWidget* self) {
 	return self->focusProxy();
 }
 
-uintptr_t QWidget_ContextMenuPolicy(const QWidget* self) {
+int QWidget_ContextMenuPolicy(const QWidget* self) {
 	Qt::ContextMenuPolicy _ret = self->contextMenuPolicy();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
-void QWidget_SetContextMenuPolicy(QWidget* self, uintptr_t policy) {
+void QWidget_SetContextMenuPolicy(QWidget* self, int policy) {
 	self->setContextMenuPolicy(static_cast<Qt::ContextMenuPolicy>(policy));
 }
 
@@ -921,7 +925,7 @@ void QWidget_SetSizePolicy(QWidget* self, QSizePolicy* sizePolicy) {
 	self->setSizePolicy(*sizePolicy);
 }
 
-void QWidget_SetSizePolicy2(QWidget* self, uintptr_t horizontal, uintptr_t vertical) {
+void QWidget_SetSizePolicy2(QWidget* self, int horizontal, int vertical) {
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
 }
 
@@ -1038,7 +1042,7 @@ void QWidget_RemoveAction(QWidget* self, QAction* action) {
 }
 
 struct miqt_array* QWidget_Actions(const QWidget* self) {
-	QList<QAction*> _ret = self->actions();
+	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1063,7 +1067,7 @@ int QWidget_WindowFlags(const QWidget* self) {
 	return static_cast<int>(_ret);
 }
 
-void QWidget_SetWindowFlag(QWidget* self, uintptr_t param1) {
+void QWidget_SetWindowFlag(QWidget* self, int param1) {
 	self->setWindowFlag(static_cast<Qt::WindowType>(param1));
 }
 
@@ -1071,9 +1075,9 @@ void QWidget_OverrideWindowFlags(QWidget* self, int typeVal) {
 	self->overrideWindowFlags(static_cast<Qt::WindowFlags>(typeVal));
 }
 
-uintptr_t QWidget_WindowType(const QWidget* self) {
+int QWidget_WindowType(const QWidget* self) {
 	Qt::WindowType _ret = self->windowType();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<int>(_ret);
 }
 
 QWidget* QWidget_Find(uintptr_t param1) {
@@ -1088,11 +1092,11 @@ QWidget* QWidget_ChildAtWithQPoint(const QWidget* self, QPoint* p) {
 	return self->childAt(*p);
 }
 
-void QWidget_SetAttribute(QWidget* self, uintptr_t param1) {
+void QWidget_SetAttribute(QWidget* self, int param1) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(param1));
 }
 
-bool QWidget_TestAttribute(const QWidget* self, uintptr_t param1) {
+bool QWidget_TestAttribute(const QWidget* self, int param1) {
 	return self->testAttribute(static_cast<Qt::WidgetAttribute>(param1));
 }
 
@@ -1188,7 +1192,7 @@ void QWidget_connect_CustomContextMenuRequested(QWidget* self, void* slot) {
 	});
 }
 
-QVariant* QWidget_InputMethodQuery(const QWidget* self, uintptr_t param1) {
+QVariant* QWidget_InputMethodQuery(const QWidget* self, int param1) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
@@ -1257,11 +1261,11 @@ QPixmap* QWidget_Grab1(QWidget* self, QRect* rectangle) {
 	return new QPixmap(self->grab(*rectangle));
 }
 
-void QWidget_GrabGesture2(QWidget* self, uintptr_t typeVal, int flags) {
+void QWidget_GrabGesture2(QWidget* self, int typeVal, int flags) {
 	self->grabGesture(static_cast<Qt::GestureType>(typeVal), static_cast<Qt::GestureFlags>(flags));
 }
 
-int QWidget_GrabShortcut2(QWidget* self, QKeySequence* key, uintptr_t context) {
+int QWidget_GrabShortcut2(QWidget* self, QKeySequence* key, int context) {
 	return self->grabShortcut(*key, static_cast<Qt::ShortcutContext>(context));
 }
 
@@ -1273,11 +1277,11 @@ void QWidget_SetShortcutAutoRepeat2(QWidget* self, int id, bool enable) {
 	self->setShortcutAutoRepeat(static_cast<int>(id), enable);
 }
 
-void QWidget_SetWindowFlag2(QWidget* self, uintptr_t param1, bool on) {
+void QWidget_SetWindowFlag2(QWidget* self, int param1, bool on) {
 	self->setWindowFlag(static_cast<Qt::WindowType>(param1), on);
 }
 
-void QWidget_SetAttribute2(QWidget* self, uintptr_t param1, bool on) {
+void QWidget_SetAttribute2(QWidget* self, int param1, bool on) {
 	self->setAttribute(static_cast<Qt::WidgetAttribute>(param1), on);
 }
 

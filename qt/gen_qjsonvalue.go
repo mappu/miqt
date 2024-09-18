@@ -113,7 +113,7 @@ func NewQJsonValue10(other *QJsonValue) *QJsonValue {
 
 // NewQJsonValue11 constructs a new QJsonValue object.
 func NewQJsonValue11(param1 QJsonValue__Type) *QJsonValue {
-	ret := C.QJsonValue_new11((C.uintptr_t)(param1))
+	ret := C.QJsonValue_new11((C.int)(param1))
 	return newQJsonValue(ret)
 }
 
