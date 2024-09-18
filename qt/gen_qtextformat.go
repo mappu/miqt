@@ -1052,7 +1052,7 @@ func (this *QTextBlockFormat) IsValid() bool {
 }
 
 func (this *QTextBlockFormat) SetAlignment(alignment int) {
-	C.QTextBlockFormat_SetAlignment(this.h, alignment)
+	C.QTextBlockFormat_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextBlockFormat) Alignment() int {
@@ -1140,7 +1140,7 @@ func (this *QTextBlockFormat) NonBreakableLines() bool {
 }
 
 func (this *QTextBlockFormat) SetPageBreakPolicy(flags int) {
-	C.QTextBlockFormat_SetPageBreakPolicy(this.h, flags)
+	C.QTextBlockFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
 }
 
 func (this *QTextBlockFormat) PageBreakPolicy() int {
@@ -1531,7 +1531,7 @@ func (this *QTextFrameFormat) Height() *QTextLength {
 }
 
 func (this *QTextFrameFormat) SetPageBreakPolicy(flags int) {
-	C.QTextFrameFormat_SetPageBreakPolicy(this.h, flags)
+	C.QTextFrameFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
 }
 
 func (this *QTextFrameFormat) PageBreakPolicy() int {
@@ -1640,7 +1640,7 @@ func (this *QTextTableFormat) SetCellPadding(padding float64) {
 }
 
 func (this *QTextTableFormat) SetAlignment(alignment int) {
-	C.QTextTableFormat_SetAlignment(this.h, alignment)
+	C.QTextTableFormat_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextTableFormat) Alignment() int {

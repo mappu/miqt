@@ -111,7 +111,7 @@ func NewQWizard2(parent *QWidget) *QWizard {
 
 // NewQWizard3 constructs a new QWizard object.
 func NewQWizard3(parent *QWidget, flags int) *QWizard {
-	ret := C.QWizard_new3(parent.cPointer(), flags)
+	ret := C.QWizard_new3(parent.cPointer(), (C.int)(flags))
 	return newQWizard(ret)
 }
 
@@ -246,7 +246,7 @@ func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
 }
 
 func (this *QWizard) SetOptions(options int) {
-	C.QWizard_SetOptions(this.h, options)
+	C.QWizard_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QWizard) Options() int {

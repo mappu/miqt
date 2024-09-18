@@ -682,7 +682,7 @@ func (this *QImage) Copy1(rect *QRect) *QImage {
 }
 
 func (this *QImage) ConvertToFormat22(f QImage__Format, flags int) *QImage {
-	_ret := C.QImage_ConvertToFormat22(this.h, (C.int)(f), flags)
+	_ret := C.QImage_ConvertToFormat22(this.h, (C.int)(f), (C.int)(flags))
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -697,18 +697,18 @@ func (this *QImage) ConvertToFormat3(f QImage__Format, colorTable []uint, flags 
 	}
 	colorTable_ma := &C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(colorTable_ma))
-	_ret := C.QImage_ConvertToFormat3(this.h, (C.int)(f), colorTable_ma, flags)
+	_ret := C.QImage_ConvertToFormat3(this.h, (C.int)(f), colorTable_ma, (C.int)(flags))
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) ConvertTo2(f QImage__Format, flags int) {
-	C.QImage_ConvertTo2(this.h, (C.int)(f), flags)
+	C.QImage_ConvertTo2(this.h, (C.int)(f), (C.int)(flags))
 }
 
 func (this *QImage) CreateAlphaMask1(flags int) *QImage {
-	_ret := C.QImage_CreateAlphaMask1(this.h, flags)
+	_ret := C.QImage_CreateAlphaMask1(this.h, (C.int)(flags))
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

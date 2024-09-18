@@ -312,7 +312,7 @@ func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWind
 }
 
 func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
-	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), flags)))
+	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
 }
 
 func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {

@@ -736,7 +736,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 func (this *QComboBox) FindText2(text string, flags int) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), flags))
+	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags)))
 }
 
 func (this *QComboBox) FindData2(data *QVariant, role int) int {
@@ -744,7 +744,7 @@ func (this *QComboBox) FindData2(data *QVariant, role int) int {
 }
 
 func (this *QComboBox) FindData3(data *QVariant, role int, flags int) int {
-	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), flags))
+	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {

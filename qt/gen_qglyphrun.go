@@ -178,7 +178,7 @@ func (this *QGlyphRun) SetFlag(flag QGlyphRun__GlyphRunFlag) {
 }
 
 func (this *QGlyphRun) SetFlags(flags int) {
-	C.QGlyphRun_SetFlags(this.h, flags)
+	C.QGlyphRun_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGlyphRun) Flags() int {

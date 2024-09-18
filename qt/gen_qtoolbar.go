@@ -96,7 +96,7 @@ func (this *QToolBar) IsMovable() bool {
 }
 
 func (this *QToolBar) SetAllowedAreas(areas int) {
-	C.QToolBar_SetAllowedAreas(this.h, areas)
+	C.QToolBar_SetAllowedAreas(this.h, (C.int)(areas))
 }
 
 func (this *QToolBar) AllowedAreas() int {
@@ -242,7 +242,7 @@ func miqt_exec_callback_QToolBar_MovableChanged(cb *C.void, movable C.bool) {
 }
 
 func (this *QToolBar) AllowedAreasChanged(allowedAreas int) {
-	C.QToolBar_AllowedAreasChanged(this.h, allowedAreas)
+	C.QToolBar_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas int)) {
 	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))

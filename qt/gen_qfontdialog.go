@@ -121,7 +121,7 @@ func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
 }
 
 func (this *QFontDialog) SetOptions(options int) {
-	C.QFontDialog_SetOptions(this.h, options)
+	C.QFontDialog_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QFontDialog) Options() int {
@@ -260,7 +260,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options int) *QFont {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), options)
+	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
 	_goptr := newQFont(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

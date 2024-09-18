@@ -103,13 +103,13 @@ func NewQDialogButtonBox2(orientation Orientation) *QDialogButtonBox {
 
 // NewQDialogButtonBox3 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox3(buttons int) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new3(buttons)
+	ret := C.QDialogButtonBox_new3((C.int)(buttons))
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox4(buttons int, orientation Orientation) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new4(buttons, (C.int)(orientation))
+	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
 
@@ -127,13 +127,13 @@ func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButt
 
 // NewQDialogButtonBox7 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox7(buttons int, parent *QWidget) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new7(buttons, parent.cPointer())
+	ret := C.QDialogButtonBox_new7((C.int)(buttons), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
 func NewQDialogButtonBox8(buttons int, orientation Orientation, parent *QWidget) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new8(buttons, (C.int)(orientation), parent.cPointer())
+	ret := C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
@@ -205,7 +205,7 @@ func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonB
 }
 
 func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
-	C.QDialogButtonBox_SetStandardButtons(this.h, buttons)
+	C.QDialogButtonBox_SetStandardButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QDialogButtonBox) StandardButtons() int {

@@ -211,7 +211,7 @@ func (this *QGraphicsSceneMouseEvent) Buttons() int {
 }
 
 func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
-	C.QGraphicsSceneMouseEvent_SetButtons(this.h, buttons)
+	C.QGraphicsSceneMouseEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QGraphicsSceneMouseEvent) Button() MouseButton {
@@ -227,7 +227,7 @@ func (this *QGraphicsSceneMouseEvent) Modifiers() int {
 }
 
 func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
-	C.QGraphicsSceneMouseEvent_SetModifiers(this.h, modifiers)
+	C.QGraphicsSceneMouseEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
 func (this *QGraphicsSceneMouseEvent) Source() MouseEventSource {
@@ -243,7 +243,7 @@ func (this *QGraphicsSceneMouseEvent) Flags() int {
 }
 
 func (this *QGraphicsSceneMouseEvent) SetFlags(flags int) {
-	C.QGraphicsSceneMouseEvent_SetFlags(this.h, flags)
+	C.QGraphicsSceneMouseEvent_SetFlags(this.h, (C.int)(flags))
 }
 
 // Delete this object from C++ memory.
@@ -333,7 +333,7 @@ func (this *QGraphicsSceneWheelEvent) Buttons() int {
 }
 
 func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
-	C.QGraphicsSceneWheelEvent_SetButtons(this.h, buttons)
+	C.QGraphicsSceneWheelEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QGraphicsSceneWheelEvent) Modifiers() int {
@@ -341,7 +341,7 @@ func (this *QGraphicsSceneWheelEvent) Modifiers() int {
 }
 
 func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
-	C.QGraphicsSceneWheelEvent_SetModifiers(this.h, modifiers)
+	C.QGraphicsSceneWheelEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
 func (this *QGraphicsSceneWheelEvent) Delta() int {
@@ -447,7 +447,7 @@ func (this *QGraphicsSceneContextMenuEvent) Modifiers() int {
 }
 
 func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
-	C.QGraphicsSceneContextMenuEvent_SetModifiers(this.h, modifiers)
+	C.QGraphicsSceneContextMenuEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Reason() QGraphicsSceneContextMenuEvent__Reason {
@@ -578,7 +578,7 @@ func (this *QGraphicsSceneHoverEvent) Modifiers() int {
 }
 
 func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers int) {
-	C.QGraphicsSceneHoverEvent_SetModifiers(this.h, modifiers)
+	C.QGraphicsSceneHoverEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
 // Delete this object from C++ memory.
@@ -739,7 +739,7 @@ func (this *QGraphicsSceneDragDropEvent) Buttons() int {
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
-	C.QGraphicsSceneDragDropEvent_SetButtons(this.h, buttons)
+	C.QGraphicsSceneDragDropEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QGraphicsSceneDragDropEvent) Modifiers() int {
@@ -747,7 +747,7 @@ func (this *QGraphicsSceneDragDropEvent) Modifiers() int {
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
-	C.QGraphicsSceneDragDropEvent_SetModifiers(this.h, modifiers)
+	C.QGraphicsSceneDragDropEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
 func (this *QGraphicsSceneDragDropEvent) PossibleActions() int {
@@ -755,7 +755,7 @@ func (this *QGraphicsSceneDragDropEvent) PossibleActions() int {
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
-	C.QGraphicsSceneDragDropEvent_SetPossibleActions(this.h, actions)
+	C.QGraphicsSceneDragDropEvent_SetPossibleActions(this.h, (C.int)(actions))
 }
 
 func (this *QGraphicsSceneDragDropEvent) ProposedAction() DropAction {

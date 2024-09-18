@@ -109,7 +109,7 @@ func (this *QBuffer) Data() *QByteArray {
 }
 
 func (this *QBuffer) Open(openMode int) bool {
-	return (bool)(C.QBuffer_Open(this.h, openMode))
+	return (bool)(C.QBuffer_Open(this.h, (C.int)(openMode)))
 }
 
 func (this *QBuffer) Close() {

@@ -166,7 +166,7 @@ func (this *QAbstractSpinBox) KeyboardTracking() bool {
 }
 
 func (this *QAbstractSpinBox) SetAlignment(flag int) {
-	C.QAbstractSpinBox_SetAlignment(this.h, flag)
+	C.QAbstractSpinBox_SetAlignment(this.h, (C.int)(flag))
 }
 
 func (this *QAbstractSpinBox) Alignment() int {

@@ -186,7 +186,7 @@ func QCoreApplication_ProcessEvents() {
 }
 
 func QCoreApplication_ProcessEvents2(flags int, maxtime int) {
-	C.QCoreApplication_ProcessEvents2(flags, (C.int)(maxtime))
+	C.QCoreApplication_ProcessEvents2((C.int)(flags), (C.int)(maxtime))
 }
 
 func QCoreApplication_Exit() {
@@ -451,7 +451,7 @@ func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
 }
 
 func QCoreApplication_ProcessEvents1(flags int) {
-	C.QCoreApplication_ProcessEvents1(flags)
+	C.QCoreApplication_ProcessEvents1((C.int)(flags))
 }
 
 func QCoreApplication_Exit1(retcode int) {

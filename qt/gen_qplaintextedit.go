@@ -135,7 +135,7 @@ func (this *QPlainTextEdit) SetReadOnly(ro bool) {
 }
 
 func (this *QPlainTextEdit) SetTextInteractionFlags(flags int) {
-	C.QPlainTextEdit_SetTextInteractionFlags(this.h, flags)
+	C.QPlainTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QPlainTextEdit) TextInteractionFlags() int {
@@ -665,15 +665,15 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QPlainTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), options))
+	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) Find23(exp *QRegExp, options int) bool {
-	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), options))
+	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), options))
+	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {

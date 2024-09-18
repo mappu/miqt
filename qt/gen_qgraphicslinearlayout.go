@@ -117,7 +117,7 @@ func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int 
 }
 
 func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
-	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), alignment)
+	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
 func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) int {

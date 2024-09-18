@@ -144,7 +144,7 @@ func QStandardPaths_IsTestModeEnabled() bool {
 func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options int) string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), options)
+	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -153,7 +153,7 @@ func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName s
 func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options int) []string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), options)
+	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

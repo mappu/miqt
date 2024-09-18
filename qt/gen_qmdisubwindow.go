@@ -60,7 +60,7 @@ func NewQMdiSubWindow2(parent *QWidget) *QMdiSubWindow {
 
 // NewQMdiSubWindow3 constructs a new QMdiSubWindow object.
 func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
-	ret := C.QMdiSubWindow_new3(parent.cPointer(), flags)
+	ret := C.QMdiSubWindow_new3(parent.cPointer(), (C.int)(flags))
 	return newQMdiSubWindow(ret)
 }
 
@@ -157,7 +157,7 @@ func (this *QMdiSubWindow) MdiArea() *QMdiArea {
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
-	C.QMdiSubWindow_WindowStateChanged(this.h, oldState, newState)
+	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
 }
 func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState int, newState int)) {
 	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))

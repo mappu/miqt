@@ -192,7 +192,7 @@ func (this *QImageWriter) Transformation() int {
 }
 
 func (this *QImageWriter) SetTransformation(orientation int) {
-	C.QImageWriter_SetTransformation(this.h, orientation)
+	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
 }
 
 func (this *QImageWriter) SetDescription(description string) {

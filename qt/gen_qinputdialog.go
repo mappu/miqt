@@ -67,7 +67,7 @@ func NewQInputDialog2(parent *QWidget) *QInputDialog {
 
 // NewQInputDialog3 constructs a new QInputDialog object.
 func NewQInputDialog3(parent *QWidget, flags int) *QInputDialog {
-	ret := C.QInputDialog_new3(parent.cPointer(), flags)
+	ret := C.QInputDialog_new3(parent.cPointer(), (C.int)(flags))
 	return newQInputDialog(ret)
 }
 
@@ -123,7 +123,7 @@ func (this *QInputDialog) TestOption(option QInputDialog__InputDialogOption) boo
 }
 
 func (this *QInputDialog) SetOptions(options int) {
-	C.QInputDialog_SetOptions(this.h, options)
+	C.QInputDialog_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QInputDialog) Options() int {
@@ -367,7 +367,7 @@ func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value 
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
 	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble2(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), flags, (C.double)(step)))
+	return (float64)(C.QInputDialog_GetDouble2(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.double)(step)))
 }
 
 func (this *QInputDialog) SetDoubleStep(step float64) {
@@ -604,7 +604,7 @@ func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLi
 	defer C.free(label_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), flags)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -617,7 +617,7 @@ func QInputDialog_GetText8(parent *QWidget, title string, label string, echo QLi
 	defer C.free(label_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), flags, inputMethodHints)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetText8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -656,7 +656,7 @@ func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string,
 	defer C.free(label_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), flags)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -669,7 +669,7 @@ func QInputDialog_GetMultiLineText7(parent *QWidget, title string, label string,
 	defer C.free(label_ms)
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), flags, inputMethodHints)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -753,7 +753,7 @@ func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), flags)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -774,7 +774,7 @@ func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), flags, inputMethodHints)
+	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -825,7 +825,7 @@ func QInputDialog_GetInt9(parent *QWidget, title string, label string, value int
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
 	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)), flags))
+	return (int)(C.QInputDialog_GetInt9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
 }
 
 func QInputDialog_GetDouble4(parent *QWidget, title string, label string, value float64) float64 {
@@ -873,7 +873,7 @@ func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value 
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
 	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), flags))
+	return (float64)(C.QInputDialog_GetDouble9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
 }
 
 // Delete this object from C++ memory.

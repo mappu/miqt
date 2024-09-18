@@ -823,11 +823,11 @@ func QStyle_SliderValueFromPosition(min int, max int, pos int, space int) int {
 }
 
 func QStyle_VisualAlignment(direction LayoutDirection, alignment int) int {
-	return (int)(C.QStyle_VisualAlignment((C.int)(direction), alignment))
+	return (int)(C.QStyle_VisualAlignment((C.int)(direction), (C.int)(alignment)))
 }
 
 func QStyle_AlignedRect(direction LayoutDirection, alignment int, size *QSize, rectangle *QRect) *QRect {
-	_ret := C.QStyle_AlignedRect((C.int)(direction), alignment, size.cPointer(), rectangle.cPointer())
+	_ret := C.QStyle_AlignedRect((C.int)(direction), (C.int)(alignment), size.cPointer(), rectangle.cPointer())
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -838,7 +838,7 @@ func (this *QStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QS
 }
 
 func (this *QStyle) CombinedLayoutSpacing(controls1 int, controls2 int, orientation Orientation) int {
-	return (int)(C.QStyle_CombinedLayoutSpacing(this.h, controls1, controls2, (C.int)(orientation)))
+	return (int)(C.QStyle_CombinedLayoutSpacing(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation)))
 }
 
 func (this *QStyle) Proxy() *QStyle {
@@ -997,11 +997,11 @@ func (this *QStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 Q
 }
 
 func (this *QStyle) CombinedLayoutSpacing4(controls1 int, controls2 int, orientation Orientation, option *QStyleOption) int {
-	return (int)(C.QStyle_CombinedLayoutSpacing4(this.h, controls1, controls2, (C.int)(orientation), option.cPointer()))
+	return (int)(C.QStyle_CombinedLayoutSpacing4(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer()))
 }
 
 func (this *QStyle) CombinedLayoutSpacing5(controls1 int, controls2 int, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	return (int)(C.QStyle_CombinedLayoutSpacing5(this.h, controls1, controls2, (C.int)(orientation), option.cPointer(), widget.cPointer()))
+	return (int)(C.QStyle_CombinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 // Delete this object from C++ memory.

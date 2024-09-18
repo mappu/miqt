@@ -275,7 +275,7 @@ func (this *QBoxLayout) AddWidget2(param1 *QWidget, stretch int) {
 }
 
 func (this *QBoxLayout) AddWidget3(param1 *QWidget, stretch int, alignment int) {
-	C.QBoxLayout_AddWidget3(this.h, param1.cPointer(), (C.int)(stretch), alignment)
+	C.QBoxLayout_AddWidget3(this.h, param1.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
 func (this *QBoxLayout) AddLayout2(layout *QLayout, stretch int) {
@@ -291,7 +291,7 @@ func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int) {
 }
 
 func (this *QBoxLayout) InsertWidget4(index int, widget *QWidget, stretch int, alignment int) {
-	C.QBoxLayout_InsertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), alignment)
+	C.QBoxLayout_InsertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
 func (this *QBoxLayout) InsertLayout3(index int, layout *QLayout, stretch int) {

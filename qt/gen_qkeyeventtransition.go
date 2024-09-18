@@ -95,7 +95,7 @@ func (this *QKeyEventTransition) ModifierMask() int {
 }
 
 func (this *QKeyEventTransition) SetModifierMask(modifiers int) {
-	C.QKeyEventTransition_SetModifierMask(this.h, modifiers)
+	C.QKeyEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 
 func QKeyEventTransition_Tr2(s string, c string) string {

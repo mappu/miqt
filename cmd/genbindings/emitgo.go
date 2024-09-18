@@ -265,7 +265,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// We want our functions to accept the Go wrapper type, and forward as cPointer()
 		rvalue = p.ParameterName + ".cPointer()"
 
-	} else if p.IntType() || p.ParameterType == "bool" {
+	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() || p.ParameterType == "bool" {
 		if p.Pointer || p.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
 			rvalue = "(" + p.parameterTypeCgo() + ")(unsafe.Pointer(" + p.ParameterName + "))" // n.b. This may not work if the integer type conversion was wrong

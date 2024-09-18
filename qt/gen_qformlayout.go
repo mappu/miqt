@@ -111,7 +111,7 @@ func (this *QFormLayout) RowWrapPolicy() int {
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment int) {
-	C.QFormLayout_SetLabelAlignment(this.h, alignment)
+	C.QFormLayout_SetLabelAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) LabelAlignment() int {
@@ -119,7 +119,7 @@ func (this *QFormLayout) LabelAlignment() int {
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment int) {
-	C.QFormLayout_SetFormAlignment(this.h, alignment)
+	C.QFormLayout_SetFormAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) FormAlignment() int {

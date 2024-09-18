@@ -58,7 +58,7 @@ func NewQDialog2(parent *QWidget) *QDialog {
 
 // NewQDialog3 constructs a new QDialog object.
 func NewQDialog3(parent *QWidget, f int) *QDialog {
-	ret := C.QDialog_new3(parent.cPointer(), f)
+	ret := C.QDialog_new3(parent.cPointer(), (C.int)(f))
 	return newQDialog(ret)
 }
 

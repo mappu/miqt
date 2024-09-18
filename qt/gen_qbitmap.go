@@ -129,7 +129,7 @@ func (this *QBitmap) TransformedWithMatrix(matrix *QTransform) *QBitmap {
 }
 
 func QBitmap_FromImage2(image *QImage, flags int) *QBitmap {
-	_ret := C.QBitmap_FromImage2(image.cPointer(), flags)
+	_ret := C.QBitmap_FromImage2(image.cPointer(), (C.int)(flags))
 	_goptr := newQBitmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -182,7 +182,7 @@ func (this *QStandardItem) TextAlignment() int {
 }
 
 func (this *QStandardItem) SetTextAlignment(textAlignment int) {
-	C.QStandardItem_SetTextAlignment(this.h, textAlignment)
+	C.QStandardItem_SetTextAlignment(this.h, (C.int)(textAlignment))
 }
 
 func (this *QStandardItem) Background() *QBrush {
@@ -246,7 +246,7 @@ func (this *QStandardItem) Flags() int {
 }
 
 func (this *QStandardItem) SetFlags(flags int) {
-	C.QStandardItem_SetFlags(this.h, flags)
+	C.QStandardItem_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QStandardItem) IsEnabled() bool {
@@ -1107,7 +1107,7 @@ func (this *QStandardItemModel) TakeItem2(row int, column int) *QStandardItem {
 func (this *QStandardItemModel) FindItems2(text string, flags int) []*QStandardItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, (*C.struct_miqt_string)(text_ms), flags)
+	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1120,7 +1120,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags int) []*QStandardI
 func (this *QStandardItemModel) FindItems3(text string, flags int, column int) []*QStandardItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), flags, (C.int)(column))
+	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

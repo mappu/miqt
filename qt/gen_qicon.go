@@ -387,27 +387,27 @@ func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode QIcon__Mode, s
 }
 
 func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment int) {
-	C.QIcon_Paint3(this.h, painter.cPointer(), rect.cPointer(), alignment)
+	C.QIcon_Paint3(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment))
 }
 
 func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode) {
-	C.QIcon_Paint4(this.h, painter.cPointer(), rect.cPointer(), alignment, (C.int)(mode))
+	C.QIcon_Paint4(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode))
 }
 
 func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode, state QIcon__State) {
-	C.QIcon_Paint5(this.h, painter.cPointer(), rect.cPointer(), alignment, (C.int)(mode), (C.int)(state))
+	C.QIcon_Paint5(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIcon) Paint6(painter *QPainter, x int, y int, w int, h int, alignment int) {
-	C.QIcon_Paint6(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), alignment)
+	C.QIcon_Paint6(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment))
 }
 
 func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode) {
-	C.QIcon_Paint7(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), alignment, (C.int)(mode))
+	C.QIcon_Paint7(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode))
 }
 
 func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode, state QIcon__State) {
-	C.QIcon_Paint8(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), alignment, (C.int)(mode), (C.int)(state))
+	C.QIcon_Paint8(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIcon) AddPixmap2(pixmap *QPixmap, mode QIcon__Mode) {

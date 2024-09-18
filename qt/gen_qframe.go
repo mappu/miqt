@@ -77,7 +77,7 @@ func NewQFrame2(parent *QWidget) *QFrame {
 
 // NewQFrame3 constructs a new QFrame object.
 func NewQFrame3(parent *QWidget, f int) *QFrame {
-	ret := C.QFrame_new3(parent.cPointer(), f)
+	ret := C.QFrame_new3(parent.cPointer(), (C.int)(f))
 	return newQFrame(ret)
 }
 

@@ -112,7 +112,7 @@ func (this *QDrag) Exec() DropAction {
 }
 
 func (this *QDrag) Exec2(supportedActions int, defaultAction DropAction) DropAction {
-	return (DropAction)(C.QDrag_Exec2(this.h, supportedActions, (C.int)(defaultAction)))
+	return (DropAction)(C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.int)(defaultAction)))
 }
 
 func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
@@ -223,11 +223,11 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDrag) Start1(supportedActions int) DropAction {
-	return (DropAction)(C.QDrag_Start1(this.h, supportedActions))
+	return (DropAction)(C.QDrag_Start1(this.h, (C.int)(supportedActions)))
 }
 
 func (this *QDrag) Exec1(supportedActions int) DropAction {
-	return (DropAction)(C.QDrag_Exec1(this.h, supportedActions))
+	return (DropAction)(C.QDrag_Exec1(this.h, (C.int)(supportedActions)))
 }
 
 // Delete this object from C++ memory.

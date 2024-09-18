@@ -274,7 +274,7 @@ func (this *QTreeWidgetItem) Flags() int {
 }
 
 func (this *QTreeWidgetItem) SetFlags(flags int) {
-	C.QTreeWidgetItem_SetFlags(this.h, flags)
+	C.QTreeWidgetItem_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTreeWidgetItem) Text(column int) string {
@@ -704,7 +704,7 @@ func (this *QTreeWidget) SetCurrentItem2(item *QTreeWidgetItem, column int) {
 }
 
 func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, command int) {
-	C.QTreeWidget_SetCurrentItem3(this.h, item.cPointer(), (C.int)(column), command)
+	C.QTreeWidget_SetCurrentItem3(this.h, item.cPointer(), (C.int)(column), (C.int)(command))
 }
 
 func (this *QTreeWidget) ItemAt(p *QPoint) *QTreeWidgetItem {
@@ -780,7 +780,7 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 func (this *QTreeWidget) FindItems(text string, flags int) []*QTreeWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), flags)
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1109,7 +1109,7 @@ func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column i
 func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTreeWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), flags, (C.int)(column))
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

@@ -255,7 +255,7 @@ func (this *QCommandLineOption) Flags() int {
 }
 
 func (this *QCommandLineOption) SetFlags(aflags int) {
-	C.QCommandLineOption_SetFlags(this.h, aflags)
+	C.QCommandLineOption_SetFlags(this.h, (C.int)(aflags))
 }
 
 func (this *QCommandLineOption) SetHidden(hidden bool) {

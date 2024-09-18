@@ -176,7 +176,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 	}
 	glyphIndexes_ma := &C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
-	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes2(this.h, glyphIndexes_ma, layoutFlags)
+	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -198,7 +198,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes3(glyphIndexes *uint, advances *QPo
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPointF, numGlyphs int, layoutFlags int) bool {
-	return (bool)(C.QRawFont_AdvancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), layoutFlags))
+	return (bool)(C.QRawFont_AdvancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), (C.int)(layoutFlags)))
 }
 
 func (this *QRawFont) AlphaMapForGlyph(glyphIndex uint) *QImage {

@@ -857,7 +857,7 @@ func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsS
 }
 
 func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags int) *QGraphicsProxyWidget {
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), wFlags)))
+	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags))))
 }
 
 func (this *QGraphicsScene) AddEllipse5(x float64, y float64, w float64, h float64, pen *QPen) *QGraphicsEllipseItem {
@@ -889,7 +889,7 @@ func (this *QGraphicsScene) SetFocus1(focusReason FocusReason) {
 }
 
 func (this *QGraphicsScene) Invalidate5(x float64, y float64, w float64, h float64, layers int) {
-	C.QGraphicsScene_Invalidate5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), layers)
+	C.QGraphicsScene_Invalidate5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(layers))
 }
 
 func (this *QGraphicsScene) Update1(rect *QRectF) {
@@ -901,7 +901,7 @@ func (this *QGraphicsScene) Invalidate1(rect *QRectF) {
 }
 
 func (this *QGraphicsScene) Invalidate22(rect *QRectF, layers int) {
-	C.QGraphicsScene_Invalidate22(this.h, rect.cPointer(), layers)
+	C.QGraphicsScene_Invalidate22(this.h, rect.cPointer(), (C.int)(layers))
 }
 
 // Delete this object from C++ memory.

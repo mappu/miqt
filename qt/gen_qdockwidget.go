@@ -76,7 +76,7 @@ func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
 func NewQDockWidget4(title string, parent *QWidget, flags int) *QDockWidget {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	ret := C.QDockWidget_new4((*C.struct_miqt_string)(title_ms), parent.cPointer(), flags)
+	ret := C.QDockWidget_new4((*C.struct_miqt_string)(title_ms), parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
 
@@ -88,7 +88,7 @@ func NewQDockWidget5(parent *QWidget) *QDockWidget {
 
 // NewQDockWidget6 constructs a new QDockWidget object.
 func NewQDockWidget6(parent *QWidget, flags int) *QDockWidget {
-	ret := C.QDockWidget_new6(parent.cPointer(), flags)
+	ret := C.QDockWidget_new6(parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
 
@@ -123,7 +123,7 @@ func (this *QDockWidget) SetWidget(widget *QWidget) {
 }
 
 func (this *QDockWidget) SetFeatures(features int) {
-	C.QDockWidget_SetFeatures(this.h, features)
+	C.QDockWidget_SetFeatures(this.h, (C.int)(features))
 }
 
 func (this *QDockWidget) Features() int {
@@ -139,7 +139,7 @@ func (this *QDockWidget) IsFloating() bool {
 }
 
 func (this *QDockWidget) SetAllowedAreas(areas int) {
-	C.QDockWidget_SetAllowedAreas(this.h, areas)
+	C.QDockWidget_SetAllowedAreas(this.h, (C.int)(areas))
 }
 
 func (this *QDockWidget) AllowedAreas() int {
@@ -163,7 +163,7 @@ func (this *QDockWidget) ToggleViewAction() *QAction {
 }
 
 func (this *QDockWidget) FeaturesChanged(features int) {
-	C.QDockWidget_FeaturesChanged(this.h, features)
+	C.QDockWidget_FeaturesChanged(this.h, (C.int)(features))
 }
 func (this *QDockWidget) OnFeaturesChanged(slot func(features int)) {
 	C.QDockWidget_connect_FeaturesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
@@ -203,7 +203,7 @@ func miqt_exec_callback_QDockWidget_TopLevelChanged(cb *C.void, topLevel C.bool)
 }
 
 func (this *QDockWidget) AllowedAreasChanged(allowedAreas int) {
-	C.QDockWidget_AllowedAreasChanged(this.h, allowedAreas)
+	C.QDockWidget_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas int)) {
 	C.QDockWidget_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))

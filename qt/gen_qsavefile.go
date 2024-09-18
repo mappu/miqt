@@ -100,7 +100,7 @@ func (this *QSaveFile) SetFileName(name string) {
 }
 
 func (this *QSaveFile) Open(flags int) bool {
-	return (bool)(C.QSaveFile_Open(this.h, flags))
+	return (bool)(C.QSaveFile_Open(this.h, (C.int)(flags)))
 }
 
 func (this *QSaveFile) Commit() bool {

@@ -773,17 +773,17 @@ func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	}
 	arguments_ma := &C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(arguments_ma))
-	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, mode)
+	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, (C.int)(mode))
 }
 
 func (this *QProcess) Start22(command string, mode int) {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
-	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), mode)
+	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), (C.int)(mode))
 }
 
 func (this *QProcess) Start1(mode int) {
-	C.QProcess_Start1(this.h, mode)
+	C.QProcess_Start1(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) StartDetached1(pid *int64) bool {
@@ -791,19 +791,19 @@ func (this *QProcess) StartDetached1(pid *int64) bool {
 }
 
 func (this *QProcess) Open1(mode int) bool {
-	return (bool)(C.QProcess_Open1(this.h, mode))
+	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), mode)
+	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
 }
 
 func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
-	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), mode)
+	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
 }
 
 func (this *QProcess) WaitForStarted1(msecs int) bool {

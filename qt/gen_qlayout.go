@@ -113,11 +113,11 @@ func (this *QLayout) ContentsRect() *QRect {
 }
 
 func (this *QLayout) SetAlignment(w *QWidget, alignment int) bool {
-	return (bool)(C.QLayout_SetAlignment(this.h, w.cPointer(), alignment))
+	return (bool)(C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment)))
 }
 
 func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
-	return (bool)(C.QLayout_SetAlignment2(this.h, l.cPointer(), alignment))
+	return (bool)(C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment)))
 }
 
 func (this *QLayout) SetSizeConstraint(sizeConstraint QLayout__SizeConstraint) {
@@ -318,7 +318,7 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), options)))
+	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
 }
 
 // Delete this object from C++ memory.

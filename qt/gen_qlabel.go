@@ -59,7 +59,7 @@ func NewQLabel3(parent *QWidget) *QLabel {
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f int) *QLabel {
-	ret := C.QLabel_new4(parent.cPointer(), f)
+	ret := C.QLabel_new4(parent.cPointer(), (C.int)(f))
 	return newQLabel(ret)
 }
 
@@ -75,7 +75,7 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 func NewQLabel6(text string, parent *QWidget, f int) *QLabel {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), f)
+	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), (C.int)(f))
 	return newQLabel(ret)
 }
 
@@ -147,7 +147,7 @@ func (this *QLabel) Alignment() int {
 }
 
 func (this *QLabel) SetAlignment(alignment int) {
-	C.QLabel_SetAlignment(this.h, alignment)
+	C.QLabel_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QLabel) SetWordWrap(on bool) {
@@ -217,7 +217,7 @@ func (this *QLabel) SetOpenExternalLinks(open bool) {
 }
 
 func (this *QLabel) SetTextInteractionFlags(flags int) {
-	C.QLabel_SetTextInteractionFlags(this.h, flags)
+	C.QLabel_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QLabel) TextInteractionFlags() int {

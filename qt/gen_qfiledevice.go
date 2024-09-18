@@ -174,7 +174,7 @@ func (this *QFileDevice) Permissions() int {
 }
 
 func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
-	return (bool)(C.QFileDevice_SetPermissions(this.h, permissionSpec))
+	return (bool)(C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec)))
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {

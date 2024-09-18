@@ -247,7 +247,7 @@ func (this *QIdentityProxyModel) Match4(start *QModelIndex, role int, value *QVa
 }
 
 func (this *QIdentityProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), flags)
+	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

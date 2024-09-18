@@ -995,7 +995,7 @@ func (this *QPainter) SetRenderHint(hint QPainter__RenderHint) {
 }
 
 func (this *QPainter) SetRenderHints(hints int) {
-	C.QPainter_SetRenderHints(this.h, hints)
+	C.QPainter_SetRenderHints(this.h, (C.int)(hints))
 }
 
 func (this *QPainter) RenderHints() int {
@@ -1127,23 +1127,23 @@ func (this *QPainter) DrawTiledPixmap33(param1 *QRect, param2 *QPixmap, param3 *
 }
 
 func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints int) {
-	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), hints)
+	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
 }
 
 func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags int) {
-	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), flags)
+	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
 func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags int) {
-	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), flags)
+	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
 func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags int) {
-	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), flags)
+	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags int) {
-	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), flags)
+	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 func (this *QPainter) DrawImage46(x int, y int, image *QImage, sx int) {
@@ -1163,7 +1163,7 @@ func (this *QPainter) DrawImage72(x int, y int, image *QImage, sx int, sy int, s
 }
 
 func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags int) {
-	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), flags)
+	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
 }
 
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
@@ -1204,7 +1204,7 @@ func (this *QPainter) SetRenderHint2(hint QPainter__RenderHint, on bool) {
 }
 
 func (this *QPainter) SetRenderHints2(hints int, on bool) {
-	C.QPainter_SetRenderHints2(this.h, hints, (C.bool)(on))
+	C.QPainter_SetRenderHints2(this.h, (C.int)(hints), (C.bool)(on))
 }
 
 func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, offset *QPoint) {

@@ -269,7 +269,7 @@ func (this *QGraphicsItem) SetFlag(flag QGraphicsItem__GraphicsItemFlag) {
 }
 
 func (this *QGraphicsItem) SetFlags(flags int) {
-	C.QGraphicsItem_SetFlags(this.h, flags)
+	C.QGraphicsItem_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGraphicsItem) CacheMode() QGraphicsItem__CacheMode {
@@ -393,7 +393,7 @@ func (this *QGraphicsItem) AcceptedMouseButtons() int {
 }
 
 func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
-	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, buttons)
+	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QGraphicsItem) AcceptHoverEvents() bool {
@@ -1008,7 +1008,7 @@ func (this *QGraphicsItem) InputMethodHints() int {
 }
 
 func (this *QGraphicsItem) SetInputMethodHints(hints int) {
-	C.QGraphicsItem_SetInputMethodHints(this.h, hints)
+	C.QGraphicsItem_SetInputMethodHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsItem) Type() int {
@@ -1422,7 +1422,7 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags int) {
-	C.QGraphicsObject_GrabGesture2(this.h, (C.int)(typeVal), flags)
+	C.QGraphicsObject_GrabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
 // Delete this object from C++ memory.
@@ -2453,7 +2453,7 @@ func (this *QGraphicsTextItem) Document() *QTextDocument {
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
-	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, flags)
+	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGraphicsTextItem) TextInteractionFlags() int {

@@ -314,7 +314,7 @@ func (this *QFileInfo) GroupId() uint {
 }
 
 func (this *QFileInfo) Permission(permissions int) bool {
-	return (bool)(C.QFileInfo_Permission(this.h, permissions))
+	return (bool)(C.QFileInfo_Permission(this.h, (C.int)(permissions)))
 }
 
 func (this *QFileInfo) Permissions() int {

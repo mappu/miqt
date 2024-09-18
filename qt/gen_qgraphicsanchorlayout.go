@@ -228,7 +228,7 @@ func (this *QGraphicsAnchorLayout) Invalidate() {
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations int) {
-	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), orientations)
+	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
 // Delete this object from C++ memory.

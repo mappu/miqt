@@ -315,19 +315,19 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 }
 
 func (this *QPaintEngine) TestDirty(df int) bool {
-	return (bool)(C.QPaintEngine_TestDirty(this.h, df))
+	return (bool)(C.QPaintEngine_TestDirty(this.h, (C.int)(df)))
 }
 
 func (this *QPaintEngine) SetDirty(df int) {
-	C.QPaintEngine_SetDirty(this.h, df)
+	C.QPaintEngine_SetDirty(this.h, (C.int)(df))
 }
 
 func (this *QPaintEngine) ClearDirty(df int) {
-	C.QPaintEngine_ClearDirty(this.h, df)
+	C.QPaintEngine_ClearDirty(this.h, (C.int)(df))
 }
 
 func (this *QPaintEngine) HasFeature(feature int) bool {
-	return (bool)(C.QPaintEngine_HasFeature(this.h, feature))
+	return (bool)(C.QPaintEngine_HasFeature(this.h, (C.int)(feature)))
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
@@ -343,7 +343,7 @@ func (this *QPaintEngine) IsExtended() bool {
 }
 
 func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
-	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), flags)
+	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
 // Delete this object from C++ memory.

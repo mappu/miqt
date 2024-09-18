@@ -80,13 +80,13 @@ func NewQTreeWidgetItemIterator3(item *QTreeWidgetItem) *QTreeWidgetItemIterator
 
 // NewQTreeWidgetItemIterator4 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator4(widget *QTreeWidget, flags int) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new4(widget.cPointer(), flags)
+	ret := C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags))
 	return newQTreeWidgetItemIterator(ret)
 }
 
 // NewQTreeWidgetItemIterator5 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator5(item *QTreeWidgetItem, flags int) *QTreeWidgetItemIterator {
-	ret := C.QTreeWidgetItemIterator_new5(item.cPointer(), flags)
+	ret := C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags))
 	return newQTreeWidgetItemIterator(ret)
 }
 

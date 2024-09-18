@@ -90,7 +90,7 @@ func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
 }
 
 func (this *QFontComboBox) SetFontFilters(filters int) {
-	C.QFontComboBox_SetFontFilters(this.h, filters)
+	C.QFontComboBox_SetFontFilters(this.h, (C.int)(filters))
 }
 
 func (this *QFontComboBox) FontFilters() int {

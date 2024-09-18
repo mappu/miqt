@@ -85,7 +85,7 @@ func NewQSurfaceFormat() *QSurfaceFormat {
 
 // NewQSurfaceFormat2 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat2(options int) *QSurfaceFormat {
-	ret := C.QSurfaceFormat_new2(options)
+	ret := C.QSurfaceFormat_new2((C.int)(options))
 	return newQSurfaceFormat(ret)
 }
 
@@ -212,15 +212,15 @@ func (this *QSurfaceFormat) SetStereo(enable bool) {
 }
 
 func (this *QSurfaceFormat) SetOption(opt int) {
-	C.QSurfaceFormat_SetOption(this.h, opt)
+	C.QSurfaceFormat_SetOption(this.h, (C.int)(opt))
 }
 
 func (this *QSurfaceFormat) TestOption(opt int) bool {
-	return (bool)(C.QSurfaceFormat_TestOption(this.h, opt))
+	return (bool)(C.QSurfaceFormat_TestOption(this.h, (C.int)(opt)))
 }
 
 func (this *QSurfaceFormat) SetOptions(options int) {
-	C.QSurfaceFormat_SetOptions(this.h, options)
+	C.QSurfaceFormat_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QSurfaceFormat) SetOptionWithOption(option QSurfaceFormat__FormatOption) {

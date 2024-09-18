@@ -95,7 +95,7 @@ func (this *QMouseEventTransition) ModifierMask() int {
 }
 
 func (this *QMouseEventTransition) SetModifierMask(modifiers int) {
-	C.QMouseEventTransition_SetModifierMask(this.h, modifiers)
+	C.QMouseEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 
 func (this *QMouseEventTransition) HitTestPath() *QPainterPath {

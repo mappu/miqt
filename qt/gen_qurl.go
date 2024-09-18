@@ -533,7 +533,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options int)
 	defer C.free(userInput_ms)
 	workingDirectory_ms := miqt_strdupg(workingDirectory)
 	defer C.free(workingDirectory_ms)
-	_ret := C.QUrl_FromUserInput3((*C.struct_miqt_string)(userInput_ms), (*C.struct_miqt_string)(workingDirectory_ms), options)
+	_ret := C.QUrl_FromUserInput3((*C.struct_miqt_string)(userInput_ms), (*C.struct_miqt_string)(workingDirectory_ms), (C.int)(options))
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -546,7 +546,7 @@ func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) Authority1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Authority1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_Authority1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -559,7 +559,7 @@ func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) UserInfo1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_UserInfo1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_UserInfo1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -572,7 +572,7 @@ func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) UserName1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_UserName1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_UserName1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -585,7 +585,7 @@ func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) Password1(param1 int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Password1(this.h, param1)
+	var _ms *C.struct_miqt_string = C.QUrl_Password1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -598,14 +598,14 @@ func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) Host1(param1 int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Host1(this.h, param1)
+	var _ms *C.struct_miqt_string = C.QUrl_Host1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QUrl) TopLevelDomain1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_TopLevelDomain1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_TopLevelDomain1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -622,14 +622,14 @@ func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) Path1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Path1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_Path1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QUrl) FileName1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_FileName1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_FileName1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -642,14 +642,14 @@ func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
 }
 
 func (this *QUrl) Query1(param1 int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Query1(this.h, param1)
+	var _ms *C.struct_miqt_string = C.QUrl_Query1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
 func (this *QUrl) Fragment1(options int) string {
-	var _ms *C.struct_miqt_string = C.QUrl_Fragment1(this.h, options)
+	var _ms *C.struct_miqt_string = C.QUrl_Fragment1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

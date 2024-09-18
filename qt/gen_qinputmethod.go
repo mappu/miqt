@@ -154,7 +154,7 @@ func (this *QInputMethod) Hide() {
 }
 
 func (this *QInputMethod) Update(queries int) {
-	C.QInputMethod_Update(this.h, queries)
+	C.QInputMethod_Update(this.h, (C.int)(queries))
 }
 
 func (this *QInputMethod) Reset() {

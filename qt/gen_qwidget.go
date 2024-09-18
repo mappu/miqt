@@ -106,7 +106,7 @@ func NewQWidget2(parent *QWidget) *QWidget {
 
 // NewQWidget3 constructs a new QWidget object.
 func NewQWidget3(parent *QWidget, f int) *QWidget {
-	ret := C.QWidget_new3(parent.cPointer(), f)
+	ret := C.QWidget_new3(parent.cPointer(), (C.int)(f))
 	return newQWidget(ret)
 }
 
@@ -1025,11 +1025,11 @@ func (this *QWidget) WindowState() int {
 }
 
 func (this *QWidget) SetWindowState(state int) {
-	C.QWidget_SetWindowState(this.h, state)
+	C.QWidget_SetWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWidget) OverrideWindowState(state int) {
-	C.QWidget_OverrideWindowState(this.h, state)
+	C.QWidget_OverrideWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWidget) SizeHint() *QSize {
@@ -1119,7 +1119,7 @@ func (this *QWidget) SetParent(parent *QWidget) {
 }
 
 func (this *QWidget) SetParent2(parent *QWidget, f int) {
-	C.QWidget_SetParent2(this.h, parent.cPointer(), f)
+	C.QWidget_SetParent2(this.h, parent.cPointer(), (C.int)(f))
 }
 
 func (this *QWidget) Scroll(dx int, dy int) {
@@ -1202,7 +1202,7 @@ func (this *QWidget) ParentWidget() *QWidget {
 }
 
 func (this *QWidget) SetWindowFlags(typeVal int) {
-	C.QWidget_SetWindowFlags(this.h, typeVal)
+	C.QWidget_SetWindowFlags(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) WindowFlags() int {
@@ -1214,7 +1214,7 @@ func (this *QWidget) SetWindowFlag(param1 WindowType) {
 }
 
 func (this *QWidget) OverrideWindowFlags(typeVal int) {
-	C.QWidget_OverrideWindowFlags(this.h, typeVal)
+	C.QWidget_OverrideWindowFlags(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) WindowType() WindowType {
@@ -1379,7 +1379,7 @@ func (this *QWidget) InputMethodHints() int {
 }
 
 func (this *QWidget) SetInputMethodHints(hints int) {
-	C.QWidget_SetInputMethodHints(this.h, hints)
+	C.QWidget_SetInputMethodHints(this.h, (C.int)(hints))
 }
 
 func QWidget_Tr2(s string, c string) string {
@@ -1435,7 +1435,7 @@ func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceR
 }
 
 func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
-	C.QWidget_Render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), renderFlags)
+	C.QWidget_Render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
 func (this *QWidget) Render22(painter *QPainter, targetOffset *QPoint) {
@@ -1447,7 +1447,7 @@ func (this *QWidget) Render32(painter *QPainter, targetOffset *QPoint, sourceReg
 }
 
 func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
-	C.QWidget_Render42(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), renderFlags)
+	C.QWidget_Render42(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
 func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
@@ -1458,7 +1458,7 @@ func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
 }
 
 func (this *QWidget) GrabGesture2(typeVal GestureType, flags int) {
-	C.QWidget_GrabGesture2(this.h, (C.int)(typeVal), flags)
+	C.QWidget_GrabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
 func (this *QWidget) GrabShortcut2(key *QKeySequence, context ShortcutContext) int {
@@ -1486,7 +1486,7 @@ func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), flags)))
+	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))))
 }
 
 // Delete this object from C++ memory.

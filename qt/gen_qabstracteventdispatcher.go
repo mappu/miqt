@@ -64,7 +64,7 @@ func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags int) bool {
-	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, flags))
+	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags)))
 }
 
 func (this *QAbstractEventDispatcher) HasPendingEvents() bool {

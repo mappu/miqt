@@ -165,7 +165,7 @@ func (this *QGraphicsGridLayout) SetColumnFixedWidth(column int, width float64) 
 }
 
 func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment int) {
-	C.QGraphicsGridLayout_SetRowAlignment(this.h, (C.int)(row), alignment)
+	C.QGraphicsGridLayout_SetRowAlignment(this.h, (C.int)(row), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) RowAlignment(row int) int {
@@ -173,7 +173,7 @@ func (this *QGraphicsGridLayout) RowAlignment(row int) int {
 }
 
 func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment int) {
-	C.QGraphicsGridLayout_SetColumnAlignment(this.h, (C.int)(column), alignment)
+	C.QGraphicsGridLayout_SetColumnAlignment(this.h, (C.int)(column), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) ColumnAlignment(column int) int {
@@ -181,7 +181,7 @@ func (this *QGraphicsGridLayout) ColumnAlignment(column int) int {
 }
 
 func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
-	C.QGraphicsGridLayout_SetAlignment(this.h, item.cPointer(), alignment)
+	C.QGraphicsGridLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) int {
@@ -232,11 +232,11 @@ func (this *QGraphicsGridLayout) SizeHint(which SizeHint) *QSizeF {
 }
 
 func (this *QGraphicsGridLayout) AddItem6(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment int) {
-	C.QGraphicsGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), alignment)
+	C.QGraphicsGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment int) {
-	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), alignment)
+	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) SizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {

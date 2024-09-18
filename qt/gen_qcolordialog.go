@@ -118,7 +118,7 @@ func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) boo
 }
 
 func (this *QColorDialog) SetOptions(options int) {
-	C.QColorDialog_SetOptions(this.h, options)
+	C.QColorDialog_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QColorDialog) Options() int {
@@ -280,7 +280,7 @@ func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QCo
 func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options int) *QColor {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
-	_ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), options)
+	_ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
 	_goptr := newQColor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

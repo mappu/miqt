@@ -324,7 +324,7 @@ func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
 }
 
 func (this *QFileSystemModel) SetFilter(filters int) {
-	C.QFileSystemModel_SetFilter(this.h, filters)
+	C.QFileSystemModel_SetFilter(this.h, (C.int)(filters))
 }
 
 func (this *QFileSystemModel) Filter() int {
@@ -392,7 +392,7 @@ func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
 }
 
 func (this *QFileSystemModel) SetOptions(options int) {
-	C.QFileSystemModel_SetOptions(this.h, options)
+	C.QFileSystemModel_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QFileSystemModel) Options() int {

@@ -145,7 +145,7 @@ func (this *QTextEdit) SetReadOnly(ro bool) {
 }
 
 func (this *QTextEdit) SetTextInteractionFlags(flags int) {
-	C.QTextEdit_SetTextInteractionFlags(this.h, flags)
+	C.QTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextEdit) TextInteractionFlags() int {
@@ -220,7 +220,7 @@ func (this *QTextEdit) AutoFormatting() int {
 }
 
 func (this *QTextEdit) SetAutoFormatting(features int) {
-	C.QTextEdit_SetAutoFormatting(this.h, features)
+	C.QTextEdit_SetAutoFormatting(this.h, (C.int)(features))
 }
 
 func (this *QTextEdit) TabChangesFocus() bool {
@@ -485,7 +485,7 @@ func (this *QTextEdit) SetCurrentFont(f *QFont) {
 }
 
 func (this *QTextEdit) SetAlignment(a int) {
-	C.QTextEdit_SetAlignment(this.h, a)
+	C.QTextEdit_SetAlignment(this.h, (C.int)(a))
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
@@ -750,19 +750,19 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 func (this *QTextEdit) Find22(exp string, options int) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
-	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), options))
+	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
 func (this *QTextEdit) Find23(exp *QRegExp, options int) bool {
-	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), options))
+	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) Find24(exp *QRegularExpression, options int) bool {
-	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), options))
+	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) ToMarkdown1(features int) string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, features)
+	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

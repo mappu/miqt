@@ -86,7 +86,7 @@ func newQFileDialog_U(h unsafe.Pointer) *QFileDialog {
 
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget, f int) *QFileDialog {
-	ret := C.QFileDialog_new(parent.cPointer(), f)
+	ret := C.QFileDialog_new(parent.cPointer(), (C.int)(f))
 	return newQFileDialog(ret)
 }
 
@@ -321,7 +321,7 @@ func (this *QFileDialog) Filter() int {
 }
 
 func (this *QFileDialog) SetFilter(filters int) {
-	C.QFileDialog_SetFilter(this.h, filters)
+	C.QFileDialog_SetFilter(this.h, (C.int)(filters))
 }
 
 func (this *QFileDialog) SetViewMode(mode QFileDialog__ViewMode) {
@@ -524,7 +524,7 @@ func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
 }
 
 func (this *QFileDialog) SetOptions(options int) {
-	C.QFileDialog_SetOptions(this.h, options)
+	C.QFileDialog_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QFileDialog) Options() int {
@@ -1079,7 +1079,7 @@ func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir stri
 	defer C.free(caption_ms)
 	dir_ms := miqt_strdupg(dir)
 	defer C.free(dir_ms)
-	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), options)
+	var _ms *C.struct_miqt_string = C.QFileDialog_GetExistingDirectory4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), (*C.struct_miqt_string)(dir_ms), (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -1113,7 +1113,7 @@ func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *
 func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options int) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
-	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), options)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options))
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1132,7 +1132,7 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 	}
 	supportedSchemes_ma := &C.struct_miqt_array{len: C.size_t(len(supportedSchemes)), data: unsafe.Pointer(supportedSchemes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(supportedSchemes_ma))
-	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), options, supportedSchemes_ma)
+	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options), supportedSchemes_ma)
 	_goptr := newQUrl(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

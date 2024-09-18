@@ -227,7 +227,7 @@ func (this *QListView) IsSelectionRectVisible() bool {
 }
 
 func (this *QListView) SetItemAlignment(alignment int) {
-	C.QListView_SetItemAlignment(this.h, alignment)
+	C.QListView_SetItemAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QListView) ItemAlignment() int {

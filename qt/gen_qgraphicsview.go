@@ -141,7 +141,7 @@ func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
 }
 
 func (this *QGraphicsView) SetRenderHints(hints int) {
-	C.QGraphicsView_SetRenderHints(this.h, hints)
+	C.QGraphicsView_SetRenderHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsView) Alignment() int {
@@ -149,7 +149,7 @@ func (this *QGraphicsView) Alignment() int {
 }
 
 func (this *QGraphicsView) SetAlignment(alignment int) {
-	C.QGraphicsView_SetAlignment(this.h, alignment)
+	C.QGraphicsView_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QGraphicsView) TransformationAnchor() QGraphicsView__ViewportAnchor {
@@ -185,7 +185,7 @@ func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationF
 }
 
 func (this *QGraphicsView) SetOptimizationFlags(flags int) {
-	C.QGraphicsView_SetOptimizationFlags(this.h, flags)
+	C.QGraphicsView_SetOptimizationFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGraphicsView) DragMode() QGraphicsView__DragMode {
@@ -216,7 +216,7 @@ func (this *QGraphicsView) CacheMode() int {
 }
 
 func (this *QGraphicsView) SetCacheMode(mode int) {
-	C.QGraphicsView_SetCacheMode(this.h, mode)
+	C.QGraphicsView_SetCacheMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsView) ResetCachedContent() {
@@ -695,7 +695,7 @@ func (this *QGraphicsView) InvalidateScene1(rect *QRectF) {
 }
 
 func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers int) {
-	C.QGraphicsView_InvalidateScene2(this.h, rect.cPointer(), layers)
+	C.QGraphicsView_InvalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
 // Delete this object from C++ memory.

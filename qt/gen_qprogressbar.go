@@ -110,7 +110,7 @@ func (this *QProgressBar) Alignment() int {
 }
 
 func (this *QProgressBar) SetAlignment(alignment int) {
-	C.QProgressBar_SetAlignment(this.h, alignment)
+	C.QProgressBar_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QProgressBar) SizeHint() *QSize {

@@ -213,7 +213,7 @@ func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
 }
 
 func (this *QLineEdit) SetAlignment(flag int) {
-	C.QLineEdit_SetAlignment(this.h, flag)
+	C.QLineEdit_SetAlignment(this.h, (C.int)(flag))
 }
 
 func (this *QLineEdit) Alignment() int {

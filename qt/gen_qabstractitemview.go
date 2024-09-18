@@ -170,7 +170,7 @@ func (this *QAbstractItemView) RootIndex() *QModelIndex {
 }
 
 func (this *QAbstractItemView) SetEditTriggers(triggers int) {
-	C.QAbstractItemView_SetEditTriggers(this.h, triggers)
+	C.QAbstractItemView_SetEditTriggers(this.h, (C.int)(triggers))
 }
 
 func (this *QAbstractItemView) EditTriggers() int {

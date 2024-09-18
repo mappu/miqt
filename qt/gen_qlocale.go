@@ -1653,7 +1653,7 @@ func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
 }
 
 func (this *QLocale) SetNumberOptions(options int) {
-	C.QLocale_SetNumberOptions(this.h, options)
+	C.QLocale_SetNumberOptions(this.h, (C.int)(options))
 }
 
 func (this *QLocale) NumberOptions() int {
@@ -1958,7 +1958,7 @@ func (this *QLocale) FormattedDataSize2(bytes int64, precision int) string {
 }
 
 func (this *QLocale) FormattedDataSize3(bytes int64, precision int, format int) string {
-	var _ms *C.struct_miqt_string = C.QLocale_FormattedDataSize3(this.h, (C.longlong)(bytes), (C.int)(precision), format)
+	var _ms *C.struct_miqt_string = C.QLocale_FormattedDataSize3(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -1972,7 +1972,7 @@ func (this *QLocale) FormattedDataSize22(bytes int64, precision int) string {
 }
 
 func (this *QLocale) FormattedDataSize32(bytes int64, precision int, format int) string {
-	var _ms *C.struct_miqt_string = C.QLocale_FormattedDataSize32(this.h, (C.longlong)(bytes), (C.int)(precision), format)
+	var _ms *C.struct_miqt_string = C.QLocale_FormattedDataSize32(this.h, (C.longlong)(bytes), (C.int)(precision), (C.int)(format))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

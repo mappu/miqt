@@ -439,7 +439,7 @@ func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
 }
 
 func (this *QGraphicsBlurEffect) SetBlurHints(hints int) {
-	C.QGraphicsBlurEffect_SetBlurHints(this.h, hints)
+	C.QGraphicsBlurEffect_SetBlurHints(this.h, (C.int)(hints))
 }
 
 func (this *QGraphicsBlurEffect) BlurRadiusChanged(blurRadius float64) {
@@ -463,7 +463,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRa
 }
 
 func (this *QGraphicsBlurEffect) BlurHintsChanged(hints int) {
-	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, hints)
+	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
 }
 func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints int)) {
 	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))

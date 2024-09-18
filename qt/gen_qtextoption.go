@@ -73,7 +73,7 @@ func NewQTextOption() *QTextOption {
 
 // NewQTextOption2 constructs a new QTextOption object.
 func NewQTextOption2(alignment int) *QTextOption {
-	ret := C.QTextOption_new2(alignment)
+	ret := C.QTextOption_new2((C.int)(alignment))
 	return newQTextOption(ret)
 }
 
@@ -88,7 +88,7 @@ func (this *QTextOption) OperatorAssign(o *QTextOption) {
 }
 
 func (this *QTextOption) SetAlignment(alignment int) {
-	C.QTextOption_SetAlignment(this.h, alignment)
+	C.QTextOption_SetAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextOption) Alignment() int {
@@ -112,7 +112,7 @@ func (this *QTextOption) WrapMode() QTextOption__WrapMode {
 }
 
 func (this *QTextOption) SetFlags(flags int) {
-	C.QTextOption_SetFlags(this.h, flags)
+	C.QTextOption_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextOption) Flags() int {

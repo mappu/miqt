@@ -91,7 +91,7 @@ func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
 func NewQRegularExpression4(pattern string, options int) *QRegularExpression {
 	pattern_ms := miqt_strdupg(pattern)
 	defer C.free(pattern_ms)
-	ret := C.QRegularExpression_new4((*C.struct_miqt_string)(pattern_ms), options)
+	ret := C.QRegularExpression_new4((*C.struct_miqt_string)(pattern_ms), (C.int)(options))
 	return newQRegularExpression(ret)
 }
 
@@ -100,7 +100,7 @@ func (this *QRegularExpression) PatternOptions() int {
 }
 
 func (this *QRegularExpression) SetPatternOptions(options int) {
-	C.QRegularExpression_SetPatternOptions(this.h, options)
+	C.QRegularExpression_SetPatternOptions(this.h, (C.int)(options))
 }
 
 func (this *QRegularExpression) OperatorAssign(re *QRegularExpression) {
@@ -235,7 +235,7 @@ func (this *QRegularExpression) Match3(subject string, offset int, matchType QRe
 func (this *QRegularExpression) Match4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatch {
 	subject_ms := miqt_strdupg(subject)
 	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_Match4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), matchOptions)
+	_ret := C.QRegularExpression_Match4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
 	_goptr := newQRegularExpressionMatch(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -262,7 +262,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchTy
 func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatchIterator {
 	subject_ms := miqt_strdupg(subject)
 	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_GlobalMatch4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), matchOptions)
+	_ret := C.QRegularExpression_GlobalMatch4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
 	_goptr := newQRegularExpressionMatchIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

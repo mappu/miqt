@@ -402,7 +402,7 @@ func (this *QPinchGesture) TotalChangeFlags() int {
 }
 
 func (this *QPinchGesture) SetTotalChangeFlags(value int) {
-	C.QPinchGesture_SetTotalChangeFlags(this.h, value)
+	C.QPinchGesture_SetTotalChangeFlags(this.h, (C.int)(value))
 }
 
 func (this *QPinchGesture) ChangeFlags() int {
@@ -410,7 +410,7 @@ func (this *QPinchGesture) ChangeFlags() int {
 }
 
 func (this *QPinchGesture) SetChangeFlags(value int) {
-	C.QPinchGesture_SetChangeFlags(this.h, value)
+	C.QPinchGesture_SetChangeFlags(this.h, (C.int)(value))
 }
 
 func (this *QPinchGesture) StartCenterPoint() *QPointF {

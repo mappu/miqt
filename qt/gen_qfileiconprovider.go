@@ -81,7 +81,7 @@ func (this *QFileIconProvider) Type(info *QFileInfo) string {
 }
 
 func (this *QFileIconProvider) SetOptions(options int) {
-	C.QFileIconProvider_SetOptions(this.h, options)
+	C.QFileIconProvider_SetOptions(this.h, (C.int)(options))
 }
 
 func (this *QFileIconProvider) Options() int {

@@ -171,7 +171,7 @@ func (this *QWindow) RequestedFormat() *QSurfaceFormat {
 }
 
 func (this *QWindow) SetFlags(flags int) {
-	C.QWindow_SetFlags(this.h, flags)
+	C.QWindow_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QWindow) Flags() int {
@@ -241,7 +241,7 @@ func (this *QWindow) SetWindowState(state WindowState) {
 }
 
 func (this *QWindow) SetWindowStates(states int) {
-	C.QWindow_SetWindowStates(this.h, states)
+	C.QWindow_SetWindowStates(this.h, (C.int)(states))
 }
 
 func (this *QWindow) SetTransientParent(parent *QWindow) {
@@ -528,7 +528,7 @@ func (this *QWindow) Lower() {
 }
 
 func (this *QWindow) StartSystemResize(edges int) bool {
-	return (bool)(C.QWindow_StartSystemResize(this.h, edges))
+	return (bool)(C.QWindow_StartSystemResize(this.h, (C.int)(edges)))
 }
 
 func (this *QWindow) StartSystemMove() bool {

@@ -58,7 +58,7 @@ func NewQGraphicsWidget2(parent *QGraphicsItem) *QGraphicsWidget {
 
 // NewQGraphicsWidget3 constructs a new QGraphicsWidget object.
 func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsWidget {
-	ret := C.QGraphicsWidget_new3(parent.cPointer(), wFlags)
+	ret := C.QGraphicsWidget_new3(parent.cPointer(), (C.int)(wFlags))
 	return newQGraphicsWidget(ret)
 }
 
@@ -227,7 +227,7 @@ func (this *QGraphicsWidget) WindowType() WindowType {
 }
 
 func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
-	C.QGraphicsWidget_SetWindowFlags(this.h, wFlags)
+	C.QGraphicsWidget_SetWindowFlags(this.h, (C.int)(wFlags))
 }
 
 func (this *QGraphicsWidget) IsActiveWindow() bool {

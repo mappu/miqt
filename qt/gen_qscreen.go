@@ -214,7 +214,7 @@ func (this *QScreen) OrientationUpdateMask() int {
 }
 
 func (this *QScreen) SetOrientationUpdateMask(mask int) {
-	C.QScreen_SetOrientationUpdateMask(this.h, mask)
+	C.QScreen_SetOrientationUpdateMask(this.h, (C.int)(mask))
 }
 
 func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int {

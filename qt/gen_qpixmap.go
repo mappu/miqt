@@ -84,7 +84,7 @@ func NewQPixmap7(fileName string, format string, flags int) *QPixmap {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_new7((*C.struct_miqt_string)(fileName_ms), format_Cstring, flags)
+	ret := C.QPixmap_new7((*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags))
 	return newQPixmap(ret)
 }
 
@@ -490,14 +490,14 @@ func (this *QPixmap) Transformed22(param1 *QTransform, mode TransformationMode) 
 }
 
 func QPixmap_FromImage2(image *QImage, flags int) *QPixmap {
-	_ret := C.QPixmap_FromImage2(image.cPointer(), flags)
+	_ret := C.QPixmap_FromImage2(image.cPointer(), (C.int)(flags))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImageReader2(imageReader *QImageReader, flags int) *QPixmap {
-	_ret := C.QPixmap_FromImageReader2(imageReader.cPointer(), flags)
+	_ret := C.QPixmap_FromImageReader2(imageReader.cPointer(), (C.int)(flags))
 	_goptr := newQPixmap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -516,7 +516,7 @@ func (this *QPixmap) Load3(fileName string, format string, flags int) bool {
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_Load3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, flags))
+	return (bool)(C.QPixmap_Load3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string) bool {
@@ -528,7 +528,7 @@ func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string) bool {
 func (this *QPixmap) LoadFromData4(buf *byte, lenVal uint, format string, flags int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_LoadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, flags))
+	return (bool)(C.QPixmap_LoadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData2(data *QByteArray, format string) bool {
@@ -540,7 +540,7 @@ func (this *QPixmap) LoadFromData2(data *QByteArray, format string) bool {
 func (this *QPixmap) LoadFromData32(data *QByteArray, format string, flags int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_LoadFromData32(this.h, data.cPointer(), format_Cstring, flags))
+	return (bool)(C.QPixmap_LoadFromData32(this.h, data.cPointer(), format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
@@ -572,7 +572,7 @@ func (this *QPixmap) Save32(device *QIODevice, format string, quality int) bool 
 }
 
 func (this *QPixmap) ConvertFromImage2(img *QImage, flags int) bool {
-	return (bool)(C.QPixmap_ConvertFromImage2(this.h, img.cPointer(), flags))
+	return (bool)(C.QPixmap_ConvertFromImage2(this.h, img.cPointer(), (C.int)(flags)))
 }
 
 func (this *QPixmap) Copy1(rect *QRect) *QPixmap {

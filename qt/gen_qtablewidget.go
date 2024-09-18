@@ -204,7 +204,7 @@ func (this *QTableWidgetItem) Flags() int {
 }
 
 func (this *QTableWidgetItem) SetFlags(flags int) {
-	C.QTableWidgetItem_SetFlags(this.h, flags)
+	C.QTableWidgetItem_SetFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTableWidgetItem) Text() string {
@@ -571,7 +571,7 @@ func (this *QTableWidget) SetCurrentItem(item *QTableWidgetItem) {
 }
 
 func (this *QTableWidget) SetCurrentItem2(item *QTableWidgetItem, command int) {
-	C.QTableWidget_SetCurrentItem2(this.h, item.cPointer(), command)
+	C.QTableWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
 }
 
 func (this *QTableWidget) SetCurrentCell(row int, column int) {
@@ -579,7 +579,7 @@ func (this *QTableWidget) SetCurrentCell(row int, column int) {
 }
 
 func (this *QTableWidget) SetCurrentCell2(row int, column int, command int) {
-	C.QTableWidget_SetCurrentCell2(this.h, (C.int)(row), (C.int)(column), command)
+	C.QTableWidget_SetCurrentCell2(this.h, (C.int)(row), (C.int)(column), (C.int)(command))
 }
 
 func (this *QTableWidget) SortItems(column int) {
@@ -662,7 +662,7 @@ func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
 func (this *QTableWidget) FindItems(text string, flags int) []*QTableWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), flags)
+	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

@@ -156,7 +156,7 @@ func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
 }
 
 func (this *QCompleter) SetFilterMode(filterMode int) {
-	C.QCompleter_SetFilterMode(this.h, filterMode)
+	C.QCompleter_SetFilterMode(this.h, (C.int)(filterMode))
 }
 
 func (this *QCompleter) FilterMode() int {

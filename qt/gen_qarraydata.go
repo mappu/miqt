@@ -87,11 +87,11 @@ func QArrayData_SharedNull() *QArrayData {
 }
 
 func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options int) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), options)))
+	return newQArrayData_U(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options))))
 }
 
 func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions int) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), newOptions)))
+	return newQArrayData_U(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions))))
 }
 
 // Delete this object from C++ memory.

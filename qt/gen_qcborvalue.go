@@ -662,18 +662,18 @@ func QCborValue_FromCbor33(data *byte, lenVal uint64, error *QCborParserError) *
 }
 
 func (this *QCborValue) ToCbor1(opt int) *QByteArray {
-	_ret := C.QCborValue_ToCbor1(this.h, opt)
+	_ret := C.QCborValue_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt int) {
-	C.QCborValue_ToCbor2(this.h, writer.cPointer(), opt)
+	C.QCborValue_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
 func (this *QCborValue) ToDiagnosticNotation1(opts int) string {
-	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, opts)
+	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, (C.int)(opts))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
@@ -1054,18 +1054,18 @@ func (this *QCborValueRef) ToUuid1(defaultValue *QUuid) *QUuid {
 }
 
 func (this *QCborValueRef) ToCbor1(opt int) *QByteArray {
-	_ret := C.QCborValueRef_ToCbor1(this.h, opt)
+	_ret := C.QCborValueRef_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt int) {
-	C.QCborValueRef_ToCbor2(this.h, writer.cPointer(), opt)
+	C.QCborValueRef_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
 func (this *QCborValueRef) ToDiagnosticNotation1(opt int) string {
-	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, opt)
+	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, (C.int)(opt))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret

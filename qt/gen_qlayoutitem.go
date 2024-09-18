@@ -108,7 +108,7 @@ func (this *QLayoutItem) Alignment() int {
 }
 
 func (this *QLayoutItem) SetAlignment(a int) {
-	C.QLayoutItem_SetAlignment(this.h, a)
+	C.QLayoutItem_SetAlignment(this.h, (C.int)(a))
 }
 
 func (this *QLayoutItem) ControlTypes() int {

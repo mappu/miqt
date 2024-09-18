@@ -56,7 +56,7 @@ func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirModel_new(nameFilters_ma, filters, sort)
+	ret := C.QDirModel_new(nameFilters_ma, (C.int)(filters), (C.int)(sort))
 	return newQDirModel(ret)
 }
 
@@ -78,7 +78,7 @@ func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject)
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirModel_new3(nameFilters_ma, filters, sort, parent.cPointer())
+	ret := C.QDirModel_new3(nameFilters_ma, (C.int)(filters), (C.int)(sort), parent.cPointer())
 	return newQDirModel(ret)
 }
 
@@ -233,7 +233,7 @@ func (this *QDirModel) NameFilters() []string {
 }
 
 func (this *QDirModel) SetFilter(filters int) {
-	C.QDirModel_SetFilter(this.h, filters)
+	C.QDirModel_SetFilter(this.h, (C.int)(filters))
 }
 
 func (this *QDirModel) Filter() int {
@@ -241,7 +241,7 @@ func (this *QDirModel) Filter() int {
 }
 
 func (this *QDirModel) SetSorting(sort int) {
-	C.QDirModel_SetSorting(this.h, sort)
+	C.QDirModel_SetSorting(this.h, (C.int)(sort))
 }
 
 func (this *QDirModel) Sorting() int {

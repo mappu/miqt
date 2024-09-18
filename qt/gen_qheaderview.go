@@ -313,7 +313,7 @@ func (this *QHeaderView) DefaultAlignment() int {
 }
 
 func (this *QHeaderView) SetDefaultAlignment(alignment int) {
-	C.QHeaderView_SetDefaultAlignment(this.h, alignment)
+	C.QHeaderView_SetDefaultAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QHeaderView) DoItemsLayout() {

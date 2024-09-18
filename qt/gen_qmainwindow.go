@@ -62,7 +62,7 @@ func NewQMainWindow2(parent *QWidget) *QMainWindow {
 
 // NewQMainWindow3 constructs a new QMainWindow object.
 func NewQMainWindow3(parent *QWidget, flags int) *QMainWindow {
-	ret := C.QMainWindow_new3(parent.cPointer(), flags)
+	ret := C.QMainWindow_new3(parent.cPointer(), (C.int)(flags))
 	return newQMainWindow(ret)
 }
 
@@ -136,11 +136,11 @@ func (this *QMainWindow) TabPosition(area DockWidgetArea) QTabWidget__TabPositio
 }
 
 func (this *QMainWindow) SetTabPosition(areas int, tabPosition QTabWidget__TabPosition) {
-	C.QMainWindow_SetTabPosition(this.h, areas, (C.int)(tabPosition))
+	C.QMainWindow_SetTabPosition(this.h, (C.int)(areas), (C.int)(tabPosition))
 }
 
 func (this *QMainWindow) SetDockOptions(options int) {
-	C.QMainWindow_SetDockOptions(this.h, options)
+	C.QMainWindow_SetDockOptions(this.h, (C.int)(options))
 }
 
 func (this *QMainWindow) DockOptions() int {

@@ -127,7 +127,7 @@ func (this *QIODevice) SetCurrentWriteChannel(channel int) {
 }
 
 func (this *QIODevice) Open(mode int) bool {
-	return (bool)(C.QIODevice_Open(this.h, mode))
+	return (bool)(C.QIODevice_Open(this.h, (C.int)(mode)))
 }
 
 func (this *QIODevice) Close() {

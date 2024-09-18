@@ -97,13 +97,13 @@ func NewQTextStream4(array *QByteArray) *QTextStream {
 
 // NewQTextStream5 constructs a new QTextStream object.
 func NewQTextStream5(array *QByteArray, openMode int) *QTextStream {
-	ret := C.QTextStream_new5(array.cPointer(), openMode)
+	ret := C.QTextStream_new5(array.cPointer(), (C.int)(openMode))
 	return newQTextStream(ret)
 }
 
 // NewQTextStream6 constructs a new QTextStream object.
 func NewQTextStream6(array *QByteArray, openMode int) *QTextStream {
-	ret := C.QTextStream_new6(array.cPointer(), openMode)
+	ret := C.QTextStream_new6(array.cPointer(), (C.int)(openMode))
 	return newQTextStream(ret)
 }
 
@@ -248,7 +248,7 @@ func (this *QTextStream) FieldWidth() int {
 }
 
 func (this *QTextStream) SetNumberFlags(flags int) {
-	C.QTextStream_SetNumberFlags(this.h, flags)
+	C.QTextStream_SetNumberFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextStream) NumberFlags() int {
