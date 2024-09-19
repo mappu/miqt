@@ -21,7 +21,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |---|---|---
 |Linux|Static, Dynamic (.so)|✅ Works<br>- Tested with Debian 12 / Qt 5.15 / GCC 12
 |Windows|Static, Dynamic (.dll)|✅ Works<br>- Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation<br>- Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation
-|macOS|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
+|macOS x86_64|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
+|macOS ARM64|Static, Dynamic (.dylib)|[Blocked by #11](https://github.com/mappu/miqt/issues/11)
 
 ## License
 
