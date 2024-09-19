@@ -65,22 +65,28 @@ func (p *CppParameter) GetQtCppType() *CppParameter {
 	return p
 }
 
-func (p CppParameter) IsFlagType() bool {
-	if strings.HasPrefix(p.ParameterType, `QFlags<`) ||
-		strings.HasPrefix(p.GetQtCppType().ParameterType, `QFlags<`) {
-		return true // This catches most cases through the typedef system
+func (p CppParameter) QFlagsOf() (CppParameter, bool) {
+
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		ret := parseSingleTypeString(p.ParameterType[7 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_qf"
+		return ret, true
 	}
 
-	switch p.ParameterType {
-	case "QTouchEvent::TouchPoint::InfoFlags",
-		"QFile::Permissions",
-		"QWizard::WizardButton",
-		"QFormLayout::ItemRole",
-		"QFormLayout::RowWrapPolicy":
-		return true
-	default:
-		return false
+	if under := p.QtCppOriginalType; under != nil {
+		if strings.HasPrefix(under.ParameterType, `QFlags<`) {
+			ret := parseSingleTypeString(under.ParameterType[7 : len(under.ParameterType)-1])
+			ret.ParameterName = under.ParameterName + "_qf"
+			return ret, true
+		}
 	}
+
+	return CppParameter{}, false
+}
+
+func (p CppParameter) IsFlagType() bool {
+	_, ok := p.QFlagsOf()
+	return ok
 }
 
 func (p CppParameter) QtClassType() bool {

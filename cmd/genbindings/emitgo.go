@@ -86,8 +86,8 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "uintptr"
 	default:
 
-		if p.IsFlagType() {
-			ret += "int"
+		if ft, ok := p.QFlagsOf(); ok {
+			ret += cabiClassName(ft.ParameterType)
 
 		} else if p.IsKnownEnum() {
 			ret += cabiClassName(p.ParameterType)
