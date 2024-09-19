@@ -19,8 +19,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 
 |Platform|Linkage|Status
 |---|---|---
-|Linux|Static, Dynamic (.so)|✅ Works (Tested with Debian 12 / Qt 5.15 / Clang 14 / GCC 12)
-|Windows|Static, Dynamic (.dll)|✅ Works (Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation)
+|Linux|Static, Dynamic (.so)|✅ Works<br>- Tested with Debian 12 / Qt 5.15 / GCC 12
+|Windows|Static, Dynamic (.dll)|✅ Works<br>- Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation<br>- Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation
 |macOS|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
 
 ## License
@@ -93,3 +93,22 @@ For dynamically-linked builds (closed-source or open source application):
 For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
 
 To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
+
+### Q8. How can I compile natively on Windows?
+
+1. Install Go from [the official website](https://go.dev/dl/).
+2. Install a Qt toolchain. You can use [official Qt binaries](https://www.qt.io/) or any LGPL rebuild.
+	- Example: Download and extract the following into some shared `C:\dev\rootfs`.
+	- [Qt and matching GCC or Clang toolchain](https://build-qt.fsu0413.me/5.15-series/5.15.11-for-windows/index.html#windows-mingw-llvm)
+	- [pkg-config](https://sourceforge.net/projects/pkgconfiglite/files/0.28-1/)
+3. Configure environment variables to allow it to be used:
+
+```powershell
+$env:CGO_ENABLED = 1
+$env:CC = 'C:\dev\rootfs\bin\clang.exe'
+$env:CXX = 'C:\dev\rootfs\bin\clang++.exe'
+$env:PKG_CONFIG = 'C:\dev\rootfs\bin\pkg-config.exe'
+$env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommendation
+```
+
+4. Run `go build -ldflags "-s -w -H windowsgui"`
