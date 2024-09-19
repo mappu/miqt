@@ -88,6 +88,8 @@ func main() {
 		preserve: make(map[string]*CppEnum),
 	}
 
+	InsertTypedefs()
+
 	for _, inputHeader := range includeFiles {
 
 		// If we have a cached clang AST, use that instead

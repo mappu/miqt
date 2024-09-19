@@ -52,6 +52,9 @@ func TestTransformTypedefs(t *testing.T) {
 		}
 	}
 
+	InsertTypedefs()
+	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
+
 	runTest("WId", "uintptr_t")
 	runTest("QList<WId>", "QList<uintptr_t>")
 	runTest("QStringList", "QList<QString>")

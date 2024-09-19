@@ -5,6 +5,30 @@ import (
 	"strings"
 )
 
+func InsertTypedefs() {
+
+	// Seed well-known typedefs
+
+	// QString is deleted from this binding
+	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
+
+	// FIXME this isn't picked up automatically because QFile inherits QFileDevice and the name refers to its parent class
+	KnownTypedefs["QFile::FileTime"] = CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}
+
+	// n.b. Qt 5 only
+	KnownTypedefs["QLineF::IntersectionType"] = CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}
+
+	// Not sure the reason for this one
+	KnownTypedefs["QSocketDescriptor::DescriptorType"] = CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}
+
+	// QFlags<> typedef
+	KnownTypedefs["QTouchEvent::TouchPoint::InfoFlags"] = CppTypedef{"QTouchEvent::TouchPoint::InfoFlags", parseSingleTypeString("QFlags<QTouchEvent::TouchPoint::InfoFlag>")}
+
+	// QFile doesn't see QFileDevice parent class enum
+	KnownTypedefs["QFile::Permissions"] = CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}
+	KnownTypedefs["QFileDevice::Permissions"] = CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}
+}
+
 func AllowHeader(fullpath string) bool {
 	fname := filepath.Base(fullpath)
 

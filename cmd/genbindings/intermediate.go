@@ -15,25 +15,6 @@ func init() {
 	KnownClassnames = make(map[string]struct{})
 	KnownTypedefs = make(map[string]CppTypedef)
 	KnownEnums = make(map[string]CppEnum)
-
-	// Seed well-known typedefs
-
-	KnownTypedefs["QRgb"] = CppTypedef{"QRgb", parseSingleTypeString("unsigned int")}
-
-	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
-
-	// QString is deleted from this binding
-	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
-
-	// Not sure why this isn't picked up automatically
-	// FIXME because QFile inherits QFileDevice(!!) and the name refers to its parent class
-	KnownTypedefs["QFile::FileTime"] = CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}
-
-	// n.b. Qt 5 only
-	KnownTypedefs["QLineF::IntersectionType"] = CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}
-
-	// Not sure the reason for this one
-	KnownTypedefs["QSocketDescriptor::DescriptorType"] = CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}
 }
 
 type CppParameter struct {
