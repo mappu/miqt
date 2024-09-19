@@ -97,8 +97,9 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 ### Q8. How can I compile natively on Windows?
 
 1. Install Go from [the official website](https://go.dev/dl/).
-2. Install a Qt toolchain. You can use [official Qt binaries](https://www.qt.io/) or any LGPL rebuild.
-	- Example: Download and extract the following into some shared `C:\dev\rootfs`.
+2. Install some Qt toolchain and its matching GCC or Clang compiler (MSVC is not compatible with CGO).
+	- You can use [official Qt binaries](https://www.qt.io/) or any LGPL rebuild.
+	- Example: Download and extract the following into some shared `C:\dev\rootfs`:
 	- [Qt and matching GCC or Clang toolchain](https://build-qt.fsu0413.me/5.15-series/5.15.11-for-windows/index.html#windows-mingw-llvm)
 	- [pkg-config](https://sourceforge.net/projects/pkgconfiglite/files/0.28-1/)
 3. Configure environment variables to allow it to be used:
