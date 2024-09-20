@@ -16,16 +16,16 @@ import (
 type QRawFont__AntialiasingType int
 
 const (
-	QRawFont__AntialiasingType__PixelAntialiasing    QRawFont__AntialiasingType = 0
-	QRawFont__AntialiasingType__SubPixelAntialiasing QRawFont__AntialiasingType = 1
+	QRawFont__PixelAntialiasing    QRawFont__AntialiasingType = 0
+	QRawFont__SubPixelAntialiasing QRawFont__AntialiasingType = 1
 )
 
 type QRawFont__LayoutFlag int
 
 const (
-	QRawFont__LayoutFlag__SeparateAdvances QRawFont__LayoutFlag = 0
-	QRawFont__LayoutFlag__KernedAdvances   QRawFont__LayoutFlag = 1
-	QRawFont__LayoutFlag__UseDesignMetrics QRawFont__LayoutFlag = 2
+	QRawFont__SeparateAdvances QRawFont__LayoutFlag = 0
+	QRawFont__KernedAdvances   QRawFont__LayoutFlag = 1
+	QRawFont__UseDesignMetrics QRawFont__LayoutFlag = 2
 )
 
 type QRawFont struct {

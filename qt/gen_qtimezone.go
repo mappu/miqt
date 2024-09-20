@@ -16,25 +16,25 @@ import (
 type QTimeZone__ int
 
 const (
-	QTimeZone____MinUtcOffsetSecs QTimeZone__ = -50400
-	QTimeZone____MaxUtcOffsetSecs QTimeZone__ = 50400
+	QTimeZone__MinUtcOffsetSecs QTimeZone__ = -50400
+	QTimeZone__MaxUtcOffsetSecs QTimeZone__ = 50400
 )
 
 type QTimeZone__TimeType int
 
 const (
-	QTimeZone__TimeType__StandardTime QTimeZone__TimeType = 0
-	QTimeZone__TimeType__DaylightTime QTimeZone__TimeType = 1
-	QTimeZone__TimeType__GenericTime  QTimeZone__TimeType = 2
+	QTimeZone__StandardTime QTimeZone__TimeType = 0
+	QTimeZone__DaylightTime QTimeZone__TimeType = 1
+	QTimeZone__GenericTime  QTimeZone__TimeType = 2
 )
 
 type QTimeZone__NameType int
 
 const (
-	QTimeZone__NameType__DefaultName QTimeZone__NameType = 0
-	QTimeZone__NameType__LongName    QTimeZone__NameType = 1
-	QTimeZone__NameType__ShortName   QTimeZone__NameType = 2
-	QTimeZone__NameType__OffsetName  QTimeZone__NameType = 3
+	QTimeZone__DefaultName QTimeZone__NameType = 0
+	QTimeZone__LongName    QTimeZone__NameType = 1
+	QTimeZone__ShortName   QTimeZone__NameType = 2
+	QTimeZone__OffsetName  QTimeZone__NameType = 3
 )
 
 type QTimeZone struct {

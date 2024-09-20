@@ -16,15 +16,15 @@ import (
 type QState__ChildMode int
 
 const (
-	QState__ChildMode__ExclusiveStates QState__ChildMode = 0
-	QState__ChildMode__ParallelStates  QState__ChildMode = 1
+	QState__ExclusiveStates QState__ChildMode = 0
+	QState__ParallelStates  QState__ChildMode = 1
 )
 
 type QState__RestorePolicy int
 
 const (
-	QState__RestorePolicy__DontRestoreProperties QState__RestorePolicy = 0
-	QState__RestorePolicy__RestoreProperties     QState__RestorePolicy = 1
+	QState__DontRestoreProperties QState__RestorePolicy = 0
+	QState__RestoreProperties     QState__RestorePolicy = 1
 )
 
 type QState struct {

@@ -17,16 +17,16 @@ import (
 type QIODevice__OpenModeFlag int
 
 const (
-	QIODevice__OpenModeFlag__NotOpen      QIODevice__OpenModeFlag = 0
-	QIODevice__OpenModeFlag__ReadOnly     QIODevice__OpenModeFlag = 1
-	QIODevice__OpenModeFlag__WriteOnly    QIODevice__OpenModeFlag = 2
-	QIODevice__OpenModeFlag__ReadWrite    QIODevice__OpenModeFlag = 3
-	QIODevice__OpenModeFlag__Append       QIODevice__OpenModeFlag = 4
-	QIODevice__OpenModeFlag__Truncate     QIODevice__OpenModeFlag = 8
-	QIODevice__OpenModeFlag__Text         QIODevice__OpenModeFlag = 16
-	QIODevice__OpenModeFlag__Unbuffered   QIODevice__OpenModeFlag = 32
-	QIODevice__OpenModeFlag__NewOnly      QIODevice__OpenModeFlag = 64
-	QIODevice__OpenModeFlag__ExistingOnly QIODevice__OpenModeFlag = 128
+	QIODevice__NotOpen      QIODevice__OpenModeFlag = 0
+	QIODevice__ReadOnly     QIODevice__OpenModeFlag = 1
+	QIODevice__WriteOnly    QIODevice__OpenModeFlag = 2
+	QIODevice__ReadWrite    QIODevice__OpenModeFlag = 3
+	QIODevice__Append       QIODevice__OpenModeFlag = 4
+	QIODevice__Truncate     QIODevice__OpenModeFlag = 8
+	QIODevice__Text         QIODevice__OpenModeFlag = 16
+	QIODevice__Unbuffered   QIODevice__OpenModeFlag = 32
+	QIODevice__NewOnly      QIODevice__OpenModeFlag = 64
+	QIODevice__ExistingOnly QIODevice__OpenModeFlag = 128
 )
 
 type QIODevice struct {

@@ -17,14 +17,14 @@ import (
 type QDockWidget__DockWidgetFeature int
 
 const (
-	QDockWidget__DockWidgetFeature__DockWidgetClosable         QDockWidget__DockWidgetFeature = 1
-	QDockWidget__DockWidgetFeature__DockWidgetMovable          QDockWidget__DockWidgetFeature = 2
-	QDockWidget__DockWidgetFeature__DockWidgetFloatable        QDockWidget__DockWidgetFeature = 4
-	QDockWidget__DockWidgetFeature__DockWidgetVerticalTitleBar QDockWidget__DockWidgetFeature = 8
-	QDockWidget__DockWidgetFeature__DockWidgetFeatureMask      QDockWidget__DockWidgetFeature = 15
-	QDockWidget__DockWidgetFeature__AllDockWidgetFeatures      QDockWidget__DockWidgetFeature = 7
-	QDockWidget__DockWidgetFeature__NoDockWidgetFeatures       QDockWidget__DockWidgetFeature = 0
-	QDockWidget__DockWidgetFeature__Reserved                   QDockWidget__DockWidgetFeature = 255
+	QDockWidget__DockWidgetClosable         QDockWidget__DockWidgetFeature = 1
+	QDockWidget__DockWidgetMovable          QDockWidget__DockWidgetFeature = 2
+	QDockWidget__DockWidgetFloatable        QDockWidget__DockWidgetFeature = 4
+	QDockWidget__DockWidgetVerticalTitleBar QDockWidget__DockWidgetFeature = 8
+	QDockWidget__DockWidgetFeatureMask      QDockWidget__DockWidgetFeature = 15
+	QDockWidget__AllDockWidgetFeatures      QDockWidget__DockWidgetFeature = 7
+	QDockWidget__NoDockWidgetFeatures       QDockWidget__DockWidgetFeature = 0
+	QDockWidget__Reserved                   QDockWidget__DockWidgetFeature = 255
 )
 
 type QDockWidget struct {

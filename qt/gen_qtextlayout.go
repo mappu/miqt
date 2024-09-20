@@ -16,22 +16,22 @@ import (
 type QTextLayout__CursorMode int
 
 const (
-	QTextLayout__CursorMode__SkipCharacters QTextLayout__CursorMode = 0
-	QTextLayout__CursorMode__SkipWords      QTextLayout__CursorMode = 1
+	QTextLayout__SkipCharacters QTextLayout__CursorMode = 0
+	QTextLayout__SkipWords      QTextLayout__CursorMode = 1
 )
 
 type QTextLine__Edge int
 
 const (
-	QTextLine__Edge__Leading  QTextLine__Edge = 0
-	QTextLine__Edge__Trailing QTextLine__Edge = 1
+	QTextLine__Leading  QTextLine__Edge = 0
+	QTextLine__Trailing QTextLine__Edge = 1
 )
 
 type QTextLine__CursorPosition int
 
 const (
-	QTextLine__CursorPosition__CursorBetweenCharacters QTextLine__CursorPosition = 0
-	QTextLine__CursorPosition__CursorOnCharacter       QTextLine__CursorPosition = 1
+	QTextLine__CursorBetweenCharacters QTextLine__CursorPosition = 0
+	QTextLine__CursorOnCharacter       QTextLine__CursorPosition = 1
 )
 
 type QTextInlineObject struct {

@@ -17,8 +17,8 @@ import (
 type QStackedLayout__StackingMode int
 
 const (
-	QStackedLayout__StackingMode__StackOne QStackedLayout__StackingMode = 0
-	QStackedLayout__StackingMode__StackAll QStackedLayout__StackingMode = 1
+	QStackedLayout__StackOne QStackedLayout__StackingMode = 0
+	QStackedLayout__StackAll QStackedLayout__StackingMode = 1
 )
 
 type QStackedLayout struct {

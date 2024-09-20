@@ -16,31 +16,31 @@ import (
 type QColorSpace__NamedColorSpace int
 
 const (
-	QColorSpace__NamedColorSpace__SRgb        QColorSpace__NamedColorSpace = 1
-	QColorSpace__NamedColorSpace__SRgbLinear  QColorSpace__NamedColorSpace = 2
-	QColorSpace__NamedColorSpace__AdobeRgb    QColorSpace__NamedColorSpace = 3
-	QColorSpace__NamedColorSpace__DisplayP3   QColorSpace__NamedColorSpace = 4
-	QColorSpace__NamedColorSpace__ProPhotoRgb QColorSpace__NamedColorSpace = 5
+	QColorSpace__SRgb        QColorSpace__NamedColorSpace = 1
+	QColorSpace__SRgbLinear  QColorSpace__NamedColorSpace = 2
+	QColorSpace__AdobeRgb    QColorSpace__NamedColorSpace = 3
+	QColorSpace__DisplayP3   QColorSpace__NamedColorSpace = 4
+	QColorSpace__ProPhotoRgb QColorSpace__NamedColorSpace = 5
 )
 
 type QColorSpace__Primaries int
 
 const (
-	QColorSpace__Primaries__Custom      QColorSpace__Primaries = 0
-	QColorSpace__Primaries__SRgb        QColorSpace__Primaries = 1
-	QColorSpace__Primaries__AdobeRgb    QColorSpace__Primaries = 2
-	QColorSpace__Primaries__DciP3D65    QColorSpace__Primaries = 3
-	QColorSpace__Primaries__ProPhotoRgb QColorSpace__Primaries = 4
+	QColorSpace__Custom      QColorSpace__Primaries = 0
+	QColorSpace__SRgb        QColorSpace__Primaries = 1
+	QColorSpace__AdobeRgb    QColorSpace__Primaries = 2
+	QColorSpace__DciP3D65    QColorSpace__Primaries = 3
+	QColorSpace__ProPhotoRgb QColorSpace__Primaries = 4
 )
 
 type QColorSpace__TransferFunction int
 
 const (
-	QColorSpace__TransferFunction__Custom      QColorSpace__TransferFunction = 0
-	QColorSpace__TransferFunction__Linear      QColorSpace__TransferFunction = 1
-	QColorSpace__TransferFunction__Gamma       QColorSpace__TransferFunction = 2
-	QColorSpace__TransferFunction__SRgb        QColorSpace__TransferFunction = 3
-	QColorSpace__TransferFunction__ProPhotoRgb QColorSpace__TransferFunction = 4
+	QColorSpace__Custom      QColorSpace__TransferFunction = 0
+	QColorSpace__Linear      QColorSpace__TransferFunction = 1
+	QColorSpace__Gamma       QColorSpace__TransferFunction = 2
+	QColorSpace__SRgb        QColorSpace__TransferFunction = 3
+	QColorSpace__ProPhotoRgb QColorSpace__TransferFunction = 4
 )
 
 type QColorSpace struct {

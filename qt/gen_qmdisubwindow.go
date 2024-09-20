@@ -17,10 +17,10 @@ import (
 type QMdiSubWindow__SubWindowOption int
 
 const (
-	QMdiSubWindow__SubWindowOption__AllowOutsideAreaHorizontally QMdiSubWindow__SubWindowOption = 1
-	QMdiSubWindow__SubWindowOption__AllowOutsideAreaVertically   QMdiSubWindow__SubWindowOption = 2
-	QMdiSubWindow__SubWindowOption__RubberBandResize             QMdiSubWindow__SubWindowOption = 4
-	QMdiSubWindow__SubWindowOption__RubberBandMove               QMdiSubWindow__SubWindowOption = 8
+	QMdiSubWindow__AllowOutsideAreaHorizontally QMdiSubWindow__SubWindowOption = 1
+	QMdiSubWindow__AllowOutsideAreaVertically   QMdiSubWindow__SubWindowOption = 2
+	QMdiSubWindow__RubberBandResize             QMdiSubWindow__SubWindowOption = 4
+	QMdiSubWindow__RubberBandMove               QMdiSubWindow__SubWindowOption = 8
 )
 
 type QMdiSubWindow struct {

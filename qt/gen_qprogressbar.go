@@ -17,8 +17,8 @@ import (
 type QProgressBar__Direction int
 
 const (
-	QProgressBar__Direction__TopToBottom QProgressBar__Direction = 0
-	QProgressBar__Direction__BottomToTop QProgressBar__Direction = 1
+	QProgressBar__TopToBottom QProgressBar__Direction = 0
+	QProgressBar__BottomToTop QProgressBar__Direction = 1
 )
 
 type QProgressBar struct {

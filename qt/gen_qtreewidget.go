@@ -17,16 +17,16 @@ import (
 type QTreeWidgetItem__ItemType int
 
 const (
-	QTreeWidgetItem__ItemType__Type     QTreeWidgetItem__ItemType = 0
-	QTreeWidgetItem__ItemType__UserType QTreeWidgetItem__ItemType = 1000
+	QTreeWidgetItem__Type     QTreeWidgetItem__ItemType = 0
+	QTreeWidgetItem__UserType QTreeWidgetItem__ItemType = 1000
 )
 
 type QTreeWidgetItem__ChildIndicatorPolicy int
 
 const (
-	QTreeWidgetItem__ChildIndicatorPolicy__ShowIndicator                  QTreeWidgetItem__ChildIndicatorPolicy = 0
-	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicator              QTreeWidgetItem__ChildIndicatorPolicy = 1
-	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicatorWhenChildless QTreeWidgetItem__ChildIndicatorPolicy = 2
+	QTreeWidgetItem__ShowIndicator                  QTreeWidgetItem__ChildIndicatorPolicy = 0
+	QTreeWidgetItem__DontShowIndicator              QTreeWidgetItem__ChildIndicatorPolicy = 1
+	QTreeWidgetItem__DontShowIndicatorWhenChildless QTreeWidgetItem__ChildIndicatorPolicy = 2
 )
 
 type QTreeWidgetItem struct {

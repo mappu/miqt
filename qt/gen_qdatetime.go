@@ -16,15 +16,15 @@ import (
 type QDate__MonthNameType int
 
 const (
-	QDate__MonthNameType__DateFormat       QDate__MonthNameType = 0
-	QDate__MonthNameType__StandaloneFormat QDate__MonthNameType = 1
+	QDate__DateFormat       QDate__MonthNameType = 0
+	QDate__StandaloneFormat QDate__MonthNameType = 1
 )
 
 type QDateTime__YearRange int
 
 const (
-	QDateTime__YearRange__First QDateTime__YearRange = -292275056
-	QDateTime__YearRange__Last  QDateTime__YearRange = 292278994
+	QDateTime__First QDateTime__YearRange = -292275056
+	QDateTime__Last  QDateTime__YearRange = 292278994
 )
 
 type QDate struct {

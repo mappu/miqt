@@ -16,8 +16,8 @@ import (
 type QInputMethod__Action int
 
 const (
-	QInputMethod__Action__Click       QInputMethod__Action = 0
-	QInputMethod__Action__ContextMenu QInputMethod__Action = 1
+	QInputMethod__Click       QInputMethod__Action = 0
+	QInputMethod__ContextMenu QInputMethod__Action = 1
 )
 
 type QInputMethod struct {

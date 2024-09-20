@@ -17,17 +17,17 @@ import (
 type QInputDialog__InputDialogOption int
 
 const (
-	QInputDialog__InputDialogOption__NoButtons                    QInputDialog__InputDialogOption = 1
-	QInputDialog__InputDialogOption__UseListViewForComboBoxItems  QInputDialog__InputDialogOption = 2
-	QInputDialog__InputDialogOption__UsePlainTextEditForTextInput QInputDialog__InputDialogOption = 4
+	QInputDialog__NoButtons                    QInputDialog__InputDialogOption = 1
+	QInputDialog__UseListViewForComboBoxItems  QInputDialog__InputDialogOption = 2
+	QInputDialog__UsePlainTextEditForTextInput QInputDialog__InputDialogOption = 4
 )
 
 type QInputDialog__InputMode int
 
 const (
-	QInputDialog__InputMode__TextInput   QInputDialog__InputMode = 0
-	QInputDialog__InputMode__IntInput    QInputDialog__InputMode = 1
-	QInputDialog__InputMode__DoubleInput QInputDialog__InputMode = 2
+	QInputDialog__TextInput   QInputDialog__InputMode = 0
+	QInputDialog__IntInput    QInputDialog__InputMode = 1
+	QInputDialog__DoubleInput QInputDialog__InputMode = 2
 )
 
 type QInputDialog struct {

@@ -17,26 +17,26 @@ import (
 type QGraphicsEffect__ChangeFlag int
 
 const (
-	QGraphicsEffect__ChangeFlag__SourceAttached            QGraphicsEffect__ChangeFlag = 1
-	QGraphicsEffect__ChangeFlag__SourceDetached            QGraphicsEffect__ChangeFlag = 2
-	QGraphicsEffect__ChangeFlag__SourceBoundingRectChanged QGraphicsEffect__ChangeFlag = 4
-	QGraphicsEffect__ChangeFlag__SourceInvalidated         QGraphicsEffect__ChangeFlag = 8
+	QGraphicsEffect__SourceAttached            QGraphicsEffect__ChangeFlag = 1
+	QGraphicsEffect__SourceDetached            QGraphicsEffect__ChangeFlag = 2
+	QGraphicsEffect__SourceBoundingRectChanged QGraphicsEffect__ChangeFlag = 4
+	QGraphicsEffect__SourceInvalidated         QGraphicsEffect__ChangeFlag = 8
 )
 
 type QGraphicsEffect__PixmapPadMode int
 
 const (
-	QGraphicsEffect__PixmapPadMode__NoPad                      QGraphicsEffect__PixmapPadMode = 0
-	QGraphicsEffect__PixmapPadMode__PadToTransparentBorder     QGraphicsEffect__PixmapPadMode = 1
-	QGraphicsEffect__PixmapPadMode__PadToEffectiveBoundingRect QGraphicsEffect__PixmapPadMode = 2
+	QGraphicsEffect__NoPad                      QGraphicsEffect__PixmapPadMode = 0
+	QGraphicsEffect__PadToTransparentBorder     QGraphicsEffect__PixmapPadMode = 1
+	QGraphicsEffect__PadToEffectiveBoundingRect QGraphicsEffect__PixmapPadMode = 2
 )
 
 type QGraphicsBlurEffect__BlurHint int
 
 const (
-	QGraphicsBlurEffect__BlurHint__PerformanceHint QGraphicsBlurEffect__BlurHint = 0
-	QGraphicsBlurEffect__BlurHint__QualityHint     QGraphicsBlurEffect__BlurHint = 1
-	QGraphicsBlurEffect__BlurHint__AnimationHint   QGraphicsBlurEffect__BlurHint = 2
+	QGraphicsBlurEffect__PerformanceHint QGraphicsBlurEffect__BlurHint = 0
+	QGraphicsBlurEffect__QualityHint     QGraphicsBlurEffect__BlurHint = 1
+	QGraphicsBlurEffect__AnimationHint   QGraphicsBlurEffect__BlurHint = 2
 )
 
 type QGraphicsEffect struct {

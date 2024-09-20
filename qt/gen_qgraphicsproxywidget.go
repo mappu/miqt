@@ -16,7 +16,7 @@ import (
 type QGraphicsProxyWidget__ int
 
 const (
-	QGraphicsProxyWidget____Type QGraphicsProxyWidget__ = 12
+	QGraphicsProxyWidget__Type QGraphicsProxyWidget__ = 12
 )
 
 type QGraphicsProxyWidget struct {

@@ -17,16 +17,16 @@ import (
 type QValidator__State int
 
 const (
-	QValidator__State__Invalid      QValidator__State = 0
-	QValidator__State__Intermediate QValidator__State = 1
-	QValidator__State__Acceptable   QValidator__State = 2
+	QValidator__Invalid      QValidator__State = 0
+	QValidator__Intermediate QValidator__State = 1
+	QValidator__Acceptable   QValidator__State = 2
 )
 
 type QDoubleValidator__Notation int
 
 const (
-	QDoubleValidator__Notation__StandardNotation   QDoubleValidator__Notation = 0
-	QDoubleValidator__Notation__ScientificNotation QDoubleValidator__Notation = 1
+	QDoubleValidator__StandardNotation   QDoubleValidator__Notation = 0
+	QDoubleValidator__ScientificNotation QDoubleValidator__Notation = 1
 )
 
 type QValidator struct {

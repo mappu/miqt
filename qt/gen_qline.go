@@ -16,9 +16,9 @@ import (
 type QLineF__IntersectType int
 
 const (
-	QLineF__IntersectType__NoIntersection        QLineF__IntersectType = 0
-	QLineF__IntersectType__BoundedIntersection   QLineF__IntersectType = 1
-	QLineF__IntersectType__UnboundedIntersection QLineF__IntersectType = 2
+	QLineF__NoIntersection        QLineF__IntersectType = 0
+	QLineF__BoundedIntersection   QLineF__IntersectType = 1
+	QLineF__UnboundedIntersection QLineF__IntersectType = 2
 )
 
 type QLine struct {

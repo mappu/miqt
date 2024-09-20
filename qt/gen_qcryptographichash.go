@@ -16,25 +16,25 @@ import (
 type QCryptographicHash__Algorithm int
 
 const (
-	QCryptographicHash__Algorithm__Md4          QCryptographicHash__Algorithm = 0
-	QCryptographicHash__Algorithm__Md5          QCryptographicHash__Algorithm = 1
-	QCryptographicHash__Algorithm__Sha1         QCryptographicHash__Algorithm = 2
-	QCryptographicHash__Algorithm__Sha224       QCryptographicHash__Algorithm = 3
-	QCryptographicHash__Algorithm__Sha256       QCryptographicHash__Algorithm = 4
-	QCryptographicHash__Algorithm__Sha384       QCryptographicHash__Algorithm = 5
-	QCryptographicHash__Algorithm__Sha512       QCryptographicHash__Algorithm = 6
-	QCryptographicHash__Algorithm__Keccak_224   QCryptographicHash__Algorithm = 7
-	QCryptographicHash__Algorithm__Keccak_256   QCryptographicHash__Algorithm = 8
-	QCryptographicHash__Algorithm__Keccak_384   QCryptographicHash__Algorithm = 9
-	QCryptographicHash__Algorithm__Keccak_512   QCryptographicHash__Algorithm = 10
-	QCryptographicHash__Algorithm__RealSha3_224 QCryptographicHash__Algorithm = 11
-	QCryptographicHash__Algorithm__RealSha3_256 QCryptographicHash__Algorithm = 12
-	QCryptographicHash__Algorithm__RealSha3_384 QCryptographicHash__Algorithm = 13
-	QCryptographicHash__Algorithm__RealSha3_512 QCryptographicHash__Algorithm = 14
-	QCryptographicHash__Algorithm__Sha3_224     QCryptographicHash__Algorithm = 11
-	QCryptographicHash__Algorithm__Sha3_256     QCryptographicHash__Algorithm = 12
-	QCryptographicHash__Algorithm__Sha3_384     QCryptographicHash__Algorithm = 13
-	QCryptographicHash__Algorithm__Sha3_512     QCryptographicHash__Algorithm = 14
+	QCryptographicHash__Md4          QCryptographicHash__Algorithm = 0
+	QCryptographicHash__Md5          QCryptographicHash__Algorithm = 1
+	QCryptographicHash__Sha1         QCryptographicHash__Algorithm = 2
+	QCryptographicHash__Sha224       QCryptographicHash__Algorithm = 3
+	QCryptographicHash__Sha256       QCryptographicHash__Algorithm = 4
+	QCryptographicHash__Sha384       QCryptographicHash__Algorithm = 5
+	QCryptographicHash__Sha512       QCryptographicHash__Algorithm = 6
+	QCryptographicHash__Keccak_224   QCryptographicHash__Algorithm = 7
+	QCryptographicHash__Keccak_256   QCryptographicHash__Algorithm = 8
+	QCryptographicHash__Keccak_384   QCryptographicHash__Algorithm = 9
+	QCryptographicHash__Keccak_512   QCryptographicHash__Algorithm = 10
+	QCryptographicHash__RealSha3_224 QCryptographicHash__Algorithm = 11
+	QCryptographicHash__RealSha3_256 QCryptographicHash__Algorithm = 12
+	QCryptographicHash__RealSha3_384 QCryptographicHash__Algorithm = 13
+	QCryptographicHash__RealSha3_512 QCryptographicHash__Algorithm = 14
+	QCryptographicHash__Sha3_224     QCryptographicHash__Algorithm = 11
+	QCryptographicHash__Sha3_256     QCryptographicHash__Algorithm = 12
+	QCryptographicHash__Sha3_384     QCryptographicHash__Algorithm = 13
+	QCryptographicHash__Sha3_512     QCryptographicHash__Algorithm = 14
 )
 
 type QCryptographicHash struct {

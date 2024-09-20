@@ -16,22 +16,22 @@ import (
 type QSharedMemory__AccessMode int
 
 const (
-	QSharedMemory__AccessMode__ReadOnly  QSharedMemory__AccessMode = 0
-	QSharedMemory__AccessMode__ReadWrite QSharedMemory__AccessMode = 1
+	QSharedMemory__ReadOnly  QSharedMemory__AccessMode = 0
+	QSharedMemory__ReadWrite QSharedMemory__AccessMode = 1
 )
 
 type QSharedMemory__SharedMemoryError int
 
 const (
-	QSharedMemory__SharedMemoryError__NoError          QSharedMemory__SharedMemoryError = 0
-	QSharedMemory__SharedMemoryError__PermissionDenied QSharedMemory__SharedMemoryError = 1
-	QSharedMemory__SharedMemoryError__InvalidSize      QSharedMemory__SharedMemoryError = 2
-	QSharedMemory__SharedMemoryError__KeyError         QSharedMemory__SharedMemoryError = 3
-	QSharedMemory__SharedMemoryError__AlreadyExists    QSharedMemory__SharedMemoryError = 4
-	QSharedMemory__SharedMemoryError__NotFound         QSharedMemory__SharedMemoryError = 5
-	QSharedMemory__SharedMemoryError__LockError        QSharedMemory__SharedMemoryError = 6
-	QSharedMemory__SharedMemoryError__OutOfResources   QSharedMemory__SharedMemoryError = 7
-	QSharedMemory__SharedMemoryError__UnknownError     QSharedMemory__SharedMemoryError = 8
+	QSharedMemory__NoError          QSharedMemory__SharedMemoryError = 0
+	QSharedMemory__PermissionDenied QSharedMemory__SharedMemoryError = 1
+	QSharedMemory__InvalidSize      QSharedMemory__SharedMemoryError = 2
+	QSharedMemory__KeyError         QSharedMemory__SharedMemoryError = 3
+	QSharedMemory__AlreadyExists    QSharedMemory__SharedMemoryError = 4
+	QSharedMemory__NotFound         QSharedMemory__SharedMemoryError = 5
+	QSharedMemory__LockError        QSharedMemory__SharedMemoryError = 6
+	QSharedMemory__OutOfResources   QSharedMemory__SharedMemoryError = 7
+	QSharedMemory__UnknownError     QSharedMemory__SharedMemoryError = 8
 )
 
 type QSharedMemory struct {

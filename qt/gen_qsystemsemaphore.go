@@ -16,20 +16,20 @@ import (
 type QSystemSemaphore__AccessMode int
 
 const (
-	QSystemSemaphore__AccessMode__Open   QSystemSemaphore__AccessMode = 0
-	QSystemSemaphore__AccessMode__Create QSystemSemaphore__AccessMode = 1
+	QSystemSemaphore__Open   QSystemSemaphore__AccessMode = 0
+	QSystemSemaphore__Create QSystemSemaphore__AccessMode = 1
 )
 
 type QSystemSemaphore__SystemSemaphoreError int
 
 const (
-	QSystemSemaphore__SystemSemaphoreError__NoError          QSystemSemaphore__SystemSemaphoreError = 0
-	QSystemSemaphore__SystemSemaphoreError__PermissionDenied QSystemSemaphore__SystemSemaphoreError = 1
-	QSystemSemaphore__SystemSemaphoreError__KeyError         QSystemSemaphore__SystemSemaphoreError = 2
-	QSystemSemaphore__SystemSemaphoreError__AlreadyExists    QSystemSemaphore__SystemSemaphoreError = 3
-	QSystemSemaphore__SystemSemaphoreError__NotFound         QSystemSemaphore__SystemSemaphoreError = 4
-	QSystemSemaphore__SystemSemaphoreError__OutOfResources   QSystemSemaphore__SystemSemaphoreError = 5
-	QSystemSemaphore__SystemSemaphoreError__UnknownError     QSystemSemaphore__SystemSemaphoreError = 6
+	QSystemSemaphore__NoError          QSystemSemaphore__SystemSemaphoreError = 0
+	QSystemSemaphore__PermissionDenied QSystemSemaphore__SystemSemaphoreError = 1
+	QSystemSemaphore__KeyError         QSystemSemaphore__SystemSemaphoreError = 2
+	QSystemSemaphore__AlreadyExists    QSystemSemaphore__SystemSemaphoreError = 3
+	QSystemSemaphore__NotFound         QSystemSemaphore__SystemSemaphoreError = 4
+	QSystemSemaphore__OutOfResources   QSystemSemaphore__SystemSemaphoreError = 5
+	QSystemSemaphore__UnknownError     QSystemSemaphore__SystemSemaphoreError = 6
 )
 
 type QSystemSemaphore struct {

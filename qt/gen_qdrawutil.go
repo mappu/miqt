@@ -16,19 +16,19 @@ import (
 type QDrawBorderPixmap__DrawingHint int
 
 const (
-	QDrawBorderPixmap__DrawingHint__OpaqueTopLeft     QDrawBorderPixmap__DrawingHint = 1
-	QDrawBorderPixmap__DrawingHint__OpaqueTop         QDrawBorderPixmap__DrawingHint = 2
-	QDrawBorderPixmap__DrawingHint__OpaqueTopRight    QDrawBorderPixmap__DrawingHint = 4
-	QDrawBorderPixmap__DrawingHint__OpaqueLeft        QDrawBorderPixmap__DrawingHint = 8
-	QDrawBorderPixmap__DrawingHint__OpaqueCenter      QDrawBorderPixmap__DrawingHint = 16
-	QDrawBorderPixmap__DrawingHint__OpaqueRight       QDrawBorderPixmap__DrawingHint = 32
-	QDrawBorderPixmap__DrawingHint__OpaqueBottomLeft  QDrawBorderPixmap__DrawingHint = 64
-	QDrawBorderPixmap__DrawingHint__OpaqueBottom      QDrawBorderPixmap__DrawingHint = 128
-	QDrawBorderPixmap__DrawingHint__OpaqueBottomRight QDrawBorderPixmap__DrawingHint = 256
-	QDrawBorderPixmap__DrawingHint__OpaqueCorners     QDrawBorderPixmap__DrawingHint = 325
-	QDrawBorderPixmap__DrawingHint__OpaqueEdges       QDrawBorderPixmap__DrawingHint = 170
-	QDrawBorderPixmap__DrawingHint__OpaqueFrame       QDrawBorderPixmap__DrawingHint = 495
-	QDrawBorderPixmap__DrawingHint__OpaqueAll         QDrawBorderPixmap__DrawingHint = 511
+	QDrawBorderPixmap__OpaqueTopLeft     QDrawBorderPixmap__DrawingHint = 1
+	QDrawBorderPixmap__OpaqueTop         QDrawBorderPixmap__DrawingHint = 2
+	QDrawBorderPixmap__OpaqueTopRight    QDrawBorderPixmap__DrawingHint = 4
+	QDrawBorderPixmap__OpaqueLeft        QDrawBorderPixmap__DrawingHint = 8
+	QDrawBorderPixmap__OpaqueCenter      QDrawBorderPixmap__DrawingHint = 16
+	QDrawBorderPixmap__OpaqueRight       QDrawBorderPixmap__DrawingHint = 32
+	QDrawBorderPixmap__OpaqueBottomLeft  QDrawBorderPixmap__DrawingHint = 64
+	QDrawBorderPixmap__OpaqueBottom      QDrawBorderPixmap__DrawingHint = 128
+	QDrawBorderPixmap__OpaqueBottomRight QDrawBorderPixmap__DrawingHint = 256
+	QDrawBorderPixmap__OpaqueCorners     QDrawBorderPixmap__DrawingHint = 325
+	QDrawBorderPixmap__OpaqueEdges       QDrawBorderPixmap__DrawingHint = 170
+	QDrawBorderPixmap__OpaqueFrame       QDrawBorderPixmap__DrawingHint = 495
+	QDrawBorderPixmap__OpaqueAll         QDrawBorderPixmap__DrawingHint = 511
 )
 
 type QTileRules struct {

@@ -16,9 +16,9 @@ import (
 type QDirIterator__IteratorFlag int
 
 const (
-	QDirIterator__IteratorFlag__NoIteratorFlags QDirIterator__IteratorFlag = 0
-	QDirIterator__IteratorFlag__FollowSymlinks  QDirIterator__IteratorFlag = 1
-	QDirIterator__IteratorFlag__Subdirectories  QDirIterator__IteratorFlag = 2
+	QDirIterator__NoIteratorFlags QDirIterator__IteratorFlag = 0
+	QDirIterator__FollowSymlinks  QDirIterator__IteratorFlag = 1
+	QDirIterator__Subdirectories  QDirIterator__IteratorFlag = 2
 )
 
 type QDirIterator struct {

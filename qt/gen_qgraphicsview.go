@@ -17,43 +17,43 @@ import (
 type QGraphicsView__ViewportAnchor int
 
 const (
-	QGraphicsView__ViewportAnchor__NoAnchor         QGraphicsView__ViewportAnchor = 0
-	QGraphicsView__ViewportAnchor__AnchorViewCenter QGraphicsView__ViewportAnchor = 1
-	QGraphicsView__ViewportAnchor__AnchorUnderMouse QGraphicsView__ViewportAnchor = 2
+	QGraphicsView__NoAnchor         QGraphicsView__ViewportAnchor = 0
+	QGraphicsView__AnchorViewCenter QGraphicsView__ViewportAnchor = 1
+	QGraphicsView__AnchorUnderMouse QGraphicsView__ViewportAnchor = 2
 )
 
 type QGraphicsView__CacheModeFlag int
 
 const (
-	QGraphicsView__CacheModeFlag__CacheNone       QGraphicsView__CacheModeFlag = 0
-	QGraphicsView__CacheModeFlag__CacheBackground QGraphicsView__CacheModeFlag = 1
+	QGraphicsView__CacheNone       QGraphicsView__CacheModeFlag = 0
+	QGraphicsView__CacheBackground QGraphicsView__CacheModeFlag = 1
 )
 
 type QGraphicsView__DragMode int
 
 const (
-	QGraphicsView__DragMode__NoDrag         QGraphicsView__DragMode = 0
-	QGraphicsView__DragMode__ScrollHandDrag QGraphicsView__DragMode = 1
-	QGraphicsView__DragMode__RubberBandDrag QGraphicsView__DragMode = 2
+	QGraphicsView__NoDrag         QGraphicsView__DragMode = 0
+	QGraphicsView__ScrollHandDrag QGraphicsView__DragMode = 1
+	QGraphicsView__RubberBandDrag QGraphicsView__DragMode = 2
 )
 
 type QGraphicsView__ViewportUpdateMode int
 
 const (
-	QGraphicsView__ViewportUpdateMode__FullViewportUpdate         QGraphicsView__ViewportUpdateMode = 0
-	QGraphicsView__ViewportUpdateMode__MinimalViewportUpdate      QGraphicsView__ViewportUpdateMode = 1
-	QGraphicsView__ViewportUpdateMode__SmartViewportUpdate        QGraphicsView__ViewportUpdateMode = 2
-	QGraphicsView__ViewportUpdateMode__NoViewportUpdate           QGraphicsView__ViewportUpdateMode = 3
-	QGraphicsView__ViewportUpdateMode__BoundingRectViewportUpdate QGraphicsView__ViewportUpdateMode = 4
+	QGraphicsView__FullViewportUpdate         QGraphicsView__ViewportUpdateMode = 0
+	QGraphicsView__MinimalViewportUpdate      QGraphicsView__ViewportUpdateMode = 1
+	QGraphicsView__SmartViewportUpdate        QGraphicsView__ViewportUpdateMode = 2
+	QGraphicsView__NoViewportUpdate           QGraphicsView__ViewportUpdateMode = 3
+	QGraphicsView__BoundingRectViewportUpdate QGraphicsView__ViewportUpdateMode = 4
 )
 
 type QGraphicsView__OptimizationFlag int
 
 const (
-	QGraphicsView__OptimizationFlag__DontClipPainter           QGraphicsView__OptimizationFlag = 1
-	QGraphicsView__OptimizationFlag__DontSavePainterState      QGraphicsView__OptimizationFlag = 2
-	QGraphicsView__OptimizationFlag__DontAdjustForAntialiasing QGraphicsView__OptimizationFlag = 4
-	QGraphicsView__OptimizationFlag__IndirectPainting          QGraphicsView__OptimizationFlag = 8
+	QGraphicsView__DontClipPainter           QGraphicsView__OptimizationFlag = 1
+	QGraphicsView__DontSavePainterState      QGraphicsView__OptimizationFlag = 2
+	QGraphicsView__DontAdjustForAntialiasing QGraphicsView__OptimizationFlag = 4
+	QGraphicsView__IndirectPainting          QGraphicsView__OptimizationFlag = 8
 )
 
 type QGraphicsView struct {

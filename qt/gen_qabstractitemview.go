@@ -17,57 +17,57 @@ import (
 type QAbstractItemView__SelectionMode int
 
 const (
-	QAbstractItemView__SelectionMode__NoSelection         QAbstractItemView__SelectionMode = 0
-	QAbstractItemView__SelectionMode__SingleSelection     QAbstractItemView__SelectionMode = 1
-	QAbstractItemView__SelectionMode__MultiSelection      QAbstractItemView__SelectionMode = 2
-	QAbstractItemView__SelectionMode__ExtendedSelection   QAbstractItemView__SelectionMode = 3
-	QAbstractItemView__SelectionMode__ContiguousSelection QAbstractItemView__SelectionMode = 4
+	QAbstractItemView__NoSelection         QAbstractItemView__SelectionMode = 0
+	QAbstractItemView__SingleSelection     QAbstractItemView__SelectionMode = 1
+	QAbstractItemView__MultiSelection      QAbstractItemView__SelectionMode = 2
+	QAbstractItemView__ExtendedSelection   QAbstractItemView__SelectionMode = 3
+	QAbstractItemView__ContiguousSelection QAbstractItemView__SelectionMode = 4
 )
 
 type QAbstractItemView__SelectionBehavior int
 
 const (
-	QAbstractItemView__SelectionBehavior__SelectItems   QAbstractItemView__SelectionBehavior = 0
-	QAbstractItemView__SelectionBehavior__SelectRows    QAbstractItemView__SelectionBehavior = 1
-	QAbstractItemView__SelectionBehavior__SelectColumns QAbstractItemView__SelectionBehavior = 2
+	QAbstractItemView__SelectItems   QAbstractItemView__SelectionBehavior = 0
+	QAbstractItemView__SelectRows    QAbstractItemView__SelectionBehavior = 1
+	QAbstractItemView__SelectColumns QAbstractItemView__SelectionBehavior = 2
 )
 
 type QAbstractItemView__ScrollHint int
 
 const (
-	QAbstractItemView__ScrollHint__EnsureVisible    QAbstractItemView__ScrollHint = 0
-	QAbstractItemView__ScrollHint__PositionAtTop    QAbstractItemView__ScrollHint = 1
-	QAbstractItemView__ScrollHint__PositionAtBottom QAbstractItemView__ScrollHint = 2
-	QAbstractItemView__ScrollHint__PositionAtCenter QAbstractItemView__ScrollHint = 3
+	QAbstractItemView__EnsureVisible    QAbstractItemView__ScrollHint = 0
+	QAbstractItemView__PositionAtTop    QAbstractItemView__ScrollHint = 1
+	QAbstractItemView__PositionAtBottom QAbstractItemView__ScrollHint = 2
+	QAbstractItemView__PositionAtCenter QAbstractItemView__ScrollHint = 3
 )
 
 type QAbstractItemView__EditTrigger int
 
 const (
-	QAbstractItemView__EditTrigger__NoEditTriggers  QAbstractItemView__EditTrigger = 0
-	QAbstractItemView__EditTrigger__CurrentChanged  QAbstractItemView__EditTrigger = 1
-	QAbstractItemView__EditTrigger__DoubleClicked   QAbstractItemView__EditTrigger = 2
-	QAbstractItemView__EditTrigger__SelectedClicked QAbstractItemView__EditTrigger = 4
-	QAbstractItemView__EditTrigger__EditKeyPressed  QAbstractItemView__EditTrigger = 8
-	QAbstractItemView__EditTrigger__AnyKeyPressed   QAbstractItemView__EditTrigger = 16
-	QAbstractItemView__EditTrigger__AllEditTriggers QAbstractItemView__EditTrigger = 31
+	QAbstractItemView__NoEditTriggers  QAbstractItemView__EditTrigger = 0
+	QAbstractItemView__CurrentChanged  QAbstractItemView__EditTrigger = 1
+	QAbstractItemView__DoubleClicked   QAbstractItemView__EditTrigger = 2
+	QAbstractItemView__SelectedClicked QAbstractItemView__EditTrigger = 4
+	QAbstractItemView__EditKeyPressed  QAbstractItemView__EditTrigger = 8
+	QAbstractItemView__AnyKeyPressed   QAbstractItemView__EditTrigger = 16
+	QAbstractItemView__AllEditTriggers QAbstractItemView__EditTrigger = 31
 )
 
 type QAbstractItemView__ScrollMode int
 
 const (
-	QAbstractItemView__ScrollMode__ScrollPerItem  QAbstractItemView__ScrollMode = 0
-	QAbstractItemView__ScrollMode__ScrollPerPixel QAbstractItemView__ScrollMode = 1
+	QAbstractItemView__ScrollPerItem  QAbstractItemView__ScrollMode = 0
+	QAbstractItemView__ScrollPerPixel QAbstractItemView__ScrollMode = 1
 )
 
 type QAbstractItemView__DragDropMode int
 
 const (
-	QAbstractItemView__DragDropMode__NoDragDrop   QAbstractItemView__DragDropMode = 0
-	QAbstractItemView__DragDropMode__DragOnly     QAbstractItemView__DragDropMode = 1
-	QAbstractItemView__DragDropMode__DropOnly     QAbstractItemView__DragDropMode = 2
-	QAbstractItemView__DragDropMode__DragDrop     QAbstractItemView__DragDropMode = 3
-	QAbstractItemView__DragDropMode__InternalMove QAbstractItemView__DragDropMode = 4
+	QAbstractItemView__NoDragDrop   QAbstractItemView__DragDropMode = 0
+	QAbstractItemView__DragOnly     QAbstractItemView__DragDropMode = 1
+	QAbstractItemView__DropOnly     QAbstractItemView__DragDropMode = 2
+	QAbstractItemView__DragDrop     QAbstractItemView__DragDropMode = 3
+	QAbstractItemView__InternalMove QAbstractItemView__DragDropMode = 4
 )
 
 type QAbstractItemView struct {

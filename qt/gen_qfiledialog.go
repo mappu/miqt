@@ -17,48 +17,48 @@ import (
 type QFileDialog__ViewMode int
 
 const (
-	QFileDialog__ViewMode__Detail QFileDialog__ViewMode = 0
-	QFileDialog__ViewMode__List   QFileDialog__ViewMode = 1
+	QFileDialog__Detail QFileDialog__ViewMode = 0
+	QFileDialog__List   QFileDialog__ViewMode = 1
 )
 
 type QFileDialog__FileMode int
 
 const (
-	QFileDialog__FileMode__AnyFile       QFileDialog__FileMode = 0
-	QFileDialog__FileMode__ExistingFile  QFileDialog__FileMode = 1
-	QFileDialog__FileMode__Directory     QFileDialog__FileMode = 2
-	QFileDialog__FileMode__ExistingFiles QFileDialog__FileMode = 3
-	QFileDialog__FileMode__DirectoryOnly QFileDialog__FileMode = 4
+	QFileDialog__AnyFile       QFileDialog__FileMode = 0
+	QFileDialog__ExistingFile  QFileDialog__FileMode = 1
+	QFileDialog__Directory     QFileDialog__FileMode = 2
+	QFileDialog__ExistingFiles QFileDialog__FileMode = 3
+	QFileDialog__DirectoryOnly QFileDialog__FileMode = 4
 )
 
 type QFileDialog__AcceptMode int
 
 const (
-	QFileDialog__AcceptMode__AcceptOpen QFileDialog__AcceptMode = 0
-	QFileDialog__AcceptMode__AcceptSave QFileDialog__AcceptMode = 1
+	QFileDialog__AcceptOpen QFileDialog__AcceptMode = 0
+	QFileDialog__AcceptSave QFileDialog__AcceptMode = 1
 )
 
 type QFileDialog__DialogLabel int
 
 const (
-	QFileDialog__DialogLabel__LookIn   QFileDialog__DialogLabel = 0
-	QFileDialog__DialogLabel__FileName QFileDialog__DialogLabel = 1
-	QFileDialog__DialogLabel__FileType QFileDialog__DialogLabel = 2
-	QFileDialog__DialogLabel__Accept   QFileDialog__DialogLabel = 3
-	QFileDialog__DialogLabel__Reject   QFileDialog__DialogLabel = 4
+	QFileDialog__LookIn   QFileDialog__DialogLabel = 0
+	QFileDialog__FileName QFileDialog__DialogLabel = 1
+	QFileDialog__FileType QFileDialog__DialogLabel = 2
+	QFileDialog__Accept   QFileDialog__DialogLabel = 3
+	QFileDialog__Reject   QFileDialog__DialogLabel = 4
 )
 
 type QFileDialog__Option int
 
 const (
-	QFileDialog__Option__ShowDirsOnly                QFileDialog__Option = 1
-	QFileDialog__Option__DontResolveSymlinks         QFileDialog__Option = 2
-	QFileDialog__Option__DontConfirmOverwrite        QFileDialog__Option = 4
-	QFileDialog__Option__DontUseSheet                QFileDialog__Option = 8
-	QFileDialog__Option__DontUseNativeDialog         QFileDialog__Option = 16
-	QFileDialog__Option__ReadOnly                    QFileDialog__Option = 32
-	QFileDialog__Option__HideNameFilterDetails       QFileDialog__Option = 64
-	QFileDialog__Option__DontUseCustomDirectoryIcons QFileDialog__Option = 128
+	QFileDialog__ShowDirsOnly                QFileDialog__Option = 1
+	QFileDialog__DontResolveSymlinks         QFileDialog__Option = 2
+	QFileDialog__DontConfirmOverwrite        QFileDialog__Option = 4
+	QFileDialog__DontUseSheet                QFileDialog__Option = 8
+	QFileDialog__DontUseNativeDialog         QFileDialog__Option = 16
+	QFileDialog__ReadOnly                    QFileDialog__Option = 32
+	QFileDialog__HideNameFilterDetails       QFileDialog__Option = 64
+	QFileDialog__DontUseCustomDirectoryIcons QFileDialog__Option = 128
 )
 
 type QFileDialog struct {

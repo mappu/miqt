@@ -16,9 +16,9 @@ import (
 type QResource__Compression int
 
 const (
-	QResource__Compression__NoCompression   QResource__Compression = 0
-	QResource__Compression__ZlibCompression QResource__Compression = 1
-	QResource__Compression__ZstdCompression QResource__Compression = 2
+	QResource__NoCompression   QResource__Compression = 0
+	QResource__ZlibCompression QResource__Compression = 1
+	QResource__ZstdCompression QResource__Compression = 2
 )
 
 type QResource struct {

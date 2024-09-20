@@ -16,61 +16,61 @@ import (
 type QWheelEvent__ int
 
 const (
-	QWheelEvent____DefaultDeltasPerStep QWheelEvent__ = 120
+	QWheelEvent__DefaultDeltasPerStep QWheelEvent__ = 120
 )
 
 type QTabletEvent__TabletDevice int
 
 const (
-	QTabletEvent__TabletDevice__NoDevice       QTabletEvent__TabletDevice = 0
-	QTabletEvent__TabletDevice__Puck           QTabletEvent__TabletDevice = 1
-	QTabletEvent__TabletDevice__Stylus         QTabletEvent__TabletDevice = 2
-	QTabletEvent__TabletDevice__Airbrush       QTabletEvent__TabletDevice = 3
-	QTabletEvent__TabletDevice__FourDMouse     QTabletEvent__TabletDevice = 4
-	QTabletEvent__TabletDevice__XFreeEraser    QTabletEvent__TabletDevice = 5
-	QTabletEvent__TabletDevice__RotationStylus QTabletEvent__TabletDevice = 6
+	QTabletEvent__NoDevice       QTabletEvent__TabletDevice = 0
+	QTabletEvent__Puck           QTabletEvent__TabletDevice = 1
+	QTabletEvent__Stylus         QTabletEvent__TabletDevice = 2
+	QTabletEvent__Airbrush       QTabletEvent__TabletDevice = 3
+	QTabletEvent__FourDMouse     QTabletEvent__TabletDevice = 4
+	QTabletEvent__XFreeEraser    QTabletEvent__TabletDevice = 5
+	QTabletEvent__RotationStylus QTabletEvent__TabletDevice = 6
 )
 
 type QTabletEvent__PointerType int
 
 const (
-	QTabletEvent__PointerType__UnknownPointer QTabletEvent__PointerType = 0
-	QTabletEvent__PointerType__Pen            QTabletEvent__PointerType = 1
-	QTabletEvent__PointerType__Cursor         QTabletEvent__PointerType = 2
-	QTabletEvent__PointerType__Eraser         QTabletEvent__PointerType = 3
+	QTabletEvent__UnknownPointer QTabletEvent__PointerType = 0
+	QTabletEvent__Pen            QTabletEvent__PointerType = 1
+	QTabletEvent__Cursor         QTabletEvent__PointerType = 2
+	QTabletEvent__Eraser         QTabletEvent__PointerType = 3
 )
 
 type QPlatformSurfaceEvent__SurfaceEventType int
 
 const (
-	QPlatformSurfaceEvent__SurfaceEventType__SurfaceCreated            QPlatformSurfaceEvent__SurfaceEventType = 0
-	QPlatformSurfaceEvent__SurfaceEventType__SurfaceAboutToBeDestroyed QPlatformSurfaceEvent__SurfaceEventType = 1
+	QPlatformSurfaceEvent__SurfaceCreated            QPlatformSurfaceEvent__SurfaceEventType = 0
+	QPlatformSurfaceEvent__SurfaceAboutToBeDestroyed QPlatformSurfaceEvent__SurfaceEventType = 1
 )
 
 type QContextMenuEvent__Reason int
 
 const (
-	QContextMenuEvent__Reason__Mouse    QContextMenuEvent__Reason = 0
-	QContextMenuEvent__Reason__Keyboard QContextMenuEvent__Reason = 1
-	QContextMenuEvent__Reason__Other    QContextMenuEvent__Reason = 2
+	QContextMenuEvent__Mouse    QContextMenuEvent__Reason = 0
+	QContextMenuEvent__Keyboard QContextMenuEvent__Reason = 1
+	QContextMenuEvent__Other    QContextMenuEvent__Reason = 2
 )
 
 type QInputMethodEvent__AttributeType int
 
 const (
-	QInputMethodEvent__AttributeType__TextFormat QInputMethodEvent__AttributeType = 0
-	QInputMethodEvent__AttributeType__Cursor     QInputMethodEvent__AttributeType = 1
-	QInputMethodEvent__AttributeType__Language   QInputMethodEvent__AttributeType = 2
-	QInputMethodEvent__AttributeType__Ruby       QInputMethodEvent__AttributeType = 3
-	QInputMethodEvent__AttributeType__Selection  QInputMethodEvent__AttributeType = 4
+	QInputMethodEvent__TextFormat QInputMethodEvent__AttributeType = 0
+	QInputMethodEvent__Cursor     QInputMethodEvent__AttributeType = 1
+	QInputMethodEvent__Language   QInputMethodEvent__AttributeType = 2
+	QInputMethodEvent__Ruby       QInputMethodEvent__AttributeType = 3
+	QInputMethodEvent__Selection  QInputMethodEvent__AttributeType = 4
 )
 
 type QScrollEvent__ScrollState int
 
 const (
-	QScrollEvent__ScrollState__ScrollStarted  QScrollEvent__ScrollState = 0
-	QScrollEvent__ScrollState__ScrollUpdated  QScrollEvent__ScrollState = 1
-	QScrollEvent__ScrollState__ScrollFinished QScrollEvent__ScrollState = 2
+	QScrollEvent__ScrollStarted  QScrollEvent__ScrollState = 0
+	QScrollEvent__ScrollUpdated  QScrollEvent__ScrollState = 1
+	QScrollEvent__ScrollFinished QScrollEvent__ScrollState = 2
 )
 
 type QInputEvent struct {

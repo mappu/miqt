@@ -16,26 +16,26 @@ import (
 type QTreeWidgetItemIterator__IteratorFlag int
 
 const (
-	QTreeWidgetItemIterator__IteratorFlag__All           QTreeWidgetItemIterator__IteratorFlag = 0
-	QTreeWidgetItemIterator__IteratorFlag__Hidden        QTreeWidgetItemIterator__IteratorFlag = 1
-	QTreeWidgetItemIterator__IteratorFlag__NotHidden     QTreeWidgetItemIterator__IteratorFlag = 2
-	QTreeWidgetItemIterator__IteratorFlag__Selected      QTreeWidgetItemIterator__IteratorFlag = 4
-	QTreeWidgetItemIterator__IteratorFlag__Unselected    QTreeWidgetItemIterator__IteratorFlag = 8
-	QTreeWidgetItemIterator__IteratorFlag__Selectable    QTreeWidgetItemIterator__IteratorFlag = 16
-	QTreeWidgetItemIterator__IteratorFlag__NotSelectable QTreeWidgetItemIterator__IteratorFlag = 32
-	QTreeWidgetItemIterator__IteratorFlag__DragEnabled   QTreeWidgetItemIterator__IteratorFlag = 64
-	QTreeWidgetItemIterator__IteratorFlag__DragDisabled  QTreeWidgetItemIterator__IteratorFlag = 128
-	QTreeWidgetItemIterator__IteratorFlag__DropEnabled   QTreeWidgetItemIterator__IteratorFlag = 256
-	QTreeWidgetItemIterator__IteratorFlag__DropDisabled  QTreeWidgetItemIterator__IteratorFlag = 512
-	QTreeWidgetItemIterator__IteratorFlag__HasChildren   QTreeWidgetItemIterator__IteratorFlag = 1024
-	QTreeWidgetItemIterator__IteratorFlag__NoChildren    QTreeWidgetItemIterator__IteratorFlag = 2048
-	QTreeWidgetItemIterator__IteratorFlag__Checked       QTreeWidgetItemIterator__IteratorFlag = 4096
-	QTreeWidgetItemIterator__IteratorFlag__NotChecked    QTreeWidgetItemIterator__IteratorFlag = 8192
-	QTreeWidgetItemIterator__IteratorFlag__Enabled       QTreeWidgetItemIterator__IteratorFlag = 16384
-	QTreeWidgetItemIterator__IteratorFlag__Disabled      QTreeWidgetItemIterator__IteratorFlag = 32768
-	QTreeWidgetItemIterator__IteratorFlag__Editable      QTreeWidgetItemIterator__IteratorFlag = 65536
-	QTreeWidgetItemIterator__IteratorFlag__NotEditable   QTreeWidgetItemIterator__IteratorFlag = 131072
-	QTreeWidgetItemIterator__IteratorFlag__UserFlag      QTreeWidgetItemIterator__IteratorFlag = 16777216
+	QTreeWidgetItemIterator__All           QTreeWidgetItemIterator__IteratorFlag = 0
+	QTreeWidgetItemIterator__Hidden        QTreeWidgetItemIterator__IteratorFlag = 1
+	QTreeWidgetItemIterator__NotHidden     QTreeWidgetItemIterator__IteratorFlag = 2
+	QTreeWidgetItemIterator__Selected      QTreeWidgetItemIterator__IteratorFlag = 4
+	QTreeWidgetItemIterator__Unselected    QTreeWidgetItemIterator__IteratorFlag = 8
+	QTreeWidgetItemIterator__Selectable    QTreeWidgetItemIterator__IteratorFlag = 16
+	QTreeWidgetItemIterator__NotSelectable QTreeWidgetItemIterator__IteratorFlag = 32
+	QTreeWidgetItemIterator__DragEnabled   QTreeWidgetItemIterator__IteratorFlag = 64
+	QTreeWidgetItemIterator__DragDisabled  QTreeWidgetItemIterator__IteratorFlag = 128
+	QTreeWidgetItemIterator__DropEnabled   QTreeWidgetItemIterator__IteratorFlag = 256
+	QTreeWidgetItemIterator__DropDisabled  QTreeWidgetItemIterator__IteratorFlag = 512
+	QTreeWidgetItemIterator__HasChildren   QTreeWidgetItemIterator__IteratorFlag = 1024
+	QTreeWidgetItemIterator__NoChildren    QTreeWidgetItemIterator__IteratorFlag = 2048
+	QTreeWidgetItemIterator__Checked       QTreeWidgetItemIterator__IteratorFlag = 4096
+	QTreeWidgetItemIterator__NotChecked    QTreeWidgetItemIterator__IteratorFlag = 8192
+	QTreeWidgetItemIterator__Enabled       QTreeWidgetItemIterator__IteratorFlag = 16384
+	QTreeWidgetItemIterator__Disabled      QTreeWidgetItemIterator__IteratorFlag = 32768
+	QTreeWidgetItemIterator__Editable      QTreeWidgetItemIterator__IteratorFlag = 65536
+	QTreeWidgetItemIterator__NotEditable   QTreeWidgetItemIterator__IteratorFlag = 131072
+	QTreeWidgetItemIterator__UserFlag      QTreeWidgetItemIterator__IteratorFlag = 16777216
 )
 
 type QTreeWidgetItemIterator struct {

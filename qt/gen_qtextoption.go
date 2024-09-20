@@ -16,31 +16,31 @@ import (
 type QTextOption__TabType int
 
 const (
-	QTextOption__TabType__LeftTab      QTextOption__TabType = 0
-	QTextOption__TabType__RightTab     QTextOption__TabType = 1
-	QTextOption__TabType__CenterTab    QTextOption__TabType = 2
-	QTextOption__TabType__DelimiterTab QTextOption__TabType = 3
+	QTextOption__LeftTab      QTextOption__TabType = 0
+	QTextOption__RightTab     QTextOption__TabType = 1
+	QTextOption__CenterTab    QTextOption__TabType = 2
+	QTextOption__DelimiterTab QTextOption__TabType = 3
 )
 
 type QTextOption__WrapMode int
 
 const (
-	QTextOption__WrapMode__NoWrap                       QTextOption__WrapMode = 0
-	QTextOption__WrapMode__WordWrap                     QTextOption__WrapMode = 1
-	QTextOption__WrapMode__ManualWrap                   QTextOption__WrapMode = 2
-	QTextOption__WrapMode__WrapAnywhere                 QTextOption__WrapMode = 3
-	QTextOption__WrapMode__WrapAtWordBoundaryOrAnywhere QTextOption__WrapMode = 4
+	QTextOption__NoWrap                       QTextOption__WrapMode = 0
+	QTextOption__WordWrap                     QTextOption__WrapMode = 1
+	QTextOption__ManualWrap                   QTextOption__WrapMode = 2
+	QTextOption__WrapAnywhere                 QTextOption__WrapMode = 3
+	QTextOption__WrapAtWordBoundaryOrAnywhere QTextOption__WrapMode = 4
 )
 
 type QTextOption__Flag int
 
 const (
-	QTextOption__Flag__ShowTabsAndSpaces                     QTextOption__Flag = 1
-	QTextOption__Flag__ShowLineAndParagraphSeparators        QTextOption__Flag = 2
-	QTextOption__Flag__AddSpaceForLineAndParagraphSeparators QTextOption__Flag = 4
-	QTextOption__Flag__SuppressColors                        QTextOption__Flag = 8
-	QTextOption__Flag__ShowDocumentTerminator                QTextOption__Flag = 16
-	QTextOption__Flag__IncludeTrailingSpaces                 QTextOption__Flag = 2147483648
+	QTextOption__ShowTabsAndSpaces                     QTextOption__Flag = 1
+	QTextOption__ShowLineAndParagraphSeparators        QTextOption__Flag = 2
+	QTextOption__AddSpaceForLineAndParagraphSeparators QTextOption__Flag = 4
+	QTextOption__SuppressColors                        QTextOption__Flag = 8
+	QTextOption__ShowDocumentTerminator                QTextOption__Flag = 16
+	QTextOption__IncludeTrailingSpaces                 QTextOption__Flag = 2147483648
 )
 
 type QTextOption struct {

@@ -17,31 +17,31 @@ import (
 type QAbstractSpinBox__StepEnabledFlag int
 
 const (
-	QAbstractSpinBox__StepEnabledFlag__StepNone        QAbstractSpinBox__StepEnabledFlag = 0
-	QAbstractSpinBox__StepEnabledFlag__StepUpEnabled   QAbstractSpinBox__StepEnabledFlag = 1
-	QAbstractSpinBox__StepEnabledFlag__StepDownEnabled QAbstractSpinBox__StepEnabledFlag = 2
+	QAbstractSpinBox__StepNone        QAbstractSpinBox__StepEnabledFlag = 0
+	QAbstractSpinBox__StepUpEnabled   QAbstractSpinBox__StepEnabledFlag = 1
+	QAbstractSpinBox__StepDownEnabled QAbstractSpinBox__StepEnabledFlag = 2
 )
 
 type QAbstractSpinBox__ButtonSymbols int
 
 const (
-	QAbstractSpinBox__ButtonSymbols__UpDownArrows QAbstractSpinBox__ButtonSymbols = 0
-	QAbstractSpinBox__ButtonSymbols__PlusMinus    QAbstractSpinBox__ButtonSymbols = 1
-	QAbstractSpinBox__ButtonSymbols__NoButtons    QAbstractSpinBox__ButtonSymbols = 2
+	QAbstractSpinBox__UpDownArrows QAbstractSpinBox__ButtonSymbols = 0
+	QAbstractSpinBox__PlusMinus    QAbstractSpinBox__ButtonSymbols = 1
+	QAbstractSpinBox__NoButtons    QAbstractSpinBox__ButtonSymbols = 2
 )
 
 type QAbstractSpinBox__CorrectionMode int
 
 const (
-	QAbstractSpinBox__CorrectionMode__CorrectToPreviousValue QAbstractSpinBox__CorrectionMode = 0
-	QAbstractSpinBox__CorrectionMode__CorrectToNearestValue  QAbstractSpinBox__CorrectionMode = 1
+	QAbstractSpinBox__CorrectToPreviousValue QAbstractSpinBox__CorrectionMode = 0
+	QAbstractSpinBox__CorrectToNearestValue  QAbstractSpinBox__CorrectionMode = 1
 )
 
 type QAbstractSpinBox__StepType int
 
 const (
-	QAbstractSpinBox__StepType__DefaultStepType         QAbstractSpinBox__StepType = 0
-	QAbstractSpinBox__StepType__AdaptiveDecimalStepType QAbstractSpinBox__StepType = 1
+	QAbstractSpinBox__DefaultStepType         QAbstractSpinBox__StepType = 0
+	QAbstractSpinBox__AdaptiveDecimalStepType QAbstractSpinBox__StepType = 1
 )
 
 type QAbstractSpinBox struct {

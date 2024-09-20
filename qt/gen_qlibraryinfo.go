@@ -16,21 +16,21 @@ import (
 type QLibraryInfo__LibraryLocation int
 
 const (
-	QLibraryInfo__LibraryLocation__PrefixPath             QLibraryInfo__LibraryLocation = 0
-	QLibraryInfo__LibraryLocation__DocumentationPath      QLibraryInfo__LibraryLocation = 1
-	QLibraryInfo__LibraryLocation__HeadersPath            QLibraryInfo__LibraryLocation = 2
-	QLibraryInfo__LibraryLocation__LibrariesPath          QLibraryInfo__LibraryLocation = 3
-	QLibraryInfo__LibraryLocation__LibraryExecutablesPath QLibraryInfo__LibraryLocation = 4
-	QLibraryInfo__LibraryLocation__BinariesPath           QLibraryInfo__LibraryLocation = 5
-	QLibraryInfo__LibraryLocation__PluginsPath            QLibraryInfo__LibraryLocation = 6
-	QLibraryInfo__LibraryLocation__ImportsPath            QLibraryInfo__LibraryLocation = 7
-	QLibraryInfo__LibraryLocation__Qml2ImportsPath        QLibraryInfo__LibraryLocation = 8
-	QLibraryInfo__LibraryLocation__ArchDataPath           QLibraryInfo__LibraryLocation = 9
-	QLibraryInfo__LibraryLocation__DataPath               QLibraryInfo__LibraryLocation = 10
-	QLibraryInfo__LibraryLocation__TranslationsPath       QLibraryInfo__LibraryLocation = 11
-	QLibraryInfo__LibraryLocation__ExamplesPath           QLibraryInfo__LibraryLocation = 12
-	QLibraryInfo__LibraryLocation__TestsPath              QLibraryInfo__LibraryLocation = 13
-	QLibraryInfo__LibraryLocation__SettingsPath           QLibraryInfo__LibraryLocation = 100
+	QLibraryInfo__PrefixPath             QLibraryInfo__LibraryLocation = 0
+	QLibraryInfo__DocumentationPath      QLibraryInfo__LibraryLocation = 1
+	QLibraryInfo__HeadersPath            QLibraryInfo__LibraryLocation = 2
+	QLibraryInfo__LibrariesPath          QLibraryInfo__LibraryLocation = 3
+	QLibraryInfo__LibraryExecutablesPath QLibraryInfo__LibraryLocation = 4
+	QLibraryInfo__BinariesPath           QLibraryInfo__LibraryLocation = 5
+	QLibraryInfo__PluginsPath            QLibraryInfo__LibraryLocation = 6
+	QLibraryInfo__ImportsPath            QLibraryInfo__LibraryLocation = 7
+	QLibraryInfo__Qml2ImportsPath        QLibraryInfo__LibraryLocation = 8
+	QLibraryInfo__ArchDataPath           QLibraryInfo__LibraryLocation = 9
+	QLibraryInfo__DataPath               QLibraryInfo__LibraryLocation = 10
+	QLibraryInfo__TranslationsPath       QLibraryInfo__LibraryLocation = 11
+	QLibraryInfo__ExamplesPath           QLibraryInfo__LibraryLocation = 12
+	QLibraryInfo__TestsPath              QLibraryInfo__LibraryLocation = 13
+	QLibraryInfo__SettingsPath           QLibraryInfo__LibraryLocation = 100
 )
 
 type QLibraryInfo struct {

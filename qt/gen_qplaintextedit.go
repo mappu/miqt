@@ -17,8 +17,8 @@ import (
 type QPlainTextEdit__LineWrapMode int
 
 const (
-	QPlainTextEdit__LineWrapMode__NoWrap      QPlainTextEdit__LineWrapMode = 0
-	QPlainTextEdit__LineWrapMode__WidgetWidth QPlainTextEdit__LineWrapMode = 1
+	QPlainTextEdit__NoWrap      QPlainTextEdit__LineWrapMode = 0
+	QPlainTextEdit__WidgetWidth QPlainTextEdit__LineWrapMode = 1
 )
 
 type QPlainTextEdit struct {

@@ -16,43 +16,43 @@ import (
 type QDir__Filter int
 
 const (
-	QDir__Filter__Dirs           QDir__Filter = 1
-	QDir__Filter__Files          QDir__Filter = 2
-	QDir__Filter__Drives         QDir__Filter = 4
-	QDir__Filter__NoSymLinks     QDir__Filter = 8
-	QDir__Filter__AllEntries     QDir__Filter = 7
-	QDir__Filter__TypeMask       QDir__Filter = 15
-	QDir__Filter__Readable       QDir__Filter = 16
-	QDir__Filter__Writable       QDir__Filter = 32
-	QDir__Filter__Executable     QDir__Filter = 64
-	QDir__Filter__PermissionMask QDir__Filter = 112
-	QDir__Filter__Modified       QDir__Filter = 128
-	QDir__Filter__Hidden         QDir__Filter = 256
-	QDir__Filter__System         QDir__Filter = 512
-	QDir__Filter__AccessMask     QDir__Filter = 1008
-	QDir__Filter__AllDirs        QDir__Filter = 1024
-	QDir__Filter__CaseSensitive  QDir__Filter = 2048
-	QDir__Filter__NoDot          QDir__Filter = 8192
-	QDir__Filter__NoDotDot       QDir__Filter = 16384
-	QDir__Filter__NoDotAndDotDot QDir__Filter = 24576
-	QDir__Filter__NoFilter       QDir__Filter = -1
+	QDir__Dirs           QDir__Filter = 1
+	QDir__Files          QDir__Filter = 2
+	QDir__Drives         QDir__Filter = 4
+	QDir__NoSymLinks     QDir__Filter = 8
+	QDir__AllEntries     QDir__Filter = 7
+	QDir__TypeMask       QDir__Filter = 15
+	QDir__Readable       QDir__Filter = 16
+	QDir__Writable       QDir__Filter = 32
+	QDir__Executable     QDir__Filter = 64
+	QDir__PermissionMask QDir__Filter = 112
+	QDir__Modified       QDir__Filter = 128
+	QDir__Hidden         QDir__Filter = 256
+	QDir__System         QDir__Filter = 512
+	QDir__AccessMask     QDir__Filter = 1008
+	QDir__AllDirs        QDir__Filter = 1024
+	QDir__CaseSensitive  QDir__Filter = 2048
+	QDir__NoDot          QDir__Filter = 8192
+	QDir__NoDotDot       QDir__Filter = 16384
+	QDir__NoDotAndDotDot QDir__Filter = 24576
+	QDir__NoFilter       QDir__Filter = -1
 )
 
 type QDir__SortFlag int
 
 const (
-	QDir__SortFlag__Name        QDir__SortFlag = 0
-	QDir__SortFlag__Time        QDir__SortFlag = 1
-	QDir__SortFlag__Size        QDir__SortFlag = 2
-	QDir__SortFlag__Unsorted    QDir__SortFlag = 3
-	QDir__SortFlag__SortByMask  QDir__SortFlag = 3
-	QDir__SortFlag__DirsFirst   QDir__SortFlag = 4
-	QDir__SortFlag__Reversed    QDir__SortFlag = 8
-	QDir__SortFlag__IgnoreCase  QDir__SortFlag = 16
-	QDir__SortFlag__DirsLast    QDir__SortFlag = 32
-	QDir__SortFlag__LocaleAware QDir__SortFlag = 64
-	QDir__SortFlag__Type        QDir__SortFlag = 128
-	QDir__SortFlag__NoSort      QDir__SortFlag = -1
+	QDir__Name        QDir__SortFlag = 0
+	QDir__Time        QDir__SortFlag = 1
+	QDir__Size        QDir__SortFlag = 2
+	QDir__Unsorted    QDir__SortFlag = 3
+	QDir__SortByMask  QDir__SortFlag = 3
+	QDir__DirsFirst   QDir__SortFlag = 4
+	QDir__Reversed    QDir__SortFlag = 8
+	QDir__IgnoreCase  QDir__SortFlag = 16
+	QDir__DirsLast    QDir__SortFlag = 32
+	QDir__LocaleAware QDir__SortFlag = 64
+	QDir__Type        QDir__SortFlag = 128
+	QDir__NoSort      QDir__SortFlag = -1
 )
 
 type QDir struct {

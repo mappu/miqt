@@ -17,16 +17,16 @@ import (
 type QMovie__MovieState int
 
 const (
-	QMovie__MovieState__NotRunning QMovie__MovieState = 0
-	QMovie__MovieState__Paused     QMovie__MovieState = 1
-	QMovie__MovieState__Running    QMovie__MovieState = 2
+	QMovie__NotRunning QMovie__MovieState = 0
+	QMovie__Paused     QMovie__MovieState = 1
+	QMovie__Running    QMovie__MovieState = 2
 )
 
 type QMovie__CacheMode int
 
 const (
-	QMovie__CacheMode__CacheNone QMovie__CacheMode = 0
-	QMovie__CacheMode__CacheAll  QMovie__CacheMode = 1
+	QMovie__CacheNone QMovie__CacheMode = 0
+	QMovie__CacheAll  QMovie__CacheMode = 1
 )
 
 type QMovie struct {

@@ -17,27 +17,27 @@ import (
 type QScroller__State int
 
 const (
-	QScroller__State__Inactive  QScroller__State = 0
-	QScroller__State__Pressed   QScroller__State = 1
-	QScroller__State__Dragging  QScroller__State = 2
-	QScroller__State__Scrolling QScroller__State = 3
+	QScroller__Inactive  QScroller__State = 0
+	QScroller__Pressed   QScroller__State = 1
+	QScroller__Dragging  QScroller__State = 2
+	QScroller__Scrolling QScroller__State = 3
 )
 
 type QScroller__ScrollerGestureType int
 
 const (
-	QScroller__ScrollerGestureType__TouchGesture             QScroller__ScrollerGestureType = 0
-	QScroller__ScrollerGestureType__LeftMouseButtonGesture   QScroller__ScrollerGestureType = 1
-	QScroller__ScrollerGestureType__RightMouseButtonGesture  QScroller__ScrollerGestureType = 2
-	QScroller__ScrollerGestureType__MiddleMouseButtonGesture QScroller__ScrollerGestureType = 3
+	QScroller__TouchGesture             QScroller__ScrollerGestureType = 0
+	QScroller__LeftMouseButtonGesture   QScroller__ScrollerGestureType = 1
+	QScroller__RightMouseButtonGesture  QScroller__ScrollerGestureType = 2
+	QScroller__MiddleMouseButtonGesture QScroller__ScrollerGestureType = 3
 )
 
 type QScroller__Input int
 
 const (
-	QScroller__Input__InputPress   QScroller__Input = 1
-	QScroller__Input__InputMove    QScroller__Input = 2
-	QScroller__Input__InputRelease QScroller__Input = 3
+	QScroller__InputPress   QScroller__Input = 1
+	QScroller__InputMove    QScroller__Input = 2
+	QScroller__InputRelease QScroller__Input = 3
 )
 
 type QScroller struct {

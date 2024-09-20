@@ -16,31 +16,31 @@ import (
 type QUuid__Variant int
 
 const (
-	QUuid__Variant__VarUnknown QUuid__Variant = -1
-	QUuid__Variant__NCS        QUuid__Variant = 0
-	QUuid__Variant__DCE        QUuid__Variant = 2
-	QUuid__Variant__Microsoft  QUuid__Variant = 6
-	QUuid__Variant__Reserved   QUuid__Variant = 7
+	QUuid__VarUnknown QUuid__Variant = -1
+	QUuid__NCS        QUuid__Variant = 0
+	QUuid__DCE        QUuid__Variant = 2
+	QUuid__Microsoft  QUuid__Variant = 6
+	QUuid__Reserved   QUuid__Variant = 7
 )
 
 type QUuid__Version int
 
 const (
-	QUuid__Version__VerUnknown    QUuid__Version = -1
-	QUuid__Version__Time          QUuid__Version = 1
-	QUuid__Version__EmbeddedPOSIX QUuid__Version = 2
-	QUuid__Version__Md5           QUuid__Version = 3
-	QUuid__Version__Name          QUuid__Version = 3
-	QUuid__Version__Random        QUuid__Version = 4
-	QUuid__Version__Sha1          QUuid__Version = 5
+	QUuid__VerUnknown    QUuid__Version = -1
+	QUuid__Time          QUuid__Version = 1
+	QUuid__EmbeddedPOSIX QUuid__Version = 2
+	QUuid__Md5           QUuid__Version = 3
+	QUuid__Name          QUuid__Version = 3
+	QUuid__Random        QUuid__Version = 4
+	QUuid__Sha1          QUuid__Version = 5
 )
 
 type QUuid__StringFormat int
 
 const (
-	QUuid__StringFormat__WithBraces    QUuid__StringFormat = 0
-	QUuid__StringFormat__WithoutBraces QUuid__StringFormat = 1
-	QUuid__StringFormat__Id128         QUuid__StringFormat = 3
+	QUuid__WithBraces    QUuid__StringFormat = 0
+	QUuid__WithoutBraces QUuid__StringFormat = 1
+	QUuid__Id128         QUuid__StringFormat = 3
 )
 
 type QUuid struct {

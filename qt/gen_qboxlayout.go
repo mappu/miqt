@@ -16,12 +16,12 @@ import (
 type QBoxLayout__Direction int
 
 const (
-	QBoxLayout__Direction__LeftToRight QBoxLayout__Direction = 0
-	QBoxLayout__Direction__RightToLeft QBoxLayout__Direction = 1
-	QBoxLayout__Direction__TopToBottom QBoxLayout__Direction = 2
-	QBoxLayout__Direction__BottomToTop QBoxLayout__Direction = 3
-	QBoxLayout__Direction__Down        QBoxLayout__Direction = 2
-	QBoxLayout__Direction__Up          QBoxLayout__Direction = 3
+	QBoxLayout__LeftToRight QBoxLayout__Direction = 0
+	QBoxLayout__RightToLeft QBoxLayout__Direction = 1
+	QBoxLayout__TopToBottom QBoxLayout__Direction = 2
+	QBoxLayout__BottomToTop QBoxLayout__Direction = 3
+	QBoxLayout__Down        QBoxLayout__Direction = 2
+	QBoxLayout__Up          QBoxLayout__Direction = 3
 )
 
 type QBoxLayout struct {

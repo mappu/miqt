@@ -17,7 +17,7 @@ import (
 type QObjectData__ int
 
 const (
-	QObjectData____CheckForParentChildLoopsWarnDepth QObjectData__ = 4096
+	QObjectData__CheckForParentChildLoopsWarnDepth QObjectData__ = 4096
 )
 
 type QObjectData struct {

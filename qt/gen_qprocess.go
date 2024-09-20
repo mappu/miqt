@@ -17,51 +17,51 @@ import (
 type QProcess__ProcessError int
 
 const (
-	QProcess__ProcessError__FailedToStart QProcess__ProcessError = 0
-	QProcess__ProcessError__Crashed       QProcess__ProcessError = 1
-	QProcess__ProcessError__Timedout      QProcess__ProcessError = 2
-	QProcess__ProcessError__ReadError     QProcess__ProcessError = 3
-	QProcess__ProcessError__WriteError    QProcess__ProcessError = 4
-	QProcess__ProcessError__UnknownError  QProcess__ProcessError = 5
+	QProcess__FailedToStart QProcess__ProcessError = 0
+	QProcess__Crashed       QProcess__ProcessError = 1
+	QProcess__Timedout      QProcess__ProcessError = 2
+	QProcess__ReadError     QProcess__ProcessError = 3
+	QProcess__WriteError    QProcess__ProcessError = 4
+	QProcess__UnknownError  QProcess__ProcessError = 5
 )
 
 type QProcess__ProcessState int
 
 const (
-	QProcess__ProcessState__NotRunning QProcess__ProcessState = 0
-	QProcess__ProcessState__Starting   QProcess__ProcessState = 1
-	QProcess__ProcessState__Running    QProcess__ProcessState = 2
+	QProcess__NotRunning QProcess__ProcessState = 0
+	QProcess__Starting   QProcess__ProcessState = 1
+	QProcess__Running    QProcess__ProcessState = 2
 )
 
 type QProcess__ProcessChannel int
 
 const (
-	QProcess__ProcessChannel__StandardOutput QProcess__ProcessChannel = 0
-	QProcess__ProcessChannel__StandardError  QProcess__ProcessChannel = 1
+	QProcess__StandardOutput QProcess__ProcessChannel = 0
+	QProcess__StandardError  QProcess__ProcessChannel = 1
 )
 
 type QProcess__ProcessChannelMode int
 
 const (
-	QProcess__ProcessChannelMode__SeparateChannels       QProcess__ProcessChannelMode = 0
-	QProcess__ProcessChannelMode__MergedChannels         QProcess__ProcessChannelMode = 1
-	QProcess__ProcessChannelMode__ForwardedChannels      QProcess__ProcessChannelMode = 2
-	QProcess__ProcessChannelMode__ForwardedOutputChannel QProcess__ProcessChannelMode = 3
-	QProcess__ProcessChannelMode__ForwardedErrorChannel  QProcess__ProcessChannelMode = 4
+	QProcess__SeparateChannels       QProcess__ProcessChannelMode = 0
+	QProcess__MergedChannels         QProcess__ProcessChannelMode = 1
+	QProcess__ForwardedChannels      QProcess__ProcessChannelMode = 2
+	QProcess__ForwardedOutputChannel QProcess__ProcessChannelMode = 3
+	QProcess__ForwardedErrorChannel  QProcess__ProcessChannelMode = 4
 )
 
 type QProcess__InputChannelMode int
 
 const (
-	QProcess__InputChannelMode__ManagedInputChannel   QProcess__InputChannelMode = 0
-	QProcess__InputChannelMode__ForwardedInputChannel QProcess__InputChannelMode = 1
+	QProcess__ManagedInputChannel   QProcess__InputChannelMode = 0
+	QProcess__ForwardedInputChannel QProcess__InputChannelMode = 1
 )
 
 type QProcess__ExitStatus int
 
 const (
-	QProcess__ExitStatus__NormalExit QProcess__ExitStatus = 0
-	QProcess__ExitStatus__CrashExit  QProcess__ExitStatus = 1
+	QProcess__NormalExit QProcess__ExitStatus = 0
+	QProcess__CrashExit  QProcess__ExitStatus = 1
 )
 
 type QProcessEnvironment struct {

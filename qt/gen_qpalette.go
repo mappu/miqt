@@ -16,42 +16,42 @@ import (
 type QPalette__ColorGroup int
 
 const (
-	QPalette__ColorGroup__Active       QPalette__ColorGroup = 0
-	QPalette__ColorGroup__Disabled     QPalette__ColorGroup = 1
-	QPalette__ColorGroup__Inactive     QPalette__ColorGroup = 2
-	QPalette__ColorGroup__NColorGroups QPalette__ColorGroup = 3
-	QPalette__ColorGroup__Current      QPalette__ColorGroup = 4
-	QPalette__ColorGroup__All          QPalette__ColorGroup = 5
-	QPalette__ColorGroup__Normal       QPalette__ColorGroup = 0
+	QPalette__Active       QPalette__ColorGroup = 0
+	QPalette__Disabled     QPalette__ColorGroup = 1
+	QPalette__Inactive     QPalette__ColorGroup = 2
+	QPalette__NColorGroups QPalette__ColorGroup = 3
+	QPalette__Current      QPalette__ColorGroup = 4
+	QPalette__All          QPalette__ColorGroup = 5
+	QPalette__Normal       QPalette__ColorGroup = 0
 )
 
 type QPalette__ColorRole int
 
 const (
-	QPalette__ColorRole__WindowText      QPalette__ColorRole = 0
-	QPalette__ColorRole__Button          QPalette__ColorRole = 1
-	QPalette__ColorRole__Light           QPalette__ColorRole = 2
-	QPalette__ColorRole__Midlight        QPalette__ColorRole = 3
-	QPalette__ColorRole__Dark            QPalette__ColorRole = 4
-	QPalette__ColorRole__Mid             QPalette__ColorRole = 5
-	QPalette__ColorRole__Text            QPalette__ColorRole = 6
-	QPalette__ColorRole__BrightText      QPalette__ColorRole = 7
-	QPalette__ColorRole__ButtonText      QPalette__ColorRole = 8
-	QPalette__ColorRole__Base            QPalette__ColorRole = 9
-	QPalette__ColorRole__Window          QPalette__ColorRole = 10
-	QPalette__ColorRole__Shadow          QPalette__ColorRole = 11
-	QPalette__ColorRole__Highlight       QPalette__ColorRole = 12
-	QPalette__ColorRole__HighlightedText QPalette__ColorRole = 13
-	QPalette__ColorRole__Link            QPalette__ColorRole = 14
-	QPalette__ColorRole__LinkVisited     QPalette__ColorRole = 15
-	QPalette__ColorRole__AlternateBase   QPalette__ColorRole = 16
-	QPalette__ColorRole__NoRole          QPalette__ColorRole = 17
-	QPalette__ColorRole__ToolTipBase     QPalette__ColorRole = 18
-	QPalette__ColorRole__ToolTipText     QPalette__ColorRole = 19
-	QPalette__ColorRole__PlaceholderText QPalette__ColorRole = 20
-	QPalette__ColorRole__NColorRoles     QPalette__ColorRole = 21
-	QPalette__ColorRole__Foreground      QPalette__ColorRole = 0
-	QPalette__ColorRole__Background      QPalette__ColorRole = 10
+	QPalette__WindowText      QPalette__ColorRole = 0
+	QPalette__Button          QPalette__ColorRole = 1
+	QPalette__Light           QPalette__ColorRole = 2
+	QPalette__Midlight        QPalette__ColorRole = 3
+	QPalette__Dark            QPalette__ColorRole = 4
+	QPalette__Mid             QPalette__ColorRole = 5
+	QPalette__Text            QPalette__ColorRole = 6
+	QPalette__BrightText      QPalette__ColorRole = 7
+	QPalette__ButtonText      QPalette__ColorRole = 8
+	QPalette__Base            QPalette__ColorRole = 9
+	QPalette__Window          QPalette__ColorRole = 10
+	QPalette__Shadow          QPalette__ColorRole = 11
+	QPalette__Highlight       QPalette__ColorRole = 12
+	QPalette__HighlightedText QPalette__ColorRole = 13
+	QPalette__Link            QPalette__ColorRole = 14
+	QPalette__LinkVisited     QPalette__ColorRole = 15
+	QPalette__AlternateBase   QPalette__ColorRole = 16
+	QPalette__NoRole          QPalette__ColorRole = 17
+	QPalette__ToolTipBase     QPalette__ColorRole = 18
+	QPalette__ToolTipText     QPalette__ColorRole = 19
+	QPalette__PlaceholderText QPalette__ColorRole = 20
+	QPalette__NColorRoles     QPalette__ColorRole = 21
+	QPalette__Foreground      QPalette__ColorRole = 0
+	QPalette__Background      QPalette__ColorRole = 10
 )
 
 type QPalette struct {

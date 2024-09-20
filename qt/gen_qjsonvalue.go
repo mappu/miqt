@@ -16,13 +16,13 @@ import (
 type QJsonValue__Type int
 
 const (
-	QJsonValue__Type__Null      QJsonValue__Type = 0
-	QJsonValue__Type__Bool      QJsonValue__Type = 1
-	QJsonValue__Type__Double    QJsonValue__Type = 2
-	QJsonValue__Type__String    QJsonValue__Type = 3
-	QJsonValue__Type__Array     QJsonValue__Type = 4
-	QJsonValue__Type__Object    QJsonValue__Type = 5
-	QJsonValue__Type__Undefined QJsonValue__Type = 128
+	QJsonValue__Null      QJsonValue__Type = 0
+	QJsonValue__Bool      QJsonValue__Type = 1
+	QJsonValue__Double    QJsonValue__Type = 2
+	QJsonValue__String    QJsonValue__Type = 3
+	QJsonValue__Array     QJsonValue__Type = 4
+	QJsonValue__Object    QJsonValue__Type = 5
+	QJsonValue__Undefined QJsonValue__Type = 128
 )
 
 type QJsonValue struct {

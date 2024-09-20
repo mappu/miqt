@@ -16,8 +16,8 @@ import (
 type QRegion__RegionType int
 
 const (
-	QRegion__RegionType__Rectangle QRegion__RegionType = 0
-	QRegion__RegionType__Ellipse   QRegion__RegionType = 1
+	QRegion__Rectangle QRegion__RegionType = 0
+	QRegion__Ellipse   QRegion__RegionType = 1
 )
 
 type QRegion struct {

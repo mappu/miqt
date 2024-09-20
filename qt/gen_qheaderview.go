@@ -17,11 +17,11 @@ import (
 type QHeaderView__ResizeMode int
 
 const (
-	QHeaderView__ResizeMode__Interactive      QHeaderView__ResizeMode = 0
-	QHeaderView__ResizeMode__Stretch          QHeaderView__ResizeMode = 1
-	QHeaderView__ResizeMode__Fixed            QHeaderView__ResizeMode = 2
-	QHeaderView__ResizeMode__ResizeToContents QHeaderView__ResizeMode = 3
-	QHeaderView__ResizeMode__Custom           QHeaderView__ResizeMode = 2
+	QHeaderView__Interactive      QHeaderView__ResizeMode = 0
+	QHeaderView__Stretch          QHeaderView__ResizeMode = 1
+	QHeaderView__Fixed            QHeaderView__ResizeMode = 2
+	QHeaderView__ResizeToContents QHeaderView__ResizeMode = 3
+	QHeaderView__Custom           QHeaderView__ResizeMode = 2
 )
 
 type QHeaderView struct {

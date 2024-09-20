@@ -17,19 +17,19 @@ import (
 type QWindow__Visibility int
 
 const (
-	QWindow__Visibility__Hidden              QWindow__Visibility = 0
-	QWindow__Visibility__AutomaticVisibility QWindow__Visibility = 1
-	QWindow__Visibility__Windowed            QWindow__Visibility = 2
-	QWindow__Visibility__Minimized           QWindow__Visibility = 3
-	QWindow__Visibility__Maximized           QWindow__Visibility = 4
-	QWindow__Visibility__FullScreen          QWindow__Visibility = 5
+	QWindow__Hidden              QWindow__Visibility = 0
+	QWindow__AutomaticVisibility QWindow__Visibility = 1
+	QWindow__Windowed            QWindow__Visibility = 2
+	QWindow__Minimized           QWindow__Visibility = 3
+	QWindow__Maximized           QWindow__Visibility = 4
+	QWindow__FullScreen          QWindow__Visibility = 5
 )
 
 type QWindow__AncestorMode int
 
 const (
-	QWindow__AncestorMode__ExcludeTransients QWindow__AncestorMode = 0
-	QWindow__AncestorMode__IncludeTransients QWindow__AncestorMode = 1
+	QWindow__ExcludeTransients QWindow__AncestorMode = 0
+	QWindow__IncludeTransients QWindow__AncestorMode = 1
 )
 
 type QWindow struct {

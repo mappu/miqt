@@ -16,13 +16,13 @@ import (
 type QOperatingSystemVersion__OSType int
 
 const (
-	QOperatingSystemVersion__OSType__Unknown QOperatingSystemVersion__OSType = 0
-	QOperatingSystemVersion__OSType__Windows QOperatingSystemVersion__OSType = 1
-	QOperatingSystemVersion__OSType__MacOS   QOperatingSystemVersion__OSType = 2
-	QOperatingSystemVersion__OSType__IOS     QOperatingSystemVersion__OSType = 3
-	QOperatingSystemVersion__OSType__TvOS    QOperatingSystemVersion__OSType = 4
-	QOperatingSystemVersion__OSType__WatchOS QOperatingSystemVersion__OSType = 5
-	QOperatingSystemVersion__OSType__Android QOperatingSystemVersion__OSType = 6
+	QOperatingSystemVersion__Unknown QOperatingSystemVersion__OSType = 0
+	QOperatingSystemVersion__Windows QOperatingSystemVersion__OSType = 1
+	QOperatingSystemVersion__MacOS   QOperatingSystemVersion__OSType = 2
+	QOperatingSystemVersion__IOS     QOperatingSystemVersion__OSType = 3
+	QOperatingSystemVersion__TvOS    QOperatingSystemVersion__OSType = 4
+	QOperatingSystemVersion__WatchOS QOperatingSystemVersion__OSType = 5
+	QOperatingSystemVersion__Android QOperatingSystemVersion__OSType = 6
 )
 
 type QOperatingSystemVersion struct {

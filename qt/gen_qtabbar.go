@@ -17,29 +17,29 @@ import (
 type QTabBar__Shape int
 
 const (
-	QTabBar__Shape__RoundedNorth    QTabBar__Shape = 0
-	QTabBar__Shape__RoundedSouth    QTabBar__Shape = 1
-	QTabBar__Shape__RoundedWest     QTabBar__Shape = 2
-	QTabBar__Shape__RoundedEast     QTabBar__Shape = 3
-	QTabBar__Shape__TriangularNorth QTabBar__Shape = 4
-	QTabBar__Shape__TriangularSouth QTabBar__Shape = 5
-	QTabBar__Shape__TriangularWest  QTabBar__Shape = 6
-	QTabBar__Shape__TriangularEast  QTabBar__Shape = 7
+	QTabBar__RoundedNorth    QTabBar__Shape = 0
+	QTabBar__RoundedSouth    QTabBar__Shape = 1
+	QTabBar__RoundedWest     QTabBar__Shape = 2
+	QTabBar__RoundedEast     QTabBar__Shape = 3
+	QTabBar__TriangularNorth QTabBar__Shape = 4
+	QTabBar__TriangularSouth QTabBar__Shape = 5
+	QTabBar__TriangularWest  QTabBar__Shape = 6
+	QTabBar__TriangularEast  QTabBar__Shape = 7
 )
 
 type QTabBar__ButtonPosition int
 
 const (
-	QTabBar__ButtonPosition__LeftSide  QTabBar__ButtonPosition = 0
-	QTabBar__ButtonPosition__RightSide QTabBar__ButtonPosition = 1
+	QTabBar__LeftSide  QTabBar__ButtonPosition = 0
+	QTabBar__RightSide QTabBar__ButtonPosition = 1
 )
 
 type QTabBar__SelectionBehavior int
 
 const (
-	QTabBar__SelectionBehavior__SelectLeftTab     QTabBar__SelectionBehavior = 0
-	QTabBar__SelectionBehavior__SelectRightTab    QTabBar__SelectionBehavior = 1
-	QTabBar__SelectionBehavior__SelectPreviousTab QTabBar__SelectionBehavior = 2
+	QTabBar__SelectLeftTab     QTabBar__SelectionBehavior = 0
+	QTabBar__SelectRightTab    QTabBar__SelectionBehavior = 1
+	QTabBar__SelectPreviousTab QTabBar__SelectionBehavior = 2
 )
 
 type QTabBar struct {

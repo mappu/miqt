@@ -17,8 +17,8 @@ import (
 type QStandardItem__ItemType int
 
 const (
-	QStandardItem__ItemType__Type     QStandardItem__ItemType = 0
-	QStandardItem__ItemType__UserType QStandardItem__ItemType = 1000
+	QStandardItem__Type     QStandardItem__ItemType = 0
+	QStandardItem__UserType QStandardItem__ItemType = 1000
 )
 
 type QStandardItem struct {

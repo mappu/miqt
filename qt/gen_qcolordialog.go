@@ -17,9 +17,9 @@ import (
 type QColorDialog__ColorDialogOption int
 
 const (
-	QColorDialog__ColorDialogOption__ShowAlphaChannel    QColorDialog__ColorDialogOption = 1
-	QColorDialog__ColorDialogOption__NoButtons           QColorDialog__ColorDialogOption = 2
-	QColorDialog__ColorDialogOption__DontUseNativeDialog QColorDialog__ColorDialogOption = 4
+	QColorDialog__ShowAlphaChannel    QColorDialog__ColorDialogOption = 1
+	QColorDialog__NoButtons           QColorDialog__ColorDialogOption = 2
+	QColorDialog__DontUseNativeDialog QColorDialog__ColorDialogOption = 4
 )
 
 type QColorDialog struct {

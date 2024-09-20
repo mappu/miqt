@@ -17,17 +17,17 @@ import (
 type QGraphicsScene__ItemIndexMethod int
 
 const (
-	QGraphicsScene__ItemIndexMethod__BspTreeIndex QGraphicsScene__ItemIndexMethod = 0
-	QGraphicsScene__ItemIndexMethod__NoIndex      QGraphicsScene__ItemIndexMethod = -1
+	QGraphicsScene__BspTreeIndex QGraphicsScene__ItemIndexMethod = 0
+	QGraphicsScene__NoIndex      QGraphicsScene__ItemIndexMethod = -1
 )
 
 type QGraphicsScene__SceneLayer int
 
 const (
-	QGraphicsScene__SceneLayer__ItemLayer       QGraphicsScene__SceneLayer = 1
-	QGraphicsScene__SceneLayer__BackgroundLayer QGraphicsScene__SceneLayer = 2
-	QGraphicsScene__SceneLayer__ForegroundLayer QGraphicsScene__SceneLayer = 4
-	QGraphicsScene__SceneLayer__AllLayers       QGraphicsScene__SceneLayer = 65535
+	QGraphicsScene__ItemLayer       QGraphicsScene__SceneLayer = 1
+	QGraphicsScene__BackgroundLayer QGraphicsScene__SceneLayer = 2
+	QGraphicsScene__ForegroundLayer QGraphicsScene__SceneLayer = 4
+	QGraphicsScene__AllLayers       QGraphicsScene__SceneLayer = 65535
 )
 
 type QGraphicsScene struct {

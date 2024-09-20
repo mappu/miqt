@@ -16,9 +16,9 @@ import (
 type QDirModel__Roles int
 
 const (
-	QDirModel__Roles__FileIconRole QDirModel__Roles = 1
-	QDirModel__Roles__FilePathRole QDirModel__Roles = 257
-	QDirModel__Roles__FileNameRole QDirModel__Roles = 258
+	QDirModel__FileIconRole QDirModel__Roles = 1
+	QDirModel__FilePathRole QDirModel__Roles = 257
+	QDirModel__FileNameRole QDirModel__Roles = 258
 )
 
 type QDirModel struct {

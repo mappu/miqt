@@ -17,7 +17,7 @@ import (
 type QGraphicsWidget__ int
 
 const (
-	QGraphicsWidget____Type QGraphicsWidget__ = 11
+	QGraphicsWidget__Type QGraphicsWidget__ = 11
 )
 
 type QGraphicsWidget struct {

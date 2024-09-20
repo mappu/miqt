@@ -16,33 +16,33 @@ import (
 type QRegularExpression__PatternOption int
 
 const (
-	QRegularExpression__PatternOption__NoPatternOption                 QRegularExpression__PatternOption = 0
-	QRegularExpression__PatternOption__CaseInsensitiveOption           QRegularExpression__PatternOption = 1
-	QRegularExpression__PatternOption__DotMatchesEverythingOption      QRegularExpression__PatternOption = 2
-	QRegularExpression__PatternOption__MultilineOption                 QRegularExpression__PatternOption = 4
-	QRegularExpression__PatternOption__ExtendedPatternSyntaxOption     QRegularExpression__PatternOption = 8
-	QRegularExpression__PatternOption__InvertedGreedinessOption        QRegularExpression__PatternOption = 16
-	QRegularExpression__PatternOption__DontCaptureOption               QRegularExpression__PatternOption = 32
-	QRegularExpression__PatternOption__UseUnicodePropertiesOption      QRegularExpression__PatternOption = 64
-	QRegularExpression__PatternOption__OptimizeOnFirstUsageOption      QRegularExpression__PatternOption = 128
-	QRegularExpression__PatternOption__DontAutomaticallyOptimizeOption QRegularExpression__PatternOption = 256
+	QRegularExpression__NoPatternOption                 QRegularExpression__PatternOption = 0
+	QRegularExpression__CaseInsensitiveOption           QRegularExpression__PatternOption = 1
+	QRegularExpression__DotMatchesEverythingOption      QRegularExpression__PatternOption = 2
+	QRegularExpression__MultilineOption                 QRegularExpression__PatternOption = 4
+	QRegularExpression__ExtendedPatternSyntaxOption     QRegularExpression__PatternOption = 8
+	QRegularExpression__InvertedGreedinessOption        QRegularExpression__PatternOption = 16
+	QRegularExpression__DontCaptureOption               QRegularExpression__PatternOption = 32
+	QRegularExpression__UseUnicodePropertiesOption      QRegularExpression__PatternOption = 64
+	QRegularExpression__OptimizeOnFirstUsageOption      QRegularExpression__PatternOption = 128
+	QRegularExpression__DontAutomaticallyOptimizeOption QRegularExpression__PatternOption = 256
 )
 
 type QRegularExpression__MatchType int
 
 const (
-	QRegularExpression__MatchType__NormalMatch                QRegularExpression__MatchType = 0
-	QRegularExpression__MatchType__PartialPreferCompleteMatch QRegularExpression__MatchType = 1
-	QRegularExpression__MatchType__PartialPreferFirstMatch    QRegularExpression__MatchType = 2
-	QRegularExpression__MatchType__NoMatch                    QRegularExpression__MatchType = 3
+	QRegularExpression__NormalMatch                QRegularExpression__MatchType = 0
+	QRegularExpression__PartialPreferCompleteMatch QRegularExpression__MatchType = 1
+	QRegularExpression__PartialPreferFirstMatch    QRegularExpression__MatchType = 2
+	QRegularExpression__NoMatch                    QRegularExpression__MatchType = 3
 )
 
 type QRegularExpression__MatchOption int
 
 const (
-	QRegularExpression__MatchOption__NoMatchOption                     QRegularExpression__MatchOption = 0
-	QRegularExpression__MatchOption__AnchoredMatchOption               QRegularExpression__MatchOption = 1
-	QRegularExpression__MatchOption__DontCheckSubjectStringMatchOption QRegularExpression__MatchOption = 2
+	QRegularExpression__NoMatchOption                     QRegularExpression__MatchOption = 0
+	QRegularExpression__AnchoredMatchOption               QRegularExpression__MatchOption = 1
+	QRegularExpression__DontCheckSubjectStringMatchOption QRegularExpression__MatchOption = 2
 )
 
 type QRegularExpression struct {

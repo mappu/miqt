@@ -16,9 +16,9 @@ import (
 type QGraphicsSceneContextMenuEvent__Reason int
 
 const (
-	QGraphicsSceneContextMenuEvent__Reason__Mouse    QGraphicsSceneContextMenuEvent__Reason = 0
-	QGraphicsSceneContextMenuEvent__Reason__Keyboard QGraphicsSceneContextMenuEvent__Reason = 1
-	QGraphicsSceneContextMenuEvent__Reason__Other    QGraphicsSceneContextMenuEvent__Reason = 2
+	QGraphicsSceneContextMenuEvent__Mouse    QGraphicsSceneContextMenuEvent__Reason = 0
+	QGraphicsSceneContextMenuEvent__Keyboard QGraphicsSceneContextMenuEvent__Reason = 1
+	QGraphicsSceneContextMenuEvent__Other    QGraphicsSceneContextMenuEvent__Reason = 2
 )
 
 type QGraphicsSceneEvent struct {

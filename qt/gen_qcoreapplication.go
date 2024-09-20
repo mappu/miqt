@@ -17,7 +17,7 @@ import (
 type QCoreApplication__ int
 
 const (
-	QCoreApplication____ApplicationFlags QCoreApplication__ = 331528
+	QCoreApplication__ApplicationFlags QCoreApplication__ = 331528
 )
 
 type QCoreApplication struct {

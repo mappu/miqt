@@ -16,20 +16,20 @@ import (
 type QRegExp__PatternSyntax int
 
 const (
-	QRegExp__PatternSyntax__RegExp         QRegExp__PatternSyntax = 0
-	QRegExp__PatternSyntax__Wildcard       QRegExp__PatternSyntax = 1
-	QRegExp__PatternSyntax__FixedString    QRegExp__PatternSyntax = 2
-	QRegExp__PatternSyntax__RegExp2        QRegExp__PatternSyntax = 3
-	QRegExp__PatternSyntax__WildcardUnix   QRegExp__PatternSyntax = 4
-	QRegExp__PatternSyntax__W3CXmlSchema11 QRegExp__PatternSyntax = 5
+	QRegExp__RegExp         QRegExp__PatternSyntax = 0
+	QRegExp__Wildcard       QRegExp__PatternSyntax = 1
+	QRegExp__FixedString    QRegExp__PatternSyntax = 2
+	QRegExp__RegExp2        QRegExp__PatternSyntax = 3
+	QRegExp__WildcardUnix   QRegExp__PatternSyntax = 4
+	QRegExp__W3CXmlSchema11 QRegExp__PatternSyntax = 5
 )
 
 type QRegExp__CaretMode int
 
 const (
-	QRegExp__CaretMode__CaretAtZero    QRegExp__CaretMode = 0
-	QRegExp__CaretMode__CaretAtOffset  QRegExp__CaretMode = 1
-	QRegExp__CaretMode__CaretWontMatch QRegExp__CaretMode = 2
+	QRegExp__CaretAtZero    QRegExp__CaretMode = 0
+	QRegExp__CaretAtOffset  QRegExp__CaretMode = 1
+	QRegExp__CaretWontMatch QRegExp__CaretMode = 2
 )
 
 type QRegExp struct {

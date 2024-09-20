@@ -17,22 +17,22 @@ import (
 type QComboBox__InsertPolicy int
 
 const (
-	QComboBox__InsertPolicy__NoInsert             QComboBox__InsertPolicy = 0
-	QComboBox__InsertPolicy__InsertAtTop          QComboBox__InsertPolicy = 1
-	QComboBox__InsertPolicy__InsertAtCurrent      QComboBox__InsertPolicy = 2
-	QComboBox__InsertPolicy__InsertAtBottom       QComboBox__InsertPolicy = 3
-	QComboBox__InsertPolicy__InsertAfterCurrent   QComboBox__InsertPolicy = 4
-	QComboBox__InsertPolicy__InsertBeforeCurrent  QComboBox__InsertPolicy = 5
-	QComboBox__InsertPolicy__InsertAlphabetically QComboBox__InsertPolicy = 6
+	QComboBox__NoInsert             QComboBox__InsertPolicy = 0
+	QComboBox__InsertAtTop          QComboBox__InsertPolicy = 1
+	QComboBox__InsertAtCurrent      QComboBox__InsertPolicy = 2
+	QComboBox__InsertAtBottom       QComboBox__InsertPolicy = 3
+	QComboBox__InsertAfterCurrent   QComboBox__InsertPolicy = 4
+	QComboBox__InsertBeforeCurrent  QComboBox__InsertPolicy = 5
+	QComboBox__InsertAlphabetically QComboBox__InsertPolicy = 6
 )
 
 type QComboBox__SizeAdjustPolicy int
 
 const (
-	QComboBox__SizeAdjustPolicy__AdjustToContents                      QComboBox__SizeAdjustPolicy = 0
-	QComboBox__SizeAdjustPolicy__AdjustToContentsOnFirstShow           QComboBox__SizeAdjustPolicy = 1
-	QComboBox__SizeAdjustPolicy__AdjustToMinimumContentsLength         QComboBox__SizeAdjustPolicy = 2
-	QComboBox__SizeAdjustPolicy__AdjustToMinimumContentsLengthWithIcon QComboBox__SizeAdjustPolicy = 3
+	QComboBox__AdjustToContents                      QComboBox__SizeAdjustPolicy = 0
+	QComboBox__AdjustToContentsOnFirstShow           QComboBox__SizeAdjustPolicy = 1
+	QComboBox__AdjustToMinimumContentsLength         QComboBox__SizeAdjustPolicy = 2
+	QComboBox__AdjustToMinimumContentsLengthWithIcon QComboBox__SizeAdjustPolicy = 3
 )
 
 type QComboBox struct {

@@ -17,8 +17,8 @@ import (
 type QDialog__DialogCode int
 
 const (
-	QDialog__DialogCode__Rejected QDialog__DialogCode = 0
-	QDialog__DialogCode__Accepted QDialog__DialogCode = 1
+	QDialog__Rejected QDialog__DialogCode = 0
+	QDialog__Accepted QDialog__DialogCode = 1
 )
 
 type QDialog struct {

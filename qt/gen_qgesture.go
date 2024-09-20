@@ -16,26 +16,26 @@ import (
 type QGesture__GestureCancelPolicy int
 
 const (
-	QGesture__GestureCancelPolicy__CancelNone         QGesture__GestureCancelPolicy = 0
-	QGesture__GestureCancelPolicy__CancelAllInContext QGesture__GestureCancelPolicy = 1
+	QGesture__CancelNone         QGesture__GestureCancelPolicy = 0
+	QGesture__CancelAllInContext QGesture__GestureCancelPolicy = 1
 )
 
 type QPinchGesture__ChangeFlag int
 
 const (
-	QPinchGesture__ChangeFlag__ScaleFactorChanged   QPinchGesture__ChangeFlag = 1
-	QPinchGesture__ChangeFlag__RotationAngleChanged QPinchGesture__ChangeFlag = 2
-	QPinchGesture__ChangeFlag__CenterPointChanged   QPinchGesture__ChangeFlag = 4
+	QPinchGesture__ScaleFactorChanged   QPinchGesture__ChangeFlag = 1
+	QPinchGesture__RotationAngleChanged QPinchGesture__ChangeFlag = 2
+	QPinchGesture__CenterPointChanged   QPinchGesture__ChangeFlag = 4
 )
 
 type QSwipeGesture__SwipeDirection int
 
 const (
-	QSwipeGesture__SwipeDirection__NoDirection QSwipeGesture__SwipeDirection = 0
-	QSwipeGesture__SwipeDirection__Left        QSwipeGesture__SwipeDirection = 1
-	QSwipeGesture__SwipeDirection__Right       QSwipeGesture__SwipeDirection = 2
-	QSwipeGesture__SwipeDirection__Up          QSwipeGesture__SwipeDirection = 3
-	QSwipeGesture__SwipeDirection__Down        QSwipeGesture__SwipeDirection = 4
+	QSwipeGesture__NoDirection QSwipeGesture__SwipeDirection = 0
+	QSwipeGesture__Left        QSwipeGesture__SwipeDirection = 1
+	QSwipeGesture__Right       QSwipeGesture__SwipeDirection = 2
+	QSwipeGesture__Up          QSwipeGesture__SwipeDirection = 3
+	QSwipeGesture__Down        QSwipeGesture__SwipeDirection = 4
 )
 
 type QGesture struct {

@@ -16,7 +16,7 @@ import (
 type QDeadlineTimer__ForeverConstant int
 
 const (
-	QDeadlineTimer__ForeverConstant__Forever QDeadlineTimer__ForeverConstant = 0
+	QDeadlineTimer__Forever QDeadlineTimer__ForeverConstant = 0
 )
 
 type QDeadlineTimer struct {

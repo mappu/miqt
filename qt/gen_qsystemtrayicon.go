@@ -17,20 +17,20 @@ import (
 type QSystemTrayIcon__ActivationReason int
 
 const (
-	QSystemTrayIcon__ActivationReason__Unknown     QSystemTrayIcon__ActivationReason = 0
-	QSystemTrayIcon__ActivationReason__Context     QSystemTrayIcon__ActivationReason = 1
-	QSystemTrayIcon__ActivationReason__DoubleClick QSystemTrayIcon__ActivationReason = 2
-	QSystemTrayIcon__ActivationReason__Trigger     QSystemTrayIcon__ActivationReason = 3
-	QSystemTrayIcon__ActivationReason__MiddleClick QSystemTrayIcon__ActivationReason = 4
+	QSystemTrayIcon__Unknown     QSystemTrayIcon__ActivationReason = 0
+	QSystemTrayIcon__Context     QSystemTrayIcon__ActivationReason = 1
+	QSystemTrayIcon__DoubleClick QSystemTrayIcon__ActivationReason = 2
+	QSystemTrayIcon__Trigger     QSystemTrayIcon__ActivationReason = 3
+	QSystemTrayIcon__MiddleClick QSystemTrayIcon__ActivationReason = 4
 )
 
 type QSystemTrayIcon__MessageIcon int
 
 const (
-	QSystemTrayIcon__MessageIcon__NoIcon      QSystemTrayIcon__MessageIcon = 0
-	QSystemTrayIcon__MessageIcon__Information QSystemTrayIcon__MessageIcon = 1
-	QSystemTrayIcon__MessageIcon__Warning     QSystemTrayIcon__MessageIcon = 2
-	QSystemTrayIcon__MessageIcon__Critical    QSystemTrayIcon__MessageIcon = 3
+	QSystemTrayIcon__NoIcon      QSystemTrayIcon__MessageIcon = 0
+	QSystemTrayIcon__Information QSystemTrayIcon__MessageIcon = 1
+	QSystemTrayIcon__Warning     QSystemTrayIcon__MessageIcon = 2
+	QSystemTrayIcon__Critical    QSystemTrayIcon__MessageIcon = 3
 )
 
 type QSystemTrayIcon struct {

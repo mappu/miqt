@@ -16,26 +16,26 @@ import (
 type QMetaMethod__Access int
 
 const (
-	QMetaMethod__Access__Private   QMetaMethod__Access = 0
-	QMetaMethod__Access__Protected QMetaMethod__Access = 1
-	QMetaMethod__Access__Public    QMetaMethod__Access = 2
+	QMetaMethod__Private   QMetaMethod__Access = 0
+	QMetaMethod__Protected QMetaMethod__Access = 1
+	QMetaMethod__Public    QMetaMethod__Access = 2
 )
 
 type QMetaMethod__MethodType int
 
 const (
-	QMetaMethod__MethodType__Method      QMetaMethod__MethodType = 0
-	QMetaMethod__MethodType__Signal      QMetaMethod__MethodType = 1
-	QMetaMethod__MethodType__Slot        QMetaMethod__MethodType = 2
-	QMetaMethod__MethodType__Constructor QMetaMethod__MethodType = 3
+	QMetaMethod__Method      QMetaMethod__MethodType = 0
+	QMetaMethod__Signal      QMetaMethod__MethodType = 1
+	QMetaMethod__Slot        QMetaMethod__MethodType = 2
+	QMetaMethod__Constructor QMetaMethod__MethodType = 3
 )
 
 type QMetaMethod__Attributes int
 
 const (
-	QMetaMethod__Attributes__Compatibility QMetaMethod__Attributes = 1
-	QMetaMethod__Attributes__Cloned        QMetaMethod__Attributes = 2
-	QMetaMethod__Attributes__Scriptable    QMetaMethod__Attributes = 4
+	QMetaMethod__Compatibility QMetaMethod__Attributes = 1
+	QMetaMethod__Cloned        QMetaMethod__Attributes = 2
+	QMetaMethod__Scriptable    QMetaMethod__Attributes = 4
 )
 
 type QMetaMethod struct {

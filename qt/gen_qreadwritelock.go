@@ -16,8 +16,8 @@ import (
 type QReadWriteLock__RecursionMode int
 
 const (
-	QReadWriteLock__RecursionMode__NonRecursive QReadWriteLock__RecursionMode = 0
-	QReadWriteLock__RecursionMode__Recursive    QReadWriteLock__RecursionMode = 1
+	QReadWriteLock__NonRecursive QReadWriteLock__RecursionMode = 0
+	QReadWriteLock__Recursive    QReadWriteLock__RecursionMode = 1
 )
 
 type QReadWriteLock struct {

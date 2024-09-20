@@ -16,35 +16,35 @@ import (
 type QJsonParseError__ParseError int
 
 const (
-	QJsonParseError__ParseError__NoError               QJsonParseError__ParseError = 0
-	QJsonParseError__ParseError__UnterminatedObject    QJsonParseError__ParseError = 1
-	QJsonParseError__ParseError__MissingNameSeparator  QJsonParseError__ParseError = 2
-	QJsonParseError__ParseError__UnterminatedArray     QJsonParseError__ParseError = 3
-	QJsonParseError__ParseError__MissingValueSeparator QJsonParseError__ParseError = 4
-	QJsonParseError__ParseError__IllegalValue          QJsonParseError__ParseError = 5
-	QJsonParseError__ParseError__TerminationByNumber   QJsonParseError__ParseError = 6
-	QJsonParseError__ParseError__IllegalNumber         QJsonParseError__ParseError = 7
-	QJsonParseError__ParseError__IllegalEscapeSequence QJsonParseError__ParseError = 8
-	QJsonParseError__ParseError__IllegalUTF8String     QJsonParseError__ParseError = 9
-	QJsonParseError__ParseError__UnterminatedString    QJsonParseError__ParseError = 10
-	QJsonParseError__ParseError__MissingObject         QJsonParseError__ParseError = 11
-	QJsonParseError__ParseError__DeepNesting           QJsonParseError__ParseError = 12
-	QJsonParseError__ParseError__DocumentTooLarge      QJsonParseError__ParseError = 13
-	QJsonParseError__ParseError__GarbageAtEnd          QJsonParseError__ParseError = 14
+	QJsonParseError__NoError               QJsonParseError__ParseError = 0
+	QJsonParseError__UnterminatedObject    QJsonParseError__ParseError = 1
+	QJsonParseError__MissingNameSeparator  QJsonParseError__ParseError = 2
+	QJsonParseError__UnterminatedArray     QJsonParseError__ParseError = 3
+	QJsonParseError__MissingValueSeparator QJsonParseError__ParseError = 4
+	QJsonParseError__IllegalValue          QJsonParseError__ParseError = 5
+	QJsonParseError__TerminationByNumber   QJsonParseError__ParseError = 6
+	QJsonParseError__IllegalNumber         QJsonParseError__ParseError = 7
+	QJsonParseError__IllegalEscapeSequence QJsonParseError__ParseError = 8
+	QJsonParseError__IllegalUTF8String     QJsonParseError__ParseError = 9
+	QJsonParseError__UnterminatedString    QJsonParseError__ParseError = 10
+	QJsonParseError__MissingObject         QJsonParseError__ParseError = 11
+	QJsonParseError__DeepNesting           QJsonParseError__ParseError = 12
+	QJsonParseError__DocumentTooLarge      QJsonParseError__ParseError = 13
+	QJsonParseError__GarbageAtEnd          QJsonParseError__ParseError = 14
 )
 
 type QJsonDocument__DataValidation int
 
 const (
-	QJsonDocument__DataValidation__Validate         QJsonDocument__DataValidation = 0
-	QJsonDocument__DataValidation__BypassValidation QJsonDocument__DataValidation = 1
+	QJsonDocument__Validate         QJsonDocument__DataValidation = 0
+	QJsonDocument__BypassValidation QJsonDocument__DataValidation = 1
 )
 
 type QJsonDocument__JsonFormat int
 
 const (
-	QJsonDocument__JsonFormat__Indented QJsonDocument__JsonFormat = 0
-	QJsonDocument__JsonFormat__Compact  QJsonDocument__JsonFormat = 1
+	QJsonDocument__Indented QJsonDocument__JsonFormat = 0
+	QJsonDocument__Compact  QJsonDocument__JsonFormat = 1
 )
 
 type QJsonParseError struct {

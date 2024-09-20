@@ -16,11 +16,11 @@ import (
 type QGlyphRun__GlyphRunFlag int
 
 const (
-	QGlyphRun__GlyphRunFlag__Overline      QGlyphRun__GlyphRunFlag = 1
-	QGlyphRun__GlyphRunFlag__Underline     QGlyphRun__GlyphRunFlag = 2
-	QGlyphRun__GlyphRunFlag__StrikeOut     QGlyphRun__GlyphRunFlag = 4
-	QGlyphRun__GlyphRunFlag__RightToLeft   QGlyphRun__GlyphRunFlag = 8
-	QGlyphRun__GlyphRunFlag__SplitLigature QGlyphRun__GlyphRunFlag = 16
+	QGlyphRun__Overline      QGlyphRun__GlyphRunFlag = 1
+	QGlyphRun__Underline     QGlyphRun__GlyphRunFlag = 2
+	QGlyphRun__StrikeOut     QGlyphRun__GlyphRunFlag = 4
+	QGlyphRun__RightToLeft   QGlyphRun__GlyphRunFlag = 8
+	QGlyphRun__SplitLigature QGlyphRun__GlyphRunFlag = 16
 )
 
 type QGlyphRun struct {

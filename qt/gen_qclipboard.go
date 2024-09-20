@@ -16,10 +16,10 @@ import (
 type QClipboard__Mode int
 
 const (
-	QClipboard__Mode__Clipboard  QClipboard__Mode = 0
-	QClipboard__Mode__Selection  QClipboard__Mode = 1
-	QClipboard__Mode__FindBuffer QClipboard__Mode = 2
-	QClipboard__Mode__LastMode   QClipboard__Mode = 2
+	QClipboard__Clipboard  QClipboard__Mode = 0
+	QClipboard__Selection  QClipboard__Mode = 1
+	QClipboard__FindBuffer QClipboard__Mode = 2
+	QClipboard__LastMode   QClipboard__Mode = 2
 )
 
 type QClipboard struct {

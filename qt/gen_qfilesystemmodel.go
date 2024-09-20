@@ -17,18 +17,18 @@ import (
 type QFileSystemModel__Roles int
 
 const (
-	QFileSystemModel__Roles__FileIconRole    QFileSystemModel__Roles = 1
-	QFileSystemModel__Roles__FilePathRole    QFileSystemModel__Roles = 257
-	QFileSystemModel__Roles__FileNameRole    QFileSystemModel__Roles = 258
-	QFileSystemModel__Roles__FilePermissions QFileSystemModel__Roles = 259
+	QFileSystemModel__FileIconRole    QFileSystemModel__Roles = 1
+	QFileSystemModel__FilePathRole    QFileSystemModel__Roles = 257
+	QFileSystemModel__FileNameRole    QFileSystemModel__Roles = 258
+	QFileSystemModel__FilePermissions QFileSystemModel__Roles = 259
 )
 
 type QFileSystemModel__Option int
 
 const (
-	QFileSystemModel__Option__DontWatchForChanges         QFileSystemModel__Option = 1
-	QFileSystemModel__Option__DontResolveSymlinks         QFileSystemModel__Option = 2
-	QFileSystemModel__Option__DontUseCustomDirectoryIcons QFileSystemModel__Option = 4
+	QFileSystemModel__DontWatchForChanges         QFileSystemModel__Option = 1
+	QFileSystemModel__DontResolveSymlinks         QFileSystemModel__Option = 2
+	QFileSystemModel__DontUseCustomDirectoryIcons QFileSystemModel__Option = 4
 )
 
 type QFileSystemModel struct {

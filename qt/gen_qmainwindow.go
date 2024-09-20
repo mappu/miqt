@@ -17,12 +17,12 @@ import (
 type QMainWindow__DockOption int
 
 const (
-	QMainWindow__DockOption__AnimatedDocks    QMainWindow__DockOption = 1
-	QMainWindow__DockOption__AllowNestedDocks QMainWindow__DockOption = 2
-	QMainWindow__DockOption__AllowTabbedDocks QMainWindow__DockOption = 4
-	QMainWindow__DockOption__ForceTabbedDocks QMainWindow__DockOption = 8
-	QMainWindow__DockOption__VerticalTabs     QMainWindow__DockOption = 16
-	QMainWindow__DockOption__GroupedDragging  QMainWindow__DockOption = 32
+	QMainWindow__AnimatedDocks    QMainWindow__DockOption = 1
+	QMainWindow__AllowNestedDocks QMainWindow__DockOption = 2
+	QMainWindow__AllowTabbedDocks QMainWindow__DockOption = 4
+	QMainWindow__ForceTabbedDocks QMainWindow__DockOption = 8
+	QMainWindow__VerticalTabs     QMainWindow__DockOption = 16
+	QMainWindow__GroupedDragging  QMainWindow__DockOption = 32
 )
 
 type QMainWindow struct {

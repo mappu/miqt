@@ -17,8 +17,8 @@ import (
 type QListWidgetItem__ItemType int
 
 const (
-	QListWidgetItem__ItemType__Type     QListWidgetItem__ItemType = 0
-	QListWidgetItem__ItemType__UserType QListWidgetItem__ItemType = 1000
+	QListWidgetItem__Type     QListWidgetItem__ItemType = 0
+	QListWidgetItem__UserType QListWidgetItem__ItemType = 1000
 )
 
 type QListWidgetItem struct {

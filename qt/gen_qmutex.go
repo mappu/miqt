@@ -16,8 +16,8 @@ import (
 type QMutex__RecursionMode int
 
 const (
-	QMutex__RecursionMode__NonRecursive QMutex__RecursionMode = 0
-	QMutex__RecursionMode__Recursive    QMutex__RecursionMode = 1
+	QMutex__NonRecursive QMutex__RecursionMode = 0
+	QMutex__Recursive    QMutex__RecursionMode = 1
 )
 
 type QBasicMutex struct {

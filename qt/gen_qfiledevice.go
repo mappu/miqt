@@ -16,61 +16,61 @@ import (
 type QFileDevice__FileError int
 
 const (
-	QFileDevice__FileError__NoError          QFileDevice__FileError = 0
-	QFileDevice__FileError__ReadError        QFileDevice__FileError = 1
-	QFileDevice__FileError__WriteError       QFileDevice__FileError = 2
-	QFileDevice__FileError__FatalError       QFileDevice__FileError = 3
-	QFileDevice__FileError__ResourceError    QFileDevice__FileError = 4
-	QFileDevice__FileError__OpenError        QFileDevice__FileError = 5
-	QFileDevice__FileError__AbortError       QFileDevice__FileError = 6
-	QFileDevice__FileError__TimeOutError     QFileDevice__FileError = 7
-	QFileDevice__FileError__UnspecifiedError QFileDevice__FileError = 8
-	QFileDevice__FileError__RemoveError      QFileDevice__FileError = 9
-	QFileDevice__FileError__RenameError      QFileDevice__FileError = 10
-	QFileDevice__FileError__PositionError    QFileDevice__FileError = 11
-	QFileDevice__FileError__ResizeError      QFileDevice__FileError = 12
-	QFileDevice__FileError__PermissionsError QFileDevice__FileError = 13
-	QFileDevice__FileError__CopyError        QFileDevice__FileError = 14
+	QFileDevice__NoError          QFileDevice__FileError = 0
+	QFileDevice__ReadError        QFileDevice__FileError = 1
+	QFileDevice__WriteError       QFileDevice__FileError = 2
+	QFileDevice__FatalError       QFileDevice__FileError = 3
+	QFileDevice__ResourceError    QFileDevice__FileError = 4
+	QFileDevice__OpenError        QFileDevice__FileError = 5
+	QFileDevice__AbortError       QFileDevice__FileError = 6
+	QFileDevice__TimeOutError     QFileDevice__FileError = 7
+	QFileDevice__UnspecifiedError QFileDevice__FileError = 8
+	QFileDevice__RemoveError      QFileDevice__FileError = 9
+	QFileDevice__RenameError      QFileDevice__FileError = 10
+	QFileDevice__PositionError    QFileDevice__FileError = 11
+	QFileDevice__ResizeError      QFileDevice__FileError = 12
+	QFileDevice__PermissionsError QFileDevice__FileError = 13
+	QFileDevice__CopyError        QFileDevice__FileError = 14
 )
 
 type QFileDevice__FileTime int
 
 const (
-	QFileDevice__FileTime__FileAccessTime         QFileDevice__FileTime = 0
-	QFileDevice__FileTime__FileBirthTime          QFileDevice__FileTime = 1
-	QFileDevice__FileTime__FileMetadataChangeTime QFileDevice__FileTime = 2
-	QFileDevice__FileTime__FileModificationTime   QFileDevice__FileTime = 3
+	QFileDevice__FileAccessTime         QFileDevice__FileTime = 0
+	QFileDevice__FileBirthTime          QFileDevice__FileTime = 1
+	QFileDevice__FileMetadataChangeTime QFileDevice__FileTime = 2
+	QFileDevice__FileModificationTime   QFileDevice__FileTime = 3
 )
 
 type QFileDevice__Permission int
 
 const (
-	QFileDevice__Permission__ReadOwner  QFileDevice__Permission = 16384
-	QFileDevice__Permission__WriteOwner QFileDevice__Permission = 8192
-	QFileDevice__Permission__ExeOwner   QFileDevice__Permission = 4096
-	QFileDevice__Permission__ReadUser   QFileDevice__Permission = 1024
-	QFileDevice__Permission__WriteUser  QFileDevice__Permission = 512
-	QFileDevice__Permission__ExeUser    QFileDevice__Permission = 256
-	QFileDevice__Permission__ReadGroup  QFileDevice__Permission = 64
-	QFileDevice__Permission__WriteGroup QFileDevice__Permission = 32
-	QFileDevice__Permission__ExeGroup   QFileDevice__Permission = 16
-	QFileDevice__Permission__ReadOther  QFileDevice__Permission = 4
-	QFileDevice__Permission__WriteOther QFileDevice__Permission = 2
-	QFileDevice__Permission__ExeOther   QFileDevice__Permission = 1
+	QFileDevice__ReadOwner  QFileDevice__Permission = 16384
+	QFileDevice__WriteOwner QFileDevice__Permission = 8192
+	QFileDevice__ExeOwner   QFileDevice__Permission = 4096
+	QFileDevice__ReadUser   QFileDevice__Permission = 1024
+	QFileDevice__WriteUser  QFileDevice__Permission = 512
+	QFileDevice__ExeUser    QFileDevice__Permission = 256
+	QFileDevice__ReadGroup  QFileDevice__Permission = 64
+	QFileDevice__WriteGroup QFileDevice__Permission = 32
+	QFileDevice__ExeGroup   QFileDevice__Permission = 16
+	QFileDevice__ReadOther  QFileDevice__Permission = 4
+	QFileDevice__WriteOther QFileDevice__Permission = 2
+	QFileDevice__ExeOther   QFileDevice__Permission = 1
 )
 
 type QFileDevice__FileHandleFlag int
 
 const (
-	QFileDevice__FileHandleFlag__AutoCloseHandle QFileDevice__FileHandleFlag = 1
-	QFileDevice__FileHandleFlag__DontCloseHandle QFileDevice__FileHandleFlag = 0
+	QFileDevice__AutoCloseHandle QFileDevice__FileHandleFlag = 1
+	QFileDevice__DontCloseHandle QFileDevice__FileHandleFlag = 0
 )
 
 type QFileDevice__MemoryMapFlags int
 
 const (
-	QFileDevice__MemoryMapFlags__NoOptions        QFileDevice__MemoryMapFlags = 0
-	QFileDevice__MemoryMapFlags__MapPrivateOption QFileDevice__MemoryMapFlags = 1
+	QFileDevice__NoOptions        QFileDevice__MemoryMapFlags = 0
+	QFileDevice__MapPrivateOption QFileDevice__MemoryMapFlags = 1
 )
 
 type QFileDevice struct {

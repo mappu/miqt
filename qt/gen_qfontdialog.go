@@ -17,12 +17,12 @@ import (
 type QFontDialog__FontDialogOption int
 
 const (
-	QFontDialog__FontDialogOption__NoButtons           QFontDialog__FontDialogOption = 1
-	QFontDialog__FontDialogOption__DontUseNativeDialog QFontDialog__FontDialogOption = 2
-	QFontDialog__FontDialogOption__ScalableFonts       QFontDialog__FontDialogOption = 4
-	QFontDialog__FontDialogOption__NonScalableFonts    QFontDialog__FontDialogOption = 8
-	QFontDialog__FontDialogOption__MonospacedFonts     QFontDialog__FontDialogOption = 16
-	QFontDialog__FontDialogOption__ProportionalFonts   QFontDialog__FontDialogOption = 32
+	QFontDialog__NoButtons           QFontDialog__FontDialogOption = 1
+	QFontDialog__DontUseNativeDialog QFontDialog__FontDialogOption = 2
+	QFontDialog__ScalableFonts       QFontDialog__FontDialogOption = 4
+	QFontDialog__NonScalableFonts    QFontDialog__FontDialogOption = 8
+	QFontDialog__MonospacedFonts     QFontDialog__FontDialogOption = 16
+	QFontDialog__ProportionalFonts   QFontDialog__FontDialogOption = 32
 )
 
 type QFontDialog struct {

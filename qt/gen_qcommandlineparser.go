@@ -16,15 +16,15 @@ import (
 type QCommandLineParser__SingleDashWordOptionMode int
 
 const (
-	QCommandLineParser__SingleDashWordOptionMode__ParseAsCompactedShortOptions QCommandLineParser__SingleDashWordOptionMode = 0
-	QCommandLineParser__SingleDashWordOptionMode__ParseAsLongOptions           QCommandLineParser__SingleDashWordOptionMode = 1
+	QCommandLineParser__ParseAsCompactedShortOptions QCommandLineParser__SingleDashWordOptionMode = 0
+	QCommandLineParser__ParseAsLongOptions           QCommandLineParser__SingleDashWordOptionMode = 1
 )
 
 type QCommandLineParser__OptionsAfterPositionalArgumentsMode int
 
 const (
-	QCommandLineParser__OptionsAfterPositionalArgumentsMode__ParseAsOptions             QCommandLineParser__OptionsAfterPositionalArgumentsMode = 0
-	QCommandLineParser__OptionsAfterPositionalArgumentsMode__ParseAsPositionalArguments QCommandLineParser__OptionsAfterPositionalArgumentsMode = 1
+	QCommandLineParser__ParseAsOptions             QCommandLineParser__OptionsAfterPositionalArgumentsMode = 0
+	QCommandLineParser__ParseAsPositionalArguments QCommandLineParser__OptionsAfterPositionalArgumentsMode = 1
 )
 
 type QCommandLineParser struct {

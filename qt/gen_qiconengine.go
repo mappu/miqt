@@ -16,10 +16,10 @@ import (
 type QIconEngine__IconEngineHook int
 
 const (
-	QIconEngine__IconEngineHook__AvailableSizesHook QIconEngine__IconEngineHook = 1
-	QIconEngine__IconEngineHook__IconNameHook       QIconEngine__IconEngineHook = 2
-	QIconEngine__IconEngineHook__IsNullHook         QIconEngine__IconEngineHook = 3
-	QIconEngine__IconEngineHook__ScaledPixmapHook   QIconEngine__IconEngineHook = 4
+	QIconEngine__AvailableSizesHook QIconEngine__IconEngineHook = 1
+	QIconEngine__IconNameHook       QIconEngine__IconEngineHook = 2
+	QIconEngine__IsNullHook         QIconEngine__IconEngineHook = 3
+	QIconEngine__ScaledPixmapHook   QIconEngine__IconEngineHook = 4
 )
 
 type QIconEngine struct {

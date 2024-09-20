@@ -16,19 +16,19 @@ import (
 type QSurface__SurfaceClass int
 
 const (
-	QSurface__SurfaceClass__Window    QSurface__SurfaceClass = 0
-	QSurface__SurfaceClass__Offscreen QSurface__SurfaceClass = 1
+	QSurface__Window    QSurface__SurfaceClass = 0
+	QSurface__Offscreen QSurface__SurfaceClass = 1
 )
 
 type QSurface__SurfaceType int
 
 const (
-	QSurface__SurfaceType__RasterSurface   QSurface__SurfaceType = 0
-	QSurface__SurfaceType__OpenGLSurface   QSurface__SurfaceType = 1
-	QSurface__SurfaceType__RasterGLSurface QSurface__SurfaceType = 2
-	QSurface__SurfaceType__OpenVGSurface   QSurface__SurfaceType = 3
-	QSurface__SurfaceType__VulkanSurface   QSurface__SurfaceType = 4
-	QSurface__SurfaceType__MetalSurface    QSurface__SurfaceType = 5
+	QSurface__RasterSurface   QSurface__SurfaceType = 0
+	QSurface__OpenGLSurface   QSurface__SurfaceType = 1
+	QSurface__RasterGLSurface QSurface__SurfaceType = 2
+	QSurface__OpenVGSurface   QSurface__SurfaceType = 3
+	QSurface__VulkanSurface   QSurface__SurfaceType = 4
+	QSurface__MetalSurface    QSurface__SurfaceType = 5
 )
 
 type QSurface struct {

@@ -16,8 +16,8 @@ import (
 type QStaticText__PerformanceHint int
 
 const (
-	QStaticText__PerformanceHint__ModerateCaching   QStaticText__PerformanceHint = 0
-	QStaticText__PerformanceHint__AggressiveCaching QStaticText__PerformanceHint = 1
+	QStaticText__ModerateCaching   QStaticText__PerformanceHint = 0
+	QStaticText__AggressiveCaching QStaticText__PerformanceHint = 1
 )
 
 type QStaticText struct {

@@ -16,17 +16,17 @@ import (
 type QIcon__Mode int
 
 const (
-	QIcon__Mode__Normal   QIcon__Mode = 0
-	QIcon__Mode__Disabled QIcon__Mode = 1
-	QIcon__Mode__Active   QIcon__Mode = 2
-	QIcon__Mode__Selected QIcon__Mode = 3
+	QIcon__Normal   QIcon__Mode = 0
+	QIcon__Disabled QIcon__Mode = 1
+	QIcon__Active   QIcon__Mode = 2
+	QIcon__Selected QIcon__Mode = 3
 )
 
 type QIcon__State int
 
 const (
-	QIcon__State__On  QIcon__State = 0
-	QIcon__State__Off QIcon__State = 1
+	QIcon__On  QIcon__State = 0
+	QIcon__Off QIcon__State = 1
 )
 
 type QIcon struct {

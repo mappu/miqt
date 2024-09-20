@@ -16,9 +16,9 @@ import (
 type QSocketNotifier__Type int
 
 const (
-	QSocketNotifier__Type__Read      QSocketNotifier__Type = 0
-	QSocketNotifier__Type__Write     QSocketNotifier__Type = 1
-	QSocketNotifier__Type__Exception QSocketNotifier__Type = 2
+	QSocketNotifier__Read      QSocketNotifier__Type = 0
+	QSocketNotifier__Write     QSocketNotifier__Type = 1
+	QSocketNotifier__Exception QSocketNotifier__Type = 2
 )
 
 type QSocketNotifier struct {

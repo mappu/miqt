@@ -17,8 +17,8 @@ import (
 type QTableWidgetItem__ItemType int
 
 const (
-	QTableWidgetItem__ItemType__Type     QTableWidgetItem__ItemType = 0
-	QTableWidgetItem__ItemType__UserType QTableWidgetItem__ItemType = 1000
+	QTableWidgetItem__Type     QTableWidgetItem__ItemType = 0
+	QTableWidgetItem__UserType QTableWidgetItem__ItemType = 1000
 )
 
 type QTableWidgetSelectionRange struct {

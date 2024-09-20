@@ -17,9 +17,9 @@ import (
 type QWidget__RenderFlag int
 
 const (
-	QWidget__RenderFlag__DrawWindowBackground QWidget__RenderFlag = 1
-	QWidget__RenderFlag__DrawChildren         QWidget__RenderFlag = 2
-	QWidget__RenderFlag__IgnoreMask           QWidget__RenderFlag = 4
+	QWidget__DrawWindowBackground QWidget__RenderFlag = 1
+	QWidget__DrawChildren         QWidget__RenderFlag = 2
+	QWidget__IgnoreMask           QWidget__RenderFlag = 4
 )
 
 type QWidgetData struct {

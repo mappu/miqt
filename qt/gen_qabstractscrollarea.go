@@ -16,9 +16,9 @@ import (
 type QAbstractScrollArea__SizeAdjustPolicy int
 
 const (
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustIgnored               QAbstractScrollArea__SizeAdjustPolicy = 0
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContentsOnFirstShow QAbstractScrollArea__SizeAdjustPolicy = 1
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContents            QAbstractScrollArea__SizeAdjustPolicy = 2
+	QAbstractScrollArea__AdjustIgnored               QAbstractScrollArea__SizeAdjustPolicy = 0
+	QAbstractScrollArea__AdjustToContentsOnFirstShow QAbstractScrollArea__SizeAdjustPolicy = 1
+	QAbstractScrollArea__AdjustToContents            QAbstractScrollArea__SizeAdjustPolicy = 2
 )
 
 type QAbstractScrollArea struct {
