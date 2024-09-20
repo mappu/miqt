@@ -27,6 +27,10 @@ QMetaObject* QCommonStyle_MetaObject(const QCommonStyle* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QCommonStyle_Metacast(QCommonStyle* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QCommonStyle_Tr(const char* s) {
 	QString _ret = QCommonStyle::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

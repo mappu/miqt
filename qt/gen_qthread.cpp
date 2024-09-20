@@ -23,6 +23,10 @@ QMetaObject* QThread_MetaObject(const QThread* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QThread_Metacast(QThread* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QThread_Tr(const char* s) {
 	QString _ret = QThread::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -35,6 +39,11 @@ struct miqt_string* QThread_TrUtf8(const char* s) {
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	return miqt_strdup(_b.data(), _b.length());
+}
+
+void* QThread_CurrentThreadId() {
+	Qt::HANDLE _ret = QThread::currentThreadId();
+	return static_cast<void*>(_ret);
 }
 
 QThread* QThread_CurrentThread() {

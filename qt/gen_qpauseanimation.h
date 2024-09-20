@@ -28,6 +28,7 @@ QPauseAnimation* QPauseAnimation_new2(int msecs);
 QPauseAnimation* QPauseAnimation_new3(QObject* parent);
 QPauseAnimation* QPauseAnimation_new4(int msecs, QObject* parent);
 QMetaObject* QPauseAnimation_MetaObject(const QPauseAnimation* self);
+void* QPauseAnimation_Metacast(QPauseAnimation* self, const char* param1);
 struct miqt_string* QPauseAnimation_Tr(const char* s);
 struct miqt_string* QPauseAnimation_TrUtf8(const char* s);
 int QPauseAnimation_Duration(const QPauseAnimation* self);

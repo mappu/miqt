@@ -54,6 +54,7 @@ QGraphicsView* QGraphicsView_new2(QGraphicsScene* scene);
 QGraphicsView* QGraphicsView_new3(QWidget* parent);
 QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent);
 QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self);
+void* QGraphicsView_Metacast(QGraphicsView* self, const char* param1);
 struct miqt_string* QGraphicsView_Tr(const char* s);
 struct miqt_string* QGraphicsView_TrUtf8(const char* s);
 QSize* QGraphicsView_SizeHint(const QGraphicsView* self);

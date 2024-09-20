@@ -25,6 +25,8 @@ typedef struct QArrayData QArrayData;
 typedef struct QtPrivate__QContainerImplHelper QtPrivate__QContainerImplHelper;
 #endif
 
+void* QArrayData_Data(QArrayData* self);
+const void* QArrayData_Data2(const QArrayData* self);
 bool QArrayData_IsMutable(const QArrayData* self);
 size_t QArrayData_DetachCapacity(const QArrayData* self, size_t newSize);
 int QArrayData_DetachFlags(const QArrayData* self);

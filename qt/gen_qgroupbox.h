@@ -30,6 +30,7 @@ QGroupBox* QGroupBox_new2(struct miqt_string* title);
 QGroupBox* QGroupBox_new3(QWidget* parent);
 QGroupBox* QGroupBox_new4(struct miqt_string* title, QWidget* parent);
 QMetaObject* QGroupBox_MetaObject(const QGroupBox* self);
+void* QGroupBox_Metacast(QGroupBox* self, const char* param1);
 struct miqt_string* QGroupBox_Tr(const char* s);
 struct miqt_string* QGroupBox_TrUtf8(const char* s);
 struct miqt_string* QGroupBox_Title(const QGroupBox* self);

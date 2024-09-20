@@ -35,6 +35,7 @@ QStackedLayout* QStackedLayout_new();
 QStackedLayout* QStackedLayout_new2(QWidget* parent);
 QStackedLayout* QStackedLayout_new3(QLayout* parentLayout);
 QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self);
+void* QStackedLayout_Metacast(QStackedLayout* self, const char* param1);
 struct miqt_string* QStackedLayout_Tr(const char* s);
 struct miqt_string* QStackedLayout_TrUtf8(const char* s);
 int QStackedLayout_AddWidget(QStackedLayout* self, QWidget* w);

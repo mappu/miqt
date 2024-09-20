@@ -65,6 +65,12 @@ func (this *QThread) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QThread_MetaObject(this.h)))
 }
 
+func (this *QThread) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QThread_Metacast(this.h, param1_Cstring)
+}
+
 func QThread_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -81,6 +87,10 @@ func QThread_TrUtf8(s string) string {
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
+}
+
+func QThread_CurrentThreadId() unsafe.Pointer {
+	return C.QThread_CurrentThreadId()
 }
 
 func QThread_CurrentThread() *QThread {

@@ -30,6 +30,7 @@ QBuffer* QBuffer_new2(QByteArray* buf);
 QBuffer* QBuffer_new3(QObject* parent);
 QBuffer* QBuffer_new4(QByteArray* buf, QObject* parent);
 QMetaObject* QBuffer_MetaObject(const QBuffer* self);
+void* QBuffer_Metacast(QBuffer* self, const char* param1);
 struct miqt_string* QBuffer_Tr(const char* s);
 struct miqt_string* QBuffer_TrUtf8(const char* s);
 QByteArray* QBuffer_Buffer(QBuffer* self);

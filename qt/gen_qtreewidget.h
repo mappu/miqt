@@ -129,6 +129,7 @@ void QTreeWidgetItem_Delete(QTreeWidgetItem* self);
 QTreeWidget* QTreeWidget_new();
 QTreeWidget* QTreeWidget_new2(QWidget* parent);
 QMetaObject* QTreeWidget_MetaObject(const QTreeWidget* self);
+void* QTreeWidget_Metacast(QTreeWidget* self, const char* param1);
 struct miqt_string* QTreeWidget_Tr(const char* s);
 struct miqt_string* QTreeWidget_TrUtf8(const char* s);
 int QTreeWidget_ColumnCount(const QTreeWidget* self);

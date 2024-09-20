@@ -26,6 +26,10 @@ QMetaObject* QTableView_MetaObject(const QTableView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTableView_Metacast(QTableView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTableView_Tr(const char* s) {
 	QString _ret = QTableView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

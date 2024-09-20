@@ -27,6 +27,8 @@ typedef struct QHashData__Node QHashData__Node;
 typedef struct QHashDummyValue QHashDummyValue;
 #endif
 
+void* QHashData_AllocateNode(QHashData* self, int nodeAlign);
+void QHashData_FreeNode(QHashData* self, void* node);
 bool QHashData_WillGrow(QHashData* self);
 void QHashData_HasShrunk(QHashData* self);
 void QHashData_Rehash(QHashData* self, int hint);

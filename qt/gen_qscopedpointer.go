@@ -35,6 +35,10 @@ func newQScopedPointerPodDeleter_U(h unsafe.Pointer) *QScopedPointerPodDeleter {
 	return newQScopedPointerPodDeleter((*C.QScopedPointerPodDeleter)(h))
 }
 
+func QScopedPointerPodDeleter_Cleanup(pointer unsafe.Pointer) {
+	C.QScopedPointerPodDeleter_Cleanup(pointer)
+}
+
 // Delete this object from C++ memory.
 func (this *QScopedPointerPodDeleter) Delete() {
 	C.QScopedPointerPodDeleter_Delete(this.h)

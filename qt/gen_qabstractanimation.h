@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 #endif
 
 QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self);
+void* QAbstractAnimation_Metacast(QAbstractAnimation* self, const char* param1);
 struct miqt_string* QAbstractAnimation_Tr(const char* s);
 struct miqt_string* QAbstractAnimation_TrUtf8(const char* s);
 int QAbstractAnimation_State(const QAbstractAnimation* self);
@@ -65,6 +66,7 @@ void QAbstractAnimation_Delete(QAbstractAnimation* self);
 QAnimationDriver* QAnimationDriver_new();
 QAnimationDriver* QAnimationDriver_new2(QObject* parent);
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self);
+void* QAnimationDriver_Metacast(QAnimationDriver* self, const char* param1);
 struct miqt_string* QAnimationDriver_Tr(const char* s);
 struct miqt_string* QAnimationDriver_TrUtf8(const char* s);
 void QAnimationDriver_Advance(QAnimationDriver* self);

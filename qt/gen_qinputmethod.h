@@ -30,6 +30,7 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QInputMethod_MetaObject(const QInputMethod* self);
+void* QInputMethod_Metacast(QInputMethod* self, const char* param1);
 struct miqt_string* QInputMethod_Tr(const char* s);
 struct miqt_string* QInputMethod_TrUtf8(const char* s);
 QTransform* QInputMethod_InputItemTransform(const QInputMethod* self);

@@ -30,6 +30,7 @@ QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int 
 QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState);
 QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState);
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self);
+void* QKeyEventTransition_Metacast(QKeyEventTransition* self, const char* param1);
 struct miqt_string* QKeyEventTransition_Tr(const char* s);
 struct miqt_string* QKeyEventTransition_TrUtf8(const char* s);
 int QKeyEventTransition_Key(const QKeyEventTransition* self);

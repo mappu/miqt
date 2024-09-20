@@ -114,6 +114,12 @@ func (this *QLibrary) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QLibrary_MetaObject(this.h)))
 }
 
+func (this *QLibrary) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QLibrary_Metacast(this.h, param1_Cstring)
+}
+
 func QLibrary_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

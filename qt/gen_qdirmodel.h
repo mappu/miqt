@@ -40,6 +40,7 @@ QDirModel* QDirModel_new2();
 QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent);
 QDirModel* QDirModel_new4(QObject* parent);
 QMetaObject* QDirModel_MetaObject(const QDirModel* self);
+void* QDirModel_Metacast(QDirModel* self, const char* param1);
 struct miqt_string* QDirModel_Tr(const char* s);
 struct miqt_string* QDirModel_TrUtf8(const char* s);
 QModelIndex* QDirModel_Index(const QDirModel* self, int row, int column);

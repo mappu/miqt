@@ -33,6 +33,10 @@ QMetaObject* QShortcut_MetaObject(const QShortcut* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QShortcut_Metacast(QShortcut* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QShortcut_Tr(const char* s) {
 	QString _ret = QShortcut::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

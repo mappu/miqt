@@ -112,6 +112,7 @@ QTableWidget* QTableWidget_new2(int rows, int columns);
 QTableWidget* QTableWidget_new3(QWidget* parent);
 QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent);
 QMetaObject* QTableWidget_MetaObject(const QTableWidget* self);
+void* QTableWidget_Metacast(QTableWidget* self, const char* param1);
 struct miqt_string* QTableWidget_Tr(const char* s);
 struct miqt_string* QTableWidget_TrUtf8(const char* s);
 void QTableWidget_SetRowCount(QTableWidget* self, int rows);

@@ -28,6 +28,7 @@ QSaveFile* QSaveFile_new2();
 QSaveFile* QSaveFile_new3(struct miqt_string* name, QObject* parent);
 QSaveFile* QSaveFile_new4(QObject* parent);
 QMetaObject* QSaveFile_MetaObject(const QSaveFile* self);
+void* QSaveFile_Metacast(QSaveFile* self, const char* param1);
 struct miqt_string* QSaveFile_Tr(const char* s);
 struct miqt_string* QSaveFile_TrUtf8(const char* s);
 struct miqt_string* QSaveFile_FileName(const QSaveFile* self);

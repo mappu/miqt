@@ -24,6 +24,10 @@ QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QCalendarWidget_Metacast(QCalendarWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QCalendarWidget_Tr(const char* s) {
 	QString _ret = QCalendarWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

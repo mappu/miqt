@@ -28,6 +28,7 @@ typedef struct QWidget QWidget;
 QSignalMapper* QSignalMapper_new();
 QSignalMapper* QSignalMapper_new2(QObject* parent);
 QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self);
+void* QSignalMapper_Metacast(QSignalMapper* self, const char* param1);
 struct miqt_string* QSignalMapper_Tr(const char* s);
 struct miqt_string* QSignalMapper_TrUtf8(const char* s);
 void QSignalMapper_SetMapping(QSignalMapper* self, QObject* sender, int id);

@@ -376,6 +376,12 @@ func (this *QListWidget) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QListWidget_MetaObject(this.h)))
 }
 
+func (this *QListWidget) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QListWidget_Metacast(this.h, param1_Cstring)
+}
+
 func QListWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

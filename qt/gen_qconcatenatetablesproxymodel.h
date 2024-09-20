@@ -36,6 +36,7 @@ typedef struct QVariant QVariant;
 QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new();
 QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new2(QObject* parent);
 QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesProxyModel* self);
+void* QConcatenateTablesProxyModel_Metacast(QConcatenateTablesProxyModel* self, const char* param1);
 struct miqt_string* QConcatenateTablesProxyModel_Tr(const char* s);
 struct miqt_string* QConcatenateTablesProxyModel_TrUtf8(const char* s);
 struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);

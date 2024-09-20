@@ -53,6 +53,10 @@ QMetaObject* QDateTimeEdit_MetaObject(const QDateTimeEdit* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDateTimeEdit_Metacast(QDateTimeEdit* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDateTimeEdit_Tr(const char* s) {
 	QString _ret = QDateTimeEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -369,6 +373,10 @@ QMetaObject* QTimeEdit_MetaObject(const QTimeEdit* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTimeEdit_Metacast(QTimeEdit* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTimeEdit_Tr(const char* s) {
 	QString _ret = QTimeEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -446,6 +454,10 @@ QDateEdit* QDateEdit_new4(QDate* date, QWidget* parent) {
 
 QMetaObject* QDateEdit_MetaObject(const QDateEdit* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QDateEdit_Metacast(QDateEdit* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QDateEdit_Tr(const char* s) {

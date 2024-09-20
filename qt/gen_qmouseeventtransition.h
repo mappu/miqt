@@ -32,6 +32,7 @@ QMouseEventTransition* QMouseEventTransition_new2(QObject* object, int typeVal, 
 QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState);
 QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState);
 QMetaObject* QMouseEventTransition_MetaObject(const QMouseEventTransition* self);
+void* QMouseEventTransition_Metacast(QMouseEventTransition* self, const char* param1);
 struct miqt_string* QMouseEventTransition_Tr(const char* s);
 struct miqt_string* QMouseEventTransition_TrUtf8(const char* s);
 int QMouseEventTransition_Button(const QMouseEventTransition* self);

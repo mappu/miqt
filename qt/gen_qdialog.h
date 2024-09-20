@@ -29,6 +29,7 @@ QDialog* QDialog_new();
 QDialog* QDialog_new2(QWidget* parent);
 QDialog* QDialog_new3(QWidget* parent, int f);
 QMetaObject* QDialog_MetaObject(const QDialog* self);
+void* QDialog_Metacast(QDialog* self, const char* param1);
 struct miqt_string* QDialog_Tr(const char* s);
 struct miqt_string* QDialog_TrUtf8(const char* s);
 int QDialog_Result(const QDialog* self);

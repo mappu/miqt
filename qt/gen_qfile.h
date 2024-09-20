@@ -30,6 +30,7 @@ QFile* QFile_new2(struct miqt_string* name);
 QFile* QFile_new3(QObject* parent);
 QFile* QFile_new4(struct miqt_string* name, QObject* parent);
 QMetaObject* QFile_MetaObject(const QFile* self);
+void* QFile_Metacast(QFile* self, const char* param1);
 struct miqt_string* QFile_Tr(const char* s);
 struct miqt_string* QFile_TrUtf8(const char* s);
 struct miqt_string* QFile_FileName(const QFile* self);

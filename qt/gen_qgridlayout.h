@@ -34,6 +34,7 @@ typedef struct QWidget QWidget;
 QGridLayout* QGridLayout_new(QWidget* parent);
 QGridLayout* QGridLayout_new2();
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self);
+void* QGridLayout_Metacast(QGridLayout* self, const char* param1);
 struct miqt_string* QGridLayout_Tr(const char* s);
 struct miqt_string* QGridLayout_TrUtf8(const char* s);
 QSize* QGridLayout_SizeHint(const QGridLayout* self);

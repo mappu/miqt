@@ -29,6 +29,7 @@ QToolBox* QToolBox_new();
 QToolBox* QToolBox_new2(QWidget* parent);
 QToolBox* QToolBox_new3(QWidget* parent, int f);
 QMetaObject* QToolBox_MetaObject(const QToolBox* self);
+void* QToolBox_Metacast(QToolBox* self, const char* param1);
 struct miqt_string* QToolBox_Tr(const char* s);
 struct miqt_string* QToolBox_TrUtf8(const char* s);
 int QToolBox_AddItem(QToolBox* self, QWidget* widget, struct miqt_string* text);

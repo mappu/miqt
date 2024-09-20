@@ -36,6 +36,7 @@ typedef struct QTransform QTransform;
 QGraphicsItemAnimation* QGraphicsItemAnimation_new();
 QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self);
+void* QGraphicsItemAnimation_Metacast(QGraphicsItemAnimation* self, const char* param1);
 struct miqt_string* QGraphicsItemAnimation_Tr(const char* s);
 struct miqt_string* QGraphicsItemAnimation_TrUtf8(const char* s);
 QGraphicsItem* QGraphicsItemAnimation_Item(const QGraphicsItemAnimation* self);

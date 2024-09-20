@@ -27,6 +27,7 @@ typedef struct QWidgetAction QWidgetAction;
 
 QWidgetAction* QWidgetAction_new(QObject* parent);
 QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self);
+void* QWidgetAction_Metacast(QWidgetAction* self, const char* param1);
 struct miqt_string* QWidgetAction_Tr(const char* s);
 struct miqt_string* QWidgetAction_TrUtf8(const char* s);
 void QWidgetAction_SetDefaultWidget(QWidgetAction* self, QWidget* w);

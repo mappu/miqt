@@ -21,6 +21,10 @@ QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSocketNotifier_Metacast(QSocketNotifier* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSocketNotifier_Tr(const char* s) {
 	QString _ret = QSocketNotifier::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

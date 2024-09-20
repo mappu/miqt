@@ -30,6 +30,10 @@ QMetaObject* QWizard_MetaObject(const QWizard* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QWizard_Metacast(QWizard* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QWizard_Tr(const char* s) {
 	QString _ret = QWizard::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -351,6 +355,10 @@ QWizardPage* QWizardPage_new2(QWidget* parent) {
 
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QWizardPage_Metacast(QWizardPage* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QWizardPage_Tr(const char* s) {

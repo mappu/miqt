@@ -82,6 +82,10 @@ QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self) {
 	return new QColor(self->backgroundColor());
 }
 
+void* QAccessibleWidget_InterfaceCast(QAccessibleWidget* self, int t) {
+	return self->interface_cast(static_cast<QAccessible::InterfaceType>(t));
+}
+
 struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self) {
 	QStringList _ret = self->actionNames();
 	// Convert QList<> from C++ memory to manually-managed C memory

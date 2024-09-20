@@ -35,6 +35,7 @@ QGraphicsProxyWidget* QGraphicsProxyWidget_new();
 QGraphicsProxyWidget* QGraphicsProxyWidget_new2(QGraphicsItem* parent);
 QGraphicsProxyWidget* QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags);
 QMetaObject* QGraphicsProxyWidget_MetaObject(const QGraphicsProxyWidget* self);
+void* QGraphicsProxyWidget_Metacast(QGraphicsProxyWidget* self, const char* param1);
 struct miqt_string* QGraphicsProxyWidget_Tr(const char* s);
 struct miqt_string* QGraphicsProxyWidget_TrUtf8(const char* s);
 void QGraphicsProxyWidget_SetWidget(QGraphicsProxyWidget* self, QWidget* widget);

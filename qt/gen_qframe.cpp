@@ -26,6 +26,10 @@ QMetaObject* QFrame_MetaObject(const QFrame* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFrame_Metacast(QFrame* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFrame_Tr(const char* s) {
 	QString _ret = QFrame::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -22,6 +22,10 @@ QMetaObject* QFileSelector_MetaObject(const QFileSelector* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFileSelector_Metacast(QFileSelector* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFileSelector_Tr(const char* s) {
 	QString _ret = QFileSelector::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

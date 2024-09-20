@@ -38,6 +38,7 @@ typedef struct QWidget QWidget;
 QMenuBar* QMenuBar_new();
 QMenuBar* QMenuBar_new2(QWidget* parent);
 QMetaObject* QMenuBar_MetaObject(const QMenuBar* self);
+void* QMenuBar_Metacast(QMenuBar* self, const char* param1);
 struct miqt_string* QMenuBar_Tr(const char* s);
 struct miqt_string* QMenuBar_TrUtf8(const char* s);
 QAction* QMenuBar_AddAction(QMenuBar* self, struct miqt_string* text);

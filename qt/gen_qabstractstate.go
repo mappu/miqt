@@ -41,6 +41,12 @@ func (this *QAbstractState) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractState_MetaObject(this.h)))
 }
 
+func (this *QAbstractState) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractState_Metacast(this.h, param1_Cstring)
+}
+
 func QAbstractState_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

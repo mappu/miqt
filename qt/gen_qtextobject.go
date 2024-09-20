@@ -40,6 +40,12 @@ func (this *QTextObject) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTextObject_MetaObject(this.h)))
 }
 
+func (this *QTextObject) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTextObject_Metacast(this.h, param1_Cstring)
+}
+
 func QTextObject_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -146,6 +152,12 @@ func newQTextBlockGroup_U(h unsafe.Pointer) *QTextBlockGroup {
 
 func (this *QTextBlockGroup) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTextBlockGroup_MetaObject(this.h)))
+}
+
+func (this *QTextBlockGroup) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTextBlockGroup_Metacast(this.h, param1_Cstring)
 }
 
 func QTextBlockGroup_Tr(s string) string {
@@ -281,6 +293,12 @@ func NewQTextFrame(doc *QTextDocument) *QTextFrame {
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTextFrame_MetaObject(this.h)))
+}
+
+func (this *QTextFrame) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTextFrame_Metacast(this.h, param1_Cstring)
 }
 
 func QTextFrame_Tr(s string) string {

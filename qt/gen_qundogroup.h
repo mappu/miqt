@@ -30,6 +30,7 @@ typedef struct QUndoStack QUndoStack;
 QUndoGroup* QUndoGroup_new();
 QUndoGroup* QUndoGroup_new2(QObject* parent);
 QMetaObject* QUndoGroup_MetaObject(const QUndoGroup* self);
+void* QUndoGroup_Metacast(QUndoGroup* self, const char* param1);
 struct miqt_string* QUndoGroup_Tr(const char* s);
 struct miqt_string* QUndoGroup_TrUtf8(const char* s);
 void QUndoGroup_AddStack(QUndoGroup* self, QUndoStack* stack);

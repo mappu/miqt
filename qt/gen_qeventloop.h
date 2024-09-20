@@ -32,6 +32,7 @@ typedef struct QThread QThread;
 QEventLoop* QEventLoop_new();
 QEventLoop* QEventLoop_new2(QObject* parent);
 QMetaObject* QEventLoop_MetaObject(const QEventLoop* self);
+void* QEventLoop_Metacast(QEventLoop* self, const char* param1);
 struct miqt_string* QEventLoop_Tr(const char* s);
 struct miqt_string* QEventLoop_TrUtf8(const char* s);
 bool QEventLoop_ProcessEvents(QEventLoop* self);

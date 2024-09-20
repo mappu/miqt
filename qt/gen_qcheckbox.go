@@ -69,6 +69,12 @@ func (this *QCheckBox) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
 }
 
+func (this *QCheckBox) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QCheckBox_Metacast(this.h, param1_Cstring)
+}
+
 func QCheckBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

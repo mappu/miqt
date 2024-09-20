@@ -42,6 +42,7 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self);
+void* QAbstractItemDelegate_Metacast(QAbstractItemDelegate* self, const char* param1);
 struct miqt_string* QAbstractItemDelegate_Tr(const char* s);
 struct miqt_string* QAbstractItemDelegate_TrUtf8(const char* s);
 void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);

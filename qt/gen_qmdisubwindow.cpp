@@ -27,6 +27,10 @@ QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QMdiSubWindow_Metacast(QMdiSubWindow* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QMdiSubWindow_Tr(const char* s) {
 	QString _ret = QMdiSubWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

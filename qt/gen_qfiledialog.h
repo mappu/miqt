@@ -42,6 +42,7 @@ QFileDialog* QFileDialog_new4(QWidget* parent, struct miqt_string* caption);
 QFileDialog* QFileDialog_new5(QWidget* parent, struct miqt_string* caption, struct miqt_string* directory);
 QFileDialog* QFileDialog_new6(QWidget* parent, struct miqt_string* caption, struct miqt_string* directory, struct miqt_string* filter);
 QMetaObject* QFileDialog_MetaObject(const QFileDialog* self);
+void* QFileDialog_Metacast(QFileDialog* self, const char* param1);
 struct miqt_string* QFileDialog_Tr(const char* s);
 struct miqt_string* QFileDialog_TrUtf8(const char* s);
 void QFileDialog_SetDirectory(QFileDialog* self, struct miqt_string* directory);

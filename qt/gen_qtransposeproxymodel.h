@@ -34,6 +34,7 @@ typedef struct QVariant QVariant;
 QTransposeProxyModel* QTransposeProxyModel_new();
 QTransposeProxyModel* QTransposeProxyModel_new2(QObject* parent);
 QMetaObject* QTransposeProxyModel_MetaObject(const QTransposeProxyModel* self);
+void* QTransposeProxyModel_Metacast(QTransposeProxyModel* self, const char* param1);
 struct miqt_string* QTransposeProxyModel_Tr(const char* s);
 struct miqt_string* QTransposeProxyModel_TrUtf8(const char* s);
 void QTransposeProxyModel_SetSourceModel(QTransposeProxyModel* self, QAbstractItemModel* newSourceModel);

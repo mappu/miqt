@@ -89,6 +89,12 @@ func (this *QSharedMemory) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSharedMemory_MetaObject(this.h)))
 }
 
+func (this *QSharedMemory) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSharedMemory_Metacast(this.h, param1_Cstring)
+}
+
 func QSharedMemory_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -151,6 +157,18 @@ func (this *QSharedMemory) IsAttached() bool {
 
 func (this *QSharedMemory) Detach() bool {
 	return (bool)(C.QSharedMemory_Detach(this.h))
+}
+
+func (this *QSharedMemory) Data() unsafe.Pointer {
+	return C.QSharedMemory_Data(this.h)
+}
+
+func (this *QSharedMemory) ConstData() unsafe.Pointer {
+	return C.QSharedMemory_ConstData(this.h)
+}
+
+func (this *QSharedMemory) Data2() unsafe.Pointer {
+	return C.QSharedMemory_Data2(this.h)
 }
 
 func (this *QSharedMemory) Lock() bool {

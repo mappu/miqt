@@ -119,6 +119,12 @@ func (this *QWizard) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QWizard_MetaObject(this.h)))
 }
 
+func (this *QWizard) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QWizard_Metacast(this.h, param1_Cstring)
+}
+
 func QWizard_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -550,6 +556,12 @@ func NewQWizardPage2(parent *QWidget) *QWizardPage {
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QWizardPage_MetaObject(this.h)))
+}
+
+func (this *QWizardPage) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QWizardPage_Metacast(this.h, param1_Cstring)
 }
 
 func QWizardPage_Tr(s string) string {

@@ -18,6 +18,10 @@ QMetaObject* QScreen_MetaObject(const QScreen* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QScreen_Metacast(QScreen* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QScreen_Tr(const char* s) {
 	QString _ret = QScreen::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

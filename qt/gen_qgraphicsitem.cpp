@@ -842,6 +842,10 @@ QMetaObject* QGraphicsObject_MetaObject(const QGraphicsObject* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsObject_Metacast(QGraphicsObject* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsObject_Tr(const char* s) {
 	QString _ret = QGraphicsObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1507,6 +1511,10 @@ QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string* text, QGraphicsIte
 
 QMetaObject* QGraphicsTextItem_MetaObject(const QGraphicsTextItem* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsTextItem_Metacast(QGraphicsTextItem* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsTextItem_Tr(const char* s) {

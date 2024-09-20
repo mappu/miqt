@@ -70,6 +70,7 @@ typedef struct QTextObject QTextObject;
 #endif
 
 QMetaObject* QTextObject_MetaObject(const QTextObject* self);
+void* QTextObject_Metacast(QTextObject* self, const char* param1);
 struct miqt_string* QTextObject_Tr(const char* s);
 struct miqt_string* QTextObject_TrUtf8(const char* s);
 QTextFormat* QTextObject_Format(const QTextObject* self);
@@ -82,6 +83,7 @@ struct miqt_string* QTextObject_TrUtf82(const char* s, const char* c);
 struct miqt_string* QTextObject_TrUtf83(const char* s, const char* c, int n);
 
 QMetaObject* QTextBlockGroup_MetaObject(const QTextBlockGroup* self);
+void* QTextBlockGroup_Metacast(QTextBlockGroup* self, const char* param1);
 struct miqt_string* QTextBlockGroup_Tr(const char* s);
 struct miqt_string* QTextBlockGroup_TrUtf8(const char* s);
 struct miqt_string* QTextBlockGroup_Tr2(const char* s, const char* c);
@@ -94,6 +96,7 @@ void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self);
 
 QTextFrame* QTextFrame_new(QTextDocument* doc);
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self);
+void* QTextFrame_Metacast(QTextFrame* self, const char* param1);
 struct miqt_string* QTextFrame_Tr(const char* s);
 struct miqt_string* QTextFrame_TrUtf8(const char* s);
 void QTextFrame_SetFrameFormat(QTextFrame* self, QTextFrameFormat* format);

@@ -38,6 +38,7 @@ QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags);
 QProgressDialog* QProgressDialog_new5(struct miqt_string* labelText, struct miqt_string* cancelButtonText, int minimum, int maximum, QWidget* parent);
 QProgressDialog* QProgressDialog_new6(struct miqt_string* labelText, struct miqt_string* cancelButtonText, int minimum, int maximum, QWidget* parent, int flags);
 QMetaObject* QProgressDialog_MetaObject(const QProgressDialog* self);
+void* QProgressDialog_Metacast(QProgressDialog* self, const char* param1);
 struct miqt_string* QProgressDialog_Tr(const char* s);
 struct miqt_string* QProgressDialog_TrUtf8(const char* s);
 void QProgressDialog_SetLabel(QProgressDialog* self, QLabel* label);

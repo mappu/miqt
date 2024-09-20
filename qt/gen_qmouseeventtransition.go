@@ -64,6 +64,12 @@ func (this *QMouseEventTransition) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
 }
 
+func (this *QMouseEventTransition) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QMouseEventTransition_Metacast(this.h, param1_Cstring)
+}
+
 func QMouseEventTransition_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

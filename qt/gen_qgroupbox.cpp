@@ -31,6 +31,10 @@ QMetaObject* QGroupBox_MetaObject(const QGroupBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGroupBox_Metacast(QGroupBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGroupBox_Tr(const char* s) {
 	QString _ret = QGroupBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

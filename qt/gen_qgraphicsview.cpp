@@ -42,6 +42,10 @@ QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsView_Metacast(QGraphicsView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsView_Tr(const char* s) {
 	QString _ret = QGraphicsView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

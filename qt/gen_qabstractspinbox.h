@@ -32,6 +32,7 @@ typedef struct QWidget QWidget;
 QAbstractSpinBox* QAbstractSpinBox_new();
 QAbstractSpinBox* QAbstractSpinBox_new2(QWidget* parent);
 QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self);
+void* QAbstractSpinBox_Metacast(QAbstractSpinBox* self, const char* param1);
 struct miqt_string* QAbstractSpinBox_Tr(const char* s);
 struct miqt_string* QAbstractSpinBox_TrUtf8(const char* s);
 int QAbstractSpinBox_ButtonSymbols(const QAbstractSpinBox* self);

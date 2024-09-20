@@ -75,6 +75,12 @@ func (this *QApplication) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QApplication_MetaObject(this.h)))
 }
 
+func (this *QApplication) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QApplication_Metacast(this.h, param1_Cstring)
+}
+
 func QApplication_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

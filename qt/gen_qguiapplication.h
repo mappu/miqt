@@ -50,6 +50,7 @@ typedef struct QWindow QWindow;
 QGuiApplication* QGuiApplication_new(int* argc, char** argv);
 QGuiApplication* QGuiApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self);
+void* QGuiApplication_Metacast(QGuiApplication* self, const char* param1);
 struct miqt_string* QGuiApplication_Tr(const char* s);
 struct miqt_string* QGuiApplication_TrUtf8(const char* s);
 void QGuiApplication_SetApplicationDisplayName(struct miqt_string* name);

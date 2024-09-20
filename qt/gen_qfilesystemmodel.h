@@ -42,6 +42,7 @@ typedef struct QVariant QVariant;
 QFileSystemModel* QFileSystemModel_new();
 QFileSystemModel* QFileSystemModel_new2(QObject* parent);
 QMetaObject* QFileSystemModel_MetaObject(const QFileSystemModel* self);
+void* QFileSystemModel_Metacast(QFileSystemModel* self, const char* param1);
 struct miqt_string* QFileSystemModel_Tr(const char* s);
 struct miqt_string* QFileSystemModel_TrUtf8(const char* s);
 void QFileSystemModel_RootPathChanged(QFileSystemModel* self, struct miqt_string* newPath);

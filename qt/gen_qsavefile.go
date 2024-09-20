@@ -68,6 +68,12 @@ func (this *QSaveFile) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSaveFile_MetaObject(this.h)))
 }
 
+func (this *QSaveFile) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSaveFile_Metacast(this.h, param1_Cstring)
+}
+
 func QSaveFile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

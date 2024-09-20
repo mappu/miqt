@@ -35,6 +35,10 @@ func newQAbstractNativeEventFilter_U(h unsafe.Pointer) *QAbstractNativeEventFilt
 	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
 }
 
+func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType *QByteArray, message unsafe.Pointer, result *int64) bool {
+	return (bool)(C.QAbstractNativeEventFilter_NativeEventFilter(this.h, eventType.cPointer(), message, (*C.long)(unsafe.Pointer(result))))
+}
+
 // Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
 	C.QAbstractNativeEventFilter_Delete(this.h)

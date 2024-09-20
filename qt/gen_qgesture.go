@@ -77,6 +77,12 @@ func (this *QGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGesture_MetaObject(this.h)))
 }
 
+func (this *QGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGesture_Metacast(this.h, param1_Cstring)
+}
+
 func QGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -225,6 +231,12 @@ func NewQPanGesture2(parent *QObject) *QPanGesture {
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QPanGesture_MetaObject(this.h)))
+}
+
+func (this *QPanGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QPanGesture_Metacast(this.h, param1_Cstring)
 }
 
 func QPanGesture_Tr(s string) string {
@@ -377,6 +389,12 @@ func NewQPinchGesture2(parent *QObject) *QPinchGesture {
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QPinchGesture_MetaObject(this.h)))
+}
+
+func (this *QPinchGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QPinchGesture_Metacast(this.h, param1_Cstring)
 }
 
 func QPinchGesture_Tr(s string) string {
@@ -591,6 +609,12 @@ func (this *QSwipeGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSwipeGesture_MetaObject(this.h)))
 }
 
+func (this *QSwipeGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSwipeGesture_Metacast(this.h, param1_Cstring)
+}
+
 func QSwipeGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -722,6 +746,12 @@ func (this *QTapGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTapGesture_MetaObject(this.h)))
 }
 
+func (this *QTapGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTapGesture_Metacast(this.h, param1_Cstring)
+}
+
 func QTapGesture_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -846,6 +876,12 @@ func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTapAndHoldGesture_MetaObject(this.h)))
+}
+
+func (this *QTapAndHoldGesture) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTapAndHoldGesture_Metacast(this.h, param1_Cstring)
 }
 
 func QTapAndHoldGesture_Tr(s string) string {

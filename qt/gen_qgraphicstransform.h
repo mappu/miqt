@@ -32,6 +32,7 @@ typedef struct QVector3D QVector3D;
 #endif
 
 QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self);
+void* QGraphicsTransform_Metacast(QGraphicsTransform* self, const char* param1);
 struct miqt_string* QGraphicsTransform_Tr(const char* s);
 struct miqt_string* QGraphicsTransform_TrUtf8(const char* s);
 void QGraphicsTransform_ApplyTo(const QGraphicsTransform* self, QMatrix4x4* matrix);
@@ -44,6 +45,7 @@ void QGraphicsTransform_Delete(QGraphicsTransform* self);
 QGraphicsScale* QGraphicsScale_new();
 QGraphicsScale* QGraphicsScale_new2(QObject* parent);
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self);
+void* QGraphicsScale_Metacast(QGraphicsScale* self, const char* param1);
 struct miqt_string* QGraphicsScale_Tr(const char* s);
 struct miqt_string* QGraphicsScale_TrUtf8(const char* s);
 QVector3D* QGraphicsScale_Origin(const QGraphicsScale* self);
@@ -74,6 +76,7 @@ void QGraphicsScale_Delete(QGraphicsScale* self);
 QGraphicsRotation* QGraphicsRotation_new();
 QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self);
+void* QGraphicsRotation_Metacast(QGraphicsRotation* self, const char* param1);
 struct miqt_string* QGraphicsRotation_Tr(const char* s);
 struct miqt_string* QGraphicsRotation_TrUtf8(const char* s);
 QVector3D* QGraphicsRotation_Origin(const QGraphicsRotation* self);

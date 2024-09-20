@@ -42,6 +42,10 @@ QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QCommandLinkButton_Metacast(QCommandLinkButton* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QCommandLinkButton_Tr(const char* s) {
 	QString _ret = QCommandLinkButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

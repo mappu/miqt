@@ -76,6 +76,12 @@ func (this *QPlainTextEdit) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextEdit_MetaObject(this.h)))
 }
 
+func (this *QPlainTextEdit) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QPlainTextEdit_Metacast(this.h, param1_Cstring)
+}
+
 func QPlainTextEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -733,6 +739,12 @@ func NewQPlainTextDocumentLayout(document *QTextDocument) *QPlainTextDocumentLay
 
 func (this *QPlainTextDocumentLayout) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextDocumentLayout_MetaObject(this.h)))
+}
+
+func (this *QPlainTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QPlainTextDocumentLayout_Metacast(this.h, param1_Cstring)
 }
 
 func QPlainTextDocumentLayout_Tr(s string) string {

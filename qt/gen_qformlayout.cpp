@@ -25,6 +25,10 @@ QMetaObject* QFormLayout_MetaObject(const QFormLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFormLayout_Metacast(QFormLayout* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFormLayout_Tr(const char* s) {
 	QString _ret = QFormLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

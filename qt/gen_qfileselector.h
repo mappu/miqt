@@ -28,6 +28,7 @@ typedef struct QUrl QUrl;
 QFileSelector* QFileSelector_new();
 QFileSelector* QFileSelector_new2(QObject* parent);
 QMetaObject* QFileSelector_MetaObject(const QFileSelector* self);
+void* QFileSelector_Metacast(QFileSelector* self, const char* param1);
 struct miqt_string* QFileSelector_Tr(const char* s);
 struct miqt_string* QFileSelector_TrUtf8(const char* s);
 struct miqt_string* QFileSelector_Select(const QFileSelector* self, struct miqt_string* filePath);

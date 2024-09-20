@@ -49,6 +49,7 @@ void QObjectData_Delete(QObjectData* self);
 QObject* QObject_new();
 QObject* QObject_new2(QObject* parent);
 QMetaObject* QObject_MetaObject(const QObject* self);
+void* QObject_Metacast(QObject* self, const char* param1);
 struct miqt_string* QObject_Tr(const char* s);
 struct miqt_string* QObject_TrUtf8(const char* s);
 bool QObject_Event(QObject* self, QEvent* event);

@@ -121,6 +121,14 @@ bool QMetaMethod_InvokeWithObject(const QMetaMethod* self, QObject* object) {
 	return self->invoke(object);
 }
 
+bool QMetaMethod_InvokeOnGadget(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue) {
+	return self->invokeOnGadget(gadget, *returnValue);
+}
+
+bool QMetaMethod_InvokeOnGadgetWithGadget(const QMetaMethod* self, void* gadget) {
+	return self->invokeOnGadget(gadget);
+}
+
 bool QMetaMethod_IsValid(const QMetaMethod* self) {
 	return self->isValid();
 }
@@ -283,6 +291,86 @@ bool QMetaMethod_Invoke104(const QMetaMethod* self, QObject* object, QGenericArg
 
 bool QMetaMethod_Invoke114(const QMetaMethod* self, QObject* object, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
 	return self->invoke(object, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
+}
+
+bool QMetaMethod_InvokeOnGadget3(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0);
+}
+
+bool QMetaMethod_InvokeOnGadget4(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1);
+}
+
+bool QMetaMethod_InvokeOnGadget5(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2);
+}
+
+bool QMetaMethod_InvokeOnGadget6(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3);
+}
+
+bool QMetaMethod_InvokeOnGadget7(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4);
+}
+
+bool QMetaMethod_InvokeOnGadget8(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5);
+}
+
+bool QMetaMethod_InvokeOnGadget9(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6);
+}
+
+bool QMetaMethod_InvokeOnGadget10(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
+}
+
+bool QMetaMethod_InvokeOnGadget11(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
+}
+
+bool QMetaMethod_InvokeOnGadget12(const QMetaMethod* self, void* gadget, QGenericReturnArgument* returnValue, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
+	return self->invokeOnGadget(gadget, *returnValue, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
+}
+
+bool QMetaMethod_InvokeOnGadget2(const QMetaMethod* self, void* gadget, QGenericArgument* val0) {
+	return self->invokeOnGadget(gadget, *val0);
+}
+
+bool QMetaMethod_InvokeOnGadget32(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1) {
+	return self->invokeOnGadget(gadget, *val0, *val1);
+}
+
+bool QMetaMethod_InvokeOnGadget42(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2);
+}
+
+bool QMetaMethod_InvokeOnGadget52(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3);
+}
+
+bool QMetaMethod_InvokeOnGadget62(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4);
+}
+
+bool QMetaMethod_InvokeOnGadget72(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5);
+}
+
+bool QMetaMethod_InvokeOnGadget82(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6);
+}
+
+bool QMetaMethod_InvokeOnGadget92(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7);
+}
+
+bool QMetaMethod_InvokeOnGadget102(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8);
+}
+
+bool QMetaMethod_InvokeOnGadget112(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9) {
+	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
 void QMetaMethod_Delete(QMetaMethod* self) {
@@ -476,6 +564,18 @@ bool QMetaProperty_Write(const QMetaProperty* self, QObject* obj, QVariant* valu
 
 bool QMetaProperty_Reset(const QMetaProperty* self, QObject* obj) {
 	return self->reset(obj);
+}
+
+QVariant* QMetaProperty_ReadOnGadget(const QMetaProperty* self, const void* gadget) {
+	return new QVariant(self->readOnGadget(gadget));
+}
+
+bool QMetaProperty_WriteOnGadget(const QMetaProperty* self, void* gadget, QVariant* value) {
+	return self->writeOnGadget(gadget, *value);
+}
+
+bool QMetaProperty_ResetOnGadget(const QMetaProperty* self, void* gadget) {
+	return self->resetOnGadget(gadget);
 }
 
 bool QMetaProperty_HasStdCppSet(const QMetaProperty* self) {

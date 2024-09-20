@@ -18,6 +18,10 @@ QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDesktopWidget_Metacast(QDesktopWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDesktopWidget_Tr(const char* s) {
 	QString _ret = QDesktopWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

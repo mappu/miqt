@@ -43,6 +43,10 @@ QMetaObject* QPushButton_MetaObject(const QPushButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPushButton_Metacast(QPushButton* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPushButton_Tr(const char* s) {
 	QString _ret = QPushButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

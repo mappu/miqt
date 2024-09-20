@@ -20,6 +20,10 @@ QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAbstractSlider_Metacast(QAbstractSlider* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAbstractSlider_Tr(const char* s) {
 	QString _ret = QAbstractSlider::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

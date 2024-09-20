@@ -36,6 +36,7 @@ QDialogButtonBox* QDialogButtonBox_new6(int orientation, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new7(int buttons, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent);
 QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self);
+void* QDialogButtonBox_Metacast(QDialogButtonBox* self, const char* param1);
 struct miqt_string* QDialogButtonBox_Tr(const char* s);
 struct miqt_string* QDialogButtonBox_TrUtf8(const char* s);
 void QDialogButtonBox_SetOrientation(QDialogButtonBox* self, int orientation);

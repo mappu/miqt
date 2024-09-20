@@ -29,6 +29,7 @@ typedef struct QWidget QWidget;
 
 QDesktopWidget* QDesktopWidget_new();
 QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self);
+void* QDesktopWidget_Metacast(QDesktopWidget* self, const char* param1);
 struct miqt_string* QDesktopWidget_Tr(const char* s);
 struct miqt_string* QDesktopWidget_TrUtf8(const char* s);
 int QDesktopWidget_ScreenNumber(const QDesktopWidget* self);

@@ -33,6 +33,7 @@ QMdiSubWindow* QMdiSubWindow_new();
 QMdiSubWindow* QMdiSubWindow_new2(QWidget* parent);
 QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self);
+void* QMdiSubWindow_Metacast(QMdiSubWindow* self, const char* param1);
 struct miqt_string* QMdiSubWindow_Tr(const char* s);
 struct miqt_string* QMdiSubWindow_TrUtf8(const char* s);
 QSize* QMdiSubWindow_SizeHint(const QMdiSubWindow* self);

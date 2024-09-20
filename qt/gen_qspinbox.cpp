@@ -21,6 +21,10 @@ QMetaObject* QSpinBox_MetaObject(const QSpinBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSpinBox_Metacast(QSpinBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSpinBox_Tr(const char* s) {
 	QString _ret = QSpinBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -202,6 +206,10 @@ QDoubleSpinBox* QDoubleSpinBox_new2(QWidget* parent) {
 
 QMetaObject* QDoubleSpinBox_MetaObject(const QDoubleSpinBox* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QDoubleSpinBox_Metacast(QDoubleSpinBox* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QDoubleSpinBox_Tr(const char* s) {

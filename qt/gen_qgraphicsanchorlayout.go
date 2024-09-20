@@ -40,6 +40,12 @@ func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsAnchor_MetaObject(this.h)))
 }
 
+func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsAnchor_Metacast(this.h, param1_Cstring)
+}
+
 func QGraphicsAnchor_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

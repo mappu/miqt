@@ -51,6 +51,10 @@ QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPlainTextEdit_Metacast(QPlainTextEdit* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPlainTextEdit_Tr(const char* s) {
 	QString _ret = QPlainTextEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -549,6 +553,10 @@ QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document) 
 
 QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QPlainTextDocumentLayout_Metacast(QPlainTextDocumentLayout* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QPlainTextDocumentLayout_Tr(const char* s) {

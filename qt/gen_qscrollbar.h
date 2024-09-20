@@ -32,6 +32,7 @@ QScrollBar* QScrollBar_new2(int param1);
 QScrollBar* QScrollBar_new3(QWidget* parent);
 QScrollBar* QScrollBar_new4(int param1, QWidget* parent);
 QMetaObject* QScrollBar_MetaObject(const QScrollBar* self);
+void* QScrollBar_Metacast(QScrollBar* self, const char* param1);
 struct miqt_string* QScrollBar_Tr(const char* s);
 struct miqt_string* QScrollBar_TrUtf8(const char* s);
 QSize* QScrollBar_SizeHint(const QScrollBar* self);

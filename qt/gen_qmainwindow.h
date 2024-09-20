@@ -43,6 +43,7 @@ QMainWindow* QMainWindow_new();
 QMainWindow* QMainWindow_new2(QWidget* parent);
 QMainWindow* QMainWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMainWindow_MetaObject(const QMainWindow* self);
+void* QMainWindow_Metacast(QMainWindow* self, const char* param1);
 struct miqt_string* QMainWindow_Tr(const char* s);
 struct miqt_string* QMainWindow_TrUtf8(const char* s);
 QSize* QMainWindow_IconSize(const QMainWindow* self);

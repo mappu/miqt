@@ -15,6 +15,8 @@ extern "C" {
 
 #ifdef __cplusplus
 class QByteArray;
+class QDataStream;
+class QDebug;
 class QMetaObject;
 class QMetaType;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QAssociativeIterableImpl)
@@ -59,6 +61,8 @@ class QtPrivate__AbstractDebugStreamFunction;
 #endif
 #else
 typedef struct QByteArray QByteArray;
+typedef struct QDataStream QDataStream;
+typedef struct QDebug QDebug;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMetaType QMetaType;
 typedef struct QtMetaTypePrivate__QAssociativeIterableImpl QtMetaTypePrivate__QAssociativeIterableImpl;
@@ -92,6 +96,12 @@ int QMetaType_SizeOf(int typeVal);
 int QMetaType_TypeFlags(int typeVal);
 QMetaObject* QMetaType_MetaObjectForType(int typeVal);
 bool QMetaType_IsRegistered(int typeVal);
+void* QMetaType_Create(int typeVal);
+void QMetaType_Destroy(int typeVal, void* data);
+void* QMetaType_Construct(int typeVal, void* where, const void* copyVal);
+void QMetaType_Destruct(int typeVal, void* where);
+bool QMetaType_Save(QDataStream* stream, int typeVal, const void* data);
+bool QMetaType_Load(QDataStream* stream, int typeVal, void* data);
 bool QMetaType_IsValid(const QMetaType* self);
 bool QMetaType_IsRegistered2(const QMetaType* self);
 int QMetaType_Id(const QMetaType* self);
@@ -99,12 +109,24 @@ int QMetaType_SizeOf2(const QMetaType* self);
 int QMetaType_Flags(const QMetaType* self);
 QMetaObject* QMetaType_MetaObject(const QMetaType* self);
 QByteArray* QMetaType_Name(const QMetaType* self);
+void* QMetaType_Create2(const QMetaType* self);
+void QMetaType_DestroyWithData(const QMetaType* self, void* data);
+void* QMetaType_ConstructWithWhere(const QMetaType* self, void* where);
+void QMetaType_DestructWithData(const QMetaType* self, void* data);
 bool QMetaType_HasRegisteredComparators(int typeId);
 bool QMetaType_HasRegisteredDebugStreamOperator(int typeId);
+bool QMetaType_Convert(const void* from, int fromTypeId, void* to, int toTypeId);
+bool QMetaType_Compare(const void* lhs, const void* rhs, int typeId, int* result);
+bool QMetaType_Equals(const void* lhs, const void* rhs, int typeId, int* result);
+bool QMetaType_DebugStream(QDebug* dbg, const void* rhs, int typeId);
 bool QMetaType_HasRegisteredConverterFunction(int fromTypeId, int toTypeId);
+void* QMetaType_Create22(int typeVal, const void* copyVal);
+void* QMetaType_Create1(const QMetaType* self, const void* copyVal);
+void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyVal);
 void QMetaType_Delete(QMetaType* self);
 
-QtMetaTypePrivate__VariantData* QtMetaTypePrivate__VariantData_new(QtMetaTypePrivate__VariantData* other);
+QtMetaTypePrivate__VariantData* QtMetaTypePrivate__VariantData_new(const int metaTypeId_, const void* data_, const unsigned int flags_);
+QtMetaTypePrivate__VariantData* QtMetaTypePrivate__VariantData_new2(QtMetaTypePrivate__VariantData* other);
 void QtMetaTypePrivate__VariantData_Delete(QtMetaTypePrivate__VariantData* self);
 
 void QtMetaTypePrivate__VectorBoolElements_Delete(QtMetaTypePrivate__VectorBoolElements* self);
@@ -118,6 +140,7 @@ void QtMetaTypePrivate__QSequentialIterableImpl_MoveToBegin(QtMetaTypePrivate__Q
 void QtMetaTypePrivate__QSequentialIterableImpl_MoveToEnd(QtMetaTypePrivate__QSequentialIterableImpl* self);
 bool QtMetaTypePrivate__QSequentialIterableImpl_Equal(const QtMetaTypePrivate__QSequentialIterableImpl* self, QtMetaTypePrivate__QSequentialIterableImpl* other);
 QtMetaTypePrivate__QSequentialIterableImpl* QtMetaTypePrivate__QSequentialIterableImpl_Advance(QtMetaTypePrivate__QSequentialIterableImpl* self, int i);
+void QtMetaTypePrivate__QSequentialIterableImpl_Append(QtMetaTypePrivate__QSequentialIterableImpl* self, const void* newElement);
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_GetCurrent(const QtMetaTypePrivate__QSequentialIterableImpl* self);
 QtMetaTypePrivate__VariantData* QtMetaTypePrivate__QSequentialIterableImpl_At(const QtMetaTypePrivate__QSequentialIterableImpl* self, int idx);
 int QtMetaTypePrivate__QSequentialIterableImpl_Size(const QtMetaTypePrivate__QSequentialIterableImpl* self);

@@ -47,6 +47,7 @@ void QUndoCommand_Delete(QUndoCommand* self);
 QUndoStack* QUndoStack_new();
 QUndoStack* QUndoStack_new2(QObject* parent);
 QMetaObject* QUndoStack_MetaObject(const QUndoStack* self);
+void* QUndoStack_Metacast(QUndoStack* self, const char* param1);
 struct miqt_string* QUndoStack_Tr(const char* s);
 struct miqt_string* QUndoStack_TrUtf8(const char* s);
 void QUndoStack_Clear(QUndoStack* self);

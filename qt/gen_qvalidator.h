@@ -38,6 +38,7 @@ typedef struct QValidator QValidator;
 #endif
 
 QMetaObject* QValidator_MetaObject(const QValidator* self);
+void* QValidator_Metacast(QValidator* self, const char* param1);
 struct miqt_string* QValidator_Tr(const char* s);
 struct miqt_string* QValidator_TrUtf8(const char* s);
 void QValidator_SetLocale(QValidator* self, QLocale* locale);
@@ -57,6 +58,7 @@ QIntValidator* QIntValidator_new2(int bottom, int top);
 QIntValidator* QIntValidator_new3(QObject* parent);
 QIntValidator* QIntValidator_new4(int bottom, int top, QObject* parent);
 QMetaObject* QIntValidator_MetaObject(const QIntValidator* self);
+void* QIntValidator_Metacast(QIntValidator* self, const char* param1);
 struct miqt_string* QIntValidator_Tr(const char* s);
 struct miqt_string* QIntValidator_TrUtf8(const char* s);
 int QIntValidator_Validate(const QIntValidator* self, struct miqt_string* param1, int* param2);
@@ -81,6 +83,7 @@ QDoubleValidator* QDoubleValidator_new2(double bottom, double top, int decimals)
 QDoubleValidator* QDoubleValidator_new3(QObject* parent);
 QDoubleValidator* QDoubleValidator_new4(double bottom, double top, int decimals, QObject* parent);
 QMetaObject* QDoubleValidator_MetaObject(const QDoubleValidator* self);
+void* QDoubleValidator_Metacast(QDoubleValidator* self, const char* param1);
 struct miqt_string* QDoubleValidator_Tr(const char* s);
 struct miqt_string* QDoubleValidator_TrUtf8(const char* s);
 int QDoubleValidator_Validate(const QDoubleValidator* self, struct miqt_string* param1, int* param2);
@@ -113,6 +116,7 @@ QRegExpValidator* QRegExpValidator_new2(QRegExp* rx);
 QRegExpValidator* QRegExpValidator_new3(QObject* parent);
 QRegExpValidator* QRegExpValidator_new4(QRegExp* rx, QObject* parent);
 QMetaObject* QRegExpValidator_MetaObject(const QRegExpValidator* self);
+void* QRegExpValidator_Metacast(QRegExpValidator* self, const char* param1);
 struct miqt_string* QRegExpValidator_Tr(const char* s);
 struct miqt_string* QRegExpValidator_TrUtf8(const char* s);
 int QRegExpValidator_Validate(const QRegExpValidator* self, struct miqt_string* input, int* pos);
@@ -131,6 +135,7 @@ QRegularExpressionValidator* QRegularExpressionValidator_new2(QRegularExpression
 QRegularExpressionValidator* QRegularExpressionValidator_new3(QObject* parent);
 QRegularExpressionValidator* QRegularExpressionValidator_new4(QRegularExpression* re, QObject* parent);
 QMetaObject* QRegularExpressionValidator_MetaObject(const QRegularExpressionValidator* self);
+void* QRegularExpressionValidator_Metacast(QRegularExpressionValidator* self, const char* param1);
 struct miqt_string* QRegularExpressionValidator_Tr(const char* s);
 struct miqt_string* QRegularExpressionValidator_TrUtf8(const char* s);
 int QRegularExpressionValidator_Validate(const QRegularExpressionValidator* self, struct miqt_string* input, int* pos);

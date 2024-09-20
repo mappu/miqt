@@ -36,6 +36,7 @@ QPushButton* QPushButton_new4(QWidget* parent);
 QPushButton* QPushButton_new5(struct miqt_string* text, QWidget* parent);
 QPushButton* QPushButton_new6(QIcon* icon, struct miqt_string* text, QWidget* parent);
 QMetaObject* QPushButton_MetaObject(const QPushButton* self);
+void* QPushButton_Metacast(QPushButton* self, const char* param1);
 struct miqt_string* QPushButton_Tr(const char* s);
 struct miqt_string* QPushButton_TrUtf8(const char* s);
 QSize* QPushButton_SizeHint(const QPushButton* self);

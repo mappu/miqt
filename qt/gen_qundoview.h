@@ -36,6 +36,7 @@ QUndoView* QUndoView_new4(QWidget* parent);
 QUndoView* QUndoView_new5(QUndoStack* stack, QWidget* parent);
 QUndoView* QUndoView_new6(QUndoGroup* group, QWidget* parent);
 QMetaObject* QUndoView_MetaObject(const QUndoView* self);
+void* QUndoView_Metacast(QUndoView* self, const char* param1);
 struct miqt_string* QUndoView_Tr(const char* s);
 struct miqt_string* QUndoView_TrUtf8(const char* s);
 QUndoStack* QUndoView_Stack(const QUndoView* self);

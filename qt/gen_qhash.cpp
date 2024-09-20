@@ -5,6 +5,14 @@
 #include "gen_qhash.h"
 #include "_cgo_export.h"
 
+void* QHashData_AllocateNode(QHashData* self, int nodeAlign) {
+	return self->allocateNode(static_cast<int>(nodeAlign));
+}
+
+void QHashData_FreeNode(QHashData* self, void* node) {
+	self->freeNode(node);
+}
+
 bool QHashData_WillGrow(QHashData* self) {
 	return self->willGrow();
 }

@@ -38,6 +38,7 @@ QToolBar* QToolBar_new2();
 QToolBar* QToolBar_new3(struct miqt_string* title, QWidget* parent);
 QToolBar* QToolBar_new4(QWidget* parent);
 QMetaObject* QToolBar_MetaObject(const QToolBar* self);
+void* QToolBar_Metacast(QToolBar* self, const char* param1);
 struct miqt_string* QToolBar_Tr(const char* s);
 struct miqt_string* QToolBar_TrUtf8(const char* s);
 void QToolBar_SetMovable(QToolBar* self, bool movable);

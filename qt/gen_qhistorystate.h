@@ -32,6 +32,7 @@ QHistoryState* QHistoryState_new2(int typeVal);
 QHistoryState* QHistoryState_new3(QState* parent);
 QHistoryState* QHistoryState_new4(int typeVal, QState* parent);
 QMetaObject* QHistoryState_MetaObject(const QHistoryState* self);
+void* QHistoryState_Metacast(QHistoryState* self, const char* param1);
 struct miqt_string* QHistoryState_Tr(const char* s);
 struct miqt_string* QHistoryState_TrUtf8(const char* s);
 QAbstractTransition* QHistoryState_DefaultTransition(const QHistoryState* self);

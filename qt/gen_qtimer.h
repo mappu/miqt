@@ -26,6 +26,7 @@ typedef struct QTimer QTimer;
 QTimer* QTimer_new();
 QTimer* QTimer_new2(QObject* parent);
 QMetaObject* QTimer_MetaObject(const QTimer* self);
+void* QTimer_Metacast(QTimer* self, const char* param1);
 struct miqt_string* QTimer_Tr(const char* s);
 struct miqt_string* QTimer_TrUtf8(const char* s);
 bool QTimer_IsActive(const QTimer* self);

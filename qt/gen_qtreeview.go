@@ -53,6 +53,12 @@ func (this *QTreeView) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTreeView_MetaObject(this.h)))
 }
 
+func (this *QTreeView) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTreeView_Metacast(this.h, param1_Cstring)
+}
+
 func QTreeView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

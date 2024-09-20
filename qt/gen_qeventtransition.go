@@ -64,6 +64,12 @@ func (this *QEventTransition) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QEventTransition_MetaObject(this.h)))
 }
 
+func (this *QEventTransition) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QEventTransition_Metacast(this.h, param1_Cstring)
+}
+
 func QEventTransition_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

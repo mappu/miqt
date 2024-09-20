@@ -123,6 +123,10 @@ func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon
 	return _goptr
 }
 
+func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
+	C.QIconEngine_VirtualHook(this.h, (C.int)(id), data)
+}
+
 func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))

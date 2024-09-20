@@ -29,6 +29,10 @@ QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QLCDNumber_Metacast(QLCDNumber* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QLCDNumber_Tr(const char* s) {
 	QString _ret = QLCDNumber::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

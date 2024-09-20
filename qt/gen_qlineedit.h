@@ -48,6 +48,7 @@ QLineEdit* QLineEdit_new2(struct miqt_string* param1);
 QLineEdit* QLineEdit_new3(QWidget* parent);
 QLineEdit* QLineEdit_new4(struct miqt_string* param1, QWidget* parent);
 QMetaObject* QLineEdit_MetaObject(const QLineEdit* self);
+void* QLineEdit_Metacast(QLineEdit* self, const char* param1);
 struct miqt_string* QLineEdit_Tr(const char* s);
 struct miqt_string* QLineEdit_TrUtf8(const char* s);
 struct miqt_string* QLineEdit_Text(const QLineEdit* self);

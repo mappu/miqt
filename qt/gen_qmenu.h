@@ -38,6 +38,7 @@ QMenu* QMenu_new2(struct miqt_string* title);
 QMenu* QMenu_new3(QWidget* parent);
 QMenu* QMenu_new4(struct miqt_string* title, QWidget* parent);
 QMetaObject* QMenu_MetaObject(const QMenu* self);
+void* QMenu_Metacast(QMenu* self, const char* param1);
 struct miqt_string* QMenu_Tr(const char* s);
 struct miqt_string* QMenu_TrUtf8(const char* s);
 QAction* QMenu_AddAction(QMenu* self, struct miqt_string* text);

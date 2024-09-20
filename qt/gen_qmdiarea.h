@@ -32,6 +32,7 @@ typedef struct QWidget QWidget;
 QMdiArea* QMdiArea_new();
 QMdiArea* QMdiArea_new2(QWidget* parent);
 QMetaObject* QMdiArea_MetaObject(const QMdiArea* self);
+void* QMdiArea_Metacast(QMdiArea* self, const char* param1);
 struct miqt_string* QMdiArea_Tr(const char* s);
 struct miqt_string* QMdiArea_TrUtf8(const char* s);
 QSize* QMdiArea_SizeHint(const QMdiArea* self);

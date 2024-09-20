@@ -34,6 +34,7 @@ typedef struct QTransform QTransform;
 #endif
 
 QMetaObject* QScreen_MetaObject(const QScreen* self);
+void* QScreen_Metacast(QScreen* self, const char* param1);
 struct miqt_string* QScreen_Tr(const char* s);
 struct miqt_string* QScreen_TrUtf8(const char* s);
 struct miqt_string* QScreen_Name(const QScreen* self);

@@ -32,6 +32,7 @@ QDockWidget* QDockWidget_new4(struct miqt_string* title, QWidget* parent, int fl
 QDockWidget* QDockWidget_new5(QWidget* parent);
 QDockWidget* QDockWidget_new6(QWidget* parent, int flags);
 QMetaObject* QDockWidget_MetaObject(const QDockWidget* self);
+void* QDockWidget_Metacast(QDockWidget* self, const char* param1);
 struct miqt_string* QDockWidget_Tr(const char* s);
 struct miqt_string* QDockWidget_TrUtf8(const char* s);
 QWidget* QDockWidget_Widget(const QDockWidget* self);

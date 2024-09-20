@@ -30,6 +30,7 @@ typedef struct QVariantAnimation QVariantAnimation;
 QVariantAnimation* QVariantAnimation_new();
 QVariantAnimation* QVariantAnimation_new2(QObject* parent);
 QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self);
+void* QVariantAnimation_Metacast(QVariantAnimation* self, const char* param1);
 struct miqt_string* QVariantAnimation_Tr(const char* s);
 struct miqt_string* QVariantAnimation_TrUtf8(const char* s);
 QVariant* QVariantAnimation_StartValue(const QVariantAnimation* self);

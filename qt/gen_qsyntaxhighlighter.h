@@ -26,6 +26,7 @@ typedef struct QTextDocument QTextDocument;
 #endif
 
 QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self);
+void* QSyntaxHighlighter_Metacast(QSyntaxHighlighter* self, const char* param1);
 struct miqt_string* QSyntaxHighlighter_Tr(const char* s);
 struct miqt_string* QSyntaxHighlighter_TrUtf8(const char* s);
 void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc);

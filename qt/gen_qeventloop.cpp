@@ -23,6 +23,10 @@ QMetaObject* QEventLoop_MetaObject(const QEventLoop* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QEventLoop_Metacast(QEventLoop* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QEventLoop_Tr(const char* s) {
 	QString _ret = QEventLoop::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

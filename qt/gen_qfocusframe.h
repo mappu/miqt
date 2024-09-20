@@ -26,6 +26,7 @@ typedef struct QWidget QWidget;
 QFocusFrame* QFocusFrame_new();
 QFocusFrame* QFocusFrame_new2(QWidget* parent);
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self);
+void* QFocusFrame_Metacast(QFocusFrame* self, const char* param1);
 struct miqt_string* QFocusFrame_Tr(const char* s);
 struct miqt_string* QFocusFrame_TrUtf8(const char* s);
 void QFocusFrame_SetWidget(QFocusFrame* self, QWidget* widget);

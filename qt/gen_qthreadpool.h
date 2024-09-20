@@ -30,6 +30,7 @@ typedef struct QThreadPool QThreadPool;
 QThreadPool* QThreadPool_new();
 QThreadPool* QThreadPool_new2(QObject* parent);
 QMetaObject* QThreadPool_MetaObject(const QThreadPool* self);
+void* QThreadPool_Metacast(QThreadPool* self, const char* param1);
 struct miqt_string* QThreadPool_Tr(const char* s);
 struct miqt_string* QThreadPool_TrUtf8(const char* s);
 QThreadPool* QThreadPool_GlobalInstance();

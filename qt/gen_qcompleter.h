@@ -40,6 +40,7 @@ QCompleter* QCompleter_new4(QObject* parent);
 QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent);
 QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent);
 QMetaObject* QCompleter_MetaObject(const QCompleter* self);
+void* QCompleter_Metacast(QCompleter* self, const char* param1);
 struct miqt_string* QCompleter_Tr(const char* s);
 struct miqt_string* QCompleter_TrUtf8(const char* s);
 void QCompleter_SetWidget(QCompleter* self, QWidget* widget);

@@ -21,6 +21,10 @@ QMetaObject* QDial_MetaObject(const QDial* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDial_Metacast(QDial* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDial_Tr(const char* s) {
 	QString _ret = QDial::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

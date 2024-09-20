@@ -40,6 +40,7 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QAbstractItemView_MetaObject(const QAbstractItemView* self);
+void* QAbstractItemView_Metacast(QAbstractItemView* self, const char* param1);
 struct miqt_string* QAbstractItemView_Tr(const char* s);
 struct miqt_string* QAbstractItemView_TrUtf8(const char* s);
 void QAbstractItemView_SetModel(QAbstractItemView* self, QAbstractItemModel* model);

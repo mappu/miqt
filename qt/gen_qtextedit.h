@@ -60,6 +60,7 @@ QTextEdit* QTextEdit_new2(struct miqt_string* text);
 QTextEdit* QTextEdit_new3(QWidget* parent);
 QTextEdit* QTextEdit_new4(struct miqt_string* text, QWidget* parent);
 QMetaObject* QTextEdit_MetaObject(const QTextEdit* self);
+void* QTextEdit_Metacast(QTextEdit* self, const char* param1);
 struct miqt_string* QTextEdit_Tr(const char* s);
 struct miqt_string* QTextEdit_TrUtf8(const char* s);
 void QTextEdit_SetDocument(QTextEdit* self, QTextDocument* document);

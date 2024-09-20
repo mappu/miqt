@@ -277,6 +277,7 @@ void QGraphicsItem_Scroll3(QGraphicsItem* self, double dx, double dy, QRectF* re
 void QGraphicsItem_Delete(QGraphicsItem* self);
 
 QMetaObject* QGraphicsObject_MetaObject(const QGraphicsObject* self);
+void* QGraphicsObject_Metacast(QGraphicsObject* self, const char* param1);
 struct miqt_string* QGraphicsObject_Tr(const char* s);
 struct miqt_string* QGraphicsObject_TrUtf8(const char* s);
 void QGraphicsObject_GrabGesture(QGraphicsObject* self, int typeVal);
@@ -440,6 +441,7 @@ QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string* text);
 QGraphicsTextItem* QGraphicsTextItem_new3(QGraphicsItem* parent);
 QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string* text, QGraphicsItem* parent);
 QMetaObject* QGraphicsTextItem_MetaObject(const QGraphicsTextItem* self);
+void* QGraphicsTextItem_Metacast(QGraphicsTextItem* self, const char* param1);
 struct miqt_string* QGraphicsTextItem_Tr(const char* s);
 struct miqt_string* QGraphicsTextItem_TrUtf8(const char* s);
 struct miqt_string* QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self);

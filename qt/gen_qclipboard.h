@@ -28,6 +28,7 @@ typedef struct QPixmap QPixmap;
 #endif
 
 QMetaObject* QClipboard_MetaObject(const QClipboard* self);
+void* QClipboard_Metacast(QClipboard* self, const char* param1);
 struct miqt_string* QClipboard_Tr(const char* s);
 struct miqt_string* QClipboard_TrUtf8(const char* s);
 void QClipboard_Clear(QClipboard* self);

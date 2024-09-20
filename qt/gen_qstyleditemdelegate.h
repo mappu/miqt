@@ -44,6 +44,7 @@ typedef struct QWidget QWidget;
 QStyledItemDelegate* QStyledItemDelegate_new();
 QStyledItemDelegate* QStyledItemDelegate_new2(QObject* parent);
 QMetaObject* QStyledItemDelegate_MetaObject(const QStyledItemDelegate* self);
+void* QStyledItemDelegate_Metacast(QStyledItemDelegate* self, const char* param1);
 struct miqt_string* QStyledItemDelegate_Tr(const char* s);
 struct miqt_string* QStyledItemDelegate_TrUtf8(const char* s);
 void QStyledItemDelegate_Paint(const QStyledItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);

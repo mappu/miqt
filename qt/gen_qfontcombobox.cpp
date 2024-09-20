@@ -22,6 +22,10 @@ QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFontComboBox_Metacast(QFontComboBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFontComboBox_Tr(const char* s) {
 	QString _ret = QFontComboBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -35,7 +35,9 @@ typedef struct QtPrivate__ResultIteratorBase QtPrivate__ResultIteratorBase;
 typedef struct QtPrivate__ResultStoreBase QtPrivate__ResultStoreBase;
 #endif
 
-QtPrivate__ResultItem* QtPrivate__ResultItem_new();
+QtPrivate__ResultItem* QtPrivate__ResultItem_new(const void* _result, int _count);
+QtPrivate__ResultItem* QtPrivate__ResultItem_new2(const void* _result);
+QtPrivate__ResultItem* QtPrivate__ResultItem_new3();
 bool QtPrivate__ResultItem_IsValid(const QtPrivate__ResultItem* self);
 bool QtPrivate__ResultItem_IsVector(const QtPrivate__ResultItem* self);
 int QtPrivate__ResultItem_Count(const QtPrivate__ResultItem* self);
@@ -57,6 +59,8 @@ QtPrivate__ResultStoreBase* QtPrivate__ResultStoreBase_new();
 QtPrivate__ResultStoreBase* QtPrivate__ResultStoreBase_new2(QtPrivate__ResultStoreBase* param1);
 void QtPrivate__ResultStoreBase_SetFilterMode(QtPrivate__ResultStoreBase* self, bool enable);
 bool QtPrivate__ResultStoreBase_FilterMode(const QtPrivate__ResultStoreBase* self);
+int QtPrivate__ResultStoreBase_AddResult(QtPrivate__ResultStoreBase* self, int index, const void* result);
+int QtPrivate__ResultStoreBase_AddResults(QtPrivate__ResultStoreBase* self, int index, const void* results, int vectorSize, int logicalCount);
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_Begin(const QtPrivate__ResultStoreBase* self);
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_End(const QtPrivate__ResultStoreBase* self);
 bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* self);

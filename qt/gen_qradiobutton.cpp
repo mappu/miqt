@@ -31,6 +31,10 @@ QMetaObject* QRadioButton_MetaObject(const QRadioButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QRadioButton_Metacast(QRadioButton* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QRadioButton_Tr(const char* s) {
 	QString _ret = QRadioButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

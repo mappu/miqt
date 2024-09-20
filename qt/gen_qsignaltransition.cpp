@@ -30,6 +30,10 @@ QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSignalTransition_Metacast(QSignalTransition* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSignalTransition_Tr(const char* s) {
 	QString _ret = QSignalTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

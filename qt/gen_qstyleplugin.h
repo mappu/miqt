@@ -24,6 +24,7 @@ typedef struct QStylePlugin QStylePlugin;
 #endif
 
 QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self);
+void* QStylePlugin_Metacast(QStylePlugin* self, const char* param1);
 struct miqt_string* QStylePlugin_Tr(const char* s);
 struct miqt_string* QStylePlugin_TrUtf8(const char* s);
 QStyle* QStylePlugin_Create(QStylePlugin* self, struct miqt_string* key);

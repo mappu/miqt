@@ -67,6 +67,10 @@ QMetaObject* QMessageBox_MetaObject(const QMessageBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QMessageBox_Metacast(QMessageBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QMessageBox_Tr(const char* s) {
 	QString _ret = QMessageBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -14,6 +14,10 @@ QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsAnchor_Metacast(QGraphicsAnchor* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsAnchor_Tr(const char* s) {
 	QString _ret = QGraphicsAnchor::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

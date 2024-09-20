@@ -27,6 +27,10 @@ QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QBoxLayout_Metacast(QBoxLayout* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QBoxLayout_Tr(const char* s) {
 	QString _ret = QBoxLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -251,6 +255,10 @@ QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QHBoxLayout_Metacast(QHBoxLayout* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QHBoxLayout_Tr(const char* s) {
 	QString _ret = QHBoxLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -307,6 +315,10 @@ QVBoxLayout* QVBoxLayout_new2(QWidget* parent) {
 
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QVBoxLayout_Metacast(QVBoxLayout* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QVBoxLayout_Tr(const char* s) {

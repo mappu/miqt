@@ -29,6 +29,10 @@ QMetaObject* QPropertyAnimation_MetaObject(const QPropertyAnimation* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPropertyAnimation_Metacast(QPropertyAnimation* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPropertyAnimation_Tr(const char* s) {
 	QString _ret = QPropertyAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

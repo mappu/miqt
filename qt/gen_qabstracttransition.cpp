@@ -16,6 +16,10 @@ QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAbstractTransition_Metacast(QAbstractTransition* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAbstractTransition_Tr(const char* s) {
 	QString _ret = QAbstractTransition::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

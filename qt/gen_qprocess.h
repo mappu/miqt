@@ -49,6 +49,7 @@ void QProcessEnvironment_Delete(QProcessEnvironment* self);
 QProcess* QProcess_new();
 QProcess* QProcess_new2(QObject* parent);
 QMetaObject* QProcess_MetaObject(const QProcess* self);
+void* QProcess_Metacast(QProcess* self, const char* param1);
 struct miqt_string* QProcess_Tr(const char* s);
 struct miqt_string* QProcess_TrUtf8(const char* s);
 void QProcess_Start(QProcess* self, struct miqt_string* program, struct miqt_array* /* of struct miqt_string* */ arguments);

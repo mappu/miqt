@@ -24,6 +24,7 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QIODevice_MetaObject(const QIODevice* self);
+void* QIODevice_Metacast(QIODevice* self, const char* param1);
 struct miqt_string* QIODevice_Tr(const char* s);
 struct miqt_string* QIODevice_TrUtf8(const char* s);
 int QIODevice_OpenMode(const QIODevice* self);

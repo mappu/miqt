@@ -34,6 +34,7 @@ typedef struct QWidget QWidget;
 QCalendarWidget* QCalendarWidget_new();
 QCalendarWidget* QCalendarWidget_new2(QWidget* parent);
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self);
+void* QCalendarWidget_Metacast(QCalendarWidget* self, const char* param1);
 struct miqt_string* QCalendarWidget_Tr(const char* s);
 struct miqt_string* QCalendarWidget_TrUtf8(const char* s);
 QSize* QCalendarWidget_SizeHint(const QCalendarWidget* self);

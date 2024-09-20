@@ -55,6 +55,10 @@ QMetaObject* QMovie_MetaObject(const QMovie* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QMovie_Metacast(QMovie* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QMovie_Tr(const char* s) {
 	QString _ret = QMovie::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -34,6 +34,7 @@ typedef struct QTranslator QTranslator;
 QCoreApplication* QCoreApplication_new(int* argc, char** argv);
 QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self);
+void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1);
 struct miqt_string* QCoreApplication_Tr(const char* s);
 struct miqt_string* QCoreApplication_TrUtf8(const char* s);
 struct miqt_array* QCoreApplication_Arguments();

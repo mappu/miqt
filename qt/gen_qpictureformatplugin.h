@@ -24,6 +24,7 @@ typedef struct QPictureFormatPlugin QPictureFormatPlugin;
 #endif
 
 QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self);
+void* QPictureFormatPlugin_Metacast(QPictureFormatPlugin* self, const char* param1);
 struct miqt_string* QPictureFormatPlugin_Tr(const char* s);
 struct miqt_string* QPictureFormatPlugin_TrUtf8(const char* s);
 bool QPictureFormatPlugin_LoadPicture(QPictureFormatPlugin* self, struct miqt_string* format, struct miqt_string* filename, QPicture* pic);

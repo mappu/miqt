@@ -40,6 +40,7 @@ typedef struct QWidget QWidget;
 QFormLayout* QFormLayout_new();
 QFormLayout* QFormLayout_new2(QWidget* parent);
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self);
+void* QFormLayout_Metacast(QFormLayout* self, const char* param1);
 struct miqt_string* QFormLayout_Tr(const char* s);
 struct miqt_string* QFormLayout_TrUtf8(const char* s);
 void QFormLayout_SetFieldGrowthPolicy(QFormLayout* self, int policy);

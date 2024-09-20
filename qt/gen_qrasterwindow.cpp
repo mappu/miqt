@@ -20,6 +20,10 @@ QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QRasterWindow_Metacast(QRasterWindow* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QRasterWindow_Tr(const char* s) {
 	QString _ret = QRasterWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

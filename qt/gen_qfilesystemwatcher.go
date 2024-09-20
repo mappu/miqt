@@ -84,6 +84,12 @@ func (this *QFileSystemWatcher) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QFileSystemWatcher_MetaObject(this.h)))
 }
 
+func (this *QFileSystemWatcher) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QFileSystemWatcher_Metacast(this.h, param1_Cstring)
+}
+
 func QFileSystemWatcher_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

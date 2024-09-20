@@ -5,7 +5,15 @@
 #include "gen_qresultstore.h"
 #include "_cgo_export.h"
 
-QtPrivate__ResultItem* QtPrivate__ResultItem_new() {
+QtPrivate__ResultItem* QtPrivate__ResultItem_new(const void* _result, int _count) {
+	return new QtPrivate::ResultItem(_result, static_cast<int>(_count));
+}
+
+QtPrivate__ResultItem* QtPrivate__ResultItem_new2(const void* _result) {
+	return new QtPrivate::ResultItem(_result);
+}
+
+QtPrivate__ResultItem* QtPrivate__ResultItem_new3() {
 	return new QtPrivate::ResultItem();
 }
 
@@ -83,6 +91,14 @@ void QtPrivate__ResultStoreBase_SetFilterMode(QtPrivate__ResultStoreBase* self, 
 
 bool QtPrivate__ResultStoreBase_FilterMode(const QtPrivate__ResultStoreBase* self) {
 	return self->filterMode();
+}
+
+int QtPrivate__ResultStoreBase_AddResult(QtPrivate__ResultStoreBase* self, int index, const void* result) {
+	return self->addResult(static_cast<int>(index), result);
+}
+
+int QtPrivate__ResultStoreBase_AddResults(QtPrivate__ResultStoreBase* self, int index, const void* results, int vectorSize, int logicalCount) {
+	return self->addResults(static_cast<int>(index), results, static_cast<int>(vectorSize), static_cast<int>(logicalCount));
 }
 
 QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_Begin(const QtPrivate__ResultStoreBase* self) {

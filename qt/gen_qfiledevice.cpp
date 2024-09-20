@@ -12,6 +12,10 @@ QMetaObject* QFileDevice_MetaObject(const QFileDevice* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFileDevice_Metacast(QFileDevice* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFileDevice_Tr(const char* s) {
 	QString _ret = QFileDevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

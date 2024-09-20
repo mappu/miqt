@@ -30,6 +30,7 @@ typedef struct QWidget QWidget;
 QFontComboBox* QFontComboBox_new();
 QFontComboBox* QFontComboBox_new2(QWidget* parent);
 QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self);
+void* QFontComboBox_Metacast(QFontComboBox* self, const char* param1);
 struct miqt_string* QFontComboBox_Tr(const char* s);
 struct miqt_string* QFontComboBox_TrUtf8(const char* s);
 void QFontComboBox_SetWritingSystem(QFontComboBox* self, int writingSystem);

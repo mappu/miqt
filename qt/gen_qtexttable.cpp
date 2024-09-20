@@ -101,6 +101,10 @@ QMetaObject* QTextTable_MetaObject(const QTextTable* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTextTable_Metacast(QTextTable* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTextTable_Tr(const char* s) {
 	QString _ret = QTextTable::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

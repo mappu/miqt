@@ -36,6 +36,10 @@ uintptr_t QModelIndex_InternalId(const QModelIndex* self) {
 	return static_cast<uintptr_t>(_ret);
 }
 
+void* QModelIndex_InternalPointer(const QModelIndex* self) {
+	return self->internalPointer();
+}
+
 QModelIndex* QModelIndex_Parent(const QModelIndex* self) {
 	return new QModelIndex(self->parent());
 }
@@ -145,6 +149,10 @@ int QPersistentModelIndex_Column(const QPersistentModelIndex* self) {
 	return self->column();
 }
 
+void* QPersistentModelIndex_InternalPointer(const QPersistentModelIndex* self) {
+	return self->internalPointer();
+}
+
 uintptr_t QPersistentModelIndex_InternalId(const QPersistentModelIndex* self) {
 	quintptr _ret = self->internalId();
 	return static_cast<uintptr_t>(_ret);
@@ -189,6 +197,10 @@ void QPersistentModelIndex_Delete(QPersistentModelIndex* self) {
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QAbstractItemModel_Metacast(QAbstractItemModel* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QAbstractItemModel_Tr(const char* s) {
@@ -719,6 +731,10 @@ QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAbstractTableModel_Metacast(QAbstractTableModel* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAbstractTableModel_Tr(const char* s) {
 	QString _ret = QAbstractTableModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -788,6 +804,10 @@ void QAbstractTableModel_Delete(QAbstractTableModel* self) {
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QAbstractListModel_Metacast(QAbstractListModel* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QAbstractListModel_Tr(const char* s) {

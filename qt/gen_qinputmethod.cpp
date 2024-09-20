@@ -15,6 +15,10 @@ QMetaObject* QInputMethod_MetaObject(const QInputMethod* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QInputMethod_Metacast(QInputMethod* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QInputMethod_Tr(const char* s) {
 	QString _ret = QInputMethod::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -115,89 +115,101 @@ func NewQVariant2(typeVal QVariant__Type) *QVariant {
 }
 
 // NewQVariant3 constructs a new QVariant object.
-func NewQVariant3(other *QVariant) *QVariant {
-	ret := C.QVariant_new3(other.cPointer())
+func NewQVariant3(typeId int, copyVal unsafe.Pointer) *QVariant {
+	ret := C.QVariant_new3((C.int)(typeId), copyVal)
 	return newQVariant(ret)
 }
 
 // NewQVariant4 constructs a new QVariant object.
-func NewQVariant4(s *QDataStream) *QVariant {
-	ret := C.QVariant_new4(s.cPointer())
+func NewQVariant4(typeId int, copyVal unsafe.Pointer, flags uint) *QVariant {
+	ret := C.QVariant_new4((C.int)(typeId), copyVal, (C.uint)(flags))
 	return newQVariant(ret)
 }
 
 // NewQVariant5 constructs a new QVariant object.
-func NewQVariant5(i int) *QVariant {
-	ret := C.QVariant_new5((C.int)(i))
+func NewQVariant5(other *QVariant) *QVariant {
+	ret := C.QVariant_new5(other.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant6 constructs a new QVariant object.
-func NewQVariant6(ui uint) *QVariant {
-	ret := C.QVariant_new6((C.uint)(ui))
+func NewQVariant6(s *QDataStream) *QVariant {
+	ret := C.QVariant_new6(s.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant7 constructs a new QVariant object.
-func NewQVariant7(ll int64) *QVariant {
-	ret := C.QVariant_new7((C.longlong)(ll))
+func NewQVariant7(i int) *QVariant {
+	ret := C.QVariant_new7((C.int)(i))
 	return newQVariant(ret)
 }
 
 // NewQVariant8 constructs a new QVariant object.
-func NewQVariant8(ull uint64) *QVariant {
-	ret := C.QVariant_new8((C.ulonglong)(ull))
+func NewQVariant8(ui uint) *QVariant {
+	ret := C.QVariant_new8((C.uint)(ui))
 	return newQVariant(ret)
 }
 
 // NewQVariant9 constructs a new QVariant object.
-func NewQVariant9(b bool) *QVariant {
-	ret := C.QVariant_new9((C.bool)(b))
+func NewQVariant9(ll int64) *QVariant {
+	ret := C.QVariant_new9((C.longlong)(ll))
 	return newQVariant(ret)
 }
 
 // NewQVariant10 constructs a new QVariant object.
-func NewQVariant10(d float64) *QVariant {
-	ret := C.QVariant_new10((C.double)(d))
+func NewQVariant10(ull uint64) *QVariant {
+	ret := C.QVariant_new10((C.ulonglong)(ull))
 	return newQVariant(ret)
 }
 
 // NewQVariant11 constructs a new QVariant object.
-func NewQVariant11(f float32) *QVariant {
-	ret := C.QVariant_new11((C.float)(f))
+func NewQVariant11(b bool) *QVariant {
+	ret := C.QVariant_new11((C.bool)(b))
 	return newQVariant(ret)
 }
 
 // NewQVariant12 constructs a new QVariant object.
-func NewQVariant12(str string) *QVariant {
-	str_Cstring := C.CString(str)
-	defer C.free(unsafe.Pointer(str_Cstring))
-	ret := C.QVariant_new12(str_Cstring)
+func NewQVariant12(d float64) *QVariant {
+	ret := C.QVariant_new12((C.double)(d))
 	return newQVariant(ret)
 }
 
 // NewQVariant13 constructs a new QVariant object.
-func NewQVariant13(bytearray *QByteArray) *QVariant {
-	ret := C.QVariant_new13(bytearray.cPointer())
+func NewQVariant13(f float32) *QVariant {
+	ret := C.QVariant_new13((C.float)(f))
 	return newQVariant(ret)
 }
 
 // NewQVariant14 constructs a new QVariant object.
-func NewQVariant14(bitarray *QBitArray) *QVariant {
-	ret := C.QVariant_new14(bitarray.cPointer())
+func NewQVariant14(str string) *QVariant {
+	str_Cstring := C.CString(str)
+	defer C.free(unsafe.Pointer(str_Cstring))
+	ret := C.QVariant_new14(str_Cstring)
 	return newQVariant(ret)
 }
 
 // NewQVariant15 constructs a new QVariant object.
-func NewQVariant15(stringVal string) *QVariant {
-	stringVal_ms := miqt_strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	ret := C.QVariant_new15((*C.struct_miqt_string)(stringVal_ms))
+func NewQVariant15(bytearray *QByteArray) *QVariant {
+	ret := C.QVariant_new15(bytearray.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant16 constructs a new QVariant object.
-func NewQVariant16(stringlist []string) *QVariant {
+func NewQVariant16(bitarray *QBitArray) *QVariant {
+	ret := C.QVariant_new16(bitarray.cPointer())
+	return newQVariant(ret)
+}
+
+// NewQVariant17 constructs a new QVariant object.
+func NewQVariant17(stringVal string) *QVariant {
+	stringVal_ms := miqt_strdupg(stringVal)
+	defer C.free(stringVal_ms)
+	ret := C.QVariant_new17((*C.struct_miqt_string)(stringVal_ms))
+	return newQVariant(ret)
+}
+
+// NewQVariant18 constructs a new QVariant object.
+func NewQVariant18(stringlist []string) *QVariant {
 	// For the C ABI, malloc a C array of raw pointers
 	stringlist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
@@ -208,151 +220,151 @@ func NewQVariant16(stringlist []string) *QVariant {
 	}
 	stringlist_ma := &C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(stringlist_ma))
-	ret := C.QVariant_new16(stringlist_ma)
-	return newQVariant(ret)
-}
-
-// NewQVariant17 constructs a new QVariant object.
-func NewQVariant17(qchar QChar) *QVariant {
-	ret := C.QVariant_new17(qchar.cPointer())
-	return newQVariant(ret)
-}
-
-// NewQVariant18 constructs a new QVariant object.
-func NewQVariant18(date *QDate) *QVariant {
-	ret := C.QVariant_new18(date.cPointer())
+	ret := C.QVariant_new18(stringlist_ma)
 	return newQVariant(ret)
 }
 
 // NewQVariant19 constructs a new QVariant object.
-func NewQVariant19(time *QTime) *QVariant {
-	ret := C.QVariant_new19(time.cPointer())
+func NewQVariant19(qchar QChar) *QVariant {
+	ret := C.QVariant_new19(qchar.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant20 constructs a new QVariant object.
-func NewQVariant20(datetime *QDateTime) *QVariant {
-	ret := C.QVariant_new20(datetime.cPointer())
+func NewQVariant20(date *QDate) *QVariant {
+	ret := C.QVariant_new20(date.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant21 constructs a new QVariant object.
-func NewQVariant21(size *QSize) *QVariant {
-	ret := C.QVariant_new21(size.cPointer())
+func NewQVariant21(time *QTime) *QVariant {
+	ret := C.QVariant_new21(time.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant22 constructs a new QVariant object.
-func NewQVariant22(size *QSizeF) *QVariant {
-	ret := C.QVariant_new22(size.cPointer())
+func NewQVariant22(datetime *QDateTime) *QVariant {
+	ret := C.QVariant_new22(datetime.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant23 constructs a new QVariant object.
-func NewQVariant23(pt *QPoint) *QVariant {
-	ret := C.QVariant_new23(pt.cPointer())
+func NewQVariant23(size *QSize) *QVariant {
+	ret := C.QVariant_new23(size.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant24 constructs a new QVariant object.
-func NewQVariant24(pt *QPointF) *QVariant {
-	ret := C.QVariant_new24(pt.cPointer())
+func NewQVariant24(size *QSizeF) *QVariant {
+	ret := C.QVariant_new24(size.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant25 constructs a new QVariant object.
-func NewQVariant25(line *QLine) *QVariant {
-	ret := C.QVariant_new25(line.cPointer())
+func NewQVariant25(pt *QPoint) *QVariant {
+	ret := C.QVariant_new25(pt.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant26 constructs a new QVariant object.
-func NewQVariant26(line *QLineF) *QVariant {
-	ret := C.QVariant_new26(line.cPointer())
+func NewQVariant26(pt *QPointF) *QVariant {
+	ret := C.QVariant_new26(pt.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant27 constructs a new QVariant object.
-func NewQVariant27(rect *QRect) *QVariant {
-	ret := C.QVariant_new27(rect.cPointer())
+func NewQVariant27(line *QLine) *QVariant {
+	ret := C.QVariant_new27(line.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant28 constructs a new QVariant object.
-func NewQVariant28(rect *QRectF) *QVariant {
-	ret := C.QVariant_new28(rect.cPointer())
+func NewQVariant28(line *QLineF) *QVariant {
+	ret := C.QVariant_new28(line.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant29 constructs a new QVariant object.
-func NewQVariant29(locale *QLocale) *QVariant {
-	ret := C.QVariant_new29(locale.cPointer())
+func NewQVariant29(rect *QRect) *QVariant {
+	ret := C.QVariant_new29(rect.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant30 constructs a new QVariant object.
-func NewQVariant30(regExp *QRegExp) *QVariant {
-	ret := C.QVariant_new30(regExp.cPointer())
+func NewQVariant30(rect *QRectF) *QVariant {
+	ret := C.QVariant_new30(rect.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant31 constructs a new QVariant object.
-func NewQVariant31(re *QRegularExpression) *QVariant {
-	ret := C.QVariant_new31(re.cPointer())
+func NewQVariant31(locale *QLocale) *QVariant {
+	ret := C.QVariant_new31(locale.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant32 constructs a new QVariant object.
-func NewQVariant32(easing *QEasingCurve) *QVariant {
-	ret := C.QVariant_new32(easing.cPointer())
+func NewQVariant32(regExp *QRegExp) *QVariant {
+	ret := C.QVariant_new32(regExp.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant33 constructs a new QVariant object.
-func NewQVariant33(uuid *QUuid) *QVariant {
-	ret := C.QVariant_new33(uuid.cPointer())
+func NewQVariant33(re *QRegularExpression) *QVariant {
+	ret := C.QVariant_new33(re.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant34 constructs a new QVariant object.
-func NewQVariant34(url *QUrl) *QVariant {
-	ret := C.QVariant_new34(url.cPointer())
+func NewQVariant34(easing *QEasingCurve) *QVariant {
+	ret := C.QVariant_new34(easing.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant35 constructs a new QVariant object.
-func NewQVariant35(jsonValue *QJsonValue) *QVariant {
-	ret := C.QVariant_new35(jsonValue.cPointer())
+func NewQVariant35(uuid *QUuid) *QVariant {
+	ret := C.QVariant_new35(uuid.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant36 constructs a new QVariant object.
-func NewQVariant36(jsonObject *QJsonObject) *QVariant {
-	ret := C.QVariant_new36(jsonObject.cPointer())
+func NewQVariant36(url *QUrl) *QVariant {
+	ret := C.QVariant_new36(url.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant37 constructs a new QVariant object.
-func NewQVariant37(jsonArray *QJsonArray) *QVariant {
-	ret := C.QVariant_new37(jsonArray.cPointer())
+func NewQVariant37(jsonValue *QJsonValue) *QVariant {
+	ret := C.QVariant_new37(jsonValue.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant38 constructs a new QVariant object.
-func NewQVariant38(jsonDocument *QJsonDocument) *QVariant {
-	ret := C.QVariant_new38(jsonDocument.cPointer())
+func NewQVariant38(jsonObject *QJsonObject) *QVariant {
+	ret := C.QVariant_new38(jsonObject.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant39 constructs a new QVariant object.
-func NewQVariant39(modelIndex *QModelIndex) *QVariant {
-	ret := C.QVariant_new39(modelIndex.cPointer())
+func NewQVariant39(jsonArray *QJsonArray) *QVariant {
+	ret := C.QVariant_new39(jsonArray.cPointer())
 	return newQVariant(ret)
 }
 
 // NewQVariant40 constructs a new QVariant object.
-func NewQVariant40(modelIndex *QPersistentModelIndex) *QVariant {
-	ret := C.QVariant_new40(modelIndex.cPointer())
+func NewQVariant40(jsonDocument *QJsonDocument) *QVariant {
+	ret := C.QVariant_new40(jsonDocument.cPointer())
+	return newQVariant(ret)
+}
+
+// NewQVariant41 constructs a new QVariant object.
+func NewQVariant41(modelIndex *QModelIndex) *QVariant {
+	ret := C.QVariant_new41(modelIndex.cPointer())
+	return newQVariant(ret)
+}
+
+// NewQVariant42 constructs a new QVariant object.
+func NewQVariant42(modelIndex *QPersistentModelIndex) *QVariant {
+	ret := C.QVariant_new42(modelIndex.cPointer())
 	return newQVariant(ret)
 }
 
@@ -659,6 +671,18 @@ func QVariant_NameToType(name string) QVariant__Type {
 	return (QVariant__Type)(C.QVariant_NameToType(name_Cstring))
 }
 
+func (this *QVariant) Data() unsafe.Pointer {
+	return C.QVariant_Data(this.h)
+}
+
+func (this *QVariant) ConstData() unsafe.Pointer {
+	return C.QVariant_ConstData(this.h)
+}
+
+func (this *QVariant) Data2() unsafe.Pointer {
+	return C.QVariant_Data2(this.h)
+}
+
 func (this *QVariant) OperatorEqual(v *QVariant) bool {
 	return (bool)(C.QVariant_OperatorEqual(this.h, v.cPointer()))
 }
@@ -950,6 +974,12 @@ func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__Private
 
 func newQVariant__PrivateShared_U(h unsafe.Pointer) *QVariant__PrivateShared {
 	return newQVariant__PrivateShared((*C.QVariant__PrivateShared)(h))
+}
+
+// NewQVariant__PrivateShared constructs a new QVariant::PrivateShared object.
+func NewQVariant__PrivateShared(v unsafe.Pointer) *QVariant__PrivateShared {
+	ret := C.QVariant__PrivateShared_new(v)
+	return newQVariant__PrivateShared(ret)
 }
 
 // Delete this object from C++ memory.

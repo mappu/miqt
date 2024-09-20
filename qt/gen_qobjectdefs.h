@@ -50,12 +50,15 @@ typedef struct QObject QObject;
 QGenericArgument* QGenericArgument_new();
 QGenericArgument* QGenericArgument_new2(QGenericArgument* param1);
 QGenericArgument* QGenericArgument_new3(const char* aName);
+QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData);
+void* QGenericArgument_Data(const QGenericArgument* self);
 const char* QGenericArgument_Name(const QGenericArgument* self);
 void QGenericArgument_Delete(QGenericArgument* self);
 
 QGenericReturnArgument* QGenericReturnArgument_new();
 QGenericReturnArgument* QGenericReturnArgument_new2(QGenericReturnArgument* param1);
 QGenericReturnArgument* QGenericReturnArgument_new3(const char* aName);
+QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName, void* aData);
 void QGenericReturnArgument_Delete(QGenericReturnArgument* self);
 
 QMetaObject* QMetaObject_new();

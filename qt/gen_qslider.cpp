@@ -30,6 +30,10 @@ QMetaObject* QSlider_MetaObject(const QSlider* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSlider_Metacast(QSlider* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSlider_Tr(const char* s) {
 	QString _ret = QSlider::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

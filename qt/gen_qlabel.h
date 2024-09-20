@@ -38,6 +38,7 @@ QLabel* QLabel_new4(QWidget* parent, int f);
 QLabel* QLabel_new5(struct miqt_string* text, QWidget* parent);
 QLabel* QLabel_new6(struct miqt_string* text, QWidget* parent, int f);
 QMetaObject* QLabel_MetaObject(const QLabel* self);
+void* QLabel_Metacast(QLabel* self, const char* param1);
 struct miqt_string* QLabel_Tr(const char* s);
 struct miqt_string* QLabel_TrUtf8(const char* s);
 struct miqt_string* QLabel_Text(const QLabel* self);

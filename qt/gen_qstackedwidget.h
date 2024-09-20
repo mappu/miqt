@@ -26,6 +26,7 @@ typedef struct QWidget QWidget;
 QStackedWidget* QStackedWidget_new();
 QStackedWidget* QStackedWidget_new2(QWidget* parent);
 QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self);
+void* QStackedWidget_Metacast(QStackedWidget* self, const char* param1);
 struct miqt_string* QStackedWidget_Tr(const char* s);
 struct miqt_string* QStackedWidget_TrUtf8(const char* s);
 int QStackedWidget_AddWidget(QStackedWidget* self, QWidget* w);

@@ -53,6 +53,7 @@ QProxyStyle* QProxyStyle_new();
 QProxyStyle* QProxyStyle_new2(struct miqt_string* key);
 QProxyStyle* QProxyStyle_new3(QStyle* style);
 QMetaObject* QProxyStyle_MetaObject(const QProxyStyle* self);
+void* QProxyStyle_Metacast(QProxyStyle* self, const char* param1);
 struct miqt_string* QProxyStyle_Tr(const char* s);
 struct miqt_string* QProxyStyle_TrUtf8(const char* s);
 QStyle* QProxyStyle_BaseStyle(const QProxyStyle* self);

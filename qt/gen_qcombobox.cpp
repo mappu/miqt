@@ -32,6 +32,10 @@ QMetaObject* QComboBox_MetaObject(const QComboBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QComboBox_Metacast(QComboBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QComboBox_Tr(const char* s) {
 	QString _ret = QComboBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

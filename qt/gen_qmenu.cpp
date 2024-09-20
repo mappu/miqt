@@ -36,6 +36,10 @@ QMetaObject* QMenu_MetaObject(const QMenu* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QMenu_Metacast(QMenu* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QMenu_Tr(const char* s) {
 	QString _ret = QMenu::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

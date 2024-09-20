@@ -27,6 +27,10 @@ QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QItemDelegate_Metacast(QItemDelegate* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QItemDelegate_Tr(const char* s) {
 	QString _ret = QItemDelegate::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

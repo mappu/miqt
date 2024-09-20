@@ -30,6 +30,7 @@ QKeySequenceEdit* QKeySequenceEdit_new2(QKeySequence* keySequence);
 QKeySequenceEdit* QKeySequenceEdit_new3(QWidget* parent);
 QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent);
 QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self);
+void* QKeySequenceEdit_Metacast(QKeySequenceEdit* self, const char* param1);
 struct miqt_string* QKeySequenceEdit_Tr(const char* s);
 struct miqt_string* QKeySequenceEdit_TrUtf8(const char* s);
 QKeySequence* QKeySequenceEdit_KeySequence(const QKeySequenceEdit* self);

@@ -47,6 +47,7 @@ QWindow* QWindow_new();
 QWindow* QWindow_new2(QWindow* parent);
 QWindow* QWindow_new3(QScreen* screen);
 QMetaObject* QWindow_MetaObject(const QWindow* self);
+void* QWindow_Metacast(QWindow* self, const char* param1);
 struct miqt_string* QWindow_Tr(const char* s);
 struct miqt_string* QWindow_TrUtf8(const char* s);
 void QWindow_SetSurfaceType(QWindow* self, int surfaceType);

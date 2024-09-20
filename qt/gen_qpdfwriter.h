@@ -36,6 +36,7 @@ typedef struct QSizeF QSizeF;
 QPdfWriter* QPdfWriter_new(struct miqt_string* filename);
 QPdfWriter* QPdfWriter_new2(QIODevice* device);
 QMetaObject* QPdfWriter_MetaObject(const QPdfWriter* self);
+void* QPdfWriter_Metacast(QPdfWriter* self, const char* param1);
 struct miqt_string* QPdfWriter_Tr(const char* s);
 struct miqt_string* QPdfWriter_TrUtf8(const char* s);
 void QPdfWriter_SetPdfVersion(QPdfWriter* self, int version);

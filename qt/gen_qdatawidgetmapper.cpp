@@ -25,6 +25,10 @@ QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDataWidgetMapper_Metacast(QDataWidgetMapper* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDataWidgetMapper_Tr(const char* s) {
 	QString _ret = QDataWidgetMapper::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

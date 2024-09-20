@@ -28,6 +28,7 @@ typedef struct QWidget QWidget;
 QProgressBar* QProgressBar_new();
 QProgressBar* QProgressBar_new2(QWidget* parent);
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self);
+void* QProgressBar_Metacast(QProgressBar* self, const char* param1);
 struct miqt_string* QProgressBar_Tr(const char* s);
 struct miqt_string* QProgressBar_TrUtf8(const char* s);
 int QProgressBar_Minimum(const QProgressBar* self);

@@ -116,6 +116,8 @@ QAccessibleActionInterface* QAccessibleInterface_ActionInterface(QAccessibleInte
 QAccessibleImageInterface* QAccessibleInterface_ImageInterface(QAccessibleInterface* self);
 QAccessibleTableInterface* QAccessibleInterface_TableInterface(QAccessibleInterface* self);
 QAccessibleTableCellInterface* QAccessibleInterface_TableCellInterface(QAccessibleInterface* self);
+void QAccessibleInterface_VirtualHook(QAccessibleInterface* self, int id, void* data);
+void* QAccessibleInterface_InterfaceCast(QAccessibleInterface* self, int param1);
 
 void QAccessibleTextInterface_Selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset);
 int QAccessibleTextInterface_SelectionCount(const QAccessibleTextInterface* self);

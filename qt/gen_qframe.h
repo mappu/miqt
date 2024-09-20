@@ -31,6 +31,7 @@ QFrame* QFrame_new();
 QFrame* QFrame_new2(QWidget* parent);
 QFrame* QFrame_new3(QWidget* parent, int f);
 QMetaObject* QFrame_MetaObject(const QFrame* self);
+void* QFrame_Metacast(QFrame* self, const char* param1);
 struct miqt_string* QFrame_Tr(const char* s);
 struct miqt_string* QFrame_TrUtf8(const char* s);
 int QFrame_FrameStyle(const QFrame* self);

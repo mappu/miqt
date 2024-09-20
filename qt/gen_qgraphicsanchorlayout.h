@@ -28,6 +28,7 @@ typedef struct QRectF QRectF;
 #endif
 
 QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self);
+void* QGraphicsAnchor_Metacast(QGraphicsAnchor* self, const char* param1);
 struct miqt_string* QGraphicsAnchor_Tr(const char* s);
 struct miqt_string* QGraphicsAnchor_TrUtf8(const char* s);
 void QGraphicsAnchor_SetSpacing(QGraphicsAnchor* self, double spacing);

@@ -32,6 +32,7 @@ QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_str
 QStringListModel* QStringListModel_new3(QObject* parent);
 QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string* */ strings, QObject* parent);
 QMetaObject* QStringListModel_MetaObject(const QStringListModel* self);
+void* QStringListModel_Metacast(QStringListModel* self, const char* param1);
 struct miqt_string* QStringListModel_Tr(const char* s);
 struct miqt_string* QStringListModel_TrUtf8(const char* s);
 int QStringListModel_RowCount(const QStringListModel* self);

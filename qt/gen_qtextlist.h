@@ -29,6 +29,7 @@ typedef struct QTextListFormat QTextListFormat;
 
 QTextList* QTextList_new(QTextDocument* doc);
 QMetaObject* QTextList_MetaObject(const QTextList* self);
+void* QTextList_Metacast(QTextList* self, const char* param1);
 struct miqt_string* QTextList_Tr(const char* s);
 struct miqt_string* QTextList_TrUtf8(const char* s);
 int QTextList_Count(const QTextList* self);

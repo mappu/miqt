@@ -28,6 +28,7 @@ typedef struct QTranslator QTranslator;
 QTranslator* QTranslator_new();
 QTranslator* QTranslator_new2(QObject* parent);
 QMetaObject* QTranslator_MetaObject(const QTranslator* self);
+void* QTranslator_Metacast(QTranslator* self, const char* param1);
 struct miqt_string* QTranslator_Tr(const char* s);
 struct miqt_string* QTranslator_TrUtf8(const char* s);
 struct miqt_string* QTranslator_Translate(const QTranslator* self, const char* context, const char* sourceText);

@@ -95,6 +95,10 @@ QMetaObject* QUndoStack_MetaObject(const QUndoStack* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QUndoStack_Metacast(QUndoStack* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QUndoStack_Tr(const char* s) {
 	QString _ret = QUndoStack::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

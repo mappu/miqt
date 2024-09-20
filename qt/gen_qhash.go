@@ -35,6 +35,14 @@ func newQHashData_U(h unsafe.Pointer) *QHashData {
 	return newQHashData((*C.QHashData)(h))
 }
 
+func (this *QHashData) AllocateNode(nodeAlign int) unsafe.Pointer {
+	return C.QHashData_AllocateNode(this.h, (C.int)(nodeAlign))
+}
+
+func (this *QHashData) FreeNode(node unsafe.Pointer) {
+	C.QHashData_FreeNode(this.h, node)
+}
+
 func (this *QHashData) WillGrow() bool {
 	return (bool)(C.QHashData_WillGrow(this.h))
 }

@@ -40,6 +40,7 @@ QModelIndex* QModelIndex_new2(QModelIndex* param1);
 int QModelIndex_Row(const QModelIndex* self);
 int QModelIndex_Column(const QModelIndex* self);
 uintptr_t QModelIndex_InternalId(const QModelIndex* self);
+void* QModelIndex_InternalPointer(const QModelIndex* self);
 QModelIndex* QModelIndex_Parent(const QModelIndex* self);
 QModelIndex* QModelIndex_Sibling(const QModelIndex* self, int row, int column);
 QModelIndex* QModelIndex_SiblingAtColumn(const QModelIndex* self, int column);
@@ -68,6 +69,7 @@ bool QPersistentModelIndex_OperatorNotEqualWithOther(const QPersistentModelIndex
 void QPersistentModelIndex_OperatorAssignWithOther(QPersistentModelIndex* self, QModelIndex* other);
 int QPersistentModelIndex_Row(const QPersistentModelIndex* self);
 int QPersistentModelIndex_Column(const QPersistentModelIndex* self);
+void* QPersistentModelIndex_InternalPointer(const QPersistentModelIndex* self);
 uintptr_t QPersistentModelIndex_InternalId(const QPersistentModelIndex* self);
 QModelIndex* QPersistentModelIndex_Parent(const QPersistentModelIndex* self);
 QModelIndex* QPersistentModelIndex_Sibling(const QPersistentModelIndex* self, int row, int column);
@@ -80,6 +82,7 @@ QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int rol
 void QPersistentModelIndex_Delete(QPersistentModelIndex* self);
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self);
+void* QAbstractItemModel_Metacast(QAbstractItemModel* self, const char* param1);
 struct miqt_string* QAbstractItemModel_Tr(const char* s);
 struct miqt_string* QAbstractItemModel_TrUtf8(const char* s);
 bool QAbstractItemModel_HasIndex(const QAbstractItemModel* self, int row, int column);
@@ -167,6 +170,7 @@ void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self
 void QAbstractItemModel_Delete(QAbstractItemModel* self);
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self);
+void* QAbstractTableModel_Metacast(QAbstractTableModel* self, const char* param1);
 struct miqt_string* QAbstractTableModel_Tr(const char* s);
 struct miqt_string* QAbstractTableModel_TrUtf8(const char* s);
 QModelIndex* QAbstractTableModel_Index(const QAbstractTableModel* self, int row, int column);
@@ -181,6 +185,7 @@ QModelIndex* QAbstractTableModel_Index3(const QAbstractTableModel* self, int row
 void QAbstractTableModel_Delete(QAbstractTableModel* self);
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self);
+void* QAbstractListModel_Metacast(QAbstractListModel* self, const char* param1);
 struct miqt_string* QAbstractListModel_Tr(const char* s);
 struct miqt_string* QAbstractListModel_TrUtf8(const char* s);
 QModelIndex* QAbstractListModel_Index(const QAbstractListModel* self, int row);

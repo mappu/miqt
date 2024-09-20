@@ -53,6 +53,12 @@ func (this *QMenuBar) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QMenuBar_MetaObject(this.h)))
 }
 
+func (this *QMenuBar) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QMenuBar_Metacast(this.h, param1_Cstring)
+}
+
 func QMenuBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

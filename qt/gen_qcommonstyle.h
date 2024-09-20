@@ -47,6 +47,7 @@ typedef struct QWidget QWidget;
 
 QCommonStyle* QCommonStyle_new();
 QMetaObject* QCommonStyle_MetaObject(const QCommonStyle* self);
+void* QCommonStyle_Metacast(QCommonStyle* self, const char* param1);
 struct miqt_string* QCommonStyle_Tr(const char* s);
 struct miqt_string* QCommonStyle_TrUtf8(const char* s);
 void QCommonStyle_DrawPrimitive(const QCommonStyle* self, int pe, QStyleOption* opt, QPainter* p);

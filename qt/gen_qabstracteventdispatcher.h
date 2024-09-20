@@ -21,6 +21,7 @@ typedef QAbstractEventDispatcher::TimerInfo QAbstractEventDispatcher__TimerInfo;
 class QAbstractEventDispatcher__TimerInfo;
 #endif
 class QAbstractNativeEventFilter;
+class QByteArray;
 class QMetaObject;
 class QObject;
 class QSocketNotifier;
@@ -29,6 +30,7 @@ class QThread;
 typedef struct QAbstractEventDispatcher QAbstractEventDispatcher;
 typedef struct QAbstractEventDispatcher__TimerInfo QAbstractEventDispatcher__TimerInfo;
 typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
+typedef struct QByteArray QByteArray;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSocketNotifier QSocketNotifier;
@@ -36,6 +38,7 @@ typedef struct QThread QThread;
 #endif
 
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self);
+void* QAbstractEventDispatcher_Metacast(QAbstractEventDispatcher* self, const char* param1);
 struct miqt_string* QAbstractEventDispatcher_Tr(const char* s);
 struct miqt_string* QAbstractEventDispatcher_TrUtf8(const char* s);
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance();
@@ -56,6 +59,7 @@ void QAbstractEventDispatcher_StartingUp(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_ClosingDown(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_InstallNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
 void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
+bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, QByteArray* eventType, void* message, long* result);
 void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, void* slot);
 void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self);

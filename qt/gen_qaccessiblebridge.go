@@ -88,6 +88,12 @@ func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAccessibleBridgePlugin_MetaObject(this.h)))
 }
 
+func (this *QAccessibleBridgePlugin) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAccessibleBridgePlugin_Metacast(this.h, param1_Cstring)
+}
+
 func QAccessibleBridgePlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

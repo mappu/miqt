@@ -28,6 +28,7 @@ typedef struct QWidget QWidget;
 QDial* QDial_new();
 QDial* QDial_new2(QWidget* parent);
 QMetaObject* QDial_MetaObject(const QDial* self);
+void* QDial_Metacast(QDial* self, const char* param1);
 struct miqt_string* QDial_Tr(const char* s);
 struct miqt_string* QDial_TrUtf8(const char* s);
 bool QDial_Wrapping(const QDial* self);

@@ -66,6 +66,10 @@ QMetaObject* QTextDocument_MetaObject(const QTextDocument* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTextDocument_Metacast(QTextDocument* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTextDocument_Tr(const char* s) {
 	QString _ret = QTextDocument::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

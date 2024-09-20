@@ -30,6 +30,7 @@ typedef struct QStateMachine QStateMachine;
 #endif
 
 QMetaObject* QAbstractTransition_MetaObject(const QAbstractTransition* self);
+void* QAbstractTransition_Metacast(QAbstractTransition* self, const char* param1);
 struct miqt_string* QAbstractTransition_Tr(const char* s);
 struct miqt_string* QAbstractTransition_TrUtf8(const char* s);
 QState* QAbstractTransition_SourceState(const QAbstractTransition* self);

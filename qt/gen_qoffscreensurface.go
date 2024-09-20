@@ -60,6 +60,12 @@ func (this *QOffscreenSurface) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QOffscreenSurface_MetaObject(this.h)))
 }
 
+func (this *QOffscreenSurface) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QOffscreenSurface_Metacast(this.h, param1_Cstring)
+}
+
 func QOffscreenSurface_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -125,6 +131,14 @@ func (this *QOffscreenSurface) Screen() *QScreen {
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
 	C.QOffscreenSurface_SetScreen(this.h, screen.cPointer())
+}
+
+func (this *QOffscreenSurface) NativeHandle() unsafe.Pointer {
+	return C.QOffscreenSurface_NativeHandle(this.h)
+}
+
+func (this *QOffscreenSurface) SetNativeHandle(handle unsafe.Pointer) {
+	C.QOffscreenSurface_SetNativeHandle(this.h, handle)
 }
 
 func (this *QOffscreenSurface) ScreenChanged(screen *QScreen) {

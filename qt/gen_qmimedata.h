@@ -29,6 +29,7 @@ typedef struct QVariant QVariant;
 
 QMimeData* QMimeData_new();
 QMetaObject* QMimeData_MetaObject(const QMimeData* self);
+void* QMimeData_Metacast(QMimeData* self, const char* param1);
 struct miqt_string* QMimeData_Tr(const char* s);
 struct miqt_string* QMimeData_TrUtf8(const char* s);
 struct miqt_array* QMimeData_Urls(const QMimeData* self);
