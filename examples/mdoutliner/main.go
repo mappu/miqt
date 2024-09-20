@@ -15,7 +15,7 @@ import (
 var embedContent embed.FS
 
 const (
-	lineNumberRole = int(qt.ItemDataRole__UserRole + 1)
+	lineNumberRole = int(qt.UserRole + 1)
 )
 
 type AppWindow struct {
