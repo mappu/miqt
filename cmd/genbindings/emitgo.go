@@ -400,6 +400,26 @@ import "C"
 		imports: map[string]struct{}{},
 	}
 
+	// Check if short-named enums are allowed.
+	// We only allow short names if there are no conflicts anywhere in the whole
+	// file. This doesn't fully defend against cross-file conflicts but those
+	// should hopefully be rare enough
+	preventShortNames := map[string]struct{}{}
+	{
+		nameTest := map[string]string{}
+	nextEnum:
+		for _, e := range src.Enums {
+			for _, ee := range e.Entries {
+				if other, ok := nameTest[ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{}
+					preventShortNames[other] = struct{}{}
+					continue nextEnum
+				}
+				nameTest[ee.EntryName] = e.EnumName
+			}
+		}
+	}
+
 	for _, e := range src.Enums {
 		if e.EnumName == "" {
 			continue // Removed by transformRedundant AST pass
@@ -410,12 +430,15 @@ import "C"
 
 		// Shorter name, so that enum elements are reachable from the surrounding
 		// namespace
-		// Strip back one single :: pair from the generated variable name
-		nameParts := strings.Split(e.EnumName, `::`)
-		if len(nameParts) > 1 {
-			nameParts = nameParts[0 : len(nameParts)-1]
+		goEnumShortName := goEnumName
+		if _, ok := preventShortNames[e.EnumName]; !ok {
+			// Strip back one single :: pair from the generated variable name
+			nameParts := strings.Split(e.EnumName, `::`)
+			if len(nameParts) > 1 {
+				nameParts = nameParts[0 : len(nameParts)-1]
+			}
+			goEnumShortName = cabiClassName(strings.Join(nameParts, `::`))
 		}
-		goEnumShortName := cabiClassName(strings.Join(nameParts, `::`))
 
 		ret.WriteString(`
 		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo() + `
