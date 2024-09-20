@@ -65,6 +65,13 @@ const (
 	QInputMethodEvent__AttributeType__Selection  QInputMethodEvent__AttributeType = 4
 )
 
+type QTouchEvent__TouchPoint__InfoFlag int
+
+const (
+	QTouchEvent__TouchPoint__InfoFlag__Pen   QTouchEvent__TouchPoint__InfoFlag = 1
+	QTouchEvent__TouchPoint__InfoFlag__Token QTouchEvent__TouchPoint__InfoFlag = 2
+)
+
 type QScrollEvent__ScrollState int
 
 const (

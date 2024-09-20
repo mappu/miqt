@@ -21,9 +21,6 @@ func InsertTypedefs() {
 	// Not sure the reason for this one
 	KnownTypedefs["QSocketDescriptor::DescriptorType"] = CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}
 
-	// QFlags<> typedef
-	KnownTypedefs["QTouchEvent::TouchPoint::InfoFlags"] = CppTypedef{"QTouchEvent::TouchPoint::InfoFlags", parseSingleTypeString("QFlags<QTouchEvent::TouchPoint::InfoFlag>")}
-
 	// QFile doesn't see QFileDevice parent class enum
 	KnownTypedefs["QFile::Permissions"] = CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}
 	KnownTypedefs["QFileDevice::Permissions"] = CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}
