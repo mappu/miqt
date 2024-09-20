@@ -236,10 +236,6 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex
 	}
 
-	if p.ParameterType == "void" && p.Pointer {
-		return ErrTooComplex // e.g. qobjectdefs.h QMetaObject->InvokeOnGadget(). TODO represent as uintptr
-	}
-
 	// Should be OK
 	return nil
 }
