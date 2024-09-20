@@ -78,9 +78,6 @@ void QFormLayout_SetItem(QFormLayout* self, int row, int role, QLayoutItem* item
 void QFormLayout_SetWidget(QFormLayout* self, int row, int role, QWidget* widget);
 void QFormLayout_SetLayout(QFormLayout* self, int row, int role, QLayout* layout);
 QLayoutItem* QFormLayout_ItemAt(const QFormLayout* self, int row, int role);
-void QFormLayout_GetItemPosition(const QFormLayout* self, int index, int* rowPtr, int* rolePtr);
-void QFormLayout_GetWidgetPosition(const QFormLayout* self, QWidget* widget, int* rowPtr, int* rolePtr);
-void QFormLayout_GetLayoutPosition(const QFormLayout* self, QLayout* layout, int* rowPtr, int* rolePtr);
 QWidget* QFormLayout_LabelForField(const QFormLayout* self, QWidget* field);
 QWidget* QFormLayout_LabelForFieldWithField(const QFormLayout* self, QLayout* field);
 void QFormLayout_AddItem(QFormLayout* self, QLayoutItem* item);

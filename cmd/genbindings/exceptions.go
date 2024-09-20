@@ -185,8 +185,8 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex
 	}
 
-	if p.IsFlagType() && p.Pointer && !isReturnType {
-		return ErrTooComplex // e.g. qformlayout. The cast doesn't survive through a pointer parameter
+	if p.ParameterType == "QFormLayout::ItemRole" && p.Pointer && !isReturnType { // Out-parameters in QFormLayout
+		return ErrTooComplex
 	}
 
 	if p.Pointer && p.PointerCount >= 2 { // Out-parameters

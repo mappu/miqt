@@ -255,18 +255,6 @@ func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutIte
 	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))))
 }
 
-func (this *QFormLayout) GetItemPosition(index int, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
-	C.QFormLayout_GetItemPosition(this.h, (C.int)(index), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
-}
-
-func (this *QFormLayout) GetWidgetPosition(widget *QWidget, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
-	C.QFormLayout_GetWidgetPosition(this.h, widget.cPointer(), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
-}
-
-func (this *QFormLayout) GetLayoutPosition(layout *QLayout, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
-	C.QFormLayout_GetLayoutPosition(this.h, layout.cPointer(), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
-}
-
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
 	return newQWidget_U(unsafe.Pointer(C.QFormLayout_LabelForField(this.h, field.cPointer())))
 }

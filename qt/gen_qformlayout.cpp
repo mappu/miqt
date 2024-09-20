@@ -191,18 +191,6 @@ QLayoutItem* QFormLayout_ItemAt(const QFormLayout* self, int row, int role) {
 	return self->itemAt(static_cast<int>(row), static_cast<QFormLayout::ItemRole>(role));
 }
 
-void QFormLayout_GetItemPosition(const QFormLayout* self, int index, int* rowPtr, int* rolePtr) {
-	self->getItemPosition(static_cast<int>(index), static_cast<int*>(rowPtr), static_cast<QFormLayout::ItemRole*>(rolePtr));
-}
-
-void QFormLayout_GetWidgetPosition(const QFormLayout* self, QWidget* widget, int* rowPtr, int* rolePtr) {
-	self->getWidgetPosition(widget, static_cast<int*>(rowPtr), static_cast<QFormLayout::ItemRole*>(rolePtr));
-}
-
-void QFormLayout_GetLayoutPosition(const QFormLayout* self, QLayout* layout, int* rowPtr, int* rolePtr) {
-	self->getLayoutPosition(layout, static_cast<int*>(rowPtr), static_cast<QFormLayout::ItemRole*>(rolePtr));
-}
-
 QWidget* QFormLayout_LabelForField(const QFormLayout* self, QWidget* field) {
 	return self->labelForField(field);
 }
