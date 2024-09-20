@@ -442,22 +442,18 @@ nextMethod:
 				return CppClass{}, err
 			}
 
-			for _, p := range mm.Parameters {
-				if strings.HasSuffix(p.ParameterType, "Private") {
-					log.Printf("Skipping method %q taking Private type", mm.MethodName)
+			mm.IsSignal = isSignal && !mm.IsStatic && AllowSignal(mm)
+
+			// Once all processing is complete, pass to exceptions for final decision
+
+			if err := AllowMethod(mm); err != nil {
+				if errors.Is(err, ErrTooComplex) {
+					log.Printf("Skipping method %q with complex type", mm.MethodName)
 					continue nextMethod
 				}
-			}
-			if strings.HasSuffix(mm.ReturnType.ParameterType, "Private") {
-				log.Printf("Skipping method %q returning Private type", mm.MethodName)
-				continue nextMethod
-			}
 
-			mm.IsSignal = isSignal && !mm.IsStatic && mm.MethodName != `metaObject`
-
-			if mm.IsReceiverMethod() {
-				log.Printf("Skipping method %q using non-projectable receiver pattern parameters", mm.MethodName)
-				continue nextMethod
+				// Real error
+				return CppClass{}, err
 			}
 
 			ret.Methods = append(ret.Methods, mm)

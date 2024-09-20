@@ -103,6 +103,35 @@ func AllowClass(className string) bool {
 	return true
 }
 
+func AllowSignal(mm CppMethod) bool {
+	switch mm.MethodName {
+	case `metaObject`, `qt_metacast`:
+		return false
+	default:
+		return true
+	}
+}
+
+func AllowMethod(mm CppMethod) error {
+
+	for _, p := range mm.Parameters {
+		if strings.HasSuffix(p.ParameterType, "Private") {
+			return ErrTooComplex // Skip private type
+		}
+	}
+	if strings.HasSuffix(mm.ReturnType.ParameterType, "Private") {
+		return ErrTooComplex // Skip private type
+	}
+
+	if mm.IsReceiverMethod() {
+		// Non-projectable receiver pattern parameters
+		return ErrTooComplex
+	}
+
+	return nil // OK, allow
+
+}
+
 func CheckComplexity(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
