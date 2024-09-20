@@ -108,7 +108,7 @@ func (this *QBuffer) Data() *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Data(this.h)))
 }
 
-func (this *QBuffer) Open(openMode int) bool {
+func (this *QBuffer) Open(openMode QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QBuffer_Open(this.h, (C.int)(openMode)))
 }
 

@@ -822,11 +822,11 @@ func QStyle_SliderValueFromPosition(min int, max int, pos int, space int) int {
 	return (int)(C.QStyle_SliderValueFromPosition((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space)))
 }
 
-func QStyle_VisualAlignment(direction LayoutDirection, alignment int) int {
-	return (int)(C.QStyle_VisualAlignment((C.int)(direction), (C.int)(alignment)))
+func QStyle_VisualAlignment(direction LayoutDirection, alignment AlignmentFlag) AlignmentFlag {
+	return (AlignmentFlag)(C.QStyle_VisualAlignment((C.int)(direction), (C.int)(alignment)))
 }
 
-func QStyle_AlignedRect(direction LayoutDirection, alignment int, size *QSize, rectangle *QRect) *QRect {
+func QStyle_AlignedRect(direction LayoutDirection, alignment AlignmentFlag, size *QSize, rectangle *QRect) *QRect {
 	_ret := C.QStyle_AlignedRect((C.int)(direction), (C.int)(alignment), size.cPointer(), rectangle.cPointer())
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -837,7 +837,7 @@ func (this *QStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QS
 	return (int)(C.QStyle_LayoutSpacing(this.h, (C.int)(control1), (C.int)(control2), (C.int)(orientation)))
 }
 
-func (this *QStyle) CombinedLayoutSpacing(controls1 int, controls2 int, orientation Orientation) int {
+func (this *QStyle) CombinedLayoutSpacing(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation) int {
 	return (int)(C.QStyle_CombinedLayoutSpacing(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation)))
 }
 
@@ -996,11 +996,11 @@ func (this *QStyle) LayoutSpacing5(control1 QSizePolicy__ControlType, control2 Q
 	return (int)(C.QStyle_LayoutSpacing5(this.h, (C.int)(control1), (C.int)(control2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
-func (this *QStyle) CombinedLayoutSpacing4(controls1 int, controls2 int, orientation Orientation, option *QStyleOption) int {
+func (this *QStyle) CombinedLayoutSpacing4(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
 	return (int)(C.QStyle_CombinedLayoutSpacing4(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer()))
 }
 
-func (this *QStyle) CombinedLayoutSpacing5(controls1 int, controls2 int, orientation Orientation, option *QStyleOption, widget *QWidget) int {
+func (this *QStyle) CombinedLayoutSpacing5(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
 	return (int)(C.QStyle_CombinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 

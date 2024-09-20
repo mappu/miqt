@@ -120,12 +120,12 @@ func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
 	return (bool)(C.QFontDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QFontDialog) SetOptions(options int) {
+func (this *QFontDialog) SetOptions(options QFontDialog__FontDialogOption) {
 	C.QFontDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFontDialog) Options() int {
-	return (int)(C.QFontDialog_Options(this.h))
+func (this *QFontDialog) Options() QFontDialog__FontDialogOption {
+	return (QFontDialog__FontDialogOption)(C.QFontDialog_Options(this.h))
 }
 
 func (this *QFontDialog) SetVisible(visible bool) {
@@ -257,7 +257,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 	return _goptr
 }
 
-func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options int) *QFont {
+func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))

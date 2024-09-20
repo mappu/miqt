@@ -733,7 +733,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QComboBox) FindText2(text string, flags int) int {
+func (this *QComboBox) FindText2(text string, flags MatchFlag) int {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags)))
@@ -743,7 +743,7 @@ func (this *QComboBox) FindData2(data *QVariant, role int) int {
 	return (int)(C.QComboBox_FindData2(this.h, data.cPointer(), (C.int)(role)))
 }
 
-func (this *QComboBox) FindData3(data *QVariant, role int, flags int) int {
+func (this *QComboBox) FindData3(data *QVariant, role int, flags MatchFlag) int {
 	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
 }
 

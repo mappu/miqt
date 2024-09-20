@@ -96,13 +96,13 @@ func NewQTextStream4(array *QByteArray) *QTextStream {
 }
 
 // NewQTextStream5 constructs a new QTextStream object.
-func NewQTextStream5(array *QByteArray, openMode int) *QTextStream {
+func NewQTextStream5(array *QByteArray, openMode QIODevice__OpenModeFlag) *QTextStream {
 	ret := C.QTextStream_new5(array.cPointer(), (C.int)(openMode))
 	return newQTextStream(ret)
 }
 
 // NewQTextStream6 constructs a new QTextStream object.
-func NewQTextStream6(array *QByteArray, openMode int) *QTextStream {
+func NewQTextStream6(array *QByteArray, openMode QIODevice__OpenModeFlag) *QTextStream {
 	ret := C.QTextStream_new6(array.cPointer(), (C.int)(openMode))
 	return newQTextStream(ret)
 }
@@ -247,12 +247,12 @@ func (this *QTextStream) FieldWidth() int {
 	return (int)(C.QTextStream_FieldWidth(this.h))
 }
 
-func (this *QTextStream) SetNumberFlags(flags int) {
+func (this *QTextStream) SetNumberFlags(flags QTextStream__NumberFlag) {
 	C.QTextStream_SetNumberFlags(this.h, (C.int)(flags))
 }
 
-func (this *QTextStream) NumberFlags() int {
-	return (int)(C.QTextStream_NumberFlags(this.h))
+func (this *QTextStream) NumberFlags() QTextStream__NumberFlag {
+	return (QTextStream__NumberFlag)(C.QTextStream_NumberFlags(this.h))
 }
 
 func (this *QTextStream) SetIntegerBase(base int) {

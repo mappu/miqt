@@ -80,12 +80,12 @@ func (this *QFileIconProvider) Type(info *QFileInfo) string {
 	return _ret
 }
 
-func (this *QFileIconProvider) SetOptions(options int) {
+func (this *QFileIconProvider) SetOptions(options QFileIconProvider__Option) {
 	C.QFileIconProvider_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFileIconProvider) Options() int {
-	return (int)(C.QFileIconProvider_Options(this.h))
+func (this *QFileIconProvider) Options() QFileIconProvider__Option {
+	return (QFileIconProvider__Option)(C.QFileIconProvider_Options(this.h))
 }
 
 // Delete this object from C++ memory.

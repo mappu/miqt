@@ -397,19 +397,19 @@ func QPinchGesture_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QPinchGesture) TotalChangeFlags() int {
-	return (int)(C.QPinchGesture_TotalChangeFlags(this.h))
+func (this *QPinchGesture) TotalChangeFlags() QPinchGesture__ChangeFlag {
+	return (QPinchGesture__ChangeFlag)(C.QPinchGesture_TotalChangeFlags(this.h))
 }
 
-func (this *QPinchGesture) SetTotalChangeFlags(value int) {
+func (this *QPinchGesture) SetTotalChangeFlags(value QPinchGesture__ChangeFlag) {
 	C.QPinchGesture_SetTotalChangeFlags(this.h, (C.int)(value))
 }
 
-func (this *QPinchGesture) ChangeFlags() int {
-	return (int)(C.QPinchGesture_ChangeFlags(this.h))
+func (this *QPinchGesture) ChangeFlags() QPinchGesture__ChangeFlag {
+	return (QPinchGesture__ChangeFlag)(C.QPinchGesture_ChangeFlags(this.h))
 }
 
-func (this *QPinchGesture) SetChangeFlags(value int) {
+func (this *QPinchGesture) SetChangeFlags(value QPinchGesture__ChangeFlag) {
 	C.QPinchGesture_SetChangeFlags(this.h, (C.int)(value))
 }
 

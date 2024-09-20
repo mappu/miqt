@@ -99,7 +99,7 @@ func (this *QSaveFile) SetFileName(name string) {
 	C.QSaveFile_SetFileName(this.h, (*C.struct_miqt_string)(name_ms))
 }
 
-func (this *QSaveFile) Open(flags int) bool {
+func (this *QSaveFile) Open(flags QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QSaveFile_Open(this.h, (C.int)(flags)))
 }
 

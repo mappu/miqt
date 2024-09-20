@@ -311,7 +311,7 @@ func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWind
 	return _ret
 }
 
-func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
+func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags WindowType) *QMdiSubWindow {
 	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
 }
 

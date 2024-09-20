@@ -144,12 +144,12 @@ func (this *QTextEdit) SetReadOnly(ro bool) {
 	C.QTextEdit_SetReadOnly(this.h, (C.bool)(ro))
 }
 
-func (this *QTextEdit) SetTextInteractionFlags(flags int) {
+func (this *QTextEdit) SetTextInteractionFlags(flags TextInteractionFlag) {
 	C.QTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
-func (this *QTextEdit) TextInteractionFlags() int {
-	return (int)(C.QTextEdit_TextInteractionFlags(this.h))
+func (this *QTextEdit) TextInteractionFlags() TextInteractionFlag {
+	return (TextInteractionFlag)(C.QTextEdit_TextInteractionFlags(this.h))
 }
 
 func (this *QTextEdit) FontPointSize() float64 {
@@ -196,8 +196,8 @@ func (this *QTextEdit) CurrentFont() *QFont {
 	return _goptr
 }
 
-func (this *QTextEdit) Alignment() int {
-	return (int)(C.QTextEdit_Alignment(this.h))
+func (this *QTextEdit) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QTextEdit_Alignment(this.h))
 }
 
 func (this *QTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
@@ -215,11 +215,11 @@ func (this *QTextEdit) CurrentCharFormat() *QTextCharFormat {
 	return _goptr
 }
 
-func (this *QTextEdit) AutoFormatting() int {
-	return (int)(C.QTextEdit_AutoFormatting(this.h))
+func (this *QTextEdit) AutoFormatting() QTextEdit__AutoFormattingFlag {
+	return (QTextEdit__AutoFormattingFlag)(C.QTextEdit_AutoFormatting(this.h))
 }
 
-func (this *QTextEdit) SetAutoFormatting(features int) {
+func (this *QTextEdit) SetAutoFormatting(features QTextEdit__AutoFormattingFlag) {
 	C.QTextEdit_SetAutoFormatting(this.h, (C.int)(features))
 }
 
@@ -484,7 +484,7 @@ func (this *QTextEdit) SetCurrentFont(f *QFont) {
 	C.QTextEdit_SetCurrentFont(this.h, f.cPointer())
 }
 
-func (this *QTextEdit) SetAlignment(a int) {
+func (this *QTextEdit) SetAlignment(a AlignmentFlag) {
 	C.QTextEdit_SetAlignment(this.h, (C.int)(a))
 }
 
@@ -747,21 +747,21 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QTextEdit) Find22(exp string, options int) bool {
+func (this *QTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
-func (this *QTextEdit) Find23(exp *QRegExp, options int) bool {
+func (this *QTextEdit) Find23(exp *QRegExp, options QTextDocument__FindFlag) bool {
 	return (bool)(C.QTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
-func (this *QTextEdit) Find24(exp *QRegularExpression, options int) bool {
+func (this *QTextEdit) Find24(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
 	return (bool)(C.QTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 
-func (this *QTextEdit) ToMarkdown1(features int) string {
+func (this *QTextEdit) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
 	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

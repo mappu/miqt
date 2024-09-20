@@ -177,11 +177,11 @@ func (this *QStandardItem) SetFont(font *QFont) {
 	C.QStandardItem_SetFont(this.h, font.cPointer())
 }
 
-func (this *QStandardItem) TextAlignment() int {
-	return (int)(C.QStandardItem_TextAlignment(this.h))
+func (this *QStandardItem) TextAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QStandardItem_TextAlignment(this.h))
 }
 
-func (this *QStandardItem) SetTextAlignment(textAlignment int) {
+func (this *QStandardItem) SetTextAlignment(textAlignment AlignmentFlag) {
 	C.QStandardItem_SetTextAlignment(this.h, (C.int)(textAlignment))
 }
 
@@ -241,11 +241,11 @@ func (this *QStandardItem) SetAccessibleDescription(accessibleDescription string
 	C.QStandardItem_SetAccessibleDescription(this.h, (*C.struct_miqt_string)(accessibleDescription_ms))
 }
 
-func (this *QStandardItem) Flags() int {
-	return (int)(C.QStandardItem_Flags(this.h))
+func (this *QStandardItem) Flags() ItemFlag {
+	return (ItemFlag)(C.QStandardItem_Flags(this.h))
 }
 
-func (this *QStandardItem) SetFlags(flags int) {
+func (this *QStandardItem) SetFlags(flags ItemFlag) {
 	C.QStandardItem_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -711,12 +711,12 @@ func (this *QStandardItemModel) RemoveColumns(column int, count int) bool {
 	return (bool)(C.QStandardItemModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count)))
 }
 
-func (this *QStandardItemModel) Flags(index *QModelIndex) int {
-	return (int)(C.QStandardItemModel_Flags(this.h, index.cPointer()))
+func (this *QStandardItemModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QStandardItemModel_Flags(this.h, index.cPointer()))
 }
 
-func (this *QStandardItemModel) SupportedDropActions() int {
-	return (int)(C.QStandardItemModel_SupportedDropActions(this.h))
+func (this *QStandardItemModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QStandardItemModel_SupportedDropActions(this.h))
 }
 
 func (this *QStandardItemModel) Clear() {
@@ -1104,7 +1104,7 @@ func (this *QStandardItemModel) TakeItem2(row int, column int) *QStandardItem {
 	return newQStandardItem_U(unsafe.Pointer(C.QStandardItemModel_TakeItem2(this.h, (C.int)(row), (C.int)(column))))
 }
 
-func (this *QStandardItemModel) FindItems2(text string, flags int) []*QStandardItem {
+func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QStandardItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
@@ -1117,7 +1117,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags int) []*QStandardI
 	return _ret
 }
 
-func (this *QStandardItemModel) FindItems3(text string, flags int, column int) []*QStandardItem {
+func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column int) []*QStandardItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))

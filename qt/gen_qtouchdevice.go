@@ -82,8 +82,8 @@ func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
 	return (QTouchDevice__DeviceType)(C.QTouchDevice_Type(this.h))
 }
 
-func (this *QTouchDevice) Capabilities() int {
-	return (int)(C.QTouchDevice_Capabilities(this.h))
+func (this *QTouchDevice) Capabilities() QTouchDevice__CapabilityFlag {
+	return (QTouchDevice__CapabilityFlag)(C.QTouchDevice_Capabilities(this.h))
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
@@ -100,7 +100,7 @@ func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
 	C.QTouchDevice_SetType(this.h, (C.int)(devType))
 }
 
-func (this *QTouchDevice) SetCapabilities(caps int) {
+func (this *QTouchDevice) SetCapabilities(caps QTouchDevice__CapabilityFlag) {
 	C.QTouchDevice_SetCapabilities(this.h, (C.int)(caps))
 }
 

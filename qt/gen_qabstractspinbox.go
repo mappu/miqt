@@ -165,12 +165,12 @@ func (this *QAbstractSpinBox) KeyboardTracking() bool {
 	return (bool)(C.QAbstractSpinBox_KeyboardTracking(this.h))
 }
 
-func (this *QAbstractSpinBox) SetAlignment(flag int) {
+func (this *QAbstractSpinBox) SetAlignment(flag AlignmentFlag) {
 	C.QAbstractSpinBox_SetAlignment(this.h, (C.int)(flag))
 }
 
-func (this *QAbstractSpinBox) Alignment() int {
-	return (int)(C.QAbstractSpinBox_Alignment(this.h))
+func (this *QAbstractSpinBox) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QAbstractSpinBox_Alignment(this.h))
 }
 
 func (this *QAbstractSpinBox) SetFrame(frame bool) {

@@ -141,7 +141,7 @@ func QStandardPaths_IsTestModeEnabled() bool {
 	return (bool)(C.QStandardPaths_IsTestModeEnabled())
 }
 
-func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options int) string {
+func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
@@ -150,7 +150,7 @@ func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName s
 	return _ret
 }
 
-func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options int) []string {
+func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) []string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))

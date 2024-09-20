@@ -212,12 +212,12 @@ func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
 	return (int)(C.QLineEdit_CursorPositionAt(this.h, pos.cPointer()))
 }
 
-func (this *QLineEdit) SetAlignment(flag int) {
+func (this *QLineEdit) SetAlignment(flag AlignmentFlag) {
 	C.QLineEdit_SetAlignment(this.h, (C.int)(flag))
 }
 
-func (this *QLineEdit) Alignment() int {
-	return (int)(C.QLineEdit_Alignment(this.h))
+func (this *QLineEdit) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QLineEdit_Alignment(this.h))
 }
 
 func (this *QLineEdit) CursorForward(mark bool) {

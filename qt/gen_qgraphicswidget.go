@@ -57,7 +57,7 @@ func NewQGraphicsWidget2(parent *QGraphicsItem) *QGraphicsWidget {
 }
 
 // NewQGraphicsWidget3 constructs a new QGraphicsWidget object.
-func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsWidget {
+func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsWidget {
 	ret := C.QGraphicsWidget_new3(parent.cPointer(), (C.int)(wFlags))
 	return newQGraphicsWidget(ret)
 }
@@ -218,15 +218,15 @@ func (this *QGraphicsWidget) WindowFrameRect() *QRectF {
 	return _goptr
 }
 
-func (this *QGraphicsWidget) WindowFlags() int {
-	return (int)(C.QGraphicsWidget_WindowFlags(this.h))
+func (this *QGraphicsWidget) WindowFlags() WindowType {
+	return (WindowType)(C.QGraphicsWidget_WindowFlags(this.h))
 }
 
 func (this *QGraphicsWidget) WindowType() WindowType {
 	return (WindowType)(C.QGraphicsWidget_WindowType(this.h))
 }
 
-func (this *QGraphicsWidget) SetWindowFlags(wFlags int) {
+func (this *QGraphicsWidget) SetWindowFlags(wFlags WindowType) {
 	C.QGraphicsWidget_SetWindowFlags(this.h, (C.int)(wFlags))
 }
 

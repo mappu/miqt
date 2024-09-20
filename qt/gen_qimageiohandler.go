@@ -228,8 +228,8 @@ func QImageIOPlugin_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) int {
-	return (int)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer()))
+func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) QImageIOPlugin__Capability {
+	return (QImageIOPlugin__Capability)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer()))
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {

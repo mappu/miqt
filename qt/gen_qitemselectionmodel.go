@@ -342,11 +342,11 @@ func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
 	C.QItemSelectionModel_SetModel(this.h, model.cPointer())
 }
 
-func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command int) {
+func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
 	C.QItemSelectionModel_SetCurrentIndex(this.h, index.cPointer(), (C.int)(command))
 }
 
-func (this *QItemSelectionModel) Select(index *QModelIndex, command int) {
+func (this *QItemSelectionModel) Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
 	C.QItemSelectionModel_Select(this.h, index.cPointer(), (C.int)(command))
 }
 

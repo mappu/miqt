@@ -72,7 +72,7 @@ func NewQTextOption() *QTextOption {
 }
 
 // NewQTextOption2 constructs a new QTextOption object.
-func NewQTextOption2(alignment int) *QTextOption {
+func NewQTextOption2(alignment AlignmentFlag) *QTextOption {
 	ret := C.QTextOption_new2((C.int)(alignment))
 	return newQTextOption(ret)
 }
@@ -87,12 +87,12 @@ func (this *QTextOption) OperatorAssign(o *QTextOption) {
 	C.QTextOption_OperatorAssign(this.h, o.cPointer())
 }
 
-func (this *QTextOption) SetAlignment(alignment int) {
+func (this *QTextOption) SetAlignment(alignment AlignmentFlag) {
 	C.QTextOption_SetAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QTextOption) Alignment() int {
-	return (int)(C.QTextOption_Alignment(this.h))
+func (this *QTextOption) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QTextOption_Alignment(this.h))
 }
 
 func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
@@ -111,12 +111,12 @@ func (this *QTextOption) WrapMode() QTextOption__WrapMode {
 	return (QTextOption__WrapMode)(C.QTextOption_WrapMode(this.h))
 }
 
-func (this *QTextOption) SetFlags(flags int) {
+func (this *QTextOption) SetFlags(flags QTextOption__Flag) {
 	C.QTextOption_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QTextOption) Flags() int {
-	return (int)(C.QTextOption_Flags(this.h))
+func (this *QTextOption) Flags() QTextOption__Flag {
+	return (QTextOption__Flag)(C.QTextOption_Flags(this.h))
 }
 
 func (this *QTextOption) SetTabStop(tabStop float64) {

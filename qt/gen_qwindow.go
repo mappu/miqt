@@ -170,12 +170,12 @@ func (this *QWindow) RequestedFormat() *QSurfaceFormat {
 	return _goptr
 }
 
-func (this *QWindow) SetFlags(flags int) {
+func (this *QWindow) SetFlags(flags WindowType) {
 	C.QWindow_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QWindow) Flags() int {
-	return (int)(C.QWindow_Flags(this.h))
+func (this *QWindow) Flags() WindowType {
+	return (WindowType)(C.QWindow_Flags(this.h))
 }
 
 func (this *QWindow) SetFlag(param1 WindowType) {
@@ -232,15 +232,15 @@ func (this *QWindow) WindowState() WindowState {
 	return (WindowState)(C.QWindow_WindowState(this.h))
 }
 
-func (this *QWindow) WindowStates() int {
-	return (int)(C.QWindow_WindowStates(this.h))
+func (this *QWindow) WindowStates() WindowState {
+	return (WindowState)(C.QWindow_WindowStates(this.h))
 }
 
 func (this *QWindow) SetWindowState(state WindowState) {
 	C.QWindow_SetWindowState(this.h, (C.int)(state))
 }
 
-func (this *QWindow) SetWindowStates(states int) {
+func (this *QWindow) SetWindowStates(states WindowState) {
 	C.QWindow_SetWindowStates(this.h, (C.int)(states))
 }
 
@@ -527,7 +527,7 @@ func (this *QWindow) Lower() {
 	C.QWindow_Lower(this.h)
 }
 
-func (this *QWindow) StartSystemResize(edges int) bool {
+func (this *QWindow) StartSystemResize(edges Edge) bool {
 	return (bool)(C.QWindow_StartSystemResize(this.h, (C.int)(edges)))
 }
 

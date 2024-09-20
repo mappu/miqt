@@ -169,12 +169,12 @@ func (this *QAbstractItemView) RootIndex() *QModelIndex {
 	return _goptr
 }
 
-func (this *QAbstractItemView) SetEditTriggers(triggers int) {
+func (this *QAbstractItemView) SetEditTriggers(triggers QAbstractItemView__EditTrigger) {
 	C.QAbstractItemView_SetEditTriggers(this.h, (C.int)(triggers))
 }
 
-func (this *QAbstractItemView) EditTriggers() int {
-	return (int)(C.QAbstractItemView_EditTriggers(this.h))
+func (this *QAbstractItemView) EditTriggers() QAbstractItemView__EditTrigger {
+	return (QAbstractItemView__EditTrigger)(C.QAbstractItemView_EditTriggers(this.h))
 }
 
 func (this *QAbstractItemView) SetVerticalScrollMode(mode QAbstractItemView__ScrollMode) {

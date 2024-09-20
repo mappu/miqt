@@ -235,8 +235,8 @@ func (this *QImageReader) SupportsAnimation() bool {
 	return (bool)(C.QImageReader_SupportsAnimation(this.h))
 }
 
-func (this *QImageReader) Transformation() int {
-	return (int)(C.QImageReader_Transformation(this.h))
+func (this *QImageReader) Transformation() QImageIOHandler__Transformation {
+	return (QImageIOHandler__Transformation)(C.QImageReader_Transformation(this.h))
 }
 
 func (this *QImageReader) SetAutoTransform(enabled bool) {

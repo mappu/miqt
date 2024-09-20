@@ -56,8 +56,8 @@ func (this *QLayoutItem) MaximumSize() *QSize {
 	return _goptr
 }
 
-func (this *QLayoutItem) ExpandingDirections() int {
-	return (int)(C.QLayoutItem_ExpandingDirections(this.h))
+func (this *QLayoutItem) ExpandingDirections() Orientation {
+	return (Orientation)(C.QLayoutItem_ExpandingDirections(this.h))
 }
 
 func (this *QLayoutItem) SetGeometry(geometry *QRect) {
@@ -103,16 +103,16 @@ func (this *QLayoutItem) SpacerItem() *QSpacerItem {
 	return newQSpacerItem_U(unsafe.Pointer(C.QLayoutItem_SpacerItem(this.h)))
 }
 
-func (this *QLayoutItem) Alignment() int {
-	return (int)(C.QLayoutItem_Alignment(this.h))
+func (this *QLayoutItem) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QLayoutItem_Alignment(this.h))
 }
 
-func (this *QLayoutItem) SetAlignment(a int) {
+func (this *QLayoutItem) SetAlignment(a AlignmentFlag) {
 	C.QLayoutItem_SetAlignment(this.h, (C.int)(a))
 }
 
-func (this *QLayoutItem) ControlTypes() int {
-	return (int)(C.QLayoutItem_ControlTypes(this.h))
+func (this *QLayoutItem) ControlTypes() QSizePolicy__ControlType {
+	return (QSizePolicy__ControlType)(C.QLayoutItem_ControlTypes(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -201,8 +201,8 @@ func (this *QSpacerItem) MaximumSize() *QSize {
 	return _goptr
 }
 
-func (this *QSpacerItem) ExpandingDirections() int {
-	return (int)(C.QSpacerItem_ExpandingDirections(this.h))
+func (this *QSpacerItem) ExpandingDirections() Orientation {
+	return (Orientation)(C.QSpacerItem_ExpandingDirections(this.h))
 }
 
 func (this *QSpacerItem) IsEmpty() bool {
@@ -303,8 +303,8 @@ func (this *QWidgetItem) MaximumSize() *QSize {
 	return _goptr
 }
 
-func (this *QWidgetItem) ExpandingDirections() int {
-	return (int)(C.QWidgetItem_ExpandingDirections(this.h))
+func (this *QWidgetItem) ExpandingDirections() Orientation {
+	return (Orientation)(C.QWidgetItem_ExpandingDirections(this.h))
 }
 
 func (this *QWidgetItem) IsEmpty() bool {
@@ -334,8 +334,8 @@ func (this *QWidgetItem) HeightForWidth(param1 int) int {
 	return (int)(C.QWidgetItem_HeightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QWidgetItem) ControlTypes() int {
-	return (int)(C.QWidgetItem_ControlTypes(this.h))
+func (this *QWidgetItem) ControlTypes() QSizePolicy__ControlType {
+	return (QSizePolicy__ControlType)(C.QWidgetItem_ControlTypes(this.h))
 }
 
 // Delete this object from C++ memory.

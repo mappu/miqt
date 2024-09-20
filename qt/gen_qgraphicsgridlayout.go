@@ -164,28 +164,28 @@ func (this *QGraphicsGridLayout) SetColumnFixedWidth(column int, width float64) 
 	C.QGraphicsGridLayout_SetColumnFixedWidth(this.h, (C.int)(column), (C.double)(width))
 }
 
-func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment int) {
+func (this *QGraphicsGridLayout) SetRowAlignment(row int, alignment AlignmentFlag) {
 	C.QGraphicsGridLayout_SetRowAlignment(this.h, (C.int)(row), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) RowAlignment(row int) int {
-	return (int)(C.QGraphicsGridLayout_RowAlignment(this.h, (C.int)(row)))
+func (this *QGraphicsGridLayout) RowAlignment(row int) AlignmentFlag {
+	return (AlignmentFlag)(C.QGraphicsGridLayout_RowAlignment(this.h, (C.int)(row)))
 }
 
-func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment int) {
+func (this *QGraphicsGridLayout) SetColumnAlignment(column int, alignment AlignmentFlag) {
 	C.QGraphicsGridLayout_SetColumnAlignment(this.h, (C.int)(column), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) ColumnAlignment(column int) int {
-	return (int)(C.QGraphicsGridLayout_ColumnAlignment(this.h, (C.int)(column)))
+func (this *QGraphicsGridLayout) ColumnAlignment(column int) AlignmentFlag {
+	return (AlignmentFlag)(C.QGraphicsGridLayout_ColumnAlignment(this.h, (C.int)(column)))
 }
 
-func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
+func (this *QGraphicsGridLayout) SetAlignment(item *QGraphicsLayoutItem, alignment AlignmentFlag) {
 	C.QGraphicsGridLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) int {
-	return (int)(C.QGraphicsGridLayout_Alignment(this.h, item.cPointer()))
+func (this *QGraphicsGridLayout) Alignment(item *QGraphicsLayoutItem) AlignmentFlag {
+	return (AlignmentFlag)(C.QGraphicsGridLayout_Alignment(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsGridLayout) RowCount() int {
@@ -231,11 +231,11 @@ func (this *QGraphicsGridLayout) SizeHint(which SizeHint) *QSizeF {
 	return _goptr
 }
 
-func (this *QGraphicsGridLayout) AddItem6(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment int) {
+func (this *QGraphicsGridLayout) AddItem6(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment AlignmentFlag) {
 	C.QGraphicsGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
 }
 
-func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment int) {
+func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment AlignmentFlag) {
 	C.QGraphicsGridLayout_AddItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 

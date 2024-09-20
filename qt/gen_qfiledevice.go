@@ -169,11 +169,11 @@ func (this *QFileDevice) Resize(sz int64) bool {
 	return (bool)(C.QFileDevice_Resize(this.h, (C.longlong)(sz)))
 }
 
-func (this *QFileDevice) Permissions() int {
-	return (int)(C.QFileDevice_Permissions(this.h))
+func (this *QFileDevice) Permissions() QFileDevice__Permission {
+	return (QFileDevice__Permission)(C.QFileDevice_Permissions(this.h))
 }
 
-func (this *QFileDevice) SetPermissions(permissionSpec int) bool {
+func (this *QFileDevice) SetPermissions(permissionSpec QFileDevice__Permission) bool {
 	return (bool)(C.QFileDevice_SetPermissions(this.h, (C.int)(permissionSpec)))
 }
 

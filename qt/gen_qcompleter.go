@@ -155,12 +155,12 @@ func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
 	return (QCompleter__CompletionMode)(C.QCompleter_CompletionMode(this.h))
 }
 
-func (this *QCompleter) SetFilterMode(filterMode int) {
+func (this *QCompleter) SetFilterMode(filterMode MatchFlag) {
 	C.QCompleter_SetFilterMode(this.h, (C.int)(filterMode))
 }
 
-func (this *QCompleter) FilterMode() int {
-	return (int)(C.QCompleter_FilterMode(this.h))
+func (this *QCompleter) FilterMode() MatchFlag {
+	return (MatchFlag)(C.QCompleter_FilterMode(this.h))
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {

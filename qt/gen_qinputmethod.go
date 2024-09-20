@@ -153,7 +153,7 @@ func (this *QInputMethod) Hide() {
 	C.QInputMethod_Hide(this.h)
 }
 
-func (this *QInputMethod) Update(queries int) {
+func (this *QInputMethod) Update(queries InputMethodQuery) {
 	C.QInputMethod_Update(this.h, (C.int)(queries))
 }
 

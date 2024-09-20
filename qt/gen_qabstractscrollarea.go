@@ -118,11 +118,11 @@ func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
 	C.QAbstractScrollArea_SetCornerWidget(this.h, widget.cPointer())
 }
 
-func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment int) {
+func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment AlignmentFlag) {
 	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
 }
 
-func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
+func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QWidget {
 	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya

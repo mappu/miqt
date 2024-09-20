@@ -84,7 +84,7 @@ func NewQSurfaceFormat() *QSurfaceFormat {
 }
 
 // NewQSurfaceFormat2 constructs a new QSurfaceFormat object.
-func NewQSurfaceFormat2(options int) *QSurfaceFormat {
+func NewQSurfaceFormat2(options QSurfaceFormat__FormatOption) *QSurfaceFormat {
 	ret := C.QSurfaceFormat_new2((C.int)(options))
 	return newQSurfaceFormat(ret)
 }
@@ -211,15 +211,15 @@ func (this *QSurfaceFormat) SetStereo(enable bool) {
 	C.QSurfaceFormat_SetStereo(this.h, (C.bool)(enable))
 }
 
-func (this *QSurfaceFormat) SetOption(opt int) {
+func (this *QSurfaceFormat) SetOption(opt QSurfaceFormat__FormatOption) {
 	C.QSurfaceFormat_SetOption(this.h, (C.int)(opt))
 }
 
-func (this *QSurfaceFormat) TestOption(opt int) bool {
+func (this *QSurfaceFormat) TestOption(opt QSurfaceFormat__FormatOption) bool {
 	return (bool)(C.QSurfaceFormat_TestOption(this.h, (C.int)(opt)))
 }
 
-func (this *QSurfaceFormat) SetOptions(options int) {
+func (this *QSurfaceFormat) SetOptions(options QSurfaceFormat__FormatOption) {
 	C.QSurfaceFormat_SetOptions(this.h, (C.int)(options))
 }
 
@@ -231,8 +231,8 @@ func (this *QSurfaceFormat) TestOptionWithOption(option QSurfaceFormat__FormatOp
 	return (bool)(C.QSurfaceFormat_TestOptionWithOption(this.h, (C.int)(option)))
 }
 
-func (this *QSurfaceFormat) Options() int {
-	return (int)(C.QSurfaceFormat_Options(this.h))
+func (this *QSurfaceFormat) Options() QSurfaceFormat__FormatOption {
+	return (QSurfaceFormat__FormatOption)(C.QSurfaceFormat_Options(this.h))
 }
 
 func (this *QSurfaceFormat) SwapInterval() int {

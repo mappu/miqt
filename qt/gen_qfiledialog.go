@@ -85,7 +85,7 @@ func newQFileDialog_U(h unsafe.Pointer) *QFileDialog {
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
-func NewQFileDialog(parent *QWidget, f int) *QFileDialog {
+func NewQFileDialog(parent *QWidget, f WindowType) *QFileDialog {
 	ret := C.QFileDialog_new(parent.cPointer(), (C.int)(f))
 	return newQFileDialog(ret)
 }
@@ -316,11 +316,11 @@ func (this *QFileDialog) SelectMimeTypeFilter(filter string) {
 	C.QFileDialog_SelectMimeTypeFilter(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 
-func (this *QFileDialog) Filter() int {
-	return (int)(C.QFileDialog_Filter(this.h))
+func (this *QFileDialog) Filter() QDir__Filter {
+	return (QDir__Filter)(C.QFileDialog_Filter(this.h))
 }
 
-func (this *QFileDialog) SetFilter(filters int) {
+func (this *QFileDialog) SetFilter(filters QDir__Filter) {
 	C.QFileDialog_SetFilter(this.h, (C.int)(filters))
 }
 
@@ -523,12 +523,12 @@ func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
 	return (bool)(C.QFileDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QFileDialog) SetOptions(options int) {
+func (this *QFileDialog) SetOptions(options QFileDialog__Option) {
 	C.QFileDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFileDialog) Options() int {
-	return (int)(C.QFileDialog_Options(this.h))
+func (this *QFileDialog) Options() QFileDialog__Option {
+	return (QFileDialog__Option)(C.QFileDialog_Options(this.h))
 }
 
 func (this *QFileDialog) SetVisible(visible bool) {
@@ -1074,7 +1074,7 @@ func QFileDialog_GetExistingDirectory3(parent *QWidget, caption string, dir stri
 	return _ret
 }
 
-func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir string, options int) string {
+func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir string, options QFileDialog__Option) string {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	dir_ms := miqt_strdupg(dir)
@@ -1110,7 +1110,7 @@ func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *
 	return _goptr
 }
 
-func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options int) *QUrl {
+func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options QFileDialog__Option) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options))
@@ -1119,7 +1119,7 @@ func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *
 	return _goptr
 }
 
-func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *QUrl, options int, supportedSchemes []string) *QUrl {
+func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *QUrl, options QFileDialog__Option, supportedSchemes []string) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	// For the C ABI, malloc a C array of raw pointers

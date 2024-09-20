@@ -102,28 +102,28 @@ func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
 	return (QFormLayout__FieldGrowthPolicy)(C.QFormLayout_FieldGrowthPolicy(this.h))
 }
 
-func (this *QFormLayout) SetRowWrapPolicy(policy int) {
+func (this *QFormLayout) SetRowWrapPolicy(policy QFormLayout__RowWrapPolicy) {
 	C.QFormLayout_SetRowWrapPolicy(this.h, (C.int)(policy))
 }
 
-func (this *QFormLayout) RowWrapPolicy() int {
-	return (int)(C.QFormLayout_RowWrapPolicy(this.h))
+func (this *QFormLayout) RowWrapPolicy() QFormLayout__RowWrapPolicy {
+	return (QFormLayout__RowWrapPolicy)(C.QFormLayout_RowWrapPolicy(this.h))
 }
 
-func (this *QFormLayout) SetLabelAlignment(alignment int) {
+func (this *QFormLayout) SetLabelAlignment(alignment AlignmentFlag) {
 	C.QFormLayout_SetLabelAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QFormLayout) LabelAlignment() int {
-	return (int)(C.QFormLayout_LabelAlignment(this.h))
+func (this *QFormLayout) LabelAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QFormLayout_LabelAlignment(this.h))
 }
 
-func (this *QFormLayout) SetFormAlignment(alignment int) {
+func (this *QFormLayout) SetFormAlignment(alignment AlignmentFlag) {
 	C.QFormLayout_SetFormAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QFormLayout) FormAlignment() int {
-	return (int)(C.QFormLayout_FormAlignment(this.h))
+func (this *QFormLayout) FormAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QFormLayout_FormAlignment(this.h))
 }
 
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
@@ -239,20 +239,32 @@ func (this *QFormLayout) TakeRowWithLayout(layout *QLayout) *QFormLayout__TakeRo
 	return _goptr
 }
 
-func (this *QFormLayout) SetItem(row int, role int, item *QLayoutItem) {
+func (this *QFormLayout) SetItem(row int, role QFormLayout__ItemRole, item *QLayoutItem) {
 	C.QFormLayout_SetItem(this.h, (C.int)(row), (C.int)(role), item.cPointer())
 }
 
-func (this *QFormLayout) SetWidget(row int, role int, widget *QWidget) {
+func (this *QFormLayout) SetWidget(row int, role QFormLayout__ItemRole, widget *QWidget) {
 	C.QFormLayout_SetWidget(this.h, (C.int)(row), (C.int)(role), widget.cPointer())
 }
 
-func (this *QFormLayout) SetLayout(row int, role int, layout *QLayout) {
+func (this *QFormLayout) SetLayout(row int, role QFormLayout__ItemRole, layout *QLayout) {
 	C.QFormLayout_SetLayout(this.h, (C.int)(row), (C.int)(role), layout.cPointer())
 }
 
-func (this *QFormLayout) ItemAt(row int, role int) *QLayoutItem {
+func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutItem {
 	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))))
+}
+
+func (this *QFormLayout) GetItemPosition(index int, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
+	C.QFormLayout_GetItemPosition(this.h, (C.int)(index), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
+}
+
+func (this *QFormLayout) GetWidgetPosition(widget *QWidget, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
+	C.QFormLayout_GetWidgetPosition(this.h, widget.cPointer(), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
+}
+
+func (this *QFormLayout) GetLayoutPosition(layout *QLayout, rowPtr *int, rolePtr *QFormLayout__ItemRole) {
+	C.QFormLayout_GetLayoutPosition(this.h, layout.cPointer(), (*C.int)(unsafe.Pointer(rowPtr)), (*C.int)(unsafe.Pointer(rolePtr)))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
@@ -305,8 +317,8 @@ func (this *QFormLayout) HeightForWidth(width int) int {
 	return (int)(C.QFormLayout_HeightForWidth(this.h, (C.int)(width)))
 }
 
-func (this *QFormLayout) ExpandingDirections() int {
-	return (int)(C.QFormLayout_ExpandingDirections(this.h))
+func (this *QFormLayout) ExpandingDirections() Orientation {
+	return (Orientation)(C.QFormLayout_ExpandingDirections(this.h))
 }
 
 func (this *QFormLayout) Count() int {

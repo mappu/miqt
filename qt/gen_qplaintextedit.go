@@ -134,12 +134,12 @@ func (this *QPlainTextEdit) SetReadOnly(ro bool) {
 	C.QPlainTextEdit_SetReadOnly(this.h, (C.bool)(ro))
 }
 
-func (this *QPlainTextEdit) SetTextInteractionFlags(flags int) {
+func (this *QPlainTextEdit) SetTextInteractionFlags(flags TextInteractionFlag) {
 	C.QPlainTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
-func (this *QPlainTextEdit) TextInteractionFlags() int {
-	return (int)(C.QPlainTextEdit_TextInteractionFlags(this.h))
+func (this *QPlainTextEdit) TextInteractionFlags() TextInteractionFlag {
+	return (TextInteractionFlag)(C.QPlainTextEdit_TextInteractionFlags(this.h))
 }
 
 func (this *QPlainTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
@@ -662,17 +662,17 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPlainTextEdit) Find22(exp string, options int) bool {
+func (this *QPlainTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
 	exp_ms := miqt_strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
 
-func (this *QPlainTextEdit) Find23(exp *QRegExp, options int) bool {
+func (this *QPlainTextEdit) Find23(exp *QRegExp, options QTextDocument__FindFlag) bool {
 	return (bool)(C.QPlainTextEdit_Find23(this.h, exp.cPointer(), (C.int)(options)))
 }
 
-func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options int) bool {
+func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
 	return (bool)(C.QPlainTextEdit_Find24(this.h, exp.cPointer(), (C.int)(options)))
 }
 

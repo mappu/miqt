@@ -198,8 +198,8 @@ func (this *QBoxLayout) MinimumHeightForWidth(param1 int) int {
 	return (int)(C.QBoxLayout_MinimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QBoxLayout) ExpandingDirections() int {
-	return (int)(C.QBoxLayout_ExpandingDirections(this.h))
+func (this *QBoxLayout) ExpandingDirections() Orientation {
+	return (Orientation)(C.QBoxLayout_ExpandingDirections(this.h))
 }
 
 func (this *QBoxLayout) Invalidate() {
@@ -274,7 +274,7 @@ func (this *QBoxLayout) AddWidget2(param1 *QWidget, stretch int) {
 	C.QBoxLayout_AddWidget2(this.h, param1.cPointer(), (C.int)(stretch))
 }
 
-func (this *QBoxLayout) AddWidget3(param1 *QWidget, stretch int, alignment int) {
+func (this *QBoxLayout) AddWidget3(param1 *QWidget, stretch int, alignment AlignmentFlag) {
 	C.QBoxLayout_AddWidget3(this.h, param1.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
@@ -290,7 +290,7 @@ func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int) {
 	C.QBoxLayout_InsertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
 }
 
-func (this *QBoxLayout) InsertWidget4(index int, widget *QWidget, stretch int, alignment int) {
+func (this *QBoxLayout) InsertWidget4(index int, widget *QWidget, stretch int, alignment AlignmentFlag) {
 	C.QBoxLayout_InsertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 

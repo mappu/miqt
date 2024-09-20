@@ -59,7 +59,7 @@ func NewQMdiSubWindow2(parent *QWidget) *QMdiSubWindow {
 }
 
 // NewQMdiSubWindow3 constructs a new QMdiSubWindow object.
-func NewQMdiSubWindow3(parent *QWidget, flags int) *QMdiSubWindow {
+func NewQMdiSubWindow3(parent *QWidget, flags WindowType) *QMdiSubWindow {
 	ret := C.QMdiSubWindow_new3(parent.cPointer(), (C.int)(flags))
 	return newQMdiSubWindow(ret)
 }
@@ -156,24 +156,24 @@ func (this *QMdiSubWindow) MdiArea() *QMdiArea {
 	return newQMdiArea_U(unsafe.Pointer(C.QMdiSubWindow_MdiArea(this.h)))
 }
 
-func (this *QMdiSubWindow) WindowStateChanged(oldState int, newState int) {
+func (this *QMdiSubWindow) WindowStateChanged(oldState WindowState, newState WindowState) {
 	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
 }
-func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState int, newState int)) {
+func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState WindowState, newState WindowState)) {
 	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QMdiSubWindow_WindowStateChanged
 func miqt_exec_callback_QMdiSubWindow_WindowStateChanged(cb *C.void, oldState C.int, newState C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldState int, newState int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldState WindowState, newState WindowState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(oldState)
+	slotval1 := (WindowState)(oldState)
 
-	slotval2 := (int)(newState)
+	slotval2 := (WindowState)(newState)
 
 	gofunc(slotval1, slotval2)
 }

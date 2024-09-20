@@ -661,18 +661,18 @@ func QCborValue_FromCbor33(data *byte, lenVal uint64, error *QCborParserError) *
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor1(opt int) *QByteArray {
+func (this *QCborValue) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
 	_ret := C.QCborValue_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt int) {
+func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
 	C.QCborValue_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
-func (this *QCborValue) ToDiagnosticNotation1(opts int) string {
+func (this *QCborValue) ToDiagnosticNotation1(opts QCborValue__DiagnosticNotationOption) string {
 	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, (C.int)(opts))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -1053,18 +1053,18 @@ func (this *QCborValueRef) ToUuid1(defaultValue *QUuid) *QUuid {
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor1(opt int) *QByteArray {
+func (this *QCborValueRef) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
 	_ret := C.QCborValueRef_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt int) {
+func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
 	C.QCborValueRef_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
-func (this *QCborValueRef) ToDiagnosticNotation1(opt int) string {
+func (this *QCborValueRef) ToDiagnosticNotation1(opt QCborValue__DiagnosticNotationOption) string {
 	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, (C.int)(opt))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

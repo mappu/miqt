@@ -102,13 +102,13 @@ func NewQDialogButtonBox2(orientation Orientation) *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox3 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox3(buttons int) *QDialogButtonBox {
+func NewQDialogButtonBox3(buttons QDialogButtonBox__StandardButton) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new3((C.int)(buttons))
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox4(buttons int, orientation Orientation) *QDialogButtonBox {
+func NewQDialogButtonBox4(buttons QDialogButtonBox__StandardButton, orientation Orientation) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
@@ -126,13 +126,13 @@ func NewQDialogButtonBox6(orientation Orientation, parent *QWidget) *QDialogButt
 }
 
 // NewQDialogButtonBox7 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox7(buttons int, parent *QWidget) *QDialogButtonBox {
+func NewQDialogButtonBox7(buttons QDialogButtonBox__StandardButton, parent *QWidget) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new7((C.int)(buttons), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox8 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox8(buttons int, orientation Orientation, parent *QWidget) *QDialogButtonBox {
+func NewQDialogButtonBox8(buttons QDialogButtonBox__StandardButton, orientation Orientation, parent *QWidget) *QDialogButtonBox {
 	ret := C.QDialogButtonBox_new8((C.int)(buttons), (C.int)(orientation), parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
@@ -204,12 +204,12 @@ func (this *QDialogButtonBox) ButtonRole(button *QAbstractButton) QDialogButtonB
 	return (QDialogButtonBox__ButtonRole)(C.QDialogButtonBox_ButtonRole(this.h, button.cPointer()))
 }
 
-func (this *QDialogButtonBox) SetStandardButtons(buttons int) {
+func (this *QDialogButtonBox) SetStandardButtons(buttons QDialogButtonBox__StandardButton) {
 	C.QDialogButtonBox_SetStandardButtons(this.h, (C.int)(buttons))
 }
 
-func (this *QDialogButtonBox) StandardButtons() int {
-	return (int)(C.QDialogButtonBox_StandardButtons(this.h))
+func (this *QDialogButtonBox) StandardButtons() QDialogButtonBox__StandardButton {
+	return (QDialogButtonBox__StandardButton)(C.QDialogButtonBox_StandardButtons(this.h))
 }
 
 func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogButtonBox__StandardButton {

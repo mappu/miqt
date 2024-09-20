@@ -86,7 +86,7 @@ func (this *QEventLoop) ProcessEvents() bool {
 	return (bool)(C.QEventLoop_ProcessEvents(this.h))
 }
 
-func (this *QEventLoop) ProcessEvents2(flags int, maximumTime int) {
+func (this *QEventLoop) ProcessEvents2(flags QEventLoop__ProcessEventsFlag, maximumTime int) {
 	C.QEventLoop_ProcessEvents2(this.h, (C.int)(flags), (C.int)(maximumTime))
 }
 
@@ -158,11 +158,11 @@ func QEventLoop_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QEventLoop) ProcessEvents1(flags int) bool {
+func (this *QEventLoop) ProcessEvents1(flags QEventLoop__ProcessEventsFlag) bool {
 	return (bool)(C.QEventLoop_ProcessEvents1(this.h, (C.int)(flags)))
 }
 
-func (this *QEventLoop) Exec1(flags int) int {
+func (this *QEventLoop) Exec1(flags QEventLoop__ProcessEventsFlag) int {
 	return (int)(C.QEventLoop_Exec1(this.h, (C.int)(flags)))
 }
 

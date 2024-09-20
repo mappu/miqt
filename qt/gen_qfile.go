@@ -228,11 +228,11 @@ func QFile_Copy2(fileName string, newName string) bool {
 	return (bool)(C.QFile_Copy2((*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(newName_ms)))
 }
 
-func (this *QFile) Open(flags int) bool {
+func (this *QFile) Open(flags QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QFile_Open(this.h, (C.int)(flags)))
 }
 
-func (this *QFile) Open3(fd int, ioFlags int) bool {
+func (this *QFile) Open3(fd int, ioFlags QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QFile_Open3(this.h, (C.int)(fd), (C.int)(ioFlags)))
 }
 
@@ -250,21 +250,21 @@ func QFile_Resize2(filename string, sz int64) bool {
 	return (bool)(C.QFile_Resize2((*C.struct_miqt_string)(filename_ms), (C.longlong)(sz)))
 }
 
-func (this *QFile) Permissions() int {
-	return (int)(C.QFile_Permissions(this.h))
+func (this *QFile) Permissions() QFileDevice__Permission {
+	return (QFileDevice__Permission)(C.QFile_Permissions(this.h))
 }
 
-func QFile_PermissionsWithFilename(filename string) int {
+func QFile_PermissionsWithFilename(filename string) QFileDevice__Permission {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
-	return (int)(C.QFile_PermissionsWithFilename((*C.struct_miqt_string)(filename_ms)))
+	return (QFileDevice__Permission)(C.QFile_PermissionsWithFilename((*C.struct_miqt_string)(filename_ms)))
 }
 
-func (this *QFile) SetPermissions(permissionSpec int) bool {
+func (this *QFile) SetPermissions(permissionSpec QFileDevice__Permission) bool {
 	return (bool)(C.QFile_SetPermissions(this.h, (C.int)(permissionSpec)))
 }
 
-func QFile_SetPermissions2(filename string, permissionSpec int) bool {
+func QFile_SetPermissions2(filename string, permissionSpec QFileDevice__Permission) bool {
 	filename_ms := miqt_strdupg(filename)
 	defer C.free(filename_ms)
 	return (bool)(C.QFile_SetPermissions2((*C.struct_miqt_string)(filename_ms), (C.int)(permissionSpec)))
@@ -314,7 +314,7 @@ func QFile_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QFile) Open33(fd int, ioFlags int, handleFlags int) bool {
+func (this *QFile) Open33(fd int, ioFlags QIODevice__OpenModeFlag, handleFlags QFileDevice__FileHandleFlag) bool {
 	return (bool)(C.QFile_Open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 

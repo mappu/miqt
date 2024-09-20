@@ -187,11 +187,11 @@ func (this *QImageWriter) ProgressiveScanWrite() bool {
 	return (bool)(C.QImageWriter_ProgressiveScanWrite(this.h))
 }
 
-func (this *QImageWriter) Transformation() int {
-	return (int)(C.QImageWriter_Transformation(this.h))
+func (this *QImageWriter) Transformation() QImageIOHandler__Transformation {
+	return (QImageIOHandler__Transformation)(C.QImageWriter_Transformation(this.h))
 }
 
-func (this *QImageWriter) SetTransformation(orientation int) {
+func (this *QImageWriter) SetTransformation(orientation QImageIOHandler__Transformation) {
 	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
 }
 

@@ -760,7 +760,7 @@ func QProcess_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QProcess) Start3(program string, arguments []string, mode int) {
+func (this *QProcess) Start3(program string, arguments []string, mode QIODevice__OpenModeFlag) {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
 	// For the C ABI, malloc a C array of raw pointers
@@ -776,13 +776,13 @@ func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, (C.int)(mode))
 }
 
-func (this *QProcess) Start22(command string, mode int) {
+func (this *QProcess) Start22(command string, mode QIODevice__OpenModeFlag) {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
 	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), (C.int)(mode))
 }
 
-func (this *QProcess) Start1(mode int) {
+func (this *QProcess) Start1(mode QIODevice__OpenModeFlag) {
 	C.QProcess_Start1(this.h, (C.int)(mode))
 }
 
@@ -790,17 +790,17 @@ func (this *QProcess) StartDetached1(pid *int64) bool {
 	return (bool)(C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
-func (this *QProcess) Open1(mode int) bool {
+func (this *QProcess) Open1(mode QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
 }
 
-func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
+func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODevice__OpenModeFlag) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
 }
 
-func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
+func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODevice__OpenModeFlag) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))

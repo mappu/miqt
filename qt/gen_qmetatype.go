@@ -338,8 +338,8 @@ func QMetaType_SizeOf(typeVal int) int {
 	return (int)(C.QMetaType_SizeOf((C.int)(typeVal)))
 }
 
-func QMetaType_TypeFlags(typeVal int) int {
-	return (int)(C.QMetaType_TypeFlags((C.int)(typeVal)))
+func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
+	return (QMetaType__TypeFlag)(C.QMetaType_TypeFlags((C.int)(typeVal)))
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
@@ -366,8 +366,8 @@ func (this *QMetaType) SizeOf2() int {
 	return (int)(C.QMetaType_SizeOf2(this.h))
 }
 
-func (this *QMetaType) Flags() int {
-	return (int)(C.QMetaType_Flags(this.h))
+func (this *QMetaType) Flags() QMetaType__TypeFlag {
+	return (QMetaType__TypeFlag)(C.QMetaType_Flags(this.h))
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {

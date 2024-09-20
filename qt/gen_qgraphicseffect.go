@@ -430,15 +430,15 @@ func (this *QGraphicsBlurEffect) BlurRadius() float64 {
 	return (float64)(C.QGraphicsBlurEffect_BlurRadius(this.h))
 }
 
-func (this *QGraphicsBlurEffect) BlurHints() int {
-	return (int)(C.QGraphicsBlurEffect_BlurHints(this.h))
+func (this *QGraphicsBlurEffect) BlurHints() QGraphicsBlurEffect__BlurHint {
+	return (QGraphicsBlurEffect__BlurHint)(C.QGraphicsBlurEffect_BlurHints(this.h))
 }
 
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
 	C.QGraphicsBlurEffect_SetBlurRadius(this.h, (C.double)(blurRadius))
 }
 
-func (this *QGraphicsBlurEffect) SetBlurHints(hints int) {
+func (this *QGraphicsBlurEffect) SetBlurHints(hints QGraphicsBlurEffect__BlurHint) {
 	C.QGraphicsBlurEffect_SetBlurHints(this.h, (C.int)(hints))
 }
 
@@ -462,22 +462,22 @@ func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRa
 	gofunc(slotval1)
 }
 
-func (this *QGraphicsBlurEffect) BlurHintsChanged(hints int) {
+func (this *QGraphicsBlurEffect) BlurHintsChanged(hints QGraphicsBlurEffect__BlurHint) {
 	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
 }
-func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints int)) {
+func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints QGraphicsBlurEffect__BlurHint)) {
 	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged
 func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb *C.void, hints C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints QGraphicsBlurEffect__BlurHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(hints)
+	slotval1 := (QGraphicsBlurEffect__BlurHint)(hints)
 
 	gofunc(slotval1)
 }

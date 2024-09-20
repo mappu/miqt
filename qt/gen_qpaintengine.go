@@ -135,8 +135,8 @@ func (this *QTextItem) Width() float64 {
 	return (float64)(C.QTextItem_Width(this.h))
 }
 
-func (this *QTextItem) RenderFlags() int {
-	return (int)(C.QTextItem_RenderFlags(this.h))
+func (this *QTextItem) RenderFlags() QTextItem__RenderFlag {
+	return (QTextItem__RenderFlag)(C.QTextItem_RenderFlags(this.h))
 }
 
 func (this *QTextItem) Text() string {
@@ -314,19 +314,19 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 	C.QPaintEngine_FixNegRect(this.h, (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
 }
 
-func (this *QPaintEngine) TestDirty(df int) bool {
+func (this *QPaintEngine) TestDirty(df QPaintEngine__DirtyFlag) bool {
 	return (bool)(C.QPaintEngine_TestDirty(this.h, (C.int)(df)))
 }
 
-func (this *QPaintEngine) SetDirty(df int) {
+func (this *QPaintEngine) SetDirty(df QPaintEngine__DirtyFlag) {
 	C.QPaintEngine_SetDirty(this.h, (C.int)(df))
 }
 
-func (this *QPaintEngine) ClearDirty(df int) {
+func (this *QPaintEngine) ClearDirty(df QPaintEngine__DirtyFlag) {
 	C.QPaintEngine_ClearDirty(this.h, (C.int)(df))
 }
 
-func (this *QPaintEngine) HasFeature(feature int) bool {
+func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) bool {
 	return (bool)(C.QPaintEngine_HasFeature(this.h, (C.int)(feature)))
 }
 
@@ -342,7 +342,7 @@ func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 
-func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
+func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
 	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
@@ -382,8 +382,8 @@ func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
 	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
-func (this *QPaintEngineState) State() int {
-	return (int)(C.QPaintEngineState_State(this.h))
+func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
+	return (QPaintEngine__DirtyFlag)(C.QPaintEngineState_State(this.h))
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
@@ -461,8 +461,8 @@ func (this *QPaintEngineState) IsClipEnabled() bool {
 	return (bool)(C.QPaintEngineState_IsClipEnabled(this.h))
 }
 
-func (this *QPaintEngineState) RenderHints() int {
-	return (int)(C.QPaintEngineState_RenderHints(this.h))
+func (this *QPaintEngineState) RenderHints() QPainter__RenderHint {
+	return (QPainter__RenderHint)(C.QPaintEngineState_RenderHints(this.h))
 }
 
 func (this *QPaintEngineState) CompositionMode() QPainter__CompositionMode {

@@ -74,8 +74,8 @@ func QIODevice_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QIODevice) OpenMode() int {
-	return (int)(C.QIODevice_OpenMode(this.h))
+func (this *QIODevice) OpenMode() QIODevice__OpenModeFlag {
+	return (QIODevice__OpenModeFlag)(C.QIODevice_OpenMode(this.h))
 }
 
 func (this *QIODevice) SetTextModeEnabled(enabled bool) {
@@ -126,7 +126,7 @@ func (this *QIODevice) SetCurrentWriteChannel(channel int) {
 	C.QIODevice_SetCurrentWriteChannel(this.h, (C.int)(channel))
 }
 
-func (this *QIODevice) Open(mode int) bool {
+func (this *QIODevice) Open(mode QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QIODevice_Open(this.h, (C.int)(mode)))
 }
 

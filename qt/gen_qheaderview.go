@@ -308,11 +308,11 @@ func (this *QHeaderView) SetMaximumSectionSize(size int) {
 	C.QHeaderView_SetMaximumSectionSize(this.h, (C.int)(size))
 }
 
-func (this *QHeaderView) DefaultAlignment() int {
-	return (int)(C.QHeaderView_DefaultAlignment(this.h))
+func (this *QHeaderView) DefaultAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QHeaderView_DefaultAlignment(this.h))
 }
 
-func (this *QHeaderView) SetDefaultAlignment(alignment int) {
+func (this *QHeaderView) SetDefaultAlignment(alignment AlignmentFlag) {
 	C.QHeaderView_SetDefaultAlignment(this.h, (C.int)(alignment))
 }
 

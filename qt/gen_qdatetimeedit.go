@@ -257,8 +257,8 @@ func (this *QDateTimeEdit) SetTimeRange(min *QTime, max *QTime) {
 	C.QDateTimeEdit_SetTimeRange(this.h, min.cPointer(), max.cPointer())
 }
 
-func (this *QDateTimeEdit) DisplayedSections() int {
-	return (int)(C.QDateTimeEdit_DisplayedSections(this.h))
+func (this *QDateTimeEdit) DisplayedSections() QDateTimeEdit__Section {
+	return (QDateTimeEdit__Section)(C.QDateTimeEdit_DisplayedSections(this.h))
 }
 
 func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {

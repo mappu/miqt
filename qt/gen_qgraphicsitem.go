@@ -260,15 +260,15 @@ func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
 	C.QGraphicsItem_SetGroup(this.h, group.cPointer())
 }
 
-func (this *QGraphicsItem) Flags() int {
-	return (int)(C.QGraphicsItem_Flags(this.h))
+func (this *QGraphicsItem) Flags() QGraphicsItem__GraphicsItemFlag {
+	return (QGraphicsItem__GraphicsItemFlag)(C.QGraphicsItem_Flags(this.h))
 }
 
 func (this *QGraphicsItem) SetFlag(flag QGraphicsItem__GraphicsItemFlag) {
 	C.QGraphicsItem_SetFlag(this.h, (C.int)(flag))
 }
 
-func (this *QGraphicsItem) SetFlags(flags int) {
+func (this *QGraphicsItem) SetFlags(flags QGraphicsItem__GraphicsItemFlag) {
 	C.QGraphicsItem_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -388,11 +388,11 @@ func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
 	C.QGraphicsItem_SetGraphicsEffect(this.h, effect.cPointer())
 }
 
-func (this *QGraphicsItem) AcceptedMouseButtons() int {
-	return (int)(C.QGraphicsItem_AcceptedMouseButtons(this.h))
+func (this *QGraphicsItem) AcceptedMouseButtons() MouseButton {
+	return (MouseButton)(C.QGraphicsItem_AcceptedMouseButtons(this.h))
 }
 
-func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons int) {
+func (this *QGraphicsItem) SetAcceptedMouseButtons(buttons MouseButton) {
 	C.QGraphicsItem_SetAcceptedMouseButtons(this.h, (C.int)(buttons))
 }
 
@@ -1003,11 +1003,11 @@ func (this *QGraphicsItem) SetData(key int, value *QVariant) {
 	C.QGraphicsItem_SetData(this.h, (C.int)(key), value.cPointer())
 }
 
-func (this *QGraphicsItem) InputMethodHints() int {
-	return (int)(C.QGraphicsItem_InputMethodHints(this.h))
+func (this *QGraphicsItem) InputMethodHints() InputMethodHint {
+	return (InputMethodHint)(C.QGraphicsItem_InputMethodHints(this.h))
 }
 
-func (this *QGraphicsItem) SetInputMethodHints(hints int) {
+func (this *QGraphicsItem) SetInputMethodHints(hints InputMethodHint) {
 	C.QGraphicsItem_SetInputMethodHints(this.h, (C.int)(hints))
 }
 
@@ -1421,7 +1421,7 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags int) {
+func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags GestureFlag) {
 	C.QGraphicsObject_GrabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
@@ -2452,12 +2452,12 @@ func (this *QGraphicsTextItem) Document() *QTextDocument {
 	return newQTextDocument_U(unsafe.Pointer(C.QGraphicsTextItem_Document(this.h)))
 }
 
-func (this *QGraphicsTextItem) SetTextInteractionFlags(flags int) {
+func (this *QGraphicsTextItem) SetTextInteractionFlags(flags TextInteractionFlag) {
 	C.QGraphicsTextItem_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
-func (this *QGraphicsTextItem) TextInteractionFlags() int {
-	return (int)(C.QGraphicsTextItem_TextInteractionFlags(this.h))
+func (this *QGraphicsTextItem) TextInteractionFlags() TextInteractionFlag {
+	return (TextInteractionFlag)(C.QGraphicsTextItem_TextInteractionFlags(this.h))
 }
 
 func (this *QGraphicsTextItem) SetTabChangesFocus(b bool) {

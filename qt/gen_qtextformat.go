@@ -1051,12 +1051,12 @@ func (this *QTextBlockFormat) IsValid() bool {
 	return (bool)(C.QTextBlockFormat_IsValid(this.h))
 }
 
-func (this *QTextBlockFormat) SetAlignment(alignment int) {
+func (this *QTextBlockFormat) SetAlignment(alignment AlignmentFlag) {
 	C.QTextBlockFormat_SetAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QTextBlockFormat) Alignment() int {
-	return (int)(C.QTextBlockFormat_Alignment(this.h))
+func (this *QTextBlockFormat) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QTextBlockFormat_Alignment(this.h))
 }
 
 func (this *QTextBlockFormat) SetTopMargin(margin float64) {
@@ -1139,12 +1139,12 @@ func (this *QTextBlockFormat) NonBreakableLines() bool {
 	return (bool)(C.QTextBlockFormat_NonBreakableLines(this.h))
 }
 
-func (this *QTextBlockFormat) SetPageBreakPolicy(flags int) {
+func (this *QTextBlockFormat) SetPageBreakPolicy(flags QTextFormat__PageBreakFlag) {
 	C.QTextBlockFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
 }
 
-func (this *QTextBlockFormat) PageBreakPolicy() int {
-	return (int)(C.QTextBlockFormat_PageBreakPolicy(this.h))
+func (this *QTextBlockFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
+	return (QTextFormat__PageBreakFlag)(C.QTextBlockFormat_PageBreakPolicy(this.h))
 }
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
@@ -1530,12 +1530,12 @@ func (this *QTextFrameFormat) Height() *QTextLength {
 	return _goptr
 }
 
-func (this *QTextFrameFormat) SetPageBreakPolicy(flags int) {
+func (this *QTextFrameFormat) SetPageBreakPolicy(flags QTextFormat__PageBreakFlag) {
 	C.QTextFrameFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
 }
 
-func (this *QTextFrameFormat) PageBreakPolicy() int {
-	return (int)(C.QTextFrameFormat_PageBreakPolicy(this.h))
+func (this *QTextFrameFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
+	return (QTextFormat__PageBreakFlag)(C.QTextFrameFormat_PageBreakPolicy(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -1639,12 +1639,12 @@ func (this *QTextTableFormat) SetCellPadding(padding float64) {
 	C.QTextTableFormat_SetCellPadding(this.h, (C.double)(padding))
 }
 
-func (this *QTextTableFormat) SetAlignment(alignment int) {
+func (this *QTextTableFormat) SetAlignment(alignment AlignmentFlag) {
 	C.QTextTableFormat_SetAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QTextTableFormat) Alignment() int {
-	return (int)(C.QTextTableFormat_Alignment(this.h))
+func (this *QTextTableFormat) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QTextTableFormat_Alignment(this.h))
 }
 
 func (this *QTextTableFormat) SetHeaderRowCount(count int) {

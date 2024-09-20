@@ -167,7 +167,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 	return _ret
 }
 
-func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags int) []QPointF {
+func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags QRawFont__LayoutFlag) []QPointF {
 	// For the C ABI, malloc a C array of raw pointers
 	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
@@ -197,7 +197,7 @@ func (this *QRawFont) AdvancesForGlyphIndexes3(glyphIndexes *uint, advances *QPo
 	return (bool)(C.QRawFont_AdvancesForGlyphIndexes3(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs)))
 }
 
-func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPointF, numGlyphs int, layoutFlags int) bool {
+func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPointF, numGlyphs int, layoutFlags QRawFont__LayoutFlag) bool {
 	return (bool)(C.QRawFont_AdvancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), (C.int)(layoutFlags)))
 }
 

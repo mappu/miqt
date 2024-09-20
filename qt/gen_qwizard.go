@@ -110,7 +110,7 @@ func NewQWizard2(parent *QWidget) *QWizard {
 }
 
 // NewQWizard3 constructs a new QWizard object.
-func NewQWizard3(parent *QWidget, flags int) *QWizard {
+func NewQWizard3(parent *QWidget, flags WindowType) *QWizard {
 	ret := C.QWizard_new3(parent.cPointer(), (C.int)(flags))
 	return newQWizard(ret)
 }
@@ -245,28 +245,28 @@ func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
 	return (bool)(C.QWizard_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QWizard) SetOptions(options int) {
+func (this *QWizard) SetOptions(options QWizard__WizardOption) {
 	C.QWizard_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QWizard) Options() int {
-	return (int)(C.QWizard_Options(this.h))
+func (this *QWizard) Options() QWizard__WizardOption {
+	return (QWizard__WizardOption)(C.QWizard_Options(this.h))
 }
 
-func (this *QWizard) SetButtonText(which int, text string) {
+func (this *QWizard) SetButtonText(which QWizard__WizardButton, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	C.QWizard_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
-func (this *QWizard) ButtonText(which int) string {
+func (this *QWizard) ButtonText(which QWizard__WizardButton) string {
 	var _ms *C.struct_miqt_string = C.QWizard_ButtonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QWizard) SetButtonLayout(layout []int) {
+func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
 	// For the C ABI, malloc a C array of raw pointers
 	layout_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(layout))))
 	defer C.free(unsafe.Pointer(layout_CArray))
@@ -278,11 +278,11 @@ func (this *QWizard) SetButtonLayout(layout []int) {
 	C.QWizard_SetButtonLayout(this.h, layout_ma)
 }
 
-func (this *QWizard) SetButton(which int, button *QAbstractButton) {
+func (this *QWizard) SetButton(which QWizard__WizardButton, button *QAbstractButton) {
 	C.QWizard_SetButton(this.h, (C.int)(which), button.cPointer())
 }
 
-func (this *QWizard) Button(which int) *QAbstractButton {
+func (this *QWizard) Button(which QWizard__WizardButton) *QAbstractButton {
 	return newQAbstractButton_U(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))))
 }
 
@@ -623,13 +623,13 @@ func (this *QWizardPage) IsCommitPage() bool {
 	return (bool)(C.QWizardPage_IsCommitPage(this.h))
 }
 
-func (this *QWizardPage) SetButtonText(which int, text string) {
+func (this *QWizardPage) SetButtonText(which QWizard__WizardButton, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	C.QWizardPage_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
-func (this *QWizardPage) ButtonText(which int) string {
+func (this *QWizardPage) ButtonText(which QWizard__WizardButton) string {
 	var _ms *C.struct_miqt_string = C.QWizardPage_ButtonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

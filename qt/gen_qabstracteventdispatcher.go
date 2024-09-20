@@ -63,7 +63,7 @@ func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
 	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()))
 }
 
-func (this *QAbstractEventDispatcher) ProcessEvents(flags int) bool {
+func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
 	return (bool)(C.QAbstractEventDispatcher_ProcessEvents(this.h, (C.int)(flags)))
 }
 

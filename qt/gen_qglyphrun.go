@@ -177,12 +177,12 @@ func (this *QGlyphRun) SetFlag(flag QGlyphRun__GlyphRunFlag) {
 	C.QGlyphRun_SetFlag(this.h, (C.int)(flag))
 }
 
-func (this *QGlyphRun) SetFlags(flags int) {
+func (this *QGlyphRun) SetFlags(flags QGlyphRun__GlyphRunFlag) {
 	C.QGlyphRun_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QGlyphRun) Flags() int {
-	return (int)(C.QGlyphRun_Flags(this.h))
+func (this *QGlyphRun) Flags() QGlyphRun__GlyphRunFlag {
+	return (QGlyphRun__GlyphRunFlag)(C.QGlyphRun_Flags(this.h))
 }
 
 func (this *QGlyphRun) SetBoundingRect(boundingRect *QRectF) {

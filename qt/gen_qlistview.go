@@ -226,12 +226,12 @@ func (this *QListView) IsSelectionRectVisible() bool {
 	return (bool)(C.QListView_IsSelectionRectVisible(this.h))
 }
 
-func (this *QListView) SetItemAlignment(alignment int) {
+func (this *QListView) SetItemAlignment(alignment AlignmentFlag) {
 	C.QListView_SetItemAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QListView) ItemAlignment() int {
-	return (int)(C.QListView_ItemAlignment(this.h))
+func (this *QListView) ItemAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QListView_ItemAlignment(this.h))
 }
 
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {

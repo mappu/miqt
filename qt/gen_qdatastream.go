@@ -109,7 +109,7 @@ func NewQDataStream2(param1 *QIODevice) *QDataStream {
 }
 
 // NewQDataStream3 constructs a new QDataStream object.
-func NewQDataStream3(param1 *QByteArray, flags int) *QDataStream {
+func NewQDataStream3(param1 *QByteArray, flags QIODevice__OpenModeFlag) *QDataStream {
 	ret := C.QDataStream_new3(param1.cPointer(), (C.int)(flags))
 	return newQDataStream(ret)
 }

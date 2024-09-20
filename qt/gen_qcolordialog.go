@@ -117,12 +117,12 @@ func (this *QColorDialog) TestOption(option QColorDialog__ColorDialogOption) boo
 	return (bool)(C.QColorDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QColorDialog) SetOptions(options int) {
+func (this *QColorDialog) SetOptions(options QColorDialog__ColorDialogOption) {
 	C.QColorDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QColorDialog) Options() int {
-	return (int)(C.QColorDialog_Options(this.h))
+func (this *QColorDialog) Options() QColorDialog__ColorDialogOption {
+	return (QColorDialog__ColorDialogOption)(C.QColorDialog_Options(this.h))
 }
 
 func (this *QColorDialog) SetVisible(visible bool) {
@@ -277,7 +277,7 @@ func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QCo
 	return _goptr
 }
 
-func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options int) *QColor {
+func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options QColorDialog__ColorDialogOption) *QColor {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))

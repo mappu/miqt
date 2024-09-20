@@ -89,12 +89,12 @@ func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
 	return (QFontDatabase__WritingSystem)(C.QFontComboBox_WritingSystem(this.h))
 }
 
-func (this *QFontComboBox) SetFontFilters(filters int) {
+func (this *QFontComboBox) SetFontFilters(filters QFontComboBox__FontFilter) {
 	C.QFontComboBox_SetFontFilters(this.h, (C.int)(filters))
 }
 
-func (this *QFontComboBox) FontFilters() int {
-	return (int)(C.QFontComboBox_FontFilters(this.h))
+func (this *QFontComboBox) FontFilters() QFontComboBox__FontFilter {
+	return (QFontComboBox__FontFilter)(C.QFontComboBox_FontFilters(this.h))
 }
 
 func (this *QFontComboBox) CurrentFont() *QFont {

@@ -994,12 +994,12 @@ func (this *QPainter) SetRenderHint(hint QPainter__RenderHint) {
 	C.QPainter_SetRenderHint(this.h, (C.int)(hint))
 }
 
-func (this *QPainter) SetRenderHints(hints int) {
+func (this *QPainter) SetRenderHints(hints QPainter__RenderHint) {
 	C.QPainter_SetRenderHints(this.h, (C.int)(hints))
 }
 
-func (this *QPainter) RenderHints() int {
-	return (int)(C.QPainter_RenderHints(this.h))
+func (this *QPainter) RenderHints() QPainter__RenderHint {
+	return (QPainter__RenderHint)(C.QPainter_RenderHints(this.h))
 }
 
 func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
@@ -1126,23 +1126,23 @@ func (this *QPainter) DrawTiledPixmap33(param1 *QRect, param2 *QPixmap, param3 *
 	C.QPainter_DrawTiledPixmap33(this.h, param1.cPointer(), param2.cPointer(), param3.cPointer())
 }
 
-func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints int) {
+func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints QPainter__PixmapFragmentHint) {
 	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
 }
 
-func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags int) {
+func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags ImageConversionFlag) {
 	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags int) {
+func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags ImageConversionFlag) {
 	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags int) {
+func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags ImageConversionFlag) {
 	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags int) {
+func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags ImageConversionFlag) {
 	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
@@ -1162,7 +1162,7 @@ func (this *QPainter) DrawImage72(x int, y int, image *QImage, sx int, sy int, s
 	C.QPainter_DrawImage72(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh))
 }
 
-func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags int) {
+func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags ImageConversionFlag) {
 	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
 }
 
@@ -1203,7 +1203,7 @@ func (this *QPainter) SetRenderHint2(hint QPainter__RenderHint, on bool) {
 	C.QPainter_SetRenderHint2(this.h, (C.int)(hint), (C.bool)(on))
 }
 
-func (this *QPainter) SetRenderHints2(hints int, on bool) {
+func (this *QPainter) SetRenderHints2(hints QPainter__RenderHint, on bool) {
 	C.QPainter_SetRenderHints2(this.h, (C.int)(hints), (C.bool)(on))
 }
 

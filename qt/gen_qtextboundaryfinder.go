@@ -140,8 +140,8 @@ func (this *QTextBoundaryFinder) IsAtBoundary() bool {
 	return (bool)(C.QTextBoundaryFinder_IsAtBoundary(this.h))
 }
 
-func (this *QTextBoundaryFinder) BoundaryReasons() int {
-	return (int)(C.QTextBoundaryFinder_BoundaryReasons(this.h))
+func (this *QTextBoundaryFinder) BoundaryReasons() QTextBoundaryFinder__BoundaryReason {
+	return (QTextBoundaryFinder__BoundaryReason)(C.QTextBoundaryFinder_BoundaryReasons(this.h))
 }
 
 // Delete this object from C++ memory.

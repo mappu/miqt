@@ -124,8 +124,8 @@ func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
 	C.QSizePolicy_SetControlType(this.h, (C.int)(typeVal))
 }
 
-func (this *QSizePolicy) ExpandingDirections() int {
-	return (int)(C.QSizePolicy_ExpandingDirections(this.h))
+func (this *QSizePolicy) ExpandingDirections() Orientation {
+	return (Orientation)(C.QSizePolicy_ExpandingDirections(this.h))
 }
 
 func (this *QSizePolicy) SetHeightForWidth(b bool) {
