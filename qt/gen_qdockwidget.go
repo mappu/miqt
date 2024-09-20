@@ -17,14 +17,14 @@ import (
 type QDockWidget__DockWidgetFeature int
 
 const (
-	QDockWidget__DockWidgetFeature__DockWidgetClosable         QDockWidget__DockWidgetFeature = 1
-	QDockWidget__DockWidgetFeature__DockWidgetMovable          QDockWidget__DockWidgetFeature = 2
-	QDockWidget__DockWidgetFeature__DockWidgetFloatable        QDockWidget__DockWidgetFeature = 4
-	QDockWidget__DockWidgetFeature__DockWidgetVerticalTitleBar QDockWidget__DockWidgetFeature = 8
-	QDockWidget__DockWidgetFeature__DockWidgetFeatureMask      QDockWidget__DockWidgetFeature = 15
-	QDockWidget__DockWidgetFeature__AllDockWidgetFeatures      QDockWidget__DockWidgetFeature = 7
-	QDockWidget__DockWidgetFeature__NoDockWidgetFeatures       QDockWidget__DockWidgetFeature = 0
-	QDockWidget__DockWidgetFeature__Reserved                   QDockWidget__DockWidgetFeature = 255
+	QDockWidget__DockWidgetClosable         QDockWidget__DockWidgetFeature = 1
+	QDockWidget__DockWidgetMovable          QDockWidget__DockWidgetFeature = 2
+	QDockWidget__DockWidgetFloatable        QDockWidget__DockWidgetFeature = 4
+	QDockWidget__DockWidgetVerticalTitleBar QDockWidget__DockWidgetFeature = 8
+	QDockWidget__DockWidgetFeatureMask      QDockWidget__DockWidgetFeature = 15
+	QDockWidget__AllDockWidgetFeatures      QDockWidget__DockWidgetFeature = 7
+	QDockWidget__NoDockWidgetFeatures       QDockWidget__DockWidgetFeature = 0
+	QDockWidget__Reserved                   QDockWidget__DockWidgetFeature = 255
 )
 
 type QDockWidget struct {
@@ -73,7 +73,7 @@ func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
 }
 
 // NewQDockWidget4 constructs a new QDockWidget object.
-func NewQDockWidget4(title string, parent *QWidget, flags int) *QDockWidget {
+func NewQDockWidget4(title string, parent *QWidget, flags WindowType) *QDockWidget {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QDockWidget_new4((*C.struct_miqt_string)(title_ms), parent.cPointer(), (C.int)(flags))
@@ -87,7 +87,7 @@ func NewQDockWidget5(parent *QWidget) *QDockWidget {
 }
 
 // NewQDockWidget6 constructs a new QDockWidget object.
-func NewQDockWidget6(parent *QWidget, flags int) *QDockWidget {
+func NewQDockWidget6(parent *QWidget, flags WindowType) *QDockWidget {
 	ret := C.QDockWidget_new6(parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
@@ -122,12 +122,12 @@ func (this *QDockWidget) SetWidget(widget *QWidget) {
 	C.QDockWidget_SetWidget(this.h, widget.cPointer())
 }
 
-func (this *QDockWidget) SetFeatures(features int) {
+func (this *QDockWidget) SetFeatures(features QDockWidget__DockWidgetFeature) {
 	C.QDockWidget_SetFeatures(this.h, (C.int)(features))
 }
 
-func (this *QDockWidget) Features() int {
-	return (int)(C.QDockWidget_Features(this.h))
+func (this *QDockWidget) Features() QDockWidget__DockWidgetFeature {
+	return (QDockWidget__DockWidgetFeature)(C.QDockWidget_Features(this.h))
 }
 
 func (this *QDockWidget) SetFloating(floating bool) {
@@ -138,12 +138,12 @@ func (this *QDockWidget) IsFloating() bool {
 	return (bool)(C.QDockWidget_IsFloating(this.h))
 }
 
-func (this *QDockWidget) SetAllowedAreas(areas int) {
+func (this *QDockWidget) SetAllowedAreas(areas DockWidgetArea) {
 	C.QDockWidget_SetAllowedAreas(this.h, (C.int)(areas))
 }
 
-func (this *QDockWidget) AllowedAreas() int {
-	return (int)(C.QDockWidget_AllowedAreas(this.h))
+func (this *QDockWidget) AllowedAreas() DockWidgetArea {
+	return (DockWidgetArea)(C.QDockWidget_AllowedAreas(this.h))
 }
 
 func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
@@ -162,22 +162,22 @@ func (this *QDockWidget) ToggleViewAction() *QAction {
 	return newQAction_U(unsafe.Pointer(C.QDockWidget_ToggleViewAction(this.h)))
 }
 
-func (this *QDockWidget) FeaturesChanged(features int) {
+func (this *QDockWidget) FeaturesChanged(features QDockWidget__DockWidgetFeature) {
 	C.QDockWidget_FeaturesChanged(this.h, (C.int)(features))
 }
-func (this *QDockWidget) OnFeaturesChanged(slot func(features int)) {
+func (this *QDockWidget) OnFeaturesChanged(slot func(features QDockWidget__DockWidgetFeature)) {
 	C.QDockWidget_connect_FeaturesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QDockWidget_FeaturesChanged
 func miqt_exec_callback_QDockWidget_FeaturesChanged(cb *C.void, features C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(features int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(features QDockWidget__DockWidgetFeature))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(features)
+	slotval1 := (QDockWidget__DockWidgetFeature)(features)
 
 	gofunc(slotval1)
 }
@@ -202,22 +202,22 @@ func miqt_exec_callback_QDockWidget_TopLevelChanged(cb *C.void, topLevel C.bool)
 	gofunc(slotval1)
 }
 
-func (this *QDockWidget) AllowedAreasChanged(allowedAreas int) {
+func (this *QDockWidget) AllowedAreasChanged(allowedAreas DockWidgetArea) {
 	C.QDockWidget_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
-func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas int)) {
+func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas DockWidgetArea)) {
 	C.QDockWidget_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QDockWidget_AllowedAreasChanged
 func miqt_exec_callback_QDockWidget_AllowedAreasChanged(cb *C.void, allowedAreas C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas DockWidgetArea))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(allowedAreas)
+	slotval1 := (DockWidgetArea)(allowedAreas)
 
 	gofunc(slotval1)
 }

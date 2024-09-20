@@ -209,11 +209,11 @@ func (this *QScreen) NativeOrientation() ScreenOrientation {
 	return (ScreenOrientation)(C.QScreen_NativeOrientation(this.h))
 }
 
-func (this *QScreen) OrientationUpdateMask() int {
-	return (int)(C.QScreen_OrientationUpdateMask(this.h))
+func (this *QScreen) OrientationUpdateMask() ScreenOrientation {
+	return (ScreenOrientation)(C.QScreen_OrientationUpdateMask(this.h))
 }
 
-func (this *QScreen) SetOrientationUpdateMask(mask int) {
+func (this *QScreen) SetOrientationUpdateMask(mask ScreenOrientation) {
 	C.QScreen_SetOrientationUpdateMask(this.h, (C.int)(mask))
 }
 

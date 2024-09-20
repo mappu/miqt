@@ -17,8 +17,8 @@ import (
 type QProgressBar__Direction int
 
 const (
-	QProgressBar__Direction__TopToBottom QProgressBar__Direction = 0
-	QProgressBar__Direction__BottomToTop QProgressBar__Direction = 1
+	QProgressBar__TopToBottom QProgressBar__Direction = 0
+	QProgressBar__BottomToTop QProgressBar__Direction = 1
 )
 
 type QProgressBar struct {
@@ -105,11 +105,11 @@ func (this *QProgressBar) IsTextVisible() bool {
 	return (bool)(C.QProgressBar_IsTextVisible(this.h))
 }
 
-func (this *QProgressBar) Alignment() int {
-	return (int)(C.QProgressBar_Alignment(this.h))
+func (this *QProgressBar) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QProgressBar_Alignment(this.h))
 }
 
-func (this *QProgressBar) SetAlignment(alignment int) {
+func (this *QProgressBar) SetAlignment(alignment AlignmentFlag) {
 	C.QProgressBar_SetAlignment(this.h, (C.int)(alignment))
 }
 

@@ -17,18 +17,18 @@ import (
 type QFileSystemModel__Roles int
 
 const (
-	QFileSystemModel__Roles__FileIconRole    QFileSystemModel__Roles = 1
-	QFileSystemModel__Roles__FilePathRole    QFileSystemModel__Roles = 257
-	QFileSystemModel__Roles__FileNameRole    QFileSystemModel__Roles = 258
-	QFileSystemModel__Roles__FilePermissions QFileSystemModel__Roles = 259
+	QFileSystemModel__FileIconRole    QFileSystemModel__Roles = 1
+	QFileSystemModel__FilePathRole    QFileSystemModel__Roles = 257
+	QFileSystemModel__FileNameRole    QFileSystemModel__Roles = 258
+	QFileSystemModel__FilePermissions QFileSystemModel__Roles = 259
 )
 
 type QFileSystemModel__Option int
 
 const (
-	QFileSystemModel__Option__DontWatchForChanges         QFileSystemModel__Option = 1
-	QFileSystemModel__Option__DontResolveSymlinks         QFileSystemModel__Option = 2
-	QFileSystemModel__Option__DontUseCustomDirectoryIcons QFileSystemModel__Option = 4
+	QFileSystemModel__DontWatchForChanges         QFileSystemModel__Option = 1
+	QFileSystemModel__DontResolveSymlinks         QFileSystemModel__Option = 2
+	QFileSystemModel__DontUseCustomDirectoryIcons QFileSystemModel__Option = 4
 )
 
 type QFileSystemModel struct {
@@ -250,8 +250,8 @@ func (this *QFileSystemModel) HeaderData(section int, orientation Orientation) *
 	return _goptr
 }
 
-func (this *QFileSystemModel) Flags(index *QModelIndex) int {
-	return (int)(C.QFileSystemModel_Flags(this.h, index.cPointer()))
+func (this *QFileSystemModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QFileSystemModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) Sort(column int) {
@@ -288,8 +288,8 @@ func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, r
 	return (bool)(C.QFileSystemModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QFileSystemModel) SupportedDropActions() int {
-	return (int)(C.QFileSystemModel_SupportedDropActions(this.h))
+func (this *QFileSystemModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QFileSystemModel_SupportedDropActions(this.h))
 }
 
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
@@ -323,12 +323,12 @@ func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
 	return newQFileIconProvider_U(unsafe.Pointer(C.QFileSystemModel_IconProvider(this.h)))
 }
 
-func (this *QFileSystemModel) SetFilter(filters int) {
+func (this *QFileSystemModel) SetFilter(filters QDir__Filter) {
 	C.QFileSystemModel_SetFilter(this.h, (C.int)(filters))
 }
 
-func (this *QFileSystemModel) Filter() int {
-	return (int)(C.QFileSystemModel_Filter(this.h))
+func (this *QFileSystemModel) Filter() QDir__Filter {
+	return (QDir__Filter)(C.QFileSystemModel_Filter(this.h))
 }
 
 func (this *QFileSystemModel) SetResolveSymlinks(enable bool) {
@@ -391,12 +391,12 @@ func (this *QFileSystemModel) TestOption(option QFileSystemModel__Option) bool {
 	return (bool)(C.QFileSystemModel_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QFileSystemModel) SetOptions(options int) {
+func (this *QFileSystemModel) SetOptions(options QFileSystemModel__Option) {
 	C.QFileSystemModel_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFileSystemModel) Options() int {
-	return (int)(C.QFileSystemModel_Options(this.h))
+func (this *QFileSystemModel) Options() QFileSystemModel__Option {
+	return (QFileSystemModel__Option)(C.QFileSystemModel_Options(this.h))
 }
 
 func (this *QFileSystemModel) FilePath(index *QModelIndex) string {
@@ -455,8 +455,8 @@ func (this *QFileSystemModel) FileIcon(index *QModelIndex) *QIcon {
 	return _goptr
 }
 
-func (this *QFileSystemModel) Permissions(index *QModelIndex) int {
-	return (int)(C.QFileSystemModel_Permissions(this.h, index.cPointer()))
+func (this *QFileSystemModel) Permissions(index *QModelIndex) QFileDevice__Permission {
+	return (QFileDevice__Permission)(C.QFileSystemModel_Permissions(this.h, index.cPointer()))
 }
 
 func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {

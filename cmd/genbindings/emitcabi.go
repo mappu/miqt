@@ -70,8 +70,12 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "const " + ret
 	}
 
-	if p.IsFlagType() {
-		ret = "int"
+	if ft, ok := p.QFlagsOf(); ok {
+		if e, ok := KnownEnums[ft.ParameterType]; ok {
+			ret = e.UnderlyingType.RenderTypeCabi()
+		} else {
+			ret = "int"
+		}
 
 	} else if e, ok := KnownEnums[p.ParameterType]; ok {
 		ret = e.UnderlyingType.RenderTypeCabi()
@@ -216,7 +220,7 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QList"
 
-	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() {
+	} else if p.IsFlagType() || p.IntType() || p.IsKnownEnum() {
 		castSrc := p.ParameterName
 		castType := p.RenderTypeQtCpp()
 

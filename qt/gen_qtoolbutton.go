@@ -17,9 +17,9 @@ import (
 type QToolButton__ToolButtonPopupMode int
 
 const (
-	QToolButton__ToolButtonPopupMode__DelayedPopup    QToolButton__ToolButtonPopupMode = 0
-	QToolButton__ToolButtonPopupMode__MenuButtonPopup QToolButton__ToolButtonPopupMode = 1
-	QToolButton__ToolButtonPopupMode__InstantPopup    QToolButton__ToolButtonPopupMode = 2
+	QToolButton__DelayedPopup    QToolButton__ToolButtonPopupMode = 0
+	QToolButton__MenuButtonPopup QToolButton__ToolButtonPopupMode = 1
+	QToolButton__InstantPopup    QToolButton__ToolButtonPopupMode = 2
 )
 
 type QToolButton struct {

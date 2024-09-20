@@ -17,11 +17,11 @@ import (
 type QAbstractItemDelegate__EndEditHint int
 
 const (
-	QAbstractItemDelegate__EndEditHint__NoHint           QAbstractItemDelegate__EndEditHint = 0
-	QAbstractItemDelegate__EndEditHint__EditNextItem     QAbstractItemDelegate__EndEditHint = 1
-	QAbstractItemDelegate__EndEditHint__EditPreviousItem QAbstractItemDelegate__EndEditHint = 2
-	QAbstractItemDelegate__EndEditHint__SubmitModelCache QAbstractItemDelegate__EndEditHint = 3
-	QAbstractItemDelegate__EndEditHint__RevertModelCache QAbstractItemDelegate__EndEditHint = 4
+	QAbstractItemDelegate__NoHint           QAbstractItemDelegate__EndEditHint = 0
+	QAbstractItemDelegate__EditNextItem     QAbstractItemDelegate__EndEditHint = 1
+	QAbstractItemDelegate__EditPreviousItem QAbstractItemDelegate__EndEditHint = 2
+	QAbstractItemDelegate__SubmitModelCache QAbstractItemDelegate__EndEditHint = 3
+	QAbstractItemDelegate__RevertModelCache QAbstractItemDelegate__EndEditHint = 4
 )
 
 type QAbstractItemDelegate struct {

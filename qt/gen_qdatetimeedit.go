@@ -17,17 +17,17 @@ import (
 type QDateTimeEdit__Section int
 
 const (
-	QDateTimeEdit__Section__NoSection         QDateTimeEdit__Section = 0
-	QDateTimeEdit__Section__AmPmSection       QDateTimeEdit__Section = 1
-	QDateTimeEdit__Section__MSecSection       QDateTimeEdit__Section = 2
-	QDateTimeEdit__Section__SecondSection     QDateTimeEdit__Section = 4
-	QDateTimeEdit__Section__MinuteSection     QDateTimeEdit__Section = 8
-	QDateTimeEdit__Section__HourSection       QDateTimeEdit__Section = 16
-	QDateTimeEdit__Section__DaySection        QDateTimeEdit__Section = 256
-	QDateTimeEdit__Section__MonthSection      QDateTimeEdit__Section = 512
-	QDateTimeEdit__Section__YearSection       QDateTimeEdit__Section = 1024
-	QDateTimeEdit__Section__TimeSections_Mask QDateTimeEdit__Section = 31
-	QDateTimeEdit__Section__DateSections_Mask QDateTimeEdit__Section = 1792
+	QDateTimeEdit__NoSection         QDateTimeEdit__Section = 0
+	QDateTimeEdit__AmPmSection       QDateTimeEdit__Section = 1
+	QDateTimeEdit__MSecSection       QDateTimeEdit__Section = 2
+	QDateTimeEdit__SecondSection     QDateTimeEdit__Section = 4
+	QDateTimeEdit__MinuteSection     QDateTimeEdit__Section = 8
+	QDateTimeEdit__HourSection       QDateTimeEdit__Section = 16
+	QDateTimeEdit__DaySection        QDateTimeEdit__Section = 256
+	QDateTimeEdit__MonthSection      QDateTimeEdit__Section = 512
+	QDateTimeEdit__YearSection       QDateTimeEdit__Section = 1024
+	QDateTimeEdit__TimeSections_Mask QDateTimeEdit__Section = 31
+	QDateTimeEdit__DateSections_Mask QDateTimeEdit__Section = 1792
 )
 
 type QDateTimeEdit struct {
@@ -257,8 +257,8 @@ func (this *QDateTimeEdit) SetTimeRange(min *QTime, max *QTime) {
 	C.QDateTimeEdit_SetTimeRange(this.h, min.cPointer(), max.cPointer())
 }
 
-func (this *QDateTimeEdit) DisplayedSections() int {
-	return (int)(C.QDateTimeEdit_DisplayedSections(this.h))
+func (this *QDateTimeEdit) DisplayedSections() QDateTimeEdit__Section {
+	return (QDateTimeEdit__Section)(C.QDateTimeEdit_DisplayedSections(this.h))
 }
 
 func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {

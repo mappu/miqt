@@ -17,48 +17,48 @@ import (
 type QFileDialog__ViewMode int
 
 const (
-	QFileDialog__ViewMode__Detail QFileDialog__ViewMode = 0
-	QFileDialog__ViewMode__List   QFileDialog__ViewMode = 1
+	QFileDialog__Detail QFileDialog__ViewMode = 0
+	QFileDialog__List   QFileDialog__ViewMode = 1
 )
 
 type QFileDialog__FileMode int
 
 const (
-	QFileDialog__FileMode__AnyFile       QFileDialog__FileMode = 0
-	QFileDialog__FileMode__ExistingFile  QFileDialog__FileMode = 1
-	QFileDialog__FileMode__Directory     QFileDialog__FileMode = 2
-	QFileDialog__FileMode__ExistingFiles QFileDialog__FileMode = 3
-	QFileDialog__FileMode__DirectoryOnly QFileDialog__FileMode = 4
+	QFileDialog__AnyFile       QFileDialog__FileMode = 0
+	QFileDialog__ExistingFile  QFileDialog__FileMode = 1
+	QFileDialog__Directory     QFileDialog__FileMode = 2
+	QFileDialog__ExistingFiles QFileDialog__FileMode = 3
+	QFileDialog__DirectoryOnly QFileDialog__FileMode = 4
 )
 
 type QFileDialog__AcceptMode int
 
 const (
-	QFileDialog__AcceptMode__AcceptOpen QFileDialog__AcceptMode = 0
-	QFileDialog__AcceptMode__AcceptSave QFileDialog__AcceptMode = 1
+	QFileDialog__AcceptOpen QFileDialog__AcceptMode = 0
+	QFileDialog__AcceptSave QFileDialog__AcceptMode = 1
 )
 
 type QFileDialog__DialogLabel int
 
 const (
-	QFileDialog__DialogLabel__LookIn   QFileDialog__DialogLabel = 0
-	QFileDialog__DialogLabel__FileName QFileDialog__DialogLabel = 1
-	QFileDialog__DialogLabel__FileType QFileDialog__DialogLabel = 2
-	QFileDialog__DialogLabel__Accept   QFileDialog__DialogLabel = 3
-	QFileDialog__DialogLabel__Reject   QFileDialog__DialogLabel = 4
+	QFileDialog__LookIn   QFileDialog__DialogLabel = 0
+	QFileDialog__FileName QFileDialog__DialogLabel = 1
+	QFileDialog__FileType QFileDialog__DialogLabel = 2
+	QFileDialog__Accept   QFileDialog__DialogLabel = 3
+	QFileDialog__Reject   QFileDialog__DialogLabel = 4
 )
 
 type QFileDialog__Option int
 
 const (
-	QFileDialog__Option__ShowDirsOnly                QFileDialog__Option = 1
-	QFileDialog__Option__DontResolveSymlinks         QFileDialog__Option = 2
-	QFileDialog__Option__DontConfirmOverwrite        QFileDialog__Option = 4
-	QFileDialog__Option__DontUseSheet                QFileDialog__Option = 8
-	QFileDialog__Option__DontUseNativeDialog         QFileDialog__Option = 16
-	QFileDialog__Option__ReadOnly                    QFileDialog__Option = 32
-	QFileDialog__Option__HideNameFilterDetails       QFileDialog__Option = 64
-	QFileDialog__Option__DontUseCustomDirectoryIcons QFileDialog__Option = 128
+	QFileDialog__ShowDirsOnly                QFileDialog__Option = 1
+	QFileDialog__DontResolveSymlinks         QFileDialog__Option = 2
+	QFileDialog__DontConfirmOverwrite        QFileDialog__Option = 4
+	QFileDialog__DontUseSheet                QFileDialog__Option = 8
+	QFileDialog__DontUseNativeDialog         QFileDialog__Option = 16
+	QFileDialog__ReadOnly                    QFileDialog__Option = 32
+	QFileDialog__HideNameFilterDetails       QFileDialog__Option = 64
+	QFileDialog__DontUseCustomDirectoryIcons QFileDialog__Option = 128
 )
 
 type QFileDialog struct {
@@ -85,7 +85,7 @@ func newQFileDialog_U(h unsafe.Pointer) *QFileDialog {
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
-func NewQFileDialog(parent *QWidget, f int) *QFileDialog {
+func NewQFileDialog(parent *QWidget, f WindowType) *QFileDialog {
 	ret := C.QFileDialog_new(parent.cPointer(), (C.int)(f))
 	return newQFileDialog(ret)
 }
@@ -316,11 +316,11 @@ func (this *QFileDialog) SelectMimeTypeFilter(filter string) {
 	C.QFileDialog_SelectMimeTypeFilter(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 
-func (this *QFileDialog) Filter() int {
-	return (int)(C.QFileDialog_Filter(this.h))
+func (this *QFileDialog) Filter() QDir__Filter {
+	return (QDir__Filter)(C.QFileDialog_Filter(this.h))
 }
 
-func (this *QFileDialog) SetFilter(filters int) {
+func (this *QFileDialog) SetFilter(filters QDir__Filter) {
 	C.QFileDialog_SetFilter(this.h, (C.int)(filters))
 }
 
@@ -523,12 +523,12 @@ func (this *QFileDialog) TestOption(option QFileDialog__Option) bool {
 	return (bool)(C.QFileDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QFileDialog) SetOptions(options int) {
+func (this *QFileDialog) SetOptions(options QFileDialog__Option) {
 	C.QFileDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFileDialog) Options() int {
-	return (int)(C.QFileDialog_Options(this.h))
+func (this *QFileDialog) Options() QFileDialog__Option {
+	return (QFileDialog__Option)(C.QFileDialog_Options(this.h))
 }
 
 func (this *QFileDialog) SetVisible(visible bool) {
@@ -1074,7 +1074,7 @@ func QFileDialog_GetExistingDirectory3(parent *QWidget, caption string, dir stri
 	return _ret
 }
 
-func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir string, options int) string {
+func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir string, options QFileDialog__Option) string {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	dir_ms := miqt_strdupg(dir)
@@ -1110,7 +1110,7 @@ func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *
 	return _goptr
 }
 
-func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options int) *QUrl {
+func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *QUrl, options QFileDialog__Option) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), (*C.struct_miqt_string)(caption_ms), dir.cPointer(), (C.int)(options))
@@ -1119,7 +1119,7 @@ func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *
 	return _goptr
 }
 
-func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *QUrl, options int, supportedSchemes []string) *QUrl {
+func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *QUrl, options QFileDialog__Option, supportedSchemes []string) *QUrl {
 	caption_ms := miqt_strdupg(caption)
 	defer C.free(caption_ms)
 	// For the C ABI, malloc a C array of raw pointers

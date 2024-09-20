@@ -17,18 +17,18 @@ import (
 type QLCDNumber__Mode int
 
 const (
-	QLCDNumber__Mode__Hex QLCDNumber__Mode = 0
-	QLCDNumber__Mode__Dec QLCDNumber__Mode = 1
-	QLCDNumber__Mode__Oct QLCDNumber__Mode = 2
-	QLCDNumber__Mode__Bin QLCDNumber__Mode = 3
+	QLCDNumber__Hex QLCDNumber__Mode = 0
+	QLCDNumber__Dec QLCDNumber__Mode = 1
+	QLCDNumber__Oct QLCDNumber__Mode = 2
+	QLCDNumber__Bin QLCDNumber__Mode = 3
 )
 
 type QLCDNumber__SegmentStyle int
 
 const (
-	QLCDNumber__SegmentStyle__Outline QLCDNumber__SegmentStyle = 0
-	QLCDNumber__SegmentStyle__Filled  QLCDNumber__SegmentStyle = 1
-	QLCDNumber__SegmentStyle__Flat    QLCDNumber__SegmentStyle = 2
+	QLCDNumber__Outline QLCDNumber__SegmentStyle = 0
+	QLCDNumber__Filled  QLCDNumber__SegmentStyle = 1
+	QLCDNumber__Flat    QLCDNumber__SegmentStyle = 2
 )
 
 type QLCDNumber struct {

@@ -16,10 +16,10 @@ import (
 type QImageWriter__ImageWriterError int
 
 const (
-	QImageWriter__ImageWriterError__UnknownError           QImageWriter__ImageWriterError = 0
-	QImageWriter__ImageWriterError__DeviceError            QImageWriter__ImageWriterError = 1
-	QImageWriter__ImageWriterError__UnsupportedFormatError QImageWriter__ImageWriterError = 2
-	QImageWriter__ImageWriterError__InvalidImageError      QImageWriter__ImageWriterError = 3
+	QImageWriter__UnknownError           QImageWriter__ImageWriterError = 0
+	QImageWriter__DeviceError            QImageWriter__ImageWriterError = 1
+	QImageWriter__UnsupportedFormatError QImageWriter__ImageWriterError = 2
+	QImageWriter__InvalidImageError      QImageWriter__ImageWriterError = 3
 )
 
 type QImageWriter struct {
@@ -187,11 +187,11 @@ func (this *QImageWriter) ProgressiveScanWrite() bool {
 	return (bool)(C.QImageWriter_ProgressiveScanWrite(this.h))
 }
 
-func (this *QImageWriter) Transformation() int {
-	return (int)(C.QImageWriter_Transformation(this.h))
+func (this *QImageWriter) Transformation() QImageIOHandler__Transformation {
+	return (QImageIOHandler__Transformation)(C.QImageWriter_Transformation(this.h))
 }
 
-func (this *QImageWriter) SetTransformation(orientation int) {
+func (this *QImageWriter) SetTransformation(orientation QImageIOHandler__Transformation) {
 	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
 }
 

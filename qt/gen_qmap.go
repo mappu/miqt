@@ -16,14 +16,14 @@ import (
 type QMapNodeBase__Color int
 
 const (
-	QMapNodeBase__Color__Red   QMapNodeBase__Color = 0
-	QMapNodeBase__Color__Black QMapNodeBase__Color = 1
+	QMapNodeBase__Red   QMapNodeBase__Color = 0
+	QMapNodeBase__Black QMapNodeBase__Color = 1
 )
 
 type QMapNodeBase__ int
 
 const (
-	QMapNodeBase____Mask QMapNodeBase__ = 3
+	QMapNodeBase__Mask QMapNodeBase__ = 3
 )
 
 type QMapNodeBase struct {

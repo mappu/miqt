@@ -227,7 +227,7 @@ func (this *QGraphicsAnchorLayout) Invalidate() {
 	C.QGraphicsAnchorLayout_Invalidate(this.h)
 }
 
-func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations int) {
+func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations Orientation) {
 	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 

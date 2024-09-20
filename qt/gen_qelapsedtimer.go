@@ -16,11 +16,11 @@ import (
 type QElapsedTimer__ClockType int
 
 const (
-	QElapsedTimer__ClockType__SystemTime         QElapsedTimer__ClockType = 0
-	QElapsedTimer__ClockType__MonotonicClock     QElapsedTimer__ClockType = 1
-	QElapsedTimer__ClockType__TickCounter        QElapsedTimer__ClockType = 2
-	QElapsedTimer__ClockType__MachAbsoluteTime   QElapsedTimer__ClockType = 3
-	QElapsedTimer__ClockType__PerformanceCounter QElapsedTimer__ClockType = 4
+	QElapsedTimer__SystemTime         QElapsedTimer__ClockType = 0
+	QElapsedTimer__MonotonicClock     QElapsedTimer__ClockType = 1
+	QElapsedTimer__TickCounter        QElapsedTimer__ClockType = 2
+	QElapsedTimer__MachAbsoluteTime   QElapsedTimer__ClockType = 3
+	QElapsedTimer__PerformanceCounter QElapsedTimer__ClockType = 4
 )
 
 type QElapsedTimer struct {

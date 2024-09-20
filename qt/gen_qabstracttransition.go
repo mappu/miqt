@@ -16,8 +16,8 @@ import (
 type QAbstractTransition__TransitionType int
 
 const (
-	QAbstractTransition__TransitionType__ExternalTransition QAbstractTransition__TransitionType = 0
-	QAbstractTransition__TransitionType__InternalTransition QAbstractTransition__TransitionType = 1
+	QAbstractTransition__ExternalTransition QAbstractTransition__TransitionType = 0
+	QAbstractTransition__InternalTransition QAbstractTransition__TransitionType = 1
 )
 
 type QAbstractTransition struct {

@@ -17,18 +17,18 @@ import (
 type QStateMachine__EventPriority int
 
 const (
-	QStateMachine__EventPriority__NormalPriority QStateMachine__EventPriority = 0
-	QStateMachine__EventPriority__HighPriority   QStateMachine__EventPriority = 1
+	QStateMachine__NormalPriority QStateMachine__EventPriority = 0
+	QStateMachine__HighPriority   QStateMachine__EventPriority = 1
 )
 
 type QStateMachine__Error int
 
 const (
-	QStateMachine__Error__NoError                                 QStateMachine__Error = 0
-	QStateMachine__Error__NoInitialStateError                     QStateMachine__Error = 1
-	QStateMachine__Error__NoDefaultStateInHistoryStateError       QStateMachine__Error = 2
-	QStateMachine__Error__NoCommonAncestorForTransitionError      QStateMachine__Error = 3
-	QStateMachine__Error__StateMachineChildModeSetToParallelError QStateMachine__Error = 4
+	QStateMachine__NoError                                 QStateMachine__Error = 0
+	QStateMachine__NoInitialStateError                     QStateMachine__Error = 1
+	QStateMachine__NoDefaultStateInHistoryStateError       QStateMachine__Error = 2
+	QStateMachine__NoCommonAncestorForTransitionError      QStateMachine__Error = 3
+	QStateMachine__StateMachineChildModeSetToParallelError QStateMachine__Error = 4
 )
 
 type QStateMachine struct {

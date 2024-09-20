@@ -17,22 +17,22 @@ import (
 type QMdiArea__AreaOption int
 
 const (
-	QMdiArea__AreaOption__DontMaximizeSubWindowOnActivation QMdiArea__AreaOption = 1
+	QMdiArea__DontMaximizeSubWindowOnActivation QMdiArea__AreaOption = 1
 )
 
 type QMdiArea__WindowOrder int
 
 const (
-	QMdiArea__WindowOrder__CreationOrder          QMdiArea__WindowOrder = 0
-	QMdiArea__WindowOrder__StackingOrder          QMdiArea__WindowOrder = 1
-	QMdiArea__WindowOrder__ActivationHistoryOrder QMdiArea__WindowOrder = 2
+	QMdiArea__CreationOrder          QMdiArea__WindowOrder = 0
+	QMdiArea__StackingOrder          QMdiArea__WindowOrder = 1
+	QMdiArea__ActivationHistoryOrder QMdiArea__WindowOrder = 2
 )
 
 type QMdiArea__ViewMode int
 
 const (
-	QMdiArea__ViewMode__SubWindowView QMdiArea__ViewMode = 0
-	QMdiArea__ViewMode__TabbedView    QMdiArea__ViewMode = 1
+	QMdiArea__SubWindowView QMdiArea__ViewMode = 0
+	QMdiArea__TabbedView    QMdiArea__ViewMode = 1
 )
 
 type QMdiArea struct {
@@ -311,7 +311,7 @@ func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWind
 	return _ret
 }
 
-func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags int) *QMdiSubWindow {
+func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags WindowType) *QMdiSubWindow {
 	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
 }
 

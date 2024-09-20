@@ -16,20 +16,20 @@ import (
 type QArrayData__AllocationOption int
 
 const (
-	QArrayData__AllocationOption__CapacityReserved QArrayData__AllocationOption = 1
-	QArrayData__AllocationOption__Unsharable       QArrayData__AllocationOption = 2
-	QArrayData__AllocationOption__RawData          QArrayData__AllocationOption = 4
-	QArrayData__AllocationOption__Grow             QArrayData__AllocationOption = 8
-	QArrayData__AllocationOption__Default          QArrayData__AllocationOption = 0
+	QArrayData__CapacityReserved QArrayData__AllocationOption = 1
+	QArrayData__Unsharable       QArrayData__AllocationOption = 2
+	QArrayData__RawData          QArrayData__AllocationOption = 4
+	QArrayData__Grow             QArrayData__AllocationOption = 8
+	QArrayData__Default          QArrayData__AllocationOption = 0
 )
 
 type QtPrivate__QContainerImplHelper__CutResult int
 
 const (
-	QtPrivate__QContainerImplHelper__CutResult__Null   QtPrivate__QContainerImplHelper__CutResult = 0
-	QtPrivate__QContainerImplHelper__CutResult__Empty  QtPrivate__QContainerImplHelper__CutResult = 1
-	QtPrivate__QContainerImplHelper__CutResult__Full   QtPrivate__QContainerImplHelper__CutResult = 2
-	QtPrivate__QContainerImplHelper__CutResult__Subset QtPrivate__QContainerImplHelper__CutResult = 3
+	QtPrivate__QContainerImplHelper__Null   QtPrivate__QContainerImplHelper__CutResult = 0
+	QtPrivate__QContainerImplHelper__Empty  QtPrivate__QContainerImplHelper__CutResult = 1
+	QtPrivate__QContainerImplHelper__Full   QtPrivate__QContainerImplHelper__CutResult = 2
+	QtPrivate__QContainerImplHelper__Subset QtPrivate__QContainerImplHelper__CutResult = 3
 )
 
 type QArrayData struct {
@@ -62,12 +62,12 @@ func (this *QArrayData) DetachCapacity(newSize uint64) uint64 {
 	return (uint64)(C.QArrayData_DetachCapacity(this.h, (C.size_t)(newSize)))
 }
 
-func (this *QArrayData) DetachFlags() int {
-	return (int)(C.QArrayData_DetachFlags(this.h))
+func (this *QArrayData) DetachFlags() QArrayData__AllocationOption {
+	return (QArrayData__AllocationOption)(C.QArrayData_DetachFlags(this.h))
 }
 
-func (this *QArrayData) CloneFlags() int {
-	return (int)(C.QArrayData_CloneFlags(this.h))
+func (this *QArrayData) CloneFlags() QArrayData__AllocationOption {
+	return (QArrayData__AllocationOption)(C.QArrayData_CloneFlags(this.h))
 }
 
 func QArrayData_Allocate(objectSize uint64, alignment uint64, capacity uint64) *QArrayData {
@@ -86,11 +86,11 @@ func QArrayData_SharedNull() *QArrayData {
 	return newQArrayData_U(unsafe.Pointer(C.QArrayData_SharedNull()))
 }
 
-func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options int) *QArrayData {
+func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
 	return newQArrayData_U(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options))))
 }
 
-func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions int) *QArrayData {
+func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
 	return newQArrayData_U(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions))))
 }
 

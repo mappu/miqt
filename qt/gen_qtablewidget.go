@@ -17,8 +17,8 @@ import (
 type QTableWidgetItem__ItemType int
 
 const (
-	QTableWidgetItem__ItemType__Type     QTableWidgetItem__ItemType = 0
-	QTableWidgetItem__ItemType__UserType QTableWidgetItem__ItemType = 1000
+	QTableWidgetItem__Type     QTableWidgetItem__ItemType = 0
+	QTableWidgetItem__UserType QTableWidgetItem__ItemType = 1000
 )
 
 type QTableWidgetSelectionRange struct {
@@ -199,11 +199,11 @@ func (this *QTableWidgetItem) IsSelected() bool {
 	return (bool)(C.QTableWidgetItem_IsSelected(this.h))
 }
 
-func (this *QTableWidgetItem) Flags() int {
-	return (int)(C.QTableWidgetItem_Flags(this.h))
+func (this *QTableWidgetItem) Flags() ItemFlag {
+	return (ItemFlag)(C.QTableWidgetItem_Flags(this.h))
 }
 
-func (this *QTableWidgetItem) SetFlags(flags int) {
+func (this *QTableWidgetItem) SetFlags(flags ItemFlag) {
 	C.QTableWidgetItem_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -570,7 +570,7 @@ func (this *QTableWidget) SetCurrentItem(item *QTableWidgetItem) {
 	C.QTableWidget_SetCurrentItem(this.h, item.cPointer())
 }
 
-func (this *QTableWidget) SetCurrentItem2(item *QTableWidgetItem, command int) {
+func (this *QTableWidget) SetCurrentItem2(item *QTableWidgetItem, command QItemSelectionModel__SelectionFlag) {
 	C.QTableWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
 }
 
@@ -578,7 +578,7 @@ func (this *QTableWidget) SetCurrentCell(row int, column int) {
 	C.QTableWidget_SetCurrentCell(this.h, (C.int)(row), (C.int)(column))
 }
 
-func (this *QTableWidget) SetCurrentCell2(row int, column int, command int) {
+func (this *QTableWidget) SetCurrentCell2(row int, column int, command QItemSelectionModel__SelectionFlag) {
 	C.QTableWidget_SetCurrentCell2(this.h, (C.int)(row), (C.int)(column), (C.int)(command))
 }
 
@@ -659,7 +659,7 @@ func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
 	return _ret
 }
 
-func (this *QTableWidget) FindItems(text string, flags int) []*QTableWidgetItem {
+func (this *QTableWidget) FindItems(text string, flags MatchFlag) []*QTableWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))

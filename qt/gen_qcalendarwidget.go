@@ -17,24 +17,24 @@ import (
 type QCalendarWidget__HorizontalHeaderFormat int
 
 const (
-	QCalendarWidget__HorizontalHeaderFormat__NoHorizontalHeader   QCalendarWidget__HorizontalHeaderFormat = 0
-	QCalendarWidget__HorizontalHeaderFormat__SingleLetterDayNames QCalendarWidget__HorizontalHeaderFormat = 1
-	QCalendarWidget__HorizontalHeaderFormat__ShortDayNames        QCalendarWidget__HorizontalHeaderFormat = 2
-	QCalendarWidget__HorizontalHeaderFormat__LongDayNames         QCalendarWidget__HorizontalHeaderFormat = 3
+	QCalendarWidget__NoHorizontalHeader   QCalendarWidget__HorizontalHeaderFormat = 0
+	QCalendarWidget__SingleLetterDayNames QCalendarWidget__HorizontalHeaderFormat = 1
+	QCalendarWidget__ShortDayNames        QCalendarWidget__HorizontalHeaderFormat = 2
+	QCalendarWidget__LongDayNames         QCalendarWidget__HorizontalHeaderFormat = 3
 )
 
 type QCalendarWidget__VerticalHeaderFormat int
 
 const (
-	QCalendarWidget__VerticalHeaderFormat__NoVerticalHeader QCalendarWidget__VerticalHeaderFormat = 0
-	QCalendarWidget__VerticalHeaderFormat__ISOWeekNumbers   QCalendarWidget__VerticalHeaderFormat = 1
+	QCalendarWidget__NoVerticalHeader QCalendarWidget__VerticalHeaderFormat = 0
+	QCalendarWidget__ISOWeekNumbers   QCalendarWidget__VerticalHeaderFormat = 1
 )
 
 type QCalendarWidget__SelectionMode int
 
 const (
-	QCalendarWidget__SelectionMode__NoSelection     QCalendarWidget__SelectionMode = 0
-	QCalendarWidget__SelectionMode__SingleSelection QCalendarWidget__SelectionMode = 1
+	QCalendarWidget__NoSelection     QCalendarWidget__SelectionMode = 0
+	QCalendarWidget__SingleSelection QCalendarWidget__SelectionMode = 1
 )
 
 type QCalendarWidget struct {

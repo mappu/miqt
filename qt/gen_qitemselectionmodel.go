@@ -17,17 +17,17 @@ import (
 type QItemSelectionModel__SelectionFlag int
 
 const (
-	QItemSelectionModel__SelectionFlag__NoUpdate       QItemSelectionModel__SelectionFlag = 0
-	QItemSelectionModel__SelectionFlag__Clear          QItemSelectionModel__SelectionFlag = 1
-	QItemSelectionModel__SelectionFlag__Select         QItemSelectionModel__SelectionFlag = 2
-	QItemSelectionModel__SelectionFlag__Deselect       QItemSelectionModel__SelectionFlag = 4
-	QItemSelectionModel__SelectionFlag__Toggle         QItemSelectionModel__SelectionFlag = 8
-	QItemSelectionModel__SelectionFlag__Current        QItemSelectionModel__SelectionFlag = 16
-	QItemSelectionModel__SelectionFlag__Rows           QItemSelectionModel__SelectionFlag = 32
-	QItemSelectionModel__SelectionFlag__Columns        QItemSelectionModel__SelectionFlag = 64
-	QItemSelectionModel__SelectionFlag__SelectCurrent  QItemSelectionModel__SelectionFlag = 18
-	QItemSelectionModel__SelectionFlag__ToggleCurrent  QItemSelectionModel__SelectionFlag = 24
-	QItemSelectionModel__SelectionFlag__ClearAndSelect QItemSelectionModel__SelectionFlag = 3
+	QItemSelectionModel__NoUpdate       QItemSelectionModel__SelectionFlag = 0
+	QItemSelectionModel__Clear          QItemSelectionModel__SelectionFlag = 1
+	QItemSelectionModel__Select         QItemSelectionModel__SelectionFlag = 2
+	QItemSelectionModel__Deselect       QItemSelectionModel__SelectionFlag = 4
+	QItemSelectionModel__Toggle         QItemSelectionModel__SelectionFlag = 8
+	QItemSelectionModel__Current        QItemSelectionModel__SelectionFlag = 16
+	QItemSelectionModel__Rows           QItemSelectionModel__SelectionFlag = 32
+	QItemSelectionModel__Columns        QItemSelectionModel__SelectionFlag = 64
+	QItemSelectionModel__SelectCurrent  QItemSelectionModel__SelectionFlag = 18
+	QItemSelectionModel__ToggleCurrent  QItemSelectionModel__SelectionFlag = 24
+	QItemSelectionModel__ClearAndSelect QItemSelectionModel__SelectionFlag = 3
 )
 
 type QItemSelectionRange struct {
@@ -342,11 +342,11 @@ func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
 	C.QItemSelectionModel_SetModel(this.h, model.cPointer())
 }
 
-func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command int) {
+func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
 	C.QItemSelectionModel_SetCurrentIndex(this.h, index.cPointer(), (C.int)(command))
 }
 
-func (this *QItemSelectionModel) Select(index *QModelIndex, command int) {
+func (this *QItemSelectionModel) Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
 	C.QItemSelectionModel_Select(this.h, index.cPointer(), (C.int)(command))
 }
 

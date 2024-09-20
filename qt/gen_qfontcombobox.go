@@ -17,11 +17,11 @@ import (
 type QFontComboBox__FontFilter int
 
 const (
-	QFontComboBox__FontFilter__AllFonts          QFontComboBox__FontFilter = 0
-	QFontComboBox__FontFilter__ScalableFonts     QFontComboBox__FontFilter = 1
-	QFontComboBox__FontFilter__NonScalableFonts  QFontComboBox__FontFilter = 2
-	QFontComboBox__FontFilter__MonospacedFonts   QFontComboBox__FontFilter = 4
-	QFontComboBox__FontFilter__ProportionalFonts QFontComboBox__FontFilter = 8
+	QFontComboBox__AllFonts          QFontComboBox__FontFilter = 0
+	QFontComboBox__ScalableFonts     QFontComboBox__FontFilter = 1
+	QFontComboBox__NonScalableFonts  QFontComboBox__FontFilter = 2
+	QFontComboBox__MonospacedFonts   QFontComboBox__FontFilter = 4
+	QFontComboBox__ProportionalFonts QFontComboBox__FontFilter = 8
 )
 
 type QFontComboBox struct {
@@ -89,12 +89,12 @@ func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
 	return (QFontDatabase__WritingSystem)(C.QFontComboBox_WritingSystem(this.h))
 }
 
-func (this *QFontComboBox) SetFontFilters(filters int) {
+func (this *QFontComboBox) SetFontFilters(filters QFontComboBox__FontFilter) {
 	C.QFontComboBox_SetFontFilters(this.h, (C.int)(filters))
 }
 
-func (this *QFontComboBox) FontFilters() int {
-	return (int)(C.QFontComboBox_FontFilters(this.h))
+func (this *QFontComboBox) FontFilters() QFontComboBox__FontFilter {
+	return (QFontComboBox__FontFilter)(C.QFontComboBox_FontFilters(this.h))
 }
 
 func (this *QFontComboBox) CurrentFont() *QFont {

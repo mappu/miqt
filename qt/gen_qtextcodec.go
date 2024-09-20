@@ -16,10 +16,10 @@ import (
 type QTextCodec__ConversionFlag int
 
 const (
-	QTextCodec__ConversionFlag__DefaultConversion    QTextCodec__ConversionFlag = 0
-	QTextCodec__ConversionFlag__ConvertInvalidToNull QTextCodec__ConversionFlag = 2147483648
-	QTextCodec__ConversionFlag__IgnoreHeader         QTextCodec__ConversionFlag = 1
-	QTextCodec__ConversionFlag__FreeFunction         QTextCodec__ConversionFlag = 2
+	QTextCodec__DefaultConversion    QTextCodec__ConversionFlag = 0
+	QTextCodec__ConvertInvalidToNull QTextCodec__ConversionFlag = 2147483648
+	QTextCodec__IgnoreHeader         QTextCodec__ConversionFlag = 1
+	QTextCodec__FreeFunction         QTextCodec__ConversionFlag = 2
 )
 
 type QTextCodec struct {
@@ -207,11 +207,11 @@ func (this *QTextCodec) FromUnicode3(in *QChar, length int, state *QTextCodec__C
 	return _goptr
 }
 
-func (this *QTextCodec) MakeDecoder1(flags int) *QTextDecoder {
+func (this *QTextCodec) MakeDecoder1(flags QTextCodec__ConversionFlag) *QTextDecoder {
 	return newQTextDecoder_U(unsafe.Pointer(C.QTextCodec_MakeDecoder1(this.h, (C.int)(flags))))
 }
 
-func (this *QTextCodec) MakeEncoder1(flags int) *QTextEncoder {
+func (this *QTextCodec) MakeEncoder1(flags QTextCodec__ConversionFlag) *QTextEncoder {
 	return newQTextEncoder_U(unsafe.Pointer(C.QTextCodec_MakeEncoder1(this.h, (C.int)(flags))))
 }
 
@@ -244,7 +244,7 @@ func NewQTextEncoder(codec *QTextCodec) *QTextEncoder {
 }
 
 // NewQTextEncoder2 constructs a new QTextEncoder object.
-func NewQTextEncoder2(codec *QTextCodec, flags int) *QTextEncoder {
+func NewQTextEncoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextEncoder {
 	ret := C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags))
 	return newQTextEncoder(ret)
 }
@@ -312,7 +312,7 @@ func NewQTextDecoder(codec *QTextCodec) *QTextDecoder {
 }
 
 // NewQTextDecoder2 constructs a new QTextDecoder object.
-func NewQTextDecoder2(codec *QTextCodec, flags int) *QTextDecoder {
+func NewQTextDecoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextDecoder {
 	ret := C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags))
 	return newQTextDecoder(ret)
 }
@@ -384,7 +384,7 @@ func NewQTextCodec__ConverterState() *QTextCodec__ConverterState {
 }
 
 // NewQTextCodec__ConverterState2 constructs a new QTextCodec::ConverterState object.
-func NewQTextCodec__ConverterState2(f int) *QTextCodec__ConverterState {
+func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__ConverterState {
 	ret := C.QTextCodec__ConverterState_new2((C.int)(f))
 	return newQTextCodec__ConverterState(ret)
 }

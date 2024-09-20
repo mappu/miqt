@@ -16,41 +16,41 @@ import (
 type QCborValue__EncodingOption int
 
 const (
-	QCborValue__EncodingOption__SortKeysInMaps   QCborValue__EncodingOption = 1
-	QCborValue__EncodingOption__UseFloat         QCborValue__EncodingOption = 2
-	QCborValue__EncodingOption__UseFloat16       QCborValue__EncodingOption = 6
-	QCborValue__EncodingOption__UseIntegers      QCborValue__EncodingOption = 8
-	QCborValue__EncodingOption__NoTransformation QCborValue__EncodingOption = 0
+	QCborValue__SortKeysInMaps   QCborValue__EncodingOption = 1
+	QCborValue__UseFloat         QCborValue__EncodingOption = 2
+	QCborValue__UseFloat16       QCborValue__EncodingOption = 6
+	QCborValue__UseIntegers      QCborValue__EncodingOption = 8
+	QCborValue__NoTransformation QCborValue__EncodingOption = 0
 )
 
 type QCborValue__DiagnosticNotationOption int
 
 const (
-	QCborValue__DiagnosticNotationOption__Compact        QCborValue__DiagnosticNotationOption = 0
-	QCborValue__DiagnosticNotationOption__LineWrapped    QCborValue__DiagnosticNotationOption = 1
-	QCborValue__DiagnosticNotationOption__ExtendedFormat QCborValue__DiagnosticNotationOption = 2
+	QCborValue__Compact        QCborValue__DiagnosticNotationOption = 0
+	QCborValue__LineWrapped    QCborValue__DiagnosticNotationOption = 1
+	QCborValue__ExtendedFormat QCborValue__DiagnosticNotationOption = 2
 )
 
 type QCborValue__Type int
 
 const (
-	QCborValue__Type__Integer           QCborValue__Type = 0
-	QCborValue__Type__ByteArray         QCborValue__Type = 64
-	QCborValue__Type__String            QCborValue__Type = 96
-	QCborValue__Type__Array             QCborValue__Type = 128
-	QCborValue__Type__Map               QCborValue__Type = 160
-	QCborValue__Type__Tag               QCborValue__Type = 192
-	QCborValue__Type__SimpleType        QCborValue__Type = 256
-	QCborValue__Type__False             QCborValue__Type = 276
-	QCborValue__Type__True              QCborValue__Type = 277
-	QCborValue__Type__Null              QCborValue__Type = 278
-	QCborValue__Type__Undefined         QCborValue__Type = 279
-	QCborValue__Type__Double            QCborValue__Type = 514
-	QCborValue__Type__DateTime          QCborValue__Type = 65536
-	QCborValue__Type__Url               QCborValue__Type = 65568
-	QCborValue__Type__RegularExpression QCborValue__Type = 65571
-	QCborValue__Type__Uuid              QCborValue__Type = 65573
-	QCborValue__Type__Invalid           QCborValue__Type = -1
+	QCborValue__Integer           QCborValue__Type = 0
+	QCborValue__ByteArray         QCborValue__Type = 64
+	QCborValue__String            QCborValue__Type = 96
+	QCborValue__Array             QCborValue__Type = 128
+	QCborValue__Map               QCborValue__Type = 160
+	QCborValue__Tag               QCborValue__Type = 192
+	QCborValue__SimpleType        QCborValue__Type = 256
+	QCborValue__False             QCborValue__Type = 276
+	QCborValue__True              QCborValue__Type = 277
+	QCborValue__Null              QCborValue__Type = 278
+	QCborValue__Undefined         QCborValue__Type = 279
+	QCborValue__Double            QCborValue__Type = 514
+	QCborValue__DateTime          QCborValue__Type = 65536
+	QCborValue__Url               QCborValue__Type = 65568
+	QCborValue__RegularExpression QCborValue__Type = 65571
+	QCborValue__Uuid              QCborValue__Type = 65573
+	QCborValue__Invalid           QCborValue__Type = -1
 )
 
 type QCborParserError struct {
@@ -661,18 +661,18 @@ func QCborValue_FromCbor33(data *byte, lenVal uint64, error *QCborParserError) *
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor1(opt int) *QByteArray {
+func (this *QCborValue) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
 	_ret := C.QCborValue_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt int) {
+func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
 	C.QCborValue_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
-func (this *QCborValue) ToDiagnosticNotation1(opts int) string {
+func (this *QCborValue) ToDiagnosticNotation1(opts QCborValue__DiagnosticNotationOption) string {
 	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, (C.int)(opts))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -1053,18 +1053,18 @@ func (this *QCborValueRef) ToUuid1(defaultValue *QUuid) *QUuid {
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor1(opt int) *QByteArray {
+func (this *QCborValueRef) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
 	_ret := C.QCborValueRef_ToCbor1(this.h, (C.int)(opt))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt int) {
+func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
 	C.QCborValueRef_ToCbor2(this.h, writer.cPointer(), (C.int)(opt))
 }
 
-func (this *QCborValueRef) ToDiagnosticNotation1(opt int) string {
+func (this *QCborValueRef) ToDiagnosticNotation1(opt QCborValue__DiagnosticNotationOption) string {
 	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, (C.int)(opt))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

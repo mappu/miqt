@@ -17,43 +17,43 @@ import (
 type QTextDocument__MetaInformation int
 
 const (
-	QTextDocument__MetaInformation__DocumentTitle QTextDocument__MetaInformation = 0
-	QTextDocument__MetaInformation__DocumentUrl   QTextDocument__MetaInformation = 1
+	QTextDocument__DocumentTitle QTextDocument__MetaInformation = 0
+	QTextDocument__DocumentUrl   QTextDocument__MetaInformation = 1
 )
 
 type QTextDocument__MarkdownFeature int
 
 const (
-	QTextDocument__MarkdownFeature__MarkdownNoHTML            QTextDocument__MarkdownFeature = 96
-	QTextDocument__MarkdownFeature__MarkdownDialectCommonMark QTextDocument__MarkdownFeature = 0
-	QTextDocument__MarkdownFeature__MarkdownDialectGitHub     QTextDocument__MarkdownFeature = 3852
+	QTextDocument__MarkdownNoHTML            QTextDocument__MarkdownFeature = 96
+	QTextDocument__MarkdownDialectCommonMark QTextDocument__MarkdownFeature = 0
+	QTextDocument__MarkdownDialectGitHub     QTextDocument__MarkdownFeature = 3852
 )
 
 type QTextDocument__FindFlag int
 
 const (
-	QTextDocument__FindFlag__FindBackward        QTextDocument__FindFlag = 1
-	QTextDocument__FindFlag__FindCaseSensitively QTextDocument__FindFlag = 2
-	QTextDocument__FindFlag__FindWholeWords      QTextDocument__FindFlag = 4
+	QTextDocument__FindBackward        QTextDocument__FindFlag = 1
+	QTextDocument__FindCaseSensitively QTextDocument__FindFlag = 2
+	QTextDocument__FindWholeWords      QTextDocument__FindFlag = 4
 )
 
 type QTextDocument__ResourceType int
 
 const (
-	QTextDocument__ResourceType__UnknownResource    QTextDocument__ResourceType = 0
-	QTextDocument__ResourceType__HtmlResource       QTextDocument__ResourceType = 1
-	QTextDocument__ResourceType__ImageResource      QTextDocument__ResourceType = 2
-	QTextDocument__ResourceType__StyleSheetResource QTextDocument__ResourceType = 3
-	QTextDocument__ResourceType__MarkdownResource   QTextDocument__ResourceType = 4
-	QTextDocument__ResourceType__UserResource       QTextDocument__ResourceType = 100
+	QTextDocument__UnknownResource    QTextDocument__ResourceType = 0
+	QTextDocument__HtmlResource       QTextDocument__ResourceType = 1
+	QTextDocument__ImageResource      QTextDocument__ResourceType = 2
+	QTextDocument__StyleSheetResource QTextDocument__ResourceType = 3
+	QTextDocument__MarkdownResource   QTextDocument__ResourceType = 4
+	QTextDocument__UserResource       QTextDocument__ResourceType = 100
 )
 
 type QTextDocument__Stacks int
 
 const (
-	QTextDocument__Stacks__UndoStack         QTextDocument__Stacks = 1
-	QTextDocument__Stacks__RedoStack         QTextDocument__Stacks = 2
-	QTextDocument__Stacks__UndoAndRedoStacks QTextDocument__Stacks = 3
+	QTextDocument__UndoStack         QTextDocument__Stacks = 1
+	QTextDocument__RedoStack         QTextDocument__Stacks = 2
+	QTextDocument__UndoAndRedoStacks QTextDocument__Stacks = 3
 )
 
 type QAbstractUndoItem struct {
@@ -857,14 +857,14 @@ func (this *QTextDocument) ToHtml1(encoding *QByteArray) string {
 	return _ret
 }
 
-func (this *QTextDocument) ToMarkdown1(features int) string {
+func (this *QTextDocument) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
 	var _ms *C.struct_miqt_string = C.QTextDocument_ToMarkdown1(this.h, (C.int)(features))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QTextDocument) SetMarkdown2(markdown string, features int) {
+func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument__MarkdownFeature) {
 	markdown_ms := miqt_strdupg(markdown)
 	defer C.free(markdown_ms)
 	C.QTextDocument_SetMarkdown2(this.h, (*C.struct_miqt_string)(markdown_ms), (C.int)(features))
@@ -879,7 +879,7 @@ func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
 	return _goptr
 }
 
-func (this *QTextDocument) Find32(subString string, from int, options int) *QTextCursor {
+func (this *QTextDocument) Find32(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
 	subString_ms := miqt_strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find32(this.h, (*C.struct_miqt_string)(subString_ms), (C.int)(from), (C.int)(options))
@@ -888,7 +888,7 @@ func (this *QTextDocument) Find32(subString string, from int, options int) *QTex
 	return _goptr
 }
 
-func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options int) *QTextCursor {
+func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
 	subString_ms := miqt_strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find33(this.h, (*C.struct_miqt_string)(subString_ms), cursor.cPointer(), (C.int)(options))
@@ -904,14 +904,14 @@ func (this *QTextDocument) Find23(expr *QRegExp, from int) *QTextCursor {
 	return _goptr
 }
 
-func (this *QTextDocument) Find34(expr *QRegExp, from int, options int) *QTextCursor {
+func (this *QTextDocument) Find34(expr *QRegExp, from int, options QTextDocument__FindFlag) *QTextCursor {
 	_ret := C.QTextDocument_Find34(this.h, expr.cPointer(), (C.int)(from), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find35(expr *QRegExp, cursor *QTextCursor, options int) *QTextCursor {
+func (this *QTextDocument) Find35(expr *QRegExp, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
 	_ret := C.QTextDocument_Find35(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -925,14 +925,14 @@ func (this *QTextDocument) Find24(expr *QRegularExpression, from int) *QTextCurs
 	return _goptr
 }
 
-func (this *QTextDocument) Find36(expr *QRegularExpression, from int, options int) *QTextCursor {
+func (this *QTextDocument) Find36(expr *QRegularExpression, from int, options QTextDocument__FindFlag) *QTextCursor {
 	_ret := C.QTextDocument_Find36(this.h, expr.cPointer(), (C.int)(from), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find37(expr *QRegularExpression, cursor *QTextCursor, options int) *QTextCursor {
+func (this *QTextDocument) Find37(expr *QRegularExpression, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
 	_ret := C.QTextDocument_Find37(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

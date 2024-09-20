@@ -16,27 +16,27 @@ import (
 type QTimeLine__State int
 
 const (
-	QTimeLine__State__NotRunning QTimeLine__State = 0
-	QTimeLine__State__Paused     QTimeLine__State = 1
-	QTimeLine__State__Running    QTimeLine__State = 2
+	QTimeLine__NotRunning QTimeLine__State = 0
+	QTimeLine__Paused     QTimeLine__State = 1
+	QTimeLine__Running    QTimeLine__State = 2
 )
 
 type QTimeLine__Direction int
 
 const (
-	QTimeLine__Direction__Forward  QTimeLine__Direction = 0
-	QTimeLine__Direction__Backward QTimeLine__Direction = 1
+	QTimeLine__Forward  QTimeLine__Direction = 0
+	QTimeLine__Backward QTimeLine__Direction = 1
 )
 
 type QTimeLine__CurveShape int
 
 const (
-	QTimeLine__CurveShape__EaseInCurve    QTimeLine__CurveShape = 0
-	QTimeLine__CurveShape__EaseOutCurve   QTimeLine__CurveShape = 1
-	QTimeLine__CurveShape__EaseInOutCurve QTimeLine__CurveShape = 2
-	QTimeLine__CurveShape__LinearCurve    QTimeLine__CurveShape = 3
-	QTimeLine__CurveShape__SineCurve      QTimeLine__CurveShape = 4
-	QTimeLine__CurveShape__CosineCurve    QTimeLine__CurveShape = 5
+	QTimeLine__EaseInCurve    QTimeLine__CurveShape = 0
+	QTimeLine__EaseOutCurve   QTimeLine__CurveShape = 1
+	QTimeLine__EaseInOutCurve QTimeLine__CurveShape = 2
+	QTimeLine__LinearCurve    QTimeLine__CurveShape = 3
+	QTimeLine__SineCurve      QTimeLine__CurveShape = 4
+	QTimeLine__CosineCurve    QTimeLine__CurveShape = 5
 )
 
 type QTimeLine struct {

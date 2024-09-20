@@ -16,8 +16,8 @@ import (
 type QInputMethod__Action int
 
 const (
-	QInputMethod__Action__Click       QInputMethod__Action = 0
-	QInputMethod__Action__ContextMenu QInputMethod__Action = 1
+	QInputMethod__Click       QInputMethod__Action = 0
+	QInputMethod__ContextMenu QInputMethod__Action = 1
 )
 
 type QInputMethod struct {
@@ -153,7 +153,7 @@ func (this *QInputMethod) Hide() {
 	C.QInputMethod_Hide(this.h)
 }
 
-func (this *QInputMethod) Update(queries int) {
+func (this *QInputMethod) Update(queries InputMethodQuery) {
 	C.QInputMethod_Update(this.h, (C.int)(queries))
 }
 

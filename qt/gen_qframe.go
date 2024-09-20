@@ -16,28 +16,28 @@ import (
 type QFrame__Shape int
 
 const (
-	QFrame__Shape__NoFrame     QFrame__Shape = 0
-	QFrame__Shape__Box         QFrame__Shape = 1
-	QFrame__Shape__Panel       QFrame__Shape = 2
-	QFrame__Shape__WinPanel    QFrame__Shape = 3
-	QFrame__Shape__HLine       QFrame__Shape = 4
-	QFrame__Shape__VLine       QFrame__Shape = 5
-	QFrame__Shape__StyledPanel QFrame__Shape = 6
+	QFrame__NoFrame     QFrame__Shape = 0
+	QFrame__Box         QFrame__Shape = 1
+	QFrame__Panel       QFrame__Shape = 2
+	QFrame__WinPanel    QFrame__Shape = 3
+	QFrame__HLine       QFrame__Shape = 4
+	QFrame__VLine       QFrame__Shape = 5
+	QFrame__StyledPanel QFrame__Shape = 6
 )
 
 type QFrame__Shadow int
 
 const (
-	QFrame__Shadow__Plain  QFrame__Shadow = 16
-	QFrame__Shadow__Raised QFrame__Shadow = 32
-	QFrame__Shadow__Sunken QFrame__Shadow = 48
+	QFrame__Plain  QFrame__Shadow = 16
+	QFrame__Raised QFrame__Shadow = 32
+	QFrame__Sunken QFrame__Shadow = 48
 )
 
 type QFrame__StyleMask int
 
 const (
-	QFrame__StyleMask__Shadow_Mask QFrame__StyleMask = 240
-	QFrame__StyleMask__Shape_Mask  QFrame__StyleMask = 15
+	QFrame__Shadow_Mask QFrame__StyleMask = 240
+	QFrame__Shape_Mask  QFrame__StyleMask = 15
 )
 
 type QFrame struct {
@@ -76,7 +76,7 @@ func NewQFrame2(parent *QWidget) *QFrame {
 }
 
 // NewQFrame3 constructs a new QFrame object.
-func NewQFrame3(parent *QWidget, f int) *QFrame {
+func NewQFrame3(parent *QWidget, f WindowType) *QFrame {
 	ret := C.QFrame_new3(parent.cPointer(), (C.int)(f))
 	return newQFrame(ret)
 }

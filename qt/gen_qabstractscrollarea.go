@@ -16,9 +16,9 @@ import (
 type QAbstractScrollArea__SizeAdjustPolicy int
 
 const (
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustIgnored               QAbstractScrollArea__SizeAdjustPolicy = 0
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContentsOnFirstShow QAbstractScrollArea__SizeAdjustPolicy = 1
-	QAbstractScrollArea__SizeAdjustPolicy__AdjustToContents            QAbstractScrollArea__SizeAdjustPolicy = 2
+	QAbstractScrollArea__AdjustIgnored               QAbstractScrollArea__SizeAdjustPolicy = 0
+	QAbstractScrollArea__AdjustToContentsOnFirstShow QAbstractScrollArea__SizeAdjustPolicy = 1
+	QAbstractScrollArea__AdjustToContents            QAbstractScrollArea__SizeAdjustPolicy = 2
 )
 
 type QAbstractScrollArea struct {
@@ -118,11 +118,11 @@ func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
 	C.QAbstractScrollArea_SetCornerWidget(this.h, widget.cPointer())
 }
 
-func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment int) {
+func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment AlignmentFlag) {
 	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
 }
 
-func (this *QAbstractScrollArea) ScrollBarWidgets(alignment int) []*QWidget {
+func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QWidget {
 	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya

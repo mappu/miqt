@@ -17,9 +17,9 @@ import (
 type QActionGroup__ExclusionPolicy int
 
 const (
-	QActionGroup__ExclusionPolicy__None              QActionGroup__ExclusionPolicy = 0
-	QActionGroup__ExclusionPolicy__Exclusive         QActionGroup__ExclusionPolicy = 1
-	QActionGroup__ExclusionPolicy__ExclusiveOptional QActionGroup__ExclusionPolicy = 2
+	QActionGroup__None              QActionGroup__ExclusionPolicy = 0
+	QActionGroup__Exclusive         QActionGroup__ExclusionPolicy = 1
+	QActionGroup__ExclusiveOptional QActionGroup__ExclusionPolicy = 2
 )
 
 type QActionGroup struct {

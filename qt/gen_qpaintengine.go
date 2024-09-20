@@ -16,89 +16,89 @@ import (
 type QTextItem__RenderFlag int
 
 const (
-	QTextItem__RenderFlag__RightToLeft QTextItem__RenderFlag = 1
-	QTextItem__RenderFlag__Overline    QTextItem__RenderFlag = 16
-	QTextItem__RenderFlag__Underline   QTextItem__RenderFlag = 32
-	QTextItem__RenderFlag__StrikeOut   QTextItem__RenderFlag = 64
-	QTextItem__RenderFlag__Dummy       QTextItem__RenderFlag = 4294967295
+	QTextItem__RightToLeft QTextItem__RenderFlag = 1
+	QTextItem__Overline    QTextItem__RenderFlag = 16
+	QTextItem__Underline   QTextItem__RenderFlag = 32
+	QTextItem__StrikeOut   QTextItem__RenderFlag = 64
+	QTextItem__Dummy       QTextItem__RenderFlag = 4294967295
 )
 
 type QPaintEngine__PaintEngineFeature int
 
 const (
-	QPaintEngine__PaintEngineFeature__PrimitiveTransform          QPaintEngine__PaintEngineFeature = 1
-	QPaintEngine__PaintEngineFeature__PatternTransform            QPaintEngine__PaintEngineFeature = 2
-	QPaintEngine__PaintEngineFeature__PixmapTransform             QPaintEngine__PaintEngineFeature = 4
-	QPaintEngine__PaintEngineFeature__PatternBrush                QPaintEngine__PaintEngineFeature = 8
-	QPaintEngine__PaintEngineFeature__LinearGradientFill          QPaintEngine__PaintEngineFeature = 16
-	QPaintEngine__PaintEngineFeature__RadialGradientFill          QPaintEngine__PaintEngineFeature = 32
-	QPaintEngine__PaintEngineFeature__ConicalGradientFill         QPaintEngine__PaintEngineFeature = 64
-	QPaintEngine__PaintEngineFeature__AlphaBlend                  QPaintEngine__PaintEngineFeature = 128
-	QPaintEngine__PaintEngineFeature__PorterDuff                  QPaintEngine__PaintEngineFeature = 256
-	QPaintEngine__PaintEngineFeature__PainterPaths                QPaintEngine__PaintEngineFeature = 512
-	QPaintEngine__PaintEngineFeature__Antialiasing                QPaintEngine__PaintEngineFeature = 1024
-	QPaintEngine__PaintEngineFeature__BrushStroke                 QPaintEngine__PaintEngineFeature = 2048
-	QPaintEngine__PaintEngineFeature__ConstantOpacity             QPaintEngine__PaintEngineFeature = 4096
-	QPaintEngine__PaintEngineFeature__MaskedBrush                 QPaintEngine__PaintEngineFeature = 8192
-	QPaintEngine__PaintEngineFeature__PerspectiveTransform        QPaintEngine__PaintEngineFeature = 16384
-	QPaintEngine__PaintEngineFeature__BlendModes                  QPaintEngine__PaintEngineFeature = 32768
-	QPaintEngine__PaintEngineFeature__ObjectBoundingModeGradients QPaintEngine__PaintEngineFeature = 65536
-	QPaintEngine__PaintEngineFeature__RasterOpModes               QPaintEngine__PaintEngineFeature = 131072
-	QPaintEngine__PaintEngineFeature__PaintOutsidePaintEvent      QPaintEngine__PaintEngineFeature = 536870912
-	QPaintEngine__PaintEngineFeature__AllFeatures                 QPaintEngine__PaintEngineFeature = 4294967295
+	QPaintEngine__PrimitiveTransform          QPaintEngine__PaintEngineFeature = 1
+	QPaintEngine__PatternTransform            QPaintEngine__PaintEngineFeature = 2
+	QPaintEngine__PixmapTransform             QPaintEngine__PaintEngineFeature = 4
+	QPaintEngine__PatternBrush                QPaintEngine__PaintEngineFeature = 8
+	QPaintEngine__LinearGradientFill          QPaintEngine__PaintEngineFeature = 16
+	QPaintEngine__RadialGradientFill          QPaintEngine__PaintEngineFeature = 32
+	QPaintEngine__ConicalGradientFill         QPaintEngine__PaintEngineFeature = 64
+	QPaintEngine__AlphaBlend                  QPaintEngine__PaintEngineFeature = 128
+	QPaintEngine__PorterDuff                  QPaintEngine__PaintEngineFeature = 256
+	QPaintEngine__PainterPaths                QPaintEngine__PaintEngineFeature = 512
+	QPaintEngine__Antialiasing                QPaintEngine__PaintEngineFeature = 1024
+	QPaintEngine__BrushStroke                 QPaintEngine__PaintEngineFeature = 2048
+	QPaintEngine__ConstantOpacity             QPaintEngine__PaintEngineFeature = 4096
+	QPaintEngine__MaskedBrush                 QPaintEngine__PaintEngineFeature = 8192
+	QPaintEngine__PerspectiveTransform        QPaintEngine__PaintEngineFeature = 16384
+	QPaintEngine__BlendModes                  QPaintEngine__PaintEngineFeature = 32768
+	QPaintEngine__ObjectBoundingModeGradients QPaintEngine__PaintEngineFeature = 65536
+	QPaintEngine__RasterOpModes               QPaintEngine__PaintEngineFeature = 131072
+	QPaintEngine__PaintOutsidePaintEvent      QPaintEngine__PaintEngineFeature = 536870912
+	QPaintEngine__AllFeatures                 QPaintEngine__PaintEngineFeature = 4294967295
 )
 
 type QPaintEngine__DirtyFlag int
 
 const (
-	QPaintEngine__DirtyFlag__DirtyPen             QPaintEngine__DirtyFlag = 1
-	QPaintEngine__DirtyFlag__DirtyBrush           QPaintEngine__DirtyFlag = 2
-	QPaintEngine__DirtyFlag__DirtyBrushOrigin     QPaintEngine__DirtyFlag = 4
-	QPaintEngine__DirtyFlag__DirtyFont            QPaintEngine__DirtyFlag = 8
-	QPaintEngine__DirtyFlag__DirtyBackground      QPaintEngine__DirtyFlag = 16
-	QPaintEngine__DirtyFlag__DirtyBackgroundMode  QPaintEngine__DirtyFlag = 32
-	QPaintEngine__DirtyFlag__DirtyTransform       QPaintEngine__DirtyFlag = 64
-	QPaintEngine__DirtyFlag__DirtyClipRegion      QPaintEngine__DirtyFlag = 128
-	QPaintEngine__DirtyFlag__DirtyClipPath        QPaintEngine__DirtyFlag = 256
-	QPaintEngine__DirtyFlag__DirtyHints           QPaintEngine__DirtyFlag = 512
-	QPaintEngine__DirtyFlag__DirtyCompositionMode QPaintEngine__DirtyFlag = 1024
-	QPaintEngine__DirtyFlag__DirtyClipEnabled     QPaintEngine__DirtyFlag = 2048
-	QPaintEngine__DirtyFlag__DirtyOpacity         QPaintEngine__DirtyFlag = 4096
-	QPaintEngine__DirtyFlag__AllDirty             QPaintEngine__DirtyFlag = 65535
+	QPaintEngine__DirtyPen             QPaintEngine__DirtyFlag = 1
+	QPaintEngine__DirtyBrush           QPaintEngine__DirtyFlag = 2
+	QPaintEngine__DirtyBrushOrigin     QPaintEngine__DirtyFlag = 4
+	QPaintEngine__DirtyFont            QPaintEngine__DirtyFlag = 8
+	QPaintEngine__DirtyBackground      QPaintEngine__DirtyFlag = 16
+	QPaintEngine__DirtyBackgroundMode  QPaintEngine__DirtyFlag = 32
+	QPaintEngine__DirtyTransform       QPaintEngine__DirtyFlag = 64
+	QPaintEngine__DirtyClipRegion      QPaintEngine__DirtyFlag = 128
+	QPaintEngine__DirtyClipPath        QPaintEngine__DirtyFlag = 256
+	QPaintEngine__DirtyHints           QPaintEngine__DirtyFlag = 512
+	QPaintEngine__DirtyCompositionMode QPaintEngine__DirtyFlag = 1024
+	QPaintEngine__DirtyClipEnabled     QPaintEngine__DirtyFlag = 2048
+	QPaintEngine__DirtyOpacity         QPaintEngine__DirtyFlag = 4096
+	QPaintEngine__AllDirty             QPaintEngine__DirtyFlag = 65535
 )
 
 type QPaintEngine__PolygonDrawMode int
 
 const (
-	QPaintEngine__PolygonDrawMode__OddEvenMode  QPaintEngine__PolygonDrawMode = 0
-	QPaintEngine__PolygonDrawMode__WindingMode  QPaintEngine__PolygonDrawMode = 1
-	QPaintEngine__PolygonDrawMode__ConvexMode   QPaintEngine__PolygonDrawMode = 2
-	QPaintEngine__PolygonDrawMode__PolylineMode QPaintEngine__PolygonDrawMode = 3
+	QPaintEngine__OddEvenMode  QPaintEngine__PolygonDrawMode = 0
+	QPaintEngine__WindingMode  QPaintEngine__PolygonDrawMode = 1
+	QPaintEngine__ConvexMode   QPaintEngine__PolygonDrawMode = 2
+	QPaintEngine__PolylineMode QPaintEngine__PolygonDrawMode = 3
 )
 
 type QPaintEngine__Type int
 
 const (
-	QPaintEngine__Type__X11           QPaintEngine__Type = 0
-	QPaintEngine__Type__Windows       QPaintEngine__Type = 1
-	QPaintEngine__Type__QuickDraw     QPaintEngine__Type = 2
-	QPaintEngine__Type__CoreGraphics  QPaintEngine__Type = 3
-	QPaintEngine__Type__MacPrinter    QPaintEngine__Type = 4
-	QPaintEngine__Type__QWindowSystem QPaintEngine__Type = 5
-	QPaintEngine__Type__PostScript    QPaintEngine__Type = 6
-	QPaintEngine__Type__OpenGL        QPaintEngine__Type = 7
-	QPaintEngine__Type__Picture       QPaintEngine__Type = 8
-	QPaintEngine__Type__SVG           QPaintEngine__Type = 9
-	QPaintEngine__Type__Raster        QPaintEngine__Type = 10
-	QPaintEngine__Type__Direct3D      QPaintEngine__Type = 11
-	QPaintEngine__Type__Pdf           QPaintEngine__Type = 12
-	QPaintEngine__Type__OpenVG        QPaintEngine__Type = 13
-	QPaintEngine__Type__OpenGL2       QPaintEngine__Type = 14
-	QPaintEngine__Type__PaintBuffer   QPaintEngine__Type = 15
-	QPaintEngine__Type__Blitter       QPaintEngine__Type = 16
-	QPaintEngine__Type__Direct2D      QPaintEngine__Type = 17
-	QPaintEngine__Type__User          QPaintEngine__Type = 50
-	QPaintEngine__Type__MaxUser       QPaintEngine__Type = 100
+	QPaintEngine__X11           QPaintEngine__Type = 0
+	QPaintEngine__Windows       QPaintEngine__Type = 1
+	QPaintEngine__QuickDraw     QPaintEngine__Type = 2
+	QPaintEngine__CoreGraphics  QPaintEngine__Type = 3
+	QPaintEngine__MacPrinter    QPaintEngine__Type = 4
+	QPaintEngine__QWindowSystem QPaintEngine__Type = 5
+	QPaintEngine__PostScript    QPaintEngine__Type = 6
+	QPaintEngine__OpenGL        QPaintEngine__Type = 7
+	QPaintEngine__Picture       QPaintEngine__Type = 8
+	QPaintEngine__SVG           QPaintEngine__Type = 9
+	QPaintEngine__Raster        QPaintEngine__Type = 10
+	QPaintEngine__Direct3D      QPaintEngine__Type = 11
+	QPaintEngine__Pdf           QPaintEngine__Type = 12
+	QPaintEngine__OpenVG        QPaintEngine__Type = 13
+	QPaintEngine__OpenGL2       QPaintEngine__Type = 14
+	QPaintEngine__PaintBuffer   QPaintEngine__Type = 15
+	QPaintEngine__Blitter       QPaintEngine__Type = 16
+	QPaintEngine__Direct2D      QPaintEngine__Type = 17
+	QPaintEngine__User          QPaintEngine__Type = 50
+	QPaintEngine__MaxUser       QPaintEngine__Type = 100
 )
 
 type QTextItem struct {
@@ -135,8 +135,8 @@ func (this *QTextItem) Width() float64 {
 	return (float64)(C.QTextItem_Width(this.h))
 }
 
-func (this *QTextItem) RenderFlags() int {
-	return (int)(C.QTextItem_RenderFlags(this.h))
+func (this *QTextItem) RenderFlags() QTextItem__RenderFlag {
+	return (QTextItem__RenderFlag)(C.QTextItem_RenderFlags(this.h))
 }
 
 func (this *QTextItem) Text() string {
@@ -314,19 +314,19 @@ func (this *QPaintEngine) FixNegRect(x *int, y *int, w *int, h *int) {
 	C.QPaintEngine_FixNegRect(this.h, (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
 }
 
-func (this *QPaintEngine) TestDirty(df int) bool {
+func (this *QPaintEngine) TestDirty(df QPaintEngine__DirtyFlag) bool {
 	return (bool)(C.QPaintEngine_TestDirty(this.h, (C.int)(df)))
 }
 
-func (this *QPaintEngine) SetDirty(df int) {
+func (this *QPaintEngine) SetDirty(df QPaintEngine__DirtyFlag) {
 	C.QPaintEngine_SetDirty(this.h, (C.int)(df))
 }
 
-func (this *QPaintEngine) ClearDirty(df int) {
+func (this *QPaintEngine) ClearDirty(df QPaintEngine__DirtyFlag) {
 	C.QPaintEngine_ClearDirty(this.h, (C.int)(df))
 }
 
-func (this *QPaintEngine) HasFeature(feature int) bool {
+func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) bool {
 	return (bool)(C.QPaintEngine_HasFeature(this.h, (C.int)(feature)))
 }
 
@@ -342,7 +342,7 @@ func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 
-func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags int) {
+func (this *QPaintEngine) DrawImage4(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
 	C.QPaintEngine_DrawImage4(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
@@ -382,8 +382,8 @@ func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
 	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
-func (this *QPaintEngineState) State() int {
-	return (int)(C.QPaintEngineState_State(this.h))
+func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
+	return (QPaintEngine__DirtyFlag)(C.QPaintEngineState_State(this.h))
 }
 
 func (this *QPaintEngineState) Pen() *QPen {
@@ -461,8 +461,8 @@ func (this *QPaintEngineState) IsClipEnabled() bool {
 	return (bool)(C.QPaintEngineState_IsClipEnabled(this.h))
 }
 
-func (this *QPaintEngineState) RenderHints() int {
-	return (int)(C.QPaintEngineState_RenderHints(this.h))
+func (this *QPaintEngineState) RenderHints() QPainter__RenderHint {
+	return (QPainter__RenderHint)(C.QPaintEngineState_RenderHints(this.h))
 }
 
 func (this *QPaintEngineState) CompositionMode() QPainter__CompositionMode {

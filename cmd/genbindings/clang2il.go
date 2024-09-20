@@ -8,6 +8,12 @@ import (
 	"strings"
 )
 
+var (
+	ErrTooComplex = errors.New("Type declaration is too complex to parse")
+	ErrNoContent  = errors.New("There's no content to include")
+)
+
+// parseHeader parses a whole C++ header into our CppParsedHeader intermediate format.
 func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader, error) {
 
 	var ret CppParsedHeader
@@ -147,6 +153,7 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 	return &ret, nil // done
 }
 
+// processTypedef parses a single C++ typedef into our intermediate format.
 func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTypedef, error) {
 	// Must have a name
 	nodename, ok := node["name"].(string)
@@ -166,6 +173,7 @@ func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTyped
 	return CppTypedef{}, errors.New("processTypedef: ???")
 }
 
+// processClassType parses a single C++ class definition into our intermediate format.
 func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
 	ret.CanDelete = true
@@ -476,11 +484,7 @@ func isExplicitlyDeleted(node map[string]interface{}) bool {
 	return false
 }
 
-var (
-	ErrTooComplex = errors.New("Type declaration is too complex to parse")
-	ErrNoContent  = errors.New("There's no content to include")
-)
-
+// processEnum parses a Clang enum into our CppEnum intermediate format.
 func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
 	var ret CppEnum
 
@@ -592,6 +596,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 	return ret, nil
 }
 
+// parseMethod parses a Clang method into our CppMethod intermediate format.
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 	if typobj, ok := node["type"].(map[string]interface{}); ok {
@@ -739,6 +744,10 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, err
 	return returnType, ret, isConst, nil
 }
 
+// tokenizeMultipleParameters is like strings.Split by comma, except it does not
+// split if a comma is used for an interior template type e.g. QMap<K,V>.
+// It is expected to be used with a Clang type representing a function's parameter
+// list.
 func tokenizeMultipleParameters(p string) []string {
 	// Tokenize into top-level strings
 	templateDepth := 0
@@ -764,6 +773,8 @@ func tokenizeMultipleParameters(p string) []string {
 	return tokens
 }
 
+// tokenizeSingleParameter tokenizes a Clang qualType into separate tokens.
+// Interior templates or brackets are tokenized together as a single token.
 func tokenizeSingleParameter(p string) []string {
 	// Tokenize into top-level strings
 	templateDepth := 0
@@ -799,6 +810,9 @@ func tokenizeSingleParameter(p string) []string {
 
 	return tokens
 }
+
+// parseSingleTypeString parses the Clang qualType for a single type into our
+// CppParameter intermediate format.
 func parseSingleTypeString(p string) CppParameter {
 
 	isSigned := false

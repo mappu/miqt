@@ -17,37 +17,37 @@ import (
 type QListView__Movement int
 
 const (
-	QListView__Movement__Static QListView__Movement = 0
-	QListView__Movement__Free   QListView__Movement = 1
-	QListView__Movement__Snap   QListView__Movement = 2
+	QListView__Static QListView__Movement = 0
+	QListView__Free   QListView__Movement = 1
+	QListView__Snap   QListView__Movement = 2
 )
 
 type QListView__Flow int
 
 const (
-	QListView__Flow__LeftToRight QListView__Flow = 0
-	QListView__Flow__TopToBottom QListView__Flow = 1
+	QListView__LeftToRight QListView__Flow = 0
+	QListView__TopToBottom QListView__Flow = 1
 )
 
 type QListView__ResizeMode int
 
 const (
-	QListView__ResizeMode__Fixed  QListView__ResizeMode = 0
-	QListView__ResizeMode__Adjust QListView__ResizeMode = 1
+	QListView__Fixed  QListView__ResizeMode = 0
+	QListView__Adjust QListView__ResizeMode = 1
 )
 
 type QListView__LayoutMode int
 
 const (
-	QListView__LayoutMode__SinglePass QListView__LayoutMode = 0
-	QListView__LayoutMode__Batched    QListView__LayoutMode = 1
+	QListView__SinglePass QListView__LayoutMode = 0
+	QListView__Batched    QListView__LayoutMode = 1
 )
 
 type QListView__ViewMode int
 
 const (
-	QListView__ViewMode__ListMode QListView__ViewMode = 0
-	QListView__ViewMode__IconMode QListView__ViewMode = 1
+	QListView__ListMode QListView__ViewMode = 0
+	QListView__IconMode QListView__ViewMode = 1
 )
 
 type QListView struct {
@@ -226,12 +226,12 @@ func (this *QListView) IsSelectionRectVisible() bool {
 	return (bool)(C.QListView_IsSelectionRectVisible(this.h))
 }
 
-func (this *QListView) SetItemAlignment(alignment int) {
+func (this *QListView) SetItemAlignment(alignment AlignmentFlag) {
 	C.QListView_SetItemAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QListView) ItemAlignment() int {
-	return (int)(C.QListView_ItemAlignment(this.h))
+func (this *QListView) ItemAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QListView_ItemAlignment(this.h))
 }
 
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {

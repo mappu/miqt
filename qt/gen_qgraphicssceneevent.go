@@ -16,9 +16,9 @@ import (
 type QGraphicsSceneContextMenuEvent__Reason int
 
 const (
-	QGraphicsSceneContextMenuEvent__Reason__Mouse    QGraphicsSceneContextMenuEvent__Reason = 0
-	QGraphicsSceneContextMenuEvent__Reason__Keyboard QGraphicsSceneContextMenuEvent__Reason = 1
-	QGraphicsSceneContextMenuEvent__Reason__Other    QGraphicsSceneContextMenuEvent__Reason = 2
+	QGraphicsSceneContextMenuEvent__Mouse    QGraphicsSceneContextMenuEvent__Reason = 0
+	QGraphicsSceneContextMenuEvent__Keyboard QGraphicsSceneContextMenuEvent__Reason = 1
+	QGraphicsSceneContextMenuEvent__Other    QGraphicsSceneContextMenuEvent__Reason = 2
 )
 
 type QGraphicsSceneEvent struct {
@@ -206,11 +206,11 @@ func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos *QPoint) {
 	C.QGraphicsSceneMouseEvent_SetLastScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneMouseEvent) Buttons() int {
-	return (int)(C.QGraphicsSceneMouseEvent_Buttons(this.h))
+func (this *QGraphicsSceneMouseEvent) Buttons() MouseButton {
+	return (MouseButton)(C.QGraphicsSceneMouseEvent_Buttons(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtons(buttons int) {
+func (this *QGraphicsSceneMouseEvent) SetButtons(buttons MouseButton) {
 	C.QGraphicsSceneMouseEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
@@ -222,11 +222,11 @@ func (this *QGraphicsSceneMouseEvent) SetButton(button MouseButton) {
 	C.QGraphicsSceneMouseEvent_SetButton(this.h, (C.int)(button))
 }
 
-func (this *QGraphicsSceneMouseEvent) Modifiers() int {
-	return (int)(C.QGraphicsSceneMouseEvent_Modifiers(this.h))
+func (this *QGraphicsSceneMouseEvent) Modifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGraphicsSceneMouseEvent_Modifiers(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers int) {
+func (this *QGraphicsSceneMouseEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneMouseEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -238,11 +238,11 @@ func (this *QGraphicsSceneMouseEvent) SetSource(source MouseEventSource) {
 	C.QGraphicsSceneMouseEvent_SetSource(this.h, (C.int)(source))
 }
 
-func (this *QGraphicsSceneMouseEvent) Flags() int {
-	return (int)(C.QGraphicsSceneMouseEvent_Flags(this.h))
+func (this *QGraphicsSceneMouseEvent) Flags() MouseEventFlag {
+	return (MouseEventFlag)(C.QGraphicsSceneMouseEvent_Flags(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetFlags(flags int) {
+func (this *QGraphicsSceneMouseEvent) SetFlags(flags MouseEventFlag) {
 	C.QGraphicsSceneMouseEvent_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -328,19 +328,19 @@ func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneWheelEvent_SetScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneWheelEvent) Buttons() int {
-	return (int)(C.QGraphicsSceneWheelEvent_Buttons(this.h))
+func (this *QGraphicsSceneWheelEvent) Buttons() MouseButton {
+	return (MouseButton)(C.QGraphicsSceneWheelEvent_Buttons(this.h))
 }
 
-func (this *QGraphicsSceneWheelEvent) SetButtons(buttons int) {
+func (this *QGraphicsSceneWheelEvent) SetButtons(buttons MouseButton) {
 	C.QGraphicsSceneWheelEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
-func (this *QGraphicsSceneWheelEvent) Modifiers() int {
-	return (int)(C.QGraphicsSceneWheelEvent_Modifiers(this.h))
+func (this *QGraphicsSceneWheelEvent) Modifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGraphicsSceneWheelEvent_Modifiers(this.h))
 }
 
-func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers int) {
+func (this *QGraphicsSceneWheelEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneWheelEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -442,11 +442,11 @@ func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneContextMenuEvent_SetScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneContextMenuEvent) Modifiers() int {
-	return (int)(C.QGraphicsSceneContextMenuEvent_Modifiers(this.h))
+func (this *QGraphicsSceneContextMenuEvent) Modifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGraphicsSceneContextMenuEvent_Modifiers(this.h))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers int) {
+func (this *QGraphicsSceneContextMenuEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneContextMenuEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -573,11 +573,11 @@ func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos *QPoint) {
 	C.QGraphicsSceneHoverEvent_SetLastScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneHoverEvent) Modifiers() int {
-	return (int)(C.QGraphicsSceneHoverEvent_Modifiers(this.h))
+func (this *QGraphicsSceneHoverEvent) Modifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGraphicsSceneHoverEvent_Modifiers(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers int) {
+func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneHoverEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
@@ -734,27 +734,27 @@ func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneDragDropEvent_SetScreenPos(this.h, pos.cPointer())
 }
 
-func (this *QGraphicsSceneDragDropEvent) Buttons() int {
-	return (int)(C.QGraphicsSceneDragDropEvent_Buttons(this.h))
+func (this *QGraphicsSceneDragDropEvent) Buttons() MouseButton {
+	return (MouseButton)(C.QGraphicsSceneDragDropEvent_Buttons(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons int) {
+func (this *QGraphicsSceneDragDropEvent) SetButtons(buttons MouseButton) {
 	C.QGraphicsSceneDragDropEvent_SetButtons(this.h, (C.int)(buttons))
 }
 
-func (this *QGraphicsSceneDragDropEvent) Modifiers() int {
-	return (int)(C.QGraphicsSceneDragDropEvent_Modifiers(this.h))
+func (this *QGraphicsSceneDragDropEvent) Modifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGraphicsSceneDragDropEvent_Modifiers(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers int) {
+func (this *QGraphicsSceneDragDropEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneDragDropEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
-func (this *QGraphicsSceneDragDropEvent) PossibleActions() int {
-	return (int)(C.QGraphicsSceneDragDropEvent_PossibleActions(this.h))
+func (this *QGraphicsSceneDragDropEvent) PossibleActions() DropAction {
+	return (DropAction)(C.QGraphicsSceneDragDropEvent_PossibleActions(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions int) {
+func (this *QGraphicsSceneDragDropEvent) SetPossibleActions(actions DropAction) {
 	C.QGraphicsSceneDragDropEvent_SetPossibleActions(this.h, (C.int)(actions))
 }
 

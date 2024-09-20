@@ -16,17 +16,17 @@ import (
 type QIcon__Mode int
 
 const (
-	QIcon__Mode__Normal   QIcon__Mode = 0
-	QIcon__Mode__Disabled QIcon__Mode = 1
-	QIcon__Mode__Active   QIcon__Mode = 2
-	QIcon__Mode__Selected QIcon__Mode = 3
+	QIcon__Normal   QIcon__Mode = 0
+	QIcon__Disabled QIcon__Mode = 1
+	QIcon__Active   QIcon__Mode = 2
+	QIcon__Selected QIcon__Mode = 3
 )
 
 type QIcon__State int
 
 const (
-	QIcon__State__On  QIcon__State = 0
-	QIcon__State__Off QIcon__State = 1
+	QIcon__On  QIcon__State = 0
+	QIcon__Off QIcon__State = 1
 )
 
 type QIcon struct {
@@ -386,27 +386,27 @@ func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode QIcon__Mode, s
 	return _goptr
 }
 
-func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment int) {
+func (this *QIcon) Paint3(painter *QPainter, rect *QRect, alignment AlignmentFlag) {
 	C.QIcon_Paint3(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment))
 }
 
-func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode) {
+func (this *QIcon) Paint4(painter *QPainter, rect *QRect, alignment AlignmentFlag, mode QIcon__Mode) {
 	C.QIcon_Paint4(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode))
 }
 
-func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment int, mode QIcon__Mode, state QIcon__State) {
+func (this *QIcon) Paint5(painter *QPainter, rect *QRect, alignment AlignmentFlag, mode QIcon__Mode, state QIcon__State) {
 	C.QIcon_Paint5(this.h, painter.cPointer(), rect.cPointer(), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 
-func (this *QIcon) Paint6(painter *QPainter, x int, y int, w int, h int, alignment int) {
+func (this *QIcon) Paint6(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag) {
 	C.QIcon_Paint6(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment))
 }
 
-func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode) {
+func (this *QIcon) Paint7(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag, mode QIcon__Mode) {
 	C.QIcon_Paint7(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode))
 }
 
-func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment int, mode QIcon__Mode, state QIcon__State) {
+func (this *QIcon) Paint8(painter *QPainter, x int, y int, w int, h int, alignment AlignmentFlag, mode QIcon__Mode, state QIcon__State) {
 	C.QIcon_Paint8(this.h, painter.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(alignment), (C.int)(mode), (C.int)(state))
 }
 

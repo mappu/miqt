@@ -16,9 +16,9 @@ import (
 type QMimeDatabase__MatchMode int
 
 const (
-	QMimeDatabase__MatchMode__MatchDefault   QMimeDatabase__MatchMode = 0
-	QMimeDatabase__MatchMode__MatchExtension QMimeDatabase__MatchMode = 1
-	QMimeDatabase__MatchMode__MatchContent   QMimeDatabase__MatchMode = 2
+	QMimeDatabase__MatchDefault   QMimeDatabase__MatchMode = 0
+	QMimeDatabase__MatchExtension QMimeDatabase__MatchMode = 1
+	QMimeDatabase__MatchContent   QMimeDatabase__MatchMode = 2
 )
 
 type QMimeDatabase struct {

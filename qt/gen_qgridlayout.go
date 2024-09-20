@@ -174,8 +174,8 @@ func (this *QGridLayout) MinimumHeightForWidth(param1 int) int {
 	return (int)(C.QGridLayout_MinimumHeightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QGridLayout) ExpandingDirections() int {
-	return (int)(C.QGridLayout_ExpandingDirections(this.h))
+func (this *QGridLayout) ExpandingDirections() Orientation {
+	return (Orientation)(C.QGridLayout_ExpandingDirections(this.h))
 }
 
 func (this *QGridLayout) Invalidate() {
@@ -286,19 +286,19 @@ func QGridLayout_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QGridLayout) AddWidget4(param1 *QWidget, row int, column int, param4 int) {
+func (this *QGridLayout) AddWidget4(param1 *QWidget, row int, column int, param4 AlignmentFlag) {
 	C.QGridLayout_AddWidget4(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(param4))
 }
 
-func (this *QGridLayout) AddWidget6(param1 *QWidget, row int, column int, rowSpan int, columnSpan int, param6 int) {
+func (this *QGridLayout) AddWidget6(param1 *QWidget, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
 	C.QGridLayout_AddWidget6(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
-func (this *QGridLayout) AddLayout4(param1 *QLayout, row int, column int, param4 int) {
+func (this *QGridLayout) AddLayout4(param1 *QLayout, row int, column int, param4 AlignmentFlag) {
 	C.QGridLayout_AddLayout4(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(param4))
 }
 
-func (this *QGridLayout) AddLayout6(param1 *QLayout, row int, column int, rowSpan int, columnSpan int, param6 int) {
+func (this *QGridLayout) AddLayout6(param1 *QLayout, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
 	C.QGridLayout_AddLayout6(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
@@ -310,7 +310,7 @@ func (this *QGridLayout) AddItem5(item *QLayoutItem, row int, column int, rowSpa
 	C.QGridLayout_AddItem5(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
 }
 
-func (this *QGridLayout) AddItem6(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int, param6 int) {
+func (this *QGridLayout) AddItem6(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
 	C.QGridLayout_AddItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 

@@ -17,8 +17,8 @@ import (
 type QDialog__DialogCode int
 
 const (
-	QDialog__DialogCode__Rejected QDialog__DialogCode = 0
-	QDialog__DialogCode__Accepted QDialog__DialogCode = 1
+	QDialog__Rejected QDialog__DialogCode = 0
+	QDialog__Accepted QDialog__DialogCode = 1
 )
 
 type QDialog struct {
@@ -57,7 +57,7 @@ func NewQDialog2(parent *QWidget) *QDialog {
 }
 
 // NewQDialog3 constructs a new QDialog object.
-func NewQDialog3(parent *QWidget, f int) *QDialog {
+func NewQDialog3(parent *QWidget, f WindowType) *QDialog {
 	ret := C.QDialog_new3(parent.cPointer(), (C.int)(f))
 	return newQDialog(ret)
 }

@@ -17,26 +17,26 @@ import (
 type QGraphicsEffect__ChangeFlag int
 
 const (
-	QGraphicsEffect__ChangeFlag__SourceAttached            QGraphicsEffect__ChangeFlag = 1
-	QGraphicsEffect__ChangeFlag__SourceDetached            QGraphicsEffect__ChangeFlag = 2
-	QGraphicsEffect__ChangeFlag__SourceBoundingRectChanged QGraphicsEffect__ChangeFlag = 4
-	QGraphicsEffect__ChangeFlag__SourceInvalidated         QGraphicsEffect__ChangeFlag = 8
+	QGraphicsEffect__SourceAttached            QGraphicsEffect__ChangeFlag = 1
+	QGraphicsEffect__SourceDetached            QGraphicsEffect__ChangeFlag = 2
+	QGraphicsEffect__SourceBoundingRectChanged QGraphicsEffect__ChangeFlag = 4
+	QGraphicsEffect__SourceInvalidated         QGraphicsEffect__ChangeFlag = 8
 )
 
 type QGraphicsEffect__PixmapPadMode int
 
 const (
-	QGraphicsEffect__PixmapPadMode__NoPad                      QGraphicsEffect__PixmapPadMode = 0
-	QGraphicsEffect__PixmapPadMode__PadToTransparentBorder     QGraphicsEffect__PixmapPadMode = 1
-	QGraphicsEffect__PixmapPadMode__PadToEffectiveBoundingRect QGraphicsEffect__PixmapPadMode = 2
+	QGraphicsEffect__NoPad                      QGraphicsEffect__PixmapPadMode = 0
+	QGraphicsEffect__PadToTransparentBorder     QGraphicsEffect__PixmapPadMode = 1
+	QGraphicsEffect__PadToEffectiveBoundingRect QGraphicsEffect__PixmapPadMode = 2
 )
 
 type QGraphicsBlurEffect__BlurHint int
 
 const (
-	QGraphicsBlurEffect__BlurHint__PerformanceHint QGraphicsBlurEffect__BlurHint = 0
-	QGraphicsBlurEffect__BlurHint__QualityHint     QGraphicsBlurEffect__BlurHint = 1
-	QGraphicsBlurEffect__BlurHint__AnimationHint   QGraphicsBlurEffect__BlurHint = 2
+	QGraphicsBlurEffect__PerformanceHint QGraphicsBlurEffect__BlurHint = 0
+	QGraphicsBlurEffect__QualityHint     QGraphicsBlurEffect__BlurHint = 1
+	QGraphicsBlurEffect__AnimationHint   QGraphicsBlurEffect__BlurHint = 2
 )
 
 type QGraphicsEffect struct {
@@ -430,15 +430,15 @@ func (this *QGraphicsBlurEffect) BlurRadius() float64 {
 	return (float64)(C.QGraphicsBlurEffect_BlurRadius(this.h))
 }
 
-func (this *QGraphicsBlurEffect) BlurHints() int {
-	return (int)(C.QGraphicsBlurEffect_BlurHints(this.h))
+func (this *QGraphicsBlurEffect) BlurHints() QGraphicsBlurEffect__BlurHint {
+	return (QGraphicsBlurEffect__BlurHint)(C.QGraphicsBlurEffect_BlurHints(this.h))
 }
 
 func (this *QGraphicsBlurEffect) SetBlurRadius(blurRadius float64) {
 	C.QGraphicsBlurEffect_SetBlurRadius(this.h, (C.double)(blurRadius))
 }
 
-func (this *QGraphicsBlurEffect) SetBlurHints(hints int) {
+func (this *QGraphicsBlurEffect) SetBlurHints(hints QGraphicsBlurEffect__BlurHint) {
 	C.QGraphicsBlurEffect_SetBlurHints(this.h, (C.int)(hints))
 }
 
@@ -462,22 +462,22 @@ func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRa
 	gofunc(slotval1)
 }
 
-func (this *QGraphicsBlurEffect) BlurHintsChanged(hints int) {
+func (this *QGraphicsBlurEffect) BlurHintsChanged(hints QGraphicsBlurEffect__BlurHint) {
 	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
 }
-func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints int)) {
+func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints QGraphicsBlurEffect__BlurHint)) {
 	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged
 func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb *C.void, hints C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints QGraphicsBlurEffect__BlurHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(hints)
+	slotval1 := (QGraphicsBlurEffect__BlurHint)(hints)
 
 	gofunc(slotval1)
 }

@@ -16,33 +16,33 @@ import (
 type QRegularExpression__PatternOption int
 
 const (
-	QRegularExpression__PatternOption__NoPatternOption                 QRegularExpression__PatternOption = 0
-	QRegularExpression__PatternOption__CaseInsensitiveOption           QRegularExpression__PatternOption = 1
-	QRegularExpression__PatternOption__DotMatchesEverythingOption      QRegularExpression__PatternOption = 2
-	QRegularExpression__PatternOption__MultilineOption                 QRegularExpression__PatternOption = 4
-	QRegularExpression__PatternOption__ExtendedPatternSyntaxOption     QRegularExpression__PatternOption = 8
-	QRegularExpression__PatternOption__InvertedGreedinessOption        QRegularExpression__PatternOption = 16
-	QRegularExpression__PatternOption__DontCaptureOption               QRegularExpression__PatternOption = 32
-	QRegularExpression__PatternOption__UseUnicodePropertiesOption      QRegularExpression__PatternOption = 64
-	QRegularExpression__PatternOption__OptimizeOnFirstUsageOption      QRegularExpression__PatternOption = 128
-	QRegularExpression__PatternOption__DontAutomaticallyOptimizeOption QRegularExpression__PatternOption = 256
+	QRegularExpression__NoPatternOption                 QRegularExpression__PatternOption = 0
+	QRegularExpression__CaseInsensitiveOption           QRegularExpression__PatternOption = 1
+	QRegularExpression__DotMatchesEverythingOption      QRegularExpression__PatternOption = 2
+	QRegularExpression__MultilineOption                 QRegularExpression__PatternOption = 4
+	QRegularExpression__ExtendedPatternSyntaxOption     QRegularExpression__PatternOption = 8
+	QRegularExpression__InvertedGreedinessOption        QRegularExpression__PatternOption = 16
+	QRegularExpression__DontCaptureOption               QRegularExpression__PatternOption = 32
+	QRegularExpression__UseUnicodePropertiesOption      QRegularExpression__PatternOption = 64
+	QRegularExpression__OptimizeOnFirstUsageOption      QRegularExpression__PatternOption = 128
+	QRegularExpression__DontAutomaticallyOptimizeOption QRegularExpression__PatternOption = 256
 )
 
 type QRegularExpression__MatchType int
 
 const (
-	QRegularExpression__MatchType__NormalMatch                QRegularExpression__MatchType = 0
-	QRegularExpression__MatchType__PartialPreferCompleteMatch QRegularExpression__MatchType = 1
-	QRegularExpression__MatchType__PartialPreferFirstMatch    QRegularExpression__MatchType = 2
-	QRegularExpression__MatchType__NoMatch                    QRegularExpression__MatchType = 3
+	QRegularExpression__NormalMatch                QRegularExpression__MatchType = 0
+	QRegularExpression__PartialPreferCompleteMatch QRegularExpression__MatchType = 1
+	QRegularExpression__PartialPreferFirstMatch    QRegularExpression__MatchType = 2
+	QRegularExpression__NoMatch                    QRegularExpression__MatchType = 3
 )
 
 type QRegularExpression__MatchOption int
 
 const (
-	QRegularExpression__MatchOption__NoMatchOption                     QRegularExpression__MatchOption = 0
-	QRegularExpression__MatchOption__AnchoredMatchOption               QRegularExpression__MatchOption = 1
-	QRegularExpression__MatchOption__DontCheckSubjectStringMatchOption QRegularExpression__MatchOption = 2
+	QRegularExpression__NoMatchOption                     QRegularExpression__MatchOption = 0
+	QRegularExpression__AnchoredMatchOption               QRegularExpression__MatchOption = 1
+	QRegularExpression__DontCheckSubjectStringMatchOption QRegularExpression__MatchOption = 2
 )
 
 type QRegularExpression struct {
@@ -88,18 +88,18 @@ func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
 }
 
 // NewQRegularExpression4 constructs a new QRegularExpression object.
-func NewQRegularExpression4(pattern string, options int) *QRegularExpression {
+func NewQRegularExpression4(pattern string, options QRegularExpression__PatternOption) *QRegularExpression {
 	pattern_ms := miqt_strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QRegularExpression_new4((*C.struct_miqt_string)(pattern_ms), (C.int)(options))
 	return newQRegularExpression(ret)
 }
 
-func (this *QRegularExpression) PatternOptions() int {
-	return (int)(C.QRegularExpression_PatternOptions(this.h))
+func (this *QRegularExpression) PatternOptions() QRegularExpression__PatternOption {
+	return (QRegularExpression__PatternOption)(C.QRegularExpression_PatternOptions(this.h))
 }
 
-func (this *QRegularExpression) SetPatternOptions(options int) {
+func (this *QRegularExpression) SetPatternOptions(options QRegularExpression__PatternOption) {
 	C.QRegularExpression_SetPatternOptions(this.h, (C.int)(options))
 }
 
@@ -232,7 +232,7 @@ func (this *QRegularExpression) Match3(subject string, offset int, matchType QRe
 	return _goptr
 }
 
-func (this *QRegularExpression) Match4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatch {
+func (this *QRegularExpression) Match4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatch {
 	subject_ms := miqt_strdupg(subject)
 	defer C.free(subject_ms)
 	_ret := C.QRegularExpression_Match4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
@@ -259,7 +259,7 @@ func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchTy
 	return _goptr
 }
 
-func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions int) *QRegularExpressionMatchIterator {
+func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatchIterator {
 	subject_ms := miqt_strdupg(subject)
 	defer C.free(subject_ms)
 	_ret := C.QRegularExpression_GlobalMatch4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
@@ -335,8 +335,8 @@ func (this *QRegularExpressionMatch) MatchType() QRegularExpression__MatchType {
 	return (QRegularExpression__MatchType)(C.QRegularExpressionMatch_MatchType(this.h))
 }
 
-func (this *QRegularExpressionMatch) MatchOptions() int {
-	return (int)(C.QRegularExpressionMatch_MatchOptions(this.h))
+func (this *QRegularExpressionMatch) MatchOptions() QRegularExpression__MatchOption {
+	return (QRegularExpression__MatchOption)(C.QRegularExpressionMatch_MatchOptions(this.h))
 }
 
 func (this *QRegularExpressionMatch) HasMatch() bool {
@@ -523,8 +523,8 @@ func (this *QRegularExpressionMatchIterator) MatchType() QRegularExpression__Mat
 	return (QRegularExpression__MatchType)(C.QRegularExpressionMatchIterator_MatchType(this.h))
 }
 
-func (this *QRegularExpressionMatchIterator) MatchOptions() int {
-	return (int)(C.QRegularExpressionMatchIterator_MatchOptions(this.h))
+func (this *QRegularExpressionMatchIterator) MatchOptions() QRegularExpression__MatchOption {
+	return (QRegularExpression__MatchOption)(C.QRegularExpressionMatchIterator_MatchOptions(this.h))
 }
 
 // Delete this object from C++ memory.

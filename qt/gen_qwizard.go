@@ -17,61 +17,61 @@ import (
 type QWizard__WizardButton int
 
 const (
-	QWizard__WizardButton__BackButton       QWizard__WizardButton = 0
-	QWizard__WizardButton__NextButton       QWizard__WizardButton = 1
-	QWizard__WizardButton__CommitButton     QWizard__WizardButton = 2
-	QWizard__WizardButton__FinishButton     QWizard__WizardButton = 3
-	QWizard__WizardButton__CancelButton     QWizard__WizardButton = 4
-	QWizard__WizardButton__HelpButton       QWizard__WizardButton = 5
-	QWizard__WizardButton__CustomButton1    QWizard__WizardButton = 6
-	QWizard__WizardButton__CustomButton2    QWizard__WizardButton = 7
-	QWizard__WizardButton__CustomButton3    QWizard__WizardButton = 8
-	QWizard__WizardButton__Stretch          QWizard__WizardButton = 9
-	QWizard__WizardButton__NoButton         QWizard__WizardButton = -1
-	QWizard__WizardButton__NStandardButtons QWizard__WizardButton = 6
-	QWizard__WizardButton__NButtons         QWizard__WizardButton = 9
+	QWizard__BackButton       QWizard__WizardButton = 0
+	QWizard__NextButton       QWizard__WizardButton = 1
+	QWizard__CommitButton     QWizard__WizardButton = 2
+	QWizard__FinishButton     QWizard__WizardButton = 3
+	QWizard__CancelButton     QWizard__WizardButton = 4
+	QWizard__HelpButton       QWizard__WizardButton = 5
+	QWizard__CustomButton1    QWizard__WizardButton = 6
+	QWizard__CustomButton2    QWizard__WizardButton = 7
+	QWizard__CustomButton3    QWizard__WizardButton = 8
+	QWizard__Stretch          QWizard__WizardButton = 9
+	QWizard__NoButton         QWizard__WizardButton = -1
+	QWizard__NStandardButtons QWizard__WizardButton = 6
+	QWizard__NButtons         QWizard__WizardButton = 9
 )
 
 type QWizard__WizardPixmap int
 
 const (
-	QWizard__WizardPixmap__WatermarkPixmap  QWizard__WizardPixmap = 0
-	QWizard__WizardPixmap__LogoPixmap       QWizard__WizardPixmap = 1
-	QWizard__WizardPixmap__BannerPixmap     QWizard__WizardPixmap = 2
-	QWizard__WizardPixmap__BackgroundPixmap QWizard__WizardPixmap = 3
-	QWizard__WizardPixmap__NPixmaps         QWizard__WizardPixmap = 4
+	QWizard__WatermarkPixmap  QWizard__WizardPixmap = 0
+	QWizard__LogoPixmap       QWizard__WizardPixmap = 1
+	QWizard__BannerPixmap     QWizard__WizardPixmap = 2
+	QWizard__BackgroundPixmap QWizard__WizardPixmap = 3
+	QWizard__NPixmaps         QWizard__WizardPixmap = 4
 )
 
 type QWizard__WizardStyle int
 
 const (
-	QWizard__WizardStyle__ClassicStyle QWizard__WizardStyle = 0
-	QWizard__WizardStyle__ModernStyle  QWizard__WizardStyle = 1
-	QWizard__WizardStyle__MacStyle     QWizard__WizardStyle = 2
-	QWizard__WizardStyle__AeroStyle    QWizard__WizardStyle = 3
-	QWizard__WizardStyle__NStyles      QWizard__WizardStyle = 4
+	QWizard__ClassicStyle QWizard__WizardStyle = 0
+	QWizard__ModernStyle  QWizard__WizardStyle = 1
+	QWizard__MacStyle     QWizard__WizardStyle = 2
+	QWizard__AeroStyle    QWizard__WizardStyle = 3
+	QWizard__NStyles      QWizard__WizardStyle = 4
 )
 
 type QWizard__WizardOption int
 
 const (
-	QWizard__WizardOption__IndependentPages             QWizard__WizardOption = 1
-	QWizard__WizardOption__IgnoreSubTitles              QWizard__WizardOption = 2
-	QWizard__WizardOption__ExtendedWatermarkPixmap      QWizard__WizardOption = 4
-	QWizard__WizardOption__NoDefaultButton              QWizard__WizardOption = 8
-	QWizard__WizardOption__NoBackButtonOnStartPage      QWizard__WizardOption = 16
-	QWizard__WizardOption__NoBackButtonOnLastPage       QWizard__WizardOption = 32
-	QWizard__WizardOption__DisabledBackButtonOnLastPage QWizard__WizardOption = 64
-	QWizard__WizardOption__HaveNextButtonOnLastPage     QWizard__WizardOption = 128
-	QWizard__WizardOption__HaveFinishButtonOnEarlyPages QWizard__WizardOption = 256
-	QWizard__WizardOption__NoCancelButton               QWizard__WizardOption = 512
-	QWizard__WizardOption__CancelButtonOnLeft           QWizard__WizardOption = 1024
-	QWizard__WizardOption__HaveHelpButton               QWizard__WizardOption = 2048
-	QWizard__WizardOption__HelpButtonOnRight            QWizard__WizardOption = 4096
-	QWizard__WizardOption__HaveCustomButton1            QWizard__WizardOption = 8192
-	QWizard__WizardOption__HaveCustomButton2            QWizard__WizardOption = 16384
-	QWizard__WizardOption__HaveCustomButton3            QWizard__WizardOption = 32768
-	QWizard__WizardOption__NoCancelButtonOnLastPage     QWizard__WizardOption = 65536
+	QWizard__IndependentPages             QWizard__WizardOption = 1
+	QWizard__IgnoreSubTitles              QWizard__WizardOption = 2
+	QWizard__ExtendedWatermarkPixmap      QWizard__WizardOption = 4
+	QWizard__NoDefaultButton              QWizard__WizardOption = 8
+	QWizard__NoBackButtonOnStartPage      QWizard__WizardOption = 16
+	QWizard__NoBackButtonOnLastPage       QWizard__WizardOption = 32
+	QWizard__DisabledBackButtonOnLastPage QWizard__WizardOption = 64
+	QWizard__HaveNextButtonOnLastPage     QWizard__WizardOption = 128
+	QWizard__HaveFinishButtonOnEarlyPages QWizard__WizardOption = 256
+	QWizard__NoCancelButton               QWizard__WizardOption = 512
+	QWizard__CancelButtonOnLeft           QWizard__WizardOption = 1024
+	QWizard__HaveHelpButton               QWizard__WizardOption = 2048
+	QWizard__HelpButtonOnRight            QWizard__WizardOption = 4096
+	QWizard__HaveCustomButton1            QWizard__WizardOption = 8192
+	QWizard__HaveCustomButton2            QWizard__WizardOption = 16384
+	QWizard__HaveCustomButton3            QWizard__WizardOption = 32768
+	QWizard__NoCancelButtonOnLastPage     QWizard__WizardOption = 65536
 )
 
 type QWizard struct {
@@ -110,7 +110,7 @@ func NewQWizard2(parent *QWidget) *QWizard {
 }
 
 // NewQWizard3 constructs a new QWizard object.
-func NewQWizard3(parent *QWidget, flags int) *QWizard {
+func NewQWizard3(parent *QWidget, flags WindowType) *QWizard {
 	ret := C.QWizard_new3(parent.cPointer(), (C.int)(flags))
 	return newQWizard(ret)
 }
@@ -245,28 +245,28 @@ func (this *QWizard) TestOption(option QWizard__WizardOption) bool {
 	return (bool)(C.QWizard_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QWizard) SetOptions(options int) {
+func (this *QWizard) SetOptions(options QWizard__WizardOption) {
 	C.QWizard_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QWizard) Options() int {
-	return (int)(C.QWizard_Options(this.h))
+func (this *QWizard) Options() QWizard__WizardOption {
+	return (QWizard__WizardOption)(C.QWizard_Options(this.h))
 }
 
-func (this *QWizard) SetButtonText(which int, text string) {
+func (this *QWizard) SetButtonText(which QWizard__WizardButton, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	C.QWizard_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
-func (this *QWizard) ButtonText(which int) string {
+func (this *QWizard) ButtonText(which QWizard__WizardButton) string {
 	var _ms *C.struct_miqt_string = C.QWizard_ButtonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QWizard) SetButtonLayout(layout []int) {
+func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
 	// For the C ABI, malloc a C array of raw pointers
 	layout_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(layout))))
 	defer C.free(unsafe.Pointer(layout_CArray))
@@ -278,11 +278,11 @@ func (this *QWizard) SetButtonLayout(layout []int) {
 	C.QWizard_SetButtonLayout(this.h, layout_ma)
 }
 
-func (this *QWizard) SetButton(which int, button *QAbstractButton) {
+func (this *QWizard) SetButton(which QWizard__WizardButton, button *QAbstractButton) {
 	C.QWizard_SetButton(this.h, (C.int)(which), button.cPointer())
 }
 
-func (this *QWizard) Button(which int) *QAbstractButton {
+func (this *QWizard) Button(which QWizard__WizardButton) *QAbstractButton {
 	return newQAbstractButton_U(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))))
 }
 
@@ -623,13 +623,13 @@ func (this *QWizardPage) IsCommitPage() bool {
 	return (bool)(C.QWizardPage_IsCommitPage(this.h))
 }
 
-func (this *QWizardPage) SetButtonText(which int, text string) {
+func (this *QWizardPage) SetButtonText(which QWizard__WizardButton, text string) {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	C.QWizardPage_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
 
-func (this *QWizardPage) ButtonText(which int) string {
+func (this *QWizardPage) ButtonText(which QWizard__WizardButton) string {
 	var _ms *C.struct_miqt_string = C.QWizardPage_ButtonText(this.h, (C.int)(which))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

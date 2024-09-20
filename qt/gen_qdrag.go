@@ -111,7 +111,7 @@ func (this *QDrag) Exec() DropAction {
 	return (DropAction)(C.QDrag_Exec(this.h))
 }
 
-func (this *QDrag) Exec2(supportedActions int, defaultAction DropAction) DropAction {
+func (this *QDrag) Exec2(supportedActions DropAction, defaultAction DropAction) DropAction {
 	return (DropAction)(C.QDrag_Exec2(this.h, (C.int)(supportedActions), (C.int)(defaultAction)))
 }
 
@@ -126,8 +126,8 @@ func (this *QDrag) DragCursor(action DropAction) *QPixmap {
 	return _goptr
 }
 
-func (this *QDrag) SupportedActions() int {
-	return (int)(C.QDrag_SupportedActions(this.h))
+func (this *QDrag) SupportedActions() DropAction {
+	return (DropAction)(C.QDrag_SupportedActions(this.h))
 }
 
 func (this *QDrag) DefaultAction() DropAction {
@@ -222,11 +222,11 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QDrag) Start1(supportedActions int) DropAction {
+func (this *QDrag) Start1(supportedActions DropAction) DropAction {
 	return (DropAction)(C.QDrag_Start1(this.h, (C.int)(supportedActions)))
 }
 
-func (this *QDrag) Exec1(supportedActions int) DropAction {
+func (this *QDrag) Exec1(supportedActions DropAction) DropAction {
 	return (DropAction)(C.QDrag_Exec1(this.h, (C.int)(supportedActions)))
 }
 

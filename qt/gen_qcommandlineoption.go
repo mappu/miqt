@@ -16,8 +16,8 @@ import (
 type QCommandLineOption__Flag int
 
 const (
-	QCommandLineOption__Flag__HiddenFromHelp   QCommandLineOption__Flag = 1
-	QCommandLineOption__Flag__ShortOptionStyle QCommandLineOption__Flag = 2
+	QCommandLineOption__HiddenFromHelp   QCommandLineOption__Flag = 1
+	QCommandLineOption__ShortOptionStyle QCommandLineOption__Flag = 2
 )
 
 type QCommandLineOption struct {
@@ -250,11 +250,11 @@ func (this *QCommandLineOption) DefaultValues() []string {
 	return _ret
 }
 
-func (this *QCommandLineOption) Flags() int {
-	return (int)(C.QCommandLineOption_Flags(this.h))
+func (this *QCommandLineOption) Flags() QCommandLineOption__Flag {
+	return (QCommandLineOption__Flag)(C.QCommandLineOption_Flags(this.h))
 }
 
-func (this *QCommandLineOption) SetFlags(aflags int) {
+func (this *QCommandLineOption) SetFlags(aflags QCommandLineOption__Flag) {
 	C.QCommandLineOption_SetFlags(this.h, (C.int)(aflags))
 }
 

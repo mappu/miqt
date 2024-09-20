@@ -17,9 +17,9 @@ import (
 type QApplication__ColorSpec int
 
 const (
-	QApplication__ColorSpec__NormalColor QApplication__ColorSpec = 0
-	QApplication__ColorSpec__CustomColor QApplication__ColorSpec = 1
-	QApplication__ColorSpec__ManyColor   QApplication__ColorSpec = 2
+	QApplication__NormalColor QApplication__ColorSpec = 0
+	QApplication__CustomColor QApplication__ColorSpec = 1
+	QApplication__ManyColor   QApplication__ColorSpec = 2
 )
 
 type QApplication struct {

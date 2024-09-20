@@ -17,23 +17,23 @@ import (
 type QAbstractAnimation__Direction int
 
 const (
-	QAbstractAnimation__Direction__Forward  QAbstractAnimation__Direction = 0
-	QAbstractAnimation__Direction__Backward QAbstractAnimation__Direction = 1
+	QAbstractAnimation__Forward  QAbstractAnimation__Direction = 0
+	QAbstractAnimation__Backward QAbstractAnimation__Direction = 1
 )
 
 type QAbstractAnimation__State int
 
 const (
-	QAbstractAnimation__State__Stopped QAbstractAnimation__State = 0
-	QAbstractAnimation__State__Paused  QAbstractAnimation__State = 1
-	QAbstractAnimation__State__Running QAbstractAnimation__State = 2
+	QAbstractAnimation__Stopped QAbstractAnimation__State = 0
+	QAbstractAnimation__Paused  QAbstractAnimation__State = 1
+	QAbstractAnimation__Running QAbstractAnimation__State = 2
 )
 
 type QAbstractAnimation__DeletionPolicy int
 
 const (
-	QAbstractAnimation__DeletionPolicy__KeepWhenStopped   QAbstractAnimation__DeletionPolicy = 0
-	QAbstractAnimation__DeletionPolicy__DeleteWhenStopped QAbstractAnimation__DeletionPolicy = 1
+	QAbstractAnimation__KeepWhenStopped   QAbstractAnimation__DeletionPolicy = 0
+	QAbstractAnimation__DeleteWhenStopped QAbstractAnimation__DeletionPolicy = 1
 )
 
 type QAbstractAnimation struct {

@@ -17,16 +17,16 @@ import (
 type QTreeWidgetItem__ItemType int
 
 const (
-	QTreeWidgetItem__ItemType__Type     QTreeWidgetItem__ItemType = 0
-	QTreeWidgetItem__ItemType__UserType QTreeWidgetItem__ItemType = 1000
+	QTreeWidgetItem__Type     QTreeWidgetItem__ItemType = 0
+	QTreeWidgetItem__UserType QTreeWidgetItem__ItemType = 1000
 )
 
 type QTreeWidgetItem__ChildIndicatorPolicy int
 
 const (
-	QTreeWidgetItem__ChildIndicatorPolicy__ShowIndicator                  QTreeWidgetItem__ChildIndicatorPolicy = 0
-	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicator              QTreeWidgetItem__ChildIndicatorPolicy = 1
-	QTreeWidgetItem__ChildIndicatorPolicy__DontShowIndicatorWhenChildless QTreeWidgetItem__ChildIndicatorPolicy = 2
+	QTreeWidgetItem__ShowIndicator                  QTreeWidgetItem__ChildIndicatorPolicy = 0
+	QTreeWidgetItem__DontShowIndicator              QTreeWidgetItem__ChildIndicatorPolicy = 1
+	QTreeWidgetItem__DontShowIndicatorWhenChildless QTreeWidgetItem__ChildIndicatorPolicy = 2
 )
 
 type QTreeWidgetItem struct {
@@ -269,11 +269,11 @@ func (this *QTreeWidgetItem) ChildIndicatorPolicy() QTreeWidgetItem__ChildIndica
 	return (QTreeWidgetItem__ChildIndicatorPolicy)(C.QTreeWidgetItem_ChildIndicatorPolicy(this.h))
 }
 
-func (this *QTreeWidgetItem) Flags() int {
-	return (int)(C.QTreeWidgetItem_Flags(this.h))
+func (this *QTreeWidgetItem) Flags() ItemFlag {
+	return (ItemFlag)(C.QTreeWidgetItem_Flags(this.h))
 }
 
-func (this *QTreeWidgetItem) SetFlags(flags int) {
+func (this *QTreeWidgetItem) SetFlags(flags ItemFlag) {
 	C.QTreeWidgetItem_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -703,7 +703,7 @@ func (this *QTreeWidget) SetCurrentItem2(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(column))
 }
 
-func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, command int) {
+func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, command QItemSelectionModel__SelectionFlag) {
 	C.QTreeWidget_SetCurrentItem3(this.h, item.cPointer(), (C.int)(column), (C.int)(command))
 }
 
@@ -777,7 +777,7 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 	return _ret
 }
 
-func (this *QTreeWidget) FindItems(text string, flags int) []*QTreeWidgetItem {
+func (this *QTreeWidget) FindItems(text string, flags MatchFlag) []*QTreeWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
@@ -1106,7 +1106,7 @@ func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column i
 	return (bool)(C.QTreeWidget_IsPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column)))
 }
 
-func (this *QTreeWidget) FindItems3(text string, flags int, column int) []*QTreeWidgetItem {
+func (this *QTreeWidget) FindItems3(text string, flags MatchFlag, column int) []*QTreeWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))

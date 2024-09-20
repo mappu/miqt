@@ -16,14 +16,14 @@ import (
 type QThread__Priority int
 
 const (
-	QThread__Priority__IdlePriority         QThread__Priority = 0
-	QThread__Priority__LowestPriority       QThread__Priority = 1
-	QThread__Priority__LowPriority          QThread__Priority = 2
-	QThread__Priority__NormalPriority       QThread__Priority = 3
-	QThread__Priority__HighPriority         QThread__Priority = 4
-	QThread__Priority__HighestPriority      QThread__Priority = 5
-	QThread__Priority__TimeCriticalPriority QThread__Priority = 6
-	QThread__Priority__InheritPriority      QThread__Priority = 7
+	QThread__IdlePriority         QThread__Priority = 0
+	QThread__LowestPriority       QThread__Priority = 1
+	QThread__LowPriority          QThread__Priority = 2
+	QThread__NormalPriority       QThread__Priority = 3
+	QThread__HighPriority         QThread__Priority = 4
+	QThread__HighestPriority      QThread__Priority = 5
+	QThread__TimeCriticalPriority QThread__Priority = 6
+	QThread__InheritPriority      QThread__Priority = 7
 )
 
 type QThread struct {

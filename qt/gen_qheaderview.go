@@ -17,11 +17,11 @@ import (
 type QHeaderView__ResizeMode int
 
 const (
-	QHeaderView__ResizeMode__Interactive      QHeaderView__ResizeMode = 0
-	QHeaderView__ResizeMode__Stretch          QHeaderView__ResizeMode = 1
-	QHeaderView__ResizeMode__Fixed            QHeaderView__ResizeMode = 2
-	QHeaderView__ResizeMode__ResizeToContents QHeaderView__ResizeMode = 3
-	QHeaderView__ResizeMode__Custom           QHeaderView__ResizeMode = 2
+	QHeaderView__Interactive      QHeaderView__ResizeMode = 0
+	QHeaderView__Stretch          QHeaderView__ResizeMode = 1
+	QHeaderView__Fixed            QHeaderView__ResizeMode = 2
+	QHeaderView__ResizeToContents QHeaderView__ResizeMode = 3
+	QHeaderView__Custom           QHeaderView__ResizeMode = 2
 )
 
 type QHeaderView struct {
@@ -308,11 +308,11 @@ func (this *QHeaderView) SetMaximumSectionSize(size int) {
 	C.QHeaderView_SetMaximumSectionSize(this.h, (C.int)(size))
 }
 
-func (this *QHeaderView) DefaultAlignment() int {
-	return (int)(C.QHeaderView_DefaultAlignment(this.h))
+func (this *QHeaderView) DefaultAlignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QHeaderView_DefaultAlignment(this.h))
 }
 
-func (this *QHeaderView) SetDefaultAlignment(alignment int) {
+func (this *QHeaderView) SetDefaultAlignment(alignment AlignmentFlag) {
 	C.QHeaderView_SetDefaultAlignment(this.h, (C.int)(alignment))
 }
 

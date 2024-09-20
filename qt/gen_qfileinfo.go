@@ -313,12 +313,12 @@ func (this *QFileInfo) GroupId() uint {
 	return (uint)(C.QFileInfo_GroupId(this.h))
 }
 
-func (this *QFileInfo) Permission(permissions int) bool {
+func (this *QFileInfo) Permission(permissions QFileDevice__Permission) bool {
 	return (bool)(C.QFileInfo_Permission(this.h, (C.int)(permissions)))
 }
 
-func (this *QFileInfo) Permissions() int {
-	return (int)(C.QFileInfo_Permissions(this.h))
+func (this *QFileInfo) Permissions() QFileDevice__Permission {
+	return (QFileDevice__Permission)(C.QFileInfo_Permissions(this.h))
 }
 
 func (this *QFileInfo) Size() int64 {

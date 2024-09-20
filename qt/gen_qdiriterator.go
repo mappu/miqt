@@ -16,9 +16,9 @@ import (
 type QDirIterator__IteratorFlag int
 
 const (
-	QDirIterator__IteratorFlag__NoIteratorFlags QDirIterator__IteratorFlag = 0
-	QDirIterator__IteratorFlag__FollowSymlinks  QDirIterator__IteratorFlag = 1
-	QDirIterator__IteratorFlag__Subdirectories  QDirIterator__IteratorFlag = 2
+	QDirIterator__NoIteratorFlags QDirIterator__IteratorFlag = 0
+	QDirIterator__FollowSymlinks  QDirIterator__IteratorFlag = 1
+	QDirIterator__Subdirectories  QDirIterator__IteratorFlag = 2
 )
 
 type QDirIterator struct {
@@ -58,7 +58,7 @@ func NewQDirIterator2(path string) *QDirIterator {
 }
 
 // NewQDirIterator3 constructs a new QDirIterator object.
-func NewQDirIterator3(path string, filter int) *QDirIterator {
+func NewQDirIterator3(path string, filter QDir__Filter) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
 	ret := C.QDirIterator_new3((*C.struct_miqt_string)(path_ms), (C.int)(filter))
@@ -84,13 +84,13 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 }
 
 // NewQDirIterator5 constructs a new QDirIterator object.
-func NewQDirIterator5(dir *QDir, flags int) *QDirIterator {
+func NewQDirIterator5(dir *QDir, flags QDirIterator__IteratorFlag) *QDirIterator {
 	ret := C.QDirIterator_new5(dir.cPointer(), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator6 constructs a new QDirIterator object.
-func NewQDirIterator6(path string, flags int) *QDirIterator {
+func NewQDirIterator6(path string, flags QDirIterator__IteratorFlag) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
 	ret := C.QDirIterator_new6((*C.struct_miqt_string)(path_ms), (C.int)(flags))
@@ -98,7 +98,7 @@ func NewQDirIterator6(path string, flags int) *QDirIterator {
 }
 
 // NewQDirIterator7 constructs a new QDirIterator object.
-func NewQDirIterator7(path string, filter int, flags int) *QDirIterator {
+func NewQDirIterator7(path string, filter QDir__Filter, flags QDirIterator__IteratorFlag) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
 	ret := C.QDirIterator_new7((*C.struct_miqt_string)(path_ms), (C.int)(filter), (C.int)(flags))
@@ -106,7 +106,7 @@ func NewQDirIterator7(path string, filter int, flags int) *QDirIterator {
 }
 
 // NewQDirIterator8 constructs a new QDirIterator object.
-func NewQDirIterator8(path string, nameFilters []string, filters int) *QDirIterator {
+func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
 	// For the C ABI, malloc a C array of raw pointers
@@ -124,7 +124,7 @@ func NewQDirIterator8(path string, nameFilters []string, filters int) *QDirItera
 }
 
 // NewQDirIterator9 constructs a new QDirIterator object.
-func NewQDirIterator9(path string, nameFilters []string, filters int, flags int) *QDirIterator {
+func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, flags QDirIterator__IteratorFlag) *QDirIterator {
 	path_ms := miqt_strdupg(path)
 	defer C.free(path_ms)
 	// For the C ABI, malloc a C array of raw pointers

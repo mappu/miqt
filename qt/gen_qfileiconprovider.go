@@ -16,19 +16,19 @@ import (
 type QFileIconProvider__IconType int
 
 const (
-	QFileIconProvider__IconType__Computer QFileIconProvider__IconType = 0
-	QFileIconProvider__IconType__Desktop  QFileIconProvider__IconType = 1
-	QFileIconProvider__IconType__Trashcan QFileIconProvider__IconType = 2
-	QFileIconProvider__IconType__Network  QFileIconProvider__IconType = 3
-	QFileIconProvider__IconType__Drive    QFileIconProvider__IconType = 4
-	QFileIconProvider__IconType__Folder   QFileIconProvider__IconType = 5
-	QFileIconProvider__IconType__File     QFileIconProvider__IconType = 6
+	QFileIconProvider__Computer QFileIconProvider__IconType = 0
+	QFileIconProvider__Desktop  QFileIconProvider__IconType = 1
+	QFileIconProvider__Trashcan QFileIconProvider__IconType = 2
+	QFileIconProvider__Network  QFileIconProvider__IconType = 3
+	QFileIconProvider__Drive    QFileIconProvider__IconType = 4
+	QFileIconProvider__Folder   QFileIconProvider__IconType = 5
+	QFileIconProvider__File     QFileIconProvider__IconType = 6
 )
 
 type QFileIconProvider__Option int
 
 const (
-	QFileIconProvider__Option__DontUseCustomDirectoryIcons QFileIconProvider__Option = 1
+	QFileIconProvider__DontUseCustomDirectoryIcons QFileIconProvider__Option = 1
 )
 
 type QFileIconProvider struct {
@@ -80,12 +80,12 @@ func (this *QFileIconProvider) Type(info *QFileInfo) string {
 	return _ret
 }
 
-func (this *QFileIconProvider) SetOptions(options int) {
+func (this *QFileIconProvider) SetOptions(options QFileIconProvider__Option) {
 	C.QFileIconProvider_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFileIconProvider) Options() int {
-	return (int)(C.QFileIconProvider_Options(this.h))
+func (this *QFileIconProvider) Options() QFileIconProvider__Option {
+	return (QFileIconProvider__Option)(C.QFileIconProvider_Options(this.h))
 }
 
 // Delete this object from C++ memory.

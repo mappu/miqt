@@ -90,11 +90,11 @@ func (this *QKeyEventTransition) SetKey(key int) {
 	C.QKeyEventTransition_SetKey(this.h, (C.int)(key))
 }
 
-func (this *QKeyEventTransition) ModifierMask() int {
-	return (int)(C.QKeyEventTransition_ModifierMask(this.h))
+func (this *QKeyEventTransition) ModifierMask() KeyboardModifier {
+	return (KeyboardModifier)(C.QKeyEventTransition_ModifierMask(this.h))
 }
 
-func (this *QKeyEventTransition) SetModifierMask(modifiers int) {
+func (this *QKeyEventTransition) SetModifierMask(modifiers KeyboardModifier) {
 	C.QKeyEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 

@@ -17,19 +17,19 @@ import (
 type QWindow__Visibility int
 
 const (
-	QWindow__Visibility__Hidden              QWindow__Visibility = 0
-	QWindow__Visibility__AutomaticVisibility QWindow__Visibility = 1
-	QWindow__Visibility__Windowed            QWindow__Visibility = 2
-	QWindow__Visibility__Minimized           QWindow__Visibility = 3
-	QWindow__Visibility__Maximized           QWindow__Visibility = 4
-	QWindow__Visibility__FullScreen          QWindow__Visibility = 5
+	QWindow__Hidden              QWindow__Visibility = 0
+	QWindow__AutomaticVisibility QWindow__Visibility = 1
+	QWindow__Windowed            QWindow__Visibility = 2
+	QWindow__Minimized           QWindow__Visibility = 3
+	QWindow__Maximized           QWindow__Visibility = 4
+	QWindow__FullScreen          QWindow__Visibility = 5
 )
 
 type QWindow__AncestorMode int
 
 const (
-	QWindow__AncestorMode__ExcludeTransients QWindow__AncestorMode = 0
-	QWindow__AncestorMode__IncludeTransients QWindow__AncestorMode = 1
+	QWindow__ExcludeTransients QWindow__AncestorMode = 0
+	QWindow__IncludeTransients QWindow__AncestorMode = 1
 )
 
 type QWindow struct {
@@ -170,12 +170,12 @@ func (this *QWindow) RequestedFormat() *QSurfaceFormat {
 	return _goptr
 }
 
-func (this *QWindow) SetFlags(flags int) {
+func (this *QWindow) SetFlags(flags WindowType) {
 	C.QWindow_SetFlags(this.h, (C.int)(flags))
 }
 
-func (this *QWindow) Flags() int {
-	return (int)(C.QWindow_Flags(this.h))
+func (this *QWindow) Flags() WindowType {
+	return (WindowType)(C.QWindow_Flags(this.h))
 }
 
 func (this *QWindow) SetFlag(param1 WindowType) {
@@ -232,15 +232,15 @@ func (this *QWindow) WindowState() WindowState {
 	return (WindowState)(C.QWindow_WindowState(this.h))
 }
 
-func (this *QWindow) WindowStates() int {
-	return (int)(C.QWindow_WindowStates(this.h))
+func (this *QWindow) WindowStates() WindowState {
+	return (WindowState)(C.QWindow_WindowStates(this.h))
 }
 
 func (this *QWindow) SetWindowState(state WindowState) {
 	C.QWindow_SetWindowState(this.h, (C.int)(state))
 }
 
-func (this *QWindow) SetWindowStates(states int) {
+func (this *QWindow) SetWindowStates(states WindowState) {
 	C.QWindow_SetWindowStates(this.h, (C.int)(states))
 }
 
@@ -527,7 +527,7 @@ func (this *QWindow) Lower() {
 	C.QWindow_Lower(this.h)
 }
 
-func (this *QWindow) StartSystemResize(edges int) bool {
+func (this *QWindow) StartSystemResize(edges Edge) bool {
 	return (bool)(C.QWindow_StartSystemResize(this.h, (C.int)(edges)))
 }
 

@@ -16,47 +16,47 @@ import (
 type QTextCursor__MoveMode int
 
 const (
-	QTextCursor__MoveMode__MoveAnchor QTextCursor__MoveMode = 0
-	QTextCursor__MoveMode__KeepAnchor QTextCursor__MoveMode = 1
+	QTextCursor__MoveAnchor QTextCursor__MoveMode = 0
+	QTextCursor__KeepAnchor QTextCursor__MoveMode = 1
 )
 
 type QTextCursor__MoveOperation int
 
 const (
-	QTextCursor__MoveOperation__NoMove            QTextCursor__MoveOperation = 0
-	QTextCursor__MoveOperation__Start             QTextCursor__MoveOperation = 1
-	QTextCursor__MoveOperation__Up                QTextCursor__MoveOperation = 2
-	QTextCursor__MoveOperation__StartOfLine       QTextCursor__MoveOperation = 3
-	QTextCursor__MoveOperation__StartOfBlock      QTextCursor__MoveOperation = 4
-	QTextCursor__MoveOperation__StartOfWord       QTextCursor__MoveOperation = 5
-	QTextCursor__MoveOperation__PreviousBlock     QTextCursor__MoveOperation = 6
-	QTextCursor__MoveOperation__PreviousCharacter QTextCursor__MoveOperation = 7
-	QTextCursor__MoveOperation__PreviousWord      QTextCursor__MoveOperation = 8
-	QTextCursor__MoveOperation__Left              QTextCursor__MoveOperation = 9
-	QTextCursor__MoveOperation__WordLeft          QTextCursor__MoveOperation = 10
-	QTextCursor__MoveOperation__End               QTextCursor__MoveOperation = 11
-	QTextCursor__MoveOperation__Down              QTextCursor__MoveOperation = 12
-	QTextCursor__MoveOperation__EndOfLine         QTextCursor__MoveOperation = 13
-	QTextCursor__MoveOperation__EndOfWord         QTextCursor__MoveOperation = 14
-	QTextCursor__MoveOperation__EndOfBlock        QTextCursor__MoveOperation = 15
-	QTextCursor__MoveOperation__NextBlock         QTextCursor__MoveOperation = 16
-	QTextCursor__MoveOperation__NextCharacter     QTextCursor__MoveOperation = 17
-	QTextCursor__MoveOperation__NextWord          QTextCursor__MoveOperation = 18
-	QTextCursor__MoveOperation__Right             QTextCursor__MoveOperation = 19
-	QTextCursor__MoveOperation__WordRight         QTextCursor__MoveOperation = 20
-	QTextCursor__MoveOperation__NextCell          QTextCursor__MoveOperation = 21
-	QTextCursor__MoveOperation__PreviousCell      QTextCursor__MoveOperation = 22
-	QTextCursor__MoveOperation__NextRow           QTextCursor__MoveOperation = 23
-	QTextCursor__MoveOperation__PreviousRow       QTextCursor__MoveOperation = 24
+	QTextCursor__NoMove            QTextCursor__MoveOperation = 0
+	QTextCursor__Start             QTextCursor__MoveOperation = 1
+	QTextCursor__Up                QTextCursor__MoveOperation = 2
+	QTextCursor__StartOfLine       QTextCursor__MoveOperation = 3
+	QTextCursor__StartOfBlock      QTextCursor__MoveOperation = 4
+	QTextCursor__StartOfWord       QTextCursor__MoveOperation = 5
+	QTextCursor__PreviousBlock     QTextCursor__MoveOperation = 6
+	QTextCursor__PreviousCharacter QTextCursor__MoveOperation = 7
+	QTextCursor__PreviousWord      QTextCursor__MoveOperation = 8
+	QTextCursor__Left              QTextCursor__MoveOperation = 9
+	QTextCursor__WordLeft          QTextCursor__MoveOperation = 10
+	QTextCursor__End               QTextCursor__MoveOperation = 11
+	QTextCursor__Down              QTextCursor__MoveOperation = 12
+	QTextCursor__EndOfLine         QTextCursor__MoveOperation = 13
+	QTextCursor__EndOfWord         QTextCursor__MoveOperation = 14
+	QTextCursor__EndOfBlock        QTextCursor__MoveOperation = 15
+	QTextCursor__NextBlock         QTextCursor__MoveOperation = 16
+	QTextCursor__NextCharacter     QTextCursor__MoveOperation = 17
+	QTextCursor__NextWord          QTextCursor__MoveOperation = 18
+	QTextCursor__Right             QTextCursor__MoveOperation = 19
+	QTextCursor__WordRight         QTextCursor__MoveOperation = 20
+	QTextCursor__NextCell          QTextCursor__MoveOperation = 21
+	QTextCursor__PreviousCell      QTextCursor__MoveOperation = 22
+	QTextCursor__NextRow           QTextCursor__MoveOperation = 23
+	QTextCursor__PreviousRow       QTextCursor__MoveOperation = 24
 )
 
 type QTextCursor__SelectionType int
 
 const (
-	QTextCursor__SelectionType__WordUnderCursor  QTextCursor__SelectionType = 0
-	QTextCursor__SelectionType__LineUnderCursor  QTextCursor__SelectionType = 1
-	QTextCursor__SelectionType__BlockUnderCursor QTextCursor__SelectionType = 2
-	QTextCursor__SelectionType__Document         QTextCursor__SelectionType = 3
+	QTextCursor__WordUnderCursor  QTextCursor__SelectionType = 0
+	QTextCursor__LineUnderCursor  QTextCursor__SelectionType = 1
+	QTextCursor__BlockUnderCursor QTextCursor__SelectionType = 2
+	QTextCursor__Document         QTextCursor__SelectionType = 3
 )
 
 type QTextCursor struct {

@@ -16,9 +16,9 @@ import (
 type QColormap__Mode int
 
 const (
-	QColormap__Mode__Direct  QColormap__Mode = 0
-	QColormap__Mode__Indexed QColormap__Mode = 1
-	QColormap__Mode__Gray    QColormap__Mode = 2
+	QColormap__Direct  QColormap__Mode = 0
+	QColormap__Indexed QColormap__Mode = 1
+	QColormap__Gray    QColormap__Mode = 2
 )
 
 type QColormap struct {

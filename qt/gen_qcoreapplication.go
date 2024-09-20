@@ -17,7 +17,7 @@ import (
 type QCoreApplication__ int
 
 const (
-	QCoreApplication____ApplicationFlags QCoreApplication__ = 331528
+	QCoreApplication__ApplicationFlags QCoreApplication__ = 331528
 )
 
 type QCoreApplication struct {
@@ -185,7 +185,7 @@ func QCoreApplication_ProcessEvents() {
 	C.QCoreApplication_ProcessEvents()
 }
 
-func QCoreApplication_ProcessEvents2(flags int, maxtime int) {
+func QCoreApplication_ProcessEvents2(flags QEventLoop__ProcessEventsFlag, maxtime int) {
 	C.QCoreApplication_ProcessEvents2((C.int)(flags), (C.int)(maxtime))
 }
 
@@ -450,7 +450,7 @@ func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
 	C.QCoreApplication_SetAttribute2((C.int)(attribute), (C.bool)(on))
 }
 
-func QCoreApplication_ProcessEvents1(flags int) {
+func QCoreApplication_ProcessEvents1(flags QEventLoop__ProcessEventsFlag) {
 	C.QCoreApplication_ProcessEvents1((C.int)(flags))
 }
 

@@ -16,92 +16,92 @@ import (
 type QKeySequence__StandardKey int
 
 const (
-	QKeySequence__StandardKey__UnknownKey               QKeySequence__StandardKey = 0
-	QKeySequence__StandardKey__HelpContents             QKeySequence__StandardKey = 1
-	QKeySequence__StandardKey__WhatsThis                QKeySequence__StandardKey = 2
-	QKeySequence__StandardKey__Open                     QKeySequence__StandardKey = 3
-	QKeySequence__StandardKey__Close                    QKeySequence__StandardKey = 4
-	QKeySequence__StandardKey__Save                     QKeySequence__StandardKey = 5
-	QKeySequence__StandardKey__New                      QKeySequence__StandardKey = 6
-	QKeySequence__StandardKey__Delete                   QKeySequence__StandardKey = 7
-	QKeySequence__StandardKey__Cut                      QKeySequence__StandardKey = 8
-	QKeySequence__StandardKey__Copy                     QKeySequence__StandardKey = 9
-	QKeySequence__StandardKey__Paste                    QKeySequence__StandardKey = 10
-	QKeySequence__StandardKey__Undo                     QKeySequence__StandardKey = 11
-	QKeySequence__StandardKey__Redo                     QKeySequence__StandardKey = 12
-	QKeySequence__StandardKey__Back                     QKeySequence__StandardKey = 13
-	QKeySequence__StandardKey__Forward                  QKeySequence__StandardKey = 14
-	QKeySequence__StandardKey__Refresh                  QKeySequence__StandardKey = 15
-	QKeySequence__StandardKey__ZoomIn                   QKeySequence__StandardKey = 16
-	QKeySequence__StandardKey__ZoomOut                  QKeySequence__StandardKey = 17
-	QKeySequence__StandardKey__Print                    QKeySequence__StandardKey = 18
-	QKeySequence__StandardKey__AddTab                   QKeySequence__StandardKey = 19
-	QKeySequence__StandardKey__NextChild                QKeySequence__StandardKey = 20
-	QKeySequence__StandardKey__PreviousChild            QKeySequence__StandardKey = 21
-	QKeySequence__StandardKey__Find                     QKeySequence__StandardKey = 22
-	QKeySequence__StandardKey__FindNext                 QKeySequence__StandardKey = 23
-	QKeySequence__StandardKey__FindPrevious             QKeySequence__StandardKey = 24
-	QKeySequence__StandardKey__Replace                  QKeySequence__StandardKey = 25
-	QKeySequence__StandardKey__SelectAll                QKeySequence__StandardKey = 26
-	QKeySequence__StandardKey__Bold                     QKeySequence__StandardKey = 27
-	QKeySequence__StandardKey__Italic                   QKeySequence__StandardKey = 28
-	QKeySequence__StandardKey__Underline                QKeySequence__StandardKey = 29
-	QKeySequence__StandardKey__MoveToNextChar           QKeySequence__StandardKey = 30
-	QKeySequence__StandardKey__MoveToPreviousChar       QKeySequence__StandardKey = 31
-	QKeySequence__StandardKey__MoveToNextWord           QKeySequence__StandardKey = 32
-	QKeySequence__StandardKey__MoveToPreviousWord       QKeySequence__StandardKey = 33
-	QKeySequence__StandardKey__MoveToNextLine           QKeySequence__StandardKey = 34
-	QKeySequence__StandardKey__MoveToPreviousLine       QKeySequence__StandardKey = 35
-	QKeySequence__StandardKey__MoveToNextPage           QKeySequence__StandardKey = 36
-	QKeySequence__StandardKey__MoveToPreviousPage       QKeySequence__StandardKey = 37
-	QKeySequence__StandardKey__MoveToStartOfLine        QKeySequence__StandardKey = 38
-	QKeySequence__StandardKey__MoveToEndOfLine          QKeySequence__StandardKey = 39
-	QKeySequence__StandardKey__MoveToStartOfBlock       QKeySequence__StandardKey = 40
-	QKeySequence__StandardKey__MoveToEndOfBlock         QKeySequence__StandardKey = 41
-	QKeySequence__StandardKey__MoveToStartOfDocument    QKeySequence__StandardKey = 42
-	QKeySequence__StandardKey__MoveToEndOfDocument      QKeySequence__StandardKey = 43
-	QKeySequence__StandardKey__SelectNextChar           QKeySequence__StandardKey = 44
-	QKeySequence__StandardKey__SelectPreviousChar       QKeySequence__StandardKey = 45
-	QKeySequence__StandardKey__SelectNextWord           QKeySequence__StandardKey = 46
-	QKeySequence__StandardKey__SelectPreviousWord       QKeySequence__StandardKey = 47
-	QKeySequence__StandardKey__SelectNextLine           QKeySequence__StandardKey = 48
-	QKeySequence__StandardKey__SelectPreviousLine       QKeySequence__StandardKey = 49
-	QKeySequence__StandardKey__SelectNextPage           QKeySequence__StandardKey = 50
-	QKeySequence__StandardKey__SelectPreviousPage       QKeySequence__StandardKey = 51
-	QKeySequence__StandardKey__SelectStartOfLine        QKeySequence__StandardKey = 52
-	QKeySequence__StandardKey__SelectEndOfLine          QKeySequence__StandardKey = 53
-	QKeySequence__StandardKey__SelectStartOfBlock       QKeySequence__StandardKey = 54
-	QKeySequence__StandardKey__SelectEndOfBlock         QKeySequence__StandardKey = 55
-	QKeySequence__StandardKey__SelectStartOfDocument    QKeySequence__StandardKey = 56
-	QKeySequence__StandardKey__SelectEndOfDocument      QKeySequence__StandardKey = 57
-	QKeySequence__StandardKey__DeleteStartOfWord        QKeySequence__StandardKey = 58
-	QKeySequence__StandardKey__DeleteEndOfWord          QKeySequence__StandardKey = 59
-	QKeySequence__StandardKey__DeleteEndOfLine          QKeySequence__StandardKey = 60
-	QKeySequence__StandardKey__InsertParagraphSeparator QKeySequence__StandardKey = 61
-	QKeySequence__StandardKey__InsertLineSeparator      QKeySequence__StandardKey = 62
-	QKeySequence__StandardKey__SaveAs                   QKeySequence__StandardKey = 63
-	QKeySequence__StandardKey__Preferences              QKeySequence__StandardKey = 64
-	QKeySequence__StandardKey__Quit                     QKeySequence__StandardKey = 65
-	QKeySequence__StandardKey__FullScreen               QKeySequence__StandardKey = 66
-	QKeySequence__StandardKey__Deselect                 QKeySequence__StandardKey = 67
-	QKeySequence__StandardKey__DeleteCompleteLine       QKeySequence__StandardKey = 68
-	QKeySequence__StandardKey__Backspace                QKeySequence__StandardKey = 69
-	QKeySequence__StandardKey__Cancel                   QKeySequence__StandardKey = 70
+	QKeySequence__UnknownKey               QKeySequence__StandardKey = 0
+	QKeySequence__HelpContents             QKeySequence__StandardKey = 1
+	QKeySequence__WhatsThis                QKeySequence__StandardKey = 2
+	QKeySequence__Open                     QKeySequence__StandardKey = 3
+	QKeySequence__Close                    QKeySequence__StandardKey = 4
+	QKeySequence__Save                     QKeySequence__StandardKey = 5
+	QKeySequence__New                      QKeySequence__StandardKey = 6
+	QKeySequence__Delete                   QKeySequence__StandardKey = 7
+	QKeySequence__Cut                      QKeySequence__StandardKey = 8
+	QKeySequence__Copy                     QKeySequence__StandardKey = 9
+	QKeySequence__Paste                    QKeySequence__StandardKey = 10
+	QKeySequence__Undo                     QKeySequence__StandardKey = 11
+	QKeySequence__Redo                     QKeySequence__StandardKey = 12
+	QKeySequence__Back                     QKeySequence__StandardKey = 13
+	QKeySequence__Forward                  QKeySequence__StandardKey = 14
+	QKeySequence__Refresh                  QKeySequence__StandardKey = 15
+	QKeySequence__ZoomIn                   QKeySequence__StandardKey = 16
+	QKeySequence__ZoomOut                  QKeySequence__StandardKey = 17
+	QKeySequence__Print                    QKeySequence__StandardKey = 18
+	QKeySequence__AddTab                   QKeySequence__StandardKey = 19
+	QKeySequence__NextChild                QKeySequence__StandardKey = 20
+	QKeySequence__PreviousChild            QKeySequence__StandardKey = 21
+	QKeySequence__Find                     QKeySequence__StandardKey = 22
+	QKeySequence__FindNext                 QKeySequence__StandardKey = 23
+	QKeySequence__FindPrevious             QKeySequence__StandardKey = 24
+	QKeySequence__Replace                  QKeySequence__StandardKey = 25
+	QKeySequence__SelectAll                QKeySequence__StandardKey = 26
+	QKeySequence__Bold                     QKeySequence__StandardKey = 27
+	QKeySequence__Italic                   QKeySequence__StandardKey = 28
+	QKeySequence__Underline                QKeySequence__StandardKey = 29
+	QKeySequence__MoveToNextChar           QKeySequence__StandardKey = 30
+	QKeySequence__MoveToPreviousChar       QKeySequence__StandardKey = 31
+	QKeySequence__MoveToNextWord           QKeySequence__StandardKey = 32
+	QKeySequence__MoveToPreviousWord       QKeySequence__StandardKey = 33
+	QKeySequence__MoveToNextLine           QKeySequence__StandardKey = 34
+	QKeySequence__MoveToPreviousLine       QKeySequence__StandardKey = 35
+	QKeySequence__MoveToNextPage           QKeySequence__StandardKey = 36
+	QKeySequence__MoveToPreviousPage       QKeySequence__StandardKey = 37
+	QKeySequence__MoveToStartOfLine        QKeySequence__StandardKey = 38
+	QKeySequence__MoveToEndOfLine          QKeySequence__StandardKey = 39
+	QKeySequence__MoveToStartOfBlock       QKeySequence__StandardKey = 40
+	QKeySequence__MoveToEndOfBlock         QKeySequence__StandardKey = 41
+	QKeySequence__MoveToStartOfDocument    QKeySequence__StandardKey = 42
+	QKeySequence__MoveToEndOfDocument      QKeySequence__StandardKey = 43
+	QKeySequence__SelectNextChar           QKeySequence__StandardKey = 44
+	QKeySequence__SelectPreviousChar       QKeySequence__StandardKey = 45
+	QKeySequence__SelectNextWord           QKeySequence__StandardKey = 46
+	QKeySequence__SelectPreviousWord       QKeySequence__StandardKey = 47
+	QKeySequence__SelectNextLine           QKeySequence__StandardKey = 48
+	QKeySequence__SelectPreviousLine       QKeySequence__StandardKey = 49
+	QKeySequence__SelectNextPage           QKeySequence__StandardKey = 50
+	QKeySequence__SelectPreviousPage       QKeySequence__StandardKey = 51
+	QKeySequence__SelectStartOfLine        QKeySequence__StandardKey = 52
+	QKeySequence__SelectEndOfLine          QKeySequence__StandardKey = 53
+	QKeySequence__SelectStartOfBlock       QKeySequence__StandardKey = 54
+	QKeySequence__SelectEndOfBlock         QKeySequence__StandardKey = 55
+	QKeySequence__SelectStartOfDocument    QKeySequence__StandardKey = 56
+	QKeySequence__SelectEndOfDocument      QKeySequence__StandardKey = 57
+	QKeySequence__DeleteStartOfWord        QKeySequence__StandardKey = 58
+	QKeySequence__DeleteEndOfWord          QKeySequence__StandardKey = 59
+	QKeySequence__DeleteEndOfLine          QKeySequence__StandardKey = 60
+	QKeySequence__InsertParagraphSeparator QKeySequence__StandardKey = 61
+	QKeySequence__InsertLineSeparator      QKeySequence__StandardKey = 62
+	QKeySequence__SaveAs                   QKeySequence__StandardKey = 63
+	QKeySequence__Preferences              QKeySequence__StandardKey = 64
+	QKeySequence__Quit                     QKeySequence__StandardKey = 65
+	QKeySequence__FullScreen               QKeySequence__StandardKey = 66
+	QKeySequence__Deselect                 QKeySequence__StandardKey = 67
+	QKeySequence__DeleteCompleteLine       QKeySequence__StandardKey = 68
+	QKeySequence__Backspace                QKeySequence__StandardKey = 69
+	QKeySequence__Cancel                   QKeySequence__StandardKey = 70
 )
 
 type QKeySequence__SequenceFormat int
 
 const (
-	QKeySequence__SequenceFormat__NativeText   QKeySequence__SequenceFormat = 0
-	QKeySequence__SequenceFormat__PortableText QKeySequence__SequenceFormat = 1
+	QKeySequence__NativeText   QKeySequence__SequenceFormat = 0
+	QKeySequence__PortableText QKeySequence__SequenceFormat = 1
 )
 
 type QKeySequence__SequenceMatch int
 
 const (
-	QKeySequence__SequenceMatch__NoMatch      QKeySequence__SequenceMatch = 0
-	QKeySequence__SequenceMatch__PartialMatch QKeySequence__SequenceMatch = 1
-	QKeySequence__SequenceMatch__ExactMatch   QKeySequence__SequenceMatch = 2
+	QKeySequence__NoMatch      QKeySequence__SequenceMatch = 0
+	QKeySequence__PartialMatch QKeySequence__SequenceMatch = 1
+	QKeySequence__ExactMatch   QKeySequence__SequenceMatch = 2
 )
 
 type QKeySequence struct {

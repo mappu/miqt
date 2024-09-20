@@ -116,12 +116,12 @@ func (this *QGraphicsLinearLayout) StretchFactor(item *QGraphicsLayoutItem) int 
 	return (int)(C.QGraphicsLinearLayout_StretchFactor(this.h, item.cPointer()))
 }
 
-func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment int) {
+func (this *QGraphicsLinearLayout) SetAlignment(item *QGraphicsLayoutItem, alignment AlignmentFlag) {
 	C.QGraphicsLinearLayout_SetAlignment(this.h, item.cPointer(), (C.int)(alignment))
 }
 
-func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) int {
-	return (int)(C.QGraphicsLinearLayout_Alignment(this.h, item.cPointer()))
+func (this *QGraphicsLinearLayout) Alignment(item *QGraphicsLayoutItem) AlignmentFlag {
+	return (AlignmentFlag)(C.QGraphicsLinearLayout_Alignment(this.h, item.cPointer()))
 }
 
 func (this *QGraphicsLinearLayout) SetGeometry(rect *QRectF) {

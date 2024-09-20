@@ -17,14 +17,14 @@ import (
 type QAbstractSlider__SliderAction int
 
 const (
-	QAbstractSlider__SliderAction__SliderNoAction      QAbstractSlider__SliderAction = 0
-	QAbstractSlider__SliderAction__SliderSingleStepAdd QAbstractSlider__SliderAction = 1
-	QAbstractSlider__SliderAction__SliderSingleStepSub QAbstractSlider__SliderAction = 2
-	QAbstractSlider__SliderAction__SliderPageStepAdd   QAbstractSlider__SliderAction = 3
-	QAbstractSlider__SliderAction__SliderPageStepSub   QAbstractSlider__SliderAction = 4
-	QAbstractSlider__SliderAction__SliderToMinimum     QAbstractSlider__SliderAction = 5
-	QAbstractSlider__SliderAction__SliderToMaximum     QAbstractSlider__SliderAction = 6
-	QAbstractSlider__SliderAction__SliderMove          QAbstractSlider__SliderAction = 7
+	QAbstractSlider__SliderNoAction      QAbstractSlider__SliderAction = 0
+	QAbstractSlider__SliderSingleStepAdd QAbstractSlider__SliderAction = 1
+	QAbstractSlider__SliderSingleStepSub QAbstractSlider__SliderAction = 2
+	QAbstractSlider__SliderPageStepAdd   QAbstractSlider__SliderAction = 3
+	QAbstractSlider__SliderPageStepSub   QAbstractSlider__SliderAction = 4
+	QAbstractSlider__SliderToMinimum     QAbstractSlider__SliderAction = 5
+	QAbstractSlider__SliderToMaximum     QAbstractSlider__SliderAction = 6
+	QAbstractSlider__SliderMove          QAbstractSlider__SliderAction = 7
 )
 
 type QAbstractSlider struct {

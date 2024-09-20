@@ -17,12 +17,12 @@ import (
 type QFontDialog__FontDialogOption int
 
 const (
-	QFontDialog__FontDialogOption__NoButtons           QFontDialog__FontDialogOption = 1
-	QFontDialog__FontDialogOption__DontUseNativeDialog QFontDialog__FontDialogOption = 2
-	QFontDialog__FontDialogOption__ScalableFonts       QFontDialog__FontDialogOption = 4
-	QFontDialog__FontDialogOption__NonScalableFonts    QFontDialog__FontDialogOption = 8
-	QFontDialog__FontDialogOption__MonospacedFonts     QFontDialog__FontDialogOption = 16
-	QFontDialog__FontDialogOption__ProportionalFonts   QFontDialog__FontDialogOption = 32
+	QFontDialog__NoButtons           QFontDialog__FontDialogOption = 1
+	QFontDialog__DontUseNativeDialog QFontDialog__FontDialogOption = 2
+	QFontDialog__ScalableFonts       QFontDialog__FontDialogOption = 4
+	QFontDialog__NonScalableFonts    QFontDialog__FontDialogOption = 8
+	QFontDialog__MonospacedFonts     QFontDialog__FontDialogOption = 16
+	QFontDialog__ProportionalFonts   QFontDialog__FontDialogOption = 32
 )
 
 type QFontDialog struct {
@@ -120,12 +120,12 @@ func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
 	return (bool)(C.QFontDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QFontDialog) SetOptions(options int) {
+func (this *QFontDialog) SetOptions(options QFontDialog__FontDialogOption) {
 	C.QFontDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QFontDialog) Options() int {
-	return (int)(C.QFontDialog_Options(this.h))
+func (this *QFontDialog) Options() QFontDialog__FontDialogOption {
+	return (QFontDialog__FontDialogOption)(C.QFontDialog_Options(this.h))
 }
 
 func (this *QFontDialog) SetVisible(visible bool) {
@@ -257,7 +257,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 	return _goptr
 }
 
-func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options int) *QFont {
+func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))

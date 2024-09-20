@@ -16,35 +16,35 @@ import (
 type DeprecatedRefClassBehavior__EmittingClass int
 
 const (
-	DeprecatedRefClassBehavior__EmittingClass__QByteRef DeprecatedRefClassBehavior__EmittingClass = 0
-	DeprecatedRefClassBehavior__EmittingClass__QCharRef DeprecatedRefClassBehavior__EmittingClass = 1
+	DeprecatedRefClassBehavior__QByteRef DeprecatedRefClassBehavior__EmittingClass = 0
+	DeprecatedRefClassBehavior__QCharRef DeprecatedRefClassBehavior__EmittingClass = 1
 )
 
 type DeprecatedRefClassBehavior__WarningType int
 
 const (
-	DeprecatedRefClassBehavior__WarningType__OutOfRange    DeprecatedRefClassBehavior__WarningType = 0
-	DeprecatedRefClassBehavior__WarningType__DelayedDetach DeprecatedRefClassBehavior__WarningType = 1
+	DeprecatedRefClassBehavior__OutOfRange    DeprecatedRefClassBehavior__WarningType = 0
+	DeprecatedRefClassBehavior__DelayedDetach DeprecatedRefClassBehavior__WarningType = 1
 )
 
 type QByteArray__Base64Option int
 
 const (
-	QByteArray__Base64Option__Base64Encoding              QByteArray__Base64Option = 0
-	QByteArray__Base64Option__Base64UrlEncoding           QByteArray__Base64Option = 1
-	QByteArray__Base64Option__KeepTrailingEquals          QByteArray__Base64Option = 0
-	QByteArray__Base64Option__OmitTrailingEquals          QByteArray__Base64Option = 2
-	QByteArray__Base64Option__IgnoreBase64DecodingErrors  QByteArray__Base64Option = 0
-	QByteArray__Base64Option__AbortOnBase64DecodingErrors QByteArray__Base64Option = 4
+	QByteArray__Base64Encoding              QByteArray__Base64Option = 0
+	QByteArray__Base64UrlEncoding           QByteArray__Base64Option = 1
+	QByteArray__KeepTrailingEquals          QByteArray__Base64Option = 0
+	QByteArray__OmitTrailingEquals          QByteArray__Base64Option = 2
+	QByteArray__IgnoreBase64DecodingErrors  QByteArray__Base64Option = 0
+	QByteArray__AbortOnBase64DecodingErrors QByteArray__Base64Option = 4
 )
 
 type QByteArray__Base64DecodingStatus int
 
 const (
-	QByteArray__Base64DecodingStatus__Ok                 QByteArray__Base64DecodingStatus = 0
-	QByteArray__Base64DecodingStatus__IllegalInputLength QByteArray__Base64DecodingStatus = 1
-	QByteArray__Base64DecodingStatus__IllegalCharacter   QByteArray__Base64DecodingStatus = 2
-	QByteArray__Base64DecodingStatus__IllegalPadding     QByteArray__Base64DecodingStatus = 3
+	QByteArray__Ok                 QByteArray__Base64DecodingStatus = 0
+	QByteArray__IllegalInputLength QByteArray__Base64DecodingStatus = 1
+	QByteArray__IllegalCharacter   QByteArray__Base64DecodingStatus = 2
+	QByteArray__IllegalPadding     QByteArray__Base64DecodingStatus = 3
 )
 
 type QByteArrayDataPtr struct {
@@ -763,7 +763,7 @@ func (this *QByteArray) ToDouble() float64 {
 	return (float64)(C.QByteArray_ToDouble(this.h))
 }
 
-func (this *QByteArray) ToBase64(options int) *QByteArray {
+func (this *QByteArray) ToBase64(options QByteArray__Base64Option) *QByteArray {
 	_ret := C.QByteArray_ToBase64(this.h, (C.int)(options))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -887,7 +887,7 @@ func QByteArray_FromBase64Encoding(base64 *QByteArray) *QByteArray__FromBase64Re
 	return _goptr
 }
 
-func QByteArray_FromBase64(base64 *QByteArray, options int) *QByteArray {
+func QByteArray_FromBase64(base64 *QByteArray, options QByteArray__Base64Option) *QByteArray {
 	_ret := C.QByteArray_FromBase64(base64.cPointer(), (C.int)(options))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1263,7 +1263,7 @@ func QByteArray_Number3(param1 float64, f byte, prec int) *QByteArray {
 	return _goptr
 }
 
-func QByteArray_FromBase64Encoding2(base64 *QByteArray, options int) *QByteArray__FromBase64Result {
+func QByteArray_FromBase64Encoding2(base64 *QByteArray, options QByteArray__Base64Option) *QByteArray__FromBase64Result {
 	_ret := C.QByteArray_FromBase64Encoding2(base64.cPointer(), (C.int)(options))
 	_goptr := newQByteArray__FromBase64Result(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

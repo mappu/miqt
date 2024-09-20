@@ -17,17 +17,17 @@ import (
 type QInputDialog__InputDialogOption int
 
 const (
-	QInputDialog__InputDialogOption__NoButtons                    QInputDialog__InputDialogOption = 1
-	QInputDialog__InputDialogOption__UseListViewForComboBoxItems  QInputDialog__InputDialogOption = 2
-	QInputDialog__InputDialogOption__UsePlainTextEditForTextInput QInputDialog__InputDialogOption = 4
+	QInputDialog__NoButtons                    QInputDialog__InputDialogOption = 1
+	QInputDialog__UseListViewForComboBoxItems  QInputDialog__InputDialogOption = 2
+	QInputDialog__UsePlainTextEditForTextInput QInputDialog__InputDialogOption = 4
 )
 
 type QInputDialog__InputMode int
 
 const (
-	QInputDialog__InputMode__TextInput   QInputDialog__InputMode = 0
-	QInputDialog__InputMode__IntInput    QInputDialog__InputMode = 1
-	QInputDialog__InputMode__DoubleInput QInputDialog__InputMode = 2
+	QInputDialog__TextInput   QInputDialog__InputMode = 0
+	QInputDialog__IntInput    QInputDialog__InputMode = 1
+	QInputDialog__DoubleInput QInputDialog__InputMode = 2
 )
 
 type QInputDialog struct {
@@ -66,7 +66,7 @@ func NewQInputDialog2(parent *QWidget) *QInputDialog {
 }
 
 // NewQInputDialog3 constructs a new QInputDialog object.
-func NewQInputDialog3(parent *QWidget, flags int) *QInputDialog {
+func NewQInputDialog3(parent *QWidget, flags WindowType) *QInputDialog {
 	ret := C.QInputDialog_new3(parent.cPointer(), (C.int)(flags))
 	return newQInputDialog(ret)
 }
@@ -122,12 +122,12 @@ func (this *QInputDialog) TestOption(option QInputDialog__InputDialogOption) boo
 	return (bool)(C.QInputDialog_TestOption(this.h, (C.int)(option)))
 }
 
-func (this *QInputDialog) SetOptions(options int) {
+func (this *QInputDialog) SetOptions(options QInputDialog__InputDialogOption) {
 	C.QInputDialog_SetOptions(this.h, (C.int)(options))
 }
 
-func (this *QInputDialog) Options() int {
-	return (int)(C.QInputDialog_Options(this.h))
+func (this *QInputDialog) Options() QInputDialog__InputDialogOption {
+	return (QInputDialog__InputDialogOption)(C.QInputDialog_Options(this.h))
 }
 
 func (this *QInputDialog) SetTextValue(text string) {
@@ -362,7 +362,7 @@ func QInputDialog_GetDouble(parent *QWidget, title string, label string) float64
 	return (float64)(C.QInputDialog_GetDouble(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms)))
 }
 
-func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags int, step float64) float64 {
+func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType, step float64) float64 {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -597,7 +597,7 @@ func QInputDialog_GetText6(parent *QWidget, title string, label string, echo QLi
 	return _ret
 }
 
-func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags int) string {
+func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -610,7 +610,7 @@ func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLi
 	return _ret
 }
 
-func QInputDialog_GetText8(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags int, inputMethodHints int) string {
+func QInputDialog_GetText8(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -649,7 +649,7 @@ func QInputDialog_GetMultiLineText5(parent *QWidget, title string, label string,
 	return _ret
 }
 
-func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string, text string, ok *bool, flags int) string {
+func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -662,7 +662,7 @@ func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string,
 	return _ret
 }
 
-func QInputDialog_GetMultiLineText7(parent *QWidget, title string, label string, text string, ok *bool, flags int, inputMethodHints int) string {
+func QInputDialog_GetMultiLineText7(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -738,7 +738,7 @@ func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []
 	return _ret
 }
 
-func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags int) string {
+func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -759,7 +759,7 @@ func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []
 	return _ret
 }
 
-func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags int, inputMethodHints int) string {
+func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -820,7 +820,7 @@ func QInputDialog_GetInt8(parent *QWidget, title string, label string, value int
 	return (int)(C.QInputDialog_GetInt8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func QInputDialog_GetInt9(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool, flags int) int {
+func QInputDialog_GetInt9(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool, flags WindowType) int {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)
@@ -868,7 +868,7 @@ func QInputDialog_GetDouble8(parent *QWidget, title string, label string, value 
 	return (float64)(C.QInputDialog_GetDouble8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags int) float64 {
+func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType) float64 {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	label_ms := miqt_strdupg(label)

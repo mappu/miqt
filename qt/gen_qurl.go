@@ -16,47 +16,47 @@ import (
 type QUrl__ParsingMode int
 
 const (
-	QUrl__ParsingMode__TolerantMode QUrl__ParsingMode = 0
-	QUrl__ParsingMode__StrictMode   QUrl__ParsingMode = 1
-	QUrl__ParsingMode__DecodedMode  QUrl__ParsingMode = 2
+	QUrl__TolerantMode QUrl__ParsingMode = 0
+	QUrl__StrictMode   QUrl__ParsingMode = 1
+	QUrl__DecodedMode  QUrl__ParsingMode = 2
 )
 
 type QUrl__UrlFormattingOption int
 
 const (
-	QUrl__UrlFormattingOption__None                  QUrl__UrlFormattingOption = 0
-	QUrl__UrlFormattingOption__RemoveScheme          QUrl__UrlFormattingOption = 1
-	QUrl__UrlFormattingOption__RemovePassword        QUrl__UrlFormattingOption = 2
-	QUrl__UrlFormattingOption__RemoveUserInfo        QUrl__UrlFormattingOption = 6
-	QUrl__UrlFormattingOption__RemovePort            QUrl__UrlFormattingOption = 8
-	QUrl__UrlFormattingOption__RemoveAuthority       QUrl__UrlFormattingOption = 30
-	QUrl__UrlFormattingOption__RemovePath            QUrl__UrlFormattingOption = 32
-	QUrl__UrlFormattingOption__RemoveQuery           QUrl__UrlFormattingOption = 64
-	QUrl__UrlFormattingOption__RemoveFragment        QUrl__UrlFormattingOption = 128
-	QUrl__UrlFormattingOption__PreferLocalFile       QUrl__UrlFormattingOption = 512
-	QUrl__UrlFormattingOption__StripTrailingSlash    QUrl__UrlFormattingOption = 1024
-	QUrl__UrlFormattingOption__RemoveFilename        QUrl__UrlFormattingOption = 2048
-	QUrl__UrlFormattingOption__NormalizePathSegments QUrl__UrlFormattingOption = 4096
+	QUrl__None                  QUrl__UrlFormattingOption = 0
+	QUrl__RemoveScheme          QUrl__UrlFormattingOption = 1
+	QUrl__RemovePassword        QUrl__UrlFormattingOption = 2
+	QUrl__RemoveUserInfo        QUrl__UrlFormattingOption = 6
+	QUrl__RemovePort            QUrl__UrlFormattingOption = 8
+	QUrl__RemoveAuthority       QUrl__UrlFormattingOption = 30
+	QUrl__RemovePath            QUrl__UrlFormattingOption = 32
+	QUrl__RemoveQuery           QUrl__UrlFormattingOption = 64
+	QUrl__RemoveFragment        QUrl__UrlFormattingOption = 128
+	QUrl__PreferLocalFile       QUrl__UrlFormattingOption = 512
+	QUrl__StripTrailingSlash    QUrl__UrlFormattingOption = 1024
+	QUrl__RemoveFilename        QUrl__UrlFormattingOption = 2048
+	QUrl__NormalizePathSegments QUrl__UrlFormattingOption = 4096
 )
 
 type QUrl__ComponentFormattingOption int
 
 const (
-	QUrl__ComponentFormattingOption__PrettyDecoded    QUrl__ComponentFormattingOption = 0
-	QUrl__ComponentFormattingOption__EncodeSpaces     QUrl__ComponentFormattingOption = 1048576
-	QUrl__ComponentFormattingOption__EncodeUnicode    QUrl__ComponentFormattingOption = 2097152
-	QUrl__ComponentFormattingOption__EncodeDelimiters QUrl__ComponentFormattingOption = 12582912
-	QUrl__ComponentFormattingOption__EncodeReserved   QUrl__ComponentFormattingOption = 16777216
-	QUrl__ComponentFormattingOption__DecodeReserved   QUrl__ComponentFormattingOption = 33554432
-	QUrl__ComponentFormattingOption__FullyEncoded     QUrl__ComponentFormattingOption = 32505856
-	QUrl__ComponentFormattingOption__FullyDecoded     QUrl__ComponentFormattingOption = 133169152
+	QUrl__PrettyDecoded    QUrl__ComponentFormattingOption = 0
+	QUrl__EncodeSpaces     QUrl__ComponentFormattingOption = 1048576
+	QUrl__EncodeUnicode    QUrl__ComponentFormattingOption = 2097152
+	QUrl__EncodeDelimiters QUrl__ComponentFormattingOption = 12582912
+	QUrl__EncodeReserved   QUrl__ComponentFormattingOption = 16777216
+	QUrl__DecodeReserved   QUrl__ComponentFormattingOption = 33554432
+	QUrl__FullyEncoded     QUrl__ComponentFormattingOption = 32505856
+	QUrl__FullyDecoded     QUrl__ComponentFormattingOption = 133169152
 )
 
 type QUrl__UserInputResolutionOption int
 
 const (
-	QUrl__UserInputResolutionOption__DefaultResolution QUrl__UserInputResolutionOption = 0
-	QUrl__UserInputResolutionOption__AssumeLocalFile   QUrl__UserInputResolutionOption = 1
+	QUrl__DefaultResolution QUrl__UserInputResolutionOption = 0
+	QUrl__AssumeLocalFile   QUrl__UserInputResolutionOption = 1
 )
 
 type QUrl struct {
@@ -528,7 +528,7 @@ func QUrl_FromEncoded2(url *QByteArray, mode QUrl__ParsingMode) *QUrl {
 	return _goptr
 }
 
-func QUrl_FromUserInput3(userInput string, workingDirectory string, options int) *QUrl {
+func QUrl_FromUserInput3(userInput string, workingDirectory string, options QUrl__UserInputResolutionOption) *QUrl {
 	userInput_ms := miqt_strdupg(userInput)
 	defer C.free(userInput_ms)
 	workingDirectory_ms := miqt_strdupg(workingDirectory)
@@ -545,7 +545,7 @@ func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
 	C.QUrl_SetAuthority2(this.h, (*C.struct_miqt_string)(authority_ms), (C.int)(mode))
 }
 
-func (this *QUrl) Authority1(options int) string {
+func (this *QUrl) Authority1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Authority1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -558,7 +558,7 @@ func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
 	C.QUrl_SetUserInfo2(this.h, (*C.struct_miqt_string)(userInfo_ms), (C.int)(mode))
 }
 
-func (this *QUrl) UserInfo1(options int) string {
+func (this *QUrl) UserInfo1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_UserInfo1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -571,7 +571,7 @@ func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
 	C.QUrl_SetUserName2(this.h, (*C.struct_miqt_string)(userName_ms), (C.int)(mode))
 }
 
-func (this *QUrl) UserName1(options int) string {
+func (this *QUrl) UserName1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_UserName1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -584,7 +584,7 @@ func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
 	C.QUrl_SetPassword2(this.h, (*C.struct_miqt_string)(password_ms), (C.int)(mode))
 }
 
-func (this *QUrl) Password1(param1 int) string {
+func (this *QUrl) Password1(param1 QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Password1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -597,14 +597,14 @@ func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
 	C.QUrl_SetHost2(this.h, (*C.struct_miqt_string)(host_ms), (C.int)(mode))
 }
 
-func (this *QUrl) Host1(param1 int) string {
+func (this *QUrl) Host1(param1 QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Host1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QUrl) TopLevelDomain1(options int) string {
+func (this *QUrl) TopLevelDomain1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_TopLevelDomain1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -621,14 +621,14 @@ func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
 	C.QUrl_SetPath2(this.h, (*C.struct_miqt_string)(path_ms), (C.int)(mode))
 }
 
-func (this *QUrl) Path1(options int) string {
+func (this *QUrl) Path1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Path1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QUrl) FileName1(options int) string {
+func (this *QUrl) FileName1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_FileName1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
@@ -641,14 +641,14 @@ func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
 	C.QUrl_SetQuery2(this.h, (*C.struct_miqt_string)(query_ms), (C.int)(mode))
 }
 
-func (this *QUrl) Query1(param1 int) string {
+func (this *QUrl) Query1(param1 QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Query1(this.h, (C.int)(param1))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QUrl) Fragment1(options int) string {
+func (this *QUrl) Fragment1(options QUrl__ComponentFormattingOption) string {
 	var _ms *C.struct_miqt_string = C.QUrl_Fragment1(this.h, (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

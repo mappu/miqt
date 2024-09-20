@@ -17,28 +17,28 @@ import (
 type QAction__MenuRole int
 
 const (
-	QAction__MenuRole__NoRole                  QAction__MenuRole = 0
-	QAction__MenuRole__TextHeuristicRole       QAction__MenuRole = 1
-	QAction__MenuRole__ApplicationSpecificRole QAction__MenuRole = 2
-	QAction__MenuRole__AboutQtRole             QAction__MenuRole = 3
-	QAction__MenuRole__AboutRole               QAction__MenuRole = 4
-	QAction__MenuRole__PreferencesRole         QAction__MenuRole = 5
-	QAction__MenuRole__QuitRole                QAction__MenuRole = 6
+	QAction__NoRole                  QAction__MenuRole = 0
+	QAction__TextHeuristicRole       QAction__MenuRole = 1
+	QAction__ApplicationSpecificRole QAction__MenuRole = 2
+	QAction__AboutQtRole             QAction__MenuRole = 3
+	QAction__AboutRole               QAction__MenuRole = 4
+	QAction__PreferencesRole         QAction__MenuRole = 5
+	QAction__QuitRole                QAction__MenuRole = 6
 )
 
 type QAction__Priority int
 
 const (
-	QAction__Priority__LowPriority    QAction__Priority = 0
-	QAction__Priority__NormalPriority QAction__Priority = 128
-	QAction__Priority__HighPriority   QAction__Priority = 256
+	QAction__LowPriority    QAction__Priority = 0
+	QAction__NormalPriority QAction__Priority = 128
+	QAction__HighPriority   QAction__Priority = 256
 )
 
 type QAction__ActionEvent int
 
 const (
-	QAction__ActionEvent__Trigger QAction__ActionEvent = 0
-	QAction__ActionEvent__Hover   QAction__ActionEvent = 1
+	QAction__Trigger QAction__ActionEvent = 0
+	QAction__Hover   QAction__ActionEvent = 1
 )
 
 type QAction struct {

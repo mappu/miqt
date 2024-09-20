@@ -17,17 +17,17 @@ import (
 type QCompleter__CompletionMode int
 
 const (
-	QCompleter__CompletionMode__PopupCompletion           QCompleter__CompletionMode = 0
-	QCompleter__CompletionMode__UnfilteredPopupCompletion QCompleter__CompletionMode = 1
-	QCompleter__CompletionMode__InlineCompletion          QCompleter__CompletionMode = 2
+	QCompleter__PopupCompletion           QCompleter__CompletionMode = 0
+	QCompleter__UnfilteredPopupCompletion QCompleter__CompletionMode = 1
+	QCompleter__InlineCompletion          QCompleter__CompletionMode = 2
 )
 
 type QCompleter__ModelSorting int
 
 const (
-	QCompleter__ModelSorting__UnsortedModel                QCompleter__ModelSorting = 0
-	QCompleter__ModelSorting__CaseSensitivelySortedModel   QCompleter__ModelSorting = 1
-	QCompleter__ModelSorting__CaseInsensitivelySortedModel QCompleter__ModelSorting = 2
+	QCompleter__UnsortedModel                QCompleter__ModelSorting = 0
+	QCompleter__CaseSensitivelySortedModel   QCompleter__ModelSorting = 1
+	QCompleter__CaseInsensitivelySortedModel QCompleter__ModelSorting = 2
 )
 
 type QCompleter struct {
@@ -155,12 +155,12 @@ func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
 	return (QCompleter__CompletionMode)(C.QCompleter_CompletionMode(this.h))
 }
 
-func (this *QCompleter) SetFilterMode(filterMode int) {
+func (this *QCompleter) SetFilterMode(filterMode MatchFlag) {
 	C.QCompleter_SetFilterMode(this.h, (C.int)(filterMode))
 }
 
-func (this *QCompleter) FilterMode() int {
-	return (int)(C.QCompleter_FilterMode(this.h))
+func (this *QCompleter) FilterMode() MatchFlag {
+	return (MatchFlag)(C.QCompleter_FilterMode(this.h))
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {

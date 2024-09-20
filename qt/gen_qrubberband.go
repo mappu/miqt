@@ -16,8 +16,8 @@ import (
 type QRubberBand__Shape int
 
 const (
-	QRubberBand__Shape__Line      QRubberBand__Shape = 0
-	QRubberBand__Shape__Rectangle QRubberBand__Shape = 1
+	QRubberBand__Line      QRubberBand__Shape = 0
+	QRubberBand__Rectangle QRubberBand__Shape = 1
 )
 
 type QRubberBand struct {

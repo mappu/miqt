@@ -100,8 +100,8 @@ func (this *QGroupBox) SetTitle(title string) {
 	C.QGroupBox_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
 
-func (this *QGroupBox) Alignment() int {
-	return (int)(C.QGroupBox_Alignment(this.h))
+func (this *QGroupBox) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QGroupBox_Alignment(this.h))
 }
 
 func (this *QGroupBox) SetAlignment(alignment int) {

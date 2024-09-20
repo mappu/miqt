@@ -16,20 +16,20 @@ import (
 type QTouchDevice__DeviceType int
 
 const (
-	QTouchDevice__DeviceType__TouchScreen QTouchDevice__DeviceType = 0
-	QTouchDevice__DeviceType__TouchPad    QTouchDevice__DeviceType = 1
+	QTouchDevice__TouchScreen QTouchDevice__DeviceType = 0
+	QTouchDevice__TouchPad    QTouchDevice__DeviceType = 1
 )
 
 type QTouchDevice__CapabilityFlag int
 
 const (
-	QTouchDevice__CapabilityFlag__Position           QTouchDevice__CapabilityFlag = 1
-	QTouchDevice__CapabilityFlag__Area               QTouchDevice__CapabilityFlag = 2
-	QTouchDevice__CapabilityFlag__Pressure           QTouchDevice__CapabilityFlag = 4
-	QTouchDevice__CapabilityFlag__Velocity           QTouchDevice__CapabilityFlag = 8
-	QTouchDevice__CapabilityFlag__RawPositions       QTouchDevice__CapabilityFlag = 16
-	QTouchDevice__CapabilityFlag__NormalizedPosition QTouchDevice__CapabilityFlag = 32
-	QTouchDevice__CapabilityFlag__MouseEmulation     QTouchDevice__CapabilityFlag = 64
+	QTouchDevice__Position           QTouchDevice__CapabilityFlag = 1
+	QTouchDevice__Area               QTouchDevice__CapabilityFlag = 2
+	QTouchDevice__Pressure           QTouchDevice__CapabilityFlag = 4
+	QTouchDevice__Velocity           QTouchDevice__CapabilityFlag = 8
+	QTouchDevice__RawPositions       QTouchDevice__CapabilityFlag = 16
+	QTouchDevice__NormalizedPosition QTouchDevice__CapabilityFlag = 32
+	QTouchDevice__MouseEmulation     QTouchDevice__CapabilityFlag = 64
 )
 
 type QTouchDevice struct {
@@ -82,8 +82,8 @@ func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
 	return (QTouchDevice__DeviceType)(C.QTouchDevice_Type(this.h))
 }
 
-func (this *QTouchDevice) Capabilities() int {
-	return (int)(C.QTouchDevice_Capabilities(this.h))
+func (this *QTouchDevice) Capabilities() QTouchDevice__CapabilityFlag {
+	return (QTouchDevice__CapabilityFlag)(C.QTouchDevice_Capabilities(this.h))
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
@@ -100,7 +100,7 @@ func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
 	C.QTouchDevice_SetType(this.h, (C.int)(devType))
 }
 
-func (this *QTouchDevice) SetCapabilities(caps int) {
+func (this *QTouchDevice) SetCapabilities(caps QTouchDevice__CapabilityFlag) {
 	C.QTouchDevice_SetCapabilities(this.h, (C.int)(caps))
 }
 

@@ -16,7 +16,7 @@ import (
 type QGraphicsProxyWidget__ int
 
 const (
-	QGraphicsProxyWidget____Type QGraphicsProxyWidget__ = 12
+	QGraphicsProxyWidget__Type QGraphicsProxyWidget__ = 12
 )
 
 type QGraphicsProxyWidget struct {
@@ -55,7 +55,7 @@ func NewQGraphicsProxyWidget2(parent *QGraphicsItem) *QGraphicsProxyWidget {
 }
 
 // NewQGraphicsProxyWidget3 constructs a new QGraphicsProxyWidget object.
-func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags int) *QGraphicsProxyWidget {
+func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsProxyWidget {
 	ret := C.QGraphicsProxyWidget_new3(parent.cPointer(), (C.int)(wFlags))
 	return newQGraphicsProxyWidget(ret)
 }

@@ -95,12 +95,12 @@ func (this *QToolBar) IsMovable() bool {
 	return (bool)(C.QToolBar_IsMovable(this.h))
 }
 
-func (this *QToolBar) SetAllowedAreas(areas int) {
+func (this *QToolBar) SetAllowedAreas(areas ToolBarArea) {
 	C.QToolBar_SetAllowedAreas(this.h, (C.int)(areas))
 }
 
-func (this *QToolBar) AllowedAreas() int {
-	return (int)(C.QToolBar_AllowedAreas(this.h))
+func (this *QToolBar) AllowedAreas() ToolBarArea {
+	return (ToolBarArea)(C.QToolBar_AllowedAreas(this.h))
 }
 
 func (this *QToolBar) IsAreaAllowed(area ToolBarArea) bool {
@@ -241,22 +241,22 @@ func miqt_exec_callback_QToolBar_MovableChanged(cb *C.void, movable C.bool) {
 	gofunc(slotval1)
 }
 
-func (this *QToolBar) AllowedAreasChanged(allowedAreas int) {
+func (this *QToolBar) AllowedAreasChanged(allowedAreas ToolBarArea) {
 	C.QToolBar_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
-func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas int)) {
+func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas ToolBarArea)) {
 	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
 }
 
 //export miqt_exec_callback_QToolBar_AllowedAreasChanged
 func miqt_exec_callback_QToolBar_AllowedAreasChanged(cb *C.void, allowedAreas C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas int))
+	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas ToolBarArea))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (int)(allowedAreas)
+	slotval1 := (ToolBarArea)(allowedAreas)
 
 	gofunc(slotval1)
 }

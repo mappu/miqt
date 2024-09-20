@@ -16,62 +16,62 @@ import (
 type QDataStream__Version int
 
 const (
-	QDataStream__Version__Qt_1_0                    QDataStream__Version = 1
-	QDataStream__Version__Qt_2_0                    QDataStream__Version = 2
-	QDataStream__Version__Qt_2_1                    QDataStream__Version = 3
-	QDataStream__Version__Qt_3_0                    QDataStream__Version = 4
-	QDataStream__Version__Qt_3_1                    QDataStream__Version = 5
-	QDataStream__Version__Qt_3_3                    QDataStream__Version = 6
-	QDataStream__Version__Qt_4_0                    QDataStream__Version = 7
-	QDataStream__Version__Qt_4_1                    QDataStream__Version = 7
-	QDataStream__Version__Qt_4_2                    QDataStream__Version = 8
-	QDataStream__Version__Qt_4_3                    QDataStream__Version = 9
-	QDataStream__Version__Qt_4_4                    QDataStream__Version = 10
-	QDataStream__Version__Qt_4_5                    QDataStream__Version = 11
-	QDataStream__Version__Qt_4_6                    QDataStream__Version = 12
-	QDataStream__Version__Qt_4_7                    QDataStream__Version = 12
-	QDataStream__Version__Qt_4_8                    QDataStream__Version = 12
-	QDataStream__Version__Qt_4_9                    QDataStream__Version = 12
-	QDataStream__Version__Qt_5_0                    QDataStream__Version = 13
-	QDataStream__Version__Qt_5_1                    QDataStream__Version = 14
-	QDataStream__Version__Qt_5_2                    QDataStream__Version = 15
-	QDataStream__Version__Qt_5_3                    QDataStream__Version = 15
-	QDataStream__Version__Qt_5_4                    QDataStream__Version = 16
-	QDataStream__Version__Qt_5_5                    QDataStream__Version = 16
-	QDataStream__Version__Qt_5_6                    QDataStream__Version = 17
-	QDataStream__Version__Qt_5_7                    QDataStream__Version = 17
-	QDataStream__Version__Qt_5_8                    QDataStream__Version = 17
-	QDataStream__Version__Qt_5_9                    QDataStream__Version = 17
-	QDataStream__Version__Qt_5_10                   QDataStream__Version = 17
-	QDataStream__Version__Qt_5_11                   QDataStream__Version = 17
-	QDataStream__Version__Qt_5_12                   QDataStream__Version = 18
-	QDataStream__Version__Qt_5_13                   QDataStream__Version = 19
-	QDataStream__Version__Qt_5_14                   QDataStream__Version = 19
-	QDataStream__Version__Qt_5_15                   QDataStream__Version = 19
-	QDataStream__Version__Qt_DefaultCompiledVersion QDataStream__Version = 19
+	QDataStream__Qt_1_0                    QDataStream__Version = 1
+	QDataStream__Qt_2_0                    QDataStream__Version = 2
+	QDataStream__Qt_2_1                    QDataStream__Version = 3
+	QDataStream__Qt_3_0                    QDataStream__Version = 4
+	QDataStream__Qt_3_1                    QDataStream__Version = 5
+	QDataStream__Qt_3_3                    QDataStream__Version = 6
+	QDataStream__Qt_4_0                    QDataStream__Version = 7
+	QDataStream__Qt_4_1                    QDataStream__Version = 7
+	QDataStream__Qt_4_2                    QDataStream__Version = 8
+	QDataStream__Qt_4_3                    QDataStream__Version = 9
+	QDataStream__Qt_4_4                    QDataStream__Version = 10
+	QDataStream__Qt_4_5                    QDataStream__Version = 11
+	QDataStream__Qt_4_6                    QDataStream__Version = 12
+	QDataStream__Qt_4_7                    QDataStream__Version = 12
+	QDataStream__Qt_4_8                    QDataStream__Version = 12
+	QDataStream__Qt_4_9                    QDataStream__Version = 12
+	QDataStream__Qt_5_0                    QDataStream__Version = 13
+	QDataStream__Qt_5_1                    QDataStream__Version = 14
+	QDataStream__Qt_5_2                    QDataStream__Version = 15
+	QDataStream__Qt_5_3                    QDataStream__Version = 15
+	QDataStream__Qt_5_4                    QDataStream__Version = 16
+	QDataStream__Qt_5_5                    QDataStream__Version = 16
+	QDataStream__Qt_5_6                    QDataStream__Version = 17
+	QDataStream__Qt_5_7                    QDataStream__Version = 17
+	QDataStream__Qt_5_8                    QDataStream__Version = 17
+	QDataStream__Qt_5_9                    QDataStream__Version = 17
+	QDataStream__Qt_5_10                   QDataStream__Version = 17
+	QDataStream__Qt_5_11                   QDataStream__Version = 17
+	QDataStream__Qt_5_12                   QDataStream__Version = 18
+	QDataStream__Qt_5_13                   QDataStream__Version = 19
+	QDataStream__Qt_5_14                   QDataStream__Version = 19
+	QDataStream__Qt_5_15                   QDataStream__Version = 19
+	QDataStream__Qt_DefaultCompiledVersion QDataStream__Version = 19
 )
 
 type QDataStream__ByteOrder int
 
 const (
-	QDataStream__ByteOrder__BigEndian    QDataStream__ByteOrder = 0
-	QDataStream__ByteOrder__LittleEndian QDataStream__ByteOrder = 1
+	QDataStream__BigEndian    QDataStream__ByteOrder = 0
+	QDataStream__LittleEndian QDataStream__ByteOrder = 1
 )
 
 type QDataStream__Status int
 
 const (
-	QDataStream__Status__Ok              QDataStream__Status = 0
-	QDataStream__Status__ReadPastEnd     QDataStream__Status = 1
-	QDataStream__Status__ReadCorruptData QDataStream__Status = 2
-	QDataStream__Status__WriteFailed     QDataStream__Status = 3
+	QDataStream__Ok              QDataStream__Status = 0
+	QDataStream__ReadPastEnd     QDataStream__Status = 1
+	QDataStream__ReadCorruptData QDataStream__Status = 2
+	QDataStream__WriteFailed     QDataStream__Status = 3
 )
 
 type QDataStream__FloatingPointPrecision int
 
 const (
-	QDataStream__FloatingPointPrecision__SinglePrecision QDataStream__FloatingPointPrecision = 0
-	QDataStream__FloatingPointPrecision__DoublePrecision QDataStream__FloatingPointPrecision = 1
+	QDataStream__SinglePrecision QDataStream__FloatingPointPrecision = 0
+	QDataStream__DoublePrecision QDataStream__FloatingPointPrecision = 1
 )
 
 type QDataStream struct {
@@ -109,7 +109,7 @@ func NewQDataStream2(param1 *QIODevice) *QDataStream {
 }
 
 // NewQDataStream3 constructs a new QDataStream object.
-func NewQDataStream3(param1 *QByteArray, flags int) *QDataStream {
+func NewQDataStream3(param1 *QByteArray, flags QIODevice__OpenModeFlag) *QDataStream {
 	ret := C.QDataStream_new3(param1.cPointer(), (C.int)(flags))
 	return newQDataStream(ret)
 }

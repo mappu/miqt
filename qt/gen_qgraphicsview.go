@@ -17,43 +17,43 @@ import (
 type QGraphicsView__ViewportAnchor int
 
 const (
-	QGraphicsView__ViewportAnchor__NoAnchor         QGraphicsView__ViewportAnchor = 0
-	QGraphicsView__ViewportAnchor__AnchorViewCenter QGraphicsView__ViewportAnchor = 1
-	QGraphicsView__ViewportAnchor__AnchorUnderMouse QGraphicsView__ViewportAnchor = 2
+	QGraphicsView__NoAnchor         QGraphicsView__ViewportAnchor = 0
+	QGraphicsView__AnchorViewCenter QGraphicsView__ViewportAnchor = 1
+	QGraphicsView__AnchorUnderMouse QGraphicsView__ViewportAnchor = 2
 )
 
 type QGraphicsView__CacheModeFlag int
 
 const (
-	QGraphicsView__CacheModeFlag__CacheNone       QGraphicsView__CacheModeFlag = 0
-	QGraphicsView__CacheModeFlag__CacheBackground QGraphicsView__CacheModeFlag = 1
+	QGraphicsView__CacheNone       QGraphicsView__CacheModeFlag = 0
+	QGraphicsView__CacheBackground QGraphicsView__CacheModeFlag = 1
 )
 
 type QGraphicsView__DragMode int
 
 const (
-	QGraphicsView__DragMode__NoDrag         QGraphicsView__DragMode = 0
-	QGraphicsView__DragMode__ScrollHandDrag QGraphicsView__DragMode = 1
-	QGraphicsView__DragMode__RubberBandDrag QGraphicsView__DragMode = 2
+	QGraphicsView__NoDrag         QGraphicsView__DragMode = 0
+	QGraphicsView__ScrollHandDrag QGraphicsView__DragMode = 1
+	QGraphicsView__RubberBandDrag QGraphicsView__DragMode = 2
 )
 
 type QGraphicsView__ViewportUpdateMode int
 
 const (
-	QGraphicsView__ViewportUpdateMode__FullViewportUpdate         QGraphicsView__ViewportUpdateMode = 0
-	QGraphicsView__ViewportUpdateMode__MinimalViewportUpdate      QGraphicsView__ViewportUpdateMode = 1
-	QGraphicsView__ViewportUpdateMode__SmartViewportUpdate        QGraphicsView__ViewportUpdateMode = 2
-	QGraphicsView__ViewportUpdateMode__NoViewportUpdate           QGraphicsView__ViewportUpdateMode = 3
-	QGraphicsView__ViewportUpdateMode__BoundingRectViewportUpdate QGraphicsView__ViewportUpdateMode = 4
+	QGraphicsView__FullViewportUpdate         QGraphicsView__ViewportUpdateMode = 0
+	QGraphicsView__MinimalViewportUpdate      QGraphicsView__ViewportUpdateMode = 1
+	QGraphicsView__SmartViewportUpdate        QGraphicsView__ViewportUpdateMode = 2
+	QGraphicsView__NoViewportUpdate           QGraphicsView__ViewportUpdateMode = 3
+	QGraphicsView__BoundingRectViewportUpdate QGraphicsView__ViewportUpdateMode = 4
 )
 
 type QGraphicsView__OptimizationFlag int
 
 const (
-	QGraphicsView__OptimizationFlag__DontClipPainter           QGraphicsView__OptimizationFlag = 1
-	QGraphicsView__OptimizationFlag__DontSavePainterState      QGraphicsView__OptimizationFlag = 2
-	QGraphicsView__OptimizationFlag__DontAdjustForAntialiasing QGraphicsView__OptimizationFlag = 4
-	QGraphicsView__OptimizationFlag__IndirectPainting          QGraphicsView__OptimizationFlag = 8
+	QGraphicsView__DontClipPainter           QGraphicsView__OptimizationFlag = 1
+	QGraphicsView__DontSavePainterState      QGraphicsView__OptimizationFlag = 2
+	QGraphicsView__DontAdjustForAntialiasing QGraphicsView__OptimizationFlag = 4
+	QGraphicsView__IndirectPainting          QGraphicsView__OptimizationFlag = 8
 )
 
 type QGraphicsView struct {
@@ -132,23 +132,23 @@ func (this *QGraphicsView) SizeHint() *QSize {
 	return _goptr
 }
 
-func (this *QGraphicsView) RenderHints() int {
-	return (int)(C.QGraphicsView_RenderHints(this.h))
+func (this *QGraphicsView) RenderHints() QPainter__RenderHint {
+	return (QPainter__RenderHint)(C.QGraphicsView_RenderHints(this.h))
 }
 
 func (this *QGraphicsView) SetRenderHint(hint QPainter__RenderHint) {
 	C.QGraphicsView_SetRenderHint(this.h, (C.int)(hint))
 }
 
-func (this *QGraphicsView) SetRenderHints(hints int) {
+func (this *QGraphicsView) SetRenderHints(hints QPainter__RenderHint) {
 	C.QGraphicsView_SetRenderHints(this.h, (C.int)(hints))
 }
 
-func (this *QGraphicsView) Alignment() int {
-	return (int)(C.QGraphicsView_Alignment(this.h))
+func (this *QGraphicsView) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QGraphicsView_Alignment(this.h))
 }
 
-func (this *QGraphicsView) SetAlignment(alignment int) {
+func (this *QGraphicsView) SetAlignment(alignment AlignmentFlag) {
 	C.QGraphicsView_SetAlignment(this.h, (C.int)(alignment))
 }
 
@@ -176,15 +176,15 @@ func (this *QGraphicsView) SetViewportUpdateMode(mode QGraphicsView__ViewportUpd
 	C.QGraphicsView_SetViewportUpdateMode(this.h, (C.int)(mode))
 }
 
-func (this *QGraphicsView) OptimizationFlags() int {
-	return (int)(C.QGraphicsView_OptimizationFlags(this.h))
+func (this *QGraphicsView) OptimizationFlags() QGraphicsView__OptimizationFlag {
+	return (QGraphicsView__OptimizationFlag)(C.QGraphicsView_OptimizationFlags(this.h))
 }
 
 func (this *QGraphicsView) SetOptimizationFlag(flag QGraphicsView__OptimizationFlag) {
 	C.QGraphicsView_SetOptimizationFlag(this.h, (C.int)(flag))
 }
 
-func (this *QGraphicsView) SetOptimizationFlags(flags int) {
+func (this *QGraphicsView) SetOptimizationFlags(flags QGraphicsView__OptimizationFlag) {
 	C.QGraphicsView_SetOptimizationFlags(this.h, (C.int)(flags))
 }
 
@@ -211,11 +211,11 @@ func (this *QGraphicsView) RubberBandRect() *QRect {
 	return _goptr
 }
 
-func (this *QGraphicsView) CacheMode() int {
-	return (int)(C.QGraphicsView_CacheMode(this.h))
+func (this *QGraphicsView) CacheMode() QGraphicsView__CacheModeFlag {
+	return (QGraphicsView__CacheModeFlag)(C.QGraphicsView_CacheMode(this.h))
 }
 
-func (this *QGraphicsView) SetCacheMode(mode int) {
+func (this *QGraphicsView) SetCacheMode(mode QGraphicsView__CacheModeFlag) {
 	C.QGraphicsView_SetCacheMode(this.h, (C.int)(mode))
 }
 
@@ -694,7 +694,7 @@ func (this *QGraphicsView) InvalidateScene1(rect *QRectF) {
 	C.QGraphicsView_InvalidateScene1(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers int) {
+func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene__SceneLayer) {
 	C.QGraphicsView_InvalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 

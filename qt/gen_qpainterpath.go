@@ -16,10 +16,10 @@ import (
 type QPainterPath__ElementType int
 
 const (
-	QPainterPath__ElementType__MoveToElement      QPainterPath__ElementType = 0
-	QPainterPath__ElementType__LineToElement      QPainterPath__ElementType = 1
-	QPainterPath__ElementType__CurveToElement     QPainterPath__ElementType = 2
-	QPainterPath__ElementType__CurveToDataElement QPainterPath__ElementType = 3
+	QPainterPath__MoveToElement      QPainterPath__ElementType = 0
+	QPainterPath__LineToElement      QPainterPath__ElementType = 1
+	QPainterPath__CurveToElement     QPainterPath__ElementType = 2
+	QPainterPath__CurveToDataElement QPainterPath__ElementType = 3
 )
 
 type QPainterPath struct {

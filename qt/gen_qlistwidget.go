@@ -17,8 +17,8 @@ import (
 type QListWidgetItem__ItemType int
 
 const (
-	QListWidgetItem__ItemType__Type     QListWidgetItem__ItemType = 0
-	QListWidgetItem__ItemType__UserType QListWidgetItem__ItemType = 1000
+	QListWidgetItem__Type     QListWidgetItem__ItemType = 0
+	QListWidgetItem__UserType QListWidgetItem__ItemType = 1000
 )
 
 type QListWidgetItem struct {
@@ -139,11 +139,11 @@ func (this *QListWidgetItem) IsHidden() bool {
 	return (bool)(C.QListWidgetItem_IsHidden(this.h))
 }
 
-func (this *QListWidgetItem) Flags() int {
-	return (int)(C.QListWidgetItem_Flags(this.h))
+func (this *QListWidgetItem) Flags() ItemFlag {
+	return (ItemFlag)(C.QListWidgetItem_Flags(this.h))
 }
 
-func (this *QListWidgetItem) SetFlags(flags int) {
+func (this *QListWidgetItem) SetFlags(flags ItemFlag) {
 	C.QListWidgetItem_SetFlags(this.h, (C.int)(flags))
 }
 
@@ -470,7 +470,7 @@ func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
 	C.QListWidget_SetCurrentItem(this.h, item.cPointer())
 }
 
-func (this *QListWidget) SetCurrentItem2(item *QListWidgetItem, command int) {
+func (this *QListWidget) SetCurrentItem2(item *QListWidgetItem, command QItemSelectionModel__SelectionFlag) {
 	C.QListWidget_SetCurrentItem2(this.h, item.cPointer(), (C.int)(command))
 }
 
@@ -482,7 +482,7 @@ func (this *QListWidget) SetCurrentRow(row int) {
 	C.QListWidget_SetCurrentRow(this.h, (C.int)(row))
 }
 
-func (this *QListWidget) SetCurrentRow2(row int, command int) {
+func (this *QListWidget) SetCurrentRow2(row int, command QItemSelectionModel__SelectionFlag) {
 	C.QListWidget_SetCurrentRow2(this.h, (C.int)(row), (C.int)(command))
 }
 
@@ -560,7 +560,7 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 	return _ret
 }
 
-func (this *QListWidget) FindItems(text string, flags int) []*QListWidgetItem {
+func (this *QListWidget) FindItems(text string, flags MatchFlag) []*QListWidgetItem {
 	text_ms := miqt_strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))

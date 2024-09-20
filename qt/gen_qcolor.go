@@ -16,19 +16,19 @@ import (
 type QColor__Spec int
 
 const (
-	QColor__Spec__Invalid     QColor__Spec = 0
-	QColor__Spec__Rgb         QColor__Spec = 1
-	QColor__Spec__Hsv         QColor__Spec = 2
-	QColor__Spec__Cmyk        QColor__Spec = 3
-	QColor__Spec__Hsl         QColor__Spec = 4
-	QColor__Spec__ExtendedRgb QColor__Spec = 5
+	QColor__Invalid     QColor__Spec = 0
+	QColor__Rgb         QColor__Spec = 1
+	QColor__Hsv         QColor__Spec = 2
+	QColor__Cmyk        QColor__Spec = 3
+	QColor__Hsl         QColor__Spec = 4
+	QColor__ExtendedRgb QColor__Spec = 5
 )
 
 type QColor__NameFormat int
 
 const (
-	QColor__NameFormat__HexRgb  QColor__NameFormat = 0
-	QColor__NameFormat__HexArgb QColor__NameFormat = 1
+	QColor__HexRgb  QColor__NameFormat = 0
+	QColor__HexArgb QColor__NameFormat = 1
 )
 
 type QColor struct {

@@ -17,12 +17,12 @@ import (
 type QMainWindow__DockOption int
 
 const (
-	QMainWindow__DockOption__AnimatedDocks    QMainWindow__DockOption = 1
-	QMainWindow__DockOption__AllowNestedDocks QMainWindow__DockOption = 2
-	QMainWindow__DockOption__AllowTabbedDocks QMainWindow__DockOption = 4
-	QMainWindow__DockOption__ForceTabbedDocks QMainWindow__DockOption = 8
-	QMainWindow__DockOption__VerticalTabs     QMainWindow__DockOption = 16
-	QMainWindow__DockOption__GroupedDragging  QMainWindow__DockOption = 32
+	QMainWindow__AnimatedDocks    QMainWindow__DockOption = 1
+	QMainWindow__AllowNestedDocks QMainWindow__DockOption = 2
+	QMainWindow__AllowTabbedDocks QMainWindow__DockOption = 4
+	QMainWindow__ForceTabbedDocks QMainWindow__DockOption = 8
+	QMainWindow__VerticalTabs     QMainWindow__DockOption = 16
+	QMainWindow__GroupedDragging  QMainWindow__DockOption = 32
 )
 
 type QMainWindow struct {
@@ -61,7 +61,7 @@ func NewQMainWindow2(parent *QWidget) *QMainWindow {
 }
 
 // NewQMainWindow3 constructs a new QMainWindow object.
-func NewQMainWindow3(parent *QWidget, flags int) *QMainWindow {
+func NewQMainWindow3(parent *QWidget, flags WindowType) *QMainWindow {
 	ret := C.QMainWindow_new3(parent.cPointer(), (C.int)(flags))
 	return newQMainWindow(ret)
 }
@@ -135,16 +135,16 @@ func (this *QMainWindow) TabPosition(area DockWidgetArea) QTabWidget__TabPositio
 	return (QTabWidget__TabPosition)(C.QMainWindow_TabPosition(this.h, (C.int)(area)))
 }
 
-func (this *QMainWindow) SetTabPosition(areas int, tabPosition QTabWidget__TabPosition) {
+func (this *QMainWindow) SetTabPosition(areas DockWidgetArea, tabPosition QTabWidget__TabPosition) {
 	C.QMainWindow_SetTabPosition(this.h, (C.int)(areas), (C.int)(tabPosition))
 }
 
-func (this *QMainWindow) SetDockOptions(options int) {
+func (this *QMainWindow) SetDockOptions(options QMainWindow__DockOption) {
 	C.QMainWindow_SetDockOptions(this.h, (C.int)(options))
 }
 
-func (this *QMainWindow) DockOptions() int {
-	return (int)(C.QMainWindow_DockOptions(this.h))
+func (this *QMainWindow) DockOptions() QMainWindow__DockOption {
+	return (QMainWindow__DockOption)(C.QMainWindow_DockOptions(this.h))
 }
 
 func (this *QMainWindow) IsSeparator(pos *QPoint) bool {

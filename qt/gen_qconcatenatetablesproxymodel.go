@@ -114,8 +114,8 @@ func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVa
 	return (bool)(C.QConcatenateTablesProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
-func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) int {
-	return (int)(C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer()))
+func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) Index(row int, column int) *QModelIndex {

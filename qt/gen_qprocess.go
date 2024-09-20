@@ -17,51 +17,51 @@ import (
 type QProcess__ProcessError int
 
 const (
-	QProcess__ProcessError__FailedToStart QProcess__ProcessError = 0
-	QProcess__ProcessError__Crashed       QProcess__ProcessError = 1
-	QProcess__ProcessError__Timedout      QProcess__ProcessError = 2
-	QProcess__ProcessError__ReadError     QProcess__ProcessError = 3
-	QProcess__ProcessError__WriteError    QProcess__ProcessError = 4
-	QProcess__ProcessError__UnknownError  QProcess__ProcessError = 5
+	QProcess__FailedToStart QProcess__ProcessError = 0
+	QProcess__Crashed       QProcess__ProcessError = 1
+	QProcess__Timedout      QProcess__ProcessError = 2
+	QProcess__ReadError     QProcess__ProcessError = 3
+	QProcess__WriteError    QProcess__ProcessError = 4
+	QProcess__UnknownError  QProcess__ProcessError = 5
 )
 
 type QProcess__ProcessState int
 
 const (
-	QProcess__ProcessState__NotRunning QProcess__ProcessState = 0
-	QProcess__ProcessState__Starting   QProcess__ProcessState = 1
-	QProcess__ProcessState__Running    QProcess__ProcessState = 2
+	QProcess__NotRunning QProcess__ProcessState = 0
+	QProcess__Starting   QProcess__ProcessState = 1
+	QProcess__Running    QProcess__ProcessState = 2
 )
 
 type QProcess__ProcessChannel int
 
 const (
-	QProcess__ProcessChannel__StandardOutput QProcess__ProcessChannel = 0
-	QProcess__ProcessChannel__StandardError  QProcess__ProcessChannel = 1
+	QProcess__StandardOutput QProcess__ProcessChannel = 0
+	QProcess__StandardError  QProcess__ProcessChannel = 1
 )
 
 type QProcess__ProcessChannelMode int
 
 const (
-	QProcess__ProcessChannelMode__SeparateChannels       QProcess__ProcessChannelMode = 0
-	QProcess__ProcessChannelMode__MergedChannels         QProcess__ProcessChannelMode = 1
-	QProcess__ProcessChannelMode__ForwardedChannels      QProcess__ProcessChannelMode = 2
-	QProcess__ProcessChannelMode__ForwardedOutputChannel QProcess__ProcessChannelMode = 3
-	QProcess__ProcessChannelMode__ForwardedErrorChannel  QProcess__ProcessChannelMode = 4
+	QProcess__SeparateChannels       QProcess__ProcessChannelMode = 0
+	QProcess__MergedChannels         QProcess__ProcessChannelMode = 1
+	QProcess__ForwardedChannels      QProcess__ProcessChannelMode = 2
+	QProcess__ForwardedOutputChannel QProcess__ProcessChannelMode = 3
+	QProcess__ForwardedErrorChannel  QProcess__ProcessChannelMode = 4
 )
 
 type QProcess__InputChannelMode int
 
 const (
-	QProcess__InputChannelMode__ManagedInputChannel   QProcess__InputChannelMode = 0
-	QProcess__InputChannelMode__ForwardedInputChannel QProcess__InputChannelMode = 1
+	QProcess__ManagedInputChannel   QProcess__InputChannelMode = 0
+	QProcess__ForwardedInputChannel QProcess__InputChannelMode = 1
 )
 
 type QProcess__ExitStatus int
 
 const (
-	QProcess__ExitStatus__NormalExit QProcess__ExitStatus = 0
-	QProcess__ExitStatus__CrashExit  QProcess__ExitStatus = 1
+	QProcess__NormalExit QProcess__ExitStatus = 0
+	QProcess__CrashExit  QProcess__ExitStatus = 1
 )
 
 type QProcessEnvironment struct {
@@ -760,7 +760,7 @@ func QProcess_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QProcess) Start3(program string, arguments []string, mode int) {
+func (this *QProcess) Start3(program string, arguments []string, mode QIODevice__OpenModeFlag) {
 	program_ms := miqt_strdupg(program)
 	defer C.free(program_ms)
 	// For the C ABI, malloc a C array of raw pointers
@@ -776,13 +776,13 @@ func (this *QProcess) Start3(program string, arguments []string, mode int) {
 	C.QProcess_Start3(this.h, (*C.struct_miqt_string)(program_ms), arguments_ma, (C.int)(mode))
 }
 
-func (this *QProcess) Start22(command string, mode int) {
+func (this *QProcess) Start22(command string, mode QIODevice__OpenModeFlag) {
 	command_ms := miqt_strdupg(command)
 	defer C.free(command_ms)
 	C.QProcess_Start22(this.h, (*C.struct_miqt_string)(command_ms), (C.int)(mode))
 }
 
-func (this *QProcess) Start1(mode int) {
+func (this *QProcess) Start1(mode QIODevice__OpenModeFlag) {
 	C.QProcess_Start1(this.h, (C.int)(mode))
 }
 
@@ -790,17 +790,17 @@ func (this *QProcess) StartDetached1(pid *int64) bool {
 	return (bool)(C.QProcess_StartDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
-func (this *QProcess) Open1(mode int) bool {
+func (this *QProcess) Open1(mode QIODevice__OpenModeFlag) bool {
 	return (bool)(C.QProcess_Open1(this.h, (C.int)(mode)))
 }
 
-func (this *QProcess) SetStandardOutputFile2(fileName string, mode int) {
+func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODevice__OpenModeFlag) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QProcess_SetStandardOutputFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
 }
 
-func (this *QProcess) SetStandardErrorFile2(fileName string, mode int) {
+func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODevice__OpenModeFlag) {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QProcess_SetStandardErrorFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))

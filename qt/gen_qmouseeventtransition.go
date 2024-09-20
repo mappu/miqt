@@ -90,11 +90,11 @@ func (this *QMouseEventTransition) SetButton(button MouseButton) {
 	C.QMouseEventTransition_SetButton(this.h, (C.int)(button))
 }
 
-func (this *QMouseEventTransition) ModifierMask() int {
-	return (int)(C.QMouseEventTransition_ModifierMask(this.h))
+func (this *QMouseEventTransition) ModifierMask() KeyboardModifier {
+	return (KeyboardModifier)(C.QMouseEventTransition_ModifierMask(this.h))
 }
 
-func (this *QMouseEventTransition) SetModifierMask(modifiers int) {
+func (this *QMouseEventTransition) SetModifierMask(modifiers KeyboardModifier) {
 	C.QMouseEventTransition_SetModifierMask(this.h, (C.int)(modifiers))
 }
 

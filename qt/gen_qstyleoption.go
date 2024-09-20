@@ -16,32 +16,32 @@ import (
 type QStyleOption__OptionType int
 
 const (
-	QStyleOption__OptionType__SO_Default           QStyleOption__OptionType = 0
-	QStyleOption__OptionType__SO_FocusRect         QStyleOption__OptionType = 1
-	QStyleOption__OptionType__SO_Button            QStyleOption__OptionType = 2
-	QStyleOption__OptionType__SO_Tab               QStyleOption__OptionType = 3
-	QStyleOption__OptionType__SO_MenuItem          QStyleOption__OptionType = 4
-	QStyleOption__OptionType__SO_Frame             QStyleOption__OptionType = 5
-	QStyleOption__OptionType__SO_ProgressBar       QStyleOption__OptionType = 6
-	QStyleOption__OptionType__SO_ToolBox           QStyleOption__OptionType = 7
-	QStyleOption__OptionType__SO_Header            QStyleOption__OptionType = 8
-	QStyleOption__OptionType__SO_DockWidget        QStyleOption__OptionType = 9
-	QStyleOption__OptionType__SO_ViewItem          QStyleOption__OptionType = 10
-	QStyleOption__OptionType__SO_TabWidgetFrame    QStyleOption__OptionType = 11
-	QStyleOption__OptionType__SO_TabBarBase        QStyleOption__OptionType = 12
-	QStyleOption__OptionType__SO_RubberBand        QStyleOption__OptionType = 13
-	QStyleOption__OptionType__SO_ToolBar           QStyleOption__OptionType = 14
-	QStyleOption__OptionType__SO_GraphicsItem      QStyleOption__OptionType = 15
-	QStyleOption__OptionType__SO_Complex           QStyleOption__OptionType = 983040
-	QStyleOption__OptionType__SO_Slider            QStyleOption__OptionType = 983041
-	QStyleOption__OptionType__SO_SpinBox           QStyleOption__OptionType = 983042
-	QStyleOption__OptionType__SO_ToolButton        QStyleOption__OptionType = 983043
-	QStyleOption__OptionType__SO_ComboBox          QStyleOption__OptionType = 983044
-	QStyleOption__OptionType__SO_TitleBar          QStyleOption__OptionType = 983045
-	QStyleOption__OptionType__SO_GroupBox          QStyleOption__OptionType = 983046
-	QStyleOption__OptionType__SO_SizeGrip          QStyleOption__OptionType = 983047
-	QStyleOption__OptionType__SO_CustomBase        QStyleOption__OptionType = 3840
-	QStyleOption__OptionType__SO_ComplexCustomBase QStyleOption__OptionType = 251658240
+	QStyleOption__SO_Default           QStyleOption__OptionType = 0
+	QStyleOption__SO_FocusRect         QStyleOption__OptionType = 1
+	QStyleOption__SO_Button            QStyleOption__OptionType = 2
+	QStyleOption__SO_Tab               QStyleOption__OptionType = 3
+	QStyleOption__SO_MenuItem          QStyleOption__OptionType = 4
+	QStyleOption__SO_Frame             QStyleOption__OptionType = 5
+	QStyleOption__SO_ProgressBar       QStyleOption__OptionType = 6
+	QStyleOption__SO_ToolBox           QStyleOption__OptionType = 7
+	QStyleOption__SO_Header            QStyleOption__OptionType = 8
+	QStyleOption__SO_DockWidget        QStyleOption__OptionType = 9
+	QStyleOption__SO_ViewItem          QStyleOption__OptionType = 10
+	QStyleOption__SO_TabWidgetFrame    QStyleOption__OptionType = 11
+	QStyleOption__SO_TabBarBase        QStyleOption__OptionType = 12
+	QStyleOption__SO_RubberBand        QStyleOption__OptionType = 13
+	QStyleOption__SO_ToolBar           QStyleOption__OptionType = 14
+	QStyleOption__SO_GraphicsItem      QStyleOption__OptionType = 15
+	QStyleOption__SO_Complex           QStyleOption__OptionType = 983040
+	QStyleOption__SO_Slider            QStyleOption__OptionType = 983041
+	QStyleOption__SO_SpinBox           QStyleOption__OptionType = 983042
+	QStyleOption__SO_ToolButton        QStyleOption__OptionType = 983043
+	QStyleOption__SO_ComboBox          QStyleOption__OptionType = 983044
+	QStyleOption__SO_TitleBar          QStyleOption__OptionType = 983045
+	QStyleOption__SO_GroupBox          QStyleOption__OptionType = 983046
+	QStyleOption__SO_SizeGrip          QStyleOption__OptionType = 983047
+	QStyleOption__SO_CustomBase        QStyleOption__OptionType = 3840
+	QStyleOption__SO_ComplexCustomBase QStyleOption__OptionType = 251658240
 )
 
 type QStyleOption__StyleOptionType int
@@ -205,9 +205,9 @@ const (
 type QStyleOptionTab__CornerWidget int
 
 const (
-	QStyleOptionTab__CornerWidget__NoCornerWidgets   QStyleOptionTab__CornerWidget = 0
-	QStyleOptionTab__CornerWidget__LeftCornerWidget  QStyleOptionTab__CornerWidget = 1
-	QStyleOptionTab__CornerWidget__RightCornerWidget QStyleOptionTab__CornerWidget = 2
+	QStyleOptionTab__NoCornerWidgets   QStyleOptionTab__CornerWidget = 0
+	QStyleOptionTab__LeftCornerWidget  QStyleOptionTab__CornerWidget = 1
+	QStyleOptionTab__RightCornerWidget QStyleOptionTab__CornerWidget = 2
 )
 
 type QStyleOptionTab__TabFeature int
@@ -278,22 +278,22 @@ const (
 type QStyleOptionMenuItem__MenuItemType int
 
 const (
-	QStyleOptionMenuItem__MenuItemType__Normal      QStyleOptionMenuItem__MenuItemType = 0
-	QStyleOptionMenuItem__MenuItemType__DefaultItem QStyleOptionMenuItem__MenuItemType = 1
-	QStyleOptionMenuItem__MenuItemType__Separator   QStyleOptionMenuItem__MenuItemType = 2
-	QStyleOptionMenuItem__MenuItemType__SubMenu     QStyleOptionMenuItem__MenuItemType = 3
-	QStyleOptionMenuItem__MenuItemType__Scroller    QStyleOptionMenuItem__MenuItemType = 4
-	QStyleOptionMenuItem__MenuItemType__TearOff     QStyleOptionMenuItem__MenuItemType = 5
-	QStyleOptionMenuItem__MenuItemType__Margin      QStyleOptionMenuItem__MenuItemType = 6
-	QStyleOptionMenuItem__MenuItemType__EmptyArea   QStyleOptionMenuItem__MenuItemType = 7
+	QStyleOptionMenuItem__Normal      QStyleOptionMenuItem__MenuItemType = 0
+	QStyleOptionMenuItem__DefaultItem QStyleOptionMenuItem__MenuItemType = 1
+	QStyleOptionMenuItem__Separator   QStyleOptionMenuItem__MenuItemType = 2
+	QStyleOptionMenuItem__SubMenu     QStyleOptionMenuItem__MenuItemType = 3
+	QStyleOptionMenuItem__Scroller    QStyleOptionMenuItem__MenuItemType = 4
+	QStyleOptionMenuItem__TearOff     QStyleOptionMenuItem__MenuItemType = 5
+	QStyleOptionMenuItem__Margin      QStyleOptionMenuItem__MenuItemType = 6
+	QStyleOptionMenuItem__EmptyArea   QStyleOptionMenuItem__MenuItemType = 7
 )
 
 type QStyleOptionMenuItem__CheckType int
 
 const (
-	QStyleOptionMenuItem__CheckType__NotCheckable QStyleOptionMenuItem__CheckType = 0
-	QStyleOptionMenuItem__CheckType__Exclusive    QStyleOptionMenuItem__CheckType = 1
-	QStyleOptionMenuItem__CheckType__NonExclusive QStyleOptionMenuItem__CheckType = 2
+	QStyleOptionMenuItem__NotCheckable QStyleOptionMenuItem__CheckType = 0
+	QStyleOptionMenuItem__Exclusive    QStyleOptionMenuItem__CheckType = 1
+	QStyleOptionMenuItem__NonExclusive QStyleOptionMenuItem__CheckType = 2
 )
 
 type QStyleOptionDockWidget__StyleOptionType int
@@ -323,10 +323,10 @@ const (
 type QStyleOptionViewItem__Position int
 
 const (
-	QStyleOptionViewItem__Position__Left   QStyleOptionViewItem__Position = 0
-	QStyleOptionViewItem__Position__Right  QStyleOptionViewItem__Position = 1
-	QStyleOptionViewItem__Position__Top    QStyleOptionViewItem__Position = 2
-	QStyleOptionViewItem__Position__Bottom QStyleOptionViewItem__Position = 3
+	QStyleOptionViewItem__Left   QStyleOptionViewItem__Position = 0
+	QStyleOptionViewItem__Right  QStyleOptionViewItem__Position = 1
+	QStyleOptionViewItem__Top    QStyleOptionViewItem__Position = 2
+	QStyleOptionViewItem__Bottom QStyleOptionViewItem__Position = 3
 )
 
 type QStyleOptionViewItem__ViewItemFeature int
@@ -513,9 +513,9 @@ const (
 type QStyleHintReturn__HintReturnType int
 
 const (
-	QStyleHintReturn__HintReturnType__SH_Default QStyleHintReturn__HintReturnType = 61440
-	QStyleHintReturn__HintReturnType__SH_Mask    QStyleHintReturn__HintReturnType = 61441
-	QStyleHintReturn__HintReturnType__SH_Variant QStyleHintReturn__HintReturnType = 61442
+	QStyleHintReturn__SH_Default QStyleHintReturn__HintReturnType = 61440
+	QStyleHintReturn__SH_Mask    QStyleHintReturn__HintReturnType = 61441
+	QStyleHintReturn__SH_Variant QStyleHintReturn__HintReturnType = 61442
 )
 
 type QStyleHintReturn__StyleOptionType int

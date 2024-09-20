@@ -16,42 +16,42 @@ import (
 type QSizePolicy__PolicyFlag int
 
 const (
-	QSizePolicy__PolicyFlag__GrowFlag   QSizePolicy__PolicyFlag = 1
-	QSizePolicy__PolicyFlag__ExpandFlag QSizePolicy__PolicyFlag = 2
-	QSizePolicy__PolicyFlag__ShrinkFlag QSizePolicy__PolicyFlag = 4
-	QSizePolicy__PolicyFlag__IgnoreFlag QSizePolicy__PolicyFlag = 8
+	QSizePolicy__GrowFlag   QSizePolicy__PolicyFlag = 1
+	QSizePolicy__ExpandFlag QSizePolicy__PolicyFlag = 2
+	QSizePolicy__ShrinkFlag QSizePolicy__PolicyFlag = 4
+	QSizePolicy__IgnoreFlag QSizePolicy__PolicyFlag = 8
 )
 
 type QSizePolicy__Policy int
 
 const (
-	QSizePolicy__Policy__Fixed            QSizePolicy__Policy = 0
-	QSizePolicy__Policy__Minimum          QSizePolicy__Policy = 1
-	QSizePolicy__Policy__Maximum          QSizePolicy__Policy = 4
-	QSizePolicy__Policy__Preferred        QSizePolicy__Policy = 5
-	QSizePolicy__Policy__MinimumExpanding QSizePolicy__Policy = 3
-	QSizePolicy__Policy__Expanding        QSizePolicy__Policy = 7
-	QSizePolicy__Policy__Ignored          QSizePolicy__Policy = 13
+	QSizePolicy__Fixed            QSizePolicy__Policy = 0
+	QSizePolicy__Minimum          QSizePolicy__Policy = 1
+	QSizePolicy__Maximum          QSizePolicy__Policy = 4
+	QSizePolicy__Preferred        QSizePolicy__Policy = 5
+	QSizePolicy__MinimumExpanding QSizePolicy__Policy = 3
+	QSizePolicy__Expanding        QSizePolicy__Policy = 7
+	QSizePolicy__Ignored          QSizePolicy__Policy = 13
 )
 
 type QSizePolicy__ControlType int
 
 const (
-	QSizePolicy__ControlType__DefaultType QSizePolicy__ControlType = 1
-	QSizePolicy__ControlType__ButtonBox   QSizePolicy__ControlType = 2
-	QSizePolicy__ControlType__CheckBox    QSizePolicy__ControlType = 4
-	QSizePolicy__ControlType__ComboBox    QSizePolicy__ControlType = 8
-	QSizePolicy__ControlType__Frame       QSizePolicy__ControlType = 16
-	QSizePolicy__ControlType__GroupBox    QSizePolicy__ControlType = 32
-	QSizePolicy__ControlType__Label       QSizePolicy__ControlType = 64
-	QSizePolicy__ControlType__Line        QSizePolicy__ControlType = 128
-	QSizePolicy__ControlType__LineEdit    QSizePolicy__ControlType = 256
-	QSizePolicy__ControlType__PushButton  QSizePolicy__ControlType = 512
-	QSizePolicy__ControlType__RadioButton QSizePolicy__ControlType = 1024
-	QSizePolicy__ControlType__Slider      QSizePolicy__ControlType = 2048
-	QSizePolicy__ControlType__SpinBox     QSizePolicy__ControlType = 4096
-	QSizePolicy__ControlType__TabWidget   QSizePolicy__ControlType = 8192
-	QSizePolicy__ControlType__ToolButton  QSizePolicy__ControlType = 16384
+	QSizePolicy__DefaultType QSizePolicy__ControlType = 1
+	QSizePolicy__ButtonBox   QSizePolicy__ControlType = 2
+	QSizePolicy__CheckBox    QSizePolicy__ControlType = 4
+	QSizePolicy__ComboBox    QSizePolicy__ControlType = 8
+	QSizePolicy__Frame       QSizePolicy__ControlType = 16
+	QSizePolicy__GroupBox    QSizePolicy__ControlType = 32
+	QSizePolicy__Label       QSizePolicy__ControlType = 64
+	QSizePolicy__Line        QSizePolicy__ControlType = 128
+	QSizePolicy__LineEdit    QSizePolicy__ControlType = 256
+	QSizePolicy__PushButton  QSizePolicy__ControlType = 512
+	QSizePolicy__RadioButton QSizePolicy__ControlType = 1024
+	QSizePolicy__Slider      QSizePolicy__ControlType = 2048
+	QSizePolicy__SpinBox     QSizePolicy__ControlType = 4096
+	QSizePolicy__TabWidget   QSizePolicy__ControlType = 8192
+	QSizePolicy__ToolButton  QSizePolicy__ControlType = 16384
 )
 
 type QSizePolicy struct {
@@ -124,8 +124,8 @@ func (this *QSizePolicy) SetControlType(typeVal QSizePolicy__ControlType) {
 	C.QSizePolicy_SetControlType(this.h, (C.int)(typeVal))
 }
 
-func (this *QSizePolicy) ExpandingDirections() int {
-	return (int)(C.QSizePolicy_ExpandingDirections(this.h))
+func (this *QSizePolicy) ExpandingDirections() Orientation {
+	return (Orientation)(C.QSizePolicy_ExpandingDirections(this.h))
 }
 
 func (this *QSizePolicy) SetHeightForWidth(b bool) {

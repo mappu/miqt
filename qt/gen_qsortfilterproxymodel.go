@@ -310,8 +310,8 @@ func (this *QSortFilterProxyModel) CanFetchMore(parent *QModelIndex) bool {
 	return (bool)(C.QSortFilterProxyModel_CanFetchMore(this.h, parent.cPointer()))
 }
 
-func (this *QSortFilterProxyModel) Flags(index *QModelIndex) int {
-	return (int)(C.QSortFilterProxyModel_Flags(this.h, index.cPointer()))
+func (this *QSortFilterProxyModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QSortFilterProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Buddy(index *QModelIndex) *QModelIndex {
@@ -360,8 +360,8 @@ func (this *QSortFilterProxyModel) MimeTypes() []string {
 	return _ret
 }
 
-func (this *QSortFilterProxyModel) SupportedDropActions() int {
-	return (int)(C.QSortFilterProxyModel_SupportedDropActions(this.h))
+func (this *QSortFilterProxyModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QSortFilterProxyModel_SupportedDropActions(this.h))
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilterChanged(dynamicSortFilter bool) {
@@ -619,7 +619,7 @@ func (this *QSortFilterProxyModel) Match4(start *QModelIndex, role int, value *Q
 	return _ret
 }
 
-func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
+func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya

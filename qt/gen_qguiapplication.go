@@ -232,16 +232,16 @@ func QGuiApplication_SetPalette(pal *QPalette) {
 	C.QGuiApplication_SetPalette(pal.cPointer())
 }
 
-func QGuiApplication_KeyboardModifiers() int {
-	return (int)(C.QGuiApplication_KeyboardModifiers())
+func QGuiApplication_KeyboardModifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGuiApplication_KeyboardModifiers())
 }
 
-func QGuiApplication_QueryKeyboardModifiers() int {
-	return (int)(C.QGuiApplication_QueryKeyboardModifiers())
+func QGuiApplication_QueryKeyboardModifiers() KeyboardModifier {
+	return (KeyboardModifier)(C.QGuiApplication_QueryKeyboardModifiers())
 }
 
-func QGuiApplication_MouseButtons() int {
-	return (int)(C.QGuiApplication_MouseButtons())
+func QGuiApplication_MouseButtons() MouseButton {
+	return (MouseButton)(C.QGuiApplication_MouseButtons())
 }
 
 func QGuiApplication_SetLayoutDirection(direction LayoutDirection) {

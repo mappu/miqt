@@ -17,9 +17,9 @@ import (
 type QWidget__RenderFlag int
 
 const (
-	QWidget__RenderFlag__DrawWindowBackground QWidget__RenderFlag = 1
-	QWidget__RenderFlag__DrawChildren         QWidget__RenderFlag = 2
-	QWidget__RenderFlag__IgnoreMask           QWidget__RenderFlag = 4
+	QWidget__DrawWindowBackground QWidget__RenderFlag = 1
+	QWidget__DrawChildren         QWidget__RenderFlag = 2
+	QWidget__IgnoreMask           QWidget__RenderFlag = 4
 )
 
 type QWidgetData struct {
@@ -105,7 +105,7 @@ func NewQWidget2(parent *QWidget) *QWidget {
 }
 
 // NewQWidget3 constructs a new QWidget object.
-func NewQWidget3(parent *QWidget, f int) *QWidget {
+func NewQWidget3(parent *QWidget, f WindowType) *QWidget {
 	ret := C.QWidget_new3(parent.cPointer(), (C.int)(f))
 	return newQWidget(ret)
 }
@@ -1020,15 +1020,15 @@ func (this *QWidget) IsFullScreen() bool {
 	return (bool)(C.QWidget_IsFullScreen(this.h))
 }
 
-func (this *QWidget) WindowState() int {
-	return (int)(C.QWidget_WindowState(this.h))
+func (this *QWidget) WindowState() WindowState {
+	return (WindowState)(C.QWidget_WindowState(this.h))
 }
 
-func (this *QWidget) SetWindowState(state int) {
+func (this *QWidget) SetWindowState(state WindowState) {
 	C.QWidget_SetWindowState(this.h, (C.int)(state))
 }
 
-func (this *QWidget) OverrideWindowState(state int) {
+func (this *QWidget) OverrideWindowState(state WindowState) {
 	C.QWidget_OverrideWindowState(this.h, (C.int)(state))
 }
 
@@ -1118,7 +1118,7 @@ func (this *QWidget) SetParent(parent *QWidget) {
 	C.QWidget_SetParent(this.h, parent.cPointer())
 }
 
-func (this *QWidget) SetParent2(parent *QWidget, f int) {
+func (this *QWidget) SetParent2(parent *QWidget, f WindowType) {
 	C.QWidget_SetParent2(this.h, parent.cPointer(), (C.int)(f))
 }
 
@@ -1201,19 +1201,19 @@ func (this *QWidget) ParentWidget() *QWidget {
 	return newQWidget_U(unsafe.Pointer(C.QWidget_ParentWidget(this.h)))
 }
 
-func (this *QWidget) SetWindowFlags(typeVal int) {
+func (this *QWidget) SetWindowFlags(typeVal WindowType) {
 	C.QWidget_SetWindowFlags(this.h, (C.int)(typeVal))
 }
 
-func (this *QWidget) WindowFlags() int {
-	return (int)(C.QWidget_WindowFlags(this.h))
+func (this *QWidget) WindowFlags() WindowType {
+	return (WindowType)(C.QWidget_WindowFlags(this.h))
 }
 
 func (this *QWidget) SetWindowFlag(param1 WindowType) {
 	C.QWidget_SetWindowFlag(this.h, (C.int)(param1))
 }
 
-func (this *QWidget) OverrideWindowFlags(typeVal int) {
+func (this *QWidget) OverrideWindowFlags(typeVal WindowType) {
 	C.QWidget_OverrideWindowFlags(this.h, (C.int)(typeVal))
 }
 
@@ -1374,11 +1374,11 @@ func (this *QWidget) InputMethodQuery(param1 InputMethodQuery) *QVariant {
 	return _goptr
 }
 
-func (this *QWidget) InputMethodHints() int {
-	return (int)(C.QWidget_InputMethodHints(this.h))
+func (this *QWidget) InputMethodHints() InputMethodHint {
+	return (InputMethodHint)(C.QWidget_InputMethodHints(this.h))
 }
 
-func (this *QWidget) SetInputMethodHints(hints int) {
+func (this *QWidget) SetInputMethodHints(hints InputMethodHint) {
 	C.QWidget_SetInputMethodHints(this.h, (C.int)(hints))
 }
 
@@ -1434,7 +1434,7 @@ func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceR
 	C.QWidget_Render3(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
 }
 
-func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
+func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
 	C.QWidget_Render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
@@ -1446,7 +1446,7 @@ func (this *QWidget) Render32(painter *QPainter, targetOffset *QPoint, sourceReg
 	C.QWidget_Render32(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
 }
 
-func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags int) {
+func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
 	C.QWidget_Render42(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
@@ -1457,7 +1457,7 @@ func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
 	return _goptr
 }
 
-func (this *QWidget) GrabGesture2(typeVal GestureType, flags int) {
+func (this *QWidget) GrabGesture2(typeVal GestureType, flags GestureFlag) {
 	C.QWidget_GrabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
@@ -1485,7 +1485,7 @@ func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
 	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())))
 }
 
-func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags int) *QWidget {
+func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags WindowType) *QWidget {
 	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))))
 }
 

@@ -16,10 +16,10 @@ import (
 type QLockFile__LockError int
 
 const (
-	QLockFile__LockError__NoError         QLockFile__LockError = 0
-	QLockFile__LockError__LockFailedError QLockFile__LockError = 1
-	QLockFile__LockError__PermissionError QLockFile__LockError = 2
-	QLockFile__LockError__UnknownError    QLockFile__LockError = 3
+	QLockFile__NoError         QLockFile__LockError = 0
+	QLockFile__LockFailedError QLockFile__LockError = 1
+	QLockFile__PermissionError QLockFile__LockError = 2
+	QLockFile__UnknownError    QLockFile__LockError = 3
 )
 
 type QLockFile struct {

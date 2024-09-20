@@ -102,8 +102,8 @@ func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation
 	return _goptr
 }
 
-func (this *QAbstractProxyModel) Flags(index *QModelIndex) int {
-	return (int)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
+func (this *QAbstractProxyModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
@@ -185,12 +185,12 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 	return _ret
 }
 
-func (this *QAbstractProxyModel) SupportedDragActions() int {
-	return (int)(C.QAbstractProxyModel_SupportedDragActions(this.h))
+func (this *QAbstractProxyModel) SupportedDragActions() DropAction {
+	return (DropAction)(C.QAbstractProxyModel_SupportedDragActions(this.h))
 }
 
-func (this *QAbstractProxyModel) SupportedDropActions() int {
-	return (int)(C.QAbstractProxyModel_SupportedDropActions(this.h))
+func (this *QAbstractProxyModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QAbstractProxyModel_SupportedDropActions(this.h))
 }
 
 func QAbstractProxyModel_Tr2(s string, c string) string {

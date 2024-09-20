@@ -17,8 +17,8 @@ import (
 type QDataWidgetMapper__SubmitPolicy int
 
 const (
-	QDataWidgetMapper__SubmitPolicy__AutoSubmit   QDataWidgetMapper__SubmitPolicy = 0
-	QDataWidgetMapper__SubmitPolicy__ManualSubmit QDataWidgetMapper__SubmitPolicy = 1
+	QDataWidgetMapper__AutoSubmit   QDataWidgetMapper__SubmitPolicy = 0
+	QDataWidgetMapper__ManualSubmit QDataWidgetMapper__SubmitPolicy = 1
 )
 
 type QDataWidgetMapper struct {

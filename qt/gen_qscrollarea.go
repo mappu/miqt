@@ -101,11 +101,11 @@ func (this *QScrollArea) FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QScrollArea_FocusNextPrevChild(this.h, (C.bool)(next)))
 }
 
-func (this *QScrollArea) Alignment() int {
-	return (int)(C.QScrollArea_Alignment(this.h))
+func (this *QScrollArea) Alignment() AlignmentFlag {
+	return (AlignmentFlag)(C.QScrollArea_Alignment(this.h))
 }
 
-func (this *QScrollArea) SetAlignment(alignment int) {
+func (this *QScrollArea) SetAlignment(alignment AlignmentFlag) {
 	C.QScrollArea_SetAlignment(this.h, (C.int)(alignment))
 }
 

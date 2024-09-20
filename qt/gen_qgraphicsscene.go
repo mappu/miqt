@@ -17,17 +17,17 @@ import (
 type QGraphicsScene__ItemIndexMethod int
 
 const (
-	QGraphicsScene__ItemIndexMethod__BspTreeIndex QGraphicsScene__ItemIndexMethod = 0
-	QGraphicsScene__ItemIndexMethod__NoIndex      QGraphicsScene__ItemIndexMethod = -1
+	QGraphicsScene__BspTreeIndex QGraphicsScene__ItemIndexMethod = 0
+	QGraphicsScene__NoIndex      QGraphicsScene__ItemIndexMethod = -1
 )
 
 type QGraphicsScene__SceneLayer int
 
 const (
-	QGraphicsScene__SceneLayer__ItemLayer       QGraphicsScene__SceneLayer = 1
-	QGraphicsScene__SceneLayer__BackgroundLayer QGraphicsScene__SceneLayer = 2
-	QGraphicsScene__SceneLayer__ForegroundLayer QGraphicsScene__SceneLayer = 4
-	QGraphicsScene__SceneLayer__AllLayers       QGraphicsScene__SceneLayer = 65535
+	QGraphicsScene__ItemLayer       QGraphicsScene__SceneLayer = 1
+	QGraphicsScene__BackgroundLayer QGraphicsScene__SceneLayer = 2
+	QGraphicsScene__ForegroundLayer QGraphicsScene__SceneLayer = 4
+	QGraphicsScene__AllLayers       QGraphicsScene__SceneLayer = 65535
 )
 
 type QGraphicsScene struct {
@@ -856,7 +856,7 @@ func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsS
 	return newQGraphicsSimpleTextItem_U(unsafe.Pointer(C.QGraphicsScene_AddSimpleText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())))
 }
 
-func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags int) *QGraphicsProxyWidget {
+func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags WindowType) *QGraphicsProxyWidget {
 	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsScene_AddWidget2(this.h, widget.cPointer(), (C.int)(wFlags))))
 }
 
@@ -888,7 +888,7 @@ func (this *QGraphicsScene) SetFocus1(focusReason FocusReason) {
 	C.QGraphicsScene_SetFocus1(this.h, (C.int)(focusReason))
 }
 
-func (this *QGraphicsScene) Invalidate5(x float64, y float64, w float64, h float64, layers int) {
+func (this *QGraphicsScene) Invalidate5(x float64, y float64, w float64, h float64, layers QGraphicsScene__SceneLayer) {
 	C.QGraphicsScene_Invalidate5(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(layers))
 }
 
@@ -900,7 +900,7 @@ func (this *QGraphicsScene) Invalidate1(rect *QRectF) {
 	C.QGraphicsScene_Invalidate1(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsScene) Invalidate22(rect *QRectF, layers int) {
+func (this *QGraphicsScene) Invalidate22(rect *QRectF, layers QGraphicsScene__SceneLayer) {
 	C.QGraphicsScene_Invalidate22(this.h, rect.cPointer(), (C.int)(layers))
 }
 

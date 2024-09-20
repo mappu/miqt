@@ -17,18 +17,18 @@ import (
 type QAbstractItemModel__LayoutChangeHint int
 
 const (
-	QAbstractItemModel__LayoutChangeHint__NoLayoutChangeHint QAbstractItemModel__LayoutChangeHint = 0
-	QAbstractItemModel__LayoutChangeHint__VerticalSortHint   QAbstractItemModel__LayoutChangeHint = 1
-	QAbstractItemModel__LayoutChangeHint__HorizontalSortHint QAbstractItemModel__LayoutChangeHint = 2
+	QAbstractItemModel__NoLayoutChangeHint QAbstractItemModel__LayoutChangeHint = 0
+	QAbstractItemModel__VerticalSortHint   QAbstractItemModel__LayoutChangeHint = 1
+	QAbstractItemModel__HorizontalSortHint QAbstractItemModel__LayoutChangeHint = 2
 )
 
 type QAbstractItemModel__CheckIndexOption int
 
 const (
-	QAbstractItemModel__CheckIndexOption__NoOption        QAbstractItemModel__CheckIndexOption = 0
-	QAbstractItemModel__CheckIndexOption__IndexIsValid    QAbstractItemModel__CheckIndexOption = 1
-	QAbstractItemModel__CheckIndexOption__DoNotUseParent  QAbstractItemModel__CheckIndexOption = 2
-	QAbstractItemModel__CheckIndexOption__ParentIsInvalid QAbstractItemModel__CheckIndexOption = 4
+	QAbstractItemModel__NoOption        QAbstractItemModel__CheckIndexOption = 0
+	QAbstractItemModel__IndexIsValid    QAbstractItemModel__CheckIndexOption = 1
+	QAbstractItemModel__DoNotUseParent  QAbstractItemModel__CheckIndexOption = 2
+	QAbstractItemModel__ParentIsInvalid QAbstractItemModel__CheckIndexOption = 4
 )
 
 type QModelIndex struct {
@@ -119,8 +119,8 @@ func (this *QModelIndex) Data() *QVariant {
 	return _goptr
 }
 
-func (this *QModelIndex) Flags() int {
-	return (int)(C.QModelIndex_Flags(this.h))
+func (this *QModelIndex) Flags() ItemFlag {
+	return (ItemFlag)(C.QModelIndex_Flags(this.h))
 }
 
 func (this *QModelIndex) Model() *QAbstractItemModel {
@@ -276,8 +276,8 @@ func (this *QPersistentModelIndex) Data() *QVariant {
 	return _goptr
 }
 
-func (this *QPersistentModelIndex) Flags() int {
-	return (int)(C.QPersistentModelIndex_Flags(this.h))
+func (this *QPersistentModelIndex) Flags() ItemFlag {
+	return (ItemFlag)(C.QPersistentModelIndex_Flags(this.h))
 }
 
 func (this *QPersistentModelIndex) Model() *QAbstractItemModel {
@@ -447,12 +447,12 @@ func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action DropAction,
 	return (bool)(C.QAbstractItemModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) SupportedDropActions() int {
-	return (int)(C.QAbstractItemModel_SupportedDropActions(this.h))
+func (this *QAbstractItemModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QAbstractItemModel_SupportedDropActions(this.h))
 }
 
-func (this *QAbstractItemModel) SupportedDragActions() int {
-	return (int)(C.QAbstractItemModel_SupportedDragActions(this.h))
+func (this *QAbstractItemModel) SupportedDragActions() DropAction {
+	return (DropAction)(C.QAbstractItemModel_SupportedDragActions(this.h))
 }
 
 func (this *QAbstractItemModel) InsertRows(row int, count int) bool {
@@ -511,8 +511,8 @@ func (this *QAbstractItemModel) CanFetchMore(parent *QModelIndex) bool {
 	return (bool)(C.QAbstractItemModel_CanFetchMore(this.h, parent.cPointer()))
 }
 
-func (this *QAbstractItemModel) Flags(index *QModelIndex) int {
-	return (int)(C.QAbstractItemModel_Flags(this.h, index.cPointer()))
+func (this *QAbstractItemModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QAbstractItemModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemModel) Sort(column int) {
@@ -777,7 +777,7 @@ func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVar
 	return _ret
 }
 
-func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags int) []QModelIndex {
+func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
@@ -791,7 +791,7 @@ func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVar
 	return _ret
 }
 
-func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options int) bool {
+func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstractItemModel__CheckIndexOption) bool {
 	return (bool)(C.QAbstractItemModel_CheckIndex2(this.h, index.cPointer(), (C.int)(options)))
 }
 
@@ -1065,8 +1065,8 @@ func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action DropAction
 	return (bool)(C.QAbstractTableModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QAbstractTableModel) Flags(index *QModelIndex) int {
-	return (int)(C.QAbstractTableModel_Flags(this.h, index.cPointer()))
+func (this *QAbstractTableModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QAbstractTableModel_Flags(this.h, index.cPointer()))
 }
 
 func QAbstractTableModel_Tr2(s string, c string) string {
@@ -1197,8 +1197,8 @@ func (this *QAbstractListModel) DropMimeData(data *QMimeData, action DropAction,
 	return (bool)(C.QAbstractListModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QAbstractListModel) Flags(index *QModelIndex) int {
-	return (int)(C.QAbstractListModel_Flags(this.h, index.cPointer()))
+func (this *QAbstractListModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QAbstractListModel_Flags(this.h, index.cPointer()))
 }
 
 func QAbstractListModel_Tr2(s string, c string) string {

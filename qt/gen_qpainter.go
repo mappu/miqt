@@ -16,62 +16,62 @@ import (
 type QPainter__RenderHint int
 
 const (
-	QPainter__RenderHint__Antialiasing            QPainter__RenderHint = 1
-	QPainter__RenderHint__TextAntialiasing        QPainter__RenderHint = 2
-	QPainter__RenderHint__SmoothPixmapTransform   QPainter__RenderHint = 4
-	QPainter__RenderHint__HighQualityAntialiasing QPainter__RenderHint = 8
-	QPainter__RenderHint__NonCosmeticDefaultPen   QPainter__RenderHint = 16
-	QPainter__RenderHint__Qt4CompatiblePainting   QPainter__RenderHint = 32
-	QPainter__RenderHint__LosslessImageRendering  QPainter__RenderHint = 64
+	QPainter__Antialiasing            QPainter__RenderHint = 1
+	QPainter__TextAntialiasing        QPainter__RenderHint = 2
+	QPainter__SmoothPixmapTransform   QPainter__RenderHint = 4
+	QPainter__HighQualityAntialiasing QPainter__RenderHint = 8
+	QPainter__NonCosmeticDefaultPen   QPainter__RenderHint = 16
+	QPainter__Qt4CompatiblePainting   QPainter__RenderHint = 32
+	QPainter__LosslessImageRendering  QPainter__RenderHint = 64
 )
 
 type QPainter__PixmapFragmentHint int
 
 const (
-	QPainter__PixmapFragmentHint__OpaqueHint QPainter__PixmapFragmentHint = 1
+	QPainter__OpaqueHint QPainter__PixmapFragmentHint = 1
 )
 
 type QPainter__CompositionMode int
 
 const (
-	QPainter__CompositionMode__CompositionMode_SourceOver          QPainter__CompositionMode = 0
-	QPainter__CompositionMode__CompositionMode_DestinationOver     QPainter__CompositionMode = 1
-	QPainter__CompositionMode__CompositionMode_Clear               QPainter__CompositionMode = 2
-	QPainter__CompositionMode__CompositionMode_Source              QPainter__CompositionMode = 3
-	QPainter__CompositionMode__CompositionMode_Destination         QPainter__CompositionMode = 4
-	QPainter__CompositionMode__CompositionMode_SourceIn            QPainter__CompositionMode = 5
-	QPainter__CompositionMode__CompositionMode_DestinationIn       QPainter__CompositionMode = 6
-	QPainter__CompositionMode__CompositionMode_SourceOut           QPainter__CompositionMode = 7
-	QPainter__CompositionMode__CompositionMode_DestinationOut      QPainter__CompositionMode = 8
-	QPainter__CompositionMode__CompositionMode_SourceAtop          QPainter__CompositionMode = 9
-	QPainter__CompositionMode__CompositionMode_DestinationAtop     QPainter__CompositionMode = 10
-	QPainter__CompositionMode__CompositionMode_Xor                 QPainter__CompositionMode = 11
-	QPainter__CompositionMode__CompositionMode_Plus                QPainter__CompositionMode = 12
-	QPainter__CompositionMode__CompositionMode_Multiply            QPainter__CompositionMode = 13
-	QPainter__CompositionMode__CompositionMode_Screen              QPainter__CompositionMode = 14
-	QPainter__CompositionMode__CompositionMode_Overlay             QPainter__CompositionMode = 15
-	QPainter__CompositionMode__CompositionMode_Darken              QPainter__CompositionMode = 16
-	QPainter__CompositionMode__CompositionMode_Lighten             QPainter__CompositionMode = 17
-	QPainter__CompositionMode__CompositionMode_ColorDodge          QPainter__CompositionMode = 18
-	QPainter__CompositionMode__CompositionMode_ColorBurn           QPainter__CompositionMode = 19
-	QPainter__CompositionMode__CompositionMode_HardLight           QPainter__CompositionMode = 20
-	QPainter__CompositionMode__CompositionMode_SoftLight           QPainter__CompositionMode = 21
-	QPainter__CompositionMode__CompositionMode_Difference          QPainter__CompositionMode = 22
-	QPainter__CompositionMode__CompositionMode_Exclusion           QPainter__CompositionMode = 23
-	QPainter__CompositionMode__RasterOp_SourceOrDestination        QPainter__CompositionMode = 24
-	QPainter__CompositionMode__RasterOp_SourceAndDestination       QPainter__CompositionMode = 25
-	QPainter__CompositionMode__RasterOp_SourceXorDestination       QPainter__CompositionMode = 26
-	QPainter__CompositionMode__RasterOp_NotSourceAndNotDestination QPainter__CompositionMode = 27
-	QPainter__CompositionMode__RasterOp_NotSourceOrNotDestination  QPainter__CompositionMode = 28
-	QPainter__CompositionMode__RasterOp_NotSourceXorDestination    QPainter__CompositionMode = 29
-	QPainter__CompositionMode__RasterOp_NotSource                  QPainter__CompositionMode = 30
-	QPainter__CompositionMode__RasterOp_NotSourceAndDestination    QPainter__CompositionMode = 31
-	QPainter__CompositionMode__RasterOp_SourceAndNotDestination    QPainter__CompositionMode = 32
-	QPainter__CompositionMode__RasterOp_NotSourceOrDestination     QPainter__CompositionMode = 33
-	QPainter__CompositionMode__RasterOp_SourceOrNotDestination     QPainter__CompositionMode = 34
-	QPainter__CompositionMode__RasterOp_ClearDestination           QPainter__CompositionMode = 35
-	QPainter__CompositionMode__RasterOp_SetDestination             QPainter__CompositionMode = 36
-	QPainter__CompositionMode__RasterOp_NotDestination             QPainter__CompositionMode = 37
+	QPainter__CompositionMode_SourceOver          QPainter__CompositionMode = 0
+	QPainter__CompositionMode_DestinationOver     QPainter__CompositionMode = 1
+	QPainter__CompositionMode_Clear               QPainter__CompositionMode = 2
+	QPainter__CompositionMode_Source              QPainter__CompositionMode = 3
+	QPainter__CompositionMode_Destination         QPainter__CompositionMode = 4
+	QPainter__CompositionMode_SourceIn            QPainter__CompositionMode = 5
+	QPainter__CompositionMode_DestinationIn       QPainter__CompositionMode = 6
+	QPainter__CompositionMode_SourceOut           QPainter__CompositionMode = 7
+	QPainter__CompositionMode_DestinationOut      QPainter__CompositionMode = 8
+	QPainter__CompositionMode_SourceAtop          QPainter__CompositionMode = 9
+	QPainter__CompositionMode_DestinationAtop     QPainter__CompositionMode = 10
+	QPainter__CompositionMode_Xor                 QPainter__CompositionMode = 11
+	QPainter__CompositionMode_Plus                QPainter__CompositionMode = 12
+	QPainter__CompositionMode_Multiply            QPainter__CompositionMode = 13
+	QPainter__CompositionMode_Screen              QPainter__CompositionMode = 14
+	QPainter__CompositionMode_Overlay             QPainter__CompositionMode = 15
+	QPainter__CompositionMode_Darken              QPainter__CompositionMode = 16
+	QPainter__CompositionMode_Lighten             QPainter__CompositionMode = 17
+	QPainter__CompositionMode_ColorDodge          QPainter__CompositionMode = 18
+	QPainter__CompositionMode_ColorBurn           QPainter__CompositionMode = 19
+	QPainter__CompositionMode_HardLight           QPainter__CompositionMode = 20
+	QPainter__CompositionMode_SoftLight           QPainter__CompositionMode = 21
+	QPainter__CompositionMode_Difference          QPainter__CompositionMode = 22
+	QPainter__CompositionMode_Exclusion           QPainter__CompositionMode = 23
+	QPainter__RasterOp_SourceOrDestination        QPainter__CompositionMode = 24
+	QPainter__RasterOp_SourceAndDestination       QPainter__CompositionMode = 25
+	QPainter__RasterOp_SourceXorDestination       QPainter__CompositionMode = 26
+	QPainter__RasterOp_NotSourceAndNotDestination QPainter__CompositionMode = 27
+	QPainter__RasterOp_NotSourceOrNotDestination  QPainter__CompositionMode = 28
+	QPainter__RasterOp_NotSourceXorDestination    QPainter__CompositionMode = 29
+	QPainter__RasterOp_NotSource                  QPainter__CompositionMode = 30
+	QPainter__RasterOp_NotSourceAndDestination    QPainter__CompositionMode = 31
+	QPainter__RasterOp_SourceAndNotDestination    QPainter__CompositionMode = 32
+	QPainter__RasterOp_NotSourceOrDestination     QPainter__CompositionMode = 33
+	QPainter__RasterOp_SourceOrNotDestination     QPainter__CompositionMode = 34
+	QPainter__RasterOp_ClearDestination           QPainter__CompositionMode = 35
+	QPainter__RasterOp_SetDestination             QPainter__CompositionMode = 36
+	QPainter__RasterOp_NotDestination             QPainter__CompositionMode = 37
 )
 
 type QPainter struct {
@@ -994,12 +994,12 @@ func (this *QPainter) SetRenderHint(hint QPainter__RenderHint) {
 	C.QPainter_SetRenderHint(this.h, (C.int)(hint))
 }
 
-func (this *QPainter) SetRenderHints(hints int) {
+func (this *QPainter) SetRenderHints(hints QPainter__RenderHint) {
 	C.QPainter_SetRenderHints(this.h, (C.int)(hints))
 }
 
-func (this *QPainter) RenderHints() int {
-	return (int)(C.QPainter_RenderHints(this.h))
+func (this *QPainter) RenderHints() QPainter__RenderHint {
+	return (QPainter__RenderHint)(C.QPainter_RenderHints(this.h))
 }
 
 func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
@@ -1126,23 +1126,23 @@ func (this *QPainter) DrawTiledPixmap33(param1 *QRect, param2 *QPixmap, param3 *
 	C.QPainter_DrawTiledPixmap33(this.h, param1.cPointer(), param2.cPointer(), param3.cPointer())
 }
 
-func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints int) {
+func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints QPainter__PixmapFragmentHint) {
 	C.QPainter_DrawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
 }
 
-func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags int) {
+func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags ImageConversionFlag) {
 	C.QPainter_DrawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags int) {
+func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags ImageConversionFlag) {
 	C.QPainter_DrawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags int) {
+func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags ImageConversionFlag) {
 	C.QPainter_DrawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags int) {
+func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags ImageConversionFlag) {
 	C.QPainter_DrawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
@@ -1162,7 +1162,7 @@ func (this *QPainter) DrawImage72(x int, y int, image *QImage, sx int, sy int, s
 	C.QPainter_DrawImage72(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh))
 }
 
-func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags int) {
+func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags ImageConversionFlag) {
 	C.QPainter_DrawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
 }
 
@@ -1203,7 +1203,7 @@ func (this *QPainter) SetRenderHint2(hint QPainter__RenderHint, on bool) {
 	C.QPainter_SetRenderHint2(this.h, (C.int)(hint), (C.bool)(on))
 }
 
-func (this *QPainter) SetRenderHints2(hints int, on bool) {
+func (this *QPainter) SetRenderHints2(hints QPainter__RenderHint, on bool) {
 	C.QPainter_SetRenderHints2(this.h, (C.int)(hints), (C.bool)(on))
 }
 

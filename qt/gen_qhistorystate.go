@@ -16,8 +16,8 @@ import (
 type QHistoryState__HistoryType int
 
 const (
-	QHistoryState__HistoryType__ShallowHistory QHistoryState__HistoryType = 0
-	QHistoryState__HistoryType__DeepHistory    QHistoryState__HistoryType = 1
+	QHistoryState__ShallowHistory QHistoryState__HistoryType = 0
+	QHistoryState__DeepHistory    QHistoryState__HistoryType = 1
 )
 
 type QHistoryState struct {

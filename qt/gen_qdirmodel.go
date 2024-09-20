@@ -16,9 +16,9 @@ import (
 type QDirModel__Roles int
 
 const (
-	QDirModel__Roles__FileIconRole QDirModel__Roles = 1
-	QDirModel__Roles__FilePathRole QDirModel__Roles = 257
-	QDirModel__Roles__FileNameRole QDirModel__Roles = 258
+	QDirModel__FileIconRole QDirModel__Roles = 1
+	QDirModel__FilePathRole QDirModel__Roles = 257
+	QDirModel__FileNameRole QDirModel__Roles = 258
 )
 
 type QDirModel struct {
@@ -45,7 +45,7 @@ func newQDirModel_U(h unsafe.Pointer) *QDirModel {
 }
 
 // NewQDirModel constructs a new QDirModel object.
-func NewQDirModel(nameFilters []string, filters int, sort int) *QDirModel {
+func NewQDirModel(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag) *QDirModel {
 	// For the C ABI, malloc a C array of raw pointers
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
@@ -67,7 +67,7 @@ func NewQDirModel2() *QDirModel {
 }
 
 // NewQDirModel3 constructs a new QDirModel object.
-func NewQDirModel3(nameFilters []string, filters int, sort int, parent *QObject) *QDirModel {
+func NewQDirModel3(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag, parent *QObject) *QDirModel {
 	// For the C ABI, malloc a C array of raw pointers
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
@@ -154,8 +154,8 @@ func (this *QDirModel) HasChildren() bool {
 	return (bool)(C.QDirModel_HasChildren(this.h))
 }
 
-func (this *QDirModel) Flags(index *QModelIndex) int {
-	return (int)(C.QDirModel_Flags(this.h, index.cPointer()))
+func (this *QDirModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QDirModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QDirModel) Sort(column int) {
@@ -192,8 +192,8 @@ func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int,
 	return (bool)(C.QDirModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
-func (this *QDirModel) SupportedDropActions() int {
-	return (int)(C.QDirModel_SupportedDropActions(this.h))
+func (this *QDirModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QDirModel_SupportedDropActions(this.h))
 }
 
 func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
@@ -232,20 +232,20 @@ func (this *QDirModel) NameFilters() []string {
 	return _ret
 }
 
-func (this *QDirModel) SetFilter(filters int) {
+func (this *QDirModel) SetFilter(filters QDir__Filter) {
 	C.QDirModel_SetFilter(this.h, (C.int)(filters))
 }
 
-func (this *QDirModel) Filter() int {
-	return (int)(C.QDirModel_Filter(this.h))
+func (this *QDirModel) Filter() QDir__Filter {
+	return (QDir__Filter)(C.QDirModel_Filter(this.h))
 }
 
-func (this *QDirModel) SetSorting(sort int) {
+func (this *QDirModel) SetSorting(sort QDir__SortFlag) {
 	C.QDirModel_SetSorting(this.h, (C.int)(sort))
 }
 
-func (this *QDirModel) Sorting() int {
-	return (int)(C.QDirModel_Sorting(this.h))
+func (this *QDirModel) Sorting() QDir__SortFlag {
+	return (QDir__SortFlag)(C.QDirModel_Sorting(this.h))
 }
 
 func (this *QDirModel) SetResolveSymlinks(enable bool) {

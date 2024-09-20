@@ -16,12 +16,12 @@ import (
 type QLayout__SizeConstraint int
 
 const (
-	QLayout__SizeConstraint__SetDefaultConstraint QLayout__SizeConstraint = 0
-	QLayout__SizeConstraint__SetNoConstraint      QLayout__SizeConstraint = 1
-	QLayout__SizeConstraint__SetMinimumSize       QLayout__SizeConstraint = 2
-	QLayout__SizeConstraint__SetFixedSize         QLayout__SizeConstraint = 3
-	QLayout__SizeConstraint__SetMaximumSize       QLayout__SizeConstraint = 4
-	QLayout__SizeConstraint__SetMinAndMaxSize     QLayout__SizeConstraint = 5
+	QLayout__SetDefaultConstraint QLayout__SizeConstraint = 0
+	QLayout__SetNoConstraint      QLayout__SizeConstraint = 1
+	QLayout__SetMinimumSize       QLayout__SizeConstraint = 2
+	QLayout__SetFixedSize         QLayout__SizeConstraint = 3
+	QLayout__SetMaximumSize       QLayout__SizeConstraint = 4
+	QLayout__SetMinAndMaxSize     QLayout__SizeConstraint = 5
 )
 
 type QLayout struct {
@@ -112,11 +112,11 @@ func (this *QLayout) ContentsRect() *QRect {
 	return _goptr
 }
 
-func (this *QLayout) SetAlignment(w *QWidget, alignment int) bool {
+func (this *QLayout) SetAlignment(w *QWidget, alignment AlignmentFlag) bool {
 	return (bool)(C.QLayout_SetAlignment(this.h, w.cPointer(), (C.int)(alignment)))
 }
 
-func (this *QLayout) SetAlignment2(l *QLayout, alignment int) bool {
+func (this *QLayout) SetAlignment2(l *QLayout, alignment AlignmentFlag) bool {
 	return (bool)(C.QLayout_SetAlignment2(this.h, l.cPointer(), (C.int)(alignment)))
 }
 
@@ -175,8 +175,8 @@ func (this *QLayout) RemoveItem(param1 *QLayoutItem) {
 	C.QLayout_RemoveItem(this.h, param1.cPointer())
 }
 
-func (this *QLayout) ExpandingDirections() int {
-	return (int)(C.QLayout_ExpandingDirections(this.h))
+func (this *QLayout) ExpandingDirections() Orientation {
+	return (Orientation)(C.QLayout_ExpandingDirections(this.h))
 }
 
 func (this *QLayout) MinimumSize() *QSize {
@@ -221,8 +221,8 @@ func (this *QLayout) IsEmpty() bool {
 	return (bool)(C.QLayout_IsEmpty(this.h))
 }
 
-func (this *QLayout) ControlTypes() int {
-	return (int)(C.QLayout_ControlTypes(this.h))
+func (this *QLayout) ControlTypes() QSizePolicy__ControlType {
+	return (QSizePolicy__ControlType)(C.QLayout_ControlTypes(this.h))
 }
 
 func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
@@ -317,7 +317,7 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options int) *QLayoutItem {
+func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
 	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
 }
 

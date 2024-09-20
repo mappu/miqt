@@ -15,25 +15,6 @@ func init() {
 	KnownClassnames = make(map[string]struct{})
 	KnownTypedefs = make(map[string]CppTypedef)
 	KnownEnums = make(map[string]CppEnum)
-
-	// Seed well-known typedefs
-
-	KnownTypedefs["QRgb"] = CppTypedef{"QRgb", parseSingleTypeString("unsigned int")}
-
-	KnownTypedefs["WId"] = CppTypedef{"WId", parseSingleTypeString("uintptr_t")}
-
-	// QString is deleted from this binding
-	KnownTypedefs["QStringList"] = CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}
-
-	// Not sure why this isn't picked up automatically
-	// FIXME because QFile inherits QFileDevice(!!) and the name refers to its parent class
-	KnownTypedefs["QFile::FileTime"] = CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}
-
-	// n.b. Qt 5 only
-	KnownTypedefs["QLineF::IntersectionType"] = CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}
-
-	// Not sure the reason for this one
-	KnownTypedefs["QSocketDescriptor::DescriptorType"] = CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}
 }
 
 type CppParameter struct {
@@ -84,22 +65,28 @@ func (p *CppParameter) GetQtCppType() *CppParameter {
 	return p
 }
 
-func (p CppParameter) IsFlagType() bool {
-	if strings.HasPrefix(p.ParameterType, `QFlags<`) ||
-		strings.HasPrefix(p.GetQtCppType().ParameterType, `QFlags<`) {
-		return true // This catches most cases through the typedef system
+func (p CppParameter) QFlagsOf() (CppParameter, bool) {
+
+	if strings.HasPrefix(p.ParameterType, `QFlags<`) {
+		ret := parseSingleTypeString(p.ParameterType[7 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_qf"
+		return ret, true
 	}
 
-	switch p.ParameterType {
-	case "QTouchEvent::TouchPoint::InfoFlags",
-		"QFile::Permissions",
-		"QWizard::WizardButton",
-		"QFormLayout::ItemRole",
-		"QFormLayout::RowWrapPolicy":
-		return true
-	default:
-		return false
+	if under := p.QtCppOriginalType; under != nil {
+		if strings.HasPrefix(under.ParameterType, `QFlags<`) {
+			ret := parseSingleTypeString(under.ParameterType[7 : len(under.ParameterType)-1])
+			ret.ParameterName = under.ParameterName + "_qf"
+			return ret, true
+		}
 	}
+
+	return CppParameter{}, false
+}
+
+func (p CppParameter) IsFlagType() bool {
+	_, ok := p.QFlagsOf()
+	return ok
 }
 
 func (p CppParameter) QtClassType() bool {

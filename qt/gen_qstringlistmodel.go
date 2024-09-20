@@ -124,8 +124,8 @@ func (this *QStringListModel) SetData(index *QModelIndex, value *QVariant) bool 
 	return (bool)(C.QStringListModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
-func (this *QStringListModel) Flags(index *QModelIndex) int {
-	return (int)(C.QStringListModel_Flags(this.h, index.cPointer()))
+func (this *QStringListModel) Flags(index *QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QStringListModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QStringListModel) InsertRows(row int, count int) bool {
@@ -172,8 +172,8 @@ func (this *QStringListModel) SetStringList(strings []string) {
 	C.QStringListModel_SetStringList(this.h, strings_ma)
 }
 
-func (this *QStringListModel) SupportedDropActions() int {
-	return (int)(C.QStringListModel_SupportedDropActions(this.h))
+func (this *QStringListModel) SupportedDropActions() DropAction {
+	return (DropAction)(C.QStringListModel_SupportedDropActions(this.h))
 }
 
 func QStringListModel_Tr2(s string, c string) string {

@@ -16,33 +16,33 @@ import (
 type QStandardPaths__StandardLocation int
 
 const (
-	QStandardPaths__StandardLocation__DesktopLocation       QStandardPaths__StandardLocation = 0
-	QStandardPaths__StandardLocation__DocumentsLocation     QStandardPaths__StandardLocation = 1
-	QStandardPaths__StandardLocation__FontsLocation         QStandardPaths__StandardLocation = 2
-	QStandardPaths__StandardLocation__ApplicationsLocation  QStandardPaths__StandardLocation = 3
-	QStandardPaths__StandardLocation__MusicLocation         QStandardPaths__StandardLocation = 4
-	QStandardPaths__StandardLocation__MoviesLocation        QStandardPaths__StandardLocation = 5
-	QStandardPaths__StandardLocation__PicturesLocation      QStandardPaths__StandardLocation = 6
-	QStandardPaths__StandardLocation__TempLocation          QStandardPaths__StandardLocation = 7
-	QStandardPaths__StandardLocation__HomeLocation          QStandardPaths__StandardLocation = 8
-	QStandardPaths__StandardLocation__DataLocation          QStandardPaths__StandardLocation = 9
-	QStandardPaths__StandardLocation__CacheLocation         QStandardPaths__StandardLocation = 10
-	QStandardPaths__StandardLocation__GenericDataLocation   QStandardPaths__StandardLocation = 11
-	QStandardPaths__StandardLocation__RuntimeLocation       QStandardPaths__StandardLocation = 12
-	QStandardPaths__StandardLocation__ConfigLocation        QStandardPaths__StandardLocation = 13
-	QStandardPaths__StandardLocation__DownloadLocation      QStandardPaths__StandardLocation = 14
-	QStandardPaths__StandardLocation__GenericCacheLocation  QStandardPaths__StandardLocation = 15
-	QStandardPaths__StandardLocation__GenericConfigLocation QStandardPaths__StandardLocation = 16
-	QStandardPaths__StandardLocation__AppDataLocation       QStandardPaths__StandardLocation = 17
-	QStandardPaths__StandardLocation__AppConfigLocation     QStandardPaths__StandardLocation = 18
-	QStandardPaths__StandardLocation__AppLocalDataLocation  QStandardPaths__StandardLocation = 9
+	QStandardPaths__DesktopLocation       QStandardPaths__StandardLocation = 0
+	QStandardPaths__DocumentsLocation     QStandardPaths__StandardLocation = 1
+	QStandardPaths__FontsLocation         QStandardPaths__StandardLocation = 2
+	QStandardPaths__ApplicationsLocation  QStandardPaths__StandardLocation = 3
+	QStandardPaths__MusicLocation         QStandardPaths__StandardLocation = 4
+	QStandardPaths__MoviesLocation        QStandardPaths__StandardLocation = 5
+	QStandardPaths__PicturesLocation      QStandardPaths__StandardLocation = 6
+	QStandardPaths__TempLocation          QStandardPaths__StandardLocation = 7
+	QStandardPaths__HomeLocation          QStandardPaths__StandardLocation = 8
+	QStandardPaths__DataLocation          QStandardPaths__StandardLocation = 9
+	QStandardPaths__CacheLocation         QStandardPaths__StandardLocation = 10
+	QStandardPaths__GenericDataLocation   QStandardPaths__StandardLocation = 11
+	QStandardPaths__RuntimeLocation       QStandardPaths__StandardLocation = 12
+	QStandardPaths__ConfigLocation        QStandardPaths__StandardLocation = 13
+	QStandardPaths__DownloadLocation      QStandardPaths__StandardLocation = 14
+	QStandardPaths__GenericCacheLocation  QStandardPaths__StandardLocation = 15
+	QStandardPaths__GenericConfigLocation QStandardPaths__StandardLocation = 16
+	QStandardPaths__AppDataLocation       QStandardPaths__StandardLocation = 17
+	QStandardPaths__AppConfigLocation     QStandardPaths__StandardLocation = 18
+	QStandardPaths__AppLocalDataLocation  QStandardPaths__StandardLocation = 9
 )
 
 type QStandardPaths__LocateOption int
 
 const (
-	QStandardPaths__LocateOption__LocateFile      QStandardPaths__LocateOption = 0
-	QStandardPaths__LocateOption__LocateDirectory QStandardPaths__LocateOption = 1
+	QStandardPaths__LocateFile      QStandardPaths__LocateOption = 0
+	QStandardPaths__LocateDirectory QStandardPaths__LocateOption = 1
 )
 
 type QStandardPaths struct {
@@ -141,7 +141,7 @@ func QStandardPaths_IsTestModeEnabled() bool {
 	return (bool)(C.QStandardPaths_IsTestModeEnabled())
 }
 
-func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options int) string {
+func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
@@ -150,7 +150,7 @@ func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName s
 	return _ret
 }
 
-func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options int) []string {
+func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) []string {
 	fileName_ms := miqt_strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))

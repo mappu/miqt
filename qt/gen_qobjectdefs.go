@@ -16,19 +16,19 @@ import (
 type QMetaObject__Call int
 
 const (
-	QMetaObject__Call__InvokeMetaMethod               QMetaObject__Call = 0
-	QMetaObject__Call__ReadProperty                   QMetaObject__Call = 1
-	QMetaObject__Call__WriteProperty                  QMetaObject__Call = 2
-	QMetaObject__Call__ResetProperty                  QMetaObject__Call = 3
-	QMetaObject__Call__QueryPropertyDesignable        QMetaObject__Call = 4
-	QMetaObject__Call__QueryPropertyScriptable        QMetaObject__Call = 5
-	QMetaObject__Call__QueryPropertyStored            QMetaObject__Call = 6
-	QMetaObject__Call__QueryPropertyEditable          QMetaObject__Call = 7
-	QMetaObject__Call__QueryPropertyUser              QMetaObject__Call = 8
-	QMetaObject__Call__CreateInstance                 QMetaObject__Call = 9
-	QMetaObject__Call__IndexOfMethod                  QMetaObject__Call = 10
-	QMetaObject__Call__RegisterPropertyMetaType       QMetaObject__Call = 11
-	QMetaObject__Call__RegisterMethodArgumentMetaType QMetaObject__Call = 12
+	QMetaObject__InvokeMetaMethod               QMetaObject__Call = 0
+	QMetaObject__ReadProperty                   QMetaObject__Call = 1
+	QMetaObject__WriteProperty                  QMetaObject__Call = 2
+	QMetaObject__ResetProperty                  QMetaObject__Call = 3
+	QMetaObject__QueryPropertyDesignable        QMetaObject__Call = 4
+	QMetaObject__QueryPropertyScriptable        QMetaObject__Call = 5
+	QMetaObject__QueryPropertyStored            QMetaObject__Call = 6
+	QMetaObject__QueryPropertyEditable          QMetaObject__Call = 7
+	QMetaObject__QueryPropertyUser              QMetaObject__Call = 8
+	QMetaObject__CreateInstance                 QMetaObject__Call = 9
+	QMetaObject__IndexOfMethod                  QMetaObject__Call = 10
+	QMetaObject__RegisterPropertyMetaType       QMetaObject__Call = 11
+	QMetaObject__RegisterMethodArgumentMetaType QMetaObject__Call = 12
 )
 
 type QGenericArgument struct {

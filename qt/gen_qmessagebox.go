@@ -17,59 +17,59 @@ import (
 type QMessageBox__Icon int
 
 const (
-	QMessageBox__Icon__NoIcon      QMessageBox__Icon = 0
-	QMessageBox__Icon__Information QMessageBox__Icon = 1
-	QMessageBox__Icon__Warning     QMessageBox__Icon = 2
-	QMessageBox__Icon__Critical    QMessageBox__Icon = 3
-	QMessageBox__Icon__Question    QMessageBox__Icon = 4
+	QMessageBox__NoIcon      QMessageBox__Icon = 0
+	QMessageBox__Information QMessageBox__Icon = 1
+	QMessageBox__Warning     QMessageBox__Icon = 2
+	QMessageBox__Critical    QMessageBox__Icon = 3
+	QMessageBox__Question    QMessageBox__Icon = 4
 )
 
 type QMessageBox__ButtonRole int
 
 const (
-	QMessageBox__ButtonRole__InvalidRole     QMessageBox__ButtonRole = -1
-	QMessageBox__ButtonRole__AcceptRole      QMessageBox__ButtonRole = 0
-	QMessageBox__ButtonRole__RejectRole      QMessageBox__ButtonRole = 1
-	QMessageBox__ButtonRole__DestructiveRole QMessageBox__ButtonRole = 2
-	QMessageBox__ButtonRole__ActionRole      QMessageBox__ButtonRole = 3
-	QMessageBox__ButtonRole__HelpRole        QMessageBox__ButtonRole = 4
-	QMessageBox__ButtonRole__YesRole         QMessageBox__ButtonRole = 5
-	QMessageBox__ButtonRole__NoRole          QMessageBox__ButtonRole = 6
-	QMessageBox__ButtonRole__ResetRole       QMessageBox__ButtonRole = 7
-	QMessageBox__ButtonRole__ApplyRole       QMessageBox__ButtonRole = 8
-	QMessageBox__ButtonRole__NRoles          QMessageBox__ButtonRole = 9
+	QMessageBox__InvalidRole     QMessageBox__ButtonRole = -1
+	QMessageBox__AcceptRole      QMessageBox__ButtonRole = 0
+	QMessageBox__RejectRole      QMessageBox__ButtonRole = 1
+	QMessageBox__DestructiveRole QMessageBox__ButtonRole = 2
+	QMessageBox__ActionRole      QMessageBox__ButtonRole = 3
+	QMessageBox__HelpRole        QMessageBox__ButtonRole = 4
+	QMessageBox__YesRole         QMessageBox__ButtonRole = 5
+	QMessageBox__NoRole          QMessageBox__ButtonRole = 6
+	QMessageBox__ResetRole       QMessageBox__ButtonRole = 7
+	QMessageBox__ApplyRole       QMessageBox__ButtonRole = 8
+	QMessageBox__NRoles          QMessageBox__ButtonRole = 9
 )
 
 type QMessageBox__StandardButton int
 
 const (
-	QMessageBox__StandardButton__NoButton        QMessageBox__StandardButton = 0
-	QMessageBox__StandardButton__Ok              QMessageBox__StandardButton = 1024
-	QMessageBox__StandardButton__Save            QMessageBox__StandardButton = 2048
-	QMessageBox__StandardButton__SaveAll         QMessageBox__StandardButton = 4096
-	QMessageBox__StandardButton__Open            QMessageBox__StandardButton = 8192
-	QMessageBox__StandardButton__Yes             QMessageBox__StandardButton = 16384
-	QMessageBox__StandardButton__YesToAll        QMessageBox__StandardButton = 32768
-	QMessageBox__StandardButton__No              QMessageBox__StandardButton = 65536
-	QMessageBox__StandardButton__NoToAll         QMessageBox__StandardButton = 131072
-	QMessageBox__StandardButton__Abort           QMessageBox__StandardButton = 262144
-	QMessageBox__StandardButton__Retry           QMessageBox__StandardButton = 524288
-	QMessageBox__StandardButton__Ignore          QMessageBox__StandardButton = 1048576
-	QMessageBox__StandardButton__Close           QMessageBox__StandardButton = 2097152
-	QMessageBox__StandardButton__Cancel          QMessageBox__StandardButton = 4194304
-	QMessageBox__StandardButton__Discard         QMessageBox__StandardButton = 8388608
-	QMessageBox__StandardButton__Help            QMessageBox__StandardButton = 16777216
-	QMessageBox__StandardButton__Apply           QMessageBox__StandardButton = 33554432
-	QMessageBox__StandardButton__Reset           QMessageBox__StandardButton = 67108864
-	QMessageBox__StandardButton__RestoreDefaults QMessageBox__StandardButton = 134217728
-	QMessageBox__StandardButton__FirstButton     QMessageBox__StandardButton = 1024
-	QMessageBox__StandardButton__LastButton      QMessageBox__StandardButton = 134217728
-	QMessageBox__StandardButton__YesAll          QMessageBox__StandardButton = 32768
-	QMessageBox__StandardButton__NoAll           QMessageBox__StandardButton = 131072
-	QMessageBox__StandardButton__Default         QMessageBox__StandardButton = 256
-	QMessageBox__StandardButton__Escape          QMessageBox__StandardButton = 512
-	QMessageBox__StandardButton__FlagMask        QMessageBox__StandardButton = 768
-	QMessageBox__StandardButton__ButtonMask      QMessageBox__StandardButton = -769
+	QMessageBox__NoButton        QMessageBox__StandardButton = 0
+	QMessageBox__Ok              QMessageBox__StandardButton = 1024
+	QMessageBox__Save            QMessageBox__StandardButton = 2048
+	QMessageBox__SaveAll         QMessageBox__StandardButton = 4096
+	QMessageBox__Open            QMessageBox__StandardButton = 8192
+	QMessageBox__Yes             QMessageBox__StandardButton = 16384
+	QMessageBox__YesToAll        QMessageBox__StandardButton = 32768
+	QMessageBox__No              QMessageBox__StandardButton = 65536
+	QMessageBox__NoToAll         QMessageBox__StandardButton = 131072
+	QMessageBox__Abort           QMessageBox__StandardButton = 262144
+	QMessageBox__Retry           QMessageBox__StandardButton = 524288
+	QMessageBox__Ignore          QMessageBox__StandardButton = 1048576
+	QMessageBox__Close           QMessageBox__StandardButton = 2097152
+	QMessageBox__Cancel          QMessageBox__StandardButton = 4194304
+	QMessageBox__Discard         QMessageBox__StandardButton = 8388608
+	QMessageBox__Help            QMessageBox__StandardButton = 16777216
+	QMessageBox__Apply           QMessageBox__StandardButton = 33554432
+	QMessageBox__Reset           QMessageBox__StandardButton = 67108864
+	QMessageBox__RestoreDefaults QMessageBox__StandardButton = 134217728
+	QMessageBox__FirstButton     QMessageBox__StandardButton = 1024
+	QMessageBox__LastButton      QMessageBox__StandardButton = 134217728
+	QMessageBox__YesAll          QMessageBox__StandardButton = 32768
+	QMessageBox__NoAll           QMessageBox__StandardButton = 131072
+	QMessageBox__Default         QMessageBox__StandardButton = 256
+	QMessageBox__Escape          QMessageBox__StandardButton = 512
+	QMessageBox__FlagMask        QMessageBox__StandardButton = 768
+	QMessageBox__ButtonMask      QMessageBox__StandardButton = -769
 )
 
 type QMessageBox struct {
@@ -128,7 +128,7 @@ func NewQMessageBox4(parent *QWidget) *QMessageBox {
 }
 
 // NewQMessageBox5 constructs a new QMessageBox object.
-func NewQMessageBox5(icon QMessageBox__Icon, title string, text string, buttons int) *QMessageBox {
+func NewQMessageBox5(icon QMessageBox__Icon, title string, text string, buttons QMessageBox__StandardButton) *QMessageBox {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -138,7 +138,7 @@ func NewQMessageBox5(icon QMessageBox__Icon, title string, text string, buttons 
 }
 
 // NewQMessageBox6 constructs a new QMessageBox object.
-func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons int, parent *QWidget) *QMessageBox {
+func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons QMessageBox__StandardButton, parent *QWidget) *QMessageBox {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -148,7 +148,7 @@ func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons 
 }
 
 // NewQMessageBox7 constructs a new QMessageBox object.
-func NewQMessageBox7(icon QMessageBox__Icon, title string, text string, buttons int, parent *QWidget, flags int) *QMessageBox {
+func NewQMessageBox7(icon QMessageBox__Icon, title string, text string, buttons QMessageBox__StandardButton, parent *QWidget, flags WindowType) *QMessageBox {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -168,7 +168,7 @@ func NewQMessageBox8(title string, text string, icon QMessageBox__Icon, button0 
 }
 
 // NewQMessageBox9 constructs a new QMessageBox object.
-func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int, parent *QWidget, f int) *QMessageBox {
+func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int, parent *QWidget, f WindowType) *QMessageBox {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -232,12 +232,12 @@ func (this *QMessageBox) ButtonRole(button *QAbstractButton) QMessageBox__Button
 	return (QMessageBox__ButtonRole)(C.QMessageBox_ButtonRole(this.h, button.cPointer()))
 }
 
-func (this *QMessageBox) SetStandardButtons(buttons int) {
+func (this *QMessageBox) SetStandardButtons(buttons QMessageBox__StandardButton) {
 	C.QMessageBox_SetStandardButtons(this.h, (C.int)(buttons))
 }
 
-func (this *QMessageBox) StandardButtons() int {
-	return (int)(C.QMessageBox_StandardButtons(this.h))
+func (this *QMessageBox) StandardButtons() QMessageBox__StandardButton {
+	return (QMessageBox__StandardButton)(C.QMessageBox_StandardButtons(this.h))
 }
 
 func (this *QMessageBox) StandardButton(button *QAbstractButton) QMessageBox__StandardButton {
@@ -316,12 +316,12 @@ func (this *QMessageBox) SetTextFormat(format TextFormat) {
 	C.QMessageBox_SetTextFormat(this.h, (C.int)(format))
 }
 
-func (this *QMessageBox) SetTextInteractionFlags(flags int) {
+func (this *QMessageBox) SetTextInteractionFlags(flags TextInteractionFlag) {
 	C.QMessageBox_SetTextInteractionFlags(this.h, (C.int)(flags))
 }
 
-func (this *QMessageBox) TextInteractionFlags() int {
-	return (int)(C.QMessageBox_TextInteractionFlags(this.h))
+func (this *QMessageBox) TextInteractionFlags() TextInteractionFlag {
+	return (TextInteractionFlag)(C.QMessageBox_TextInteractionFlags(this.h))
 }
 
 func (this *QMessageBox) SetCheckBox(cb *QCheckBox) {
@@ -600,7 +600,7 @@ func QMessageBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func QMessageBox_Information42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
+func QMessageBox_Information42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -608,7 +608,7 @@ func QMessageBox_Information42(parent *QWidget, title string, text string, butto
 	return (QMessageBox__StandardButton)(C.QMessageBox_Information42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
 }
 
-func QMessageBox_Information5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
+func QMessageBox_Information5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -616,7 +616,7 @@ func QMessageBox_Information5(parent *QWidget, title string, text string, button
 	return (QMessageBox__StandardButton)(C.QMessageBox_Information5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.int)(defaultButton)))
 }
 
-func QMessageBox_Question42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
+func QMessageBox_Question42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -624,7 +624,7 @@ func QMessageBox_Question42(parent *QWidget, title string, text string, buttons 
 	return (QMessageBox__StandardButton)(C.QMessageBox_Question42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
 }
 
-func QMessageBox_Question5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
+func QMessageBox_Question5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -632,7 +632,7 @@ func QMessageBox_Question5(parent *QWidget, title string, text string, buttons i
 	return (QMessageBox__StandardButton)(C.QMessageBox_Question5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.int)(defaultButton)))
 }
 
-func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
+func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -640,7 +640,7 @@ func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons i
 	return (QMessageBox__StandardButton)(C.QMessageBox_Warning42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
 }
 
-func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
+func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -648,7 +648,7 @@ func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons in
 	return (QMessageBox__StandardButton)(C.QMessageBox_Warning5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons), (C.int)(defaultButton)))
 }
 
-func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons int) QMessageBox__StandardButton {
+func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)
@@ -656,7 +656,7 @@ func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons 
 	return (QMessageBox__StandardButton)(C.QMessageBox_Critical42(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(text_ms), (C.int)(buttons)))
 }
 
-func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons int, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
+func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
 	title_ms := miqt_strdupg(title)
 	defer C.free(title_ms)
 	text_ms := miqt_strdupg(text)

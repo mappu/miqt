@@ -17,17 +17,17 @@ import (
 type QTabWidget__TabPosition int
 
 const (
-	QTabWidget__TabPosition__North QTabWidget__TabPosition = 0
-	QTabWidget__TabPosition__South QTabWidget__TabPosition = 1
-	QTabWidget__TabPosition__West  QTabWidget__TabPosition = 2
-	QTabWidget__TabPosition__East  QTabWidget__TabPosition = 3
+	QTabWidget__North QTabWidget__TabPosition = 0
+	QTabWidget__South QTabWidget__TabPosition = 1
+	QTabWidget__West  QTabWidget__TabPosition = 2
+	QTabWidget__East  QTabWidget__TabPosition = 3
 )
 
 type QTabWidget__TabShape int
 
 const (
-	QTabWidget__TabShape__Rounded    QTabWidget__TabShape = 0
-	QTabWidget__TabShape__Triangular QTabWidget__TabShape = 1
+	QTabWidget__Rounded    QTabWidget__TabShape = 0
+	QTabWidget__Triangular QTabWidget__TabShape = 1
 )
 
 type QTabWidget struct {

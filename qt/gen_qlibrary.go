@@ -16,11 +16,11 @@ import (
 type QLibrary__LoadHint int
 
 const (
-	QLibrary__LoadHint__ResolveAllSymbolsHint     QLibrary__LoadHint = 1
-	QLibrary__LoadHint__ExportExternalSymbolsHint QLibrary__LoadHint = 2
-	QLibrary__LoadHint__LoadArchiveMemberHint     QLibrary__LoadHint = 4
-	QLibrary__LoadHint__PreventUnloadHint         QLibrary__LoadHint = 8
-	QLibrary__LoadHint__DeepBindHint              QLibrary__LoadHint = 16
+	QLibrary__ResolveAllSymbolsHint     QLibrary__LoadHint = 1
+	QLibrary__ExportExternalSymbolsHint QLibrary__LoadHint = 2
+	QLibrary__LoadArchiveMemberHint     QLibrary__LoadHint = 4
+	QLibrary__PreventUnloadHint         QLibrary__LoadHint = 8
+	QLibrary__DeepBindHint              QLibrary__LoadHint = 16
 )
 
 type QLibrary struct {
@@ -184,12 +184,12 @@ func (this *QLibrary) ErrorString() string {
 	return _ret
 }
 
-func (this *QLibrary) SetLoadHints(hints int) {
+func (this *QLibrary) SetLoadHints(hints QLibrary__LoadHint) {
 	C.QLibrary_SetLoadHints(this.h, (C.int)(hints))
 }
 
-func (this *QLibrary) LoadHints() int {
-	return (int)(C.QLibrary_LoadHints(this.h))
+func (this *QLibrary) LoadHints() QLibrary__LoadHint {
+	return (QLibrary__LoadHint)(C.QLibrary_LoadHints(this.h))
 }
 
 func QLibrary_Tr2(s string, c string) string {
