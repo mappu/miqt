@@ -97,38 +97,38 @@ const (
 type QGraphicsItem__ int
 
 const (
-	QGraphicsItem__Type     QGraphicsItem__ = 1
-	QGraphicsItem__UserType QGraphicsItem__ = 65536
+	QGraphicsItem____Type     QGraphicsItem__ = 1
+	QGraphicsItem____UserType QGraphicsItem__ = 65536
 )
 
 type QGraphicsPathItem__ int
 
 const (
-	QGraphicsPathItem__Type QGraphicsPathItem__ = 2
+	QGraphicsPathItem____Type QGraphicsPathItem__ = 2
 )
 
 type QGraphicsRectItem__ int
 
 const (
-	QGraphicsRectItem__Type QGraphicsRectItem__ = 3
+	QGraphicsRectItem____Type QGraphicsRectItem__ = 3
 )
 
 type QGraphicsEllipseItem__ int
 
 const (
-	QGraphicsEllipseItem__Type QGraphicsEllipseItem__ = 4
+	QGraphicsEllipseItem____Type QGraphicsEllipseItem__ = 4
 )
 
 type QGraphicsPolygonItem__ int
 
 const (
-	QGraphicsPolygonItem__Type QGraphicsPolygonItem__ = 5
+	QGraphicsPolygonItem____Type QGraphicsPolygonItem__ = 5
 )
 
 type QGraphicsLineItem__ int
 
 const (
-	QGraphicsLineItem__Type QGraphicsLineItem__ = 6
+	QGraphicsLineItem____Type QGraphicsLineItem__ = 6
 )
 
 type QGraphicsPixmapItem__ShapeMode int
@@ -142,25 +142,25 @@ const (
 type QGraphicsPixmapItem__ int
 
 const (
-	QGraphicsPixmapItem__Type QGraphicsPixmapItem__ = 7
+	QGraphicsPixmapItem____Type QGraphicsPixmapItem__ = 7
 )
 
 type QGraphicsTextItem__ int
 
 const (
-	QGraphicsTextItem__Type QGraphicsTextItem__ = 8
+	QGraphicsTextItem____Type QGraphicsTextItem__ = 8
 )
 
 type QGraphicsSimpleTextItem__ int
 
 const (
-	QGraphicsSimpleTextItem__Type QGraphicsSimpleTextItem__ = 9
+	QGraphicsSimpleTextItem____Type QGraphicsSimpleTextItem__ = 9
 )
 
 type QGraphicsItemGroup__ int
 
 const (
-	QGraphicsItemGroup__Type QGraphicsItemGroup__ = 10
+	QGraphicsItemGroup____Type QGraphicsItemGroup__ = 10
 )
 
 type QGraphicsItem struct {

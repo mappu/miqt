@@ -218,44 +218,44 @@ const (
 type WindowType int
 
 const (
-	Widget                              WindowType = 0
-	Window                              WindowType = 1
-	Dialog                              WindowType = 3
-	Sheet                               WindowType = 5
-	Drawer                              WindowType = 7
-	Popup                               WindowType = 9
-	Tool                                WindowType = 11
-	ToolTip                             WindowType = 13
-	SplashScreen                        WindowType = 15
-	Desktop                             WindowType = 17
-	SubWindow                           WindowType = 18
-	ForeignWindow                       WindowType = 33
-	CoverWindow                         WindowType = 65
-	WindowType_Mask                     WindowType = 255
-	MSWindowsFixedSizeDialogHint        WindowType = 256
-	MSWindowsOwnDC                      WindowType = 512
-	BypassWindowManagerHint             WindowType = 1024
-	X11BypassWindowManagerHint          WindowType = 1024
-	FramelessWindowHint                 WindowType = 2048
-	WindowTitleHint                     WindowType = 4096
-	WindowSystemMenuHint                WindowType = 8192
-	WindowMinimizeButtonHint            WindowType = 16384
-	WindowMaximizeButtonHint            WindowType = 32768
-	WindowMinMaxButtonsHint             WindowType = 49152
-	WindowContextHelpButtonHint         WindowType = 65536
-	WindowShadeButtonHint               WindowType = 131072
-	WindowStaysOnTopHint                WindowType = 262144
-	WindowTransparentForInput           WindowType = 524288
-	WindowOverridesSystemGestures       WindowType = 1048576
-	WindowDoesNotAcceptFocus            WindowType = 2097152
-	MaximizeUsingFullscreenGeometryHint WindowType = 4194304
-	CustomizeWindowHint                 WindowType = 33554432
-	WindowStaysOnBottomHint             WindowType = 67108864
-	WindowCloseButtonHint               WindowType = 134217728
-	MacWindowToolBarButtonHint          WindowType = 268435456
-	BypassGraphicsProxyWidget           WindowType = 536870912
-	NoDropShadowWindowHint              WindowType = 1073741824
-	WindowFullscreenButtonHint          WindowType = 2147483648
+	WindowType__Widget                              WindowType = 0
+	WindowType__Window                              WindowType = 1
+	WindowType__Dialog                              WindowType = 3
+	WindowType__Sheet                               WindowType = 5
+	WindowType__Drawer                              WindowType = 7
+	WindowType__Popup                               WindowType = 9
+	WindowType__Tool                                WindowType = 11
+	WindowType__ToolTip                             WindowType = 13
+	WindowType__SplashScreen                        WindowType = 15
+	WindowType__Desktop                             WindowType = 17
+	WindowType__SubWindow                           WindowType = 18
+	WindowType__ForeignWindow                       WindowType = 33
+	WindowType__CoverWindow                         WindowType = 65
+	WindowType__WindowType_Mask                     WindowType = 255
+	WindowType__MSWindowsFixedSizeDialogHint        WindowType = 256
+	WindowType__MSWindowsOwnDC                      WindowType = 512
+	WindowType__BypassWindowManagerHint             WindowType = 1024
+	WindowType__X11BypassWindowManagerHint          WindowType = 1024
+	WindowType__FramelessWindowHint                 WindowType = 2048
+	WindowType__WindowTitleHint                     WindowType = 4096
+	WindowType__WindowSystemMenuHint                WindowType = 8192
+	WindowType__WindowMinimizeButtonHint            WindowType = 16384
+	WindowType__WindowMaximizeButtonHint            WindowType = 32768
+	WindowType__WindowMinMaxButtonsHint             WindowType = 49152
+	WindowType__WindowContextHelpButtonHint         WindowType = 65536
+	WindowType__WindowShadeButtonHint               WindowType = 131072
+	WindowType__WindowStaysOnTopHint                WindowType = 262144
+	WindowType__WindowTransparentForInput           WindowType = 524288
+	WindowType__WindowOverridesSystemGestures       WindowType = 1048576
+	WindowType__WindowDoesNotAcceptFocus            WindowType = 2097152
+	WindowType__MaximizeUsingFullscreenGeometryHint WindowType = 4194304
+	WindowType__CustomizeWindowHint                 WindowType = 33554432
+	WindowType__WindowStaysOnBottomHint             WindowType = 67108864
+	WindowType__WindowCloseButtonHint               WindowType = 134217728
+	WindowType__MacWindowToolBarButtonHint          WindowType = 268435456
+	WindowType__BypassGraphicsProxyWidget           WindowType = 536870912
+	WindowType__NoDropShadowWindowHint              WindowType = 1073741824
+	WindowType__WindowFullscreenButtonHint          WindowType = 2147483648
 )
 
 type WindowState int
@@ -1662,18 +1662,18 @@ const (
 type QInternal__PaintDeviceFlags int
 
 const (
-	QInternal__UnknownDevice     QInternal__PaintDeviceFlags = 0
-	QInternal__Widget            QInternal__PaintDeviceFlags = 1
-	QInternal__Pixmap            QInternal__PaintDeviceFlags = 2
-	QInternal__Image             QInternal__PaintDeviceFlags = 3
-	QInternal__Printer           QInternal__PaintDeviceFlags = 4
-	QInternal__Picture           QInternal__PaintDeviceFlags = 5
-	QInternal__Pbuffer           QInternal__PaintDeviceFlags = 6
-	QInternal__FramebufferObject QInternal__PaintDeviceFlags = 7
-	QInternal__CustomRaster      QInternal__PaintDeviceFlags = 8
-	QInternal__MacQuartz         QInternal__PaintDeviceFlags = 9
-	QInternal__PaintBuffer       QInternal__PaintDeviceFlags = 10
-	QInternal__OpenGL            QInternal__PaintDeviceFlags = 11
+	QInternal__PaintDeviceFlags__UnknownDevice     QInternal__PaintDeviceFlags = 0
+	QInternal__PaintDeviceFlags__Widget            QInternal__PaintDeviceFlags = 1
+	QInternal__PaintDeviceFlags__Pixmap            QInternal__PaintDeviceFlags = 2
+	QInternal__PaintDeviceFlags__Image             QInternal__PaintDeviceFlags = 3
+	QInternal__PaintDeviceFlags__Printer           QInternal__PaintDeviceFlags = 4
+	QInternal__PaintDeviceFlags__Picture           QInternal__PaintDeviceFlags = 5
+	QInternal__PaintDeviceFlags__Pbuffer           QInternal__PaintDeviceFlags = 6
+	QInternal__PaintDeviceFlags__FramebufferObject QInternal__PaintDeviceFlags = 7
+	QInternal__PaintDeviceFlags__CustomRaster      QInternal__PaintDeviceFlags = 8
+	QInternal__PaintDeviceFlags__MacQuartz         QInternal__PaintDeviceFlags = 9
+	QInternal__PaintDeviceFlags__PaintBuffer       QInternal__PaintDeviceFlags = 10
+	QInternal__PaintDeviceFlags__OpenGL            QInternal__PaintDeviceFlags = 11
 )
 
 type QInternal__RelayoutType int

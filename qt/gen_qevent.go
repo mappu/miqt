@@ -34,10 +34,10 @@ const (
 type QTabletEvent__PointerType int
 
 const (
-	QTabletEvent__UnknownPointer QTabletEvent__PointerType = 0
-	QTabletEvent__Pen            QTabletEvent__PointerType = 1
-	QTabletEvent__Cursor         QTabletEvent__PointerType = 2
-	QTabletEvent__Eraser         QTabletEvent__PointerType = 3
+	QTabletEvent__PointerType__UnknownPointer QTabletEvent__PointerType = 0
+	QTabletEvent__PointerType__Pen            QTabletEvent__PointerType = 1
+	QTabletEvent__PointerType__Cursor         QTabletEvent__PointerType = 2
+	QTabletEvent__PointerType__Eraser         QTabletEvent__PointerType = 3
 )
 
 type QPlatformSurfaceEvent__SurfaceEventType int
@@ -58,11 +58,11 @@ const (
 type QInputMethodEvent__AttributeType int
 
 const (
-	QInputMethodEvent__TextFormat QInputMethodEvent__AttributeType = 0
-	QInputMethodEvent__Cursor     QInputMethodEvent__AttributeType = 1
-	QInputMethodEvent__Language   QInputMethodEvent__AttributeType = 2
-	QInputMethodEvent__Ruby       QInputMethodEvent__AttributeType = 3
-	QInputMethodEvent__Selection  QInputMethodEvent__AttributeType = 4
+	QInputMethodEvent__AttributeType__TextFormat QInputMethodEvent__AttributeType = 0
+	QInputMethodEvent__AttributeType__Cursor     QInputMethodEvent__AttributeType = 1
+	QInputMethodEvent__AttributeType__Language   QInputMethodEvent__AttributeType = 2
+	QInputMethodEvent__AttributeType__Ruby       QInputMethodEvent__AttributeType = 3
+	QInputMethodEvent__AttributeType__Selection  QInputMethodEvent__AttributeType = 4
 )
 
 type QScrollEvent__ScrollState int
