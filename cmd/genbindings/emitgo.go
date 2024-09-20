@@ -405,7 +405,17 @@ import "C"
 			continue // Removed by transformRedundant AST pass
 		}
 
+		// Fully qualified name of the enum itself
 		goEnumName := cabiClassName(e.EnumName)
+
+		// Shorter name, so that enum elements are reachable from the surrounding
+		// namespace
+		// Strip back one single :: pair from the generated variable name
+		nameParts := strings.Split(e.EnumName, `::`)
+		if len(nameParts) > 1 {
+			nameParts = nameParts[0 : len(nameParts)-1]
+		}
+		goEnumShortName := cabiClassName(strings.Join(nameParts, `::`))
 
 		ret.WriteString(`
 		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo() + `
@@ -416,7 +426,7 @@ import "C"
 			ret.WriteString("const (\n")
 
 			for _, ee := range e.Entries {
-				ret.WriteString(cabiClassName(goEnumName+"::"+ee.EntryName) + " " + goEnumName + " = " + ee.EntryValue + "\n")
+				ret.WriteString(titleCase(cabiClassName(goEnumShortName+"::"+ee.EntryName)) + " " + goEnumName + " = " + ee.EntryValue + "\n")
 			}
 
 			ret.WriteString("\n)\n\n")
