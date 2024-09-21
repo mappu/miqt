@@ -24,6 +24,10 @@ QMetaObject* QMdiArea_MetaObject(const QMdiArea* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QMdiArea_Metacast(QMdiArea* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QMdiArea_Tr(const char* s) {
 	QString _ret = QMdiArea::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

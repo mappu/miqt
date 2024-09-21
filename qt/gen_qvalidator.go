@@ -56,6 +56,12 @@ func (this *QValidator) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QValidator_MetaObject(this.h)))
 }
 
+func (this *QValidator) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QValidator_Metacast(this.h, param1_Cstring)
+}
+
 func QValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -221,6 +227,12 @@ func NewQIntValidator4(bottom int, top int, parent *QObject) *QIntValidator {
 
 func (this *QIntValidator) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QIntValidator_MetaObject(this.h)))
+}
+
+func (this *QIntValidator) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QIntValidator_Metacast(this.h, param1_Cstring)
 }
 
 func QIntValidator_Tr(s string) string {
@@ -420,6 +432,12 @@ func NewQDoubleValidator4(bottom float64, top float64, decimals int, parent *QOb
 
 func (this *QDoubleValidator) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QDoubleValidator_MetaObject(this.h)))
+}
+
+func (this *QDoubleValidator) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QDoubleValidator_Metacast(this.h, param1_Cstring)
 }
 
 func QDoubleValidator_Tr(s string) string {
@@ -675,6 +693,12 @@ func (this *QRegExpValidator) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QRegExpValidator_MetaObject(this.h)))
 }
 
+func (this *QRegExpValidator) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QRegExpValidator_Metacast(this.h, param1_Cstring)
+}
+
 func QRegExpValidator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -834,6 +858,12 @@ func NewQRegularExpressionValidator4(re *QRegularExpression, parent *QObject) *Q
 
 func (this *QRegularExpressionValidator) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QRegularExpressionValidator_MetaObject(this.h)))
+}
+
+func (this *QRegularExpressionValidator) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QRegularExpressionValidator_Metacast(this.h, param1_Cstring)
 }
 
 func QRegularExpressionValidator_Tr(s string) string {

@@ -39,6 +39,10 @@ QMetaObject* QUndoView_MetaObject(const QUndoView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QUndoView_Metacast(QUndoView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QUndoView_Tr(const char* s) {
 	QString _ret = QUndoView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

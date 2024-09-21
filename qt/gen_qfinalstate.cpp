@@ -20,6 +20,10 @@ QMetaObject* QFinalState_MetaObject(const QFinalState* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFinalState_Metacast(QFinalState* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFinalState_Tr(const char* s) {
 	QString _ret = QFinalState::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

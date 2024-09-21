@@ -46,6 +46,7 @@ QAction* QAction_new4(QObject* parent);
 QAction* QAction_new5(struct miqt_string* text, QObject* parent);
 QAction* QAction_new6(QIcon* icon, struct miqt_string* text, QObject* parent);
 QMetaObject* QAction_MetaObject(const QAction* self);
+void* QAction_Metacast(QAction* self, const char* param1);
 struct miqt_string* QAction_Tr(const char* s);
 struct miqt_string* QAction_TrUtf8(const char* s);
 void QAction_SetActionGroup(QAction* self, QActionGroup* group);

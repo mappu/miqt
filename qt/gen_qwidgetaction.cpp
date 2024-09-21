@@ -17,6 +17,10 @@ QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QWidgetAction_Metacast(QWidgetAction* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QWidgetAction_Tr(const char* s) {
 	QString _ret = QWidgetAction::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -71,6 +71,7 @@ QTextDocument* QTextDocument_new2(struct miqt_string* text);
 QTextDocument* QTextDocument_new3(QObject* parent);
 QTextDocument* QTextDocument_new4(struct miqt_string* text, QObject* parent);
 QMetaObject* QTextDocument_MetaObject(const QTextDocument* self);
+void* QTextDocument_Metacast(QTextDocument* self, const char* param1);
 struct miqt_string* QTextDocument_Tr(const char* s);
 struct miqt_string* QTextDocument_TrUtf8(const char* s);
 QTextDocument* QTextDocument_Clone(const QTextDocument* self);

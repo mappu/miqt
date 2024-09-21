@@ -4,6 +4,14 @@
 #include "gen_qarraydata.h"
 #include "_cgo_export.h"
 
+void* QArrayData_Data(QArrayData* self) {
+	return self->data();
+}
+
+const void* QArrayData_Data2(const QArrayData* self) {
+	return (const void*) self->data();
+}
+
 bool QArrayData_IsMutable(const QArrayData* self) {
 	return self->isMutable();
 }

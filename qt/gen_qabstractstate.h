@@ -26,6 +26,7 @@ typedef struct QStateMachine QStateMachine;
 #endif
 
 QMetaObject* QAbstractState_MetaObject(const QAbstractState* self);
+void* QAbstractState_Metacast(QAbstractState* self, const char* param1);
 struct miqt_string* QAbstractState_Tr(const char* s);
 struct miqt_string* QAbstractState_TrUtf8(const char* s);
 QState* QAbstractState_ParentState(const QAbstractState* self);

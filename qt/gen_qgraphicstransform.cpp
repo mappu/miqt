@@ -16,6 +16,10 @@ QMetaObject* QGraphicsTransform_MetaObject(const QGraphicsTransform* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsTransform_Metacast(QGraphicsTransform* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsTransform_Tr(const char* s) {
 	QString _ret = QGraphicsTransform::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -76,6 +80,10 @@ QGraphicsScale* QGraphicsScale_new2(QObject* parent) {
 
 QMetaObject* QGraphicsScale_MetaObject(const QGraphicsScale* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsScale_Metacast(QGraphicsScale* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsScale_Tr(const char* s) {
@@ -223,6 +231,10 @@ QGraphicsRotation* QGraphicsRotation_new2(QObject* parent) {
 
 QMetaObject* QGraphicsRotation_MetaObject(const QGraphicsRotation* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsRotation_Metacast(QGraphicsRotation* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsRotation_Tr(const char* s) {

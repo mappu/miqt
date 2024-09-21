@@ -41,6 +41,7 @@ QMessageBox* QMessageBox_new7(int icon, struct miqt_string* title, struct miqt_s
 QMessageBox* QMessageBox_new8(struct miqt_string* title, struct miqt_string* text, int icon, int button0, int button1, int button2, QWidget* parent);
 QMessageBox* QMessageBox_new9(struct miqt_string* title, struct miqt_string* text, int icon, int button0, int button1, int button2, QWidget* parent, int f);
 QMetaObject* QMessageBox_MetaObject(const QMessageBox* self);
+void* QMessageBox_Metacast(QMessageBox* self, const char* param1);
 struct miqt_string* QMessageBox_Tr(const char* s);
 struct miqt_string* QMessageBox_TrUtf8(const char* s);
 void QMessageBox_AddButton(QMessageBox* self, QAbstractButton* button, int role);

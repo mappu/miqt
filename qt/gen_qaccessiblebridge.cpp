@@ -30,6 +30,10 @@ QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* s
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAccessibleBridgePlugin_Metacast(QAccessibleBridgePlugin* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAccessibleBridgePlugin_Tr(const char* s) {
 	QString _ret = QAccessibleBridgePlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

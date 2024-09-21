@@ -30,6 +30,7 @@ typedef struct QWidget QWidget;
 QAbstractScrollArea* QAbstractScrollArea_new();
 QAbstractScrollArea* QAbstractScrollArea_new2(QWidget* parent);
 QMetaObject* QAbstractScrollArea_MetaObject(const QAbstractScrollArea* self);
+void* QAbstractScrollArea_Metacast(QAbstractScrollArea* self, const char* param1);
 struct miqt_string* QAbstractScrollArea_Tr(const char* s);
 struct miqt_string* QAbstractScrollArea_TrUtf8(const char* s);
 int QAbstractScrollArea_VerticalScrollBarPolicy(const QAbstractScrollArea* self);

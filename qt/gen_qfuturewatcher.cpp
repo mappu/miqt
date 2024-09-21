@@ -12,6 +12,10 @@ QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFutureWatcherBase_Metacast(QFutureWatcherBase* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFutureWatcherBase_Tr(const char* s) {
 	QString _ret = QFutureWatcherBase::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

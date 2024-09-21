@@ -24,6 +24,7 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QFileDevice_MetaObject(const QFileDevice* self);
+void* QFileDevice_Metacast(QFileDevice* self, const char* param1);
 struct miqt_string* QFileDevice_Tr(const char* s);
 struct miqt_string* QFileDevice_TrUtf8(const char* s);
 int QFileDevice_Error(const QFileDevice* self);

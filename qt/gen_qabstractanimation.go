@@ -63,6 +63,12 @@ func (this *QAbstractAnimation) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
 }
 
+func (this *QAbstractAnimation) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractAnimation_Metacast(this.h, param1_Cstring)
+}
+
 func QAbstractAnimation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -327,6 +333,12 @@ func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
 
 func (this *QAnimationDriver) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAnimationDriver_MetaObject(this.h)))
+}
+
+func (this *QAnimationDriver) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAnimationDriver_Metacast(this.h, param1_Cstring)
 }
 
 func QAnimationDriver_Tr(s string) string {

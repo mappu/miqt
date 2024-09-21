@@ -30,6 +30,7 @@ QColorDialog* QColorDialog_new2(QColor* initial);
 QColorDialog* QColorDialog_new3(QWidget* parent);
 QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent);
 QMetaObject* QColorDialog_MetaObject(const QColorDialog* self);
+void* QColorDialog_Metacast(QColorDialog* self, const char* param1);
 struct miqt_string* QColorDialog_Tr(const char* s);
 struct miqt_string* QColorDialog_TrUtf8(const char* s);
 void QColorDialog_SetCurrentColor(QColorDialog* self, QColor* color);

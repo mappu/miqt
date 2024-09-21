@@ -32,6 +32,7 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QLayout_MetaObject(const QLayout* self);
+void* QLayout_Metacast(QLayout* self, const char* param1);
 struct miqt_string* QLayout_Tr(const char* s);
 struct miqt_string* QLayout_TrUtf8(const char* s);
 int QLayout_Margin(const QLayout* self);

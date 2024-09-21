@@ -97,6 +97,10 @@ QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QImageIOPlugin_Metacast(QImageIOPlugin* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QImageIOPlugin_Tr(const char* s) {
 	QString _ret = QImageIOPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

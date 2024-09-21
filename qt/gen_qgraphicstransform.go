@@ -41,6 +41,12 @@ func (this *QGraphicsTransform) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
 }
 
+func (this *QGraphicsTransform) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsTransform_Metacast(this.h, param1_Cstring)
+}
+
 func QGraphicsTransform_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -158,6 +164,12 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsScale_MetaObject(this.h)))
+}
+
+func (this *QGraphicsScale) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsScale_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsScale_Tr(s string) string {
@@ -397,6 +409,12 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsRotation_MetaObject(this.h)))
+}
+
+func (this *QGraphicsRotation) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsRotation_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsRotation_Tr(s string) string {

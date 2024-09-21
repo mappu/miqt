@@ -1,6 +1,7 @@
 #include <QAbstractEventDispatcher>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QAbstractEventDispatcher__TimerInfo
 #include <QAbstractNativeEventFilter>
+#include <QByteArray>
 #include <QList>
 #include <QMetaObject>
 #include <QObject>
@@ -15,6 +16,10 @@
 
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QAbstractEventDispatcher_Metacast(QAbstractEventDispatcher* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QAbstractEventDispatcher_Tr(const char* s) {
@@ -110,6 +115,10 @@ void QAbstractEventDispatcher_InstallNativeEventFilter(QAbstractEventDispatcher*
 
 void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj) {
 	self->removeNativeEventFilter(filterObj);
+}
+
+bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, QByteArray* eventType, void* message, long* result) {
+	return self->filterNativeEvent(*eventType, message, static_cast<long*>(result));
 }
 
 void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self) {

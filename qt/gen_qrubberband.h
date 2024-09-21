@@ -32,6 +32,7 @@ typedef struct QWidget QWidget;
 QRubberBand* QRubberBand_new(int param1);
 QRubberBand* QRubberBand_new2(int param1, QWidget* param2);
 QMetaObject* QRubberBand_MetaObject(const QRubberBand* self);
+void* QRubberBand_Metacast(QRubberBand* self, const char* param1);
 struct miqt_string* QRubberBand_Tr(const char* s);
 struct miqt_string* QRubberBand_TrUtf8(const char* s);
 int QRubberBand_Shape(const QRubberBand* self);

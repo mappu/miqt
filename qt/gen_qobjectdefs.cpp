@@ -28,6 +28,14 @@ QGenericArgument* QGenericArgument_new3(const char* aName) {
 	return new QGenericArgument(aName);
 }
 
+QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData) {
+	return new QGenericArgument(aName, aData);
+}
+
+void* QGenericArgument_Data(const QGenericArgument* self) {
+	return self->data();
+}
+
 const char* QGenericArgument_Name(const QGenericArgument* self) {
 	return (const char*) self->name();
 }
@@ -46,6 +54,10 @@ QGenericReturnArgument* QGenericReturnArgument_new2(QGenericReturnArgument* para
 
 QGenericReturnArgument* QGenericReturnArgument_new3(const char* aName) {
 	return new QGenericReturnArgument(aName);
+}
+
+QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName, void* aData) {
+	return new QGenericReturnArgument(aName, aData);
 }
 
 void QGenericReturnArgument_Delete(QGenericReturnArgument* self) {

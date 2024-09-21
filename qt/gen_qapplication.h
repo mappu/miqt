@@ -46,6 +46,7 @@ typedef struct QWidget QWidget;
 QApplication* QApplication_new(int* argc, char** argv);
 QApplication* QApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QApplication_MetaObject(const QApplication* self);
+void* QApplication_Metacast(QApplication* self, const char* param1);
 struct miqt_string* QApplication_Tr(const char* s);
 struct miqt_string* QApplication_TrUtf8(const char* s);
 QStyle* QApplication_Style();

@@ -29,6 +29,7 @@ QTimeLine* QTimeLine_new();
 QTimeLine* QTimeLine_new2(int duration);
 QTimeLine* QTimeLine_new3(int duration, QObject* parent);
 QMetaObject* QTimeLine_MetaObject(const QTimeLine* self);
+void* QTimeLine_Metacast(QTimeLine* self, const char* param1);
 struct miqt_string* QTimeLine_Tr(const char* s);
 struct miqt_string* QTimeLine_TrUtf8(const char* s);
 int QTimeLine_State(const QTimeLine* self);

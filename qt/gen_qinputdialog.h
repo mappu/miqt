@@ -29,6 +29,7 @@ QInputDialog* QInputDialog_new();
 QInputDialog* QInputDialog_new2(QWidget* parent);
 QInputDialog* QInputDialog_new3(QWidget* parent, int flags);
 QMetaObject* QInputDialog_MetaObject(const QInputDialog* self);
+void* QInputDialog_Metacast(QInputDialog* self, const char* param1);
 struct miqt_string* QInputDialog_Tr(const char* s);
 struct miqt_string* QInputDialog_TrUtf8(const char* s);
 void QInputDialog_SetInputMode(QInputDialog* self, int mode);

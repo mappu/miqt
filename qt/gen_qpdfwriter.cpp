@@ -24,6 +24,10 @@ QMetaObject* QPdfWriter_MetaObject(const QPdfWriter* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPdfWriter_Metacast(QPdfWriter* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPdfWriter_Tr(const char* s) {
 	QString _ret = QPdfWriter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

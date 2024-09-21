@@ -31,6 +31,7 @@ typedef struct QPoint QPoint;
 
 QDrag* QDrag_new(QObject* dragSource);
 QMetaObject* QDrag_MetaObject(const QDrag* self);
+void* QDrag_Metacast(QDrag* self, const char* param1);
 struct miqt_string* QDrag_Tr(const char* s);
 struct miqt_string* QDrag_TrUtf8(const char* s);
 void QDrag_SetMimeData(QDrag* self, QMimeData* data);

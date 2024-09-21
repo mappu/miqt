@@ -22,6 +22,10 @@ QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QVariantAnimation_Metacast(QVariantAnimation* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QVariantAnimation_Tr(const char* s) {
 	QString _ret = QVariantAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -27,6 +27,10 @@ QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QOffscreenSurface_Metacast(QOffscreenSurface* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QOffscreenSurface_Tr(const char* s) {
 	QString _ret = QOffscreenSurface::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -80,6 +84,14 @@ QScreen* QOffscreenSurface_Screen(const QOffscreenSurface* self) {
 
 void QOffscreenSurface_SetScreen(QOffscreenSurface* self, QScreen* screen) {
 	self->setScreen(screen);
+}
+
+void* QOffscreenSurface_NativeHandle(const QOffscreenSurface* self) {
+	return self->nativeHandle();
+}
+
+void QOffscreenSurface_SetNativeHandle(QOffscreenSurface* self, void* handle) {
+	self->setNativeHandle(handle);
 }
 
 void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen) {

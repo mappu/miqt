@@ -14,6 +14,10 @@ QMetaObject* QClipboard_MetaObject(const QClipboard* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QClipboard_Metacast(QClipboard* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QClipboard_Tr(const char* s) {
 	QString _ret = QClipboard::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

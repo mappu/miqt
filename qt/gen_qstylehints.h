@@ -24,6 +24,7 @@ typedef struct QStyleHints QStyleHints;
 #endif
 
 QMetaObject* QStyleHints_MetaObject(const QStyleHints* self);
+void* QStyleHints_Metacast(QStyleHints* self, const char* param1);
 struct miqt_string* QStyleHints_Tr(const char* s);
 struct miqt_string* QStyleHints_TrUtf8(const char* s);
 void QStyleHints_SetMouseDoubleClickInterval(QStyleHints* self, int mouseDoubleClickInterval);

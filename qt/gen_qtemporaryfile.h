@@ -30,6 +30,7 @@ QTemporaryFile* QTemporaryFile_new2(struct miqt_string* templateName);
 QTemporaryFile* QTemporaryFile_new3(QObject* parent);
 QTemporaryFile* QTemporaryFile_new4(struct miqt_string* templateName, QObject* parent);
 QMetaObject* QTemporaryFile_MetaObject(const QTemporaryFile* self);
+void* QTemporaryFile_Metacast(QTemporaryFile* self, const char* param1);
 struct miqt_string* QTemporaryFile_Tr(const char* s);
 struct miqt_string* QTemporaryFile_TrUtf8(const char* s);
 bool QTemporaryFile_AutoRemove(const QTemporaryFile* self);

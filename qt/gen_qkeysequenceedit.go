@@ -65,6 +65,12 @@ func (this *QKeySequenceEdit) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QKeySequenceEdit_MetaObject(this.h)))
 }
 
+func (this *QKeySequenceEdit) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QKeySequenceEdit_Metacast(this.h, param1_Cstring)
+}
+
 func QKeySequenceEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

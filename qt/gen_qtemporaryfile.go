@@ -68,6 +68,12 @@ func (this *QTemporaryFile) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTemporaryFile_MetaObject(this.h)))
 }
 
+func (this *QTemporaryFile) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTemporaryFile_Metacast(this.h, param1_Cstring)
+}
+
 func QTemporaryFile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

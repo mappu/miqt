@@ -52,6 +52,12 @@ func (this *QTimer) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTimer_MetaObject(this.h)))
 }
 
+func (this *QTimer) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTimer_Metacast(this.h, param1_Cstring)
+}
+
 func QTimer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

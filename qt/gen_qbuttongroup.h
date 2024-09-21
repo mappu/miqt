@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 QButtonGroup* QButtonGroup_new();
 QButtonGroup* QButtonGroup_new2(QObject* parent);
 QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self);
+void* QButtonGroup_Metacast(QButtonGroup* self, const char* param1);
 struct miqt_string* QButtonGroup_Tr(const char* s);
 struct miqt_string* QButtonGroup_TrUtf8(const char* s);
 void QButtonGroup_SetExclusive(QButtonGroup* self, bool exclusive);

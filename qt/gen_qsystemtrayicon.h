@@ -34,6 +34,7 @@ QSystemTrayIcon* QSystemTrayIcon_new2(QIcon* icon);
 QSystemTrayIcon* QSystemTrayIcon_new3(QObject* parent);
 QSystemTrayIcon* QSystemTrayIcon_new4(QIcon* icon, QObject* parent);
 QMetaObject* QSystemTrayIcon_MetaObject(const QSystemTrayIcon* self);
+void* QSystemTrayIcon_Metacast(QSystemTrayIcon* self, const char* param1);
 struct miqt_string* QSystemTrayIcon_Tr(const char* s);
 struct miqt_string* QSystemTrayIcon_TrUtf8(const char* s);
 void QSystemTrayIcon_SetContextMenu(QSystemTrayIcon* self, QMenu* menu);

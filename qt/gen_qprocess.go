@@ -254,6 +254,12 @@ func (this *QProcess) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QProcess_MetaObject(this.h)))
 }
 
+func (this *QProcess) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QProcess_Metacast(this.h, param1_Cstring)
+}
+
 func QProcess_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

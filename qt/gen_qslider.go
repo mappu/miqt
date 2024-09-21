@@ -75,6 +75,12 @@ func (this *QSlider) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
 }
 
+func (this *QSlider) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSlider_Metacast(this.h, param1_Cstring)
+}
+
 func QSlider_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

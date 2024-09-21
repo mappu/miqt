@@ -32,6 +32,7 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self);
+void* QAbstractProxyModel_Metacast(QAbstractProxyModel* self, const char* param1);
 struct miqt_string* QAbstractProxyModel_Tr(const char* s);
 struct miqt_string* QAbstractProxyModel_TrUtf8(const char* s);
 void QAbstractProxyModel_SetSourceModel(QAbstractProxyModel* self, QAbstractItemModel* sourceModel);

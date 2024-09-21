@@ -49,6 +49,10 @@ QMetaObject* QDirModel_MetaObject(const QDirModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDirModel_Metacast(QDirModel* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDirModel_Tr(const char* s) {
 	QString _ret = QDirModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

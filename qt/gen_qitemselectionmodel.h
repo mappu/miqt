@@ -63,6 +63,7 @@ QItemSelectionModel* QItemSelectionModel_new();
 QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent);
 QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model);
 QMetaObject* QItemSelectionModel_MetaObject(const QItemSelectionModel* self);
+void* QItemSelectionModel_Metacast(QItemSelectionModel* self, const char* param1);
 struct miqt_string* QItemSelectionModel_Tr(const char* s);
 struct miqt_string* QItemSelectionModel_TrUtf8(const char* s);
 QModelIndex* QItemSelectionModel_CurrentIndex(const QItemSelectionModel* self);

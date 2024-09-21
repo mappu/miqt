@@ -12,6 +12,10 @@ QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAnimationGroup_Metacast(QAnimationGroup* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAnimationGroup_Tr(const char* s) {
 	QString _ret = QAnimationGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

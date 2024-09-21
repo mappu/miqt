@@ -32,6 +32,7 @@ QSlider* QSlider_new2(int orientation);
 QSlider* QSlider_new3(QWidget* parent);
 QSlider* QSlider_new4(int orientation, QWidget* parent);
 QMetaObject* QSlider_MetaObject(const QSlider* self);
+void* QSlider_Metacast(QSlider* self, const char* param1);
 struct miqt_string* QSlider_Tr(const char* s);
 struct miqt_string* QSlider_TrUtf8(const char* s);
 QSize* QSlider_SizeHint(const QSlider* self);

@@ -39,6 +39,7 @@ QSplashScreen* QSplashScreen_new7(QScreen* screen, QPixmap* pixmap, int f);
 QSplashScreen* QSplashScreen_new8(QWidget* parent, QPixmap* pixmap);
 QSplashScreen* QSplashScreen_new9(QWidget* parent, QPixmap* pixmap, int f);
 QMetaObject* QSplashScreen_MetaObject(const QSplashScreen* self);
+void* QSplashScreen_Metacast(QSplashScreen* self, const char* param1);
 struct miqt_string* QSplashScreen_Tr(const char* s);
 struct miqt_string* QSplashScreen_TrUtf8(const char* s);
 void QSplashScreen_SetPixmap(QSplashScreen* self, QPixmap* pixmap);

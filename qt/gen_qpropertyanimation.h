@@ -30,6 +30,7 @@ QPropertyAnimation* QPropertyAnimation_new2(QObject* target, QByteArray* propert
 QPropertyAnimation* QPropertyAnimation_new3(QObject* parent);
 QPropertyAnimation* QPropertyAnimation_new4(QObject* target, QByteArray* propertyName, QObject* parent);
 QMetaObject* QPropertyAnimation_MetaObject(const QPropertyAnimation* self);
+void* QPropertyAnimation_Metacast(QPropertyAnimation* self, const char* param1);
 struct miqt_string* QPropertyAnimation_Tr(const char* s);
 struct miqt_string* QPropertyAnimation_TrUtf8(const char* s);
 QObject* QPropertyAnimation_TargetObject(const QPropertyAnimation* self);

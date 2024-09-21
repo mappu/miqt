@@ -30,6 +30,7 @@ typedef struct QSize QSize;
 #endif
 
 QMetaObject* QAbstractButton_MetaObject(const QAbstractButton* self);
+void* QAbstractButton_Metacast(QAbstractButton* self, const char* param1);
 struct miqt_string* QAbstractButton_Tr(const char* s);
 struct miqt_string* QAbstractButton_TrUtf8(const char* s);
 void QAbstractButton_SetText(QAbstractButton* self, struct miqt_string* text);

@@ -47,6 +47,10 @@ QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDialogButtonBox_Metacast(QDialogButtonBox* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDialogButtonBox_Tr(const char* s) {
 	QString _ret = QDialogButtonBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -123,6 +123,10 @@ func (this *QAccessibleWidget) BackgroundColor() *QColor {
 	return _goptr
 }
 
+func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsafe.Pointer {
+	return C.QAccessibleWidget_InterfaceCast(this.h, (C.int)(t))
+}
+
 func (this *QAccessibleWidget) ActionNames() []string {
 	var _ma *C.struct_miqt_array = C.QAccessibleWidget_ActionNames(this.h)
 	_ret := make([]string, int(_ma.len))

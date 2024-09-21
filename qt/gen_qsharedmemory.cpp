@@ -30,6 +30,10 @@ QMetaObject* QSharedMemory_MetaObject(const QSharedMemory* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSharedMemory_Metacast(QSharedMemory* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSharedMemory_Tr(const char* s) {
 	QString _ret = QSharedMemory::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -86,6 +90,18 @@ bool QSharedMemory_IsAttached(const QSharedMemory* self) {
 
 bool QSharedMemory_Detach(QSharedMemory* self) {
 	return self->detach();
+}
+
+void* QSharedMemory_Data(QSharedMemory* self) {
+	return self->data();
+}
+
+const void* QSharedMemory_ConstData(const QSharedMemory* self) {
+	return (const void*) self->constData();
+}
+
+const void* QSharedMemory_Data2(const QSharedMemory* self) {
+	return (const void*) self->data();
 }
 
 bool QSharedMemory_Lock(QSharedMemory* self) {

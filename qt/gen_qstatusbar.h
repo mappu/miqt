@@ -26,6 +26,7 @@ typedef struct QWidget QWidget;
 QStatusBar* QStatusBar_new();
 QStatusBar* QStatusBar_new2(QWidget* parent);
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self);
+void* QStatusBar_Metacast(QStatusBar* self, const char* param1);
 struct miqt_string* QStatusBar_Tr(const char* s);
 struct miqt_string* QStatusBar_TrUtf8(const char* s);
 void QStatusBar_AddWidget(QStatusBar* self, QWidget* widget);

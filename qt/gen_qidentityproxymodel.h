@@ -34,6 +34,7 @@ typedef struct QVariant QVariant;
 QIdentityProxyModel* QIdentityProxyModel_new();
 QIdentityProxyModel* QIdentityProxyModel_new2(QObject* parent);
 QMetaObject* QIdentityProxyModel_MetaObject(const QIdentityProxyModel* self);
+void* QIdentityProxyModel_Metacast(QIdentityProxyModel* self, const char* param1);
 struct miqt_string* QIdentityProxyModel_Tr(const char* s);
 struct miqt_string* QIdentityProxyModel_TrUtf8(const char* s);
 int QIdentityProxyModel_ColumnCount(const QIdentityProxyModel* self);

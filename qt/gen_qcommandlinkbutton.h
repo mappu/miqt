@@ -30,6 +30,7 @@ QCommandLinkButton* QCommandLinkButton_new4(QWidget* parent);
 QCommandLinkButton* QCommandLinkButton_new5(struct miqt_string* text, QWidget* parent);
 QCommandLinkButton* QCommandLinkButton_new6(struct miqt_string* text, struct miqt_string* description, QWidget* parent);
 QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self);
+void* QCommandLinkButton_Metacast(QCommandLinkButton* self, const char* param1);
 struct miqt_string* QCommandLinkButton_Tr(const char* s);
 struct miqt_string* QCommandLinkButton_TrUtf8(const char* s);
 struct miqt_string* QCommandLinkButton_Description(const QCommandLinkButton* self);

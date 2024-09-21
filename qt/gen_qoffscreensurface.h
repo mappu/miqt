@@ -33,6 +33,7 @@ QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent);
 QOffscreenSurface* QOffscreenSurface_new2();
 QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen);
 QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self);
+void* QOffscreenSurface_Metacast(QOffscreenSurface* self, const char* param1);
 struct miqt_string* QOffscreenSurface_Tr(const char* s);
 struct miqt_string* QOffscreenSurface_TrUtf8(const char* s);
 int QOffscreenSurface_SurfaceType(const QOffscreenSurface* self);
@@ -45,6 +46,8 @@ QSurfaceFormat* QOffscreenSurface_RequestedFormat(const QOffscreenSurface* self)
 QSize* QOffscreenSurface_Size(const QOffscreenSurface* self);
 QScreen* QOffscreenSurface_Screen(const QOffscreenSurface* self);
 void QOffscreenSurface_SetScreen(QOffscreenSurface* self, QScreen* screen);
+void* QOffscreenSurface_NativeHandle(const QOffscreenSurface* self);
+void QOffscreenSurface_SetNativeHandle(QOffscreenSurface* self, void* handle);
 void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot);
 struct miqt_string* QOffscreenSurface_Tr2(const char* s, const char* c);

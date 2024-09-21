@@ -24,6 +24,10 @@ QMetaObject* QHeaderView_MetaObject(const QHeaderView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QHeaderView_Metacast(QHeaderView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QHeaderView_Tr(const char* s) {
 	QString _ret = QHeaderView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

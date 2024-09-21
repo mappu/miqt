@@ -77,6 +77,10 @@ func (this *QModelIndex) InternalId() uintptr {
 	return (uintptr)(C.QModelIndex_InternalId(this.h))
 }
 
+func (this *QModelIndex) InternalPointer() unsafe.Pointer {
+	return C.QModelIndex_InternalPointer(this.h)
+}
+
 func (this *QModelIndex) Parent() *QModelIndex {
 	_ret := C.QModelIndex_Parent(this.h)
 	_goptr := newQModelIndex(_ret)
@@ -244,6 +248,10 @@ func (this *QPersistentModelIndex) Column() int {
 	return (int)(C.QPersistentModelIndex_Column(this.h))
 }
 
+func (this *QPersistentModelIndex) InternalPointer() unsafe.Pointer {
+	return C.QPersistentModelIndex_InternalPointer(this.h)
+}
+
 func (this *QPersistentModelIndex) InternalId() uintptr {
 	return (uintptr)(C.QPersistentModelIndex_InternalId(this.h))
 }
@@ -334,6 +342,12 @@ func newQAbstractItemModel_U(h unsafe.Pointer) *QAbstractItemModel {
 
 func (this *QAbstractItemModel) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractItemModel_MetaObject(this.h)))
+}
+
+func (this *QAbstractItemModel) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractItemModel_Metacast(this.h, param1_Cstring)
 }
 
 func QAbstractItemModel_Tr(s string) string {
@@ -1029,6 +1043,12 @@ func (this *QAbstractTableModel) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTableModel_MetaObject(this.h)))
 }
 
+func (this *QAbstractTableModel) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractTableModel_Metacast(this.h, param1_Cstring)
+}
+
 func QAbstractTableModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -1159,6 +1179,12 @@ func newQAbstractListModel_U(h unsafe.Pointer) *QAbstractListModel {
 
 func (this *QAbstractListModel) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractListModel_MetaObject(this.h)))
+}
+
+func (this *QAbstractListModel) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractListModel_Metacast(this.h, param1_Cstring)
 }
 
 func QAbstractListModel_Tr(s string) string {

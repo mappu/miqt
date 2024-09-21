@@ -350,6 +350,30 @@ func QMetaType_IsRegistered(typeVal int) bool {
 	return (bool)(C.QMetaType_IsRegistered((C.int)(typeVal)))
 }
 
+func QMetaType_Create(typeVal int) unsafe.Pointer {
+	return C.QMetaType_Create((C.int)(typeVal))
+}
+
+func QMetaType_Destroy(typeVal int, data unsafe.Pointer) {
+	C.QMetaType_Destroy((C.int)(typeVal), data)
+}
+
+func QMetaType_Construct(typeVal int, where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
+	return C.QMetaType_Construct((C.int)(typeVal), where, copyVal)
+}
+
+func QMetaType_Destruct(typeVal int, where unsafe.Pointer) {
+	C.QMetaType_Destruct((C.int)(typeVal), where)
+}
+
+func QMetaType_Save(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
+	return (bool)(C.QMetaType_Save(stream.cPointer(), (C.int)(typeVal), data))
+}
+
+func QMetaType_Load(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
+	return (bool)(C.QMetaType_Load(stream.cPointer(), (C.int)(typeVal), data))
+}
+
 func (this *QMetaType) IsValid() bool {
 	return (bool)(C.QMetaType_IsValid(this.h))
 }
@@ -381,6 +405,22 @@ func (this *QMetaType) Name() *QByteArray {
 	return _goptr
 }
 
+func (this *QMetaType) Create2() unsafe.Pointer {
+	return C.QMetaType_Create2(this.h)
+}
+
+func (this *QMetaType) DestroyWithData(data unsafe.Pointer) {
+	C.QMetaType_DestroyWithData(this.h, data)
+}
+
+func (this *QMetaType) ConstructWithWhere(where unsafe.Pointer) unsafe.Pointer {
+	return C.QMetaType_ConstructWithWhere(this.h, where)
+}
+
+func (this *QMetaType) DestructWithData(data unsafe.Pointer) {
+	C.QMetaType_DestructWithData(this.h, data)
+}
+
 func QMetaType_HasRegisteredComparators(typeId int) bool {
 	return (bool)(C.QMetaType_HasRegisteredComparators((C.int)(typeId)))
 }
@@ -389,8 +429,36 @@ func QMetaType_HasRegisteredDebugStreamOperator(typeId int) bool {
 	return (bool)(C.QMetaType_HasRegisteredDebugStreamOperator((C.int)(typeId)))
 }
 
+func QMetaType_Convert(from unsafe.Pointer, fromTypeId int, to unsafe.Pointer, toTypeId int) bool {
+	return (bool)(C.QMetaType_Convert(from, (C.int)(fromTypeId), to, (C.int)(toTypeId)))
+}
+
+func QMetaType_Compare(lhs unsafe.Pointer, rhs unsafe.Pointer, typeId int, result *int) bool {
+	return (bool)(C.QMetaType_Compare(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
+}
+
+func QMetaType_Equals(lhs unsafe.Pointer, rhs unsafe.Pointer, typeId int, result *int) bool {
+	return (bool)(C.QMetaType_Equals(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
+}
+
+func QMetaType_DebugStream(dbg *QDebug, rhs unsafe.Pointer, typeId int) bool {
+	return (bool)(C.QMetaType_DebugStream(dbg.cPointer(), rhs, (C.int)(typeId)))
+}
+
 func QMetaType_HasRegisteredConverterFunction(fromTypeId int, toTypeId int) bool {
 	return (bool)(C.QMetaType_HasRegisteredConverterFunction((C.int)(fromTypeId), (C.int)(toTypeId)))
+}
+
+func QMetaType_Create22(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
+	return C.QMetaType_Create22((C.int)(typeVal), copyVal)
+}
+
+func (this *QMetaType) Create1(copyVal unsafe.Pointer) unsafe.Pointer {
+	return C.QMetaType_Create1(this.h, copyVal)
+}
+
+func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
+	return C.QMetaType_Construct2(this.h, where, copyVal)
 }
 
 // Delete this object from C++ memory.
@@ -430,8 +498,14 @@ func newQtMetaTypePrivate__VariantData_U(h unsafe.Pointer) *QtMetaTypePrivate__V
 }
 
 // NewQtMetaTypePrivate__VariantData constructs a new QtMetaTypePrivate::VariantData object.
-func NewQtMetaTypePrivate__VariantData(other *QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
-	ret := C.QtMetaTypePrivate__VariantData_new(other.cPointer())
+func NewQtMetaTypePrivate__VariantData(metaTypeId_ int, data_ unsafe.Pointer, flags_ uint) *QtMetaTypePrivate__VariantData {
+	ret := C.QtMetaTypePrivate__VariantData_new((C.int)(metaTypeId_), data_, (C.uint)(flags_))
+	return newQtMetaTypePrivate__VariantData(ret)
+}
+
+// NewQtMetaTypePrivate__VariantData2 constructs a new QtMetaTypePrivate::VariantData object.
+func NewQtMetaTypePrivate__VariantData2(other *QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
+	ret := C.QtMetaTypePrivate__VariantData_new2(other.cPointer())
 	return newQtMetaTypePrivate__VariantData(ret)
 }
 
@@ -545,6 +619,10 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) Equal(other *QtMetaTypeP
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Advance(i int) *QtMetaTypePrivate__QSequentialIterableImpl {
 	return newQtMetaTypePrivate__QSequentialIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
+}
+
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) Append(newElement unsafe.Pointer) {
+	C.QtMetaTypePrivate__QSequentialIterableImpl_Append(this.h, newElement)
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) GetCurrent() *QtMetaTypePrivate__VariantData {

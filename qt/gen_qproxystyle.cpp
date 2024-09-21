@@ -38,6 +38,10 @@ QMetaObject* QProxyStyle_MetaObject(const QProxyStyle* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QProxyStyle_Metacast(QProxyStyle* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QProxyStyle_Tr(const char* s) {
 	QString _ret = QProxyStyle::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

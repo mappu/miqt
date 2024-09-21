@@ -17,6 +17,10 @@ QMetaObject* QSizeGrip_MetaObject(const QSizeGrip* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSizeGrip_Metacast(QSizeGrip* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSizeGrip_Tr(const char* s) {
 	QString _ret = QSizeGrip::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

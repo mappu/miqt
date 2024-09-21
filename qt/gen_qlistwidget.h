@@ -103,6 +103,7 @@ void QListWidgetItem_Delete(QListWidgetItem* self);
 QListWidget* QListWidget_new();
 QListWidget* QListWidget_new2(QWidget* parent);
 QMetaObject* QListWidget_MetaObject(const QListWidget* self);
+void* QListWidget_Metacast(QListWidget* self, const char* param1);
 struct miqt_string* QListWidget_Tr(const char* s);
 struct miqt_string* QListWidget_TrUtf8(const char* s);
 void QListWidget_SetSelectionModel(QListWidget* self, QItemSelectionModel* selectionModel);

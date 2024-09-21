@@ -53,6 +53,12 @@ func (this *QButtonGroup) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QButtonGroup_MetaObject(this.h)))
 }
 
+func (this *QButtonGroup) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QButtonGroup_Metacast(this.h, param1_Cstring)
+}
+
 func QButtonGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

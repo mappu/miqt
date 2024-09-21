@@ -33,6 +33,10 @@ QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPluginLoader_Metacast(QPluginLoader* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPluginLoader_Tr(const char* s) {
 	QString _ret = QPluginLoader::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

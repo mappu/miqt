@@ -66,6 +66,10 @@ QMetaObject* QWidget_MetaObject(const QWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QWidget_Metacast(QWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QWidget_Tr(const char* s) {
 	QString _ret = QWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

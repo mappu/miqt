@@ -26,6 +26,7 @@ typedef struct QState QState;
 QFinalState* QFinalState_new();
 QFinalState* QFinalState_new2(QState* parent);
 QMetaObject* QFinalState_MetaObject(const QFinalState* self);
+void* QFinalState_Metacast(QFinalState* self, const char* param1);
 struct miqt_string* QFinalState_Tr(const char* s);
 struct miqt_string* QFinalState_TrUtf8(const char* s);
 struct miqt_string* QFinalState_Tr2(const char* s, const char* c);

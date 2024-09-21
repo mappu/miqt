@@ -48,6 +48,7 @@ typedef struct QWidget QWidget;
 #endif
 
 QMetaObject* QStyle_MetaObject(const QStyle* self);
+void* QStyle_Metacast(QStyle* self, const char* param1);
 struct miqt_string* QStyle_Tr(const char* s);
 struct miqt_string* QStyle_TrUtf8(const char* s);
 void QStyle_Polish(QStyle* self, QWidget* widget);

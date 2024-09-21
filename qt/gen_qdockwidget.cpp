@@ -40,6 +40,10 @@ QMetaObject* QDockWidget_MetaObject(const QDockWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QDockWidget_Metacast(QDockWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QDockWidget_Tr(const char* s) {
 	QString _ret = QDockWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

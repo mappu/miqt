@@ -36,6 +36,7 @@ typedef struct QWidget QWidget;
 QDataWidgetMapper* QDataWidgetMapper_new();
 QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent);
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self);
+void* QDataWidgetMapper_Metacast(QDataWidgetMapper* self, const char* param1);
 struct miqt_string* QDataWidgetMapper_Tr(const char* s);
 struct miqt_string* QDataWidgetMapper_TrUtf8(const char* s);
 void QDataWidgetMapper_SetModel(QDataWidgetMapper* self, QAbstractItemModel* model);

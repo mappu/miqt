@@ -96,6 +96,12 @@ func (this *QDockWidget) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QDockWidget_MetaObject(this.h)))
 }
 
+func (this *QDockWidget) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QDockWidget_Metacast(this.h, param1_Cstring)
+}
+
 func QDockWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

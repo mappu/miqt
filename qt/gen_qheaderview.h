@@ -34,6 +34,7 @@ typedef struct QWidget QWidget;
 QHeaderView* QHeaderView_new(int orientation);
 QHeaderView* QHeaderView_new2(int orientation, QWidget* parent);
 QMetaObject* QHeaderView_MetaObject(const QHeaderView* self);
+void* QHeaderView_Metacast(QHeaderView* self, const char* param1);
 struct miqt_string* QHeaderView_Tr(const char* s);
 struct miqt_string* QHeaderView_TrUtf8(const char* s);
 void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model);

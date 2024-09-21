@@ -38,6 +38,7 @@ typedef struct QWidget QWidget;
 QTableView* QTableView_new();
 QTableView* QTableView_new2(QWidget* parent);
 QMetaObject* QTableView_MetaObject(const QTableView* self);
+void* QTableView_Metacast(QTableView* self, const char* param1);
 struct miqt_string* QTableView_Tr(const char* s);
 struct miqt_string* QTableView_TrUtf8(const char* s);
 void QTableView_SetModel(QTableView* self, QAbstractItemModel* model);

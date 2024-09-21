@@ -31,6 +31,7 @@ QShortcut* QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member
 QShortcut* QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember);
 QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext);
 QMetaObject* QShortcut_MetaObject(const QShortcut* self);
+void* QShortcut_Metacast(QShortcut* self, const char* param1);
 struct miqt_string* QShortcut_Tr(const char* s);
 struct miqt_string* QShortcut_TrUtf8(const char* s);
 void QShortcut_SetKey(QShortcut* self, QKeySequence* key);

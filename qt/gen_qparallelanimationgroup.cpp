@@ -20,6 +20,10 @@ QMetaObject* QParallelAnimationGroup_MetaObject(const QParallelAnimationGroup* s
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QParallelAnimationGroup_Metacast(QParallelAnimationGroup* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QParallelAnimationGroup_Tr(const char* s) {
 	QString _ret = QParallelAnimationGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

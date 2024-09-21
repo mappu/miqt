@@ -105,6 +105,12 @@ func (this *QDateTimeEdit) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QDateTimeEdit_MetaObject(this.h)))
 }
 
+func (this *QDateTimeEdit) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QDateTimeEdit_Metacast(this.h, param1_Cstring)
+}
+
 func QDateTimeEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -533,6 +539,12 @@ func (this *QTimeEdit) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTimeEdit_MetaObject(this.h)))
 }
 
+func (this *QTimeEdit) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTimeEdit_Metacast(this.h, param1_Cstring)
+}
+
 func QTimeEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -678,6 +690,12 @@ func NewQDateEdit4(date *QDate, parent *QWidget) *QDateEdit {
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QDateEdit_MetaObject(this.h)))
+}
+
+func (this *QDateEdit) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QDateEdit_Metacast(this.h, param1_Cstring)
 }
 
 func QDateEdit_Tr(s string) string {

@@ -12,6 +12,10 @@ QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QIconEnginePlugin_Metacast(QIconEnginePlugin* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QIconEnginePlugin_Tr(const char* s) {
 	QString _ret = QIconEnginePlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

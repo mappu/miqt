@@ -24,6 +24,7 @@ typedef struct QObject QObject;
 #endif
 
 QMetaObject* QGenericPlugin_MetaObject(const QGenericPlugin* self);
+void* QGenericPlugin_Metacast(QGenericPlugin* self, const char* param1);
 struct miqt_string* QGenericPlugin_Tr(const char* s);
 struct miqt_string* QGenericPlugin_TrUtf8(const char* s);
 QObject* QGenericPlugin_Create(QGenericPlugin* self, struct miqt_string* name, struct miqt_string* spec);

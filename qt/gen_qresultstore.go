@@ -36,8 +36,20 @@ func newQtPrivate__ResultItem_U(h unsafe.Pointer) *QtPrivate__ResultItem {
 }
 
 // NewQtPrivate__ResultItem constructs a new QtPrivate::ResultItem object.
-func NewQtPrivate__ResultItem() *QtPrivate__ResultItem {
-	ret := C.QtPrivate__ResultItem_new()
+func NewQtPrivate__ResultItem(_result unsafe.Pointer, _count int) *QtPrivate__ResultItem {
+	ret := C.QtPrivate__ResultItem_new(_result, (C.int)(_count))
+	return newQtPrivate__ResultItem(ret)
+}
+
+// NewQtPrivate__ResultItem2 constructs a new QtPrivate::ResultItem object.
+func NewQtPrivate__ResultItem2(_result unsafe.Pointer) *QtPrivate__ResultItem {
+	ret := C.QtPrivate__ResultItem_new2(_result)
+	return newQtPrivate__ResultItem(ret)
+}
+
+// NewQtPrivate__ResultItem3 constructs a new QtPrivate::ResultItem object.
+func NewQtPrivate__ResultItem3() *QtPrivate__ResultItem {
+	ret := C.QtPrivate__ResultItem_new3()
 	return newQtPrivate__ResultItem(ret)
 }
 
@@ -188,6 +200,14 @@ func (this *QtPrivate__ResultStoreBase) SetFilterMode(enable bool) {
 
 func (this *QtPrivate__ResultStoreBase) FilterMode() bool {
 	return (bool)(C.QtPrivate__ResultStoreBase_FilterMode(this.h))
+}
+
+func (this *QtPrivate__ResultStoreBase) AddResult(index int, result unsafe.Pointer) int {
+	return (int)(C.QtPrivate__ResultStoreBase_AddResult(this.h, (C.int)(index), result))
+}
+
+func (this *QtPrivate__ResultStoreBase) AddResults(index int, results unsafe.Pointer, vectorSize int, logicalCount int) int {
+	return (int)(C.QtPrivate__ResultStoreBase_AddResults(this.h, (C.int)(index), results, (C.int)(vectorSize), (C.int)(logicalCount)))
 }
 
 func (this *QtPrivate__ResultStoreBase) Begin() *QtPrivate__ResultIteratorBase {

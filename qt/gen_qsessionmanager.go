@@ -49,6 +49,12 @@ func (this *QSessionManager) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSessionManager_MetaObject(this.h)))
 }
 
+func (this *QSessionManager) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSessionManager_Metacast(this.h, param1_Cstring)
+}
+
 func QSessionManager_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

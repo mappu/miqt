@@ -32,6 +32,7 @@ QPluginLoader* QPluginLoader_new2(struct miqt_string* fileName);
 QPluginLoader* QPluginLoader_new3(QObject* parent);
 QPluginLoader* QPluginLoader_new4(struct miqt_string* fileName, QObject* parent);
 QMetaObject* QPluginLoader_MetaObject(const QPluginLoader* self);
+void* QPluginLoader_Metacast(QPluginLoader* self, const char* param1);
 struct miqt_string* QPluginLoader_Tr(const char* s);
 struct miqt_string* QPluginLoader_TrUtf8(const char* s);
 QObject* QPluginLoader_Instance(QPluginLoader* self);

@@ -76,6 +76,12 @@ func (this *QUndoView) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QUndoView_MetaObject(this.h)))
 }
 
+func (this *QUndoView) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QUndoView_Metacast(this.h, param1_Cstring)
+}
+
 func QUndoView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

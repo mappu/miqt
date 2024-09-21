@@ -32,6 +32,7 @@ QLibrary* QLibrary_new6(struct miqt_string* fileName, QObject* parent);
 QLibrary* QLibrary_new7(struct miqt_string* fileName, int verNum, QObject* parent);
 QLibrary* QLibrary_new8(struct miqt_string* fileName, struct miqt_string* version, QObject* parent);
 QMetaObject* QLibrary_MetaObject(const QLibrary* self);
+void* QLibrary_Metacast(QLibrary* self, const char* param1);
 struct miqt_string* QLibrary_Tr(const char* s);
 struct miqt_string* QLibrary_TrUtf8(const char* s);
 bool QLibrary_Load(QLibrary* self);

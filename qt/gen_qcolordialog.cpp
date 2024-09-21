@@ -29,6 +29,10 @@ QMetaObject* QColorDialog_MetaObject(const QColorDialog* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QColorDialog_Metacast(QColorDialog* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QColorDialog_Tr(const char* s) {
 	QString _ret = QColorDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

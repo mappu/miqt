@@ -29,6 +29,7 @@ typedef struct QObject QObject;
 
 QActionGroup* QActionGroup_new(QObject* parent);
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self);
+void* QActionGroup_Metacast(QActionGroup* self, const char* param1);
 struct miqt_string* QActionGroup_Tr(const char* s);
 struct miqt_string* QActionGroup_TrUtf8(const char* s);
 QAction* QActionGroup_AddAction(QActionGroup* self, QAction* a);

@@ -30,6 +30,10 @@ QMetaObject* QTextObject_MetaObject(const QTextObject* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTextObject_Metacast(QTextObject* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTextObject_Tr(const char* s) {
 	QString _ret = QTextObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -92,6 +96,10 @@ QMetaObject* QTextBlockGroup_MetaObject(const QTextBlockGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTextBlockGroup_Metacast(QTextBlockGroup* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTextBlockGroup_Tr(const char* s) {
 	QString _ret = QTextBlockGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -148,6 +156,10 @@ QTextFrame* QTextFrame_new(QTextDocument* doc) {
 
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QTextFrame_Metacast(QTextFrame* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QTextFrame_Tr(const char* s) {

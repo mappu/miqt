@@ -34,6 +34,7 @@ QSplitter* QSplitter_new2(int param1);
 QSplitter* QSplitter_new3(QWidget* parent);
 QSplitter* QSplitter_new4(int param1, QWidget* parent);
 QMetaObject* QSplitter_MetaObject(const QSplitter* self);
+void* QSplitter_Metacast(QSplitter* self, const char* param1);
 struct miqt_string* QSplitter_Tr(const char* s);
 struct miqt_string* QSplitter_TrUtf8(const char* s);
 void QSplitter_AddWidget(QSplitter* self, QWidget* widget);
@@ -73,6 +74,7 @@ void QSplitter_Delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self);
+void* QSplitterHandle_Metacast(QSplitterHandle* self, const char* param1);
 struct miqt_string* QSplitterHandle_Tr(const char* s);
 struct miqt_string* QSplitterHandle_TrUtf8(const char* s);
 void QSplitterHandle_SetOrientation(QSplitterHandle* self, int o);

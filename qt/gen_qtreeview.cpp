@@ -27,6 +27,10 @@ QMetaObject* QTreeView_MetaObject(const QTreeView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTreeView_Metacast(QTreeView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTreeView_Tr(const char* s) {
 	QString _ret = QTreeView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -89,6 +89,7 @@ QWidget* QWidget_new();
 QWidget* QWidget_new2(QWidget* parent);
 QWidget* QWidget_new3(QWidget* parent, int f);
 QMetaObject* QWidget_MetaObject(const QWidget* self);
+void* QWidget_Metacast(QWidget* self, const char* param1);
 struct miqt_string* QWidget_Tr(const char* s);
 struct miqt_string* QWidget_TrUtf8(const char* s);
 int QWidget_DevType(const QWidget* self);

@@ -159,6 +159,12 @@ func (this *QTextDocument) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QTextDocument_MetaObject(this.h)))
 }
 
+func (this *QTextDocument) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QTextDocument_Metacast(this.h, param1_Cstring)
+}
+
 func QTextDocument_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

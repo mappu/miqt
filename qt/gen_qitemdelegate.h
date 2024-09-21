@@ -40,6 +40,7 @@ typedef struct QWidget QWidget;
 QItemDelegate* QItemDelegate_new();
 QItemDelegate* QItemDelegate_new2(QObject* parent);
 QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self);
+void* QItemDelegate_Metacast(QItemDelegate* self, const char* param1);
 struct miqt_string* QItemDelegate_Tr(const char* s);
 struct miqt_string* QItemDelegate_TrUtf8(const char* s);
 bool QItemDelegate_HasClipping(const QItemDelegate* self);

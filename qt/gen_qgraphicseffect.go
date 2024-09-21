@@ -66,6 +66,12 @@ func (this *QGraphicsEffect) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
 }
 
+func (this *QGraphicsEffect) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsEffect_Metacast(this.h, param1_Cstring)
+}
+
 func QGraphicsEffect_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -225,6 +231,12 @@ func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsColorizeEffect_MetaObject(this.h)))
+}
+
+func (this *QGraphicsColorizeEffect) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsColorizeEffect_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsColorizeEffect_Tr(s string) string {
@@ -399,6 +411,12 @@ func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsBlurEffect_MetaObject(this.h)))
+}
+
+func (this *QGraphicsBlurEffect) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsBlurEffect_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsBlurEffect_Tr(s string) string {
@@ -577,6 +595,12 @@ func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsDropShadowEffect_MetaObject(this.h)))
+}
+
+func (this *QGraphicsDropShadowEffect) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsDropShadowEffect_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsDropShadowEffect_Tr(s string) string {
@@ -813,6 +837,12 @@ func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsOpacityEffect_MetaObject(this.h)))
+}
+
+func (this *QGraphicsOpacityEffect) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QGraphicsOpacityEffect_Metacast(this.h, param1_Cstring)
 }
 
 func QGraphicsOpacityEffect_Tr(s string) string {

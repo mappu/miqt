@@ -16,6 +16,10 @@ QMetaObject* QScroller_MetaObject(const QScroller* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QScroller_Metacast(QScroller* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QScroller_Tr(const char* s) {
 	QString _ret = QScroller::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

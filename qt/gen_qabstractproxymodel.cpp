@@ -17,6 +17,10 @@ QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAbstractProxyModel_Metacast(QAbstractProxyModel* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAbstractProxyModel_Tr(const char* s) {
 	QString _ret = QAbstractProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

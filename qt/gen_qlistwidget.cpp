@@ -265,6 +265,10 @@ QMetaObject* QListWidget_MetaObject(const QListWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QListWidget_Metacast(QListWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QListWidget_Tr(const char* s) {
 	QString _ret = QListWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

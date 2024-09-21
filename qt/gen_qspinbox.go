@@ -53,6 +53,12 @@ func (this *QSpinBox) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSpinBox_MetaObject(this.h)))
 }
 
+func (this *QSpinBox) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSpinBox_Metacast(this.h, param1_Cstring)
+}
+
 func QSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -321,6 +327,12 @@ func NewQDoubleSpinBox2(parent *QWidget) *QDoubleSpinBox {
 
 func (this *QDoubleSpinBox) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QDoubleSpinBox_MetaObject(this.h)))
+}
+
+func (this *QDoubleSpinBox) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QDoubleSpinBox_Metacast(this.h, param1_Cstring)
 }
 
 func QDoubleSpinBox_Tr(s string) string {

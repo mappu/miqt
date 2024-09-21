@@ -38,6 +38,7 @@ typedef struct QWidget QWidget;
 QTabBar* QTabBar_new();
 QTabBar* QTabBar_new2(QWidget* parent);
 QMetaObject* QTabBar_MetaObject(const QTabBar* self);
+void* QTabBar_Metacast(QTabBar* self, const char* param1);
 struct miqt_string* QTabBar_Tr(const char* s);
 struct miqt_string* QTabBar_TrUtf8(const char* s);
 int QTabBar_Shape(const QTabBar* self);

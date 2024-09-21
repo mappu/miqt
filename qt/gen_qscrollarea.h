@@ -28,6 +28,7 @@ typedef struct QWidget QWidget;
 QScrollArea* QScrollArea_new();
 QScrollArea* QScrollArea_new2(QWidget* parent);
 QMetaObject* QScrollArea_MetaObject(const QScrollArea* self);
+void* QScrollArea_Metacast(QScrollArea* self, const char* param1);
 struct miqt_string* QScrollArea_Tr(const char* s);
 struct miqt_string* QScrollArea_TrUtf8(const char* s);
 QWidget* QScrollArea_Widget(const QScrollArea* self);

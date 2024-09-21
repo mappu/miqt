@@ -23,6 +23,10 @@ QMetaObject* QRubberBand_MetaObject(const QRubberBand* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QRubberBand_Metacast(QRubberBand* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QRubberBand_Tr(const char* s) {
 	QString _ret = QRubberBand::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

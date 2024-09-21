@@ -41,6 +41,12 @@ func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
 }
 
+func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QAbstractEventDispatcher_Metacast(this.h, param1_Cstring)
+}
+
 func QAbstractEventDispatcher_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -139,6 +145,10 @@ func (this *QAbstractEventDispatcher) InstallNativeEventFilter(filterObj *QAbstr
 
 func (this *QAbstractEventDispatcher) RemoveNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
 	C.QAbstractEventDispatcher_RemoveNativeEventFilter(this.h, filterObj.cPointer())
+}
+
+func (this *QAbstractEventDispatcher) FilterNativeEvent(eventType *QByteArray, message unsafe.Pointer, result *int64) bool {
+	return (bool)(C.QAbstractEventDispatcher_FilterNativeEvent(this.h, eventType.cPointer(), message, (*C.long)(unsafe.Pointer(result))))
 }
 
 func (this *QAbstractEventDispatcher) AboutToBlock() {

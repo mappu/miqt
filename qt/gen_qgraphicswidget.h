@@ -53,6 +53,7 @@ QGraphicsWidget* QGraphicsWidget_new();
 QGraphicsWidget* QGraphicsWidget_new2(QGraphicsItem* parent);
 QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags);
 QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self);
+void* QGraphicsWidget_Metacast(QGraphicsWidget* self, const char* param1);
 struct miqt_string* QGraphicsWidget_Tr(const char* s);
 struct miqt_string* QGraphicsWidget_TrUtf8(const char* s);
 QGraphicsLayout* QGraphicsWidget_Layout(const QGraphicsWidget* self);

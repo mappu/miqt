@@ -55,6 +55,7 @@ QRect* QImageIOHandler_CurrentImageRect(const QImageIOHandler* self);
 void QImageIOHandler_Delete(QImageIOHandler* self);
 
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self);
+void* QImageIOPlugin_Metacast(QImageIOPlugin* self, const char* param1);
 struct miqt_string* QImageIOPlugin_Tr(const char* s);
 struct miqt_string* QImageIOPlugin_TrUtf8(const char* s);
 int QImageIOPlugin_Capabilities(const QImageIOPlugin* self, QIODevice* device, QByteArray* format);

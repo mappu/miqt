@@ -29,6 +29,10 @@ QMetaObject* QFontDialog_MetaObject(const QFontDialog* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFontDialog_Metacast(QFontDialog* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFontDialog_Tr(const char* s) {
 	QString _ret = QFontDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

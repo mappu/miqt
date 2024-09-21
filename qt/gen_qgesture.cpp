@@ -29,6 +29,10 @@ QMetaObject* QGesture_MetaObject(const QGesture* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGesture_Metacast(QGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGesture_Tr(const char* s) {
 	QString _ret = QGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -122,6 +126,10 @@ QMetaObject* QPanGesture_MetaObject(const QPanGesture* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPanGesture_Metacast(QPanGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPanGesture_Tr(const char* s) {
 	QString _ret = QPanGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -207,6 +215,10 @@ QPinchGesture* QPinchGesture_new2(QObject* parent) {
 
 QMetaObject* QPinchGesture_MetaObject(const QPinchGesture* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QPinchGesture_Metacast(QPinchGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QPinchGesture_Tr(const char* s) {
@@ -363,6 +375,10 @@ QMetaObject* QSwipeGesture_MetaObject(const QSwipeGesture* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSwipeGesture_Metacast(QSwipeGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSwipeGesture_Tr(const char* s) {
 	QString _ret = QSwipeGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -440,6 +456,10 @@ QMetaObject* QTapGesture_MetaObject(const QTapGesture* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTapGesture_Metacast(QTapGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTapGesture_Tr(const char* s) {
 	QString _ret = QTapGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -504,6 +524,10 @@ QTapAndHoldGesture* QTapAndHoldGesture_new2(QObject* parent) {
 
 QMetaObject* QTapAndHoldGesture_MetaObject(const QTapAndHoldGesture* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QTapAndHoldGesture_Metacast(QTapAndHoldGesture* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QTapAndHoldGesture_Tr(const char* s) {

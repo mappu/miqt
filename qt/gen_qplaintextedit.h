@@ -76,6 +76,7 @@ QPlainTextEdit* QPlainTextEdit_new2(struct miqt_string* text);
 QPlainTextEdit* QPlainTextEdit_new3(QWidget* parent);
 QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string* text, QWidget* parent);
 QMetaObject* QPlainTextEdit_MetaObject(const QPlainTextEdit* self);
+void* QPlainTextEdit_Metacast(QPlainTextEdit* self, const char* param1);
 struct miqt_string* QPlainTextEdit_Tr(const char* s);
 struct miqt_string* QPlainTextEdit_TrUtf8(const char* s);
 void QPlainTextEdit_SetDocument(QPlainTextEdit* self, QTextDocument* document);
@@ -181,6 +182,7 @@ void QPlainTextEdit_Delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
 QMetaObject* QPlainTextDocumentLayout_MetaObject(const QPlainTextDocumentLayout* self);
+void* QPlainTextDocumentLayout_Metacast(QPlainTextDocumentLayout* self, const char* param1);
 struct miqt_string* QPlainTextDocumentLayout_Tr(const char* s);
 struct miqt_string* QPlainTextDocumentLayout_TrUtf8(const char* s);
 void QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout* self, QPainter* param1, QAbstractTextDocumentLayout__PaintContext* param2);

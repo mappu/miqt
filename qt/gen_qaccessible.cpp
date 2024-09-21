@@ -184,6 +184,14 @@ QAccessibleTableCellInterface* QAccessibleInterface_TableCellInterface(QAccessib
 	return self->tableCellInterface();
 }
 
+void QAccessibleInterface_VirtualHook(QAccessibleInterface* self, int id, void* data) {
+	self->virtual_hook(static_cast<int>(id), data);
+}
+
+void* QAccessibleInterface_InterfaceCast(QAccessibleInterface* self, int param1) {
+	return self->interface_cast(static_cast<QAccessible::InterfaceType>(param1));
+}
+
 void QAccessibleTextInterface_Selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
 	self->selection(static_cast<int>(selectionIndex), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 }

@@ -19,6 +19,10 @@ QMetaObject* QValidator_MetaObject(const QValidator* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QValidator_Metacast(QValidator* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QValidator_Tr(const char* s) {
 	QString _ret = QValidator::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -112,6 +116,10 @@ QIntValidator* QIntValidator_new4(int bottom, int top, QObject* parent) {
 
 QMetaObject* QIntValidator_MetaObject(const QIntValidator* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QIntValidator_Metacast(QIntValidator* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QIntValidator_Tr(const char* s) {
@@ -231,6 +239,10 @@ QDoubleValidator* QDoubleValidator_new4(double bottom, double top, int decimals,
 
 QMetaObject* QDoubleValidator_MetaObject(const QDoubleValidator* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QDoubleValidator_Metacast(QDoubleValidator* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QDoubleValidator_Tr(const char* s) {
@@ -391,6 +403,10 @@ QMetaObject* QRegExpValidator_MetaObject(const QRegExpValidator* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QRegExpValidator_Metacast(QRegExpValidator* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QRegExpValidator_Tr(const char* s) {
 	QString _ret = QRegExpValidator::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -484,6 +500,10 @@ QRegularExpressionValidator* QRegularExpressionValidator_new4(QRegularExpression
 
 QMetaObject* QRegularExpressionValidator_MetaObject(const QRegularExpressionValidator* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QRegularExpressionValidator_Metacast(QRegularExpressionValidator* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QRegularExpressionValidator_Tr(const char* s) {

@@ -43,6 +43,7 @@ QSettings* QSettings_new13(struct miqt_string* fileName, int format, QObject* pa
 QSettings* QSettings_new14(QObject* parent);
 QSettings* QSettings_new15(int scope, QObject* parent);
 QMetaObject* QSettings_MetaObject(const QSettings* self);
+void* QSettings_Metacast(QSettings* self, const char* param1);
 struct miqt_string* QSettings_Tr(const char* s);
 struct miqt_string* QSettings_TrUtf8(const char* s);
 void QSettings_Clear(QSettings* self);

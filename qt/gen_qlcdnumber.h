@@ -30,6 +30,7 @@ QLCDNumber* QLCDNumber_new2(unsigned int numDigits);
 QLCDNumber* QLCDNumber_new3(QWidget* parent);
 QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent);
 QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self);
+void* QLCDNumber_Metacast(QLCDNumber* self, const char* param1);
 struct miqt_string* QLCDNumber_Tr(const char* s);
 struct miqt_string* QLCDNumber_TrUtf8(const char* s);
 bool QLCDNumber_SmallDecimalPoint(const QLCDNumber* self);

@@ -21,6 +21,10 @@ QMetaObject* QSignalMapper_MetaObject(const QSignalMapper* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSignalMapper_Metacast(QSignalMapper* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSignalMapper_Tr(const char* s) {
 	QString _ret = QSignalMapper::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

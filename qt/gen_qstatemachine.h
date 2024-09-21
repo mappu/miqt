@@ -46,6 +46,7 @@ QStateMachine* QStateMachine_new2(int childMode);
 QStateMachine* QStateMachine_new3(QObject* parent);
 QStateMachine* QStateMachine_new4(int childMode, QObject* parent);
 QMetaObject* QStateMachine_MetaObject(const QStateMachine* self);
+void* QStateMachine_Metacast(QStateMachine* self, const char* param1);
 struct miqt_string* QStateMachine_Tr(const char* s);
 struct miqt_string* QStateMachine_TrUtf8(const char* s);
 void QStateMachine_AddState(QStateMachine* self, QAbstractState* state);

@@ -32,6 +32,10 @@ QMetaObject* QSplitter_MetaObject(const QSplitter* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSplitter_Metacast(QSplitter* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSplitter_Tr(const char* s) {
 	QString _ret = QSplitter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -220,6 +224,10 @@ QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent) {
 
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QSplitterHandle_Metacast(QSplitterHandle* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QSplitterHandle_Tr(const char* s) {

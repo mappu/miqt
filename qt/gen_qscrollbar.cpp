@@ -30,6 +30,10 @@ QMetaObject* QScrollBar_MetaObject(const QScrollBar* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QScrollBar_Metacast(QScrollBar* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QScrollBar_Tr(const char* s) {
 	QString _ret = QScrollBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -56,6 +56,7 @@ typedef struct QTextObjectInterface QTextObjectInterface;
 #endif
 
 QMetaObject* QAbstractTextDocumentLayout_MetaObject(const QAbstractTextDocumentLayout* self);
+void* QAbstractTextDocumentLayout_Metacast(QAbstractTextDocumentLayout* self, const char* param1);
 struct miqt_string* QAbstractTextDocumentLayout_Tr(const char* s);
 struct miqt_string* QAbstractTextDocumentLayout_TrUtf8(const char* s);
 void QAbstractTextDocumentLayout_Draw(QAbstractTextDocumentLayout* self, QPainter* painter, QAbstractTextDocumentLayout__PaintContext* context);

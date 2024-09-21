@@ -60,6 +60,12 @@ func (this *QProgressBar) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QProgressBar_MetaObject(this.h)))
 }
 
+func (this *QProgressBar) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QProgressBar_Metacast(this.h, param1_Cstring)
+}
+
 func QProgressBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

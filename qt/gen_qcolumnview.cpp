@@ -27,6 +27,10 @@ QMetaObject* QColumnView_MetaObject(const QColumnView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QColumnView_Metacast(QColumnView* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QColumnView_Tr(const char* s) {
 	QString _ret = QColumnView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

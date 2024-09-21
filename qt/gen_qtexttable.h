@@ -60,6 +60,7 @@ void QTextTableCell_Delete(QTextTableCell* self);
 
 QTextTable* QTextTable_new(QTextDocument* doc);
 QMetaObject* QTextTable_MetaObject(const QTextTable* self);
+void* QTextTable_Metacast(QTextTable* self, const char* param1);
 struct miqt_string* QTextTable_Tr(const char* s);
 struct miqt_string* QTextTable_TrUtf8(const char* s);
 void QTextTable_Resize(QTextTable* self, int rows, int cols);

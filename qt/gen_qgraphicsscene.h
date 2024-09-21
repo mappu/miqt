@@ -84,6 +84,7 @@ QGraphicsScene* QGraphicsScene_new4(QObject* parent);
 QGraphicsScene* QGraphicsScene_new5(QRectF* sceneRect, QObject* parent);
 QGraphicsScene* QGraphicsScene_new6(double x, double y, double width, double height, QObject* parent);
 QMetaObject* QGraphicsScene_MetaObject(const QGraphicsScene* self);
+void* QGraphicsScene_Metacast(QGraphicsScene* self, const char* param1);
 struct miqt_string* QGraphicsScene_Tr(const char* s);
 struct miqt_string* QGraphicsScene_TrUtf8(const char* s);
 QRectF* QGraphicsScene_SceneRect(const QGraphicsScene* self);

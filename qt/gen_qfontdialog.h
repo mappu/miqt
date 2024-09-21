@@ -30,6 +30,7 @@ QFontDialog* QFontDialog_new2(QFont* initial);
 QFontDialog* QFontDialog_new3(QWidget* parent);
 QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent);
 QMetaObject* QFontDialog_MetaObject(const QFontDialog* self);
+void* QFontDialog_Metacast(QFontDialog* self, const char* param1);
 struct miqt_string* QFontDialog_Tr(const char* s);
 struct miqt_string* QFontDialog_TrUtf8(const char* s);
 void QFontDialog_SetCurrentFont(QFontDialog* self, QFont* font);

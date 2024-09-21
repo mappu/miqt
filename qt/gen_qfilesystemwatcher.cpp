@@ -43,6 +43,10 @@ QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QFileSystemWatcher_Metacast(QFileSystemWatcher* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QFileSystemWatcher_Tr(const char* s) {
 	QString _ret = QFileSystemWatcher::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

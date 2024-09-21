@@ -54,6 +54,14 @@ func newQArrayData_U(h unsafe.Pointer) *QArrayData {
 	return newQArrayData((*C.QArrayData)(h))
 }
 
+func (this *QArrayData) Data() unsafe.Pointer {
+	return C.QArrayData_Data(this.h)
+}
+
+func (this *QArrayData) Data2() unsafe.Pointer {
+	return C.QArrayData_Data2(this.h)
+}
+
 func (this *QArrayData) IsMutable() bool {
 	return (bool)(C.QArrayData_IsMutable(this.h))
 }

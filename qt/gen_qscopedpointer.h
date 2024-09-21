@@ -19,6 +19,7 @@ class QScopedPointerPodDeleter;
 typedef struct QScopedPointerPodDeleter QScopedPointerPodDeleter;
 #endif
 
+void QScopedPointerPodDeleter_Cleanup(void* pointer);
 void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self);
 
 #ifdef __cplusplus

@@ -65,6 +65,12 @@ func (this *QSplitter) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSplitter_MetaObject(this.h)))
 }
 
+func (this *QSplitter) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSplitter_Metacast(this.h, param1_Cstring)
+}
+
 func QSplitter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
@@ -326,6 +332,12 @@ func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
 
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QSplitterHandle_MetaObject(this.h)))
+}
+
+func (this *QSplitterHandle) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QSplitterHandle_Metacast(this.h, param1_Cstring)
 }
 
 func QSplitterHandle_Tr(s string) string {

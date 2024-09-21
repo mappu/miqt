@@ -16,6 +16,10 @@ QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self)
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QObjectCleanupHandler_Metacast(QObjectCleanupHandler* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QObjectCleanupHandler_Tr(const char* s) {
 	QString _ret = QObjectCleanupHandler::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

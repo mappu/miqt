@@ -30,6 +30,7 @@ typedef struct QSequentialAnimationGroup QSequentialAnimationGroup;
 QSequentialAnimationGroup* QSequentialAnimationGroup_new();
 QSequentialAnimationGroup* QSequentialAnimationGroup_new2(QObject* parent);
 QMetaObject* QSequentialAnimationGroup_MetaObject(const QSequentialAnimationGroup* self);
+void* QSequentialAnimationGroup_Metacast(QSequentialAnimationGroup* self, const char* param1);
 struct miqt_string* QSequentialAnimationGroup_Tr(const char* s);
 struct miqt_string* QSequentialAnimationGroup_TrUtf8(const char* s);
 QPauseAnimation* QSequentialAnimationGroup_AddPause(QSequentialAnimationGroup* self, int msecs);

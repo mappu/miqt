@@ -143,6 +143,7 @@ QStandardItemModel* QStandardItemModel_new2(int rows, int columns);
 QStandardItemModel* QStandardItemModel_new3(QObject* parent);
 QStandardItemModel* QStandardItemModel_new4(int rows, int columns, QObject* parent);
 QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self);
+void* QStandardItemModel_Metacast(QStandardItemModel* self, const char* param1);
 struct miqt_string* QStandardItemModel_Tr(const char* s);
 struct miqt_string* QStandardItemModel_TrUtf8(const char* s);
 QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column);

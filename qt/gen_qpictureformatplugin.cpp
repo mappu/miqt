@@ -12,6 +12,10 @@ QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPictureFormatPlugin_Metacast(QPictureFormatPlugin* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPictureFormatPlugin_Tr(const char* s) {
 	QString _ret = QPictureFormatPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

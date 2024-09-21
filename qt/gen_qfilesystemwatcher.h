@@ -28,6 +28,7 @@ QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of struct miqt
 QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent);
 QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of struct miqt_string* */ paths, QObject* parent);
 QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self);
+void* QFileSystemWatcher_Metacast(QFileSystemWatcher* self, const char* param1);
 struct miqt_string* QFileSystemWatcher_Tr(const char* s);
 struct miqt_string* QFileSystemWatcher_TrUtf8(const char* s);
 bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, struct miqt_string* file);

@@ -25,6 +25,10 @@ QMetaObject* QTimeLine_MetaObject(const QTimeLine* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QTimeLine_Metacast(QTimeLine* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QTimeLine_Tr(const char* s) {
 	QString _ret = QTimeLine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

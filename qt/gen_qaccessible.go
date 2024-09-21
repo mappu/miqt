@@ -440,6 +440,14 @@ func (this *QAccessibleInterface) TableCellInterface() *QAccessibleTableCellInte
 	return newQAccessibleTableCellInterface_U(unsafe.Pointer(C.QAccessibleInterface_TableCellInterface(this.h)))
 }
 
+func (this *QAccessibleInterface) VirtualHook(id int, data unsafe.Pointer) {
+	C.QAccessibleInterface_VirtualHook(this.h, (C.int)(id), data)
+}
+
+func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceType) unsafe.Pointer {
+	return C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1))
+}
+
 type QAccessibleTextInterface struct {
 	h *C.QAccessibleTextInterface
 }

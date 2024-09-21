@@ -46,6 +46,12 @@ func (this *QWidgetAction) MetaObject() *QMetaObject {
 	return newQMetaObject_U(unsafe.Pointer(C.QWidgetAction_MetaObject(this.h)))
 }
 
+func (this *QWidgetAction) Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+	return C.QWidgetAction_Metacast(this.h, param1_Cstring)
+}
+
 func QWidgetAction_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

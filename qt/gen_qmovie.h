@@ -46,6 +46,7 @@ QMovie* QMovie_new6(QIODevice* device, QByteArray* format, QObject* parent);
 QMovie* QMovie_new7(struct miqt_string* fileName, QByteArray* format);
 QMovie* QMovie_new8(struct miqt_string* fileName, QByteArray* format, QObject* parent);
 QMetaObject* QMovie_MetaObject(const QMovie* self);
+void* QMovie_Metacast(QMovie* self, const char* param1);
 struct miqt_string* QMovie_Tr(const char* s);
 struct miqt_string* QMovie_TrUtf8(const char* s);
 struct miqt_array* QMovie_SupportedFormats();

@@ -28,6 +28,10 @@ QMetaObject* QPauseAnimation_MetaObject(const QPauseAnimation* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPauseAnimation_Metacast(QPauseAnimation* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPauseAnimation_Tr(const char* s) {
 	QString _ret = QPauseAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

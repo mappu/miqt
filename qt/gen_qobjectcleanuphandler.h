@@ -25,6 +25,7 @@ typedef struct QObjectCleanupHandler QObjectCleanupHandler;
 
 QObjectCleanupHandler* QObjectCleanupHandler_new();
 QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self);
+void* QObjectCleanupHandler_Metacast(QObjectCleanupHandler* self, const char* param1);
 struct miqt_string* QObjectCleanupHandler_Tr(const char* s);
 struct miqt_string* QObjectCleanupHandler_TrUtf8(const char* s);
 QObject* QObjectCleanupHandler_Add(QObjectCleanupHandler* self, QObject* object);

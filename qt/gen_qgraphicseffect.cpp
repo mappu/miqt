@@ -20,6 +20,10 @@ QMetaObject* QGraphicsEffect_MetaObject(const QGraphicsEffect* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsEffect_Metacast(QGraphicsEffect* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsEffect_Tr(const char* s) {
 	QString _ret = QGraphicsEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -107,6 +111,10 @@ QGraphicsColorizeEffect* QGraphicsColorizeEffect_new2(QObject* parent) {
 
 QMetaObject* QGraphicsColorizeEffect_MetaObject(const QGraphicsColorizeEffect* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsColorizeEffect_Metacast(QGraphicsColorizeEffect* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsColorizeEffect_Tr(const char* s) {
@@ -207,6 +215,10 @@ QGraphicsBlurEffect* QGraphicsBlurEffect_new2(QObject* parent) {
 
 QMetaObject* QGraphicsBlurEffect_MetaObject(const QGraphicsBlurEffect* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsBlurEffect_Metacast(QGraphicsBlurEffect* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsBlurEffect_Tr(const char* s) {
@@ -311,6 +323,10 @@ QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new2(QObject* parent) {
 
 QMetaObject* QGraphicsDropShadowEffect_MetaObject(const QGraphicsDropShadowEffect* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsDropShadowEffect_Metacast(QGraphicsDropShadowEffect* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsDropShadowEffect_Tr(const char* s) {
@@ -462,6 +478,10 @@ QGraphicsOpacityEffect* QGraphicsOpacityEffect_new2(QObject* parent) {
 
 QMetaObject* QGraphicsOpacityEffect_MetaObject(const QGraphicsOpacityEffect* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QGraphicsOpacityEffect_Metacast(QGraphicsOpacityEffect* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QGraphicsOpacityEffect_Tr(const char* s) {

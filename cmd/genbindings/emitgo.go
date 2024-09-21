@@ -35,6 +35,10 @@ func (p CppParameter) RenderTypeGo() string {
 		return "map[" + t.RenderTypeGo() + "]struct{}"
 	}
 
+	if p.ParameterType == "void" && p.Pointer {
+		return "unsafe.Pointer"
+	}
+
 	ret := ""
 	if p.ByRef || p.Pointer {
 		ret += "*"

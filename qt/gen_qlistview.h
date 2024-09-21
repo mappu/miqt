@@ -34,6 +34,7 @@ typedef struct QWidget QWidget;
 QListView* QListView_new();
 QListView* QListView_new2(QWidget* parent);
 QMetaObject* QListView_MetaObject(const QListView* self);
+void* QListView_Metacast(QListView* self, const char* param1);
 struct miqt_string* QListView_Tr(const char* s);
 struct miqt_string* QListView_TrUtf8(const char* s);
 void QListView_SetMovement(QListView* self, int movement);

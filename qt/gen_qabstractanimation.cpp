@@ -14,6 +14,10 @@ QMetaObject* QAbstractAnimation_MetaObject(const QAbstractAnimation* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QAbstractAnimation_Metacast(QAbstractAnimation* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QAbstractAnimation_Tr(const char* s) {
 	QString _ret = QAbstractAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -191,6 +195,10 @@ QAnimationDriver* QAnimationDriver_new2(QObject* parent) {
 
 QMetaObject* QAnimationDriver_MetaObject(const QAnimationDriver* self) {
 	return (QMetaObject*) self->metaObject();
+}
+
+void* QAnimationDriver_Metacast(QAnimationDriver* self, const char* param1) {
+	return self->qt_metacast(param1);
 }
 
 struct miqt_string* QAnimationDriver_Tr(const char* s) {

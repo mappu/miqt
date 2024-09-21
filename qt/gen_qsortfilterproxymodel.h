@@ -40,6 +40,7 @@ typedef struct QVariant QVariant;
 QSortFilterProxyModel* QSortFilterProxyModel_new();
 QSortFilterProxyModel* QSortFilterProxyModel_new2(QObject* parent);
 QMetaObject* QSortFilterProxyModel_MetaObject(const QSortFilterProxyModel* self);
+void* QSortFilterProxyModel_Metacast(QSortFilterProxyModel* self, const char* param1);
 struct miqt_string* QSortFilterProxyModel_Tr(const char* s);
 struct miqt_string* QSortFilterProxyModel_TrUtf8(const char* s);
 void QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel* self, QAbstractItemModel* sourceModel);

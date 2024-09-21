@@ -23,6 +23,10 @@ QMetaObject* QToolButton_MetaObject(const QToolButton* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QToolButton_Metacast(QToolButton* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QToolButton_Tr(const char* s) {
 	QString _ret = QToolButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -48,6 +48,7 @@ typedef struct QWidget QWidget;
 QComboBox* QComboBox_new();
 QComboBox* QComboBox_new2(QWidget* parent);
 QMetaObject* QComboBox_MetaObject(const QComboBox* self);
+void* QComboBox_Metacast(QComboBox* self, const char* param1);
 struct miqt_string* QComboBox_Tr(const char* s);
 struct miqt_string* QComboBox_TrUtf8(const char* s);
 int QComboBox_MaxVisibleItems(const QComboBox* self);

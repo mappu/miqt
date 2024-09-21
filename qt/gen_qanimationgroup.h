@@ -24,6 +24,7 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
+void* QAnimationGroup_Metacast(QAnimationGroup* self, const char* param1);
 struct miqt_string* QAnimationGroup_Tr(const char* s);
 struct miqt_string* QAnimationGroup_TrUtf8(const char* s);
 QAbstractAnimation* QAnimationGroup_AnimationAt(const QAnimationGroup* self, int index);

@@ -38,6 +38,10 @@ QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QGraphicsWidget_Metacast(QGraphicsWidget* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QGraphicsWidget_Tr(const char* s) {
 	QString _ret = QGraphicsWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

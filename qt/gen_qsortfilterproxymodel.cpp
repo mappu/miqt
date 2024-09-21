@@ -28,6 +28,10 @@ QMetaObject* QSortFilterProxyModel_MetaObject(const QSortFilterProxyModel* self)
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QSortFilterProxyModel_Metacast(QSortFilterProxyModel* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QSortFilterProxyModel_Tr(const char* s) {
 	QString _ret = QSortFilterProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

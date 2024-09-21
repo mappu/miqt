@@ -20,6 +20,10 @@ QMetaObject* QStatusBar_MetaObject(const QStatusBar* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QStatusBar_Metacast(QStatusBar* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QStatusBar_Tr(const char* s) {
 	QString _ret = QStatusBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

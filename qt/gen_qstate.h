@@ -36,6 +36,7 @@ QState* QState_new2(int childMode);
 QState* QState_new3(QState* parent);
 QState* QState_new4(int childMode, QState* parent);
 QMetaObject* QState_MetaObject(const QState* self);
+void* QState_Metacast(QState* self, const char* param1);
 struct miqt_string* QState_Tr(const char* s);
 struct miqt_string* QState_TrUtf8(const char* s);
 QAbstractState* QState_ErrorState(const QState* self);

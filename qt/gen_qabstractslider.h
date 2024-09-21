@@ -26,6 +26,7 @@ typedef struct QWidget QWidget;
 QAbstractSlider* QAbstractSlider_new();
 QAbstractSlider* QAbstractSlider_new2(QWidget* parent);
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self);
+void* QAbstractSlider_Metacast(QAbstractSlider* self, const char* param1);
 struct miqt_string* QAbstractSlider_Tr(const char* s);
 struct miqt_string* QAbstractSlider_TrUtf8(const char* s);
 int QAbstractSlider_Orientation(const QAbstractSlider* self);

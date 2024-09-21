@@ -179,6 +179,10 @@ func (this *QDebug) OperatorShiftLeftWithQByteArray(t *QByteArray) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t.cPointer())))
 }
 
+func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {
+	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithVoid(this.h, t)))
+}
+
 func (this *QDebug) MaybeQuote1(c byte) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_MaybeQuote1(this.h, (C.char)(c))))
 }

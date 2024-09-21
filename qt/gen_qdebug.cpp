@@ -188,6 +188,12 @@ QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, QByteArray* t) {
 	return &_ret;
 }
 
+QDebug* QDebug_OperatorShiftLeftWithVoid(QDebug* self, const void* t) {
+	QDebug& _ret = self->operator<<(t);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
 QDebug* QDebug_MaybeQuote1(QDebug* self, char c) {
 	QDebug& _ret = self->maybeQuote(static_cast<char>(c));
 	// Cast returned reference into pointer

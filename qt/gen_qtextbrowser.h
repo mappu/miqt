@@ -30,6 +30,7 @@ typedef struct QWidget QWidget;
 QTextBrowser* QTextBrowser_new();
 QTextBrowser* QTextBrowser_new2(QWidget* parent);
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self);
+void* QTextBrowser_Metacast(QTextBrowser* self, const char* param1);
 struct miqt_string* QTextBrowser_Tr(const char* s);
 struct miqt_string* QTextBrowser_TrUtf8(const char* s);
 QUrl* QTextBrowser_Source(const QTextBrowser* self);

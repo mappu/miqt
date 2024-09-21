@@ -32,6 +32,7 @@ QSignalTransition* QSignalTransition_new2(QObject* sender, const char* signal);
 QSignalTransition* QSignalTransition_new3(QState* sourceState);
 QSignalTransition* QSignalTransition_new4(QObject* sender, const char* signal, QState* sourceState);
 QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self);
+void* QSignalTransition_Metacast(QSignalTransition* self, const char* param1);
 struct miqt_string* QSignalTransition_Tr(const char* s);
 struct miqt_string* QSignalTransition_TrUtf8(const char* s);
 QObject* QSignalTransition_SenderObject(const QSignalTransition* self);

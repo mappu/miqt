@@ -38,6 +38,7 @@ typedef struct QWidget QWidget;
 QColumnView* QColumnView_new();
 QColumnView* QColumnView_new2(QWidget* parent);
 QMetaObject* QColumnView_MetaObject(const QColumnView* self);
+void* QColumnView_Metacast(QColumnView* self, const char* param1);
 struct miqt_string* QColumnView_Tr(const char* s);
 struct miqt_string* QColumnView_TrUtf8(const char* s);
 void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index);

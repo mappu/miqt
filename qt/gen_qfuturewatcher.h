@@ -24,6 +24,7 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self);
+void* QFutureWatcherBase_Metacast(QFutureWatcherBase* self, const char* param1);
 struct miqt_string* QFutureWatcherBase_Tr(const char* s);
 struct miqt_string* QFutureWatcherBase_TrUtf8(const char* s);
 int QFutureWatcherBase_ProgressValue(const QFutureWatcherBase* self);

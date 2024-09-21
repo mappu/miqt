@@ -73,6 +73,18 @@ func NewQGenericArgument3(aName string) *QGenericArgument {
 	return newQGenericArgument(ret)
 }
 
+// NewQGenericArgument4 constructs a new QGenericArgument object.
+func NewQGenericArgument4(aName string, aData unsafe.Pointer) *QGenericArgument {
+	aName_Cstring := C.CString(aName)
+	defer C.free(unsafe.Pointer(aName_Cstring))
+	ret := C.QGenericArgument_new4(aName_Cstring, aData)
+	return newQGenericArgument(ret)
+}
+
+func (this *QGenericArgument) Data() unsafe.Pointer {
+	return C.QGenericArgument_Data(this.h)
+}
+
 func (this *QGenericArgument) Name() unsafe.Pointer {
 	_ret := C.QGenericArgument_Name(this.h)
 	return (unsafe.Pointer)(_ret)
@@ -132,6 +144,14 @@ func NewQGenericReturnArgument3(aName string) *QGenericReturnArgument {
 	aName_Cstring := C.CString(aName)
 	defer C.free(unsafe.Pointer(aName_Cstring))
 	ret := C.QGenericReturnArgument_new3(aName_Cstring)
+	return newQGenericReturnArgument(ret)
+}
+
+// NewQGenericReturnArgument4 constructs a new QGenericReturnArgument object.
+func NewQGenericReturnArgument4(aName string, aData unsafe.Pointer) *QGenericReturnArgument {
+	aName_Cstring := C.CString(aName)
+	defer C.free(unsafe.Pointer(aName_Cstring))
+	ret := C.QGenericReturnArgument_new4(aName_Cstring, aData)
 	return newQGenericReturnArgument(ret)
 }
 

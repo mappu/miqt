@@ -25,6 +25,10 @@ QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QCoreApplication_Tr(const char* s) {
 	QString _ret = QCoreApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

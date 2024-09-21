@@ -13,6 +13,10 @@ QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
+void* QPaintDeviceWindow_Metacast(QPaintDeviceWindow* self, const char* param1) {
+	return self->qt_metacast(param1);
+}
+
 struct miqt_string* QPaintDeviceWindow_Tr(const char* s) {
 	QString _ret = QPaintDeviceWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
