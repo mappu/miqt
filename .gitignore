@@ -1,5 +1,5 @@
-# scratch files
-*.json
+# cache files for genbindings
+cmd/genbindings/cachedir/
 
 # docker files
 container-build-cache/
@@ -16,3 +16,7 @@ examples/mdoutliner/mdoutliner
 examples/mdoutliner/mdoutliner.exe
 examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
+
+# android temporary build files
+android-build
+deployment-settings.json

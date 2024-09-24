@@ -19,8 +19,9 @@ These bindings were newly started in August 2024. The bindings are functional fo
 
 |Platform|Linkage|Status
 |---|---|---
-|Linux|Static, Dynamic (.so)|✅ Works<br>- Tested with Debian 12 / Qt 5.15 / GCC 12
-|Windows|Static, Dynamic (.dll)|✅ Works<br>- Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation<br>- Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation
+|Linux x86_64|Static, Dynamic (.so)|✅ Works<br>- Tested with Debian 12 / Qt 5.15 / GCC 12
+|Windows x86_64|Static, Dynamic (.dll)|✅ Works<br>- Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation<br>- Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation
+|Android ARM64|Dynamic bundled in package|✅ Works<br>- Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22
 |macOS x86_64|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
 |macOS ARM64|Static, Dynamic (.dylib)|[Blocked by #11](https://github.com/mappu/miqt/issues/11)
 
@@ -44,7 +45,11 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 ### Q3. Why does it take so long to compile?
 
-The first time the Qt bindings are compiled takes a long time. After this, it's fast. In a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
+The first time the Qt bindings are compiled takes a long time. After this, it's fast.
+
+If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
+
+If you are compiling your app with a `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
 
 See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
@@ -91,7 +96,7 @@ For dynamically-linked builds (closed-source or open source application):
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
 
-For repeated builds, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
+See Q3 for advice about docker performance.
 
 To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
 
@@ -114,3 +119,33 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 ```
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
+
+### Q9. How can I compile for Android?
+
+Miqt supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
+
+![](doc/android-architecture.png)
+
+1. Modify your main function to [support `c-shared` build mode](https://pkg.go.dev/cmd/go#hdr-Build_modes).
+	- Package `main` must have an empty `main` function.
+	- Rename your `main` function to `AndroidMain` and add a comment `//export AndroidMain`.
+	- Ensure to `import "C"`.
+	- Check `examples/android` to see how to support both Android and desktop platforms.
+2. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/android:latest -f android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
+3. Build your application as `.so` format:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
+4. Build the Qt linking stub:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
+	- The linking stub is needed because Qt for Android will itself only call a function named `main`, but `c-shared` can't create one.
+5. Build the [androiddeployqt](https://doc.qt.io/qt-6/android-deploy-qt-tool.html) configuration file:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-mktemplate.sh RealAppName deployment-settings.json`
+6. Build the android package:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest androiddeployqt --input ./deployment-settings.json --output ./android-build/`
+	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`. 
+	- You can build in release mode by adding `--release`
+
+See Q3 for advice about docker performance.
+
+For repeated builds, if you customize the `AndroidManifest.xml` file or images, they will be used for the next `androiddeployqt` run.
+

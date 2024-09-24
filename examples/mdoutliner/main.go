@@ -160,7 +160,7 @@ func (t *AppTab) updateOutlineForContent(content string) {
 
 			bookmark := qt.NewQListWidgetItem7(line, t.outline)
 			bookmark.SetToolTip(fmt.Sprintf("Line %d", lineNumber+1))
-			bookmark.SetData(lineNumberRole, qt.NewQVariant5(lineNumber))
+			bookmark.SetData(lineNumberRole, qt.NewQVariant7(lineNumber))
 		}
 	}
 }

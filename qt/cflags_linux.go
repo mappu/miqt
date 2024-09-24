@@ -1,3 +1,5 @@
+// +build linux,!android
+
 package qt
 
 /*
