@@ -134,7 +134,7 @@ Miqt supports compiling for Android. Some extra steps are required to bridge the
 2. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/android:latest -f android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
 3. Build your application as `.so` format:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
+	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
 4. Build the Qt linking stub:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
 	- The linking stub is needed because Qt for Android will itself only call a function named `main`, but `c-shared` can't create one.
