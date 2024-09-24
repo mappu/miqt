@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2024-09-24 v0.5.0
+
+- **BREAKING:** Shorter enum names
+- **BREAKING:** More accurate type definitions for enums and `QFlags<T>`
+- Expand binding to cover `void*` return methods and `QSet<>` types
+- Android support
+- Support native compilation on Windows without Docker
+
 ## 2024-09-15 v0.4.0
 
 - **BREAKING:** Expand binding to cover signal argument types
