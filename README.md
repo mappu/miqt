@@ -4,6 +4,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/mappu/miqt/qt.svg)](https://pkg.go.dev/github.com/mappu/miqt/qt)
 [![GitHub Actions CI](https://github.com/mappu/miqt/actions/workflows/miqt.yml/badge.svg?branch=master)](https://github.com/mappu/miqt/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mappu/miqt)](https://goreportcard.com/report/github.com/mappu/miqt)
+![](doc/made_in_nz.svg "Made in New Zealand")
 
 # MIQT
 
