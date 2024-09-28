@@ -9,6 +9,7 @@ cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
 cmd/genbindings/genbindings
+cmd/miqt-uic/miqt-uic
 
 examples/helloworld/helloworld
 examples/helloworld/helloworld.exe
@@ -16,6 +17,8 @@ examples/mdoutliner/mdoutliner
 examples/mdoutliner/mdoutliner.exe
 examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
+examples/uidesigner/uidesigner
+examples/uidesigner/uidesigner.exe
 
 # android temporary build files
 android-build

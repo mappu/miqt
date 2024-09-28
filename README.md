@@ -77,6 +77,8 @@ The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected
 
 Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
 
+- When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
+
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
 ### Q7. How can I cross-compile for Windows from a Linux host OS?
