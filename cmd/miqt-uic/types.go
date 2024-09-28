@@ -76,7 +76,7 @@ type UiFile struct {
 
 	Class       string        `xml:"class"`
 	Version     string        `xml:"version,attr"` // e.g. 4.0
-	Widget      []UiWidget    `xml:"widget"`
+	Widget      UiWidget      `xml:"widget"`       // There's only one root widget
 	Resources   UiResources   `xml:"resources"`
 	Connections UiConnections `xml:"connections"`
 }
