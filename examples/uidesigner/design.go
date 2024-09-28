@@ -117,6 +117,7 @@ func NewMainWindowUi() *MainWindowUi {
 
 	ui.dockWidget = qt.NewQDockWidget5(ui.MainWindow.QWidget)
 	ui.dockWidget.SetObjectName("dockWidget")
+	ui.MainWindow.AddDockWidget(qt.DockWidgetArea(1), ui.dockWidget)
 
 	ui.dockWidgetContents = qt.NewQWidget2(ui.dockWidget.QWidget)
 	ui.dockWidgetContents.SetObjectName("dockWidgetContents")
@@ -140,10 +141,12 @@ func (ui *MainWindowUi) Retranslate() {
 	ui.action_New.SetText(qt.QMainWindow_Tr("&New..."))
 	ui.actionE_xit.SetText(qt.QMainWindow_Tr("E&xit"))
 	ui.actionE_xit.SetShortcut(qt.NewQKeySequence2(qt.QMainWindow_Tr("Ctrl+Q")))
+	ui.tabWidget.SetTabText(ui.tabWidget.IndexOf(ui.tab), qt.QTabWidget_Tr("Tab 1"))
 	ui.label.SetText(qt.QWidget_Tr("Dropdown:"))
 	ui.comboBox.SetItemText(0, qt.QComboBox_Tr("First"))
 	ui.comboBox.SetItemText(1, qt.QComboBox_Tr("Second"))
 	ui.label_2.SetText(qt.QWidget_Tr("Number:"))
+	ui.tabWidget.SetTabText(ui.tabWidget.IndexOf(ui.tab_2), qt.QTabWidget_Tr("Tab 2"))
 	ui.menu_File.SetTitle(qt.QMenuBar_Tr("&File"))
 	ui.dockWidget.SetWindowTitle(qt.QMainWindow_Tr("Dock Title"))
 }

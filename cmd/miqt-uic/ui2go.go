@@ -82,11 +82,24 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			ret.WriteString(`ui.` + w.Name + setterFunc + `(qt.` + strings.Replace(*prop.EnumVal, `::`, `__`, -1) + ")\n")
 
 		} else {
-			ret.WriteString("/* miqt-uic: no handler for property '" + prop.Name + "' */\n")
+			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " property '" + prop.Name + "' */\n")
 		}
 	}
 
 	// Attributes
+
+	for _, attr := range w.Attributes {
+		if parentClass == "QTabWidget" && attr.Name == "title" {
+			ret.WriteString(parentName + `.SetTabText(` + parentName + ".IndexOf(ui." + w.Name + "), " + generateString(attr.StringVal, parentClass) + ")\n")
+
+		} else if w.Class == "QDockWidget" && parentClass == "QMainWindow" && attr.Name == "dockWidgetArea" {
+			ret.WriteString(parentName + `.AddDockWidget(qt.DockWidgetArea(` + *attr.NumberVal + `), ui.` + w.Name + `)` + "\n")
+
+		} else {
+			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " attribute '" + attr.Name + "' */\n")
+
+		}
+	}
 	// TODO
 	// w.Attributes
 
