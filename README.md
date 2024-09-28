@@ -11,19 +11,17 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-## Project status
-
 These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets. But, they may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
-|Platform|Linkage|Status
-|---|---|---
-|Linux x86_64|Static, Dynamic (.so)|✅ Works<br>- Tested with Debian 12 / Qt 5.15 / GCC 12
-|Windows x86_64|Static, Dynamic (.dll)|✅ Works<br>- Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation<br>- Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation
-|Android ARM64|Dynamic bundled in package|✅ Works<br>- Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22
-|macOS x86_64|Static, Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
-|macOS ARM64|Static, Dynamic (.dylib)|[Blocked by #11](https://github.com/mappu/miqt/issues/11)
+|OS|Arch|Linkage|Status
+|---|---|---|---
+|Linux|x86_64|Static or Dynamic (.so)|✅ Works
+|Windows|x86_64|Static or Dynamic (.dll)|✅ Works
+|Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
+|macOS|x86_64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
+|macOS|ARM64|Static or Dynamic (.dylib)|[Blocked by #11](https://github.com/mappu/miqt/issues/11)
 
 ## License
 
@@ -45,11 +43,11 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 ### Q3. Why does it take so long to compile?
 
-The first time the Qt bindings are compiled takes a long time. After this, it's fast.
+The first time MIQT is used, your `go build` would take about 10 minutes. But after that, any `go build` is very fast.
 
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
 
-If you are compiling your app with a `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
+If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
 
 See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
@@ -67,7 +65,7 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 ### Q5. How does the MIQT Go API differ from the official Qt C++ API?
 
-Most functions are implemented 1:1. The Qt documentation should be used.
+Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-5/classes.html) should be used.
 
 The `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `string` and `[]T`. Therefore, you can't call any of QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
 
@@ -81,28 +79,20 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
-### Q7. How can I cross-compile for Windows from a Linux host OS?
+## Building
 
-For static builds (open source application):
+### Linux (native)
 
-1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
-2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
+*Tested with Debian 12 / Qt 5.15 / GCC 12*
 
-For dynamically-linked builds (closed-source or open source application):
+```bash
+apt install qtbase5-dev build-essential
+go build -ldflags '-s -w'
+```
 
-1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
-2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
-3. Copy necessary Qt LGPL libraries and plugin files.
+### Windows (native)
 
-See Q3 for advice about docker performance.
-
-To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
-
-### Q8. How can I compile natively on Windows?
+*Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation*
 
 1. Install Go from [the official website](https://go.dev/dl/).
 2. Install some Qt toolchain and its matching GCC or Clang compiler (MSVC is not compatible with CGO).
@@ -122,7 +112,32 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
 
-### Q9. How can I compile for Android?
+### Windows (Docker)
+
+*Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation*
+
+For static builds (open source application):
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
+
+For dynamically-linked builds (closed-source or open source application):
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
+3. Copy necessary Qt LGPL libraries and plugin files.
+
+See FAQ Q3 for advice about docker performance.
+
+To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
+
+### Android (Docker)
+
+*Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
 
 Miqt supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
@@ -147,7 +162,6 @@ Miqt supports compiling for Android. Some extra steps are required to bridge the
 	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`. 
 	- You can build in release mode by adding `--release`
 
-See Q3 for advice about docker performance.
+See FAQ Q3 for advice about docker performance.
 
-For repeated builds, if you customize the `AndroidManifest.xml` file or images, they will be used for the next `androiddeployqt` run.
-
+For repeated builds, only steps 3 and 6 are needed. If you customize the `AndroidManifest.xml` file or images, they will be used for the next `androiddeployqt` run.
