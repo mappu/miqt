@@ -71,3 +71,14 @@ func xmlConvertToSelfClosing(input string) string {
 
 	return strings.Join(lines, "\n")
 }
+
+// propertyByName searches a slice of UiProperty to find one with a matching name.
+func propertyByName(check []UiProperty, search string) (UiProperty, bool) {
+	for _, p := range check {
+		if p.Name == search {
+			return p, true
+		}
+	}
+
+	return UiProperty{}, false
+}

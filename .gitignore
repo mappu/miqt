@@ -17,6 +17,8 @@ examples/mdoutliner/mdoutliner
 examples/mdoutliner/mdoutliner.exe
 examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
+examples/uidesigner/uidesigner
+examples/uidesigner/uidesigner.exe
 
 # android temporary build files
 android-build

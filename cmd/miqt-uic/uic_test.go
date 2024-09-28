@@ -43,5 +43,5 @@ func TestFixtureMarshalRoundtrip(t *testing.T) {
 
 	}
 
-	testFixture("testdata/fixture1.ui")
+	testFixture("../../examples/uidesigner/design.ui")
 }
