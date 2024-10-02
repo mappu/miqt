@@ -46,7 +46,7 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 The first time MIQT is used, your `go build` would take about 10 minutes. But after that, any `go build` is very fast.
 
-If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt`.
+If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
 If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
 
