@@ -113,6 +113,21 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
 
+### Windows (MSYS2)
+
+*Tested with MSYS2 UCRT64*
+
+For dynamic builds:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-{go,gcc,qt5-base,pkg-config}
+GOROOT=/ucrt64/lib/go go build -ldflags "-s -w -H windowsgui"
+```
+
+Static builds are also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`.
+
+The MSYS2 Qt packages in MSYS2 link against `libicu`, whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
+
 ### Windows (Docker)
 
 *Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation*
