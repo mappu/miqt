@@ -57,6 +57,21 @@ type UiString struct {
 	Notr  bool   `xml:"notr,attr,omitempty"`
 }
 
+type UiIcon struct {
+	ResourceFile string `xml:"resource,attr"`
+
+	NormalOff   *string `xml:"normaloff,omitempty"`
+	NormalOn    *string `xml:"normalon,omitempty"`
+	ActiveOff   *string `xml:"activeoff,omitempty"`
+	ActiveOn    *string `xml:"activeon,omitempty"`
+	DisabledOff *string `xml:"disabledoff,omitempty"`
+	DisabledOn  *string `xml:"disabledon,omitempty"`
+	SelectedOff *string `xml:"selectedoff,omitempty"`
+	SelectedOn  *string `xml:"selectedon,omitempty"`
+
+	Base string `xml:",chardata"`
+}
+
 type UiProperty struct {
 	Name      string    `xml:"name,attr"`
 	StringVal *UiString `xml:"string,omitempty"`
@@ -64,6 +79,7 @@ type UiProperty struct {
 	BoolVal   *bool     `xml:"bool,omitempty"`   // "true" or "false"
 	EnumVal   *string   `xml:"enum,omitempty"`
 	RectVal   *UiRect   `xml:"rect,omitempty"`
+	IconVal   *UiIcon   `xml:"iconset,omitempty"`
 }
 
 type UiActionReference struct {

@@ -10,6 +10,7 @@ import (
 var (
 	DefaultGridMargin = 11
 	DefaultSpacing    = 6
+	IconCounter       = 0
 )
 
 func collectClassNames_Widget(u *UiWidget) []string {
@@ -61,6 +62,45 @@ func normalizeEnumName(s string) string {
 	}
 
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
+}
+
+func renderSetIcon(targetName, setterFunc string, iconVal *UiIcon, ret *strings.Builder) {
+
+	iconName := fmt.Sprintf("icon%d", IconCounter)
+	IconCounter++
+
+	ret.WriteString(iconName + " := qt.NewQIcon()\n")
+
+	// A base entry is a synonym for NormalOff. Don't need them both
+	if iconVal.NormalOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOff) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__Off)\n")
+	} else {
+		ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+	}
+
+	if iconVal.NormalOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__On)\n")
+	}
+	if iconVal.ActiveOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Active, qt.QIcon__Off)\n")
+	}
+	if iconVal.ActiveOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Active, qt.QIcon__On)\n")
+	}
+	if iconVal.DisabledOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Disabled, qt.QIcon__Off)\n")
+	}
+	if iconVal.DisabledOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Disabled, qt.QIcon__On)\n")
+	}
+	if iconVal.SelectedOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Selected, qt.QIcon__Off)\n")
+	}
+	if iconVal.SelectedOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Selected, qt.QIcon__On)\n")
+	}
+
+	ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 }
 
 func renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
@@ -121,6 +161,9 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			// names (A::B::C) but miqt changed to use the short names. Need to
 			// detect the case and convert it to match
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
+
+		} else if prop.IconVal != nil {
+			renderSetIcon(targetName, setterFunc, prop.IconVal, ret)
 
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
@@ -272,6 +315,10 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 		if prop, ok := propertyByName(a.Properties, "shortcut"); ok {
 			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + generateString(prop.StringVal, w.Class) + `))` + "\n")
+		}
+
+		if prop, ok := propertyByName(a.Properties, "icon"); ok {
+			renderSetIcon(a.Name, ".SetIcon", prop.IconVal, &ret)
 		}
 	}
 
