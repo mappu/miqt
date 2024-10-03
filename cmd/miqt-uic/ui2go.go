@@ -7,18 +7,23 @@ import (
 	"strings"
 )
 
-func collectClassNames_Widget(u UiWidget) []string {
+func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
 	}
 	for _, w := range u.Widgets {
-		ret = append(ret, collectClassNames_Widget(w)...)
+		ret = append(ret, collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
 		ret = append(ret, u.Layout.Name+" *qt."+u.Layout.Class)
 		for _, li := range u.Layout.Items {
-			ret = append(ret, collectClassNames_Widget(li.Widget)...)
+			if li.Widget != nil {
+				ret = append(ret, collectClassNames_Widget(li.Widget)...)
+			}
+			if li.Spacer != nil {
+				ret = append(ret, li.Spacer.Name+" *qt.QSpacerItem")
+			}
 		}
 	}
 	for _, a := range u.Actions {
@@ -127,56 +132,65 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		ui.` + w.Layout.Name + `.SetObjectName(` + strconv.Quote(w.Layout.Name) + `)
 		`)
 
-		for _, child := range w.Layout.Items {
+		for i, child := range w.Layout.Items {
 
-			// Layout items have the parent as the real QWidget parent and are
-			// separately assigned to the layout afterwards
+			// A layout item is either a widget, or a spacer
 
-			nest, err := generateWidget(child.Widget, `ui.`+w.Name, w.Class)
-			if err != nil {
-				return "", fmt.Errorf(w.Name+": %w", err)
+			if child.Spacer != nil {
+				ret.WriteString("/* miqt-uic: no handler for spacer */\n")
 			}
 
-			ret.WriteString(nest)
+			if child.Widget != nil {
 
-			// Assign to layout
+				// Layout items have the parent as the real QWidget parent and are
+				// separately assigned to the layout afterwards
 
-			switch w.Layout.Class {
-			case `QFormLayout`:
-				// Row and Column are always populated.
-				rowPos := fmt.Sprintf("%d", *child.Row)
-				var colPos string
-				if *child.Column == 0 {
-					colPos = `qt.QFormLayout__LabelRole`
-				} else if *child.Column == 1 {
-					colPos = `qt.QFormLayout__FieldRole`
-				} else {
-					ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
-					continue
+				nest, err := generateWidget(*child.Widget, `ui.`+w.Name, w.Class)
+				if err != nil {
+					return "", fmt.Errorf(w.Name+"/Layout/Item[%d]: %w", i, err)
 				}
 
-				// For QFormLayout it's SetWidget
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.SetWidget(` + rowPos + `, ` + colPos + `, ` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-					`)
+				ret.WriteString(nest)
 
-			case `QGridLayout`:
-				// For QGridLayout it's AddWidget2
-				// FIXME in Miqt this function has optionals, needs to be called with the correct arity
-				// TODO support rowSpan, columnSpan
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
-					`)
+				// Assign to layout
 
-			case "QVBoxLayout", "QHBoxLayout":
-				// For box layout it's AddWidget
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.AddWidget(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-					`)
+				switch w.Layout.Class {
+				case `QFormLayout`:
+					// Row and Column are always populated.
+					rowPos := fmt.Sprintf("%d", *child.Row)
+					var colPos string
+					if *child.Column == 0 {
+						colPos = `qt.QFormLayout__LabelRole`
+					} else if *child.Column == 1 {
+						colPos = `qt.QFormLayout__FieldRole`
+					} else {
+						ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
+						continue
+					}
 
-			default:
-				ret.WriteString("/* miqt-uic: no handler for layout '" + w.Layout.Class + "' */\n")
+					// For QFormLayout it's SetWidget
+					ret.WriteString(`
+					ui.` + w.Layout.Name + `.SetWidget(` + rowPos + `, ` + colPos + `, ` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
+						`)
 
+				case `QGridLayout`:
+					// For QGridLayout it's AddWidget2
+					// FIXME in Miqt this function has optionals, needs to be called with the correct arity
+					// TODO support rowSpan, columnSpan
+					ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
+						`)
+
+				case "QVBoxLayout", "QHBoxLayout":
+					// For box layout it's AddWidget
+					ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
+						`)
+
+				default:
+					ret.WriteString("/* miqt-uic: no handler for layout '" + w.Layout.Class + "' */\n")
+
+				}
 			}
 		}
 	}
@@ -301,7 +315,7 @@ import (
 )
 
 type ` + u.Class + `Ui struct {
-	` + strings.Join(collectClassNames_Widget(u.Widget), "\n") + `
+	` + strings.Join(collectClassNames_Widget(&u.Widget), "\n") + `
 }
 
 // New` + u.Class + `Ui creates all Qt widget classes for ` + u.Class + `.

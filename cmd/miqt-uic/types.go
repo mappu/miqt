@@ -5,9 +5,12 @@ import (
 )
 
 type UiLayoutItem struct {
-	Row    *int     `xml:"row,attr"`
-	Column *int     `xml:"column,attr"`
-	Widget UiWidget `xml:"widget"`
+	Row    *int `xml:"row,attr"`
+	Column *int `xml:"column,attr"`
+
+	// A layout item either has a widget, or a spacer
+	Widget *UiWidget `xml:"widget"`
+	Spacer *UiSpacer `xml:"spacer"`
 }
 
 type UiLayout struct {
@@ -17,6 +20,11 @@ type UiLayout struct {
 }
 
 type UiPropertyContainer struct {
+	Properties []UiProperty `xml:"property"`
+}
+
+type UiSpacer struct {
+	Name       string       `xml:"name,attr"`
 	Properties []UiProperty `xml:"property"`
 }
 
