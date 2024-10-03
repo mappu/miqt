@@ -45,6 +45,14 @@ func qwidgetName(name string, class string) string {
 	return name + ".QWidget"
 }
 
+func normalizeEnumName(s string) string {
+	if strings.HasPrefix(s, `Qt::`) {
+		s = s[4:]
+	}
+
+	return `qt.` + strings.Replace(s, `::`, `__`, -1)
+}
+
 func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
 	ret := strings.Builder{}
 
@@ -79,7 +87,11 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 		} else if prop.EnumVal != nil {
 			// "frameShape"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(qt.` + strings.Replace(*prop.EnumVal, `::`, `__`, -1) + ")\n")
+
+			// Newer versions of Qt Designer produce the fully qualified enum
+			// names (A::B::C) but miqt changed to use the short names. Need to
+			// detect the case and convert it to match
+			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
 
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " property '" + prop.Name + "' */\n")
