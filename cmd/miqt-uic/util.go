@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -88,4 +89,13 @@ func formatBool(b bool) string {
 		return "true"
 	}
 	return "false"
+}
+
+func mustParseInt(s string) int {
+	val, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		panic("parseInt(" + s + "): " + err.Error())
+	}
+
+	return int(val) // n.b. might do 32-bit truncation(!)
 }

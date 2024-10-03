@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+var (
+	DefaultGridMargin = 11
+	DefaultSpacing    = 6
+)
+
 func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 	if u.Name != "" {
@@ -58,6 +63,83 @@ func normalizeEnumName(s string) string {
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
+func renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
+
+	contentsMargins := [4]int{DefaultGridMargin, DefaultGridMargin, DefaultGridMargin, DefaultGridMargin} // left, top, right, bottom
+	customContentsMargins := false
+	customSpacing := false
+
+	for _, prop := range properties {
+		setterFunc := `.Set` + strings.ToUpper(string(prop.Name[0])) + prop.Name[1:]
+
+		if prop.Name == "geometry" {
+			if !(prop.RectVal.X == 0 && prop.RectVal.Y == 0) {
+				// Set all 4x properties
+				ret.WriteString(`ui.` + targetName + `.SetGeometry(qt.NewQRect(` + fmt.Sprintf("%d, %d, %d, %d", prop.RectVal.X, prop.RectVal.Y, prop.RectVal.Width, prop.RectVal.Height) + "))\n")
+
+			} else if !(prop.RectVal.Width == 0 && prop.RectVal.Height == 0) {
+				// Only width/height were supplied
+				ret.WriteString(`ui.` + targetName + `.Resize(` + fmt.Sprintf("%d, %d", prop.RectVal.Width, prop.RectVal.Height) + ")\n")
+
+			}
+
+		} else if prop.Name == "leftMargin" {
+			contentsMargins[0] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "topMargin" {
+			contentsMargins[1] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "rightMargin" {
+			contentsMargins[2] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "bottomMargin" {
+			contentsMargins[3] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.StringVal != nil {
+			//  "windowTitle", "title", "text"
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
+
+		} else if prop.NumberVal != nil {
+			// "currentIndex"
+			if prop.Name == "spacing" {
+				customSpacing = true
+			}
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + *prop.NumberVal + ")\n")
+
+		} else if prop.BoolVal != nil {
+			// "childrenCollapsible"
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + formatBool(*prop.BoolVal) + ")\n")
+
+		} else if prop.EnumVal != nil {
+			// "frameShape"
+
+			// Newer versions of Qt Designer produce the fully qualified enum
+			// names (A::B::C) but miqt changed to use the short names. Need to
+			// detect the case and convert it to match
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
+
+		} else {
+			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
+		}
+	}
+
+	if customContentsMargins || isLayout {
+		ret.WriteString(`ui.` + targetName + `.SetContentsMargins(` + fmt.Sprintf("%d, %d, %d, %d", contentsMargins[0], contentsMargins[1], contentsMargins[2], contentsMargins[3]) + ")\n")
+	}
+
+	if !customSpacing && isLayout {
+		// Layouts must specify spacing, unless, we specified it already
+		ret.WriteString(`ui.` + targetName + `.SetSpacing(` + fmt.Sprintf("%d", DefaultSpacing) + ")\n")
+
+	}
+
+	return nil
+}
+
 func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
 	ret := strings.Builder{}
 
@@ -69,43 +151,10 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	`)
 
 	// Properties
-	for _, prop := range w.Properties {
-		setterFunc := `.Set` + strings.ToUpper(string(prop.Name[0])) + prop.Name[1:]
 
-		if prop.Name == "geometry" {
-			if !(prop.RectVal.X == 0 && prop.RectVal.Y == 0) {
-				// Set all 4x properties
-				ret.WriteString(`ui.` + w.Name + `.SetGeometry(qt.NewQRect(` + fmt.Sprintf("%d, %d, %d, %d", prop.RectVal.X, prop.RectVal.Y, prop.RectVal.Width, prop.RectVal.Height) + "))\n")
-
-			} else if !(prop.RectVal.Width == 0 && prop.RectVal.Height == 0) {
-				// Only width/height were supplied
-				ret.WriteString(`ui.` + w.Name + `.Resize(` + fmt.Sprintf("%d, %d", prop.RectVal.Width, prop.RectVal.Height) + ")\n")
-
-			}
-
-		} else if prop.StringVal != nil {
-			//  "windowTitle", "title", "text"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
-
-		} else if prop.NumberVal != nil {
-			// "currentIndex"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + *prop.NumberVal + ")\n")
-
-		} else if prop.BoolVal != nil {
-			// "childrenCollapsible"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + formatBool(*prop.BoolVal) + ")\n")
-
-		} else if prop.EnumVal != nil {
-			// "frameShape"
-
-			// Newer versions of Qt Designer produce the fully qualified enum
-			// names (A::B::C) but miqt changed to use the short names. Need to
-			// detect the case and convert it to match
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
-
-		} else {
-			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " property '" + prop.Name + "' */\n")
-		}
+	err := renderProperties(w.Properties, &ret, w.Name, parentClass, false)
+	if err != nil {
+		return "", err
 	}
 
 	// Attributes
@@ -117,15 +166,17 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		} else if w.Class == "QDockWidget" && parentClass == "QMainWindow" && attr.Name == "dockWidgetArea" {
 			ret.WriteString(parentName + `.AddDockWidget(qt.DockWidgetArea(` + *attr.NumberVal + `), ui.` + w.Name + `)` + "\n")
 
+		} else if w.Class == "QToolBar" && parentClass == "QMainWindow" && attr.Name == "toolBarArea" {
+			ret.WriteString(parentName + `.AddToolBar(` + normalizeEnumName(*attr.EnumVal) + `, ui.` + w.Name + `)` + "\n")
+
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " attribute '" + attr.Name + "' */\n")
 
 		}
 	}
-	// TODO
-	// w.Attributes
 
 	// Layout
+
 	if w.Layout != nil {
 		ctor := constructorFunctionFor(w.Layout.Class)
 
@@ -133,6 +184,15 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + `)
 		ui.` + w.Layout.Name + `.SetObjectName(` + strconv.Quote(w.Layout.Name) + `)
 		`)
+
+		// Layout->Properties
+
+		err := renderProperties(w.Layout.Properties, &ret, w.Layout.Name, parentClass, true) // Always emit spacing/padding calls
+		if err != nil {
+			return "", err
+		}
+
+		// Layout->Items
 
 		for i, child := range w.Layout.Items {
 
@@ -304,7 +364,22 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 }
 
 func generate(packageName string, goGenerateArgs string, u UiFile) ([]byte, error) {
+
 	ret := strings.Builder{}
+
+	// Update globals for layoutdefault, if present
+
+	if u.LayoutDefault != nil {
+		if u.LayoutDefault.Spacing != nil {
+			DefaultSpacing = *u.LayoutDefault.Spacing
+		}
+		if u.LayoutDefault.Margin != nil {
+			DefaultGridMargin = *u.LayoutDefault.Margin
+		}
+	}
+
+	// Header
+
 	ret.WriteString(`// Generated by miqt-uic. To update this file, edit the .ui file in
 // Qt Designer, and then run 'go generate'.
 //
