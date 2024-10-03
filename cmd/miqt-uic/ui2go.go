@@ -50,7 +50,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 	ctor, ok := constructorFunctionFor(w.Class)
 	if !ok {
-		return "", fmt.Errorf("No known constructor function for %q class %q", w.Name, w.Class)
+		return "", fmt.Errorf("No known widget constructor function for %q class %q", w.Name, w.Class)
 	}
 
 	ret.WriteString(`
@@ -107,7 +107,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	if w.Layout != nil {
 		ctor, ok := constructorFunctionFor(w.Layout.Class)
 		if !ok {
-			return "", fmt.Errorf("No known constructor function for %q class %q", w.Layout.Name, w.Layout.Class)
+			return "", fmt.Errorf("No known layout constructor function for %q class %q", w.Layout.Name, w.Layout.Class)
 		}
 
 		ret.WriteString(`
@@ -211,10 +211,10 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		setStatusBar     = false
 	)
 
-	for _, child := range w.Widgets {
+	for i, child := range w.Widgets {
 		nest, err := generateWidget(child, `ui.`+w.Name, w.Class)
 		if err != nil {
-			return "", fmt.Errorf(w.Name+": %w", err)
+			return "", fmt.Errorf(w.Name+"/Widgets[%d]: %w", i, err)
 		}
 
 		ret.WriteString(nest)
