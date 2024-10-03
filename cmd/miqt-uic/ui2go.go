@@ -61,10 +61,7 @@ func normalizeEnumName(s string) string {
 func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
 	ret := strings.Builder{}
 
-	ctor, ok := constructorFunctionFor(w.Class)
-	if !ok {
-		return "", fmt.Errorf("No known widget constructor function for %q class %q", w.Name, w.Class)
-	}
+	ctor := constructorFunctionFor(w.Class)
 
 	ret.WriteString(`
 	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
@@ -122,10 +119,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 	// Layout
 	if w.Layout != nil {
-		ctor, ok := constructorFunctionFor(w.Layout.Class)
-		if !ok {
-			return "", fmt.Errorf("No known layout constructor function for %q class %q", w.Layout.Name, w.Layout.Class)
-		}
+		ctor := constructorFunctionFor(w.Layout.Class)
 
 		ret.WriteString(`
 		ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + `)
