@@ -64,7 +64,7 @@ func normalizeEnumName(s string) string {
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
-func renderSetIcon(targetName, setterFunc string, iconVal *UiIcon, ret *strings.Builder) {
+func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 
 	iconName := fmt.Sprintf("icon%d", IconCounter)
 	IconCounter++
@@ -100,7 +100,7 @@ func renderSetIcon(targetName, setterFunc string, iconVal *UiIcon, ret *strings.
 		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Selected, qt.QIcon__On)\n")
 	}
 
-	ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
+	return iconName
 }
 
 func renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
@@ -163,7 +163,8 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
 
 		} else if prop.IconVal != nil {
-			renderSetIcon(targetName, setterFunc, prop.IconVal, ret)
+			iconName := renderIcon(prop.IconVal, ret)
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
@@ -211,6 +212,9 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 		} else if w.Class == "QToolBar" && parentClass == "QMainWindow" && attr.Name == "toolBarArea" {
 			ret.WriteString(parentName + `.AddToolBar(` + normalizeEnumName(*attr.EnumVal) + `, ui.` + w.Name + `)` + "\n")
+
+		} else if parentClass == "QTabWidget" && attr.Name == "icon" {
+			// This will be handled when we call .AddTab() on the parent QTabWidget
 
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " attribute '" + attr.Name + "' */\n")
@@ -318,7 +322,8 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		}
 
 		if prop, ok := propertyByName(a.Properties, "icon"); ok {
-			renderSetIcon(a.Name, ".SetIcon", prop.IconVal, &ret)
+			iconName := renderIcon(prop.IconVal, &ret)
+			ret.WriteString(`ui.` + a.Name + `.SetIcon(` + iconName + ")\n")
 		}
 	}
 
@@ -403,7 +408,15 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 		// QTabWidget->QTab handling
 		if w.Class == `QTabWidget` {
-			ret.WriteString(`ui.` + w.Name + `.AddTab(` + qwidgetName(`ui.`+child.Name, child.Class) + `, "")` + "\n")
+			if icon, ok := propertyByName(child.Attributes, "icon"); ok {
+				// AddTab() overload with icon
+				iconName := renderIcon(icon.IconVal, &ret)
+				ret.WriteString(`ui.` + w.Name + `.AddTab2(` + qwidgetName(`ui.`+child.Name, child.Class) + `, ` + iconName + `, "")` + "\n")
+
+			} else {
+				// AddTab() overload without icon
+				ret.WriteString(`ui.` + w.Name + `.AddTab(` + qwidgetName(`ui.`+child.Name, child.Class) + `, "")` + "\n")
+			}
 		}
 	}
 
