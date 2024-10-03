@@ -321,6 +321,15 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			setCentralWidget = true
 		}
 
+		if w.Class == "QSplitter" || w.Class == "QStackedWidget" {
+			// We need to manually AddWidget on every child of QSplitter
+			if child.Class == "QWidget" {
+				ret.WriteString(`ui.` + w.Name + `.AddWidget(ui.` + child.Name + `)` + "\n")
+			} else {
+				ret.WriteString(`ui.` + w.Name + `.AddWidget(ui.` + child.Name + `.QWidget)` + "\n")
+			}
+		}
+
 		if w.Class == "QMainWindow" && child.Class == "QMenuBar" && !setMenuBar {
 			ret.WriteString(`ui.` + w.Name + `.SetMenuBar(ui.` + child.Name + `)` + "\n")
 			setMenuBar = true
