@@ -479,17 +479,24 @@ func New` + u.Class + `Ui() *` + u.Class + `Ui {
 	// Don't emit any of the lines that included .Tr(), move them into the
 	// retranslateUi() function
 	var translateFunc []string
+	var setCurrentIndex []string
 	for _, line := range strings.Split(nest, "\n") {
 		if strings.Contains(line, `_Tr(`) {
 			translateFunc = append(translateFunc, line)
+		} else if strings.Contains(line, `.SetCurrentIndex(`) {
+			setCurrentIndex = append(setCurrentIndex, line)
 		} else {
 			ret.WriteString(line + "\n")
 		}
 	}
 
+	ret.WriteString("\nui.Retranslate()\n\n")
+
+	for _, sci := range setCurrentIndex {
+		ret.WriteString(sci + "\n")
+	}
+
 	ret.WriteString(`
-	ui.Retranslate()
-	
 	return ui
 }
 
