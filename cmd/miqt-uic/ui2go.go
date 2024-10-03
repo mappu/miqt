@@ -330,8 +330,13 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		// Check for a "text" property and update the item's text
 		// Do this as a 2nd step so that the SetItemText can be trapped for retranslateUi()
 		// TODO Abstract for all SetItem{Foo} properties
-		if prop, ok := propertyByName(itm.Properties, "text"); ok {
-			ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+		for _, prop := range itm.Properties {
+			if prop.Name == "text" {
+				ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+			} else {
+				ret.WriteString("/* miqt-uic: no handler for item property '" + prop.Name + "' */\n")
+
+			}
 		}
 	}
 
