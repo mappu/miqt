@@ -82,3 +82,10 @@ func propertyByName(check []UiProperty, search string) (UiProperty, bool) {
 
 	return UiProperty{}, false
 }
+
+func formatBool(b bool) string {
+	if b {
+		return "true"
+	}
+	return "false"
+}

@@ -60,6 +60,7 @@ type UiProperty struct {
 	Name      string    `xml:"name,attr"`
 	StringVal *UiString `xml:"string,omitempty"`
 	NumberVal *string   `xml:"number,omitempty"` // Preserve as string literal
+	BoolVal   *bool     `xml:"bool,omitempty"`   // "true" or "false"
 	EnumVal   *string   `xml:"enum,omitempty"`
 	RectVal   *UiRect   `xml:"rect,omitempty"`
 }

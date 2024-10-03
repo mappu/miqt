@@ -87,6 +87,14 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			//  "windowTitle", "title", "text"
 			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
 
+		} else if prop.NumberVal != nil {
+			// "currentIndex"
+			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + *prop.NumberVal + ")\n")
+
+		} else if prop.BoolVal != nil {
+			// "childrenCollapsible"
+			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + formatBool(*prop.BoolVal) + ")\n")
+
 		} else if prop.EnumVal != nil {
 			// "frameShape"
 
@@ -281,7 +289,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			// If we are a menubar, then <addaction> refers to top-level QMenu instead of QAction
 			if w.Class == "QMenuBar" {
 				ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
-			} else if w.Class == "QMenu" {
+			} else if w.Class == "QMenu" || w.Class == "QToolBar" {
 				// QMenu has its own .AddAction() implementation that takes plain string
 				// That's convenient, but it shadows the AddAction version that takes a QAction*
 				// We need to use the underlying QWidget.AddAction explicitly
