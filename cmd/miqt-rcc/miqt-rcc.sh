@@ -15,7 +15,7 @@ main() {
 	local ARG_DEST_RCC="${2:-$(basename -s .qrc "$ARG_INPUT_QRC").rcc}"
 	local ARG_DEST_GO="${3:-$(basename -s .rcc "$ARG_DEST_RCC").go}"
 	local ARG_PACKAGENAME="${4:-main}"
-	local ARG_VARIABLENAME="${4:-_resourceRcc}"
+	local ARG_VARIABLENAME="${5:-_resourceRcc}"
 	
 	if [[ ! -f ${ARG_INPUT_QRC} ]] ; then
 		echo "Input file ${ARG_INPUT_QRC} not found" >&2
@@ -28,6 +28,8 @@ main() {
 	# Create Go file that loads the resource
 	cat > "${ARG_DEST_GO}" <<EOF
 package ${ARG_PACKAGENAME}
+
+//go:generate miqt-rcc.sh $@
 
 import (
 	"embed"
