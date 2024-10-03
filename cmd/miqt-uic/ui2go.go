@@ -341,8 +341,18 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	}
 
 	// Columns
-	// TODO
-	// w.Columns
+
+	for colNo, col := range w.Columns {
+
+		for _, prop := range col.Properties {
+			if prop.Name == "text" {
+				ret.WriteString("ui." + w.Name + ".HeaderItem().SetText(" + fmt.Sprintf("%d", colNo) + ", " + generateString(prop.StringVal, w.Class) + ")\n")
+			} else {
+				ret.WriteString("/* miqt-uic: no handler for column property '" + prop.Name + "' */\n")
+			}
+		}
+
+	}
 
 	// Recurse children
 	var (
