@@ -30,6 +30,12 @@ The MIQT Go bindings are licensed under the MIT license.
 
 You must also meet your Qt license obligations.
 
+## Made with MIQT
+
+- [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
+- [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
+- Raise an issue or PR to have your app listed here!
+
 ## FAQ
 
 ### Q1. Why are the binaries so big?
