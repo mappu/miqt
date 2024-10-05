@@ -7,18 +7,30 @@ import (
 	"strings"
 )
 
-func collectClassNames_Widget(u UiWidget) []string {
+var (
+	RootWindowName    = ""
+	DefaultGridMargin = 11
+	DefaultSpacing    = 6
+	IconCounter       = 0
+)
+
+func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
 	}
 	for _, w := range u.Widgets {
-		ret = append(ret, collectClassNames_Widget(w)...)
+		ret = append(ret, collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
 		ret = append(ret, u.Layout.Name+" *qt."+u.Layout.Class)
 		for _, li := range u.Layout.Items {
-			ret = append(ret, collectClassNames_Widget(li.Widget)...)
+			if li.Widget != nil {
+				ret = append(ret, collectClassNames_Widget(li.Widget)...)
+			}
+			if li.Spacer != nil {
+				ret = append(ret, li.Spacer.Name+" *qt.QSpacerItem")
+			}
 		}
 	}
 	for _, a := range u.Actions {
@@ -45,45 +57,167 @@ func qwidgetName(name string, class string) string {
 	return name + ".QWidget"
 }
 
-func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
-	ret := strings.Builder{}
-
-	ctor, ok := constructorFunctionFor(w.Class)
-	if !ok {
-		return "", fmt.Errorf("No known constructor function for %q class %q", w.Name, w.Class)
+func normalizeEnumName(s string) string {
+	if strings.HasPrefix(s, `Qt::`) {
+		s = s[4:]
 	}
 
-	ret.WriteString(`
-	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
-	ui.` + w.Name + `.SetObjectName(` + strconv.Quote(w.Name) + `)
-	`)
+	return `qt.` + strings.Replace(s, `::`, `__`, -1)
+}
 
-	// Properties
-	for _, prop := range w.Properties {
+func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
+
+	iconName := fmt.Sprintf("icon%d", IconCounter)
+	IconCounter++
+
+	ret.WriteString(iconName + " := qt.NewQIcon()\n")
+
+	// A base entry is a synonym for NormalOff. Don't need them both
+	if iconVal.NormalOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOff) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__Off)\n")
+	} else {
+		ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+	}
+
+	if iconVal.NormalOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__On)\n")
+	}
+	if iconVal.ActiveOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Active, qt.QIcon__Off)\n")
+	}
+	if iconVal.ActiveOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Active, qt.QIcon__On)\n")
+	}
+	if iconVal.DisabledOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Disabled, qt.QIcon__Off)\n")
+	}
+	if iconVal.DisabledOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Disabled, qt.QIcon__On)\n")
+	}
+	if iconVal.SelectedOff != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Selected, qt.QIcon__Off)\n")
+	}
+	if iconVal.SelectedOn != nil {
+		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOn) + ", qt.NewQSize(), qt.QIcon__Selected, qt.QIcon__On)\n")
+	}
+
+	return iconName
+}
+
+func renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
+
+	contentsMargins := [4]int{DefaultGridMargin, DefaultGridMargin, DefaultGridMargin, DefaultGridMargin} // left, top, right, bottom
+	customContentsMargins := false
+	customSpacing := false
+
+	for _, prop := range properties {
 		setterFunc := `.Set` + strings.ToUpper(string(prop.Name[0])) + prop.Name[1:]
 
 		if prop.Name == "geometry" {
 			if !(prop.RectVal.X == 0 && prop.RectVal.Y == 0) {
 				// Set all 4x properties
-				ret.WriteString(`ui.` + w.Name + `.SetGeometry(qt.NewQRect(` + fmt.Sprintf("%d, %d, %d, %d", prop.RectVal.X, prop.RectVal.Y, prop.RectVal.Width, prop.RectVal.Height) + "))\n")
+				ret.WriteString(`ui.` + targetName + `.SetGeometry(qt.NewQRect(` + fmt.Sprintf("%d, %d, %d, %d", prop.RectVal.X, prop.RectVal.Y, prop.RectVal.Width, prop.RectVal.Height) + "))\n")
 
 			} else if !(prop.RectVal.Width == 0 && prop.RectVal.Height == 0) {
 				// Only width/height were supplied
-				ret.WriteString(`ui.` + w.Name + `.Resize(` + fmt.Sprintf("%d, %d", prop.RectVal.Width, prop.RectVal.Height) + ")\n")
+				ret.WriteString(`ui.` + targetName + `.Resize(` + fmt.Sprintf("%d, %d", prop.RectVal.Width, prop.RectVal.Height) + ")\n")
 
 			}
 
+		} else if prop.Name == "leftMargin" {
+			contentsMargins[0] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "topMargin" {
+			contentsMargins[1] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "rightMargin" {
+			contentsMargins[2] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
+		} else if prop.Name == "bottomMargin" {
+			contentsMargins[3] = mustParseInt(*prop.NumberVal)
+			customContentsMargins = true
+
 		} else if prop.StringVal != nil {
 			//  "windowTitle", "title", "text"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
+
+		} else if prop.NumberVal != nil {
+			// "currentIndex"
+			if prop.Name == "spacing" {
+				customSpacing = true
+			}
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + *prop.NumberVal + ")\n")
+
+		} else if prop.BoolVal != nil {
+			// "childrenCollapsible"
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + formatBool(*prop.BoolVal) + ")\n")
 
 		} else if prop.EnumVal != nil {
 			// "frameShape"
-			ret.WriteString(`ui.` + w.Name + setterFunc + `(qt.` + strings.Replace(*prop.EnumVal, `::`, `__`, -1) + ")\n")
+
+			// Newer versions of Qt Designer produce the fully qualified enum
+			// names (A::B::C) but miqt changed to use the short names. Need to
+			// detect the case and convert it to match
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
+
+		} else if prop.SetVal != nil {
+			// QDialogButtonBox::"standardButtons"
+			// <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+
+			parts := strings.Split(*prop.SetVal, `|`)
+			for i, p := range parts {
+				parts[i] = normalizeEnumName(p)
+			}
+
+			emit := "0"
+			if len(parts) > 0 {
+				emit = strings.Join(parts, `|`)
+			}
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + emit + ")\n")
+
+		} else if prop.IconVal != nil {
+			iconName := renderIcon(prop.IconVal, ret)
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 
 		} else {
-			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " property '" + prop.Name + "' */\n")
+			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
 		}
+	}
+
+	if customContentsMargins || isLayout {
+		ret.WriteString(`ui.` + targetName + `.SetContentsMargins(` + fmt.Sprintf("%d, %d, %d, %d", contentsMargins[0], contentsMargins[1], contentsMargins[2], contentsMargins[3]) + ")\n")
+	}
+
+	if !customSpacing && isLayout {
+		// Layouts must specify spacing, unless, we specified it already
+		ret.WriteString(`ui.` + targetName + `.SetSpacing(` + fmt.Sprintf("%d", DefaultSpacing) + ")\n")
+
+	}
+
+	return nil
+}
+
+func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
+	ret := strings.Builder{}
+
+	ctor := constructorFunctionFor(w.Class)
+
+	ret.WriteString(`
+	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
+	ui.` + w.Name + `.SetObjectName(` + strconv.Quote(w.Name) + `)
+	`)
+	if RootWindowName == "" {
+		RootWindowName = `ui.` + w.Name
+	}
+
+	// Properties
+
+	err := renderProperties(w.Properties, &ret, w.Name, parentClass, false)
+	if err != nil {
+		return "", err
 	}
 
 	// Attributes
@@ -95,76 +229,113 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		} else if w.Class == "QDockWidget" && parentClass == "QMainWindow" && attr.Name == "dockWidgetArea" {
 			ret.WriteString(parentName + `.AddDockWidget(qt.DockWidgetArea(` + *attr.NumberVal + `), ui.` + w.Name + `)` + "\n")
 
+		} else if w.Class == "QToolBar" && parentClass == "QMainWindow" && attr.Name == "toolBarArea" {
+			ret.WriteString(parentName + `.AddToolBar(` + normalizeEnumName(*attr.EnumVal) + `, ui.` + w.Name + `)` + "\n")
+
+		} else if parentClass == "QTabWidget" && attr.Name == "icon" {
+			// This will be handled when we call .AddTab() on the parent QTabWidget
+
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + w.Name + " attribute '" + attr.Name + "' */\n")
 
 		}
 	}
-	// TODO
-	// w.Attributes
 
 	// Layout
+
 	if w.Layout != nil {
-		ctor, ok := constructorFunctionFor(w.Layout.Class)
-		if !ok {
-			return "", fmt.Errorf("No known constructor function for %q class %q", w.Layout.Name, w.Layout.Class)
-		}
+		ctor := constructorFunctionFor(w.Layout.Class)
 
 		ret.WriteString(`
 		ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + `)
 		ui.` + w.Layout.Name + `.SetObjectName(` + strconv.Quote(w.Layout.Name) + `)
 		`)
 
-		for _, child := range w.Layout.Items {
+		// Layout->Properties
 
-			// Layout items have the parent as the real QWidget parent and are
-			// separately assigned to the layout afterwards
+		err := renderProperties(w.Layout.Properties, &ret, w.Layout.Name, parentClass, true) // Always emit spacing/padding calls
+		if err != nil {
+			return "", err
+		}
 
-			nest, err := generateWidget(child.Widget, `ui.`+w.Name, w.Class)
-			if err != nil {
-				return "", fmt.Errorf(w.Name+": %w", err)
+		// Layout->Items
+
+		for i, child := range w.Layout.Items {
+
+			// A layout item is either a widget, or a spacer
+
+			if child.Spacer != nil {
+				ret.WriteString("/* miqt-uic: no handler for spacer */\n")
 			}
 
-			ret.WriteString(nest)
+			if child.Widget != nil {
 
-			// Assign to layout
+				// Layout items have the parent as the real QWidget parent and are
+				// separately assigned to the layout afterwards
 
-			switch w.Layout.Class {
-			case `QFormLayout`:
-				// Row and Column are always populated.
-				rowPos := fmt.Sprintf("%d", *child.Row)
-				var colPos string
-				if *child.Column == 0 {
-					colPos = `qt.QFormLayout__LabelRole`
-				} else if *child.Column == 1 {
-					colPos = `qt.QFormLayout__FieldRole`
-				} else {
-					ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
-					continue
+				nest, err := generateWidget(*child.Widget, `ui.`+w.Name, w.Class)
+				if err != nil {
+					return "", fmt.Errorf(w.Name+"/Layout/Item[%d]: %w", i, err)
 				}
 
-				// For QFormLayout it's SetWidget
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.SetWidget(` + rowPos + `, ` + colPos + `, ` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-					`)
+				ret.WriteString(nest)
 
-			case `QGridLayout`:
-				// For QGridLayout it's AddWidget2
-				// FIXME in Miqt this function has optionals, needs to be called with the correct arity
-				// TODO support rowSpan, columnSpan
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
-					`)
+				// Assign to layout
 
-			case "QVBoxLayout", "QHBoxLayout":
-				// For box layout it's AddWidget
-				ret.WriteString(`
-				ui.` + w.Layout.Name + `.AddWidget(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-					`)
+				switch w.Layout.Class {
+				case `QFormLayout`:
+					// Row and Column are always populated.
+					rowPos := fmt.Sprintf("%d", *child.Row)
+					var colPos string
+					if *child.Column == 0 {
+						colPos = `qt.QFormLayout__LabelRole`
+					} else if *child.Column == 1 {
+						colPos = `qt.QFormLayout__FieldRole`
+					} else {
+						ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
+						continue
+					}
 
-			default:
-				ret.WriteString("/* miqt-uic: no handler for layout '" + w.Layout.Class + "' */\n")
+					// For QFormLayout it's SetWidget
+					ret.WriteString(`
+					ui.` + w.Layout.Name + `.SetWidget(` + rowPos + `, ` + colPos + `, ` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
+						`)
 
+				case `QGridLayout`:
+					if child.ColSpan != nil || child.RowSpan != nil {
+						// If either are present, use full four-value AddWidget3
+						rowSpan := 1
+						if child.RowSpan != nil {
+							rowSpan = *child.RowSpan
+						}
+						colSpan := 1
+						if child.ColSpan != nil {
+							colSpan = *child.ColSpan
+						}
+
+						ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget3(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d, %d, %d", *child.Row, *child.Column, rowSpan, colSpan) + `)
+						`)
+
+					} else {
+						// Row and Column are always present in the .ui file
+						// For row/column it's AddWidget2
+
+						ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
+						`)
+					}
+
+				case "QVBoxLayout", "QHBoxLayout":
+					// For box layout it's AddWidget
+					ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
+						`)
+
+				default:
+					ret.WriteString("/* miqt-uic: no handler for layout '" + w.Layout.Class + "' */\n")
+
+				}
 			}
 		}
 	}
@@ -185,6 +356,11 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		if prop, ok := propertyByName(a.Properties, "shortcut"); ok {
 			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + generateString(prop.StringVal, w.Class) + `))` + "\n")
 		}
+
+		if prop, ok := propertyByName(a.Properties, "icon"); ok {
+			iconName := renderIcon(prop.IconVal, &ret)
+			ret.WriteString(`ui.` + a.Name + `.SetIcon(` + iconName + ")\n")
+		}
 	}
 
 	// Items
@@ -195,14 +371,29 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		// Check for a "text" property and update the item's text
 		// Do this as a 2nd step so that the SetItemText can be trapped for retranslateUi()
 		// TODO Abstract for all SetItem{Foo} properties
-		if prop, ok := propertyByName(itm.Properties, "text"); ok {
-			ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+		for _, prop := range itm.Properties {
+			if prop.Name == "text" {
+				ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+			} else {
+				ret.WriteString("/* miqt-uic: no handler for item property '" + prop.Name + "' */\n")
+
+			}
 		}
 	}
 
 	// Columns
-	// TODO
-	// w.Columns
+
+	for colNo, col := range w.Columns {
+
+		for _, prop := range col.Properties {
+			if prop.Name == "text" {
+				ret.WriteString("ui." + w.Name + ".HeaderItem().SetText(" + fmt.Sprintf("%d", colNo) + ", " + generateString(prop.StringVal, w.Class) + ")\n")
+			} else {
+				ret.WriteString("/* miqt-uic: no handler for column property '" + prop.Name + "' */\n")
+			}
+		}
+
+	}
 
 	// Recurse children
 	var (
@@ -211,10 +402,10 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		setStatusBar     = false
 	)
 
-	for _, child := range w.Widgets {
+	for i, child := range w.Widgets {
 		nest, err := generateWidget(child, `ui.`+w.Name, w.Class)
 		if err != nil {
-			return "", fmt.Errorf(w.Name+": %w", err)
+			return "", fmt.Errorf(w.Name+"/Widgets[%d]: %w", i, err)
 		}
 
 		ret.WriteString(nest)
@@ -233,6 +424,15 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			setCentralWidget = true
 		}
 
+		if w.Class == "QSplitter" || w.Class == "QStackedWidget" {
+			// We need to manually AddWidget on every child of QSplitter
+			if child.Class == "QWidget" {
+				ret.WriteString(`ui.` + w.Name + `.AddWidget(ui.` + child.Name + `)` + "\n")
+			} else {
+				ret.WriteString(`ui.` + w.Name + `.AddWidget(ui.` + child.Name + `.QWidget)` + "\n")
+			}
+		}
+
 		if w.Class == "QMainWindow" && child.Class == "QMenuBar" && !setMenuBar {
 			ret.WriteString(`ui.` + w.Name + `.SetMenuBar(ui.` + child.Name + `)` + "\n")
 			setMenuBar = true
@@ -244,8 +444,17 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 		// QTabWidget->QTab handling
 		if w.Class == `QTabWidget` {
-			ret.WriteString(`ui.` + w.Name + `.AddTab(` + qwidgetName(`ui.`+child.Name, child.Class) + `, "")` + "\n")
+			if icon, ok := propertyByName(child.Attributes, "icon"); ok {
+				// AddTab() overload with icon
+				iconName := renderIcon(icon.IconVal, &ret)
+				ret.WriteString(`ui.` + w.Name + `.AddTab2(` + qwidgetName(`ui.`+child.Name, child.Class) + `, ` + iconName + `, "")` + "\n")
+
+			} else {
+				// AddTab() overload without icon
+				ret.WriteString(`ui.` + w.Name + `.AddTab(` + qwidgetName(`ui.`+child.Name, child.Class) + `, "")` + "\n")
+			}
 		}
+
 	}
 
 	// AddActions
@@ -261,7 +470,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			// If we are a menubar, then <addaction> refers to top-level QMenu instead of QAction
 			if w.Class == "QMenuBar" {
 				ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
-			} else if w.Class == "QMenu" {
+			} else if w.Class == "QMenu" || w.Class == "QToolBar" {
 				// QMenu has its own .AddAction() implementation that takes plain string
 				// That's convenient, but it shadows the AddAction version that takes a QAction*
 				// We need to use the underlying QWidget.AddAction explicitly
@@ -272,11 +481,32 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 		}
 	}
 
+	if w.Class == "QDialogButtonBox" {
+		// TODO make this using a native connection instead of a C++ -> Go -> C++ roundtrip
+		ret.WriteString(`ui.` + w.Name + `.OnAccepted(` + RootWindowName + ".Accept)\n")
+		ret.WriteString(`ui.` + w.Name + `.OnRejected(` + RootWindowName + ".Reject)\n")
+	}
+
 	return ret.String(), nil
 }
 
 func generate(packageName string, goGenerateArgs string, u UiFile) ([]byte, error) {
+
 	ret := strings.Builder{}
+
+	// Update globals for layoutdefault, if present
+
+	if u.LayoutDefault != nil {
+		if u.LayoutDefault.Spacing != nil {
+			DefaultSpacing = *u.LayoutDefault.Spacing
+		}
+		if u.LayoutDefault.Margin != nil {
+			DefaultGridMargin = *u.LayoutDefault.Margin
+		}
+	}
+
+	// Header
+
 	ret.WriteString(`// Generated by miqt-uic. To update this file, edit the .ui file in
 // Qt Designer, and then run 'go generate'.
 //
@@ -289,7 +519,7 @@ import (
 )
 
 type ` + u.Class + `Ui struct {
-	` + strings.Join(collectClassNames_Widget(u.Widget), "\n") + `
+	` + strings.Join(collectClassNames_Widget(&u.Widget), "\n") + `
 }
 
 // New` + u.Class + `Ui creates all Qt widget classes for ` + u.Class + `.
@@ -305,17 +535,24 @@ func New` + u.Class + `Ui() *` + u.Class + `Ui {
 	// Don't emit any of the lines that included .Tr(), move them into the
 	// retranslateUi() function
 	var translateFunc []string
+	var setCurrentIndex []string
 	for _, line := range strings.Split(nest, "\n") {
 		if strings.Contains(line, `_Tr(`) {
 			translateFunc = append(translateFunc, line)
+		} else if strings.Contains(line, `.SetCurrentIndex(`) {
+			setCurrentIndex = append(setCurrentIndex, line)
 		} else {
 			ret.WriteString(line + "\n")
 		}
 	}
 
+	ret.WriteString("\nui.Retranslate()\n\n")
+
+	for _, sci := range setCurrentIndex {
+		ret.WriteString(sci + "\n")
+	}
+
 	ret.WriteString(`
-	ui.Retranslate()
-	
 	return ui
 }
 

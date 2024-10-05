@@ -12,7 +12,7 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets. But, they may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
+These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
@@ -87,6 +87,12 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 - When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
+
+### Q6. Can I use Qt Designer and the Qt Resource system?
+
+![](doc/architecture-uic.png)
+
+MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) for form design and resource management. After running the `miqt-uic` and `miqt-rcc` tools once, you can rebuild any changes using the convenient `go generate` command.
 
 ## Building
 
