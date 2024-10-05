@@ -80,6 +80,7 @@ type UiProperty struct {
 	EnumVal   *string   `xml:"enum,omitempty"`
 	RectVal   *UiRect   `xml:"rect,omitempty"`
 	IconVal   *UiIcon   `xml:"iconset,omitempty"`
+	SetVal    *string   `xml:"set,omitempty"`
 }
 
 type UiActionReference struct {

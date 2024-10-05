@@ -162,6 +162,21 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			// detect the case and convert it to match
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + normalizeEnumName(*prop.EnumVal) + ")\n")
 
+		} else if prop.SetVal != nil {
+			// QDialogButtonBox::"standardButtons"
+			// <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+
+			parts := strings.Split(*prop.SetVal, `|`)
+			for i, p := range parts {
+				parts[i] = normalizeEnumName(p)
+			}
+
+			emit := "0"
+			if len(parts) > 0 {
+				emit = strings.Join(parts, `|`)
+			}
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + emit + ")\n")
+
 		} else if prop.IconVal != nil {
 			iconName := renderIcon(prop.IconVal, ret)
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
