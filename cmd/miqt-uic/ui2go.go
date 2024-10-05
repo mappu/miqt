@@ -298,12 +298,29 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 						`)
 
 				case `QGridLayout`:
-					// For QGridLayout it's AddWidget2
-					// FIXME in Miqt this function has optionals, needs to be called with the correct arity
-					// TODO support rowSpan, columnSpan
-					ret.WriteString(`
+					if child.ColSpan != nil || child.RowSpan != nil {
+						// If either are present, use full four-value AddWidget3
+						rowSpan := 1
+						if child.RowSpan != nil {
+							rowSpan = *child.RowSpan
+						}
+						colSpan := 1
+						if child.ColSpan != nil {
+							colSpan = *child.ColSpan
+						}
+
+						ret.WriteString(`
+					ui.` + w.Layout.Name + `.AddWidget3(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d, %d, %d", *child.Row, *child.Column, rowSpan, colSpan) + `)
+						`)
+
+					} else {
+						// Row and Column are always present in the .ui file
+						// For row/column it's AddWidget2
+
+						ret.WriteString(`
 					ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
 						`)
+					}
 
 				case "QVBoxLayout", "QHBoxLayout":
 					// For box layout it's AddWidget

@@ -5,8 +5,10 @@ import (
 )
 
 type UiLayoutItem struct {
-	Row    *int `xml:"row,attr"`
-	Column *int `xml:"column,attr"`
+	Row     *int `xml:"row,attr"`
+	Column  *int `xml:"column,attr"`
+	RowSpan *int `xml:"rowspan,attr"`
+	ColSpan *int `xml:"colspan,attr"`
 
 	// A layout item either has a widget, or a spacer
 	Widget *UiWidget `xml:"widget"`
