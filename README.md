@@ -70,6 +70,8 @@ Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-
 
 The `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `string` and `[]T`. Therefore, you can't call any of QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
 
+- Go strings are internally converted to QString using `QString::fromUtf8`. Therefore, the Go string must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Go string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Go space, this becomes `\xEF\xBF\xBD`.
+
 Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
 
 The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
