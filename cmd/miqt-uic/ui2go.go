@@ -8,6 +8,7 @@ import (
 )
 
 var (
+	RootWindowName    = ""
 	DefaultGridMargin = 11
 	DefaultSpacing    = 6
 	IconCounter       = 0
@@ -208,6 +209,9 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
 	ui.` + w.Name + `.SetObjectName(` + strconv.Quote(w.Name) + `)
 	`)
+	if RootWindowName == "" {
+		RootWindowName = `ui.` + w.Name
+	}
 
 	// Properties
 
@@ -450,6 +454,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 				ret.WriteString(`ui.` + w.Name + `.AddTab(` + qwidgetName(`ui.`+child.Name, child.Class) + `, "")` + "\n")
 			}
 		}
+
 	}
 
 	// AddActions
@@ -474,6 +479,12 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 				ret.WriteString("ui." + w.Name + ".AddAction(ui." + a.Name + ")\n")
 			}
 		}
+	}
+
+	if w.Class == "QDialogButtonBox" {
+		// TODO make this using a native connection instead of a C++ -> Go -> C++ roundtrip
+		ret.WriteString(`ui.` + w.Name + `.OnAccepted(` + RootWindowName + ".Accept)\n")
+		ret.WriteString(`ui.` + w.Name + `.OnRejected(` + RootWindowName + ".Reject)\n")
 	}
 
 	return ret.String(), nil
