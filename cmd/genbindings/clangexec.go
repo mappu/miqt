@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"os"
 	"os/exec"
 	"sync"
 )
@@ -21,6 +22,8 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	if err != nil {
 		return nil, fmt.Errorf("StdoutPipe: %w", err)
 	}
+
+	cmd.Stderr = os.Stderr
 
 	err = cmd.Start()
 	if err != nil {
