@@ -8,8 +8,13 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
-	"time"
+	"sync"
+)
+
+const (
+	ClangSubprocessCount = 3
 )
 
 func cacheFilePath(inputHeader string) string {
@@ -90,56 +95,88 @@ func main() {
 
 	InsertTypedefs()
 
+	//
+	// PASS 0 (Fill clang cache)
+	//
+
+	var clangChan = make(chan string, 0)
+	var clangWg sync.WaitGroup
+
+	for i := 0; i < ClangSubprocessCount; i++ {
+		clangWg.Add(1)
+		go func() {
+			defer clangWg.Done()
+			log.Printf("Clang worker: starting")
+
+			for {
+				inputHeader, ok := <-clangChan
+				if !ok {
+					return // Done
+				}
+
+				log.Printf("Clang worker got message for file %q", inputHeader)
+
+				// Parse the file
+				// This seems to intermittently fail, so allow retrying
+				astInner := mustClangExec(ctx, *clang, inputHeader, strings.Fields(*cflags))
+
+				// Write to cache
+				jb, err := json.MarshalIndent(astInner, "", "\t")
+				if err != nil {
+					panic(err)
+				}
+
+				err = ioutil.WriteFile(cacheFilePath(inputHeader), jb, 0644)
+				if err != nil {
+					panic(err)
+				}
+
+				astInner = nil
+				jb = nil
+				runtime.GC()
+
+			}
+			log.Printf("Clang worker: exiting")
+		}()
+	}
+
 	for _, inputHeader := range includeFiles {
 
-		// If we have a cached clang AST, use that instead
+		// Check if there is a matching cache hit
 		cacheFile := cacheFilePath(inputHeader)
-		astJson, err := ioutil.ReadFile(cacheFile)
-		var astInner []interface{} = nil
-		if err != nil {
+
+		if _, err := os.Stat(cacheFile); err != nil && os.IsNotExist(err) {
 
 			// Nonexistent cache file, regenerate from clang
 			log.Printf("No AST cache for file %q, running clang...", filepath.Base(inputHeader))
+			clangChan <- inputHeader
+		}
+	}
 
-			// Parse the file
-			// This seems to intermittently fail, so allow retrying
-		nextRetry:
-			for retryCt := 0; retryCt < 5; retryCt++ {
-				astInner, err = clangExec(ctx, *clang, inputHeader, strings.Fields(*cflags))
-				if err != nil {
-					// Log and continue with next retry
-					log.Printf("WARNING: Clang execution failed: %v", err)
-					time.Sleep(3 * time.Second)
-					log.Printf("Retrying...")
+	// Done with all clang workers
+	close(clangChan)
+	clangWg.Wait()
 
-				} else { // err == nil
-					break nextRetry
-				}
-			}
-			if err != nil {
-				panic("Clang execution failed after 5x retries")
-			}
+	// The cache should now be fully populated.
 
-			// Write to cache
-			jb, err := json.MarshalIndent(astInner, "", "\t")
-			if err != nil {
-				panic(err)
-			}
+	//
+	// PASS 1 (clang2il)
+	//
 
-			err = ioutil.WriteFile(cacheFile, jb, 0644)
-			if err != nil {
-				panic(err)
-			}
+	for _, inputHeader := range includeFiles {
 
-		} else {
-			log.Printf("Reused cache AST for file %q", filepath.Base(inputHeader))
+		cacheFile := cacheFilePath(inputHeader)
 
-			// Json decode
-			err = json.Unmarshal(astJson, &astInner)
-			if err != nil {
-				panic(err)
-			}
+		astJson, err := ioutil.ReadFile(cacheFile)
+		if err != nil {
+			panic("Expected cache to be created for " + inputHeader + ", but got error " + err.Error())
+		}
 
+		// Json decode
+		var astInner []interface{} = nil
+		err = json.Unmarshal(astJson, &astInner)
+		if err != nil {
+			panic(err)
 		}
 
 		// Convert it to our intermediate format
