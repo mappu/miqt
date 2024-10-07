@@ -539,35 +539,44 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 			// This means one more than the last value
 			cee.EntryValue = fmt.Sprintf("%d", lastImplicitValue+1)
 
-		} else if len(ei1) == 1 {
+		} else if len(ei1) >= 1 {
 
-			ei1_0 := ei1[0].(map[string]interface{})
+			// There may be more than one RHS `inner` expression if one of them
+			// is a comment
+			// Iterate through each of the ei1 entries and see if any of them
+			// work for the purposes of enum constant value parsing
+			for _, ei1_0 := range ei1 {
 
-			// Best case: .inner -> kind=ConstantExpr value=xx
-			// e.g. qabstractitemmodel
-			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ConstantExpr" {
-				log.Printf("Got ConstantExpr OK")
-				if ei1Value, ok := ei1_0["value"].(string); ok {
-					cee.EntryValue = ei1Value
-					goto afterParse
+				ei1_0 := ei1_0.(map[string]interface{})
+
+				// Best case: .inner -> kind=ConstantExpr value=xx
+				// e.g. qabstractitemmodel
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ConstantExpr" {
+					log.Printf("Got ConstantExpr OK")
+					if ei1Value, ok := ei1_0["value"].(string); ok {
+						cee.EntryValue = ei1Value
+						goto afterParse
+					}
 				}
-			}
 
-			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
-			// e.g. QCalendar (when there is a int typecast)
-			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ImplicitCastExpr" {
-				log.Printf("Got ImplicitCastExpr OK")
-				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
-					ei2_0 := ei2[0].(map[string]interface{})
-					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
-						log.Printf("Got ConstantExpr OK")
-						if ei2Value, ok := ei2_0["value"].(string); ok {
-							cee.EntryValue = ei2Value
-							goto afterParse
+				// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
+				// e.g. QCalendar (when there is a int typecast)
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ImplicitCastExpr" {
+					log.Printf("Got ImplicitCastExpr OK")
+					if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
+						ei2_0 := ei2[0].(map[string]interface{})
+						if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
+							log.Printf("Got ConstantExpr OK")
+							if ei2Value, ok := ei2_0["value"].(string); ok {
+								cee.EntryValue = ei2Value
+								goto afterParse
+							}
 						}
 					}
 				}
+
 			}
+			// If we made it here, we did not hit any of the `goto afterParse` cases
 
 		}
 	afterParse:
