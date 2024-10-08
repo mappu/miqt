@@ -512,6 +512,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 
 	var lastImplicitValue int64 = -1
 
+nextEnumEntry:
 	for _, entry := range inner {
 		entry, ok := entry.(map[string]interface{})
 		if !ok {
@@ -519,7 +520,12 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 		}
 
 		kind, ok := entry["kind"].(string)
-		if !ok || kind != "EnumConstantDecl" {
+		if kind == "DeprecatedAttr" {
+			continue nextEnumEntry // skip
+		} else if kind == "EnumConstantDecl" {
+			// allow
+		} else {
+			// unknown kind, or maybe !ok
 			return ret, fmt.Errorf("unexpected kind %q", kind)
 		}
 
@@ -573,6 +579,11 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 							}
 						}
 					}
+				}
+
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "DeprecatedAttr" {
+					log.Printf("Enum entry %q is deprecated, skipping", ret.EnumName+"::"+entryname)
+					continue nextEnumEntry
 				}
 
 			}
