@@ -18,6 +18,7 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 
 	var ret CppParsedHeader
 
+nextTopLevel:
 	for _, node := range topLevel {
 
 		node, ok := node.(map[string]interface{})
@@ -71,7 +72,10 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			// Then copy the parsed elements back into our own file
 			namespace, ok := node["name"].(string)
 			if !ok {
-				panic("NamespaceDecl missing name")
+				// Qt 5 has none of these
+				// Qt 6 has some e.g. qloggingcategory.h
+				// Treat it as not having existed
+				continue nextTopLevel
 			}
 
 			namespaceInner, ok := node["inner"].([]interface{})
