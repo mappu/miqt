@@ -80,12 +80,19 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double", "qreal":
 		ret += "float64"
-	case "qsizetype", "size_t", "qptrdiff", "ptrdiff_t":
+	case "size_t": // size_t is unsigned
 		if C.sizeof_size_t == 4 {
 			ret += "uint32"
 		} else {
 			ret += "uint64"
 		}
+	case "qsizetype", "QIntegerForSizeof<std::size_t>::Signed", "qptrdiff", "ptrdiff_t": // all signed
+		if C.sizeof_size_t == 4 {
+			ret += "int32"
+		} else {
+			ret += "int64"
+		}
+
 	case "qintptr", "uintptr_t", "intptr_t", "quintptr", "QIntegerForSizeof<void *>::Unsigned", "QIntegerForSizeof<void *>::Signed":
 		ret += "uintptr"
 	default:

@@ -51,15 +51,13 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "uint64_t"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
-	case "qsizetype":
-		ret = "size_t"
 	case "qreal":
 		ret = "double"
 	case "qintptr", "QIntegerForSizeof<void *>::Signed":
 		ret = "intptr_t"
 	case "quintptr", "uintptr", "QIntegerForSizeof<void *>::Unsigned":
 		ret = "uintptr_t"
-	case "qptrdiff":
+	case "qsizetype", "qptrdiff", "QIntegerForSizeof<std::size_t>::Signed":
 		ret = "ptrdiff_t"
 	}
 
