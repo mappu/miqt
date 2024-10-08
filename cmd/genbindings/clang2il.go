@@ -130,14 +130,13 @@ nextTopLevel:
 			// TODO e.g. qfuturewatcher.h
 			// Probably can't be supported in the Go binding
 
-		case "TypeAliasDecl", // qglobal.h
-			"UsingDirectiveDecl", // qtextstream.h
-			"UsingDecl",          // qglobal.h
-			"UsingShadowDecl":    // global.h
+		case "UsingDirectiveDecl", // qtextstream.h
+			"UsingDecl",       // qglobal.h
+			"UsingShadowDecl": // global.h
 			// TODO e.g.
 			// Should be treated like a typedef
 
-		case "TypedefDecl":
+		case "TypeAliasDecl", "TypedefDecl":
 			td, err := processTypedef(node, addNamePrefix)
 			if err != nil {
 				return nil, fmt.Errorf("processTypedef: %w", err)
@@ -329,7 +328,7 @@ nextMethod:
 
 			ret.ChildClassdefs = append(ret.ChildClassdefs, child)
 
-		case "TypedefDecl":
+		case "TypeAliasDecl", "TypedefDecl":
 			// Child class typedef
 			td, err := processTypedef(node, nodename+"::")
 			if err != nil {
