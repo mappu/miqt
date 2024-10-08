@@ -56,8 +56,10 @@ nextTopLevel:
 			"ClassTemplateSpecializationDecl",
 			"ClassTemplatePartialSpecializationDecl",
 			"FunctionTemplateDecl",
-			"TypeAliasTemplateDecl", // e.g. qendian.h
-			"VarTemplateDecl":       // e.g. qglobal.h
+			"VarTemplatePartialSpecializationDecl", // e.g. Qt6 qcontainerinfo.h
+			"VarTemplateSpecializationDecl",        // e.g. qhashfunctions.h
+			"TypeAliasTemplateDecl",                // e.g. qendian.h
+			"VarTemplateDecl":                      // e.g. qglobal.h
 			// Template stuff probably can't be supported in the binding since
 			// we would need to link a concrete instantiation for each type in
 			// the CABI
