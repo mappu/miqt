@@ -338,6 +338,7 @@ type CppParsedHeader struct {
 
 func (c CppParsedHeader) Empty() bool {
 	return len(c.Typedefs) == 0 &&
+		len(c.Enums) == 0 &&
 		len(c.Classes) == 0
 }
 
