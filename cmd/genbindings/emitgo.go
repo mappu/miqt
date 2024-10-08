@@ -471,7 +471,7 @@ import "C"
 
 		// Embed all inherited types to directly allow calling inherited methods
 		for _, base := range c.Inherits {
-			ret.WriteString("*" + base + "\n")
+			ret.WriteString("*" + cabiClassName(base) + "\n")
 		}
 
 		ret.WriteString(`
@@ -489,7 +489,7 @@ import "C"
 		localInit := "h: h"
 		for _, base := range c.Inherits {
 			gfs.imports["unsafe"] = struct{}{}
-			localInit += ", " + base + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
+			localInit += ", " + cabiClassName(base) + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
