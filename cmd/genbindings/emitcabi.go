@@ -234,6 +234,8 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			p.ParameterType == "quint64" ||
 			p.ParameterType == "qlonglong" ||
 			p.ParameterType == "qulonglong" ||
+			p.GetQtCppType().ParameterType == "qintptr" ||
+			p.GetQtCppType().ParameterType == "qsizetype" || // Qt 6 qversionnumber.h: invalid ‘static_cast’ from type ‘ptrdiff_t*’ {aka ‘long int*’} to type ‘qsizetype*’ {aka ‘long long int*’}
 			p.ParameterType == "qint8" {
 			// QDataStream::operator>>() by reference (qint64)
 			// QLockFile::getLockInfo() by pointer
