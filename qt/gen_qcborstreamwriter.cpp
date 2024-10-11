@@ -57,12 +57,12 @@ void QCborStreamWriter_AppendWithDouble(QCborStreamWriter* self, double d) {
 	self->append(static_cast<double>(d));
 }
 
-void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, size_t lenVal) {
-	self->appendByteString(data, static_cast<qsizetype>(lenVal));
+void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, ptrdiff_t lenVal) {
+	self->appendByteString(data, (qsizetype)(lenVal));
 }
 
-void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, size_t lenVal) {
-	self->appendTextString(utf8, static_cast<qsizetype>(lenVal));
+void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, ptrdiff_t lenVal) {
+	self->appendTextString(utf8, (qsizetype)(lenVal));
 }
 
 void QCborStreamWriter_AppendWithBool(QCborStreamWriter* self, bool b) {
@@ -113,8 +113,8 @@ bool QCborStreamWriter_EndMap(QCborStreamWriter* self) {
 	return self->endMap();
 }
 
-void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, size_t size) {
-	self->append(str, static_cast<qsizetype>(size));
+void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdiff_t size) {
+	self->append(str, (qsizetype)(size));
 }
 
 void QCborStreamWriter_Delete(QCborStreamWriter* self) {

@@ -10,11 +10,11 @@
 #include "_cgo_export.h"
 
 QSocketNotifier* QSocketNotifier_new(intptr_t socket, int param2) {
-	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2));
+	return new QSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
 QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2, QObject* parent) {
-	return new QSocketNotifier(static_cast<qintptr>(socket), static_cast<QSocketNotifier::Type>(param2), parent);
+	return new QSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
 QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {

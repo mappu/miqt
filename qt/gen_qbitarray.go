@@ -193,10 +193,10 @@ func (this *QBitArray) Bits() unsafe.Pointer {
 	return (unsafe.Pointer)(_ret)
 }
 
-func QBitArray_FromBits(data string, lenVal uint64) *QBitArray {
+func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QBitArray_FromBits(data_Cstring, (C.size_t)(lenVal))
+	_ret := C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal))
 	_goptr := newQBitArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

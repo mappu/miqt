@@ -172,7 +172,7 @@ func (this *QDataStream) SetVersion(version int) {
 	C.QDataStream_SetVersion(this.h, (C.int)(version))
 }
 
-func (this *QDataStream) OperatorShiftRight(i *byte) {
+func (this *QDataStream) OperatorShiftRight(i *int8) {
 	C.QDataStream_OperatorShiftRight(this.h, (*C.schar)(unsafe.Pointer(i)))
 }
 
@@ -222,7 +222,7 @@ func (this *QDataStream) OperatorShiftRightWithStr(str string) {
 	C.QDataStream_OperatorShiftRightWithStr(this.h, str_Cstring)
 }
 
-func (this *QDataStream) OperatorShiftLeft(i byte) {
+func (this *QDataStream) OperatorShiftLeft(i int8) {
 	C.QDataStream_OperatorShiftLeft(this.h, (C.schar)(i))
 }
 

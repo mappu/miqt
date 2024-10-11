@@ -533,17 +533,17 @@ func QCborValue_FromCborWithBa(ba *QByteArray) *QCborValue {
 	return _goptr
 }
 
-func QCborValue_FromCbor2(data string, lenVal uint64) *QCborValue {
+func QCborValue_FromCbor2(data string, lenVal int64) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QCborValue_FromCbor2(data_Cstring, (C.size_t)(lenVal))
+	_ret := C.QCborValue_FromCbor2(data_Cstring, (C.ptrdiff_t)(lenVal))
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QCborValue_FromCbor3(data *byte, lenVal uint64) *QCborValue {
-	_ret := C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal))
+func QCborValue_FromCbor3(data *byte, lenVal int64) *QCborValue {
+	_ret := C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -645,17 +645,17 @@ func QCborValue_FromCbor22(ba *QByteArray, error *QCborParserError) *QCborValue 
 	return _goptr
 }
 
-func QCborValue_FromCbor32(data string, lenVal uint64, error *QCborParserError) *QCborValue {
+func QCborValue_FromCbor32(data string, lenVal int64, error *QCborParserError) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QCborValue_FromCbor32(data_Cstring, (C.size_t)(lenVal), error.cPointer())
+	_ret := C.QCborValue_FromCbor32(data_Cstring, (C.ptrdiff_t)(lenVal), error.cPointer())
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QCborValue_FromCbor33(data *byte, lenVal uint64, error *QCborParserError) *QCborValue {
-	_ret := C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal), error.cPointer())
+func QCborValue_FromCbor33(data *byte, lenVal int64, error *QCborParserError) *QCborValue {
+	_ret := C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), error.cPointer())
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -10,12 +10,12 @@ QCborStreamReader* QCborStreamReader_new() {
 	return new QCborStreamReader();
 }
 
-QCborStreamReader* QCborStreamReader_new2(const char* data, size_t lenVal) {
-	return new QCborStreamReader(data, static_cast<qsizetype>(lenVal));
+QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t lenVal) {
+	return new QCborStreamReader(data, (qsizetype)(lenVal));
 }
 
-QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, size_t lenVal) {
-	return new QCborStreamReader(static_cast<const quint8*>(data), static_cast<qsizetype>(lenVal));
+QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal) {
+	return new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
 QCborStreamReader* QCborStreamReader_new4(QByteArray* data) {
@@ -38,12 +38,12 @@ void QCborStreamReader_AddData(QCborStreamReader* self, QByteArray* data) {
 	self->addData(*data);
 }
 
-void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, size_t lenVal) {
-	self->addData(data, static_cast<qsizetype>(lenVal));
+void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, ptrdiff_t lenVal) {
+	self->addData(data, (qsizetype)(lenVal));
 }
 
-void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, size_t lenVal) {
-	self->addData(static_cast<const quint8*>(data), static_cast<qsizetype>(lenVal));
+void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, ptrdiff_t lenVal) {
+	self->addData(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
 void QCborStreamReader_Reparse(QCborStreamReader* self) {
@@ -190,8 +190,9 @@ bool QCborStreamReader_LeaveContainer(QCborStreamReader* self) {
 	return self->leaveContainer();
 }
 
-size_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self) {
-	return self->currentStringChunkSize();
+ptrdiff_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self) {
+	qsizetype _ret = self->currentStringChunkSize();
+	return static_cast<ptrdiff_t>(_ret);
 }
 
 bool QCborStreamReader_ToBool(const QCborStreamReader* self) {

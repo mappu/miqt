@@ -18,6 +18,7 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 
 	var ret CppParsedHeader
 
+nextTopLevel:
 	for _, node := range topLevel {
 
 		node, ok := node.(map[string]interface{})
@@ -55,8 +56,10 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			"ClassTemplateSpecializationDecl",
 			"ClassTemplatePartialSpecializationDecl",
 			"FunctionTemplateDecl",
-			"TypeAliasTemplateDecl", // e.g. qendian.h
-			"VarTemplateDecl":       // e.g. qglobal.h
+			"VarTemplatePartialSpecializationDecl", // e.g. Qt6 qcontainerinfo.h
+			"VarTemplateSpecializationDecl",        // e.g. qhashfunctions.h
+			"TypeAliasTemplateDecl",                // e.g. qendian.h
+			"VarTemplateDecl":                      // e.g. qglobal.h
 			// Template stuff probably can't be supported in the binding since
 			// we would need to link a concrete instantiation for each type in
 			// the CABI
@@ -71,7 +74,10 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			// Then copy the parsed elements back into our own file
 			namespace, ok := node["name"].(string)
 			if !ok {
-				panic("NamespaceDecl missing name")
+				// Qt 5 has none of these
+				// Qt 6 has some e.g. qloggingcategory.h
+				// Treat it as not having existed
+				continue nextTopLevel
 			}
 
 			namespaceInner, ok := node["inner"].([]interface{})
@@ -124,14 +130,13 @@ func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader
 			// TODO e.g. qfuturewatcher.h
 			// Probably can't be supported in the Go binding
 
-		case "TypeAliasDecl", // qglobal.h
-			"UsingDirectiveDecl", // qtextstream.h
-			"UsingDecl",          // qglobal.h
-			"UsingShadowDecl":    // global.h
+		case "UsingDirectiveDecl", // qtextstream.h
+			"UsingDecl",       // qglobal.h
+			"UsingShadowDecl": // global.h
 			// TODO e.g.
 			// Should be treated like a typedef
 
-		case "TypedefDecl":
+		case "TypeAliasDecl", "TypedefDecl":
 			td, err := processTypedef(node, addNamePrefix)
 			if err != nil {
 				return nil, fmt.Errorf("processTypedef: %w", err)
@@ -323,7 +328,7 @@ nextMethod:
 
 			ret.ChildClassdefs = append(ret.ChildClassdefs, child)
 
-		case "TypedefDecl":
+		case "TypeAliasDecl", "TypedefDecl":
 			// Child class typedef
 			td, err := processTypedef(node, nodename+"::")
 			if err != nil {
@@ -512,6 +517,7 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 
 	var lastImplicitValue int64 = -1
 
+nextEnumEntry:
 	for _, entry := range inner {
 		entry, ok := entry.(map[string]interface{})
 		if !ok {
@@ -519,7 +525,12 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 		}
 
 		kind, ok := entry["kind"].(string)
-		if !ok || kind != "EnumConstantDecl" {
+		if kind == "DeprecatedAttr" {
+			continue nextEnumEntry // skip
+		} else if kind == "EnumConstantDecl" {
+			// allow
+		} else {
+			// unknown kind, or maybe !ok
 			return ret, fmt.Errorf("unexpected kind %q", kind)
 		}
 
@@ -539,35 +550,49 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 			// This means one more than the last value
 			cee.EntryValue = fmt.Sprintf("%d", lastImplicitValue+1)
 
-		} else if len(ei1) == 1 {
+		} else if len(ei1) >= 1 {
 
-			ei1_0 := ei1[0].(map[string]interface{})
+			// There may be more than one RHS `inner` expression if one of them
+			// is a comment
+			// Iterate through each of the ei1 entries and see if any of them
+			// work for the purposes of enum constant value parsing
+			for _, ei1_0 := range ei1 {
 
-			// Best case: .inner -> kind=ConstantExpr value=xx
-			// e.g. qabstractitemmodel
-			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ConstantExpr" {
-				log.Printf("Got ConstantExpr OK")
-				if ei1Value, ok := ei1_0["value"].(string); ok {
-					cee.EntryValue = ei1Value
-					goto afterParse
+				ei1_0 := ei1_0.(map[string]interface{})
+
+				// Best case: .inner -> kind=ConstantExpr value=xx
+				// e.g. qabstractitemmodel
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ConstantExpr" {
+					log.Printf("Got ConstantExpr OK")
+					if ei1Value, ok := ei1_0["value"].(string); ok {
+						cee.EntryValue = ei1Value
+						goto afterParse
+					}
 				}
-			}
 
-			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
-			// e.g. QCalendar (when there is a int typecast)
-			if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ImplicitCastExpr" {
-				log.Printf("Got ImplicitCastExpr OK")
-				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
-					ei2_0 := ei2[0].(map[string]interface{})
-					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
-						log.Printf("Got ConstantExpr OK")
-						if ei2Value, ok := ei2_0["value"].(string); ok {
-							cee.EntryValue = ei2Value
-							goto afterParse
+				// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
+				// e.g. QCalendar (when there is a int typecast)
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "ImplicitCastExpr" {
+					log.Printf("Got ImplicitCastExpr OK")
+					if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
+						ei2_0 := ei2[0].(map[string]interface{})
+						if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
+							log.Printf("Got ConstantExpr OK")
+							if ei2Value, ok := ei2_0["value"].(string); ok {
+								cee.EntryValue = ei2Value
+								goto afterParse
+							}
 						}
 					}
 				}
+
+				if ei1Kind, ok := ei1_0["kind"].(string); ok && ei1Kind == "DeprecatedAttr" {
+					log.Printf("Enum entry %q is deprecated, skipping", ret.EnumName+"::"+entryname)
+					continue nextEnumEntry
+				}
+
 			}
+			// If we made it here, we did not hit any of the `goto afterParse` cases
 
 		}
 	afterParse:

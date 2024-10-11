@@ -6,8 +6,16 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
+	"os"
 	"os/exec"
 	"sync"
+	"time"
+)
+
+const (
+	ClangMaxRetries = 5
+	ClangRetryDelay = 3 * time.Second
 )
 
 func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []string) ([]interface{}, error) {
@@ -21,6 +29,8 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	if err != nil {
 		return nil, fmt.Errorf("StdoutPipe: %w", err)
 	}
+
+	cmd.Stderr = os.Stderr
 
 	err = cmd.Start()
 	if err != nil {
@@ -50,6 +60,26 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	wg.Wait()
 
 	return inner, nil
+}
+
+func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []string) []interface{} {
+
+	for i := 0; i < ClangMaxRetries; i++ {
+		astInner, err := clangExec(ctx, clangBin, inputHeader, cflags)
+		if err != nil {
+			// Log and continue with next retry
+			log.Printf("WARNING: Clang execution failed: %v", err)
+			time.Sleep(ClangRetryDelay)
+			log.Printf("Retrying...")
+		}
+
+		// Success
+		return astInner
+	}
+
+	// Failed 5x
+	// Panic
+	panic("Clang failed 5x parsing file " + inputHeader)
 }
 
 // clangStripUpToFile strips all AST nodes from the clang output until we find

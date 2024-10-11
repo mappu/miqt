@@ -151,15 +151,16 @@ func (p CppParameter) IntType() bool {
 
 	switch p.ParameterType {
 	case "int", "unsigned int", "uint",
-		"short", "unsigned short", "ushort", "qint16", "quint16",
+		"short", "unsigned short", "ushort", "qint16", "quint16", "uint16_t", "int16_t",
 		"qint8", "quint8",
 		"unsigned char", "signed char", "uchar",
-		"long", "unsigned long", "ulong", "qint32", "quint32",
+		"long", "unsigned long", "ulong", "qint32", "quint32", "int32_t", "uint32_t",
 		"longlong", "ulonglong", "qlonglong", "qulonglong", "qint64", "quint64", "int64_t", "uint64_t", "long long", "unsigned long long",
 		"qintptr", "quintptr", "uintptr_t", "intptr_t",
 		"qsizetype", "size_t",
 		"QIntegerForSizeof<void *>::Unsigned",
 		"QIntegerForSizeof<void *>::Signed",
+		"QIntegerForSizeof<std::size_t>::Signed",
 		"qptrdiff", "ptrdiff_t",
 		"double", "float", "qreal":
 		return true
@@ -337,6 +338,7 @@ type CppParsedHeader struct {
 
 func (c CppParsedHeader) Empty() bool {
 	return len(c.Typedefs) == 0 &&
+		len(c.Enums) == 0 &&
 		len(c.Classes) == 0
 }
 

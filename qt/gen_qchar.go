@@ -378,7 +378,7 @@ func newQLatin1Char_U(h unsafe.Pointer) *QLatin1Char {
 }
 
 // NewQLatin1Char constructs a new QLatin1Char object.
-func NewQLatin1Char(c byte) *QLatin1Char {
+func NewQLatin1Char(c int8) *QLatin1Char {
 	ret := C.QLatin1Char_new((C.char)(c))
 	return newQLatin1Char(ret)
 }
@@ -389,8 +389,8 @@ func NewQLatin1Char2(param1 *QLatin1Char) *QLatin1Char {
 	return newQLatin1Char(ret)
 }
 
-func (this *QLatin1Char) ToLatin1() byte {
-	return (byte)(C.QLatin1Char_ToLatin1(this.h))
+func (this *QLatin1Char) ToLatin1() int8 {
+	return (int8)(C.QLatin1Char_ToLatin1(this.h))
 }
 
 func (this *QLatin1Char) Unicode() uint16 {
@@ -482,7 +482,7 @@ func NewQChar8(ch QLatin1Char) *QChar {
 }
 
 // NewQChar9 constructs a new QChar object.
-func NewQChar9(c byte) *QChar {
+func NewQChar9(c int8) *QChar {
 	ret := C.QChar_new9((C.char)(c))
 	return newQChar(ret)
 }
@@ -581,15 +581,15 @@ func (this *QChar) UnicodeVersion() QChar__UnicodeVersion {
 	return (QChar__UnicodeVersion)(C.QChar_UnicodeVersion(this.h))
 }
 
-func (this *QChar) ToLatin1() byte {
-	return (byte)(C.QChar_ToLatin1(this.h))
+func (this *QChar) ToLatin1() int8 {
+	return (int8)(C.QChar_ToLatin1(this.h))
 }
 
 func (this *QChar) Unicode() uint16 {
 	return (uint16)(C.QChar_Unicode(this.h))
 }
 
-func QChar_FromLatin1(c byte) *QChar {
+func QChar_FromLatin1(c int8) *QChar {
 	_ret := C.QChar_FromLatin1((C.char)(c))
 	_goptr := newQChar(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

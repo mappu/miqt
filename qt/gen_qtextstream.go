@@ -283,7 +283,7 @@ func (this *QTextStream) OperatorShiftRight(ch *QChar) *QTextStream {
 	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRight(this.h, ch.cPointer())))
 }
 
-func (this *QTextStream) OperatorShiftRightWithCh(ch *byte) *QTextStream {
+func (this *QTextStream) OperatorShiftRightWithCh(ch *int8) *QTextStream {
 	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithCh(this.h, (*C.char)(unsafe.Pointer(ch)))))
 }
 
@@ -347,7 +347,7 @@ func (this *QTextStream) OperatorShiftLeft(ch QChar) *QTextStream {
 	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeft(this.h, ch.cPointer())))
 }
 
-func (this *QTextStream) OperatorShiftLeftWithCh(ch byte) *QTextStream {
+func (this *QTextStream) OperatorShiftLeftWithCh(ch int8) *QTextStream {
 	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithCh(this.h, (C.char)(ch))))
 }
 

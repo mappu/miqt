@@ -193,7 +193,7 @@ func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
 }
 
 // NewQSocketDescriptor3 constructs a new QSocketDescriptor object.
-func NewQSocketDescriptor3(descriptor QSocketNotifier__Type) *QSocketDescriptor {
+func NewQSocketDescriptor3(descriptor int) *QSocketDescriptor {
 	if runtime.GOOS == "linux" {
 		ret := C.QSocketDescriptor_new3((C.int)(descriptor))
 		return newQSocketDescriptor(ret)

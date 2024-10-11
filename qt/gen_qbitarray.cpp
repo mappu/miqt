@@ -144,8 +144,8 @@ const char* QBitArray_Bits(const QBitArray* self) {
 	return (const char*) self->bits();
 }
 
-QBitArray* QBitArray_FromBits(const char* data, size_t lenVal) {
-	return new QBitArray(QBitArray::fromBits(data, static_cast<qsizetype>(lenVal)));
+QBitArray* QBitArray_FromBits(const char* data, ptrdiff_t lenVal) {
+	return new QBitArray(QBitArray::fromBits(data, (qsizetype)(lenVal)));
 }
 
 bool QBitArray_Fill22(QBitArray* self, bool val, int size) {

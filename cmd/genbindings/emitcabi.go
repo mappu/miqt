@@ -51,15 +51,13 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "uint64_t"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
-	case "qsizetype":
-		ret = "size_t"
 	case "qreal":
 		ret = "double"
 	case "qintptr", "QIntegerForSizeof<void *>::Signed":
 		ret = "intptr_t"
 	case "quintptr", "uintptr", "QIntegerForSizeof<void *>::Unsigned":
 		ret = "uintptr_t"
-	case "qptrdiff":
+	case "qsizetype", "qptrdiff", "QIntegerForSizeof<std::size_t>::Signed":
 		ret = "ptrdiff_t"
 	}
 
@@ -236,6 +234,8 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			p.ParameterType == "quint64" ||
 			p.ParameterType == "qlonglong" ||
 			p.ParameterType == "qulonglong" ||
+			p.GetQtCppType().ParameterType == "qintptr" ||
+			p.GetQtCppType().ParameterType == "qsizetype" || // Qt 6 qversionnumber.h: invalid ‘static_cast’ from type ‘ptrdiff_t*’ {aka ‘long int*’} to type ‘qsizetype*’ {aka ‘long long int*’}
 			p.ParameterType == "qint8" {
 			// QDataStream::operator>>() by reference (qint64)
 			// QLockFile::getLockInfo() by pointer
@@ -688,7 +688,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 				// If there are hidden parameters, the type of the signal itself
 				// needs to include them
-				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
+				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)` + ifv(m.IsConst, ` const`, ``) + `>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
 
 				paramArgs := []string{"slot"}
 				paramArgDefs := []string{"void* cb"}

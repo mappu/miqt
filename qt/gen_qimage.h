@@ -84,7 +84,7 @@ unsigned char* QImage_Bits(QImage* self);
 const unsigned char* QImage_Bits2(const QImage* self);
 const unsigned char* QImage_ConstBits(const QImage* self);
 int QImage_ByteCount(const QImage* self);
-size_t QImage_SizeInBytes(const QImage* self);
+ptrdiff_t QImage_SizeInBytes(const QImage* self);
 unsigned char* QImage_ScanLine(QImage* self, int param1);
 const unsigned char* QImage_ScanLineWithInt(const QImage* self, int param1);
 const unsigned char* QImage_ConstScanLine(const QImage* self, int param1);

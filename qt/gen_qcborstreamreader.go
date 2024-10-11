@@ -70,16 +70,16 @@ func NewQCborStreamReader() *QCborStreamReader {
 }
 
 // NewQCborStreamReader2 constructs a new QCborStreamReader object.
-func NewQCborStreamReader2(data string, lenVal uint64) *QCborStreamReader {
+func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	ret := C.QCborStreamReader_new2(data_Cstring, (C.size_t)(lenVal))
+	ret := C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal))
 	return newQCborStreamReader(ret)
 }
 
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
-func NewQCborStreamReader3(data *byte, lenVal uint64) *QCborStreamReader {
-	ret := C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal))
+func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
+	ret := C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
 	return newQCborStreamReader(ret)
 }
 
@@ -107,14 +107,14 @@ func (this *QCborStreamReader) AddData(data *QByteArray) {
 	C.QCborStreamReader_AddData(this.h, data.cPointer())
 }
 
-func (this *QCborStreamReader) AddData2(data string, lenVal uint64) {
+func (this *QCborStreamReader) AddData2(data string, lenVal int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QCborStreamReader_AddData2(this.h, data_Cstring, (C.size_t)(lenVal))
+	C.QCborStreamReader_AddData2(this.h, data_Cstring, (C.ptrdiff_t)(lenVal))
 }
 
-func (this *QCborStreamReader) AddData3(data *byte, lenVal uint64) {
-	C.QCborStreamReader_AddData3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.size_t)(lenVal))
+func (this *QCborStreamReader) AddData3(data *byte, lenVal int64) {
+	C.QCborStreamReader_AddData3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
 }
 
 func (this *QCborStreamReader) Reparse() {
@@ -260,8 +260,8 @@ func (this *QCborStreamReader) LeaveContainer() bool {
 	return (bool)(C.QCborStreamReader_LeaveContainer(this.h))
 }
 
-func (this *QCborStreamReader) CurrentStringChunkSize() uint64 {
-	return (uint64)(C.QCborStreamReader_CurrentStringChunkSize(this.h))
+func (this *QCborStreamReader) CurrentStringChunkSize() int64 {
+	return (int64)(C.QCborStreamReader_CurrentStringChunkSize(this.h))
 }
 
 func (this *QCborStreamReader) ToBool() bool {

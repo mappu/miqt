@@ -1746,28 +1746,28 @@ func (this *QLocale) ToDouble2(s string, ok *bool) float64 {
 	return (float64)(C.QLocale_ToDouble2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QLocale) ToString22(i float64, f byte) string {
+func (this *QLocale) ToString22(i float64, f int8) string {
 	var _ms *C.struct_miqt_string = C.QLocale_ToString22(this.h, (C.double)(i), (C.char)(f))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QLocale) ToString32(i float64, f byte, prec int) string {
+func (this *QLocale) ToString32(i float64, f int8, prec int) string {
 	var _ms *C.struct_miqt_string = C.QLocale_ToString32(this.h, (C.double)(i), (C.char)(f), (C.int)(prec))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QLocale) ToString23(i float32, f byte) string {
+func (this *QLocale) ToString23(i float32, f int8) string {
 	var _ms *C.struct_miqt_string = C.QLocale_ToString23(this.h, (C.float)(i), (C.char)(f))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))
 	return _ret
 }
 
-func (this *QLocale) ToString33(i float32, f byte, prec int) string {
+func (this *QLocale) ToString33(i float32, f int8, prec int) string {
 	var _ms *C.struct_miqt_string = C.QLocale_ToString33(this.h, (C.float)(i), (C.char)(f), (C.int)(prec))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms))

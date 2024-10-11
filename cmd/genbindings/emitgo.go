@@ -45,11 +45,14 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	switch p.ParameterType {
-	case "char", "qint8", "signed char", "unsigned char", "uchar", "quint8":
-		ret += "byte" // Strictly speaking, Go byte is unsigned and char may be signed
-	case "short", "qint16":
+	case "unsigned char", "uchar", "quint8":
+		// Go byte is unsigned
+		ret += "byte"
+	case "char", "qint8", "signed char":
+		ret += "int8" // Signed
+	case "short", "qint16", "int16_t":
 		ret += "int16"
-	case "ushort", "quint16", "unsigned short":
+	case "ushort", "quint16", "unsigned short", "uint16_t":
 		ret += "uint16"
 	case "long":
 		// Windows ILP32 - 32-bits
@@ -80,12 +83,19 @@ func (p CppParameter) RenderTypeGo() string {
 		ret += "float32"
 	case "double", "qreal":
 		ret += "float64"
-	case "qsizetype", "size_t", "qptrdiff", "ptrdiff_t":
+	case "size_t": // size_t is unsigned
 		if C.sizeof_size_t == 4 {
 			ret += "uint32"
 		} else {
 			ret += "uint64"
 		}
+	case "qsizetype", "QIntegerForSizeof<std::size_t>::Signed", "qptrdiff", "ptrdiff_t": // all signed
+		if C.sizeof_size_t == 4 {
+			ret += "int32"
+		} else {
+			ret += "int64"
+		}
+
 	case "qintptr", "uintptr_t", "intptr_t", "quintptr", "QIntegerForSizeof<void *>::Unsigned", "QIntegerForSizeof<void *>::Signed":
 		ret += "uintptr"
 	default:
@@ -471,7 +481,7 @@ import "C"
 
 		// Embed all inherited types to directly allow calling inherited methods
 		for _, base := range c.Inherits {
-			ret.WriteString("*" + base + "\n")
+			ret.WriteString("*" + cabiClassName(base) + "\n")
 		}
 
 		ret.WriteString(`
@@ -489,7 +499,7 @@ import "C"
 		localInit := "h: h"
 		for _, base := range c.Inherits {
 			gfs.imports["unsafe"] = struct{}{}
-			localInit += ", " + base + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
+			localInit += ", " + cabiClassName(base) + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
