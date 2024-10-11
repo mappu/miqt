@@ -686,7 +686,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 				// If there are hidden parameters, the type of the signal itself
 				// needs to include them
-				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
+				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)` + ifv(m.IsConst, ` const`, ``) + `>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
 
 				paramArgs := []string{"slot"}
 				paramArgDefs := []string{"void* cb"}
