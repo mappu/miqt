@@ -45,11 +45,14 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	switch p.ParameterType {
-	case "char", "qint8", "signed char", "unsigned char", "uchar", "quint8":
-		ret += "byte" // Strictly speaking, Go byte is unsigned and char may be signed
-	case "short", "qint16":
+	case "unsigned char", "uchar", "quint8":
+		// Go byte is unsigned
+		ret += "byte"
+	case "char", "qint8", "signed char":
+		ret += "int8" // Signed
+	case "short", "qint16", "int16_t":
 		ret += "int16"
-	case "ushort", "quint16", "unsigned short":
+	case "ushort", "quint16", "unsigned short", "uint16_t":
 		ret += "uint16"
 	case "long":
 		// Windows ILP32 - 32-bits
