@@ -26,15 +26,15 @@ typedef struct QIODevice QIODevice;
 #endif
 
 QCborStreamReader* QCborStreamReader_new();
-QCborStreamReader* QCborStreamReader_new2(const char* data, size_t lenVal);
-QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, size_t lenVal);
+QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t lenVal);
+QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal);
 QCborStreamReader* QCborStreamReader_new4(QByteArray* data);
 QCborStreamReader* QCborStreamReader_new5(QIODevice* device);
 void QCborStreamReader_SetDevice(QCborStreamReader* self, QIODevice* device);
 QIODevice* QCborStreamReader_Device(const QCborStreamReader* self);
 void QCborStreamReader_AddData(QCborStreamReader* self, QByteArray* data);
-void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, size_t lenVal);
-void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, size_t lenVal);
+void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, ptrdiff_t lenVal);
+void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, ptrdiff_t lenVal);
 void QCborStreamReader_Reparse(QCborStreamReader* self);
 void QCborStreamReader_Clear(QCborStreamReader* self);
 void QCborStreamReader_Reset(QCborStreamReader* self);
@@ -70,7 +70,7 @@ unsigned long long QCborStreamReader_Length(const QCborStreamReader* self);
 bool QCborStreamReader_IsContainer(const QCborStreamReader* self);
 bool QCborStreamReader_EnterContainer(QCborStreamReader* self);
 bool QCborStreamReader_LeaveContainer(QCborStreamReader* self);
-size_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self);
+ptrdiff_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self);
 bool QCborStreamReader_ToBool(const QCborStreamReader* self);
 uint64_t QCborStreamReader_ToTag(const QCborStreamReader* self);
 unsigned long long QCborStreamReader_ToUnsignedInteger(const QCborStreamReader* self);

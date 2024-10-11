@@ -262,11 +262,11 @@ func (this *QIODevice) WaitForBytesWritten(msecs int) bool {
 	return (bool)(C.QIODevice_WaitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
-func (this *QIODevice) UngetChar(c byte) {
+func (this *QIODevice) UngetChar(c int8) {
 	C.QIODevice_UngetChar(this.h, (C.char)(c))
 }
 
-func (this *QIODevice) PutChar(c byte) bool {
+func (this *QIODevice) PutChar(c int8) bool {
 	return (bool)(C.QIODevice_PutChar(this.h, (C.char)(c)))
 }
 

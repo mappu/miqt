@@ -119,7 +119,7 @@ func (this *QDebug) OperatorShiftLeftWithBool(t bool) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithBool(this.h, (C.bool)(t))))
 }
 
-func (this *QDebug) OperatorShiftLeftWithChar(t byte) *QDebug {
+func (this *QDebug) OperatorShiftLeftWithChar(t int8) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithChar(this.h, (C.char)(t))))
 }
 
@@ -183,7 +183,7 @@ func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithVoid(this.h, t)))
 }
 
-func (this *QDebug) MaybeQuote1(c byte) *QDebug {
+func (this *QDebug) MaybeQuote1(c int8) *QDebug {
 	return newQDebug_U(unsafe.Pointer(C.QDebug_MaybeQuote1(this.h, (C.char)(c))))
 }
 
@@ -293,7 +293,7 @@ func (this *QNoDebug) Verbosity(param1 int) *QNoDebug {
 	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Verbosity(this.h, (C.int)(param1))))
 }
 
-func (this *QNoDebug) MaybeQuote1(param1 byte) *QNoDebug {
+func (this *QNoDebug) MaybeQuote1(param1 int8) *QNoDebug {
 	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_MaybeQuote1(this.h, (C.char)(param1))))
 }
 

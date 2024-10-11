@@ -295,8 +295,8 @@ func (this *QImage) ByteCount() int {
 	return (int)(C.QImage_ByteCount(this.h))
 }
 
-func (this *QImage) SizeInBytes() uint64 {
-	return (uint64)(C.QImage_SizeInBytes(this.h))
+func (this *QImage) SizeInBytes() int64 {
+	return (int64)(C.QImage_SizeInBytes(this.h))
 }
 
 func (this *QImage) ScanLine(param1 int) *byte {

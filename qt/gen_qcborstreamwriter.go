@@ -91,16 +91,16 @@ func (this *QCborStreamWriter) AppendWithDouble(d float64) {
 	C.QCborStreamWriter_AppendWithDouble(this.h, (C.double)(d))
 }
 
-func (this *QCborStreamWriter) AppendByteString(data string, lenVal uint64) {
+func (this *QCborStreamWriter) AppendByteString(data string, lenVal int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QCborStreamWriter_AppendByteString(this.h, data_Cstring, (C.size_t)(lenVal))
+	C.QCborStreamWriter_AppendByteString(this.h, data_Cstring, (C.ptrdiff_t)(lenVal))
 }
 
-func (this *QCborStreamWriter) AppendTextString(utf8 string, lenVal uint64) {
+func (this *QCborStreamWriter) AppendTextString(utf8 string, lenVal int64) {
 	utf8_Cstring := C.CString(utf8)
 	defer C.free(unsafe.Pointer(utf8_Cstring))
-	C.QCborStreamWriter_AppendTextString(this.h, utf8_Cstring, (C.size_t)(lenVal))
+	C.QCborStreamWriter_AppendTextString(this.h, utf8_Cstring, (C.ptrdiff_t)(lenVal))
 }
 
 func (this *QCborStreamWriter) AppendWithBool(b bool) {
@@ -153,10 +153,10 @@ func (this *QCborStreamWriter) EndMap() bool {
 	return (bool)(C.QCborStreamWriter_EndMap(this.h))
 }
 
-func (this *QCborStreamWriter) Append22(str string, size uint64) {
+func (this *QCborStreamWriter) Append22(str string, size int64) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QCborStreamWriter_Append22(this.h, str_Cstring, (C.size_t)(size))
+	C.QCborStreamWriter_Append22(this.h, str_Cstring, (C.ptrdiff_t)(size))
 }
 
 // Delete this object from C++ memory.

@@ -36,8 +36,8 @@ void QCborStreamWriter_Append3(QCborStreamWriter* self, int tag);
 void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, uint8_t st);
 void QCborStreamWriter_AppendWithFloat(QCborStreamWriter* self, float f);
 void QCborStreamWriter_AppendWithDouble(QCborStreamWriter* self, double d);
-void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, size_t lenVal);
-void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, size_t lenVal);
+void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, ptrdiff_t lenVal);
+void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, ptrdiff_t lenVal);
 void QCborStreamWriter_AppendWithBool(QCborStreamWriter* self, bool b);
 void QCborStreamWriter_AppendNull(QCborStreamWriter* self);
 void QCborStreamWriter_AppendUndefined(QCborStreamWriter* self);
@@ -50,7 +50,7 @@ bool QCborStreamWriter_EndArray(QCborStreamWriter* self);
 void QCborStreamWriter_StartMap(QCborStreamWriter* self);
 void QCborStreamWriter_StartMapWithCount(QCborStreamWriter* self, unsigned long long count);
 bool QCborStreamWriter_EndMap(QCborStreamWriter* self);
-void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, size_t size);
+void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdiff_t size);
 void QCborStreamWriter_Delete(QCborStreamWriter* self);
 
 #ifdef __cplusplus

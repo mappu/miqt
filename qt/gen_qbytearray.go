@@ -132,7 +132,7 @@ func NewQByteArray2(param1 string) *QByteArray {
 }
 
 // NewQByteArray3 constructs a new QByteArray object.
-func NewQByteArray3(size int, c byte) *QByteArray {
+func NewQByteArray3(size int, c int8) *QByteArray {
 	ret := C.QByteArray_new3((C.int)(size), (C.char)(c))
 	return newQByteArray(ret)
 }
@@ -189,7 +189,7 @@ func (this *QByteArray) Resize(size int) {
 	C.QByteArray_Resize(this.h, (C.int)(size))
 }
 
-func (this *QByteArray) Fill(c byte) *QByteArray {
+func (this *QByteArray) Fill(c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Fill(this.h, (C.char)(c))))
 }
 
@@ -236,16 +236,16 @@ func (this *QByteArray) Clear() {
 	C.QByteArray_Clear(this.h)
 }
 
-func (this *QByteArray) At(i int) byte {
-	return (byte)(C.QByteArray_At(this.h, (C.int)(i)))
+func (this *QByteArray) At(i int) int8 {
+	return (int8)(C.QByteArray_At(this.h, (C.int)(i)))
 }
 
-func (this *QByteArray) OperatorSubscript(i int) byte {
-	return (byte)(C.QByteArray_OperatorSubscript(this.h, (C.int)(i)))
+func (this *QByteArray) OperatorSubscript(i int) int8 {
+	return (int8)(C.QByteArray_OperatorSubscript(this.h, (C.int)(i)))
 }
 
-func (this *QByteArray) OperatorSubscriptWithUint(i uint) byte {
-	return (byte)(C.QByteArray_OperatorSubscriptWithUint(this.h, (C.uint)(i)))
+func (this *QByteArray) OperatorSubscriptWithUint(i uint) int8 {
+	return (int8)(C.QByteArray_OperatorSubscriptWithUint(this.h, (C.uint)(i)))
 }
 
 func (this *QByteArray) OperatorSubscriptWithInt(i int) *QByteRef {
@@ -262,8 +262,8 @@ func (this *QByteArray) OperatorSubscript2(i uint) *QByteRef {
 	return _goptr
 }
 
-func (this *QByteArray) Front() byte {
-	return (byte)(C.QByteArray_Front(this.h))
+func (this *QByteArray) Front() int8 {
+	return (int8)(C.QByteArray_Front(this.h))
 }
 
 func (this *QByteArray) Front2() *QByteRef {
@@ -273,8 +273,8 @@ func (this *QByteArray) Front2() *QByteRef {
 	return _goptr
 }
 
-func (this *QByteArray) Back() byte {
-	return (byte)(C.QByteArray_Back(this.h))
+func (this *QByteArray) Back() int8 {
+	return (int8)(C.QByteArray_Back(this.h))
 }
 
 func (this *QByteArray) Back2() *QByteRef {
@@ -284,7 +284,7 @@ func (this *QByteArray) Back2() *QByteRef {
 	return _goptr
 }
 
-func (this *QByteArray) IndexOf(c byte) int {
+func (this *QByteArray) IndexOf(c int8) int {
 	return (int)(C.QByteArray_IndexOf(this.h, (C.char)(c)))
 }
 
@@ -298,7 +298,7 @@ func (this *QByteArray) IndexOfWithQByteArray(a *QByteArray) int {
 	return (int)(C.QByteArray_IndexOfWithQByteArray(this.h, a.cPointer()))
 }
 
-func (this *QByteArray) LastIndexOf(c byte) int {
+func (this *QByteArray) LastIndexOf(c int8) int {
 	return (int)(C.QByteArray_LastIndexOf(this.h, (C.char)(c)))
 }
 
@@ -312,7 +312,7 @@ func (this *QByteArray) LastIndexOfWithQByteArray(a *QByteArray) int {
 	return (int)(C.QByteArray_LastIndexOfWithQByteArray(this.h, a.cPointer()))
 }
 
-func (this *QByteArray) Contains(c byte) bool {
+func (this *QByteArray) Contains(c int8) bool {
 	return (bool)(C.QByteArray_Contains(this.h, (C.char)(c)))
 }
 
@@ -326,7 +326,7 @@ func (this *QByteArray) ContainsWithQByteArray(a *QByteArray) bool {
 	return (bool)(C.QByteArray_ContainsWithQByteArray(this.h, a.cPointer()))
 }
 
-func (this *QByteArray) Count(c byte) int {
+func (this *QByteArray) Count(c int8) int {
 	return (int)(C.QByteArray_Count(this.h, (C.char)(c)))
 }
 
@@ -382,7 +382,7 @@ func (this *QByteArray) StartsWith(a *QByteArray) bool {
 	return (bool)(C.QByteArray_StartsWith(this.h, a.cPointer()))
 }
 
-func (this *QByteArray) StartsWithWithChar(c byte) bool {
+func (this *QByteArray) StartsWithWithChar(c int8) bool {
 	return (bool)(C.QByteArray_StartsWithWithChar(this.h, (C.char)(c)))
 }
 
@@ -396,7 +396,7 @@ func (this *QByteArray) EndsWith(a *QByteArray) bool {
 	return (bool)(C.QByteArray_EndsWith(this.h, a.cPointer()))
 }
 
-func (this *QByteArray) EndsWithWithChar(c byte) bool {
+func (this *QByteArray) EndsWithWithChar(c int8) bool {
 	return (bool)(C.QByteArray_EndsWithWithChar(this.h, (C.char)(c)))
 }
 
@@ -464,11 +464,11 @@ func (this *QByteArray) RightJustified(width int) *QByteArray {
 	return _goptr
 }
 
-func (this *QByteArray) Prepend(c byte) *QByteArray {
+func (this *QByteArray) Prepend(c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Prepend(this.h, (C.char)(c))))
 }
 
-func (this *QByteArray) Prepend2(count int, c byte) *QByteArray {
+func (this *QByteArray) Prepend2(count int, c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Prepend2(this.h, (C.int)(count), (C.char)(c))))
 }
 
@@ -488,11 +488,11 @@ func (this *QByteArray) PrependWithQByteArray(a *QByteArray) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_PrependWithQByteArray(this.h, a.cPointer())))
 }
 
-func (this *QByteArray) Append(c byte) *QByteArray {
+func (this *QByteArray) Append(c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Append(this.h, (C.char)(c))))
 }
 
-func (this *QByteArray) Append2(count int, c byte) *QByteArray {
+func (this *QByteArray) Append2(count int, c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Append2(this.h, (C.int)(count), (C.char)(c))))
 }
 
@@ -512,11 +512,11 @@ func (this *QByteArray) AppendWithQByteArray(a *QByteArray) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_AppendWithQByteArray(this.h, a.cPointer())))
 }
 
-func (this *QByteArray) Insert(i int, c byte) *QByteArray {
+func (this *QByteArray) Insert(i int, c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert(this.h, (C.int)(i), (C.char)(c))))
 }
 
-func (this *QByteArray) Insert2(i int, count int, c byte) *QByteArray {
+func (this *QByteArray) Insert2(i int, count int, c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert2(this.h, (C.int)(i), (C.int)(count), (C.char)(c))))
 }
 
@@ -556,13 +556,13 @@ func (this *QByteArray) Replace3(index int, lenVal int, s *QByteArray) *QByteArr
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace3(this.h, (C.int)(index), (C.int)(lenVal), s.cPointer())))
 }
 
-func (this *QByteArray) Replace4(before byte, after string) *QByteArray {
+func (this *QByteArray) Replace4(before int8, after string) *QByteArray {
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace4(this.h, (C.char)(before), after_Cstring)))
 }
 
-func (this *QByteArray) Replace5(before byte, after *QByteArray) *QByteArray {
+func (this *QByteArray) Replace5(before int8, after *QByteArray) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace5(this.h, (C.char)(before), after.cPointer())))
 }
 
@@ -598,11 +598,11 @@ func (this *QByteArray) Replace10(before string, after *QByteArray) *QByteArray 
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace10(this.h, before_Cstring, after.cPointer())))
 }
 
-func (this *QByteArray) Replace11(before byte, after byte) *QByteArray {
+func (this *QByteArray) Replace11(before int8, after int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace11(this.h, (C.char)(before), (C.char)(after))))
 }
 
-func (this *QByteArray) OperatorPlusAssign(c byte) *QByteArray {
+func (this *QByteArray) OperatorPlusAssign(c int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssign(this.h, (C.char)(c))))
 }
 
@@ -616,7 +616,7 @@ func (this *QByteArray) OperatorPlusAssignWithQByteArray(a *QByteArray) *QByteAr
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithQByteArray(this.h, a.cPointer())))
 }
 
-func (this *QByteArray) Split(sep byte) []QByteArray {
+func (this *QByteArray) Split(sep int8) []QByteArray {
 	var _ma *C.struct_miqt_array = C.QByteArray_Split(this.h, (C.char)(sep))
 	_ret := make([]QByteArray, int(_ma.len))
 	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
@@ -657,7 +657,7 @@ func (this *QByteArray) Replace12(before string, after string) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace12(this.h, (*C.struct_miqt_string)(before_ms), after_Cstring)))
 }
 
-func (this *QByteArray) Replace13(c byte, after string) *QByteArray {
+func (this *QByteArray) Replace13(c int8, after string) *QByteArray {
 	after_ms := miqt_strdupg(after)
 	defer C.free(after_ms)
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace13(this.h, (C.char)(c), (*C.struct_miqt_string)(after_ms))))
@@ -784,7 +784,7 @@ func (this *QByteArray) ToHex() *QByteArray {
 	return _goptr
 }
 
-func (this *QByteArray) ToHexWithSeparator(separator byte) *QByteArray {
+func (this *QByteArray) ToHexWithSeparator(separator int8) *QByteArray {
 	_ret := C.QByteArray_ToHexWithSeparator(this.h, (C.char)(separator))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -955,7 +955,7 @@ func (this *QByteArray) ConstEnd() unsafe.Pointer {
 	return (unsafe.Pointer)(_ret)
 }
 
-func (this *QByteArray) PushBack(c byte) {
+func (this *QByteArray) PushBack(c int8) {
 	C.QByteArray_PushBack(this.h, (C.char)(c))
 }
 
@@ -969,7 +969,7 @@ func (this *QByteArray) PushBackWithQByteArray(a *QByteArray) {
 	C.QByteArray_PushBackWithQByteArray(this.h, a.cPointer())
 }
 
-func (this *QByteArray) PushFront(c byte) {
+func (this *QByteArray) PushFront(c int8) {
 	C.QByteArray_PushFront(this.h, (C.char)(c))
 }
 
@@ -999,11 +999,11 @@ func (this *QByteArray) IsNull() bool {
 	return (bool)(C.QByteArray_IsNull(this.h))
 }
 
-func (this *QByteArray) Fill2(c byte, size int) *QByteArray {
+func (this *QByteArray) Fill2(c int8, size int) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Fill2(this.h, (C.char)(c), (C.int)(size))))
 }
 
-func (this *QByteArray) IndexOf2(c byte, from int) int {
+func (this *QByteArray) IndexOf2(c int8, from int) int {
 	return (int)(C.QByteArray_IndexOf2(this.h, (C.char)(c), (C.int)(from)))
 }
 
@@ -1017,7 +1017,7 @@ func (this *QByteArray) IndexOf23(a *QByteArray, from int) int {
 	return (int)(C.QByteArray_IndexOf23(this.h, a.cPointer(), (C.int)(from)))
 }
 
-func (this *QByteArray) LastIndexOf2(c byte, from int) int {
+func (this *QByteArray) LastIndexOf2(c int8, from int) int {
 	return (int)(C.QByteArray_LastIndexOf2(this.h, (C.char)(c), (C.int)(from)))
 }
 
@@ -1048,28 +1048,28 @@ func (this *QByteArray) Mid2(index int, lenVal int) *QByteArray {
 	return _goptr
 }
 
-func (this *QByteArray) LeftJustified2(width int, fill byte) *QByteArray {
+func (this *QByteArray) LeftJustified2(width int, fill int8) *QByteArray {
 	_ret := C.QByteArray_LeftJustified2(this.h, (C.int)(width), (C.char)(fill))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QByteArray) LeftJustified3(width int, fill byte, truncate bool) *QByteArray {
+func (this *QByteArray) LeftJustified3(width int, fill int8, truncate bool) *QByteArray {
 	_ret := C.QByteArray_LeftJustified3(this.h, (C.int)(width), (C.char)(fill), (C.bool)(truncate))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QByteArray) RightJustified2(width int, fill byte) *QByteArray {
+func (this *QByteArray) RightJustified2(width int, fill int8) *QByteArray {
 	_ret := C.QByteArray_RightJustified2(this.h, (C.int)(width), (C.char)(fill))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QByteArray) RightJustified3(width int, fill byte, truncate bool) *QByteArray {
+func (this *QByteArray) RightJustified3(width int, fill int8, truncate bool) *QByteArray {
 	_ret := C.QByteArray_RightJustified3(this.h, (C.int)(width), (C.char)(fill), (C.bool)(truncate))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1174,7 +1174,7 @@ func (this *QByteArray) ToPercentEncoding2(exclude *QByteArray, include *QByteAr
 	return _goptr
 }
 
-func (this *QByteArray) ToPercentEncoding3(exclude *QByteArray, include *QByteArray, percent byte) *QByteArray {
+func (this *QByteArray) ToPercentEncoding3(exclude *QByteArray, include *QByteArray, percent int8) *QByteArray {
 	_ret := C.QByteArray_ToPercentEncoding3(this.h, exclude.cPointer(), include.cPointer(), (C.char)(percent))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1205,19 +1205,19 @@ func (this *QByteArray) SetNum26(param1 uint64, base int) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum26(this.h, (C.ulonglong)(param1), (C.int)(base))))
 }
 
-func (this *QByteArray) SetNum27(param1 float32, f byte) *QByteArray {
+func (this *QByteArray) SetNum27(param1 float32, f int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum27(this.h, (C.float)(param1), (C.char)(f))))
 }
 
-func (this *QByteArray) SetNum3(param1 float32, f byte, prec int) *QByteArray {
+func (this *QByteArray) SetNum3(param1 float32, f int8, prec int) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum3(this.h, (C.float)(param1), (C.char)(f), (C.int)(prec))))
 }
 
-func (this *QByteArray) SetNum28(param1 float64, f byte) *QByteArray {
+func (this *QByteArray) SetNum28(param1 float64, f int8) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum28(this.h, (C.double)(param1), (C.char)(f))))
 }
 
-func (this *QByteArray) SetNum32(param1 float64, f byte, prec int) *QByteArray {
+func (this *QByteArray) SetNum32(param1 float64, f int8, prec int) *QByteArray {
 	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum32(this.h, (C.double)(param1), (C.char)(f), (C.int)(prec))))
 }
 
@@ -1249,14 +1249,14 @@ func QByteArray_Number24(param1 uint64, base int) *QByteArray {
 	return _goptr
 }
 
-func QByteArray_Number25(param1 float64, f byte) *QByteArray {
+func QByteArray_Number25(param1 float64, f int8) *QByteArray {
 	_ret := C.QByteArray_Number25((C.double)(param1), (C.char)(f))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QByteArray_Number3(param1 float64, f byte, prec int) *QByteArray {
+func QByteArray_Number3(param1 float64, f int8, prec int) *QByteArray {
 	_ret := C.QByteArray_Number3((C.double)(param1), (C.char)(f), (C.int)(prec))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1270,7 +1270,7 @@ func QByteArray_FromBase64Encoding2(base64 *QByteArray, options QByteArray__Base
 	return _goptr
 }
 
-func QByteArray_FromPercentEncoding2(pctEncoded *QByteArray, percent byte) *QByteArray {
+func QByteArray_FromPercentEncoding2(pctEncoded *QByteArray, percent int8) *QByteArray {
 	_ret := C.QByteArray_FromPercentEncoding2(pctEncoded.cPointer(), (C.char)(percent))
 	_goptr := newQByteArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1319,7 +1319,7 @@ func NewQByteRef(param1 *QByteRef) *QByteRef {
 	return newQByteRef(ret)
 }
 
-func (this *QByteRef) OperatorAssign(c byte) {
+func (this *QByteRef) OperatorAssign(c int8) {
 	C.QByteRef_OperatorAssign(this.h, (C.char)(c))
 }
 
@@ -1327,27 +1327,27 @@ func (this *QByteRef) OperatorAssignWithQByteRef(c *QByteRef) {
 	C.QByteRef_OperatorAssignWithQByteRef(this.h, c.cPointer())
 }
 
-func (this *QByteRef) OperatorEqual(c byte) bool {
+func (this *QByteRef) OperatorEqual(c int8) bool {
 	return (bool)(C.QByteRef_OperatorEqual(this.h, (C.char)(c)))
 }
 
-func (this *QByteRef) OperatorNotEqual(c byte) bool {
+func (this *QByteRef) OperatorNotEqual(c int8) bool {
 	return (bool)(C.QByteRef_OperatorNotEqual(this.h, (C.char)(c)))
 }
 
-func (this *QByteRef) OperatorGreater(c byte) bool {
+func (this *QByteRef) OperatorGreater(c int8) bool {
 	return (bool)(C.QByteRef_OperatorGreater(this.h, (C.char)(c)))
 }
 
-func (this *QByteRef) OperatorGreaterOrEqual(c byte) bool {
+func (this *QByteRef) OperatorGreaterOrEqual(c int8) bool {
 	return (bool)(C.QByteRef_OperatorGreaterOrEqual(this.h, (C.char)(c)))
 }
 
-func (this *QByteRef) OperatorLesser(c byte) bool {
+func (this *QByteRef) OperatorLesser(c int8) bool {
 	return (bool)(C.QByteRef_OperatorLesser(this.h, (C.char)(c)))
 }
 
-func (this *QByteRef) OperatorLesserOrEqual(c byte) bool {
+func (this *QByteRef) OperatorLesserOrEqual(c int8) bool {
 	return (bool)(C.QByteRef_OperatorLesserOrEqual(this.h, (C.char)(c)))
 }
 

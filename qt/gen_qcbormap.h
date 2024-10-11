@@ -42,7 +42,7 @@ QCborMap* QCborMap_new2(QCborMap* other);
 void QCborMap_OperatorAssign(QCborMap* self, QCborMap* other);
 void QCborMap_Swap(QCborMap* self, QCborMap* other);
 QCborValue* QCborMap_ToCborValue(const QCborMap* self);
-size_t QCborMap_Size(const QCborMap* self);
+ptrdiff_t QCborMap_Size(const QCborMap* self);
 bool QCborMap_IsEmpty(const QCborMap* self);
 void QCborMap_Clear(QCborMap* self);
 struct miqt_array* QCborMap_Keys(const QCborMap* self);
@@ -119,11 +119,11 @@ QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlus(QCborMap__Iterator* self
 QCborMap__Iterator* QCborMap__Iterator_OperatorPlusPlusWithInt(QCborMap__Iterator* self, int param1);
 QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinus(QCborMap__Iterator* self);
 QCborMap__Iterator* QCborMap__Iterator_OperatorMinusMinusWithInt(QCborMap__Iterator* self, int param1);
-QCborMap__Iterator* QCborMap__Iterator_OperatorPlusAssign(QCborMap__Iterator* self, size_t j);
-QCborMap__Iterator* QCborMap__Iterator_OperatorMinusAssign(QCborMap__Iterator* self, size_t j);
-QCborMap__Iterator* QCborMap__Iterator_OperatorPlus(const QCborMap__Iterator* self, size_t j);
-QCborMap__Iterator* QCborMap__Iterator_OperatorMinus(const QCborMap__Iterator* self, size_t j);
-size_t QCborMap__Iterator_OperatorMinusWithQCborMapIterator(const QCborMap__Iterator* self, QCborMap__Iterator* j);
+QCborMap__Iterator* QCborMap__Iterator_OperatorPlusAssign(QCborMap__Iterator* self, ptrdiff_t j);
+QCborMap__Iterator* QCborMap__Iterator_OperatorMinusAssign(QCborMap__Iterator* self, ptrdiff_t j);
+QCborMap__Iterator* QCborMap__Iterator_OperatorPlus(const QCborMap__Iterator* self, ptrdiff_t j);
+QCborMap__Iterator* QCborMap__Iterator_OperatorMinus(const QCborMap__Iterator* self, ptrdiff_t j);
+ptrdiff_t QCborMap__Iterator_OperatorMinusWithQCborMapIterator(const QCborMap__Iterator* self, QCborMap__Iterator* j);
 void QCborMap__Iterator_Delete(QCborMap__Iterator* self);
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_new();
@@ -148,11 +148,11 @@ QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlus(QCborMap__Cons
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusPlusWithInt(QCborMap__ConstIterator* self, int param1);
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinus(QCborMap__ConstIterator* self);
 QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusMinusWithInt(QCborMap__ConstIterator* self, int param1);
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusAssign(QCborMap__ConstIterator* self, size_t j);
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusAssign(QCborMap__ConstIterator* self, size_t j);
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlus(const QCborMap__ConstIterator* self, size_t j);
-QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinus(const QCborMap__ConstIterator* self, size_t j);
-size_t QCborMap__ConstIterator_OperatorMinusWithQCborMapConstIterator(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* j);
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlusAssign(QCborMap__ConstIterator* self, ptrdiff_t j);
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinusAssign(QCborMap__ConstIterator* self, ptrdiff_t j);
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorPlus(const QCborMap__ConstIterator* self, ptrdiff_t j);
+QCborMap__ConstIterator* QCborMap__ConstIterator_OperatorMinus(const QCborMap__ConstIterator* self, ptrdiff_t j);
+ptrdiff_t QCborMap__ConstIterator_OperatorMinusWithQCborMapConstIterator(const QCborMap__ConstIterator* self, QCborMap__ConstIterator* j);
 void QCborMap__ConstIterator_Delete(QCborMap__ConstIterator* self);
 
 #ifdef __cplusplus
