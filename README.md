@@ -129,7 +129,7 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 ### Windows (MSYS2)
 
-*Tested with MSYS2 UCRT64*
+*Tested with MSYS2 UCRT64 Qt 5.15 / GCC 14*
 
 For dynamic builds:
 
