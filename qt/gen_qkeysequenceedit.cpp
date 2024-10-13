@@ -63,7 +63,7 @@ void QKeySequenceEdit_EditingFinished(QKeySequenceEdit* self) {
 	self->editingFinished();
 }
 
-void QKeySequenceEdit_connect_EditingFinished(QKeySequenceEdit* self, void* slot) {
+void QKeySequenceEdit_connect_EditingFinished(QKeySequenceEdit* self, intptr_t slot) {
 	QKeySequenceEdit::connect(self, static_cast<void (QKeySequenceEdit::*)()>(&QKeySequenceEdit::editingFinished), self, [=]() {
 		miqt_exec_callback_QKeySequenceEdit_EditingFinished(slot);
 	});
@@ -73,7 +73,7 @@ void QKeySequenceEdit_KeySequenceChanged(QKeySequenceEdit* self, QKeySequence* k
 	self->keySequenceChanged(*keySequence);
 }
 
-void QKeySequenceEdit_connect_KeySequenceChanged(QKeySequenceEdit* self, void* slot) {
+void QKeySequenceEdit_connect_KeySequenceChanged(QKeySequenceEdit* self, intptr_t slot) {
 	QKeySequenceEdit::connect(self, static_cast<void (QKeySequenceEdit::*)(const QKeySequence&)>(&QKeySequenceEdit::keySequenceChanged), self, [=](const QKeySequence& keySequence) {
 		const QKeySequence& keySequence_ret = keySequence;
 		// Cast returned reference into pointer

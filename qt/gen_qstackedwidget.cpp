@@ -82,7 +82,7 @@ void QStackedWidget_CurrentChanged(QStackedWidget* self, int param1) {
 	self->currentChanged(static_cast<int>(param1));
 }
 
-void QStackedWidget_connect_CurrentChanged(QStackedWidget* self, void* slot) {
+void QStackedWidget_connect_CurrentChanged(QStackedWidget* self, intptr_t slot) {
 	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_CurrentChanged(slot, sigval1);
@@ -93,7 +93,7 @@ void QStackedWidget_WidgetRemoved(QStackedWidget* self, int index) {
 	self->widgetRemoved(static_cast<int>(index));
 }
 
-void QStackedWidget_connect_WidgetRemoved(QStackedWidget* self, void* slot) {
+void QStackedWidget_connect_WidgetRemoved(QStackedWidget* self, intptr_t slot) {
 	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QStackedWidget_WidgetRemoved(slot, sigval1);

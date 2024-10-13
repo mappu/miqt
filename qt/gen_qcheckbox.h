@@ -40,7 +40,7 @@ bool QCheckBox_IsTristate(const QCheckBox* self);
 int QCheckBox_CheckState(const QCheckBox* self);
 void QCheckBox_SetCheckState(QCheckBox* self, int state);
 void QCheckBox_StateChanged(QCheckBox* self, int param1);
-void QCheckBox_connect_StateChanged(QCheckBox* self, void* slot);
+void QCheckBox_connect_StateChanged(QCheckBox* self, intptr_t slot);
 struct miqt_string* QCheckBox_Tr2(const char* s, const char* c);
 struct miqt_string* QCheckBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QCheckBox_TrUtf82(const char* s, const char* c);

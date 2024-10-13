@@ -161,12 +161,12 @@ func (this *QSplashScreen) MessageChanged(message string) {
 	C.QSplashScreen_MessageChanged(this.h, (*C.struct_miqt_string)(message_ms))
 }
 func (this *QSplashScreen) OnMessageChanged(slot func(message string)) {
-	C.QSplashScreen_connect_MessageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSplashScreen_connect_MessageChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSplashScreen_MessageChanged
-func miqt_exec_callback_QSplashScreen_MessageChanged(cb *C.void, message *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(message string))
+func miqt_exec_callback_QSplashScreen_MessageChanged(cb C.intptr_t, message *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(message string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

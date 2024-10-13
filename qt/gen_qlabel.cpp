@@ -228,7 +228,7 @@ void QLabel_LinkActivated(QLabel* self, struct miqt_string* link) {
 	self->linkActivated(link_QString);
 }
 
-void QLabel_connect_LinkActivated(QLabel* self, void* slot) {
+void QLabel_connect_LinkActivated(QLabel* self, intptr_t slot) {
 	QLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkActivated), self, [=](const QString& link) {
 		const QString link_ret = link;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -243,7 +243,7 @@ void QLabel_LinkHovered(QLabel* self, struct miqt_string* link) {
 	self->linkHovered(link_QString);
 }
 
-void QLabel_connect_LinkHovered(QLabel* self, void* slot) {
+void QLabel_connect_LinkHovered(QLabel* self, intptr_t slot) {
 	QLabel::connect(self, static_cast<void (QLabel::*)(const QString&)>(&QLabel::linkHovered), self, [=](const QString& link) {
 		const QString link_ret = link;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

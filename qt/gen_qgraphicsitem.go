@@ -1183,12 +1183,12 @@ func (this *QGraphicsObject) ParentChanged() {
 	C.QGraphicsObject_ParentChanged(this.h)
 }
 func (this *QGraphicsObject) OnParentChanged(slot func()) {
-	C.QGraphicsObject_connect_ParentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_ParentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_ParentChanged
-func miqt_exec_callback_QGraphicsObject_ParentChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_ParentChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1200,12 +1200,12 @@ func (this *QGraphicsObject) OpacityChanged() {
 	C.QGraphicsObject_OpacityChanged(this.h)
 }
 func (this *QGraphicsObject) OnOpacityChanged(slot func()) {
-	C.QGraphicsObject_connect_OpacityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_OpacityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_OpacityChanged
-func miqt_exec_callback_QGraphicsObject_OpacityChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_OpacityChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1217,12 +1217,12 @@ func (this *QGraphicsObject) VisibleChanged() {
 	C.QGraphicsObject_VisibleChanged(this.h)
 }
 func (this *QGraphicsObject) OnVisibleChanged(slot func()) {
-	C.QGraphicsObject_connect_VisibleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_VisibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_VisibleChanged
-func miqt_exec_callback_QGraphicsObject_VisibleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_VisibleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1234,12 +1234,12 @@ func (this *QGraphicsObject) EnabledChanged() {
 	C.QGraphicsObject_EnabledChanged(this.h)
 }
 func (this *QGraphicsObject) OnEnabledChanged(slot func()) {
-	C.QGraphicsObject_connect_EnabledChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_EnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_EnabledChanged
-func miqt_exec_callback_QGraphicsObject_EnabledChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_EnabledChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1251,12 +1251,12 @@ func (this *QGraphicsObject) XChanged() {
 	C.QGraphicsObject_XChanged(this.h)
 }
 func (this *QGraphicsObject) OnXChanged(slot func()) {
-	C.QGraphicsObject_connect_XChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_XChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_XChanged
-func miqt_exec_callback_QGraphicsObject_XChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_XChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1268,12 +1268,12 @@ func (this *QGraphicsObject) YChanged() {
 	C.QGraphicsObject_YChanged(this.h)
 }
 func (this *QGraphicsObject) OnYChanged(slot func()) {
-	C.QGraphicsObject_connect_YChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_YChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_YChanged
-func miqt_exec_callback_QGraphicsObject_YChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_YChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1285,12 +1285,12 @@ func (this *QGraphicsObject) ZChanged() {
 	C.QGraphicsObject_ZChanged(this.h)
 }
 func (this *QGraphicsObject) OnZChanged(slot func()) {
-	C.QGraphicsObject_connect_ZChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_ZChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_ZChanged
-func miqt_exec_callback_QGraphicsObject_ZChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_ZChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1302,12 +1302,12 @@ func (this *QGraphicsObject) RotationChanged() {
 	C.QGraphicsObject_RotationChanged(this.h)
 }
 func (this *QGraphicsObject) OnRotationChanged(slot func()) {
-	C.QGraphicsObject_connect_RotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_RotationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_RotationChanged
-func miqt_exec_callback_QGraphicsObject_RotationChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_RotationChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1319,12 +1319,12 @@ func (this *QGraphicsObject) ScaleChanged() {
 	C.QGraphicsObject_ScaleChanged(this.h)
 }
 func (this *QGraphicsObject) OnScaleChanged(slot func()) {
-	C.QGraphicsObject_connect_ScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_ScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_ScaleChanged
-func miqt_exec_callback_QGraphicsObject_ScaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_ScaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1336,12 +1336,12 @@ func (this *QGraphicsObject) ChildrenChanged() {
 	C.QGraphicsObject_ChildrenChanged(this.h)
 }
 func (this *QGraphicsObject) OnChildrenChanged(slot func()) {
-	C.QGraphicsObject_connect_ChildrenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_ChildrenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_ChildrenChanged
-func miqt_exec_callback_QGraphicsObject_ChildrenChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_ChildrenChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1353,12 +1353,12 @@ func (this *QGraphicsObject) WidthChanged() {
 	C.QGraphicsObject_WidthChanged(this.h)
 }
 func (this *QGraphicsObject) OnWidthChanged(slot func()) {
-	C.QGraphicsObject_connect_WidthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_WidthChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_WidthChanged
-func miqt_exec_callback_QGraphicsObject_WidthChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_WidthChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1370,12 +1370,12 @@ func (this *QGraphicsObject) HeightChanged() {
 	C.QGraphicsObject_HeightChanged(this.h)
 }
 func (this *QGraphicsObject) OnHeightChanged(slot func()) {
-	C.QGraphicsObject_connect_HeightChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsObject_connect_HeightChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_HeightChanged
-func miqt_exec_callback_QGraphicsObject_HeightChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsObject_HeightChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2505,12 +2505,12 @@ func (this *QGraphicsTextItem) LinkActivated(param1 string) {
 	C.QGraphicsTextItem_LinkActivated(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QGraphicsTextItem) OnLinkActivated(slot func(param1 string)) {
-	C.QGraphicsTextItem_connect_LinkActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsTextItem_connect_LinkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_LinkActivated
-func miqt_exec_callback_QGraphicsTextItem_LinkActivated(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QGraphicsTextItem_LinkActivated(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2530,12 +2530,12 @@ func (this *QGraphicsTextItem) LinkHovered(param1 string) {
 	C.QGraphicsTextItem_LinkHovered(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QGraphicsTextItem) OnLinkHovered(slot func(param1 string)) {
-	C.QGraphicsTextItem_connect_LinkHovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsTextItem_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_LinkHovered
-func miqt_exec_callback_QGraphicsTextItem_LinkHovered(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QGraphicsTextItem_LinkHovered(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -96,7 +96,7 @@ void QDialog_Finished(QDialog* self, int result) {
 	self->finished(static_cast<int>(result));
 }
 
-void QDialog_connect_Finished(QDialog* self, void* slot) {
+void QDialog_connect_Finished(QDialog* self, intptr_t slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)(int)>(&QDialog::finished), self, [=](int result) {
 		int sigval1 = result;
 		miqt_exec_callback_QDialog_Finished(slot, sigval1);
@@ -107,7 +107,7 @@ void QDialog_Accepted(QDialog* self) {
 	self->accepted();
 }
 
-void QDialog_connect_Accepted(QDialog* self, void* slot) {
+void QDialog_connect_Accepted(QDialog* self, intptr_t slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::accepted), self, [=]() {
 		miqt_exec_callback_QDialog_Accepted(slot);
 	});
@@ -117,7 +117,7 @@ void QDialog_Rejected(QDialog* self) {
 	self->rejected();
 }
 
-void QDialog_connect_Rejected(QDialog* self, void* slot) {
+void QDialog_connect_Rejected(QDialog* self, intptr_t slot) {
 	QDialog::connect(self, static_cast<void (QDialog::*)()>(&QDialog::rejected), self, [=]() {
 		miqt_exec_callback_QDialog_Rejected(slot);
 	});

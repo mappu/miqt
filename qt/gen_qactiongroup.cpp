@@ -113,7 +113,7 @@ void QActionGroup_Triggered(QActionGroup* self, QAction* param1) {
 	self->triggered(param1);
 }
 
-void QActionGroup_connect_Triggered(QActionGroup* self, void* slot) {
+void QActionGroup_connect_Triggered(QActionGroup* self, intptr_t slot) {
 	QActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
 		miqt_exec_callback_QActionGroup_Triggered(slot, sigval1);
@@ -124,7 +124,7 @@ void QActionGroup_Hovered(QActionGroup* self, QAction* param1) {
 	self->hovered(param1);
 }
 
-void QActionGroup_connect_Hovered(QActionGroup* self, void* slot) {
+void QActionGroup_connect_Hovered(QActionGroup* self, intptr_t slot) {
 	QActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
 		miqt_exec_callback_QActionGroup_Hovered(slot, sigval1);

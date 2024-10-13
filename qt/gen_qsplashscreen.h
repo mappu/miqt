@@ -50,7 +50,7 @@ struct miqt_string* QSplashScreen_Message(const QSplashScreen* self);
 void QSplashScreen_ShowMessage(QSplashScreen* self, struct miqt_string* message);
 void QSplashScreen_ClearMessage(QSplashScreen* self);
 void QSplashScreen_MessageChanged(QSplashScreen* self, struct miqt_string* message);
-void QSplashScreen_connect_MessageChanged(QSplashScreen* self, void* slot);
+void QSplashScreen_connect_MessageChanged(QSplashScreen* self, intptr_t slot);
 struct miqt_string* QSplashScreen_Tr2(const char* s, const char* c);
 struct miqt_string* QSplashScreen_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QSplashScreen_TrUtf82(const char* s, const char* c);

@@ -240,7 +240,7 @@ void QMenu_AboutToShow(QMenu* self) {
 	self->aboutToShow();
 }
 
-void QMenu_connect_AboutToShow(QMenu* self, void* slot) {
+void QMenu_connect_AboutToShow(QMenu* self, intptr_t slot) {
 	QMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToShow), self, [=]() {
 		miqt_exec_callback_QMenu_AboutToShow(slot);
 	});
@@ -250,7 +250,7 @@ void QMenu_AboutToHide(QMenu* self) {
 	self->aboutToHide();
 }
 
-void QMenu_connect_AboutToHide(QMenu* self, void* slot) {
+void QMenu_connect_AboutToHide(QMenu* self, intptr_t slot) {
 	QMenu::connect(self, static_cast<void (QMenu::*)()>(&QMenu::aboutToHide), self, [=]() {
 		miqt_exec_callback_QMenu_AboutToHide(slot);
 	});
@@ -260,7 +260,7 @@ void QMenu_Triggered(QMenu* self, QAction* action) {
 	self->triggered(action);
 }
 
-void QMenu_connect_Triggered(QMenu* self, void* slot) {
+void QMenu_connect_Triggered(QMenu* self, intptr_t slot) {
 	QMenu::connect(self, static_cast<void (QMenu::*)(QAction*)>(&QMenu::triggered), self, [=](QAction* action) {
 		QAction* sigval1 = action;
 		miqt_exec_callback_QMenu_Triggered(slot, sigval1);
@@ -271,7 +271,7 @@ void QMenu_Hovered(QMenu* self, QAction* action) {
 	self->hovered(action);
 }
 
-void QMenu_connect_Hovered(QMenu* self, void* slot) {
+void QMenu_connect_Hovered(QMenu* self, intptr_t slot) {
 	QMenu::connect(self, static_cast<void (QMenu::*)(QAction*)>(&QMenu::hovered), self, [=](QAction* action) {
 		QAction* sigval1 = action;
 		miqt_exec_callback_QMenu_Hovered(slot, sigval1);

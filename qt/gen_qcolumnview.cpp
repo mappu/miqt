@@ -49,7 +49,7 @@ void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index) {
 	self->updatePreviewWidget(*index);
 }
 
-void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot) {
+void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, intptr_t slot) {
 	QColumnView::connect(self, static_cast<void (QColumnView::*)(const QModelIndex&)>(&QColumnView::updatePreviewWidget), self, [=](const QModelIndex& index) {
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer

@@ -81,7 +81,7 @@ void QSignalMapper_Mapped(QSignalMapper* self, int param1) {
 	self->mapped(static_cast<int>(param1));
 }
 
-void QSignalMapper_connect_Mapped(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_Mapped(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mapped), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_Mapped(slot, sigval1);
@@ -93,7 +93,7 @@ void QSignalMapper_MappedWithQString(QSignalMapper* self, struct miqt_string* pa
 	self->mapped(param1_QString);
 }
 
-void QSignalMapper_connect_MappedWithQString(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedWithQString(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mapped), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -107,7 +107,7 @@ void QSignalMapper_MappedWithQWidget(QSignalMapper* self, QWidget* param1) {
 	self->mapped(param1);
 }
 
-void QSignalMapper_connect_MappedWithQWidget(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedWithQWidget(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mapped), self, [=](QWidget* param1) {
 		QWidget* sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_MappedWithQWidget(slot, sigval1);
@@ -118,7 +118,7 @@ void QSignalMapper_MappedWithQObject(QSignalMapper* self, QObject* param1) {
 	self->mapped(param1);
 }
 
-void QSignalMapper_connect_MappedWithQObject(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedWithQObject(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mapped), self, [=](QObject* param1) {
 		QObject* sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_MappedWithQObject(slot, sigval1);
@@ -129,7 +129,7 @@ void QSignalMapper_MappedInt(QSignalMapper* self, int param1) {
 	self->mappedInt(static_cast<int>(param1));
 }
 
-void QSignalMapper_connect_MappedInt(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedInt(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mappedInt), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_MappedInt(slot, sigval1);
@@ -141,7 +141,7 @@ void QSignalMapper_MappedString(QSignalMapper* self, struct miqt_string* param1)
 	self->mappedString(param1_QString);
 }
 
-void QSignalMapper_connect_MappedString(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedString(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(const QString&)>(&QSignalMapper::mappedString), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -155,7 +155,7 @@ void QSignalMapper_MappedWidget(QSignalMapper* self, QWidget* param1) {
 	self->mappedWidget(param1);
 }
 
-void QSignalMapper_connect_MappedWidget(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedWidget(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QWidget*)>(&QSignalMapper::mappedWidget), self, [=](QWidget* param1) {
 		QWidget* sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_MappedWidget(slot, sigval1);
@@ -166,7 +166,7 @@ void QSignalMapper_MappedObject(QSignalMapper* self, QObject* param1) {
 	self->mappedObject(param1);
 }
 
-void QSignalMapper_connect_MappedObject(QSignalMapper* self, void* slot) {
+void QSignalMapper_connect_MappedObject(QSignalMapper* self, intptr_t slot) {
 	QSignalMapper::connect(self, static_cast<void (QSignalMapper::*)(QObject*)>(&QSignalMapper::mappedObject), self, [=](QObject* param1) {
 		QObject* sigval1 = param1;
 		miqt_exec_callback_QSignalMapper_MappedObject(slot, sigval1);

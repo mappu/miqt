@@ -313,7 +313,7 @@ void QGraphicsWidget_GeometryChanged(QGraphicsWidget* self) {
 	self->geometryChanged();
 }
 
-void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, void* slot) {
+void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, intptr_t slot) {
 	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsWidget_GeometryChanged(slot);
 	});
@@ -323,7 +323,7 @@ void QGraphicsWidget_LayoutChanged(QGraphicsWidget* self) {
 	self->layoutChanged();
 }
 
-void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, void* slot) {
+void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, intptr_t slot) {
 	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsWidget_LayoutChanged(slot);
 	});

@@ -57,17 +57,17 @@ struct miqt_string* QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, 
 bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_array* QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self);
 void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* editor);
-void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, void* slot);
+void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* editor);
-void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, void* slot);
+void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1);
-void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, void* slot);
+void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, intptr_t slot);
 struct miqt_string* QAbstractItemDelegate_Tr2(const char* s, const char* c);
 struct miqt_string* QAbstractItemDelegate_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAbstractItemDelegate_TrUtf82(const char* s, const char* c);
 struct miqt_string* QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, int hint);
-void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, void* slot);
+void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self);
 
 #ifdef __cplusplus

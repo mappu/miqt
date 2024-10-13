@@ -118,7 +118,7 @@ void QInputMethod_CursorRectangleChanged(QInputMethod* self) {
 	self->cursorRectangleChanged();
 }
 
-void QInputMethod_connect_CursorRectangleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_CursorRectangleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::cursorRectangleChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_CursorRectangleChanged(slot);
 	});
@@ -128,7 +128,7 @@ void QInputMethod_AnchorRectangleChanged(QInputMethod* self) {
 	self->anchorRectangleChanged();
 }
 
-void QInputMethod_connect_AnchorRectangleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_AnchorRectangleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::anchorRectangleChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_AnchorRectangleChanged(slot);
 	});
@@ -138,7 +138,7 @@ void QInputMethod_KeyboardRectangleChanged(QInputMethod* self) {
 	self->keyboardRectangleChanged();
 }
 
-void QInputMethod_connect_KeyboardRectangleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_KeyboardRectangleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::keyboardRectangleChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_KeyboardRectangleChanged(slot);
 	});
@@ -148,7 +148,7 @@ void QInputMethod_InputItemClipRectangleChanged(QInputMethod* self) {
 	self->inputItemClipRectangleChanged();
 }
 
-void QInputMethod_connect_InputItemClipRectangleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_InputItemClipRectangleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::inputItemClipRectangleChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_InputItemClipRectangleChanged(slot);
 	});
@@ -158,7 +158,7 @@ void QInputMethod_VisibleChanged(QInputMethod* self) {
 	self->visibleChanged();
 }
 
-void QInputMethod_connect_VisibleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_VisibleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::visibleChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_VisibleChanged(slot);
 	});
@@ -168,7 +168,7 @@ void QInputMethod_AnimatingChanged(QInputMethod* self) {
 	self->animatingChanged();
 }
 
-void QInputMethod_connect_AnimatingChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_AnimatingChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::animatingChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_AnimatingChanged(slot);
 	});
@@ -178,7 +178,7 @@ void QInputMethod_LocaleChanged(QInputMethod* self) {
 	self->localeChanged();
 }
 
-void QInputMethod_connect_LocaleChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_LocaleChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)()>(&QInputMethod::localeChanged), self, [=]() {
 		miqt_exec_callback_QInputMethod_LocaleChanged(slot);
 	});
@@ -188,7 +188,7 @@ void QInputMethod_InputDirectionChanged(QInputMethod* self, int newDirection) {
 	self->inputDirectionChanged(static_cast<Qt::LayoutDirection>(newDirection));
 }
 
-void QInputMethod_connect_InputDirectionChanged(QInputMethod* self, void* slot) {
+void QInputMethod_connect_InputDirectionChanged(QInputMethod* self, intptr_t slot) {
 	QInputMethod::connect(self, static_cast<void (QInputMethod::*)(Qt::LayoutDirection)>(&QInputMethod::inputDirectionChanged), self, [=](Qt::LayoutDirection newDirection) {
 		Qt::LayoutDirection newDirection_ret = newDirection;
 		int sigval1 = static_cast<int>(newDirection_ret);

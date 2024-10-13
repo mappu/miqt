@@ -258,7 +258,7 @@ void QTreeView_Expanded(QTreeView* self, QModelIndex* index) {
 	self->expanded(*index);
 }
 
-void QTreeView_connect_Expanded(QTreeView* self, void* slot) {
+void QTreeView_connect_Expanded(QTreeView* self, intptr_t slot) {
 	QTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::expanded), self, [=](const QModelIndex& index) {
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
@@ -271,7 +271,7 @@ void QTreeView_Collapsed(QTreeView* self, QModelIndex* index) {
 	self->collapsed(*index);
 }
 
-void QTreeView_connect_Collapsed(QTreeView* self, void* slot) {
+void QTreeView_connect_Collapsed(QTreeView* self, intptr_t slot) {
 	QTreeView::connect(self, static_cast<void (QTreeView::*)(const QModelIndex&)>(&QTreeView::collapsed), self, [=](const QModelIndex& index) {
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer

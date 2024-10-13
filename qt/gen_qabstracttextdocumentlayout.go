@@ -154,12 +154,12 @@ func (this *QAbstractTextDocumentLayout) Update() {
 	C.QAbstractTextDocumentLayout_Update(this.h)
 }
 func (this *QAbstractTextDocumentLayout) OnUpdate(slot func()) {
-	C.QAbstractTextDocumentLayout_connect_Update(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractTextDocumentLayout_connect_Update(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTextDocumentLayout_Update
-func miqt_exec_callback_QAbstractTextDocumentLayout_Update(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractTextDocumentLayout_Update(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -171,12 +171,12 @@ func (this *QAbstractTextDocumentLayout) UpdateBlock(block *QTextBlock) {
 	C.QAbstractTextDocumentLayout_UpdateBlock(this.h, block.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdateBlock(slot func(block *QTextBlock)) {
-	C.QAbstractTextDocumentLayout_connect_UpdateBlock(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractTextDocumentLayout_connect_UpdateBlock(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock
-func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb *C.void, block *C.QTextBlock) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(block *QTextBlock))
+func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb C.intptr_t, block *C.QTextBlock) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(block *QTextBlock))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -191,12 +191,12 @@ func (this *QAbstractTextDocumentLayout) DocumentSizeChanged(newSize *QSizeF) {
 	C.QAbstractTextDocumentLayout_DocumentSizeChanged(this.h, newSize.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentSizeChanged(slot func(newSize *QSizeF)) {
-	C.QAbstractTextDocumentLayout_connect_DocumentSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractTextDocumentLayout_connect_DocumentSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged
-func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb *C.void, newSize *C.QSizeF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newSize *QSizeF))
+func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb C.intptr_t, newSize *C.QSizeF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newSize *QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -211,12 +211,12 @@ func (this *QAbstractTextDocumentLayout) PageCountChanged(newPages int) {
 	C.QAbstractTextDocumentLayout_PageCountChanged(this.h, (C.int)(newPages))
 }
 func (this *QAbstractTextDocumentLayout) OnPageCountChanged(slot func(newPages int)) {
-	C.QAbstractTextDocumentLayout_connect_PageCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractTextDocumentLayout_connect_PageCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged
-func miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(cb *C.void, newPages C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newPages int))
+func miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(cb C.intptr_t, newPages C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newPages int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -279,12 +279,12 @@ func (this *QAbstractTextDocumentLayout) Update1(param1 *QRectF) {
 	C.QAbstractTextDocumentLayout_Update1(this.h, param1.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdate1(slot func(param1 *QRectF)) {
-	C.QAbstractTextDocumentLayout_connect_Update1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractTextDocumentLayout_connect_Update1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTextDocumentLayout_Update1
-func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb *C.void, param1 *C.QRectF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QRectF))
+func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param1 *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

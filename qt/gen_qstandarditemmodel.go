@@ -973,12 +973,12 @@ func (this *QStandardItemModel) ItemChanged(item *QStandardItem) {
 	C.QStandardItemModel_ItemChanged(this.h, item.cPointer())
 }
 func (this *QStandardItemModel) OnItemChanged(slot func(item *QStandardItem)) {
-	C.QStandardItemModel_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStandardItemModel_connect_ItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_ItemChanged
-func miqt_exec_callback_QStandardItemModel_ItemChanged(cb *C.void, item *C.QStandardItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QStandardItem))
+func miqt_exec_callback_QStandardItemModel_ItemChanged(cb C.intptr_t, item *C.QStandardItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QStandardItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

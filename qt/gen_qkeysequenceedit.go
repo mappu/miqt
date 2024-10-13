@@ -108,12 +108,12 @@ func (this *QKeySequenceEdit) EditingFinished() {
 	C.QKeySequenceEdit_EditingFinished(this.h)
 }
 func (this *QKeySequenceEdit) OnEditingFinished(slot func()) {
-	C.QKeySequenceEdit_connect_EditingFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QKeySequenceEdit_connect_EditingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QKeySequenceEdit_EditingFinished
-func miqt_exec_callback_QKeySequenceEdit_EditingFinished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QKeySequenceEdit_EditingFinished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -125,12 +125,12 @@ func (this *QKeySequenceEdit) KeySequenceChanged(keySequence *QKeySequence) {
 	C.QKeySequenceEdit_KeySequenceChanged(this.h, keySequence.cPointer())
 }
 func (this *QKeySequenceEdit) OnKeySequenceChanged(slot func(keySequence *QKeySequence)) {
-	C.QKeySequenceEdit_connect_KeySequenceChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QKeySequenceEdit_connect_KeySequenceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged
-func miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged(cb *C.void, keySequence *C.QKeySequence) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(keySequence *QKeySequence))
+func miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged(cb C.intptr_t, keySequence *C.QKeySequence) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(keySequence *QKeySequence))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

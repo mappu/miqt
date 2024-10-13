@@ -128,12 +128,12 @@ func (this *QButtonGroup) ButtonClicked(param1 *QAbstractButton) {
 	C.QButtonGroup_ButtonClicked(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonClicked(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonClicked
-func miqt_exec_callback_QButtonGroup_ButtonClicked(cb *C.void, param1 *C.QAbstractButton) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAbstractButton))
+func miqt_exec_callback_QButtonGroup_ButtonClicked(cb C.intptr_t, param1 *C.QAbstractButton) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -148,12 +148,12 @@ func (this *QButtonGroup) ButtonPressed(param1 *QAbstractButton) {
 	C.QButtonGroup_ButtonPressed(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonPressed(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonPressed
-func miqt_exec_callback_QButtonGroup_ButtonPressed(cb *C.void, param1 *C.QAbstractButton) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAbstractButton))
+func miqt_exec_callback_QButtonGroup_ButtonPressed(cb C.intptr_t, param1 *C.QAbstractButton) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -168,12 +168,12 @@ func (this *QButtonGroup) ButtonReleased(param1 *QAbstractButton) {
 	C.QButtonGroup_ButtonReleased(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonReleased(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonReleased(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonReleased
-func miqt_exec_callback_QButtonGroup_ButtonReleased(cb *C.void, param1 *C.QAbstractButton) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAbstractButton))
+func miqt_exec_callback_QButtonGroup_ButtonReleased(cb C.intptr_t, param1 *C.QAbstractButton) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -188,12 +188,12 @@ func (this *QButtonGroup) ButtonToggled(param1 *QAbstractButton, param2 bool) {
 	C.QButtonGroup_ButtonToggled(this.h, param1.cPointer(), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnButtonToggled(slot func(param1 *QAbstractButton, param2 bool)) {
-	C.QButtonGroup_connect_ButtonToggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonToggled
-func miqt_exec_callback_QButtonGroup_ButtonToggled(cb *C.void, param1 *C.QAbstractButton, param2 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAbstractButton, param2 bool))
+func miqt_exec_callback_QButtonGroup_ButtonToggled(cb C.intptr_t, param1 *C.QAbstractButton, param2 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton, param2 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -209,12 +209,12 @@ func (this *QButtonGroup) IdClicked(param1 int) {
 	C.QButtonGroup_IdClicked(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdClicked(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_IdClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_IdClicked
-func miqt_exec_callback_QButtonGroup_IdClicked(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_IdClicked(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -229,12 +229,12 @@ func (this *QButtonGroup) IdPressed(param1 int) {
 	C.QButtonGroup_IdPressed(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdPressed(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_IdPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_IdPressed
-func miqt_exec_callback_QButtonGroup_IdPressed(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_IdPressed(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -249,12 +249,12 @@ func (this *QButtonGroup) IdReleased(param1 int) {
 	C.QButtonGroup_IdReleased(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdReleased(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdReleased(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_IdReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_IdReleased
-func miqt_exec_callback_QButtonGroup_IdReleased(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_IdReleased(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -269,12 +269,12 @@ func (this *QButtonGroup) IdToggled(param1 int, param2 bool) {
 	C.QButtonGroup_IdToggled(this.h, (C.int)(param1), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnIdToggled(slot func(param1 int, param2 bool)) {
-	C.QButtonGroup_connect_IdToggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_IdToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_IdToggled
-func miqt_exec_callback_QButtonGroup_IdToggled(cb *C.void, param1 C.int, param2 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int, param2 bool))
+func miqt_exec_callback_QButtonGroup_IdToggled(cb C.intptr_t, param1 C.int, param2 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int, param2 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -291,12 +291,12 @@ func (this *QButtonGroup) ButtonClickedWithInt(param1 int) {
 	C.QButtonGroup_ButtonClickedWithInt(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnButtonClickedWithInt(slot func(param1 int)) {
-	C.QButtonGroup_connect_ButtonClickedWithInt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonClickedWithInt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonClickedWithInt
-func miqt_exec_callback_QButtonGroup_ButtonClickedWithInt(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_ButtonClickedWithInt(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -311,12 +311,12 @@ func (this *QButtonGroup) ButtonPressedWithInt(param1 int) {
 	C.QButtonGroup_ButtonPressedWithInt(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnButtonPressedWithInt(slot func(param1 int)) {
-	C.QButtonGroup_connect_ButtonPressedWithInt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonPressedWithInt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonPressedWithInt
-func miqt_exec_callback_QButtonGroup_ButtonPressedWithInt(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_ButtonPressedWithInt(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -331,12 +331,12 @@ func (this *QButtonGroup) ButtonReleasedWithInt(param1 int) {
 	C.QButtonGroup_ButtonReleasedWithInt(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnButtonReleasedWithInt(slot func(param1 int)) {
-	C.QButtonGroup_connect_ButtonReleasedWithInt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonReleasedWithInt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt
-func miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -351,12 +351,12 @@ func (this *QButtonGroup) ButtonToggled2(param1 int, param2 bool) {
 	C.QButtonGroup_ButtonToggled2(this.h, (C.int)(param1), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnButtonToggled2(slot func(param1 int, param2 bool)) {
-	C.QButtonGroup_connect_ButtonToggled2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QButtonGroup_connect_ButtonToggled2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ButtonToggled2
-func miqt_exec_callback_QButtonGroup_ButtonToggled2(cb *C.void, param1 C.int, param2 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int, param2 bool))
+func miqt_exec_callback_QButtonGroup_ButtonToggled2(cb C.intptr_t, param1 C.int, param2 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int, param2 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

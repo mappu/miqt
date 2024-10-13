@@ -113,9 +113,9 @@ void QGraphicsWidget_PaintWindowFrame(QGraphicsWidget* self, QPainter* painter, 
 QRectF* QGraphicsWidget_BoundingRect(const QGraphicsWidget* self);
 QPainterPath* QGraphicsWidget_Shape(const QGraphicsWidget* self);
 void QGraphicsWidget_GeometryChanged(QGraphicsWidget* self);
-void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, void* slot);
+void QGraphicsWidget_connect_GeometryChanged(QGraphicsWidget* self, intptr_t slot);
 void QGraphicsWidget_LayoutChanged(QGraphicsWidget* self);
-void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, void* slot);
+void QGraphicsWidget_connect_LayoutChanged(QGraphicsWidget* self, intptr_t slot);
 bool QGraphicsWidget_Close(QGraphicsWidget* self);
 struct miqt_string* QGraphicsWidget_Tr2(const char* s, const char* c);
 struct miqt_string* QGraphicsWidget_Tr3(const char* s, const char* c, int n);

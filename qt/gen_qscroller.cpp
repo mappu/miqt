@@ -162,7 +162,7 @@ void QScroller_StateChanged(QScroller* self, int newstate) {
 	self->stateChanged(static_cast<QScroller::State>(newstate));
 }
 
-void QScroller_connect_StateChanged(QScroller* self, void* slot) {
+void QScroller_connect_StateChanged(QScroller* self, intptr_t slot) {
 	QScroller::connect(self, static_cast<void (QScroller::*)(QScroller::State)>(&QScroller::stateChanged), self, [=](QScroller::State newstate) {
 		QScroller::State newstate_ret = newstate;
 		int sigval1 = static_cast<int>(newstate_ret);
@@ -174,7 +174,7 @@ void QScroller_ScrollerPropertiesChanged(QScroller* self, QScrollerProperties* p
 	self->scrollerPropertiesChanged(*param1);
 }
 
-void QScroller_connect_ScrollerPropertiesChanged(QScroller* self, void* slot) {
+void QScroller_connect_ScrollerPropertiesChanged(QScroller* self, intptr_t slot) {
 	QScroller::connect(self, static_cast<void (QScroller::*)(const QScrollerProperties&)>(&QScroller::scrollerPropertiesChanged), self, [=](const QScrollerProperties& param1) {
 		const QScrollerProperties& param1_ret = param1;
 		// Cast returned reference into pointer

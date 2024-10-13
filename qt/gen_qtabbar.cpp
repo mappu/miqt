@@ -299,7 +299,7 @@ void QTabBar_CurrentChanged(QTabBar* self, int index) {
 	self->currentChanged(static_cast<int>(index));
 }
 
-void QTabBar_connect_CurrentChanged(QTabBar* self, void* slot) {
+void QTabBar_connect_CurrentChanged(QTabBar* self, intptr_t slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::currentChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QTabBar_CurrentChanged(slot, sigval1);
@@ -310,7 +310,7 @@ void QTabBar_TabCloseRequested(QTabBar* self, int index) {
 	self->tabCloseRequested(static_cast<int>(index));
 }
 
-void QTabBar_connect_TabCloseRequested(QTabBar* self, void* slot) {
+void QTabBar_connect_TabCloseRequested(QTabBar* self, intptr_t slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabCloseRequested), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QTabBar_TabCloseRequested(slot, sigval1);
@@ -321,7 +321,7 @@ void QTabBar_TabMoved(QTabBar* self, int from, int to) {
 	self->tabMoved(static_cast<int>(from), static_cast<int>(to));
 }
 
-void QTabBar_connect_TabMoved(QTabBar* self, void* slot) {
+void QTabBar_connect_TabMoved(QTabBar* self, intptr_t slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int, int)>(&QTabBar::tabMoved), self, [=](int from, int to) {
 		int sigval1 = from;
 		int sigval2 = to;
@@ -333,7 +333,7 @@ void QTabBar_TabBarClicked(QTabBar* self, int index) {
 	self->tabBarClicked(static_cast<int>(index));
 }
 
-void QTabBar_connect_TabBarClicked(QTabBar* self, void* slot) {
+void QTabBar_connect_TabBarClicked(QTabBar* self, intptr_t slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabBarClicked), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QTabBar_TabBarClicked(slot, sigval1);
@@ -344,7 +344,7 @@ void QTabBar_TabBarDoubleClicked(QTabBar* self, int index) {
 	self->tabBarDoubleClicked(static_cast<int>(index));
 }
 
-void QTabBar_connect_TabBarDoubleClicked(QTabBar* self, void* slot) {
+void QTabBar_connect_TabBarDoubleClicked(QTabBar* self, intptr_t slot) {
 	QTabBar::connect(self, static_cast<void (QTabBar::*)(int)>(&QTabBar::tabBarDoubleClicked), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QTabBar_TabBarDoubleClicked(slot, sigval1);

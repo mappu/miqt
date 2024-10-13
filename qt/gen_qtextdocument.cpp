@@ -439,7 +439,7 @@ void QTextDocument_ContentsChange(QTextDocument* self, int from, int charsRemove
 	self->contentsChange(static_cast<int>(from), static_cast<int>(charsRemoved), static_cast<int>(charsAdded));
 }
 
-void QTextDocument_connect_ContentsChange(QTextDocument* self, void* slot) {
+void QTextDocument_connect_ContentsChange(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(int, int, int)>(&QTextDocument::contentsChange), self, [=](int from, int charsRemoved, int charsAdded) {
 		int sigval1 = from;
 		int sigval2 = charsRemoved;
@@ -452,7 +452,7 @@ void QTextDocument_ContentsChanged(QTextDocument* self) {
 	self->contentsChanged();
 }
 
-void QTextDocument_connect_ContentsChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_ContentsChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::contentsChanged), self, [=]() {
 		miqt_exec_callback_QTextDocument_ContentsChanged(slot);
 	});
@@ -462,7 +462,7 @@ void QTextDocument_UndoAvailable(QTextDocument* self, bool param1) {
 	self->undoAvailable(param1);
 }
 
-void QTextDocument_connect_UndoAvailable(QTextDocument* self, void* slot) {
+void QTextDocument_connect_UndoAvailable(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::undoAvailable), self, [=](bool param1) {
 		bool sigval1 = param1;
 		miqt_exec_callback_QTextDocument_UndoAvailable(slot, sigval1);
@@ -473,7 +473,7 @@ void QTextDocument_RedoAvailable(QTextDocument* self, bool param1) {
 	self->redoAvailable(param1);
 }
 
-void QTextDocument_connect_RedoAvailable(QTextDocument* self, void* slot) {
+void QTextDocument_connect_RedoAvailable(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::redoAvailable), self, [=](bool param1) {
 		bool sigval1 = param1;
 		miqt_exec_callback_QTextDocument_RedoAvailable(slot, sigval1);
@@ -484,7 +484,7 @@ void QTextDocument_UndoCommandAdded(QTextDocument* self) {
 	self->undoCommandAdded();
 }
 
-void QTextDocument_connect_UndoCommandAdded(QTextDocument* self, void* slot) {
+void QTextDocument_connect_UndoCommandAdded(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::undoCommandAdded), self, [=]() {
 		miqt_exec_callback_QTextDocument_UndoCommandAdded(slot);
 	});
@@ -494,7 +494,7 @@ void QTextDocument_ModificationChanged(QTextDocument* self, bool m) {
 	self->modificationChanged(m);
 }
 
-void QTextDocument_connect_ModificationChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_ModificationChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(bool)>(&QTextDocument::modificationChanged), self, [=](bool m) {
 		bool sigval1 = m;
 		miqt_exec_callback_QTextDocument_ModificationChanged(slot, sigval1);
@@ -505,7 +505,7 @@ void QTextDocument_CursorPositionChanged(QTextDocument* self, QTextCursor* curso
 	self->cursorPositionChanged(*cursor);
 }
 
-void QTextDocument_connect_CursorPositionChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_CursorPositionChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QTextCursor&)>(&QTextDocument::cursorPositionChanged), self, [=](const QTextCursor& cursor) {
 		const QTextCursor& cursor_ret = cursor;
 		// Cast returned reference into pointer
@@ -518,7 +518,7 @@ void QTextDocument_BlockCountChanged(QTextDocument* self, int newBlockCount) {
 	self->blockCountChanged(static_cast<int>(newBlockCount));
 }
 
-void QTextDocument_connect_BlockCountChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_BlockCountChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(int)>(&QTextDocument::blockCountChanged), self, [=](int newBlockCount) {
 		int sigval1 = newBlockCount;
 		miqt_exec_callback_QTextDocument_BlockCountChanged(slot, sigval1);
@@ -529,7 +529,7 @@ void QTextDocument_BaseUrlChanged(QTextDocument* self, QUrl* url) {
 	self->baseUrlChanged(*url);
 }
 
-void QTextDocument_connect_BaseUrlChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_BaseUrlChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)(const QUrl&)>(&QTextDocument::baseUrlChanged), self, [=](const QUrl& url) {
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
@@ -542,7 +542,7 @@ void QTextDocument_DocumentLayoutChanged(QTextDocument* self) {
 	self->documentLayoutChanged();
 }
 
-void QTextDocument_connect_DocumentLayoutChanged(QTextDocument* self, void* slot) {
+void QTextDocument_connect_DocumentLayoutChanged(QTextDocument* self, intptr_t slot) {
 	QTextDocument::connect(self, static_cast<void (QTextDocument::*)()>(&QTextDocument::documentLayoutChanged), self, [=]() {
 		miqt_exec_callback_QTextDocument_DocumentLayoutChanged(slot);
 	});

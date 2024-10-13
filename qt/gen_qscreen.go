@@ -264,12 +264,12 @@ func (this *QScreen) GeometryChanged(geometry *QRect) {
 	C.QScreen_GeometryChanged(this.h, geometry.cPointer())
 }
 func (this *QScreen) OnGeometryChanged(slot func(geometry *QRect)) {
-	C.QScreen_connect_GeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_GeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_GeometryChanged
-func miqt_exec_callback_QScreen_GeometryChanged(cb *C.void, geometry *C.QRect) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(geometry *QRect))
+func miqt_exec_callback_QScreen_GeometryChanged(cb C.intptr_t, geometry *C.QRect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geometry *QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -284,12 +284,12 @@ func (this *QScreen) AvailableGeometryChanged(geometry *QRect) {
 	C.QScreen_AvailableGeometryChanged(this.h, geometry.cPointer())
 }
 func (this *QScreen) OnAvailableGeometryChanged(slot func(geometry *QRect)) {
-	C.QScreen_connect_AvailableGeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_AvailableGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_AvailableGeometryChanged
-func miqt_exec_callback_QScreen_AvailableGeometryChanged(cb *C.void, geometry *C.QRect) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(geometry *QRect))
+func miqt_exec_callback_QScreen_AvailableGeometryChanged(cb C.intptr_t, geometry *C.QRect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geometry *QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -304,12 +304,12 @@ func (this *QScreen) PhysicalSizeChanged(size *QSizeF) {
 	C.QScreen_PhysicalSizeChanged(this.h, size.cPointer())
 }
 func (this *QScreen) OnPhysicalSizeChanged(slot func(size *QSizeF)) {
-	C.QScreen_connect_PhysicalSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_PhysicalSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_PhysicalSizeChanged
-func miqt_exec_callback_QScreen_PhysicalSizeChanged(cb *C.void, size *C.QSizeF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(size *QSizeF))
+func miqt_exec_callback_QScreen_PhysicalSizeChanged(cb C.intptr_t, size *C.QSizeF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -324,12 +324,12 @@ func (this *QScreen) PhysicalDotsPerInchChanged(dpi float64) {
 	C.QScreen_PhysicalDotsPerInchChanged(this.h, (C.double)(dpi))
 }
 func (this *QScreen) OnPhysicalDotsPerInchChanged(slot func(dpi float64)) {
-	C.QScreen_connect_PhysicalDotsPerInchChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_PhysicalDotsPerInchChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged
-func miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(cb *C.void, dpi C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dpi float64))
+func miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(cb C.intptr_t, dpi C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dpi float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -344,12 +344,12 @@ func (this *QScreen) LogicalDotsPerInchChanged(dpi float64) {
 	C.QScreen_LogicalDotsPerInchChanged(this.h, (C.double)(dpi))
 }
 func (this *QScreen) OnLogicalDotsPerInchChanged(slot func(dpi float64)) {
-	C.QScreen_connect_LogicalDotsPerInchChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_LogicalDotsPerInchChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_LogicalDotsPerInchChanged
-func miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(cb *C.void, dpi C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dpi float64))
+func miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(cb C.intptr_t, dpi C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dpi float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -364,12 +364,12 @@ func (this *QScreen) VirtualGeometryChanged(rect *QRect) {
 	C.QScreen_VirtualGeometryChanged(this.h, rect.cPointer())
 }
 func (this *QScreen) OnVirtualGeometryChanged(slot func(rect *QRect)) {
-	C.QScreen_connect_VirtualGeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_VirtualGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_VirtualGeometryChanged
-func miqt_exec_callback_QScreen_VirtualGeometryChanged(cb *C.void, rect *C.QRect) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(rect *QRect))
+func miqt_exec_callback_QScreen_VirtualGeometryChanged(cb C.intptr_t, rect *C.QRect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -384,12 +384,12 @@ func (this *QScreen) PrimaryOrientationChanged(orientation ScreenOrientation) {
 	C.QScreen_PrimaryOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnPrimaryOrientationChanged(slot func(orientation ScreenOrientation)) {
-	C.QScreen_connect_PrimaryOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_PrimaryOrientationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_PrimaryOrientationChanged
-func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb *C.void, orientation C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
+func miqt_exec_callback_QScreen_PrimaryOrientationChanged(cb C.intptr_t, orientation C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -404,12 +404,12 @@ func (this *QScreen) OrientationChanged(orientation ScreenOrientation) {
 	C.QScreen_OrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QScreen) OnOrientationChanged(slot func(orientation ScreenOrientation)) {
-	C.QScreen_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_OrientationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_OrientationChanged
-func miqt_exec_callback_QScreen_OrientationChanged(cb *C.void, orientation C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
+func miqt_exec_callback_QScreen_OrientationChanged(cb C.intptr_t, orientation C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -424,12 +424,12 @@ func (this *QScreen) RefreshRateChanged(refreshRate float64) {
 	C.QScreen_RefreshRateChanged(this.h, (C.double)(refreshRate))
 }
 func (this *QScreen) OnRefreshRateChanged(slot func(refreshRate float64)) {
-	C.QScreen_connect_RefreshRateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScreen_connect_RefreshRateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_RefreshRateChanged
-func miqt_exec_callback_QScreen_RefreshRateChanged(cb *C.void, refreshRate C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(refreshRate float64))
+func miqt_exec_callback_QScreen_RefreshRateChanged(cb C.intptr_t, refreshRate C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(refreshRate float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

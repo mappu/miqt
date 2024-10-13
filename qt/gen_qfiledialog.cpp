@@ -436,7 +436,7 @@ void QFileDialog_FileSelected(QFileDialog* self, struct miqt_string* file) {
 	self->fileSelected(file_QString);
 }
 
-void QFileDialog_connect_FileSelected(QFileDialog* self, void* slot) {
+void QFileDialog_connect_FileSelected(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::fileSelected), self, [=](const QString& file) {
 		const QString file_ret = file;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -457,7 +457,7 @@ void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array* /* of struc
 	self->filesSelected(files_QList);
 }
 
-void QFileDialog_connect_FilesSelected(QFileDialog* self, void* slot) {
+void QFileDialog_connect_FilesSelected(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QStringList&)>(&QFileDialog::filesSelected), self, [=](const QStringList& files) {
 		const QStringList& files_ret = files;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -481,7 +481,7 @@ void QFileDialog_CurrentChanged(QFileDialog* self, struct miqt_string* path) {
 	self->currentChanged(path_QString);
 }
 
-void QFileDialog_connect_CurrentChanged(QFileDialog* self, void* slot) {
+void QFileDialog_connect_CurrentChanged(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::currentChanged), self, [=](const QString& path) {
 		const QString path_ret = path;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -496,7 +496,7 @@ void QFileDialog_DirectoryEntered(QFileDialog* self, struct miqt_string* directo
 	self->directoryEntered(directory_QString);
 }
 
-void QFileDialog_connect_DirectoryEntered(QFileDialog* self, void* slot) {
+void QFileDialog_connect_DirectoryEntered(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::directoryEntered), self, [=](const QString& directory) {
 		const QString directory_ret = directory;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -510,7 +510,7 @@ void QFileDialog_UrlSelected(QFileDialog* self, QUrl* url) {
 	self->urlSelected(*url);
 }
 
-void QFileDialog_connect_UrlSelected(QFileDialog* self, void* slot) {
+void QFileDialog_connect_UrlSelected(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::urlSelected), self, [=](const QUrl& url) {
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
@@ -529,7 +529,7 @@ void QFileDialog_UrlsSelected(QFileDialog* self, struct miqt_array* /* of QUrl* 
 	self->urlsSelected(urls_QList);
 }
 
-void QFileDialog_connect_UrlsSelected(QFileDialog* self, void* slot) {
+void QFileDialog_connect_UrlsSelected(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QList<QUrl>&)>(&QFileDialog::urlsSelected), self, [=](const QList<QUrl>& urls) {
 		const QList<QUrl>& urls_ret = urls;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -549,7 +549,7 @@ void QFileDialog_CurrentUrlChanged(QFileDialog* self, QUrl* url) {
 	self->currentUrlChanged(*url);
 }
 
-void QFileDialog_connect_CurrentUrlChanged(QFileDialog* self, void* slot) {
+void QFileDialog_connect_CurrentUrlChanged(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::currentUrlChanged), self, [=](const QUrl& url) {
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
@@ -562,7 +562,7 @@ void QFileDialog_DirectoryUrlEntered(QFileDialog* self, QUrl* directory) {
 	self->directoryUrlEntered(*directory);
 }
 
-void QFileDialog_connect_DirectoryUrlEntered(QFileDialog* self, void* slot) {
+void QFileDialog_connect_DirectoryUrlEntered(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QUrl&)>(&QFileDialog::directoryUrlEntered), self, [=](const QUrl& directory) {
 		const QUrl& directory_ret = directory;
 		// Cast returned reference into pointer
@@ -576,7 +576,7 @@ void QFileDialog_FilterSelected(QFileDialog* self, struct miqt_string* filter) {
 	self->filterSelected(filter_QString);
 }
 
-void QFileDialog_connect_FilterSelected(QFileDialog* self, void* slot) {
+void QFileDialog_connect_FilterSelected(QFileDialog* self, intptr_t slot) {
 	QFileDialog::connect(self, static_cast<void (QFileDialog::*)(const QString&)>(&QFileDialog::filterSelected), self, [=](const QString& filter) {
 		const QString filter_ret = filter;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -127,12 +127,12 @@ func (this *QCheckBox) StateChanged(param1 int) {
 	C.QCheckBox_StateChanged(this.h, (C.int)(param1))
 }
 func (this *QCheckBox) OnStateChanged(slot func(param1 int)) {
-	C.QCheckBox_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCheckBox_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCheckBox_StateChanged
-func miqt_exec_callback_QCheckBox_StateChanged(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QCheckBox_StateChanged(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

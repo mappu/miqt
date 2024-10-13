@@ -108,7 +108,7 @@ void QShortcut_Activated(QShortcut* self) {
 	self->activated();
 }
 
-void QShortcut_connect_Activated(QShortcut* self, void* slot) {
+void QShortcut_connect_Activated(QShortcut* self, intptr_t slot) {
 	QShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
 		miqt_exec_callback_QShortcut_Activated(slot);
 	});
@@ -118,7 +118,7 @@ void QShortcut_ActivatedAmbiguously(QShortcut* self) {
 	self->activatedAmbiguously();
 }
 
-void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, void* slot) {
+void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, intptr_t slot) {
 	QShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
 		miqt_exec_callback_QShortcut_ActivatedAmbiguously(slot);
 	});

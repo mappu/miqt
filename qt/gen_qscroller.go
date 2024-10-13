@@ -230,12 +230,12 @@ func (this *QScroller) StateChanged(newstate QScroller__State) {
 	C.QScroller_StateChanged(this.h, (C.int)(newstate))
 }
 func (this *QScroller) OnStateChanged(slot func(newstate QScroller__State)) {
-	C.QScroller_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScroller_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScroller_StateChanged
-func miqt_exec_callback_QScroller_StateChanged(cb *C.void, newstate C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newstate QScroller__State))
+func miqt_exec_callback_QScroller_StateChanged(cb C.intptr_t, newstate C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newstate QScroller__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -250,12 +250,12 @@ func (this *QScroller) ScrollerPropertiesChanged(param1 *QScrollerProperties) {
 	C.QScroller_ScrollerPropertiesChanged(this.h, param1.cPointer())
 }
 func (this *QScroller) OnScrollerPropertiesChanged(slot func(param1 *QScrollerProperties)) {
-	C.QScroller_connect_ScrollerPropertiesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QScroller_connect_ScrollerPropertiesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScroller_ScrollerPropertiesChanged
-func miqt_exec_callback_QScroller_ScrollerPropertiesChanged(cb *C.void, param1 *C.QScrollerProperties) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QScrollerProperties))
+func miqt_exec_callback_QScroller_ScrollerPropertiesChanged(cb C.intptr_t, param1 *C.QScrollerProperties) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QScrollerProperties))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

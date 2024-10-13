@@ -61,9 +61,9 @@ void QAbstractEventDispatcher_InstallNativeEventFilter(QAbstractEventDispatcher*
 void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
 bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, QByteArray* eventType, void* message, long* result);
 void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, void* slot);
+void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, intptr_t slot);
 void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, void* slot);
+void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, intptr_t slot);
 struct miqt_string* QAbstractEventDispatcher_Tr2(const char* s, const char* c);
 struct miqt_string* QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAbstractEventDispatcher_TrUtf82(const char* s, const char* c);

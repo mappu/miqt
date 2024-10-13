@@ -121,12 +121,12 @@ func (this *QStackedWidget) CurrentChanged(param1 int) {
 	C.QStackedWidget_CurrentChanged(this.h, (C.int)(param1))
 }
 func (this *QStackedWidget) OnCurrentChanged(slot func(param1 int)) {
-	C.QStackedWidget_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStackedWidget_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStackedWidget_CurrentChanged
-func miqt_exec_callback_QStackedWidget_CurrentChanged(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QStackedWidget_CurrentChanged(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -141,12 +141,12 @@ func (this *QStackedWidget) WidgetRemoved(index int) {
 	C.QStackedWidget_WidgetRemoved(this.h, (C.int)(index))
 }
 func (this *QStackedWidget) OnWidgetRemoved(slot func(index int)) {
-	C.QStackedWidget_connect_WidgetRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStackedWidget_connect_WidgetRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStackedWidget_WidgetRemoved
-func miqt_exec_callback_QStackedWidget_WidgetRemoved(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QStackedWidget_WidgetRemoved(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

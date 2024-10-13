@@ -390,12 +390,12 @@ func (this *QInputDialog) TextValueChanged(text string) {
 	C.QInputDialog_TextValueChanged(this.h, (*C.struct_miqt_string)(text_ms))
 }
 func (this *QInputDialog) OnTextValueChanged(slot func(text string)) {
-	C.QInputDialog_connect_TextValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_TextValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_TextValueChanged
-func miqt_exec_callback_QInputDialog_TextValueChanged(cb *C.void, text *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+func miqt_exec_callback_QInputDialog_TextValueChanged(cb C.intptr_t, text *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -415,12 +415,12 @@ func (this *QInputDialog) TextValueSelected(text string) {
 	C.QInputDialog_TextValueSelected(this.h, (*C.struct_miqt_string)(text_ms))
 }
 func (this *QInputDialog) OnTextValueSelected(slot func(text string)) {
-	C.QInputDialog_connect_TextValueSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_TextValueSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_TextValueSelected
-func miqt_exec_callback_QInputDialog_TextValueSelected(cb *C.void, text *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+func miqt_exec_callback_QInputDialog_TextValueSelected(cb C.intptr_t, text *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -438,12 +438,12 @@ func (this *QInputDialog) IntValueChanged(value int) {
 	C.QInputDialog_IntValueChanged(this.h, (C.int)(value))
 }
 func (this *QInputDialog) OnIntValueChanged(slot func(value int)) {
-	C.QInputDialog_connect_IntValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_IntValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_IntValueChanged
-func miqt_exec_callback_QInputDialog_IntValueChanged(cb *C.void, value C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+func miqt_exec_callback_QInputDialog_IntValueChanged(cb C.intptr_t, value C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -458,12 +458,12 @@ func (this *QInputDialog) IntValueSelected(value int) {
 	C.QInputDialog_IntValueSelected(this.h, (C.int)(value))
 }
 func (this *QInputDialog) OnIntValueSelected(slot func(value int)) {
-	C.QInputDialog_connect_IntValueSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_IntValueSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_IntValueSelected
-func miqt_exec_callback_QInputDialog_IntValueSelected(cb *C.void, value C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+func miqt_exec_callback_QInputDialog_IntValueSelected(cb C.intptr_t, value C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -478,12 +478,12 @@ func (this *QInputDialog) DoubleValueChanged(value float64) {
 	C.QInputDialog_DoubleValueChanged(this.h, (C.double)(value))
 }
 func (this *QInputDialog) OnDoubleValueChanged(slot func(value float64)) {
-	C.QInputDialog_connect_DoubleValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_DoubleValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_DoubleValueChanged
-func miqt_exec_callback_QInputDialog_DoubleValueChanged(cb *C.void, value C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value float64))
+func miqt_exec_callback_QInputDialog_DoubleValueChanged(cb C.intptr_t, value C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -498,12 +498,12 @@ func (this *QInputDialog) DoubleValueSelected(value float64) {
 	C.QInputDialog_DoubleValueSelected(this.h, (C.double)(value))
 }
 func (this *QInputDialog) OnDoubleValueSelected(slot func(value float64)) {
-	C.QInputDialog_connect_DoubleValueSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputDialog_connect_DoubleValueSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_DoubleValueSelected
-func miqt_exec_callback_QInputDialog_DoubleValueSelected(cb *C.void, value C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value float64))
+func miqt_exec_callback_QInputDialog_DoubleValueSelected(cb C.intptr_t, value C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

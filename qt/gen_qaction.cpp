@@ -351,7 +351,7 @@ void QAction_Changed(QAction* self) {
 	self->changed();
 }
 
-void QAction_connect_Changed(QAction* self, void* slot) {
+void QAction_connect_Changed(QAction* self, intptr_t slot) {
 	QAction::connect(self, static_cast<void (QAction::*)()>(&QAction::changed), self, [=]() {
 		miqt_exec_callback_QAction_Changed(slot);
 	});
@@ -361,7 +361,7 @@ void QAction_Triggered(QAction* self) {
 	self->triggered();
 }
 
-void QAction_connect_Triggered(QAction* self, void* slot) {
+void QAction_connect_Triggered(QAction* self, intptr_t slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=]() {
 		miqt_exec_callback_QAction_Triggered(slot);
 	});
@@ -371,7 +371,7 @@ void QAction_Hovered(QAction* self) {
 	self->hovered();
 }
 
-void QAction_connect_Hovered(QAction* self, void* slot) {
+void QAction_connect_Hovered(QAction* self, intptr_t slot) {
 	QAction::connect(self, static_cast<void (QAction::*)()>(&QAction::hovered), self, [=]() {
 		miqt_exec_callback_QAction_Hovered(slot);
 	});
@@ -381,7 +381,7 @@ void QAction_Toggled(QAction* self, bool param1) {
 	self->toggled(param1);
 }
 
-void QAction_connect_Toggled(QAction* self, void* slot) {
+void QAction_connect_Toggled(QAction* self, intptr_t slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::toggled), self, [=](bool param1) {
 		bool sigval1 = param1;
 		miqt_exec_callback_QAction_Toggled(slot, sigval1);
@@ -424,7 +424,7 @@ void QAction_Triggered1(QAction* self, bool checked) {
 	self->triggered(checked);
 }
 
-void QAction_connect_Triggered1(QAction* self, void* slot) {
+void QAction_connect_Triggered1(QAction* self, intptr_t slot) {
 	QAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=](bool checked) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAction_Triggered1(slot, sigval1);

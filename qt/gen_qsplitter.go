@@ -221,12 +221,12 @@ func (this *QSplitter) SplitterMoved(pos int, index int) {
 	C.QSplitter_SplitterMoved(this.h, (C.int)(pos), (C.int)(index))
 }
 func (this *QSplitter) OnSplitterMoved(slot func(pos int, index int)) {
-	C.QSplitter_connect_SplitterMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSplitter_connect_SplitterMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSplitter_SplitterMoved
-func miqt_exec_callback_QSplitter_SplitterMoved(cb *C.void, pos C.int, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(pos int, index int))
+func miqt_exec_callback_QSplitter_SplitterMoved(cb C.intptr_t, pos C.int, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos int, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

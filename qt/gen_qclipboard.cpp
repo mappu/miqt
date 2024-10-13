@@ -104,7 +104,7 @@ void QClipboard_Changed(QClipboard* self, int mode) {
 	self->changed(static_cast<QClipboard::Mode>(mode));
 }
 
-void QClipboard_connect_Changed(QClipboard* self, void* slot) {
+void QClipboard_connect_Changed(QClipboard* self, intptr_t slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)(QClipboard::Mode)>(&QClipboard::changed), self, [=](QClipboard::Mode mode) {
 		QClipboard::Mode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
@@ -116,7 +116,7 @@ void QClipboard_SelectionChanged(QClipboard* self) {
 	self->selectionChanged();
 }
 
-void QClipboard_connect_SelectionChanged(QClipboard* self, void* slot) {
+void QClipboard_connect_SelectionChanged(QClipboard* self, intptr_t slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::selectionChanged), self, [=]() {
 		miqt_exec_callback_QClipboard_SelectionChanged(slot);
 	});
@@ -126,7 +126,7 @@ void QClipboard_FindBufferChanged(QClipboard* self) {
 	self->findBufferChanged();
 }
 
-void QClipboard_connect_FindBufferChanged(QClipboard* self, void* slot) {
+void QClipboard_connect_FindBufferChanged(QClipboard* self, intptr_t slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::findBufferChanged), self, [=]() {
 		miqt_exec_callback_QClipboard_FindBufferChanged(slot);
 	});
@@ -136,7 +136,7 @@ void QClipboard_DataChanged(QClipboard* self) {
 	self->dataChanged();
 }
 
-void QClipboard_connect_DataChanged(QClipboard* self, void* slot) {
+void QClipboard_connect_DataChanged(QClipboard* self, intptr_t slot) {
 	QClipboard::connect(self, static_cast<void (QClipboard::*)()>(&QClipboard::dataChanged), self, [=]() {
 		miqt_exec_callback_QClipboard_DataChanged(slot);
 	});

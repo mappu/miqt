@@ -145,12 +145,12 @@ func (this *QDesktopWidget) Resized(param1 int) {
 	C.QDesktopWidget_Resized(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnResized(slot func(param1 int)) {
-	C.QDesktopWidget_connect_Resized(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDesktopWidget_connect_Resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesktopWidget_Resized
-func miqt_exec_callback_QDesktopWidget_Resized(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QDesktopWidget_Resized(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -165,12 +165,12 @@ func (this *QDesktopWidget) WorkAreaResized(param1 int) {
 	C.QDesktopWidget_WorkAreaResized(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnWorkAreaResized(slot func(param1 int)) {
-	C.QDesktopWidget_connect_WorkAreaResized(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDesktopWidget_connect_WorkAreaResized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesktopWidget_WorkAreaResized
-func miqt_exec_callback_QDesktopWidget_WorkAreaResized(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QDesktopWidget_WorkAreaResized(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -185,12 +185,12 @@ func (this *QDesktopWidget) ScreenCountChanged(param1 int) {
 	C.QDesktopWidget_ScreenCountChanged(this.h, (C.int)(param1))
 }
 func (this *QDesktopWidget) OnScreenCountChanged(slot func(param1 int)) {
-	C.QDesktopWidget_connect_ScreenCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDesktopWidget_connect_ScreenCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesktopWidget_ScreenCountChanged
-func miqt_exec_callback_QDesktopWidget_ScreenCountChanged(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QDesktopWidget_ScreenCountChanged(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -205,12 +205,12 @@ func (this *QDesktopWidget) PrimaryScreenChanged() {
 	C.QDesktopWidget_PrimaryScreenChanged(this.h)
 }
 func (this *QDesktopWidget) OnPrimaryScreenChanged(slot func()) {
-	C.QDesktopWidget_connect_PrimaryScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDesktopWidget_connect_PrimaryScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged
-func miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

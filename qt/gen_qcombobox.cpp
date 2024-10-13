@@ -378,7 +378,7 @@ void QComboBox_EditTextChanged(QComboBox* self, struct miqt_string* param1) {
 	self->editTextChanged(param1_QString);
 }
 
-void QComboBox_connect_EditTextChanged(QComboBox* self, void* slot) {
+void QComboBox_connect_EditTextChanged(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::editTextChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -392,7 +392,7 @@ void QComboBox_Activated(QComboBox* self, int index) {
 	self->activated(static_cast<int>(index));
 }
 
-void QComboBox_connect_Activated(QComboBox* self, void* slot) {
+void QComboBox_connect_Activated(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QComboBox_Activated(slot, sigval1);
@@ -404,7 +404,7 @@ void QComboBox_TextActivated(QComboBox* self, struct miqt_string* param1) {
 	self->textActivated(param1_QString);
 }
 
-void QComboBox_connect_TextActivated(QComboBox* self, void* slot) {
+void QComboBox_connect_TextActivated(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::textActivated), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -418,7 +418,7 @@ void QComboBox_Highlighted(QComboBox* self, int index) {
 	self->highlighted(static_cast<int>(index));
 }
 
-void QComboBox_connect_Highlighted(QComboBox* self, void* slot) {
+void QComboBox_connect_Highlighted(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(int)>(&QComboBox::highlighted), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QComboBox_Highlighted(slot, sigval1);
@@ -430,7 +430,7 @@ void QComboBox_TextHighlighted(QComboBox* self, struct miqt_string* param1) {
 	self->textHighlighted(param1_QString);
 }
 
-void QComboBox_connect_TextHighlighted(QComboBox* self, void* slot) {
+void QComboBox_connect_TextHighlighted(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::textHighlighted), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -444,7 +444,7 @@ void QComboBox_CurrentIndexChanged(QComboBox* self, int index) {
 	self->currentIndexChanged(static_cast<int>(index));
 }
 
-void QComboBox_connect_CurrentIndexChanged(QComboBox* self, void* slot) {
+void QComboBox_connect_CurrentIndexChanged(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QComboBox_CurrentIndexChanged(slot, sigval1);
@@ -456,7 +456,7 @@ void QComboBox_CurrentIndexChangedWithQString(QComboBox* self, struct miqt_strin
 	self->currentIndexChanged(param1_QString);
 }
 
-void QComboBox_connect_CurrentIndexChangedWithQString(QComboBox* self, void* slot) {
+void QComboBox_connect_CurrentIndexChangedWithQString(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -471,7 +471,7 @@ void QComboBox_CurrentTextChanged(QComboBox* self, struct miqt_string* param1) {
 	self->currentTextChanged(param1_QString);
 }
 
-void QComboBox_connect_CurrentTextChanged(QComboBox* self, void* slot) {
+void QComboBox_connect_CurrentTextChanged(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentTextChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -486,7 +486,7 @@ void QComboBox_ActivatedWithQString(QComboBox* self, struct miqt_string* param1)
 	self->activated(param1_QString);
 }
 
-void QComboBox_connect_ActivatedWithQString(QComboBox* self, void* slot) {
+void QComboBox_connect_ActivatedWithQString(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::activated), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -501,7 +501,7 @@ void QComboBox_HighlightedWithQString(QComboBox* self, struct miqt_string* param
 	self->highlighted(param1_QString);
 }
 
-void QComboBox_connect_HighlightedWithQString(QComboBox* self, void* slot) {
+void QComboBox_connect_HighlightedWithQString(QComboBox* self, intptr_t slot) {
 	QComboBox::connect(self, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::highlighted), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

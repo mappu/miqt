@@ -526,12 +526,12 @@ func (this *QGraphicsView) RubberBandChanged(viewportRect QRect, fromScenePoint 
 	C.QGraphicsView_RubberBandChanged(this.h, viewportRect.cPointer(), fromScenePoint.cPointer(), toScenePoint.cPointer())
 }
 func (this *QGraphicsView) OnRubberBandChanged(slot func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF)) {
-	C.QGraphicsView_connect_RubberBandChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsView_connect_RubberBandChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsView_RubberBandChanged
-func miqt_exec_callback_QGraphicsView_RubberBandChanged(cb *C.void, viewportRect *C.QRect, fromScenePoint *C.QPointF, toScenePoint *C.QPointF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF))
+func miqt_exec_callback_QGraphicsView_RubberBandChanged(cb C.intptr_t, viewportRect *C.QRect, fromScenePoint *C.QPointF, toScenePoint *C.QPointF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -292,7 +292,7 @@ void QMainWindow_IconSizeChanged(QMainWindow* self, QSize* iconSize) {
 	self->iconSizeChanged(*iconSize);
 }
 
-void QMainWindow_connect_IconSizeChanged(QMainWindow* self, void* slot) {
+void QMainWindow_connect_IconSizeChanged(QMainWindow* self, intptr_t slot) {
 	QMainWindow::connect(self, static_cast<void (QMainWindow::*)(const QSize&)>(&QMainWindow::iconSizeChanged), self, [=](const QSize& iconSize) {
 		const QSize& iconSize_ret = iconSize;
 		// Cast returned reference into pointer
@@ -305,7 +305,7 @@ void QMainWindow_ToolButtonStyleChanged(QMainWindow* self, int toolButtonStyle) 
 	self->toolButtonStyleChanged(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
-void QMainWindow_connect_ToolButtonStyleChanged(QMainWindow* self, void* slot) {
+void QMainWindow_connect_ToolButtonStyleChanged(QMainWindow* self, intptr_t slot) {
 	QMainWindow::connect(self, static_cast<void (QMainWindow::*)(Qt::ToolButtonStyle)>(&QMainWindow::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
 		Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
 		int sigval1 = static_cast<int>(toolButtonStyle_ret);
@@ -317,7 +317,7 @@ void QMainWindow_TabifiedDockWidgetActivated(QMainWindow* self, QDockWidget* doc
 	self->tabifiedDockWidgetActivated(dockWidget);
 }
 
-void QMainWindow_connect_TabifiedDockWidgetActivated(QMainWindow* self, void* slot) {
+void QMainWindow_connect_TabifiedDockWidgetActivated(QMainWindow* self, intptr_t slot) {
 	QMainWindow::connect(self, static_cast<void (QMainWindow::*)(QDockWidget*)>(&QMainWindow::tabifiedDockWidgetActivated), self, [=](QDockWidget* dockWidget) {
 		QDockWidget* sigval1 = dockWidget;
 		miqt_exec_callback_QMainWindow_TabifiedDockWidgetActivated(slot, sigval1);

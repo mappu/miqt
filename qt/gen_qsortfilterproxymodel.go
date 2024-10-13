@@ -374,12 +374,12 @@ func (this *QSortFilterProxyModel) DynamicSortFilterChanged(dynamicSortFilter bo
 	C.QSortFilterProxyModel_DynamicSortFilterChanged(this.h, (C.bool)(dynamicSortFilter))
 }
 func (this *QSortFilterProxyModel) OnDynamicSortFilterChanged(slot func(dynamicSortFilter bool)) {
-	C.QSortFilterProxyModel_connect_DynamicSortFilterChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_DynamicSortFilterChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged
-func miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(cb *C.void, dynamicSortFilter C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dynamicSortFilter bool))
+func miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(cb C.intptr_t, dynamicSortFilter C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dynamicSortFilter bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -394,12 +394,12 @@ func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensit
 	C.QSortFilterProxyModel_FilterCaseSensitivityChanged(this.h, (C.int)(filterCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnFilterCaseSensitivityChanged(slot func(filterCaseSensitivity CaseSensitivity)) {
-	C.QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb *C.void, filterCaseSensitivity C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(filterCaseSensitivity CaseSensitivity))
+func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb C.intptr_t, filterCaseSensitivity C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(filterCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -414,12 +414,12 @@ func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivit
 	C.QSortFilterProxyModel_SortCaseSensitivityChanged(this.h, (C.int)(sortCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnSortCaseSensitivityChanged(slot func(sortCaseSensitivity CaseSensitivity)) {
-	C.QSortFilterProxyModel_connect_SortCaseSensitivityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_SortCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb *C.void, sortCaseSensitivity C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sortCaseSensitivity CaseSensitivity))
+func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb C.intptr_t, sortCaseSensitivity C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sortCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -434,12 +434,12 @@ func (this *QSortFilterProxyModel) SortLocaleAwareChanged(sortLocaleAware bool) 
 	C.QSortFilterProxyModel_SortLocaleAwareChanged(this.h, (C.bool)(sortLocaleAware))
 }
 func (this *QSortFilterProxyModel) OnSortLocaleAwareChanged(slot func(sortLocaleAware bool)) {
-	C.QSortFilterProxyModel_connect_SortLocaleAwareChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_SortLocaleAwareChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(cb *C.void, sortLocaleAware C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sortLocaleAware bool))
+func miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(cb C.intptr_t, sortLocaleAware C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sortLocaleAware bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -454,12 +454,12 @@ func (this *QSortFilterProxyModel) SortRoleChanged(sortRole int) {
 	C.QSortFilterProxyModel_SortRoleChanged(this.h, (C.int)(sortRole))
 }
 func (this *QSortFilterProxyModel) OnSortRoleChanged(slot func(sortRole int)) {
-	C.QSortFilterProxyModel_connect_SortRoleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_SortRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(cb *C.void, sortRole C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sortRole int))
+func miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(cb C.intptr_t, sortRole C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sortRole int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -474,12 +474,12 @@ func (this *QSortFilterProxyModel) FilterRoleChanged(filterRole int) {
 	C.QSortFilterProxyModel_FilterRoleChanged(this.h, (C.int)(filterRole))
 }
 func (this *QSortFilterProxyModel) OnFilterRoleChanged(slot func(filterRole int)) {
-	C.QSortFilterProxyModel_connect_FilterRoleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_FilterRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged
-func miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(cb *C.void, filterRole C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(filterRole int))
+func miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(cb C.intptr_t, filterRole C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(filterRole int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -494,12 +494,12 @@ func (this *QSortFilterProxyModel) RecursiveFilteringEnabledChanged(recursiveFil
 	C.QSortFilterProxyModel_RecursiveFilteringEnabledChanged(this.h, (C.bool)(recursiveFilteringEnabled))
 }
 func (this *QSortFilterProxyModel) OnRecursiveFilteringEnabledChanged(slot func(recursiveFilteringEnabled bool)) {
-	C.QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged
-func miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(cb *C.void, recursiveFilteringEnabled C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(recursiveFilteringEnabled bool))
+func miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(cb C.intptr_t, recursiveFilteringEnabled C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(recursiveFilteringEnabled bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

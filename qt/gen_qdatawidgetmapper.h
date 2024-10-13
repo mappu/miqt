@@ -66,7 +66,7 @@ void QDataWidgetMapper_ToPrevious(QDataWidgetMapper* self);
 void QDataWidgetMapper_SetCurrentIndex(QDataWidgetMapper* self, int index);
 void QDataWidgetMapper_SetCurrentModelIndex(QDataWidgetMapper* self, QModelIndex* index);
 void QDataWidgetMapper_CurrentIndexChanged(QDataWidgetMapper* self, int index);
-void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, void* slot);
+void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, intptr_t slot);
 struct miqt_string* QDataWidgetMapper_Tr2(const char* s, const char* c);
 struct miqt_string* QDataWidgetMapper_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QDataWidgetMapper_TrUtf82(const char* s, const char* c);

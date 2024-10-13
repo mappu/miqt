@@ -247,7 +247,7 @@ void QWizard_CurrentIdChanged(QWizard* self, int id) {
 	self->currentIdChanged(static_cast<int>(id));
 }
 
-void QWizard_connect_CurrentIdChanged(QWizard* self, void* slot) {
+void QWizard_connect_CurrentIdChanged(QWizard* self, intptr_t slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_CurrentIdChanged(slot, sigval1);
@@ -258,7 +258,7 @@ void QWizard_HelpRequested(QWizard* self) {
 	self->helpRequested();
 }
 
-void QWizard_connect_HelpRequested(QWizard* self, void* slot) {
+void QWizard_connect_HelpRequested(QWizard* self, intptr_t slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, [=]() {
 		miqt_exec_callback_QWizard_HelpRequested(slot);
 	});
@@ -268,7 +268,7 @@ void QWizard_CustomButtonClicked(QWizard* self, int which) {
 	self->customButtonClicked(static_cast<int>(which));
 }
 
-void QWizard_connect_CustomButtonClicked(QWizard* self, void* slot) {
+void QWizard_connect_CustomButtonClicked(QWizard* self, intptr_t slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, [=](int which) {
 		int sigval1 = which;
 		miqt_exec_callback_QWizard_CustomButtonClicked(slot, sigval1);
@@ -279,7 +279,7 @@ void QWizard_PageAdded(QWizard* self, int id) {
 	self->pageAdded(static_cast<int>(id));
 }
 
-void QWizard_connect_PageAdded(QWizard* self, void* slot) {
+void QWizard_connect_PageAdded(QWizard* self, intptr_t slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_PageAdded(slot, sigval1);
@@ -290,7 +290,7 @@ void QWizard_PageRemoved(QWizard* self, int id) {
 	self->pageRemoved(static_cast<int>(id));
 }
 
-void QWizard_connect_PageRemoved(QWizard* self, void* slot) {
+void QWizard_connect_PageRemoved(QWizard* self, intptr_t slot) {
 	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_PageRemoved(slot, sigval1);
@@ -459,7 +459,7 @@ void QWizardPage_CompleteChanged(QWizardPage* self) {
 	self->completeChanged();
 }
 
-void QWizardPage_connect_CompleteChanged(QWizardPage* self, void* slot) {
+void QWizardPage_connect_CompleteChanged(QWizardPage* self, intptr_t slot) {
 	QWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, [=]() {
 		miqt_exec_callback_QWizardPage_CompleteChanged(slot);
 	});

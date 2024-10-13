@@ -97,7 +97,7 @@ void QApplication_SetEffectEnabled(int param1);
 int QApplication_Exec();
 bool QApplication_Notify(QApplication* self, QObject* param1, QEvent* param2);
 void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now);
-void QApplication_connect_FocusChanged(QApplication* self, void* slot);
+void QApplication_connect_FocusChanged(QApplication* self, intptr_t slot);
 struct miqt_string* QApplication_StyleSheet(const QApplication* self);
 void QApplication_SetStyleSheet(QApplication* self, struct miqt_string* sheet);
 void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled);

@@ -1145,7 +1145,7 @@ void QWidget_WindowTitleChanged(QWidget* self, struct miqt_string* title) {
 	self->windowTitleChanged(title_QString);
 }
 
-void QWidget_connect_WindowTitleChanged(QWidget* self, void* slot) {
+void QWidget_connect_WindowTitleChanged(QWidget* self, intptr_t slot) {
 	QWidget::connect(self, static_cast<void (QWidget::*)(const QString&)>(&QWidget::windowTitleChanged), self, [=](const QString& title) {
 		const QString title_ret = title;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1159,7 +1159,7 @@ void QWidget_WindowIconChanged(QWidget* self, QIcon* icon) {
 	self->windowIconChanged(*icon);
 }
 
-void QWidget_connect_WindowIconChanged(QWidget* self, void* slot) {
+void QWidget_connect_WindowIconChanged(QWidget* self, intptr_t slot) {
 	QWidget::connect(self, static_cast<void (QWidget::*)(const QIcon&)>(&QWidget::windowIconChanged), self, [=](const QIcon& icon) {
 		const QIcon& icon_ret = icon;
 		// Cast returned reference into pointer
@@ -1173,7 +1173,7 @@ void QWidget_WindowIconTextChanged(QWidget* self, struct miqt_string* iconText) 
 	self->windowIconTextChanged(iconText_QString);
 }
 
-void QWidget_connect_WindowIconTextChanged(QWidget* self, void* slot) {
+void QWidget_connect_WindowIconTextChanged(QWidget* self, intptr_t slot) {
 	QWidget::connect(self, static_cast<void (QWidget::*)(const QString&)>(&QWidget::windowIconTextChanged), self, [=](const QString& iconText) {
 		const QString iconText_ret = iconText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1187,7 +1187,7 @@ void QWidget_CustomContextMenuRequested(QWidget* self, QPoint* pos) {
 	self->customContextMenuRequested(*pos);
 }
 
-void QWidget_connect_CustomContextMenuRequested(QWidget* self, void* slot) {
+void QWidget_connect_CustomContextMenuRequested(QWidget* self, intptr_t slot) {
 	QWidget::connect(self, static_cast<void (QWidget::*)(const QPoint&)>(&QWidget::customContextMenuRequested), self, [=](const QPoint& pos) {
 		const QPoint& pos_ret = pos;
 		// Cast returned reference into pointer

@@ -466,12 +466,12 @@ func (this *QComboBox) EditTextChanged(param1 string) {
 	C.QComboBox_EditTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnEditTextChanged(slot func(param1 string)) {
-	C.QComboBox_connect_EditTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_EditTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_EditTextChanged
-func miqt_exec_callback_QComboBox_EditTextChanged(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_EditTextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -489,12 +489,12 @@ func (this *QComboBox) Activated(index int) {
 	C.QComboBox_Activated(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnActivated(slot func(index int)) {
-	C.QComboBox_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_Activated
-func miqt_exec_callback_QComboBox_Activated(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QComboBox_Activated(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -511,12 +511,12 @@ func (this *QComboBox) TextActivated(param1 string) {
 	C.QComboBox_TextActivated(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnTextActivated(slot func(param1 string)) {
-	C.QComboBox_connect_TextActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_TextActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_TextActivated
-func miqt_exec_callback_QComboBox_TextActivated(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_TextActivated(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -534,12 +534,12 @@ func (this *QComboBox) Highlighted(index int) {
 	C.QComboBox_Highlighted(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnHighlighted(slot func(index int)) {
-	C.QComboBox_connect_Highlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_Highlighted
-func miqt_exec_callback_QComboBox_Highlighted(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QComboBox_Highlighted(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -556,12 +556,12 @@ func (this *QComboBox) TextHighlighted(param1 string) {
 	C.QComboBox_TextHighlighted(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnTextHighlighted(slot func(param1 string)) {
-	C.QComboBox_connect_TextHighlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_TextHighlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_TextHighlighted
-func miqt_exec_callback_QComboBox_TextHighlighted(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_TextHighlighted(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -579,12 +579,12 @@ func (this *QComboBox) CurrentIndexChanged(index int) {
 	C.QComboBox_CurrentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnCurrentIndexChanged(slot func(index int)) {
-	C.QComboBox_connect_CurrentIndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_CurrentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_CurrentIndexChanged
-func miqt_exec_callback_QComboBox_CurrentIndexChanged(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QComboBox_CurrentIndexChanged(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -601,12 +601,12 @@ func (this *QComboBox) CurrentIndexChangedWithQString(param1 string) {
 	C.QComboBox_CurrentIndexChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_CurrentIndexChangedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_CurrentIndexChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString
-func miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -626,12 +626,12 @@ func (this *QComboBox) CurrentTextChanged(param1 string) {
 	C.QComboBox_CurrentTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnCurrentTextChanged(slot func(param1 string)) {
-	C.QComboBox_connect_CurrentTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_CurrentTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_CurrentTextChanged
-func miqt_exec_callback_QComboBox_CurrentTextChanged(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_CurrentTextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -651,12 +651,12 @@ func (this *QComboBox) ActivatedWithQString(param1 string) {
 	C.QComboBox_ActivatedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnActivatedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_ActivatedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_ActivatedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_ActivatedWithQString
-func miqt_exec_callback_QComboBox_ActivatedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_ActivatedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -676,12 +676,12 @@ func (this *QComboBox) HighlightedWithQString(param1 string) {
 	C.QComboBox_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QComboBox) OnHighlightedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_HighlightedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QComboBox_connect_HighlightedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QComboBox_HighlightedWithQString
-func miqt_exec_callback_QComboBox_HighlightedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QComboBox_HighlightedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

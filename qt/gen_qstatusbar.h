@@ -40,7 +40,7 @@ struct miqt_string* QStatusBar_CurrentMessage(const QStatusBar* self);
 void QStatusBar_ShowMessage(QStatusBar* self, struct miqt_string* text);
 void QStatusBar_ClearMessage(QStatusBar* self);
 void QStatusBar_MessageChanged(QStatusBar* self, struct miqt_string* text);
-void QStatusBar_connect_MessageChanged(QStatusBar* self, void* slot);
+void QStatusBar_connect_MessageChanged(QStatusBar* self, intptr_t slot);
 struct miqt_string* QStatusBar_Tr2(const char* s, const char* c);
 struct miqt_string* QStatusBar_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QStatusBar_TrUtf82(const char* s, const char* c);

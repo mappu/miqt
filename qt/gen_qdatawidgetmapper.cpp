@@ -153,7 +153,7 @@ void QDataWidgetMapper_CurrentIndexChanged(QDataWidgetMapper* self, int index) {
 	self->currentIndexChanged(static_cast<int>(index));
 }
 
-void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, void* slot) {
+void QDataWidgetMapper_connect_CurrentIndexChanged(QDataWidgetMapper* self, intptr_t slot) {
 	QDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(slot, sigval1);

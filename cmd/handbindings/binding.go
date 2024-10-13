@@ -28,11 +28,11 @@ func CArray(data []string) (C.int, **C.char) {
 type CallbackFunc func(argc C.int, args *C.void)
 
 //export miqt_exec_callback
-func miqt_exec_callback(cb *C.void, argc C.int, args *C.void) {
+func miqt_exec_callback(cb C.intptr_t, argc C.int, args *C.void) {
 	// Our CABI for all callbacks is void(int, void*).
 	// Our Go ABI is CallbackFunc
 	// Then the Go bindings can unmarshal the arguments and C.free() them as necessary
-	cfunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(CallbackFunc)
+	cfunc, ok := (cgo.Handle(cb)).Value().(CallbackFunc)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -105,6 +105,6 @@ func (this *QPushButton) OnPressed(cb func()) {
 		cb()
 	}
 
-	C.QPushButton_connect_pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(cbWrapper))))
+	C.QPushButton_connect_pressed(this.h, C.intptr_t(cgo.NewHandle(cbWrapper)))
 	// TODO allow disconnect'ing, or tie lifespan for handle.Delete(), ...
 }

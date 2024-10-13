@@ -102,7 +102,7 @@ void QGroupBox_Clicked(QGroupBox* self) {
 	self->clicked();
 }
 
-void QGroupBox_connect_Clicked(QGroupBox* self, void* slot) {
+void QGroupBox_connect_Clicked(QGroupBox* self, intptr_t slot) {
 	QGroupBox::connect(self, static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::clicked), self, [=]() {
 		miqt_exec_callback_QGroupBox_Clicked(slot);
 	});
@@ -112,7 +112,7 @@ void QGroupBox_Toggled(QGroupBox* self, bool param1) {
 	self->toggled(param1);
 }
 
-void QGroupBox_connect_Toggled(QGroupBox* self, void* slot) {
+void QGroupBox_connect_Toggled(QGroupBox* self, intptr_t slot) {
 	QGroupBox::connect(self, static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::toggled), self, [=](bool param1) {
 		bool sigval1 = param1;
 		miqt_exec_callback_QGroupBox_Toggled(slot, sigval1);
@@ -151,7 +151,7 @@ void QGroupBox_Clicked1(QGroupBox* self, bool checked) {
 	self->clicked(checked);
 }
 
-void QGroupBox_connect_Clicked1(QGroupBox* self, void* slot) {
+void QGroupBox_connect_Clicked1(QGroupBox* self, intptr_t slot) {
 	QGroupBox::connect(self, static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::clicked), self, [=](bool checked) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QGroupBox_Clicked1(slot, sigval1);

@@ -143,7 +143,7 @@ void QDialogButtonBox_Clicked(QDialogButtonBox* self, QAbstractButton* button) {
 	self->clicked(button);
 }
 
-void QDialogButtonBox_connect_Clicked(QDialogButtonBox* self, void* slot) {
+void QDialogButtonBox_connect_Clicked(QDialogButtonBox* self, intptr_t slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)(QAbstractButton*)>(&QDialogButtonBox::clicked), self, [=](QAbstractButton* button) {
 		QAbstractButton* sigval1 = button;
 		miqt_exec_callback_QDialogButtonBox_Clicked(slot, sigval1);
@@ -154,7 +154,7 @@ void QDialogButtonBox_Accepted(QDialogButtonBox* self) {
 	self->accepted();
 }
 
-void QDialogButtonBox_connect_Accepted(QDialogButtonBox* self, void* slot) {
+void QDialogButtonBox_connect_Accepted(QDialogButtonBox* self, intptr_t slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::accepted), self, [=]() {
 		miqt_exec_callback_QDialogButtonBox_Accepted(slot);
 	});
@@ -164,7 +164,7 @@ void QDialogButtonBox_HelpRequested(QDialogButtonBox* self) {
 	self->helpRequested();
 }
 
-void QDialogButtonBox_connect_HelpRequested(QDialogButtonBox* self, void* slot) {
+void QDialogButtonBox_connect_HelpRequested(QDialogButtonBox* self, intptr_t slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::helpRequested), self, [=]() {
 		miqt_exec_callback_QDialogButtonBox_HelpRequested(slot);
 	});
@@ -174,7 +174,7 @@ void QDialogButtonBox_Rejected(QDialogButtonBox* self) {
 	self->rejected();
 }
 
-void QDialogButtonBox_connect_Rejected(QDialogButtonBox* self, void* slot) {
+void QDialogButtonBox_connect_Rejected(QDialogButtonBox* self, intptr_t slot) {
 	QDialogButtonBox::connect(self, static_cast<void (QDialogButtonBox::*)()>(&QDialogButtonBox::rejected), self, [=]() {
 		miqt_exec_callback_QDialogButtonBox_Rejected(slot);
 	});

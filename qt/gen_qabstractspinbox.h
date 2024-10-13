@@ -70,7 +70,7 @@ void QAbstractSpinBox_StepDown(QAbstractSpinBox* self);
 void QAbstractSpinBox_SelectAll(QAbstractSpinBox* self);
 void QAbstractSpinBox_Clear(QAbstractSpinBox* self);
 void QAbstractSpinBox_EditingFinished(QAbstractSpinBox* self);
-void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, void* slot);
+void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, intptr_t slot);
 struct miqt_string* QAbstractSpinBox_Tr2(const char* s, const char* c);
 struct miqt_string* QAbstractSpinBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAbstractSpinBox_TrUtf82(const char* s, const char* c);

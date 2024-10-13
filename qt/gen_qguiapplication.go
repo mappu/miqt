@@ -348,12 +348,12 @@ func (this *QGuiApplication) FontDatabaseChanged() {
 	C.QGuiApplication_FontDatabaseChanged(this.h)
 }
 func (this *QGuiApplication) OnFontDatabaseChanged(slot func()) {
-	C.QGuiApplication_connect_FontDatabaseChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_FontDatabaseChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_FontDatabaseChanged
-func miqt_exec_callback_QGuiApplication_FontDatabaseChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGuiApplication_FontDatabaseChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -365,12 +365,12 @@ func (this *QGuiApplication) ScreenAdded(screen *QScreen) {
 	C.QGuiApplication_ScreenAdded(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnScreenAdded(slot func(screen *QScreen)) {
-	C.QGuiApplication_connect_ScreenAdded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_ScreenAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_ScreenAdded
-func miqt_exec_callback_QGuiApplication_ScreenAdded(cb *C.void, screen *C.QScreen) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+func miqt_exec_callback_QGuiApplication_ScreenAdded(cb C.intptr_t, screen *C.QScreen) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(screen *QScreen))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -385,12 +385,12 @@ func (this *QGuiApplication) ScreenRemoved(screen *QScreen) {
 	C.QGuiApplication_ScreenRemoved(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnScreenRemoved(slot func(screen *QScreen)) {
-	C.QGuiApplication_connect_ScreenRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_ScreenRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_ScreenRemoved
-func miqt_exec_callback_QGuiApplication_ScreenRemoved(cb *C.void, screen *C.QScreen) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+func miqt_exec_callback_QGuiApplication_ScreenRemoved(cb C.intptr_t, screen *C.QScreen) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(screen *QScreen))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -405,12 +405,12 @@ func (this *QGuiApplication) PrimaryScreenChanged(screen *QScreen) {
 	C.QGuiApplication_PrimaryScreenChanged(this.h, screen.cPointer())
 }
 func (this *QGuiApplication) OnPrimaryScreenChanged(slot func(screen *QScreen)) {
-	C.QGuiApplication_connect_PrimaryScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_PrimaryScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_PrimaryScreenChanged
-func miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(cb *C.void, screen *C.QScreen) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+func miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(cb C.intptr_t, screen *C.QScreen) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(screen *QScreen))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -425,12 +425,12 @@ func (this *QGuiApplication) LastWindowClosed() {
 	C.QGuiApplication_LastWindowClosed(this.h)
 }
 func (this *QGuiApplication) OnLastWindowClosed(slot func()) {
-	C.QGuiApplication_connect_LastWindowClosed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_LastWindowClosed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_LastWindowClosed
-func miqt_exec_callback_QGuiApplication_LastWindowClosed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGuiApplication_LastWindowClosed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -442,12 +442,12 @@ func (this *QGuiApplication) FocusObjectChanged(focusObject *QObject) {
 	C.QGuiApplication_FocusObjectChanged(this.h, focusObject.cPointer())
 }
 func (this *QGuiApplication) OnFocusObjectChanged(slot func(focusObject *QObject)) {
-	C.QGuiApplication_connect_FocusObjectChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_FocusObjectChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_FocusObjectChanged
-func miqt_exec_callback_QGuiApplication_FocusObjectChanged(cb *C.void, focusObject *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(focusObject *QObject))
+func miqt_exec_callback_QGuiApplication_FocusObjectChanged(cb C.intptr_t, focusObject *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(focusObject *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -462,12 +462,12 @@ func (this *QGuiApplication) FocusWindowChanged(focusWindow *QWindow) {
 	C.QGuiApplication_FocusWindowChanged(this.h, focusWindow.cPointer())
 }
 func (this *QGuiApplication) OnFocusWindowChanged(slot func(focusWindow *QWindow)) {
-	C.QGuiApplication_connect_FocusWindowChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_FocusWindowChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_FocusWindowChanged
-func miqt_exec_callback_QGuiApplication_FocusWindowChanged(cb *C.void, focusWindow *C.QWindow) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(focusWindow *QWindow))
+func miqt_exec_callback_QGuiApplication_FocusWindowChanged(cb C.intptr_t, focusWindow *C.QWindow) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(focusWindow *QWindow))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -482,12 +482,12 @@ func (this *QGuiApplication) ApplicationStateChanged(state ApplicationState) {
 	C.QGuiApplication_ApplicationStateChanged(this.h, (C.int)(state))
 }
 func (this *QGuiApplication) OnApplicationStateChanged(slot func(state ApplicationState)) {
-	C.QGuiApplication_connect_ApplicationStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_ApplicationStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_ApplicationStateChanged
-func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb *C.void, state C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(state ApplicationState))
+func miqt_exec_callback_QGuiApplication_ApplicationStateChanged(cb C.intptr_t, state C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(state ApplicationState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -502,12 +502,12 @@ func (this *QGuiApplication) LayoutDirectionChanged(direction LayoutDirection) {
 	C.QGuiApplication_LayoutDirectionChanged(this.h, (C.int)(direction))
 }
 func (this *QGuiApplication) OnLayoutDirectionChanged(slot func(direction LayoutDirection)) {
-	C.QGuiApplication_connect_LayoutDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_LayoutDirectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_LayoutDirectionChanged
-func miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(cb *C.void, direction C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(direction LayoutDirection))
+func miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(cb C.intptr_t, direction C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(direction LayoutDirection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -522,12 +522,12 @@ func (this *QGuiApplication) CommitDataRequest(sessionManager *QSessionManager) 
 	C.QGuiApplication_CommitDataRequest(this.h, sessionManager.cPointer())
 }
 func (this *QGuiApplication) OnCommitDataRequest(slot func(sessionManager *QSessionManager)) {
-	C.QGuiApplication_connect_CommitDataRequest(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_CommitDataRequest(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_CommitDataRequest
-func miqt_exec_callback_QGuiApplication_CommitDataRequest(cb *C.void, sessionManager *C.QSessionManager) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sessionManager *QSessionManager))
+func miqt_exec_callback_QGuiApplication_CommitDataRequest(cb C.intptr_t, sessionManager *C.QSessionManager) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sessionManager *QSessionManager))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -542,12 +542,12 @@ func (this *QGuiApplication) SaveStateRequest(sessionManager *QSessionManager) {
 	C.QGuiApplication_SaveStateRequest(this.h, sessionManager.cPointer())
 }
 func (this *QGuiApplication) OnSaveStateRequest(slot func(sessionManager *QSessionManager)) {
-	C.QGuiApplication_connect_SaveStateRequest(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_SaveStateRequest(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_SaveStateRequest
-func miqt_exec_callback_QGuiApplication_SaveStateRequest(cb *C.void, sessionManager *C.QSessionManager) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(sessionManager *QSessionManager))
+func miqt_exec_callback_QGuiApplication_SaveStateRequest(cb C.intptr_t, sessionManager *C.QSessionManager) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sessionManager *QSessionManager))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -562,12 +562,12 @@ func (this *QGuiApplication) PaletteChanged(pal *QPalette) {
 	C.QGuiApplication_PaletteChanged(this.h, pal.cPointer())
 }
 func (this *QGuiApplication) OnPaletteChanged(slot func(pal *QPalette)) {
-	C.QGuiApplication_connect_PaletteChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_PaletteChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_PaletteChanged
-func miqt_exec_callback_QGuiApplication_PaletteChanged(cb *C.void, pal *C.QPalette) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(pal *QPalette))
+func miqt_exec_callback_QGuiApplication_PaletteChanged(cb C.intptr_t, pal *C.QPalette) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pal *QPalette))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -582,12 +582,12 @@ func (this *QGuiApplication) ApplicationDisplayNameChanged() {
 	C.QGuiApplication_ApplicationDisplayNameChanged(this.h)
 }
 func (this *QGuiApplication) OnApplicationDisplayNameChanged(slot func()) {
-	C.QGuiApplication_connect_ApplicationDisplayNameChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_ApplicationDisplayNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged
-func miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -599,12 +599,12 @@ func (this *QGuiApplication) FontChanged(font *QFont) {
 	C.QGuiApplication_FontChanged(this.h, font.cPointer())
 }
 func (this *QGuiApplication) OnFontChanged(slot func(font *QFont)) {
-	C.QGuiApplication_connect_FontChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGuiApplication_connect_FontChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_FontChanged
-func miqt_exec_callback_QGuiApplication_FontChanged(cb *C.void, font *C.QFont) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(font *QFont))
+func miqt_exec_callback_QGuiApplication_FontChanged(cb C.intptr_t, font *C.QFont) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font *QFont))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

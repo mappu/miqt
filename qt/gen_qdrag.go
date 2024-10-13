@@ -148,12 +148,12 @@ func (this *QDrag) ActionChanged(action DropAction) {
 	C.QDrag_ActionChanged(this.h, (C.int)(action))
 }
 func (this *QDrag) OnActionChanged(slot func(action DropAction)) {
-	C.QDrag_connect_ActionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDrag_connect_ActionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDrag_ActionChanged
-func miqt_exec_callback_QDrag_ActionChanged(cb *C.void, action C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action DropAction))
+func miqt_exec_callback_QDrag_ActionChanged(cb C.intptr_t, action C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(action DropAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -168,12 +168,12 @@ func (this *QDrag) TargetChanged(newTarget *QObject) {
 	C.QDrag_TargetChanged(this.h, newTarget.cPointer())
 }
 func (this *QDrag) OnTargetChanged(slot func(newTarget *QObject)) {
-	C.QDrag_connect_TargetChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDrag_connect_TargetChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDrag_TargetChanged
-func miqt_exec_callback_QDrag_TargetChanged(cb *C.void, newTarget *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newTarget *QObject))
+func miqt_exec_callback_QDrag_TargetChanged(cb C.intptr_t, newTarget *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newTarget *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

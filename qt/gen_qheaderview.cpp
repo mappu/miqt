@@ -322,7 +322,7 @@ void QHeaderView_SectionMoved(QHeaderView* self, int logicalIndex, int oldVisual
 	self->sectionMoved(static_cast<int>(logicalIndex), static_cast<int>(oldVisualIndex), static_cast<int>(newVisualIndex));
 }
 
-void QHeaderView_connect_SectionMoved(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionMoved(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int, int)>(&QHeaderView::sectionMoved), self, [=](int logicalIndex, int oldVisualIndex, int newVisualIndex) {
 		int sigval1 = logicalIndex;
 		int sigval2 = oldVisualIndex;
@@ -335,7 +335,7 @@ void QHeaderView_SectionResized(QHeaderView* self, int logicalIndex, int oldSize
 	self->sectionResized(static_cast<int>(logicalIndex), static_cast<int>(oldSize), static_cast<int>(newSize));
 }
 
-void QHeaderView_connect_SectionResized(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionResized(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int, int)>(&QHeaderView::sectionResized), self, [=](int logicalIndex, int oldSize, int newSize) {
 		int sigval1 = logicalIndex;
 		int sigval2 = oldSize;
@@ -348,7 +348,7 @@ void QHeaderView_SectionPressed(QHeaderView* self, int logicalIndex) {
 	self->sectionPressed(static_cast<int>(logicalIndex));
 }
 
-void QHeaderView_connect_SectionPressed(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionPressed(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionPressed), self, [=](int logicalIndex) {
 		int sigval1 = logicalIndex;
 		miqt_exec_callback_QHeaderView_SectionPressed(slot, sigval1);
@@ -359,7 +359,7 @@ void QHeaderView_SectionClicked(QHeaderView* self, int logicalIndex) {
 	self->sectionClicked(static_cast<int>(logicalIndex));
 }
 
-void QHeaderView_connect_SectionClicked(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionClicked(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionClicked), self, [=](int logicalIndex) {
 		int sigval1 = logicalIndex;
 		miqt_exec_callback_QHeaderView_SectionClicked(slot, sigval1);
@@ -370,7 +370,7 @@ void QHeaderView_SectionEntered(QHeaderView* self, int logicalIndex) {
 	self->sectionEntered(static_cast<int>(logicalIndex));
 }
 
-void QHeaderView_connect_SectionEntered(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionEntered(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionEntered), self, [=](int logicalIndex) {
 		int sigval1 = logicalIndex;
 		miqt_exec_callback_QHeaderView_SectionEntered(slot, sigval1);
@@ -381,7 +381,7 @@ void QHeaderView_SectionDoubleClicked(QHeaderView* self, int logicalIndex) {
 	self->sectionDoubleClicked(static_cast<int>(logicalIndex));
 }
 
-void QHeaderView_connect_SectionDoubleClicked(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionDoubleClicked(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionDoubleClicked), self, [=](int logicalIndex) {
 		int sigval1 = logicalIndex;
 		miqt_exec_callback_QHeaderView_SectionDoubleClicked(slot, sigval1);
@@ -392,7 +392,7 @@ void QHeaderView_SectionCountChanged(QHeaderView* self, int oldCount, int newCou
 	self->sectionCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
 }
 
-void QHeaderView_connect_SectionCountChanged(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionCountChanged(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, int)>(&QHeaderView::sectionCountChanged), self, [=](int oldCount, int newCount) {
 		int sigval1 = oldCount;
 		int sigval2 = newCount;
@@ -404,7 +404,7 @@ void QHeaderView_SectionHandleDoubleClicked(QHeaderView* self, int logicalIndex)
 	self->sectionHandleDoubleClicked(static_cast<int>(logicalIndex));
 }
 
-void QHeaderView_connect_SectionHandleDoubleClicked(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SectionHandleDoubleClicked(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int)>(&QHeaderView::sectionHandleDoubleClicked), self, [=](int logicalIndex) {
 		int sigval1 = logicalIndex;
 		miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(slot, sigval1);
@@ -415,7 +415,7 @@ void QHeaderView_GeometriesChanged(QHeaderView* self) {
 	self->geometriesChanged();
 }
 
-void QHeaderView_connect_GeometriesChanged(QHeaderView* self, void* slot) {
+void QHeaderView_connect_GeometriesChanged(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)()>(&QHeaderView::geometriesChanged), self, [=]() {
 		miqt_exec_callback_QHeaderView_GeometriesChanged(slot);
 	});
@@ -425,7 +425,7 @@ void QHeaderView_SortIndicatorChanged(QHeaderView* self, int logicalIndex, int o
 	self->sortIndicatorChanged(static_cast<int>(logicalIndex), static_cast<Qt::SortOrder>(order));
 }
 
-void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, void* slot) {
+void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, intptr_t slot) {
 	QHeaderView::connect(self, static_cast<void (QHeaderView::*)(int, Qt::SortOrder)>(&QHeaderView::sortIndicatorChanged), self, [=](int logicalIndex, Qt::SortOrder order) {
 		int sigval1 = logicalIndex;
 		Qt::SortOrder order_ret = order;

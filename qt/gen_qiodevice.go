@@ -287,12 +287,12 @@ func (this *QIODevice) ReadyRead() {
 	C.QIODevice_ReadyRead(this.h)
 }
 func (this *QIODevice) OnReadyRead(slot func()) {
-	C.QIODevice_connect_ReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_ReadyRead(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_ReadyRead
-func miqt_exec_callback_QIODevice_ReadyRead(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QIODevice_ReadyRead(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -304,12 +304,12 @@ func (this *QIODevice) ChannelReadyRead(channel int) {
 	C.QIODevice_ChannelReadyRead(this.h, (C.int)(channel))
 }
 func (this *QIODevice) OnChannelReadyRead(slot func(channel int)) {
-	C.QIODevice_connect_ChannelReadyRead(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_ChannelReadyRead(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_ChannelReadyRead
-func miqt_exec_callback_QIODevice_ChannelReadyRead(cb *C.void, channel C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(channel int))
+func miqt_exec_callback_QIODevice_ChannelReadyRead(cb C.intptr_t, channel C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(channel int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -324,12 +324,12 @@ func (this *QIODevice) BytesWritten(bytes int64) {
 	C.QIODevice_BytesWritten(this.h, (C.longlong)(bytes))
 }
 func (this *QIODevice) OnBytesWritten(slot func(bytes int64)) {
-	C.QIODevice_connect_BytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_BytesWritten(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_BytesWritten
-func miqt_exec_callback_QIODevice_BytesWritten(cb *C.void, bytes C.longlong) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bytes int64))
+func miqt_exec_callback_QIODevice_BytesWritten(cb C.intptr_t, bytes C.longlong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(bytes int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -344,12 +344,12 @@ func (this *QIODevice) ChannelBytesWritten(channel int, bytes int64) {
 	C.QIODevice_ChannelBytesWritten(this.h, (C.int)(channel), (C.longlong)(bytes))
 }
 func (this *QIODevice) OnChannelBytesWritten(slot func(channel int, bytes int64)) {
-	C.QIODevice_connect_ChannelBytesWritten(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_ChannelBytesWritten(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_ChannelBytesWritten
-func miqt_exec_callback_QIODevice_ChannelBytesWritten(cb *C.void, channel C.int, bytes C.longlong) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(channel int, bytes int64))
+func miqt_exec_callback_QIODevice_ChannelBytesWritten(cb C.intptr_t, channel C.int, bytes C.longlong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(channel int, bytes int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -366,12 +366,12 @@ func (this *QIODevice) AboutToClose() {
 	C.QIODevice_AboutToClose(this.h)
 }
 func (this *QIODevice) OnAboutToClose(slot func()) {
-	C.QIODevice_connect_AboutToClose(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_AboutToClose(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_AboutToClose
-func miqt_exec_callback_QIODevice_AboutToClose(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QIODevice_AboutToClose(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -383,12 +383,12 @@ func (this *QIODevice) ReadChannelFinished() {
 	C.QIODevice_ReadChannelFinished(this.h)
 }
 func (this *QIODevice) OnReadChannelFinished(slot func()) {
-	C.QIODevice_connect_ReadChannelFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIODevice_connect_ReadChannelFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_ReadChannelFinished
-func miqt_exec_callback_QIODevice_ReadChannelFinished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QIODevice_ReadChannelFinished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

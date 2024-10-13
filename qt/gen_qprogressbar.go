@@ -198,12 +198,12 @@ func (this *QProgressBar) ValueChanged(value int) {
 	C.QProgressBar_ValueChanged(this.h, (C.int)(value))
 }
 func (this *QProgressBar) OnValueChanged(slot func(value int)) {
-	C.QProgressBar_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProgressBar_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressBar_ValueChanged
-func miqt_exec_callback_QProgressBar_ValueChanged(cb *C.void, value C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+func miqt_exec_callback_QProgressBar_ValueChanged(cb C.intptr_t, value C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

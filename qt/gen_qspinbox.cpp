@@ -127,7 +127,7 @@ void QSpinBox_ValueChanged(QSpinBox* self, int param1) {
 	self->valueChanged(static_cast<int>(param1));
 }
 
-void QSpinBox_connect_ValueChanged(QSpinBox* self, void* slot) {
+void QSpinBox_connect_ValueChanged(QSpinBox* self, intptr_t slot) {
 	QSpinBox::connect(self, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QSpinBox_ValueChanged(slot, sigval1);
@@ -139,7 +139,7 @@ void QSpinBox_TextChanged(QSpinBox* self, struct miqt_string* param1) {
 	self->textChanged(param1_QString);
 }
 
-void QSpinBox_connect_TextChanged(QSpinBox* self, void* slot) {
+void QSpinBox_connect_TextChanged(QSpinBox* self, intptr_t slot) {
 	QSpinBox::connect(self, static_cast<void (QSpinBox::*)(const QString&)>(&QSpinBox::textChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -154,7 +154,7 @@ void QSpinBox_ValueChangedWithQString(QSpinBox* self, struct miqt_string* param1
 	self->valueChanged(param1_QString);
 }
 
-void QSpinBox_connect_ValueChangedWithQString(QSpinBox* self, void* slot) {
+void QSpinBox_connect_ValueChangedWithQString(QSpinBox* self, intptr_t slot) {
 	QSpinBox::connect(self, static_cast<void (QSpinBox::*)(const QString&)>(&QSpinBox::valueChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -337,7 +337,7 @@ void QDoubleSpinBox_ValueChanged(QDoubleSpinBox* self, double param1) {
 	self->valueChanged(static_cast<double>(param1));
 }
 
-void QDoubleSpinBox_connect_ValueChanged(QDoubleSpinBox* self, void* slot) {
+void QDoubleSpinBox_connect_ValueChanged(QDoubleSpinBox* self, intptr_t slot) {
 	QDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), self, [=](double param1) {
 		double sigval1 = param1;
 		miqt_exec_callback_QDoubleSpinBox_ValueChanged(slot, sigval1);
@@ -349,7 +349,7 @@ void QDoubleSpinBox_TextChanged(QDoubleSpinBox* self, struct miqt_string* param1
 	self->textChanged(param1_QString);
 }
 
-void QDoubleSpinBox_connect_TextChanged(QDoubleSpinBox* self, void* slot) {
+void QDoubleSpinBox_connect_TextChanged(QDoubleSpinBox* self, intptr_t slot) {
 	QDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(const QString&)>(&QDoubleSpinBox::textChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -364,7 +364,7 @@ void QDoubleSpinBox_ValueChangedWithQString(QDoubleSpinBox* self, struct miqt_st
 	self->valueChanged(param1_QString);
 }
 
-void QDoubleSpinBox_connect_ValueChangedWithQString(QDoubleSpinBox* self, void* slot) {
+void QDoubleSpinBox_connect_ValueChangedWithQString(QDoubleSpinBox* self, intptr_t slot) {
 	QDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(const QString&)>(&QDoubleSpinBox::valueChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

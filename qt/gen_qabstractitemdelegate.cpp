@@ -101,7 +101,7 @@ void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* edit
 	self->commitData(editor);
 }
 
-void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, void* slot) {
+void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, intptr_t slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*)>(&QAbstractItemDelegate::commitData), self, [=](QWidget* editor) {
 		QWidget* sigval1 = editor;
 		miqt_exec_callback_QAbstractItemDelegate_CommitData(slot, sigval1);
@@ -112,7 +112,7 @@ void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* edi
 	self->closeEditor(editor);
 }
 
-void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, void* slot) {
+void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, intptr_t slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor) {
 		QWidget* sigval1 = editor;
 		miqt_exec_callback_QAbstractItemDelegate_CloseEditor(slot, sigval1);
@@ -123,7 +123,7 @@ void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIn
 	self->sizeHintChanged(*param1);
 }
 
-void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, void* slot) {
+void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, intptr_t slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(const QModelIndex&)>(&QAbstractItemDelegate::sizeHintChanged), self, [=](const QModelIndex& param1) {
 		const QModelIndex& param1_ret = param1;
 		// Cast returned reference into pointer
@@ -164,7 +164,7 @@ void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* ed
 	self->closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 }
 
-void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, void* slot) {
+void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, intptr_t slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(QWidget*, QAbstractItemDelegate::EndEditHint)>(&QAbstractItemDelegate::closeEditor), self, [=](QWidget* editor, QAbstractItemDelegate::EndEditHint hint) {
 		QWidget* sigval1 = editor;
 		QAbstractItemDelegate::EndEditHint hint_ret = hint;

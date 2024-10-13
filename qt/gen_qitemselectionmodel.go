@@ -376,12 +376,12 @@ func (this *QItemSelectionModel) CurrentChanged(current *QModelIndex, previous *
 	C.QItemSelectionModel_CurrentChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
-	C.QItemSelectionModel_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QItemSelectionModel_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_CurrentChanged
-func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb *C.void, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -397,12 +397,12 @@ func (this *QItemSelectionModel) CurrentRowChanged(current *QModelIndex, previou
 	C.QItemSelectionModel_CurrentRowChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentRowChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
-	C.QItemSelectionModel_connect_CurrentRowChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QItemSelectionModel_connect_CurrentRowChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_CurrentRowChanged
-func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb *C.void, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -418,12 +418,12 @@ func (this *QItemSelectionModel) CurrentColumnChanged(current *QModelIndex, prev
 	C.QItemSelectionModel_CurrentColumnChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QItemSelectionModel) OnCurrentColumnChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
-	C.QItemSelectionModel_connect_CurrentColumnChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QItemSelectionModel_connect_CurrentColumnChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged
-func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb *C.void, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -439,12 +439,12 @@ func (this *QItemSelectionModel) ModelChanged(model *QAbstractItemModel) {
 	C.QItemSelectionModel_ModelChanged(this.h, model.cPointer())
 }
 func (this *QItemSelectionModel) OnModelChanged(slot func(model *QAbstractItemModel)) {
-	C.QItemSelectionModel_connect_ModelChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QItemSelectionModel_connect_ModelChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_ModelChanged
-func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb *C.void, model *C.QAbstractItemModel) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(model *QAbstractItemModel))
+func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C.QAbstractItemModel) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(model *QAbstractItemModel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

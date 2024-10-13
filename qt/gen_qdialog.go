@@ -148,12 +148,12 @@ func (this *QDialog) Finished(result int) {
 	C.QDialog_Finished(this.h, (C.int)(result))
 }
 func (this *QDialog) OnFinished(slot func(result int)) {
-	C.QDialog_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialog_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialog_Finished
-func miqt_exec_callback_QDialog_Finished(cb *C.void, result C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(result int))
+func miqt_exec_callback_QDialog_Finished(cb C.intptr_t, result C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(result int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -168,12 +168,12 @@ func (this *QDialog) Accepted() {
 	C.QDialog_Accepted(this.h)
 }
 func (this *QDialog) OnAccepted(slot func()) {
-	C.QDialog_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialog_connect_Accepted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialog_Accepted
-func miqt_exec_callback_QDialog_Accepted(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDialog_Accepted(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -185,12 +185,12 @@ func (this *QDialog) Rejected() {
 	C.QDialog_Rejected(this.h)
 }
 func (this *QDialog) OnRejected(slot func()) {
-	C.QDialog_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialog_connect_Rejected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialog_Rejected
-func miqt_exec_callback_QDialog_Rejected(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDialog_Rejected(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

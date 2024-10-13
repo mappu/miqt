@@ -116,7 +116,7 @@ void QUndoGroup_ActiveStackChanged(QUndoGroup* self, QUndoStack* stack) {
 	self->activeStackChanged(stack);
 }
 
-void QUndoGroup_connect_ActiveStackChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_ActiveStackChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(QUndoStack*)>(&QUndoGroup::activeStackChanged), self, [=](QUndoStack* stack) {
 		QUndoStack* sigval1 = stack;
 		miqt_exec_callback_QUndoGroup_ActiveStackChanged(slot, sigval1);
@@ -127,7 +127,7 @@ void QUndoGroup_IndexChanged(QUndoGroup* self, int idx) {
 	self->indexChanged(static_cast<int>(idx));
 }
 
-void QUndoGroup_connect_IndexChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_IndexChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(int)>(&QUndoGroup::indexChanged), self, [=](int idx) {
 		int sigval1 = idx;
 		miqt_exec_callback_QUndoGroup_IndexChanged(slot, sigval1);
@@ -138,7 +138,7 @@ void QUndoGroup_CleanChanged(QUndoGroup* self, bool clean) {
 	self->cleanChanged(clean);
 }
 
-void QUndoGroup_connect_CleanChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_CleanChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::cleanChanged), self, [=](bool clean) {
 		bool sigval1 = clean;
 		miqt_exec_callback_QUndoGroup_CleanChanged(slot, sigval1);
@@ -149,7 +149,7 @@ void QUndoGroup_CanUndoChanged(QUndoGroup* self, bool canUndo) {
 	self->canUndoChanged(canUndo);
 }
 
-void QUndoGroup_connect_CanUndoChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_CanUndoChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canUndoChanged), self, [=](bool canUndo) {
 		bool sigval1 = canUndo;
 		miqt_exec_callback_QUndoGroup_CanUndoChanged(slot, sigval1);
@@ -160,7 +160,7 @@ void QUndoGroup_CanRedoChanged(QUndoGroup* self, bool canRedo) {
 	self->canRedoChanged(canRedo);
 }
 
-void QUndoGroup_connect_CanRedoChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_CanRedoChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canRedoChanged), self, [=](bool canRedo) {
 		bool sigval1 = canRedo;
 		miqt_exec_callback_QUndoGroup_CanRedoChanged(slot, sigval1);
@@ -172,7 +172,7 @@ void QUndoGroup_UndoTextChanged(QUndoGroup* self, struct miqt_string* undoText) 
 	self->undoTextChanged(undoText_QString);
 }
 
-void QUndoGroup_connect_UndoTextChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_UndoTextChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::undoTextChanged), self, [=](const QString& undoText) {
 		const QString undoText_ret = undoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -187,7 +187,7 @@ void QUndoGroup_RedoTextChanged(QUndoGroup* self, struct miqt_string* redoText) 
 	self->redoTextChanged(redoText_QString);
 }
 
-void QUndoGroup_connect_RedoTextChanged(QUndoGroup* self, void* slot) {
+void QUndoGroup_connect_RedoTextChanged(QUndoGroup* self, intptr_t slot) {
 	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::redoTextChanged), self, [=](const QString& redoText) {
 		const QString redoText_ret = redoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -533,12 +533,12 @@ func (this *QGraphicsScene) Changed(region []QRectF) {
 	C.QGraphicsScene_Changed(this.h, region_ma)
 }
 func (this *QGraphicsScene) OnChanged(slot func(region []QRectF)) {
-	C.QGraphicsScene_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScene_connect_Changed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScene_Changed
-func miqt_exec_callback_QGraphicsScene_Changed(cb *C.void, region *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(region []QRectF))
+func miqt_exec_callback_QGraphicsScene_Changed(cb C.intptr_t, region *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(region []QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -563,12 +563,12 @@ func (this *QGraphicsScene) SceneRectChanged(rect *QRectF) {
 	C.QGraphicsScene_SceneRectChanged(this.h, rect.cPointer())
 }
 func (this *QGraphicsScene) OnSceneRectChanged(slot func(rect *QRectF)) {
-	C.QGraphicsScene_connect_SceneRectChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScene_connect_SceneRectChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScene_SceneRectChanged
-func miqt_exec_callback_QGraphicsScene_SceneRectChanged(cb *C.void, rect *C.QRectF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(rect *QRectF))
+func miqt_exec_callback_QGraphicsScene_SceneRectChanged(cb C.intptr_t, rect *C.QRectF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -583,12 +583,12 @@ func (this *QGraphicsScene) SelectionChanged() {
 	C.QGraphicsScene_SelectionChanged(this.h)
 }
 func (this *QGraphicsScene) OnSelectionChanged(slot func()) {
-	C.QGraphicsScene_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScene_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScene_SelectionChanged
-func miqt_exec_callback_QGraphicsScene_SelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScene_SelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -600,12 +600,12 @@ func (this *QGraphicsScene) FocusItemChanged(newFocus *QGraphicsItem, oldFocus *
 	C.QGraphicsScene_FocusItemChanged(this.h, newFocus.cPointer(), oldFocus.cPointer(), (C.int)(reason))
 }
 func (this *QGraphicsScene) OnFocusItemChanged(slot func(newFocus *QGraphicsItem, oldFocus *QGraphicsItem, reason FocusReason)) {
-	C.QGraphicsScene_connect_FocusItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScene_connect_FocusItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScene_FocusItemChanged
-func miqt_exec_callback_QGraphicsScene_FocusItemChanged(cb *C.void, newFocus *C.QGraphicsItem, oldFocus *C.QGraphicsItem, reason C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newFocus *QGraphicsItem, oldFocus *QGraphicsItem, reason FocusReason))
+func miqt_exec_callback_QGraphicsScene_FocusItemChanged(cb C.intptr_t, newFocus *C.QGraphicsItem, oldFocus *C.QGraphicsItem, reason C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newFocus *QGraphicsItem, oldFocus *QGraphicsItem, reason FocusReason))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

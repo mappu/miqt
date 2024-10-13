@@ -389,7 +389,7 @@ void QMessageBox_ButtonClicked(QMessageBox* self, QAbstractButton* button) {
 	self->buttonClicked(button);
 }
 
-void QMessageBox_connect_ButtonClicked(QMessageBox* self, void* slot) {
+void QMessageBox_connect_ButtonClicked(QMessageBox* self, intptr_t slot) {
 	QMessageBox::connect(self, static_cast<void (QMessageBox::*)(QAbstractButton*)>(&QMessageBox::buttonClicked), self, [=](QAbstractButton* button) {
 		QAbstractButton* sigval1 = button;
 		miqt_exec_callback_QMessageBox_ButtonClicked(slot, sigval1);

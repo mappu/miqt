@@ -260,7 +260,7 @@ void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now) {
 	self->focusChanged(old, now);
 }
 
-void QApplication_connect_FocusChanged(QApplication* self, void* slot) {
+void QApplication_connect_FocusChanged(QApplication* self, intptr_t slot) {
 	QApplication::connect(self, static_cast<void (QApplication::*)(QWidget*, QWidget*)>(&QApplication::focusChanged), self, [=](QWidget* old, QWidget* now) {
 		QWidget* sigval1 = old;
 		QWidget* sigval2 = now;

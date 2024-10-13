@@ -116,7 +116,7 @@ void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self) {
 	self->update();
 }
 
-void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot) {
+void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=]() {
 		miqt_exec_callback_QAbstractTextDocumentLayout_Update(slot);
 	});
@@ -126,7 +126,7 @@ void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, 
 	self->updateBlock(*block);
 }
 
-void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, void* slot) {
+void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QTextBlock&)>(&QAbstractTextDocumentLayout::updateBlock), self, [=](const QTextBlock& block) {
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
@@ -139,7 +139,7 @@ void QAbstractTextDocumentLayout_DocumentSizeChanged(QAbstractTextDocumentLayout
 	self->documentSizeChanged(*newSize);
 }
 
-void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, void* slot) {
+void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QSizeF&)>(&QAbstractTextDocumentLayout::documentSizeChanged), self, [=](const QSizeF& newSize) {
 		const QSizeF& newSize_ret = newSize;
 		// Cast returned reference into pointer
@@ -152,7 +152,7 @@ void QAbstractTextDocumentLayout_PageCountChanged(QAbstractTextDocumentLayout* s
 	self->pageCountChanged(static_cast<int>(newPages));
 }
 
-void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, void* slot) {
+void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(int)>(&QAbstractTextDocumentLayout::pageCountChanged), self, [=](int newPages) {
 		int sigval1 = newPages;
 		miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(slot, sigval1);
@@ -195,7 +195,7 @@ void QAbstractTextDocumentLayout_Update1(QAbstractTextDocumentLayout* self, QRec
 	self->update(*param1);
 }
 
-void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, void* slot) {
+void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
 		const QRectF& param1_ret = param1;
 		// Cast returned reference into pointer

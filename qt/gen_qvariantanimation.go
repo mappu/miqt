@@ -140,12 +140,12 @@ func (this *QVariantAnimation) ValueChanged(value *QVariant) {
 	C.QVariantAnimation_ValueChanged(this.h, value.cPointer())
 }
 func (this *QVariantAnimation) OnValueChanged(slot func(value *QVariant)) {
-	C.QVariantAnimation_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QVariantAnimation_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVariantAnimation_ValueChanged
-func miqt_exec_callback_QVariantAnimation_ValueChanged(cb *C.void, value *C.QVariant) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value *QVariant))
+func miqt_exec_callback_QVariantAnimation_ValueChanged(cb C.intptr_t, value *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value *QVariant))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

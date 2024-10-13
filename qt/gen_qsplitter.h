@@ -64,7 +64,7 @@ void QSplitter_GetRange(const QSplitter* self, int index, int* param2, int* para
 QSplitterHandle* QSplitter_Handle(const QSplitter* self, int index);
 void QSplitter_SetStretchFactor(QSplitter* self, int index, int stretch);
 void QSplitter_SplitterMoved(QSplitter* self, int pos, int index);
-void QSplitter_connect_SplitterMoved(QSplitter* self, void* slot);
+void QSplitter_connect_SplitterMoved(QSplitter* self, intptr_t slot);
 struct miqt_string* QSplitter_Tr2(const char* s, const char* c);
 struct miqt_string* QSplitter_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QSplitter_TrUtf82(const char* s, const char* c);

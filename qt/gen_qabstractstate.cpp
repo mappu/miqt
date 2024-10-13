@@ -47,7 +47,7 @@ void QAbstractState_ActiveChanged(QAbstractState* self, bool active) {
 	self->activeChanged(active);
 }
 
-void QAbstractState_connect_ActiveChanged(QAbstractState* self, void* slot) {
+void QAbstractState_connect_ActiveChanged(QAbstractState* self, intptr_t slot) {
 	QAbstractState::connect(self, static_cast<void (QAbstractState::*)(bool)>(&QAbstractState::activeChanged), self, [=](bool active) {
 		bool sigval1 = active;
 		miqt_exec_callback_QAbstractState_ActiveChanged(slot, sigval1);

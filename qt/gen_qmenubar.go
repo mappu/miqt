@@ -184,12 +184,12 @@ func (this *QMenuBar) Triggered(action *QAction) {
 	C.QMenuBar_Triggered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnTriggered(slot func(action *QAction)) {
-	C.QMenuBar_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMenuBar_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMenuBar_Triggered
-func miqt_exec_callback_QMenuBar_Triggered(cb *C.void, action *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action *QAction))
+func miqt_exec_callback_QMenuBar_Triggered(cb C.intptr_t, action *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -204,12 +204,12 @@ func (this *QMenuBar) Hovered(action *QAction) {
 	C.QMenuBar_Hovered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnHovered(slot func(action *QAction)) {
-	C.QMenuBar_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMenuBar_connect_Hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMenuBar_Hovered
-func miqt_exec_callback_QMenuBar_Hovered(cb *C.void, action *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action *QAction))
+func miqt_exec_callback_QMenuBar_Hovered(cb C.intptr_t, action *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

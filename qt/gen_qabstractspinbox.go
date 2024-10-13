@@ -268,12 +268,12 @@ func (this *QAbstractSpinBox) EditingFinished() {
 	C.QAbstractSpinBox_EditingFinished(this.h)
 }
 func (this *QAbstractSpinBox) OnEditingFinished(slot func()) {
-	C.QAbstractSpinBox_connect_EditingFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSpinBox_connect_EditingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSpinBox_EditingFinished
-func miqt_exec_callback_QAbstractSpinBox_EditingFinished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractSpinBox_EditingFinished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -165,12 +165,12 @@ func (this *QShortcut) Activated() {
 	C.QShortcut_Activated(this.h)
 }
 func (this *QShortcut) OnActivated(slot func()) {
-	C.QShortcut_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QShortcut_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QShortcut_Activated
-func miqt_exec_callback_QShortcut_Activated(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QShortcut_Activated(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -182,12 +182,12 @@ func (this *QShortcut) ActivatedAmbiguously() {
 	C.QShortcut_ActivatedAmbiguously(this.h)
 }
 func (this *QShortcut) OnActivatedAmbiguously(slot func()) {
-	C.QShortcut_connect_ActivatedAmbiguously(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QShortcut_connect_ActivatedAmbiguously(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QShortcut_ActivatedAmbiguously
-func miqt_exec_callback_QShortcut_ActivatedAmbiguously(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QShortcut_ActivatedAmbiguously(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -353,7 +353,7 @@ void QLineEdit_TextChanged(QLineEdit* self, struct miqt_string* param1) {
 	self->textChanged(param1_QString);
 }
 
-void QLineEdit_connect_TextChanged(QLineEdit* self, void* slot) {
+void QLineEdit_connect_TextChanged(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -368,7 +368,7 @@ void QLineEdit_TextEdited(QLineEdit* self, struct miqt_string* param1) {
 	self->textEdited(param1_QString);
 }
 
-void QLineEdit_connect_TextEdited(QLineEdit* self, void* slot) {
+void QLineEdit_connect_TextEdited(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textEdited), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -382,7 +382,7 @@ void QLineEdit_CursorPositionChanged(QLineEdit* self, int param1, int param2) {
 	self->cursorPositionChanged(static_cast<int>(param1), static_cast<int>(param2));
 }
 
-void QLineEdit_connect_CursorPositionChanged(QLineEdit* self, void* slot) {
+void QLineEdit_connect_CursorPositionChanged(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)(int, int)>(&QLineEdit::cursorPositionChanged), self, [=](int param1, int param2) {
 		int sigval1 = param1;
 		int sigval2 = param2;
@@ -394,7 +394,7 @@ void QLineEdit_ReturnPressed(QLineEdit* self) {
 	self->returnPressed();
 }
 
-void QLineEdit_connect_ReturnPressed(QLineEdit* self, void* slot) {
+void QLineEdit_connect_ReturnPressed(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)()>(&QLineEdit::returnPressed), self, [=]() {
 		miqt_exec_callback_QLineEdit_ReturnPressed(slot);
 	});
@@ -404,7 +404,7 @@ void QLineEdit_EditingFinished(QLineEdit* self) {
 	self->editingFinished();
 }
 
-void QLineEdit_connect_EditingFinished(QLineEdit* self, void* slot) {
+void QLineEdit_connect_EditingFinished(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)()>(&QLineEdit::editingFinished), self, [=]() {
 		miqt_exec_callback_QLineEdit_EditingFinished(slot);
 	});
@@ -414,7 +414,7 @@ void QLineEdit_SelectionChanged(QLineEdit* self) {
 	self->selectionChanged();
 }
 
-void QLineEdit_connect_SelectionChanged(QLineEdit* self, void* slot) {
+void QLineEdit_connect_SelectionChanged(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)()>(&QLineEdit::selectionChanged), self, [=]() {
 		miqt_exec_callback_QLineEdit_SelectionChanged(slot);
 	});
@@ -424,7 +424,7 @@ void QLineEdit_InputRejected(QLineEdit* self) {
 	self->inputRejected();
 }
 
-void QLineEdit_connect_InputRejected(QLineEdit* self, void* slot) {
+void QLineEdit_connect_InputRejected(QLineEdit* self, intptr_t slot) {
 	QLineEdit::connect(self, static_cast<void (QLineEdit::*)()>(&QLineEdit::inputRejected), self, [=]() {
 		miqt_exec_callback_QLineEdit_InputRejected(slot);
 	});

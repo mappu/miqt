@@ -100,12 +100,12 @@ func (this *QFileSystemModel) RootPathChanged(newPath string) {
 	C.QFileSystemModel_RootPathChanged(this.h, (*C.struct_miqt_string)(newPath_ms))
 }
 func (this *QFileSystemModel) OnRootPathChanged(slot func(newPath string)) {
-	C.QFileSystemModel_connect_RootPathChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileSystemModel_connect_RootPathChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemModel_RootPathChanged
-func miqt_exec_callback_QFileSystemModel_RootPathChanged(cb *C.void, newPath *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newPath string))
+func miqt_exec_callback_QFileSystemModel_RootPathChanged(cb C.intptr_t, newPath *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newPath string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -129,12 +129,12 @@ func (this *QFileSystemModel) FileRenamed(path string, oldName string, newName s
 	C.QFileSystemModel_FileRenamed(this.h, (*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(oldName_ms), (*C.struct_miqt_string)(newName_ms))
 }
 func (this *QFileSystemModel) OnFileRenamed(slot func(path string, oldName string, newName string)) {
-	C.QFileSystemModel_connect_FileRenamed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileSystemModel_connect_FileRenamed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemModel_FileRenamed
-func miqt_exec_callback_QFileSystemModel_FileRenamed(cb *C.void, path *C.struct_miqt_string, oldName *C.struct_miqt_string, newName *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(path string, oldName string, newName string))
+func miqt_exec_callback_QFileSystemModel_FileRenamed(cb C.intptr_t, path *C.struct_miqt_string, oldName *C.struct_miqt_string, newName *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(path string, oldName string, newName string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -162,12 +162,12 @@ func (this *QFileSystemModel) DirectoryLoaded(path string) {
 	C.QFileSystemModel_DirectoryLoaded(this.h, (*C.struct_miqt_string)(path_ms))
 }
 func (this *QFileSystemModel) OnDirectoryLoaded(slot func(path string)) {
-	C.QFileSystemModel_connect_DirectoryLoaded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileSystemModel_connect_DirectoryLoaded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemModel_DirectoryLoaded
-func miqt_exec_callback_QFileSystemModel_DirectoryLoaded(cb *C.void, path *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(path string))
+func miqt_exec_callback_QFileSystemModel_DirectoryLoaded(cb C.intptr_t, path *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(path string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

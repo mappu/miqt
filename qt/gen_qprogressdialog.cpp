@@ -165,7 +165,7 @@ void QProgressDialog_Canceled(QProgressDialog* self) {
 	self->canceled();
 }
 
-void QProgressDialog_connect_Canceled(QProgressDialog* self, void* slot) {
+void QProgressDialog_connect_Canceled(QProgressDialog* self, intptr_t slot) {
 	QProgressDialog::connect(self, static_cast<void (QProgressDialog::*)()>(&QProgressDialog::canceled), self, [=]() {
 		miqt_exec_callback_QProgressDialog_Canceled(slot);
 	});

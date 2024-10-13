@@ -46,13 +46,13 @@ QRect* QDesktopWidget_ScreenGeometryWithPoint(const QDesktopWidget* self, QPoint
 QRect* QDesktopWidget_AvailableGeometry2(const QDesktopWidget* self);
 QRect* QDesktopWidget_AvailableGeometryWithPoint(const QDesktopWidget* self, QPoint* point);
 void QDesktopWidget_Resized(QDesktopWidget* self, int param1);
-void QDesktopWidget_connect_Resized(QDesktopWidget* self, void* slot);
+void QDesktopWidget_connect_Resized(QDesktopWidget* self, intptr_t slot);
 void QDesktopWidget_WorkAreaResized(QDesktopWidget* self, int param1);
-void QDesktopWidget_connect_WorkAreaResized(QDesktopWidget* self, void* slot);
+void QDesktopWidget_connect_WorkAreaResized(QDesktopWidget* self, intptr_t slot);
 void QDesktopWidget_ScreenCountChanged(QDesktopWidget* self, int param1);
-void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, void* slot);
+void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, intptr_t slot);
 void QDesktopWidget_PrimaryScreenChanged(QDesktopWidget* self);
-void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, void* slot);
+void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, intptr_t slot);
 struct miqt_string* QDesktopWidget_Tr2(const char* s, const char* c);
 struct miqt_string* QDesktopWidget_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QDesktopWidget_TrUtf82(const char* s, const char* c);

@@ -603,12 +603,12 @@ func (this *QListWidget) ItemPressed(item *QListWidgetItem) {
 	C.QListWidget_ItemPressed(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemPressed(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemPressed
-func miqt_exec_callback_QListWidget_ItemPressed(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemPressed(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -623,12 +623,12 @@ func (this *QListWidget) ItemClicked(item *QListWidgetItem) {
 	C.QListWidget_ItemClicked(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemClicked(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemClicked
-func miqt_exec_callback_QListWidget_ItemClicked(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemClicked(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -643,12 +643,12 @@ func (this *QListWidget) ItemDoubleClicked(item *QListWidgetItem) {
 	C.QListWidget_ItemDoubleClicked(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemDoubleClicked(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemDoubleClicked
-func miqt_exec_callback_QListWidget_ItemDoubleClicked(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -663,12 +663,12 @@ func (this *QListWidget) ItemActivated(item *QListWidgetItem) {
 	C.QListWidget_ItemActivated(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemActivated(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemActivated
-func miqt_exec_callback_QListWidget_ItemActivated(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemActivated(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -683,12 +683,12 @@ func (this *QListWidget) ItemEntered(item *QListWidgetItem) {
 	C.QListWidget_ItemEntered(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemEntered(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemEntered
-func miqt_exec_callback_QListWidget_ItemEntered(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemEntered(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -703,12 +703,12 @@ func (this *QListWidget) ItemChanged(item *QListWidgetItem) {
 	C.QListWidget_ItemChanged(this.h, item.cPointer())
 }
 func (this *QListWidget) OnItemChanged(slot func(item *QListWidgetItem)) {
-	C.QListWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemChanged
-func miqt_exec_callback_QListWidget_ItemChanged(cb *C.void, item *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QListWidgetItem))
+func miqt_exec_callback_QListWidget_ItemChanged(cb C.intptr_t, item *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -723,12 +723,12 @@ func (this *QListWidget) CurrentItemChanged(current *QListWidgetItem, previous *
 	C.QListWidget_CurrentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QListWidget) OnCurrentItemChanged(slot func(current *QListWidgetItem, previous *QListWidgetItem)) {
-	C.QListWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_CurrentItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_CurrentItemChanged
-func miqt_exec_callback_QListWidget_CurrentItemChanged(cb *C.void, current *C.QListWidgetItem, previous *C.QListWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QListWidgetItem, previous *QListWidgetItem))
+func miqt_exec_callback_QListWidget_CurrentItemChanged(cb C.intptr_t, current *C.QListWidgetItem, previous *C.QListWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QListWidgetItem, previous *QListWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -746,12 +746,12 @@ func (this *QListWidget) CurrentTextChanged(currentText string) {
 	C.QListWidget_CurrentTextChanged(this.h, (*C.struct_miqt_string)(currentText_ms))
 }
 func (this *QListWidget) OnCurrentTextChanged(slot func(currentText string)) {
-	C.QListWidget_connect_CurrentTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_CurrentTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_CurrentTextChanged
-func miqt_exec_callback_QListWidget_CurrentTextChanged(cb *C.void, currentText *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(currentText string))
+func miqt_exec_callback_QListWidget_CurrentTextChanged(cb C.intptr_t, currentText *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -769,12 +769,12 @@ func (this *QListWidget) CurrentRowChanged(currentRow int) {
 	C.QListWidget_CurrentRowChanged(this.h, (C.int)(currentRow))
 }
 func (this *QListWidget) OnCurrentRowChanged(slot func(currentRow int)) {
-	C.QListWidget_connect_CurrentRowChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_CurrentRowChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_CurrentRowChanged
-func miqt_exec_callback_QListWidget_CurrentRowChanged(cb *C.void, currentRow C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(currentRow int))
+func miqt_exec_callback_QListWidget_CurrentRowChanged(cb C.intptr_t, currentRow C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentRow int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -789,12 +789,12 @@ func (this *QListWidget) ItemSelectionChanged() {
 	C.QListWidget_ItemSelectionChanged(this.h)
 }
 func (this *QListWidget) OnItemSelectionChanged(slot func()) {
-	C.QListWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListWidget_connect_ItemSelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_ItemSelectionChanged
-func miqt_exec_callback_QListWidget_ItemSelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QListWidget_ItemSelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

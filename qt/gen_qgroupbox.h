@@ -45,15 +45,15 @@ void QGroupBox_SetCheckable(QGroupBox* self, bool checkable);
 bool QGroupBox_IsChecked(const QGroupBox* self);
 void QGroupBox_SetChecked(QGroupBox* self, bool checked);
 void QGroupBox_Clicked(QGroupBox* self);
-void QGroupBox_connect_Clicked(QGroupBox* self, void* slot);
+void QGroupBox_connect_Clicked(QGroupBox* self, intptr_t slot);
 void QGroupBox_Toggled(QGroupBox* self, bool param1);
-void QGroupBox_connect_Toggled(QGroupBox* self, void* slot);
+void QGroupBox_connect_Toggled(QGroupBox* self, intptr_t slot);
 struct miqt_string* QGroupBox_Tr2(const char* s, const char* c);
 struct miqt_string* QGroupBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QGroupBox_TrUtf82(const char* s, const char* c);
 struct miqt_string* QGroupBox_TrUtf83(const char* s, const char* c, int n);
 void QGroupBox_Clicked1(QGroupBox* self, bool checked);
-void QGroupBox_connect_Clicked1(QGroupBox* self, void* slot);
+void QGroupBox_connect_Clicked1(QGroupBox* self, intptr_t slot);
 void QGroupBox_Delete(QGroupBox* self);
 
 #ifdef __cplusplus

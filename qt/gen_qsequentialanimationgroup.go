@@ -97,12 +97,12 @@ func (this *QSequentialAnimationGroup) CurrentAnimationChanged(current *QAbstrac
 	C.QSequentialAnimationGroup_CurrentAnimationChanged(this.h, current.cPointer())
 }
 func (this *QSequentialAnimationGroup) OnCurrentAnimationChanged(slot func(current *QAbstractAnimation)) {
-	C.QSequentialAnimationGroup_connect_CurrentAnimationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSequentialAnimationGroup_connect_CurrentAnimationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged
-func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb *C.void, current *C.QAbstractAnimation) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QAbstractAnimation))
+func miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(cb C.intptr_t, current *C.QAbstractAnimation) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QAbstractAnimation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

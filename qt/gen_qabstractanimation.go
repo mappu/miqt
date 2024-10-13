@@ -135,12 +135,12 @@ func (this *QAbstractAnimation) Finished() {
 	C.QAbstractAnimation_Finished(this.h)
 }
 func (this *QAbstractAnimation) OnFinished(slot func()) {
-	C.QAbstractAnimation_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractAnimation_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_Finished
-func miqt_exec_callback_QAbstractAnimation_Finished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractAnimation_Finished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -152,12 +152,12 @@ func (this *QAbstractAnimation) StateChanged(newState QAbstractAnimation__State,
 	C.QAbstractAnimation_StateChanged(this.h, (C.int)(newState), (C.int)(oldState))
 }
 func (this *QAbstractAnimation) OnStateChanged(slot func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
-	C.QAbstractAnimation_connect_StateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractAnimation_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_StateChanged
-func miqt_exec_callback_QAbstractAnimation_StateChanged(cb *C.void, newState C.int, oldState C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
+func miqt_exec_callback_QAbstractAnimation_StateChanged(cb C.intptr_t, newState C.int, oldState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -174,12 +174,12 @@ func (this *QAbstractAnimation) CurrentLoopChanged(currentLoop int) {
 	C.QAbstractAnimation_CurrentLoopChanged(this.h, (C.int)(currentLoop))
 }
 func (this *QAbstractAnimation) OnCurrentLoopChanged(slot func(currentLoop int)) {
-	C.QAbstractAnimation_connect_CurrentLoopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractAnimation_connect_CurrentLoopChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged
-func miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(cb *C.void, currentLoop C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(currentLoop int))
+func miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(cb C.intptr_t, currentLoop C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentLoop int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -194,12 +194,12 @@ func (this *QAbstractAnimation) DirectionChanged(param1 QAbstractAnimation__Dire
 	C.QAbstractAnimation_DirectionChanged(this.h, (C.int)(param1))
 }
 func (this *QAbstractAnimation) OnDirectionChanged(slot func(param1 QAbstractAnimation__Direction)) {
-	C.QAbstractAnimation_connect_DirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractAnimation_connect_DirectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_DirectionChanged
-func miqt_exec_callback_QAbstractAnimation_DirectionChanged(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 QAbstractAnimation__Direction))
+func miqt_exec_callback_QAbstractAnimation_DirectionChanged(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 QAbstractAnimation__Direction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -391,12 +391,12 @@ func (this *QAnimationDriver) Started() {
 	C.QAnimationDriver_Started(this.h)
 }
 func (this *QAnimationDriver) OnStarted(slot func()) {
-	C.QAnimationDriver_connect_Started(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAnimationDriver_connect_Started(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationDriver_Started
-func miqt_exec_callback_QAnimationDriver_Started(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAnimationDriver_Started(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -408,12 +408,12 @@ func (this *QAnimationDriver) Stopped() {
 	C.QAnimationDriver_Stopped(this.h)
 }
 func (this *QAnimationDriver) OnStopped(slot func()) {
-	C.QAnimationDriver_connect_Stopped(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAnimationDriver_connect_Stopped(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationDriver_Stopped
-func miqt_exec_callback_QAnimationDriver_Stopped(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAnimationDriver_Stopped(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

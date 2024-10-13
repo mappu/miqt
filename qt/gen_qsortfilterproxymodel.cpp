@@ -310,7 +310,7 @@ void QSortFilterProxyModel_DynamicSortFilterChanged(QSortFilterProxyModel* self,
 	self->dynamicSortFilterChanged(dynamicSortFilter);
 }
 
-void QSortFilterProxyModel_connect_DynamicSortFilterChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_DynamicSortFilterChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::dynamicSortFilterChanged), self, [=](bool dynamicSortFilter) {
 		bool sigval1 = dynamicSortFilter;
 		miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(slot, sigval1);
@@ -321,7 +321,7 @@ void QSortFilterProxyModel_FilterCaseSensitivityChanged(QSortFilterProxyModel* s
 	self->filterCaseSensitivityChanged(static_cast<Qt::CaseSensitivity>(filterCaseSensitivity));
 }
 
-void QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::filterCaseSensitivityChanged), self, [=](Qt::CaseSensitivity filterCaseSensitivity) {
 		Qt::CaseSensitivity filterCaseSensitivity_ret = filterCaseSensitivity;
 		int sigval1 = static_cast<int>(filterCaseSensitivity_ret);
@@ -333,7 +333,7 @@ void QSortFilterProxyModel_SortCaseSensitivityChanged(QSortFilterProxyModel* sel
 	self->sortCaseSensitivityChanged(static_cast<Qt::CaseSensitivity>(sortCaseSensitivity));
 }
 
-void QSortFilterProxyModel_connect_SortCaseSensitivityChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_SortCaseSensitivityChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(Qt::CaseSensitivity)>(&QSortFilterProxyModel::sortCaseSensitivityChanged), self, [=](Qt::CaseSensitivity sortCaseSensitivity) {
 		Qt::CaseSensitivity sortCaseSensitivity_ret = sortCaseSensitivity;
 		int sigval1 = static_cast<int>(sortCaseSensitivity_ret);
@@ -345,7 +345,7 @@ void QSortFilterProxyModel_SortLocaleAwareChanged(QSortFilterProxyModel* self, b
 	self->sortLocaleAwareChanged(sortLocaleAware);
 }
 
-void QSortFilterProxyModel_connect_SortLocaleAwareChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_SortLocaleAwareChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::sortLocaleAwareChanged), self, [=](bool sortLocaleAware) {
 		bool sigval1 = sortLocaleAware;
 		miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(slot, sigval1);
@@ -356,7 +356,7 @@ void QSortFilterProxyModel_SortRoleChanged(QSortFilterProxyModel* self, int sort
 	self->sortRoleChanged(static_cast<int>(sortRole));
 }
 
-void QSortFilterProxyModel_connect_SortRoleChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_SortRoleChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(int)>(&QSortFilterProxyModel::sortRoleChanged), self, [=](int sortRole) {
 		int sigval1 = sortRole;
 		miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(slot, sigval1);
@@ -367,7 +367,7 @@ void QSortFilterProxyModel_FilterRoleChanged(QSortFilterProxyModel* self, int fi
 	self->filterRoleChanged(static_cast<int>(filterRole));
 }
 
-void QSortFilterProxyModel_connect_FilterRoleChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_FilterRoleChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(int)>(&QSortFilterProxyModel::filterRoleChanged), self, [=](int filterRole) {
 		int sigval1 = filterRole;
 		miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(slot, sigval1);
@@ -378,7 +378,7 @@ void QSortFilterProxyModel_RecursiveFilteringEnabledChanged(QSortFilterProxyMode
 	self->recursiveFilteringEnabledChanged(recursiveFilteringEnabled);
 }
 
-void QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(QSortFilterProxyModel* self, void* slot) {
+void QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(QSortFilterProxyModel* self, intptr_t slot) {
 	QSortFilterProxyModel::connect(self, static_cast<void (QSortFilterProxyModel::*)(bool)>(&QSortFilterProxyModel::recursiveFilteringEnabledChanged), self, [=](bool recursiveFilteringEnabled) {
 		bool sigval1 = recursiveFilteringEnabled;
 		miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(slot, sigval1);

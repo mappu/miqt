@@ -108,7 +108,7 @@ void QToolButton_Triggered(QToolButton* self, QAction* param1) {
 	self->triggered(param1);
 }
 
-void QToolButton_connect_Triggered(QToolButton* self, void* slot) {
+void QToolButton_connect_Triggered(QToolButton* self, intptr_t slot) {
 	QToolButton::connect(self, static_cast<void (QToolButton::*)(QAction*)>(&QToolButton::triggered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
 		miqt_exec_callback_QToolButton_Triggered(slot, sigval1);

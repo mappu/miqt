@@ -303,12 +303,12 @@ func (this *QTreeView) Expanded(index *QModelIndex) {
 	C.QTreeView_Expanded(this.h, index.cPointer())
 }
 func (this *QTreeView) OnExpanded(slot func(index *QModelIndex)) {
-	C.QTreeView_connect_Expanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeView_connect_Expanded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeView_Expanded
-func miqt_exec_callback_QTreeView_Expanded(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QTreeView_Expanded(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -323,12 +323,12 @@ func (this *QTreeView) Collapsed(index *QModelIndex) {
 	C.QTreeView_Collapsed(this.h, index.cPointer())
 }
 func (this *QTreeView) OnCollapsed(slot func(index *QModelIndex)) {
-	C.QTreeView_connect_Collapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeView_connect_Collapsed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeView_Collapsed
-func miqt_exec_callback_QTreeView_Collapsed(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QTreeView_Collapsed(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

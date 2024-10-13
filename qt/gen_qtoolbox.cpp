@@ -139,7 +139,7 @@ void QToolBox_CurrentChanged(QToolBox* self, int index) {
 	self->currentChanged(static_cast<int>(index));
 }
 
-void QToolBox_connect_CurrentChanged(QToolBox* self, void* slot) {
+void QToolBox_connect_CurrentChanged(QToolBox* self, intptr_t slot) {
 	QToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QToolBox_CurrentChanged(slot, sigval1);

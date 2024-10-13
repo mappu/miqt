@@ -155,12 +155,12 @@ func (this *QToolButton) Triggered(param1 *QAction) {
 	C.QToolButton_Triggered(this.h, param1.cPointer())
 }
 func (this *QToolButton) OnTriggered(slot func(param1 *QAction)) {
-	C.QToolButton_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolButton_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolButton_Triggered
-func miqt_exec_callback_QToolButton_Triggered(cb *C.void, param1 *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+func miqt_exec_callback_QToolButton_Triggered(cb C.intptr_t, param1 *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

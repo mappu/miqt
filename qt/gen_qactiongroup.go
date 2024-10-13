@@ -154,12 +154,12 @@ func (this *QActionGroup) Triggered(param1 *QAction) {
 	C.QActionGroup_Triggered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnTriggered(slot func(param1 *QAction)) {
-	C.QActionGroup_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QActionGroup_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QActionGroup_Triggered
-func miqt_exec_callback_QActionGroup_Triggered(cb *C.void, param1 *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -174,12 +174,12 @@ func (this *QActionGroup) Hovered(param1 *QAction) {
 	C.QActionGroup_Hovered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnHovered(slot func(param1 *QAction)) {
-	C.QActionGroup_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QActionGroup_connect_Hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QActionGroup_Hovered
-func miqt_exec_callback_QActionGroup_Hovered(cb *C.void, param1 *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QAction))
+func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -52,7 +52,7 @@ void QFileSystemModel_RootPathChanged(QFileSystemModel* self, struct miqt_string
 	self->rootPathChanged(newPath_QString);
 }
 
-void QFileSystemModel_connect_RootPathChanged(QFileSystemModel* self, void* slot) {
+void QFileSystemModel_connect_RootPathChanged(QFileSystemModel* self, intptr_t slot) {
 	QFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::rootPathChanged), self, [=](const QString& newPath) {
 		const QString newPath_ret = newPath;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -69,7 +69,7 @@ void QFileSystemModel_FileRenamed(QFileSystemModel* self, struct miqt_string* pa
 	self->fileRenamed(path_QString, oldName_QString, newName_QString);
 }
 
-void QFileSystemModel_connect_FileRenamed(QFileSystemModel* self, void* slot) {
+void QFileSystemModel_connect_FileRenamed(QFileSystemModel* self, intptr_t slot) {
 	QFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&, const QString&, const QString&)>(&QFileSystemModel::fileRenamed), self, [=](const QString& path, const QString& oldName, const QString& newName) {
 		const QString path_ret = path;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -92,7 +92,7 @@ void QFileSystemModel_DirectoryLoaded(QFileSystemModel* self, struct miqt_string
 	self->directoryLoaded(path_QString);
 }
 
-void QFileSystemModel_connect_DirectoryLoaded(QFileSystemModel* self, void* slot) {
+void QFileSystemModel_connect_DirectoryLoaded(QFileSystemModel* self, intptr_t slot) {
 	QFileSystemModel::connect(self, static_cast<void (QFileSystemModel::*)(const QString&)>(&QFileSystemModel::directoryLoaded), self, [=](const QString& path) {
 		const QString path_ret = path;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

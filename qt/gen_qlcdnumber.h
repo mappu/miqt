@@ -54,7 +54,7 @@ void QLCDNumber_SetOctMode(QLCDNumber* self);
 void QLCDNumber_SetBinMode(QLCDNumber* self);
 void QLCDNumber_SetSmallDecimalPoint(QLCDNumber* self, bool smallDecimalPoint);
 void QLCDNumber_Overflow(QLCDNumber* self);
-void QLCDNumber_connect_Overflow(QLCDNumber* self, void* slot);
+void QLCDNumber_connect_Overflow(QLCDNumber* self, intptr_t slot);
 struct miqt_string* QLCDNumber_Tr2(const char* s, const char* c);
 struct miqt_string* QLCDNumber_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QLCDNumber_TrUtf82(const char* s, const char* c);

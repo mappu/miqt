@@ -49,7 +49,7 @@ void QOffscreenSurface_SetScreen(QOffscreenSurface* self, QScreen* screen);
 void* QOffscreenSurface_NativeHandle(const QOffscreenSurface* self);
 void QOffscreenSurface_SetNativeHandle(QOffscreenSurface* self, void* handle);
 void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen);
-void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot);
+void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, intptr_t slot);
 struct miqt_string* QOffscreenSurface_Tr2(const char* s, const char* c);
 struct miqt_string* QOffscreenSurface_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QOffscreenSurface_TrUtf82(const char* s, const char* c);

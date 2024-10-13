@@ -362,12 +362,12 @@ func (this *QDateTimeEdit) DateTimeChanged(dateTime *QDateTime) {
 	C.QDateTimeEdit_DateTimeChanged(this.h, dateTime.cPointer())
 }
 func (this *QDateTimeEdit) OnDateTimeChanged(slot func(dateTime *QDateTime)) {
-	C.QDateTimeEdit_connect_DateTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDateTimeEdit_connect_DateTimeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_DateTimeChanged
-func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb *C.void, dateTime *C.QDateTime) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dateTime *QDateTime))
+func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb C.intptr_t, dateTime *C.QDateTime) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dateTime *QDateTime))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -382,12 +382,12 @@ func (this *QDateTimeEdit) TimeChanged(time *QTime) {
 	C.QDateTimeEdit_TimeChanged(this.h, time.cPointer())
 }
 func (this *QDateTimeEdit) OnTimeChanged(slot func(time *QTime)) {
-	C.QDateTimeEdit_connect_TimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDateTimeEdit_connect_TimeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_TimeChanged
-func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb *C.void, time *C.QTime) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(time *QTime))
+func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb C.intptr_t, time *C.QTime) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(time *QTime))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -402,12 +402,12 @@ func (this *QDateTimeEdit) DateChanged(date *QDate) {
 	C.QDateTimeEdit_DateChanged(this.h, date.cPointer())
 }
 func (this *QDateTimeEdit) OnDateChanged(slot func(date *QDate)) {
-	C.QDateTimeEdit_connect_DateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDateTimeEdit_connect_DateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_DateChanged
-func miqt_exec_callback_QDateTimeEdit_DateChanged(cb *C.void, date *C.QDate) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+func miqt_exec_callback_QDateTimeEdit_DateChanged(cb C.intptr_t, date *C.QDate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(date *QDate))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -567,12 +567,12 @@ func (this *QTimeEdit) UserTimeChanged(time *QTime) {
 	C.QTimeEdit_UserTimeChanged(this.h, time.cPointer())
 }
 func (this *QTimeEdit) OnUserTimeChanged(slot func(time *QTime)) {
-	C.QTimeEdit_connect_UserTimeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTimeEdit_connect_UserTimeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_UserTimeChanged
-func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb *C.void, time *C.QTime) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(time *QTime))
+func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb C.intptr_t, time *C.QTime) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(time *QTime))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -720,12 +720,12 @@ func (this *QDateEdit) UserDateChanged(date *QDate) {
 	C.QDateEdit_UserDateChanged(this.h, date.cPointer())
 }
 func (this *QDateEdit) OnUserDateChanged(slot func(date *QDate)) {
-	C.QDateEdit_connect_UserDateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDateEdit_connect_UserDateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_UserDateChanged
-func miqt_exec_callback_QDateEdit_UserDateChanged(cb *C.void, date *C.QDate) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+func miqt_exec_callback_QDateEdit_UserDateChanged(cb C.intptr_t, date *C.QDate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(date *QDate))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

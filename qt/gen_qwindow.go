@@ -599,12 +599,12 @@ func (this *QWindow) ScreenChanged(screen *QScreen) {
 	C.QWindow_ScreenChanged(this.h, screen.cPointer())
 }
 func (this *QWindow) OnScreenChanged(slot func(screen *QScreen)) {
-	C.QWindow_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_ScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_ScreenChanged
-func miqt_exec_callback_QWindow_ScreenChanged(cb *C.void, screen *C.QScreen) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+func miqt_exec_callback_QWindow_ScreenChanged(cb C.intptr_t, screen *C.QScreen) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(screen *QScreen))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -619,12 +619,12 @@ func (this *QWindow) ModalityChanged(modality WindowModality) {
 	C.QWindow_ModalityChanged(this.h, (C.int)(modality))
 }
 func (this *QWindow) OnModalityChanged(slot func(modality WindowModality)) {
-	C.QWindow_connect_ModalityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_ModalityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_ModalityChanged
-func miqt_exec_callback_QWindow_ModalityChanged(cb *C.void, modality C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(modality WindowModality))
+func miqt_exec_callback_QWindow_ModalityChanged(cb C.intptr_t, modality C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(modality WindowModality))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -639,12 +639,12 @@ func (this *QWindow) WindowStateChanged(windowState WindowState) {
 	C.QWindow_WindowStateChanged(this.h, (C.int)(windowState))
 }
 func (this *QWindow) OnWindowStateChanged(slot func(windowState WindowState)) {
-	C.QWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_WindowStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_WindowStateChanged
-func miqt_exec_callback_QWindow_WindowStateChanged(cb *C.void, windowState C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(windowState WindowState))
+func miqt_exec_callback_QWindow_WindowStateChanged(cb C.intptr_t, windowState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(windowState WindowState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -661,12 +661,12 @@ func (this *QWindow) WindowTitleChanged(title string) {
 	C.QWindow_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
 }
 func (this *QWindow) OnWindowTitleChanged(slot func(title string)) {
-	C.QWindow_connect_WindowTitleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_WindowTitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_WindowTitleChanged
-func miqt_exec_callback_QWindow_WindowTitleChanged(cb *C.void, title *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(title string))
+func miqt_exec_callback_QWindow_WindowTitleChanged(cb C.intptr_t, title *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -684,12 +684,12 @@ func (this *QWindow) XChanged(arg int) {
 	C.QWindow_XChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnXChanged(slot func(arg int)) {
-	C.QWindow_connect_XChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_XChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_XChanged
-func miqt_exec_callback_QWindow_XChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_XChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -704,12 +704,12 @@ func (this *QWindow) YChanged(arg int) {
 	C.QWindow_YChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnYChanged(slot func(arg int)) {
-	C.QWindow_connect_YChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_YChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_YChanged
-func miqt_exec_callback_QWindow_YChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_YChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -724,12 +724,12 @@ func (this *QWindow) WidthChanged(arg int) {
 	C.QWindow_WidthChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnWidthChanged(slot func(arg int)) {
-	C.QWindow_connect_WidthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_WidthChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_WidthChanged
-func miqt_exec_callback_QWindow_WidthChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_WidthChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -744,12 +744,12 @@ func (this *QWindow) HeightChanged(arg int) {
 	C.QWindow_HeightChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnHeightChanged(slot func(arg int)) {
-	C.QWindow_connect_HeightChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_HeightChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_HeightChanged
-func miqt_exec_callback_QWindow_HeightChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_HeightChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -764,12 +764,12 @@ func (this *QWindow) MinimumWidthChanged(arg int) {
 	C.QWindow_MinimumWidthChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnMinimumWidthChanged(slot func(arg int)) {
-	C.QWindow_connect_MinimumWidthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_MinimumWidthChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_MinimumWidthChanged
-func miqt_exec_callback_QWindow_MinimumWidthChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_MinimumWidthChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -784,12 +784,12 @@ func (this *QWindow) MinimumHeightChanged(arg int) {
 	C.QWindow_MinimumHeightChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnMinimumHeightChanged(slot func(arg int)) {
-	C.QWindow_connect_MinimumHeightChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_MinimumHeightChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_MinimumHeightChanged
-func miqt_exec_callback_QWindow_MinimumHeightChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_MinimumHeightChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -804,12 +804,12 @@ func (this *QWindow) MaximumWidthChanged(arg int) {
 	C.QWindow_MaximumWidthChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnMaximumWidthChanged(slot func(arg int)) {
-	C.QWindow_connect_MaximumWidthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_MaximumWidthChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_MaximumWidthChanged
-func miqt_exec_callback_QWindow_MaximumWidthChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_MaximumWidthChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -824,12 +824,12 @@ func (this *QWindow) MaximumHeightChanged(arg int) {
 	C.QWindow_MaximumHeightChanged(this.h, (C.int)(arg))
 }
 func (this *QWindow) OnMaximumHeightChanged(slot func(arg int)) {
-	C.QWindow_connect_MaximumHeightChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_MaximumHeightChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_MaximumHeightChanged
-func miqt_exec_callback_QWindow_MaximumHeightChanged(cb *C.void, arg C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg int))
+func miqt_exec_callback_QWindow_MaximumHeightChanged(cb C.intptr_t, arg C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -844,12 +844,12 @@ func (this *QWindow) VisibleChanged(arg bool) {
 	C.QWindow_VisibleChanged(this.h, (C.bool)(arg))
 }
 func (this *QWindow) OnVisibleChanged(slot func(arg bool)) {
-	C.QWindow_connect_VisibleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_VisibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_VisibleChanged
-func miqt_exec_callback_QWindow_VisibleChanged(cb *C.void, arg C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(arg bool))
+func miqt_exec_callback_QWindow_VisibleChanged(cb C.intptr_t, arg C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(arg bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -864,12 +864,12 @@ func (this *QWindow) VisibilityChanged(visibility QWindow__Visibility) {
 	C.QWindow_VisibilityChanged(this.h, (C.int)(visibility))
 }
 func (this *QWindow) OnVisibilityChanged(slot func(visibility QWindow__Visibility)) {
-	C.QWindow_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_VisibilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_VisibilityChanged
-func miqt_exec_callback_QWindow_VisibilityChanged(cb *C.void, visibility C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visibility QWindow__Visibility))
+func miqt_exec_callback_QWindow_VisibilityChanged(cb C.intptr_t, visibility C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(visibility QWindow__Visibility))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -884,12 +884,12 @@ func (this *QWindow) ActiveChanged() {
 	C.QWindow_ActiveChanged(this.h)
 }
 func (this *QWindow) OnActiveChanged(slot func()) {
-	C.QWindow_connect_ActiveChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_ActiveChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_ActiveChanged
-func miqt_exec_callback_QWindow_ActiveChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QWindow_ActiveChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -901,12 +901,12 @@ func (this *QWindow) ContentOrientationChanged(orientation ScreenOrientation) {
 	C.QWindow_ContentOrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QWindow) OnContentOrientationChanged(slot func(orientation ScreenOrientation)) {
-	C.QWindow_connect_ContentOrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_ContentOrientationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_ContentOrientationChanged
-func miqt_exec_callback_QWindow_ContentOrientationChanged(cb *C.void, orientation C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation ScreenOrientation))
+func miqt_exec_callback_QWindow_ContentOrientationChanged(cb C.intptr_t, orientation C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(orientation ScreenOrientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -921,12 +921,12 @@ func (this *QWindow) FocusObjectChanged(object *QObject) {
 	C.QWindow_FocusObjectChanged(this.h, object.cPointer())
 }
 func (this *QWindow) OnFocusObjectChanged(slot func(object *QObject)) {
-	C.QWindow_connect_FocusObjectChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_FocusObjectChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_FocusObjectChanged
-func miqt_exec_callback_QWindow_FocusObjectChanged(cb *C.void, object *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(object *QObject))
+func miqt_exec_callback_QWindow_FocusObjectChanged(cb C.intptr_t, object *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(object *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -941,12 +941,12 @@ func (this *QWindow) OpacityChanged(opacity float64) {
 	C.QWindow_OpacityChanged(this.h, (C.double)(opacity))
 }
 func (this *QWindow) OnOpacityChanged(slot func(opacity float64)) {
-	C.QWindow_connect_OpacityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_OpacityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_OpacityChanged
-func miqt_exec_callback_QWindow_OpacityChanged(cb *C.void, opacity C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(opacity float64))
+func miqt_exec_callback_QWindow_OpacityChanged(cb C.intptr_t, opacity C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(opacity float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -961,12 +961,12 @@ func (this *QWindow) TransientParentChanged(transientParent *QWindow) {
 	C.QWindow_TransientParentChanged(this.h, transientParent.cPointer())
 }
 func (this *QWindow) OnTransientParentChanged(slot func(transientParent *QWindow)) {
-	C.QWindow_connect_TransientParentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWindow_connect_TransientParentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_TransientParentChanged
-func miqt_exec_callback_QWindow_TransientParentChanged(cb *C.void, transientParent *C.QWindow) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(transientParent *QWindow))
+func miqt_exec_callback_QWindow_TransientParentChanged(cb C.intptr_t, transientParent *C.QWindow) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(transientParent *QWindow))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

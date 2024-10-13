@@ -81,12 +81,12 @@ func (this *QAbstractState) ActiveChanged(active bool) {
 	C.QAbstractState_ActiveChanged(this.h, (C.bool)(active))
 }
 func (this *QAbstractState) OnActiveChanged(slot func(active bool)) {
-	C.QAbstractState_connect_ActiveChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractState_connect_ActiveChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractState_ActiveChanged
-func miqt_exec_callback_QAbstractState_ActiveChanged(cb *C.void, active C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(active bool))
+func miqt_exec_callback_QAbstractState_ActiveChanged(cb C.intptr_t, active C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(active bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

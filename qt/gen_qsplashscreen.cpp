@@ -106,7 +106,7 @@ void QSplashScreen_MessageChanged(QSplashScreen* self, struct miqt_string* messa
 	self->messageChanged(message_QString);
 }
 
-void QSplashScreen_connect_MessageChanged(QSplashScreen* self, void* slot) {
+void QSplashScreen_connect_MessageChanged(QSplashScreen* self, intptr_t slot) {
 	QSplashScreen::connect(self, static_cast<void (QSplashScreen::*)(const QString&)>(&QSplashScreen::messageChanged), self, [=](const QString& message) {
 		const QString message_ret = message;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

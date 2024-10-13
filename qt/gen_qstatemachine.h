@@ -71,7 +71,7 @@ void QStateMachine_Start(QStateMachine* self);
 void QStateMachine_Stop(QStateMachine* self);
 void QStateMachine_SetRunning(QStateMachine* self, bool running);
 void QStateMachine_RunningChanged(QStateMachine* self, bool running);
-void QStateMachine_connect_RunningChanged(QStateMachine* self, void* slot);
+void QStateMachine_connect_RunningChanged(QStateMachine* self, intptr_t slot);
 struct miqt_string* QStateMachine_Tr2(const char* s, const char* c);
 struct miqt_string* QStateMachine_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QStateMachine_TrUtf82(const char* s, const char* c);

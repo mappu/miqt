@@ -53,7 +53,7 @@ int QToolBox_Count(const QToolBox* self);
 void QToolBox_SetCurrentIndex(QToolBox* self, int index);
 void QToolBox_SetCurrentWidget(QToolBox* self, QWidget* widget);
 void QToolBox_CurrentChanged(QToolBox* self, int index);
-void QToolBox_connect_CurrentChanged(QToolBox* self, void* slot);
+void QToolBox_connect_CurrentChanged(QToolBox* self, intptr_t slot);
 struct miqt_string* QToolBox_Tr2(const char* s, const char* c);
 struct miqt_string* QToolBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QToolBox_TrUtf82(const char* s, const char* c);

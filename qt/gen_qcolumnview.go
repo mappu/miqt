@@ -81,12 +81,12 @@ func (this *QColumnView) UpdatePreviewWidget(index *QModelIndex) {
 	C.QColumnView_UpdatePreviewWidget(this.h, index.cPointer())
 }
 func (this *QColumnView) OnUpdatePreviewWidget(slot func(index *QModelIndex)) {
-	C.QColumnView_connect_UpdatePreviewWidget(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QColumnView_connect_UpdatePreviewWidget(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_UpdatePreviewWidget
-func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

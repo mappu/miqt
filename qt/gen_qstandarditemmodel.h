@@ -201,7 +201,7 @@ struct miqt_array* QStandardItemModel_MimeTypes(const QStandardItemModel* self);
 QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
 bool QStandardItemModel_DropMimeData(QStandardItemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 void QStandardItemModel_ItemChanged(QStandardItemModel* self, QStandardItem* item);
-void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, void* slot);
+void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, intptr_t slot);
 struct miqt_string* QStandardItemModel_Tr2(const char* s, const char* c);
 struct miqt_string* QStandardItemModel_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QStandardItemModel_TrUtf82(const char* s, const char* c);

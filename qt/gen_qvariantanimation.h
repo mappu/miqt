@@ -45,7 +45,7 @@ void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs);
 QEasingCurve* QVariantAnimation_EasingCurve(const QVariantAnimation* self);
 void QVariantAnimation_SetEasingCurve(QVariantAnimation* self, QEasingCurve* easing);
 void QVariantAnimation_ValueChanged(QVariantAnimation* self, QVariant* value);
-void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, void* slot);
+void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, intptr_t slot);
 struct miqt_string* QVariantAnimation_Tr2(const char* s, const char* c);
 struct miqt_string* QVariantAnimation_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QVariantAnimation_TrUtf82(const char* s, const char* c);
