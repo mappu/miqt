@@ -143,7 +143,7 @@ void QGraphicsScale_OriginChanged(QGraphicsScale* self) {
 	self->originChanged();
 }
 
-void QGraphicsScale_connect_OriginChanged(QGraphicsScale* self, void* slot) {
+void QGraphicsScale_connect_OriginChanged(QGraphicsScale* self, intptr_t slot) {
 	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::originChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_OriginChanged(slot);
 	});
@@ -153,7 +153,7 @@ void QGraphicsScale_XScaleChanged(QGraphicsScale* self) {
 	self->xScaleChanged();
 }
 
-void QGraphicsScale_connect_XScaleChanged(QGraphicsScale* self, void* slot) {
+void QGraphicsScale_connect_XScaleChanged(QGraphicsScale* self, intptr_t slot) {
 	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::xScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_XScaleChanged(slot);
 	});
@@ -163,7 +163,7 @@ void QGraphicsScale_YScaleChanged(QGraphicsScale* self) {
 	self->yScaleChanged();
 }
 
-void QGraphicsScale_connect_YScaleChanged(QGraphicsScale* self, void* slot) {
+void QGraphicsScale_connect_YScaleChanged(QGraphicsScale* self, intptr_t slot) {
 	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::yScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_YScaleChanged(slot);
 	});
@@ -173,7 +173,7 @@ void QGraphicsScale_ZScaleChanged(QGraphicsScale* self) {
 	self->zScaleChanged();
 }
 
-void QGraphicsScale_connect_ZScaleChanged(QGraphicsScale* self, void* slot) {
+void QGraphicsScale_connect_ZScaleChanged(QGraphicsScale* self, intptr_t slot) {
 	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::zScaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_ZScaleChanged(slot);
 	});
@@ -183,7 +183,7 @@ void QGraphicsScale_ScaleChanged(QGraphicsScale* self) {
 	self->scaleChanged();
 }
 
-void QGraphicsScale_connect_ScaleChanged(QGraphicsScale* self, void* slot) {
+void QGraphicsScale_connect_ScaleChanged(QGraphicsScale* self, intptr_t slot) {
 	QGraphicsScale::connect(self, static_cast<void (QGraphicsScale::*)()>(&QGraphicsScale::scaleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScale_ScaleChanged(slot);
 	});
@@ -288,7 +288,7 @@ void QGraphicsRotation_OriginChanged(QGraphicsRotation* self) {
 	self->originChanged();
 }
 
-void QGraphicsRotation_connect_OriginChanged(QGraphicsRotation* self, void* slot) {
+void QGraphicsRotation_connect_OriginChanged(QGraphicsRotation* self, intptr_t slot) {
 	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::originChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_OriginChanged(slot);
 	});
@@ -298,7 +298,7 @@ void QGraphicsRotation_AngleChanged(QGraphicsRotation* self) {
 	self->angleChanged();
 }
 
-void QGraphicsRotation_connect_AngleChanged(QGraphicsRotation* self, void* slot) {
+void QGraphicsRotation_connect_AngleChanged(QGraphicsRotation* self, intptr_t slot) {
 	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::angleChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_AngleChanged(slot);
 	});
@@ -308,7 +308,7 @@ void QGraphicsRotation_AxisChanged(QGraphicsRotation* self) {
 	self->axisChanged();
 }
 
-void QGraphicsRotation_connect_AxisChanged(QGraphicsRotation* self, void* slot) {
+void QGraphicsRotation_connect_AxisChanged(QGraphicsRotation* self, intptr_t slot) {
 	QGraphicsRotation::connect(self, static_cast<void (QGraphicsRotation::*)()>(&QGraphicsRotation::axisChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsRotation_AxisChanged(slot);
 	});

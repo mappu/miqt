@@ -546,12 +546,12 @@ func (this *QMessageBox) ButtonClicked(button *QAbstractButton) {
 	C.QMessageBox_ButtonClicked(this.h, button.cPointer())
 }
 func (this *QMessageBox) OnButtonClicked(slot func(button *QAbstractButton)) {
-	C.QMessageBox_connect_ButtonClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMessageBox_connect_ButtonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMessageBox_ButtonClicked
-func miqt_exec_callback_QMessageBox_ButtonClicked(cb *C.void, button *C.QAbstractButton) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(button *QAbstractButton))
+func miqt_exec_callback_QMessageBox_ButtonClicked(cb C.intptr_t, button *C.QAbstractButton) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(button *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

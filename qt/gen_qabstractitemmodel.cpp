@@ -399,7 +399,7 @@ void QAbstractItemModel_DataChanged(QAbstractItemModel* self, QModelIndex* topLe
 	self->dataChanged(*topLeft, *bottomRight);
 }
 
-void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, [=](const QModelIndex& topLeft, const QModelIndex& bottomRight) {
 		const QModelIndex& topLeft_ret = topLeft;
 		// Cast returned reference into pointer
@@ -415,7 +415,7 @@ void QAbstractItemModel_HeaderDataChanged(QAbstractItemModel* self, int orientat
 	self->headerDataChanged(static_cast<Qt::Orientation>(orientation), static_cast<int>(first), static_cast<int>(last));
 }
 
-void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(Qt::Orientation, int, int)>(&QAbstractItemModel::headerDataChanged), self, [=](Qt::Orientation orientation, int first, int last) {
 		Qt::Orientation orientation_ret = orientation;
 		int sigval1 = static_cast<int>(orientation_ret);
@@ -429,7 +429,7 @@ void QAbstractItemModel_LayoutChanged(QAbstractItemModel* self) {
 	self->layoutChanged();
 }
 
-void QAbstractItemModel_connect_LayoutChanged(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutChanged(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=]() {
 		miqt_exec_callback_QAbstractItemModel_LayoutChanged(slot);
 	});
@@ -439,7 +439,7 @@ void QAbstractItemModel_LayoutAboutToBeChanged(QAbstractItemModel* self) {
 	self->layoutAboutToBeChanged();
 }
 
-void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=]() {
 		miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged(slot);
 	});
@@ -593,7 +593,7 @@ void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topL
 	self->dataChanged(*topLeft, *bottomRight, roles_QList);
 }
 
-void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QModelIndex&, const QModelIndex&, const QVector<int>&)>(&QAbstractItemModel::dataChanged), self, [=](const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles) {
 		const QModelIndex& topLeft_ret = topLeft;
 		// Cast returned reference into pointer
@@ -625,7 +625,7 @@ void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_arr
 	self->layoutChanged(parents_QList);
 }
 
-void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=](const QList<QPersistentModelIndex>& parents) {
 		const QList<QPersistentModelIndex>& parents_ret = parents;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -651,7 +651,7 @@ void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_arr
 	self->layoutChanged(parents_QList, static_cast<QAbstractItemModel::LayoutChangeHint>(hint));
 }
 
-void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutChanged), self, [=](const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
 		const QList<QPersistentModelIndex>& parents_ret = parents;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -679,7 +679,7 @@ void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct
 	self->layoutAboutToBeChanged(parents_QList);
 }
 
-void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=](const QList<QPersistentModelIndex>& parents) {
 		const QList<QPersistentModelIndex>& parents_ret = parents;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -705,7 +705,7 @@ void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct
 	self->layoutAboutToBeChanged(parents_QList, static_cast<QAbstractItemModel::LayoutChangeHint>(hint));
 }
 
-void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, void* slot) {
+void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, intptr_t slot) {
 	QAbstractItemModel::connect(self, static_cast<void (QAbstractItemModel::*)(const QList<QPersistentModelIndex>&, QAbstractItemModel::LayoutChangeHint)>(&QAbstractItemModel::layoutAboutToBeChanged), self, [=](const QList<QPersistentModelIndex>& parents, QAbstractItemModel::LayoutChangeHint hint) {
 		const QList<QPersistentModelIndex>& parents_ret = parents;
 		// Convert QList<> from C++ memory to manually-managed C memory

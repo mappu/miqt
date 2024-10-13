@@ -200,7 +200,7 @@ void QMovie_Started(QMovie* self) {
 	self->started();
 }
 
-void QMovie_connect_Started(QMovie* self, void* slot) {
+void QMovie_connect_Started(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::started), self, [=]() {
 		miqt_exec_callback_QMovie_Started(slot);
 	});
@@ -210,7 +210,7 @@ void QMovie_Resized(QMovie* self, QSize* size) {
 	self->resized(*size);
 }
 
-void QMovie_connect_Resized(QMovie* self, void* slot) {
+void QMovie_connect_Resized(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, [=](const QSize& size) {
 		const QSize& size_ret = size;
 		// Cast returned reference into pointer
@@ -223,7 +223,7 @@ void QMovie_Updated(QMovie* self, QRect* rect) {
 	self->updated(*rect);
 }
 
-void QMovie_connect_Updated(QMovie* self, void* slot) {
+void QMovie_connect_Updated(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, [=](const QRect& rect) {
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
@@ -236,7 +236,7 @@ void QMovie_StateChanged(QMovie* self, int state) {
 	self->stateChanged(static_cast<QMovie::MovieState>(state));
 }
 
-void QMovie_connect_StateChanged(QMovie* self, void* slot) {
+void QMovie_connect_StateChanged(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(QMovie::MovieState)>(&QMovie::stateChanged), self, [=](QMovie::MovieState state) {
 		QMovie::MovieState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
@@ -248,7 +248,7 @@ void QMovie_Error(QMovie* self, int error) {
 	self->error(static_cast<QImageReader::ImageReaderError>(error));
 }
 
-void QMovie_connect_Error(QMovie* self, void* slot) {
+void QMovie_connect_Error(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(QImageReader::ImageReaderError)>(&QMovie::error), self, [=](QImageReader::ImageReaderError error) {
 		QImageReader::ImageReaderError error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
@@ -260,7 +260,7 @@ void QMovie_Finished(QMovie* self) {
 	self->finished();
 }
 
-void QMovie_connect_Finished(QMovie* self, void* slot) {
+void QMovie_connect_Finished(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)()>(&QMovie::finished), self, [=]() {
 		miqt_exec_callback_QMovie_Finished(slot);
 	});
@@ -270,7 +270,7 @@ void QMovie_FrameChanged(QMovie* self, int frameNumber) {
 	self->frameChanged(static_cast<int>(frameNumber));
 }
 
-void QMovie_connect_FrameChanged(QMovie* self, void* slot) {
+void QMovie_connect_FrameChanged(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(int)>(&QMovie::frameChanged), self, [=](int frameNumber) {
 		int sigval1 = frameNumber;
 		miqt_exec_callback_QMovie_FrameChanged(slot, sigval1);

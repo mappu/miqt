@@ -202,7 +202,7 @@ void QObject_Destroyed(QObject* self) {
 	self->destroyed();
 }
 
-void QObject_connect_Destroyed(QObject* self, void* slot) {
+void QObject_connect_Destroyed(QObject* self, intptr_t slot) {
 	QObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=]() {
 		miqt_exec_callback_QObject_Destroyed(slot);
 	});
@@ -264,7 +264,7 @@ void QObject_Destroyed1(QObject* self, QObject* param1) {
 	self->destroyed(param1);
 }
 
-void QObject_connect_Destroyed1(QObject* self, void* slot) {
+void QObject_connect_Destroyed1(QObject* self, intptr_t slot) {
 	QObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=](QObject* param1) {
 		QObject* sigval1 = param1;
 		miqt_exec_callback_QObject_Destroyed1(slot, sigval1);

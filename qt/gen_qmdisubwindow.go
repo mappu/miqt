@@ -166,12 +166,12 @@ func (this *QMdiSubWindow) WindowStateChanged(oldState WindowState, newState Win
 	C.QMdiSubWindow_WindowStateChanged(this.h, (C.int)(oldState), (C.int)(newState))
 }
 func (this *QMdiSubWindow) OnWindowStateChanged(slot func(oldState WindowState, newState WindowState)) {
-	C.QMdiSubWindow_connect_WindowStateChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMdiSubWindow_connect_WindowStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMdiSubWindow_WindowStateChanged
-func miqt_exec_callback_QMdiSubWindow_WindowStateChanged(cb *C.void, oldState C.int, newState C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldState WindowState, newState WindowState))
+func miqt_exec_callback_QMdiSubWindow_WindowStateChanged(cb C.intptr_t, oldState C.int, newState C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(oldState WindowState, newState WindowState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -188,12 +188,12 @@ func (this *QMdiSubWindow) AboutToActivate() {
 	C.QMdiSubWindow_AboutToActivate(this.h)
 }
 func (this *QMdiSubWindow) OnAboutToActivate(slot func()) {
-	C.QMdiSubWindow_connect_AboutToActivate(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMdiSubWindow_connect_AboutToActivate(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMdiSubWindow_AboutToActivate
-func miqt_exec_callback_QMdiSubWindow_AboutToActivate(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QMdiSubWindow_AboutToActivate(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

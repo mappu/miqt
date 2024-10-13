@@ -218,7 +218,7 @@ void QCalendarWidget_SelectionChanged(QCalendarWidget* self) {
 	self->selectionChanged();
 }
 
-void QCalendarWidget_connect_SelectionChanged(QCalendarWidget* self, void* slot) {
+void QCalendarWidget_connect_SelectionChanged(QCalendarWidget* self, intptr_t slot) {
 	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)()>(&QCalendarWidget::selectionChanged), self, [=]() {
 		miqt_exec_callback_QCalendarWidget_SelectionChanged(slot);
 	});
@@ -228,7 +228,7 @@ void QCalendarWidget_Clicked(QCalendarWidget* self, QDate* date) {
 	self->clicked(*date);
 }
 
-void QCalendarWidget_connect_Clicked(QCalendarWidget* self, void* slot) {
+void QCalendarWidget_connect_Clicked(QCalendarWidget* self, intptr_t slot) {
 	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(const QDate&)>(&QCalendarWidget::clicked), self, [=](const QDate& date) {
 		const QDate& date_ret = date;
 		// Cast returned reference into pointer
@@ -241,7 +241,7 @@ void QCalendarWidget_Activated(QCalendarWidget* self, QDate* date) {
 	self->activated(*date);
 }
 
-void QCalendarWidget_connect_Activated(QCalendarWidget* self, void* slot) {
+void QCalendarWidget_connect_Activated(QCalendarWidget* self, intptr_t slot) {
 	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(const QDate&)>(&QCalendarWidget::activated), self, [=](const QDate& date) {
 		const QDate& date_ret = date;
 		// Cast returned reference into pointer
@@ -254,7 +254,7 @@ void QCalendarWidget_CurrentPageChanged(QCalendarWidget* self, int year, int mon
 	self->currentPageChanged(static_cast<int>(year), static_cast<int>(month));
 }
 
-void QCalendarWidget_connect_CurrentPageChanged(QCalendarWidget* self, void* slot) {
+void QCalendarWidget_connect_CurrentPageChanged(QCalendarWidget* self, intptr_t slot) {
 	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(int, int)>(&QCalendarWidget::currentPageChanged), self, [=](int year, int month) {
 		int sigval1 = year;
 		int sigval2 = month;

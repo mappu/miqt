@@ -120,12 +120,12 @@ func (this *QGraphicsEffect) EnabledChanged(enabled bool) {
 	C.QGraphicsEffect_EnabledChanged(this.h, (C.bool)(enabled))
 }
 func (this *QGraphicsEffect) OnEnabledChanged(slot func(enabled bool)) {
-	C.QGraphicsEffect_connect_EnabledChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsEffect_connect_EnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsEffect_EnabledChanged
-func miqt_exec_callback_QGraphicsEffect_EnabledChanged(cb *C.void, enabled C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(enabled bool))
+func miqt_exec_callback_QGraphicsEffect_EnabledChanged(cb C.intptr_t, enabled C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(enabled bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -280,12 +280,12 @@ func (this *QGraphicsColorizeEffect) ColorChanged(color *QColor) {
 	C.QGraphicsColorizeEffect_ColorChanged(this.h, color.cPointer())
 }
 func (this *QGraphicsColorizeEffect) OnColorChanged(slot func(color *QColor)) {
-	C.QGraphicsColorizeEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsColorizeEffect_connect_ColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged
-func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb *C.void, color *C.QColor) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb C.intptr_t, color *C.QColor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -300,12 +300,12 @@ func (this *QGraphicsColorizeEffect) StrengthChanged(strength float64) {
 	C.QGraphicsColorizeEffect_StrengthChanged(this.h, (C.double)(strength))
 }
 func (this *QGraphicsColorizeEffect) OnStrengthChanged(slot func(strength float64)) {
-	C.QGraphicsColorizeEffect_connect_StrengthChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsColorizeEffect_connect_StrengthChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged
-func miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(cb *C.void, strength C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(strength float64))
+func miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(cb C.intptr_t, strength C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(strength float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -464,12 +464,12 @@ func (this *QGraphicsBlurEffect) BlurRadiusChanged(blurRadius float64) {
 	C.QGraphicsBlurEffect_BlurRadiusChanged(this.h, (C.double)(blurRadius))
 }
 func (this *QGraphicsBlurEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
-	C.QGraphicsBlurEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsBlurEffect_connect_BlurRadiusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged
-func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb *C.void, blurRadius C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(blurRadius float64))
+func miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(cb C.intptr_t, blurRadius C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(blurRadius float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -484,12 +484,12 @@ func (this *QGraphicsBlurEffect) BlurHintsChanged(hints QGraphicsBlurEffect__Blu
 	C.QGraphicsBlurEffect_BlurHintsChanged(this.h, (C.int)(hints))
 }
 func (this *QGraphicsBlurEffect) OnBlurHintsChanged(slot func(hints QGraphicsBlurEffect__BlurHint)) {
-	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsBlurEffect_connect_BlurHintsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged
-func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb *C.void, hints C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(hints QGraphicsBlurEffect__BlurHint))
+func miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(cb C.intptr_t, hints C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(hints QGraphicsBlurEffect__BlurHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -686,12 +686,12 @@ func (this *QGraphicsDropShadowEffect) OffsetChanged(offset *QPointF) {
 	C.QGraphicsDropShadowEffect_OffsetChanged(this.h, offset.cPointer())
 }
 func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func(offset *QPointF)) {
-	C.QGraphicsDropShadowEffect_connect_OffsetChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsDropShadowEffect_connect_OffsetChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged
-func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb *C.void, offset *C.QPointF) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(offset *QPointF))
+func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb C.intptr_t, offset *C.QPointF) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(offset *QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -706,12 +706,12 @@ func (this *QGraphicsDropShadowEffect) BlurRadiusChanged(blurRadius float64) {
 	C.QGraphicsDropShadowEffect_BlurRadiusChanged(this.h, (C.double)(blurRadius))
 }
 func (this *QGraphicsDropShadowEffect) OnBlurRadiusChanged(slot func(blurRadius float64)) {
-	C.QGraphicsDropShadowEffect_connect_BlurRadiusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsDropShadowEffect_connect_BlurRadiusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged
-func miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(cb *C.void, blurRadius C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(blurRadius float64))
+func miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(cb C.intptr_t, blurRadius C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(blurRadius float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -726,12 +726,12 @@ func (this *QGraphicsDropShadowEffect) ColorChanged(color *QColor) {
 	C.QGraphicsDropShadowEffect_ColorChanged(this.h, color.cPointer())
 }
 func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func(color *QColor)) {
-	C.QGraphicsDropShadowEffect_connect_ColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsDropShadowEffect_connect_ColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged
-func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb *C.void, color *C.QColor) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb C.intptr_t, color *C.QColor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -886,12 +886,12 @@ func (this *QGraphicsOpacityEffect) OpacityChanged(opacity float64) {
 	C.QGraphicsOpacityEffect_OpacityChanged(this.h, (C.double)(opacity))
 }
 func (this *QGraphicsOpacityEffect) OnOpacityChanged(slot func(opacity float64)) {
-	C.QGraphicsOpacityEffect_connect_OpacityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsOpacityEffect_connect_OpacityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged
-func miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(cb *C.void, opacity C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(opacity float64))
+func miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(cb C.intptr_t, opacity C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(opacity float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -906,12 +906,12 @@ func (this *QGraphicsOpacityEffect) OpacityMaskChanged(mask *QBrush) {
 	C.QGraphicsOpacityEffect_OpacityMaskChanged(this.h, mask.cPointer())
 }
 func (this *QGraphicsOpacityEffect) OnOpacityMaskChanged(slot func(mask *QBrush)) {
-	C.QGraphicsOpacityEffect_connect_OpacityMaskChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsOpacityEffect_connect_OpacityMaskChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged
-func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb *C.void, mask *C.QBrush) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(mask *QBrush))
+func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb C.intptr_t, mask *C.QBrush) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(mask *QBrush))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

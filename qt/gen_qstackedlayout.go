@@ -164,12 +164,12 @@ func (this *QStackedLayout) WidgetRemoved(index int) {
 	C.QStackedLayout_WidgetRemoved(this.h, (C.int)(index))
 }
 func (this *QStackedLayout) OnWidgetRemoved(slot func(index int)) {
-	C.QStackedLayout_connect_WidgetRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStackedLayout_connect_WidgetRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStackedLayout_WidgetRemoved
-func miqt_exec_callback_QStackedLayout_WidgetRemoved(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QStackedLayout_WidgetRemoved(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -184,12 +184,12 @@ func (this *QStackedLayout) CurrentChanged(index int) {
 	C.QStackedLayout_CurrentChanged(this.h, (C.int)(index))
 }
 func (this *QStackedLayout) OnCurrentChanged(slot func(index int)) {
-	C.QStackedLayout_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStackedLayout_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStackedLayout_CurrentChanged
-func miqt_exec_callback_QStackedLayout_CurrentChanged(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QStackedLayout_CurrentChanged(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -82,7 +82,7 @@ void QAbstractAnimation_Finished(QAbstractAnimation* self) {
 	self->finished();
 }
 
-void QAbstractAnimation_connect_Finished(QAbstractAnimation* self, void* slot) {
+void QAbstractAnimation_connect_Finished(QAbstractAnimation* self, intptr_t slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)()>(&QAbstractAnimation::finished), self, [=]() {
 		miqt_exec_callback_QAbstractAnimation_Finished(slot);
 	});
@@ -92,7 +92,7 @@ void QAbstractAnimation_StateChanged(QAbstractAnimation* self, int newState, int
 	self->stateChanged(static_cast<QAbstractAnimation::State>(newState), static_cast<QAbstractAnimation::State>(oldState));
 }
 
-void QAbstractAnimation_connect_StateChanged(QAbstractAnimation* self, void* slot) {
+void QAbstractAnimation_connect_StateChanged(QAbstractAnimation* self, intptr_t slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)(QAbstractAnimation::State, QAbstractAnimation::State)>(&QAbstractAnimation::stateChanged), self, [=](QAbstractAnimation::State newState, QAbstractAnimation::State oldState) {
 		QAbstractAnimation::State newState_ret = newState;
 		int sigval1 = static_cast<int>(newState_ret);
@@ -106,7 +106,7 @@ void QAbstractAnimation_CurrentLoopChanged(QAbstractAnimation* self, int current
 	self->currentLoopChanged(static_cast<int>(currentLoop));
 }
 
-void QAbstractAnimation_connect_CurrentLoopChanged(QAbstractAnimation* self, void* slot) {
+void QAbstractAnimation_connect_CurrentLoopChanged(QAbstractAnimation* self, intptr_t slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)(int)>(&QAbstractAnimation::currentLoopChanged), self, [=](int currentLoop) {
 		int sigval1 = currentLoop;
 		miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(slot, sigval1);
@@ -117,7 +117,7 @@ void QAbstractAnimation_DirectionChanged(QAbstractAnimation* self, int param1) {
 	self->directionChanged(static_cast<QAbstractAnimation::Direction>(param1));
 }
 
-void QAbstractAnimation_connect_DirectionChanged(QAbstractAnimation* self, void* slot) {
+void QAbstractAnimation_connect_DirectionChanged(QAbstractAnimation* self, intptr_t slot) {
 	QAbstractAnimation::connect(self, static_cast<void (QAbstractAnimation::*)(QAbstractAnimation::Direction)>(&QAbstractAnimation::directionChanged), self, [=](QAbstractAnimation::Direction param1) {
 		QAbstractAnimation::Direction param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
@@ -249,7 +249,7 @@ void QAnimationDriver_Started(QAnimationDriver* self) {
 	self->started();
 }
 
-void QAnimationDriver_connect_Started(QAnimationDriver* self, void* slot) {
+void QAnimationDriver_connect_Started(QAnimationDriver* self, intptr_t slot) {
 	QAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::started), self, [=]() {
 		miqt_exec_callback_QAnimationDriver_Started(slot);
 	});
@@ -259,7 +259,7 @@ void QAnimationDriver_Stopped(QAnimationDriver* self) {
 	self->stopped();
 }
 
-void QAnimationDriver_connect_Stopped(QAnimationDriver* self, void* slot) {
+void QAnimationDriver_connect_Stopped(QAnimationDriver* self, intptr_t slot) {
 	QAnimationDriver::connect(self, static_cast<void (QAnimationDriver::*)()>(&QAnimationDriver::stopped), self, [=]() {
 		miqt_exec_callback_QAnimationDriver_Stopped(slot);
 	});

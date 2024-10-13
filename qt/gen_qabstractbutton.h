@@ -60,20 +60,20 @@ void QAbstractButton_Click(QAbstractButton* self);
 void QAbstractButton_Toggle(QAbstractButton* self);
 void QAbstractButton_SetChecked(QAbstractButton* self, bool checked);
 void QAbstractButton_Pressed(QAbstractButton* self);
-void QAbstractButton_connect_Pressed(QAbstractButton* self, void* slot);
+void QAbstractButton_connect_Pressed(QAbstractButton* self, intptr_t slot);
 void QAbstractButton_Released(QAbstractButton* self);
-void QAbstractButton_connect_Released(QAbstractButton* self, void* slot);
+void QAbstractButton_connect_Released(QAbstractButton* self, intptr_t slot);
 void QAbstractButton_Clicked(QAbstractButton* self);
-void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot);
+void QAbstractButton_connect_Clicked(QAbstractButton* self, intptr_t slot);
 void QAbstractButton_Toggled(QAbstractButton* self, bool checked);
-void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot);
+void QAbstractButton_connect_Toggled(QAbstractButton* self, intptr_t slot);
 struct miqt_string* QAbstractButton_Tr2(const char* s, const char* c);
 struct miqt_string* QAbstractButton_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAbstractButton_TrUtf82(const char* s, const char* c);
 struct miqt_string* QAbstractButton_TrUtf83(const char* s, const char* c, int n);
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec);
 void QAbstractButton_Clicked1(QAbstractButton* self, bool checked);
-void QAbstractButton_connect_Clicked1(QAbstractButton* self, void* slot);
+void QAbstractButton_connect_Clicked1(QAbstractButton* self, intptr_t slot);
 void QAbstractButton_Delete(QAbstractButton* self);
 
 #ifdef __cplusplus

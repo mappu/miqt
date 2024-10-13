@@ -125,7 +125,7 @@ void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self) {
 	self->aboutToBlock();
 }
 
-void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, void* slot) {
+void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, intptr_t slot) {
 	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::aboutToBlock), self, [=]() {
 		miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock(slot);
 	});
@@ -135,7 +135,7 @@ void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self) {
 	self->awake();
 }
 
-void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, void* slot) {
+void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, intptr_t slot) {
 	QAbstractEventDispatcher::connect(self, static_cast<void (QAbstractEventDispatcher::*)()>(&QAbstractEventDispatcher::awake), self, [=]() {
 		miqt_exec_callback_QAbstractEventDispatcher_Awake(slot);
 	});

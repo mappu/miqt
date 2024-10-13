@@ -132,7 +132,7 @@ void QGraphicsView_UpdateScene(QGraphicsView* self, struct miqt_array* /* of QRe
 void QGraphicsView_InvalidateScene(QGraphicsView* self);
 void QGraphicsView_UpdateSceneRect(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, QPointF* fromScenePoint, QPointF* toScenePoint);
-void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, void* slot);
+void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, intptr_t slot);
 struct miqt_string* QGraphicsView_Tr2(const char* s, const char* c);
 struct miqt_string* QGraphicsView_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QGraphicsView_TrUtf82(const char* s, const char* c);

@@ -62,7 +62,7 @@ void QGraphicsEffect_EnabledChanged(QGraphicsEffect* self, bool enabled) {
 	self->enabledChanged(enabled);
 }
 
-void QGraphicsEffect_connect_EnabledChanged(QGraphicsEffect* self, void* slot) {
+void QGraphicsEffect_connect_EnabledChanged(QGraphicsEffect* self, intptr_t slot) {
 	QGraphicsEffect::connect(self, static_cast<void (QGraphicsEffect::*)(bool)>(&QGraphicsEffect::enabledChanged), self, [=](bool enabled) {
 		bool sigval1 = enabled;
 		miqt_exec_callback_QGraphicsEffect_EnabledChanged(slot, sigval1);
@@ -152,7 +152,7 @@ void QGraphicsColorizeEffect_ColorChanged(QGraphicsColorizeEffect* self, QColor*
 	self->colorChanged(*color);
 }
 
-void QGraphicsColorizeEffect_connect_ColorChanged(QGraphicsColorizeEffect* self, void* slot) {
+void QGraphicsColorizeEffect_connect_ColorChanged(QGraphicsColorizeEffect* self, intptr_t slot) {
 	QGraphicsColorizeEffect::connect(self, static_cast<void (QGraphicsColorizeEffect::*)(const QColor&)>(&QGraphicsColorizeEffect::colorChanged), self, [=](const QColor& color) {
 		const QColor& color_ret = color;
 		// Cast returned reference into pointer
@@ -165,7 +165,7 @@ void QGraphicsColorizeEffect_StrengthChanged(QGraphicsColorizeEffect* self, doub
 	self->strengthChanged(static_cast<qreal>(strength));
 }
 
-void QGraphicsColorizeEffect_connect_StrengthChanged(QGraphicsColorizeEffect* self, void* slot) {
+void QGraphicsColorizeEffect_connect_StrengthChanged(QGraphicsColorizeEffect* self, intptr_t slot) {
 	QGraphicsColorizeEffect::connect(self, static_cast<void (QGraphicsColorizeEffect::*)(qreal)>(&QGraphicsColorizeEffect::strengthChanged), self, [=](qreal strength) {
 		qreal strength_ret = strength;
 		double sigval1 = static_cast<double>(strength_ret);
@@ -261,7 +261,7 @@ void QGraphicsBlurEffect_BlurRadiusChanged(QGraphicsBlurEffect* self, double blu
 	self->blurRadiusChanged(static_cast<qreal>(blurRadius));
 }
 
-void QGraphicsBlurEffect_connect_BlurRadiusChanged(QGraphicsBlurEffect* self, void* slot) {
+void QGraphicsBlurEffect_connect_BlurRadiusChanged(QGraphicsBlurEffect* self, intptr_t slot) {
 	QGraphicsBlurEffect::connect(self, static_cast<void (QGraphicsBlurEffect::*)(qreal)>(&QGraphicsBlurEffect::blurRadiusChanged), self, [=](qreal blurRadius) {
 		qreal blurRadius_ret = blurRadius;
 		double sigval1 = static_cast<double>(blurRadius_ret);
@@ -273,7 +273,7 @@ void QGraphicsBlurEffect_BlurHintsChanged(QGraphicsBlurEffect* self, int hints) 
 	self->blurHintsChanged(static_cast<QGraphicsBlurEffect::BlurHints>(hints));
 }
 
-void QGraphicsBlurEffect_connect_BlurHintsChanged(QGraphicsBlurEffect* self, void* slot) {
+void QGraphicsBlurEffect_connect_BlurHintsChanged(QGraphicsBlurEffect* self, intptr_t slot) {
 	QGraphicsBlurEffect::connect(self, static_cast<void (QGraphicsBlurEffect::*)(QGraphicsBlurEffect::BlurHints)>(&QGraphicsBlurEffect::blurHintsChanged), self, [=](QGraphicsBlurEffect::BlurHints hints) {
 		QGraphicsBlurEffect::BlurHints hints_ret = hints;
 		int sigval1 = static_cast<int>(hints_ret);
@@ -402,7 +402,7 @@ void QGraphicsDropShadowEffect_OffsetChanged(QGraphicsDropShadowEffect* self, QP
 	self->offsetChanged(*offset);
 }
 
-void QGraphicsDropShadowEffect_connect_OffsetChanged(QGraphicsDropShadowEffect* self, void* slot) {
+void QGraphicsDropShadowEffect_connect_OffsetChanged(QGraphicsDropShadowEffect* self, intptr_t slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(const QPointF&)>(&QGraphicsDropShadowEffect::offsetChanged), self, [=](const QPointF& offset) {
 		const QPointF& offset_ret = offset;
 		// Cast returned reference into pointer
@@ -415,7 +415,7 @@ void QGraphicsDropShadowEffect_BlurRadiusChanged(QGraphicsDropShadowEffect* self
 	self->blurRadiusChanged(static_cast<qreal>(blurRadius));
 }
 
-void QGraphicsDropShadowEffect_connect_BlurRadiusChanged(QGraphicsDropShadowEffect* self, void* slot) {
+void QGraphicsDropShadowEffect_connect_BlurRadiusChanged(QGraphicsDropShadowEffect* self, intptr_t slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(qreal)>(&QGraphicsDropShadowEffect::blurRadiusChanged), self, [=](qreal blurRadius) {
 		qreal blurRadius_ret = blurRadius;
 		double sigval1 = static_cast<double>(blurRadius_ret);
@@ -427,7 +427,7 @@ void QGraphicsDropShadowEffect_ColorChanged(QGraphicsDropShadowEffect* self, QCo
 	self->colorChanged(*color);
 }
 
-void QGraphicsDropShadowEffect_connect_ColorChanged(QGraphicsDropShadowEffect* self, void* slot) {
+void QGraphicsDropShadowEffect_connect_ColorChanged(QGraphicsDropShadowEffect* self, intptr_t slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(const QColor&)>(&QGraphicsDropShadowEffect::colorChanged), self, [=](const QColor& color) {
 		const QColor& color_ret = color;
 		// Cast returned reference into pointer
@@ -519,7 +519,7 @@ void QGraphicsOpacityEffect_OpacityChanged(QGraphicsOpacityEffect* self, double 
 	self->opacityChanged(static_cast<qreal>(opacity));
 }
 
-void QGraphicsOpacityEffect_connect_OpacityChanged(QGraphicsOpacityEffect* self, void* slot) {
+void QGraphicsOpacityEffect_connect_OpacityChanged(QGraphicsOpacityEffect* self, intptr_t slot) {
 	QGraphicsOpacityEffect::connect(self, static_cast<void (QGraphicsOpacityEffect::*)(qreal)>(&QGraphicsOpacityEffect::opacityChanged), self, [=](qreal opacity) {
 		qreal opacity_ret = opacity;
 		double sigval1 = static_cast<double>(opacity_ret);
@@ -531,7 +531,7 @@ void QGraphicsOpacityEffect_OpacityMaskChanged(QGraphicsOpacityEffect* self, QBr
 	self->opacityMaskChanged(*mask);
 }
 
-void QGraphicsOpacityEffect_connect_OpacityMaskChanged(QGraphicsOpacityEffect* self, void* slot) {
+void QGraphicsOpacityEffect_connect_OpacityMaskChanged(QGraphicsOpacityEffect* self, intptr_t slot) {
 	QGraphicsOpacityEffect::connect(self, static_cast<void (QGraphicsOpacityEffect::*)(const QBrush&)>(&QGraphicsOpacityEffect::opacityMaskChanged), self, [=](const QBrush& mask) {
 		const QBrush& mask_ret = mask;
 		// Cast returned reference into pointer

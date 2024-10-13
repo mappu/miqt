@@ -282,12 +282,12 @@ func (this *QListView) IndexesMoved(indexes []QModelIndex) {
 	C.QListView_IndexesMoved(this.h, indexes_ma)
 }
 func (this *QListView) OnIndexesMoved(slot func(indexes []QModelIndex)) {
-	C.QListView_connect_IndexesMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QListView_connect_IndexesMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListView_IndexesMoved
-func miqt_exec_callback_QListView_IndexesMoved(cb *C.void, indexes *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(indexes []QModelIndex))
+func miqt_exec_callback_QListView_IndexesMoved(cb C.intptr_t, indexes *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(indexes []QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

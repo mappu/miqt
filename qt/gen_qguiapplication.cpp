@@ -310,7 +310,7 @@ void QGuiApplication_FontDatabaseChanged(QGuiApplication* self) {
 	self->fontDatabaseChanged();
 }
 
-void QGuiApplication_connect_FontDatabaseChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_FontDatabaseChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::fontDatabaseChanged), self, [=]() {
 		miqt_exec_callback_QGuiApplication_FontDatabaseChanged(slot);
 	});
@@ -320,7 +320,7 @@ void QGuiApplication_ScreenAdded(QGuiApplication* self, QScreen* screen) {
 	self->screenAdded(screen);
 }
 
-void QGuiApplication_connect_ScreenAdded(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_ScreenAdded(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenAdded), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_ScreenAdded(slot, sigval1);
@@ -331,7 +331,7 @@ void QGuiApplication_ScreenRemoved(QGuiApplication* self, QScreen* screen) {
 	self->screenRemoved(screen);
 }
 
-void QGuiApplication_connect_ScreenRemoved(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_ScreenRemoved(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenRemoved), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_ScreenRemoved(slot, sigval1);
@@ -342,7 +342,7 @@ void QGuiApplication_PrimaryScreenChanged(QGuiApplication* self, QScreen* screen
 	self->primaryScreenChanged(screen);
 }
 
-void QGuiApplication_connect_PrimaryScreenChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_PrimaryScreenChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::primaryScreenChanged), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(slot, sigval1);
@@ -353,7 +353,7 @@ void QGuiApplication_LastWindowClosed(QGuiApplication* self) {
 	self->lastWindowClosed();
 }
 
-void QGuiApplication_connect_LastWindowClosed(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_LastWindowClosed(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::lastWindowClosed), self, [=]() {
 		miqt_exec_callback_QGuiApplication_LastWindowClosed(slot);
 	});
@@ -363,7 +363,7 @@ void QGuiApplication_FocusObjectChanged(QGuiApplication* self, QObject* focusObj
 	self->focusObjectChanged(focusObject);
 }
 
-void QGuiApplication_connect_FocusObjectChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_FocusObjectChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QObject*)>(&QGuiApplication::focusObjectChanged), self, [=](QObject* focusObject) {
 		QObject* sigval1 = focusObject;
 		miqt_exec_callback_QGuiApplication_FocusObjectChanged(slot, sigval1);
@@ -374,7 +374,7 @@ void QGuiApplication_FocusWindowChanged(QGuiApplication* self, QWindow* focusWin
 	self->focusWindowChanged(focusWindow);
 }
 
-void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QWindow*)>(&QGuiApplication::focusWindowChanged), self, [=](QWindow* focusWindow) {
 		QWindow* sigval1 = focusWindow;
 		miqt_exec_callback_QGuiApplication_FocusWindowChanged(slot, sigval1);
@@ -385,7 +385,7 @@ void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, int state) {
 	self->applicationStateChanged(static_cast<Qt::ApplicationState>(state));
 }
 
-void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
 		Qt::ApplicationState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
@@ -397,7 +397,7 @@ void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, int direction
 	self->layoutDirectionChanged(static_cast<Qt::LayoutDirection>(direction));
 }
 
-void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
 		Qt::LayoutDirection direction_ret = direction;
 		int sigval1 = static_cast<int>(direction_ret);
@@ -409,7 +409,7 @@ void QGuiApplication_CommitDataRequest(QGuiApplication* self, QSessionManager* s
 	self->commitDataRequest(*sessionManager);
 }
 
-void QGuiApplication_connect_CommitDataRequest(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_CommitDataRequest(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::commitDataRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
@@ -422,7 +422,7 @@ void QGuiApplication_SaveStateRequest(QGuiApplication* self, QSessionManager* se
 	self->saveStateRequest(*sessionManager);
 }
 
-void QGuiApplication_connect_SaveStateRequest(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_SaveStateRequest(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::saveStateRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
@@ -435,7 +435,7 @@ void QGuiApplication_PaletteChanged(QGuiApplication* self, QPalette* pal) {
 	self->paletteChanged(*pal);
 }
 
-void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QPalette&)>(&QGuiApplication::paletteChanged), self, [=](const QPalette& pal) {
 		const QPalette& pal_ret = pal;
 		// Cast returned reference into pointer
@@ -448,7 +448,7 @@ void QGuiApplication_ApplicationDisplayNameChanged(QGuiApplication* self) {
 	self->applicationDisplayNameChanged();
 }
 
-void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::applicationDisplayNameChanged), self, [=]() {
 		miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(slot);
 	});
@@ -458,7 +458,7 @@ void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font) {
 	self->fontChanged(*font);
 }
 
-void QGuiApplication_connect_FontChanged(QGuiApplication* self, void* slot) {
+void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot) {
 	QGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QFont&)>(&QGuiApplication::fontChanged), self, [=](const QFont& font) {
 		const QFont& font_ret = font;
 		// Cast returned reference into pointer

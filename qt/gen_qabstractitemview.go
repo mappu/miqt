@@ -428,12 +428,12 @@ func (this *QAbstractItemView) Pressed(index *QModelIndex) {
 	C.QAbstractItemView_Pressed(this.h, index.cPointer())
 }
 func (this *QAbstractItemView) OnPressed(slot func(index *QModelIndex)) {
-	C.QAbstractItemView_connect_Pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_Pressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_Pressed
-func miqt_exec_callback_QAbstractItemView_Pressed(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_Pressed(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -448,12 +448,12 @@ func (this *QAbstractItemView) Clicked(index *QModelIndex) {
 	C.QAbstractItemView_Clicked(this.h, index.cPointer())
 }
 func (this *QAbstractItemView) OnClicked(slot func(index *QModelIndex)) {
-	C.QAbstractItemView_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_Clicked
-func miqt_exec_callback_QAbstractItemView_Clicked(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_Clicked(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -468,12 +468,12 @@ func (this *QAbstractItemView) DoubleClicked(index *QModelIndex) {
 	C.QAbstractItemView_DoubleClicked(this.h, index.cPointer())
 }
 func (this *QAbstractItemView) OnDoubleClicked(slot func(index *QModelIndex)) {
-	C.QAbstractItemView_connect_DoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_DoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_DoubleClicked
-func miqt_exec_callback_QAbstractItemView_DoubleClicked(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_DoubleClicked(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -488,12 +488,12 @@ func (this *QAbstractItemView) Activated(index *QModelIndex) {
 	C.QAbstractItemView_Activated(this.h, index.cPointer())
 }
 func (this *QAbstractItemView) OnActivated(slot func(index *QModelIndex)) {
-	C.QAbstractItemView_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_Activated
-func miqt_exec_callback_QAbstractItemView_Activated(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_Activated(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -508,12 +508,12 @@ func (this *QAbstractItemView) Entered(index *QModelIndex) {
 	C.QAbstractItemView_Entered(this.h, index.cPointer())
 }
 func (this *QAbstractItemView) OnEntered(slot func(index *QModelIndex)) {
-	C.QAbstractItemView_connect_Entered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_Entered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_Entered
-func miqt_exec_callback_QAbstractItemView_Entered(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_Entered(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -528,12 +528,12 @@ func (this *QAbstractItemView) ViewportEntered() {
 	C.QAbstractItemView_ViewportEntered(this.h)
 }
 func (this *QAbstractItemView) OnViewportEntered(slot func()) {
-	C.QAbstractItemView_connect_ViewportEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_ViewportEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_ViewportEntered
-func miqt_exec_callback_QAbstractItemView_ViewportEntered(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractItemView_ViewportEntered(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -545,12 +545,12 @@ func (this *QAbstractItemView) IconSizeChanged(size *QSize) {
 	C.QAbstractItemView_IconSizeChanged(this.h, size.cPointer())
 }
 func (this *QAbstractItemView) OnIconSizeChanged(slot func(size *QSize)) {
-	C.QAbstractItemView_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemView_connect_IconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_IconSizeChanged
-func miqt_exec_callback_QAbstractItemView_IconSizeChanged(cb *C.void, size *C.QSize) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(size *QSize))
+func miqt_exec_callback_QAbstractItemView_IconSizeChanged(cb C.intptr_t, size *C.QSize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

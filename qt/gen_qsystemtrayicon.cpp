@@ -121,7 +121,7 @@ void QSystemTrayIcon_Activated(QSystemTrayIcon* self, int reason) {
 	self->activated(static_cast<QSystemTrayIcon::ActivationReason>(reason));
 }
 
-void QSystemTrayIcon_connect_Activated(QSystemTrayIcon* self, void* slot) {
+void QSystemTrayIcon_connect_Activated(QSystemTrayIcon* self, intptr_t slot) {
 	QSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason)>(&QSystemTrayIcon::activated), self, [=](QSystemTrayIcon::ActivationReason reason) {
 		QSystemTrayIcon::ActivationReason reason_ret = reason;
 		int sigval1 = static_cast<int>(reason_ret);
@@ -133,7 +133,7 @@ void QSystemTrayIcon_MessageClicked(QSystemTrayIcon* self) {
 	self->messageClicked();
 }
 
-void QSystemTrayIcon_connect_MessageClicked(QSystemTrayIcon* self, void* slot) {
+void QSystemTrayIcon_connect_MessageClicked(QSystemTrayIcon* self, intptr_t slot) {
 	QSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)()>(&QSystemTrayIcon::messageClicked), self, [=]() {
 		miqt_exec_callback_QSystemTrayIcon_MessageClicked(slot);
 	});

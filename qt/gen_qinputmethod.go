@@ -179,12 +179,12 @@ func (this *QInputMethod) CursorRectangleChanged() {
 	C.QInputMethod_CursorRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnCursorRectangleChanged(slot func()) {
-	C.QInputMethod_connect_CursorRectangleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_CursorRectangleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_CursorRectangleChanged
-func miqt_exec_callback_QInputMethod_CursorRectangleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_CursorRectangleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -196,12 +196,12 @@ func (this *QInputMethod) AnchorRectangleChanged() {
 	C.QInputMethod_AnchorRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnAnchorRectangleChanged(slot func()) {
-	C.QInputMethod_connect_AnchorRectangleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_AnchorRectangleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_AnchorRectangleChanged
-func miqt_exec_callback_QInputMethod_AnchorRectangleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_AnchorRectangleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -213,12 +213,12 @@ func (this *QInputMethod) KeyboardRectangleChanged() {
 	C.QInputMethod_KeyboardRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnKeyboardRectangleChanged(slot func()) {
-	C.QInputMethod_connect_KeyboardRectangleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_KeyboardRectangleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_KeyboardRectangleChanged
-func miqt_exec_callback_QInputMethod_KeyboardRectangleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_KeyboardRectangleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -230,12 +230,12 @@ func (this *QInputMethod) InputItemClipRectangleChanged() {
 	C.QInputMethod_InputItemClipRectangleChanged(this.h)
 }
 func (this *QInputMethod) OnInputItemClipRectangleChanged(slot func()) {
-	C.QInputMethod_connect_InputItemClipRectangleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_InputItemClipRectangleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_InputItemClipRectangleChanged
-func miqt_exec_callback_QInputMethod_InputItemClipRectangleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_InputItemClipRectangleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -247,12 +247,12 @@ func (this *QInputMethod) VisibleChanged() {
 	C.QInputMethod_VisibleChanged(this.h)
 }
 func (this *QInputMethod) OnVisibleChanged(slot func()) {
-	C.QInputMethod_connect_VisibleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_VisibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_VisibleChanged
-func miqt_exec_callback_QInputMethod_VisibleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_VisibleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -264,12 +264,12 @@ func (this *QInputMethod) AnimatingChanged() {
 	C.QInputMethod_AnimatingChanged(this.h)
 }
 func (this *QInputMethod) OnAnimatingChanged(slot func()) {
-	C.QInputMethod_connect_AnimatingChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_AnimatingChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_AnimatingChanged
-func miqt_exec_callback_QInputMethod_AnimatingChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_AnimatingChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -281,12 +281,12 @@ func (this *QInputMethod) LocaleChanged() {
 	C.QInputMethod_LocaleChanged(this.h)
 }
 func (this *QInputMethod) OnLocaleChanged(slot func()) {
-	C.QInputMethod_connect_LocaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_LocaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_LocaleChanged
-func miqt_exec_callback_QInputMethod_LocaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QInputMethod_LocaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -298,12 +298,12 @@ func (this *QInputMethod) InputDirectionChanged(newDirection LayoutDirection) {
 	C.QInputMethod_InputDirectionChanged(this.h, (C.int)(newDirection))
 }
 func (this *QInputMethod) OnInputDirectionChanged(slot func(newDirection LayoutDirection)) {
-	C.QInputMethod_connect_InputDirectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QInputMethod_connect_InputDirectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputMethod_InputDirectionChanged
-func miqt_exec_callback_QInputMethod_InputDirectionChanged(cb *C.void, newDirection C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newDirection LayoutDirection))
+func miqt_exec_callback_QInputMethod_InputDirectionChanged(cb C.intptr_t, newDirection C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newDirection LayoutDirection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

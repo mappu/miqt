@@ -190,12 +190,12 @@ func (this *QAbstractSlider) ValueChanged(value int) {
 	C.QAbstractSlider_ValueChanged(this.h, (C.int)(value))
 }
 func (this *QAbstractSlider) OnValueChanged(slot func(value int)) {
-	C.QAbstractSlider_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_ValueChanged
-func miqt_exec_callback_QAbstractSlider_ValueChanged(cb *C.void, value C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(value int))
+func miqt_exec_callback_QAbstractSlider_ValueChanged(cb C.intptr_t, value C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -210,12 +210,12 @@ func (this *QAbstractSlider) SliderPressed() {
 	C.QAbstractSlider_SliderPressed(this.h)
 }
 func (this *QAbstractSlider) OnSliderPressed(slot func()) {
-	C.QAbstractSlider_connect_SliderPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_SliderPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_SliderPressed
-func miqt_exec_callback_QAbstractSlider_SliderPressed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractSlider_SliderPressed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -227,12 +227,12 @@ func (this *QAbstractSlider) SliderMoved(position int) {
 	C.QAbstractSlider_SliderMoved(this.h, (C.int)(position))
 }
 func (this *QAbstractSlider) OnSliderMoved(slot func(position int)) {
-	C.QAbstractSlider_connect_SliderMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_SliderMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_SliderMoved
-func miqt_exec_callback_QAbstractSlider_SliderMoved(cb *C.void, position C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(position int))
+func miqt_exec_callback_QAbstractSlider_SliderMoved(cb C.intptr_t, position C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(position int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -247,12 +247,12 @@ func (this *QAbstractSlider) SliderReleased() {
 	C.QAbstractSlider_SliderReleased(this.h)
 }
 func (this *QAbstractSlider) OnSliderReleased(slot func()) {
-	C.QAbstractSlider_connect_SliderReleased(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_SliderReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_SliderReleased
-func miqt_exec_callback_QAbstractSlider_SliderReleased(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractSlider_SliderReleased(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -264,12 +264,12 @@ func (this *QAbstractSlider) RangeChanged(min int, max int) {
 	C.QAbstractSlider_RangeChanged(this.h, (C.int)(min), (C.int)(max))
 }
 func (this *QAbstractSlider) OnRangeChanged(slot func(min int, max int)) {
-	C.QAbstractSlider_connect_RangeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_RangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_RangeChanged
-func miqt_exec_callback_QAbstractSlider_RangeChanged(cb *C.void, min C.int, max C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(min int, max int))
+func miqt_exec_callback_QAbstractSlider_RangeChanged(cb C.intptr_t, min C.int, max C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(min int, max int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -286,12 +286,12 @@ func (this *QAbstractSlider) ActionTriggered(action int) {
 	C.QAbstractSlider_ActionTriggered(this.h, (C.int)(action))
 }
 func (this *QAbstractSlider) OnActionTriggered(slot func(action int)) {
-	C.QAbstractSlider_connect_ActionTriggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractSlider_connect_ActionTriggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractSlider_ActionTriggered
-func miqt_exec_callback_QAbstractSlider_ActionTriggered(cb *C.void, action C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action int))
+func miqt_exec_callback_QAbstractSlider_ActionTriggered(cb C.intptr_t, action C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(action int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

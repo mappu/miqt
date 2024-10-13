@@ -225,7 +225,7 @@ void QIODevice_ReadyRead(QIODevice* self) {
 	self->readyRead();
 }
 
-void QIODevice_connect_ReadyRead(QIODevice* self, void* slot) {
+void QIODevice_connect_ReadyRead(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readyRead), self, [=]() {
 		miqt_exec_callback_QIODevice_ReadyRead(slot);
 	});
@@ -235,7 +235,7 @@ void QIODevice_ChannelReadyRead(QIODevice* self, int channel) {
 	self->channelReadyRead(static_cast<int>(channel));
 }
 
-void QIODevice_connect_ChannelReadyRead(QIODevice* self, void* slot) {
+void QIODevice_connect_ChannelReadyRead(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(int)>(&QIODevice::channelReadyRead), self, [=](int channel) {
 		int sigval1 = channel;
 		miqt_exec_callback_QIODevice_ChannelReadyRead(slot, sigval1);
@@ -246,7 +246,7 @@ void QIODevice_BytesWritten(QIODevice* self, long long bytes) {
 	self->bytesWritten(static_cast<qint64>(bytes));
 }
 
-void QIODevice_connect_BytesWritten(QIODevice* self, void* slot) {
+void QIODevice_connect_BytesWritten(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(qint64)>(&QIODevice::bytesWritten), self, [=](qint64 bytes) {
 		qint64 bytes_ret = bytes;
 		long long sigval1 = static_cast<long long>(bytes_ret);
@@ -258,7 +258,7 @@ void QIODevice_ChannelBytesWritten(QIODevice* self, int channel, long long bytes
 	self->channelBytesWritten(static_cast<int>(channel), static_cast<qint64>(bytes));
 }
 
-void QIODevice_connect_ChannelBytesWritten(QIODevice* self, void* slot) {
+void QIODevice_connect_ChannelBytesWritten(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)(int, qint64)>(&QIODevice::channelBytesWritten), self, [=](int channel, qint64 bytes) {
 		int sigval1 = channel;
 		qint64 bytes_ret = bytes;
@@ -271,7 +271,7 @@ void QIODevice_AboutToClose(QIODevice* self) {
 	self->aboutToClose();
 }
 
-void QIODevice_connect_AboutToClose(QIODevice* self, void* slot) {
+void QIODevice_connect_AboutToClose(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::aboutToClose), self, [=]() {
 		miqt_exec_callback_QIODevice_AboutToClose(slot);
 	});
@@ -281,7 +281,7 @@ void QIODevice_ReadChannelFinished(QIODevice* self) {
 	self->readChannelFinished();
 }
 
-void QIODevice_connect_ReadChannelFinished(QIODevice* self, void* slot) {
+void QIODevice_connect_ReadChannelFinished(QIODevice* self, intptr_t slot) {
 	QIODevice::connect(self, static_cast<void (QIODevice::*)()>(&QIODevice::readChannelFinished), self, [=]() {
 		miqt_exec_callback_QIODevice_ReadChannelFinished(slot);
 	});

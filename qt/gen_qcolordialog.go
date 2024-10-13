@@ -176,12 +176,12 @@ func (this *QColorDialog) CurrentColorChanged(color *QColor) {
 	C.QColorDialog_CurrentColorChanged(this.h, color.cPointer())
 }
 func (this *QColorDialog) OnCurrentColorChanged(slot func(color *QColor)) {
-	C.QColorDialog_connect_CurrentColorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QColorDialog_connect_CurrentColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColorDialog_CurrentColorChanged
-func miqt_exec_callback_QColorDialog_CurrentColorChanged(cb *C.void, color *C.QColor) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+func miqt_exec_callback_QColorDialog_CurrentColorChanged(cb C.intptr_t, color *C.QColor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -196,12 +196,12 @@ func (this *QColorDialog) ColorSelected(color *QColor) {
 	C.QColorDialog_ColorSelected(this.h, color.cPointer())
 }
 func (this *QColorDialog) OnColorSelected(slot func(color *QColor)) {
-	C.QColorDialog_connect_ColorSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QColorDialog_connect_ColorSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColorDialog_ColorSelected
-func miqt_exec_callback_QColorDialog_ColorSelected(cb *C.void, color *C.QColor) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(color *QColor))
+func miqt_exec_callback_QColorDialog_ColorSelected(cb C.intptr_t, color *C.QColor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -201,12 +201,12 @@ func (this *QTextBrowser) BackwardAvailable(param1 bool) {
 	C.QTextBrowser_BackwardAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextBrowser) OnBackwardAvailable(slot func(param1 bool)) {
-	C.QTextBrowser_connect_BackwardAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_BackwardAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_BackwardAvailable
-func miqt_exec_callback_QTextBrowser_BackwardAvailable(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QTextBrowser_BackwardAvailable(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -221,12 +221,12 @@ func (this *QTextBrowser) ForwardAvailable(param1 bool) {
 	C.QTextBrowser_ForwardAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextBrowser) OnForwardAvailable(slot func(param1 bool)) {
-	C.QTextBrowser_connect_ForwardAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_ForwardAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_ForwardAvailable
-func miqt_exec_callback_QTextBrowser_ForwardAvailable(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QTextBrowser_ForwardAvailable(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -241,12 +241,12 @@ func (this *QTextBrowser) HistoryChanged() {
 	C.QTextBrowser_HistoryChanged(this.h)
 }
 func (this *QTextBrowser) OnHistoryChanged(slot func()) {
-	C.QTextBrowser_connect_HistoryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_HistoryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_HistoryChanged
-func miqt_exec_callback_QTextBrowser_HistoryChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTextBrowser_HistoryChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -258,12 +258,12 @@ func (this *QTextBrowser) SourceChanged(param1 *QUrl) {
 	C.QTextBrowser_SourceChanged(this.h, param1.cPointer())
 }
 func (this *QTextBrowser) OnSourceChanged(slot func(param1 *QUrl)) {
-	C.QTextBrowser_connect_SourceChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_SourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_SourceChanged
-func miqt_exec_callback_QTextBrowser_SourceChanged(cb *C.void, param1 *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QUrl))
+func miqt_exec_callback_QTextBrowser_SourceChanged(cb C.intptr_t, param1 *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -278,12 +278,12 @@ func (this *QTextBrowser) Highlighted(param1 *QUrl) {
 	C.QTextBrowser_Highlighted(this.h, param1.cPointer())
 }
 func (this *QTextBrowser) OnHighlighted(slot func(param1 *QUrl)) {
-	C.QTextBrowser_connect_Highlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_Highlighted
-func miqt_exec_callback_QTextBrowser_Highlighted(cb *C.void, param1 *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QUrl))
+func miqt_exec_callback_QTextBrowser_Highlighted(cb C.intptr_t, param1 *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -300,12 +300,12 @@ func (this *QTextBrowser) HighlightedWithQString(param1 string) {
 	C.QTextBrowser_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QTextBrowser) OnHighlightedWithQString(slot func(param1 string)) {
-	C.QTextBrowser_connect_HighlightedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_HighlightedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_HighlightedWithQString
-func miqt_exec_callback_QTextBrowser_HighlightedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QTextBrowser_HighlightedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -323,12 +323,12 @@ func (this *QTextBrowser) AnchorClicked(param1 *QUrl) {
 	C.QTextBrowser_AnchorClicked(this.h, param1.cPointer())
 }
 func (this *QTextBrowser) OnAnchorClicked(slot func(param1 *QUrl)) {
-	C.QTextBrowser_connect_AnchorClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextBrowser_connect_AnchorClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_AnchorClicked
-func miqt_exec_callback_QTextBrowser_AnchorClicked(cb *C.void, param1 *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QUrl))
+func miqt_exec_callback_QTextBrowser_AnchorClicked(cb C.intptr_t, param1 *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

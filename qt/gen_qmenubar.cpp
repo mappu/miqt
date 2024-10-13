@@ -139,7 +139,7 @@ void QMenuBar_Triggered(QMenuBar* self, QAction* action) {
 	self->triggered(action);
 }
 
-void QMenuBar_connect_Triggered(QMenuBar* self, void* slot) {
+void QMenuBar_connect_Triggered(QMenuBar* self, intptr_t slot) {
 	QMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::triggered), self, [=](QAction* action) {
 		QAction* sigval1 = action;
 		miqt_exec_callback_QMenuBar_Triggered(slot, sigval1);
@@ -150,7 +150,7 @@ void QMenuBar_Hovered(QMenuBar* self, QAction* action) {
 	self->hovered(action);
 }
 
-void QMenuBar_connect_Hovered(QMenuBar* self, void* slot) {
+void QMenuBar_connect_Hovered(QMenuBar* self, intptr_t slot) {
 	QMenuBar::connect(self, static_cast<void (QMenuBar::*)(QAction*)>(&QMenuBar::hovered), self, [=](QAction* action) {
 		QAction* sigval1 = action;
 		miqt_exec_callback_QMenuBar_Hovered(slot, sigval1);

@@ -191,12 +191,12 @@ func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason)
 	C.QSystemTrayIcon_Activated(this.h, (C.int)(reason))
 }
 func (this *QSystemTrayIcon) OnActivated(slot func(reason QSystemTrayIcon__ActivationReason)) {
-	C.QSystemTrayIcon_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSystemTrayIcon_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSystemTrayIcon_Activated
-func miqt_exec_callback_QSystemTrayIcon_Activated(cb *C.void, reason C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(reason QSystemTrayIcon__ActivationReason))
+func miqt_exec_callback_QSystemTrayIcon_Activated(cb C.intptr_t, reason C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(reason QSystemTrayIcon__ActivationReason))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -211,12 +211,12 @@ func (this *QSystemTrayIcon) MessageClicked() {
 	C.QSystemTrayIcon_MessageClicked(this.h)
 }
 func (this *QSystemTrayIcon) OnMessageClicked(slot func()) {
-	C.QSystemTrayIcon_connect_MessageClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSystemTrayIcon_connect_MessageClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSystemTrayIcon_MessageClicked
-func miqt_exec_callback_QSystemTrayIcon_MessageClicked(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QSystemTrayIcon_MessageClicked(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

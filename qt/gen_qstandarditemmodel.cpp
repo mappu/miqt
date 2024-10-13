@@ -829,7 +829,7 @@ void QStandardItemModel_ItemChanged(QStandardItemModel* self, QStandardItem* ite
 	self->itemChanged(item);
 }
 
-void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, void* slot) {
+void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, intptr_t slot) {
 	QStandardItemModel::connect(self, static_cast<void (QStandardItemModel::*)(QStandardItem*)>(&QStandardItemModel::itemChanged), self, [=](QStandardItem* item) {
 		QStandardItem* sigval1 = item;
 		miqt_exec_callback_QStandardItemModel_ItemChanged(slot, sigval1);

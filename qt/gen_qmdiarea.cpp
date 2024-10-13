@@ -159,7 +159,7 @@ void QMdiArea_SubWindowActivated(QMdiArea* self, QMdiSubWindow* param1) {
 	self->subWindowActivated(param1);
 }
 
-void QMdiArea_connect_SubWindowActivated(QMdiArea* self, void* slot) {
+void QMdiArea_connect_SubWindowActivated(QMdiArea* self, intptr_t slot) {
 	QMdiArea::connect(self, static_cast<void (QMdiArea::*)(QMdiSubWindow*)>(&QMdiArea::subWindowActivated), self, [=](QMdiSubWindow* param1) {
 		QMdiSubWindow* sigval1 = param1;
 		miqt_exec_callback_QMdiArea_SubWindowActivated(slot, sigval1);

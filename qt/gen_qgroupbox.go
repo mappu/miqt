@@ -149,12 +149,12 @@ func (this *QGroupBox) Clicked() {
 	C.QGroupBox_Clicked(this.h)
 }
 func (this *QGroupBox) OnClicked(slot func()) {
-	C.QGroupBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGroupBox_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGroupBox_Clicked
-func miqt_exec_callback_QGroupBox_Clicked(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGroupBox_Clicked(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -166,12 +166,12 @@ func (this *QGroupBox) Toggled(param1 bool) {
 	C.QGroupBox_Toggled(this.h, (C.bool)(param1))
 }
 func (this *QGroupBox) OnToggled(slot func(param1 bool)) {
-	C.QGroupBox_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGroupBox_connect_Toggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGroupBox_Toggled
-func miqt_exec_callback_QGroupBox_Toggled(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QGroupBox_Toggled(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -230,12 +230,12 @@ func (this *QGroupBox) Clicked1(checked bool) {
 	C.QGroupBox_Clicked1(this.h, (C.bool)(checked))
 }
 func (this *QGroupBox) OnClicked1(slot func(checked bool)) {
-	C.QGroupBox_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGroupBox_connect_Clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGroupBox_Clicked1
-func miqt_exec_callback_QGroupBox_Clicked1(cb *C.void, checked C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+func miqt_exec_callback_QGroupBox_Clicked1(cb C.intptr_t, checked C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

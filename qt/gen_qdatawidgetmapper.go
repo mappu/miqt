@@ -198,12 +198,12 @@ func (this *QDataWidgetMapper) CurrentIndexChanged(index int) {
 	C.QDataWidgetMapper_CurrentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QDataWidgetMapper) OnCurrentIndexChanged(slot func(index int)) {
-	C.QDataWidgetMapper_connect_CurrentIndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDataWidgetMapper_connect_CurrentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged
-func miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

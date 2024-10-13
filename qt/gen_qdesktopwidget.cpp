@@ -92,7 +92,7 @@ void QDesktopWidget_Resized(QDesktopWidget* self, int param1) {
 	self->resized(static_cast<int>(param1));
 }
 
-void QDesktopWidget_connect_Resized(QDesktopWidget* self, void* slot) {
+void QDesktopWidget_connect_Resized(QDesktopWidget* self, intptr_t slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::resized), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QDesktopWidget_Resized(slot, sigval1);
@@ -103,7 +103,7 @@ void QDesktopWidget_WorkAreaResized(QDesktopWidget* self, int param1) {
 	self->workAreaResized(static_cast<int>(param1));
 }
 
-void QDesktopWidget_connect_WorkAreaResized(QDesktopWidget* self, void* slot) {
+void QDesktopWidget_connect_WorkAreaResized(QDesktopWidget* self, intptr_t slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::workAreaResized), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QDesktopWidget_WorkAreaResized(slot, sigval1);
@@ -114,7 +114,7 @@ void QDesktopWidget_ScreenCountChanged(QDesktopWidget* self, int param1) {
 	self->screenCountChanged(static_cast<int>(param1));
 }
 
-void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, void* slot) {
+void QDesktopWidget_connect_ScreenCountChanged(QDesktopWidget* self, intptr_t slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)(int)>(&QDesktopWidget::screenCountChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QDesktopWidget_ScreenCountChanged(slot, sigval1);
@@ -125,7 +125,7 @@ void QDesktopWidget_PrimaryScreenChanged(QDesktopWidget* self) {
 	self->primaryScreenChanged();
 }
 
-void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, void* slot) {
+void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, intptr_t slot) {
 	QDesktopWidget::connect(self, static_cast<void (QDesktopWidget::*)()>(&QDesktopWidget::primaryScreenChanged), self, [=]() {
 		miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged(slot);
 	});

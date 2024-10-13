@@ -76,20 +76,20 @@ void QAbstractTextDocumentLayout_RegisterHandler(QAbstractTextDocumentLayout* se
 void QAbstractTextDocumentLayout_UnregisterHandler(QAbstractTextDocumentLayout* self, int objectType);
 QTextObjectInterface* QAbstractTextDocumentLayout_HandlerForObject(const QAbstractTextDocumentLayout* self, int objectType);
 void QAbstractTextDocumentLayout_Update(QAbstractTextDocumentLayout* self);
-void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, void* slot);
+void QAbstractTextDocumentLayout_connect_Update(QAbstractTextDocumentLayout* self, intptr_t slot);
 void QAbstractTextDocumentLayout_UpdateBlock(QAbstractTextDocumentLayout* self, QTextBlock* block);
-void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, void* slot);
+void QAbstractTextDocumentLayout_connect_UpdateBlock(QAbstractTextDocumentLayout* self, intptr_t slot);
 void QAbstractTextDocumentLayout_DocumentSizeChanged(QAbstractTextDocumentLayout* self, QSizeF* newSize);
-void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, void* slot);
+void QAbstractTextDocumentLayout_connect_DocumentSizeChanged(QAbstractTextDocumentLayout* self, intptr_t slot);
 void QAbstractTextDocumentLayout_PageCountChanged(QAbstractTextDocumentLayout* self, int newPages);
-void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, void* slot);
+void QAbstractTextDocumentLayout_connect_PageCountChanged(QAbstractTextDocumentLayout* self, intptr_t slot);
 struct miqt_string* QAbstractTextDocumentLayout_Tr2(const char* s, const char* c);
 struct miqt_string* QAbstractTextDocumentLayout_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAbstractTextDocumentLayout_TrUtf82(const char* s, const char* c);
 struct miqt_string* QAbstractTextDocumentLayout_TrUtf83(const char* s, const char* c, int n);
 void QAbstractTextDocumentLayout_UnregisterHandler2(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
 void QAbstractTextDocumentLayout_Update1(QAbstractTextDocumentLayout* self, QRectF* param1);
-void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, void* slot);
+void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* self, intptr_t slot);
 void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self);
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format);

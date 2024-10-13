@@ -741,12 +741,12 @@ func (this *QTableWidget) ItemPressed(item *QTableWidgetItem) {
 	C.QTableWidget_ItemPressed(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemPressed(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemPressed
-func miqt_exec_callback_QTableWidget_ItemPressed(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemPressed(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -761,12 +761,12 @@ func (this *QTableWidget) ItemClicked(item *QTableWidgetItem) {
 	C.QTableWidget_ItemClicked(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemClicked(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemClicked
-func miqt_exec_callback_QTableWidget_ItemClicked(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemClicked(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -781,12 +781,12 @@ func (this *QTableWidget) ItemDoubleClicked(item *QTableWidgetItem) {
 	C.QTableWidget_ItemDoubleClicked(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemDoubleClicked(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemDoubleClicked
-func miqt_exec_callback_QTableWidget_ItemDoubleClicked(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -801,12 +801,12 @@ func (this *QTableWidget) ItemActivated(item *QTableWidgetItem) {
 	C.QTableWidget_ItemActivated(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemActivated(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemActivated
-func miqt_exec_callback_QTableWidget_ItemActivated(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemActivated(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -821,12 +821,12 @@ func (this *QTableWidget) ItemEntered(item *QTableWidgetItem) {
 	C.QTableWidget_ItemEntered(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemEntered(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemEntered
-func miqt_exec_callback_QTableWidget_ItemEntered(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemEntered(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -841,12 +841,12 @@ func (this *QTableWidget) ItemChanged(item *QTableWidgetItem) {
 	C.QTableWidget_ItemChanged(this.h, item.cPointer())
 }
 func (this *QTableWidget) OnItemChanged(slot func(item *QTableWidgetItem)) {
-	C.QTableWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemChanged
-func miqt_exec_callback_QTableWidget_ItemChanged(cb *C.void, item *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_ItemChanged(cb C.intptr_t, item *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -861,12 +861,12 @@ func (this *QTableWidget) CurrentItemChanged(current *QTableWidgetItem, previous
 	C.QTableWidget_CurrentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QTableWidget) OnCurrentItemChanged(slot func(current *QTableWidgetItem, previous *QTableWidgetItem)) {
-	C.QTableWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CurrentItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CurrentItemChanged
-func miqt_exec_callback_QTableWidget_CurrentItemChanged(cb *C.void, current *C.QTableWidgetItem, previous *C.QTableWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QTableWidgetItem, previous *QTableWidgetItem))
+func miqt_exec_callback_QTableWidget_CurrentItemChanged(cb C.intptr_t, current *C.QTableWidgetItem, previous *C.QTableWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QTableWidgetItem, previous *QTableWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -882,12 +882,12 @@ func (this *QTableWidget) ItemSelectionChanged() {
 	C.QTableWidget_ItemSelectionChanged(this.h)
 }
 func (this *QTableWidget) OnItemSelectionChanged(slot func()) {
-	C.QTableWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_ItemSelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_ItemSelectionChanged
-func miqt_exec_callback_QTableWidget_ItemSelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTableWidget_ItemSelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -899,12 +899,12 @@ func (this *QTableWidget) CellPressed(row int, column int) {
 	C.QTableWidget_CellPressed(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellPressed(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellPressed
-func miqt_exec_callback_QTableWidget_CellPressed(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellPressed(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -921,12 +921,12 @@ func (this *QTableWidget) CellClicked(row int, column int) {
 	C.QTableWidget_CellClicked(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellClicked(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellClicked
-func miqt_exec_callback_QTableWidget_CellClicked(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellClicked(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -943,12 +943,12 @@ func (this *QTableWidget) CellDoubleClicked(row int, column int) {
 	C.QTableWidget_CellDoubleClicked(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellDoubleClicked(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellDoubleClicked
-func miqt_exec_callback_QTableWidget_CellDoubleClicked(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellDoubleClicked(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -965,12 +965,12 @@ func (this *QTableWidget) CellActivated(row int, column int) {
 	C.QTableWidget_CellActivated(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellActivated(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellActivated
-func miqt_exec_callback_QTableWidget_CellActivated(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellActivated(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -987,12 +987,12 @@ func (this *QTableWidget) CellEntered(row int, column int) {
 	C.QTableWidget_CellEntered(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellEntered(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellEntered
-func miqt_exec_callback_QTableWidget_CellEntered(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellEntered(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1009,12 +1009,12 @@ func (this *QTableWidget) CellChanged(row int, column int) {
 	C.QTableWidget_CellChanged(this.h, (C.int)(row), (C.int)(column))
 }
 func (this *QTableWidget) OnCellChanged(slot func(row int, column int)) {
-	C.QTableWidget_connect_CellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CellChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CellChanged
-func miqt_exec_callback_QTableWidget_CellChanged(cb *C.void, row C.int, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(row int, column int))
+func miqt_exec_callback_QTableWidget_CellChanged(cb C.intptr_t, row C.int, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1031,12 +1031,12 @@ func (this *QTableWidget) CurrentCellChanged(currentRow int, currentColumn int, 
 	C.QTableWidget_CurrentCellChanged(this.h, (C.int)(currentRow), (C.int)(currentColumn), (C.int)(previousRow), (C.int)(previousColumn))
 }
 func (this *QTableWidget) OnCurrentCellChanged(slot func(currentRow int, currentColumn int, previousRow int, previousColumn int)) {
-	C.QTableWidget_connect_CurrentCellChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTableWidget_connect_CurrentCellChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTableWidget_CurrentCellChanged
-func miqt_exec_callback_QTableWidget_CurrentCellChanged(cb *C.void, currentRow C.int, currentColumn C.int, previousRow C.int, previousColumn C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(currentRow int, currentColumn int, previousRow int, previousColumn int))
+func miqt_exec_callback_QTableWidget_CurrentCellChanged(cb C.intptr_t, currentRow C.int, currentColumn C.int, previousRow C.int, previousColumn C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(currentRow int, currentColumn int, previousRow int, previousColumn int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

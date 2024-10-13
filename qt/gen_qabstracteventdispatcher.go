@@ -155,12 +155,12 @@ func (this *QAbstractEventDispatcher) AboutToBlock() {
 	C.QAbstractEventDispatcher_AboutToBlock(this.h)
 }
 func (this *QAbstractEventDispatcher) OnAboutToBlock(slot func()) {
-	C.QAbstractEventDispatcher_connect_AboutToBlock(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractEventDispatcher_connect_AboutToBlock(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock
-func miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -172,12 +172,12 @@ func (this *QAbstractEventDispatcher) Awake() {
 	C.QAbstractEventDispatcher_Awake(this.h)
 }
 func (this *QAbstractEventDispatcher) OnAwake(slot func()) {
-	C.QAbstractEventDispatcher_connect_Awake(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractEventDispatcher_connect_Awake(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractEventDispatcher_Awake
-func miqt_exec_callback_QAbstractEventDispatcher_Awake(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractEventDispatcher_Awake(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

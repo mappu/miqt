@@ -308,12 +308,12 @@ func (this *QUndoStack) IndexChanged(idx int) {
 	C.QUndoStack_IndexChanged(this.h, (C.int)(idx))
 }
 func (this *QUndoStack) OnIndexChanged(slot func(idx int)) {
-	C.QUndoStack_connect_IndexChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_IndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_IndexChanged
-func miqt_exec_callback_QUndoStack_IndexChanged(cb *C.void, idx C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(idx int))
+func miqt_exec_callback_QUndoStack_IndexChanged(cb C.intptr_t, idx C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(idx int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -328,12 +328,12 @@ func (this *QUndoStack) CleanChanged(clean bool) {
 	C.QUndoStack_CleanChanged(this.h, (C.bool)(clean))
 }
 func (this *QUndoStack) OnCleanChanged(slot func(clean bool)) {
-	C.QUndoStack_connect_CleanChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_CleanChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_CleanChanged
-func miqt_exec_callback_QUndoStack_CleanChanged(cb *C.void, clean C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(clean bool))
+func miqt_exec_callback_QUndoStack_CleanChanged(cb C.intptr_t, clean C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(clean bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -348,12 +348,12 @@ func (this *QUndoStack) CanUndoChanged(canUndo bool) {
 	C.QUndoStack_CanUndoChanged(this.h, (C.bool)(canUndo))
 }
 func (this *QUndoStack) OnCanUndoChanged(slot func(canUndo bool)) {
-	C.QUndoStack_connect_CanUndoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_CanUndoChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_CanUndoChanged
-func miqt_exec_callback_QUndoStack_CanUndoChanged(cb *C.void, canUndo C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(canUndo bool))
+func miqt_exec_callback_QUndoStack_CanUndoChanged(cb C.intptr_t, canUndo C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(canUndo bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -368,12 +368,12 @@ func (this *QUndoStack) CanRedoChanged(canRedo bool) {
 	C.QUndoStack_CanRedoChanged(this.h, (C.bool)(canRedo))
 }
 func (this *QUndoStack) OnCanRedoChanged(slot func(canRedo bool)) {
-	C.QUndoStack_connect_CanRedoChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_CanRedoChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_CanRedoChanged
-func miqt_exec_callback_QUndoStack_CanRedoChanged(cb *C.void, canRedo C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(canRedo bool))
+func miqt_exec_callback_QUndoStack_CanRedoChanged(cb C.intptr_t, canRedo C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(canRedo bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -390,12 +390,12 @@ func (this *QUndoStack) UndoTextChanged(undoText string) {
 	C.QUndoStack_UndoTextChanged(this.h, (*C.struct_miqt_string)(undoText_ms))
 }
 func (this *QUndoStack) OnUndoTextChanged(slot func(undoText string)) {
-	C.QUndoStack_connect_UndoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_UndoTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_UndoTextChanged
-func miqt_exec_callback_QUndoStack_UndoTextChanged(cb *C.void, undoText *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(undoText string))
+func miqt_exec_callback_QUndoStack_UndoTextChanged(cb C.intptr_t, undoText *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(undoText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -415,12 +415,12 @@ func (this *QUndoStack) RedoTextChanged(redoText string) {
 	C.QUndoStack_RedoTextChanged(this.h, (*C.struct_miqt_string)(redoText_ms))
 }
 func (this *QUndoStack) OnRedoTextChanged(slot func(redoText string)) {
-	C.QUndoStack_connect_RedoTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QUndoStack_connect_RedoTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_RedoTextChanged
-func miqt_exec_callback_QUndoStack_RedoTextChanged(cb *C.void, redoText *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(redoText string))
+func miqt_exec_callback_QUndoStack_RedoTextChanged(cb C.intptr_t, redoText *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(redoText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

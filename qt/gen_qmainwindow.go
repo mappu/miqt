@@ -337,12 +337,12 @@ func (this *QMainWindow) IconSizeChanged(iconSize *QSize) {
 	C.QMainWindow_IconSizeChanged(this.h, iconSize.cPointer())
 }
 func (this *QMainWindow) OnIconSizeChanged(slot func(iconSize *QSize)) {
-	C.QMainWindow_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMainWindow_connect_IconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMainWindow_IconSizeChanged
-func miqt_exec_callback_QMainWindow_IconSizeChanged(cb *C.void, iconSize *C.QSize) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(iconSize *QSize))
+func miqt_exec_callback_QMainWindow_IconSizeChanged(cb C.intptr_t, iconSize *C.QSize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize *QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -357,12 +357,12 @@ func (this *QMainWindow) ToolButtonStyleChanged(toolButtonStyle ToolButtonStyle)
 	C.QMainWindow_ToolButtonStyleChanged(this.h, (C.int)(toolButtonStyle))
 }
 func (this *QMainWindow) OnToolButtonStyleChanged(slot func(toolButtonStyle ToolButtonStyle)) {
-	C.QMainWindow_connect_ToolButtonStyleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMainWindow_connect_ToolButtonStyleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMainWindow_ToolButtonStyleChanged
-func miqt_exec_callback_QMainWindow_ToolButtonStyleChanged(cb *C.void, toolButtonStyle C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(toolButtonStyle ToolButtonStyle))
+func miqt_exec_callback_QMainWindow_ToolButtonStyleChanged(cb C.intptr_t, toolButtonStyle C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(toolButtonStyle ToolButtonStyle))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -377,12 +377,12 @@ func (this *QMainWindow) TabifiedDockWidgetActivated(dockWidget *QDockWidget) {
 	C.QMainWindow_TabifiedDockWidgetActivated(this.h, dockWidget.cPointer())
 }
 func (this *QMainWindow) OnTabifiedDockWidgetActivated(slot func(dockWidget *QDockWidget)) {
-	C.QMainWindow_connect_TabifiedDockWidgetActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMainWindow_connect_TabifiedDockWidgetActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMainWindow_TabifiedDockWidgetActivated
-func miqt_exec_callback_QMainWindow_TabifiedDockWidgetActivated(cb *C.void, dockWidget *C.QDockWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(dockWidget *QDockWidget))
+func miqt_exec_callback_QMainWindow_TabifiedDockWidgetActivated(cb C.intptr_t, dockWidget *C.QDockWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dockWidget *QDockWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -1289,12 +1289,12 @@ func (this *QWidget) WindowTitleChanged(title string) {
 	C.QWidget_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
 }
 func (this *QWidget) OnWindowTitleChanged(slot func(title string)) {
-	C.QWidget_connect_WindowTitleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWidget_connect_WindowTitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_WindowTitleChanged
-func miqt_exec_callback_QWidget_WindowTitleChanged(cb *C.void, title *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(title string))
+func miqt_exec_callback_QWidget_WindowTitleChanged(cb C.intptr_t, title *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1312,12 +1312,12 @@ func (this *QWidget) WindowIconChanged(icon *QIcon) {
 	C.QWidget_WindowIconChanged(this.h, icon.cPointer())
 }
 func (this *QWidget) OnWindowIconChanged(slot func(icon *QIcon)) {
-	C.QWidget_connect_WindowIconChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWidget_connect_WindowIconChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_WindowIconChanged
-func miqt_exec_callback_QWidget_WindowIconChanged(cb *C.void, icon *C.QIcon) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(icon *QIcon))
+func miqt_exec_callback_QWidget_WindowIconChanged(cb C.intptr_t, icon *C.QIcon) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(icon *QIcon))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1334,12 +1334,12 @@ func (this *QWidget) WindowIconTextChanged(iconText string) {
 	C.QWidget_WindowIconTextChanged(this.h, (*C.struct_miqt_string)(iconText_ms))
 }
 func (this *QWidget) OnWindowIconTextChanged(slot func(iconText string)) {
-	C.QWidget_connect_WindowIconTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWidget_connect_WindowIconTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_WindowIconTextChanged
-func miqt_exec_callback_QWidget_WindowIconTextChanged(cb *C.void, iconText *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(iconText string))
+func miqt_exec_callback_QWidget_WindowIconTextChanged(cb C.intptr_t, iconText *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1357,12 +1357,12 @@ func (this *QWidget) CustomContextMenuRequested(pos *QPoint) {
 	C.QWidget_CustomContextMenuRequested(this.h, pos.cPointer())
 }
 func (this *QWidget) OnCustomContextMenuRequested(slot func(pos *QPoint)) {
-	C.QWidget_connect_CustomContextMenuRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWidget_connect_CustomContextMenuRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_CustomContextMenuRequested
-func miqt_exec_callback_QWidget_CustomContextMenuRequested(cb *C.void, pos *C.QPoint) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(pos *QPoint))
+func miqt_exec_callback_QWidget_CustomContextMenuRequested(cb C.intptr_t, pos *C.QPoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos *QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

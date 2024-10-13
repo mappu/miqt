@@ -138,12 +138,12 @@ func (this *QAbstractItemDelegate) CommitData(editor *QWidget) {
 	C.QAbstractItemDelegate_CommitData(this.h, editor.cPointer())
 }
 func (this *QAbstractItemDelegate) OnCommitData(slot func(editor *QWidget)) {
-	C.QAbstractItemDelegate_connect_CommitData(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemDelegate_connect_CommitData(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemDelegate_CommitData
-func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb *C.void, editor *C.QWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget))
+func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb C.intptr_t, editor *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(editor *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -158,12 +158,12 @@ func (this *QAbstractItemDelegate) CloseEditor(editor *QWidget) {
 	C.QAbstractItemDelegate_CloseEditor(this.h, editor.cPointer())
 }
 func (this *QAbstractItemDelegate) OnCloseEditor(slot func(editor *QWidget)) {
-	C.QAbstractItemDelegate_connect_CloseEditor(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemDelegate_connect_CloseEditor(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemDelegate_CloseEditor
-func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb *C.void, editor *C.QWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget))
+func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb C.intptr_t, editor *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(editor *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -178,12 +178,12 @@ func (this *QAbstractItemDelegate) SizeHintChanged(param1 *QModelIndex) {
 	C.QAbstractItemDelegate_SizeHintChanged(this.h, param1.cPointer())
 }
 func (this *QAbstractItemDelegate) OnSizeHintChanged(slot func(param1 *QModelIndex)) {
-	C.QAbstractItemDelegate_connect_SizeHintChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemDelegate_connect_SizeHintChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged
-func miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(cb *C.void, param1 *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QModelIndex))
+func miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(cb C.intptr_t, param1 *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -242,12 +242,12 @@ func (this *QAbstractItemDelegate) CloseEditor2(editor *QWidget, hint QAbstractI
 	C.QAbstractItemDelegate_CloseEditor2(this.h, editor.cPointer(), (C.int)(hint))
 }
 func (this *QAbstractItemDelegate) OnCloseEditor2(slot func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
-	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemDelegate_connect_CloseEditor2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemDelegate_CloseEditor2
-func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb *C.void, editor *C.QWidget, hint C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint))
+func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor *C.QWidget, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

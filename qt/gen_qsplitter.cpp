@@ -174,7 +174,7 @@ void QSplitter_SplitterMoved(QSplitter* self, int pos, int index) {
 	self->splitterMoved(static_cast<int>(pos), static_cast<int>(index));
 }
 
-void QSplitter_connect_SplitterMoved(QSplitter* self, void* slot) {
+void QSplitter_connect_SplitterMoved(QSplitter* self, intptr_t slot) {
 	QSplitter::connect(self, static_cast<void (QSplitter::*)(int, int)>(&QSplitter::splitterMoved), self, [=](int pos, int index) {
 		int sigval1 = pos;
 		int sigval2 = index;

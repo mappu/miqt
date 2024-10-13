@@ -547,12 +547,12 @@ func (this *QFileDialog) FileSelected(file string) {
 	C.QFileDialog_FileSelected(this.h, (*C.struct_miqt_string)(file_ms))
 }
 func (this *QFileDialog) OnFileSelected(slot func(file string)) {
-	C.QFileDialog_connect_FileSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_FileSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_FileSelected
-func miqt_exec_callback_QFileDialog_FileSelected(cb *C.void, file *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(file string))
+func miqt_exec_callback_QFileDialog_FileSelected(cb C.intptr_t, file *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(file string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -580,12 +580,12 @@ func (this *QFileDialog) FilesSelected(files []string) {
 	C.QFileDialog_FilesSelected(this.h, files_ma)
 }
 func (this *QFileDialog) OnFilesSelected(slot func(files []string)) {
-	C.QFileDialog_connect_FilesSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_FilesSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_FilesSelected
-func miqt_exec_callback_QFileDialog_FilesSelected(cb *C.void, files *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(files []string))
+func miqt_exec_callback_QFileDialog_FilesSelected(cb C.intptr_t, files *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(files []string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -612,12 +612,12 @@ func (this *QFileDialog) CurrentChanged(path string) {
 	C.QFileDialog_CurrentChanged(this.h, (*C.struct_miqt_string)(path_ms))
 }
 func (this *QFileDialog) OnCurrentChanged(slot func(path string)) {
-	C.QFileDialog_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_CurrentChanged
-func miqt_exec_callback_QFileDialog_CurrentChanged(cb *C.void, path *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(path string))
+func miqt_exec_callback_QFileDialog_CurrentChanged(cb C.intptr_t, path *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(path string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -637,12 +637,12 @@ func (this *QFileDialog) DirectoryEntered(directory string) {
 	C.QFileDialog_DirectoryEntered(this.h, (*C.struct_miqt_string)(directory_ms))
 }
 func (this *QFileDialog) OnDirectoryEntered(slot func(directory string)) {
-	C.QFileDialog_connect_DirectoryEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_DirectoryEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_DirectoryEntered
-func miqt_exec_callback_QFileDialog_DirectoryEntered(cb *C.void, directory *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(directory string))
+func miqt_exec_callback_QFileDialog_DirectoryEntered(cb C.intptr_t, directory *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(directory string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -660,12 +660,12 @@ func (this *QFileDialog) UrlSelected(url *QUrl) {
 	C.QFileDialog_UrlSelected(this.h, url.cPointer())
 }
 func (this *QFileDialog) OnUrlSelected(slot func(url *QUrl)) {
-	C.QFileDialog_connect_UrlSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_UrlSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_UrlSelected
-func miqt_exec_callback_QFileDialog_UrlSelected(cb *C.void, url *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(url *QUrl))
+func miqt_exec_callback_QFileDialog_UrlSelected(cb C.intptr_t, url *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(url *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -688,12 +688,12 @@ func (this *QFileDialog) UrlsSelected(urls []QUrl) {
 	C.QFileDialog_UrlsSelected(this.h, urls_ma)
 }
 func (this *QFileDialog) OnUrlsSelected(slot func(urls []QUrl)) {
-	C.QFileDialog_connect_UrlsSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_UrlsSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_UrlsSelected
-func miqt_exec_callback_QFileDialog_UrlsSelected(cb *C.void, urls *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(urls []QUrl))
+func miqt_exec_callback_QFileDialog_UrlsSelected(cb C.intptr_t, urls *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(urls []QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -718,12 +718,12 @@ func (this *QFileDialog) CurrentUrlChanged(url *QUrl) {
 	C.QFileDialog_CurrentUrlChanged(this.h, url.cPointer())
 }
 func (this *QFileDialog) OnCurrentUrlChanged(slot func(url *QUrl)) {
-	C.QFileDialog_connect_CurrentUrlChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_CurrentUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_CurrentUrlChanged
-func miqt_exec_callback_QFileDialog_CurrentUrlChanged(cb *C.void, url *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(url *QUrl))
+func miqt_exec_callback_QFileDialog_CurrentUrlChanged(cb C.intptr_t, url *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(url *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -738,12 +738,12 @@ func (this *QFileDialog) DirectoryUrlEntered(directory *QUrl) {
 	C.QFileDialog_DirectoryUrlEntered(this.h, directory.cPointer())
 }
 func (this *QFileDialog) OnDirectoryUrlEntered(slot func(directory *QUrl)) {
-	C.QFileDialog_connect_DirectoryUrlEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_DirectoryUrlEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_DirectoryUrlEntered
-func miqt_exec_callback_QFileDialog_DirectoryUrlEntered(cb *C.void, directory *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(directory *QUrl))
+func miqt_exec_callback_QFileDialog_DirectoryUrlEntered(cb C.intptr_t, directory *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(directory *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -760,12 +760,12 @@ func (this *QFileDialog) FilterSelected(filter string) {
 	C.QFileDialog_FilterSelected(this.h, (*C.struct_miqt_string)(filter_ms))
 }
 func (this *QFileDialog) OnFilterSelected(slot func(filter string)) {
-	C.QFileDialog_connect_FilterSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFileDialog_connect_FilterSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_FilterSelected
-func miqt_exec_callback_QFileDialog_FilterSelected(cb *C.void, filter *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(filter string))
+func miqt_exec_callback_QFileDialog_FilterSelected(cb C.intptr_t, filter *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(filter string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

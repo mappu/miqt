@@ -41,7 +41,7 @@ QFont* QFontComboBox_CurrentFont(const QFontComboBox* self);
 QSize* QFontComboBox_SizeHint(const QFontComboBox* self);
 void QFontComboBox_SetCurrentFont(QFontComboBox* self, QFont* f);
 void QFontComboBox_CurrentFontChanged(QFontComboBox* self, QFont* f);
-void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, void* slot);
+void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, intptr_t slot);
 struct miqt_string* QFontComboBox_Tr2(const char* s, const char* c);
 struct miqt_string* QFontComboBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QFontComboBox_TrUtf82(const char* s, const char* c);

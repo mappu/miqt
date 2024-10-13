@@ -238,7 +238,7 @@ void QCompleter_Activated(QCompleter* self, struct miqt_string* text) {
 	self->activated(text_QString);
 }
 
-void QCompleter_connect_Activated(QCompleter* self, void* slot) {
+void QCompleter_connect_Activated(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::activated), self, [=](const QString& text) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -252,7 +252,7 @@ void QCompleter_ActivatedWithIndex(QCompleter* self, QModelIndex* index) {
 	self->activated(*index);
 }
 
-void QCompleter_connect_ActivatedWithIndex(QCompleter* self, void* slot) {
+void QCompleter_connect_ActivatedWithIndex(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::activated), self, [=](const QModelIndex& index) {
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
@@ -266,7 +266,7 @@ void QCompleter_Highlighted(QCompleter* self, struct miqt_string* text) {
 	self->highlighted(text_QString);
 }
 
-void QCompleter_connect_Highlighted(QCompleter* self, void* slot) {
+void QCompleter_connect_Highlighted(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QString&)>(&QCompleter::highlighted), self, [=](const QString& text) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -280,7 +280,7 @@ void QCompleter_HighlightedWithIndex(QCompleter* self, QModelIndex* index) {
 	self->highlighted(*index);
 }
 
-void QCompleter_connect_HighlightedWithIndex(QCompleter* self, void* slot) {
+void QCompleter_connect_HighlightedWithIndex(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::highlighted), self, [=](const QModelIndex& index) {
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer

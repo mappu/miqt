@@ -107,12 +107,12 @@ func (this *QValidator) Changed() {
 	C.QValidator_Changed(this.h)
 }
 func (this *QValidator) OnChanged(slot func()) {
-	C.QValidator_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QValidator_connect_Changed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QValidator_Changed
-func miqt_exec_callback_QValidator_Changed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QValidator_Changed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -289,12 +289,12 @@ func (this *QIntValidator) BottomChanged(bottom int) {
 	C.QIntValidator_BottomChanged(this.h, (C.int)(bottom))
 }
 func (this *QIntValidator) OnBottomChanged(slot func(bottom int)) {
-	C.QIntValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIntValidator_connect_BottomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIntValidator_BottomChanged
-func miqt_exec_callback_QIntValidator_BottomChanged(cb *C.void, bottom C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bottom int))
+func miqt_exec_callback_QIntValidator_BottomChanged(cb C.intptr_t, bottom C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(bottom int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -309,12 +309,12 @@ func (this *QIntValidator) TopChanged(top int) {
 	C.QIntValidator_TopChanged(this.h, (C.int)(top))
 }
 func (this *QIntValidator) OnTopChanged(slot func(top int)) {
-	C.QIntValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QIntValidator_connect_TopChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIntValidator_TopChanged
-func miqt_exec_callback_QIntValidator_TopChanged(cb *C.void, top C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(top int))
+func miqt_exec_callback_QIntValidator_TopChanged(cb C.intptr_t, top C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(top int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -504,12 +504,12 @@ func (this *QDoubleValidator) BottomChanged(bottom float64) {
 	C.QDoubleValidator_BottomChanged(this.h, (C.double)(bottom))
 }
 func (this *QDoubleValidator) OnBottomChanged(slot func(bottom float64)) {
-	C.QDoubleValidator_connect_BottomChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleValidator_connect_BottomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleValidator_BottomChanged
-func miqt_exec_callback_QDoubleValidator_BottomChanged(cb *C.void, bottom C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(bottom float64))
+func miqt_exec_callback_QDoubleValidator_BottomChanged(cb C.intptr_t, bottom C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(bottom float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -524,12 +524,12 @@ func (this *QDoubleValidator) TopChanged(top float64) {
 	C.QDoubleValidator_TopChanged(this.h, (C.double)(top))
 }
 func (this *QDoubleValidator) OnTopChanged(slot func(top float64)) {
-	C.QDoubleValidator_connect_TopChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleValidator_connect_TopChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleValidator_TopChanged
-func miqt_exec_callback_QDoubleValidator_TopChanged(cb *C.void, top C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(top float64))
+func miqt_exec_callback_QDoubleValidator_TopChanged(cb C.intptr_t, top C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(top float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -544,12 +544,12 @@ func (this *QDoubleValidator) DecimalsChanged(decimals int) {
 	C.QDoubleValidator_DecimalsChanged(this.h, (C.int)(decimals))
 }
 func (this *QDoubleValidator) OnDecimalsChanged(slot func(decimals int)) {
-	C.QDoubleValidator_connect_DecimalsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleValidator_connect_DecimalsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleValidator_DecimalsChanged
-func miqt_exec_callback_QDoubleValidator_DecimalsChanged(cb *C.void, decimals C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(decimals int))
+func miqt_exec_callback_QDoubleValidator_DecimalsChanged(cb C.intptr_t, decimals C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(decimals int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -564,12 +564,12 @@ func (this *QDoubleValidator) NotationChanged(notation QDoubleValidator__Notatio
 	C.QDoubleValidator_NotationChanged(this.h, (C.int)(notation))
 }
 func (this *QDoubleValidator) OnNotationChanged(slot func(notation QDoubleValidator__Notation)) {
-	C.QDoubleValidator_connect_NotationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleValidator_connect_NotationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleValidator_NotationChanged
-func miqt_exec_callback_QDoubleValidator_NotationChanged(cb *C.void, notation C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(notation QDoubleValidator__Notation))
+func miqt_exec_callback_QDoubleValidator_NotationChanged(cb C.intptr_t, notation C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(notation QDoubleValidator__Notation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -735,12 +735,12 @@ func (this *QRegExpValidator) RegExpChanged(regExp *QRegExp) {
 	C.QRegExpValidator_RegExpChanged(this.h, regExp.cPointer())
 }
 func (this *QRegExpValidator) OnRegExpChanged(slot func(regExp *QRegExp)) {
-	C.QRegExpValidator_connect_RegExpChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QRegExpValidator_connect_RegExpChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRegExpValidator_RegExpChanged
-func miqt_exec_callback_QRegExpValidator_RegExpChanged(cb *C.void, regExp *C.QRegExp) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(regExp *QRegExp))
+func miqt_exec_callback_QRegExpValidator_RegExpChanged(cb C.intptr_t, regExp *C.QRegExp) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(regExp *QRegExp))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -905,12 +905,12 @@ func (this *QRegularExpressionValidator) RegularExpressionChanged(re *QRegularEx
 	C.QRegularExpressionValidator_RegularExpressionChanged(this.h, re.cPointer())
 }
 func (this *QRegularExpressionValidator) OnRegularExpressionChanged(slot func(re *QRegularExpression)) {
-	C.QRegularExpressionValidator_connect_RegularExpressionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QRegularExpressionValidator_connect_RegularExpressionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged
-func miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(cb *C.void, re *C.QRegularExpression) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(re *QRegularExpression))
+func miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(cb C.intptr_t, re *C.QRegularExpression) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(re *QRegularExpression))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -166,7 +166,7 @@ void QToolBar_ActionTriggered(QToolBar* self, QAction* action) {
 	self->actionTriggered(action);
 }
 
-void QToolBar_connect_ActionTriggered(QToolBar* self, void* slot) {
+void QToolBar_connect_ActionTriggered(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(QAction*)>(&QToolBar::actionTriggered), self, [=](QAction* action) {
 		QAction* sigval1 = action;
 		miqt_exec_callback_QToolBar_ActionTriggered(slot, sigval1);
@@ -177,7 +177,7 @@ void QToolBar_MovableChanged(QToolBar* self, bool movable) {
 	self->movableChanged(movable);
 }
 
-void QToolBar_connect_MovableChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_MovableChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::movableChanged), self, [=](bool movable) {
 		bool sigval1 = movable;
 		miqt_exec_callback_QToolBar_MovableChanged(slot, sigval1);
@@ -188,7 +188,7 @@ void QToolBar_AllowedAreasChanged(QToolBar* self, int allowedAreas) {
 	self->allowedAreasChanged(static_cast<Qt::ToolBarAreas>(allowedAreas));
 }
 
-void QToolBar_connect_AllowedAreasChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_AllowedAreasChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolBarAreas)>(&QToolBar::allowedAreasChanged), self, [=](Qt::ToolBarAreas allowedAreas) {
 		Qt::ToolBarAreas allowedAreas_ret = allowedAreas;
 		int sigval1 = static_cast<int>(allowedAreas_ret);
@@ -200,7 +200,7 @@ void QToolBar_OrientationChanged(QToolBar* self, int orientation) {
 	self->orientationChanged(static_cast<Qt::Orientation>(orientation));
 }
 
-void QToolBar_connect_OrientationChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_OrientationChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::Orientation)>(&QToolBar::orientationChanged), self, [=](Qt::Orientation orientation) {
 		Qt::Orientation orientation_ret = orientation;
 		int sigval1 = static_cast<int>(orientation_ret);
@@ -212,7 +212,7 @@ void QToolBar_IconSizeChanged(QToolBar* self, QSize* iconSize) {
 	self->iconSizeChanged(*iconSize);
 }
 
-void QToolBar_connect_IconSizeChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_IconSizeChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(const QSize&)>(&QToolBar::iconSizeChanged), self, [=](const QSize& iconSize) {
 		const QSize& iconSize_ret = iconSize;
 		// Cast returned reference into pointer
@@ -225,7 +225,7 @@ void QToolBar_ToolButtonStyleChanged(QToolBar* self, int toolButtonStyle) {
 	self->toolButtonStyleChanged(static_cast<Qt::ToolButtonStyle>(toolButtonStyle));
 }
 
-void QToolBar_connect_ToolButtonStyleChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_ToolButtonStyleChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(Qt::ToolButtonStyle)>(&QToolBar::toolButtonStyleChanged), self, [=](Qt::ToolButtonStyle toolButtonStyle) {
 		Qt::ToolButtonStyle toolButtonStyle_ret = toolButtonStyle;
 		int sigval1 = static_cast<int>(toolButtonStyle_ret);
@@ -237,7 +237,7 @@ void QToolBar_TopLevelChanged(QToolBar* self, bool topLevel) {
 	self->topLevelChanged(topLevel);
 }
 
-void QToolBar_connect_TopLevelChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_TopLevelChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::topLevelChanged), self, [=](bool topLevel) {
 		bool sigval1 = topLevel;
 		miqt_exec_callback_QToolBar_TopLevelChanged(slot, sigval1);
@@ -248,7 +248,7 @@ void QToolBar_VisibilityChanged(QToolBar* self, bool visible) {
 	self->visibilityChanged(visible);
 }
 
-void QToolBar_connect_VisibilityChanged(QToolBar* self, void* slot) {
+void QToolBar_connect_VisibilityChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(bool)>(&QToolBar::visibilityChanged), self, [=](bool visible) {
 		bool sigval1 = visible;
 		miqt_exec_callback_QToolBar_VisibilityChanged(slot, sigval1);

@@ -195,12 +195,12 @@ func (this *QLCDNumber) Overflow() {
 	C.QLCDNumber_Overflow(this.h)
 }
 func (this *QLCDNumber) OnOverflow(slot func()) {
-	C.QLCDNumber_connect_Overflow(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLCDNumber_connect_Overflow(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_Overflow
-func miqt_exec_callback_QLCDNumber_Overflow(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QLCDNumber_Overflow(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

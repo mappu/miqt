@@ -166,12 +166,12 @@ func (this *QSpinBox) ValueChanged(param1 int) {
 	C.QSpinBox_ValueChanged(this.h, (C.int)(param1))
 }
 func (this *QSpinBox) OnValueChanged(slot func(param1 int)) {
-	C.QSpinBox_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSpinBox_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSpinBox_ValueChanged
-func miqt_exec_callback_QSpinBox_ValueChanged(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QSpinBox_ValueChanged(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -188,12 +188,12 @@ func (this *QSpinBox) TextChanged(param1 string) {
 	C.QSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QSpinBox) OnTextChanged(slot func(param1 string)) {
-	C.QSpinBox_connect_TextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSpinBox_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSpinBox_TextChanged
-func miqt_exec_callback_QSpinBox_TextChanged(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QSpinBox_TextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -213,12 +213,12 @@ func (this *QSpinBox) ValueChangedWithQString(param1 string) {
 	C.QSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QSpinBox) OnValueChangedWithQString(slot func(param1 string)) {
-	C.QSpinBox_connect_ValueChangedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSpinBox_connect_ValueChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSpinBox_ValueChangedWithQString
-func miqt_exec_callback_QSpinBox_ValueChangedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -467,12 +467,12 @@ func (this *QDoubleSpinBox) ValueChanged(param1 float64) {
 	C.QDoubleSpinBox_ValueChanged(this.h, (C.double)(param1))
 }
 func (this *QDoubleSpinBox) OnValueChanged(slot func(param1 float64)) {
-	C.QDoubleSpinBox_connect_ValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleSpinBox_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleSpinBox_ValueChanged
-func miqt_exec_callback_QDoubleSpinBox_ValueChanged(cb *C.void, param1 C.double) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 float64))
+func miqt_exec_callback_QDoubleSpinBox_ValueChanged(cb C.intptr_t, param1 C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -489,12 +489,12 @@ func (this *QDoubleSpinBox) TextChanged(param1 string) {
 	C.QDoubleSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QDoubleSpinBox) OnTextChanged(slot func(param1 string)) {
-	C.QDoubleSpinBox_connect_TextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleSpinBox_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleSpinBox_TextChanged
-func miqt_exec_callback_QDoubleSpinBox_TextChanged(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QDoubleSpinBox_TextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -514,12 +514,12 @@ func (this *QDoubleSpinBox) ValueChangedWithQString(param1 string) {
 	C.QDoubleSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QDoubleSpinBox) OnValueChangedWithQString(slot func(param1 string)) {
-	C.QDoubleSpinBox_connect_ValueChangedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDoubleSpinBox_connect_ValueChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString
-func miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

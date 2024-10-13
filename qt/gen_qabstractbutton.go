@@ -187,12 +187,12 @@ func (this *QAbstractButton) Pressed() {
 	C.QAbstractButton_Pressed(this.h)
 }
 func (this *QAbstractButton) OnPressed(slot func()) {
-	C.QAbstractButton_connect_Pressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractButton_connect_Pressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_Pressed
-func miqt_exec_callback_QAbstractButton_Pressed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractButton_Pressed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -204,12 +204,12 @@ func (this *QAbstractButton) Released() {
 	C.QAbstractButton_Released(this.h)
 }
 func (this *QAbstractButton) OnReleased(slot func()) {
-	C.QAbstractButton_connect_Released(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractButton_connect_Released(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_Released
-func miqt_exec_callback_QAbstractButton_Released(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractButton_Released(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -221,12 +221,12 @@ func (this *QAbstractButton) Clicked() {
 	C.QAbstractButton_Clicked(this.h)
 }
 func (this *QAbstractButton) OnClicked(slot func()) {
-	C.QAbstractButton_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractButton_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_Clicked
-func miqt_exec_callback_QAbstractButton_Clicked(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractButton_Clicked(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -238,12 +238,12 @@ func (this *QAbstractButton) Toggled(checked bool) {
 	C.QAbstractButton_Toggled(this.h, (C.bool)(checked))
 }
 func (this *QAbstractButton) OnToggled(slot func(checked bool)) {
-	C.QAbstractButton_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractButton_connect_Toggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_Toggled
-func miqt_exec_callback_QAbstractButton_Toggled(cb *C.void, checked C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+func miqt_exec_callback_QAbstractButton_Toggled(cb C.intptr_t, checked C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -306,12 +306,12 @@ func (this *QAbstractButton) Clicked1(checked bool) {
 	C.QAbstractButton_Clicked1(this.h, (C.bool)(checked))
 }
 func (this *QAbstractButton) OnClicked1(slot func(checked bool)) {
-	C.QAbstractButton_connect_Clicked1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractButton_connect_Clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_Clicked1
-func miqt_exec_callback_QAbstractButton_Clicked1(cb *C.void, checked C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+func miqt_exec_callback_QAbstractButton_Clicked1(cb C.intptr_t, checked C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

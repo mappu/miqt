@@ -78,7 +78,7 @@ void QCheckBox_StateChanged(QCheckBox* self, int param1) {
 	self->stateChanged(static_cast<int>(param1));
 }
 
-void QCheckBox_connect_StateChanged(QCheckBox* self, void* slot) {
+void QCheckBox_connect_StateChanged(QCheckBox* self, intptr_t slot) {
 	QCheckBox::connect(self, static_cast<void (QCheckBox::*)(int)>(&QCheckBox::stateChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QCheckBox_StateChanged(slot, sigval1);

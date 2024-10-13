@@ -274,7 +274,7 @@ void QDateTimeEdit_DateTimeChanged(QDateTimeEdit* self, QDateTime* dateTime) {
 	self->dateTimeChanged(*dateTime);
 }
 
-void QDateTimeEdit_connect_DateTimeChanged(QDateTimeEdit* self, void* slot) {
+void QDateTimeEdit_connect_DateTimeChanged(QDateTimeEdit* self, intptr_t slot) {
 	QDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDateTime&)>(&QDateTimeEdit::dateTimeChanged), self, [=](const QDateTime& dateTime) {
 		const QDateTime& dateTime_ret = dateTime;
 		// Cast returned reference into pointer
@@ -287,7 +287,7 @@ void QDateTimeEdit_TimeChanged(QDateTimeEdit* self, QTime* time) {
 	self->timeChanged(*time);
 }
 
-void QDateTimeEdit_connect_TimeChanged(QDateTimeEdit* self, void* slot) {
+void QDateTimeEdit_connect_TimeChanged(QDateTimeEdit* self, intptr_t slot) {
 	QDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QTime&)>(&QDateTimeEdit::timeChanged), self, [=](const QTime& time) {
 		const QTime& time_ret = time;
 		// Cast returned reference into pointer
@@ -300,7 +300,7 @@ void QDateTimeEdit_DateChanged(QDateTimeEdit* self, QDate* date) {
 	self->dateChanged(*date);
 }
 
-void QDateTimeEdit_connect_DateChanged(QDateTimeEdit* self, void* slot) {
+void QDateTimeEdit_connect_DateChanged(QDateTimeEdit* self, intptr_t slot) {
 	QDateTimeEdit::connect(self, static_cast<void (QDateTimeEdit::*)(const QDate&)>(&QDateTimeEdit::dateChanged), self, [=](const QDate& date) {
 		const QDate& date_ret = date;
 		// Cast returned reference into pointer
@@ -395,7 +395,7 @@ void QTimeEdit_UserTimeChanged(QTimeEdit* self, QTime* time) {
 	self->userTimeChanged(*time);
 }
 
-void QTimeEdit_connect_UserTimeChanged(QTimeEdit* self, void* slot) {
+void QTimeEdit_connect_UserTimeChanged(QTimeEdit* self, intptr_t slot) {
 	QTimeEdit::connect(self, static_cast<void (QTimeEdit::*)(const QTime&)>(&QTimeEdit::userTimeChanged), self, [=](const QTime& time) {
 		const QTime& time_ret = time;
 		// Cast returned reference into pointer
@@ -478,7 +478,7 @@ void QDateEdit_UserDateChanged(QDateEdit* self, QDate* date) {
 	self->userDateChanged(*date);
 }
 
-void QDateEdit_connect_UserDateChanged(QDateEdit* self, void* slot) {
+void QDateEdit_connect_UserDateChanged(QDateEdit* self, intptr_t slot) {
 	QDateEdit::connect(self, static_cast<void (QDateEdit::*)(const QDate&)>(&QDateEdit::userDateChanged), self, [=](const QDate& date) {
 		const QDate& date_ret = date;
 		// Cast returned reference into pointer

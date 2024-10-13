@@ -42,7 +42,7 @@ void* QColumnView_Metacast(QColumnView* self, const char* param1);
 struct miqt_string* QColumnView_Tr(const char* s);
 struct miqt_string* QColumnView_TrUtf8(const char* s);
 void QColumnView_UpdatePreviewWidget(QColumnView* self, QModelIndex* index);
-void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, void* slot);
+void QColumnView_connect_UpdatePreviewWidget(QColumnView* self, intptr_t slot);
 QModelIndex* QColumnView_IndexAt(const QColumnView* self, QPoint* point);
 void QColumnView_ScrollTo(QColumnView* self, QModelIndex* index);
 QSize* QColumnView_SizeHint(const QColumnView* self);

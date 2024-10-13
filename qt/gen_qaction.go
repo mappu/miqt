@@ -433,12 +433,12 @@ func (this *QAction) Changed() {
 	C.QAction_Changed(this.h)
 }
 func (this *QAction) OnChanged(slot func()) {
-	C.QAction_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAction_connect_Changed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Changed
-func miqt_exec_callback_QAction_Changed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAction_Changed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -450,12 +450,12 @@ func (this *QAction) Triggered() {
 	C.QAction_Triggered(this.h)
 }
 func (this *QAction) OnTriggered(slot func()) {
-	C.QAction_connect_Triggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAction_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Triggered
-func miqt_exec_callback_QAction_Triggered(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAction_Triggered(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -467,12 +467,12 @@ func (this *QAction) Hovered() {
 	C.QAction_Hovered(this.h)
 }
 func (this *QAction) OnHovered(slot func()) {
-	C.QAction_connect_Hovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAction_connect_Hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Hovered
-func miqt_exec_callback_QAction_Hovered(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAction_Hovered(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -484,12 +484,12 @@ func (this *QAction) Toggled(param1 bool) {
 	C.QAction_Toggled(this.h, (C.bool)(param1))
 }
 func (this *QAction) OnToggled(slot func(param1 bool)) {
-	C.QAction_connect_Toggled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAction_connect_Toggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Toggled
-func miqt_exec_callback_QAction_Toggled(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QAction_Toggled(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -552,12 +552,12 @@ func (this *QAction) Triggered1(checked bool) {
 	C.QAction_Triggered1(this.h, (C.bool)(checked))
 }
 func (this *QAction) OnTriggered1(slot func(checked bool)) {
-	C.QAction_connect_Triggered1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAction_connect_Triggered1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Triggered1
-func miqt_exec_callback_QAction_Triggered1(cb *C.void, checked C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(checked bool))
+func miqt_exec_callback_QAction_Triggered1(cb C.intptr_t, checked C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

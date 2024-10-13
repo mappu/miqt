@@ -335,12 +335,12 @@ func (this *QApplication) FocusChanged(old *QWidget, now *QWidget) {
 	C.QApplication_FocusChanged(this.h, old.cPointer(), now.cPointer())
 }
 func (this *QApplication) OnFocusChanged(slot func(old *QWidget, now *QWidget)) {
-	C.QApplication_connect_FocusChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QApplication_connect_FocusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QApplication_FocusChanged
-func miqt_exec_callback_QApplication_FocusChanged(cb *C.void, old *C.QWidget, now *C.QWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(old *QWidget, now *QWidget))
+func miqt_exec_callback_QApplication_FocusChanged(cb C.intptr_t, old *C.QWidget, now *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(old *QWidget, now *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -83,7 +83,7 @@ unsigned int QObject_RegisterUserData();
 void QObject_SetUserData(QObject* self, unsigned int id, QObjectUserData* data);
 QObjectUserData* QObject_UserData(const QObject* self, unsigned int id);
 void QObject_Destroyed(QObject* self);
-void QObject_connect_Destroyed(QObject* self, void* slot);
+void QObject_connect_Destroyed(QObject* self, intptr_t slot);
 QObject* QObject_Parent(const QObject* self);
 bool QObject_Inherits(const QObject* self, const char* classname);
 void QObject_DeleteLater(QObject* self);
@@ -95,7 +95,7 @@ int QObject_StartTimer2(QObject* self, int interval, int timerType);
 QMetaObject__Connection* QObject_Connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int typeVal);
 QMetaObject__Connection* QObject_Connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int typeVal);
 void QObject_Destroyed1(QObject* self, QObject* param1);
-void QObject_connect_Destroyed1(QObject* self, void* slot);
+void QObject_connect_Destroyed1(QObject* self, intptr_t slot);
 void QObject_Delete(QObject* self);
 
 QObjectUserData* QObjectUserData_new();

@@ -285,12 +285,12 @@ func (this *QObject) Destroyed() {
 	C.QObject_Destroyed(this.h)
 }
 func (this *QObject) OnDestroyed(slot func()) {
-	C.QObject_connect_Destroyed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QObject_connect_Destroyed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_Destroyed
-func miqt_exec_callback_QObject_Destroyed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QObject_Destroyed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -382,12 +382,12 @@ func (this *QObject) Destroyed1(param1 *QObject) {
 	C.QObject_Destroyed1(this.h, param1.cPointer())
 }
 func (this *QObject) OnDestroyed1(slot func(param1 *QObject)) {
-	C.QObject_connect_Destroyed1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QObject_connect_Destroyed1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_Destroyed1
-func miqt_exec_callback_QObject_Destroyed1(cb *C.void, param1 *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QObject))
+func miqt_exec_callback_QObject_Destroyed1(cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

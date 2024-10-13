@@ -106,20 +106,20 @@ void QAction_SetEnabled(QAction* self, bool enabled);
 void QAction_SetDisabled(QAction* self, bool b);
 void QAction_SetVisible(QAction* self, bool visible);
 void QAction_Changed(QAction* self);
-void QAction_connect_Changed(QAction* self, void* slot);
+void QAction_connect_Changed(QAction* self, intptr_t slot);
 void QAction_Triggered(QAction* self);
-void QAction_connect_Triggered(QAction* self, void* slot);
+void QAction_connect_Triggered(QAction* self, intptr_t slot);
 void QAction_Hovered(QAction* self);
-void QAction_connect_Hovered(QAction* self, void* slot);
+void QAction_connect_Hovered(QAction* self, intptr_t slot);
 void QAction_Toggled(QAction* self, bool param1);
-void QAction_connect_Toggled(QAction* self, void* slot);
+void QAction_connect_Toggled(QAction* self, intptr_t slot);
 struct miqt_string* QAction_Tr2(const char* s, const char* c);
 struct miqt_string* QAction_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QAction_TrUtf82(const char* s, const char* c);
 struct miqt_string* QAction_TrUtf83(const char* s, const char* c, int n);
 bool QAction_ShowStatusText1(QAction* self, QWidget* widget);
 void QAction_Triggered1(QAction* self, bool checked);
-void QAction_connect_Triggered1(QAction* self, void* slot);
+void QAction_connect_Triggered1(QAction* self, intptr_t slot);
 void QAction_Delete(QAction* self);
 
 #ifdef __cplusplus

@@ -92,7 +92,7 @@ void QFontDialog_CurrentFontChanged(QFontDialog* self, QFont* font) {
 	self->currentFontChanged(*font);
 }
 
-void QFontDialog_connect_CurrentFontChanged(QFontDialog* self, void* slot) {
+void QFontDialog_connect_CurrentFontChanged(QFontDialog* self, intptr_t slot) {
 	QFontDialog::connect(self, static_cast<void (QFontDialog::*)(const QFont&)>(&QFontDialog::currentFontChanged), self, [=](const QFont& font) {
 		const QFont& font_ret = font;
 		// Cast returned reference into pointer
@@ -105,7 +105,7 @@ void QFontDialog_FontSelected(QFontDialog* self, QFont* font) {
 	self->fontSelected(*font);
 }
 
-void QFontDialog_connect_FontSelected(QFontDialog* self, void* slot) {
+void QFontDialog_connect_FontSelected(QFontDialog* self, intptr_t slot) {
 	QFontDialog::connect(self, static_cast<void (QFontDialog::*)(const QFont&)>(&QFontDialog::fontSelected), self, [=](const QFont& font) {
 		const QFont& font_ret = font;
 		// Cast returned reference into pointer

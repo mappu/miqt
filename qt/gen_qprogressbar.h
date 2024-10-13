@@ -56,7 +56,7 @@ void QProgressBar_SetMaximum(QProgressBar* self, int maximum);
 void QProgressBar_SetValue(QProgressBar* self, int value);
 void QProgressBar_SetOrientation(QProgressBar* self, int orientation);
 void QProgressBar_ValueChanged(QProgressBar* self, int value);
-void QProgressBar_connect_ValueChanged(QProgressBar* self, void* slot);
+void QProgressBar_connect_ValueChanged(QProgressBar* self, intptr_t slot);
 struct miqt_string* QProgressBar_Tr2(const char* s, const char* c);
 struct miqt_string* QProgressBar_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QProgressBar_TrUtf82(const char* s, const char* c);

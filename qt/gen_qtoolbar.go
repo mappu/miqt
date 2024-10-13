@@ -211,12 +211,12 @@ func (this *QToolBar) ActionTriggered(action *QAction) {
 	C.QToolBar_ActionTriggered(this.h, action.cPointer())
 }
 func (this *QToolBar) OnActionTriggered(slot func(action *QAction)) {
-	C.QToolBar_connect_ActionTriggered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_ActionTriggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_ActionTriggered
-func miqt_exec_callback_QToolBar_ActionTriggered(cb *C.void, action *C.QAction) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(action *QAction))
+func miqt_exec_callback_QToolBar_ActionTriggered(cb C.intptr_t, action *C.QAction) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -231,12 +231,12 @@ func (this *QToolBar) MovableChanged(movable bool) {
 	C.QToolBar_MovableChanged(this.h, (C.bool)(movable))
 }
 func (this *QToolBar) OnMovableChanged(slot func(movable bool)) {
-	C.QToolBar_connect_MovableChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_MovableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_MovableChanged
-func miqt_exec_callback_QToolBar_MovableChanged(cb *C.void, movable C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(movable bool))
+func miqt_exec_callback_QToolBar_MovableChanged(cb C.intptr_t, movable C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(movable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -251,12 +251,12 @@ func (this *QToolBar) AllowedAreasChanged(allowedAreas ToolBarArea) {
 	C.QToolBar_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QToolBar) OnAllowedAreasChanged(slot func(allowedAreas ToolBarArea)) {
-	C.QToolBar_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_AllowedAreasChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_AllowedAreasChanged
-func miqt_exec_callback_QToolBar_AllowedAreasChanged(cb *C.void, allowedAreas C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas ToolBarArea))
+func miqt_exec_callback_QToolBar_AllowedAreasChanged(cb C.intptr_t, allowedAreas C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(allowedAreas ToolBarArea))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -271,12 +271,12 @@ func (this *QToolBar) OrientationChanged(orientation Orientation) {
 	C.QToolBar_OrientationChanged(this.h, (C.int)(orientation))
 }
 func (this *QToolBar) OnOrientationChanged(slot func(orientation Orientation)) {
-	C.QToolBar_connect_OrientationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_OrientationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_OrientationChanged
-func miqt_exec_callback_QToolBar_OrientationChanged(cb *C.void, orientation C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation Orientation))
+func miqt_exec_callback_QToolBar_OrientationChanged(cb C.intptr_t, orientation C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(orientation Orientation))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -291,12 +291,12 @@ func (this *QToolBar) IconSizeChanged(iconSize *QSize) {
 	C.QToolBar_IconSizeChanged(this.h, iconSize.cPointer())
 }
 func (this *QToolBar) OnIconSizeChanged(slot func(iconSize *QSize)) {
-	C.QToolBar_connect_IconSizeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_IconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_IconSizeChanged
-func miqt_exec_callback_QToolBar_IconSizeChanged(cb *C.void, iconSize *C.QSize) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(iconSize *QSize))
+func miqt_exec_callback_QToolBar_IconSizeChanged(cb C.intptr_t, iconSize *C.QSize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize *QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -311,12 +311,12 @@ func (this *QToolBar) ToolButtonStyleChanged(toolButtonStyle ToolButtonStyle) {
 	C.QToolBar_ToolButtonStyleChanged(this.h, (C.int)(toolButtonStyle))
 }
 func (this *QToolBar) OnToolButtonStyleChanged(slot func(toolButtonStyle ToolButtonStyle)) {
-	C.QToolBar_connect_ToolButtonStyleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_ToolButtonStyleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_ToolButtonStyleChanged
-func miqt_exec_callback_QToolBar_ToolButtonStyleChanged(cb *C.void, toolButtonStyle C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(toolButtonStyle ToolButtonStyle))
+func miqt_exec_callback_QToolBar_ToolButtonStyleChanged(cb C.intptr_t, toolButtonStyle C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(toolButtonStyle ToolButtonStyle))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -331,12 +331,12 @@ func (this *QToolBar) TopLevelChanged(topLevel bool) {
 	C.QToolBar_TopLevelChanged(this.h, (C.bool)(topLevel))
 }
 func (this *QToolBar) OnTopLevelChanged(slot func(topLevel bool)) {
-	C.QToolBar_connect_TopLevelChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_TopLevelChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_TopLevelChanged
-func miqt_exec_callback_QToolBar_TopLevelChanged(cb *C.void, topLevel C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(topLevel bool))
+func miqt_exec_callback_QToolBar_TopLevelChanged(cb C.intptr_t, topLevel C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(topLevel bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -351,12 +351,12 @@ func (this *QToolBar) VisibilityChanged(visible bool) {
 	C.QToolBar_VisibilityChanged(this.h, (C.bool)(visible))
 }
 func (this *QToolBar) OnVisibilityChanged(slot func(visible bool)) {
-	C.QToolBar_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBar_connect_VisibilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_VisibilityChanged
-func miqt_exec_callback_QToolBar_VisibilityChanged(cb *C.void, visible C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visible bool))
+func miqt_exec_callback_QToolBar_VisibilityChanged(cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

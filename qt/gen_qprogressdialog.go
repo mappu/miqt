@@ -219,12 +219,12 @@ func (this *QProgressDialog) Canceled() {
 	C.QProgressDialog_Canceled(this.h)
 }
 func (this *QProgressDialog) OnCanceled(slot func()) {
-	C.QProgressDialog_connect_Canceled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProgressDialog_connect_Canceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Canceled
-func miqt_exec_callback_QProgressDialog_Canceled(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QProgressDialog_Canceled(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -415,12 +415,12 @@ func (this *QLineEdit) TextChanged(param1 string) {
 	C.QLineEdit_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QLineEdit) OnTextChanged(slot func(param1 string)) {
-	C.QLineEdit_connect_TextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_TextChanged
-func miqt_exec_callback_QLineEdit_TextChanged(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QLineEdit_TextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -440,12 +440,12 @@ func (this *QLineEdit) TextEdited(param1 string) {
 	C.QLineEdit_TextEdited(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QLineEdit) OnTextEdited(slot func(param1 string)) {
-	C.QLineEdit_connect_TextEdited(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_TextEdited(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_TextEdited
-func miqt_exec_callback_QLineEdit_TextEdited(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QLineEdit_TextEdited(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -463,12 +463,12 @@ func (this *QLineEdit) CursorPositionChanged(param1 int, param2 int) {
 	C.QLineEdit_CursorPositionChanged(this.h, (C.int)(param1), (C.int)(param2))
 }
 func (this *QLineEdit) OnCursorPositionChanged(slot func(param1 int, param2 int)) {
-	C.QLineEdit_connect_CursorPositionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_CursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_CursorPositionChanged
-func miqt_exec_callback_QLineEdit_CursorPositionChanged(cb *C.void, param1 C.int, param2 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int, param2 int))
+func miqt_exec_callback_QLineEdit_CursorPositionChanged(cb C.intptr_t, param1 C.int, param2 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int, param2 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -485,12 +485,12 @@ func (this *QLineEdit) ReturnPressed() {
 	C.QLineEdit_ReturnPressed(this.h)
 }
 func (this *QLineEdit) OnReturnPressed(slot func()) {
-	C.QLineEdit_connect_ReturnPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_ReturnPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_ReturnPressed
-func miqt_exec_callback_QLineEdit_ReturnPressed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QLineEdit_ReturnPressed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -502,12 +502,12 @@ func (this *QLineEdit) EditingFinished() {
 	C.QLineEdit_EditingFinished(this.h)
 }
 func (this *QLineEdit) OnEditingFinished(slot func()) {
-	C.QLineEdit_connect_EditingFinished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_EditingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_EditingFinished
-func miqt_exec_callback_QLineEdit_EditingFinished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QLineEdit_EditingFinished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -519,12 +519,12 @@ func (this *QLineEdit) SelectionChanged() {
 	C.QLineEdit_SelectionChanged(this.h)
 }
 func (this *QLineEdit) OnSelectionChanged(slot func()) {
-	C.QLineEdit_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_SelectionChanged
-func miqt_exec_callback_QLineEdit_SelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QLineEdit_SelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -536,12 +536,12 @@ func (this *QLineEdit) InputRejected() {
 	C.QLineEdit_InputRejected(this.h)
 }
 func (this *QLineEdit) OnInputRejected(slot func()) {
-	C.QLineEdit_connect_InputRejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLineEdit_connect_InputRejected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLineEdit_InputRejected
-func miqt_exec_callback_QLineEdit_InputRejected(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QLineEdit_InputRejected(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

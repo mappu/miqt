@@ -113,7 +113,7 @@ void QColorDialog_CurrentColorChanged(QColorDialog* self, QColor* color) {
 	self->currentColorChanged(*color);
 }
 
-void QColorDialog_connect_CurrentColorChanged(QColorDialog* self, void* slot) {
+void QColorDialog_connect_CurrentColorChanged(QColorDialog* self, intptr_t slot) {
 	QColorDialog::connect(self, static_cast<void (QColorDialog::*)(const QColor&)>(&QColorDialog::currentColorChanged), self, [=](const QColor& color) {
 		const QColor& color_ret = color;
 		// Cast returned reference into pointer
@@ -126,7 +126,7 @@ void QColorDialog_ColorSelected(QColorDialog* self, QColor* color) {
 	self->colorSelected(*color);
 }
 
-void QColorDialog_connect_ColorSelected(QColorDialog* self, void* slot) {
+void QColorDialog_connect_ColorSelected(QColorDialog* self, intptr_t slot) {
 	QColorDialog::connect(self, static_cast<void (QColorDialog::*)(const QColor&)>(&QColorDialog::colorSelected), self, [=](const QColor& color) {
 		const QColor& color_ret = color;
 		// Cast returned reference into pointer

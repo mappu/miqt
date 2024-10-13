@@ -494,7 +494,7 @@ void QProcess_Finished(QProcess* self, int exitCode) {
 	self->finished(static_cast<int>(exitCode));
 }
 
-void QProcess_connect_Finished(QProcess* self, void* slot) {
+void QProcess_connect_Finished(QProcess* self, intptr_t slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(int)>(&QProcess::finished), self, [=](int exitCode) {
 		int sigval1 = exitCode;
 		miqt_exec_callback_QProcess_Finished(slot, sigval1);
@@ -505,7 +505,7 @@ void QProcess_Finished2(QProcess* self, int exitCode, int exitStatus) {
 	self->finished(static_cast<int>(exitCode), static_cast<QProcess::ExitStatus>(exitStatus));
 }
 
-void QProcess_connect_Finished2(QProcess* self, void* slot) {
+void QProcess_connect_Finished2(QProcess* self, intptr_t slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), self, [=](int exitCode, QProcess::ExitStatus exitStatus) {
 		int sigval1 = exitCode;
 		QProcess::ExitStatus exitStatus_ret = exitStatus;
@@ -518,7 +518,7 @@ void QProcess_ErrorWithError(QProcess* self, int error) {
 	self->error(static_cast<QProcess::ProcessError>(error));
 }
 
-void QProcess_connect_ErrorWithError(QProcess* self, void* slot) {
+void QProcess_connect_ErrorWithError(QProcess* self, intptr_t slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), self, [=](QProcess::ProcessError error) {
 		QProcess::ProcessError error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
@@ -530,7 +530,7 @@ void QProcess_ErrorOccurred(QProcess* self, int error) {
 	self->errorOccurred(static_cast<QProcess::ProcessError>(error));
 }
 
-void QProcess_connect_ErrorOccurred(QProcess* self, void* slot) {
+void QProcess_connect_ErrorOccurred(QProcess* self, intptr_t slot) {
 	QProcess::connect(self, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), self, [=](QProcess::ProcessError error) {
 		QProcess::ProcessError error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);

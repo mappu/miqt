@@ -145,7 +145,7 @@ void QAbstractButton_Pressed(QAbstractButton* self) {
 	self->pressed();
 }
 
-void QAbstractButton_connect_Pressed(QAbstractButton* self, void* slot) {
+void QAbstractButton_connect_Pressed(QAbstractButton* self, intptr_t slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::pressed), self, [=]() {
 		miqt_exec_callback_QAbstractButton_Pressed(slot);
 	});
@@ -155,7 +155,7 @@ void QAbstractButton_Released(QAbstractButton* self) {
 	self->released();
 }
 
-void QAbstractButton_connect_Released(QAbstractButton* self, void* slot) {
+void QAbstractButton_connect_Released(QAbstractButton* self, intptr_t slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)()>(&QAbstractButton::released), self, [=]() {
 		miqt_exec_callback_QAbstractButton_Released(slot);
 	});
@@ -165,7 +165,7 @@ void QAbstractButton_Clicked(QAbstractButton* self) {
 	self->clicked();
 }
 
-void QAbstractButton_connect_Clicked(QAbstractButton* self, void* slot) {
+void QAbstractButton_connect_Clicked(QAbstractButton* self, intptr_t slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=]() {
 		miqt_exec_callback_QAbstractButton_Clicked(slot);
 	});
@@ -175,7 +175,7 @@ void QAbstractButton_Toggled(QAbstractButton* self, bool checked) {
 	self->toggled(checked);
 }
 
-void QAbstractButton_connect_Toggled(QAbstractButton* self, void* slot) {
+void QAbstractButton_connect_Toggled(QAbstractButton* self, intptr_t slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::toggled), self, [=](bool checked) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAbstractButton_Toggled(slot, sigval1);
@@ -218,7 +218,7 @@ void QAbstractButton_Clicked1(QAbstractButton* self, bool checked) {
 	self->clicked(checked);
 }
 
-void QAbstractButton_connect_Clicked1(QAbstractButton* self, void* slot) {
+void QAbstractButton_connect_Clicked1(QAbstractButton* self, intptr_t slot) {
 	QAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=](bool checked) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAbstractButton_Clicked1(slot, sigval1);

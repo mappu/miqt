@@ -60,7 +60,7 @@ void QValidator_Changed(QValidator* self) {
 	self->changed();
 }
 
-void QValidator_connect_Changed(QValidator* self, void* slot) {
+void QValidator_connect_Changed(QValidator* self, intptr_t slot) {
 	QValidator::connect(self, static_cast<void (QValidator::*)()>(&QValidator::changed), self, [=]() {
 		miqt_exec_callback_QValidator_Changed(slot);
 	});
@@ -171,7 +171,7 @@ void QIntValidator_BottomChanged(QIntValidator* self, int bottom) {
 	self->bottomChanged(static_cast<int>(bottom));
 }
 
-void QIntValidator_connect_BottomChanged(QIntValidator* self, void* slot) {
+void QIntValidator_connect_BottomChanged(QIntValidator* self, intptr_t slot) {
 	QIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::bottomChanged), self, [=](int bottom) {
 		int sigval1 = bottom;
 		miqt_exec_callback_QIntValidator_BottomChanged(slot, sigval1);
@@ -182,7 +182,7 @@ void QIntValidator_TopChanged(QIntValidator* self, int top) {
 	self->topChanged(static_cast<int>(top));
 }
 
-void QIntValidator_connect_TopChanged(QIntValidator* self, void* slot) {
+void QIntValidator_connect_TopChanged(QIntValidator* self, intptr_t slot) {
 	QIntValidator::connect(self, static_cast<void (QIntValidator::*)(int)>(&QIntValidator::topChanged), self, [=](int top) {
 		int sigval1 = top;
 		miqt_exec_callback_QIntValidator_TopChanged(slot, sigval1);
@@ -306,7 +306,7 @@ void QDoubleValidator_BottomChanged(QDoubleValidator* self, double bottom) {
 	self->bottomChanged(static_cast<double>(bottom));
 }
 
-void QDoubleValidator_connect_BottomChanged(QDoubleValidator* self, void* slot) {
+void QDoubleValidator_connect_BottomChanged(QDoubleValidator* self, intptr_t slot) {
 	QDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::bottomChanged), self, [=](double bottom) {
 		double sigval1 = bottom;
 		miqt_exec_callback_QDoubleValidator_BottomChanged(slot, sigval1);
@@ -317,7 +317,7 @@ void QDoubleValidator_TopChanged(QDoubleValidator* self, double top) {
 	self->topChanged(static_cast<double>(top));
 }
 
-void QDoubleValidator_connect_TopChanged(QDoubleValidator* self, void* slot) {
+void QDoubleValidator_connect_TopChanged(QDoubleValidator* self, intptr_t slot) {
 	QDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(double)>(&QDoubleValidator::topChanged), self, [=](double top) {
 		double sigval1 = top;
 		miqt_exec_callback_QDoubleValidator_TopChanged(slot, sigval1);
@@ -328,7 +328,7 @@ void QDoubleValidator_DecimalsChanged(QDoubleValidator* self, int decimals) {
 	self->decimalsChanged(static_cast<int>(decimals));
 }
 
-void QDoubleValidator_connect_DecimalsChanged(QDoubleValidator* self, void* slot) {
+void QDoubleValidator_connect_DecimalsChanged(QDoubleValidator* self, intptr_t slot) {
 	QDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(int)>(&QDoubleValidator::decimalsChanged), self, [=](int decimals) {
 		int sigval1 = decimals;
 		miqt_exec_callback_QDoubleValidator_DecimalsChanged(slot, sigval1);
@@ -339,7 +339,7 @@ void QDoubleValidator_NotationChanged(QDoubleValidator* self, int notation) {
 	self->notationChanged(static_cast<QDoubleValidator::Notation>(notation));
 }
 
-void QDoubleValidator_connect_NotationChanged(QDoubleValidator* self, void* slot) {
+void QDoubleValidator_connect_NotationChanged(QDoubleValidator* self, intptr_t slot) {
 	QDoubleValidator::connect(self, static_cast<void (QDoubleValidator::*)(QDoubleValidator::Notation)>(&QDoubleValidator::notationChanged), self, [=](QDoubleValidator::Notation notation) {
 		QDoubleValidator::Notation notation_ret = notation;
 		int sigval1 = static_cast<int>(notation_ret);
@@ -441,7 +441,7 @@ void QRegExpValidator_RegExpChanged(QRegExpValidator* self, QRegExp* regExp) {
 	self->regExpChanged(*regExp);
 }
 
-void QRegExpValidator_connect_RegExpChanged(QRegExpValidator* self, void* slot) {
+void QRegExpValidator_connect_RegExpChanged(QRegExpValidator* self, intptr_t slot) {
 	QRegExpValidator::connect(self, static_cast<void (QRegExpValidator::*)(const QRegExp&)>(&QRegExpValidator::regExpChanged), self, [=](const QRegExp& regExp) {
 		const QRegExp& regExp_ret = regExp;
 		// Cast returned reference into pointer
@@ -538,7 +538,7 @@ void QRegularExpressionValidator_RegularExpressionChanged(QRegularExpressionVali
 	self->regularExpressionChanged(*re);
 }
 
-void QRegularExpressionValidator_connect_RegularExpressionChanged(QRegularExpressionValidator* self, void* slot) {
+void QRegularExpressionValidator_connect_RegularExpressionChanged(QRegularExpressionValidator* self, intptr_t slot) {
 	QRegularExpressionValidator::connect(self, static_cast<void (QRegularExpressionValidator::*)(const QRegularExpression&)>(&QRegularExpressionValidator::regularExpressionChanged), self, [=](const QRegularExpression& re) {
 		const QRegularExpression& re_ret = re;
 		// Cast returned reference into pointer

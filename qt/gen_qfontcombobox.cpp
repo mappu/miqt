@@ -74,7 +74,7 @@ void QFontComboBox_CurrentFontChanged(QFontComboBox* self, QFont* f) {
 	self->currentFontChanged(*f);
 }
 
-void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, void* slot) {
+void QFontComboBox_connect_CurrentFontChanged(QFontComboBox* self, intptr_t slot) {
 	QFontComboBox::connect(self, static_cast<void (QFontComboBox::*)(const QFont&)>(&QFontComboBox::currentFontChanged), self, [=](const QFont& f) {
 		const QFont& f_ret = f;
 		// Cast returned reference into pointer

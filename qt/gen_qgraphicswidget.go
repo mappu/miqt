@@ -370,12 +370,12 @@ func (this *QGraphicsWidget) GeometryChanged() {
 	C.QGraphicsWidget_GeometryChanged(this.h)
 }
 func (this *QGraphicsWidget) OnGeometryChanged(slot func()) {
-	C.QGraphicsWidget_connect_GeometryChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsWidget_connect_GeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsWidget_GeometryChanged
-func miqt_exec_callback_QGraphicsWidget_GeometryChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsWidget_GeometryChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -387,12 +387,12 @@ func (this *QGraphicsWidget) LayoutChanged() {
 	C.QGraphicsWidget_LayoutChanged(this.h)
 }
 func (this *QGraphicsWidget) OnLayoutChanged(slot func()) {
-	C.QGraphicsWidget_connect_LayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsWidget_connect_LayoutChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsWidget_LayoutChanged
-func miqt_exec_callback_QGraphicsWidget_LayoutChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsWidget_LayoutChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

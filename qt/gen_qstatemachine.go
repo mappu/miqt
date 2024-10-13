@@ -212,12 +212,12 @@ func (this *QStateMachine) RunningChanged(running bool) {
 	C.QStateMachine_RunningChanged(this.h, (C.bool)(running))
 }
 func (this *QStateMachine) OnRunningChanged(slot func(running bool)) {
-	C.QStateMachine_connect_RunningChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStateMachine_connect_RunningChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStateMachine_RunningChanged
-func miqt_exec_callback_QStateMachine_RunningChanged(cb *C.void, running C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(running bool))
+func miqt_exec_callback_QStateMachine_RunningChanged(cb C.intptr_t, running C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(running bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

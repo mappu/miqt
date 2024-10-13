@@ -285,12 +285,12 @@ func (this *QLabel) LinkActivated(link string) {
 	C.QLabel_LinkActivated(this.h, (*C.struct_miqt_string)(link_ms))
 }
 func (this *QLabel) OnLinkActivated(slot func(link string)) {
-	C.QLabel_connect_LinkActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLabel_connect_LinkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_LinkActivated
-func miqt_exec_callback_QLabel_LinkActivated(cb *C.void, link *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(link string))
+func miqt_exec_callback_QLabel_LinkActivated(cb C.intptr_t, link *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -310,12 +310,12 @@ func (this *QLabel) LinkHovered(link string) {
 	C.QLabel_LinkHovered(this.h, (*C.struct_miqt_string)(link_ms))
 }
 func (this *QLabel) OnLinkHovered(slot func(link string)) {
-	C.QLabel_connect_LinkHovered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QLabel_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_LinkHovered
-func miqt_exec_callback_QLabel_LinkHovered(cb *C.void, link *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(link string))
+func miqt_exec_callback_QLabel_LinkHovered(cb C.intptr_t, link *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

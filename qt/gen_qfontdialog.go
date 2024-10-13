@@ -156,12 +156,12 @@ func (this *QFontDialog) CurrentFontChanged(font *QFont) {
 	C.QFontDialog_CurrentFontChanged(this.h, font.cPointer())
 }
 func (this *QFontDialog) OnCurrentFontChanged(slot func(font *QFont)) {
-	C.QFontDialog_connect_CurrentFontChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFontDialog_connect_CurrentFontChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_CurrentFontChanged
-func miqt_exec_callback_QFontDialog_CurrentFontChanged(cb *C.void, font *C.QFont) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(font *QFont))
+func miqt_exec_callback_QFontDialog_CurrentFontChanged(cb C.intptr_t, font *C.QFont) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font *QFont))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -176,12 +176,12 @@ func (this *QFontDialog) FontSelected(font *QFont) {
 	C.QFontDialog_FontSelected(this.h, font.cPointer())
 }
 func (this *QFontDialog) OnFontSelected(slot func(font *QFont)) {
-	C.QFontDialog_connect_FontSelected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFontDialog_connect_FontSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_FontSelected
-func miqt_exec_callback_QFontDialog_FontSelected(cb *C.void, font *C.QFont) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(font *QFont))
+func miqt_exec_callback_QFontDialog_FontSelected(cb C.intptr_t, font *C.QFont) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font *QFont))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

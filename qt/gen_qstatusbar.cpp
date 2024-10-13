@@ -87,7 +87,7 @@ void QStatusBar_MessageChanged(QStatusBar* self, struct miqt_string* text) {
 	self->messageChanged(text_QString);
 }
 
-void QStatusBar_connect_MessageChanged(QStatusBar* self, void* slot) {
+void QStatusBar_connect_MessageChanged(QStatusBar* self, intptr_t slot) {
 	QStatusBar::connect(self, static_cast<void (QStatusBar::*)(const QString&)>(&QStatusBar::messageChanged), self, [=](const QString& text) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

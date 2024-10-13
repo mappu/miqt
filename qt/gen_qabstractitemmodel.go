@@ -569,12 +569,12 @@ func (this *QAbstractItemModel) DataChanged(topLeft *QModelIndex, bottomRight *Q
 	C.QAbstractItemModel_DataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer())
 }
 func (this *QAbstractItemModel) OnDataChanged(slot func(topLeft *QModelIndex, bottomRight *QModelIndex)) {
-	C.QAbstractItemModel_connect_DataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_DataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_DataChanged
-func miqt_exec_callback_QAbstractItemModel_DataChanged(cb *C.void, topLeft *C.QModelIndex, bottomRight *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(topLeft *QModelIndex, bottomRight *QModelIndex))
+func miqt_exec_callback_QAbstractItemModel_DataChanged(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(topLeft *QModelIndex, bottomRight *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -590,12 +590,12 @@ func (this *QAbstractItemModel) HeaderDataChanged(orientation Orientation, first
 	C.QAbstractItemModel_HeaderDataChanged(this.h, (C.int)(orientation), (C.int)(first), (C.int)(last))
 }
 func (this *QAbstractItemModel) OnHeaderDataChanged(slot func(orientation Orientation, first int, last int)) {
-	C.QAbstractItemModel_connect_HeaderDataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_HeaderDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_HeaderDataChanged
-func miqt_exec_callback_QAbstractItemModel_HeaderDataChanged(cb *C.void, orientation C.int, first C.int, last C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(orientation Orientation, first int, last int))
+func miqt_exec_callback_QAbstractItemModel_HeaderDataChanged(cb C.intptr_t, orientation C.int, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(orientation Orientation, first int, last int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -614,12 +614,12 @@ func (this *QAbstractItemModel) LayoutChanged() {
 	C.QAbstractItemModel_LayoutChanged(this.h)
 }
 func (this *QAbstractItemModel) OnLayoutChanged(slot func()) {
-	C.QAbstractItemModel_connect_LayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -631,12 +631,12 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged() {
 	C.QAbstractItemModel_LayoutAboutToBeChanged(this.h)
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged(slot func()) {
-	C.QAbstractItemModel_connect_LayoutAboutToBeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -821,12 +821,12 @@ func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *
 	C.QAbstractItemModel_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
 func (this *QAbstractItemModel) OnDataChanged3(slot func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
-	C.QAbstractItemModel_connect_DataChanged3(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_DataChanged3(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_DataChanged3
-func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb *C.void, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
+func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -858,12 +858,12 @@ func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) 
 	C.QAbstractItemModel_LayoutChanged1(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutChanged1(slot func(parents []QPersistentModelIndex)) {
-	C.QAbstractItemModel_connect_LayoutChanged1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutChanged1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged1
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb *C.void, parents *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex))
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb C.intptr_t, parents *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -896,12 +896,12 @@ func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, 
 	C.QAbstractItemModel_LayoutChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
-	C.QAbstractItemModel_connect_LayoutChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutChanged2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents *C.struct_miqt_array, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -936,12 +936,12 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentMod
 	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged1(slot func(parents []QPersistentModelIndex)) {
-	C.QAbstractItemModel_connect_LayoutAboutToBeChanged1(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb *C.void, parents *C.struct_miqt_array) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex))
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb C.intptr_t, parents *C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -974,12 +974,12 @@ func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentMod
 	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
-	C.QAbstractItemModel_connect_LayoutAboutToBeChanged2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QAbstractItemModel_connect_LayoutAboutToBeChanged2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb *C.void, parents *C.struct_miqt_array, hint C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb C.intptr_t, parents *C.struct_miqt_array, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

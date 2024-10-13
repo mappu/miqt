@@ -115,7 +115,7 @@ void QStackedLayout_WidgetRemoved(QStackedLayout* self, int index) {
 	self->widgetRemoved(static_cast<int>(index));
 }
 
-void QStackedLayout_connect_WidgetRemoved(QStackedLayout* self, void* slot) {
+void QStackedLayout_connect_WidgetRemoved(QStackedLayout* self, intptr_t slot) {
 	QStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::widgetRemoved), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QStackedLayout_WidgetRemoved(slot, sigval1);
@@ -126,7 +126,7 @@ void QStackedLayout_CurrentChanged(QStackedLayout* self, int index) {
 	self->currentChanged(static_cast<int>(index));
 }
 
-void QStackedLayout_connect_CurrentChanged(QStackedLayout* self, void* slot) {
+void QStackedLayout_connect_CurrentChanged(QStackedLayout* self, intptr_t slot) {
 	QStackedLayout::connect(self, static_cast<void (QStackedLayout::*)(int)>(&QStackedLayout::currentChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QStackedLayout_CurrentChanged(slot, sigval1);

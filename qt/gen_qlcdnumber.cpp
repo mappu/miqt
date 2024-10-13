@@ -134,7 +134,7 @@ void QLCDNumber_Overflow(QLCDNumber* self) {
 	self->overflow();
 }
 
-void QLCDNumber_connect_Overflow(QLCDNumber* self, void* slot) {
+void QLCDNumber_connect_Overflow(QLCDNumber* self, intptr_t slot) {
 	QLCDNumber::connect(self, static_cast<void (QLCDNumber::*)()>(&QLCDNumber::overflow), self, [=]() {
 		miqt_exec_callback_QLCDNumber_Overflow(slot);
 	});

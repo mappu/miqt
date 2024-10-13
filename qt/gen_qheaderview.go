@@ -369,12 +369,12 @@ func (this *QHeaderView) SectionMoved(logicalIndex int, oldVisualIndex int, newV
 	C.QHeaderView_SectionMoved(this.h, (C.int)(logicalIndex), (C.int)(oldVisualIndex), (C.int)(newVisualIndex))
 }
 func (this *QHeaderView) OnSectionMoved(slot func(logicalIndex int, oldVisualIndex int, newVisualIndex int)) {
-	C.QHeaderView_connect_SectionMoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionMoved
-func miqt_exec_callback_QHeaderView_SectionMoved(cb *C.void, logicalIndex C.int, oldVisualIndex C.int, newVisualIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, oldVisualIndex int, newVisualIndex int))
+func miqt_exec_callback_QHeaderView_SectionMoved(cb C.intptr_t, logicalIndex C.int, oldVisualIndex C.int, newVisualIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int, oldVisualIndex int, newVisualIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -393,12 +393,12 @@ func (this *QHeaderView) SectionResized(logicalIndex int, oldSize int, newSize i
 	C.QHeaderView_SectionResized(this.h, (C.int)(logicalIndex), (C.int)(oldSize), (C.int)(newSize))
 }
 func (this *QHeaderView) OnSectionResized(slot func(logicalIndex int, oldSize int, newSize int)) {
-	C.QHeaderView_connect_SectionResized(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionResized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionResized
-func miqt_exec_callback_QHeaderView_SectionResized(cb *C.void, logicalIndex C.int, oldSize C.int, newSize C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, oldSize int, newSize int))
+func miqt_exec_callback_QHeaderView_SectionResized(cb C.intptr_t, logicalIndex C.int, oldSize C.int, newSize C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int, oldSize int, newSize int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -417,12 +417,12 @@ func (this *QHeaderView) SectionPressed(logicalIndex int) {
 	C.QHeaderView_SectionPressed(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionPressed(slot func(logicalIndex int)) {
-	C.QHeaderView_connect_SectionPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionPressed
-func miqt_exec_callback_QHeaderView_SectionPressed(cb *C.void, logicalIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+func miqt_exec_callback_QHeaderView_SectionPressed(cb C.intptr_t, logicalIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -437,12 +437,12 @@ func (this *QHeaderView) SectionClicked(logicalIndex int) {
 	C.QHeaderView_SectionClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionClicked(slot func(logicalIndex int)) {
-	C.QHeaderView_connect_SectionClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionClicked
-func miqt_exec_callback_QHeaderView_SectionClicked(cb *C.void, logicalIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+func miqt_exec_callback_QHeaderView_SectionClicked(cb C.intptr_t, logicalIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -457,12 +457,12 @@ func (this *QHeaderView) SectionEntered(logicalIndex int) {
 	C.QHeaderView_SectionEntered(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionEntered(slot func(logicalIndex int)) {
-	C.QHeaderView_connect_SectionEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionEntered
-func miqt_exec_callback_QHeaderView_SectionEntered(cb *C.void, logicalIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+func miqt_exec_callback_QHeaderView_SectionEntered(cb C.intptr_t, logicalIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -477,12 +477,12 @@ func (this *QHeaderView) SectionDoubleClicked(logicalIndex int) {
 	C.QHeaderView_SectionDoubleClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionDoubleClicked(slot func(logicalIndex int)) {
-	C.QHeaderView_connect_SectionDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionDoubleClicked
-func miqt_exec_callback_QHeaderView_SectionDoubleClicked(cb *C.void, logicalIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+func miqt_exec_callback_QHeaderView_SectionDoubleClicked(cb C.intptr_t, logicalIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -497,12 +497,12 @@ func (this *QHeaderView) SectionCountChanged(oldCount int, newCount int) {
 	C.QHeaderView_SectionCountChanged(this.h, (C.int)(oldCount), (C.int)(newCount))
 }
 func (this *QHeaderView) OnSectionCountChanged(slot func(oldCount int, newCount int)) {
-	C.QHeaderView_connect_SectionCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionCountChanged
-func miqt_exec_callback_QHeaderView_SectionCountChanged(cb *C.void, oldCount C.int, newCount C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(oldCount int, newCount int))
+func miqt_exec_callback_QHeaderView_SectionCountChanged(cb C.intptr_t, oldCount C.int, newCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(oldCount int, newCount int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -519,12 +519,12 @@ func (this *QHeaderView) SectionHandleDoubleClicked(logicalIndex int) {
 	C.QHeaderView_SectionHandleDoubleClicked(this.h, (C.int)(logicalIndex))
 }
 func (this *QHeaderView) OnSectionHandleDoubleClicked(slot func(logicalIndex int)) {
-	C.QHeaderView_connect_SectionHandleDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SectionHandleDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked
-func miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(cb *C.void, logicalIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int))
+func miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(cb C.intptr_t, logicalIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -539,12 +539,12 @@ func (this *QHeaderView) GeometriesChanged() {
 	C.QHeaderView_GeometriesChanged(this.h)
 }
 func (this *QHeaderView) OnGeometriesChanged(slot func()) {
-	C.QHeaderView_connect_GeometriesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_GeometriesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_GeometriesChanged
-func miqt_exec_callback_QHeaderView_GeometriesChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QHeaderView_GeometriesChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -556,12 +556,12 @@ func (this *QHeaderView) SortIndicatorChanged(logicalIndex int, order SortOrder)
 	C.QHeaderView_SortIndicatorChanged(this.h, (C.int)(logicalIndex), (C.int)(order))
 }
 func (this *QHeaderView) OnSortIndicatorChanged(slot func(logicalIndex int, order SortOrder)) {
-	C.QHeaderView_connect_SortIndicatorChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QHeaderView_connect_SortIndicatorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QHeaderView_SortIndicatorChanged
-func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb *C.void, logicalIndex C.int, order C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(logicalIndex int, order SortOrder))
+func miqt_exec_callback_QHeaderView_SortIndicatorChanged(cb C.intptr_t, logicalIndex C.int, order C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(logicalIndex int, order SortOrder))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

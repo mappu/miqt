@@ -88,7 +88,7 @@ void QVariantAnimation_ValueChanged(QVariantAnimation* self, QVariant* value) {
 	self->valueChanged(*value);
 }
 
-void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, void* slot) {
+void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, intptr_t slot) {
 	QVariantAnimation::connect(self, static_cast<void (QVariantAnimation::*)(const QVariant&)>(&QVariantAnimation::valueChanged), self, [=](const QVariant& value) {
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer

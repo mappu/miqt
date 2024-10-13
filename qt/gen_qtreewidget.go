@@ -852,12 +852,12 @@ func (this *QTreeWidget) ItemPressed(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemPressed(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemPressed(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemPressed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemPressed
-func miqt_exec_callback_QTreeWidget_ItemPressed(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemPressed(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -873,12 +873,12 @@ func (this *QTreeWidget) ItemClicked(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemClicked(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemClicked(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemClicked
-func miqt_exec_callback_QTreeWidget_ItemClicked(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemClicked(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -894,12 +894,12 @@ func (this *QTreeWidget) ItemDoubleClicked(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemDoubleClicked(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemDoubleClicked(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemDoubleClicked
-func miqt_exec_callback_QTreeWidget_ItemDoubleClicked(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -915,12 +915,12 @@ func (this *QTreeWidget) ItemActivated(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemActivated(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemActivated(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemActivated
-func miqt_exec_callback_QTreeWidget_ItemActivated(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemActivated(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -936,12 +936,12 @@ func (this *QTreeWidget) ItemEntered(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemEntered(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemEntered(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemEntered(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemEntered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemEntered
-func miqt_exec_callback_QTreeWidget_ItemEntered(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemEntered(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -957,12 +957,12 @@ func (this *QTreeWidget) ItemChanged(item *QTreeWidgetItem, column int) {
 	C.QTreeWidget_ItemChanged(this.h, item.cPointer(), (C.int)(column))
 }
 func (this *QTreeWidget) OnItemChanged(slot func(item *QTreeWidgetItem, column int)) {
-	C.QTreeWidget_connect_ItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemChanged
-func miqt_exec_callback_QTreeWidget_ItemChanged(cb *C.void, item *C.QTreeWidgetItem, column C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem, column int))
+func miqt_exec_callback_QTreeWidget_ItemChanged(cb C.intptr_t, item *C.QTreeWidgetItem, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem, column int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -978,12 +978,12 @@ func (this *QTreeWidget) ItemExpanded(item *QTreeWidgetItem) {
 	C.QTreeWidget_ItemExpanded(this.h, item.cPointer())
 }
 func (this *QTreeWidget) OnItemExpanded(slot func(item *QTreeWidgetItem)) {
-	C.QTreeWidget_connect_ItemExpanded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemExpanded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemExpanded
-func miqt_exec_callback_QTreeWidget_ItemExpanded(cb *C.void, item *C.QTreeWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem))
+func miqt_exec_callback_QTreeWidget_ItemExpanded(cb C.intptr_t, item *C.QTreeWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -998,12 +998,12 @@ func (this *QTreeWidget) ItemCollapsed(item *QTreeWidgetItem) {
 	C.QTreeWidget_ItemCollapsed(this.h, item.cPointer())
 }
 func (this *QTreeWidget) OnItemCollapsed(slot func(item *QTreeWidgetItem)) {
-	C.QTreeWidget_connect_ItemCollapsed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemCollapsed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemCollapsed
-func miqt_exec_callback_QTreeWidget_ItemCollapsed(cb *C.void, item *C.QTreeWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(item *QTreeWidgetItem))
+func miqt_exec_callback_QTreeWidget_ItemCollapsed(cb C.intptr_t, item *C.QTreeWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item *QTreeWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1018,12 +1018,12 @@ func (this *QTreeWidget) CurrentItemChanged(current *QTreeWidgetItem, previous *
 	C.QTreeWidget_CurrentItemChanged(this.h, current.cPointer(), previous.cPointer())
 }
 func (this *QTreeWidget) OnCurrentItemChanged(slot func(current *QTreeWidgetItem, previous *QTreeWidgetItem)) {
-	C.QTreeWidget_connect_CurrentItemChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_CurrentItemChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_CurrentItemChanged
-func miqt_exec_callback_QTreeWidget_CurrentItemChanged(cb *C.void, current *C.QTreeWidgetItem, previous *C.QTreeWidgetItem) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(current *QTreeWidgetItem, previous *QTreeWidgetItem))
+func miqt_exec_callback_QTreeWidget_CurrentItemChanged(cb C.intptr_t, current *C.QTreeWidgetItem, previous *C.QTreeWidgetItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current *QTreeWidgetItem, previous *QTreeWidgetItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1039,12 +1039,12 @@ func (this *QTreeWidget) ItemSelectionChanged() {
 	C.QTreeWidget_ItemSelectionChanged(this.h)
 }
 func (this *QTreeWidget) OnItemSelectionChanged(slot func()) {
-	C.QTreeWidget_connect_ItemSelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTreeWidget_connect_ItemSelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeWidget_ItemSelectionChanged
-func miqt_exec_callback_QTreeWidget_ItemSelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTreeWidget_ItemSelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

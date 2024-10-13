@@ -60,7 +60,7 @@ void QSequentialAnimationGroup_CurrentAnimationChanged(QSequentialAnimationGroup
 	self->currentAnimationChanged(current);
 }
 
-void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, void* slot) {
+void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, intptr_t slot) {
 	QSequentialAnimationGroup::connect(self, static_cast<void (QSequentialAnimationGroup::*)(QAbstractAnimation*)>(&QSequentialAnimationGroup::currentAnimationChanged), self, [=](QAbstractAnimation* current) {
 		QAbstractAnimation* sigval1 = current;
 		miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(slot, sigval1);

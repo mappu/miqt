@@ -282,7 +282,7 @@ void QCoreApplication_OrganizationNameChanged(QCoreApplication* self) {
 	self->organizationNameChanged();
 }
 
-void QCoreApplication_connect_OrganizationNameChanged(QCoreApplication* self, void* slot) {
+void QCoreApplication_connect_OrganizationNameChanged(QCoreApplication* self, intptr_t slot) {
 	QCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationNameChanged), self, [=]() {
 		miqt_exec_callback_QCoreApplication_OrganizationNameChanged(slot);
 	});
@@ -292,7 +292,7 @@ void QCoreApplication_OrganizationDomainChanged(QCoreApplication* self) {
 	self->organizationDomainChanged();
 }
 
-void QCoreApplication_connect_OrganizationDomainChanged(QCoreApplication* self, void* slot) {
+void QCoreApplication_connect_OrganizationDomainChanged(QCoreApplication* self, intptr_t slot) {
 	QCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::organizationDomainChanged), self, [=]() {
 		miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(slot);
 	});
@@ -302,7 +302,7 @@ void QCoreApplication_ApplicationNameChanged(QCoreApplication* self) {
 	self->applicationNameChanged();
 }
 
-void QCoreApplication_connect_ApplicationNameChanged(QCoreApplication* self, void* slot) {
+void QCoreApplication_connect_ApplicationNameChanged(QCoreApplication* self, intptr_t slot) {
 	QCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationNameChanged), self, [=]() {
 		miqt_exec_callback_QCoreApplication_ApplicationNameChanged(slot);
 	});
@@ -312,7 +312,7 @@ void QCoreApplication_ApplicationVersionChanged(QCoreApplication* self) {
 	self->applicationVersionChanged();
 }
 
-void QCoreApplication_connect_ApplicationVersionChanged(QCoreApplication* self, void* slot) {
+void QCoreApplication_connect_ApplicationVersionChanged(QCoreApplication* self, intptr_t slot) {
 	QCoreApplication::connect(self, static_cast<void (QCoreApplication::*)()>(&QCoreApplication::applicationVersionChanged), self, [=]() {
 		miqt_exec_callback_QCoreApplication_ApplicationVersionChanged(slot);
 	});

@@ -299,12 +299,12 @@ func (this *QCalendarWidget) SelectionChanged() {
 	C.QCalendarWidget_SelectionChanged(this.h)
 }
 func (this *QCalendarWidget) OnSelectionChanged(slot func()) {
-	C.QCalendarWidget_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCalendarWidget_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCalendarWidget_SelectionChanged
-func miqt_exec_callback_QCalendarWidget_SelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QCalendarWidget_SelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -316,12 +316,12 @@ func (this *QCalendarWidget) Clicked(date *QDate) {
 	C.QCalendarWidget_Clicked(this.h, date.cPointer())
 }
 func (this *QCalendarWidget) OnClicked(slot func(date *QDate)) {
-	C.QCalendarWidget_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCalendarWidget_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCalendarWidget_Clicked
-func miqt_exec_callback_QCalendarWidget_Clicked(cb *C.void, date *C.QDate) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+func miqt_exec_callback_QCalendarWidget_Clicked(cb C.intptr_t, date *C.QDate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(date *QDate))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -336,12 +336,12 @@ func (this *QCalendarWidget) Activated(date *QDate) {
 	C.QCalendarWidget_Activated(this.h, date.cPointer())
 }
 func (this *QCalendarWidget) OnActivated(slot func(date *QDate)) {
-	C.QCalendarWidget_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCalendarWidget_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCalendarWidget_Activated
-func miqt_exec_callback_QCalendarWidget_Activated(cb *C.void, date *C.QDate) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(date *QDate))
+func miqt_exec_callback_QCalendarWidget_Activated(cb C.intptr_t, date *C.QDate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(date *QDate))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -356,12 +356,12 @@ func (this *QCalendarWidget) CurrentPageChanged(year int, month int) {
 	C.QCalendarWidget_CurrentPageChanged(this.h, (C.int)(year), (C.int)(month))
 }
 func (this *QCalendarWidget) OnCurrentPageChanged(slot func(year int, month int)) {
-	C.QCalendarWidget_connect_CurrentPageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCalendarWidget_connect_CurrentPageChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCalendarWidget_CurrentPageChanged
-func miqt_exec_callback_QCalendarWidget_CurrentPageChanged(cb *C.void, year C.int, month C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(year int, month int))
+func miqt_exec_callback_QCalendarWidget_CurrentPageChanged(cb C.intptr_t, year C.int, month C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(year int, month int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

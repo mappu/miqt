@@ -172,12 +172,12 @@ func (this *QDockWidget) FeaturesChanged(features QDockWidget__DockWidgetFeature
 	C.QDockWidget_FeaturesChanged(this.h, (C.int)(features))
 }
 func (this *QDockWidget) OnFeaturesChanged(slot func(features QDockWidget__DockWidgetFeature)) {
-	C.QDockWidget_connect_FeaturesChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDockWidget_connect_FeaturesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDockWidget_FeaturesChanged
-func miqt_exec_callback_QDockWidget_FeaturesChanged(cb *C.void, features C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(features QDockWidget__DockWidgetFeature))
+func miqt_exec_callback_QDockWidget_FeaturesChanged(cb C.intptr_t, features C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(features QDockWidget__DockWidgetFeature))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -192,12 +192,12 @@ func (this *QDockWidget) TopLevelChanged(topLevel bool) {
 	C.QDockWidget_TopLevelChanged(this.h, (C.bool)(topLevel))
 }
 func (this *QDockWidget) OnTopLevelChanged(slot func(topLevel bool)) {
-	C.QDockWidget_connect_TopLevelChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDockWidget_connect_TopLevelChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDockWidget_TopLevelChanged
-func miqt_exec_callback_QDockWidget_TopLevelChanged(cb *C.void, topLevel C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(topLevel bool))
+func miqt_exec_callback_QDockWidget_TopLevelChanged(cb C.intptr_t, topLevel C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(topLevel bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -212,12 +212,12 @@ func (this *QDockWidget) AllowedAreasChanged(allowedAreas DockWidgetArea) {
 	C.QDockWidget_AllowedAreasChanged(this.h, (C.int)(allowedAreas))
 }
 func (this *QDockWidget) OnAllowedAreasChanged(slot func(allowedAreas DockWidgetArea)) {
-	C.QDockWidget_connect_AllowedAreasChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDockWidget_connect_AllowedAreasChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDockWidget_AllowedAreasChanged
-func miqt_exec_callback_QDockWidget_AllowedAreasChanged(cb *C.void, allowedAreas C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(allowedAreas DockWidgetArea))
+func miqt_exec_callback_QDockWidget_AllowedAreasChanged(cb C.intptr_t, allowedAreas C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(allowedAreas DockWidgetArea))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -232,12 +232,12 @@ func (this *QDockWidget) VisibilityChanged(visible bool) {
 	C.QDockWidget_VisibilityChanged(this.h, (C.bool)(visible))
 }
 func (this *QDockWidget) OnVisibilityChanged(slot func(visible bool)) {
-	C.QDockWidget_connect_VisibilityChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDockWidget_connect_VisibilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDockWidget_VisibilityChanged
-func miqt_exec_callback_QDockWidget_VisibilityChanged(cb *C.void, visible C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(visible bool))
+func miqt_exec_callback_QDockWidget_VisibilityChanged(cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -252,12 +252,12 @@ func (this *QDockWidget) DockLocationChanged(area DockWidgetArea) {
 	C.QDockWidget_DockLocationChanged(this.h, (C.int)(area))
 }
 func (this *QDockWidget) OnDockLocationChanged(slot func(area DockWidgetArea)) {
-	C.QDockWidget_connect_DockLocationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDockWidget_connect_DockLocationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDockWidget_DockLocationChanged
-func miqt_exec_callback_QDockWidget_DockLocationChanged(cb *C.void, area C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(area DockWidgetArea))
+func miqt_exec_callback_QDockWidget_DockLocationChanged(cb C.intptr_t, area C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(area DockWidgetArea))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

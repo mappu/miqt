@@ -194,7 +194,7 @@ void QAbstractSpinBox_EditingFinished(QAbstractSpinBox* self) {
 	self->editingFinished();
 }
 
-void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, void* slot) {
+void QAbstractSpinBox_connect_EditingFinished(QAbstractSpinBox* self, intptr_t slot) {
 	QAbstractSpinBox::connect(self, static_cast<void (QAbstractSpinBox::*)()>(&QAbstractSpinBox::editingFinished), self, [=]() {
 		miqt_exec_callback_QAbstractSpinBox_EditingFinished(slot);
 	});

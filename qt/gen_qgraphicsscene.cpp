@@ -488,7 +488,7 @@ void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array* /* of QRect
 	self->changed(region_QList);
 }
 
-void QGraphicsScene_connect_Changed(QGraphicsScene* self, void* slot) {
+void QGraphicsScene_connect_Changed(QGraphicsScene* self, intptr_t slot) {
 	QGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QList<QRectF>&)>(&QGraphicsScene::changed), self, [=](const QList<QRectF>& region) {
 		const QList<QRectF>& region_ret = region;
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -508,7 +508,7 @@ void QGraphicsScene_SceneRectChanged(QGraphicsScene* self, QRectF* rect) {
 	self->sceneRectChanged(*rect);
 }
 
-void QGraphicsScene_connect_SceneRectChanged(QGraphicsScene* self, void* slot) {
+void QGraphicsScene_connect_SceneRectChanged(QGraphicsScene* self, intptr_t slot) {
 	QGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(const QRectF&)>(&QGraphicsScene::sceneRectChanged), self, [=](const QRectF& rect) {
 		const QRectF& rect_ret = rect;
 		// Cast returned reference into pointer
@@ -521,7 +521,7 @@ void QGraphicsScene_SelectionChanged(QGraphicsScene* self) {
 	self->selectionChanged();
 }
 
-void QGraphicsScene_connect_SelectionChanged(QGraphicsScene* self, void* slot) {
+void QGraphicsScene_connect_SelectionChanged(QGraphicsScene* self, intptr_t slot) {
 	QGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)()>(&QGraphicsScene::selectionChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsScene_SelectionChanged(slot);
 	});
@@ -531,7 +531,7 @@ void QGraphicsScene_FocusItemChanged(QGraphicsScene* self, QGraphicsItem* newFoc
 	self->focusItemChanged(newFocus, oldFocus, static_cast<Qt::FocusReason>(reason));
 }
 
-void QGraphicsScene_connect_FocusItemChanged(QGraphicsScene* self, void* slot) {
+void QGraphicsScene_connect_FocusItemChanged(QGraphicsScene* self, intptr_t slot) {
 	QGraphicsScene::connect(self, static_cast<void (QGraphicsScene::*)(QGraphicsItem*, QGraphicsItem*, Qt::FocusReason)>(&QGraphicsScene::focusItemChanged), self, [=](QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason reason) {
 		QGraphicsItem* sigval1 = newFocus;
 		QGraphicsItem* sigval2 = oldFocus;

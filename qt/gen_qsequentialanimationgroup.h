@@ -38,7 +38,7 @@ QPauseAnimation* QSequentialAnimationGroup_InsertPause(QSequentialAnimationGroup
 QAbstractAnimation* QSequentialAnimationGroup_CurrentAnimation(const QSequentialAnimationGroup* self);
 int QSequentialAnimationGroup_Duration(const QSequentialAnimationGroup* self);
 void QSequentialAnimationGroup_CurrentAnimationChanged(QSequentialAnimationGroup* self, QAbstractAnimation* current);
-void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, void* slot);
+void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, intptr_t slot);
 struct miqt_string* QSequentialAnimationGroup_Tr2(const char* s, const char* c);
 struct miqt_string* QSequentialAnimationGroup_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QSequentialAnimationGroup_TrUtf82(const char* s, const char* c);

@@ -238,12 +238,12 @@ func (this *QDialogButtonBox) Clicked(button *QAbstractButton) {
 	C.QDialogButtonBox_Clicked(this.h, button.cPointer())
 }
 func (this *QDialogButtonBox) OnClicked(slot func(button *QAbstractButton)) {
-	C.QDialogButtonBox_connect_Clicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialogButtonBox_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialogButtonBox_Clicked
-func miqt_exec_callback_QDialogButtonBox_Clicked(cb *C.void, button *C.QAbstractButton) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(button *QAbstractButton))
+func miqt_exec_callback_QDialogButtonBox_Clicked(cb C.intptr_t, button *C.QAbstractButton) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(button *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -258,12 +258,12 @@ func (this *QDialogButtonBox) Accepted() {
 	C.QDialogButtonBox_Accepted(this.h)
 }
 func (this *QDialogButtonBox) OnAccepted(slot func()) {
-	C.QDialogButtonBox_connect_Accepted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialogButtonBox_connect_Accepted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialogButtonBox_Accepted
-func miqt_exec_callback_QDialogButtonBox_Accepted(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDialogButtonBox_Accepted(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -275,12 +275,12 @@ func (this *QDialogButtonBox) HelpRequested() {
 	C.QDialogButtonBox_HelpRequested(this.h)
 }
 func (this *QDialogButtonBox) OnHelpRequested(slot func()) {
-	C.QDialogButtonBox_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialogButtonBox_connect_HelpRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialogButtonBox_HelpRequested
-func miqt_exec_callback_QDialogButtonBox_HelpRequested(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDialogButtonBox_HelpRequested(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -292,12 +292,12 @@ func (this *QDialogButtonBox) Rejected() {
 	C.QDialogButtonBox_Rejected(this.h)
 }
 func (this *QDialogButtonBox) OnRejected(slot func()) {
-	C.QDialogButtonBox_connect_Rejected(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QDialogButtonBox_connect_Rejected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDialogButtonBox_Rejected
-func miqt_exec_callback_QDialogButtonBox_Rejected(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QDialogButtonBox_Rejected(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

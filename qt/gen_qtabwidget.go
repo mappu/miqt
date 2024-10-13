@@ -332,12 +332,12 @@ func (this *QTabWidget) CurrentChanged(index int) {
 	C.QTabWidget_CurrentChanged(this.h, (C.int)(index))
 }
 func (this *QTabWidget) OnCurrentChanged(slot func(index int)) {
-	C.QTabWidget_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTabWidget_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTabWidget_CurrentChanged
-func miqt_exec_callback_QTabWidget_CurrentChanged(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QTabWidget_CurrentChanged(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -352,12 +352,12 @@ func (this *QTabWidget) TabCloseRequested(index int) {
 	C.QTabWidget_TabCloseRequested(this.h, (C.int)(index))
 }
 func (this *QTabWidget) OnTabCloseRequested(slot func(index int)) {
-	C.QTabWidget_connect_TabCloseRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTabWidget_connect_TabCloseRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTabWidget_TabCloseRequested
-func miqt_exec_callback_QTabWidget_TabCloseRequested(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QTabWidget_TabCloseRequested(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -372,12 +372,12 @@ func (this *QTabWidget) TabBarClicked(index int) {
 	C.QTabWidget_TabBarClicked(this.h, (C.int)(index))
 }
 func (this *QTabWidget) OnTabBarClicked(slot func(index int)) {
-	C.QTabWidget_connect_TabBarClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTabWidget_connect_TabBarClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTabWidget_TabBarClicked
-func miqt_exec_callback_QTabWidget_TabBarClicked(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QTabWidget_TabBarClicked(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -392,12 +392,12 @@ func (this *QTabWidget) TabBarDoubleClicked(index int) {
 	C.QTabWidget_TabBarDoubleClicked(this.h, (C.int)(index))
 }
 func (this *QTabWidget) OnTabBarDoubleClicked(slot func(index int)) {
-	C.QTabWidget_connect_TabBarDoubleClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTabWidget_connect_TabBarDoubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTabWidget_TabBarDoubleClicked
-func miqt_exec_callback_QTabWidget_TabBarDoubleClicked(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QTabWidget_TabBarDoubleClicked(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

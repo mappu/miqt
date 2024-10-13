@@ -494,7 +494,7 @@ void QTextEdit_TextChanged(QTextEdit* self) {
 	self->textChanged();
 }
 
-void QTextEdit_connect_TextChanged(QTextEdit* self, void* slot) {
+void QTextEdit_connect_TextChanged(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::textChanged), self, [=]() {
 		miqt_exec_callback_QTextEdit_TextChanged(slot);
 	});
@@ -504,7 +504,7 @@ void QTextEdit_UndoAvailable(QTextEdit* self, bool b) {
 	self->undoAvailable(b);
 }
 
-void QTextEdit_connect_UndoAvailable(QTextEdit* self, void* slot) {
+void QTextEdit_connect_UndoAvailable(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::undoAvailable), self, [=](bool b) {
 		bool sigval1 = b;
 		miqt_exec_callback_QTextEdit_UndoAvailable(slot, sigval1);
@@ -515,7 +515,7 @@ void QTextEdit_RedoAvailable(QTextEdit* self, bool b) {
 	self->redoAvailable(b);
 }
 
-void QTextEdit_connect_RedoAvailable(QTextEdit* self, void* slot) {
+void QTextEdit_connect_RedoAvailable(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::redoAvailable), self, [=](bool b) {
 		bool sigval1 = b;
 		miqt_exec_callback_QTextEdit_RedoAvailable(slot, sigval1);
@@ -526,7 +526,7 @@ void QTextEdit_CurrentCharFormatChanged(QTextEdit* self, QTextCharFormat* format
 	self->currentCharFormatChanged(*format);
 }
 
-void QTextEdit_connect_CurrentCharFormatChanged(QTextEdit* self, void* slot) {
+void QTextEdit_connect_CurrentCharFormatChanged(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)(const QTextCharFormat&)>(&QTextEdit::currentCharFormatChanged), self, [=](const QTextCharFormat& format) {
 		const QTextCharFormat& format_ret = format;
 		// Cast returned reference into pointer
@@ -539,7 +539,7 @@ void QTextEdit_CopyAvailable(QTextEdit* self, bool b) {
 	self->copyAvailable(b);
 }
 
-void QTextEdit_connect_CopyAvailable(QTextEdit* self, void* slot) {
+void QTextEdit_connect_CopyAvailable(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)(bool)>(&QTextEdit::copyAvailable), self, [=](bool b) {
 		bool sigval1 = b;
 		miqt_exec_callback_QTextEdit_CopyAvailable(slot, sigval1);
@@ -550,7 +550,7 @@ void QTextEdit_SelectionChanged(QTextEdit* self) {
 	self->selectionChanged();
 }
 
-void QTextEdit_connect_SelectionChanged(QTextEdit* self, void* slot) {
+void QTextEdit_connect_SelectionChanged(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::selectionChanged), self, [=]() {
 		miqt_exec_callback_QTextEdit_SelectionChanged(slot);
 	});
@@ -560,7 +560,7 @@ void QTextEdit_CursorPositionChanged(QTextEdit* self) {
 	self->cursorPositionChanged();
 }
 
-void QTextEdit_connect_CursorPositionChanged(QTextEdit* self, void* slot) {
+void QTextEdit_connect_CursorPositionChanged(QTextEdit* self, intptr_t slot) {
 	QTextEdit::connect(self, static_cast<void (QTextEdit::*)()>(&QTextEdit::cursorPositionChanged), self, [=]() {
 		miqt_exec_callback_QTextEdit_CursorPositionChanged(slot);
 	});

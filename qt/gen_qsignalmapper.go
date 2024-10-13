@@ -121,12 +121,12 @@ func (this *QSignalMapper) Mapped(param1 int) {
 	C.QSignalMapper_Mapped(this.h, (C.int)(param1))
 }
 func (this *QSignalMapper) OnMapped(slot func(param1 int)) {
-	C.QSignalMapper_connect_Mapped(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_Mapped(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_Mapped
-func miqt_exec_callback_QSignalMapper_Mapped(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QSignalMapper_Mapped(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -143,12 +143,12 @@ func (this *QSignalMapper) MappedWithQString(param1 string) {
 	C.QSignalMapper_MappedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QSignalMapper) OnMappedWithQString(slot func(param1 string)) {
-	C.QSignalMapper_connect_MappedWithQString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedWithQString
-func miqt_exec_callback_QSignalMapper_MappedWithQString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QSignalMapper_MappedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -166,12 +166,12 @@ func (this *QSignalMapper) MappedWithQWidget(param1 *QWidget) {
 	C.QSignalMapper_MappedWithQWidget(this.h, param1.cPointer())
 }
 func (this *QSignalMapper) OnMappedWithQWidget(slot func(param1 *QWidget)) {
-	C.QSignalMapper_connect_MappedWithQWidget(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedWithQWidget(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedWithQWidget
-func miqt_exec_callback_QSignalMapper_MappedWithQWidget(cb *C.void, param1 *C.QWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QWidget))
+func miqt_exec_callback_QSignalMapper_MappedWithQWidget(cb C.intptr_t, param1 *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -186,12 +186,12 @@ func (this *QSignalMapper) MappedWithQObject(param1 *QObject) {
 	C.QSignalMapper_MappedWithQObject(this.h, param1.cPointer())
 }
 func (this *QSignalMapper) OnMappedWithQObject(slot func(param1 *QObject)) {
-	C.QSignalMapper_connect_MappedWithQObject(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedWithQObject(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedWithQObject
-func miqt_exec_callback_QSignalMapper_MappedWithQObject(cb *C.void, param1 *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QObject))
+func miqt_exec_callback_QSignalMapper_MappedWithQObject(cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -206,12 +206,12 @@ func (this *QSignalMapper) MappedInt(param1 int) {
 	C.QSignalMapper_MappedInt(this.h, (C.int)(param1))
 }
 func (this *QSignalMapper) OnMappedInt(slot func(param1 int)) {
-	C.QSignalMapper_connect_MappedInt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedInt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedInt
-func miqt_exec_callback_QSignalMapper_MappedInt(cb *C.void, param1 C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 int))
+func miqt_exec_callback_QSignalMapper_MappedInt(cb C.intptr_t, param1 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -228,12 +228,12 @@ func (this *QSignalMapper) MappedString(param1 string) {
 	C.QSignalMapper_MappedString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 func (this *QSignalMapper) OnMappedString(slot func(param1 string)) {
-	C.QSignalMapper_connect_MappedString(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedString
-func miqt_exec_callback_QSignalMapper_MappedString(cb *C.void, param1 *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 string))
+func miqt_exec_callback_QSignalMapper_MappedString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -251,12 +251,12 @@ func (this *QSignalMapper) MappedWidget(param1 *QWidget) {
 	C.QSignalMapper_MappedWidget(this.h, param1.cPointer())
 }
 func (this *QSignalMapper) OnMappedWidget(slot func(param1 *QWidget)) {
-	C.QSignalMapper_connect_MappedWidget(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedWidget(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedWidget
-func miqt_exec_callback_QSignalMapper_MappedWidget(cb *C.void, param1 *C.QWidget) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QWidget))
+func miqt_exec_callback_QSignalMapper_MappedWidget(cb C.intptr_t, param1 *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -271,12 +271,12 @@ func (this *QSignalMapper) MappedObject(param1 *QObject) {
 	C.QSignalMapper_MappedObject(this.h, param1.cPointer())
 }
 func (this *QSignalMapper) OnMappedObject(slot func(param1 *QObject)) {
-	C.QSignalMapper_connect_MappedObject(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QSignalMapper_connect_MappedObject(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalMapper_MappedObject
-func miqt_exec_callback_QSignalMapper_MappedObject(cb *C.void, param1 *C.QObject) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QObject))
+func miqt_exec_callback_QSignalMapper_MappedObject(cb C.intptr_t, param1 *C.QObject) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

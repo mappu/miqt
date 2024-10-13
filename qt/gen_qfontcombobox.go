@@ -125,12 +125,12 @@ func (this *QFontComboBox) CurrentFontChanged(f *QFont) {
 	C.QFontComboBox_CurrentFontChanged(this.h, f.cPointer())
 }
 func (this *QFontComboBox) OnCurrentFontChanged(slot func(f *QFont)) {
-	C.QFontComboBox_connect_CurrentFontChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFontComboBox_connect_CurrentFontChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_CurrentFontChanged
-func miqt_exec_callback_QFontComboBox_CurrentFontChanged(cb *C.void, f *C.QFont) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(f *QFont))
+func miqt_exec_callback_QFontComboBox_CurrentFontChanged(cb C.intptr_t, f *C.QFont) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(f *QFont))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

@@ -644,12 +644,12 @@ func (this *QProcess) Finished(exitCode int) {
 	C.QProcess_Finished(this.h, (C.int)(exitCode))
 }
 func (this *QProcess) OnFinished(slot func(exitCode int)) {
-	C.QProcess_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProcess_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProcess_Finished
-func miqt_exec_callback_QProcess_Finished(cb *C.void, exitCode C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(exitCode int))
+func miqt_exec_callback_QProcess_Finished(cb C.intptr_t, exitCode C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(exitCode int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -664,12 +664,12 @@ func (this *QProcess) Finished2(exitCode int, exitStatus QProcess__ExitStatus) {
 	C.QProcess_Finished2(this.h, (C.int)(exitCode), (C.int)(exitStatus))
 }
 func (this *QProcess) OnFinished2(slot func(exitCode int, exitStatus QProcess__ExitStatus)) {
-	C.QProcess_connect_Finished2(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProcess_connect_Finished2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProcess_Finished2
-func miqt_exec_callback_QProcess_Finished2(cb *C.void, exitCode C.int, exitStatus C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(exitCode int, exitStatus QProcess__ExitStatus))
+func miqt_exec_callback_QProcess_Finished2(cb C.intptr_t, exitCode C.int, exitStatus C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(exitCode int, exitStatus QProcess__ExitStatus))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -686,12 +686,12 @@ func (this *QProcess) ErrorWithError(error QProcess__ProcessError) {
 	C.QProcess_ErrorWithError(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorWithError(slot func(error QProcess__ProcessError)) {
-	C.QProcess_connect_ErrorWithError(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProcess_connect_ErrorWithError(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProcess_ErrorWithError
-func miqt_exec_callback_QProcess_ErrorWithError(cb *C.void, error C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
+func miqt_exec_callback_QProcess_ErrorWithError(cb C.intptr_t, error C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -706,12 +706,12 @@ func (this *QProcess) ErrorOccurred(error QProcess__ProcessError) {
 	C.QProcess_ErrorOccurred(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorOccurred(slot func(error QProcess__ProcessError)) {
-	C.QProcess_connect_ErrorOccurred(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QProcess_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProcess_ErrorOccurred
-func miqt_exec_callback_QProcess_ErrorOccurred(cb *C.void, error C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(error QProcess__ProcessError))
+func miqt_exec_callback_QProcess_ErrorOccurred(cb C.intptr_t, error C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(error QProcess__ProcessError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

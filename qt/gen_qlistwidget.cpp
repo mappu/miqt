@@ -478,7 +478,7 @@ void QListWidget_ItemPressed(QListWidget* self, QListWidgetItem* item) {
 	self->itemPressed(item);
 }
 
-void QListWidget_connect_ItemPressed(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemPressed(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemPressed), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemPressed(slot, sigval1);
@@ -489,7 +489,7 @@ void QListWidget_ItemClicked(QListWidget* self, QListWidgetItem* item) {
 	self->itemClicked(item);
 }
 
-void QListWidget_connect_ItemClicked(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemClicked(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemClicked), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemClicked(slot, sigval1);
@@ -500,7 +500,7 @@ void QListWidget_ItemDoubleClicked(QListWidget* self, QListWidgetItem* item) {
 	self->itemDoubleClicked(item);
 }
 
-void QListWidget_connect_ItemDoubleClicked(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemDoubleClicked(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemDoubleClicked), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemDoubleClicked(slot, sigval1);
@@ -511,7 +511,7 @@ void QListWidget_ItemActivated(QListWidget* self, QListWidgetItem* item) {
 	self->itemActivated(item);
 }
 
-void QListWidget_connect_ItemActivated(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemActivated(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemActivated), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemActivated(slot, sigval1);
@@ -522,7 +522,7 @@ void QListWidget_ItemEntered(QListWidget* self, QListWidgetItem* item) {
 	self->itemEntered(item);
 }
 
-void QListWidget_connect_ItemEntered(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemEntered(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemEntered), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemEntered(slot, sigval1);
@@ -533,7 +533,7 @@ void QListWidget_ItemChanged(QListWidget* self, QListWidgetItem* item) {
 	self->itemChanged(item);
 }
 
-void QListWidget_connect_ItemChanged(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemChanged(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*)>(&QListWidget::itemChanged), self, [=](QListWidgetItem* item) {
 		QListWidgetItem* sigval1 = item;
 		miqt_exec_callback_QListWidget_ItemChanged(slot, sigval1);
@@ -544,7 +544,7 @@ void QListWidget_CurrentItemChanged(QListWidget* self, QListWidgetItem* current,
 	self->currentItemChanged(current, previous);
 }
 
-void QListWidget_connect_CurrentItemChanged(QListWidget* self, void* slot) {
+void QListWidget_connect_CurrentItemChanged(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(QListWidgetItem*, QListWidgetItem*)>(&QListWidget::currentItemChanged), self, [=](QListWidgetItem* current, QListWidgetItem* previous) {
 		QListWidgetItem* sigval1 = current;
 		QListWidgetItem* sigval2 = previous;
@@ -557,7 +557,7 @@ void QListWidget_CurrentTextChanged(QListWidget* self, struct miqt_string* curre
 	self->currentTextChanged(currentText_QString);
 }
 
-void QListWidget_connect_CurrentTextChanged(QListWidget* self, void* slot) {
+void QListWidget_connect_CurrentTextChanged(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(const QString&)>(&QListWidget::currentTextChanged), self, [=](const QString& currentText) {
 		const QString currentText_ret = currentText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -571,7 +571,7 @@ void QListWidget_CurrentRowChanged(QListWidget* self, int currentRow) {
 	self->currentRowChanged(static_cast<int>(currentRow));
 }
 
-void QListWidget_connect_CurrentRowChanged(QListWidget* self, void* slot) {
+void QListWidget_connect_CurrentRowChanged(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)(int)>(&QListWidget::currentRowChanged), self, [=](int currentRow) {
 		int sigval1 = currentRow;
 		miqt_exec_callback_QListWidget_CurrentRowChanged(slot, sigval1);
@@ -582,7 +582,7 @@ void QListWidget_ItemSelectionChanged(QListWidget* self) {
 	self->itemSelectionChanged();
 }
 
-void QListWidget_connect_ItemSelectionChanged(QListWidget* self, void* slot) {
+void QListWidget_connect_ItemSelectionChanged(QListWidget* self, intptr_t slot) {
 	QListWidget::connect(self, static_cast<void (QListWidget::*)()>(&QListWidget::itemSelectionChanged), self, [=]() {
 		miqt_exec_callback_QListWidget_ItemSelectionChanged(slot);
 	});

@@ -429,7 +429,7 @@ void QGraphicsView_RubberBandChanged(QGraphicsView* self, QRect* viewportRect, Q
 	self->rubberBandChanged(*viewportRect, *fromScenePoint, *toScenePoint);
 }
 
-void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, void* slot) {
+void QGraphicsView_connect_RubberBandChanged(QGraphicsView* self, intptr_t slot) {
 	QGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, [=](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
 		QRect* sigval1 = new QRect(viewportRect);
 		QPointF* sigval2 = new QPointF(fromScenePoint);

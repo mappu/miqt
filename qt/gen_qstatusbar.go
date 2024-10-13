@@ -128,12 +128,12 @@ func (this *QStatusBar) MessageChanged(text string) {
 	C.QStatusBar_MessageChanged(this.h, (*C.struct_miqt_string)(text_ms))
 }
 func (this *QStatusBar) OnMessageChanged(slot func(text string)) {
-	C.QStatusBar_connect_MessageChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QStatusBar_connect_MessageChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStatusBar_MessageChanged
-func miqt_exec_callback_QStatusBar_MessageChanged(cb *C.void, text *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+func miqt_exec_callback_QStatusBar_MessageChanged(cb C.intptr_t, text *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

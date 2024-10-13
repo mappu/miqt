@@ -165,7 +165,7 @@ void QStateMachine_RunningChanged(QStateMachine* self, bool running) {
 	self->runningChanged(running);
 }
 
-void QStateMachine_connect_RunningChanged(QStateMachine* self, void* slot) {
+void QStateMachine_connect_RunningChanged(QStateMachine* self, intptr_t slot) {
 	QStateMachine::connect(self, static_cast<void (QStateMachine::*)(bool)>(&QStateMachine::runningChanged), self, [=](bool running) {
 		bool sigval1 = running;
 		miqt_exec_callback_QStateMachine_RunningChanged(slot, sigval1);

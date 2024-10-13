@@ -120,12 +120,12 @@ func (this *QFutureWatcherBase) Started() {
 	C.QFutureWatcherBase_Started(this.h)
 }
 func (this *QFutureWatcherBase) OnStarted(slot func()) {
-	C.QFutureWatcherBase_connect_Started(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_Started(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_Started
-func miqt_exec_callback_QFutureWatcherBase_Started(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QFutureWatcherBase_Started(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -137,12 +137,12 @@ func (this *QFutureWatcherBase) Finished() {
 	C.QFutureWatcherBase_Finished(this.h)
 }
 func (this *QFutureWatcherBase) OnFinished(slot func()) {
-	C.QFutureWatcherBase_connect_Finished(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_Finished
-func miqt_exec_callback_QFutureWatcherBase_Finished(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QFutureWatcherBase_Finished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -154,12 +154,12 @@ func (this *QFutureWatcherBase) Canceled() {
 	C.QFutureWatcherBase_Canceled(this.h)
 }
 func (this *QFutureWatcherBase) OnCanceled(slot func()) {
-	C.QFutureWatcherBase_connect_Canceled(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_Canceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_Canceled
-func miqt_exec_callback_QFutureWatcherBase_Canceled(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QFutureWatcherBase_Canceled(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -171,12 +171,12 @@ func (this *QFutureWatcherBase) Paused() {
 	C.QFutureWatcherBase_Paused(this.h)
 }
 func (this *QFutureWatcherBase) OnPaused(slot func()) {
-	C.QFutureWatcherBase_connect_Paused(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_Paused(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_Paused
-func miqt_exec_callback_QFutureWatcherBase_Paused(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QFutureWatcherBase_Paused(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -188,12 +188,12 @@ func (this *QFutureWatcherBase) Resumed() {
 	C.QFutureWatcherBase_Resumed(this.h)
 }
 func (this *QFutureWatcherBase) OnResumed(slot func()) {
-	C.QFutureWatcherBase_connect_Resumed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_Resumed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_Resumed
-func miqt_exec_callback_QFutureWatcherBase_Resumed(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QFutureWatcherBase_Resumed(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -205,12 +205,12 @@ func (this *QFutureWatcherBase) ResultReadyAt(resultIndex int) {
 	C.QFutureWatcherBase_ResultReadyAt(this.h, (C.int)(resultIndex))
 }
 func (this *QFutureWatcherBase) OnResultReadyAt(slot func(resultIndex int)) {
-	C.QFutureWatcherBase_connect_ResultReadyAt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_ResultReadyAt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ResultReadyAt
-func miqt_exec_callback_QFutureWatcherBase_ResultReadyAt(cb *C.void, resultIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(resultIndex int))
+func miqt_exec_callback_QFutureWatcherBase_ResultReadyAt(cb C.intptr_t, resultIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(resultIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -225,12 +225,12 @@ func (this *QFutureWatcherBase) ResultsReadyAt(beginIndex int, endIndex int) {
 	C.QFutureWatcherBase_ResultsReadyAt(this.h, (C.int)(beginIndex), (C.int)(endIndex))
 }
 func (this *QFutureWatcherBase) OnResultsReadyAt(slot func(beginIndex int, endIndex int)) {
-	C.QFutureWatcherBase_connect_ResultsReadyAt(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_ResultsReadyAt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt
-func miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt(cb *C.void, beginIndex C.int, endIndex C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(beginIndex int, endIndex int))
+func miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt(cb C.intptr_t, beginIndex C.int, endIndex C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(beginIndex int, endIndex int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -247,12 +247,12 @@ func (this *QFutureWatcherBase) ProgressRangeChanged(minimum int, maximum int) {
 	C.QFutureWatcherBase_ProgressRangeChanged(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 func (this *QFutureWatcherBase) OnProgressRangeChanged(slot func(minimum int, maximum int)) {
-	C.QFutureWatcherBase_connect_ProgressRangeChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_ProgressRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged
-func miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged(cb *C.void, minimum C.int, maximum C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(minimum int, maximum int))
+func miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged(cb C.intptr_t, minimum C.int, maximum C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(minimum int, maximum int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -269,12 +269,12 @@ func (this *QFutureWatcherBase) ProgressValueChanged(progressValue int) {
 	C.QFutureWatcherBase_ProgressValueChanged(this.h, (C.int)(progressValue))
 }
 func (this *QFutureWatcherBase) OnProgressValueChanged(slot func(progressValue int)) {
-	C.QFutureWatcherBase_connect_ProgressValueChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_ProgressValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged
-func miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(cb *C.void, progressValue C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(progressValue int))
+func miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(cb C.intptr_t, progressValue C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(progressValue int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -291,12 +291,12 @@ func (this *QFutureWatcherBase) ProgressTextChanged(progressText string) {
 	C.QFutureWatcherBase_ProgressTextChanged(this.h, (*C.struct_miqt_string)(progressText_ms))
 }
 func (this *QFutureWatcherBase) OnProgressTextChanged(slot func(progressText string)) {
-	C.QFutureWatcherBase_connect_ProgressTextChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QFutureWatcherBase_connect_ProgressTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged
-func miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(cb *C.void, progressText *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(progressText string))
+func miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(cb C.intptr_t, progressText *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(progressText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

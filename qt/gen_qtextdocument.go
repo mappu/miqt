@@ -601,12 +601,12 @@ func (this *QTextDocument) ContentsChange(from int, charsRemoved int, charsAdded
 	C.QTextDocument_ContentsChange(this.h, (C.int)(from), (C.int)(charsRemoved), (C.int)(charsAdded))
 }
 func (this *QTextDocument) OnContentsChange(slot func(from int, charsRemoved int, charsAdded int)) {
-	C.QTextDocument_connect_ContentsChange(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_ContentsChange(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_ContentsChange
-func miqt_exec_callback_QTextDocument_ContentsChange(cb *C.void, from C.int, charsRemoved C.int, charsAdded C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(from int, charsRemoved int, charsAdded int))
+func miqt_exec_callback_QTextDocument_ContentsChange(cb C.intptr_t, from C.int, charsRemoved C.int, charsAdded C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(from int, charsRemoved int, charsAdded int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -625,12 +625,12 @@ func (this *QTextDocument) ContentsChanged() {
 	C.QTextDocument_ContentsChanged(this.h)
 }
 func (this *QTextDocument) OnContentsChanged(slot func()) {
-	C.QTextDocument_connect_ContentsChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_ContentsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_ContentsChanged
-func miqt_exec_callback_QTextDocument_ContentsChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTextDocument_ContentsChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -642,12 +642,12 @@ func (this *QTextDocument) UndoAvailable(param1 bool) {
 	C.QTextDocument_UndoAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextDocument) OnUndoAvailable(slot func(param1 bool)) {
-	C.QTextDocument_connect_UndoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_UndoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_UndoAvailable
-func miqt_exec_callback_QTextDocument_UndoAvailable(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QTextDocument_UndoAvailable(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -662,12 +662,12 @@ func (this *QTextDocument) RedoAvailable(param1 bool) {
 	C.QTextDocument_RedoAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextDocument) OnRedoAvailable(slot func(param1 bool)) {
-	C.QTextDocument_connect_RedoAvailable(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_RedoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_RedoAvailable
-func miqt_exec_callback_QTextDocument_RedoAvailable(cb *C.void, param1 C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 bool))
+func miqt_exec_callback_QTextDocument_RedoAvailable(cb C.intptr_t, param1 C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -682,12 +682,12 @@ func (this *QTextDocument) UndoCommandAdded() {
 	C.QTextDocument_UndoCommandAdded(this.h)
 }
 func (this *QTextDocument) OnUndoCommandAdded(slot func()) {
-	C.QTextDocument_connect_UndoCommandAdded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_UndoCommandAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_UndoCommandAdded
-func miqt_exec_callback_QTextDocument_UndoCommandAdded(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTextDocument_UndoCommandAdded(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -699,12 +699,12 @@ func (this *QTextDocument) ModificationChanged(m bool) {
 	C.QTextDocument_ModificationChanged(this.h, (C.bool)(m))
 }
 func (this *QTextDocument) OnModificationChanged(slot func(m bool)) {
-	C.QTextDocument_connect_ModificationChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_ModificationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_ModificationChanged
-func miqt_exec_callback_QTextDocument_ModificationChanged(cb *C.void, m C.bool) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(m bool))
+func miqt_exec_callback_QTextDocument_ModificationChanged(cb C.intptr_t, m C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(m bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -719,12 +719,12 @@ func (this *QTextDocument) CursorPositionChanged(cursor *QTextCursor) {
 	C.QTextDocument_CursorPositionChanged(this.h, cursor.cPointer())
 }
 func (this *QTextDocument) OnCursorPositionChanged(slot func(cursor *QTextCursor)) {
-	C.QTextDocument_connect_CursorPositionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_CursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_CursorPositionChanged
-func miqt_exec_callback_QTextDocument_CursorPositionChanged(cb *C.void, cursor *C.QTextCursor) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(cursor *QTextCursor))
+func miqt_exec_callback_QTextDocument_CursorPositionChanged(cb C.intptr_t, cursor *C.QTextCursor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(cursor *QTextCursor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -739,12 +739,12 @@ func (this *QTextDocument) BlockCountChanged(newBlockCount int) {
 	C.QTextDocument_BlockCountChanged(this.h, (C.int)(newBlockCount))
 }
 func (this *QTextDocument) OnBlockCountChanged(slot func(newBlockCount int)) {
-	C.QTextDocument_connect_BlockCountChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_BlockCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_BlockCountChanged
-func miqt_exec_callback_QTextDocument_BlockCountChanged(cb *C.void, newBlockCount C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(newBlockCount int))
+func miqt_exec_callback_QTextDocument_BlockCountChanged(cb C.intptr_t, newBlockCount C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(newBlockCount int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -759,12 +759,12 @@ func (this *QTextDocument) BaseUrlChanged(url *QUrl) {
 	C.QTextDocument_BaseUrlChanged(this.h, url.cPointer())
 }
 func (this *QTextDocument) OnBaseUrlChanged(slot func(url *QUrl)) {
-	C.QTextDocument_connect_BaseUrlChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_BaseUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_BaseUrlChanged
-func miqt_exec_callback_QTextDocument_BaseUrlChanged(cb *C.void, url *C.QUrl) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(url *QUrl))
+func miqt_exec_callback_QTextDocument_BaseUrlChanged(cb C.intptr_t, url *C.QUrl) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(url *QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -779,12 +779,12 @@ func (this *QTextDocument) DocumentLayoutChanged() {
 	C.QTextDocument_DocumentLayoutChanged(this.h)
 }
 func (this *QTextDocument) OnDocumentLayoutChanged(slot func()) {
-	C.QTextDocument_connect_DocumentLayoutChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QTextDocument_connect_DocumentLayoutChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextDocument_DocumentLayoutChanged
-func miqt_exec_callback_QTextDocument_DocumentLayoutChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QTextDocument_DocumentLayoutChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

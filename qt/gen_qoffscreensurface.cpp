@@ -98,7 +98,7 @@ void QOffscreenSurface_ScreenChanged(QOffscreenSurface* self, QScreen* screen) {
 	self->screenChanged(screen);
 }
 
-void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, void* slot) {
+void QOffscreenSurface_connect_ScreenChanged(QOffscreenSurface* self, intptr_t slot) {
 	QOffscreenSurface::connect(self, static_cast<void (QOffscreenSurface::*)(QScreen*)>(&QOffscreenSurface::screenChanged), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
 		miqt_exec_callback_QOffscreenSurface_ScreenChanged(slot, sigval1);

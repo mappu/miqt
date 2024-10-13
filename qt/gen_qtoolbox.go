@@ -188,12 +188,12 @@ func (this *QToolBox) CurrentChanged(index int) {
 	C.QToolBox_CurrentChanged(this.h, (C.int)(index))
 }
 func (this *QToolBox) OnCurrentChanged(slot func(index int)) {
-	C.QToolBox_connect_CurrentChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QToolBox_connect_CurrentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBox_CurrentChanged
-func miqt_exec_callback_QToolBox_CurrentChanged(cb *C.void, index C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index int))
+func miqt_exec_callback_QToolBox_CurrentChanged(cb C.intptr_t, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

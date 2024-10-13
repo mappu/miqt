@@ -123,13 +123,13 @@ struct miqt_array* QAbstractItemModel_Match(const QAbstractItemModel* self, QMod
 QSize* QAbstractItemModel_Span(const QAbstractItemModel* self, QModelIndex* index);
 bool QAbstractItemModel_CheckIndex(const QAbstractItemModel* self, QModelIndex* index);
 void QAbstractItemModel_DataChanged(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight);
-void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_DataChanged(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_HeaderDataChanged(QAbstractItemModel* self, int orientation, int first, int last);
-void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_HeaderDataChanged(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutChanged(QAbstractItemModel* self);
-void QAbstractItemModel_connect_LayoutChanged(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutChanged(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutAboutToBeChanged(QAbstractItemModel* self);
-void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutAboutToBeChanged(QAbstractItemModel* self, intptr_t slot);
 bool QAbstractItemModel_Submit(QAbstractItemModel* self);
 void QAbstractItemModel_Revert(QAbstractItemModel* self);
 struct miqt_string* QAbstractItemModel_Tr2(const char* s, const char* c);
@@ -158,15 +158,15 @@ struct miqt_array* QAbstractItemModel_Match4(const QAbstractItemModel* self, QMo
 struct miqt_array* QAbstractItemModel_Match5(const QAbstractItemModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 bool QAbstractItemModel_CheckIndex2(const QAbstractItemModel* self, QModelIndex* index, int options);
 void QAbstractItemModel_DataChanged3(QAbstractItemModel* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles);
-void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_DataChanged3(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents);
-void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutChanged1(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, int hint);
-void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutChanged2(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutAboutToBeChanged1(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents);
-void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutAboutToBeChanged1(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_LayoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array* /* of QPersistentModelIndex* */ parents, int hint);
-void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, void* slot);
+void QAbstractItemModel_connect_LayoutAboutToBeChanged2(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_Delete(QAbstractItemModel* self);
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self);

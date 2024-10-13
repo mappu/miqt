@@ -145,12 +145,12 @@ func (this *QOffscreenSurface) ScreenChanged(screen *QScreen) {
 	C.QOffscreenSurface_ScreenChanged(this.h, screen.cPointer())
 }
 func (this *QOffscreenSurface) OnScreenChanged(slot func(screen *QScreen)) {
-	C.QOffscreenSurface_connect_ScreenChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QOffscreenSurface_connect_ScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QOffscreenSurface_ScreenChanged
-func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb *C.void, screen *C.QScreen) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(screen *QScreen))
+func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb C.intptr_t, screen *C.QScreen) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(screen *QScreen))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

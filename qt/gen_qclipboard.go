@@ -153,12 +153,12 @@ func (this *QClipboard) Changed(mode QClipboard__Mode) {
 	C.QClipboard_Changed(this.h, (C.int)(mode))
 }
 func (this *QClipboard) OnChanged(slot func(mode QClipboard__Mode)) {
-	C.QClipboard_connect_Changed(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QClipboard_connect_Changed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QClipboard_Changed
-func miqt_exec_callback_QClipboard_Changed(cb *C.void, mode C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(mode QClipboard__Mode))
+func miqt_exec_callback_QClipboard_Changed(cb C.intptr_t, mode C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(mode QClipboard__Mode))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -173,12 +173,12 @@ func (this *QClipboard) SelectionChanged() {
 	C.QClipboard_SelectionChanged(this.h)
 }
 func (this *QClipboard) OnSelectionChanged(slot func()) {
-	C.QClipboard_connect_SelectionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QClipboard_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QClipboard_SelectionChanged
-func miqt_exec_callback_QClipboard_SelectionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QClipboard_SelectionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -190,12 +190,12 @@ func (this *QClipboard) FindBufferChanged() {
 	C.QClipboard_FindBufferChanged(this.h)
 }
 func (this *QClipboard) OnFindBufferChanged(slot func()) {
-	C.QClipboard_connect_FindBufferChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QClipboard_connect_FindBufferChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QClipboard_FindBufferChanged
-func miqt_exec_callback_QClipboard_FindBufferChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QClipboard_FindBufferChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -207,12 +207,12 @@ func (this *QClipboard) DataChanged() {
 	C.QClipboard_DataChanged(this.h)
 }
 func (this *QClipboard) OnDataChanged(slot func()) {
-	C.QClipboard_connect_DataChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QClipboard_connect_DataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QClipboard_DataChanged
-func miqt_exec_callback_QClipboard_DataChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QClipboard_DataChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

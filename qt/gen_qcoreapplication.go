@@ -344,12 +344,12 @@ func (this *QCoreApplication) OrganizationNameChanged() {
 	C.QCoreApplication_OrganizationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationNameChanged(slot func()) {
-	C.QCoreApplication_connect_OrganizationNameChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCoreApplication_connect_OrganizationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCoreApplication_OrganizationNameChanged
-func miqt_exec_callback_QCoreApplication_OrganizationNameChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QCoreApplication_OrganizationNameChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -361,12 +361,12 @@ func (this *QCoreApplication) OrganizationDomainChanged() {
 	C.QCoreApplication_OrganizationDomainChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationDomainChanged(slot func()) {
-	C.QCoreApplication_connect_OrganizationDomainChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCoreApplication_connect_OrganizationDomainChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCoreApplication_OrganizationDomainChanged
-func miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -378,12 +378,12 @@ func (this *QCoreApplication) ApplicationNameChanged() {
 	C.QCoreApplication_ApplicationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationNameChanged(slot func()) {
-	C.QCoreApplication_connect_ApplicationNameChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCoreApplication_connect_ApplicationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCoreApplication_ApplicationNameChanged
-func miqt_exec_callback_QCoreApplication_ApplicationNameChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QCoreApplication_ApplicationNameChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -395,12 +395,12 @@ func (this *QCoreApplication) ApplicationVersionChanged() {
 	C.QCoreApplication_ApplicationVersionChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationVersionChanged(slot func()) {
-	C.QCoreApplication_connect_ApplicationVersionChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCoreApplication_connect_ApplicationVersionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCoreApplication_ApplicationVersionChanged
-func miqt_exec_callback_QCoreApplication_ApplicationVersionChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QCoreApplication_ApplicationVersionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

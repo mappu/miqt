@@ -352,12 +352,12 @@ func (this *QWizard) CurrentIdChanged(id int) {
 	C.QWizard_CurrentIdChanged(this.h, (C.int)(id))
 }
 func (this *QWizard) OnCurrentIdChanged(slot func(id int)) {
-	C.QWizard_connect_CurrentIdChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizard_connect_CurrentIdChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizard_CurrentIdChanged
-func miqt_exec_callback_QWizard_CurrentIdChanged(cb *C.void, id C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+func miqt_exec_callback_QWizard_CurrentIdChanged(cb C.intptr_t, id C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(id int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -372,12 +372,12 @@ func (this *QWizard) HelpRequested() {
 	C.QWizard_HelpRequested(this.h)
 }
 func (this *QWizard) OnHelpRequested(slot func()) {
-	C.QWizard_connect_HelpRequested(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizard_connect_HelpRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizard_HelpRequested
-func miqt_exec_callback_QWizard_HelpRequested(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QWizard_HelpRequested(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -389,12 +389,12 @@ func (this *QWizard) CustomButtonClicked(which int) {
 	C.QWizard_CustomButtonClicked(this.h, (C.int)(which))
 }
 func (this *QWizard) OnCustomButtonClicked(slot func(which int)) {
-	C.QWizard_connect_CustomButtonClicked(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizard_connect_CustomButtonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizard_CustomButtonClicked
-func miqt_exec_callback_QWizard_CustomButtonClicked(cb *C.void, which C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(which int))
+func miqt_exec_callback_QWizard_CustomButtonClicked(cb C.intptr_t, which C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(which int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -409,12 +409,12 @@ func (this *QWizard) PageAdded(id int) {
 	C.QWizard_PageAdded(this.h, (C.int)(id))
 }
 func (this *QWizard) OnPageAdded(slot func(id int)) {
-	C.QWizard_connect_PageAdded(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizard_connect_PageAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizard_PageAdded
-func miqt_exec_callback_QWizard_PageAdded(cb *C.void, id C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+func miqt_exec_callback_QWizard_PageAdded(cb C.intptr_t, id C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(id int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -429,12 +429,12 @@ func (this *QWizard) PageRemoved(id int) {
 	C.QWizard_PageRemoved(this.h, (C.int)(id))
 }
 func (this *QWizard) OnPageRemoved(slot func(id int)) {
-	C.QWizard_connect_PageRemoved(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizard_connect_PageRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizard_PageRemoved
-func miqt_exec_callback_QWizard_PageRemoved(cb *C.void, id C.int) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(id int))
+func miqt_exec_callback_QWizard_PageRemoved(cb C.intptr_t, id C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(id int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -672,12 +672,12 @@ func (this *QWizardPage) CompleteChanged() {
 	C.QWizardPage_CompleteChanged(this.h)
 }
 func (this *QWizardPage) OnCompleteChanged(slot func()) {
-	C.QWizardPage_connect_CompleteChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QWizardPage_connect_CompleteChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWizardPage_CompleteChanged
-func miqt_exec_callback_QWizardPage_CompleteChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QWizardPage_CompleteChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

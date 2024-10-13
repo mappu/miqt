@@ -101,7 +101,7 @@ void QMessageBox_SetWindowTitle(QMessageBox* self, struct miqt_string* title);
 void QMessageBox_SetWindowModality(QMessageBox* self, int windowModality);
 QPixmap* QMessageBox_StandardIcon(int icon);
 void QMessageBox_ButtonClicked(QMessageBox* self, QAbstractButton* button);
-void QMessageBox_connect_ButtonClicked(QMessageBox* self, void* slot);
+void QMessageBox_connect_ButtonClicked(QMessageBox* self, intptr_t slot);
 struct miqt_string* QMessageBox_Tr2(const char* s, const char* c);
 struct miqt_string* QMessageBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QMessageBox_TrUtf82(const char* s, const char* c);

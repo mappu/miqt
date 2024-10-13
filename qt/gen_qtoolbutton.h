@@ -51,7 +51,7 @@ void QToolButton_ShowMenu(QToolButton* self);
 void QToolButton_SetToolButtonStyle(QToolButton* self, int style);
 void QToolButton_SetDefaultAction(QToolButton* self, QAction* defaultAction);
 void QToolButton_Triggered(QToolButton* self, QAction* param1);
-void QToolButton_connect_Triggered(QToolButton* self, void* slot);
+void QToolButton_connect_Triggered(QToolButton* self, intptr_t slot);
 struct miqt_string* QToolButton_Tr2(const char* s, const char* c);
 struct miqt_string* QToolButton_Tr3(const char* s, const char* c, int n);
 struct miqt_string* QToolButton_TrUtf82(const char* s, const char* c);

@@ -207,7 +207,7 @@ void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelInde
 	self->indexesMoved(indexes_QList);
 }
 
-void QListView_connect_IndexesMoved(QListView* self, void* slot) {
+void QListView_connect_IndexesMoved(QListView* self, intptr_t slot) {
 	QListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory

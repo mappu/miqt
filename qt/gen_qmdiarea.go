@@ -218,12 +218,12 @@ func (this *QMdiArea) SubWindowActivated(param1 *QMdiSubWindow) {
 	C.QMdiArea_SubWindowActivated(this.h, param1.cPointer())
 }
 func (this *QMdiArea) OnSubWindowActivated(slot func(param1 *QMdiSubWindow)) {
-	C.QMdiArea_connect_SubWindowActivated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QMdiArea_connect_SubWindowActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMdiArea_SubWindowActivated
-func miqt_exec_callback_QMdiArea_SubWindowActivated(cb *C.void, param1 *C.QMdiSubWindow) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(param1 *QMdiSubWindow))
+func miqt_exec_callback_QMdiArea_SubWindowActivated(cb C.intptr_t, param1 *C.QMdiSubWindow) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QMdiSubWindow))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

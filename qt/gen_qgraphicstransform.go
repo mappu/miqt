@@ -233,12 +233,12 @@ func (this *QGraphicsScale) OriginChanged() {
 	C.QGraphicsScale_OriginChanged(this.h)
 }
 func (this *QGraphicsScale) OnOriginChanged(slot func()) {
-	C.QGraphicsScale_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScale_connect_OriginChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScale_OriginChanged
-func miqt_exec_callback_QGraphicsScale_OriginChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScale_OriginChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -250,12 +250,12 @@ func (this *QGraphicsScale) XScaleChanged() {
 	C.QGraphicsScale_XScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnXScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_XScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScale_connect_XScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScale_XScaleChanged
-func miqt_exec_callback_QGraphicsScale_XScaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScale_XScaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -267,12 +267,12 @@ func (this *QGraphicsScale) YScaleChanged() {
 	C.QGraphicsScale_YScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnYScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_YScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScale_connect_YScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScale_YScaleChanged
-func miqt_exec_callback_QGraphicsScale_YScaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScale_YScaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -284,12 +284,12 @@ func (this *QGraphicsScale) ZScaleChanged() {
 	C.QGraphicsScale_ZScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnZScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_ZScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScale_connect_ZScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScale_ZScaleChanged
-func miqt_exec_callback_QGraphicsScale_ZScaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScale_ZScaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -301,12 +301,12 @@ func (this *QGraphicsScale) ScaleChanged() {
 	C.QGraphicsScale_ScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_ScaleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsScale_connect_ScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScale_ScaleChanged
-func miqt_exec_callback_QGraphicsScale_ScaleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsScale_ScaleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -477,12 +477,12 @@ func (this *QGraphicsRotation) OriginChanged() {
 	C.QGraphicsRotation_OriginChanged(this.h)
 }
 func (this *QGraphicsRotation) OnOriginChanged(slot func()) {
-	C.QGraphicsRotation_connect_OriginChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsRotation_connect_OriginChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsRotation_OriginChanged
-func miqt_exec_callback_QGraphicsRotation_OriginChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsRotation_OriginChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -494,12 +494,12 @@ func (this *QGraphicsRotation) AngleChanged() {
 	C.QGraphicsRotation_AngleChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAngleChanged(slot func()) {
-	C.QGraphicsRotation_connect_AngleChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsRotation_connect_AngleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsRotation_AngleChanged
-func miqt_exec_callback_QGraphicsRotation_AngleChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsRotation_AngleChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -511,12 +511,12 @@ func (this *QGraphicsRotation) AxisChanged() {
 	C.QGraphicsRotation_AxisChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAxisChanged(slot func()) {
-	C.QGraphicsRotation_connect_AxisChanged(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QGraphicsRotation_connect_AxisChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsRotation_AxisChanged
-func miqt_exec_callback_QGraphicsRotation_AxisChanged(cb *C.void) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func())
+func miqt_exec_callback_QGraphicsRotation_AxisChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}

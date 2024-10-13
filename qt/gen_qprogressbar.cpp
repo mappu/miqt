@@ -149,7 +149,7 @@ void QProgressBar_ValueChanged(QProgressBar* self, int value) {
 	self->valueChanged(static_cast<int>(value));
 }
 
-void QProgressBar_connect_ValueChanged(QProgressBar* self, void* slot) {
+void QProgressBar_connect_ValueChanged(QProgressBar* self, intptr_t slot) {
 	QProgressBar::connect(self, static_cast<void (QProgressBar::*)(int)>(&QProgressBar::valueChanged), self, [=](int value) {
 		int sigval1 = value;
 		miqt_exec_callback_QProgressBar_ValueChanged(slot, sigval1);

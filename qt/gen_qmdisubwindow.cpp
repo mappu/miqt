@@ -113,7 +113,7 @@ void QMdiSubWindow_WindowStateChanged(QMdiSubWindow* self, int oldState, int new
 	self->windowStateChanged(static_cast<Qt::WindowStates>(oldState), static_cast<Qt::WindowStates>(newState));
 }
 
-void QMdiSubWindow_connect_WindowStateChanged(QMdiSubWindow* self, void* slot) {
+void QMdiSubWindow_connect_WindowStateChanged(QMdiSubWindow* self, intptr_t slot) {
 	QMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)(Qt::WindowStates, Qt::WindowStates)>(&QMdiSubWindow::windowStateChanged), self, [=](Qt::WindowStates oldState, Qt::WindowStates newState) {
 		Qt::WindowStates oldState_ret = oldState;
 		int sigval1 = static_cast<int>(oldState_ret);
@@ -127,7 +127,7 @@ void QMdiSubWindow_AboutToActivate(QMdiSubWindow* self) {
 	self->aboutToActivate();
 }
 
-void QMdiSubWindow_connect_AboutToActivate(QMdiSubWindow* self, void* slot) {
+void QMdiSubWindow_connect_AboutToActivate(QMdiSubWindow* self, intptr_t slot) {
 	QMdiSubWindow::connect(self, static_cast<void (QMdiSubWindow::*)()>(&QMdiSubWindow::aboutToActivate), self, [=]() {
 		miqt_exec_callback_QMdiSubWindow_AboutToActivate(slot);
 	});

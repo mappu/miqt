@@ -301,12 +301,12 @@ func (this *QCompleter) Activated(text string) {
 	C.QCompleter_Activated(this.h, (*C.struct_miqt_string)(text_ms))
 }
 func (this *QCompleter) OnActivated(slot func(text string)) {
-	C.QCompleter_connect_Activated(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCompleter_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_Activated
-func miqt_exec_callback_QCompleter_Activated(cb *C.void, text *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+func miqt_exec_callback_QCompleter_Activated(cb C.intptr_t, text *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -324,12 +324,12 @@ func (this *QCompleter) ActivatedWithIndex(index *QModelIndex) {
 	C.QCompleter_ActivatedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnActivatedWithIndex(slot func(index *QModelIndex)) {
-	C.QCompleter_connect_ActivatedWithIndex(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCompleter_connect_ActivatedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_ActivatedWithIndex
-func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -346,12 +346,12 @@ func (this *QCompleter) Highlighted(text string) {
 	C.QCompleter_Highlighted(this.h, (*C.struct_miqt_string)(text_ms))
 }
 func (this *QCompleter) OnHighlighted(slot func(text string)) {
-	C.QCompleter_connect_Highlighted(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCompleter_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_Highlighted
-func miqt_exec_callback_QCompleter_Highlighted(cb *C.void, text *C.struct_miqt_string) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(text string))
+func miqt_exec_callback_QCompleter_Highlighted(cb C.intptr_t, text *C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -369,12 +369,12 @@ func (this *QCompleter) HighlightedWithIndex(index *QModelIndex) {
 	C.QCompleter_HighlightedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnHighlightedWithIndex(slot func(index *QModelIndex)) {
-	C.QCompleter_connect_HighlightedWithIndex(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+	C.QCompleter_connect_HighlightedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_HighlightedWithIndex
-func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb *C.void, index *C.QModelIndex) {
-	gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(index *QModelIndex))
+func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
