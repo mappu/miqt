@@ -546,7 +546,7 @@ extern "C" {
 			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*")))
 
 			if m.IsSignal {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, void* slot);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), cClassName))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, intptr_t slot);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), cClassName))
 			}
 		}
 
@@ -691,7 +691,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)` + ifv(m.IsConst, ` const`, ``) + `>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
 
 				paramArgs := []string{"slot"}
-				paramArgDefs := []string{"void* cb"}
+				paramArgDefs := []string{"intptr_t cb"}
 
 				var signalCode string
 
@@ -704,7 +704,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
 
 				ret.WriteString(
-					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, void* slot) {` + "\n" +
+					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, intptr_t slot) {` + "\n" +
 						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
 						signalCode +
 						"\t});\n" +

@@ -612,12 +612,12 @@ import "C"
 				}
 
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + emitParametersGo(m.Parameters) + `)) {
-					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, unsafe.Pointer(uintptr(cgo.NewHandle(slot))))
+					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
-				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb *C.void` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
-					gofunc, ok := (cgo.Handle(uintptr(unsafe.Pointer(cb))).Value()).(func(` + emitParametersGo(m.Parameters) + `))
+				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
+					gofunc, ok := cgo.Handle(cb).Value().(func(` + emitParametersGo(m.Parameters) + `))
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
