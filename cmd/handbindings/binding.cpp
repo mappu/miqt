@@ -4,7 +4,7 @@
 #include <QPushButton>
 
 extern "C" {
-    extern void miqt_exec_callback(void* cb, int argc, void* argv);
+    extern void miqt_exec_callback(intptr_t cb, int argc, void* argv);
 }
 
 PQApplication QApplication_new(int* argc, char** argv) {
@@ -28,7 +28,7 @@ void QPushButton_show(PQPushButton self) {
     static_cast<QPushButton*>(self)->show();
 }
 
-void QPushButton_connect_pressed(PQPushButton self, void* cb) {
+void QPushButton_connect_pressed(PQPushButton self, intptr_t cb) {
     QPushButton::connect(static_cast<QPushButton*>(self), &QPushButton::pressed, [=]() {
         miqt_exec_callback(cb, 0, nullptr);
     });
