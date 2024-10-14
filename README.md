@@ -138,9 +138,9 @@ pacman -S mingw-w64-ucrt-x86_64-{go,gcc,qt5-base,pkg-config}
 GOROOT=/ucrt64/lib/go go build -ldflags "-s -w -H windowsgui"
 ```
 
-Static builds are also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`.
+For dynamic linking, the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
 
-The MSYS2 Qt packages in MSYS2 link against `libicu`, whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
+Static builds are also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`. The static build will also be smaller as it [does not link to `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-static/PKGBUILD#L280).
 
 ### Windows (Docker)
 
