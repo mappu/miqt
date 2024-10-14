@@ -46,6 +46,35 @@ func findHeadersInDir(srcDir string) []string {
 	return ret
 }
 
+func cleanGeneratedFilesInDir(dirpath string) {
+	log.Printf("Cleaning up output directory %q...", dirpath)
+
+	existing, err := os.ReadDir(dirpath)
+	if err != nil {
+		panic(err)
+	}
+
+	cleaned := 0
+	for _, e := range existing {
+		if e.IsDir() {
+			continue
+		}
+		if !strings.HasPrefix(e.Name(), `gen_`) {
+			continue
+		}
+		// One of ours, clean up
+		err := os.Remove(filepath.Join(dirpath, e.Name()))
+		if err != nil {
+			log.Printf("WARNING: Failed to remove existing file %q", e.Name())
+			continue
+		}
+
+		cleaned++
+	}
+
+	log.Printf("Removed %d file(s).", cleaned)
+}
+
 func main() {
 	ctx := context.Background()
 
@@ -67,34 +96,7 @@ func main() {
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
 
-	{
-		log.Printf("Cleaning up output directory %q...", *outDir)
-
-		existing, err := os.ReadDir(*outDir)
-		if err != nil {
-			panic(err)
-		}
-
-		cleaned := 0
-		for _, e := range existing {
-			if e.IsDir() {
-				continue
-			}
-			if !strings.HasPrefix(e.Name(), `gen_`) {
-				continue
-			}
-			// One of ours, clean up
-			err := os.Remove(filepath.Join(*outDir, e.Name()))
-			if err != nil {
-				log.Printf("WARNING: Failed to remove existing file %q", e.Name())
-				continue
-			}
-
-			cleaned++
-		}
-
-		log.Printf("Removed %d file(s).", cleaned)
-	}
+	cleanGeneratedFilesInDir(*outDir)
 
 	var processHeaders []*CppParsedHeader
 	atr := astTransformRedundant{
