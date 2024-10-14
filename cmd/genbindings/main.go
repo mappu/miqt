@@ -21,6 +21,31 @@ func cacheFilePath(inputHeader string) string {
 	return filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
 }
 
+func findHeadersInDir(srcDir string) []string {
+	content, err := os.ReadDir(srcDir)
+	if err != nil {
+		panic(err)
+	}
+
+	var ret []string
+
+	for _, includeFile := range content {
+		if includeFile.IsDir() {
+			continue
+		}
+		if !strings.HasSuffix(includeFile.Name(), `.h`) {
+			continue
+		}
+		fullPath := filepath.Join(srcDir, includeFile.Name())
+		if !AllowHeader(fullPath) {
+			continue
+		}
+		ret = append(ret, fullPath)
+	}
+
+	return ret
+}
+
 func main() {
 	ctx := context.Background()
 
@@ -37,24 +62,7 @@ func main() {
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 	} {
-		content, err := os.ReadDir(srcDir)
-		if err != nil {
-			panic(err)
-		}
-
-		for _, includeFile := range content {
-			if includeFile.IsDir() {
-				continue
-			}
-			if !strings.HasSuffix(includeFile.Name(), `.h`) {
-				continue
-			}
-			fullPath := filepath.Join(srcDir, includeFile.Name())
-			if !AllowHeader(fullPath) {
-				continue
-			}
-			includeFiles = append(includeFiles, fullPath)
-		}
+		includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
