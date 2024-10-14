@@ -76,8 +76,6 @@ func cleanGeneratedFilesInDir(dirpath string) {
 }
 
 func main() {
-	ctx := context.Background()
-
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	cflags := flag.String("cflags", `-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`, "Cflags to pass to clang (e.g. `pkg-config --cflags Qt5Widgets`)")
 	outDir := flag.String("outdir", "../../qt", "Output directory for generated gen_** files")
@@ -109,63 +107,7 @@ func main() {
 	// PASS 0 (Fill clang cache)
 	//
 
-	var clangChan = make(chan string, 0)
-	var clangWg sync.WaitGroup
-
-	for i := 0; i < ClangSubprocessCount; i++ {
-		clangWg.Add(1)
-		go func() {
-			defer clangWg.Done()
-			log.Printf("Clang worker: starting")
-
-			for {
-				inputHeader, ok := <-clangChan
-				if !ok {
-					return // Done
-				}
-
-				log.Printf("Clang worker got message for file %q", inputHeader)
-
-				// Parse the file
-				// This seems to intermittently fail, so allow retrying
-				astInner := mustClangExec(ctx, *clang, inputHeader, strings.Fields(*cflags))
-
-				// Write to cache
-				jb, err := json.MarshalIndent(astInner, "", "\t")
-				if err != nil {
-					panic(err)
-				}
-
-				err = ioutil.WriteFile(cacheFilePath(inputHeader), jb, 0644)
-				if err != nil {
-					panic(err)
-				}
-
-				astInner = nil
-				jb = nil
-				runtime.GC()
-
-			}
-			log.Printf("Clang worker: exiting")
-		}()
-	}
-
-	for _, inputHeader := range includeFiles {
-
-		// Check if there is a matching cache hit
-		cacheFile := cacheFilePath(inputHeader)
-
-		if _, err := os.Stat(cacheFile); err != nil && os.IsNotExist(err) {
-
-			// Nonexistent cache file, regenerate from clang
-			log.Printf("No AST cache for file %q, running clang...", filepath.Base(inputHeader))
-			clangChan <- inputHeader
-		}
-	}
-
-	// Done with all clang workers
-	close(clangChan)
-	clangWg.Wait()
+	generateClangCaches(includeFiles, *clang, strings.Fields(*cflags))
 
 	// The cache should now be fully populated.
 
@@ -287,4 +229,66 @@ func main() {
 	}
 
 	log.Printf("Processing %d file(s) completed", len(includeFiles))
+}
+
+func generateClangCaches(includeFiles []string, clangBin string, cflags []string) {
+
+	var clangChan = make(chan string, 0)
+	var clangWg sync.WaitGroup
+	ctx := context.Background()
+
+	for i := 0; i < ClangSubprocessCount; i++ {
+		clangWg.Add(1)
+		go func() {
+			defer clangWg.Done()
+			log.Printf("Clang worker: starting")
+
+			for {
+				inputHeader, ok := <-clangChan
+				if !ok {
+					return // Done
+				}
+
+				log.Printf("Clang worker got message for file %q", inputHeader)
+
+				// Parse the file
+				// This seems to intermittently fail, so allow retrying
+				astInner := mustClangExec(ctx, clangBin, inputHeader, cflags)
+
+				// Write to cache
+				jb, err := json.MarshalIndent(astInner, "", "\t")
+				if err != nil {
+					panic(err)
+				}
+
+				err = ioutil.WriteFile(cacheFilePath(inputHeader), jb, 0644)
+				if err != nil {
+					panic(err)
+				}
+
+				astInner = nil
+				jb = nil
+				runtime.GC()
+
+			}
+			log.Printf("Clang worker: exiting")
+		}()
+	}
+
+	for _, inputHeader := range includeFiles {
+
+		// Check if there is a matching cache hit
+		cacheFile := cacheFilePath(inputHeader)
+
+		if _, err := os.Stat(cacheFile); err != nil && os.IsNotExist(err) {
+
+			// Nonexistent cache file, regenerate from clang
+			log.Printf("No AST cache for file %q, running clang...", filepath.Base(inputHeader))
+			clangChan <- inputHeader
+		}
+	}
+
+	// Done with all clang workers
+	close(clangChan)
+	clangWg.Wait()
 }
