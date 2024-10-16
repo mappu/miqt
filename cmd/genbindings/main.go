@@ -50,6 +50,8 @@ func findHeadersInDir(srcDir string) []string {
 func cleanGeneratedFilesInDir(dirpath string) {
 	log.Printf("Cleaning up output directory %q...", dirpath)
 
+	_ = os.MkdirAll(dirpath, 0755)
+
 	existing, err := os.ReadDir(dirpath)
 	if err != nil {
 		panic(err)
