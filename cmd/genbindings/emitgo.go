@@ -335,9 +335,11 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 	if rt.ParameterType == "void" && !rt.Pointer {
 		shouldReturn = ""
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.ParameterType == "void" && rt.Pointer {
-		// ...
+		gfs.imports["unsafe"] = struct{}{}
+		return assignExpr + " (unsafe.Pointer)(" + rvalue + ")\n"
 
 	} else if rt.ParameterType == "char" && rt.Pointer {
 		// Qt functions normally return QString - anything returning char*
@@ -361,6 +363,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += namePrefix + "_ret := C.GoStringN(&" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms))\n"
 		afterword += assignExpr + namePrefix + "_ret"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if t, ok := rt.QListOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
@@ -376,6 +379,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += "}\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if t, ok := rt.QSetOf(); ok {
 
@@ -393,6 +397,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += "}\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
@@ -433,15 +438,17 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 				afterword += assignExpr + " *" + namePrefix + "_goptr\n"
 			}
 		}
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
 
+	} else {
+		panic("what type is this?")
 	}
 
-	return shouldReturn + " " + rvalue + "\n" + afterword
 }
 
 func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, error) {
@@ -636,10 +643,6 @@ import "C"
 			}
 			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
 				returnTypeDecl = "*" + returnTypeDecl
-			}
-			if (m.ReturnType.ParameterType == "char" || m.ReturnType.ParameterType == "void") && m.ReturnType.Pointer {
-				gfs.imports["unsafe"] = struct{}{}
-				returnTypeDecl = "unsafe.Pointer"
 			}
 
 			rvalue := `C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)`
