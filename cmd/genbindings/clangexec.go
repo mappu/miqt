@@ -39,27 +39,22 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 
 	var wg sync.WaitGroup
 	var inner []interface{}
+	var innerErr error
 
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-
-		inner__, err := clangStripUpToFile(pr, inputHeader)
-		if err != nil {
-			panic(err)
-		}
-
-		inner = inner__
+		inner, innerErr = clangStripUpToFile(pr, inputHeader)
 	}()
 
 	err = cmd.Wait()
 	if err != nil {
-		panic(err)
+		return nil, fmt.Errorf("Command: %w", err)
 	}
 
 	wg.Wait()
 
-	return inner, nil
+	return inner, innerErr
 }
 
 func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []string) []interface{} {
@@ -71,6 +66,7 @@ func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []s
 			log.Printf("WARNING: Clang execution failed: %v", err)
 			time.Sleep(ClangRetryDelay)
 			log.Printf("Retrying...")
+			continue
 		}
 
 		// Success
