@@ -134,6 +134,10 @@ func main() {
 			panic(err)
 		}
 
+		if astInner == nil {
+			panic("Null in cache file for " + inputHeader)
+		}
+
 		// Convert it to our intermediate format
 		parsed, err := parseHeader(astInner, "")
 		if err != nil {
