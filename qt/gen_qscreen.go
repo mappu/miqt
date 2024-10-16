@@ -26,19 +26,26 @@ func (this *QScreen) cPointer() *C.QScreen {
 	return this.h
 }
 
+func (this *QScreen) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScreen(h *C.QScreen) *QScreen {
 	if h == nil {
 		return nil
 	}
-	return &QScreen{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QScreen{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQScreen_U(h unsafe.Pointer) *QScreen {
+func UnsafeNewQScreen(h unsafe.Pointer) *QScreen {
 	return newQScreen((*C.QScreen)(h))
 }
 
 func (this *QScreen) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QScreen_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScreen_MetaObject(this.h)))
 }
 
 func (this *QScreen) Metacast(param1 string) unsafe.Pointer {
@@ -165,14 +172,14 @@ func (this *QScreen) VirtualSiblings() []*QScreen {
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQScreen_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QScreen) VirtualSiblingAt(point QPoint) *QScreen {
-	return newQScreen_U(unsafe.Pointer(C.QScreen_VirtualSiblingAt(this.h, point.cPointer())))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QScreen_VirtualSiblingAt(this.h, point.cPointer())))
 }
 
 func (this *QScreen) VirtualSize() *QSize {
@@ -275,7 +282,7 @@ func miqt_exec_callback_QScreen_GeometryChanged(cb C.intptr_t, geometry *C.QRect
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect_U(unsafe.Pointer(geometry))
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
 
 	gofunc(slotval1)
 }
@@ -295,7 +302,7 @@ func miqt_exec_callback_QScreen_AvailableGeometryChanged(cb C.intptr_t, geometry
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect_U(unsafe.Pointer(geometry))
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
 
 	gofunc(slotval1)
 }
@@ -315,7 +322,7 @@ func miqt_exec_callback_QScreen_PhysicalSizeChanged(cb C.intptr_t, size *C.QSize
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSizeF_U(unsafe.Pointer(size))
+	slotval1 := UnsafeNewQSizeF(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }
@@ -375,7 +382,7 @@ func miqt_exec_callback_QScreen_VirtualGeometryChanged(cb C.intptr_t, rect *C.QR
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect_U(unsafe.Pointer(rect))
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
 
 	gofunc(slotval1)
 }

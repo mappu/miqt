@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpaintdevicewindow.h"
+#include <qpaintdevicewindow.h>
 #include "gen_qpaintdevicewindow.h"
 #include "_cgo_export.h"
 

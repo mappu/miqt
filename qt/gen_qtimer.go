@@ -25,14 +25,21 @@ func (this *QTimer) cPointer() *C.QTimer {
 	return this.h
 }
 
+func (this *QTimer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimer(h *C.QTimer) *QTimer {
 	if h == nil {
 		return nil
 	}
-	return &QTimer{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QTimer{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQTimer_U(h unsafe.Pointer) *QTimer {
+func UnsafeNewQTimer(h unsafe.Pointer) *QTimer {
 	return newQTimer((*C.QTimer)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQTimer2(parent *QObject) *QTimer {
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTimer_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimer_MetaObject(this.h)))
 }
 
 func (this *QTimer) Metacast(param1 string) unsafe.Pointer {

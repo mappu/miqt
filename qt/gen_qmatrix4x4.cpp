@@ -8,7 +8,7 @@
 #include <QTransform>
 #include <QVector3D>
 #include <QVector4D>
-#include "qmatrix4x4.h"
+#include <qmatrix4x4.h>
 #include "gen_qmatrix4x4.h"
 #include "_cgo_export.h"
 

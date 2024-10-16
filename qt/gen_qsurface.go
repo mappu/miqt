@@ -42,6 +42,13 @@ func (this *QSurface) cPointer() *C.QSurface {
 	return this.h
 }
 
+func (this *QSurface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSurface(h *C.QSurface) *QSurface {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQSurface(h *C.QSurface) *QSurface {
 	return &QSurface{h: h}
 }
 
-func newQSurface_U(h unsafe.Pointer) *QSurface {
+func UnsafeNewQSurface(h unsafe.Pointer) *QSurface {
 	return newQSurface((*C.QSurface)(h))
 }
 

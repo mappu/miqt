@@ -25,14 +25,21 @@ func (this *QMouseEventTransition) cPointer() *C.QMouseEventTransition {
 	return this.h
 }
 
+func (this *QMouseEventTransition) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMouseEventTransition(h *C.QMouseEventTransition) *QMouseEventTransition {
 	if h == nil {
 		return nil
 	}
-	return &QMouseEventTransition{h: h, QEventTransition: newQEventTransition_U(unsafe.Pointer(h))}
+	return &QMouseEventTransition{h: h, QEventTransition: UnsafeNewQEventTransition(unsafe.Pointer(h))}
 }
 
-func newQMouseEventTransition_U(h unsafe.Pointer) *QMouseEventTransition {
+func UnsafeNewQMouseEventTransition(h unsafe.Pointer) *QMouseEventTransition {
 	return newQMouseEventTransition((*C.QMouseEventTransition)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button Mou
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMouseEventTransition_MetaObject(this.h)))
 }
 
 func (this *QMouseEventTransition) Metacast(param1 string) unsafe.Pointer {

@@ -16,7 +16,7 @@
 #include <QTreeWidgetItem>
 #include <QVariant>
 #include <QWidget>
-#include "qtreewidget.h"
+#include <qtreewidget.h>
 #include "gen_qtreewidget.h"
 #include "_cgo_export.h"
 
@@ -25,7 +25,7 @@ QTreeWidgetItem* QTreeWidgetItem_new() {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array* /* of struct miqt_string* */ strings) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -40,7 +40,7 @@ QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview) {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array* /* of struct miqt_string* */ strings) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -59,7 +59,7 @@ QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent) {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array* /* of struct miqt_string* */ strings) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -82,7 +82,7 @@ QTreeWidgetItem* QTreeWidgetItem_new10(int typeVal) {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array* /* of struct miqt_string* */ strings, int typeVal) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -97,7 +97,7 @@ QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal) {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array* /* of struct miqt_string* */ strings, int typeVal) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -116,7 +116,7 @@ QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal) {
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array* /* of struct miqt_string* */ strings, int typeVal) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -378,7 +378,7 @@ QTreeWidgetItem* QTreeWidgetItem_TakeChild(QTreeWidgetItem* self, int index) {
 }
 
 void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array* /* of QTreeWidgetItem* */ children) {
-	QList<QTreeWidgetItem*> children_QList;
+	QList<QTreeWidgetItem *> children_QList;
 	children_QList.reserve(children->len);
 	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children->data);
 	for(size_t i = 0; i < children->len; ++i) {
@@ -388,7 +388,7 @@ void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array* /* of
 }
 
 void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array* /* of QTreeWidgetItem* */ children) {
-	QList<QTreeWidgetItem*> children_QList;
+	QList<QTreeWidgetItem *> children_QList;
 	children_QList.reserve(children->len);
 	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children->data);
 	for(size_t i = 0; i < children->len; ++i) {
@@ -489,7 +489,7 @@ int QTreeWidget_IndexOfTopLevelItem(const QTreeWidget* self, QTreeWidgetItem* it
 }
 
 void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array* /* of QTreeWidgetItem* */ items) {
-	QList<QTreeWidgetItem*> items_QList;
+	QList<QTreeWidgetItem *> items_QList;
 	items_QList.reserve(items->len);
 	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -499,7 +499,7 @@ void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_a
 }
 
 void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array* /* of QTreeWidgetItem* */ items) {
-	QList<QTreeWidgetItem*> items_QList;
+	QList<QTreeWidgetItem *> items_QList;
 	items_QList.reserve(items->len);
 	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -517,7 +517,7 @@ void QTreeWidget_SetHeaderItem(QTreeWidget* self, QTreeWidgetItem* item) {
 }
 
 void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {

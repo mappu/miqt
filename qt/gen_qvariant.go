@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -91,6 +92,13 @@ func (this *QVariant) cPointer() *C.QVariant {
 	return this.h
 }
 
+func (this *QVariant) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVariant(h *C.QVariant) *QVariant {
 	if h == nil {
 		return nil
@@ -98,7 +106,7 @@ func newQVariant(h *C.QVariant) *QVariant {
 	return &QVariant{h: h}
 }
 
-func newQVariant_U(h unsafe.Pointer) *QVariant {
+func UnsafeNewQVariant(h unsafe.Pointer) *QVariant {
 	return newQVariant((*C.QVariant)(h))
 }
 
@@ -202,7 +210,7 @@ func NewQVariant16(bitarray *QBitArray) *QVariant {
 
 // NewQVariant17 constructs a new QVariant object.
 func NewQVariant17(stringVal string) *QVariant {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	ret := C.QVariant_new17((*C.struct_miqt_string)(stringVal_ms))
 	return newQVariant(ret)
@@ -214,7 +222,7 @@ func NewQVariant18(stringlist []string) *QVariant {
 	stringlist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
 	for i := range stringlist {
-		stringlist_i_ms := miqt_strdupg(stringlist[i])
+		stringlist_i_ms := libmiqt.Strdupg(stringlist[i])
 		defer C.free(stringlist_i_ms)
 		stringlist_CArray[i] = (*C.struct_miqt_string)(stringlist_i_ms)
 	}
@@ -760,6 +768,13 @@ func (this *QVariantComparisonHelper) cPointer() *C.QVariantComparisonHelper {
 	return this.h
 }
 
+func (this *QVariantComparisonHelper) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVariantComparisonHelper(h *C.QVariantComparisonHelper) *QVariantComparisonHelper {
 	if h == nil {
 		return nil
@@ -767,7 +782,7 @@ func newQVariantComparisonHelper(h *C.QVariantComparisonHelper) *QVariantCompari
 	return &QVariantComparisonHelper{h: h}
 }
 
-func newQVariantComparisonHelper_U(h unsafe.Pointer) *QVariantComparisonHelper {
+func UnsafeNewQVariantComparisonHelper(h unsafe.Pointer) *QVariantComparisonHelper {
 	return newQVariantComparisonHelper((*C.QVariantComparisonHelper)(h))
 }
 
@@ -808,6 +823,13 @@ func (this *QSequentialIterable) cPointer() *C.QSequentialIterable {
 	return this.h
 }
 
+func (this *QSequentialIterable) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSequentialIterable(h *C.QSequentialIterable) *QSequentialIterable {
 	if h == nil {
 		return nil
@@ -815,7 +837,7 @@ func newQSequentialIterable(h *C.QSequentialIterable) *QSequentialIterable {
 	return &QSequentialIterable{h: h}
 }
 
-func newQSequentialIterable_U(h unsafe.Pointer) *QSequentialIterable {
+func UnsafeNewQSequentialIterable(h unsafe.Pointer) *QSequentialIterable {
 	return newQSequentialIterable((*C.QSequentialIterable)(h))
 }
 
@@ -885,6 +907,13 @@ func (this *QAssociativeIterable) cPointer() *C.QAssociativeIterable {
 	return this.h
 }
 
+func (this *QAssociativeIterable) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAssociativeIterable(h *C.QAssociativeIterable) *QAssociativeIterable {
 	if h == nil {
 		return nil
@@ -892,7 +921,7 @@ func newQAssociativeIterable(h *C.QAssociativeIterable) *QAssociativeIterable {
 	return &QAssociativeIterable{h: h}
 }
 
-func newQAssociativeIterable_U(h unsafe.Pointer) *QAssociativeIterable {
+func UnsafeNewQAssociativeIterable(h unsafe.Pointer) *QAssociativeIterable {
 	return newQAssociativeIterable((*C.QAssociativeIterable)(h))
 }
 
@@ -965,6 +994,13 @@ func (this *QVariant__PrivateShared) cPointer() *C.QVariant__PrivateShared {
 	return this.h
 }
 
+func (this *QVariant__PrivateShared) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__PrivateShared {
 	if h == nil {
 		return nil
@@ -972,7 +1008,7 @@ func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__Private
 	return &QVariant__PrivateShared{h: h}
 }
 
-func newQVariant__PrivateShared_U(h unsafe.Pointer) *QVariant__PrivateShared {
+func UnsafeNewQVariant__PrivateShared(h unsafe.Pointer) *QVariant__PrivateShared {
 	return newQVariant__PrivateShared((*C.QVariant__PrivateShared)(h))
 }
 
@@ -1007,6 +1043,13 @@ func (this *QVariant__Handler) cPointer() *C.QVariant__Handler {
 	return this.h
 }
 
+func (this *QVariant__Handler) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVariant__Handler(h *C.QVariant__Handler) *QVariant__Handler {
 	if h == nil {
 		return nil
@@ -1014,7 +1057,7 @@ func newQVariant__Handler(h *C.QVariant__Handler) *QVariant__Handler {
 	return &QVariant__Handler{h: h}
 }
 
-func newQVariant__Handler_U(h unsafe.Pointer) *QVariant__Handler {
+func UnsafeNewQVariant__Handler(h unsafe.Pointer) *QVariant__Handler {
 	return newQVariant__Handler((*C.QVariant__Handler)(h))
 }
 
@@ -1043,6 +1086,13 @@ func (this *QSequentialIterable__const_iterator) cPointer() *C.QSequentialIterab
 	return this.h
 }
 
+func (this *QSequentialIterable__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSequentialIterable__const_iterator(h *C.QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
 	if h == nil {
 		return nil
@@ -1050,7 +1100,7 @@ func newQSequentialIterable__const_iterator(h *C.QSequentialIterable__const_iter
 	return &QSequentialIterable__const_iterator{h: h}
 }
 
-func newQSequentialIterable__const_iterator_U(h unsafe.Pointer) *QSequentialIterable__const_iterator {
+func UnsafeNewQSequentialIterable__const_iterator(h unsafe.Pointer) *QSequentialIterable__const_iterator {
 	return newQSequentialIterable__const_iterator((*C.QSequentialIterable__const_iterator)(h))
 }
 
@@ -1080,7 +1130,7 @@ func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequential
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusPlus() *QSequentialIterable__const_iterator {
-	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QSequentialIterable__const_iterator {
@@ -1091,7 +1141,7 @@ func (this *QSequentialIterable__const_iterator) OperatorPlusPlusWithInt(param1 
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusMinus() *QSequentialIterable__const_iterator {
-	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QSequentialIterable__const_iterator {
@@ -1102,11 +1152,11 @@ func (this *QSequentialIterable__const_iterator) OperatorMinusMinusWithInt(param
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlusAssign(j int) *QSequentialIterable__const_iterator {
-	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorMinusAssign(j int) *QSequentialIterable__const_iterator {
-	return newQSequentialIterable__const_iterator_U(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
@@ -1148,6 +1198,13 @@ func (this *QAssociativeIterable__const_iterator) cPointer() *C.QAssociativeIter
 	return this.h
 }
 
+func (this *QAssociativeIterable__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAssociativeIterable__const_iterator(h *C.QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
 	if h == nil {
 		return nil
@@ -1155,7 +1212,7 @@ func newQAssociativeIterable__const_iterator(h *C.QAssociativeIterable__const_it
 	return &QAssociativeIterable__const_iterator{h: h}
 }
 
-func newQAssociativeIterable__const_iterator_U(h unsafe.Pointer) *QAssociativeIterable__const_iterator {
+func UnsafeNewQAssociativeIterable__const_iterator(h unsafe.Pointer) *QAssociativeIterable__const_iterator {
 	return newQAssociativeIterable__const_iterator((*C.QAssociativeIterable__const_iterator)(h))
 }
 
@@ -1199,7 +1256,7 @@ func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociati
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus() *QAssociativeIterable__const_iterator {
-	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QAssociativeIterable__const_iterator {
@@ -1210,7 +1267,7 @@ func (this *QAssociativeIterable__const_iterator) OperatorPlusPlusWithInt(param1
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus() *QAssociativeIterable__const_iterator {
-	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QAssociativeIterable__const_iterator {
@@ -1221,11 +1278,11 @@ func (this *QAssociativeIterable__const_iterator) OperatorMinusMinusWithInt(para
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlusAssign(j int) *QAssociativeIterable__const_iterator {
-	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorMinusAssign(j int) *QAssociativeIterable__const_iterator {
-	return newQAssociativeIterable__const_iterator_U(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {

@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcalendar.h"
+#include <qcalendar.h>
 #include "gen_qcalendar.h"
 #include "_cgo_export.h"
 

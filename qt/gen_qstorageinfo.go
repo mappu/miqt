@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QStorageInfo) cPointer() *C.QStorageInfo {
 	return this.h
 }
 
+func (this *QStorageInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQStorageInfo(h *C.QStorageInfo) *QStorageInfo {
 	return &QStorageInfo{h: h}
 }
 
-func newQStorageInfo_U(h unsafe.Pointer) *QStorageInfo {
+func UnsafeNewQStorageInfo(h unsafe.Pointer) *QStorageInfo {
 	return newQStorageInfo((*C.QStorageInfo)(h))
 }
 
@@ -43,7 +51,7 @@ func NewQStorageInfo() *QStorageInfo {
 
 // NewQStorageInfo2 constructs a new QStorageInfo object.
 func NewQStorageInfo2(path string) *QStorageInfo {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	ret := C.QStorageInfo_new2((*C.struct_miqt_string)(path_ms))
 	return newQStorageInfo(ret)
@@ -70,7 +78,7 @@ func (this *QStorageInfo) Swap(other *QStorageInfo) {
 }
 
 func (this *QStorageInfo) SetPath(path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QStorageInfo_SetPath(this.h, (*C.struct_miqt_string)(path_ms))
 }

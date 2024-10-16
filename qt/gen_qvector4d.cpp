@@ -3,7 +3,7 @@
 #include <QVector2D>
 #include <QVector3D>
 #include <QVector4D>
-#include "qvector4d.h"
+#include <qvector4d.h>
 #include "gen_qvector4d.h"
 #include "_cgo_export.h"
 

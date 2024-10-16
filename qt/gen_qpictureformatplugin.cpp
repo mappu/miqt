@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpictureformatplugin.h"
+#include <qpictureformatplugin.h>
 #include "gen_qpictureformatplugin.h"
 #include "_cgo_export.h"
 

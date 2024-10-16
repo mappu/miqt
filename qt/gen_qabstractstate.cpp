@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qabstractstate.h"
+#include <qabstractstate.h>
 #include "gen_qabstractstate.h"
 #include "_cgo_export.h"
 

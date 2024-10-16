@@ -24,6 +24,13 @@ func (this *QThreadStorageData) cPointer() *C.QThreadStorageData {
 	return this.h
 }
 
+func (this *QThreadStorageData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQThreadStorageData(h *C.QThreadStorageData) *QThreadStorageData {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQThreadStorageData(h *C.QThreadStorageData) *QThreadStorageData {
 	return &QThreadStorageData{h: h}
 }
 
-func newQThreadStorageData_U(h unsafe.Pointer) *QThreadStorageData {
+func UnsafeNewQThreadStorageData(h unsafe.Pointer) *QThreadStorageData {
 	return newQThreadStorageData((*C.QThreadStorageData)(h))
 }
 

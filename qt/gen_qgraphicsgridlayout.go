@@ -25,14 +25,21 @@ func (this *QGraphicsGridLayout) cPointer() *C.QGraphicsGridLayout {
 	return this.h
 }
 
+func (this *QGraphicsGridLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsGridLayout(h *C.QGraphicsGridLayout) *QGraphicsGridLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsGridLayout{h: h, QGraphicsLayout: newQGraphicsLayout_U(unsafe.Pointer(h))}
+	return &QGraphicsGridLayout{h: h, QGraphicsLayout: UnsafeNewQGraphicsLayout(unsafe.Pointer(h))}
 }
 
-func newQGraphicsGridLayout_U(h unsafe.Pointer) *QGraphicsGridLayout {
+func UnsafeNewQGraphicsGridLayout(h unsafe.Pointer) *QGraphicsGridLayout {
 	return newQGraphicsGridLayout((*C.QGraphicsGridLayout)(h))
 }
 
@@ -197,7 +204,7 @@ func (this *QGraphicsGridLayout) ColumnCount() int {
 }
 
 func (this *QGraphicsGridLayout) ItemAt(row int, column int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column))))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_ItemAt(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QGraphicsGridLayout) Count() int {
@@ -205,7 +212,7 @@ func (this *QGraphicsGridLayout) Count() int {
 }
 
 func (this *QGraphicsGridLayout) ItemAtWithIndex(index int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index))))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsGridLayout_ItemAtWithIndex(this.h, (C.int)(index))))
 }
 
 func (this *QGraphicsGridLayout) RemoveAt(index int) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,19 +27,26 @@ func (this *QFutureWatcherBase) cPointer() *C.QFutureWatcherBase {
 	return this.h
 }
 
+func (this *QFutureWatcherBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFutureWatcherBase(h *C.QFutureWatcherBase) *QFutureWatcherBase {
 	if h == nil {
 		return nil
 	}
-	return &QFutureWatcherBase{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QFutureWatcherBase{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQFutureWatcherBase_U(h unsafe.Pointer) *QFutureWatcherBase {
+func UnsafeNewQFutureWatcherBase(h unsafe.Pointer) *QFutureWatcherBase {
 	return newQFutureWatcherBase((*C.QFutureWatcherBase)(h))
 }
 
 func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFutureWatcherBase_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFutureWatcherBase_MetaObject(this.h)))
 }
 
 func (this *QFutureWatcherBase) Metacast(param1 string) unsafe.Pointer {
@@ -286,7 +294,7 @@ func miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(cb C.intptr_t, p
 }
 
 func (this *QFutureWatcherBase) ProgressTextChanged(progressText string) {
-	progressText_ms := miqt_strdupg(progressText)
+	progressText_ms := libmiqt.Strdupg(progressText)
 	defer C.free(progressText_ms)
 	C.QFutureWatcherBase_ProgressTextChanged(this.h, (*C.struct_miqt_string)(progressText_ms))
 }

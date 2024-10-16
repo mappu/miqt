@@ -26,14 +26,21 @@ func (this *QKeySequenceEdit) cPointer() *C.QKeySequenceEdit {
 	return this.h
 }
 
+func (this *QKeySequenceEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQKeySequenceEdit(h *C.QKeySequenceEdit) *QKeySequenceEdit {
 	if h == nil {
 		return nil
 	}
-	return &QKeySequenceEdit{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QKeySequenceEdit{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQKeySequenceEdit_U(h unsafe.Pointer) *QKeySequenceEdit {
+func UnsafeNewQKeySequenceEdit(h unsafe.Pointer) *QKeySequenceEdit {
 	return newQKeySequenceEdit((*C.QKeySequenceEdit)(h))
 }
 
@@ -62,7 +69,7 @@ func NewQKeySequenceEdit4(keySequence *QKeySequence, parent *QWidget) *QKeySeque
 }
 
 func (this *QKeySequenceEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QKeySequenceEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QKeySequenceEdit_MetaObject(this.h)))
 }
 
 func (this *QKeySequenceEdit) Metacast(param1 string) unsafe.Pointer {
@@ -136,7 +143,7 @@ func miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged(cb C.intptr_t, keySe
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQKeySequence_U(unsafe.Pointer(keySequence))
+	slotval1 := UnsafeNewQKeySequence(unsafe.Pointer(keySequence))
 
 	gofunc(slotval1)
 }

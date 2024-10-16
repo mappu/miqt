@@ -10,7 +10,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qstatemachine.h"
+#include <qstatemachine.h>
 #include "gen_qstatemachine.h"
 #include "_cgo_export.h"
 
@@ -132,7 +132,7 @@ bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id) {
 
 struct miqt_array* QStateMachine_Configuration(const QStateMachine* self) {
 	QSet<QAbstractState *> _ret = self->configuration();
-	// Convert QList<> from C++ memory to manually-managed C memory
+	// Convert QSet<> from C++ memory to manually-managed C memory
 	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.size()));
 	int _ctr = 0;
 	QSetIterator<QAbstractState*> _itr(_ret);

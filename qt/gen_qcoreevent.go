@@ -201,6 +201,13 @@ func (this *QEvent) cPointer() *C.QEvent {
 	return this.h
 }
 
+func (this *QEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQEvent(h *C.QEvent) *QEvent {
 	if h == nil {
 		return nil
@@ -208,7 +215,7 @@ func newQEvent(h *C.QEvent) *QEvent {
 	return &QEvent{h: h}
 }
 
-func newQEvent_U(h unsafe.Pointer) *QEvent {
+func UnsafeNewQEvent(h unsafe.Pointer) *QEvent {
 	return newQEvent((*C.QEvent)(h))
 }
 
@@ -286,14 +293,21 @@ func (this *QTimerEvent) cPointer() *C.QTimerEvent {
 	return this.h
 }
 
+func (this *QTimerEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimerEvent(h *C.QTimerEvent) *QTimerEvent {
 	if h == nil {
 		return nil
 	}
-	return &QTimerEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QTimerEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQTimerEvent_U(h unsafe.Pointer) *QTimerEvent {
+func UnsafeNewQTimerEvent(h unsafe.Pointer) *QTimerEvent {
 	return newQTimerEvent((*C.QTimerEvent)(h))
 }
 
@@ -339,14 +353,21 @@ func (this *QChildEvent) cPointer() *C.QChildEvent {
 	return this.h
 }
 
+func (this *QChildEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQChildEvent(h *C.QChildEvent) *QChildEvent {
 	if h == nil {
 		return nil
 	}
-	return &QChildEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QChildEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQChildEvent_U(h unsafe.Pointer) *QChildEvent {
+func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
 	return newQChildEvent((*C.QChildEvent)(h))
 }
 
@@ -363,7 +384,7 @@ func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
 }
 
 func (this *QChildEvent) Child() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QChildEvent_Child(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QChildEvent_Child(this.h)))
 }
 
 func (this *QChildEvent) Added() bool {
@@ -404,14 +425,21 @@ func (this *QDynamicPropertyChangeEvent) cPointer() *C.QDynamicPropertyChangeEve
 	return this.h
 }
 
+func (this *QDynamicPropertyChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDynamicPropertyChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QDynamicPropertyChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQDynamicPropertyChangeEvent_U(h unsafe.Pointer) *QDynamicPropertyChangeEvent {
+func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer) *QDynamicPropertyChangeEvent {
 	return newQDynamicPropertyChangeEvent((*C.QDynamicPropertyChangeEvent)(h))
 }
 
@@ -460,14 +488,21 @@ func (this *QDeferredDeleteEvent) cPointer() *C.QDeferredDeleteEvent {
 	return this.h
 }
 
+func (this *QDeferredDeleteEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDeferredDeleteEvent(h *C.QDeferredDeleteEvent) *QDeferredDeleteEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDeferredDeleteEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QDeferredDeleteEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQDeferredDeleteEvent_U(h unsafe.Pointer) *QDeferredDeleteEvent {
+func UnsafeNewQDeferredDeleteEvent(h unsafe.Pointer) *QDeferredDeleteEvent {
 	return newQDeferredDeleteEvent((*C.QDeferredDeleteEvent)(h))
 }
 

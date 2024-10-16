@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QCollatorSortKey) cPointer() *C.QCollatorSortKey {
 	return this.h
 }
 
+func (this *QCollatorSortKey) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQCollatorSortKey(h *C.QCollatorSortKey) *QCollatorSortKey {
 	return &QCollatorSortKey{h: h}
 }
 
-func newQCollatorSortKey_U(h unsafe.Pointer) *QCollatorSortKey {
+func UnsafeNewQCollatorSortKey(h unsafe.Pointer) *QCollatorSortKey {
 	return newQCollatorSortKey((*C.QCollatorSortKey)(h))
 }
 
@@ -78,6 +86,13 @@ func (this *QCollator) cPointer() *C.QCollator {
 	return this.h
 }
 
+func (this *QCollator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCollator(h *C.QCollator) *QCollator {
 	if h == nil {
 		return nil
@@ -85,7 +100,7 @@ func newQCollator(h *C.QCollator) *QCollator {
 	return &QCollator{h: h}
 }
 
-func newQCollator_U(h unsafe.Pointer) *QCollator {
+func UnsafeNewQCollator(h unsafe.Pointer) *QCollator {
 	return newQCollator((*C.QCollator)(h))
 }
 
@@ -151,9 +166,9 @@ func (this *QCollator) IgnorePunctuation() bool {
 }
 
 func (this *QCollator) Compare(s1 string, s2 string) int {
-	s1_ms := miqt_strdupg(s1)
+	s1_ms := libmiqt.Strdupg(s1)
 	defer C.free(s1_ms)
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (int)(C.QCollator_Compare(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
 }
@@ -163,15 +178,15 @@ func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
-	s1_ms := miqt_strdupg(s1)
+	s1_ms := libmiqt.Strdupg(s1)
 	defer C.free(s1_ms)
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QCollator_OperatorCall(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QCollator_SortKey(this.h, (*C.struct_miqt_string)(stringVal_ms))
 	_goptr := newQCollatorSortKey(_ret)

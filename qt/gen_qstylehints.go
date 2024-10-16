@@ -26,19 +26,26 @@ func (this *QStyleHints) cPointer() *C.QStyleHints {
 	return this.h
 }
 
+func (this *QStyleHints) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleHints(h *C.QStyleHints) *QStyleHints {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHints{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QStyleHints{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQStyleHints_U(h unsafe.Pointer) *QStyleHints {
+func UnsafeNewQStyleHints(h unsafe.Pointer) *QStyleHints {
 	return newQStyleHints((*C.QStyleHints)(h))
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStyleHints_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyleHints_MetaObject(this.h)))
 }
 
 func (this *QStyleHints) Metacast(param1 string) unsafe.Pointer {

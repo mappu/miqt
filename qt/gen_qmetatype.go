@@ -156,6 +156,13 @@ func (this *QtPrivate__AbstractDebugStreamFunction) cPointer() *C.QtPrivate__Abs
 	return this.h
 }
 
+func (this *QtPrivate__AbstractDebugStreamFunction) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStreamFunction) *QtPrivate__AbstractDebugStreamFunction {
 	if h == nil {
 		return nil
@@ -163,7 +170,7 @@ func newQtPrivate__AbstractDebugStreamFunction(h *C.QtPrivate__AbstractDebugStre
 	return &QtPrivate__AbstractDebugStreamFunction{h: h}
 }
 
-func newQtPrivate__AbstractDebugStreamFunction_U(h unsafe.Pointer) *QtPrivate__AbstractDebugStreamFunction {
+func UnsafeNewQtPrivate__AbstractDebugStreamFunction(h unsafe.Pointer) *QtPrivate__AbstractDebugStreamFunction {
 	return newQtPrivate__AbstractDebugStreamFunction((*C.QtPrivate__AbstractDebugStreamFunction)(h))
 }
 
@@ -198,6 +205,13 @@ func (this *QtPrivate__AbstractComparatorFunction) cPointer() *C.QtPrivate__Abst
 	return this.h
 }
 
+func (this *QtPrivate__AbstractComparatorFunction) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparatorFunction) *QtPrivate__AbstractComparatorFunction {
 	if h == nil {
 		return nil
@@ -205,7 +219,7 @@ func newQtPrivate__AbstractComparatorFunction(h *C.QtPrivate__AbstractComparator
 	return &QtPrivate__AbstractComparatorFunction{h: h}
 }
 
-func newQtPrivate__AbstractComparatorFunction_U(h unsafe.Pointer) *QtPrivate__AbstractComparatorFunction {
+func UnsafeNewQtPrivate__AbstractComparatorFunction(h unsafe.Pointer) *QtPrivate__AbstractComparatorFunction {
 	return newQtPrivate__AbstractComparatorFunction((*C.QtPrivate__AbstractComparatorFunction)(h))
 }
 
@@ -240,6 +254,13 @@ func (this *QtPrivate__AbstractConverterFunction) cPointer() *C.QtPrivate__Abstr
 	return this.h
 }
 
+func (this *QtPrivate__AbstractConverterFunction) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFunction) *QtPrivate__AbstractConverterFunction {
 	if h == nil {
 		return nil
@@ -247,7 +268,7 @@ func newQtPrivate__AbstractConverterFunction(h *C.QtPrivate__AbstractConverterFu
 	return &QtPrivate__AbstractConverterFunction{h: h}
 }
 
-func newQtPrivate__AbstractConverterFunction_U(h unsafe.Pointer) *QtPrivate__AbstractConverterFunction {
+func UnsafeNewQtPrivate__AbstractConverterFunction(h unsafe.Pointer) *QtPrivate__AbstractConverterFunction {
 	return newQtPrivate__AbstractConverterFunction((*C.QtPrivate__AbstractConverterFunction)(h))
 }
 
@@ -282,6 +303,13 @@ func (this *QMetaType) cPointer() *C.QMetaType {
 	return this.h
 }
 
+func (this *QMetaType) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
@@ -289,7 +317,7 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	return &QMetaType{h: h}
 }
 
-func newQMetaType_U(h unsafe.Pointer) *QMetaType {
+func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
 	return newQMetaType((*C.QMetaType)(h))
 }
 
@@ -343,7 +371,7 @@ func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
 }
 
 func QMetaType_IsRegistered(typeVal int) bool {
@@ -395,7 +423,7 @@ func (this *QMetaType) Flags() QMetaType__TypeFlag {
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
 }
 
 func (this *QMetaType) Name() *QByteArray {
@@ -486,6 +514,13 @@ func (this *QtMetaTypePrivate__VariantData) cPointer() *C.QtMetaTypePrivate__Var
 	return this.h
 }
 
+func (this *QtMetaTypePrivate__VariantData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtMetaTypePrivate__VariantData {
 	if h == nil {
 		return nil
@@ -493,7 +528,7 @@ func newQtMetaTypePrivate__VariantData(h *C.QtMetaTypePrivate__VariantData) *QtM
 	return &QtMetaTypePrivate__VariantData{h: h}
 }
 
-func newQtMetaTypePrivate__VariantData_U(h unsafe.Pointer) *QtMetaTypePrivate__VariantData {
+func UnsafeNewQtMetaTypePrivate__VariantData(h unsafe.Pointer) *QtMetaTypePrivate__VariantData {
 	return newQtMetaTypePrivate__VariantData((*C.QtMetaTypePrivate__VariantData)(h))
 }
 
@@ -534,6 +569,13 @@ func (this *QtMetaTypePrivate__VectorBoolElements) cPointer() *C.QtMetaTypePriva
 	return this.h
 }
 
+func (this *QtMetaTypePrivate__VectorBoolElements) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBoolElements) *QtMetaTypePrivate__VectorBoolElements {
 	if h == nil {
 		return nil
@@ -541,7 +583,7 @@ func newQtMetaTypePrivate__VectorBoolElements(h *C.QtMetaTypePrivate__VectorBool
 	return &QtMetaTypePrivate__VectorBoolElements{h: h}
 }
 
-func newQtMetaTypePrivate__VectorBoolElements_U(h unsafe.Pointer) *QtMetaTypePrivate__VectorBoolElements {
+func UnsafeNewQtMetaTypePrivate__VectorBoolElements(h unsafe.Pointer) *QtMetaTypePrivate__VectorBoolElements {
 	return newQtMetaTypePrivate__VectorBoolElements((*C.QtMetaTypePrivate__VectorBoolElements)(h))
 }
 
@@ -570,6 +612,13 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) cPointer() *C.QtMetaType
 	return this.h
 }
 
+func (this *QtMetaTypePrivate__QSequentialIterableImpl) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequentialIterableImpl) *QtMetaTypePrivate__QSequentialIterableImpl {
 	if h == nil {
 		return nil
@@ -577,7 +626,7 @@ func newQtMetaTypePrivate__QSequentialIterableImpl(h *C.QtMetaTypePrivate__QSequ
 	return &QtMetaTypePrivate__QSequentialIterableImpl{h: h}
 }
 
-func newQtMetaTypePrivate__QSequentialIterableImpl_U(h unsafe.Pointer) *QtMetaTypePrivate__QSequentialIterableImpl {
+func UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QSequentialIterableImpl {
 	return newQtMetaTypePrivate__QSequentialIterableImpl((*C.QtMetaTypePrivate__QSequentialIterableImpl)(h))
 }
 
@@ -618,7 +667,7 @@ func (this *QtMetaTypePrivate__QSequentialIterableImpl) Equal(other *QtMetaTypeP
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Advance(i int) *QtMetaTypePrivate__QSequentialIterableImpl {
-	return newQtMetaTypePrivate__QSequentialIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
+	return UnsafeNewQtMetaTypePrivate__QSequentialIterableImpl(unsafe.Pointer(C.QtMetaTypePrivate__QSequentialIterableImpl_Advance(this.h, (C.int)(i))))
 }
 
 func (this *QtMetaTypePrivate__QSequentialIterableImpl) Append(newElement unsafe.Pointer) {
@@ -680,6 +729,13 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) cPointer() *C.QtMetaTyp
 	return this.h
 }
 
+func (this *QtMetaTypePrivate__QAssociativeIterableImpl) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAssociativeIterableImpl) *QtMetaTypePrivate__QAssociativeIterableImpl {
 	if h == nil {
 		return nil
@@ -687,7 +743,7 @@ func newQtMetaTypePrivate__QAssociativeIterableImpl(h *C.QtMetaTypePrivate__QAss
 	return &QtMetaTypePrivate__QAssociativeIterableImpl{h: h}
 }
 
-func newQtMetaTypePrivate__QAssociativeIterableImpl_U(h unsafe.Pointer) *QtMetaTypePrivate__QAssociativeIterableImpl {
+func UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl(h unsafe.Pointer) *QtMetaTypePrivate__QAssociativeIterableImpl {
 	return newQtMetaTypePrivate__QAssociativeIterableImpl((*C.QtMetaTypePrivate__QAssociativeIterableImpl)(h))
 }
 
@@ -716,7 +772,7 @@ func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Equal(other *QtMetaType
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) Advance(i int) *QtMetaTypePrivate__QAssociativeIterableImpl {
-	return newQtMetaTypePrivate__QAssociativeIterableImpl_U(unsafe.Pointer(C.QtMetaTypePrivate__QAssociativeIterableImpl_Advance(this.h, (C.int)(i))))
+	return UnsafeNewQtMetaTypePrivate__QAssociativeIterableImpl(unsafe.Pointer(C.QtMetaTypePrivate__QAssociativeIterableImpl_Advance(this.h, (C.int)(i))))
 }
 
 func (this *QtMetaTypePrivate__QAssociativeIterableImpl) DestroyIter() {
@@ -778,6 +834,13 @@ func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) cPointer() *C.QtMetaTy
 	return this.h
 }
 
+func (this *QtMetaTypePrivate__QPairVariantInterfaceImpl) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPairVariantInterfaceImpl) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
 	if h == nil {
 		return nil
@@ -785,7 +848,7 @@ func newQtMetaTypePrivate__QPairVariantInterfaceImpl(h *C.QtMetaTypePrivate__QPa
 	return &QtMetaTypePrivate__QPairVariantInterfaceImpl{h: h}
 }
 
-func newQtMetaTypePrivate__QPairVariantInterfaceImpl_U(h unsafe.Pointer) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
+func UnsafeNewQtMetaTypePrivate__QPairVariantInterfaceImpl(h unsafe.Pointer) *QtMetaTypePrivate__QPairVariantInterfaceImpl {
 	return newQtMetaTypePrivate__QPairVariantInterfaceImpl((*C.QtMetaTypePrivate__QPairVariantInterfaceImpl)(h))
 }
 

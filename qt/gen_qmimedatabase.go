@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -32,6 +33,13 @@ func (this *QMimeDatabase) cPointer() *C.QMimeDatabase {
 	return this.h
 }
 
+func (this *QMimeDatabase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
 	if h == nil {
 		return nil
@@ -39,7 +47,7 @@ func newQMimeDatabase(h *C.QMimeDatabase) *QMimeDatabase {
 	return &QMimeDatabase{h: h}
 }
 
-func newQMimeDatabase_U(h unsafe.Pointer) *QMimeDatabase {
+func UnsafeNewQMimeDatabase(h unsafe.Pointer) *QMimeDatabase {
 	return newQMimeDatabase((*C.QMimeDatabase)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQMimeDatabase() *QMimeDatabase {
 }
 
 func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
-	nameOrAlias_ms := miqt_strdupg(nameOrAlias)
+	nameOrAlias_ms := libmiqt.Strdupg(nameOrAlias)
 	defer C.free(nameOrAlias_ms)
 	_ret := C.QMimeDatabase_MimeTypeForName(this.h, (*C.struct_miqt_string)(nameOrAlias_ms))
 	_goptr := newQMimeType(_ret)
@@ -59,7 +67,7 @@ func (this *QMimeDatabase) MimeTypeForName(nameOrAlias string) *QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFile(fileName string) *QMimeType {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QMimeDatabase_MimeTypeForFile(this.h, (*C.struct_miqt_string)(fileName_ms))
 	_goptr := newQMimeType(_ret)
@@ -75,7 +83,7 @@ func (this *QMimeDatabase) MimeTypeForFileWithFileInfo(fileInfo *QFileInfo) *QMi
 }
 
 func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QMimeDatabase_MimeTypesForFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 	_ret := make([]QMimeType, int(_ma.len))
@@ -112,7 +120,7 @@ func (this *QMimeDatabase) MimeTypeForUrl(url *QUrl) *QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFileNameAndData(fileName string, device *QIODevice) *QMimeType {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QMimeDatabase_MimeTypeForFileNameAndData(this.h, (*C.struct_miqt_string)(fileName_ms), device.cPointer())
 	_goptr := newQMimeType(_ret)
@@ -121,7 +129,7 @@ func (this *QMimeDatabase) MimeTypeForFileNameAndData(fileName string, device *Q
 }
 
 func (this *QMimeDatabase) MimeTypeForFileNameAndData2(fileName string, data *QByteArray) *QMimeType {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QMimeDatabase_MimeTypeForFileNameAndData2(this.h, (*C.struct_miqt_string)(fileName_ms), data.cPointer())
 	_goptr := newQMimeType(_ret)
@@ -130,7 +138,7 @@ func (this *QMimeDatabase) MimeTypeForFileNameAndData2(fileName string, data *QB
 }
 
 func (this *QMimeDatabase) SuffixForFileName(fileName string) string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QMimeDatabase_SuffixForFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -153,7 +161,7 @@ func (this *QMimeDatabase) AllMimeTypes() []QMimeType {
 }
 
 func (this *QMimeDatabase) MimeTypeForFile2(fileName string, mode QMimeDatabase__MatchMode) *QMimeType {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QMimeDatabase_MimeTypeForFile2(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(mode))
 	_goptr := newQMimeType(_ret)

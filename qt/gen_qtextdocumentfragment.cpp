@@ -5,7 +5,7 @@
 #include <QTextCursor>
 #include <QTextDocument>
 #include <QTextDocumentFragment>
-#include "qtextdocumentfragment.h"
+#include <qtextdocumentfragment.h>
 #include "gen_qtextdocumentfragment.h"
 #include "_cgo_export.h"
 

@@ -9,7 +9,7 @@
 #include <cstring>
 #include <QTimeLine>
 #include <QTransform>
-#include "qgraphicsitemanimation.h"
+#include <qgraphicsitemanimation.h>
 #include "gen_qgraphicsitemanimation.h"
 #include "_cgo_export.h"
 

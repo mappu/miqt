@@ -34,7 +34,7 @@
 #include <QWidget>
 #include <QWidgetData>
 #include <QWindow>
-#include "qwidget.h"
+#include <qwidget.h>
 #include "gen_qwidget.h"
 #include "_cgo_export.h"
 
@@ -1018,7 +1018,7 @@ void QWidget_AddAction(QWidget* self, QAction* action) {
 }
 
 void QWidget_AddActions(QWidget* self, struct miqt_array* /* of QAction* */ actions) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {
@@ -1028,7 +1028,7 @@ void QWidget_AddActions(QWidget* self, struct miqt_array* /* of QAction* */ acti
 }
 
 void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array* /* of QAction* */ actions) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {

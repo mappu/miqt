@@ -2,7 +2,7 @@
 #include <QList>
 #include <QTextOption>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextOption__Tab
-#include "qtextoption.h"
+#include <qtextoption.h>
 #include "gen_qtextoption.h"
 #include "_cgo_export.h"
 
@@ -77,7 +77,7 @@ double QTextOption_TabStopDistance(const QTextOption* self) {
 }
 
 void QTextOption_SetTabArray(QTextOption* self, struct miqt_array* /* of double */ tabStops) {
-	QList<double> tabStops_QList;
+	QList<qreal> tabStops_QList;
 	tabStops_QList.reserve(tabStops->len);
 	double* tabStops_arr = static_cast<double*>(tabStops->data);
 	for(size_t i = 0; i < tabStops->len; ++i) {

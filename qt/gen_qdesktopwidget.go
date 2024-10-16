@@ -26,14 +26,21 @@ func (this *QDesktopWidget) cPointer() *C.QDesktopWidget {
 	return this.h
 }
 
+func (this *QDesktopWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDesktopWidget(h *C.QDesktopWidget) *QDesktopWidget {
 	if h == nil {
 		return nil
 	}
-	return &QDesktopWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QDesktopWidget{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQDesktopWidget_U(h unsafe.Pointer) *QDesktopWidget {
+func UnsafeNewQDesktopWidget(h unsafe.Pointer) *QDesktopWidget {
 	return newQDesktopWidget((*C.QDesktopWidget)(h))
 }
 
@@ -44,7 +51,7 @@ func NewQDesktopWidget() *QDesktopWidget {
 }
 
 func (this *QDesktopWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDesktopWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDesktopWidget_MetaObject(this.h)))
 }
 
 func (this *QDesktopWidget) Metacast(param1 string) unsafe.Pointer {
@@ -110,7 +117,7 @@ func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 *QPoint) int {
 }
 
 func (this *QDesktopWidget) Screen() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDesktopWidget_Screen(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDesktopWidget_Screen(this.h)))
 }
 
 func (this *QDesktopWidget) ScreenGeometry2() *QRect {
@@ -267,7 +274,7 @@ func (this *QDesktopWidget) ScreenNumber1(widget *QWidget) int {
 }
 
 func (this *QDesktopWidget) Screen1(screen int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDesktopWidget_Screen1(this.h, (C.int)(screen))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDesktopWidget_Screen1(this.h, (C.int)(screen))))
 }
 
 func (this *QDesktopWidget) ScreenGeometry1(screen int) *QRect {

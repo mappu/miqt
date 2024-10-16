@@ -12,7 +12,7 @@
 #include <QPointF>
 #include <QSizeF>
 #include <QWidget>
-#include "qgraphicssceneevent.h"
+#include <qgraphicssceneevent.h>
 #include "gen_qgraphicssceneevent.h"
 #include "_cgo_export.h"
 

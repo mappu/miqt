@@ -37,6 +37,13 @@ func (this *QGestureRecognizer) cPointer() *C.QGestureRecognizer {
 	return this.h
 }
 
+func (this *QGestureRecognizer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	if h == nil {
 		return nil
@@ -44,12 +51,12 @@ func newQGestureRecognizer(h *C.QGestureRecognizer) *QGestureRecognizer {
 	return &QGestureRecognizer{h: h}
 }
 
-func newQGestureRecognizer_U(h unsafe.Pointer) *QGestureRecognizer {
+func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
 	return newQGestureRecognizer((*C.QGestureRecognizer)(h))
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
-	return newQGesture_U(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())))
+	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureRecognizer_Create(this.h, target.cPointer())))
 }
 
 func (this *QGestureRecognizer) Recognize(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag {

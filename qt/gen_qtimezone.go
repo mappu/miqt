@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -48,6 +49,13 @@ func (this *QTimeZone) cPointer() *C.QTimeZone {
 	return this.h
 }
 
+func (this *QTimeZone) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimeZone(h *C.QTimeZone) *QTimeZone {
 	if h == nil {
 		return nil
@@ -55,7 +63,7 @@ func newQTimeZone(h *C.QTimeZone) *QTimeZone {
 	return &QTimeZone{h: h}
 }
 
-func newQTimeZone_U(h unsafe.Pointer) *QTimeZone {
+func UnsafeNewQTimeZone(h unsafe.Pointer) *QTimeZone {
 	return newQTimeZone((*C.QTimeZone)(h))
 }
 
@@ -79,9 +87,9 @@ func NewQTimeZone3(offsetSeconds int) *QTimeZone {
 
 // NewQTimeZone4 constructs a new QTimeZone object.
 func NewQTimeZone4(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string) *QTimeZone {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	abbreviation_ms := miqt_strdupg(abbreviation)
+	abbreviation_ms := libmiqt.Strdupg(abbreviation)
 	defer C.free(abbreviation_ms)
 	ret := C.QTimeZone_new4(zoneId.cPointer(), (C.int)(offsetSeconds), (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(abbreviation_ms))
 	return newQTimeZone(ret)
@@ -95,9 +103,9 @@ func NewQTimeZone5(other *QTimeZone) *QTimeZone {
 
 // NewQTimeZone6 constructs a new QTimeZone object.
 func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country QLocale__Country) *QTimeZone {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	abbreviation_ms := miqt_strdupg(abbreviation)
+	abbreviation_ms := libmiqt.Strdupg(abbreviation)
 	defer C.free(abbreviation_ms)
 	ret := C.QTimeZone_new6(zoneId.cPointer(), (C.int)(offsetSeconds), (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(abbreviation_ms), (C.int)(country))
 	return newQTimeZone(ret)
@@ -105,11 +113,11 @@ func NewQTimeZone6(zoneId *QByteArray, offsetSeconds int, name string, abbreviat
 
 // NewQTimeZone7 constructs a new QTimeZone object.
 func NewQTimeZone7(zoneId *QByteArray, offsetSeconds int, name string, abbreviation string, country QLocale__Country, comment string) *QTimeZone {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	abbreviation_ms := miqt_strdupg(abbreviation)
+	abbreviation_ms := libmiqt.Strdupg(abbreviation)
 	defer C.free(abbreviation_ms)
-	comment_ms := miqt_strdupg(comment)
+	comment_ms := libmiqt.Strdupg(comment)
 	defer C.free(comment_ms)
 	ret := C.QTimeZone_new7(zoneId.cPointer(), (C.int)(offsetSeconds), (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(abbreviation_ms), (C.int)(country), (*C.struct_miqt_string)(comment_ms))
 	return newQTimeZone(ret)
@@ -402,6 +410,13 @@ func (this *QTimeZone__OffsetData) cPointer() *C.QTimeZone__OffsetData {
 	return this.h
 }
 
+func (this *QTimeZone__OffsetData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData {
 	if h == nil {
 		return nil
@@ -409,7 +424,7 @@ func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData
 	return &QTimeZone__OffsetData{h: h}
 }
 
-func newQTimeZone__OffsetData_U(h unsafe.Pointer) *QTimeZone__OffsetData {
+func UnsafeNewQTimeZone__OffsetData(h unsafe.Pointer) *QTimeZone__OffsetData {
 	return newQTimeZone__OffsetData((*C.QTimeZone__OffsetData)(h))
 }
 

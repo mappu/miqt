@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QJsonObject) cPointer() *C.QJsonObject {
 	return this.h
 }
 
+func (this *QJsonObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonObject(h *C.QJsonObject) *QJsonObject {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQJsonObject(h *C.QJsonObject) *QJsonObject {
 	return &QJsonObject{h: h}
 }
 
-func newQJsonObject_U(h unsafe.Pointer) *QJsonObject {
+func UnsafeNewQJsonObject(h unsafe.Pointer) *QJsonObject {
 	return newQJsonObject((*C.QJsonObject)(h))
 }
 
@@ -86,7 +94,7 @@ func (this *QJsonObject) IsEmpty() bool {
 }
 
 func (this *QJsonObject) Value(key string) *QJsonValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_Value(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValue(_ret)
@@ -95,7 +103,7 @@ func (this *QJsonObject) Value(key string) *QJsonValue {
 }
 
 func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValue(_ret)
@@ -104,7 +112,7 @@ func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
 }
 
 func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValueRef(_ret)
@@ -113,13 +121,13 @@ func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
 }
 
 func (this *QJsonObject) Remove(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QJsonObject_Remove(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QJsonObject) Take(key string) *QJsonValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_Take(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValue(_ret)
@@ -128,7 +136,7 @@ func (this *QJsonObject) Take(key string) *QJsonValue {
 }
 
 func (this *QJsonObject) Contains(key string) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QJsonObject_Contains(this.h, (*C.struct_miqt_string)(key_ms)))
 }
@@ -191,7 +199,7 @@ func (this *QJsonObject) Erase(it QJsonObject__iterator) *QJsonObject__iterator 
 }
 
 func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_Find(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonObject__iterator(_ret)
@@ -200,7 +208,7 @@ func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
 }
 
 func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_FindWithKey(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonObject__const_iterator(_ret)
@@ -209,7 +217,7 @@ func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
 }
 
 func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_ConstFind(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonObject__const_iterator(_ret)
@@ -218,7 +226,7 @@ func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
 }
 
 func (this *QJsonObject) Insert(key string, value *QJsonValue) *QJsonObject__iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonObject_Insert(this.h, (*C.struct_miqt_string)(key_ms), value.cPointer())
 	_goptr := newQJsonObject__iterator(_ret)
@@ -255,6 +263,13 @@ func (this *QJsonObject__iterator) cPointer() *C.QJsonObject__iterator {
 	return this.h
 }
 
+func (this *QJsonObject__iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonObject__iterator(h *C.QJsonObject__iterator) *QJsonObject__iterator {
 	if h == nil {
 		return nil
@@ -262,7 +277,7 @@ func newQJsonObject__iterator(h *C.QJsonObject__iterator) *QJsonObject__iterator
 	return &QJsonObject__iterator{h: h}
 }
 
-func newQJsonObject__iterator_U(h unsafe.Pointer) *QJsonObject__iterator {
+func UnsafeNewQJsonObject__iterator(h unsafe.Pointer) *QJsonObject__iterator {
 	return newQJsonObject__iterator((*C.QJsonObject__iterator)(h))
 }
 
@@ -344,7 +359,7 @@ func (this *QJsonObject__iterator) OperatorGreaterOrEqual(other *QJsonObject__it
 }
 
 func (this *QJsonObject__iterator) OperatorPlusPlus() *QJsonObject__iterator {
-	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQJsonObject__iterator(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QJsonObject__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__iterator {
@@ -355,7 +370,7 @@ func (this *QJsonObject__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObj
 }
 
 func (this *QJsonObject__iterator) OperatorMinusMinus() *QJsonObject__iterator {
-	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQJsonObject__iterator(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QJsonObject__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__iterator {
@@ -380,11 +395,11 @@ func (this *QJsonObject__iterator) OperatorMinus(j int) *QJsonObject__iterator {
 }
 
 func (this *QJsonObject__iterator) OperatorPlusAssign(j int) *QJsonObject__iterator {
-	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonObject__iterator(unsafe.Pointer(C.QJsonObject__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__iterator) OperatorMinusAssign(j int) *QJsonObject__iterator {
-	return newQJsonObject__iterator_U(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonObject__iterator(unsafe.Pointer(C.QJsonObject__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__iterator) OperatorMinusWithQJsonObjectiterator(j QJsonObject__iterator) int {
@@ -440,6 +455,13 @@ func (this *QJsonObject__const_iterator) cPointer() *C.QJsonObject__const_iterat
 	return this.h
 }
 
+func (this *QJsonObject__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonObject__const_iterator(h *C.QJsonObject__const_iterator) *QJsonObject__const_iterator {
 	if h == nil {
 		return nil
@@ -447,7 +469,7 @@ func newQJsonObject__const_iterator(h *C.QJsonObject__const_iterator) *QJsonObje
 	return &QJsonObject__const_iterator{h: h}
 }
 
-func newQJsonObject__const_iterator_U(h unsafe.Pointer) *QJsonObject__const_iterator {
+func UnsafeNewQJsonObject__const_iterator(h unsafe.Pointer) *QJsonObject__const_iterator {
 	return newQJsonObject__const_iterator((*C.QJsonObject__const_iterator)(h))
 }
 
@@ -535,7 +557,7 @@ func (this *QJsonObject__const_iterator) OperatorGreaterOrEqual(other *QJsonObje
 }
 
 func (this *QJsonObject__const_iterator) OperatorPlusPlus() *QJsonObject__const_iterator {
-	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQJsonObject__const_iterator(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QJsonObject__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJsonObject__const_iterator {
@@ -546,7 +568,7 @@ func (this *QJsonObject__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJ
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusMinus() *QJsonObject__const_iterator {
-	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQJsonObject__const_iterator(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusMinusWithInt(param1 int) *QJsonObject__const_iterator {
@@ -571,11 +593,11 @@ func (this *QJsonObject__const_iterator) OperatorMinus(j int) *QJsonObject__cons
 }
 
 func (this *QJsonObject__const_iterator) OperatorPlusAssign(j int) *QJsonObject__const_iterator {
-	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonObject__const_iterator(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusAssign(j int) *QJsonObject__const_iterator {
-	return newQJsonObject__const_iterator_U(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonObject__const_iterator(unsafe.Pointer(C.QJsonObject__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonObject__const_iterator) OperatorMinusWithQJsonObjectconstIterator(j QJsonObject__const_iterator) int {

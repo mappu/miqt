@@ -97,6 +97,13 @@ func (this *QPixelFormat) cPointer() *C.QPixelFormat {
 	return this.h
 }
 
+func (this *QPixelFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPixelFormat(h *C.QPixelFormat) *QPixelFormat {
 	if h == nil {
 		return nil
@@ -104,7 +111,7 @@ func newQPixelFormat(h *C.QPixelFormat) *QPixelFormat {
 	return &QPixelFormat{h: h}
 }
 
-func newQPixelFormat_U(h unsafe.Pointer) *QPixelFormat {
+func UnsafeNewQPixelFormat(h unsafe.Pointer) *QPixelFormat {
 	return newQPixelFormat((*C.QPixelFormat)(h))
 }
 

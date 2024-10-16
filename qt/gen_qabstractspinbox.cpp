@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QWidget>
-#include "qabstractspinbox.h"
+#include <qabstractspinbox.h>
 #include "gen_qabstractspinbox.h"
 #include "_cgo_export.h"
 

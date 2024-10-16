@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QUrlQuery) cPointer() *C.QUrlQuery {
 	return this.h
 }
 
+func (this *QUrlQuery) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUrlQuery(h *C.QUrlQuery) *QUrlQuery {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQUrlQuery(h *C.QUrlQuery) *QUrlQuery {
 	return &QUrlQuery{h: h}
 }
 
-func newQUrlQuery_U(h unsafe.Pointer) *QUrlQuery {
+func UnsafeNewQUrlQuery(h unsafe.Pointer) *QUrlQuery {
 	return newQUrlQuery((*C.QUrlQuery)(h))
 }
 
@@ -49,7 +57,7 @@ func NewQUrlQuery2(url *QUrl) *QUrlQuery {
 
 // NewQUrlQuery3 constructs a new QUrlQuery object.
 func NewQUrlQuery3(queryString string) *QUrlQuery {
-	queryString_ms := miqt_strdupg(queryString)
+	queryString_ms := libmiqt.Strdupg(queryString)
 	defer C.free(queryString_ms)
 	ret := C.QUrlQuery_new3((*C.struct_miqt_string)(queryString_ms))
 	return newQUrlQuery(ret)
@@ -97,7 +105,7 @@ func (this *QUrlQuery) Query() string {
 }
 
 func (this *QUrlQuery) SetQuery(queryString string) {
-	queryString_ms := miqt_strdupg(queryString)
+	queryString_ms := libmiqt.Strdupg(queryString)
 	defer C.free(queryString_ms)
 	C.QUrlQuery_SetQuery(this.h, (*C.struct_miqt_string)(queryString_ms))
 }
@@ -128,27 +136,27 @@ func (this *QUrlQuery) QueryPairDelimiter() *QChar {
 }
 
 func (this *QUrlQuery) HasQueryItem(key string) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QUrlQuery_HasQueryItem(this.h, (*C.struct_miqt_string)(key_ms)))
 }
 
 func (this *QUrlQuery) AddQueryItem(key string, value string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	value_ms := miqt_strdupg(value)
+	value_ms := libmiqt.Strdupg(value)
 	defer C.free(value_ms)
 	C.QUrlQuery_AddQueryItem(this.h, (*C.struct_miqt_string)(key_ms), (*C.struct_miqt_string)(value_ms))
 }
 
 func (this *QUrlQuery) RemoveQueryItem(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QUrlQuery_RemoveQueryItem(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QUrlQuery) QueryItemValue(key string) string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ms *C.struct_miqt_string = C.QUrlQuery_QueryItemValue(this.h, (*C.struct_miqt_string)(key_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -157,7 +165,7 @@ func (this *QUrlQuery) QueryItemValue(key string) string {
 }
 
 func (this *QUrlQuery) AllQueryItemValues(key string) []string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, (*C.struct_miqt_string)(key_ms))
 	_ret := make([]string, int(_ma.len))
@@ -173,7 +181,7 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 }
 
 func (this *QUrlQuery) RemoveAllQueryItems(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QUrlQuery_RemoveAllQueryItems(this.h, (*C.struct_miqt_string)(key_ms))
 }
@@ -207,7 +215,7 @@ func (this *QUrlQuery) ToString1(encoding QUrl__ComponentFormattingOption) strin
 }
 
 func (this *QUrlQuery) QueryItemValue2(key string, encoding QUrl__ComponentFormattingOption) string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ms *C.struct_miqt_string = C.QUrlQuery_QueryItemValue2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(encoding))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -216,7 +224,7 @@ func (this *QUrlQuery) QueryItemValue2(key string, encoding QUrl__ComponentForma
 }
 
 func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentFormattingOption) []string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(encoding))
 	_ret := make([]string, int(_ma.len))

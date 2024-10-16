@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"unsafe"
 )
 
@@ -25,14 +26,21 @@ func (this *QAccessibleWidget) cPointer() *C.QAccessibleWidget {
 	return this.h
 }
 
+func (this *QAccessibleWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleWidget(h *C.QAccessibleWidget) *QAccessibleWidget {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleWidget{h: h, QAccessibleObject: newQAccessibleObject_U(unsafe.Pointer(h)), QAccessibleActionInterface: newQAccessibleActionInterface_U(unsafe.Pointer(h))}
+	return &QAccessibleWidget{h: h, QAccessibleObject: UnsafeNewQAccessibleObject(unsafe.Pointer(h)), QAccessibleActionInterface: UnsafeNewQAccessibleActionInterface(unsafe.Pointer(h))}
 }
 
-func newQAccessibleWidget_U(h unsafe.Pointer) *QAccessibleWidget {
+func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
 	return newQAccessibleWidget((*C.QAccessibleWidget)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), (*C.struct_miqt_string)(name_ms))
 	return newQAccessibleWidget(ret)
@@ -61,7 +69,7 @@ func (this *QAccessibleWidget) IsValid() bool {
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleWidget_Window(this.h)))
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
@@ -73,7 +81,7 @@ func (this *QAccessibleWidget) IndexOfChild(child *QAccessibleInterface) int {
 }
 
 func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_FocusChild(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_FocusChild(this.h)))
 }
 
 func (this *QAccessibleWidget) Rect() *QRect {
@@ -84,11 +92,11 @@ func (this *QAccessibleWidget) Rect() *QRect {
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_Parent(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_Parent(this.h)))
 }
 
 func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleWidget_Child(this.h, (C.int)(index))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleWidget_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
@@ -142,13 +150,13 @@ func (this *QAccessibleWidget) ActionNames() []string {
 }
 
 func (this *QAccessibleWidget) DoAction(actionName string) {
-	actionName_ms := miqt_strdupg(actionName)
+	actionName_ms := libmiqt.Strdupg(actionName)
 	defer C.free(actionName_ms)
 	C.QAccessibleWidget_DoAction(this.h, (*C.struct_miqt_string)(actionName_ms))
 }
 
 func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string {
-	actionName_ms := miqt_strdupg(actionName)
+	actionName_ms := libmiqt.Strdupg(actionName)
 	defer C.free(actionName_ms)
 	var _ma *C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, (*C.struct_miqt_string)(actionName_ms))
 	_ret := make([]string, int(_ma.len))

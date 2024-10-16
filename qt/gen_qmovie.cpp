@@ -12,7 +12,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qmovie.h"
+#include <qmovie.h>
 #include "gen_qmovie.h"
 #include "_cgo_export.h"
 

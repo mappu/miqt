@@ -6,7 +6,7 @@
 #include <QRectF>
 #include <QSize>
 #include <QSizeF>
-#include "qrect.h"
+#include <qrect.h>
 #include "gen_qrect.h"
 #include "_cgo_export.h"
 

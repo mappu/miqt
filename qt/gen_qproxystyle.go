@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QProxyStyle) cPointer() *C.QProxyStyle {
 	return this.h
 }
 
+func (this *QProxyStyle) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQProxyStyle(h *C.QProxyStyle) *QProxyStyle {
 	if h == nil {
 		return nil
 	}
-	return &QProxyStyle{h: h, QCommonStyle: newQCommonStyle_U(unsafe.Pointer(h))}
+	return &QProxyStyle{h: h, QCommonStyle: UnsafeNewQCommonStyle(unsafe.Pointer(h))}
 }
 
-func newQProxyStyle_U(h unsafe.Pointer) *QProxyStyle {
+func UnsafeNewQProxyStyle(h unsafe.Pointer) *QProxyStyle {
 	return newQProxyStyle((*C.QProxyStyle)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQProxyStyle() *QProxyStyle {
 
 // NewQProxyStyle2 constructs a new QProxyStyle object.
 func NewQProxyStyle2(key string) *QProxyStyle {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	ret := C.QProxyStyle_new2((*C.struct_miqt_string)(key_ms))
 	return newQProxyStyle(ret)
@@ -57,7 +65,7 @@ func NewQProxyStyle3(style *QStyle) *QProxyStyle {
 }
 
 func (this *QProxyStyle) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QProxyStyle_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProxyStyle_MetaObject(this.h)))
 }
 
 func (this *QProxyStyle) Metacast(param1 string) unsafe.Pointer {
@@ -85,7 +93,7 @@ func QProxyStyle_TrUtf8(s string) string {
 }
 
 func (this *QProxyStyle) BaseStyle() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QProxyStyle_BaseStyle(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QProxyStyle_BaseStyle(this.h)))
 }
 
 func (this *QProxyStyle) SetBaseStyle(style *QStyle) {
@@ -105,7 +113,7 @@ func (this *QProxyStyle) DrawComplexControl(control QStyle__ComplexControl, opti
 }
 
 func (this *QProxyStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QProxyStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 }
@@ -136,7 +144,7 @@ func (this *QProxyStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOp
 }
 
 func (this *QProxyStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QProxyStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRect(_ret)
@@ -272,7 +280,7 @@ func (this *QProxyStyle) DrawComplexControl4(control QStyle__ComplexControl, opt
 }
 
 func (this *QProxyStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QProxyStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.int)(textRole))
 }

@@ -11,7 +11,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qcolumnview.h"
+#include <qcolumnview.h>
 #include "gen_qcolumnview.h"
 #include "_cgo_export.h"
 

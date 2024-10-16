@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qiodevice.h"
+#include <qiodevice.h>
 #include "gen_qiodevice.h"
 #include "_cgo_export.h"
 

@@ -4,7 +4,7 @@
 #include <QRegion>
 #include <QSize>
 #include <QWindow>
-#include "qbackingstore.h"
+#include <qbackingstore.h>
 #include "gen_qbackingstore.h"
 #include "_cgo_export.h"
 

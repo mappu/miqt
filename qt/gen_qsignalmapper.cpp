@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qsignalmapper.h"
+#include <qsignalmapper.h>
 #include "gen_qsignalmapper.h"
 #include "_cgo_export.h"
 

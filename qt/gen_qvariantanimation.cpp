@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QVariantAnimation>
-#include "qvariantanimation.h"
+#include <qvariantanimation.h>
 #include "gen_qvariantanimation.h"
 #include "_cgo_export.h"
 

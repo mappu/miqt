@@ -43,6 +43,13 @@ func (this *QArrayData) cPointer() *C.QArrayData {
 	return this.h
 }
 
+func (this *QArrayData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQArrayData(h *C.QArrayData) *QArrayData {
 	if h == nil {
 		return nil
@@ -50,7 +57,7 @@ func newQArrayData(h *C.QArrayData) *QArrayData {
 	return &QArrayData{h: h}
 }
 
-func newQArrayData_U(h unsafe.Pointer) *QArrayData {
+func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 	return newQArrayData((*C.QArrayData)(h))
 }
 
@@ -79,11 +86,11 @@ func (this *QArrayData) CloneFlags() QArrayData__AllocationOption {
 }
 
 func QArrayData_Allocate(objectSize uint64, alignment uint64, capacity uint64) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_Allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity))))
+	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_Allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity))))
 }
 
 func QArrayData_ReallocateUnaligned(data *QArrayData, objectSize uint64, newCapacity uint64) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_ReallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity))))
+	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_ReallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity))))
 }
 
 func QArrayData_Deallocate(data *QArrayData, objectSize uint64, alignment uint64) {
@@ -91,15 +98,15 @@ func QArrayData_Deallocate(data *QArrayData, objectSize uint64, alignment uint64
 }
 
 func QArrayData_SharedNull() *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_SharedNull()))
+	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_SharedNull()))
 }
 
 func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options))))
+	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options))))
 }
 
 func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData_U(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions))))
+	return UnsafeNewQArrayData(unsafe.Pointer(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions))))
 }
 
 // Delete this object from C++ memory.
@@ -127,6 +134,13 @@ func (this *QtPrivate__QContainerImplHelper) cPointer() *C.QtPrivate__QContainer
 	return this.h
 }
 
+func (this *QtPrivate__QContainerImplHelper) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__QContainerImplHelper(h *C.QtPrivate__QContainerImplHelper) *QtPrivate__QContainerImplHelper {
 	if h == nil {
 		return nil
@@ -134,7 +148,7 @@ func newQtPrivate__QContainerImplHelper(h *C.QtPrivate__QContainerImplHelper) *Q
 	return &QtPrivate__QContainerImplHelper{h: h}
 }
 
-func newQtPrivate__QContainerImplHelper_U(h unsafe.Pointer) *QtPrivate__QContainerImplHelper {
+func UnsafeNewQtPrivate__QContainerImplHelper(h unsafe.Pointer) *QtPrivate__QContainerImplHelper {
 	return newQtPrivate__QContainerImplHelper((*C.QtPrivate__QContainerImplHelper)(h))
 }
 

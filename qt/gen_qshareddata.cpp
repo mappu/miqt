@@ -1,5 +1,5 @@
 #include <QSharedData>
-#include "qshareddata.h"
+#include <qshareddata.h>
 #include "gen_qshareddata.h"
 #include "_cgo_export.h"
 

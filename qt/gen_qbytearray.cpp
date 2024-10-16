@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qbytearray.h"
+#include <qbytearray.h>
 #include "gen_qbytearray.h"
 #include "_cgo_export.h"
 

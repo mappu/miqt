@@ -24,6 +24,13 @@ func (this *QBasicTimer) cPointer() *C.QBasicTimer {
 	return this.h
 }
 
+func (this *QBasicTimer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQBasicTimer(h *C.QBasicTimer) *QBasicTimer {
 	return &QBasicTimer{h: h}
 }
 
-func newQBasicTimer_U(h unsafe.Pointer) *QBasicTimer {
+func UnsafeNewQBasicTimer(h unsafe.Pointer) *QBasicTimer {
 	return newQBasicTimer((*C.QBasicTimer)(h))
 }
 

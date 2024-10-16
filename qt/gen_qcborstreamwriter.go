@@ -24,6 +24,13 @@ func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
 	return this.h
 }
 
+func (this *QCborStreamWriter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQCborStreamWriter(h *C.QCborStreamWriter) *QCborStreamWriter {
 	return &QCborStreamWriter{h: h}
 }
 
-func newQCborStreamWriter_U(h unsafe.Pointer) *QCborStreamWriter {
+func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
 	return newQCborStreamWriter((*C.QCborStreamWriter)(h))
 }
 
@@ -52,7 +59,7 @@ func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamWriter) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {

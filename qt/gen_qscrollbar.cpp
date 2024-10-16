@@ -6,7 +6,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qscrollbar.h"
+#include <qscrollbar.h>
 #include "gen_qscrollbar.h"
 #include "_cgo_export.h"
 

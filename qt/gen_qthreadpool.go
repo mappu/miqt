@@ -25,14 +25,21 @@ func (this *QThreadPool) cPointer() *C.QThreadPool {
 	return this.h
 }
 
+func (this *QThreadPool) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQThreadPool(h *C.QThreadPool) *QThreadPool {
 	if h == nil {
 		return nil
 	}
-	return &QThreadPool{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QThreadPool{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQThreadPool_U(h unsafe.Pointer) *QThreadPool {
+func UnsafeNewQThreadPool(h unsafe.Pointer) *QThreadPool {
 	return newQThreadPool((*C.QThreadPool)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQThreadPool2(parent *QObject) *QThreadPool {
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QThreadPool_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QThreadPool_MetaObject(this.h)))
 }
 
 func (this *QThreadPool) Metacast(param1 string) unsafe.Pointer {
@@ -77,7 +84,7 @@ func QThreadPool_TrUtf8(s string) string {
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	return newQThreadPool_U(unsafe.Pointer(C.QThreadPool_GlobalInstance()))
+	return UnsafeNewQThreadPool(unsafe.Pointer(C.QThreadPool_GlobalInstance()))
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {

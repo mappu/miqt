@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QStringListModel>
 #include <QVariant>
-#include "qstringlistmodel.h"
+#include <qstringlistmodel.h>
 #include "gen_qstringlistmodel.h"
 #include "_cgo_export.h"
 
@@ -16,7 +16,7 @@ QStringListModel* QStringListModel_new() {
 }
 
 QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string* */ strings) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -31,7 +31,7 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 }
 
 QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string* */ strings, QObject* parent) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {
@@ -117,7 +117,7 @@ struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
 }
 
 void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string* */ strings) {
-	QList<QString> strings_QList;
+	QStringList strings_QList;
 	strings_QList.reserve(strings->len);
 	struct miqt_string** strings_arr = static_cast<struct miqt_string**>(strings->data);
 	for(size_t i = 0; i < strings->len; ++i) {

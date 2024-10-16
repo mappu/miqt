@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qstatusbar.h"
+#include <qstatusbar.h>
 #include "gen_qstatusbar.h"
 #include "_cgo_export.h"
 

@@ -70,6 +70,13 @@ func (this *QImageIOHandler) cPointer() *C.QImageIOHandler {
 	return this.h
 }
 
+func (this *QImageIOHandler) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	if h == nil {
 		return nil
@@ -77,7 +84,7 @@ func newQImageIOHandler(h *C.QImageIOHandler) *QImageIOHandler {
 	return &QImageIOHandler{h: h}
 }
 
-func newQImageIOHandler_U(h unsafe.Pointer) *QImageIOHandler {
+func UnsafeNewQImageIOHandler(h unsafe.Pointer) *QImageIOHandler {
 	return newQImageIOHandler((*C.QImageIOHandler)(h))
 }
 
@@ -86,7 +93,7 @@ func (this *QImageIOHandler) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageIOHandler) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QImageIOHandler_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)))
 }
 
 func (this *QImageIOHandler) SetFormat(format *QByteArray) {
@@ -195,19 +202,26 @@ func (this *QImageIOPlugin) cPointer() *C.QImageIOPlugin {
 	return this.h
 }
 
+func (this *QImageIOPlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQImageIOPlugin(h *C.QImageIOPlugin) *QImageIOPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QImageIOPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QImageIOPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQImageIOPlugin_U(h unsafe.Pointer) *QImageIOPlugin {
+func UnsafeNewQImageIOPlugin(h unsafe.Pointer) *QImageIOPlugin {
 	return newQImageIOPlugin((*C.QImageIOPlugin)(h))
 }
 
 func (this *QImageIOPlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QImageIOPlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QImageIOPlugin_MetaObject(this.h)))
 }
 
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -239,7 +253,7 @@ func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) 
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {
-	return newQImageIOHandler_U(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer())))
+	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create(this.h, device.cPointer())))
 }
 
 func QImageIOPlugin_Tr2(s string, c string) string {
@@ -287,7 +301,7 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QImageIOPlugin) Create2(device *QIODevice, format *QByteArray) *QImageIOHandler {
-	return newQImageIOHandler_U(unsafe.Pointer(C.QImageIOPlugin_Create2(this.h, device.cPointer(), format.cPointer())))
+	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create2(this.h, device.cPointer(), format.cPointer())))
 }
 
 // Delete this object from C++ memory.

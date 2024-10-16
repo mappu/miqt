@@ -10,7 +10,7 @@
 #include <QStyleOptionComplex>
 #include <QStylePainter>
 #include <QWidget>
-#include "qstylepainter.h"
+#include <qstylepainter.h>
 #include "gen_qstylepainter.h"
 #include "_cgo_export.h"
 

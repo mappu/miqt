@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qcommandlinkbutton.h"
+#include <qcommandlinkbutton.h>
 #include "gen_qcommandlinkbutton.h"
 #include "_cgo_export.h"
 

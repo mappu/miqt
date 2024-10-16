@@ -25,14 +25,21 @@ func (this *QPropertyAnimation) cPointer() *C.QPropertyAnimation {
 	return this.h
 }
 
+func (this *QPropertyAnimation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPropertyAnimation(h *C.QPropertyAnimation) *QPropertyAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QPropertyAnimation{h: h, QVariantAnimation: newQVariantAnimation_U(unsafe.Pointer(h))}
+	return &QPropertyAnimation{h: h, QVariantAnimation: UnsafeNewQVariantAnimation(unsafe.Pointer(h))}
 }
 
-func newQPropertyAnimation_U(h unsafe.Pointer) *QPropertyAnimation {
+func UnsafeNewQPropertyAnimation(h unsafe.Pointer) *QPropertyAnimation {
 	return newQPropertyAnimation((*C.QPropertyAnimation)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQPropertyAnimation4(target *QObject, propertyName *QByteArray, parent *Q
 }
 
 func (this *QPropertyAnimation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPropertyAnimation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPropertyAnimation_MetaObject(this.h)))
 }
 
 func (this *QPropertyAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -89,7 +96,7 @@ func QPropertyAnimation_TrUtf8(s string) string {
 }
 
 func (this *QPropertyAnimation) TargetObject() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QPropertyAnimation_TargetObject(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QPropertyAnimation_TargetObject(this.h)))
 }
 
 func (this *QPropertyAnimation) SetTargetObject(target *QObject) {

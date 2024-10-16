@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QWhatsThis) cPointer() *C.QWhatsThis {
 	return this.h
 }
 
+func (this *QWhatsThis) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQWhatsThis(h *C.QWhatsThis) *QWhatsThis {
 	return &QWhatsThis{h: h}
 }
 
-func newQWhatsThis_U(h unsafe.Pointer) *QWhatsThis {
+func UnsafeNewQWhatsThis(h unsafe.Pointer) *QWhatsThis {
 	return newQWhatsThis((*C.QWhatsThis)(h))
 }
 
@@ -48,7 +56,7 @@ func QWhatsThis_LeaveWhatsThisMode() {
 }
 
 func QWhatsThis_ShowText(pos *QPoint, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QWhatsThis_ShowText(pos.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
@@ -58,17 +66,17 @@ func QWhatsThis_HideText() {
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QWhatsThis_CreateAction()))
+	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction()))
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QWhatsThis_ShowText3(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer())
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QWhatsThis_CreateAction1(parent.cPointer())))
 }
 
 // Delete this object from C++ memory.

@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcommandlineoption.h"
+#include <qcommandlineoption.h>
 #include "gen_qcommandlineoption.h"
 #include "_cgo_export.h"
 
@@ -13,7 +13,7 @@ QCommandLineOption* QCommandLineOption_new(struct miqt_string* name) {
 }
 
 QCommandLineOption* QCommandLineOption_new2(struct miqt_array* /* of struct miqt_string* */ names) {
-	QList<QString> names_QList;
+	QStringList names_QList;
 	names_QList.reserve(names->len);
 	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
@@ -30,7 +30,7 @@ QCommandLineOption* QCommandLineOption_new3(struct miqt_string* name, struct miq
 }
 
 QCommandLineOption* QCommandLineOption_new4(struct miqt_array* /* of struct miqt_string* */ names, struct miqt_string* description) {
-	QList<QString> names_QList;
+	QStringList names_QList;
 	names_QList.reserve(names->len);
 	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
@@ -61,7 +61,7 @@ QCommandLineOption* QCommandLineOption_new7(struct miqt_string* name, struct miq
 }
 
 QCommandLineOption* QCommandLineOption_new8(struct miqt_array* /* of struct miqt_string* */ names, struct miqt_string* description, struct miqt_string* valueName) {
-	QList<QString> names_QList;
+	QStringList names_QList;
 	names_QList.reserve(names->len);
 	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
@@ -74,7 +74,7 @@ QCommandLineOption* QCommandLineOption_new8(struct miqt_array* /* of struct miqt
 }
 
 QCommandLineOption* QCommandLineOption_new9(struct miqt_array* /* of struct miqt_string* */ names, struct miqt_string* description, struct miqt_string* valueName, struct miqt_string* defaultValue) {
-	QList<QString> names_QList;
+	QStringList names_QList;
 	names_QList.reserve(names->len);
 	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
@@ -141,7 +141,7 @@ void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, struct miqt_st
 }
 
 void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array* /* of struct miqt_string* */ defaultValues) {
-	QList<QString> defaultValues_QList;
+	QStringList defaultValues_QList;
 	defaultValues_QList.reserve(defaultValues->len);
 	struct miqt_string** defaultValues_arr = static_cast<struct miqt_string**>(defaultValues->data);
 	for(size_t i = 0; i < defaultValues->len; ++i) {

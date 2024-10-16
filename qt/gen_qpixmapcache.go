@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QPixmapCache) cPointer() *C.QPixmapCache {
 	return this.h
 }
 
+func (this *QPixmapCache) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
 	return &QPixmapCache{h: h}
 }
 
-func newQPixmapCache_U(h unsafe.Pointer) *QPixmapCache {
+func UnsafeNewQPixmapCache(h unsafe.Pointer) *QPixmapCache {
 	return newQPixmapCache((*C.QPixmapCache)(h))
 }
 
@@ -44,19 +52,19 @@ func QPixmapCache_SetCacheLimit(cacheLimit int) {
 }
 
 func QPixmapCache_Find(key string) *QPixmap {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	return newQPixmap_U(unsafe.Pointer(C.QPixmapCache_Find((*C.struct_miqt_string)(key_ms))))
+	return UnsafeNewQPixmap(unsafe.Pointer(C.QPixmapCache_Find((*C.struct_miqt_string)(key_ms))))
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QPixmapCache_Find2((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
 
 func QPixmapCache_Find3(key string, pixmap *QPixmap) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QPixmapCache_Find3((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
@@ -66,7 +74,7 @@ func QPixmapCache_Find4(key *QPixmapCache__Key, pixmap *QPixmap) bool {
 }
 
 func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QPixmapCache_Insert((*C.struct_miqt_string)(key_ms), pixmap.cPointer()))
 }
@@ -83,7 +91,7 @@ func QPixmapCache_Replace(key *QPixmapCache__Key, pixmap *QPixmap) bool {
 }
 
 func QPixmapCache_Remove(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QPixmapCache_Remove((*C.struct_miqt_string)(key_ms))
 }
@@ -121,6 +129,13 @@ func (this *QPixmapCache__Key) cPointer() *C.QPixmapCache__Key {
 	return this.h
 }
 
+func (this *QPixmapCache__Key) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
 	if h == nil {
 		return nil
@@ -128,7 +143,7 @@ func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
 	return &QPixmapCache__Key{h: h}
 }
 
-func newQPixmapCache__Key_U(h unsafe.Pointer) *QPixmapCache__Key {
+func UnsafeNewQPixmapCache__Key(h unsafe.Pointer) *QPixmapCache__Key {
 	return newQPixmapCache__Key((*C.QPixmapCache__Key)(h))
 }
 

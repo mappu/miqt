@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpropertyanimation.h"
+#include <qpropertyanimation.h>
 #include "gen_qpropertyanimation.h"
 #include "_cgo_export.h"
 

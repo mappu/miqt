@@ -1,6 +1,6 @@
 #include <QAbstractNativeEventFilter>
 #include <QByteArray>
-#include "qabstractnativeeventfilter.h"
+#include <qabstractnativeeventfilter.h>
 #include "gen_qabstractnativeeventfilter.h"
 #include "_cgo_export.h"
 

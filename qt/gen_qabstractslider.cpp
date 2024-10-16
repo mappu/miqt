@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qabstractslider.h"
+#include <qabstractslider.h>
 #include "gen_qabstractslider.h"
 #include "_cgo_export.h"
 

@@ -3,7 +3,7 @@
 #include <QPointF>
 #include <QRawFont>
 #include <QRectF>
-#include "qglyphrun.h"
+#include <qglyphrun.h>
 #include "gen_qglyphrun.h"
 #include "_cgo_export.h"
 
@@ -49,7 +49,7 @@ struct miqt_array* QGlyphRun_GlyphIndexes(const QGlyphRun* self) {
 }
 
 void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array* /* of unsigned int */ glyphIndexes) {
-	QVector<unsigned int> glyphIndexes_QList;
+	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QUndoView) cPointer() *C.QUndoView {
 	return this.h
 }
 
+func (this *QUndoView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUndoView(h *C.QUndoView) *QUndoView {
 	if h == nil {
 		return nil
 	}
-	return &QUndoView{h: h, QListView: newQListView_U(unsafe.Pointer(h))}
+	return &QUndoView{h: h, QListView: UnsafeNewQListView(unsafe.Pointer(h))}
 }
 
-func newQUndoView_U(h unsafe.Pointer) *QUndoView {
+func UnsafeNewQUndoView(h unsafe.Pointer) *QUndoView {
 	return newQUndoView((*C.QUndoView)(h))
 }
 
@@ -73,7 +81,7 @@ func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
 }
 
 func (this *QUndoView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QUndoView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QUndoView_MetaObject(this.h)))
 }
 
 func (this *QUndoView) Metacast(param1 string) unsafe.Pointer {
@@ -101,15 +109,15 @@ func QUndoView_TrUtf8(s string) string {
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
-	return newQUndoStack_U(unsafe.Pointer(C.QUndoView_Stack(this.h)))
+	return UnsafeNewQUndoStack(unsafe.Pointer(C.QUndoView_Stack(this.h)))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
-	return newQUndoGroup_U(unsafe.Pointer(C.QUndoView_Group(this.h)))
+	return UnsafeNewQUndoGroup(unsafe.Pointer(C.QUndoView_Group(this.h)))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {
-	label_ms := miqt_strdupg(label)
+	label_ms := libmiqt.Strdupg(label)
 	defer C.free(label_ms)
 	C.QUndoView_SetEmptyLabel(this.h, (*C.struct_miqt_string)(label_ms))
 }

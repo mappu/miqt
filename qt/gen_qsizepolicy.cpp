@@ -1,5 +1,5 @@
 #include <QSizePolicy>
-#include "qsizepolicy.h"
+#include <qsizepolicy.h>
 #include "gen_qsizepolicy.h"
 #include "_cgo_export.h"
 

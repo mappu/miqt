@@ -15,7 +15,7 @@
 #include <QStyleOption>
 #include <QStyleOptionComplex>
 #include <QWidget>
-#include "qcommonstyle.h"
+#include <qcommonstyle.h>
 #include "gen_qcommonstyle.h"
 #include "_cgo_export.h"
 

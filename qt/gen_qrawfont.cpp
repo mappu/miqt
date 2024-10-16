@@ -11,7 +11,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
-#include "qrawfont.h"
+#include <qrawfont.h>
 #include "gen_qrawfont.h"
 #include "_cgo_export.h"
 
@@ -99,7 +99,7 @@ struct miqt_array* QRawFont_GlyphIndexesForString(const QRawFont* self, struct m
 }
 
 struct miqt_array* QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct miqt_array* /* of unsigned int */ glyphIndexes) {
-	QVector<unsigned int> glyphIndexes_QList;
+	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {
@@ -118,7 +118,7 @@ struct miqt_array* QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct
 }
 
 struct miqt_array* QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struct miqt_array* /* of unsigned int */ glyphIndexes, int layoutFlags) {
-	QVector<unsigned int> glyphIndexes_QList;
+	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes->len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes->data);
 	for(size_t i = 0; i < glyphIndexes->len; ++i) {

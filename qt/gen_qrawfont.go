@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -39,6 +40,13 @@ func (this *QRawFont) cPointer() *C.QRawFont {
 	return this.h
 }
 
+func (this *QRawFont) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRawFont(h *C.QRawFont) *QRawFont {
 	if h == nil {
 		return nil
@@ -46,7 +54,7 @@ func newQRawFont(h *C.QRawFont) *QRawFont {
 	return &QRawFont{h: h}
 }
 
-func newQRawFont_U(h unsafe.Pointer) *QRawFont {
+func UnsafeNewQRawFont(h unsafe.Pointer) *QRawFont {
 	return newQRawFont((*C.QRawFont)(h))
 }
 
@@ -58,7 +66,7 @@ func NewQRawFont() *QRawFont {
 
 // NewQRawFont2 constructs a new QRawFont object.
 func NewQRawFont2(fileName string, pixelSize float64) *QRawFont {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QRawFont_new2((*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize))
 	return newQRawFont(ret)
@@ -78,7 +86,7 @@ func NewQRawFont4(other *QRawFont) *QRawFont {
 
 // NewQRawFont5 constructs a new QRawFont object.
 func NewQRawFont5(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QRawFont_new5((*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize), (C.int)(hintingPreference))
 	return newQRawFont(ret)
@@ -133,7 +141,7 @@ func (this *QRawFont) Weight() int {
 }
 
 func (this *QRawFont) GlyphIndexesForString(text string) []uint {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, (*C.struct_miqt_string)(text_ms))
 	_ret := make([]uint, int(_ma.len))
@@ -275,7 +283,7 @@ func (this *QRawFont) UnitsPerEm() float64 {
 }
 
 func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QRawFont_LoadFromFile(this.h, (*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize), (C.int)(hintingPreference))
 }

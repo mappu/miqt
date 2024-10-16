@@ -34,6 +34,13 @@ func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
 	return this.h
 }
 
+func (this *QElapsedTimer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
 	if h == nil {
 		return nil
@@ -41,7 +48,7 @@ func newQElapsedTimer(h *C.QElapsedTimer) *QElapsedTimer {
 	return &QElapsedTimer{h: h}
 }
 
-func newQElapsedTimer_U(h unsafe.Pointer) *QElapsedTimer {
+func UnsafeNewQElapsedTimer(h unsafe.Pointer) *QElapsedTimer {
 	return newQElapsedTimer((*C.QElapsedTimer)(h))
 }
 

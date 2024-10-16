@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -86,14 +87,21 @@ func (this *QWizard) cPointer() *C.QWizard {
 	return this.h
 }
 
+func (this *QWizard) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWizard(h *C.QWizard) *QWizard {
 	if h == nil {
 		return nil
 	}
-	return &QWizard{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
+	return &QWizard{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
-func newQWizard_U(h unsafe.Pointer) *QWizard {
+func UnsafeNewQWizard(h unsafe.Pointer) *QWizard {
 	return newQWizard((*C.QWizard)(h))
 }
 
@@ -116,7 +124,7 @@ func NewQWizard3(parent *QWidget, flags WindowType) *QWizard {
 }
 
 func (this *QWizard) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QWizard_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWizard_MetaObject(this.h)))
 }
 
 func (this *QWizard) Metacast(param1 string) unsafe.Pointer {
@@ -156,7 +164,7 @@ func (this *QWizard) RemovePage(id int) {
 }
 
 func (this *QWizard) Page(id int) *QWizardPage {
-	return newQWizardPage_U(unsafe.Pointer(C.QWizard_Page(this.h, (C.int)(id))))
+	return UnsafeNewQWizardPage(unsafe.Pointer(C.QWizard_Page(this.h, (C.int)(id))))
 }
 
 func (this *QWizard) HasVisitedPage(id int) bool {
@@ -205,7 +213,7 @@ func (this *QWizard) StartId() int {
 }
 
 func (this *QWizard) CurrentPage() *QWizardPage {
-	return newQWizardPage_U(unsafe.Pointer(C.QWizard_CurrentPage(this.h)))
+	return UnsafeNewQWizardPage(unsafe.Pointer(C.QWizard_CurrentPage(this.h)))
 }
 
 func (this *QWizard) CurrentId() int {
@@ -221,13 +229,13 @@ func (this *QWizard) NextId() int {
 }
 
 func (this *QWizard) SetField(name string, value *QVariant) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QWizard_SetField(this.h, (*C.struct_miqt_string)(name_ms), value.cPointer())
 }
 
 func (this *QWizard) Field(name string) *QVariant {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	_ret := C.QWizard_Field(this.h, (*C.struct_miqt_string)(name_ms))
 	_goptr := newQVariant(_ret)
@@ -260,7 +268,7 @@ func (this *QWizard) Options() QWizard__WizardOption {
 }
 
 func (this *QWizard) SetButtonText(which QWizard__WizardButton, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QWizard_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }
@@ -289,7 +297,7 @@ func (this *QWizard) SetButton(which QWizard__WizardButton, button *QAbstractBut
 }
 
 func (this *QWizard) Button(which QWizard__WizardButton) *QAbstractButton {
-	return newQAbstractButton_U(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))))
+	return UnsafeNewQAbstractButton(unsafe.Pointer(C.QWizard_Button(this.h, (C.int)(which))))
 }
 
 func (this *QWizard) SetTitleFormat(format TextFormat) {
@@ -324,7 +332,7 @@ func (this *QWizard) SetSideWidget(widget *QWidget) {
 }
 
 func (this *QWizard) SideWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWizard_SideWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWizard_SideWidget(this.h)))
 }
 
 func (this *QWizard) SetDefaultProperty(className string, property string, changedSignal string) {
@@ -531,14 +539,21 @@ func (this *QWizardPage) cPointer() *C.QWizardPage {
 	return this.h
 }
 
+func (this *QWizardPage) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWizardPage(h *C.QWizardPage) *QWizardPage {
 	if h == nil {
 		return nil
 	}
-	return &QWizardPage{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QWizardPage{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQWizardPage_U(h unsafe.Pointer) *QWizardPage {
+func UnsafeNewQWizardPage(h unsafe.Pointer) *QWizardPage {
 	return newQWizardPage((*C.QWizardPage)(h))
 }
 
@@ -555,7 +570,7 @@ func NewQWizardPage2(parent *QWidget) *QWizardPage {
 }
 
 func (this *QWizardPage) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QWizardPage_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWizardPage_MetaObject(this.h)))
 }
 
 func (this *QWizardPage) Metacast(param1 string) unsafe.Pointer {
@@ -583,7 +598,7 @@ func QWizardPage_TrUtf8(s string) string {
 }
 
 func (this *QWizardPage) SetTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QWizardPage_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -596,7 +611,7 @@ func (this *QWizardPage) Title() string {
 }
 
 func (this *QWizardPage) SetSubTitle(subTitle string) {
-	subTitle_ms := miqt_strdupg(subTitle)
+	subTitle_ms := libmiqt.Strdupg(subTitle)
 	defer C.free(subTitle_ms)
 	C.QWizardPage_SetSubTitle(this.h, (*C.struct_miqt_string)(subTitle_ms))
 }
@@ -636,7 +651,7 @@ func (this *QWizardPage) IsCommitPage() bool {
 }
 
 func (this *QWizardPage) SetButtonText(which QWizard__WizardButton, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QWizardPage_SetButtonText(this.h, (C.int)(which), (*C.struct_miqt_string)(text_ms))
 }

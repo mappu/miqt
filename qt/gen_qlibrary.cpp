@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qlibrary.h"
+#include <qlibrary.h>
 #include "gen_qlibrary.h"
 #include "_cgo_export.h"
 

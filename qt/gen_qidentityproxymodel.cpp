@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qidentityproxymodel.h"
+#include <qidentityproxymodel.h>
 #include "gen_qidentityproxymodel.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QTreeView) cPointer() *C.QTreeView {
 	return this.h
 }
 
+func (this *QTreeView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTreeView(h *C.QTreeView) *QTreeView {
 	if h == nil {
 		return nil
 	}
-	return &QTreeView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
+	return &QTreeView{h: h, QAbstractItemView: UnsafeNewQAbstractItemView(unsafe.Pointer(h))}
 }
 
-func newQTreeView_U(h unsafe.Pointer) *QTreeView {
+func UnsafeNewQTreeView(h unsafe.Pointer) *QTreeView {
 	return newQTreeView((*C.QTreeView)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQTreeView2(parent *QWidget) *QTreeView {
 }
 
 func (this *QTreeView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTreeView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTreeView_MetaObject(this.h)))
 }
 
 func (this *QTreeView) Metacast(param1 string) unsafe.Pointer {
@@ -90,7 +98,7 @@ func (this *QTreeView) SetSelectionModel(selectionModel *QItemSelectionModel) {
 }
 
 func (this *QTreeView) Header() *QHeaderView {
-	return newQHeaderView_U(unsafe.Pointer(C.QTreeView_Header(this.h)))
+	return UnsafeNewQHeaderView(unsafe.Pointer(C.QTreeView_Header(this.h)))
 }
 
 func (this *QTreeView) SetHeader(header *QHeaderView) {
@@ -246,7 +254,7 @@ func (this *QTreeView) TreePosition() int {
 }
 
 func (this *QTreeView) KeyboardSearch(search string) {
-	search_ms := miqt_strdupg(search)
+	search_ms := libmiqt.Strdupg(search)
 	defer C.free(search_ms)
 	C.QTreeView_KeyboardSearch(this.h, (*C.struct_miqt_string)(search_ms))
 }
@@ -314,7 +322,7 @@ func miqt_exec_callback_QTreeView_Expanded(cb C.intptr_t, index *C.QModelIndex) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -334,7 +342,7 @@ func miqt_exec_callback_QTreeView_Collapsed(cb C.intptr_t, index *C.QModelIndex)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }

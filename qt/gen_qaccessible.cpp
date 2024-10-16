@@ -29,7 +29,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QWindow>
-#include "qaccessible.h"
+#include <qaccessible.h>
 #include "gen_qaccessible.h"
 #include "_cgo_export.h"
 

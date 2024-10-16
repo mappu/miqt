@@ -4,7 +4,7 @@
 #include <cstring>
 #include <QStyle>
 #include <QStylePlugin>
-#include "qstyleplugin.h"
+#include <qstyleplugin.h>
 #include "gen_qstyleplugin.h"
 #include "_cgo_export.h"
 

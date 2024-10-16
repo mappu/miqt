@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTemporaryFile>
-#include "qtemporaryfile.h"
+#include <qtemporaryfile.h>
 #include "gen_qtemporaryfile.h"
 #include "_cgo_export.h"
 

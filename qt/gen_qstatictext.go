@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -31,6 +32,13 @@ func (this *QStaticText) cPointer() *C.QStaticText {
 	return this.h
 }
 
+func (this *QStaticText) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStaticText(h *C.QStaticText) *QStaticText {
 	if h == nil {
 		return nil
@@ -38,7 +46,7 @@ func newQStaticText(h *C.QStaticText) *QStaticText {
 	return &QStaticText{h: h}
 }
 
-func newQStaticText_U(h unsafe.Pointer) *QStaticText {
+func UnsafeNewQStaticText(h unsafe.Pointer) *QStaticText {
 	return newQStaticText((*C.QStaticText)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQStaticText() *QStaticText {
 
 // NewQStaticText2 constructs a new QStaticText object.
 func NewQStaticText2(text string) *QStaticText {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QStaticText_new2((*C.struct_miqt_string)(text_ms))
 	return newQStaticText(ret)
@@ -71,7 +79,7 @@ func (this *QStaticText) Swap(other *QStaticText) {
 }
 
 func (this *QStaticText) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStaticText_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }

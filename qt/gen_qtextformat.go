@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -260,6 +261,13 @@ func (this *QTextLength) cPointer() *C.QTextLength {
 	return this.h
 }
 
+func (this *QTextLength) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextLength(h *C.QTextLength) *QTextLength {
 	if h == nil {
 		return nil
@@ -267,7 +275,7 @@ func newQTextLength(h *C.QTextLength) *QTextLength {
 	return &QTextLength{h: h}
 }
 
-func newQTextLength_U(h unsafe.Pointer) *QTextLength {
+func UnsafeNewQTextLength(h unsafe.Pointer) *QTextLength {
 	return newQTextLength((*C.QTextLength)(h))
 }
 
@@ -334,6 +342,13 @@ func (this *QTextFormat) cPointer() *C.QTextFormat {
 	return this.h
 }
 
+func (this *QTextFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFormat(h *C.QTextFormat) *QTextFormat {
 	if h == nil {
 		return nil
@@ -341,7 +356,7 @@ func newQTextFormat(h *C.QTextFormat) *QTextFormat {
 	return &QTextFormat{h: h}
 }
 
-func newQTextFormat_U(h unsafe.Pointer) *QTextFormat {
+func UnsafeNewQTextFormat(h unsafe.Pointer) *QTextFormat {
 	return newQTextFormat((*C.QTextFormat)(h))
 }
 
@@ -648,14 +663,21 @@ func (this *QTextCharFormat) cPointer() *C.QTextCharFormat {
 	return this.h
 }
 
+func (this *QTextCharFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextCharFormat(h *C.QTextCharFormat) *QTextCharFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextCharFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
+	return &QTextCharFormat{h: h, QTextFormat: UnsafeNewQTextFormat(unsafe.Pointer(h))}
 }
 
-func newQTextCharFormat_U(h unsafe.Pointer) *QTextCharFormat {
+func UnsafeNewQTextCharFormat(h unsafe.Pointer) *QTextCharFormat {
 	return newQTextCharFormat((*C.QTextCharFormat)(h))
 }
 
@@ -691,7 +713,7 @@ func (this *QTextCharFormat) Font() *QFont {
 }
 
 func (this *QTextCharFormat) SetFontFamily(family string) {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	C.QTextCharFormat_SetFontFamily(this.h, (*C.struct_miqt_string)(family_ms))
 }
@@ -708,7 +730,7 @@ func (this *QTextCharFormat) SetFontFamilies(families []string) {
 	families_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
-		families_i_ms := miqt_strdupg(families[i])
+		families_i_ms := libmiqt.Strdupg(families[i])
 		defer C.free(families_i_ms)
 		families_CArray[i] = (*C.struct_miqt_string)(families_i_ms)
 	}
@@ -725,7 +747,7 @@ func (this *QTextCharFormat) FontFamilies() *QVariant {
 }
 
 func (this *QTextCharFormat) SetFontStyleName(styleName string) {
-	styleName_ms := miqt_strdupg(styleName)
+	styleName_ms := libmiqt.Strdupg(styleName)
 	defer C.free(styleName_ms)
 	C.QTextCharFormat_SetFontStyleName(this.h, (*C.struct_miqt_string)(styleName_ms))
 }
@@ -904,7 +926,7 @@ func (this *QTextCharFormat) TextOutline() *QPen {
 }
 
 func (this *QTextCharFormat) SetToolTip(tip string) {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	C.QTextCharFormat_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
 }
@@ -925,7 +947,7 @@ func (this *QTextCharFormat) IsAnchor() bool {
 }
 
 func (this *QTextCharFormat) SetAnchorHref(value string) {
-	value_ms := miqt_strdupg(value)
+	value_ms := libmiqt.Strdupg(value)
 	defer C.free(value_ms)
 	C.QTextCharFormat_SetAnchorHref(this.h, (*C.struct_miqt_string)(value_ms))
 }
@@ -938,7 +960,7 @@ func (this *QTextCharFormat) AnchorHref() string {
 }
 
 func (this *QTextCharFormat) SetAnchorName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTextCharFormat_SetAnchorName(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -955,7 +977,7 @@ func (this *QTextCharFormat) SetAnchorNames(names []string) {
 	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := miqt_strdupg(names[i])
+		names_i_ms := libmiqt.Strdupg(names[i])
 		defer C.free(names_i_ms)
 		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
 	}
@@ -1024,14 +1046,21 @@ func (this *QTextBlockFormat) cPointer() *C.QTextBlockFormat {
 	return this.h
 }
 
+func (this *QTextBlockFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBlockFormat(h *C.QTextBlockFormat) *QTextBlockFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextBlockFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
+	return &QTextBlockFormat{h: h, QTextFormat: UnsafeNewQTextFormat(unsafe.Pointer(h))}
 }
 
-func newQTextBlockFormat_U(h unsafe.Pointer) *QTextBlockFormat {
+func UnsafeNewQTextBlockFormat(h unsafe.Pointer) *QTextBlockFormat {
 	return newQTextBlockFormat((*C.QTextBlockFormat)(h))
 }
 
@@ -1207,14 +1236,21 @@ func (this *QTextListFormat) cPointer() *C.QTextListFormat {
 	return this.h
 }
 
+func (this *QTextListFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextListFormat(h *C.QTextListFormat) *QTextListFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextListFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
+	return &QTextListFormat{h: h, QTextFormat: UnsafeNewQTextFormat(unsafe.Pointer(h))}
 }
 
-func newQTextListFormat_U(h unsafe.Pointer) *QTextListFormat {
+func UnsafeNewQTextListFormat(h unsafe.Pointer) *QTextListFormat {
 	return newQTextListFormat((*C.QTextListFormat)(h))
 }
 
@@ -1251,7 +1287,7 @@ func (this *QTextListFormat) Indent() int {
 }
 
 func (this *QTextListFormat) SetNumberPrefix(numberPrefix string) {
-	numberPrefix_ms := miqt_strdupg(numberPrefix)
+	numberPrefix_ms := libmiqt.Strdupg(numberPrefix)
 	defer C.free(numberPrefix_ms)
 	C.QTextListFormat_SetNumberPrefix(this.h, (*C.struct_miqt_string)(numberPrefix_ms))
 }
@@ -1264,7 +1300,7 @@ func (this *QTextListFormat) NumberPrefix() string {
 }
 
 func (this *QTextListFormat) SetNumberSuffix(numberSuffix string) {
-	numberSuffix_ms := miqt_strdupg(numberSuffix)
+	numberSuffix_ms := libmiqt.Strdupg(numberSuffix)
 	defer C.free(numberSuffix_ms)
 	C.QTextListFormat_SetNumberSuffix(this.h, (*C.struct_miqt_string)(numberSuffix_ms))
 }
@@ -1302,14 +1338,21 @@ func (this *QTextImageFormat) cPointer() *C.QTextImageFormat {
 	return this.h
 }
 
+func (this *QTextImageFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextImageFormat(h *C.QTextImageFormat) *QTextImageFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextImageFormat{h: h, QTextCharFormat: newQTextCharFormat_U(unsafe.Pointer(h))}
+	return &QTextImageFormat{h: h, QTextCharFormat: UnsafeNewQTextCharFormat(unsafe.Pointer(h))}
 }
 
-func newQTextImageFormat_U(h unsafe.Pointer) *QTextImageFormat {
+func UnsafeNewQTextImageFormat(h unsafe.Pointer) *QTextImageFormat {
 	return newQTextImageFormat((*C.QTextImageFormat)(h))
 }
 
@@ -1324,7 +1367,7 @@ func (this *QTextImageFormat) IsValid() bool {
 }
 
 func (this *QTextImageFormat) SetName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTextImageFormat_SetName(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -1390,14 +1433,21 @@ func (this *QTextFrameFormat) cPointer() *C.QTextFrameFormat {
 	return this.h
 }
 
+func (this *QTextFrameFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFrameFormat(h *C.QTextFrameFormat) *QTextFrameFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextFrameFormat{h: h, QTextFormat: newQTextFormat_U(unsafe.Pointer(h))}
+	return &QTextFrameFormat{h: h, QTextFormat: UnsafeNewQTextFormat(unsafe.Pointer(h))}
 }
 
-func newQTextFrameFormat_U(h unsafe.Pointer) *QTextFrameFormat {
+func UnsafeNewQTextFrameFormat(h unsafe.Pointer) *QTextFrameFormat {
 	return newQTextFrameFormat((*C.QTextFrameFormat)(h))
 }
 
@@ -1564,14 +1614,21 @@ func (this *QTextTableFormat) cPointer() *C.QTextTableFormat {
 	return this.h
 }
 
+func (this *QTextTableFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextTableFormat(h *C.QTextTableFormat) *QTextTableFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextTableFormat{h: h, QTextFrameFormat: newQTextFrameFormat_U(unsafe.Pointer(h))}
+	return &QTextTableFormat{h: h, QTextFrameFormat: UnsafeNewQTextFrameFormat(unsafe.Pointer(h))}
 }
 
-func newQTextTableFormat_U(h unsafe.Pointer) *QTextTableFormat {
+func UnsafeNewQTextTableFormat(h unsafe.Pointer) *QTextTableFormat {
 	return newQTextTableFormat((*C.QTextTableFormat)(h))
 }
 
@@ -1689,14 +1746,21 @@ func (this *QTextTableCellFormat) cPointer() *C.QTextTableCellFormat {
 	return this.h
 }
 
+func (this *QTextTableCellFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextTableCellFormat(h *C.QTextTableCellFormat) *QTextTableCellFormat {
 	if h == nil {
 		return nil
 	}
-	return &QTextTableCellFormat{h: h, QTextCharFormat: newQTextCharFormat_U(unsafe.Pointer(h))}
+	return &QTextTableCellFormat{h: h, QTextCharFormat: UnsafeNewQTextCharFormat(unsafe.Pointer(h))}
 }
 
-func newQTextTableCellFormat_U(h unsafe.Pointer) *QTextTableCellFormat {
+func UnsafeNewQTextTableCellFormat(h unsafe.Pointer) *QTextTableCellFormat {
 	return newQTextTableCellFormat((*C.QTextTableCellFormat)(h))
 }
 

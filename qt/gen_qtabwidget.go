@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -42,14 +43,21 @@ func (this *QTabWidget) cPointer() *C.QTabWidget {
 	return this.h
 }
 
+func (this *QTabWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTabWidget(h *C.QTabWidget) *QTabWidget {
 	if h == nil {
 		return nil
 	}
-	return &QTabWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QTabWidget{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQTabWidget_U(h unsafe.Pointer) *QTabWidget {
+func UnsafeNewQTabWidget(h unsafe.Pointer) *QTabWidget {
 	return newQTabWidget((*C.QTabWidget)(h))
 }
 
@@ -66,7 +74,7 @@ func NewQTabWidget2(parent *QWidget) *QTabWidget {
 }
 
 func (this *QTabWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTabWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTabWidget_MetaObject(this.h)))
 }
 
 func (this *QTabWidget) Metacast(param1 string) unsafe.Pointer {
@@ -94,25 +102,25 @@ func QTabWidget_TrUtf8(s string) string {
 }
 
 func (this *QTabWidget) AddTab(widget *QWidget, param2 string) int {
-	param2_ms := miqt_strdupg(param2)
+	param2_ms := libmiqt.Strdupg(param2)
 	defer C.free(param2_ms)
 	return (int)(C.QTabWidget_AddTab(this.h, widget.cPointer(), (*C.struct_miqt_string)(param2_ms)))
 }
 
 func (this *QTabWidget) AddTab2(widget *QWidget, icon *QIcon, label string) int {
-	label_ms := miqt_strdupg(label)
+	label_ms := libmiqt.Strdupg(label)
 	defer C.free(label_ms)
 	return (int)(C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
 }
 
 func (this *QTabWidget) InsertTab(index int, widget *QWidget, param3 string) int {
-	param3_ms := miqt_strdupg(param3)
+	param3_ms := libmiqt.Strdupg(param3)
 	defer C.free(param3_ms)
 	return (int)(C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(param3_ms)))
 }
 
 func (this *QTabWidget) InsertTab2(index int, widget *QWidget, icon *QIcon, label string) int {
-	label_ms := miqt_strdupg(label)
+	label_ms := libmiqt.Strdupg(label)
 	defer C.free(label_ms)
 	return (int)(C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
 }
@@ -145,7 +153,7 @@ func (this *QTabWidget) TabText(index int) string {
 }
 
 func (this *QTabWidget) SetTabText(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTabWidget_SetTabText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -162,7 +170,7 @@ func (this *QTabWidget) SetTabIcon(index int, icon *QIcon) {
 }
 
 func (this *QTabWidget) SetTabToolTip(index int, tip string) {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	C.QTabWidget_SetTabToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(tip_ms))
 }
@@ -175,7 +183,7 @@ func (this *QTabWidget) TabToolTip(index int) string {
 }
 
 func (this *QTabWidget) SetTabWhatsThis(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTabWidget_SetTabWhatsThis(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -192,11 +200,11 @@ func (this *QTabWidget) CurrentIndex() int {
 }
 
 func (this *QTabWidget) CurrentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTabWidget_CurrentWidget(this.h)))
 }
 
 func (this *QTabWidget) Widget(index int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabWidget_Widget(this.h, (C.int)(index))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTabWidget_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QTabWidget) IndexOf(widget *QWidget) int {
@@ -266,7 +274,7 @@ func (this *QTabWidget) SetCornerWidget(w *QWidget) {
 }
 
 func (this *QTabWidget) CornerWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTabWidget_CornerWidget(this.h)))
 }
 
 func (this *QTabWidget) ElideMode() TextElideMode {
@@ -317,7 +325,7 @@ func (this *QTabWidget) Clear() {
 }
 
 func (this *QTabWidget) TabBar() *QTabBar {
-	return newQTabBar_U(unsafe.Pointer(C.QTabWidget_TabBar(this.h)))
+	return UnsafeNewQTabBar(unsafe.Pointer(C.QTabWidget_TabBar(this.h)))
 }
 
 func (this *QTabWidget) SetCurrentIndex(index int) {
@@ -457,7 +465,7 @@ func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 }
 
 func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabWidget_CornerWidget1(this.h, (C.int)(corner))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTabWidget_CornerWidget1(this.h, (C.int)(corner))))
 }
 
 // Delete this object from C++ memory.

@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfactoryinterface.h"
+#include <qfactoryinterface.h>
 #include "gen_qfactoryinterface.h"
 #include "_cgo_export.h"
 

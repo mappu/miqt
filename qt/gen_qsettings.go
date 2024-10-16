@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,20 +65,27 @@ func (this *QSettings) cPointer() *C.QSettings {
 	return this.h
 }
 
+func (this *QSettings) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSettings(h *C.QSettings) *QSettings {
 	if h == nil {
 		return nil
 	}
-	return &QSettings{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSettings{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSettings_U(h unsafe.Pointer) *QSettings {
+func UnsafeNewQSettings(h unsafe.Pointer) *QSettings {
 	return newQSettings((*C.QSettings)(h))
 }
 
 // NewQSettings constructs a new QSettings object.
 func NewQSettings(organization string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
 	ret := C.QSettings_new((*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
@@ -85,7 +93,7 @@ func NewQSettings(organization string) *QSettings {
 
 // NewQSettings2 constructs a new QSettings object.
 func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
 	ret := C.QSettings_new2((C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
@@ -93,7 +101,7 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 
 // NewQSettings3 constructs a new QSettings object.
 func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organization string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
 	ret := C.QSettings_new3((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms))
 	return newQSettings(ret)
@@ -101,7 +109,7 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 
 // NewQSettings4 constructs a new QSettings object.
 func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QSettings_new4((*C.struct_miqt_string)(fileName_ms), (C.int)(format))
 	return newQSettings(ret)
@@ -121,9 +129,9 @@ func NewQSettings6(scope QSettings__Scope) *QSettings {
 
 // NewQSettings7 constructs a new QSettings object.
 func NewQSettings7(organization string, application string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new7((*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
@@ -131,9 +139,9 @@ func NewQSettings7(organization string, application string) *QSettings {
 
 // NewQSettings8 constructs a new QSettings object.
 func NewQSettings8(organization string, application string, parent *QObject) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new8((*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
@@ -141,9 +149,9 @@ func NewQSettings8(organization string, application string, parent *QObject) *QS
 
 // NewQSettings9 constructs a new QSettings object.
 func NewQSettings9(scope QSettings__Scope, organization string, application string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new9((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
@@ -151,9 +159,9 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 
 // NewQSettings10 constructs a new QSettings object.
 func NewQSettings10(scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new10((C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
@@ -161,9 +169,9 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 
 // NewQSettings11 constructs a new QSettings object.
 func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organization string, application string) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new11((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms))
 	return newQSettings(ret)
@@ -171,9 +179,9 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 
 // NewQSettings12 constructs a new QSettings object.
 func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organization string, application string, parent *QObject) *QSettings {
-	organization_ms := miqt_strdupg(organization)
+	organization_ms := libmiqt.Strdupg(organization)
 	defer C.free(organization_ms)
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	ret := C.QSettings_new12((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(organization_ms), (*C.struct_miqt_string)(application_ms), parent.cPointer())
 	return newQSettings(ret)
@@ -181,7 +189,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 
 // NewQSettings13 constructs a new QSettings object.
 func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) *QSettings {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QSettings_new13((*C.struct_miqt_string)(fileName_ms), (C.int)(format), parent.cPointer())
 	return newQSettings(ret)
@@ -200,7 +208,7 @@ func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSettings_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSettings_MetaObject(this.h)))
 }
 
 func (this *QSettings) Metacast(param1 string) unsafe.Pointer {
@@ -248,7 +256,7 @@ func (this *QSettings) SetAtomicSyncRequired(enable bool) {
 }
 
 func (this *QSettings) BeginGroup(prefix string) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QSettings_BeginGroup(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
@@ -265,13 +273,13 @@ func (this *QSettings) Group() string {
 }
 
 func (this *QSettings) BeginReadArray(prefix string) int {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	return (int)(C.QSettings_BeginReadArray(this.h, (*C.struct_miqt_string)(prefix_ms)))
 }
 
 func (this *QSettings) BeginWriteArray(prefix string) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QSettings_BeginWriteArray(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
@@ -331,13 +339,13 @@ func (this *QSettings) IsWritable() bool {
 }
 
 func (this *QSettings) SetValue(key string, value *QVariant) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QSettings_SetValue(this.h, (*C.struct_miqt_string)(key_ms), value.cPointer())
 }
 
 func (this *QSettings) Value(key string) *QVariant {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QSettings_Value(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQVariant(_ret)
@@ -346,13 +354,13 @@ func (this *QSettings) Value(key string) *QVariant {
 }
 
 func (this *QSettings) Remove(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QSettings_Remove(this.h, (*C.struct_miqt_string)(key_ms))
 }
 
 func (this *QSettings) Contains(key string) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QSettings_Contains(this.h, (*C.struct_miqt_string)(key_ms)))
 }
@@ -405,7 +413,7 @@ func (this *QSettings) SetIniCodecWithCodecName(codecName string) {
 }
 
 func (this *QSettings) IniCodec() *QTextCodec {
-	return newQTextCodec_U(unsafe.Pointer(C.QSettings_IniCodec(this.h)))
+	return UnsafeNewQTextCodec(unsafe.Pointer(C.QSettings_IniCodec(this.h)))
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
@@ -417,19 +425,19 @@ func QSettings_DefaultFormat() QSettings__Format {
 }
 
 func QSettings_SetSystemIniPath(dir string) {
-	dir_ms := miqt_strdupg(dir)
+	dir_ms := libmiqt.Strdupg(dir)
 	defer C.free(dir_ms)
 	C.QSettings_SetSystemIniPath((*C.struct_miqt_string)(dir_ms))
 }
 
 func QSettings_SetUserIniPath(dir string) {
-	dir_ms := miqt_strdupg(dir)
+	dir_ms := libmiqt.Strdupg(dir)
 	defer C.free(dir_ms)
 	C.QSettings_SetUserIniPath((*C.struct_miqt_string)(dir_ms))
 }
 
 func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QSettings_SetPath((C.int)(format), (C.int)(scope), (*C.struct_miqt_string)(path_ms))
 }
@@ -479,13 +487,13 @@ func QSettings_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSettings) BeginWriteArray2(prefix string, size int) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QSettings_BeginWriteArray2(this.h, (*C.struct_miqt_string)(prefix_ms), (C.int)(size))
 }
 
 func (this *QSettings) Value2(key string, defaultValue *QVariant) *QVariant {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QSettings_Value2(this.h, (*C.struct_miqt_string)(key_ms), defaultValue.cPointer())
 	_goptr := newQVariant(_ret)

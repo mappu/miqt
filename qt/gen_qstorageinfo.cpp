@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qstorageinfo.h"
+#include <qstorageinfo.h>
 #include "gen_qstorageinfo.h"
 #include "_cgo_export.h"
 

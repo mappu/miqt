@@ -25,14 +25,21 @@ func (this *QFocusFrame) cPointer() *C.QFocusFrame {
 	return this.h
 }
 
+func (this *QFocusFrame) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFocusFrame(h *C.QFocusFrame) *QFocusFrame {
 	if h == nil {
 		return nil
 	}
-	return &QFocusFrame{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QFocusFrame{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQFocusFrame_U(h unsafe.Pointer) *QFocusFrame {
+func UnsafeNewQFocusFrame(h unsafe.Pointer) *QFocusFrame {
 	return newQFocusFrame((*C.QFocusFrame)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQFocusFrame2(parent *QWidget) *QFocusFrame {
 }
 
 func (this *QFocusFrame) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFocusFrame_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFocusFrame_MetaObject(this.h)))
 }
 
 func (this *QFocusFrame) Metacast(param1 string) unsafe.Pointer {
@@ -81,7 +88,7 @@ func (this *QFocusFrame) SetWidget(widget *QWidget) {
 }
 
 func (this *QFocusFrame) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QFocusFrame_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QFocusFrame_Widget(this.h)))
 }
 
 func QFocusFrame_Tr2(s string, c string) string {

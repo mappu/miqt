@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -54,6 +55,13 @@ func (this *QUuid) cPointer() *C.QUuid {
 	return this.h
 }
 
+func (this *QUuid) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUuid(h *C.QUuid) *QUuid {
 	if h == nil {
 		return nil
@@ -61,7 +69,7 @@ func newQUuid(h *C.QUuid) *QUuid {
 	return &QUuid{h: h}
 }
 
-func newQUuid_U(h unsafe.Pointer) *QUuid {
+func UnsafeNewQUuid(h unsafe.Pointer) *QUuid {
 	return newQUuid((*C.QUuid)(h))
 }
 
@@ -79,7 +87,7 @@ func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte,
 
 // NewQUuid3 constructs a new QUuid object.
 func NewQUuid3(param1 string) *QUuid {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	ret := C.QUuid_new3((*C.struct_miqt_string)(param1_ms))
 	return newQUuid(ret)
@@ -189,7 +197,7 @@ func QUuid_CreateUuidV5(ns *QUuid, baseData *QByteArray) *QUuid {
 }
 
 func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
-	baseData_ms := miqt_strdupg(baseData)
+	baseData_ms := libmiqt.Strdupg(baseData)
 	defer C.free(baseData_ms)
 	_ret := C.QUuid_CreateUuidV32(ns.cPointer(), (*C.struct_miqt_string)(baseData_ms))
 	_goptr := newQUuid(_ret)
@@ -198,7 +206,7 @@ func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 }
 
 func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
-	baseData_ms := miqt_strdupg(baseData)
+	baseData_ms := libmiqt.Strdupg(baseData)
 	defer C.free(baseData_ms)
 	_ret := C.QUuid_CreateUuidV52(ns.cPointer(), (*C.struct_miqt_string)(baseData_ms))
 	_goptr := newQUuid(_ret)

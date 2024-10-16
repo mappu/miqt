@@ -24,6 +24,13 @@ func (this *qfloat16) cPointer() *C.qfloat16 {
 	return this.h
 }
 
+func (this *qfloat16) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newqfloat16(h *C.qfloat16) *qfloat16 {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newqfloat16(h *C.qfloat16) *qfloat16 {
 	return &qfloat16{h: h}
 }
 
-func newqfloat16_U(h unsafe.Pointer) *qfloat16 {
+func UnsafeNewqfloat16(h unsafe.Pointer) *qfloat16 {
 	return newqfloat16((*C.qfloat16)(h))
 }
 

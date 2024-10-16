@@ -26,14 +26,21 @@ func (this *QDrag) cPointer() *C.QDrag {
 	return this.h
 }
 
+func (this *QDrag) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDrag(h *C.QDrag) *QDrag {
 	if h == nil {
 		return nil
 	}
-	return &QDrag{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QDrag{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQDrag_U(h unsafe.Pointer) *QDrag {
+func UnsafeNewQDrag(h unsafe.Pointer) *QDrag {
 	return newQDrag((*C.QDrag)(h))
 }
 
@@ -44,7 +51,7 @@ func NewQDrag(dragSource *QObject) *QDrag {
 }
 
 func (this *QDrag) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDrag_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDrag_MetaObject(this.h)))
 }
 
 func (this *QDrag) Metacast(param1 string) unsafe.Pointer {
@@ -76,7 +83,7 @@ func (this *QDrag) SetMimeData(data *QMimeData) {
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	return newQMimeData_U(unsafe.Pointer(C.QDrag_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QDrag_MimeData(this.h)))
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
@@ -102,11 +109,11 @@ func (this *QDrag) HotSpot() *QPoint {
 }
 
 func (this *QDrag) Source() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QDrag_Source(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QDrag_Source(this.h)))
 }
 
 func (this *QDrag) Target() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QDrag_Target(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QDrag_Target(this.h)))
 }
 
 func (this *QDrag) Start() DropAction {
@@ -179,7 +186,7 @@ func miqt_exec_callback_QDrag_TargetChanged(cb C.intptr_t, newTarget *C.QObject)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQObject_U(unsafe.Pointer(newTarget))
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(newTarget))
 
 	gofunc(slotval1)
 }

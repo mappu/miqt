@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -60,6 +61,13 @@ func (this *QTextStream) cPointer() *C.QTextStream {
 	return this.h
 }
 
+func (this *QTextStream) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextStream(h *C.QTextStream) *QTextStream {
 	if h == nil {
 		return nil
@@ -67,7 +75,7 @@ func newQTextStream(h *C.QTextStream) *QTextStream {
 	return &QTextStream{h: h}
 }
 
-func newQTextStream_U(h unsafe.Pointer) *QTextStream {
+func UnsafeNewQTextStream(h unsafe.Pointer) *QTextStream {
 	return newQTextStream((*C.QTextStream)(h))
 }
 
@@ -118,7 +126,7 @@ func (this *QTextStream) SetCodecWithCodecName(codecName string) {
 }
 
 func (this *QTextStream) Codec() *QTextCodec {
-	return newQTextCodec_U(unsafe.Pointer(C.QTextStream_Codec(this.h)))
+	return UnsafeNewQTextCodec(unsafe.Pointer(C.QTextStream_Codec(this.h)))
 }
 
 func (this *QTextStream) SetAutoDetectUnicode(enabled bool) {
@@ -153,7 +161,7 @@ func (this *QTextStream) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextStream) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QTextStream_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextStream_Device(this.h)))
 }
 
 func (this *QTextStream) String() string {
@@ -280,135 +288,135 @@ func (this *QTextStream) RealNumberPrecision() int {
 }
 
 func (this *QTextStream) OperatorShiftRight(ch *QChar) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRight(this.h, ch.cPointer())))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRight(this.h, ch.cPointer())))
 }
 
 func (this *QTextStream) OperatorShiftRightWithCh(ch *int8) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithCh(this.h, (*C.char)(unsafe.Pointer(ch)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithCh(this.h, (*C.char)(unsafe.Pointer(ch)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithShort(i *int16) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithShort(this.h, (*C.int16_t)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithShort(this.h, (*C.int16_t)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithUnsignedshort(i *uint16) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedshort(this.h, (*C.uint16_t)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedshort(this.h, (*C.uint16_t)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithInt(i *int) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithInt(this.h, (*C.int)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithInt(this.h, (*C.int)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithUnsignedint(i *uint) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedint(this.h, (*C.uint)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedint(this.h, (*C.uint)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithLong(i *int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithLong(this.h, (*C.long)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithLong(this.h, (*C.long)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithUnsignedlong(i *uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedlong(this.h, (*C.ulong)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithUnsignedlong(this.h, (*C.ulong)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithQlonglong(i *int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQlonglong(this.h, (*C.longlong)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQlonglong(this.h, (*C.longlong)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithQulonglong(i *uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQulonglong(this.h, (*C.ulonglong)(unsafe.Pointer(i)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQulonglong(this.h, (*C.ulonglong)(unsafe.Pointer(i)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithFloat(f *float32) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithFloat(this.h, (*C.float)(unsafe.Pointer(f)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithFloat(this.h, (*C.float)(unsafe.Pointer(f)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithDouble(f *float64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithDouble(this.h, (*C.double)(unsafe.Pointer(f)))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithDouble(this.h, (*C.double)(unsafe.Pointer(f)))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithQString(s string) *QTextStream {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithArray(array *QByteArray) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithArray(this.h, array.cPointer())))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithArray(this.h, array.cPointer())))
 }
 
 func (this *QTextStream) OperatorShiftRightWithChar(c string) *QTextStream {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithChar(this.h, c_Cstring)))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithChar(this.h, c_Cstring)))
 }
 
 func (this *QTextStream) OperatorShiftLeft(ch QChar) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeft(this.h, ch.cPointer())))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeft(this.h, ch.cPointer())))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithCh(ch int8) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithCh(this.h, (C.char)(ch))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithCh(this.h, (C.char)(ch))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithShort(i int16) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithShort(this.h, (C.int16_t)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithShort(this.h, (C.int16_t)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithUnsignedshort(i uint16) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithInt(i int) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithInt(this.h, (C.int)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithInt(this.h, (C.int)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithUnsignedint(i uint) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedint(this.h, (C.uint)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedint(this.h, (C.uint)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithLong(i int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithLong(this.h, (C.long)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithLong(this.h, (C.long)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithUnsignedlong(i uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQlonglong(i int64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQlonglong(this.h, (C.longlong)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQlonglong(this.h, (C.longlong)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQulonglong(i uint64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQulonglong(this.h, (C.ulonglong)(i))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQulonglong(this.h, (C.ulonglong)(i))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithFloat(f float32) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithFloat(this.h, (C.float)(f))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithFloat(this.h, (C.float)(f))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithDouble(f float64) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithDouble(this.h, (C.double)(f))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithDouble(this.h, (C.double)(f))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQString(s string) *QTextStream {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithArray(array *QByteArray) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithArray(this.h, array.cPointer())))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithArray(this.h, array.cPointer())))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithChar(c string) *QTextStream {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithChar(this.h, c_Cstring)))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithChar(this.h, c_Cstring)))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithPtr(ptr unsafe.Pointer) *QTextStream {
-	return newQTextStream_U(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithPtr(this.h, ptr)))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithPtr(this.h, ptr)))
 }
 
 func (this *QTextStream) ReadLine1(maxlen int64) string {

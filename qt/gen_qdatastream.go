@@ -85,6 +85,13 @@ func (this *QDataStream) cPointer() *C.QDataStream {
 	return this.h
 }
 
+func (this *QDataStream) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDataStream(h *C.QDataStream) *QDataStream {
 	if h == nil {
 		return nil
@@ -92,7 +99,7 @@ func newQDataStream(h *C.QDataStream) *QDataStream {
 	return &QDataStream{h: h}
 }
 
-func newQDataStream_U(h unsafe.Pointer) *QDataStream {
+func UnsafeNewQDataStream(h unsafe.Pointer) *QDataStream {
 	return newQDataStream((*C.QDataStream)(h))
 }
 
@@ -121,7 +128,7 @@ func NewQDataStream4(param1 *QByteArray) *QDataStream {
 }
 
 func (this *QDataStream) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QDataStream_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QDataStream_Device(this.h)))
 }
 
 func (this *QDataStream) SetDevice(device *QIODevice) {
@@ -275,7 +282,7 @@ func (this *QDataStream) OperatorShiftLeftWithStr(str string) {
 func (this *QDataStream) ReadBytes(param1 string, lenVal *uint) *QDataStream {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return newQDataStream_U(unsafe.Pointer(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))))
+	return UnsafeNewQDataStream(unsafe.Pointer(C.QDataStream_ReadBytes(this.h, param1_Cstring, (*C.uint)(unsafe.Pointer(lenVal)))))
 }
 
 func (this *QDataStream) ReadRawData(param1 string, lenVal int) int {
@@ -341,6 +348,13 @@ func (this *QtPrivate__StreamStateSaver) cPointer() *C.QtPrivate__StreamStateSav
 	return this.h
 }
 
+func (this *QtPrivate__StreamStateSaver) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__StreamStateSaver(h *C.QtPrivate__StreamStateSaver) *QtPrivate__StreamStateSaver {
 	if h == nil {
 		return nil
@@ -348,7 +362,7 @@ func newQtPrivate__StreamStateSaver(h *C.QtPrivate__StreamStateSaver) *QtPrivate
 	return &QtPrivate__StreamStateSaver{h: h}
 }
 
-func newQtPrivate__StreamStateSaver_U(h unsafe.Pointer) *QtPrivate__StreamStateSaver {
+func UnsafeNewQtPrivate__StreamStateSaver(h unsafe.Pointer) *QtPrivate__StreamStateSaver {
 	return newQtPrivate__StreamStateSaver((*C.QtPrivate__StreamStateSaver)(h))
 }
 

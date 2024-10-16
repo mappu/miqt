@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QFileSelector) cPointer() *C.QFileSelector {
 	return this.h
 }
 
+func (this *QFileSelector) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileSelector(h *C.QFileSelector) *QFileSelector {
 	if h == nil {
 		return nil
 	}
-	return &QFileSelector{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QFileSelector{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQFileSelector_U(h unsafe.Pointer) *QFileSelector {
+func UnsafeNewQFileSelector(h unsafe.Pointer) *QFileSelector {
 	return newQFileSelector((*C.QFileSelector)(h))
 }
 
@@ -49,7 +57,7 @@ func NewQFileSelector2(parent *QObject) *QFileSelector {
 }
 
 func (this *QFileSelector) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFileSelector_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSelector_MetaObject(this.h)))
 }
 
 func (this *QFileSelector) Metacast(param1 string) unsafe.Pointer {
@@ -77,7 +85,7 @@ func QFileSelector_TrUtf8(s string) string {
 }
 
 func (this *QFileSelector) Select(filePath string) string {
-	filePath_ms := miqt_strdupg(filePath)
+	filePath_ms := libmiqt.Strdupg(filePath)
 	defer C.free(filePath_ms)
 	var _ms *C.struct_miqt_string = C.QFileSelector_Select(this.h, (*C.struct_miqt_string)(filePath_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -111,7 +119,7 @@ func (this *QFileSelector) SetExtraSelectors(list []string) {
 	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		list_i_ms := miqt_strdupg(list[i])
+		list_i_ms := libmiqt.Strdupg(list[i])
 		defer C.free(list_i_ms)
 		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
 	}

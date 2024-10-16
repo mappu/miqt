@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -34,14 +35,21 @@ func (this *QActionGroup) cPointer() *C.QActionGroup {
 	return this.h
 }
 
+func (this *QActionGroup) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQActionGroup(h *C.QActionGroup) *QActionGroup {
 	if h == nil {
 		return nil
 	}
-	return &QActionGroup{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QActionGroup{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQActionGroup_U(h unsafe.Pointer) *QActionGroup {
+func UnsafeNewQActionGroup(h unsafe.Pointer) *QActionGroup {
 	return newQActionGroup((*C.QActionGroup)(h))
 }
 
@@ -52,7 +60,7 @@ func NewQActionGroup(parent *QObject) *QActionGroup {
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QActionGroup_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QActionGroup_MetaObject(this.h)))
 }
 
 func (this *QActionGroup) Metacast(param1 string) unsafe.Pointer {
@@ -80,19 +88,19 @@ func QActionGroup_TrUtf8(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddAction(this.h, a.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction(this.h, a.cPointer())))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddActionWithText(this.h, (*C.struct_miqt_string)(text_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddActionWithText(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQAction_U(unsafe.Pointer(C.QActionGroup_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -104,14 +112,14 @@ func (this *QActionGroup) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QActionGroup_CheckedAction(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_CheckedAction(this.h)))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
@@ -165,7 +173,7 @@ func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -185,7 +193,7 @@ func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

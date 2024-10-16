@@ -1,7 +1,7 @@
 #include <QByteArray>
 #include <QCryptographicHash>
 #include <QIODevice>
-#include "qcryptographichash.h"
+#include <qcryptographichash.h>
 #include "gen_qcryptographichash.h"
 #include "_cgo_export.h"
 

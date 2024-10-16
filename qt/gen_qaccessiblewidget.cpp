@@ -9,7 +9,7 @@
 #include <cstring>
 #include <QWidget>
 #include <QWindow>
-#include "qaccessiblewidget.h"
+#include <qaccessiblewidget.h>
 #include "gen_qaccessiblewidget.h"
 #include "_cgo_export.h"
 

@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qsignaltransition.h"
+#include <qsignaltransition.h>
 #include "gen_qsignaltransition.h"
 #include "_cgo_export.h"
 

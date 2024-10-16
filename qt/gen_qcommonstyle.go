@@ -25,14 +25,21 @@ func (this *QCommonStyle) cPointer() *C.QCommonStyle {
 	return this.h
 }
 
+func (this *QCommonStyle) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCommonStyle(h *C.QCommonStyle) *QCommonStyle {
 	if h == nil {
 		return nil
 	}
-	return &QCommonStyle{h: h, QStyle: newQStyle_U(unsafe.Pointer(h))}
+	return &QCommonStyle{h: h, QStyle: UnsafeNewQStyle(unsafe.Pointer(h))}
 }
 
-func newQCommonStyle_U(h unsafe.Pointer) *QCommonStyle {
+func UnsafeNewQCommonStyle(h unsafe.Pointer) *QCommonStyle {
 	return newQCommonStyle((*C.QCommonStyle)(h))
 }
 
@@ -43,7 +50,7 @@ func NewQCommonStyle() *QCommonStyle {
 }
 
 func (this *QCommonStyle) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCommonStyle_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCommonStyle_MetaObject(this.h)))
 }
 
 func (this *QCommonStyle) Metacast(param1 string) unsafe.Pointer {

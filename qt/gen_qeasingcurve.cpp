@@ -1,7 +1,7 @@
 #include <QEasingCurve>
 #include <QList>
 #include <QPointF>
-#include "qeasingcurve.h"
+#include <qeasingcurve.h>
 #include "gen_qeasingcurve.h"
 #include "_cgo_export.h"
 

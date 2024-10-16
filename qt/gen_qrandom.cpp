@@ -1,6 +1,6 @@
 #include <QRandomGenerator>
 #include <QRandomGenerator64>
-#include "qrandom.h"
+#include <qrandom.h>
 #include "gen_qrandom.h"
 #include "_cgo_export.h"
 

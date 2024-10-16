@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVersionNumber>
-#include "qlibraryinfo.h"
+#include <qlibraryinfo.h>
 #include "gen_qlibraryinfo.h"
 #include "_cgo_export.h"
 

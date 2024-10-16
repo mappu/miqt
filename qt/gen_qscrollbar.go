@@ -25,14 +25,21 @@ func (this *QScrollBar) cPointer() *C.QScrollBar {
 	return this.h
 }
 
+func (this *QScrollBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScrollBar(h *C.QScrollBar) *QScrollBar {
 	if h == nil {
 		return nil
 	}
-	return &QScrollBar{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
+	return &QScrollBar{h: h, QAbstractSlider: UnsafeNewQAbstractSlider(unsafe.Pointer(h))}
 }
 
-func newQScrollBar_U(h unsafe.Pointer) *QScrollBar {
+func UnsafeNewQScrollBar(h unsafe.Pointer) *QScrollBar {
 	return newQScrollBar((*C.QScrollBar)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQScrollBar4(param1 Orientation, parent *QWidget) *QScrollBar {
 }
 
 func (this *QScrollBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QScrollBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScrollBar_MetaObject(this.h)))
 }
 
 func (this *QScrollBar) Metacast(param1 string) unsafe.Pointer {

@@ -366,6 +366,13 @@ func (this *QLatin1Char) cPointer() *C.QLatin1Char {
 	return this.h
 }
 
+func (this *QLatin1Char) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLatin1Char(h *C.QLatin1Char) *QLatin1Char {
 	if h == nil {
 		return nil
@@ -373,7 +380,7 @@ func newQLatin1Char(h *C.QLatin1Char) *QLatin1Char {
 	return &QLatin1Char{h: h}
 }
 
-func newQLatin1Char_U(h unsafe.Pointer) *QLatin1Char {
+func UnsafeNewQLatin1Char(h unsafe.Pointer) *QLatin1Char {
 	return newQLatin1Char((*C.QLatin1Char)(h))
 }
 
@@ -422,6 +429,13 @@ func (this *QChar) cPointer() *C.QChar {
 	return this.h
 }
 
+func (this *QChar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQChar(h *C.QChar) *QChar {
 	if h == nil {
 		return nil
@@ -429,7 +443,7 @@ func newQChar(h *C.QChar) *QChar {
 	return &QChar{h: h}
 }
 
-func newQChar_U(h unsafe.Pointer) *QChar {
+func UnsafeNewQChar(h unsafe.Pointer) *QChar {
 	return newQChar((*C.QChar)(h))
 }
 

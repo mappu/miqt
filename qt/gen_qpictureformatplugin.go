@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,19 +26,26 @@ func (this *QPictureFormatPlugin) cPointer() *C.QPictureFormatPlugin {
 	return this.h
 }
 
+func (this *QPictureFormatPlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPictureFormatPlugin(h *C.QPictureFormatPlugin) *QPictureFormatPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QPictureFormatPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QPictureFormatPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQPictureFormatPlugin_U(h unsafe.Pointer) *QPictureFormatPlugin {
+func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer) *QPictureFormatPlugin {
 	return newQPictureFormatPlugin((*C.QPictureFormatPlugin)(h))
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPictureFormatPlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPictureFormatPlugin_MetaObject(this.h)))
 }
 
 func (this *QPictureFormatPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -65,23 +73,23 @@ func QPictureFormatPlugin_TrUtf8(s string) string {
 }
 
 func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pic *QPicture) bool {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
 	return (bool)(C.QPictureFormatPlugin_LoadPicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
 	return (bool)(C.QPictureFormatPlugin_SavePicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	return (bool)(C.QPictureFormatPlugin_InstallIOHandler(this.h, (*C.struct_miqt_string)(format_ms)))
 }

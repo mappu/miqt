@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QTextDocumentWriter) cPointer() *C.QTextDocumentWriter {
 	return this.h
 }
 
+func (this *QTextDocumentWriter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQTextDocumentWriter(h *C.QTextDocumentWriter) *QTextDocumentWriter {
 	return &QTextDocumentWriter{h: h}
 }
 
-func newQTextDocumentWriter_U(h unsafe.Pointer) *QTextDocumentWriter {
+func UnsafeNewQTextDocumentWriter(h unsafe.Pointer) *QTextDocumentWriter {
 	return newQTextDocumentWriter((*C.QTextDocumentWriter)(h))
 }
 
@@ -49,7 +57,7 @@ func NewQTextDocumentWriter2(device *QIODevice, format *QByteArray) *QTextDocume
 
 // NewQTextDocumentWriter3 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QTextDocumentWriter_new3((*C.struct_miqt_string)(fileName_ms))
 	return newQTextDocumentWriter(ret)
@@ -57,7 +65,7 @@ func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 
 // NewQTextDocumentWriter4 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter4(fileName string, format *QByteArray) *QTextDocumentWriter {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QTextDocumentWriter_new4((*C.struct_miqt_string)(fileName_ms), format.cPointer())
 	return newQTextDocumentWriter(ret)
@@ -79,11 +87,11 @@ func (this *QTextDocumentWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QTextDocumentWriter) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QTextDocumentWriter_Device(this.h)))
 }
 
 func (this *QTextDocumentWriter) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QTextDocumentWriter_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -108,7 +116,7 @@ func (this *QTextDocumentWriter) SetCodec(codec *QTextCodec) {
 }
 
 func (this *QTextDocumentWriter) Codec() *QTextCodec {
-	return newQTextCodec_U(unsafe.Pointer(C.QTextDocumentWriter_Codec(this.h)))
+	return UnsafeNewQTextCodec(unsafe.Pointer(C.QTextDocumentWriter_Codec(this.h)))
 }
 
 func QTextDocumentWriter_SupportedDocumentFormats() []QByteArray {

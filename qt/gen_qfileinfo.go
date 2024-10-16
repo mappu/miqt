@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QFileInfo) cPointer() *C.QFileInfo {
 	return this.h
 }
 
+func (this *QFileInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQFileInfo(h *C.QFileInfo) *QFileInfo {
 	return &QFileInfo{h: h}
 }
 
-func newQFileInfo_U(h unsafe.Pointer) *QFileInfo {
+func UnsafeNewQFileInfo(h unsafe.Pointer) *QFileInfo {
 	return newQFileInfo((*C.QFileInfo)(h))
 }
 
@@ -43,7 +51,7 @@ func NewQFileInfo() *QFileInfo {
 
 // NewQFileInfo2 constructs a new QFileInfo object.
 func NewQFileInfo2(file string) *QFileInfo {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	ret := C.QFileInfo_new2((*C.struct_miqt_string)(file_ms))
 	return newQFileInfo(ret)
@@ -57,7 +65,7 @@ func NewQFileInfo3(file *QFile) *QFileInfo {
 
 // NewQFileInfo4 constructs a new QFileInfo object.
 func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	ret := C.QFileInfo_new4(dir.cPointer(), (*C.struct_miqt_string)(file_ms))
 	return newQFileInfo(ret)
@@ -86,7 +94,7 @@ func (this *QFileInfo) OperatorNotEqual(fileinfo *QFileInfo) bool {
 }
 
 func (this *QFileInfo) SetFile(file string) {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	C.QFileInfo_SetFile(this.h, (*C.struct_miqt_string)(file_ms))
 }
@@ -96,7 +104,7 @@ func (this *QFileInfo) SetFileWithFile(file *QFile) {
 }
 
 func (this *QFileInfo) SetFile2(dir *QDir, file string) {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	C.QFileInfo_SetFile2(this.h, dir.cPointer(), (*C.struct_miqt_string)(file_ms))
 }
@@ -106,7 +114,7 @@ func (this *QFileInfo) Exists() bool {
 }
 
 func QFileInfo_ExistsWithFile(file string) bool {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	return (bool)(C.QFileInfo_ExistsWithFile((*C.struct_miqt_string)(file_ms)))
 }

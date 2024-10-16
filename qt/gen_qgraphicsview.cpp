@@ -18,7 +18,7 @@
 #include <QTransform>
 #include <QVariant>
 #include <QWidget>
-#include "qgraphicsview.h"
+#include <qgraphicsview.h>
 #include "gen_qgraphicsview.h"
 #include "_cgo_export.h"
 

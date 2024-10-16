@@ -25,19 +25,26 @@ func (this *QGraphicsAnchor) cPointer() *C.QGraphicsAnchor {
 	return this.h
 }
 
+func (this *QGraphicsAnchor) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsAnchor(h *C.QGraphicsAnchor) *QGraphicsAnchor {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsAnchor{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGraphicsAnchor{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGraphicsAnchor_U(h unsafe.Pointer) *QGraphicsAnchor {
+func UnsafeNewQGraphicsAnchor(h unsafe.Pointer) *QGraphicsAnchor {
 	return newQGraphicsAnchor((*C.QGraphicsAnchor)(h))
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsAnchor_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsAnchor_MetaObject(this.h)))
 }
 
 func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
@@ -154,14 +161,21 @@ func (this *QGraphicsAnchorLayout) cPointer() *C.QGraphicsAnchorLayout {
 	return this.h
 }
 
+func (this *QGraphicsAnchorLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsAnchorLayout(h *C.QGraphicsAnchorLayout) *QGraphicsAnchorLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsAnchorLayout{h: h, QGraphicsLayout: newQGraphicsLayout_U(unsafe.Pointer(h))}
+	return &QGraphicsAnchorLayout{h: h, QGraphicsLayout: UnsafeNewQGraphicsLayout(unsafe.Pointer(h))}
 }
 
-func newQGraphicsAnchorLayout_U(h unsafe.Pointer) *QGraphicsAnchorLayout {
+func UnsafeNewQGraphicsAnchorLayout(h unsafe.Pointer) *QGraphicsAnchorLayout {
 	return newQGraphicsAnchorLayout((*C.QGraphicsAnchorLayout)(h))
 }
 
@@ -178,11 +192,11 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
+	return UnsafeNewQGraphicsAnchor(unsafe.Pointer(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor_U(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
+	return UnsafeNewQGraphicsAnchor(unsafe.Pointer(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge))))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
@@ -226,7 +240,7 @@ func (this *QGraphicsAnchorLayout) Count() int {
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {

@@ -1,5 +1,5 @@
 #include <QLinkedListData>
-#include "qlinkedlist.h"
+#include <qlinkedlist.h>
 #include "gen_qlinkedlist.h"
 #include "_cgo_export.h"
 

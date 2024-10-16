@@ -24,6 +24,13 @@ func (this *QHashData) cPointer() *C.QHashData {
 	return this.h
 }
 
+func (this *QHashData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHashData(h *C.QHashData) *QHashData {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQHashData(h *C.QHashData) *QHashData {
 	return &QHashData{h: h}
 }
 
-func newQHashData_U(h unsafe.Pointer) *QHashData {
+func UnsafeNewQHashData(h unsafe.Pointer) *QHashData {
 	return newQHashData((*C.QHashData)(h))
 }
 
@@ -56,15 +63,15 @@ func (this *QHashData) Rehash(hint int) {
 }
 
 func (this *QHashData) FirstNode() *QHashData__Node {
-	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_FirstNode(this.h)))
+	return UnsafeNewQHashData__Node(unsafe.Pointer(C.QHashData_FirstNode(this.h)))
 }
 
 func QHashData_NextNode(node *QHashData__Node) *QHashData__Node {
-	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_NextNode(node.cPointer())))
+	return UnsafeNewQHashData__Node(unsafe.Pointer(C.QHashData_NextNode(node.cPointer())))
 }
 
 func QHashData_PreviousNode(node *QHashData__Node) *QHashData__Node {
-	return newQHashData__Node_U(unsafe.Pointer(C.QHashData_PreviousNode(node.cPointer())))
+	return UnsafeNewQHashData__Node(unsafe.Pointer(C.QHashData_PreviousNode(node.cPointer())))
 }
 
 // Delete this object from C++ memory.
@@ -92,6 +99,13 @@ func (this *QHashDummyValue) cPointer() *C.QHashDummyValue {
 	return this.h
 }
 
+func (this *QHashDummyValue) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHashDummyValue(h *C.QHashDummyValue) *QHashDummyValue {
 	if h == nil {
 		return nil
@@ -99,7 +113,7 @@ func newQHashDummyValue(h *C.QHashDummyValue) *QHashDummyValue {
 	return &QHashDummyValue{h: h}
 }
 
-func newQHashDummyValue_U(h unsafe.Pointer) *QHashDummyValue {
+func UnsafeNewQHashDummyValue(h unsafe.Pointer) *QHashDummyValue {
 	return newQHashDummyValue((*C.QHashDummyValue)(h))
 }
 
@@ -140,6 +154,13 @@ func (this *QHashData__Node) cPointer() *C.QHashData__Node {
 	return this.h
 }
 
+func (this *QHashData__Node) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHashData__Node(h *C.QHashData__Node) *QHashData__Node {
 	if h == nil {
 		return nil
@@ -147,7 +168,7 @@ func newQHashData__Node(h *C.QHashData__Node) *QHashData__Node {
 	return &QHashData__Node{h: h}
 }
 
-func newQHashData__Node_U(h unsafe.Pointer) *QHashData__Node {
+func UnsafeNewQHashData__Node(h unsafe.Pointer) *QHashData__Node {
 	return newQHashData__Node((*C.QHashData__Node)(h))
 }
 

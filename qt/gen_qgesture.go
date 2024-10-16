@@ -50,14 +50,21 @@ func (this *QGesture) cPointer() *C.QGesture {
 	return this.h
 }
 
+func (this *QGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGesture(h *C.QGesture) *QGesture {
 	if h == nil {
 		return nil
 	}
-	return &QGesture{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGesture{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGesture_U(h unsafe.Pointer) *QGesture {
+func UnsafeNewQGesture(h unsafe.Pointer) *QGesture {
 	return newQGesture((*C.QGesture)(h))
 }
 
@@ -74,7 +81,7 @@ func NewQGesture2(parent *QObject) *QGesture {
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGesture_MetaObject(this.h)))
 }
 
 func (this *QGesture) Metacast(param1 string) unsafe.Pointer {
@@ -206,14 +213,21 @@ func (this *QPanGesture) cPointer() *C.QPanGesture {
 	return this.h
 }
 
+func (this *QPanGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPanGesture(h *C.QPanGesture) *QPanGesture {
 	if h == nil {
 		return nil
 	}
-	return &QPanGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
+	return &QPanGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
 }
 
-func newQPanGesture_U(h unsafe.Pointer) *QPanGesture {
+func UnsafeNewQPanGesture(h unsafe.Pointer) *QPanGesture {
 	return newQPanGesture((*C.QPanGesture)(h))
 }
 
@@ -230,7 +244,7 @@ func NewQPanGesture2(parent *QObject) *QPanGesture {
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPanGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPanGesture_MetaObject(this.h)))
 }
 
 func (this *QPanGesture) Metacast(param1 string) unsafe.Pointer {
@@ -364,14 +378,21 @@ func (this *QPinchGesture) cPointer() *C.QPinchGesture {
 	return this.h
 }
 
+func (this *QPinchGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPinchGesture(h *C.QPinchGesture) *QPinchGesture {
 	if h == nil {
 		return nil
 	}
-	return &QPinchGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
+	return &QPinchGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
 }
 
-func newQPinchGesture_U(h unsafe.Pointer) *QPinchGesture {
+func UnsafeNewQPinchGesture(h unsafe.Pointer) *QPinchGesture {
 	return newQPinchGesture((*C.QPinchGesture)(h))
 }
 
@@ -388,7 +409,7 @@ func NewQPinchGesture2(parent *QObject) *QPinchGesture {
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPinchGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPinchGesture_MetaObject(this.h)))
 }
 
 func (this *QPinchGesture) Metacast(param1 string) unsafe.Pointer {
@@ -582,14 +603,21 @@ func (this *QSwipeGesture) cPointer() *C.QSwipeGesture {
 	return this.h
 }
 
+func (this *QSwipeGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSwipeGesture(h *C.QSwipeGesture) *QSwipeGesture {
 	if h == nil {
 		return nil
 	}
-	return &QSwipeGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
+	return &QSwipeGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
 }
 
-func newQSwipeGesture_U(h unsafe.Pointer) *QSwipeGesture {
+func UnsafeNewQSwipeGesture(h unsafe.Pointer) *QSwipeGesture {
 	return newQSwipeGesture((*C.QSwipeGesture)(h))
 }
 
@@ -606,7 +634,7 @@ func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSwipeGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSwipeGesture_MetaObject(this.h)))
 }
 
 func (this *QSwipeGesture) Metacast(param1 string) unsafe.Pointer {
@@ -719,14 +747,21 @@ func (this *QTapGesture) cPointer() *C.QTapGesture {
 	return this.h
 }
 
+func (this *QTapGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTapGesture(h *C.QTapGesture) *QTapGesture {
 	if h == nil {
 		return nil
 	}
-	return &QTapGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
+	return &QTapGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
 }
 
-func newQTapGesture_U(h unsafe.Pointer) *QTapGesture {
+func UnsafeNewQTapGesture(h unsafe.Pointer) *QTapGesture {
 	return newQTapGesture((*C.QTapGesture)(h))
 }
 
@@ -743,7 +778,7 @@ func NewQTapGesture2(parent *QObject) *QTapGesture {
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTapGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTapGesture_MetaObject(this.h)))
 }
 
 func (this *QTapGesture) Metacast(param1 string) unsafe.Pointer {
@@ -851,14 +886,21 @@ func (this *QTapAndHoldGesture) cPointer() *C.QTapAndHoldGesture {
 	return this.h
 }
 
+func (this *QTapAndHoldGesture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTapAndHoldGesture(h *C.QTapAndHoldGesture) *QTapAndHoldGesture {
 	if h == nil {
 		return nil
 	}
-	return &QTapAndHoldGesture{h: h, QGesture: newQGesture_U(unsafe.Pointer(h))}
+	return &QTapAndHoldGesture{h: h, QGesture: UnsafeNewQGesture(unsafe.Pointer(h))}
 }
 
-func newQTapAndHoldGesture_U(h unsafe.Pointer) *QTapAndHoldGesture {
+func UnsafeNewQTapAndHoldGesture(h unsafe.Pointer) *QTapAndHoldGesture {
 	return newQTapAndHoldGesture((*C.QTapAndHoldGesture)(h))
 }
 
@@ -875,7 +917,7 @@ func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTapAndHoldGesture_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTapAndHoldGesture_MetaObject(this.h)))
 }
 
 func (this *QTapAndHoldGesture) Metacast(param1 string) unsafe.Pointer {
@@ -991,14 +1033,21 @@ func (this *QGestureEvent) cPointer() *C.QGestureEvent {
 	return this.h
 }
 
+func (this *QGestureEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGestureEvent(h *C.QGestureEvent) *QGestureEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGestureEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QGestureEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQGestureEvent_U(h unsafe.Pointer) *QGestureEvent {
+func UnsafeNewQGestureEvent(h unsafe.Pointer) *QGestureEvent {
 	return newQGestureEvent((*C.QGestureEvent)(h))
 }
 
@@ -1027,14 +1076,14 @@ func (this *QGestureEvent) Gestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
-	return newQGesture_U(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))))
+	return UnsafeNewQGesture(unsafe.Pointer(C.QGestureEvent_Gesture(this.h, (C.int)(typeVal))))
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
@@ -1042,7 +1091,7 @@ func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1053,7 +1102,7 @@ func (this *QGestureEvent) CanceledGestures() []*QGesture {
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGesture_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1096,7 +1145,7 @@ func (this *QGestureEvent) SetWidget(widget *QWidget) {
 }
 
 func (this *QGestureEvent) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QGestureEvent_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGestureEvent_Widget(this.h)))
 }
 
 func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {

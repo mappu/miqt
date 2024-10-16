@@ -60,7 +60,7 @@
 #include <QWheelEvent>
 #include <QWindow>
 #include <QWindowStateChangeEvent>
-#include "qevent.h"
+#include <qevent.h>
 #include "gen_qevent.h"
 #include "_cgo_export.h"
 

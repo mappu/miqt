@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -33,6 +34,13 @@ func (this *QIconEngine) cPointer() *C.QIconEngine {
 	return this.h
 }
 
+func (this *QIconEngine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	if h == nil {
 		return nil
@@ -40,7 +48,7 @@ func newQIconEngine(h *C.QIconEngine) *QIconEngine {
 	return &QIconEngine{h: h}
 }
 
-func newQIconEngine_U(h unsafe.Pointer) *QIconEngine {
+func UnsafeNewQIconEngine(h unsafe.Pointer) *QIconEngine {
 	return newQIconEngine((*C.QIconEngine)(h))
 }
 
@@ -67,7 +75,7 @@ func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIco
 }
 
 func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QIconEngine_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.int)(mode), (C.int)(state))
 }
@@ -80,7 +88,7 @@ func (this *QIconEngine) Key() string {
 }
 
 func (this *QIconEngine) Clone() *QIconEngine {
-	return newQIconEngine_U(unsafe.Pointer(C.QIconEngine_Clone(this.h)))
+	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEngine_Clone(this.h)))
 }
 
 func (this *QIconEngine) Read(in *QDataStream) bool {
@@ -180,6 +188,13 @@ func (this *QIconEngine__AvailableSizesArgument) cPointer() *C.QIconEngine__Avai
 	return this.h
 }
 
+func (this *QIconEngine__AvailableSizesArgument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgument) *QIconEngine__AvailableSizesArgument {
 	if h == nil {
 		return nil
@@ -187,7 +202,7 @@ func newQIconEngine__AvailableSizesArgument(h *C.QIconEngine__AvailableSizesArgu
 	return &QIconEngine__AvailableSizesArgument{h: h}
 }
 
-func newQIconEngine__AvailableSizesArgument_U(h unsafe.Pointer) *QIconEngine__AvailableSizesArgument {
+func UnsafeNewQIconEngine__AvailableSizesArgument(h unsafe.Pointer) *QIconEngine__AvailableSizesArgument {
 	return newQIconEngine__AvailableSizesArgument((*C.QIconEngine__AvailableSizesArgument)(h))
 }
 
@@ -226,6 +241,13 @@ func (this *QIconEngine__ScaledPixmapArgument) cPointer() *C.QIconEngine__Scaled
 	return this.h
 }
 
+func (this *QIconEngine__ScaledPixmapArgument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
 	if h == nil {
 		return nil
@@ -233,7 +255,7 @@ func newQIconEngine__ScaledPixmapArgument(h *C.QIconEngine__ScaledPixmapArgument
 	return &QIconEngine__ScaledPixmapArgument{h: h}
 }
 
-func newQIconEngine__ScaledPixmapArgument_U(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
+func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__ScaledPixmapArgument {
 	return newQIconEngine__ScaledPixmapArgument((*C.QIconEngine__ScaledPixmapArgument)(h))
 }
 

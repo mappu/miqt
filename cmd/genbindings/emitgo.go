@@ -19,7 +19,7 @@ func goReservedWord(s string) bool {
 	}
 }
 
-func (p CppParameter) RenderTypeGo() string {
+func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
 	}
@@ -28,11 +28,11 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	if t, ok := p.QListOf(); ok {
-		return "[]" + t.RenderTypeGo()
+		return "[]" + t.RenderTypeGo(gfs)
 	}
 
 	if t, ok := p.QSetOf(); ok {
-		return "map[" + t.RenderTypeGo() + "]struct{}"
+		return "map[" + t.RenderTypeGo(gfs) + "]struct{}"
 	}
 
 	if p.ParameterType == "void" && p.Pointer {
@@ -40,10 +40,6 @@ func (p CppParameter) RenderTypeGo() string {
 	}
 
 	ret := ""
-	if p.ByRef || p.Pointer {
-		ret += "*"
-	}
-
 	switch p.ParameterType {
 	case "unsigned char", "uchar", "quint8":
 		// Go byte is unsigned
@@ -101,10 +97,25 @@ func (p CppParameter) RenderTypeGo() string {
 	default:
 
 		if ft, ok := p.QFlagsOf(); ok {
-			ret += cabiClassName(ft.ParameterType)
 
-		} else if p.IsKnownEnum() {
-			ret += cabiClassName(p.ParameterType)
+			if enumInfo, ok := KnownEnums[ft.ParameterType]; ok && enumInfo.PackageName != gfs.currentPackageName {
+				// Cross-package
+				ret += enumInfo.PackageName + "." + cabiClassName(ft.ParameterType)
+				gfs.imports[importPathForQtPackage(enumInfo.PackageName)] = struct{}{}
+			} else {
+				// Same package
+				ret += cabiClassName(ft.ParameterType)
+			}
+
+		} else if enumInfo, ok := KnownEnums[p.ParameterType]; ok {
+			if enumInfo.PackageName != gfs.currentPackageName {
+				// Cross-package
+				ret += enumInfo.PackageName + "." + cabiClassName(p.ParameterType)
+				gfs.imports[importPathForQtPackage(enumInfo.PackageName)] = struct{}{}
+			} else {
+				// Same package
+				ret += cabiClassName(p.ParameterType)
+			}
 
 		} else if strings.Contains(p.ParameterType, `::`) {
 			// Inner class
@@ -115,6 +126,15 @@ func (p CppParameter) RenderTypeGo() string {
 			ret += p.ParameterType
 		}
 
+	}
+
+	if pkg, ok := KnownClassnames[p.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
+		ret = pkg.PackageName + "." + ret
+		gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
+	}
+
+	if p.ByRef || p.Pointer {
+		ret = "*" + ret
 	}
 
 	return ret // ignore const
@@ -134,7 +154,8 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
-	if strings.HasPrefix(tmp, "const ") {
+
+	if strings.HasPrefix(tmp, "const ") && tmp != "const char" { // Special typedef to make this work for const char* signal parameters
 		tmp = tmp[6:] // Constness doesn't survive the CABI boundary
 	}
 	if strings.HasPrefix(tmp, "unsigned ") {
@@ -153,7 +174,7 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 }
 
-func emitParametersGo(params []CppParameter) string {
+func (gfs *goFileState) emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 
 	skipNext := false
@@ -170,7 +191,7 @@ func emitParametersGo(params []CppParameter) string {
 
 		} else {
 			// Ordinary parameter
-			tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo())
+			tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo(gfs))
 
 		}
 	}
@@ -178,7 +199,8 @@ func emitParametersGo(params []CppParameter) string {
 }
 
 type goFileState struct {
-	imports map[string]struct{}
+	imports            map[string]struct{}
+	currentPackageName string
 }
 
 func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble string, forwarding string) {
@@ -234,7 +256,8 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Go: convert string -> miqt_string*
 		// CABI: convert miqt_string* -> real QString
 
-		preamble += nameprefix + "_ms := miqt_strdupg(" + p.ParameterName + ")\n"
+		gfs.imports["libmiqt"] = struct{}{}
+		preamble += nameprefix + "_ms := libmiqt.Strdupg(" + p.ParameterName + ")\n"
 		preamble += "defer C.free(" + nameprefix + "_ms)\n"
 
 		rvalue = "(*C.struct_miqt_string)(" + nameprefix + "_ms)"
@@ -277,7 +300,16 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 	} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
 		// The C++ type is a pointer to Qt class
 		// We want our functions to accept the Go wrapper type, and forward as cPointer()
-		rvalue = p.ParameterName + ".cPointer()"
+		// cPointer() returns the cgo pointer which only works in the same package -
+		// anything cross-package needs to go via unsafe.Pointer
+
+		if classInfo, ok := KnownClassnames[p.ParameterType]; ok && gfs.currentPackageName != classInfo.PackageName {
+			// Cross-package
+			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.ParameterName + ".UnsafePointer())"
+		} else {
+			// Same package
+			rvalue = p.ParameterName + ".cPointer()"
+		}
 
 	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() || p.ParameterType == "bool" {
 		if p.Pointer || p.ByRef {
@@ -329,7 +361,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
 
-		afterword += namePrefix + "_ret := make([]" + t.RenderTypeGo() + ", int(" + namePrefix + "_ma.len))\n"
+		afterword += namePrefix + "_ret := make([]" + t.RenderTypeGo(gfs) + ", int(" + namePrefix + "_ma.len))\n"
 		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
 		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
@@ -345,7 +377,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
 
-		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo() + "]struct{}, int(" + namePrefix + "_ma.len))\n"
+		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo(gfs) + "]struct{}, int(" + namePrefix + "_ma.len))\n"
 		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
 		afterword += "for i := 0; i < int(" + namePrefix + "_ma.len); i++ {\n"
 
@@ -360,9 +392,15 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		// Construct our Go type based on this inner CABI type
 		shouldReturn = "" + namePrefix + "_ret := "
 
+		crossPackage := ""
+		if pkg, ok := KnownClassnames[rt.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
+			crossPackage = pkg.PackageName + "."
+			gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
+		}
+
 		if rt.Pointer || rt.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
-			return assignExpr + " new" + cabiClassName(rt.ParameterType) + "_U(unsafe.Pointer(" + rvalue + "))"
+			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + "))"
 
 		} else {
 			// This is return by value, but CABI has new'd it into a
@@ -371,7 +409,13 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			// finalizer to automatically Delete once the type goes out
 			// of Go scope
 
-			afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
+			if crossPackage == "" {
+				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret)\n"
+			} else {
+				gfs.imports["unsafe"] = struct{}{}
+				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret))\n"
+
+			}
 			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
 
 			// If this is a function return, we have converted value-returned Qt types to pointers
@@ -387,17 +431,17 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
-		return assignExpr + "(" + rt.RenderTypeGo() + ")(" + rvalue + ")\n"
+		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
 
 	}
 
 	return shouldReturn + " " + rvalue + "\n" + afterword
 }
 
-func emitGo(src *CppParsedHeader, headerName string) (string, error) {
+func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, error) {
 
 	ret := strings.Builder{}
-	ret.WriteString(`package qt
+	ret.WriteString(`package ` + packageName + `
 
 /*
 
@@ -411,7 +455,8 @@ import "C"
 `)
 
 	gfs := goFileState{
-		imports: map[string]struct{}{},
+		imports:            map[string]struct{}{},
+		currentPackageName: packageName,
 	}
 
 	// Check if short-named enums are allowed.
@@ -455,7 +500,7 @@ import "C"
 		}
 
 		ret.WriteString(`
-		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo() + `
+		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo(&gfs) + `
 		`)
 
 		if len(e.Entries) > 0 {
@@ -481,7 +526,16 @@ import "C"
 
 		// Embed all inherited types to directly allow calling inherited methods
 		for _, base := range c.Inherits {
-			ret.WriteString("*" + cabiClassName(base) + "\n")
+
+			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
+				// Cross-package parent class
+				ret.WriteString("*" + pkg.PackageName + "." + cabiClassName(base) + "\n")
+				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
+			} else {
+				// Same-package parent class
+				ret.WriteString("*" + cabiClassName(base) + "\n")
+			}
+
 		}
 
 		ret.WriteString(`
@@ -494,12 +548,26 @@ import "C"
 			return this.h
 		}
 		
+		func (this *` + goClassName + `) UnsafePointer() unsafe.Pointer {
+			if this == nil {
+				return nil
+			}
+			return unsafe.Pointer(this.h)
+		}
+		
 		`)
+		gfs.imports["unsafe"] = struct{}{}
 
 		localInit := "h: h"
 		for _, base := range c.Inherits {
 			gfs.imports["unsafe"] = struct{}{}
-			localInit += ", " + cabiClassName(base) + ": new" + cabiClassName(base) + "_U(unsafe.Pointer(h))"
+
+			ctorPrefix := ""
+			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
+				ctorPrefix = pkg.PackageName + "."
+			}
+
+			localInit += ", " + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(h))"
 		}
 
 		ret.WriteString(`
@@ -518,7 +586,7 @@ import "C"
 		// that never happens in Go's type system.
 		gfs.imports["unsafe"] = struct{}{}
 		ret.WriteString(`
-			func new` + goClassName + `_U(h unsafe.Pointer) *` + goClassName + ` {
+			func UnsafeNew` + goClassName + `(h unsafe.Pointer) *` + goClassName + ` {
 				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
 			}
 			
@@ -531,7 +599,7 @@ import "C"
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
 			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
 				if runtime.GOOS == "linux" {
 					` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
 					return new` + goClassName + `(ret)
@@ -544,7 +612,7 @@ import "C"
 			} else {
 				ret.WriteString(`
 			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
 				` + preamble + ` ret := C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
 				return new` + goClassName + `(ret)
 			}
@@ -556,7 +624,7 @@ import "C"
 		for _, m := range c.Methods {
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
-			returnTypeDecl := m.ReturnType.RenderTypeGo()
+			returnTypeDecl := m.ReturnType.RenderTypeGo(&gfs)
 			if returnTypeDecl == "void" {
 				returnTypeDecl = ""
 			}
@@ -578,7 +646,7 @@ import "C"
 			}
 
 			ret.WriteString(`
-			func ` + receiverAndMethod + `(` + emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {`)
+			func ` + receiverAndMethod + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {`)
 			if m.LinuxOnly {
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
@@ -611,13 +679,13 @@ import "C"
 					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
 				}
 
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + emitParametersGo(m.Parameters) + `)) {
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + gfs.emitParametersGo(m.Parameters) + `)) {
 					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
 				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
-					gofunc, ok := cgo.Handle(cb).Value().(func(` + emitParametersGo(m.Parameters) + `))
+					gofunc, ok := cgo.Handle(cb).Value().(func(` + gfs.emitParametersGo(m.Parameters) + `))
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
@@ -660,14 +728,17 @@ import "C"
 	if len(gfs.imports) > 0 {
 		allImports := make([]string, 0, len(gfs.imports))
 		for k, _ := range gfs.imports {
-			allImports = append(allImports, `"`+k+`"`)
+			if k == "libmiqt" {
+				allImports = append(allImports, `"`+BaseModule+`/libmiqt"`)
+			} else {
+				allImports = append(allImports, `"`+k+`"`)
+			}
 		}
+
 		sort.Strings(allImports)
 		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "import (\n\t"+strings.Join(allImports, "\n\t")+"\n)", 1)
-
 	} else {
 		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "", 1)
-
 	}
 
 	// Run gofmt over the result

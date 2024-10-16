@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QPushButton) cPointer() *C.QPushButton {
 	return this.h
 }
 
+func (this *QPushButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPushButton(h *C.QPushButton) *QPushButton {
 	if h == nil {
 		return nil
 	}
-	return &QPushButton{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
+	return &QPushButton{h: h, QAbstractButton: UnsafeNewQAbstractButton(unsafe.Pointer(h))}
 }
 
-func newQPushButton_U(h unsafe.Pointer) *QPushButton {
+func UnsafeNewQPushButton(h unsafe.Pointer) *QPushButton {
 	return newQPushButton((*C.QPushButton)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQPushButton() *QPushButton {
 
 // NewQPushButton2 constructs a new QPushButton object.
 func NewQPushButton2(text string) *QPushButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPushButton_new2((*C.struct_miqt_string)(text_ms))
 	return newQPushButton(ret)
@@ -52,7 +60,7 @@ func NewQPushButton2(text string) *QPushButton {
 
 // NewQPushButton3 constructs a new QPushButton object.
 func NewQPushButton3(icon *QIcon, text string) *QPushButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPushButton_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQPushButton(ret)
@@ -66,7 +74,7 @@ func NewQPushButton4(parent *QWidget) *QPushButton {
 
 // NewQPushButton5 constructs a new QPushButton object.
 func NewQPushButton5(text string, parent *QWidget) *QPushButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPushButton_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPushButton(ret)
@@ -74,14 +82,14 @@ func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 
 // NewQPushButton6 constructs a new QPushButton object.
 func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPushButton_new6(icon.cPointer(), (*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPushButton(ret)
 }
 
 func (this *QPushButton) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPushButton_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPushButton_MetaObject(this.h)))
 }
 
 func (this *QPushButton) Metacast(param1 string) unsafe.Pointer {
@@ -143,7 +151,7 @@ func (this *QPushButton) SetMenu(menu *QMenu) {
 }
 
 func (this *QPushButton) Menu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QPushButton_Menu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QPushButton_Menu(this.h)))
 }
 
 func (this *QPushButton) SetFlat(flat bool) {

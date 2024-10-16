@@ -25,14 +25,21 @@ func (this *QObjectCleanupHandler) cPointer() *C.QObjectCleanupHandler {
 	return this.h
 }
 
+func (this *QObjectCleanupHandler) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQObjectCleanupHandler(h *C.QObjectCleanupHandler) *QObjectCleanupHandler {
 	if h == nil {
 		return nil
 	}
-	return &QObjectCleanupHandler{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QObjectCleanupHandler{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQObjectCleanupHandler_U(h unsafe.Pointer) *QObjectCleanupHandler {
+func UnsafeNewQObjectCleanupHandler(h unsafe.Pointer) *QObjectCleanupHandler {
 	return newQObjectCleanupHandler((*C.QObjectCleanupHandler)(h))
 }
 
@@ -43,7 +50,7 @@ func NewQObjectCleanupHandler() *QObjectCleanupHandler {
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QObjectCleanupHandler_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObjectCleanupHandler_MetaObject(this.h)))
 }
 
 func (this *QObjectCleanupHandler) Metacast(param1 string) unsafe.Pointer {
@@ -71,7 +78,7 @@ func QObjectCleanupHandler_TrUtf8(s string) string {
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QObjectCleanupHandler_Add(this.h, object.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QObjectCleanupHandler_Add(this.h, object.cPointer())))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {

@@ -68,14 +68,21 @@ func (this *QGraphicsView) cPointer() *C.QGraphicsView {
 	return this.h
 }
 
+func (this *QGraphicsView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsView(h *C.QGraphicsView) *QGraphicsView {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsView{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QGraphicsView{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQGraphicsView_U(h unsafe.Pointer) *QGraphicsView {
+func UnsafeNewQGraphicsView(h unsafe.Pointer) *QGraphicsView {
 	return newQGraphicsView((*C.QGraphicsView)(h))
 }
 
@@ -104,7 +111,7 @@ func NewQGraphicsView4(scene *QGraphicsScene, parent *QWidget) *QGraphicsView {
 }
 
 func (this *QGraphicsView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsView_MetaObject(this.h)))
 }
 
 func (this *QGraphicsView) Metacast(param1 string) unsafe.Pointer {
@@ -238,7 +245,7 @@ func (this *QGraphicsView) SetInteractive(allowed bool) {
 }
 
 func (this *QGraphicsView) Scene() *QGraphicsScene {
-	return newQGraphicsScene_U(unsafe.Pointer(C.QGraphicsView_Scene(this.h)))
+	return UnsafeNewQGraphicsScene(unsafe.Pointer(C.QGraphicsView_Scene(this.h)))
 }
 
 func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
@@ -362,7 +369,7 @@ func (this *QGraphicsView) Items() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -373,7 +380,7 @@ func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -384,7 +391,7 @@ func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -395,7 +402,7 @@ func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -406,7 +413,7 @@ func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -417,18 +424,18 @@ func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsView) ItemAt(pos *QPoint) *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsView_ItemAt(this.h, pos.cPointer())))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsView_ItemAt(this.h, pos.cPointer())))
 }
 
 func (this *QGraphicsView) ItemAt2(x int, y int) *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsView_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QGraphicsView) MapToScene(point *QPoint) *QPointF {
@@ -668,7 +675,7 @@ func (this *QGraphicsView) Items22(rect *QRect, mode ItemSelectionMode) []*QGrap
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -679,7 +686,7 @@ func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelection
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -690,7 +697,7 @@ func (this *QGraphicsView) Items24(path *QPainterPath, mode ItemSelectionMode) [
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

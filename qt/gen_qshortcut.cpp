@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qshortcut.h"
+#include <qshortcut.h>
 #include "gen_qshortcut.h"
 #include "_cgo_export.h"
 

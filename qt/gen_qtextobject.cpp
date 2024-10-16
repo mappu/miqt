@@ -22,7 +22,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextLayout__FormatRange
 #include <QTextList>
 #include <QTextObject>
-#include "qtextobject.h"
+#include <qtextobject.h>
 #include "gen_qtextobject.h"
 #include "_cgo_export.h"
 

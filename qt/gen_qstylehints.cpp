@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QStyleHints>
-#include "qstylehints.h"
+#include <qstylehints.h>
 #include "gen_qstylehints.h"
 #include "_cgo_export.h"
 

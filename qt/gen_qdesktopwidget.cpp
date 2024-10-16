@@ -6,7 +6,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qdesktopwidget.h"
+#include <qdesktopwidget.h>
 #include "gen_qdesktopwidget.h"
 #include "_cgo_export.h"
 

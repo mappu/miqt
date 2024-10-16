@@ -52,14 +52,21 @@ func (this *QFrame) cPointer() *C.QFrame {
 	return this.h
 }
 
+func (this *QFrame) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFrame(h *C.QFrame) *QFrame {
 	if h == nil {
 		return nil
 	}
-	return &QFrame{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QFrame{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQFrame_U(h unsafe.Pointer) *QFrame {
+func UnsafeNewQFrame(h unsafe.Pointer) *QFrame {
 	return newQFrame((*C.QFrame)(h))
 }
 
@@ -82,7 +89,7 @@ func NewQFrame3(parent *QWidget, f WindowType) *QFrame {
 }
 
 func (this *QFrame) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFrame_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFrame_MetaObject(this.h)))
 }
 
 func (this *QFrame) Metacast(param1 string) unsafe.Pointer {

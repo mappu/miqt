@@ -33,14 +33,21 @@ func (this *QDialog) cPointer() *C.QDialog {
 	return this.h
 }
 
+func (this *QDialog) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDialog(h *C.QDialog) *QDialog {
 	if h == nil {
 		return nil
 	}
-	return &QDialog{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QDialog{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQDialog_U(h unsafe.Pointer) *QDialog {
+func UnsafeNewQDialog(h unsafe.Pointer) *QDialog {
 	return newQDialog((*C.QDialog)(h))
 }
 
@@ -63,7 +70,7 @@ func NewQDialog3(parent *QWidget, f WindowType) *QDialog {
 }
 
 func (this *QDialog) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDialog_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDialog_MetaObject(this.h)))
 }
 
 func (this *QDialog) Metacast(param1 string) unsafe.Pointer {
@@ -111,7 +118,7 @@ func (this *QDialog) SetExtension(extension *QWidget) {
 }
 
 func (this *QDialog) Extension() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDialog_Extension(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDialog_Extension(this.h)))
 }
 
 func (this *QDialog) SizeHint() *QSize {

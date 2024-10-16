@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -33,14 +34,21 @@ func (this *QGraphicsWidget) cPointer() *C.QGraphicsWidget {
 	return this.h
 }
 
+func (this *QGraphicsWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsWidget(h *C.QGraphicsWidget) *QGraphicsWidget {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsWidget{h: h, QGraphicsObject: newQGraphicsObject_U(unsafe.Pointer(h)), QGraphicsLayoutItem: newQGraphicsLayoutItem_U(unsafe.Pointer(h))}
+	return &QGraphicsWidget{h: h, QGraphicsObject: UnsafeNewQGraphicsObject(unsafe.Pointer(h)), QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsWidget_U(h unsafe.Pointer) *QGraphicsWidget {
+func UnsafeNewQGraphicsWidget(h unsafe.Pointer) *QGraphicsWidget {
 	return newQGraphicsWidget((*C.QGraphicsWidget)(h))
 }
 
@@ -63,7 +71,7 @@ func NewQGraphicsWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphicsWid
 }
 
 func (this *QGraphicsWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsWidget_MetaObject(this.h)))
 }
 
 func (this *QGraphicsWidget) Metacast(param1 string) unsafe.Pointer {
@@ -91,7 +99,7 @@ func QGraphicsWidget_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsWidget) Layout() *QGraphicsLayout {
-	return newQGraphicsLayout_U(unsafe.Pointer(C.QGraphicsWidget_Layout(this.h)))
+	return UnsafeNewQGraphicsLayout(unsafe.Pointer(C.QGraphicsWidget_Layout(this.h)))
 }
 
 func (this *QGraphicsWidget) SetLayout(layout *QGraphicsLayout) {
@@ -115,7 +123,7 @@ func (this *QGraphicsWidget) UnsetLayoutDirection() {
 }
 
 func (this *QGraphicsWidget) Style() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QGraphicsWidget_Style(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QGraphicsWidget_Style(this.h)))
 }
 
 func (this *QGraphicsWidget) SetStyle(style *QStyle) {
@@ -241,7 +249,7 @@ func (this *QGraphicsWidget) IsActiveWindow() bool {
 }
 
 func (this *QGraphicsWidget) SetWindowTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QGraphicsWidget_SetWindowTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -266,7 +274,7 @@ func QGraphicsWidget_SetTabOrder(first *QGraphicsWidget, second *QGraphicsWidget
 }
 
 func (this *QGraphicsWidget) FocusWidget() *QGraphicsWidget {
-	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsWidget_FocusWidget(this.h)))
+	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsWidget_FocusWidget(this.h)))
 }
 
 func (this *QGraphicsWidget) GrabShortcut(sequence *QKeySequence) int {
@@ -326,7 +334,7 @@ func (this *QGraphicsWidget) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

@@ -12,7 +12,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qgraphicseffect.h"
+#include <qgraphicseffect.h>
 #include "gen_qgraphicseffect.h"
 #include "_cgo_export.h"
 

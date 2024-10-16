@@ -85,19 +85,26 @@ func (this *QFileDevice) cPointer() *C.QFileDevice {
 	return this.h
 }
 
+func (this *QFileDevice) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileDevice(h *C.QFileDevice) *QFileDevice {
 	if h == nil {
 		return nil
 	}
-	return &QFileDevice{h: h, QIODevice: newQIODevice_U(unsafe.Pointer(h))}
+	return &QFileDevice{h: h, QIODevice: UnsafeNewQIODevice(unsafe.Pointer(h))}
 }
 
-func newQFileDevice_U(h unsafe.Pointer) *QFileDevice {
+func UnsafeNewQFileDevice(h unsafe.Pointer) *QFileDevice {
 	return newQFileDevice((*C.QFileDevice)(h))
 }
 
 func (this *QFileDevice) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFileDevice_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileDevice_MetaObject(this.h)))
 }
 
 func (this *QFileDevice) Metacast(param1 string) unsafe.Pointer {

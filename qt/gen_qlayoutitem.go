@@ -24,6 +24,13 @@ func (this *QLayoutItem) cPointer() *C.QLayoutItem {
 	return this.h
 }
 
+func (this *QLayoutItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLayoutItem(h *C.QLayoutItem) *QLayoutItem {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQLayoutItem(h *C.QLayoutItem) *QLayoutItem {
 	return &QLayoutItem{h: h}
 }
 
-func newQLayoutItem_U(h unsafe.Pointer) *QLayoutItem {
+func UnsafeNewQLayoutItem(h unsafe.Pointer) *QLayoutItem {
 	return newQLayoutItem((*C.QLayoutItem)(h))
 }
 
@@ -92,15 +99,15 @@ func (this *QLayoutItem) Invalidate() {
 }
 
 func (this *QLayoutItem) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QLayoutItem_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayoutItem_Widget(this.h)))
 }
 
 func (this *QLayoutItem) Layout() *QLayout {
-	return newQLayout_U(unsafe.Pointer(C.QLayoutItem_Layout(this.h)))
+	return UnsafeNewQLayout(unsafe.Pointer(C.QLayoutItem_Layout(this.h)))
 }
 
 func (this *QLayoutItem) SpacerItem() *QSpacerItem {
-	return newQSpacerItem_U(unsafe.Pointer(C.QLayoutItem_SpacerItem(this.h)))
+	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QLayoutItem_SpacerItem(this.h)))
 }
 
 func (this *QLayoutItem) Alignment() AlignmentFlag {
@@ -141,14 +148,21 @@ func (this *QSpacerItem) cPointer() *C.QSpacerItem {
 	return this.h
 }
 
+func (this *QSpacerItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSpacerItem(h *C.QSpacerItem) *QSpacerItem {
 	if h == nil {
 		return nil
 	}
-	return &QSpacerItem{h: h, QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
+	return &QSpacerItem{h: h, QLayoutItem: UnsafeNewQLayoutItem(unsafe.Pointer(h))}
 }
 
-func newQSpacerItem_U(h unsafe.Pointer) *QSpacerItem {
+func UnsafeNewQSpacerItem(h unsafe.Pointer) *QSpacerItem {
 	return newQSpacerItem((*C.QSpacerItem)(h))
 }
 
@@ -221,7 +235,7 @@ func (this *QSpacerItem) Geometry() *QRect {
 }
 
 func (this *QSpacerItem) SpacerItem() *QSpacerItem {
-	return newQSpacerItem_U(unsafe.Pointer(C.QSpacerItem_SpacerItem(this.h)))
+	return UnsafeNewQSpacerItem(unsafe.Pointer(C.QSpacerItem_SpacerItem(this.h)))
 }
 
 func (this *QSpacerItem) SizePolicy() *QSizePolicy {
@@ -265,14 +279,21 @@ func (this *QWidgetItem) cPointer() *C.QWidgetItem {
 	return this.h
 }
 
+func (this *QWidgetItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWidgetItem(h *C.QWidgetItem) *QWidgetItem {
 	if h == nil {
 		return nil
 	}
-	return &QWidgetItem{h: h, QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
+	return &QWidgetItem{h: h, QLayoutItem: UnsafeNewQLayoutItem(unsafe.Pointer(h))}
 }
 
-func newQWidgetItem_U(h unsafe.Pointer) *QWidgetItem {
+func UnsafeNewQWidgetItem(h unsafe.Pointer) *QWidgetItem {
 	return newQWidgetItem((*C.QWidgetItem)(h))
 }
 
@@ -323,7 +344,7 @@ func (this *QWidgetItem) Geometry() *QRect {
 }
 
 func (this *QWidgetItem) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidgetItem_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetItem_Widget(this.h)))
 }
 
 func (this *QWidgetItem) HasHeightForWidth() bool {
@@ -364,14 +385,21 @@ func (this *QWidgetItemV2) cPointer() *C.QWidgetItemV2 {
 	return this.h
 }
 
+func (this *QWidgetItemV2) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWidgetItemV2(h *C.QWidgetItemV2) *QWidgetItemV2 {
 	if h == nil {
 		return nil
 	}
-	return &QWidgetItemV2{h: h, QWidgetItem: newQWidgetItem_U(unsafe.Pointer(h))}
+	return &QWidgetItemV2{h: h, QWidgetItem: UnsafeNewQWidgetItem(unsafe.Pointer(h))}
 }
 
-func newQWidgetItemV2_U(h unsafe.Pointer) *QWidgetItemV2 {
+func UnsafeNewQWidgetItemV2(h unsafe.Pointer) *QWidgetItemV2 {
 	return newQWidgetItemV2((*C.QWidgetItemV2)(h))
 }
 

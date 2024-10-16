@@ -49,6 +49,13 @@ func (this *QPageLayout) cPointer() *C.QPageLayout {
 	return this.h
 }
 
+func (this *QPageLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPageLayout(h *C.QPageLayout) *QPageLayout {
 	if h == nil {
 		return nil
@@ -56,7 +63,7 @@ func newQPageLayout(h *C.QPageLayout) *QPageLayout {
 	return &QPageLayout{h: h}
 }
 
-func newQPageLayout_U(h unsafe.Pointer) *QPageLayout {
+func UnsafeNewQPageLayout(h unsafe.Pointer) *QPageLayout {
 	return newQPageLayout((*C.QPageLayout)(h))
 }
 

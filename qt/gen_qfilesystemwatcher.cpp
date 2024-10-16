@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfilesystemwatcher.h"
+#include <qfilesystemwatcher.h>
 #include "gen_qfilesystemwatcher.h"
 #include "_cgo_export.h"
 
@@ -14,7 +14,7 @@ QFileSystemWatcher* QFileSystemWatcher_new() {
 }
 
 QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array* /* of struct miqt_string* */ paths) {
-	QList<QString> paths_QList;
+	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
 	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
@@ -29,7 +29,7 @@ QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent) {
 }
 
 QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array* /* of struct miqt_string* */ paths, QObject* parent) {
-	QList<QString> paths_QList;
+	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
 	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
@@ -67,7 +67,7 @@ bool QFileSystemWatcher_AddPath(QFileSystemWatcher* self, struct miqt_string* fi
 }
 
 struct miqt_array* QFileSystemWatcher_AddPaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
-	QList<QString> files_QList;
+	QStringList files_QList;
 	files_QList.reserve(files->len);
 	struct miqt_string** files_arr = static_cast<struct miqt_string**>(files->data);
 	for(size_t i = 0; i < files->len; ++i) {
@@ -95,7 +95,7 @@ bool QFileSystemWatcher_RemovePath(QFileSystemWatcher* self, struct miqt_string*
 }
 
 struct miqt_array* QFileSystemWatcher_RemovePaths(QFileSystemWatcher* self, struct miqt_array* /* of struct miqt_string* */ files) {
-	QList<QString> files_QList;
+	QStringList files_QList;
 	files_QList.reserve(files->len);
 	struct miqt_string** files_arr = static_cast<struct miqt_string**>(files->data);
 	for(size_t i = 0; i < files->len; ++i) {

@@ -1,6 +1,6 @@
 #include <QArrayData>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QContainerImplHelper
-#include "qarraydata.h"
+#include <qarraydata.h>
 #include "gen_qarraydata.h"
 #include "_cgo_export.h"
 

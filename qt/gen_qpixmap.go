@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QPixmap) cPointer() *C.QPixmap {
 	return this.h
 }
 
+func (this *QPixmap) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPixmap(h *C.QPixmap) *QPixmap {
 	if h == nil {
 		return nil
 	}
-	return &QPixmap{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QPixmap{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQPixmap_U(h unsafe.Pointer) *QPixmap {
+func UnsafeNewQPixmap(h unsafe.Pointer) *QPixmap {
 	return newQPixmap((*C.QPixmap)(h))
 }
 
@@ -56,7 +64,7 @@ func NewQPixmap3(param1 *QSize) *QPixmap {
 
 // NewQPixmap4 constructs a new QPixmap object.
 func NewQPixmap4(fileName string) *QPixmap {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QPixmap_new4((*C.struct_miqt_string)(fileName_ms))
 	return newQPixmap(ret)
@@ -70,7 +78,7 @@ func NewQPixmap5(param1 *QPixmap) *QPixmap {
 
 // NewQPixmap6 constructs a new QPixmap object.
 func NewQPixmap6(fileName string, format string) *QPixmap {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -80,7 +88,7 @@ func NewQPixmap6(fileName string, format string) *QPixmap {
 
 // NewQPixmap7 constructs a new QPixmap object.
 func NewQPixmap7(fileName string, format string, flags ImageConversionFlag) *QPixmap {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -286,7 +294,7 @@ func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
 }
 
 func (this *QPixmap) Load(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QPixmap_Load(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -300,7 +308,7 @@ func (this *QPixmap) LoadFromDataWithData(data *QByteArray) bool {
 }
 
 func (this *QPixmap) Save(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QPixmap_Save(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -352,7 +360,7 @@ func (this *QPixmap) IsQBitmap() bool {
 }
 
 func (this *QPixmap) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QPixmap_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPixmap_PaintEngine(this.h)))
 }
 
 func (this *QPixmap) OperatorNot() bool {
@@ -504,7 +512,7 @@ func QPixmap_FromImageReader2(imageReader *QImageReader, flags ImageConversionFl
 }
 
 func (this *QPixmap) Load2(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -512,7 +520,7 @@ func (this *QPixmap) Load2(fileName string, format string) bool {
 }
 
 func (this *QPixmap) Load3(fileName string, format string, flags ImageConversionFlag) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -544,7 +552,7 @@ func (this *QPixmap) LoadFromData32(data *QByteArray, format string, flags Image
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -552,7 +560,7 @@ func (this *QPixmap) Save2(fileName string, format string) bool {
 }
 
 func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))

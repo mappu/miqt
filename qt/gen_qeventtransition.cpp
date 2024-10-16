@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qeventtransition.h"
+#include <qeventtransition.h>
 #include "gen_qeventtransition.h"
 #include "_cgo_export.h"
 

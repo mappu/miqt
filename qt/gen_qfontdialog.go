@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -37,14 +38,21 @@ func (this *QFontDialog) cPointer() *C.QFontDialog {
 	return this.h
 }
 
+func (this *QFontDialog) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFontDialog(h *C.QFontDialog) *QFontDialog {
 	if h == nil {
 		return nil
 	}
-	return &QFontDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
+	return &QFontDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
-func newQFontDialog_U(h unsafe.Pointer) *QFontDialog {
+func UnsafeNewQFontDialog(h unsafe.Pointer) *QFontDialog {
 	return newQFontDialog((*C.QFontDialog)(h))
 }
 
@@ -73,7 +81,7 @@ func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
 }
 
 func (this *QFontDialog) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFontDialog_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFontDialog_MetaObject(this.h)))
 }
 
 func (this *QFontDialog) Metacast(param1 string) unsafe.Pointer {
@@ -167,7 +175,7 @@ func miqt_exec_callback_QFontDialog_CurrentFontChanged(cb C.intptr_t, font *C.QF
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFont_U(unsafe.Pointer(font))
+	slotval1 := UnsafeNewQFont(unsafe.Pointer(font))
 
 	gofunc(slotval1)
 }
@@ -187,7 +195,7 @@ func miqt_exec_callback_QFontDialog_FontSelected(cb C.intptr_t, font *C.QFont) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFont_U(unsafe.Pointer(font))
+	slotval1 := UnsafeNewQFont(unsafe.Pointer(font))
 
 	gofunc(slotval1)
 }
@@ -255,7 +263,7 @@ func QFontDialog_GetFont3(ok *bool, initial *QFont, parent *QWidget) *QFont {
 }
 
 func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title string) *QFont {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QFontDialog_GetFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms))
 	_goptr := newQFont(_ret)
@@ -264,7 +272,7 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title strin
 }
 
 func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QFontDialog_GetFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
 	_goptr := newQFont(_ret)

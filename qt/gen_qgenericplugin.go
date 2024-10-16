@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,19 +26,26 @@ func (this *QGenericPlugin) cPointer() *C.QGenericPlugin {
 	return this.h
 }
 
+func (this *QGenericPlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGenericPlugin(h *C.QGenericPlugin) *QGenericPlugin {
 	if h == nil {
 		return nil
 	}
-	return &QGenericPlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGenericPlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGenericPlugin_U(h unsafe.Pointer) *QGenericPlugin {
+func UnsafeNewQGenericPlugin(h unsafe.Pointer) *QGenericPlugin {
 	return newQGenericPlugin((*C.QGenericPlugin)(h))
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGenericPlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGenericPlugin_MetaObject(this.h)))
 }
 
 func (this *QGenericPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -65,11 +73,11 @@ func QGenericPlugin_TrUtf8(s string) string {
 }
 
 func (this *QGenericPlugin) Create(name string, spec string) *QObject {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	spec_ms := miqt_strdupg(spec)
+	spec_ms := libmiqt.Strdupg(spec)
 	defer C.free(spec_ms)
-	return newQObject_U(unsafe.Pointer(C.QGenericPlugin_Create(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(spec_ms))))
+	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPlugin_Create(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(spec_ms))))
 }
 
 func QGenericPlugin_Tr2(s string, c string) string {

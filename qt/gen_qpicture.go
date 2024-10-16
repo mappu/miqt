@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QPicture) cPointer() *C.QPicture {
 	return this.h
 }
 
+func (this *QPicture) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPicture(h *C.QPicture) *QPicture {
 	if h == nil {
 		return nil
 	}
-	return &QPicture{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QPicture{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQPicture_U(h unsafe.Pointer) *QPicture {
+func UnsafeNewQPicture(h unsafe.Pointer) *QPicture {
 	return newQPicture((*C.QPicture)(h))
 }
 
@@ -86,7 +94,7 @@ func (this *QPicture) Load(dev *QIODevice) bool {
 }
 
 func (this *QPicture) LoadWithFileName(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QPicture_LoadWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -96,7 +104,7 @@ func (this *QPicture) Save(dev *QIODevice) bool {
 }
 
 func (this *QPicture) SaveWithFileName(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QPicture_SaveWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -129,7 +137,7 @@ func (this *QPicture) IsDetached() bool {
 }
 
 func QPicture_PictureFormat(fileName string) unsafe.Pointer {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QPicture_PictureFormat((*C.struct_miqt_string)(fileName_ms))
 	return (unsafe.Pointer)(_ret)
@@ -192,7 +200,7 @@ func QPicture_OutputFormatList() []string {
 }
 
 func (this *QPicture) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QPicture_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPicture_PaintEngine(this.h)))
 }
 
 func (this *QPicture) Load2(dev *QIODevice, format string) bool {
@@ -202,7 +210,7 @@ func (this *QPicture) Load2(dev *QIODevice, format string) bool {
 }
 
 func (this *QPicture) Load22(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -216,7 +224,7 @@ func (this *QPicture) Save2(dev *QIODevice, format string) bool {
 }
 
 func (this *QPicture) Save22(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -248,6 +256,13 @@ func (this *QPictureIO) cPointer() *C.QPictureIO {
 	return this.h
 }
 
+func (this *QPictureIO) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPictureIO(h *C.QPictureIO) *QPictureIO {
 	if h == nil {
 		return nil
@@ -255,7 +270,7 @@ func newQPictureIO(h *C.QPictureIO) *QPictureIO {
 	return &QPictureIO{h: h}
 }
 
-func newQPictureIO_U(h unsafe.Pointer) *QPictureIO {
+func UnsafeNewQPictureIO(h unsafe.Pointer) *QPictureIO {
 	return newQPictureIO((*C.QPictureIO)(h))
 }
 
@@ -275,7 +290,7 @@ func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
 
 // NewQPictureIO3 constructs a new QPictureIO object.
 func NewQPictureIO3(fileName string, format string) *QPictureIO {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -284,7 +299,7 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 }
 
 func (this *QPictureIO) Picture() *QPicture {
-	return newQPicture_U(unsafe.Pointer(C.QPictureIO_Picture(this.h)))
+	return UnsafeNewQPicture(unsafe.Pointer(C.QPictureIO_Picture(this.h)))
 }
 
 func (this *QPictureIO) Status() int {
@@ -297,7 +312,7 @@ func (this *QPictureIO) Format() unsafe.Pointer {
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QPictureIO_IoDevice(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QPictureIO_IoDevice(this.h)))
 }
 
 func (this *QPictureIO) FileName() string {
@@ -346,7 +361,7 @@ func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
 }
 
 func (this *QPictureIO) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QPictureIO_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -356,7 +371,7 @@ func (this *QPictureIO) SetQuality(quality int) {
 }
 
 func (this *QPictureIO) SetDescription(description string) {
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QPictureIO_SetDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }
@@ -380,7 +395,7 @@ func (this *QPictureIO) Write() bool {
 }
 
 func QPictureIO_PictureFormat(fileName string) *QByteArray {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QPictureIO_PictureFormat((*C.struct_miqt_string)(fileName_ms))
 	_goptr := newQByteArray(_ret)

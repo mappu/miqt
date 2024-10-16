@@ -36,14 +36,21 @@ func (this *QHeaderView) cPointer() *C.QHeaderView {
 	return this.h
 }
 
+func (this *QHeaderView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHeaderView(h *C.QHeaderView) *QHeaderView {
 	if h == nil {
 		return nil
 	}
-	return &QHeaderView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
+	return &QHeaderView{h: h, QAbstractItemView: UnsafeNewQAbstractItemView(unsafe.Pointer(h))}
 }
 
-func newQHeaderView_U(h unsafe.Pointer) *QHeaderView {
+func UnsafeNewQHeaderView(h unsafe.Pointer) *QHeaderView {
 	return newQHeaderView((*C.QHeaderView)(h))
 }
 
@@ -60,7 +67,7 @@ func NewQHeaderView2(orientation Orientation, parent *QWidget) *QHeaderView {
 }
 
 func (this *QHeaderView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QHeaderView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHeaderView_MetaObject(this.h)))
 }
 
 func (this *QHeaderView) Metacast(param1 string) unsafe.Pointer {

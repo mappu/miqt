@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qactiongroup.h"
+#include <qactiongroup.h>
 #include "gen_qactiongroup.h"
 #include "_cgo_export.h"
 

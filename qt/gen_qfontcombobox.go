@@ -36,14 +36,21 @@ func (this *QFontComboBox) cPointer() *C.QFontComboBox {
 	return this.h
 }
 
+func (this *QFontComboBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFontComboBox(h *C.QFontComboBox) *QFontComboBox {
 	if h == nil {
 		return nil
 	}
-	return &QFontComboBox{h: h, QComboBox: newQComboBox_U(unsafe.Pointer(h))}
+	return &QFontComboBox{h: h, QComboBox: UnsafeNewQComboBox(unsafe.Pointer(h))}
 }
 
-func newQFontComboBox_U(h unsafe.Pointer) *QFontComboBox {
+func UnsafeNewQFontComboBox(h unsafe.Pointer) *QFontComboBox {
 	return newQFontComboBox((*C.QFontComboBox)(h))
 }
 
@@ -60,7 +67,7 @@ func NewQFontComboBox2(parent *QWidget) *QFontComboBox {
 }
 
 func (this *QFontComboBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFontComboBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFontComboBox_MetaObject(this.h)))
 }
 
 func (this *QFontComboBox) Metacast(param1 string) unsafe.Pointer {
@@ -136,7 +143,7 @@ func miqt_exec_callback_QFontComboBox_CurrentFontChanged(cb C.intptr_t, f *C.QFo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQFont_U(unsafe.Pointer(f))
+	slotval1 := UnsafeNewQFont(unsafe.Pointer(f))
 
 	gofunc(slotval1)
 }

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QDesktopServices) cPointer() *C.QDesktopServices {
 	return this.h
 }
 
+func (this *QDesktopServices) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
 	return &QDesktopServices{h: h}
 }
 
-func newQDesktopServices_U(h unsafe.Pointer) *QDesktopServices {
+func UnsafeNewQDesktopServices(h unsafe.Pointer) *QDesktopServices {
 	return newQDesktopServices((*C.QDesktopServices)(h))
 }
 
@@ -40,7 +48,7 @@ func QDesktopServices_OpenUrl(url *QUrl) bool {
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {
-	scheme_ms := miqt_strdupg(scheme)
+	scheme_ms := libmiqt.Strdupg(scheme)
 	defer C.free(scheme_ms)
 	method_Cstring := C.CString(method)
 	defer C.free(unsafe.Pointer(method_Cstring))
@@ -48,7 +56,7 @@ func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method str
 }
 
 func QDesktopServices_UnsetUrlHandler(scheme string) {
-	scheme_ms := miqt_strdupg(scheme)
+	scheme_ms := libmiqt.Strdupg(scheme)
 	defer C.free(scheme_ms)
 	C.QDesktopServices_UnsetUrlHandler((*C.struct_miqt_string)(scheme_ms))
 }

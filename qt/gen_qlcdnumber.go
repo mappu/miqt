@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -43,14 +44,21 @@ func (this *QLCDNumber) cPointer() *C.QLCDNumber {
 	return this.h
 }
 
+func (this *QLCDNumber) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLCDNumber(h *C.QLCDNumber) *QLCDNumber {
 	if h == nil {
 		return nil
 	}
-	return &QLCDNumber{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QLCDNumber{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQLCDNumber_U(h unsafe.Pointer) *QLCDNumber {
+func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
 	return newQLCDNumber((*C.QLCDNumber)(h))
 }
 
@@ -79,7 +87,7 @@ func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QLCDNumber_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLCDNumber_MetaObject(this.h)))
 }
 
 func (this *QLCDNumber) Metacast(param1 string) unsafe.Pointer {
@@ -158,7 +166,7 @@ func (this *QLCDNumber) SizeHint() *QSize {
 }
 
 func (this *QLCDNumber) Display(str string) {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	C.QLCDNumber_Display(this.h, (*C.struct_miqt_string)(str_ms))
 }

@@ -7,7 +7,7 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "binding.h"
+#include "../libmiqt/libmiqt.h"
 
 #ifdef __cplusplus
 extern "C" {

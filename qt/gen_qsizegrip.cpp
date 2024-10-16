@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qsizegrip.h"
+#include <qsizegrip.h>
 #include "gen_qsizegrip.h"
 #include "_cgo_export.h"
 

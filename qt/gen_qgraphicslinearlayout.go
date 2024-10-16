@@ -25,14 +25,21 @@ func (this *QGraphicsLinearLayout) cPointer() *C.QGraphicsLinearLayout {
 	return this.h
 }
 
+func (this *QGraphicsLinearLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsLinearLayout(h *C.QGraphicsLinearLayout) *QGraphicsLinearLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsLinearLayout{h: h, QGraphicsLayout: newQGraphicsLayout_U(unsafe.Pointer(h))}
+	return &QGraphicsLinearLayout{h: h, QGraphicsLayout: UnsafeNewQGraphicsLayout(unsafe.Pointer(h))}
 }
 
-func newQGraphicsLinearLayout_U(h unsafe.Pointer) *QGraphicsLinearLayout {
+func UnsafeNewQGraphicsLinearLayout(h unsafe.Pointer) *QGraphicsLinearLayout {
 	return newQGraphicsLinearLayout((*C.QGraphicsLinearLayout)(h))
 }
 
@@ -133,7 +140,7 @@ func (this *QGraphicsLinearLayout) Count() int {
 }
 
 func (this *QGraphicsLinearLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index))))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLinearLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QGraphicsLinearLayout) Invalidate() {

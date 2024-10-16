@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qgroupbox.h"
+#include <qgroupbox.h>
 #include "gen_qgroupbox.h"
 #include "_cgo_export.h"
 

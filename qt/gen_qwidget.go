@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -33,6 +34,13 @@ func (this *QWidgetData) cPointer() *C.QWidgetData {
 	return this.h
 }
 
+func (this *QWidgetData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWidgetData(h *C.QWidgetData) *QWidgetData {
 	if h == nil {
 		return nil
@@ -40,7 +48,7 @@ func newQWidgetData(h *C.QWidgetData) *QWidgetData {
 	return &QWidgetData{h: h}
 }
 
-func newQWidgetData_U(h unsafe.Pointer) *QWidgetData {
+func UnsafeNewQWidgetData(h unsafe.Pointer) *QWidgetData {
 	return newQWidgetData((*C.QWidgetData)(h))
 }
 
@@ -81,14 +89,21 @@ func (this *QWidget) cPointer() *C.QWidget {
 	return this.h
 }
 
+func (this *QWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWidget(h *C.QWidget) *QWidget {
 	if h == nil {
 		return nil
 	}
-	return &QWidget{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QWidget{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQWidget_U(h unsafe.Pointer) *QWidget {
+func UnsafeNewQWidget(h unsafe.Pointer) *QWidget {
 	return newQWidget((*C.QWidget)(h))
 }
 
@@ -111,7 +126,7 @@ func NewQWidget3(parent *QWidget, f WindowType) *QWidget {
 }
 
 func (this *QWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWidget_MetaObject(this.h)))
 }
 
 func (this *QWidget) Metacast(param1 string) unsafe.Pointer {
@@ -159,7 +174,7 @@ func (this *QWidget) EffectiveWinId() uintptr {
 }
 
 func (this *QWidget) Style() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QWidget_Style(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QWidget_Style(this.h)))
 }
 
 func (this *QWidget) SetStyle(style *QStyle) {
@@ -218,7 +233,7 @@ func (this *QWidget) FrameGeometry() *QRect {
 }
 
 func (this *QWidget) Geometry() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QWidget_Geometry(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QWidget_Geometry(this.h)))
 }
 
 func (this *QWidget) NormalGeometry() *QRect {
@@ -437,19 +452,19 @@ func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
 }
 
 func (this *QWidget) Window() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_Window(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_Window(this.h)))
 }
 
 func (this *QWidget) NativeParentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_NativeParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_NativeParentWidget(this.h)))
 }
 
 func (this *QWidget) TopLevelWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_TopLevelWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_TopLevelWidget(this.h)))
 }
 
 func (this *QWidget) Palette() *QPalette {
-	return newQPalette_U(unsafe.Pointer(C.QWidget_Palette(this.h)))
+	return UnsafeNewQPalette(unsafe.Pointer(C.QWidget_Palette(this.h)))
 }
 
 func (this *QWidget) SetPalette(palette *QPalette) {
@@ -473,7 +488,7 @@ func (this *QWidget) ForegroundRole() QPalette__ColorRole {
 }
 
 func (this *QWidget) Font() *QFont {
-	return newQFont_U(unsafe.Pointer(C.QWidget_Font(this.h)))
+	return UnsafeNewQFont(unsafe.Pointer(C.QWidget_Font(this.h)))
 }
 
 func (this *QWidget) SetFont(font *QFont) {
@@ -564,7 +579,7 @@ func (this *QWidget) Grab() *QPixmap {
 }
 
 func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
-	return newQGraphicsEffect_U(unsafe.Pointer(C.QWidget_GraphicsEffect(this.h)))
+	return UnsafeNewQGraphicsEffect(unsafe.Pointer(C.QWidget_GraphicsEffect(this.h)))
 }
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -580,13 +595,13 @@ func (this *QWidget) UngrabGesture(typeVal GestureType) {
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
-	windowTitle_ms := miqt_strdupg(windowTitle)
+	windowTitle_ms := libmiqt.Strdupg(windowTitle)
 	defer C.free(windowTitle_ms)
 	C.QWidget_SetWindowTitle(this.h, (*C.struct_miqt_string)(windowTitle_ms))
 }
 
 func (this *QWidget) SetStyleSheet(styleSheet string) {
-	styleSheet_ms := miqt_strdupg(styleSheet)
+	styleSheet_ms := libmiqt.Strdupg(styleSheet)
 	defer C.free(styleSheet_ms)
 	C.QWidget_SetStyleSheet(this.h, (*C.struct_miqt_string)(styleSheet_ms))
 }
@@ -617,7 +632,7 @@ func (this *QWidget) WindowIcon() *QIcon {
 }
 
 func (this *QWidget) SetWindowIconText(windowIconText string) {
-	windowIconText_ms := miqt_strdupg(windowIconText)
+	windowIconText_ms := libmiqt.Strdupg(windowIconText)
 	defer C.free(windowIconText_ms)
 	C.QWidget_SetWindowIconText(this.h, (*C.struct_miqt_string)(windowIconText_ms))
 }
@@ -630,7 +645,7 @@ func (this *QWidget) WindowIconText() string {
 }
 
 func (this *QWidget) SetWindowRole(windowRole string) {
-	windowRole_ms := miqt_strdupg(windowRole)
+	windowRole_ms := libmiqt.Strdupg(windowRole)
 	defer C.free(windowRole_ms)
 	C.QWidget_SetWindowRole(this.h, (*C.struct_miqt_string)(windowRole_ms))
 }
@@ -643,7 +658,7 @@ func (this *QWidget) WindowRole() string {
 }
 
 func (this *QWidget) SetWindowFilePath(filePath string) {
-	filePath_ms := miqt_strdupg(filePath)
+	filePath_ms := libmiqt.Strdupg(filePath)
 	defer C.free(filePath_ms)
 	C.QWidget_SetWindowFilePath(this.h, (*C.struct_miqt_string)(filePath_ms))
 }
@@ -668,7 +683,7 @@ func (this *QWidget) IsWindowModified() bool {
 }
 
 func (this *QWidget) SetToolTip(toolTip string) {
-	toolTip_ms := miqt_strdupg(toolTip)
+	toolTip_ms := libmiqt.Strdupg(toolTip)
 	defer C.free(toolTip_ms)
 	C.QWidget_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
 }
@@ -689,7 +704,7 @@ func (this *QWidget) ToolTipDuration() int {
 }
 
 func (this *QWidget) SetStatusTip(statusTip string) {
-	statusTip_ms := miqt_strdupg(statusTip)
+	statusTip_ms := libmiqt.Strdupg(statusTip)
 	defer C.free(statusTip_ms)
 	C.QWidget_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
@@ -702,7 +717,7 @@ func (this *QWidget) StatusTip() string {
 }
 
 func (this *QWidget) SetWhatsThis(whatsThis string) {
-	whatsThis_ms := miqt_strdupg(whatsThis)
+	whatsThis_ms := libmiqt.Strdupg(whatsThis)
 	defer C.free(whatsThis_ms)
 	C.QWidget_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
 }
@@ -722,7 +737,7 @@ func (this *QWidget) AccessibleName() string {
 }
 
 func (this *QWidget) SetAccessibleName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QWidget_SetAccessibleName(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -735,7 +750,7 @@ func (this *QWidget) AccessibleDescription() string {
 }
 
 func (this *QWidget) SetAccessibleDescription(description string) {
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QWidget_SetAccessibleDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }
@@ -816,7 +831,7 @@ func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
 }
 
 func (this *QWidget) FocusProxy() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_FocusProxy(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_FocusProxy(this.h)))
 }
 
 func (this *QWidget) ContextMenuPolicy() ContextMenuPolicy {
@@ -864,11 +879,11 @@ func (this *QWidget) SetShortcutAutoRepeat(id int) {
 }
 
 func QWidget_MouseGrabber() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_MouseGrabber()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_MouseGrabber()))
 }
 
 func QWidget_KeyboardGrabber() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_KeyboardGrabber()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_KeyboardGrabber()))
 }
 
 func (this *QWidget) UpdatesEnabled() bool {
@@ -880,7 +895,7 @@ func (this *QWidget) SetUpdatesEnabled(enable bool) {
 }
 
 func (this *QWidget) GraphicsProxyWidget() *QGraphicsProxyWidget {
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QWidget_GraphicsProxyWidget(this.h)))
+	return UnsafeNewQGraphicsProxyWidget(unsafe.Pointer(C.QWidget_GraphicsProxyWidget(this.h)))
 }
 
 func (this *QWidget) Update() {
@@ -1109,7 +1124,7 @@ func (this *QWidget) ContentsRect() *QRect {
 }
 
 func (this *QWidget) Layout() *QLayout {
-	return newQLayout_U(unsafe.Pointer(C.QWidget_Layout(this.h)))
+	return UnsafeNewQLayout(unsafe.Pointer(C.QWidget_Layout(this.h)))
 }
 
 func (this *QWidget) SetLayout(layout *QLayout) {
@@ -1137,15 +1152,15 @@ func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_FocusWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_FocusWidget(this.h)))
 }
 
 func (this *QWidget) NextInFocusChain() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_NextInFocusChain(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_NextInFocusChain(this.h)))
 }
 
 func (this *QWidget) PreviousInFocusChain() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_PreviousInFocusChain(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_PreviousInFocusChain(this.h)))
 }
 
 func (this *QWidget) AcceptDrops() bool {
@@ -1197,14 +1212,14 @@ func (this *QWidget) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAction_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QWidget) ParentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_ParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_ParentWidget(this.h)))
 }
 
 func (this *QWidget) SetWindowFlags(typeVal WindowType) {
@@ -1228,15 +1243,15 @@ func (this *QWidget) WindowType() WindowType {
 }
 
 func QWidget_Find(param1 uintptr) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_Find((C.uintptr_t)(param1))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_Find((C.uintptr_t)(param1))))
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_ChildAtWithQPoint(this.h, p.cPointer())))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
@@ -1248,7 +1263,7 @@ func (this *QWidget) TestAttribute(param1 WidgetAttribute) bool {
 }
 
 func (this *QWidget) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QWidget_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QWidget_PaintEngine(this.h)))
 }
 
 func (this *QWidget) EnsurePolished() {
@@ -1268,23 +1283,23 @@ func (this *QWidget) SetAutoFillBackground(enabled bool) {
 }
 
 func (this *QWidget) BackingStore() *QBackingStore {
-	return newQBackingStore_U(unsafe.Pointer(C.QWidget_BackingStore(this.h)))
+	return UnsafeNewQBackingStore(unsafe.Pointer(C.QWidget_BackingStore(this.h)))
 }
 
 func (this *QWidget) WindowHandle() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWidget_WindowHandle(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QWidget_WindowHandle(this.h)))
 }
 
 func (this *QWidget) Screen() *QScreen {
-	return newQScreen_U(unsafe.Pointer(C.QWidget_Screen(this.h)))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QWidget_Screen(this.h)))
 }
 
 func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer(window.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_CreateWindowContainer(window.cPointer())))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QWidget_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -1323,13 +1338,13 @@ func miqt_exec_callback_QWidget_WindowIconChanged(cb C.intptr_t, icon *C.QIcon) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQIcon_U(unsafe.Pointer(icon))
+	slotval1 := UnsafeNewQIcon(unsafe.Pointer(icon))
 
 	gofunc(slotval1)
 }
 
 func (this *QWidget) WindowIconTextChanged(iconText string) {
-	iconText_ms := miqt_strdupg(iconText)
+	iconText_ms := libmiqt.Strdupg(iconText)
 	defer C.free(iconText_ms)
 	C.QWidget_WindowIconTextChanged(this.h, (*C.struct_miqt_string)(iconText_ms))
 }
@@ -1368,7 +1383,7 @@ func miqt_exec_callback_QWidget_CustomContextMenuRequested(cb C.intptr_t, pos *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint_U(unsafe.Pointer(pos))
+	slotval1 := UnsafeNewQPoint(unsafe.Pointer(pos))
 
 	gofunc(slotval1)
 }
@@ -1488,11 +1503,11 @@ func (this *QWidget) SetAttribute2(param1 WidgetAttribute, on bool) {
 }
 
 func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_CreateWindowContainer2(window.cPointer(), parent.cPointer())))
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags WindowType) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidget_CreateWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags))))
 }
 
 // Delete this object from C++ memory.

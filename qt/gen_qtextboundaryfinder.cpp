@@ -3,7 +3,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTextBoundaryFinder>
-#include "qtextboundaryfinder.h"
+#include <qtextboundaryfinder.h>
 #include "gen_qtextboundaryfinder.h"
 #include "_cgo_export.h"
 

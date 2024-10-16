@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qkeysequenceedit.h"
+#include <qkeysequenceedit.h>
 #include "gen_qkeysequenceedit.h"
 #include "_cgo_export.h"
 

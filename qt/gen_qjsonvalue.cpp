@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qjsonvalue.h"
+#include <qjsonvalue.h>
 #include "gen_qjsonvalue.h"
 #include "_cgo_export.h"
 

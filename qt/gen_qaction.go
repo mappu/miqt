@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -53,14 +54,21 @@ func (this *QAction) cPointer() *C.QAction {
 	return this.h
 }
 
+func (this *QAction) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAction(h *C.QAction) *QAction {
 	if h == nil {
 		return nil
 	}
-	return &QAction{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAction{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAction_U(h unsafe.Pointer) *QAction {
+func UnsafeNewQAction(h unsafe.Pointer) *QAction {
 	return newQAction((*C.QAction)(h))
 }
 
@@ -72,7 +80,7 @@ func NewQAction() *QAction {
 
 // NewQAction2 constructs a new QAction object.
 func NewQAction2(text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAction_new2((*C.struct_miqt_string)(text_ms))
 	return newQAction(ret)
@@ -80,7 +88,7 @@ func NewQAction2(text string) *QAction {
 
 // NewQAction3 constructs a new QAction object.
 func NewQAction3(icon *QIcon, text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAction_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQAction(ret)
@@ -94,7 +102,7 @@ func NewQAction4(parent *QObject) *QAction {
 
 // NewQAction5 constructs a new QAction object.
 func NewQAction5(text string, parent *QObject) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAction_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQAction(ret)
@@ -102,14 +110,14 @@ func NewQAction5(text string, parent *QObject) *QAction {
 
 // NewQAction6 constructs a new QAction object.
 func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAction_new6(icon.cPointer(), (*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQAction(ret)
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAction_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAction_MetaObject(this.h)))
 }
 
 func (this *QAction) Metacast(param1 string) unsafe.Pointer {
@@ -141,7 +149,7 @@ func (this *QAction) SetActionGroup(group *QActionGroup) {
 }
 
 func (this *QAction) ActionGroup() *QActionGroup {
-	return newQActionGroup_U(unsafe.Pointer(C.QAction_ActionGroup(this.h)))
+	return UnsafeNewQActionGroup(unsafe.Pointer(C.QAction_ActionGroup(this.h)))
 }
 
 func (this *QAction) SetIcon(icon *QIcon) {
@@ -156,7 +164,7 @@ func (this *QAction) Icon() *QIcon {
 }
 
 func (this *QAction) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAction_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -169,7 +177,7 @@ func (this *QAction) Text() string {
 }
 
 func (this *QAction) SetIconText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAction_SetIconText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -182,7 +190,7 @@ func (this *QAction) IconText() string {
 }
 
 func (this *QAction) SetToolTip(tip string) {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	C.QAction_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
 }
@@ -195,7 +203,7 @@ func (this *QAction) ToolTip() string {
 }
 
 func (this *QAction) SetStatusTip(statusTip string) {
-	statusTip_ms := miqt_strdupg(statusTip)
+	statusTip_ms := libmiqt.Strdupg(statusTip)
 	defer C.free(statusTip_ms)
 	C.QAction_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
@@ -208,7 +216,7 @@ func (this *QAction) StatusTip() string {
 }
 
 func (this *QAction) SetWhatsThis(what string) {
-	what_ms := miqt_strdupg(what)
+	what_ms := libmiqt.Strdupg(what)
 	defer C.free(what_ms)
 	C.QAction_SetWhatsThis(this.h, (*C.struct_miqt_string)(what_ms))
 }
@@ -229,7 +237,7 @@ func (this *QAction) Priority() QAction__Priority {
 }
 
 func (this *QAction) Menu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QAction_Menu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QAction_Menu(this.h)))
 }
 
 func (this *QAction) SetMenu(menu *QMenu) {
@@ -376,7 +384,7 @@ func (this *QAction) IsShortcutVisibleInContextMenu() bool {
 }
 
 func (this *QAction) ParentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QAction_ParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAction_ParentWidget(this.h)))
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
@@ -384,7 +392,7 @@ func (this *QAction) AssociatedWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -395,7 +403,7 @@ func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
 	_ret := make([]*QGraphicsWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

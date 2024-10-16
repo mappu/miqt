@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -42,14 +43,21 @@ func (this *QCompleter) cPointer() *C.QCompleter {
 	return this.h
 }
 
+func (this *QCompleter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCompleter(h *C.QCompleter) *QCompleter {
 	if h == nil {
 		return nil
 	}
-	return &QCompleter{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QCompleter{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQCompleter_U(h unsafe.Pointer) *QCompleter {
+func UnsafeNewQCompleter(h unsafe.Pointer) *QCompleter {
 	return newQCompleter((*C.QCompleter)(h))
 }
 
@@ -71,7 +79,7 @@ func NewQCompleter3(completions []string) *QCompleter {
 	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		completions_i_ms := miqt_strdupg(completions[i])
+		completions_i_ms := libmiqt.Strdupg(completions[i])
 		defer C.free(completions_i_ms)
 		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
 	}
@@ -99,7 +107,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		completions_i_ms := miqt_strdupg(completions[i])
+		completions_i_ms := libmiqt.Strdupg(completions[i])
 		defer C.free(completions_i_ms)
 		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
 	}
@@ -110,7 +118,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCompleter_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCompleter_MetaObject(this.h)))
 }
 
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
@@ -142,7 +150,7 @@ func (this *QCompleter) SetWidget(widget *QWidget) {
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QCompleter_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QCompleter_Widget(this.h)))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
@@ -150,7 +158,7 @@ func (this *QCompleter) SetModel(c *QAbstractItemModel) {
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QCompleter_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_Model(this.h)))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
@@ -170,7 +178,7 @@ func (this *QCompleter) FilterMode() MatchFlag {
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	return newQAbstractItemView_U(unsafe.Pointer(C.QCompleter_Popup(this.h)))
+	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QCompleter_Popup(this.h)))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
@@ -248,7 +256,7 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QCompleter_CompletionModel(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_CompletionModel(this.h)))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
@@ -259,7 +267,7 @@ func (this *QCompleter) CompletionPrefix() string {
 }
 
 func (this *QCompleter) SetCompletionPrefix(prefix string) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QCompleter_SetCompletionPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
@@ -280,7 +288,7 @@ func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
 }
 
 func (this *QCompleter) SplitPath(path string) []string {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	var _ma *C.struct_miqt_array = C.QCompleter_SplitPath(this.h, (*C.struct_miqt_string)(path_ms))
 	_ret := make([]string, int(_ma.len))
@@ -296,7 +304,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 }
 
 func (this *QCompleter) Activated(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QCompleter_Activated(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -335,13 +343,13 @@ func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
 
 func (this *QCompleter) Highlighted(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QCompleter_Highlighted(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -380,7 +388,7 @@ func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }

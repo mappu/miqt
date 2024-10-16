@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTranslator>
-#include "qcoreapplication.h"
+#include <qcoreapplication.h>
 #include "gen_qcoreapplication.h"
 #include "_cgo_export.h"
 
@@ -203,7 +203,7 @@ long long QCoreApplication_ApplicationPid() {
 }
 
 void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
-	QList<QString> libraryPaths_QList;
+	QStringList libraryPaths_QList;
 	libraryPaths_QList.reserve(libraryPaths->len);
 	struct miqt_string** libraryPaths_arr = static_cast<struct miqt_string**>(libraryPaths->data);
 	for(size_t i = 0; i < libraryPaths->len; ++i) {

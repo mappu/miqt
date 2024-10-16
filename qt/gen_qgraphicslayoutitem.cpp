@@ -3,7 +3,7 @@
 #include <QRectF>
 #include <QSizeF>
 #include <QSizePolicy>
-#include "qgraphicslayoutitem.h"
+#include <qgraphicslayoutitem.h>
 #include "gen_qgraphicslayoutitem.h"
 #include "_cgo_export.h"
 

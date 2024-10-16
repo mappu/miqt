@@ -9,7 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qimagereader.h"
+#include <qimagereader.h>
 #include "gen_qimagereader.h"
 #include "_cgo_export.h"
 

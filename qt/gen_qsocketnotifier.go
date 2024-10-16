@@ -33,14 +33,21 @@ func (this *QSocketNotifier) cPointer() *C.QSocketNotifier {
 	return this.h
 }
 
+func (this *QSocketNotifier) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSocketNotifier(h *C.QSocketNotifier) *QSocketNotifier {
 	if h == nil {
 		return nil
 	}
-	return &QSocketNotifier{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSocketNotifier{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSocketNotifier_U(h unsafe.Pointer) *QSocketNotifier {
+func UnsafeNewQSocketNotifier(h unsafe.Pointer) *QSocketNotifier {
 	return newQSocketNotifier((*C.QSocketNotifier)(h))
 }
 
@@ -57,7 +64,7 @@ func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *Q
 }
 
 func (this *QSocketNotifier) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSocketNotifier_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSocketNotifier_MetaObject(this.h)))
 }
 
 func (this *QSocketNotifier) Metacast(param1 string) unsafe.Pointer {
@@ -169,6 +176,13 @@ func (this *QSocketDescriptor) cPointer() *C.QSocketDescriptor {
 	return this.h
 }
 
+func (this *QSocketDescriptor) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSocketDescriptor(h *C.QSocketDescriptor) *QSocketDescriptor {
 	if h == nil {
 		return nil
@@ -176,7 +190,7 @@ func newQSocketDescriptor(h *C.QSocketDescriptor) *QSocketDescriptor {
 	return &QSocketDescriptor{h: h}
 }
 
-func newQSocketDescriptor_U(h unsafe.Pointer) *QSocketDescriptor {
+func UnsafeNewQSocketDescriptor(h unsafe.Pointer) *QSocketDescriptor {
 	return newQSocketDescriptor((*C.QSocketDescriptor)(h))
 }
 

@@ -38,14 +38,21 @@ func (this *QThread) cPointer() *C.QThread {
 	return this.h
 }
 
+func (this *QThread) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQThread(h *C.QThread) *QThread {
 	if h == nil {
 		return nil
 	}
-	return &QThread{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QThread{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQThread_U(h unsafe.Pointer) *QThread {
+func UnsafeNewQThread(h unsafe.Pointer) *QThread {
 	return newQThread((*C.QThread)(h))
 }
 
@@ -62,7 +69,7 @@ func NewQThread2(parent *QObject) *QThread {
 }
 
 func (this *QThread) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QThread_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QThread_MetaObject(this.h)))
 }
 
 func (this *QThread) Metacast(param1 string) unsafe.Pointer {
@@ -94,7 +101,7 @@ func QThread_CurrentThreadId() unsafe.Pointer {
 }
 
 func QThread_CurrentThread() *QThread {
-	return newQThread_U(unsafe.Pointer(C.QThread_CurrentThread()))
+	return UnsafeNewQThread(unsafe.Pointer(C.QThread_CurrentThread()))
 }
 
 func QThread_IdealThreadCount() int {
@@ -142,7 +149,7 @@ func (this *QThread) Exit() {
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QThread_EventDispatcher(this.h)))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QThread_EventDispatcher(this.h)))
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {

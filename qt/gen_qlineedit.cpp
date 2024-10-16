@@ -14,7 +14,7 @@
 #include <QValidator>
 #include <QVariant>
 #include <QWidget>
-#include "qlineedit.h"
+#include <qlineedit.h>
 #include "gen_qlineedit.h"
 #include "_cgo_export.h"
 

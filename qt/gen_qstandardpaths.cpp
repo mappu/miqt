@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qstandardpaths.h"
+#include <qstandardpaths.h>
 #include "gen_qstandardpaths.h"
 #include "_cgo_export.h"
 
@@ -109,7 +109,7 @@ struct miqt_array* QStandardPaths_LocateAll3(int typeVal, struct miqt_string* fi
 
 struct miqt_string* QStandardPaths_FindExecutable2(struct miqt_string* executableName, struct miqt_array* /* of struct miqt_string* */ paths) {
 	QString executableName_QString = QString::fromUtf8(&executableName->data, executableName->len);
-	QList<QString> paths_QList;
+	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
 	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {

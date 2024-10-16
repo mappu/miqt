@@ -9,7 +9,7 @@
 #include <QMetaProperty>
 #include <QObject>
 #include <QVariant>
-#include "qmetaobject.h"
+#include <qmetaobject.h>
 #include "gen_qmetaobject.h"
 #include "_cgo_export.h"
 

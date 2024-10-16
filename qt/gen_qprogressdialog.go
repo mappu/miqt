@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QProgressDialog) cPointer() *C.QProgressDialog {
 	return this.h
 }
 
+func (this *QProgressDialog) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQProgressDialog(h *C.QProgressDialog) *QProgressDialog {
 	if h == nil {
 		return nil
 	}
-	return &QProgressDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
+	return &QProgressDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
-func newQProgressDialog_U(h unsafe.Pointer) *QProgressDialog {
+func UnsafeNewQProgressDialog(h unsafe.Pointer) *QProgressDialog {
 	return newQProgressDialog((*C.QProgressDialog)(h))
 }
 
@@ -45,9 +53,9 @@ func NewQProgressDialog() *QProgressDialog {
 
 // NewQProgressDialog2 constructs a new QProgressDialog object.
 func NewQProgressDialog2(labelText string, cancelButtonText string, minimum int, maximum int) *QProgressDialog {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
-	cancelButtonText_ms := miqt_strdupg(cancelButtonText)
+	cancelButtonText_ms := libmiqt.Strdupg(cancelButtonText)
 	defer C.free(cancelButtonText_ms)
 	ret := C.QProgressDialog_new2((*C.struct_miqt_string)(labelText_ms), (*C.struct_miqt_string)(cancelButtonText_ms), (C.int)(minimum), (C.int)(maximum))
 	return newQProgressDialog(ret)
@@ -67,9 +75,9 @@ func NewQProgressDialog4(parent *QWidget, flags WindowType) *QProgressDialog {
 
 // NewQProgressDialog5 constructs a new QProgressDialog object.
 func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget) *QProgressDialog {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
-	cancelButtonText_ms := miqt_strdupg(cancelButtonText)
+	cancelButtonText_ms := libmiqt.Strdupg(cancelButtonText)
 	defer C.free(cancelButtonText_ms)
 	ret := C.QProgressDialog_new5((*C.struct_miqt_string)(labelText_ms), (*C.struct_miqt_string)(cancelButtonText_ms), (C.int)(minimum), (C.int)(maximum), parent.cPointer())
 	return newQProgressDialog(ret)
@@ -77,16 +85,16 @@ func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int,
 
 // NewQProgressDialog6 constructs a new QProgressDialog object.
 func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int, maximum int, parent *QWidget, flags WindowType) *QProgressDialog {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
-	cancelButtonText_ms := miqt_strdupg(cancelButtonText)
+	cancelButtonText_ms := libmiqt.Strdupg(cancelButtonText)
 	defer C.free(cancelButtonText_ms)
 	ret := C.QProgressDialog_new6((*C.struct_miqt_string)(labelText_ms), (*C.struct_miqt_string)(cancelButtonText_ms), (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags))
 	return newQProgressDialog(ret)
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QProgressDialog_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProgressDialog_MetaObject(this.h)))
 }
 
 func (this *QProgressDialog) Metacast(param1 string) unsafe.Pointer {
@@ -200,13 +208,13 @@ func (this *QProgressDialog) SetValue(progress int) {
 }
 
 func (this *QProgressDialog) SetLabelText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QProgressDialog_SetLabelText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QProgressDialog) SetCancelButtonText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QProgressDialog_SetCancelButtonText(this.h, (*C.struct_miqt_string)(text_ms))
 }

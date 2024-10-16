@@ -34,6 +34,13 @@ func (this *QGlyphRun) cPointer() *C.QGlyphRun {
 	return this.h
 }
 
+func (this *QGlyphRun) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
 	if h == nil {
 		return nil
@@ -41,7 +48,7 @@ func newQGlyphRun(h *C.QGlyphRun) *QGlyphRun {
 	return &QGlyphRun{h: h}
 }
 
-func newQGlyphRun_U(h unsafe.Pointer) *QGlyphRun {
+func UnsafeNewQGlyphRun(h unsafe.Pointer) *QGlyphRun {
 	return newQGlyphRun((*C.QGlyphRun)(h))
 }
 

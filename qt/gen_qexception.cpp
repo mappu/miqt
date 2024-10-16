@@ -1,6 +1,6 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionHolder
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
-#include "qexception.h"
+#include <qexception.h>
 #include "gen_qexception.h"
 #include "_cgo_export.h"
 

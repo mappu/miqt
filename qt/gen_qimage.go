@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -68,14 +69,21 @@ func (this *QImage) cPointer() *C.QImage {
 	return this.h
 }
 
+func (this *QImage) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQImage(h *C.QImage) *QImage {
 	if h == nil {
 		return nil
 	}
-	return &QImage{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QImage{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQImage_U(h unsafe.Pointer) *QImage {
+func UnsafeNewQImage(h unsafe.Pointer) *QImage {
 	return newQImage((*C.QImage)(h))
 }
 
@@ -123,7 +131,7 @@ func NewQImage7(data *byte, width int, height int, bytesPerLine int, format QIma
 
 // NewQImage8 constructs a new QImage object.
 func NewQImage8(fileName string) *QImage {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QImage_new8((*C.struct_miqt_string)(fileName_ms))
 	return newQImage(ret)
@@ -137,7 +145,7 @@ func NewQImage9(param1 *QImage) *QImage {
 
 // NewQImage10 constructs a new QImage object.
 func NewQImage10(fileName string, format string) *QImage {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -555,7 +563,7 @@ func (this *QImage) Load(device *QIODevice, format string) bool {
 }
 
 func (this *QImage) LoadWithFileName(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QImage_LoadWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -569,7 +577,7 @@ func (this *QImage) LoadFromDataWithData(data *QByteArray) bool {
 }
 
 func (this *QImage) Save(fileName string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (bool)(C.QImage_Save(this.h, (*C.struct_miqt_string)(fileName_ms)))
 }
@@ -597,7 +605,7 @@ func (this *QImage) CacheKey() int64 {
 }
 
 func (this *QImage) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QImage_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QImage_PaintEngine(this.h)))
 }
 
 func (this *QImage) DotsPerMeterX() int {
@@ -649,9 +657,9 @@ func (this *QImage) Text() string {
 }
 
 func (this *QImage) SetText(key string, value string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	value_ms := miqt_strdupg(value)
+	value_ms := libmiqt.Strdupg(value)
 	defer C.free(value_ms)
 	C.QImage_SetText(this.h, (*C.struct_miqt_string)(key_ms), (*C.struct_miqt_string)(value_ms))
 }
@@ -803,7 +811,7 @@ func (this *QImage) InvertPixels1(param1 QImage__InvertMode) {
 }
 
 func (this *QImage) Load2(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -823,7 +831,7 @@ func (this *QImage) LoadFromData2(data *QByteArray, aformat string) bool {
 }
 
 func (this *QImage) Save2(fileName string, format string) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -831,7 +839,7 @@ func (this *QImage) Save2(fileName string, format string) bool {
 }
 
 func (this *QImage) Save3(fileName string, format string, quality int) bool {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -869,7 +877,7 @@ func QImage_FromData2(data *QByteArray, format string) *QImage {
 }
 
 func (this *QImage) Text1(key string) string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ms *C.struct_miqt_string = C.QImage_Text1(this.h, (*C.struct_miqt_string)(key_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))

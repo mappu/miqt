@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -58,6 +59,13 @@ func (this *QJsonParseError) cPointer() *C.QJsonParseError {
 	return this.h
 }
 
+func (this *QJsonParseError) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	if h == nil {
 		return nil
@@ -65,7 +73,7 @@ func newQJsonParseError(h *C.QJsonParseError) *QJsonParseError {
 	return &QJsonParseError{h: h}
 }
 
-func newQJsonParseError_U(h unsafe.Pointer) *QJsonParseError {
+func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
 	return newQJsonParseError((*C.QJsonParseError)(h))
 }
 
@@ -101,6 +109,13 @@ func (this *QJsonDocument) cPointer() *C.QJsonDocument {
 	return this.h
 }
 
+func (this *QJsonDocument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	if h == nil {
 		return nil
@@ -108,7 +123,7 @@ func newQJsonDocument(h *C.QJsonDocument) *QJsonDocument {
 	return &QJsonDocument{h: h}
 }
 
-func newQJsonDocument_U(h unsafe.Pointer) *QJsonDocument {
+func UnsafeNewQJsonDocument(h unsafe.Pointer) *QJsonDocument {
 	return newQJsonDocument((*C.QJsonDocument)(h))
 }
 
@@ -242,7 +257,7 @@ func (this *QJsonDocument) SetArray(array *QJsonArray) {
 }
 
 func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonDocument_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValue(_ret)

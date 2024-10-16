@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -42,6 +43,13 @@ func (this *QColor) cPointer() *C.QColor {
 	return this.h
 }
 
+func (this *QColor) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColor(h *C.QColor) *QColor {
 	if h == nil {
 		return nil
@@ -49,7 +57,7 @@ func newQColor(h *C.QColor) *QColor {
 	return &QColor{h: h}
 }
 
-func newQColor_U(h unsafe.Pointer) *QColor {
+func UnsafeNewQColor(h unsafe.Pointer) *QColor {
 	return newQColor((*C.QColor)(h))
 }
 
@@ -85,7 +93,7 @@ func NewQColor5(rgba64 QRgba64) *QColor {
 
 // NewQColor6 constructs a new QColor object.
 func NewQColor6(name string) *QColor {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QColor_new6((*C.struct_miqt_string)(name_ms))
 	return newQColor(ret)
@@ -156,7 +164,7 @@ func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
 }
 
 func (this *QColor) SetNamedColor(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QColor_SetNamedColor(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -601,7 +609,7 @@ func (this *QColor) OperatorNotEqual(c *QColor) bool {
 }
 
 func QColor_IsValidColor(name string) bool {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	return (bool)(C.QColor_IsValidColor((*C.struct_miqt_string)(name_ms)))
 }

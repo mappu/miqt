@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QGroupBox) cPointer() *C.QGroupBox {
 	return this.h
 }
 
+func (this *QGroupBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGroupBox(h *C.QGroupBox) *QGroupBox {
 	if h == nil {
 		return nil
 	}
-	return &QGroupBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QGroupBox{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQGroupBox_U(h unsafe.Pointer) *QGroupBox {
+func UnsafeNewQGroupBox(h unsafe.Pointer) *QGroupBox {
 	return newQGroupBox((*C.QGroupBox)(h))
 }
 
@@ -45,7 +53,7 @@ func NewQGroupBox() *QGroupBox {
 
 // NewQGroupBox2 constructs a new QGroupBox object.
 func NewQGroupBox2(title string) *QGroupBox {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QGroupBox_new2((*C.struct_miqt_string)(title_ms))
 	return newQGroupBox(ret)
@@ -59,14 +67,14 @@ func NewQGroupBox3(parent *QWidget) *QGroupBox {
 
 // NewQGroupBox4 constructs a new QGroupBox object.
 func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QGroupBox_new4((*C.struct_miqt_string)(title_ms), parent.cPointer())
 	return newQGroupBox(ret)
 }
 
 func (this *QGroupBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGroupBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGroupBox_MetaObject(this.h)))
 }
 
 func (this *QGroupBox) Metacast(param1 string) unsafe.Pointer {
@@ -101,7 +109,7 @@ func (this *QGroupBox) Title() string {
 }
 
 func (this *QGroupBox) SetTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QGroupBox_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }

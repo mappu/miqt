@@ -66,6 +66,13 @@ func (this *QSurfaceFormat) cPointer() *C.QSurfaceFormat {
 	return this.h
 }
 
+func (this *QSurfaceFormat) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSurfaceFormat(h *C.QSurfaceFormat) *QSurfaceFormat {
 	if h == nil {
 		return nil
@@ -73,7 +80,7 @@ func newQSurfaceFormat(h *C.QSurfaceFormat) *QSurfaceFormat {
 	return &QSurfaceFormat{h: h}
 }
 
-func newQSurfaceFormat_U(h unsafe.Pointer) *QSurfaceFormat {
+func UnsafeNewQSurfaceFormat(h unsafe.Pointer) *QSurfaceFormat {
 	return newQSurfaceFormat((*C.QSurfaceFormat)(h))
 }
 

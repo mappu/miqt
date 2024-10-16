@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -46,14 +47,21 @@ func (this *QSharedMemory) cPointer() *C.QSharedMemory {
 	return this.h
 }
 
+func (this *QSharedMemory) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSharedMemory(h *C.QSharedMemory) *QSharedMemory {
 	if h == nil {
 		return nil
 	}
-	return &QSharedMemory{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSharedMemory{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSharedMemory_U(h unsafe.Pointer) *QSharedMemory {
+func UnsafeNewQSharedMemory(h unsafe.Pointer) *QSharedMemory {
 	return newQSharedMemory((*C.QSharedMemory)(h))
 }
 
@@ -65,7 +73,7 @@ func NewQSharedMemory() *QSharedMemory {
 
 // NewQSharedMemory2 constructs a new QSharedMemory object.
 func NewQSharedMemory2(key string) *QSharedMemory {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	ret := C.QSharedMemory_new2((*C.struct_miqt_string)(key_ms))
 	return newQSharedMemory(ret)
@@ -79,14 +87,14 @@ func NewQSharedMemory3(parent *QObject) *QSharedMemory {
 
 // NewQSharedMemory4 constructs a new QSharedMemory object.
 func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	ret := C.QSharedMemory_new4((*C.struct_miqt_string)(key_ms), parent.cPointer())
 	return newQSharedMemory(ret)
 }
 
 func (this *QSharedMemory) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSharedMemory_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSharedMemory_MetaObject(this.h)))
 }
 
 func (this *QSharedMemory) Metacast(param1 string) unsafe.Pointer {
@@ -114,7 +122,7 @@ func QSharedMemory_TrUtf8(s string) string {
 }
 
 func (this *QSharedMemory) SetKey(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QSharedMemory_SetKey(this.h, (*C.struct_miqt_string)(key_ms))
 }
@@ -127,7 +135,7 @@ func (this *QSharedMemory) Key() string {
 }
 
 func (this *QSharedMemory) SetNativeKey(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QSharedMemory_SetNativeKey(this.h, (*C.struct_miqt_string)(key_ms))
 }

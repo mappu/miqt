@@ -32,6 +32,13 @@ func (this *QLine) cPointer() *C.QLine {
 	return this.h
 }
 
+func (this *QLine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLine(h *C.QLine) *QLine {
 	if h == nil {
 		return nil
@@ -39,7 +46,7 @@ func newQLine(h *C.QLine) *QLine {
 	return &QLine{h: h}
 }
 
-func newQLine_U(h unsafe.Pointer) *QLine {
+func UnsafeNewQLine(h unsafe.Pointer) *QLine {
 	return newQLine((*C.QLine)(h))
 }
 
@@ -187,6 +194,13 @@ func (this *QLineF) cPointer() *C.QLineF {
 	return this.h
 }
 
+func (this *QLineF) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLineF(h *C.QLineF) *QLineF {
 	if h == nil {
 		return nil
@@ -194,7 +208,7 @@ func newQLineF(h *C.QLineF) *QLineF {
 	return &QLineF{h: h}
 }
 
-func newQLineF_U(h unsafe.Pointer) *QLineF {
+func UnsafeNewQLineF(h unsafe.Pointer) *QLineF {
 	return newQLineF((*C.QLineF)(h))
 }
 

@@ -1,6 +1,6 @@
 #include <QPaintDevice>
 #include <QPaintEngine>
-#include "qpaintdevice.h"
+#include <qpaintdevice.h>
 #include "gen_qpaintdevice.h"
 #include "_cgo_export.h"
 

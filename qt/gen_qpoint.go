@@ -24,6 +24,13 @@ func (this *QPoint) cPointer() *C.QPoint {
 	return this.h
 }
 
+func (this *QPoint) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPoint(h *C.QPoint) *QPoint {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQPoint(h *C.QPoint) *QPoint {
 	return &QPoint{h: h}
 }
 
-func newQPoint_U(h unsafe.Pointer) *QPoint {
+func UnsafeNewQPoint(h unsafe.Pointer) *QPoint {
 	return newQPoint((*C.QPoint)(h))
 }
 
@@ -85,27 +92,27 @@ func (this *QPoint) Transposed() *QPoint {
 }
 
 func (this *QPoint) OperatorPlusAssign(p *QPoint) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorPlusAssign(this.h, p.cPointer())))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorPlusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPoint) OperatorMinusAssign(p *QPoint) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMinusAssign(this.h, p.cPointer())))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorMinusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPoint) OperatorMultiplyAssign(factor float32) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QPoint) OperatorMultiplyAssignWithFactor(factor float64) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorMultiplyAssignWithFactor(this.h, (C.double)(factor))))
 }
 
 func (this *QPoint) OperatorMultiplyAssign2(factor int) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorMultiplyAssign2(this.h, (C.int)(factor))))
 }
 
 func (this *QPoint) OperatorDivideAssign(divisor float64) *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QPoint_OperatorDivideAssign(this.h, (C.double)(divisor))))
 }
 
 func QPoint_DotProduct(p1 *QPoint, p2 *QPoint) int {
@@ -137,6 +144,13 @@ func (this *QPointF) cPointer() *C.QPointF {
 	return this.h
 }
 
+func (this *QPointF) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPointF(h *C.QPointF) *QPointF {
 	if h == nil {
 		return nil
@@ -144,7 +158,7 @@ func newQPointF(h *C.QPointF) *QPointF {
 	return &QPointF{h: h}
 }
 
-func newQPointF_U(h unsafe.Pointer) *QPointF {
+func UnsafeNewQPointF(h unsafe.Pointer) *QPointF {
 	return newQPointF((*C.QPointF)(h))
 }
 
@@ -204,19 +218,19 @@ func (this *QPointF) Transposed() *QPointF {
 }
 
 func (this *QPointF) OperatorPlusAssign(p *QPointF) *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorPlusAssign(this.h, p.cPointer())))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QPointF_OperatorPlusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPointF) OperatorMinusAssign(p *QPointF) *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorMinusAssign(this.h, p.cPointer())))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QPointF_OperatorMinusAssign(this.h, p.cPointer())))
 }
 
 func (this *QPointF) OperatorMultiplyAssign(c float64) *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QPointF_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QPointF) OperatorDivideAssign(c float64) *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QPointF_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 func QPointF_DotProduct(p1 *QPointF, p2 *QPointF) float64 {

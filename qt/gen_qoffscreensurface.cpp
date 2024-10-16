@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QSurfaceFormat>
-#include "qoffscreensurface.h"
+#include <qoffscreensurface.h>
 #include "gen_qoffscreensurface.h"
 #include "_cgo_export.h"
 

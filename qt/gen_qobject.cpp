@@ -13,7 +13,7 @@
 #include <cstring>
 #include <QThread>
 #include <QVariant>
-#include "qobject.h"
+#include <qobject.h>
 #include "gen_qobject.h"
 #include "_cgo_export.h"
 

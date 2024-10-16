@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -32,6 +33,13 @@ func (this *QResource) cPointer() *C.QResource {
 	return this.h
 }
 
+func (this *QResource) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQResource(h *C.QResource) *QResource {
 	if h == nil {
 		return nil
@@ -39,7 +47,7 @@ func newQResource(h *C.QResource) *QResource {
 	return &QResource{h: h}
 }
 
-func newQResource_U(h unsafe.Pointer) *QResource {
+func UnsafeNewQResource(h unsafe.Pointer) *QResource {
 	return newQResource((*C.QResource)(h))
 }
 
@@ -51,7 +59,7 @@ func NewQResource() *QResource {
 
 // NewQResource2 constructs a new QResource object.
 func NewQResource2(file string) *QResource {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	ret := C.QResource_new2((*C.struct_miqt_string)(file_ms))
 	return newQResource(ret)
@@ -59,14 +67,14 @@ func NewQResource2(file string) *QResource {
 
 // NewQResource3 constructs a new QResource object.
 func NewQResource3(file string, locale *QLocale) *QResource {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	ret := C.QResource_new3((*C.struct_miqt_string)(file_ms), locale.cPointer())
 	return newQResource(ret)
 }
 
 func (this *QResource) SetFileName(file string) {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	C.QResource_SetFileName(this.h, (*C.struct_miqt_string)(file_ms))
 }
@@ -131,7 +139,7 @@ func (this *QResource) LastModified() *QDateTime {
 }
 
 func QResource_AddSearchPath(path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QResource_AddSearchPath((*C.struct_miqt_string)(path_ms))
 }
@@ -155,13 +163,13 @@ func (this *QResource) IsCompressed() bool {
 }
 
 func QResource_RegisterResource(rccFilename string) bool {
-	rccFilename_ms := miqt_strdupg(rccFilename)
+	rccFilename_ms := libmiqt.Strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
 	return (bool)(C.QResource_RegisterResource((*C.struct_miqt_string)(rccFilename_ms)))
 }
 
 func QResource_UnregisterResource(rccFilename string) bool {
-	rccFilename_ms := miqt_strdupg(rccFilename)
+	rccFilename_ms := libmiqt.Strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
 	return (bool)(C.QResource_UnregisterResource((*C.struct_miqt_string)(rccFilename_ms)))
 }
@@ -175,29 +183,29 @@ func QResource_UnregisterResourceWithRccData(rccData *byte) bool {
 }
 
 func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
-	rccFilename_ms := miqt_strdupg(rccFilename)
+	rccFilename_ms := libmiqt.Strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
-	resourceRoot_ms := miqt_strdupg(resourceRoot)
+	resourceRoot_ms := libmiqt.Strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
 	return (bool)(C.QResource_RegisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool {
-	rccFilename_ms := miqt_strdupg(rccFilename)
+	rccFilename_ms := libmiqt.Strdupg(rccFilename)
 	defer C.free(rccFilename_ms)
-	resourceRoot_ms := miqt_strdupg(resourceRoot)
+	resourceRoot_ms := libmiqt.Strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
 	return (bool)(C.QResource_UnregisterResource2((*C.struct_miqt_string)(rccFilename_ms), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
-	resourceRoot_ms := miqt_strdupg(resourceRoot)
+	resourceRoot_ms := libmiqt.Strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
 	return (bool)(C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms)))
 }
 
 func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
-	resourceRoot_ms := miqt_strdupg(resourceRoot)
+	resourceRoot_ms := libmiqt.Strdupg(resourceRoot)
 	defer C.free(resourceRoot_ms)
 	return (bool)(C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), (*C.struct_miqt_string)(resourceRoot_ms)))
 }

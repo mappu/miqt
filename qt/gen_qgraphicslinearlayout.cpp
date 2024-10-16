@@ -2,7 +2,7 @@
 #include <QGraphicsLinearLayout>
 #include <QRectF>
 #include <QSizeF>
-#include "qgraphicslinearlayout.h"
+#include <qgraphicslinearlayout.h>
 #include "gen_qgraphicslinearlayout.h"
 #include "_cgo_export.h"
 

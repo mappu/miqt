@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -58,6 +59,13 @@ func (this *QByteArrayDataPtr) cPointer() *C.QByteArrayDataPtr {
 	return this.h
 }
 
+func (this *QByteArrayDataPtr) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQByteArrayDataPtr(h *C.QByteArrayDataPtr) *QByteArrayDataPtr {
 	if h == nil {
 		return nil
@@ -65,7 +73,7 @@ func newQByteArrayDataPtr(h *C.QByteArrayDataPtr) *QByteArrayDataPtr {
 	return &QByteArrayDataPtr{h: h}
 }
 
-func newQByteArrayDataPtr_U(h unsafe.Pointer) *QByteArrayDataPtr {
+func UnsafeNewQByteArrayDataPtr(h unsafe.Pointer) *QByteArrayDataPtr {
 	return newQByteArrayDataPtr((*C.QByteArrayDataPtr)(h))
 }
 
@@ -106,6 +114,13 @@ func (this *QByteArray) cPointer() *C.QByteArray {
 	return this.h
 }
 
+func (this *QByteArray) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQByteArray(h *C.QByteArray) *QByteArray {
 	if h == nil {
 		return nil
@@ -113,7 +128,7 @@ func newQByteArray(h *C.QByteArray) *QByteArray {
 	return &QByteArray{h: h}
 }
 
-func newQByteArray_U(h unsafe.Pointer) *QByteArray {
+func UnsafeNewQByteArray(h unsafe.Pointer) *QByteArray {
 	return newQByteArray((*C.QByteArray)(h))
 }
 
@@ -190,7 +205,7 @@ func (this *QByteArray) Resize(size int) {
 }
 
 func (this *QByteArray) Fill(c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Fill(this.h, (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Fill(this.h, (C.char)(c))))
 }
 
 func (this *QByteArray) Capacity() int {
@@ -465,105 +480,105 @@ func (this *QByteArray) RightJustified(width int) *QByteArray {
 }
 
 func (this *QByteArray) Prepend(c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Prepend(this.h, (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Prepend(this.h, (C.char)(c))))
 }
 
 func (this *QByteArray) Prepend2(count int, c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Prepend2(this.h, (C.int)(count), (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Prepend2(this.h, (C.int)(count), (C.char)(c))))
 }
 
 func (this *QByteArray) PrependWithChar(s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_PrependWithChar(this.h, s_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_PrependWithChar(this.h, s_Cstring)))
 }
 
 func (this *QByteArray) Prepend3(s string, lenVal int) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Prepend3(this.h, s_Cstring, (C.int)(lenVal))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Prepend3(this.h, s_Cstring, (C.int)(lenVal))))
 }
 
 func (this *QByteArray) PrependWithQByteArray(a *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_PrependWithQByteArray(this.h, a.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_PrependWithQByteArray(this.h, a.cPointer())))
 }
 
 func (this *QByteArray) Append(c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Append(this.h, (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Append(this.h, (C.char)(c))))
 }
 
 func (this *QByteArray) Append2(count int, c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Append2(this.h, (C.int)(count), (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Append2(this.h, (C.int)(count), (C.char)(c))))
 }
 
 func (this *QByteArray) AppendWithChar(s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_AppendWithChar(this.h, s_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_AppendWithChar(this.h, s_Cstring)))
 }
 
 func (this *QByteArray) Append3(s string, lenVal int) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Append3(this.h, s_Cstring, (C.int)(lenVal))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Append3(this.h, s_Cstring, (C.int)(lenVal))))
 }
 
 func (this *QByteArray) AppendWithQByteArray(a *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_AppendWithQByteArray(this.h, a.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_AppendWithQByteArray(this.h, a.cPointer())))
 }
 
 func (this *QByteArray) Insert(i int, c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert(this.h, (C.int)(i), (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert(this.h, (C.int)(i), (C.char)(c))))
 }
 
 func (this *QByteArray) Insert2(i int, count int, c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert2(this.h, (C.int)(i), (C.int)(count), (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert2(this.h, (C.int)(i), (C.int)(count), (C.char)(c))))
 }
 
 func (this *QByteArray) Insert3(i int, s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert3(this.h, (C.int)(i), s_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert3(this.h, (C.int)(i), s_Cstring)))
 }
 
 func (this *QByteArray) Insert4(i int, s string, lenVal int) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert4(this.h, (C.int)(i), s_Cstring, (C.int)(lenVal))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert4(this.h, (C.int)(i), s_Cstring, (C.int)(lenVal))))
 }
 
 func (this *QByteArray) Insert5(i int, a *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert5(this.h, (C.int)(i), a.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert5(this.h, (C.int)(i), a.cPointer())))
 }
 
 func (this *QByteArray) Remove(index int, lenVal int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Remove(this.h, (C.int)(index), (C.int)(lenVal))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Remove(this.h, (C.int)(index), (C.int)(lenVal))))
 }
 
 func (this *QByteArray) Replace(index int, lenVal int, s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace(this.h, (C.int)(index), (C.int)(lenVal), s_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace(this.h, (C.int)(index), (C.int)(lenVal), s_Cstring)))
 }
 
 func (this *QByteArray) Replace2(index int, lenVal int, s string, alen int) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace2(this.h, (C.int)(index), (C.int)(lenVal), s_Cstring, (C.int)(alen))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace2(this.h, (C.int)(index), (C.int)(lenVal), s_Cstring, (C.int)(alen))))
 }
 
 func (this *QByteArray) Replace3(index int, lenVal int, s *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace3(this.h, (C.int)(index), (C.int)(lenVal), s.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace3(this.h, (C.int)(index), (C.int)(lenVal), s.cPointer())))
 }
 
 func (this *QByteArray) Replace4(before int8, after string) *QByteArray {
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace4(this.h, (C.char)(before), after_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace4(this.h, (C.char)(before), after_Cstring)))
 }
 
 func (this *QByteArray) Replace5(before int8, after *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace5(this.h, (C.char)(before), after.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace5(this.h, (C.char)(before), after.cPointer())))
 }
 
 func (this *QByteArray) Replace6(before string, after string) *QByteArray {
@@ -571,7 +586,7 @@ func (this *QByteArray) Replace6(before string, after string) *QByteArray {
 	defer C.free(unsafe.Pointer(before_Cstring))
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace6(this.h, before_Cstring, after_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace6(this.h, before_Cstring, after_Cstring)))
 }
 
 func (this *QByteArray) Replace7(before string, bsize int, after string, asize int) *QByteArray {
@@ -579,41 +594,41 @@ func (this *QByteArray) Replace7(before string, bsize int, after string, asize i
 	defer C.free(unsafe.Pointer(before_Cstring))
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace7(this.h, before_Cstring, (C.int)(bsize), after_Cstring, (C.int)(asize))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace7(this.h, before_Cstring, (C.int)(bsize), after_Cstring, (C.int)(asize))))
 }
 
 func (this *QByteArray) Replace8(before *QByteArray, after *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace8(this.h, before.cPointer(), after.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace8(this.h, before.cPointer(), after.cPointer())))
 }
 
 func (this *QByteArray) Replace9(before *QByteArray, after string) *QByteArray {
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace9(this.h, before.cPointer(), after_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace9(this.h, before.cPointer(), after_Cstring)))
 }
 
 func (this *QByteArray) Replace10(before string, after *QByteArray) *QByteArray {
 	before_Cstring := C.CString(before)
 	defer C.free(unsafe.Pointer(before_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace10(this.h, before_Cstring, after.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace10(this.h, before_Cstring, after.cPointer())))
 }
 
 func (this *QByteArray) Replace11(before int8, after int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace11(this.h, (C.char)(before), (C.char)(after))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace11(this.h, (C.char)(before), (C.char)(after))))
 }
 
 func (this *QByteArray) OperatorPlusAssign(c int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssign(this.h, (C.char)(c))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_OperatorPlusAssign(this.h, (C.char)(c))))
 }
 
 func (this *QByteArray) OperatorPlusAssignWithChar(s string) *QByteArray {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithChar(this.h, s_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithChar(this.h, s_Cstring)))
 }
 
 func (this *QByteArray) OperatorPlusAssignWithQByteArray(a *QByteArray) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithQByteArray(this.h, a.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithQByteArray(this.h, a.cPointer())))
 }
 
 func (this *QByteArray) Split(sep int8) []QByteArray {
@@ -638,87 +653,87 @@ func (this *QByteArray) Repeated(times int) *QByteArray {
 }
 
 func (this *QByteArray) AppendWithQString(s string) *QByteArray {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_AppendWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_AppendWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
 }
 
 func (this *QByteArray) Insert6(i int, s string) *QByteArray {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Insert6(this.h, (C.int)(i), (*C.struct_miqt_string)(s_ms))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Insert6(this.h, (C.int)(i), (*C.struct_miqt_string)(s_ms))))
 }
 
 func (this *QByteArray) Replace12(before string, after string) *QByteArray {
-	before_ms := miqt_strdupg(before)
+	before_ms := libmiqt.Strdupg(before)
 	defer C.free(before_ms)
 	after_Cstring := C.CString(after)
 	defer C.free(unsafe.Pointer(after_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace12(this.h, (*C.struct_miqt_string)(before_ms), after_Cstring)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace12(this.h, (*C.struct_miqt_string)(before_ms), after_Cstring)))
 }
 
 func (this *QByteArray) Replace13(c int8, after string) *QByteArray {
-	after_ms := miqt_strdupg(after)
+	after_ms := libmiqt.Strdupg(after)
 	defer C.free(after_ms)
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace13(this.h, (C.char)(c), (*C.struct_miqt_string)(after_ms))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace13(this.h, (C.char)(c), (*C.struct_miqt_string)(after_ms))))
 }
 
 func (this *QByteArray) Replace14(before string, after *QByteArray) *QByteArray {
-	before_ms := miqt_strdupg(before)
+	before_ms := libmiqt.Strdupg(before)
 	defer C.free(before_ms)
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Replace14(this.h, (*C.struct_miqt_string)(before_ms), after.cPointer())))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Replace14(this.h, (*C.struct_miqt_string)(before_ms), after.cPointer())))
 }
 
 func (this *QByteArray) OperatorPlusAssignWithQString(s string) *QByteArray {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_OperatorPlusAssignWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
 }
 
 func (this *QByteArray) IndexOfWithQString(s string) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QByteArray_IndexOfWithQString(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QByteArray) LastIndexOfWithQString(s string) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QByteArray_LastIndexOfWithQString(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QByteArray) OperatorEqual(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorEqual(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QByteArray) OperatorNotEqual(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorNotEqual(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QByteArray) OperatorLesser(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorLesser(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QByteArray) OperatorGreater(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorGreater(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QByteArray) OperatorLesserOrEqual(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorLesserOrEqual(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
 
 func (this *QByteArray) OperatorGreaterOrEqual(s2 string) bool {
-	s2_ms := miqt_strdupg(s2)
+	s2_ms := libmiqt.Strdupg(s2)
 	defer C.free(s2_ms)
 	return (bool)(C.QByteArray_OperatorGreaterOrEqual(this.h, (*C.struct_miqt_string)(s2_ms)))
 }
@@ -799,41 +814,41 @@ func (this *QByteArray) ToPercentEncoding() *QByteArray {
 }
 
 func (this *QByteArray) SetNum(param1 int16) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum(this.h, (C.int16_t)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum(this.h, (C.int16_t)(param1))))
 }
 
 func (this *QByteArray) SetNumWithUshort(param1 uint16) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithUshort(this.h, (C.uint16_t)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithUshort(this.h, (C.uint16_t)(param1))))
 }
 
 func (this *QByteArray) SetNumWithInt(param1 int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithInt(this.h, (C.int)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QByteArray) SetNumWithUint(param1 uint) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithUint(this.h, (C.uint)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithUint(this.h, (C.uint)(param1))))
 }
 
 func (this *QByteArray) SetNumWithQlonglong(param1 int64) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithQlonglong(this.h, (C.longlong)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithQlonglong(this.h, (C.longlong)(param1))))
 }
 
 func (this *QByteArray) SetNumWithQulonglong(param1 uint64) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithQulonglong(this.h, (C.ulonglong)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithQulonglong(this.h, (C.ulonglong)(param1))))
 }
 
 func (this *QByteArray) SetNumWithFloat(param1 float32) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithFloat(this.h, (C.float)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithFloat(this.h, (C.float)(param1))))
 }
 
 func (this *QByteArray) SetNumWithDouble(param1 float64) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNumWithDouble(this.h, (C.double)(param1))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNumWithDouble(this.h, (C.double)(param1))))
 }
 
 func (this *QByteArray) SetRawData(a string, n uint) *QByteArray {
 	a_Cstring := C.CString(a)
 	defer C.free(unsafe.Pointer(a_Cstring))
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetRawData(this.h, a_Cstring, (C.uint)(n))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetRawData(this.h, a_Cstring, (C.uint)(n))))
 }
 
 func QByteArray_Number(param1 int) *QByteArray {
@@ -1000,7 +1015,7 @@ func (this *QByteArray) IsNull() bool {
 }
 
 func (this *QByteArray) Fill2(c int8, size int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_Fill2(this.h, (C.char)(c), (C.int)(size))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_Fill2(this.h, (C.char)(c), (C.int)(size))))
 }
 
 func (this *QByteArray) IndexOf2(c int8, from int) int {
@@ -1077,13 +1092,13 @@ func (this *QByteArray) RightJustified3(width int, fill int8, truncate bool) *QB
 }
 
 func (this *QByteArray) IndexOf24(s string, from int) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QByteArray_IndexOf24(this.h, (*C.struct_miqt_string)(s_ms), (C.int)(from)))
 }
 
 func (this *QByteArray) LastIndexOf24(s string, from int) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QByteArray_LastIndexOf24(this.h, (*C.struct_miqt_string)(s_ms), (C.int)(from)))
 }
@@ -1182,43 +1197,43 @@ func (this *QByteArray) ToPercentEncoding3(exclude *QByteArray, include *QByteAr
 }
 
 func (this *QByteArray) SetNum2(param1 int16, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum2(this.h, (C.int16_t)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum2(this.h, (C.int16_t)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum22(param1 uint16, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum22(this.h, (C.uint16_t)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum22(this.h, (C.uint16_t)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum23(param1 int, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum23(this.h, (C.int)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum23(this.h, (C.int)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum24(param1 uint, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum24(this.h, (C.uint)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum24(this.h, (C.uint)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum25(param1 int64, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum25(this.h, (C.longlong)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum25(this.h, (C.longlong)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum26(param1 uint64, base int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum26(this.h, (C.ulonglong)(param1), (C.int)(base))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum26(this.h, (C.ulonglong)(param1), (C.int)(base))))
 }
 
 func (this *QByteArray) SetNum27(param1 float32, f int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum27(this.h, (C.float)(param1), (C.char)(f))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum27(this.h, (C.float)(param1), (C.char)(f))))
 }
 
 func (this *QByteArray) SetNum3(param1 float32, f int8, prec int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum3(this.h, (C.float)(param1), (C.char)(f), (C.int)(prec))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum3(this.h, (C.float)(param1), (C.char)(f), (C.int)(prec))))
 }
 
 func (this *QByteArray) SetNum28(param1 float64, f int8) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum28(this.h, (C.double)(param1), (C.char)(f))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum28(this.h, (C.double)(param1), (C.char)(f))))
 }
 
 func (this *QByteArray) SetNum32(param1 float64, f int8, prec int) *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray_SetNum32(this.h, (C.double)(param1), (C.char)(f), (C.int)(prec))))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray_SetNum32(this.h, (C.double)(param1), (C.char)(f), (C.int)(prec))))
 }
 
 func QByteArray_Number2(param1 int, base int) *QByteArray {
@@ -1302,6 +1317,13 @@ func (this *QByteRef) cPointer() *C.QByteRef {
 	return this.h
 }
 
+func (this *QByteRef) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQByteRef(h *C.QByteRef) *QByteRef {
 	if h == nil {
 		return nil
@@ -1309,7 +1331,7 @@ func newQByteRef(h *C.QByteRef) *QByteRef {
 	return &QByteRef{h: h}
 }
 
-func newQByteRef_U(h unsafe.Pointer) *QByteRef {
+func UnsafeNewQByteRef(h unsafe.Pointer) *QByteRef {
 	return newQByteRef((*C.QByteRef)(h))
 }
 
@@ -1376,6 +1398,13 @@ func (this *QByteArray__FromBase64Result) cPointer() *C.QByteArray__FromBase64Re
 	return this.h
 }
 
+func (this *QByteArray__FromBase64Result) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQByteArray__FromBase64Result(h *C.QByteArray__FromBase64Result) *QByteArray__FromBase64Result {
 	if h == nil {
 		return nil
@@ -1383,7 +1412,7 @@ func newQByteArray__FromBase64Result(h *C.QByteArray__FromBase64Result) *QByteAr
 	return &QByteArray__FromBase64Result{h: h}
 }
 
-func newQByteArray__FromBase64Result_U(h unsafe.Pointer) *QByteArray__FromBase64Result {
+func UnsafeNewQByteArray__FromBase64Result(h unsafe.Pointer) *QByteArray__FromBase64Result {
 	return newQByteArray__FromBase64Result((*C.QByteArray__FromBase64Result)(h))
 }
 
@@ -1398,11 +1427,11 @@ func (this *QByteArray__FromBase64Result) Swap(other *QByteArray__FromBase64Resu
 }
 
 func (this *QByteArray__FromBase64Result) OperatorMultiply() *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray__FromBase64Result_OperatorMultiply(this.h)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray__FromBase64Result_OperatorMultiply(this.h)))
 }
 
 func (this *QByteArray__FromBase64Result) OperatorMultiply2() *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QByteArray__FromBase64Result_OperatorMultiply2(this.h)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QByteArray__FromBase64Result_OperatorMultiply2(this.h)))
 }
 
 func (this *QByteArray__FromBase64Result) OperatorAssign(param1 *QByteArray__FromBase64Result) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -45,6 +46,13 @@ func (this *QTextInlineObject) cPointer() *C.QTextInlineObject {
 	return this.h
 }
 
+func (this *QTextInlineObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
 	if h == nil {
 		return nil
@@ -52,7 +60,7 @@ func newQTextInlineObject(h *C.QTextInlineObject) *QTextInlineObject {
 	return &QTextInlineObject{h: h}
 }
 
-func newQTextInlineObject_U(h unsafe.Pointer) *QTextInlineObject {
+func UnsafeNewQTextInlineObject(h unsafe.Pointer) *QTextInlineObject {
 	return newQTextInlineObject((*C.QTextInlineObject)(h))
 }
 
@@ -145,6 +153,13 @@ func (this *QTextLayout) cPointer() *C.QTextLayout {
 	return this.h
 }
 
+func (this *QTextLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextLayout(h *C.QTextLayout) *QTextLayout {
 	if h == nil {
 		return nil
@@ -152,7 +167,7 @@ func newQTextLayout(h *C.QTextLayout) *QTextLayout {
 	return &QTextLayout{h: h}
 }
 
-func newQTextLayout_U(h unsafe.Pointer) *QTextLayout {
+func UnsafeNewQTextLayout(h unsafe.Pointer) *QTextLayout {
 	return newQTextLayout((*C.QTextLayout)(h))
 }
 
@@ -164,7 +179,7 @@ func NewQTextLayout() *QTextLayout {
 
 // NewQTextLayout2 constructs a new QTextLayout object.
 func NewQTextLayout2(text string) *QTextLayout {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextLayout_new2((*C.struct_miqt_string)(text_ms))
 	return newQTextLayout(ret)
@@ -172,7 +187,7 @@ func NewQTextLayout2(text string) *QTextLayout {
 
 // NewQTextLayout3 constructs a new QTextLayout object.
 func NewQTextLayout3(text string, font *QFont) *QTextLayout {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextLayout_new3((*C.struct_miqt_string)(text_ms), font.cPointer())
 	return newQTextLayout(ret)
@@ -186,7 +201,7 @@ func NewQTextLayout4(b *QTextBlock) *QTextLayout {
 
 // NewQTextLayout5 constructs a new QTextLayout object.
 func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QTextLayout {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextLayout_new5((*C.struct_miqt_string)(text_ms), font.cPointer(), paintdevice.cPointer())
 	return newQTextLayout(ret)
@@ -208,7 +223,7 @@ func (this *QTextLayout) SetRawFont(rawFont *QRawFont) {
 }
 
 func (this *QTextLayout) SetText(stringVal string) {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	C.QTextLayout_SetText(this.h, (*C.struct_miqt_string)(stringVal_ms))
 }
@@ -225,11 +240,11 @@ func (this *QTextLayout) SetTextOption(option *QTextOption) {
 }
 
 func (this *QTextLayout) TextOption() *QTextOption {
-	return newQTextOption_U(unsafe.Pointer(C.QTextLayout_TextOption(this.h)))
+	return UnsafeNewQTextOption(unsafe.Pointer(C.QTextLayout_TextOption(this.h)))
 }
 
 func (this *QTextLayout) SetPreeditArea(position int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextLayout_SetPreeditArea(this.h, (C.int)(position), (*C.struct_miqt_string)(text_ms))
 }
@@ -519,6 +534,13 @@ func (this *QTextLine) cPointer() *C.QTextLine {
 	return this.h
 }
 
+func (this *QTextLine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextLine(h *C.QTextLine) *QTextLine {
 	if h == nil {
 		return nil
@@ -526,7 +548,7 @@ func newQTextLine(h *C.QTextLine) *QTextLine {
 	return &QTextLine{h: h}
 }
 
-func newQTextLine_U(h unsafe.Pointer) *QTextLine {
+func UnsafeNewQTextLine(h unsafe.Pointer) *QTextLine {
 	return newQTextLine((*C.QTextLine)(h))
 }
 
@@ -732,6 +754,13 @@ func (this *QTextLayout__FormatRange) cPointer() *C.QTextLayout__FormatRange {
 	return this.h
 }
 
+func (this *QTextLayout__FormatRange) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__FormatRange {
 	if h == nil {
 		return nil
@@ -739,7 +768,7 @@ func newQTextLayout__FormatRange(h *C.QTextLayout__FormatRange) *QTextLayout__Fo
 	return &QTextLayout__FormatRange{h: h}
 }
 
-func newQTextLayout__FormatRange_U(h unsafe.Pointer) *QTextLayout__FormatRange {
+func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRange {
 	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
 }
 

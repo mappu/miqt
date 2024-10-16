@@ -24,6 +24,13 @@ func (this *QVector4D) cPointer() *C.QVector4D {
 	return this.h
 }
 
+func (this *QVector4D) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVector4D(h *C.QVector4D) *QVector4D {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQVector4D(h *C.QVector4D) *QVector4D {
 	return &QVector4D{h: h}
 }
 
-func newQVector4D_U(h unsafe.Pointer) *QVector4D {
+func UnsafeNewQVector4D(h unsafe.Pointer) *QVector4D {
 	return newQVector4D((*C.QVector4D)(h))
 }
 
@@ -155,27 +162,27 @@ func (this *QVector4D) Normalize() {
 }
 
 func (this *QVector4D) OperatorPlusAssign(vector *QVector4D) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorMinusAssign(vector *QVector4D) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorMultiplyAssign(factor float32) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QVector4D) OperatorMultiplyAssignWithVector(vector *QVector4D) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
 }
 
 func (this *QVector4D) OperatorDivideAssign(divisor float32) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QVector4D) OperatorDivideAssignWithVector(vector *QVector4D) *QVector4D {
-	return newQVector4D_U(unsafe.Pointer(C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
+	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
 }
 
 func QVector4D_DotProduct(v1 *QVector4D, v2 *QVector4D) float32 {

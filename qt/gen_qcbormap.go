@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QCborMap) cPointer() *C.QCborMap {
 	return this.h
 }
 
+func (this *QCborMap) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborMap(h *C.QCborMap) *QCborMap {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQCborMap(h *C.QCborMap) *QCborMap {
 	return &QCborMap{h: h}
 }
 
-func newQCborMap_U(h unsafe.Pointer) *QCborMap {
+func UnsafeNewQCborMap(h unsafe.Pointer) *QCborMap {
 	return newQCborMap((*C.QCborMap)(h))
 }
 
@@ -96,7 +104,7 @@ func (this *QCborMap) Value(key int64) *QCborValue {
 }
 
 func (this *QCborMap) Value2(key string) *QCborValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_Value2(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValue(_ret)
@@ -119,7 +127,7 @@ func (this *QCborMap) OperatorSubscript(key int64) *QCborValue {
 }
 
 func (this *QCborMap) OperatorSubscript2(key string) *QCborValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_OperatorSubscript2(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValue(_ret)
@@ -142,7 +150,7 @@ func (this *QCborMap) OperatorSubscript4(key int64) *QCborValueRef {
 }
 
 func (this *QCborMap) OperatorSubscript6(key string) *QCborValueRef {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_OperatorSubscript6(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValueRef(_ret)
@@ -165,7 +173,7 @@ func (this *QCborMap) Take(key int64) *QCborValue {
 }
 
 func (this *QCborMap) Take2(key string) *QCborValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_Take2(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValue(_ret)
@@ -185,7 +193,7 @@ func (this *QCborMap) Remove(key int64) {
 }
 
 func (this *QCborMap) Remove2(key string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	C.QCborMap_Remove2(this.h, (*C.struct_miqt_string)(key_ms))
 }
@@ -199,7 +207,7 @@ func (this *QCborMap) Contains(key int64) bool {
 }
 
 func (this *QCborMap) Contains2(key string) bool {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	return (bool)(C.QCborMap_Contains2(this.h, (*C.struct_miqt_string)(key_ms)))
 }
@@ -320,7 +328,7 @@ func (this *QCborMap) Find(key int64) *QCborMap__Iterator {
 }
 
 func (this *QCborMap) Find2(key string) *QCborMap__Iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_Find2(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborMap__Iterator(_ret)
@@ -343,7 +351,7 @@ func (this *QCborMap) ConstFind(key int64) *QCborMap__ConstIterator {
 }
 
 func (this *QCborMap) ConstFind2(key string) *QCborMap__ConstIterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_ConstFind2(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborMap__ConstIterator(_ret)
@@ -366,7 +374,7 @@ func (this *QCborMap) Find4(key int64) *QCborMap__ConstIterator {
 }
 
 func (this *QCborMap) Find6(key string) *QCborMap__ConstIterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_Find6(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborMap__ConstIterator(_ret)
@@ -389,7 +397,7 @@ func (this *QCborMap) Insert(key int64, value_ *QCborValue) *QCborMap__Iterator 
 }
 
 func (this *QCborMap) Insert3(key string, value_ *QCborValue) *QCborMap__Iterator {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborMap_Insert3(this.h, (*C.struct_miqt_string)(key_ms), value_.cPointer())
 	_goptr := newQCborMap__Iterator(_ret)
@@ -443,6 +451,13 @@ func (this *QCborMap__Iterator) cPointer() *C.QCborMap__Iterator {
 	return this.h
 }
 
+func (this *QCborMap__Iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
 	if h == nil {
 		return nil
@@ -450,7 +465,7 @@ func newQCborMap__Iterator(h *C.QCborMap__Iterator) *QCborMap__Iterator {
 	return &QCborMap__Iterator{h: h}
 }
 
-func newQCborMap__Iterator_U(h unsafe.Pointer) *QCborMap__Iterator {
+func UnsafeNewQCborMap__Iterator(h unsafe.Pointer) *QCborMap__Iterator {
 	return newQCborMap__Iterator((*C.QCborMap__Iterator)(h))
 }
 
@@ -471,7 +486,7 @@ func (this *QCborMap__Iterator) OperatorAssign(other *QCborMap__Iterator) {
 }
 
 func (this *QCborMap__Iterator) OperatorMinusGreater() *QCborValueRef {
-	return newQCborValueRef_U(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater(this.h)))
+	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborMap__Iterator) Key() *QCborValue {
@@ -537,7 +552,7 @@ func (this *QCborMap__Iterator) OperatorGreaterOrEqualWithOther(other *QCborMap_
 }
 
 func (this *QCborMap__Iterator) OperatorPlusPlus() *QCborMap__Iterator {
-	return newQCborMap__Iterator_U(unsafe.Pointer(C.QCborMap__Iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQCborMap__Iterator(unsafe.Pointer(C.QCborMap__Iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QCborMap__Iterator) OperatorPlusPlusWithInt(param1 int) *QCborMap__Iterator {
@@ -548,7 +563,7 @@ func (this *QCborMap__Iterator) OperatorPlusPlusWithInt(param1 int) *QCborMap__I
 }
 
 func (this *QCborMap__Iterator) OperatorMinusMinus() *QCborMap__Iterator {
-	return newQCborMap__Iterator_U(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQCborMap__Iterator(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QCborMap__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborMap__Iterator {
@@ -559,11 +574,11 @@ func (this *QCborMap__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborMap_
 }
 
 func (this *QCborMap__Iterator) OperatorPlusAssign(j int64) *QCborMap__Iterator {
-	return newQCborMap__Iterator_U(unsafe.Pointer(C.QCborMap__Iterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborMap__Iterator(unsafe.Pointer(C.QCborMap__Iterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborMap__Iterator) OperatorMinusAssign(j int64) *QCborMap__Iterator {
-	return newQCborMap__Iterator_U(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborMap__Iterator(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborMap__Iterator) OperatorPlus(j int64) *QCborMap__Iterator {
@@ -609,6 +624,13 @@ func (this *QCborMap__ConstIterator) cPointer() *C.QCborMap__ConstIterator {
 	return this.h
 }
 
+func (this *QCborMap__ConstIterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIterator {
 	if h == nil {
 		return nil
@@ -616,7 +638,7 @@ func newQCborMap__ConstIterator(h *C.QCborMap__ConstIterator) *QCborMap__ConstIt
 	return &QCborMap__ConstIterator{h: h}
 }
 
-func newQCborMap__ConstIterator_U(h unsafe.Pointer) *QCborMap__ConstIterator {
+func UnsafeNewQCborMap__ConstIterator(h unsafe.Pointer) *QCborMap__ConstIterator {
 	return newQCborMap__ConstIterator((*C.QCborMap__ConstIterator)(h))
 }
 
@@ -637,7 +659,7 @@ func (this *QCborMap__ConstIterator) OperatorAssign(other *QCborMap__ConstIterat
 }
 
 func (this *QCborMap__ConstIterator) OperatorMinusGreater() *QCborValueRef {
-	return newQCborValueRef_U(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
+	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborMap__ConstIterator) Key() *QCborValue {
@@ -703,7 +725,7 @@ func (this *QCborMap__ConstIterator) OperatorGreaterOrEqualWithOther(other *QCbo
 }
 
 func (this *QCborMap__ConstIterator) OperatorPlusPlus() *QCborMap__ConstIterator {
-	return newQCborMap__ConstIterator_U(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQCborMap__ConstIterator(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QCborMap__ConstIterator) OperatorPlusPlusWithInt(param1 int) *QCborMap__ConstIterator {
@@ -714,7 +736,7 @@ func (this *QCborMap__ConstIterator) OperatorPlusPlusWithInt(param1 int) *QCborM
 }
 
 func (this *QCborMap__ConstIterator) OperatorMinusMinus() *QCborMap__ConstIterator {
-	return newQCborMap__ConstIterator_U(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQCborMap__ConstIterator(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QCborMap__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QCborMap__ConstIterator {
@@ -725,11 +747,11 @@ func (this *QCborMap__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QCbo
 }
 
 func (this *QCborMap__ConstIterator) OperatorPlusAssign(j int64) *QCborMap__ConstIterator {
-	return newQCborMap__ConstIterator_U(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborMap__ConstIterator(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborMap__ConstIterator) OperatorMinusAssign(j int64) *QCborMap__ConstIterator {
-	return newQCborMap__ConstIterator_U(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborMap__ConstIterator(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborMap__ConstIterator) OperatorPlus(j int64) *QCborMap__ConstIterator {

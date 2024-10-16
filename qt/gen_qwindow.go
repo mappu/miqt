@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -45,14 +46,21 @@ func (this *QWindow) cPointer() *C.QWindow {
 	return this.h
 }
 
+func (this *QWindow) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWindow(h *C.QWindow) *QWindow {
 	if h == nil {
 		return nil
 	}
-	return &QWindow{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QSurface: newQSurface_U(unsafe.Pointer(h))}
+	return &QWindow{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QSurface: UnsafeNewQSurface(unsafe.Pointer(h))}
 }
 
-func newQWindow_U(h unsafe.Pointer) *QWindow {
+func UnsafeNewQWindow(h unsafe.Pointer) *QWindow {
 	return newQWindow((*C.QWindow)(h))
 }
 
@@ -75,7 +83,7 @@ func NewQWindow3(screen *QScreen) *QWindow {
 }
 
 func (this *QWindow) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QWindow_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWindow_MetaObject(this.h)))
 }
 
 func (this *QWindow) Metacast(param1 string) unsafe.Pointer {
@@ -131,11 +139,11 @@ func (this *QWindow) WinId() uintptr {
 }
 
 func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent(this.h, (C.int)(mode))))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_Parent(this.h, (C.int)(mode))))
 }
 
 func (this *QWindow) Parent2() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWindow_Parent2(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_Parent2(this.h)))
 }
 
 func (this *QWindow) SetParent(parent *QWindow) {
@@ -255,7 +263,7 @@ func (this *QWindow) SetTransientParent(parent *QWindow) {
 }
 
 func (this *QWindow) TransientParent() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWindow_TransientParent(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_TransientParent(this.h)))
 }
 
 func (this *QWindow) IsAncestorOf(child *QWindow) bool {
@@ -405,7 +413,7 @@ func (this *QWindow) Resize2(w int, h int) {
 }
 
 func (this *QWindow) SetFilePath(filePath string) {
-	filePath_ms := miqt_strdupg(filePath)
+	filePath_ms := libmiqt.Strdupg(filePath)
 	defer C.free(filePath_ms)
 	C.QWindow_SetFilePath(this.h, (*C.struct_miqt_string)(filePath_ms))
 }
@@ -441,7 +449,7 @@ func (this *QWindow) SetMouseGrabEnabled(grab bool) bool {
 }
 
 func (this *QWindow) Screen() *QScreen {
-	return newQScreen_U(unsafe.Pointer(C.QWindow_Screen(this.h)))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QWindow_Screen(this.h)))
 }
 
 func (this *QWindow) SetScreen(screen *QScreen) {
@@ -449,11 +457,11 @@ func (this *QWindow) SetScreen(screen *QScreen) {
 }
 
 func (this *QWindow) AccessibleRoot() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QWindow_AccessibleRoot(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QWindow_AccessibleRoot(this.h)))
 }
 
 func (this *QWindow) FocusObject() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QWindow_FocusObject(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QWindow_FocusObject(this.h)))
 }
 
 func (this *QWindow) MapToGlobal(pos *QPoint) *QPoint {
@@ -486,7 +494,7 @@ func (this *QWindow) UnsetCursor() {
 }
 
 func QWindow_FromWinId(id uintptr) *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QWindow_FromWinId((C.uintptr_t)(id))))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QWindow_FromWinId((C.uintptr_t)(id))))
 }
 
 func (this *QWindow) RequestActivate() {
@@ -542,7 +550,7 @@ func (this *QWindow) StartSystemMove() bool {
 }
 
 func (this *QWindow) SetTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QWindow_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -610,7 +618,7 @@ func miqt_exec_callback_QWindow_ScreenChanged(cb C.intptr_t, screen *C.QScreen) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQScreen_U(unsafe.Pointer(screen))
+	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }
@@ -656,7 +664,7 @@ func miqt_exec_callback_QWindow_WindowStateChanged(cb C.intptr_t, windowState C.
 }
 
 func (this *QWindow) WindowTitleChanged(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QWindow_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -932,7 +940,7 @@ func miqt_exec_callback_QWindow_FocusObjectChanged(cb C.intptr_t, object *C.QObj
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQObject_U(unsafe.Pointer(object))
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
 
 	gofunc(slotval1)
 }
@@ -972,7 +980,7 @@ func miqt_exec_callback_QWindow_TransientParentChanged(cb C.intptr_t, transientP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWindow_U(unsafe.Pointer(transientParent))
+	slotval1 := UnsafeNewQWindow(unsafe.Pointer(transientParent))
 
 	gofunc(slotval1)
 }

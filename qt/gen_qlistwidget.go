@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -32,6 +33,13 @@ func (this *QListWidgetItem) cPointer() *C.QListWidgetItem {
 	return this.h
 }
 
+func (this *QListWidgetItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQListWidgetItem(h *C.QListWidgetItem) *QListWidgetItem {
 	if h == nil {
 		return nil
@@ -39,7 +47,7 @@ func newQListWidgetItem(h *C.QListWidgetItem) *QListWidgetItem {
 	return &QListWidgetItem{h: h}
 }
 
-func newQListWidgetItem_U(h unsafe.Pointer) *QListWidgetItem {
+func UnsafeNewQListWidgetItem(h unsafe.Pointer) *QListWidgetItem {
 	return newQListWidgetItem((*C.QListWidgetItem)(h))
 }
 
@@ -51,7 +59,7 @@ func NewQListWidgetItem() *QListWidgetItem {
 
 // NewQListWidgetItem2 constructs a new QListWidgetItem object.
 func NewQListWidgetItem2(text string) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new2((*C.struct_miqt_string)(text_ms))
 	return newQListWidgetItem(ret)
@@ -59,7 +67,7 @@ func NewQListWidgetItem2(text string) *QListWidgetItem {
 
 // NewQListWidgetItem3 constructs a new QListWidgetItem object.
 func NewQListWidgetItem3(icon *QIcon, text string) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 	return newQListWidgetItem(ret)
@@ -85,7 +93,7 @@ func NewQListWidgetItem6(listview *QListWidget, typeVal int) *QListWidgetItem {
 
 // NewQListWidgetItem7 constructs a new QListWidgetItem object.
 func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new7((*C.struct_miqt_string)(text_ms), listview.cPointer())
 	return newQListWidgetItem(ret)
@@ -93,7 +101,7 @@ func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
 
 // NewQListWidgetItem8 constructs a new QListWidgetItem object.
 func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new8((*C.struct_miqt_string)(text_ms), listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
@@ -101,7 +109,7 @@ func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QList
 
 // NewQListWidgetItem9 constructs a new QListWidgetItem object.
 func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new9(icon.cPointer(), (*C.struct_miqt_string)(text_ms), listview.cPointer())
 	return newQListWidgetItem(ret)
@@ -109,18 +117,18 @@ func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QList
 
 // NewQListWidgetItem10 constructs a new QListWidgetItem object.
 func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeVal int) *QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QListWidgetItem_new10(icon.cPointer(), (*C.struct_miqt_string)(text_ms), listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
 }
 
 func (this *QListWidgetItem) Clone() *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidgetItem_Clone(this.h)))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidgetItem_Clone(this.h)))
 }
 
 func (this *QListWidgetItem) ListWidget() *QListWidget {
-	return newQListWidget_U(unsafe.Pointer(C.QListWidgetItem_ListWidget(this.h)))
+	return UnsafeNewQListWidget(unsafe.Pointer(C.QListWidgetItem_ListWidget(this.h)))
 }
 
 func (this *QListWidgetItem) SetSelected(selectVal bool) {
@@ -155,7 +163,7 @@ func (this *QListWidgetItem) Text() string {
 }
 
 func (this *QListWidgetItem) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QListWidgetItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -179,7 +187,7 @@ func (this *QListWidgetItem) StatusTip() string {
 }
 
 func (this *QListWidgetItem) SetStatusTip(statusTip string) {
-	statusTip_ms := miqt_strdupg(statusTip)
+	statusTip_ms := libmiqt.Strdupg(statusTip)
 	defer C.free(statusTip_ms)
 	C.QListWidgetItem_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
 }
@@ -192,7 +200,7 @@ func (this *QListWidgetItem) ToolTip() string {
 }
 
 func (this *QListWidgetItem) SetToolTip(toolTip string) {
-	toolTip_ms := miqt_strdupg(toolTip)
+	toolTip_ms := libmiqt.Strdupg(toolTip)
 	defer C.free(toolTip_ms)
 	C.QListWidgetItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
 }
@@ -205,7 +213,7 @@ func (this *QListWidgetItem) WhatsThis() string {
 }
 
 func (this *QListWidgetItem) SetWhatsThis(whatsThis string) {
-	whatsThis_ms := miqt_strdupg(whatsThis)
+	whatsThis_ms := libmiqt.Strdupg(whatsThis)
 	defer C.free(whatsThis_ms)
 	C.QListWidgetItem_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
 }
@@ -349,14 +357,21 @@ func (this *QListWidget) cPointer() *C.QListWidget {
 	return this.h
 }
 
+func (this *QListWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQListWidget(h *C.QListWidget) *QListWidget {
 	if h == nil {
 		return nil
 	}
-	return &QListWidget{h: h, QListView: newQListView_U(unsafe.Pointer(h))}
+	return &QListWidget{h: h, QListView: UnsafeNewQListView(unsafe.Pointer(h))}
 }
 
-func newQListWidget_U(h unsafe.Pointer) *QListWidget {
+func UnsafeNewQListWidget(h unsafe.Pointer) *QListWidget {
 	return newQListWidget((*C.QListWidget)(h))
 }
 
@@ -373,7 +388,7 @@ func NewQListWidget2(parent *QWidget) *QListWidget {
 }
 
 func (this *QListWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QListWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QListWidget_MetaObject(this.h)))
 }
 
 func (this *QListWidget) Metacast(param1 string) unsafe.Pointer {
@@ -405,7 +420,7 @@ func (this *QListWidget) SetSelectionModel(selectionModel *QItemSelectionModel) 
 }
 
 func (this *QListWidget) Item(row int) *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_Item(this.h, (C.int)(row))))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_Item(this.h, (C.int)(row))))
 }
 
 func (this *QListWidget) Row(item *QListWidgetItem) int {
@@ -417,7 +432,7 @@ func (this *QListWidget) InsertItem(row int, item *QListWidgetItem) {
 }
 
 func (this *QListWidget) InsertItem2(row int, label string) {
-	label_ms := miqt_strdupg(label)
+	label_ms := libmiqt.Strdupg(label)
 	defer C.free(label_ms)
 	C.QListWidget_InsertItem2(this.h, (C.int)(row), (*C.struct_miqt_string)(label_ms))
 }
@@ -427,7 +442,7 @@ func (this *QListWidget) InsertItems(row int, labels []string) {
 	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := miqt_strdupg(labels[i])
+		labels_i_ms := libmiqt.Strdupg(labels[i])
 		defer C.free(labels_i_ms)
 		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
 	}
@@ -437,7 +452,7 @@ func (this *QListWidget) InsertItems(row int, labels []string) {
 }
 
 func (this *QListWidget) AddItem(label string) {
-	label_ms := miqt_strdupg(label)
+	label_ms := libmiqt.Strdupg(label)
 	defer C.free(label_ms)
 	C.QListWidget_AddItem(this.h, (*C.struct_miqt_string)(label_ms))
 }
@@ -451,7 +466,7 @@ func (this *QListWidget) AddItems(labels []string) {
 	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := miqt_strdupg(labels[i])
+		labels_i_ms := libmiqt.Strdupg(labels[i])
 		defer C.free(labels_i_ms)
 		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
 	}
@@ -461,7 +476,7 @@ func (this *QListWidget) AddItems(labels []string) {
 }
 
 func (this *QListWidget) TakeItem(row int) *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_TakeItem(this.h, (C.int)(row))))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_TakeItem(this.h, (C.int)(row))))
 }
 
 func (this *QListWidget) Count() int {
@@ -469,7 +484,7 @@ func (this *QListWidget) Count() int {
 }
 
 func (this *QListWidget) CurrentItem() *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_CurrentItem(this.h)))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_CurrentItem(this.h)))
 }
 
 func (this *QListWidget) SetCurrentItem(item *QListWidgetItem) {
@@ -493,11 +508,11 @@ func (this *QListWidget) SetCurrentRow2(row int, command QItemSelectionModel__Se
 }
 
 func (this *QListWidget) ItemAt(p *QPoint) *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_ItemAt(this.h, p.cPointer())))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_ItemAt(this.h, p.cPointer())))
 }
 
 func (this *QListWidget) ItemAt2(x int, y int) *QListWidgetItem {
-	return newQListWidgetItem_U(unsafe.Pointer(C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQListWidgetItem(unsafe.Pointer(C.QListWidget_ItemAt2(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QListWidget) VisualItemRect(item *QListWidgetItem) *QRect {
@@ -536,7 +551,7 @@ func (this *QListWidget) IsPersistentEditorOpen(item *QListWidgetItem) bool {
 }
 
 func (this *QListWidget) ItemWidget(item *QListWidgetItem) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QListWidget_ItemWidget(this.h, item.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QListWidget_ItemWidget(this.h, item.cPointer())))
 }
 
 func (this *QListWidget) SetItemWidget(item *QListWidgetItem, widget *QWidget) {
@@ -560,20 +575,20 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQListWidgetItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QListWidget) FindItems(text string, flags MatchFlag) []*QListWidgetItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQListWidgetItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -614,7 +629,7 @@ func miqt_exec_callback_QListWidget_ItemPressed(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -634,7 +649,7 @@ func miqt_exec_callback_QListWidget_ItemClicked(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -654,7 +669,7 @@ func miqt_exec_callback_QListWidget_ItemDoubleClicked(cb C.intptr_t, item *C.QLi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -674,7 +689,7 @@ func miqt_exec_callback_QListWidget_ItemActivated(cb C.intptr_t, item *C.QListWi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -694,7 +709,7 @@ func miqt_exec_callback_QListWidget_ItemEntered(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -714,7 +729,7 @@ func miqt_exec_callback_QListWidget_ItemChanged(cb C.intptr_t, item *C.QListWidg
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(item))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(item))
 
 	gofunc(slotval1)
 }
@@ -734,14 +749,14 @@ func miqt_exec_callback_QListWidget_CurrentItemChanged(cb C.intptr_t, current *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQListWidgetItem_U(unsafe.Pointer(current))
-	slotval2 := newQListWidgetItem_U(unsafe.Pointer(previous))
+	slotval1 := UnsafeNewQListWidgetItem(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQListWidgetItem(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
 
 func (this *QListWidget) CurrentTextChanged(currentText string) {
-	currentText_ms := miqt_strdupg(currentText)
+	currentText_ms := libmiqt.Strdupg(currentText)
 	defer C.free(currentText_ms)
 	C.QListWidget_CurrentTextChanged(this.h, (*C.struct_miqt_string)(currentText_ms))
 }

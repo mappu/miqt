@@ -1712,6 +1712,13 @@ func (this *QInternal) cPointer() *C.QInternal {
 	return this.h
 }
 
+func (this *QInternal) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInternal(h *C.QInternal) *QInternal {
 	if h == nil {
 		return nil
@@ -1719,7 +1726,7 @@ func newQInternal(h *C.QInternal) *QInternal {
 	return &QInternal{h: h}
 }
 
-func newQInternal_U(h unsafe.Pointer) *QInternal {
+func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
 	return newQInternal((*C.QInternal)(h))
 }
 

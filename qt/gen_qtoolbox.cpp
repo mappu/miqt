@@ -5,7 +5,7 @@
 #include <cstring>
 #include <QToolBox>
 #include <QWidget>
-#include "qtoolbox.h"
+#include <qtoolbox.h>
 #include "gen_qtoolbox.h"
 #include "_cgo_export.h"
 

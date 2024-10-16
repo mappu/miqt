@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -36,6 +37,13 @@ func (this *QFutureInterfaceBase) cPointer() *C.QFutureInterfaceBase {
 	return this.h
 }
 
+func (this *QFutureInterfaceBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
 	if h == nil {
 		return nil
@@ -43,7 +51,7 @@ func newQFutureInterfaceBase(h *C.QFutureInterfaceBase) *QFutureInterfaceBase {
 	return &QFutureInterfaceBase{h: h}
 }
 
-func newQFutureInterfaceBase_U(h unsafe.Pointer) *QFutureInterfaceBase {
+func UnsafeNewQFutureInterfaceBase(h unsafe.Pointer) *QFutureInterfaceBase {
 	return newQFutureInterfaceBase((*C.QFutureInterfaceBase)(h))
 }
 
@@ -118,7 +126,7 @@ func (this *QFutureInterfaceBase) ProgressValue() int {
 }
 
 func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, progressText string) {
-	progressText_ms := miqt_strdupg(progressText)
+	progressText_ms := libmiqt.Strdupg(progressText)
 	defer C.free(progressText_ms)
 	C.QFutureInterfaceBase_SetProgressValueAndText(this.h, (C.int)(progressValue), (*C.struct_miqt_string)(progressText_ms))
 }
@@ -207,23 +215,23 @@ func (this *QFutureInterfaceBase) WaitForResume() {
 }
 
 func (this *QFutureInterfaceBase) Mutex() *QMutex {
-	return newQMutex_U(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)))
+	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_Mutex(this.h)))
 }
 
 func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
-	return newQMutex_U(unsafe.Pointer(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))))
+	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QFutureInterfaceBase) ExceptionStore() *QtPrivate__ExceptionStore {
-	return newQtPrivate__ExceptionStore_U(unsafe.Pointer(C.QFutureInterfaceBase_ExceptionStore(this.h)))
+	return UnsafeNewQtPrivate__ExceptionStore(unsafe.Pointer(C.QFutureInterfaceBase_ExceptionStore(this.h)))
 }
 
 func (this *QFutureInterfaceBase) ResultStoreBase() *QtPrivate__ResultStoreBase {
-	return newQtPrivate__ResultStoreBase_U(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase(this.h)))
+	return UnsafeNewQtPrivate__ResultStoreBase(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase(this.h)))
 }
 
 func (this *QFutureInterfaceBase) ResultStoreBase2() *QtPrivate__ResultStoreBase {
-	return newQtPrivate__ResultStoreBase_U(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase2(this.h)))
+	return UnsafeNewQtPrivate__ResultStoreBase(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase2(this.h)))
 }
 
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {

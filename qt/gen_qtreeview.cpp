@@ -11,7 +11,7 @@
 #include <cstring>
 #include <QTreeView>
 #include <QWidget>
-#include "qtreeview.h"
+#include <qtreeview.h>
 #include "gen_qtreeview.h"
 #include "_cgo_export.h"
 

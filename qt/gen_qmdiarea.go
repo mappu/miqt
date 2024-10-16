@@ -47,14 +47,21 @@ func (this *QMdiArea) cPointer() *C.QMdiArea {
 	return this.h
 }
 
+func (this *QMdiArea) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMdiArea(h *C.QMdiArea) *QMdiArea {
 	if h == nil {
 		return nil
 	}
-	return &QMdiArea{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QMdiArea{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQMdiArea_U(h unsafe.Pointer) *QMdiArea {
+func UnsafeNewQMdiArea(h unsafe.Pointer) *QMdiArea {
 	return newQMdiArea((*C.QMdiArea)(h))
 }
 
@@ -71,7 +78,7 @@ func NewQMdiArea2(parent *QWidget) *QMdiArea {
 }
 
 func (this *QMdiArea) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMdiArea_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMdiArea_MetaObject(this.h)))
 }
 
 func (this *QMdiArea) Metacast(param1 string) unsafe.Pointer {
@@ -113,11 +120,11 @@ func (this *QMdiArea) MinimumSizeHint() *QSize {
 }
 
 func (this *QMdiArea) CurrentSubWindow() *QMdiSubWindow {
-	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_CurrentSubWindow(this.h)))
+	return UnsafeNewQMdiSubWindow(unsafe.Pointer(C.QMdiArea_CurrentSubWindow(this.h)))
 }
 
 func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
-	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_ActiveSubWindow(this.h)))
+	return UnsafeNewQMdiSubWindow(unsafe.Pointer(C.QMdiArea_ActiveSubWindow(this.h)))
 }
 
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
@@ -125,14 +132,14 @@ func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQMdiSubWindow_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQMdiSubWindow(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow(widget *QWidget) *QMdiSubWindow {
-	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow(this.h, widget.cPointer())))
+	return UnsafeNewQMdiSubWindow(unsafe.Pointer(C.QMdiArea_AddSubWindow(this.h, widget.cPointer())))
 }
 
 func (this *QMdiArea) RemoveSubWindow(widget *QWidget) {
@@ -229,7 +236,7 @@ func miqt_exec_callback_QMdiArea_SubWindowActivated(cb C.intptr_t, param1 *C.QMd
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMdiSubWindow_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQMdiSubWindow(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -311,14 +318,14 @@ func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWind
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQMdiSubWindow_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQMdiSubWindow(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMdiArea) AddSubWindow2(widget *QWidget, flags WindowType) *QMdiSubWindow {
-	return newQMdiSubWindow_U(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
+	return UnsafeNewQMdiSubWindow(unsafe.Pointer(C.QMdiArea_AddSubWindow2(this.h, widget.cPointer(), (C.int)(flags))))
 }
 
 func (this *QMdiArea) SetOption2(option QMdiArea__AreaOption, on bool) {

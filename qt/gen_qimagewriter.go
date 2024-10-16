@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -33,6 +34,13 @@ func (this *QImageWriter) cPointer() *C.QImageWriter {
 	return this.h
 }
 
+func (this *QImageWriter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQImageWriter(h *C.QImageWriter) *QImageWriter {
 	if h == nil {
 		return nil
@@ -40,7 +48,7 @@ func newQImageWriter(h *C.QImageWriter) *QImageWriter {
 	return &QImageWriter{h: h}
 }
 
-func newQImageWriter_U(h unsafe.Pointer) *QImageWriter {
+func UnsafeNewQImageWriter(h unsafe.Pointer) *QImageWriter {
 	return newQImageWriter((*C.QImageWriter)(h))
 }
 
@@ -58,7 +66,7 @@ func NewQImageWriter2(device *QIODevice, format *QByteArray) *QImageWriter {
 
 // NewQImageWriter3 constructs a new QImageWriter object.
 func NewQImageWriter3(fileName string) *QImageWriter {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QImageWriter_new3((*C.struct_miqt_string)(fileName_ms))
 	return newQImageWriter(ret)
@@ -66,7 +74,7 @@ func NewQImageWriter3(fileName string) *QImageWriter {
 
 // NewQImageWriter4 constructs a new QImageWriter object.
 func NewQImageWriter4(fileName string, format *QByteArray) *QImageWriter {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QImageWriter_new4((*C.struct_miqt_string)(fileName_ms), format.cPointer())
 	return newQImageWriter(ret)
@@ -106,11 +114,11 @@ func (this *QImageWriter) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QImageWriter_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageWriter_Device(this.h)))
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QImageWriter_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -196,7 +204,7 @@ func (this *QImageWriter) SetTransformation(orientation QImageIOHandler__Transfo
 }
 
 func (this *QImageWriter) SetDescription(description string) {
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QImageWriter_SetDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }
@@ -209,9 +217,9 @@ func (this *QImageWriter) Description() string {
 }
 
 func (this *QImageWriter) SetText(key string, text string) {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QImageWriter_SetText(this.h, (*C.struct_miqt_string)(key_ms), (*C.struct_miqt_string)(text_ms))
 }

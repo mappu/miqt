@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QStringListModel) cPointer() *C.QStringListModel {
 	return this.h
 }
 
+func (this *QStringListModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStringListModel(h *C.QStringListModel) *QStringListModel {
 	if h == nil {
 		return nil
 	}
-	return &QStringListModel{h: h, QAbstractListModel: newQAbstractListModel_U(unsafe.Pointer(h))}
+	return &QStringListModel{h: h, QAbstractListModel: UnsafeNewQAbstractListModel(unsafe.Pointer(h))}
 }
 
-func newQStringListModel_U(h unsafe.Pointer) *QStringListModel {
+func UnsafeNewQStringListModel(h unsafe.Pointer) *QStringListModel {
 	return newQStringListModel((*C.QStringListModel)(h))
 }
 
@@ -48,7 +56,7 @@ func NewQStringListModel2(strings []string) *QStringListModel {
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := miqt_strdupg(strings[i])
+		strings_i_ms := libmiqt.Strdupg(strings[i])
 		defer C.free(strings_i_ms)
 		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}
@@ -70,7 +78,7 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := miqt_strdupg(strings[i])
+		strings_i_ms := libmiqt.Strdupg(strings[i])
 		defer C.free(strings_i_ms)
 		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}
@@ -81,7 +89,7 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 }
 
 func (this *QStringListModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStringListModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStringListModel_MetaObject(this.h)))
 }
 
 func (this *QStringListModel) Metacast(param1 string) unsafe.Pointer {
@@ -169,7 +177,7 @@ func (this *QStringListModel) SetStringList(strings []string) {
 	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := miqt_strdupg(strings[i])
+		strings_i_ms := libmiqt.Strdupg(strings[i])
 		defer C.free(strings_i_ms)
 		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
 	}

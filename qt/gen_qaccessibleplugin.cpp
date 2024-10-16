@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qaccessibleplugin.h"
+#include <qaccessibleplugin.h>
 #include "gen_qaccessibleplugin.h"
 #include "_cgo_export.h"
 

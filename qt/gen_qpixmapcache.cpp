@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpixmapcache.h"
+#include <qpixmapcache.h>
 #include "gen_qpixmapcache.h"
 #include "_cgo_export.h"
 

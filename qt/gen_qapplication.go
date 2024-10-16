@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -34,14 +35,21 @@ func (this *QApplication) cPointer() *C.QApplication {
 	return this.h
 }
 
+func (this *QApplication) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQApplication(h *C.QApplication) *QApplication {
 	if h == nil {
 		return nil
 	}
-	return &QApplication{h: h, QGuiApplication: newQGuiApplication_U(unsafe.Pointer(h))}
+	return &QApplication{h: h, QGuiApplication: UnsafeNewQGuiApplication(unsafe.Pointer(h))}
 }
 
-func newQApplication_U(h unsafe.Pointer) *QApplication {
+func UnsafeNewQApplication(h unsafe.Pointer) *QApplication {
 	return newQApplication((*C.QApplication)(h))
 }
 
@@ -72,7 +80,7 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QApplication_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QApplication_MetaObject(this.h)))
 }
 
 func (this *QApplication) Metacast(param1 string) unsafe.Pointer {
@@ -100,7 +108,7 @@ func QApplication_TrUtf8(s string) string {
 }
 
 func QApplication_Style() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QApplication_Style()))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_Style()))
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -108,9 +116,9 @@ func QApplication_SetStyle(style *QStyle) {
 }
 
 func QApplication_SetStyleWithStyle(style string) *QStyle {
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
-	return newQStyle_U(unsafe.Pointer(C.QApplication_SetStyleWithStyle((*C.struct_miqt_string)(style_ms))))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_SetStyleWithStyle((*C.struct_miqt_string)(style_ms))))
 }
 
 func QApplication_ColorSpec() int {
@@ -191,7 +199,7 @@ func QApplication_AllWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -202,30 +210,30 @@ func QApplication_TopLevelWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QApplication_Desktop() *QDesktopWidget {
-	return newQDesktopWidget_U(unsafe.Pointer(C.QApplication_Desktop()))
+	return UnsafeNewQDesktopWidget(unsafe.Pointer(C.QApplication_Desktop()))
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_ActivePopupWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActivePopupWidget()))
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_ActiveModalWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveModalWidget()))
 }
 
 func QApplication_FocusWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_FocusWidget()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_FocusWidget()))
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_ActiveWindow()))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveWindow()))
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -233,19 +241,19 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))))
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))))
 }
 
 func QApplication_Beep() {
@@ -346,8 +354,8 @@ func miqt_exec_callback_QApplication_FocusChanged(cb C.intptr_t, old *C.QWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget_U(unsafe.Pointer(old))
-	slotval2 := newQWidget_U(unsafe.Pointer(now))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(old))
+	slotval2 := UnsafeNewQWidget(unsafe.Pointer(now))
 
 	gofunc(slotval1, slotval2)
 }
@@ -360,7 +368,7 @@ func (this *QApplication) StyleSheet() string {
 }
 
 func (this *QApplication) SetStyleSheet(sheet string) {
-	sheet_ms := miqt_strdupg(sheet)
+	sheet_ms := libmiqt.Strdupg(sheet)
 	defer C.free(sheet_ms)
 	C.QApplication_SetStyleSheet(this.h, (*C.struct_miqt_string)(sheet_ms))
 }

@@ -1,5 +1,5 @@
 #include <QScopedPointerPodDeleter>
-#include "qscopedpointer.h"
+#include <qscopedpointer.h>
 #include "gen_qscopedpointer.h"
 #include "_cgo_export.h"
 

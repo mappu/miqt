@@ -25,14 +25,21 @@ func (this *QGraphicsLayout) cPointer() *C.QGraphicsLayout {
 	return this.h
 }
 
+func (this *QGraphicsLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsLayout(h *C.QGraphicsLayout) *QGraphicsLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsLayout{h: h, QGraphicsLayoutItem: newQGraphicsLayoutItem_U(unsafe.Pointer(h))}
+	return &QGraphicsLayout{h: h, QGraphicsLayoutItem: UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsLayout_U(h unsafe.Pointer) *QGraphicsLayout {
+func UnsafeNewQGraphicsLayout(h unsafe.Pointer) *QGraphicsLayout {
 	return newQGraphicsLayout((*C.QGraphicsLayout)(h))
 }
 
@@ -69,7 +76,7 @@ func (this *QGraphicsLayout) Count() int {
 }
 
 func (this *QGraphicsLayout) ItemAt(i int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLayout_ItemAt(this.h, (C.int)(i))))
 }
 
 func (this *QGraphicsLayout) RemoveAt(index int) {

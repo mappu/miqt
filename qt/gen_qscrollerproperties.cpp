@@ -1,6 +1,6 @@
 #include <QScrollerProperties>
 #include <QVariant>
-#include "qscrollerproperties.h"
+#include <qscrollerproperties.h>
 #include "gen_qscrollerproperties.h"
 #include "_cgo_export.h"
 

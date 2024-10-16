@@ -12,7 +12,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QWidget>
-#include "qabstractitemview.h"
+#include <qabstractitemview.h>
 #include "gen_qabstractitemview.h"
 #include "_cgo_export.h"
 

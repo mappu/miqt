@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfinalstate.h"
+#include <qfinalstate.h>
 #include "gen_qfinalstate.h"
 #include "_cgo_export.h"
 

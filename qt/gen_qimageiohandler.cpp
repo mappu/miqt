@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qimageiohandler.h"
+#include <qimageiohandler.h>
 #include "gen_qimageiohandler.h"
 #include "_cgo_export.h"
 

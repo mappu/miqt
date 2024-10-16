@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qlabel.h"
+#include <qlabel.h>
 #include "gen_qlabel.h"
 #include "_cgo_export.h"
 

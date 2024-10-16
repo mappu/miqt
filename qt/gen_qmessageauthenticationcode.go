@@ -24,6 +24,13 @@ func (this *QMessageAuthenticationCode) cPointer() *C.QMessageAuthenticationCode
 	return this.h
 }
 
+func (this *QMessageAuthenticationCode) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAuthenticationCode {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQMessageAuthenticationCode(h *C.QMessageAuthenticationCode) *QMessageAut
 	return &QMessageAuthenticationCode{h: h}
 }
 
-func newQMessageAuthenticationCode_U(h unsafe.Pointer) *QMessageAuthenticationCode {
+func UnsafeNewQMessageAuthenticationCode(h unsafe.Pointer) *QMessageAuthenticationCode {
 	return newQMessageAuthenticationCode((*C.QMessageAuthenticationCode)(h))
 }
 

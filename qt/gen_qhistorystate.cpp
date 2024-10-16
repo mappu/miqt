@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qhistorystate.h"
+#include <qhistorystate.h>
 #include "gen_qhistorystate.h"
 #include "_cgo_export.h"
 

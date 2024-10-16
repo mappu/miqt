@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QErrorMessage) cPointer() *C.QErrorMessage {
 	return this.h
 }
 
+func (this *QErrorMessage) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQErrorMessage(h *C.QErrorMessage) *QErrorMessage {
 	if h == nil {
 		return nil
 	}
-	return &QErrorMessage{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
+	return &QErrorMessage{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
-func newQErrorMessage_U(h unsafe.Pointer) *QErrorMessage {
+func UnsafeNewQErrorMessage(h unsafe.Pointer) *QErrorMessage {
 	return newQErrorMessage((*C.QErrorMessage)(h))
 }
 
@@ -49,7 +57,7 @@ func NewQErrorMessage2(parent *QWidget) *QErrorMessage {
 }
 
 func (this *QErrorMessage) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QErrorMessage_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QErrorMessage_MetaObject(this.h)))
 }
 
 func (this *QErrorMessage) Metacast(param1 string) unsafe.Pointer {
@@ -77,19 +85,19 @@ func QErrorMessage_TrUtf8(s string) string {
 }
 
 func QErrorMessage_QtHandler() *QErrorMessage {
-	return newQErrorMessage_U(unsafe.Pointer(C.QErrorMessage_QtHandler()))
+	return UnsafeNewQErrorMessage(unsafe.Pointer(C.QErrorMessage_QtHandler()))
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
 	C.QErrorMessage_ShowMessage(this.h, (*C.struct_miqt_string)(message_ms))
 }
 
 func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
-	typeVal_ms := miqt_strdupg(typeVal)
+	typeVal_ms := libmiqt.Strdupg(typeVal)
 	defer C.free(typeVal_ms)
 	C.QErrorMessage_ShowMessage2(this.h, (*C.struct_miqt_string)(message_ms), (*C.struct_miqt_string)(typeVal_ms))
 }

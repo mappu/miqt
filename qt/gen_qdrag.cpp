@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qdrag.h"
+#include <qdrag.h>
 #include "gen_qdrag.h"
 #include "_cgo_export.h"
 

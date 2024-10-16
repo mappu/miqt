@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,19 +27,26 @@ func (this *QAbstractButton) cPointer() *C.QAbstractButton {
 	return this.h
 }
 
+func (this *QAbstractButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractButton(h *C.QAbstractButton) *QAbstractButton {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractButton{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QAbstractButton{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQAbstractButton_U(h unsafe.Pointer) *QAbstractButton {
+func UnsafeNewQAbstractButton(h unsafe.Pointer) *QAbstractButton {
 	return newQAbstractButton((*C.QAbstractButton)(h))
 }
 
 func (this *QAbstractButton) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractButton_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractButton_MetaObject(this.h)))
 }
 
 func (this *QAbstractButton) Metacast(param1 string) unsafe.Pointer {
@@ -66,7 +74,7 @@ func QAbstractButton_TrUtf8(s string) string {
 }
 
 func (this *QAbstractButton) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAbstractButton_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -160,7 +168,7 @@ func (this *QAbstractButton) AutoExclusive() bool {
 }
 
 func (this *QAbstractButton) Group() *QButtonGroup {
-	return newQButtonGroup_U(unsafe.Pointer(C.QAbstractButton_Group(this.h)))
+	return UnsafeNewQButtonGroup(unsafe.Pointer(C.QAbstractButton_Group(this.h)))
 }
 
 func (this *QAbstractButton) SetIconSize(size *QSize) {

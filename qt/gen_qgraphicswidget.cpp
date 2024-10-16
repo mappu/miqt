@@ -18,7 +18,7 @@
 #include <QStyle>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include "qgraphicswidget.h"
+#include <qgraphicswidget.h>
 #include "gen_qgraphicswidget.h"
 #include "_cgo_export.h"
 
@@ -241,7 +241,7 @@ void QGraphicsWidget_AddAction(QGraphicsWidget* self, QAction* action) {
 }
 
 void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array* /* of QAction* */ actions) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {
@@ -251,7 +251,7 @@ void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array* /* of 
 }
 
 void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array* /* of QAction* */ actions) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -82,19 +83,26 @@ func (this *QAbstractItemView) cPointer() *C.QAbstractItemView {
 	return this.h
 }
 
+func (this *QAbstractItemView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractItemView(h *C.QAbstractItemView) *QAbstractItemView {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemView{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QAbstractItemView{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQAbstractItemView_U(h unsafe.Pointer) *QAbstractItemView {
+func UnsafeNewQAbstractItemView(h unsafe.Pointer) *QAbstractItemView {
 	return newQAbstractItemView((*C.QAbstractItemView)(h))
 }
 
 func (this *QAbstractItemView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractItemView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractItemView_MetaObject(this.h)))
 }
 
 func (this *QAbstractItemView) Metacast(param1 string) unsafe.Pointer {
@@ -126,7 +134,7 @@ func (this *QAbstractItemView) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QAbstractItemView) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QAbstractItemView_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractItemView_Model(this.h)))
 }
 
 func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -134,7 +142,7 @@ func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionM
 }
 
 func (this *QAbstractItemView) SelectionModel() *QItemSelectionModel {
-	return newQItemSelectionModel_U(unsafe.Pointer(C.QAbstractItemView_SelectionModel(this.h)))
+	return UnsafeNewQItemSelectionModel(unsafe.Pointer(C.QAbstractItemView_SelectionModel(this.h)))
 }
 
 func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -142,7 +150,7 @@ func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegate(this.h)))
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
@@ -299,7 +307,7 @@ func (this *QAbstractItemView) TextElideMode() TextElideMode {
 }
 
 func (this *QAbstractItemView) KeyboardSearch(search string) {
-	search_ms := miqt_strdupg(search)
+	search_ms := libmiqt.Strdupg(search)
 	defer C.free(search_ms)
 	C.QAbstractItemView_KeyboardSearch(this.h, (*C.struct_miqt_string)(search_ms))
 }
@@ -354,7 +362,7 @@ func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidge
 }
 
 func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QAbstractItemView_IndexWidget(this.h, index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemView_IndexWidget(this.h, index.cPointer())))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
@@ -362,7 +370,7 @@ func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstrac
 }
 
 func (this *QAbstractItemView) ItemDelegateForRow(row int) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForRow(this.h, (C.int)(row))))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QAbstractItemDelegate) {
@@ -370,11 +378,11 @@ func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QA
 }
 
 func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateForColumn(this.h, (C.int)(column))))
 }
 
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QAbstractItemView_ItemDelegateWithIndex(this.h, index.cPointer())))
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
@@ -439,7 +447,7 @@ func miqt_exec_callback_QAbstractItemView_Pressed(cb C.intptr_t, index *C.QModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -459,7 +467,7 @@ func miqt_exec_callback_QAbstractItemView_Clicked(cb C.intptr_t, index *C.QModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -479,7 +487,7 @@ func miqt_exec_callback_QAbstractItemView_DoubleClicked(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -499,7 +507,7 @@ func miqt_exec_callback_QAbstractItemView_Activated(cb C.intptr_t, index *C.QMod
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -519,7 +527,7 @@ func miqt_exec_callback_QAbstractItemView_Entered(cb C.intptr_t, index *C.QModel
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -556,7 +564,7 @@ func miqt_exec_callback_QAbstractItemView_IconSizeChanged(cb C.intptr_t, size *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize_U(unsafe.Pointer(size))
+	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }

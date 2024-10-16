@@ -31,6 +31,13 @@ func (this *QRegion) cPointer() *C.QRegion {
 	return this.h
 }
 
+func (this *QRegion) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRegion(h *C.QRegion) *QRegion {
 	if h == nil {
 		return nil
@@ -38,7 +45,7 @@ func newQRegion(h *C.QRegion) *QRegion {
 	return &QRegion{h: h}
 }
 
-func newQRegion_U(h unsafe.Pointer) *QRegion {
+func UnsafeNewQRegion(h unsafe.Pointer) *QRegion {
 	return newQRegion((*C.QRegion)(h))
 }
 
@@ -101,19 +108,19 @@ func (this *QRegion) IsNull() bool {
 }
 
 func (this *QRegion) Begin() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRegion_Begin(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Begin(this.h)))
 }
 
 func (this *QRegion) Cbegin() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRegion_Cbegin(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Cbegin(this.h)))
 }
 
 func (this *QRegion) End() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRegion_End(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_End(this.h)))
 }
 
 func (this *QRegion) Cend() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRegion_Cend(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRegion_Cend(this.h)))
 }
 
 func (this *QRegion) Contains(p *QPoint) bool {
@@ -279,11 +286,11 @@ func (this *QRegion) OperatorBitwiseOrAssign(r *QRegion) {
 }
 
 func (this *QRegion) OperatorPlusAssign(r *QRegion) *QRegion {
-	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorPlusAssign(this.h, r.cPointer())))
+	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorPlusAssign(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorPlusAssignWithQRect(r *QRect) *QRegion {
-	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())))
+	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorPlusAssignWithQRect(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorBitwiseAndAssign(r *QRegion) {
@@ -295,7 +302,7 @@ func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r *QRect) {
 }
 
 func (this *QRegion) OperatorMinusAssign(r *QRegion) *QRegion {
-	return newQRegion_U(unsafe.Pointer(C.QRegion_OperatorMinusAssign(this.h, r.cPointer())))
+	return UnsafeNewQRegion(unsafe.Pointer(C.QRegion_OperatorMinusAssign(this.h, r.cPointer())))
 }
 
 func (this *QRegion) OperatorBitwiseNotAssign(r *QRegion) {

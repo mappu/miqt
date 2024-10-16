@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -41,14 +42,21 @@ func (this *QMovie) cPointer() *C.QMovie {
 	return this.h
 }
 
+func (this *QMovie) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMovie(h *C.QMovie) *QMovie {
 	if h == nil {
 		return nil
 	}
-	return &QMovie{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QMovie{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQMovie_U(h unsafe.Pointer) *QMovie {
+func UnsafeNewQMovie(h unsafe.Pointer) *QMovie {
 	return newQMovie((*C.QMovie)(h))
 }
 
@@ -66,7 +74,7 @@ func NewQMovie2(device *QIODevice) *QMovie {
 
 // NewQMovie3 constructs a new QMovie object.
 func NewQMovie3(fileName string) *QMovie {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QMovie_new3((*C.struct_miqt_string)(fileName_ms))
 	return newQMovie(ret)
@@ -92,7 +100,7 @@ func NewQMovie6(device *QIODevice, format *QByteArray, parent *QObject) *QMovie 
 
 // NewQMovie7 constructs a new QMovie object.
 func NewQMovie7(fileName string, format *QByteArray) *QMovie {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QMovie_new7((*C.struct_miqt_string)(fileName_ms), format.cPointer())
 	return newQMovie(ret)
@@ -100,14 +108,14 @@ func NewQMovie7(fileName string, format *QByteArray) *QMovie {
 
 // NewQMovie8 constructs a new QMovie object.
 func NewQMovie8(fileName string, format *QByteArray, parent *QObject) *QMovie {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QMovie_new8((*C.struct_miqt_string)(fileName_ms), format.cPointer(), parent.cPointer())
 	return newQMovie(ret)
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMovie_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMovie_MetaObject(this.h)))
 }
 
 func (this *QMovie) Metacast(param1 string) unsafe.Pointer {
@@ -153,11 +161,11 @@ func (this *QMovie) SetDevice(device *QIODevice) {
 }
 
 func (this *QMovie) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QMovie_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QMovie_Device(this.h)))
 }
 
 func (this *QMovie) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QMovie_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -306,7 +314,7 @@ func miqt_exec_callback_QMovie_Resized(cb C.intptr_t, size *C.QSize) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize_U(unsafe.Pointer(size))
+	slotval1 := UnsafeNewQSize(unsafe.Pointer(size))
 
 	gofunc(slotval1)
 }
@@ -326,7 +334,7 @@ func miqt_exec_callback_QMovie_Updated(cb C.intptr_t, rect *C.QRect) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect_U(unsafe.Pointer(rect))
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
 
 	gofunc(slotval1)
 }

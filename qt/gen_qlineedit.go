@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -42,14 +43,21 @@ func (this *QLineEdit) cPointer() *C.QLineEdit {
 	return this.h
 }
 
+func (this *QLineEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLineEdit(h *C.QLineEdit) *QLineEdit {
 	if h == nil {
 		return nil
 	}
-	return &QLineEdit{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QLineEdit{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQLineEdit_U(h unsafe.Pointer) *QLineEdit {
+func UnsafeNewQLineEdit(h unsafe.Pointer) *QLineEdit {
 	return newQLineEdit((*C.QLineEdit)(h))
 }
 
@@ -61,7 +69,7 @@ func NewQLineEdit() *QLineEdit {
 
 // NewQLineEdit2 constructs a new QLineEdit object.
 func NewQLineEdit2(param1 string) *QLineEdit {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	ret := C.QLineEdit_new2((*C.struct_miqt_string)(param1_ms))
 	return newQLineEdit(ret)
@@ -75,14 +83,14 @@ func NewQLineEdit3(parent *QWidget) *QLineEdit {
 
 // NewQLineEdit4 constructs a new QLineEdit object.
 func NewQLineEdit4(param1 string, parent *QWidget) *QLineEdit {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	ret := C.QLineEdit_new4((*C.struct_miqt_string)(param1_ms), parent.cPointer())
 	return newQLineEdit(ret)
 }
 
 func (this *QLineEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QLineEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLineEdit_MetaObject(this.h)))
 }
 
 func (this *QLineEdit) Metacast(param1 string) unsafe.Pointer {
@@ -131,7 +139,7 @@ func (this *QLineEdit) PlaceholderText() string {
 }
 
 func (this *QLineEdit) SetPlaceholderText(placeholderText string) {
-	placeholderText_ms := miqt_strdupg(placeholderText)
+	placeholderText_ms := libmiqt.Strdupg(placeholderText)
 	defer C.free(placeholderText_ms)
 	C.QLineEdit_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
@@ -181,7 +189,7 @@ func (this *QLineEdit) SetValidator(validator *QValidator) {
 }
 
 func (this *QLineEdit) Validator() *QValidator {
-	return newQValidator_U(unsafe.Pointer(C.QLineEdit_Validator(this.h)))
+	return UnsafeNewQValidator(unsafe.Pointer(C.QLineEdit_Validator(this.h)))
 }
 
 func (this *QLineEdit) SetCompleter(completer *QCompleter) {
@@ -189,7 +197,7 @@ func (this *QLineEdit) SetCompleter(completer *QCompleter) {
 }
 
 func (this *QLineEdit) Completer() *QCompleter {
-	return newQCompleter_U(unsafe.Pointer(C.QLineEdit_Completer(this.h)))
+	return UnsafeNewQCompleter(unsafe.Pointer(C.QLineEdit_Completer(this.h)))
 }
 
 func (this *QLineEdit) SizeHint() *QSize {
@@ -325,7 +333,7 @@ func (this *QLineEdit) InputMask() string {
 }
 
 func (this *QLineEdit) SetInputMask(inputMask string) {
-	inputMask_ms := miqt_strdupg(inputMask)
+	inputMask_ms := libmiqt.Strdupg(inputMask)
 	defer C.free(inputMask_ms)
 	C.QLineEdit_SetInputMask(this.h, (*C.struct_miqt_string)(inputMask_ms))
 }
@@ -358,11 +366,11 @@ func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosi
 }
 
 func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position))))
 }
 
 func (this *QLineEdit) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QLineEdit_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -400,17 +408,17 @@ func (this *QLineEdit) Deselect() {
 }
 
 func (this *QLineEdit) Insert(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QLineEdit_Insert(this.h, (*C.struct_miqt_string)(param1_ms))
 }
 
 func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QLineEdit_CreateStandardContextMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QLineEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QLineEdit) TextChanged(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QLineEdit_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -435,7 +443,7 @@ func miqt_exec_callback_QLineEdit_TextChanged(cb C.intptr_t, param1 *C.struct_mi
 }
 
 func (this *QLineEdit) TextEdited(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QLineEdit_TextEdited(this.h, (*C.struct_miqt_string)(param1_ms))
 }

@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qdial.h"
+#include <qdial.h>
 #include "gen_qdial.h"
 #include "_cgo_export.h"
 

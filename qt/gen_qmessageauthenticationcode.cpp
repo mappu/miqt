@@ -1,7 +1,7 @@
 #include <QByteArray>
 #include <QIODevice>
 #include <QMessageAuthenticationCode>
-#include "qmessageauthenticationcode.h"
+#include <qmessageauthenticationcode.h>
 #include "gen_qmessageauthenticationcode.h"
 #include "_cgo_export.h"
 

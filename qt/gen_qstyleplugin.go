@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,19 +26,26 @@ func (this *QStylePlugin) cPointer() *C.QStylePlugin {
 	return this.h
 }
 
+func (this *QStylePlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStylePlugin(h *C.QStylePlugin) *QStylePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QStylePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QStylePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQStylePlugin_U(h unsafe.Pointer) *QStylePlugin {
+func UnsafeNewQStylePlugin(h unsafe.Pointer) *QStylePlugin {
 	return newQStylePlugin((*C.QStylePlugin)(h))
 }
 
 func (this *QStylePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStylePlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStylePlugin_MetaObject(this.h)))
 }
 
 func (this *QStylePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -65,9 +73,9 @@ func QStylePlugin_TrUtf8(s string) string {
 }
 
 func (this *QStylePlugin) Create(key string) *QStyle {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	return newQStyle_U(unsafe.Pointer(C.QStylePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))))
 }
 
 func QStylePlugin_Tr2(s string, c string) string {

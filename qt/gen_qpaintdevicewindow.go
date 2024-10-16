@@ -26,19 +26,26 @@ func (this *QPaintDeviceWindow) cPointer() *C.QPaintDeviceWindow {
 	return this.h
 }
 
+func (this *QPaintDeviceWindow) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPaintDeviceWindow(h *C.QPaintDeviceWindow) *QPaintDeviceWindow {
 	if h == nil {
 		return nil
 	}
-	return &QPaintDeviceWindow{h: h, QWindow: newQWindow_U(unsafe.Pointer(h)), QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QPaintDeviceWindow{h: h, QWindow: UnsafeNewQWindow(unsafe.Pointer(h)), QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQPaintDeviceWindow_U(h unsafe.Pointer) *QPaintDeviceWindow {
+func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
 	return newQPaintDeviceWindow((*C.QPaintDeviceWindow)(h))
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPaintDeviceWindow_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPaintDeviceWindow_MetaObject(this.h)))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {

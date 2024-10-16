@@ -24,6 +24,13 @@ func (this *QtPrivate__RefCount) cPointer() *C.QtPrivate__RefCount {
 	return this.h
 }
 
+func (this *QtPrivate__RefCount) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__RefCount(h *C.QtPrivate__RefCount) *QtPrivate__RefCount {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQtPrivate__RefCount(h *C.QtPrivate__RefCount) *QtPrivate__RefCount {
 	return &QtPrivate__RefCount{h: h}
 }
 
-func newQtPrivate__RefCount_U(h unsafe.Pointer) *QtPrivate__RefCount {
+func UnsafeNewQtPrivate__RefCount(h unsafe.Pointer) *QtPrivate__RefCount {
 	return newQtPrivate__RefCount((*C.QtPrivate__RefCount)(h))
 }
 

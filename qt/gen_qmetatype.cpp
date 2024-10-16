@@ -11,7 +11,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__AbstractComparatorFunction
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__AbstractConverterFunction
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__AbstractDebugStreamFunction
-#include "qmetatype.h"
+#include <qmetatype.h>
 #include "gen_qmetatype.h"
 #include "_cgo_export.h"
 

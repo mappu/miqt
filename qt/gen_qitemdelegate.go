@@ -25,14 +25,21 @@ func (this *QItemDelegate) cPointer() *C.QItemDelegate {
 	return this.h
 }
 
+func (this *QItemDelegate) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQItemDelegate(h *C.QItemDelegate) *QItemDelegate {
 	if h == nil {
 		return nil
 	}
-	return &QItemDelegate{h: h, QAbstractItemDelegate: newQAbstractItemDelegate_U(unsafe.Pointer(h))}
+	return &QItemDelegate{h: h, QAbstractItemDelegate: UnsafeNewQAbstractItemDelegate(unsafe.Pointer(h))}
 }
 
-func newQItemDelegate_U(h unsafe.Pointer) *QItemDelegate {
+func UnsafeNewQItemDelegate(h unsafe.Pointer) *QItemDelegate {
 	return newQItemDelegate((*C.QItemDelegate)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQItemDelegate2(parent *QObject) *QItemDelegate {
 }
 
 func (this *QItemDelegate) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QItemDelegate_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QItemDelegate_MetaObject(this.h)))
 }
 
 func (this *QItemDelegate) Metacast(param1 string) unsafe.Pointer {
@@ -96,7 +103,7 @@ func (this *QItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelI
 }
 
 func (this *QItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
 }
 
 func (this *QItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
@@ -112,7 +119,7 @@ func (this *QItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleO
 }
 
 func (this *QItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	return newQItemEditorFactory_U(unsafe.Pointer(C.QItemDelegate_ItemEditorFactory(this.h)))
+	return UnsafeNewQItemEditorFactory(unsafe.Pointer(C.QItemDelegate_ItemEditorFactory(this.h)))
 }
 
 func (this *QItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {

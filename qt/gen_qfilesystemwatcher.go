@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QFileSystemWatcher) cPointer() *C.QFileSystemWatcher {
 	return this.h
 }
 
+func (this *QFileSystemWatcher) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileSystemWatcher(h *C.QFileSystemWatcher) *QFileSystemWatcher {
 	if h == nil {
 		return nil
 	}
-	return &QFileSystemWatcher{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QFileSystemWatcher{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQFileSystemWatcher_U(h unsafe.Pointer) *QFileSystemWatcher {
+func UnsafeNewQFileSystemWatcher(h unsafe.Pointer) *QFileSystemWatcher {
 	return newQFileSystemWatcher((*C.QFileSystemWatcher)(h))
 }
 
@@ -48,7 +56,7 @@ func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := miqt_strdupg(paths[i])
+		paths_i_ms := libmiqt.Strdupg(paths[i])
 		defer C.free(paths_i_ms)
 		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
@@ -70,7 +78,7 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := miqt_strdupg(paths[i])
+		paths_i_ms := libmiqt.Strdupg(paths[i])
 		defer C.free(paths_i_ms)
 		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
@@ -81,7 +89,7 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 }
 
 func (this *QFileSystemWatcher) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFileSystemWatcher_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSystemWatcher_MetaObject(this.h)))
 }
 
 func (this *QFileSystemWatcher) Metacast(param1 string) unsafe.Pointer {
@@ -109,7 +117,7 @@ func QFileSystemWatcher_TrUtf8(s string) string {
 }
 
 func (this *QFileSystemWatcher) AddPath(file string) bool {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	return (bool)(C.QFileSystemWatcher_AddPath(this.h, (*C.struct_miqt_string)(file_ms)))
 }
@@ -119,7 +127,7 @@ func (this *QFileSystemWatcher) AddPaths(files []string) []string {
 	files_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	for i := range files {
-		files_i_ms := miqt_strdupg(files[i])
+		files_i_ms := libmiqt.Strdupg(files[i])
 		defer C.free(files_i_ms)
 		files_CArray[i] = (*C.struct_miqt_string)(files_i_ms)
 	}
@@ -139,7 +147,7 @@ func (this *QFileSystemWatcher) AddPaths(files []string) []string {
 }
 
 func (this *QFileSystemWatcher) RemovePath(file string) bool {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	return (bool)(C.QFileSystemWatcher_RemovePath(this.h, (*C.struct_miqt_string)(file_ms)))
 }
@@ -149,7 +157,7 @@ func (this *QFileSystemWatcher) RemovePaths(files []string) []string {
 	files_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	for i := range files {
-		files_i_ms := miqt_strdupg(files[i])
+		files_i_ms := libmiqt.Strdupg(files[i])
 		defer C.free(files_i_ms)
 		files_CArray[i] = (*C.struct_miqt_string)(files_i_ms)
 	}

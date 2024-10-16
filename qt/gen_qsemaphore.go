@@ -24,6 +24,13 @@ func (this *QSemaphore) cPointer() *C.QSemaphore {
 	return this.h
 }
 
+func (this *QSemaphore) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSemaphore(h *C.QSemaphore) *QSemaphore {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQSemaphore(h *C.QSemaphore) *QSemaphore {
 	return &QSemaphore{h: h}
 }
 
-func newQSemaphore_U(h unsafe.Pointer) *QSemaphore {
+func UnsafeNewQSemaphore(h unsafe.Pointer) *QSemaphore {
 	return newQSemaphore((*C.QSemaphore)(h))
 }
 
@@ -104,6 +111,13 @@ func (this *QSemaphoreReleaser) cPointer() *C.QSemaphoreReleaser {
 	return this.h
 }
 
+func (this *QSemaphoreReleaser) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSemaphoreReleaser(h *C.QSemaphoreReleaser) *QSemaphoreReleaser {
 	if h == nil {
 		return nil
@@ -111,7 +125,7 @@ func newQSemaphoreReleaser(h *C.QSemaphoreReleaser) *QSemaphoreReleaser {
 	return &QSemaphoreReleaser{h: h}
 }
 
-func newQSemaphoreReleaser_U(h unsafe.Pointer) *QSemaphoreReleaser {
+func UnsafeNewQSemaphoreReleaser(h unsafe.Pointer) *QSemaphoreReleaser {
 	return newQSemaphoreReleaser((*C.QSemaphoreReleaser)(h))
 }
 
@@ -150,11 +164,11 @@ func (this *QSemaphoreReleaser) Swap(other *QSemaphoreReleaser) {
 }
 
 func (this *QSemaphoreReleaser) Semaphore() *QSemaphore {
-	return newQSemaphore_U(unsafe.Pointer(C.QSemaphoreReleaser_Semaphore(this.h)))
+	return UnsafeNewQSemaphore(unsafe.Pointer(C.QSemaphoreReleaser_Semaphore(this.h)))
 }
 
 func (this *QSemaphoreReleaser) Cancel() *QSemaphore {
-	return newQSemaphore_U(unsafe.Pointer(C.QSemaphoreReleaser_Cancel(this.h)))
+	return UnsafeNewQSemaphore(unsafe.Pointer(C.QSemaphoreReleaser_Cancel(this.h)))
 }
 
 // Delete this object from C++ memory.

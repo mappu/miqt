@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimer>
-#include "qtimer.h"
+#include <qtimer.h>
 #include "gen_qtimer.h"
 #include "_cgo_export.h"
 

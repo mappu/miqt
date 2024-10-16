@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -32,6 +33,13 @@ func (this *QDebug) cPointer() *C.QDebug {
 	return this.h
 }
 
+func (this *QDebug) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDebug(h *C.QDebug) *QDebug {
 	if h == nil {
 		return nil
@@ -39,7 +47,7 @@ func newQDebug(h *C.QDebug) *QDebug {
 	return &QDebug{h: h}
 }
 
-func newQDebug_U(h unsafe.Pointer) *QDebug {
+func UnsafeNewQDebug(h unsafe.Pointer) *QDebug {
 	return newQDebug((*C.QDebug)(h))
 }
 
@@ -64,23 +72,23 @@ func (this *QDebug) Swap(other *QDebug) {
 }
 
 func (this *QDebug) ResetFormat() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_ResetFormat(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_ResetFormat(this.h)))
 }
 
 func (this *QDebug) Space() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_Space(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_Space(this.h)))
 }
 
 func (this *QDebug) Nospace() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_Nospace(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_Nospace(this.h)))
 }
 
 func (this *QDebug) MaybeSpace() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_MaybeSpace(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_MaybeSpace(this.h)))
 }
 
 func (this *QDebug) Verbosity(verbosityLevel int) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_Verbosity(this.h, (C.int)(verbosityLevel))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_Verbosity(this.h, (C.int)(verbosityLevel))))
 }
 
 func (this *QDebug) Verbosity2() int {
@@ -100,91 +108,91 @@ func (this *QDebug) SetAutoInsertSpaces(b bool) {
 }
 
 func (this *QDebug) Quote() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_Quote(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_Quote(this.h)))
 }
 
 func (this *QDebug) Noquote() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_Noquote(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_Noquote(this.h)))
 }
 
 func (this *QDebug) MaybeQuote() *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_MaybeQuote(this.h)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_MaybeQuote(this.h)))
 }
 
 func (this *QDebug) OperatorShiftLeft(t QChar) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeft(this.h, t.cPointer())))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeft(this.h, t.cPointer())))
 }
 
 func (this *QDebug) OperatorShiftLeftWithBool(t bool) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithBool(this.h, (C.bool)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithBool(this.h, (C.bool)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithChar(t int8) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithChar(this.h, (C.char)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithChar(this.h, (C.char)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithShort(t int16) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithShort(this.h, (C.int16_t)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithShort(this.h, (C.int16_t)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedshort(t uint16) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithInt(t int) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithInt(this.h, (C.int)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithInt(this.h, (C.int)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedint(t uint) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedint(this.h, (C.uint)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedint(this.h, (C.uint)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithLong(t int64) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithLong(this.h, (C.long)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithLong(this.h, (C.long)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedlong(t uint64) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithUnsignedlong(this.h, (C.ulong)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithQint64(t int64) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQint64(this.h, (C.longlong)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQint64(this.h, (C.longlong)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithQuint64(t uint64) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQuint64(this.h, (C.ulonglong)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithFloat(t float32) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithFloat(this.h, (C.float)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithFloat(this.h, (C.float)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithDouble(t float64) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithDouble(this.h, (C.double)(t))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithDouble(this.h, (C.double)(t))))
 }
 
 func (this *QDebug) OperatorShiftLeft2(t string) *QDebug {
 	t_Cstring := C.CString(t)
 	defer C.free(unsafe.Pointer(t_Cstring))
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeft2(this.h, t_Cstring)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeft2(this.h, t_Cstring)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithQString(t string) *QDebug {
-	t_ms := miqt_strdupg(t)
+	t_ms := libmiqt.Strdupg(t)
 	defer C.free(t_ms)
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(t_ms))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(t_ms))))
 }
 
 func (this *QDebug) OperatorShiftLeftWithQByteArray(t *QByteArray) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t.cPointer())))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t.cPointer())))
 }
 
 func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithVoid(this.h, t)))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithVoid(this.h, t)))
 }
 
 func (this *QDebug) MaybeQuote1(c int8) *QDebug {
-	return newQDebug_U(unsafe.Pointer(C.QDebug_MaybeQuote1(this.h, (C.char)(c))))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_MaybeQuote1(this.h, (C.char)(c))))
 }
 
 // Delete this object from C++ memory.
@@ -212,6 +220,13 @@ func (this *QDebugStateSaver) cPointer() *C.QDebugStateSaver {
 	return this.h
 }
 
+func (this *QDebugStateSaver) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDebugStateSaver(h *C.QDebugStateSaver) *QDebugStateSaver {
 	if h == nil {
 		return nil
@@ -219,7 +234,7 @@ func newQDebugStateSaver(h *C.QDebugStateSaver) *QDebugStateSaver {
 	return &QDebugStateSaver{h: h}
 }
 
-func newQDebugStateSaver_U(h unsafe.Pointer) *QDebugStateSaver {
+func UnsafeNewQDebugStateSaver(h unsafe.Pointer) *QDebugStateSaver {
 	return newQDebugStateSaver((*C.QDebugStateSaver)(h))
 }
 
@@ -254,6 +269,13 @@ func (this *QNoDebug) cPointer() *C.QNoDebug {
 	return this.h
 }
 
+func (this *QNoDebug) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQNoDebug(h *C.QNoDebug) *QNoDebug {
 	if h == nil {
 		return nil
@@ -261,40 +283,40 @@ func newQNoDebug(h *C.QNoDebug) *QNoDebug {
 	return &QNoDebug{h: h}
 }
 
-func newQNoDebug_U(h unsafe.Pointer) *QNoDebug {
+func UnsafeNewQNoDebug(h unsafe.Pointer) *QNoDebug {
 	return newQNoDebug((*C.QNoDebug)(h))
 }
 
 func (this *QNoDebug) Space() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Space(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_Space(this.h)))
 }
 
 func (this *QNoDebug) Nospace() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Nospace(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_Nospace(this.h)))
 }
 
 func (this *QNoDebug) MaybeSpace() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_MaybeSpace(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_MaybeSpace(this.h)))
 }
 
 func (this *QNoDebug) Quote() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Quote(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_Quote(this.h)))
 }
 
 func (this *QNoDebug) Noquote() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Noquote(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_Noquote(this.h)))
 }
 
 func (this *QNoDebug) MaybeQuote() *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_MaybeQuote(this.h)))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_MaybeQuote(this.h)))
 }
 
 func (this *QNoDebug) Verbosity(param1 int) *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_Verbosity(this.h, (C.int)(param1))))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_Verbosity(this.h, (C.int)(param1))))
 }
 
 func (this *QNoDebug) MaybeQuote1(param1 int8) *QNoDebug {
-	return newQNoDebug_U(unsafe.Pointer(C.QNoDebug_MaybeQuote1(this.h, (C.char)(param1))))
+	return UnsafeNewQNoDebug(unsafe.Pointer(C.QNoDebug_MaybeQuote1(this.h, (C.const_char)(param1))))
 }
 
 // Delete this object from C++ memory.

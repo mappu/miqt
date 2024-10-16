@@ -24,6 +24,13 @@ func (this *QtPrivate__QHashCombine) cPointer() *C.QtPrivate__QHashCombine {
 	return this.h
 }
 
+func (this *QtPrivate__QHashCombine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__QHashCombine(h *C.QtPrivate__QHashCombine) *QtPrivate__QHashCombine {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQtPrivate__QHashCombine(h *C.QtPrivate__QHashCombine) *QtPrivate__QHashC
 	return &QtPrivate__QHashCombine{h: h}
 }
 
-func newQtPrivate__QHashCombine_U(h unsafe.Pointer) *QtPrivate__QHashCombine {
+func UnsafeNewQtPrivate__QHashCombine(h unsafe.Pointer) *QtPrivate__QHashCombine {
 	return newQtPrivate__QHashCombine((*C.QtPrivate__QHashCombine)(h))
 }
 
@@ -72,6 +79,13 @@ func (this *QtPrivate__QHashCombineCommutative) cPointer() *C.QtPrivate__QHashCo
 	return this.h
 }
 
+func (this *QtPrivate__QHashCombineCommutative) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__QHashCombineCommutative(h *C.QtPrivate__QHashCombineCommutative) *QtPrivate__QHashCombineCommutative {
 	if h == nil {
 		return nil
@@ -79,7 +93,7 @@ func newQtPrivate__QHashCombineCommutative(h *C.QtPrivate__QHashCombineCommutati
 	return &QtPrivate__QHashCombineCommutative{h: h}
 }
 
-func newQtPrivate__QHashCombineCommutative_U(h unsafe.Pointer) *QtPrivate__QHashCombineCommutative {
+func UnsafeNewQtPrivate__QHashCombineCommutative(h unsafe.Pointer) *QtPrivate__QHashCombineCommutative {
 	return newQtPrivate__QHashCombineCommutative((*C.QtPrivate__QHashCombineCommutative)(h))
 }
 

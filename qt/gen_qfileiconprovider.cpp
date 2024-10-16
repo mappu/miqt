@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfileiconprovider.h"
+#include <qfileiconprovider.h>
 #include "gen_qfileiconprovider.h"
 #include "_cgo_export.h"
 

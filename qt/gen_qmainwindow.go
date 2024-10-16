@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -37,14 +38,21 @@ func (this *QMainWindow) cPointer() *C.QMainWindow {
 	return this.h
 }
 
+func (this *QMainWindow) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMainWindow(h *C.QMainWindow) *QMainWindow {
 	if h == nil {
 		return nil
 	}
-	return &QMainWindow{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QMainWindow{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQMainWindow_U(h unsafe.Pointer) *QMainWindow {
+func UnsafeNewQMainWindow(h unsafe.Pointer) *QMainWindow {
 	return newQMainWindow((*C.QMainWindow)(h))
 }
 
@@ -67,7 +75,7 @@ func NewQMainWindow3(parent *QWidget, flags WindowType) *QMainWindow {
 }
 
 func (this *QMainWindow) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMainWindow_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMainWindow_MetaObject(this.h)))
 }
 
 func (this *QMainWindow) Metacast(param1 string) unsafe.Pointer {
@@ -158,7 +166,7 @@ func (this *QMainWindow) IsSeparator(pos *QPoint) bool {
 }
 
 func (this *QMainWindow) MenuBar() *QMenuBar {
-	return newQMenuBar_U(unsafe.Pointer(C.QMainWindow_MenuBar(this.h)))
+	return UnsafeNewQMenuBar(unsafe.Pointer(C.QMainWindow_MenuBar(this.h)))
 }
 
 func (this *QMainWindow) SetMenuBar(menubar *QMenuBar) {
@@ -166,7 +174,7 @@ func (this *QMainWindow) SetMenuBar(menubar *QMenuBar) {
 }
 
 func (this *QMainWindow) MenuWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMainWindow_MenuWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMainWindow_MenuWidget(this.h)))
 }
 
 func (this *QMainWindow) SetMenuWidget(menubar *QWidget) {
@@ -174,7 +182,7 @@ func (this *QMainWindow) SetMenuWidget(menubar *QWidget) {
 }
 
 func (this *QMainWindow) StatusBar() *QStatusBar {
-	return newQStatusBar_U(unsafe.Pointer(C.QMainWindow_StatusBar(this.h)))
+	return UnsafeNewQStatusBar(unsafe.Pointer(C.QMainWindow_StatusBar(this.h)))
 }
 
 func (this *QMainWindow) SetStatusBar(statusbar *QStatusBar) {
@@ -182,7 +190,7 @@ func (this *QMainWindow) SetStatusBar(statusbar *QStatusBar) {
 }
 
 func (this *QMainWindow) CentralWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMainWindow_CentralWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMainWindow_CentralWidget(this.h)))
 }
 
 func (this *QMainWindow) SetCentralWidget(widget *QWidget) {
@@ -190,7 +198,7 @@ func (this *QMainWindow) SetCentralWidget(widget *QWidget) {
 }
 
 func (this *QMainWindow) TakeCentralWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMainWindow_TakeCentralWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMainWindow_TakeCentralWidget(this.h)))
 }
 
 func (this *QMainWindow) SetCorner(corner Corner, area DockWidgetArea) {
@@ -218,9 +226,9 @@ func (this *QMainWindow) AddToolBarWithToolbar(toolbar *QToolBar) {
 }
 
 func (this *QMainWindow) AddToolBarWithTitle(title string) *QToolBar {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	return newQToolBar_U(unsafe.Pointer(C.QMainWindow_AddToolBarWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
+	return UnsafeNewQToolBar(unsafe.Pointer(C.QMainWindow_AddToolBarWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMainWindow) InsertToolBar(before *QToolBar, toolbar *QToolBar) {
@@ -268,7 +276,7 @@ func (this *QMainWindow) TabifiedDockWidgets(dockwidget *QDockWidget) []*QDockWi
 	_ret := make([]*QDockWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDockWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQDockWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQDockWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -318,7 +326,7 @@ func (this *QMainWindow) RestoreState(state *QByteArray) bool {
 }
 
 func (this *QMainWindow) CreatePopupMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QMainWindow_CreatePopupMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMainWindow_CreatePopupMenu(this.h)))
 }
 
 func (this *QMainWindow) SetAnimated(enabled bool) {
@@ -348,7 +356,7 @@ func miqt_exec_callback_QMainWindow_IconSizeChanged(cb C.intptr_t, iconSize *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize_U(unsafe.Pointer(iconSize))
+	slotval1 := UnsafeNewQSize(unsafe.Pointer(iconSize))
 
 	gofunc(slotval1)
 }
@@ -388,7 +396,7 @@ func miqt_exec_callback_QMainWindow_TabifiedDockWidgetActivated(cb C.intptr_t, d
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDockWidget_U(unsafe.Pointer(dockWidget))
+	slotval1 := UnsafeNewQDockWidget(unsafe.Pointer(dockWidget))
 
 	gofunc(slotval1)
 }

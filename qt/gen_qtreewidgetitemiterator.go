@@ -49,6 +49,13 @@ func (this *QTreeWidgetItemIterator) cPointer() *C.QTreeWidgetItemIterator {
 	return this.h
 }
 
+func (this *QTreeWidgetItemIterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTreeWidgetItemIterator(h *C.QTreeWidgetItemIterator) *QTreeWidgetItemIterator {
 	if h == nil {
 		return nil
@@ -56,7 +63,7 @@ func newQTreeWidgetItemIterator(h *C.QTreeWidgetItemIterator) *QTreeWidgetItemIt
 	return &QTreeWidgetItemIterator{h: h}
 }
 
-func newQTreeWidgetItemIterator_U(h unsafe.Pointer) *QTreeWidgetItemIterator {
+func UnsafeNewQTreeWidgetItemIterator(h unsafe.Pointer) *QTreeWidgetItemIterator {
 	return newQTreeWidgetItemIterator((*C.QTreeWidgetItemIterator)(h))
 }
 
@@ -95,7 +102,7 @@ func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator)
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlus() *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQTreeWidgetItemIterator(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlusWithInt(param1 int) *QTreeWidgetItemIterator {
@@ -106,11 +113,11 @@ func (this *QTreeWidgetItemIterator) OperatorPlusPlusWithInt(param1 int) *QTreeW
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusAssign(n int) *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusAssign(this.h, (C.int)(n))))
+	return UnsafeNewQTreeWidgetItemIterator(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorPlusAssign(this.h, (C.int)(n))))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinus() *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQTreeWidgetItemIterator(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinusWithInt(param1 int) *QTreeWidgetItemIterator {
@@ -121,11 +128,11 @@ func (this *QTreeWidgetItemIterator) OperatorMinusMinusWithInt(param1 int) *QTre
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusAssign(n int) *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusAssign(this.h, (C.int)(n))))
+	return UnsafeNewQTreeWidgetItemIterator(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMinusAssign(this.h, (C.int)(n))))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMultiply() *QTreeWidgetItem {
-	return newQTreeWidgetItem_U(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMultiply(this.h)))
+	return UnsafeNewQTreeWidgetItem(unsafe.Pointer(C.QTreeWidgetItemIterator_OperatorMultiply(this.h)))
 }
 
 // Delete this object from C++ memory.

@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qspinbox.h"
+#include <qspinbox.h>
 #include "gen_qspinbox.h"
 #include "_cgo_export.h"
 

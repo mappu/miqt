@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QUrl>
-#include "qmimedatabase.h"
+#include <qmimedatabase.h>
 #include "gen_qmimedatabase.h"
 #include "_cgo_export.h"
 

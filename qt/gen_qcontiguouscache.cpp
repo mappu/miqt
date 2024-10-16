@@ -1,5 +1,5 @@
 #include <QContiguousCacheData>
-#include "qcontiguouscache.h"
+#include <qcontiguouscache.h>
 #include "gen_qcontiguouscache.h"
 #include "_cgo_export.h"
 

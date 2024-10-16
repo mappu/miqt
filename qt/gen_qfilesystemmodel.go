@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -43,14 +44,21 @@ func (this *QFileSystemModel) cPointer() *C.QFileSystemModel {
 	return this.h
 }
 
+func (this *QFileSystemModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileSystemModel(h *C.QFileSystemModel) *QFileSystemModel {
 	if h == nil {
 		return nil
 	}
-	return &QFileSystemModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
+	return &QFileSystemModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
 }
 
-func newQFileSystemModel_U(h unsafe.Pointer) *QFileSystemModel {
+func UnsafeNewQFileSystemModel(h unsafe.Pointer) *QFileSystemModel {
 	return newQFileSystemModel((*C.QFileSystemModel)(h))
 }
 
@@ -67,7 +75,7 @@ func NewQFileSystemModel2(parent *QObject) *QFileSystemModel {
 }
 
 func (this *QFileSystemModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFileSystemModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSystemModel_MetaObject(this.h)))
 }
 
 func (this *QFileSystemModel) Metacast(param1 string) unsafe.Pointer {
@@ -95,7 +103,7 @@ func QFileSystemModel_TrUtf8(s string) string {
 }
 
 func (this *QFileSystemModel) RootPathChanged(newPath string) {
-	newPath_ms := miqt_strdupg(newPath)
+	newPath_ms := libmiqt.Strdupg(newPath)
 	defer C.free(newPath_ms)
 	C.QFileSystemModel_RootPathChanged(this.h, (*C.struct_miqt_string)(newPath_ms))
 }
@@ -120,11 +128,11 @@ func miqt_exec_callback_QFileSystemModel_RootPathChanged(cb C.intptr_t, newPath 
 }
 
 func (this *QFileSystemModel) FileRenamed(path string, oldName string, newName string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
-	oldName_ms := miqt_strdupg(oldName)
+	oldName_ms := libmiqt.Strdupg(oldName)
 	defer C.free(oldName_ms)
-	newName_ms := miqt_strdupg(newName)
+	newName_ms := libmiqt.Strdupg(newName)
 	defer C.free(newName_ms)
 	C.QFileSystemModel_FileRenamed(this.h, (*C.struct_miqt_string)(path_ms), (*C.struct_miqt_string)(oldName_ms), (*C.struct_miqt_string)(newName_ms))
 }
@@ -157,7 +165,7 @@ func miqt_exec_callback_QFileSystemModel_FileRenamed(cb C.intptr_t, path *C.stru
 }
 
 func (this *QFileSystemModel) DirectoryLoaded(path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QFileSystemModel_DirectoryLoaded(this.h, (*C.struct_miqt_string)(path_ms))
 }
@@ -189,7 +197,7 @@ func (this *QFileSystemModel) Index(row int, column int) *QModelIndex {
 }
 
 func (this *QFileSystemModel) IndexWithPath(path string) *QModelIndex {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	_ret := C.QFileSystemModel_IndexWithPath(this.h, (*C.struct_miqt_string)(path_ms))
 	_goptr := newQModelIndex(_ret)
@@ -287,7 +295,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	return newQMimeData_U(unsafe.Pointer(C.QFileSystemModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QFileSystemModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -299,7 +307,7 @@ func (this *QFileSystemModel) SupportedDropActions() DropAction {
 }
 
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	_ret := C.QFileSystemModel_SetRootPath(this.h, (*C.struct_miqt_string)(path_ms))
 	_goptr := newQModelIndex(_ret)
@@ -326,7 +334,7 @@ func (this *QFileSystemModel) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QFileSystemModel) IconProvider() *QFileIconProvider {
-	return newQFileIconProvider_U(unsafe.Pointer(C.QFileSystemModel_IconProvider(this.h)))
+	return UnsafeNewQFileIconProvider(unsafe.Pointer(C.QFileSystemModel_IconProvider(this.h)))
 }
 
 func (this *QFileSystemModel) SetFilter(filters QDir__Filter) {
@@ -366,7 +374,7 @@ func (this *QFileSystemModel) SetNameFilters(filters []string) {
 	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
-		filters_i_ms := miqt_strdupg(filters[i])
+		filters_i_ms := libmiqt.Strdupg(filters[i])
 		defer C.free(filters_i_ms)
 		filters_CArray[i] = (*C.struct_miqt_string)(filters_i_ms)
 	}
@@ -435,7 +443,7 @@ func (this *QFileSystemModel) LastModified(index *QModelIndex) *QDateTime {
 }
 
 func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	_ret := C.QFileSystemModel_Mkdir(this.h, parent.cPointer(), (*C.struct_miqt_string)(name_ms))
 	_goptr := newQModelIndex(_ret)
@@ -528,7 +536,7 @@ func (this *QFileSystemModel) Index3(row int, column int, parent *QModelIndex) *
 }
 
 func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	_ret := C.QFileSystemModel_Index2(this.h, (*C.struct_miqt_string)(path_ms), (C.int)(column))
 	_goptr := newQModelIndex(_ret)

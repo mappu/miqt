@@ -37,14 +37,21 @@ func (this *QEventLoop) cPointer() *C.QEventLoop {
 	return this.h
 }
 
+func (this *QEventLoop) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQEventLoop(h *C.QEventLoop) *QEventLoop {
 	if h == nil {
 		return nil
 	}
-	return &QEventLoop{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QEventLoop{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQEventLoop_U(h unsafe.Pointer) *QEventLoop {
+func UnsafeNewQEventLoop(h unsafe.Pointer) *QEventLoop {
 	return newQEventLoop((*C.QEventLoop)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQEventLoop2(parent *QObject) *QEventLoop {
 }
 
 func (this *QEventLoop) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QEventLoop_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QEventLoop_MetaObject(this.h)))
 }
 
 func (this *QEventLoop) Metacast(param1 string) unsafe.Pointer {
@@ -201,6 +208,13 @@ func (this *QEventLoopLocker) cPointer() *C.QEventLoopLocker {
 	return this.h
 }
 
+func (this *QEventLoopLocker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQEventLoopLocker(h *C.QEventLoopLocker) *QEventLoopLocker {
 	if h == nil {
 		return nil
@@ -208,7 +222,7 @@ func newQEventLoopLocker(h *C.QEventLoopLocker) *QEventLoopLocker {
 	return &QEventLoopLocker{h: h}
 }
 
-func newQEventLoopLocker_U(h unsafe.Pointer) *QEventLoopLocker {
+func UnsafeNewQEventLoopLocker(h unsafe.Pointer) *QEventLoopLocker {
 	return newQEventLoopLocker((*C.QEventLoopLocker)(h))
 }
 

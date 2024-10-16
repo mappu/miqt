@@ -3,7 +3,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVersionNumber>
-#include "qversionnumber.h"
+#include <qversionnumber.h>
 #include "gen_qversionnumber.h"
 #include "_cgo_export.h"
 

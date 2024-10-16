@@ -12,7 +12,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qobjectdefs.h"
+#include <qobjectdefs.h>
 #include "gen_qobjectdefs.h"
 #include "_cgo_export.h"
 

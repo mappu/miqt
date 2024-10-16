@@ -1,6 +1,6 @@
 #include <QPoint>
 #include <QPointF>
-#include "qpoint.h"
+#include <qpoint.h>
 #include "gen_qpoint.h"
 #include "_cgo_export.h"
 

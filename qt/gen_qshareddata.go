@@ -24,6 +24,13 @@ func (this *QSharedData) cPointer() *C.QSharedData {
 	return this.h
 }
 
+func (this *QSharedData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSharedData(h *C.QSharedData) *QSharedData {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQSharedData(h *C.QSharedData) *QSharedData {
 	return &QSharedData{h: h}
 }
 
-func newQSharedData_U(h unsafe.Pointer) *QSharedData {
+func UnsafeNewQSharedData(h unsafe.Pointer) *QSharedData {
 	return newQSharedData((*C.QSharedData)(h))
 }
 

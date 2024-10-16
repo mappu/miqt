@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVector3D>
-#include "qgraphicstransform.h"
+#include <qgraphicstransform.h>
 #include "gen_qgraphicstransform.h"
 #include "_cgo_export.h"
 

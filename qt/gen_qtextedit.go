@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -43,14 +44,21 @@ func (this *QTextEdit) cPointer() *C.QTextEdit {
 	return this.h
 }
 
+func (this *QTextEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextEdit(h *C.QTextEdit) *QTextEdit {
 	if h == nil {
 		return nil
 	}
-	return &QTextEdit{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QTextEdit{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQTextEdit_U(h unsafe.Pointer) *QTextEdit {
+func UnsafeNewQTextEdit(h unsafe.Pointer) *QTextEdit {
 	return newQTextEdit((*C.QTextEdit)(h))
 }
 
@@ -62,7 +70,7 @@ func NewQTextEdit() *QTextEdit {
 
 // NewQTextEdit2 constructs a new QTextEdit object.
 func NewQTextEdit2(text string) *QTextEdit {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextEdit_new2((*C.struct_miqt_string)(text_ms))
 	return newQTextEdit(ret)
@@ -76,14 +84,14 @@ func NewQTextEdit3(parent *QWidget) *QTextEdit {
 
 // NewQTextEdit4 constructs a new QTextEdit object.
 func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextEdit_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQTextEdit(ret)
 }
 
 func (this *QTextEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextEdit_MetaObject(this.h)))
 }
 
 func (this *QTextEdit) Metacast(param1 string) unsafe.Pointer {
@@ -115,11 +123,11 @@ func (this *QTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QTextEdit) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextEdit_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextEdit_Document(this.h)))
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
-	placeholderText_ms := miqt_strdupg(placeholderText)
+	placeholderText_ms := libmiqt.Strdupg(placeholderText)
 	defer C.free(placeholderText_ms)
 	C.QTextEdit_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
@@ -238,7 +246,7 @@ func (this *QTextEdit) SetTabChangesFocus(b bool) {
 }
 
 func (this *QTextEdit) SetDocumentTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QTextEdit_SetDocumentTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -283,7 +291,7 @@ func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
 }
 
 func (this *QTextEdit) Find(exp string) bool {
-	exp_ms := miqt_strdupg(exp)
+	exp_ms := libmiqt.Strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms)))
 }
@@ -329,11 +337,11 @@ func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
 }
 
 func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -461,7 +469,7 @@ func (this *QTextEdit) SetFontPointSize(s float64) {
 }
 
 func (this *QTextEdit) SetFontFamily(fontFamily string) {
-	fontFamily_ms := miqt_strdupg(fontFamily)
+	fontFamily_ms := libmiqt.Strdupg(fontFamily)
 	defer C.free(fontFamily_ms)
 	C.QTextEdit_SetFontFamily(this.h, (*C.struct_miqt_string)(fontFamily_ms))
 }
@@ -495,25 +503,25 @@ func (this *QTextEdit) SetAlignment(a AlignmentFlag) {
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextEdit) SetHtml(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_SetHtml(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextEdit) SetMarkdown(markdown string) {
-	markdown_ms := miqt_strdupg(markdown)
+	markdown_ms := libmiqt.Strdupg(markdown)
 	defer C.free(markdown_ms)
 	C.QTextEdit_SetMarkdown(this.h, (*C.struct_miqt_string)(markdown_ms))
 }
 
 func (this *QTextEdit) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -547,25 +555,25 @@ func (this *QTextEdit) SelectAll() {
 }
 
 func (this *QTextEdit) InsertPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_InsertPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextEdit) InsertHtml(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_InsertHtml(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextEdit) Append(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextEdit_Append(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextEdit) ScrollToAnchor(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTextEdit_ScrollToAnchor(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -650,7 +658,7 @@ func miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(cb C.intptr_t, format
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTextCharFormat_U(unsafe.Pointer(format))
+	slotval1 := UnsafeNewQTextCharFormat(unsafe.Pointer(format))
 
 	gofunc(slotval1)
 }
@@ -754,7 +762,7 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
-	exp_ms := miqt_strdupg(exp)
+	exp_ms := libmiqt.Strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
@@ -811,6 +819,13 @@ func (this *QTextEdit__ExtraSelection) cPointer() *C.QTextEdit__ExtraSelection {
 	return this.h
 }
 
+func (this *QTextEdit__ExtraSelection) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextEdit__ExtraSelection(h *C.QTextEdit__ExtraSelection) *QTextEdit__ExtraSelection {
 	if h == nil {
 		return nil
@@ -818,7 +833,7 @@ func newQTextEdit__ExtraSelection(h *C.QTextEdit__ExtraSelection) *QTextEdit__Ex
 	return &QTextEdit__ExtraSelection{h: h}
 }
 
-func newQTextEdit__ExtraSelection_U(h unsafe.Pointer) *QTextEdit__ExtraSelection {
+func UnsafeNewQTextEdit__ExtraSelection(h unsafe.Pointer) *QTextEdit__ExtraSelection {
 	return newQTextEdit__ExtraSelection((*C.QTextEdit__ExtraSelection)(h))
 }
 

@@ -8,7 +8,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextCodec__ConverterState
 #include <QTextDecoder>
 #include <QTextEncoder>
-#include "qtextcodec.h"
+#include <qtextcodec.h>
 #include "gen_qtextcodec.h"
 #include "_cgo_export.h"
 

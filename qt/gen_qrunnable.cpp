@@ -1,5 +1,5 @@
 #include <QRunnable>
-#include "qrunnable.h"
+#include <qrunnable.h>
 #include "gen_qrunnable.h"
 #include "_cgo_export.h"
 

@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qbuffer.h"
+#include <qbuffer.h>
 #include "gen_qbuffer.h"
 #include "_cgo_export.h"
 

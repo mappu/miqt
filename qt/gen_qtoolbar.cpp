@@ -9,7 +9,7 @@
 #include <cstring>
 #include <QToolBar>
 #include <QWidget>
-#include "qtoolbar.h"
+#include <qtoolbar.h>
 #include "gen_qtoolbar.h"
 #include "_cgo_export.h"
 

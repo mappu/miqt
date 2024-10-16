@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qregexp.h"
+#include <qregexp.h>
 #include "gen_qregexp.h"
 #include "_cgo_export.h"
 

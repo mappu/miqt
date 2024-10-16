@@ -1,7 +1,7 @@
 #include <QSize>
 #include <QSurface>
 #include <QSurfaceFormat>
-#include "qsurface.h"
+#include <qsurface.h>
 #include "gen_qsurface.h"
 #include "_cgo_export.h"
 

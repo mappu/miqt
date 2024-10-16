@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qobjectcleanuphandler.h"
+#include <qobjectcleanuphandler.h>
 #include "gen_qobjectcleanuphandler.h"
 #include "_cgo_export.h"
 

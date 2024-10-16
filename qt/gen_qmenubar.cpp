@@ -10,7 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qmenubar.h"
+#include <qmenubar.h>
 #include "gen_qmenubar.h"
 #include "_cgo_export.h"
 

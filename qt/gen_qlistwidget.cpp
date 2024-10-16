@@ -17,7 +17,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QWidget>
-#include "qlistwidget.h"
+#include <qlistwidget.h>
 #include "gen_qlistwidget.h"
 #include "_cgo_export.h"
 
@@ -305,7 +305,7 @@ void QListWidget_InsertItem2(QListWidget* self, int row, struct miqt_string* lab
 }
 
 void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
@@ -325,7 +325,7 @@ void QListWidget_AddItemWithItem(QListWidget* self, QListWidgetItem* item) {
 }
 
 void QListWidget_AddItems(QListWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {

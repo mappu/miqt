@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QThread>
-#include "qeventloop.h"
+#include <qeventloop.h>
 #include "gen_qeventloop.h"
 #include "_cgo_export.h"
 

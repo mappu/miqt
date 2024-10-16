@@ -10,7 +10,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qiconengine.h"
+#include <qiconengine.h>
 #include "gen_qiconengine.h"
 #include "_cgo_export.h"
 

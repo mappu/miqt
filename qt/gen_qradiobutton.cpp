@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qradiobutton.h"
+#include <qradiobutton.h>
 #include "gen_qradiobutton.h"
 #include "_cgo_export.h"
 

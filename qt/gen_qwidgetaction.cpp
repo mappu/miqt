@@ -5,7 +5,7 @@
 #include <cstring>
 #include <QWidget>
 #include <QWidgetAction>
-#include "qwidgetaction.h"
+#include <qwidgetaction.h>
 #include "gen_qwidgetaction.h"
 #include "_cgo_export.h"
 

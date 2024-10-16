@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qmdiarea.h"
+#include <qmdiarea.h>
 #include "gen_qmdiarea.h"
 #include "_cgo_export.h"
 

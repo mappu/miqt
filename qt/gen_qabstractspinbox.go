@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -56,14 +57,21 @@ func (this *QAbstractSpinBox) cPointer() *C.QAbstractSpinBox {
 	return this.h
 }
 
+func (this *QAbstractSpinBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractSpinBox(h *C.QAbstractSpinBox) *QAbstractSpinBox {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractSpinBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QAbstractSpinBox{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQAbstractSpinBox_U(h unsafe.Pointer) *QAbstractSpinBox {
+func UnsafeNewQAbstractSpinBox(h unsafe.Pointer) *QAbstractSpinBox {
 	return newQAbstractSpinBox((*C.QAbstractSpinBox)(h))
 }
 
@@ -80,7 +88,7 @@ func NewQAbstractSpinBox2(parent *QWidget) *QAbstractSpinBox {
 }
 
 func (this *QAbstractSpinBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractSpinBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSpinBox_MetaObject(this.h)))
 }
 
 func (this *QAbstractSpinBox) Metacast(param1 string) unsafe.Pointer {
@@ -142,7 +150,7 @@ func (this *QAbstractSpinBox) SpecialValueText() string {
 }
 
 func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
-	txt_ms := miqt_strdupg(txt)
+	txt_ms := libmiqt.Strdupg(txt)
 	defer C.free(txt_ms)
 	C.QAbstractSpinBox_SetSpecialValueText(this.h, (*C.struct_miqt_string)(txt_ms))
 }
@@ -233,13 +241,13 @@ func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVarian
 }
 
 func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
-	input_ms := miqt_strdupg(input)
+	input_ms := libmiqt.Strdupg(input)
 	defer C.free(input_ms)
 	return (QValidator__State)(C.QAbstractSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {
-	input_ms := miqt_strdupg(input)
+	input_ms := libmiqt.Strdupg(input)
 	defer C.free(input_ms)
 	C.QAbstractSpinBox_Fixup(this.h, (*C.struct_miqt_string)(input_ms))
 }

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QAccessibleObject) cPointer() *C.QAccessibleObject {
 	return this.h
 }
 
+func (this *QAccessibleObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleObject(h *C.QAccessibleObject) *QAccessibleObject {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleObject{h: h, QAccessibleInterface: newQAccessibleInterface_U(unsafe.Pointer(h))}
+	return &QAccessibleObject{h: h, QAccessibleInterface: UnsafeNewQAccessibleInterface(unsafe.Pointer(h))}
 }
 
-func newQAccessibleObject_U(h unsafe.Pointer) *QAccessibleObject {
+func UnsafeNewQAccessibleObject(h unsafe.Pointer) *QAccessibleObject {
 	return newQAccessibleObject((*C.QAccessibleObject)(h))
 }
 
@@ -41,7 +49,7 @@ func (this *QAccessibleObject) IsValid() bool {
 }
 
 func (this *QAccessibleObject) Object() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QAccessibleObject_Object(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QAccessibleObject_Object(this.h)))
 }
 
 func (this *QAccessibleObject) Rect() *QRect {
@@ -52,13 +60,13 @@ func (this *QAccessibleObject) Rect() *QRect {
 }
 
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAccessibleObject_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleObject_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 type QAccessibleApplication struct {
@@ -73,14 +81,21 @@ func (this *QAccessibleApplication) cPointer() *C.QAccessibleApplication {
 	return this.h
 }
 
+func (this *QAccessibleApplication) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleApplication(h *C.QAccessibleApplication) *QAccessibleApplication {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleApplication{h: h, QAccessibleObject: newQAccessibleObject_U(unsafe.Pointer(h))}
+	return &QAccessibleApplication{h: h, QAccessibleObject: UnsafeNewQAccessibleObject(unsafe.Pointer(h))}
 }
 
-func newQAccessibleApplication_U(h unsafe.Pointer) *QAccessibleApplication {
+func UnsafeNewQAccessibleApplication(h unsafe.Pointer) *QAccessibleApplication {
 	return newQAccessibleApplication((*C.QAccessibleApplication)(h))
 }
 
@@ -91,7 +106,7 @@ func NewQAccessibleApplication() *QAccessibleApplication {
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QAccessibleApplication_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleApplication_Window(this.h)))
 }
 
 func (this *QAccessibleApplication) ChildCount() int {
@@ -103,15 +118,15 @@ func (this *QAccessibleApplication) IndexOfChild(param1 *QAccessibleInterface) i
 }
 
 func (this *QAccessibleApplication) FocusChild() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_FocusChild(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_FocusChild(this.h)))
 }
 
 func (this *QAccessibleApplication) Parent() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_Parent(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_Parent(this.h)))
 }
 
 func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleApplication_Child(this.h, (C.int)(index))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleApplication_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {

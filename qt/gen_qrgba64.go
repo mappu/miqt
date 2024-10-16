@@ -24,6 +24,13 @@ func (this *QRgba64) cPointer() *C.QRgba64 {
 	return this.h
 }
 
+func (this *QRgba64) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRgba64(h *C.QRgba64) *QRgba64 {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQRgba64(h *C.QRgba64) *QRgba64 {
 	return &QRgba64{h: h}
 }
 
-func newQRgba64_U(h unsafe.Pointer) *QRgba64 {
+func UnsafeNewQRgba64(h unsafe.Pointer) *QRgba64 {
 	return newQRgba64((*C.QRgba64)(h))
 }
 

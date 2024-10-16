@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QToolTip>
 #include <QWidget>
-#include "qtooltip.h"
+#include <qtooltip.h>
 #include "gen_qtooltip.h"
 #include "_cgo_export.h"
 

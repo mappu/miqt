@@ -37,19 +37,26 @@ func (this *QLayout) cPointer() *C.QLayout {
 	return this.h
 }
 
+func (this *QLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLayout(h *C.QLayout) *QLayout {
 	if h == nil {
 		return nil
 	}
-	return &QLayout{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QLayoutItem: newQLayoutItem_U(unsafe.Pointer(h))}
+	return &QLayout{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QLayoutItem: UnsafeNewQLayoutItem(unsafe.Pointer(h))}
 }
 
-func newQLayout_U(h unsafe.Pointer) *QLayout {
+func UnsafeNewQLayout(h unsafe.Pointer) *QLayout {
 	return newQLayout((*C.QLayout)(h))
 }
 
 func (this *QLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLayout_MetaObject(this.h)))
 }
 
 func (this *QLayout) Metacast(param1 string) unsafe.Pointer {
@@ -139,11 +146,11 @@ func (this *QLayout) SetMenuBar(w *QWidget) {
 }
 
 func (this *QLayout) MenuBar() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QLayout_MenuBar(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_MenuBar(this.h)))
 }
 
 func (this *QLayout) ParentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QLayout_ParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLayout_ParentWidget(this.h)))
 }
 
 func (this *QLayout) Invalidate() {
@@ -204,11 +211,11 @@ func (this *QLayout) SetGeometry(geometry *QRect) {
 }
 
 func (this *QLayout) ItemAt(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ItemAt(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QLayout) TakeAt(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_TakeAt(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QLayout) IndexOf(param1 *QWidget) int {
@@ -232,7 +239,7 @@ func (this *QLayout) ControlTypes() QSizePolicy__ControlType {
 }
 
 func (this *QLayout) ReplaceWidget(from *QWidget, to *QWidget) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ReplaceWidget(this.h, from.cPointer(), to.cPointer())))
 }
 
 func (this *QLayout) TotalHeightForWidth(w int) int {
@@ -261,7 +268,7 @@ func (this *QLayout) TotalSizeHint() *QSize {
 }
 
 func (this *QLayout) Layout() *QLayout {
-	return newQLayout_U(unsafe.Pointer(C.QLayout_Layout(this.h)))
+	return UnsafeNewQLayout(unsafe.Pointer(C.QLayout_Layout(this.h)))
 }
 
 func (this *QLayout) SetEnabled(enabled bool) {
@@ -324,7 +331,7 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QLayout_ReplaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options))))
 }
 
 // Delete this object from C++ memory.

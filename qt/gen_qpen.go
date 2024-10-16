@@ -24,6 +24,13 @@ func (this *QPen) cPointer() *C.QPen {
 	return this.h
 }
 
+func (this *QPen) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPen(h *C.QPen) *QPen {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQPen(h *C.QPen) *QPen {
 	return &QPen{h: h}
 }
 
-func newQPen_U(h unsafe.Pointer) *QPen {
+func UnsafeNewQPen(h unsafe.Pointer) *QPen {
 	return newQPen((*C.QPen)(h))
 }
 

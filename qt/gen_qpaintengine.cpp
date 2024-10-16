@@ -21,7 +21,7 @@
 #include <cstring>
 #include <QTextItem>
 #include <QTransform>
-#include "qpaintengine.h"
+#include <qpaintengine.h>
 #include "gen_qpaintengine.h"
 #include "_cgo_export.h"
 

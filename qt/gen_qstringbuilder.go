@@ -24,6 +24,13 @@ func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {
 	return this.h
 }
 
+func (this *QAbstractConcatenable) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQAbstractConcatenable(h *C.QAbstractConcatenable) *QAbstractConcatenable
 	return &QAbstractConcatenable{h: h}
 }
 
-func newQAbstractConcatenable_U(h unsafe.Pointer) *QAbstractConcatenable {
+func UnsafeNewQAbstractConcatenable(h unsafe.Pointer) *QAbstractConcatenable {
 	return newQAbstractConcatenable((*C.QAbstractConcatenable)(h))
 }
 

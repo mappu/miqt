@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,19 +26,26 @@ func (this *QIconEnginePlugin) cPointer() *C.QIconEnginePlugin {
 	return this.h
 }
 
+func (this *QIconEnginePlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIconEnginePlugin(h *C.QIconEnginePlugin) *QIconEnginePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QIconEnginePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QIconEnginePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQIconEnginePlugin_U(h unsafe.Pointer) *QIconEnginePlugin {
+func UnsafeNewQIconEnginePlugin(h unsafe.Pointer) *QIconEnginePlugin {
 	return newQIconEnginePlugin((*C.QIconEnginePlugin)(h))
 }
 
 func (this *QIconEnginePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QIconEnginePlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIconEnginePlugin_MetaObject(this.h)))
 }
 
 func (this *QIconEnginePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -65,7 +73,7 @@ func QIconEnginePlugin_TrUtf8(s string) string {
 }
 
 func (this *QIconEnginePlugin) Create() *QIconEngine {
-	return newQIconEngine_U(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h)))
+	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create(this.h)))
 }
 
 func QIconEnginePlugin_Tr2(s string, c string) string {
@@ -113,9 +121,9 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QIconEnginePlugin) Create1(filename string) *QIconEngine {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	return newQIconEngine_U(unsafe.Pointer(C.QIconEnginePlugin_Create1(this.h, (*C.struct_miqt_string)(filename_ms))))
+	return UnsafeNewQIconEngine(unsafe.Pointer(C.QIconEnginePlugin_Create1(this.h, (*C.struct_miqt_string)(filename_ms))))
 }
 
 // Delete this object from C++ memory.

@@ -24,6 +24,13 @@ func (this *QRect) cPointer() *C.QRect {
 	return this.h
 }
 
+func (this *QRect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRect(h *C.QRect) *QRect {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQRect(h *C.QRect) *QRect {
 	return &QRect{h: h}
 }
 
-func newQRect_U(h unsafe.Pointer) *QRect {
+func UnsafeNewQRect(h unsafe.Pointer) *QRect {
 	return newQRect((*C.QRect)(h))
 }
 
@@ -381,11 +388,11 @@ func (this *QRect) MarginsRemoved(margins *QMargins) *QRect {
 }
 
 func (this *QRect) OperatorPlusAssign(margins *QMargins) *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRect_OperatorPlusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRect_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRect) OperatorMinusAssign(margins *QMargins) *QRect {
-	return newQRect_U(unsafe.Pointer(C.QRect_OperatorMinusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQRect(unsafe.Pointer(C.QRect_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRect) Contains22(r *QRect, proper bool) bool {
@@ -421,6 +428,13 @@ func (this *QRectF) cPointer() *C.QRectF {
 	return this.h
 }
 
+func (this *QRectF) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRectF(h *C.QRectF) *QRectF {
 	if h == nil {
 		return nil
@@ -428,7 +442,7 @@ func newQRectF(h *C.QRectF) *QRectF {
 	return &QRectF{h: h}
 }
 
-func newQRectF_U(h unsafe.Pointer) *QRectF {
+func UnsafeNewQRectF(h unsafe.Pointer) *QRectF {
 	return newQRectF((*C.QRectF)(h))
 }
 
@@ -780,11 +794,11 @@ func (this *QRectF) MarginsRemoved(margins *QMarginsF) *QRectF {
 }
 
 func (this *QRectF) OperatorPlusAssign(margins *QMarginsF) *QRectF {
-	return newQRectF_U(unsafe.Pointer(C.QRectF_OperatorPlusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQRectF(unsafe.Pointer(C.QRectF_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRectF) OperatorMinusAssign(margins *QMarginsF) *QRectF {
-	return newQRectF_U(unsafe.Pointer(C.QRectF_OperatorMinusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQRectF(unsafe.Pointer(C.QRectF_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QRectF) ToRect() *QRect {

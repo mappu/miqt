@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -115,6 +116,13 @@ func (this *QKeySequence) cPointer() *C.QKeySequence {
 	return this.h
 }
 
+func (this *QKeySequence) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQKeySequence(h *C.QKeySequence) *QKeySequence {
 	if h == nil {
 		return nil
@@ -122,7 +130,7 @@ func newQKeySequence(h *C.QKeySequence) *QKeySequence {
 	return &QKeySequence{h: h}
 }
 
-func newQKeySequence_U(h unsafe.Pointer) *QKeySequence {
+func UnsafeNewQKeySequence(h unsafe.Pointer) *QKeySequence {
 	return newQKeySequence((*C.QKeySequence)(h))
 }
 
@@ -134,7 +142,7 @@ func NewQKeySequence() *QKeySequence {
 
 // NewQKeySequence2 constructs a new QKeySequence object.
 func NewQKeySequence2(key string) *QKeySequence {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	ret := C.QKeySequence_new2((*C.struct_miqt_string)(key_ms))
 	return newQKeySequence(ret)
@@ -160,7 +168,7 @@ func NewQKeySequence5(key QKeySequence__StandardKey) *QKeySequence {
 
 // NewQKeySequence6 constructs a new QKeySequence object.
 func NewQKeySequence6(key string, format QKeySequence__SequenceFormat) *QKeySequence {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	ret := C.QKeySequence_new6((*C.struct_miqt_string)(key_ms), (C.int)(format))
 	return newQKeySequence(ret)
@@ -200,7 +208,7 @@ func (this *QKeySequence) ToString() string {
 }
 
 func QKeySequence_FromString(str string) *QKeySequence {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	_ret := C.QKeySequence_FromString((*C.struct_miqt_string)(str_ms))
 	_goptr := newQKeySequence(_ret)
@@ -209,7 +217,7 @@ func QKeySequence_FromString(str string) *QKeySequence {
 }
 
 func QKeySequence_ListFromString(str string) []QKeySequence {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString((*C.struct_miqt_string)(str_ms))
 	_ret := make([]QKeySequence, int(_ma.len))
@@ -244,7 +252,7 @@ func (this *QKeySequence) Matches(seq *QKeySequence) QKeySequence__SequenceMatch
 }
 
 func QKeySequence_Mnemonic(text string) *QKeySequence {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QKeySequence_Mnemonic((*C.struct_miqt_string)(text_ms))
 	_goptr := newQKeySequence(_ret)
@@ -314,7 +322,7 @@ func (this *QKeySequence) ToString1(format QKeySequence__SequenceFormat) string 
 }
 
 func QKeySequence_FromString2(str string, format QKeySequence__SequenceFormat) *QKeySequence {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	_ret := C.QKeySequence_FromString2((*C.struct_miqt_string)(str_ms), (C.int)(format))
 	_goptr := newQKeySequence(_ret)
@@ -323,7 +331,7 @@ func QKeySequence_FromString2(str string, format QKeySequence__SequenceFormat) *
 }
 
 func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceFormat) []QKeySequence {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString2((*C.struct_miqt_string)(str_ms), (C.int)(format))
 	_ret := make([]QKeySequence, int(_ma.len))

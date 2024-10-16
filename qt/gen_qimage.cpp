@@ -15,7 +15,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
-#include "qimage.h"
+#include <qimage.h>
 #include "gen_qimage.h"
 #include "_cgo_export.h"
 
@@ -111,7 +111,7 @@ QImage* QImage_ConvertToFormat(const QImage* self, int f) {
 }
 
 QImage* QImage_ConvertToFormat2(const QImage* self, int f, struct miqt_array* /* of unsigned int */ colorTable) {
-	QVector<unsigned int> colorTable_QList;
+	QVector<QRgb> colorTable_QList;
 	colorTable_QList.reserve(colorTable->len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable->data);
 	for(size_t i = 0; i < colorTable->len; ++i) {
@@ -284,7 +284,7 @@ struct miqt_array* QImage_ColorTable(const QImage* self) {
 }
 
 void QImage_SetColorTable(QImage* self, struct miqt_array* /* of unsigned int */ colors) {
-	QVector<unsigned int> colors_QList;
+	QVector<QRgb> colors_QList;
 	colors_QList.reserve(colors->len);
 	unsigned int* colors_arr = static_cast<unsigned int*>(colors->data);
 	for(size_t i = 0; i < colors->len; ++i) {
@@ -520,7 +520,7 @@ QImage* QImage_ConvertToFormat22(const QImage* self, int f, int flags) {
 }
 
 QImage* QImage_ConvertToFormat3(const QImage* self, int f, struct miqt_array* /* of unsigned int */ colorTable, int flags) {
-	QVector<unsigned int> colorTable_QList;
+	QVector<QRgb> colorTable_QList;
 	colorTable_QList.reserve(colorTable->len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable->data);
 	for(size_t i = 0; i < colorTable->len; ++i) {

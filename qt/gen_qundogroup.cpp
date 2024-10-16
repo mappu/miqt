@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QUndoGroup>
 #include <QUndoStack>
-#include "qundogroup.h"
+#include <qundogroup.h>
 #include "gen_qundogroup.h"
 #include "_cgo_export.h"
 

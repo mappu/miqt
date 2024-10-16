@@ -36,14 +36,21 @@ func (this *QBoxLayout) cPointer() *C.QBoxLayout {
 	return this.h
 }
 
+func (this *QBoxLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBoxLayout(h *C.QBoxLayout) *QBoxLayout {
 	if h == nil {
 		return nil
 	}
-	return &QBoxLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
+	return &QBoxLayout{h: h, QLayout: UnsafeNewQLayout(unsafe.Pointer(h))}
 }
 
-func newQBoxLayout_U(h unsafe.Pointer) *QBoxLayout {
+func UnsafeNewQBoxLayout(h unsafe.Pointer) *QBoxLayout {
 	return newQBoxLayout((*C.QBoxLayout)(h))
 }
 
@@ -60,7 +67,7 @@ func NewQBoxLayout2(param1 QBoxLayout__Direction, parent *QWidget) *QBoxLayout {
 }
 
 func (this *QBoxLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QBoxLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxLayout_MetaObject(this.h)))
 }
 
 func (this *QBoxLayout) Metacast(param1 string) unsafe.Pointer {
@@ -213,11 +220,11 @@ func (this *QBoxLayout) Invalidate() {
 }
 
 func (this *QBoxLayout) ItemAt(param1 int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QBoxLayout_ItemAt(this.h, (C.int)(param1))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_ItemAt(this.h, (C.int)(param1))))
 }
 
 func (this *QBoxLayout) TakeAt(param1 int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QBoxLayout_TakeAt(this.h, (C.int)(param1))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QBoxLayout_TakeAt(this.h, (C.int)(param1))))
 }
 
 func (this *QBoxLayout) Count() int {
@@ -330,14 +337,21 @@ func (this *QHBoxLayout) cPointer() *C.QHBoxLayout {
 	return this.h
 }
 
+func (this *QHBoxLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHBoxLayout(h *C.QHBoxLayout) *QHBoxLayout {
 	if h == nil {
 		return nil
 	}
-	return &QHBoxLayout{h: h, QBoxLayout: newQBoxLayout_U(unsafe.Pointer(h))}
+	return &QHBoxLayout{h: h, QBoxLayout: UnsafeNewQBoxLayout(unsafe.Pointer(h))}
 }
 
-func newQHBoxLayout_U(h unsafe.Pointer) *QHBoxLayout {
+func UnsafeNewQHBoxLayout(h unsafe.Pointer) *QHBoxLayout {
 	return newQHBoxLayout((*C.QHBoxLayout)(h))
 }
 
@@ -354,7 +368,7 @@ func NewQHBoxLayout2(parent *QWidget) *QHBoxLayout {
 }
 
 func (this *QHBoxLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QHBoxLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHBoxLayout_MetaObject(this.h)))
 }
 
 func (this *QHBoxLayout) Metacast(param1 string) unsafe.Pointer {
@@ -451,14 +465,21 @@ func (this *QVBoxLayout) cPointer() *C.QVBoxLayout {
 	return this.h
 }
 
+func (this *QVBoxLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVBoxLayout(h *C.QVBoxLayout) *QVBoxLayout {
 	if h == nil {
 		return nil
 	}
-	return &QVBoxLayout{h: h, QBoxLayout: newQBoxLayout_U(unsafe.Pointer(h))}
+	return &QVBoxLayout{h: h, QBoxLayout: UnsafeNewQBoxLayout(unsafe.Pointer(h))}
 }
 
-func newQVBoxLayout_U(h unsafe.Pointer) *QVBoxLayout {
+func UnsafeNewQVBoxLayout(h unsafe.Pointer) *QVBoxLayout {
 	return newQVBoxLayout((*C.QVBoxLayout)(h))
 }
 
@@ -475,7 +496,7 @@ func NewQVBoxLayout2(parent *QWidget) *QVBoxLayout {
 }
 
 func (this *QVBoxLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QVBoxLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QVBoxLayout_MetaObject(this.h)))
 }
 
 func (this *QVBoxLayout) Metacast(param1 string) unsafe.Pointer {

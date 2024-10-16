@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -25,6 +26,13 @@ func (this *QUndoCommand) cPointer() *C.QUndoCommand {
 	return this.h
 }
 
+func (this *QUndoCommand) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUndoCommand(h *C.QUndoCommand) *QUndoCommand {
 	if h == nil {
 		return nil
@@ -32,7 +40,7 @@ func newQUndoCommand(h *C.QUndoCommand) *QUndoCommand {
 	return &QUndoCommand{h: h}
 }
 
-func newQUndoCommand_U(h unsafe.Pointer) *QUndoCommand {
+func UnsafeNewQUndoCommand(h unsafe.Pointer) *QUndoCommand {
 	return newQUndoCommand((*C.QUndoCommand)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQUndoCommand() *QUndoCommand {
 
 // NewQUndoCommand2 constructs a new QUndoCommand object.
 func NewQUndoCommand2(text string) *QUndoCommand {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QUndoCommand_new2((*C.struct_miqt_string)(text_ms))
 	return newQUndoCommand(ret)
@@ -58,7 +66,7 @@ func NewQUndoCommand3(parent *QUndoCommand) *QUndoCommand {
 
 // NewQUndoCommand4 constructs a new QUndoCommand object.
 func NewQUndoCommand4(text string, parent *QUndoCommand) *QUndoCommand {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QUndoCommand_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQUndoCommand(ret)
@@ -87,7 +95,7 @@ func (this *QUndoCommand) ActionText() string {
 }
 
 func (this *QUndoCommand) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QUndoCommand_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -113,7 +121,7 @@ func (this *QUndoCommand) ChildCount() int {
 }
 
 func (this *QUndoCommand) Child(index int) *QUndoCommand {
-	return newQUndoCommand_U(unsafe.Pointer(C.QUndoCommand_Child(this.h, (C.int)(index))))
+	return UnsafeNewQUndoCommand(unsafe.Pointer(C.QUndoCommand_Child(this.h, (C.int)(index))))
 }
 
 // Delete this object from C++ memory.
@@ -142,14 +150,21 @@ func (this *QUndoStack) cPointer() *C.QUndoStack {
 	return this.h
 }
 
+func (this *QUndoStack) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUndoStack(h *C.QUndoStack) *QUndoStack {
 	if h == nil {
 		return nil
 	}
-	return &QUndoStack{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QUndoStack{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQUndoStack_U(h unsafe.Pointer) *QUndoStack {
+func UnsafeNewQUndoStack(h unsafe.Pointer) *QUndoStack {
 	return newQUndoStack((*C.QUndoStack)(h))
 }
 
@@ -166,7 +181,7 @@ func NewQUndoStack2(parent *QObject) *QUndoStack {
 }
 
 func (this *QUndoStack) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QUndoStack_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QUndoStack_MetaObject(this.h)))
 }
 
 func (this *QUndoStack) Metacast(param1 string) unsafe.Pointer {
@@ -239,11 +254,11 @@ func (this *QUndoStack) Text(idx int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction(parent *QObject) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateUndoAction(this.h, parent.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoStack_CreateUndoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoStack) CreateRedoAction(parent *QObject) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateRedoAction(this.h, parent.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoStack_CreateRedoAction(this.h, parent.cPointer())))
 }
 
 func (this *QUndoStack) IsActive() bool {
@@ -259,7 +274,7 @@ func (this *QUndoStack) CleanIndex() int {
 }
 
 func (this *QUndoStack) BeginMacro(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QUndoStack_BeginMacro(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -277,7 +292,7 @@ func (this *QUndoStack) UndoLimit() int {
 }
 
 func (this *QUndoStack) Command(index int) *QUndoCommand {
-	return newQUndoCommand_U(unsafe.Pointer(C.QUndoStack_Command(this.h, (C.int)(index))))
+	return UnsafeNewQUndoCommand(unsafe.Pointer(C.QUndoStack_Command(this.h, (C.int)(index))))
 }
 
 func (this *QUndoStack) SetClean() {
@@ -385,7 +400,7 @@ func miqt_exec_callback_QUndoStack_CanRedoChanged(cb C.intptr_t, canRedo C.bool)
 }
 
 func (this *QUndoStack) UndoTextChanged(undoText string) {
-	undoText_ms := miqt_strdupg(undoText)
+	undoText_ms := libmiqt.Strdupg(undoText)
 	defer C.free(undoText_ms)
 	C.QUndoStack_UndoTextChanged(this.h, (*C.struct_miqt_string)(undoText_ms))
 }
@@ -410,7 +425,7 @@ func miqt_exec_callback_QUndoStack_UndoTextChanged(cb C.intptr_t, undoText *C.st
 }
 
 func (this *QUndoStack) RedoTextChanged(redoText string) {
-	redoText_ms := miqt_strdupg(redoText)
+	redoText_ms := libmiqt.Strdupg(redoText)
 	defer C.free(redoText_ms)
 	C.QUndoStack_RedoTextChanged(this.h, (*C.struct_miqt_string)(redoText_ms))
 }
@@ -479,15 +494,15 @@ func QUndoStack_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QUndoStack) CreateUndoAction2(parent *QObject, prefix string) *QAction {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
-	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoStack_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QAction {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
-	return newQAction_U(unsafe.Pointer(C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoStack_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
 }
 
 func (this *QUndoStack) SetActive1(active bool) {

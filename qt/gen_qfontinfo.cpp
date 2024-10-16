@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfontinfo.h"
+#include <qfontinfo.h>
 #include "gen_qfontinfo.h"
 #include "_cgo_export.h"
 

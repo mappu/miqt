@@ -7,7 +7,7 @@
 #include <QUrl>
 #include <QVariant>
 #include <QWidget>
-#include "qtextbrowser.h"
+#include <qtextbrowser.h>
 #include "gen_qtextbrowser.h"
 #include "_cgo_export.h"
 
@@ -67,7 +67,7 @@ struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
 }
 
 void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of struct miqt_string* */ paths) {
-	QList<QString> paths_QList;
+	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
 	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {

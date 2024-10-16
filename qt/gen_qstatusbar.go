@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QStatusBar) cPointer() *C.QStatusBar {
 	return this.h
 }
 
+func (this *QStatusBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStatusBar(h *C.QStatusBar) *QStatusBar {
 	if h == nil {
 		return nil
 	}
-	return &QStatusBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QStatusBar{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQStatusBar_U(h unsafe.Pointer) *QStatusBar {
+func UnsafeNewQStatusBar(h unsafe.Pointer) *QStatusBar {
 	return newQStatusBar((*C.QStatusBar)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQStatusBar2(parent *QWidget) *QStatusBar {
 }
 
 func (this *QStatusBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStatusBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStatusBar_MetaObject(this.h)))
 }
 
 func (this *QStatusBar) Metacast(param1 string) unsafe.Pointer {
@@ -113,7 +121,7 @@ func (this *QStatusBar) CurrentMessage() string {
 }
 
 func (this *QStatusBar) ShowMessage(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStatusBar_ShowMessage(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -123,7 +131,7 @@ func (this *QStatusBar) ClearMessage() {
 }
 
 func (this *QStatusBar) MessageChanged(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStatusBar_MessageChanged(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -208,7 +216,7 @@ func (this *QStatusBar) InsertPermanentWidget3(index int, widget *QWidget, stret
 }
 
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStatusBar_ShowMessage2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(timeout))
 }

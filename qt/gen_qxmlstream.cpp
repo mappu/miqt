@@ -13,7 +13,7 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamStringRef>
 #include <QXmlStreamWriter>
-#include "qxmlstream.h"
+#include <qxmlstream.h>
 #include "gen_qxmlstream.h"
 #include "_cgo_export.h"
 
@@ -376,7 +376,7 @@ void QXmlStreamReader_AddExtraNamespaceDeclaration(QXmlStreamReader* self, QXmlS
 }
 
 void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array* /* of QXmlStreamNamespaceDeclaration* */ extraNamespaceDeclaractions) {
-	QVector<QXmlStreamNamespaceDeclaration> extraNamespaceDeclaractions_QList;
+	QXmlStreamNamespaceDeclarations extraNamespaceDeclaractions_QList;
 	extraNamespaceDeclaractions_QList.reserve(extraNamespaceDeclaractions->len);
 	QXmlStreamNamespaceDeclaration** extraNamespaceDeclaractions_arr = static_cast<QXmlStreamNamespaceDeclaration**>(extraNamespaceDeclaractions->data);
 	for(size_t i = 0; i < extraNamespaceDeclaractions->len; ++i) {

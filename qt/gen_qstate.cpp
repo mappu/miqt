@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qstate.h"
+#include <qstate.h>
 #include "gen_qstate.h"
 #include "_cgo_export.h"
 

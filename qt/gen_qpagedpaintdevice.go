@@ -165,14 +165,21 @@ func (this *QPagedPaintDevice) cPointer() *C.QPagedPaintDevice {
 	return this.h
 }
 
+func (this *QPagedPaintDevice) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPagedPaintDevice(h *C.QPagedPaintDevice) *QPagedPaintDevice {
 	if h == nil {
 		return nil
 	}
-	return &QPagedPaintDevice{h: h, QPaintDevice: newQPaintDevice_U(unsafe.Pointer(h))}
+	return &QPagedPaintDevice{h: h, QPaintDevice: UnsafeNewQPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQPagedPaintDevice_U(h unsafe.Pointer) *QPagedPaintDevice {
+func UnsafeNewQPagedPaintDevice(h unsafe.Pointer) *QPagedPaintDevice {
 	return newQPagedPaintDevice((*C.QPagedPaintDevice)(h))
 }
 
@@ -262,6 +269,13 @@ func (this *QPagedPaintDevice__Margins) cPointer() *C.QPagedPaintDevice__Margins
 	return this.h
 }
 
+func (this *QPagedPaintDevice__Margins) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPagedPaintDevice__Margins(h *C.QPagedPaintDevice__Margins) *QPagedPaintDevice__Margins {
 	if h == nil {
 		return nil
@@ -269,7 +283,7 @@ func newQPagedPaintDevice__Margins(h *C.QPagedPaintDevice__Margins) *QPagedPaint
 	return &QPagedPaintDevice__Margins{h: h}
 }
 
-func newQPagedPaintDevice__Margins_U(h unsafe.Pointer) *QPagedPaintDevice__Margins {
+func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__Margins {
 	return newQPagedPaintDevice__Margins((*C.QPagedPaintDevice__Margins)(h))
 }
 

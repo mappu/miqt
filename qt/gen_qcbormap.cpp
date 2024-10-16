@@ -8,7 +8,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcbormap.h"
+#include <qcbormap.h>
 #include "gen_qcbormap.h"
 #include "_cgo_export.h"
 

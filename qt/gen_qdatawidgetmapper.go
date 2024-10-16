@@ -33,14 +33,21 @@ func (this *QDataWidgetMapper) cPointer() *C.QDataWidgetMapper {
 	return this.h
 }
 
+func (this *QDataWidgetMapper) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDataWidgetMapper(h *C.QDataWidgetMapper) *QDataWidgetMapper {
 	if h == nil {
 		return nil
 	}
-	return &QDataWidgetMapper{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QDataWidgetMapper{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQDataWidgetMapper_U(h unsafe.Pointer) *QDataWidgetMapper {
+func UnsafeNewQDataWidgetMapper(h unsafe.Pointer) *QDataWidgetMapper {
 	return newQDataWidgetMapper((*C.QDataWidgetMapper)(h))
 }
 
@@ -57,7 +64,7 @@ func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDataWidgetMapper_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDataWidgetMapper_MetaObject(this.h)))
 }
 
 func (this *QDataWidgetMapper) Metacast(param1 string) unsafe.Pointer {
@@ -89,7 +96,7 @@ func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QDataWidgetMapper_Model(this.h)))
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -97,7 +104,7 @@ func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) 
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QDataWidgetMapper_ItemDelegate(this.h)))
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
@@ -151,7 +158,7 @@ func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) *QByteArray {
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section))))
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {

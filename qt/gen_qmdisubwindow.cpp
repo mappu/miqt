@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qmdisubwindow.h"
+#include <qmdisubwindow.h>
 #include "gen_qmdisubwindow.h"
 #include "_cgo_export.h"
 

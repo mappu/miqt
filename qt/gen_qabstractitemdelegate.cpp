@@ -14,7 +14,7 @@
 #include <cstring>
 #include <QStyleOptionViewItem>
 #include <QWidget>
-#include "qabstractitemdelegate.h"
+#include <qabstractitemdelegate.h>
 #include "gen_qabstractitemdelegate.h"
 #include "_cgo_export.h"
 

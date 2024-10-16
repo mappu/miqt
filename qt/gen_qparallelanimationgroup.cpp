@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qparallelanimationgroup.h"
+#include <qparallelanimationgroup.h>
 #include "gen_qparallelanimationgroup.h"
 #include "_cgo_export.h"
 

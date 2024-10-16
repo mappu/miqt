@@ -26,14 +26,21 @@ func (this *QStackedWidget) cPointer() *C.QStackedWidget {
 	return this.h
 }
 
+func (this *QStackedWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStackedWidget(h *C.QStackedWidget) *QStackedWidget {
 	if h == nil {
 		return nil
 	}
-	return &QStackedWidget{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QStackedWidget{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQStackedWidget_U(h unsafe.Pointer) *QStackedWidget {
+func UnsafeNewQStackedWidget(h unsafe.Pointer) *QStackedWidget {
 	return newQStackedWidget((*C.QStackedWidget)(h))
 }
 
@@ -50,7 +57,7 @@ func NewQStackedWidget2(parent *QWidget) *QStackedWidget {
 }
 
 func (this *QStackedWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStackedWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStackedWidget_MetaObject(this.h)))
 }
 
 func (this *QStackedWidget) Metacast(param1 string) unsafe.Pointer {
@@ -90,7 +97,7 @@ func (this *QStackedWidget) RemoveWidget(w *QWidget) {
 }
 
 func (this *QStackedWidget) CurrentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QStackedWidget_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_CurrentWidget(this.h)))
 }
 
 func (this *QStackedWidget) CurrentIndex() int {
@@ -102,7 +109,7 @@ func (this *QStackedWidget) IndexOf(param1 *QWidget) int {
 }
 
 func (this *QStackedWidget) Widget(param1 int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QStackedWidget_Widget(this.h, (C.int)(param1))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedWidget_Widget(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedWidget) Count() int {

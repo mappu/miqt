@@ -24,6 +24,13 @@ func (this *QMatrix4x4) cPointer() *C.QMatrix4x4 {
 	return this.h
 }
 
+func (this *QMatrix4x4) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMatrix4x4(h *C.QMatrix4x4) *QMatrix4x4 {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQMatrix4x4(h *C.QMatrix4x4) *QMatrix4x4 {
 	return &QMatrix4x4{h: h}
 }
 
-func newQMatrix4x4_U(h unsafe.Pointer) *QMatrix4x4 {
+func UnsafeNewQMatrix4x4(h unsafe.Pointer) *QMatrix4x4 {
 	return newQMatrix4x4((*C.QMatrix4x4)(h))
 }
 
@@ -140,23 +147,23 @@ func (this *QMatrix4x4) Transposed() *QMatrix4x4 {
 }
 
 func (this *QMatrix4x4) OperatorPlusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())))
+	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMinusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())))
+	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())))
+	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer())))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssignWithFactor(factor float32) *QMatrix4x4 {
-	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))))
+	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor))))
 }
 
 func (this *QMatrix4x4) OperatorDivideAssign(divisor float32) *QMatrix4x4 {
-	return newQMatrix4x4_U(unsafe.Pointer(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return UnsafeNewQMatrix4x4(unsafe.Pointer(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QMatrix4x4) OperatorEqual(other *QMatrix4x4) bool {

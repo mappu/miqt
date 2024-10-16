@@ -3,7 +3,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTouchDevice>
-#include "qtouchdevice.h"
+#include <qtouchdevice.h>
 #include "gen_qtouchdevice.h"
 #include "_cgo_export.h"
 

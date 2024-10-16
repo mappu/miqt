@@ -24,6 +24,13 @@ func (this *QRandomGenerator) cPointer() *C.QRandomGenerator {
 	return this.h
 }
 
+func (this *QRandomGenerator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRandomGenerator(h *C.QRandomGenerator) *QRandomGenerator {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQRandomGenerator(h *C.QRandomGenerator) *QRandomGenerator {
 	return &QRandomGenerator{h: h}
 }
 
-func newQRandomGenerator_U(h unsafe.Pointer) *QRandomGenerator {
+func UnsafeNewQRandomGenerator(h unsafe.Pointer) *QRandomGenerator {
 	return newQRandomGenerator((*C.QRandomGenerator)(h))
 }
 
@@ -126,11 +133,11 @@ func QRandomGenerator_Max() uint {
 }
 
 func QRandomGenerator_System() *QRandomGenerator {
-	return newQRandomGenerator_U(unsafe.Pointer(C.QRandomGenerator_System()))
+	return UnsafeNewQRandomGenerator(unsafe.Pointer(C.QRandomGenerator_System()))
 }
 
 func QRandomGenerator_Global() *QRandomGenerator {
-	return newQRandomGenerator_U(unsafe.Pointer(C.QRandomGenerator_Global()))
+	return UnsafeNewQRandomGenerator(unsafe.Pointer(C.QRandomGenerator_Global()))
 }
 
 func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
@@ -170,14 +177,21 @@ func (this *QRandomGenerator64) cPointer() *C.QRandomGenerator64 {
 	return this.h
 }
 
+func (this *QRandomGenerator64) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRandomGenerator64(h *C.QRandomGenerator64) *QRandomGenerator64 {
 	if h == nil {
 		return nil
 	}
-	return &QRandomGenerator64{h: h, QRandomGenerator: newQRandomGenerator_U(unsafe.Pointer(h))}
+	return &QRandomGenerator64{h: h, QRandomGenerator: UnsafeNewQRandomGenerator(unsafe.Pointer(h))}
 }
 
-func newQRandomGenerator64_U(h unsafe.Pointer) *QRandomGenerator64 {
+func UnsafeNewQRandomGenerator64(h unsafe.Pointer) *QRandomGenerator64 {
 	return newQRandomGenerator64((*C.QRandomGenerator64)(h))
 }
 
@@ -238,11 +252,11 @@ func QRandomGenerator64_Max() uint64 {
 }
 
 func QRandomGenerator64_System() *QRandomGenerator64 {
-	return newQRandomGenerator64_U(unsafe.Pointer(C.QRandomGenerator64_System()))
+	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_System()))
 }
 
 func QRandomGenerator64_Global() *QRandomGenerator64 {
-	return newQRandomGenerator64_U(unsafe.Pointer(C.QRandomGenerator64_Global()))
+	return UnsafeNewQRandomGenerator64(unsafe.Pointer(C.QRandomGenerator64_Global()))
 }
 
 func QRandomGenerator64_SecurelySeeded() *QRandomGenerator64 {

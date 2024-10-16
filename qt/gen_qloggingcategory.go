@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
 	return this.h
 }
 
+func (this *QLoggingCategory) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
 	return &QLoggingCategory{h: h}
 }
 
-func newQLoggingCategory_U(h unsafe.Pointer) *QLoggingCategory {
+func UnsafeNewQLoggingCategory(h unsafe.Pointer) *QLoggingCategory {
 	return newQLoggingCategory((*C.QLoggingCategory)(h))
 }
 
@@ -65,19 +73,19 @@ func (this *QLoggingCategory) CategoryName() unsafe.Pointer {
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_OperatorCall(this.h)))
+	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall(this.h)))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_OperatorCall2(this.h)))
+	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall2(this.h)))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	return newQLoggingCategory_U(unsafe.Pointer(C.QLoggingCategory_DefaultCategory()))
+	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_DefaultCategory()))
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {
-	rules_ms := miqt_strdupg(rules)
+	rules_ms := libmiqt.Strdupg(rules)
 	defer C.free(rules_ms)
 	C.QLoggingCategory_SetFilterRules((*C.struct_miqt_string)(rules_ms))
 }

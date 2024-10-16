@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qgraphicsanchorlayout.h"
+#include <qgraphicsanchorlayout.h>
 #include "gen_qgraphicsanchorlayout.h"
 #include "_cgo_export.h"
 

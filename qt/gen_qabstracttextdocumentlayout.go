@@ -26,19 +26,26 @@ func (this *QAbstractTextDocumentLayout) cPointer() *C.QAbstractTextDocumentLayo
 	return this.h
 }
 
+func (this *QAbstractTextDocumentLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractTextDocumentLayout(h *C.QAbstractTextDocumentLayout) *QAbstractTextDocumentLayout {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTextDocumentLayout{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractTextDocumentLayout{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractTextDocumentLayout_U(h unsafe.Pointer) *QAbstractTextDocumentLayout {
+func UnsafeNewQAbstractTextDocumentLayout(h unsafe.Pointer) *QAbstractTextDocumentLayout {
 	return newQAbstractTextDocumentLayout((*C.QAbstractTextDocumentLayout)(h))
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractTextDocumentLayout_MetaObject(this.h)))
 }
 
 func (this *QAbstractTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {
@@ -131,11 +138,11 @@ func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_PaintDevice(this.h)))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QAbstractTextDocumentLayout_PaintDevice(this.h)))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QAbstractTextDocumentLayout_Document(this.h)))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
@@ -147,7 +154,7 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
 }
 
 func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
-	return newQTextObjectInterface_U(unsafe.Pointer(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))))
+	return UnsafeNewQTextObjectInterface(unsafe.Pointer(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType))))
 }
 
 func (this *QAbstractTextDocumentLayout) Update() {
@@ -182,7 +189,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb C.intptr_t, b
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTextBlock_U(unsafe.Pointer(block))
+	slotval1 := UnsafeNewQTextBlock(unsafe.Pointer(block))
 
 	gofunc(slotval1)
 }
@@ -202,7 +209,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSizeF_U(unsafe.Pointer(newSize))
+	slotval1 := UnsafeNewQSizeF(unsafe.Pointer(newSize))
 
 	gofunc(slotval1)
 }
@@ -290,7 +297,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQRectF(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -320,6 +327,13 @@ func (this *QTextObjectInterface) cPointer() *C.QTextObjectInterface {
 	return this.h
 }
 
+func (this *QTextObjectInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
 	if h == nil {
 		return nil
@@ -327,7 +341,7 @@ func newQTextObjectInterface(h *C.QTextObjectInterface) *QTextObjectInterface {
 	return &QTextObjectInterface{h: h}
 }
 
-func newQTextObjectInterface_U(h unsafe.Pointer) *QTextObjectInterface {
+func UnsafeNewQTextObjectInterface(h unsafe.Pointer) *QTextObjectInterface {
 	return newQTextObjectInterface((*C.QTextObjectInterface)(h))
 }
 
@@ -371,6 +385,13 @@ func (this *QAbstractTextDocumentLayout__Selection) cPointer() *C.QAbstractTextD
 	return this.h
 }
 
+func (this *QAbstractTextDocumentLayout__Selection) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout__Selection) *QAbstractTextDocumentLayout__Selection {
 	if h == nil {
 		return nil
@@ -378,7 +399,7 @@ func newQAbstractTextDocumentLayout__Selection(h *C.QAbstractTextDocumentLayout_
 	return &QAbstractTextDocumentLayout__Selection{h: h}
 }
 
-func newQAbstractTextDocumentLayout__Selection_U(h unsafe.Pointer) *QAbstractTextDocumentLayout__Selection {
+func UnsafeNewQAbstractTextDocumentLayout__Selection(h unsafe.Pointer) *QAbstractTextDocumentLayout__Selection {
 	return newQAbstractTextDocumentLayout__Selection((*C.QAbstractTextDocumentLayout__Selection)(h))
 }
 
@@ -417,6 +438,13 @@ func (this *QAbstractTextDocumentLayout__PaintContext) cPointer() *C.QAbstractTe
 	return this.h
 }
 
+func (this *QAbstractTextDocumentLayout__PaintContext) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
 	if h == nil {
 		return nil
@@ -424,7 +452,7 @@ func newQAbstractTextDocumentLayout__PaintContext(h *C.QAbstractTextDocumentLayo
 	return &QAbstractTextDocumentLayout__PaintContext{h: h}
 }
 
-func newQAbstractTextDocumentLayout__PaintContext_U(h unsafe.Pointer) *QAbstractTextDocumentLayout__PaintContext {
+func UnsafeNewQAbstractTextDocumentLayout__PaintContext(h unsafe.Pointer) *QAbstractTextDocumentLayout__PaintContext {
 	return newQAbstractTextDocumentLayout__PaintContext((*C.QAbstractTextDocumentLayout__PaintContext)(h))
 }
 

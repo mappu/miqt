@@ -25,19 +25,26 @@ func (this *QSyntaxHighlighter) cPointer() *C.QSyntaxHighlighter {
 	return this.h
 }
 
+func (this *QSyntaxHighlighter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSyntaxHighlighter(h *C.QSyntaxHighlighter) *QSyntaxHighlighter {
 	if h == nil {
 		return nil
 	}
-	return &QSyntaxHighlighter{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSyntaxHighlighter{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSyntaxHighlighter_U(h unsafe.Pointer) *QSyntaxHighlighter {
+func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
 	return newQSyntaxHighlighter((*C.QSyntaxHighlighter)(h))
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSyntaxHighlighter_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSyntaxHighlighter_MetaObject(this.h)))
 }
 
 func (this *QSyntaxHighlighter) Metacast(param1 string) unsafe.Pointer {
@@ -69,7 +76,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)))
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {

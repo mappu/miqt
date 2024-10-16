@@ -32,19 +32,26 @@ func (this *QAbstractTransition) cPointer() *C.QAbstractTransition {
 	return this.h
 }
 
+func (this *QAbstractTransition) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractTransition(h *C.QAbstractTransition) *QAbstractTransition {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTransition{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractTransition{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractTransition_U(h unsafe.Pointer) *QAbstractTransition {
+func UnsafeNewQAbstractTransition(h unsafe.Pointer) *QAbstractTransition {
 	return newQAbstractTransition((*C.QAbstractTransition)(h))
 }
 
 func (this *QAbstractTransition) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTransition_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractTransition_MetaObject(this.h)))
 }
 
 func (this *QAbstractTransition) Metacast(param1 string) unsafe.Pointer {
@@ -72,11 +79,11 @@ func QAbstractTransition_TrUtf8(s string) string {
 }
 
 func (this *QAbstractTransition) SourceState() *QState {
-	return newQState_U(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)))
+	return UnsafeNewQState(unsafe.Pointer(C.QAbstractTransition_SourceState(this.h)))
 }
 
 func (this *QAbstractTransition) TargetState() *QAbstractState {
-	return newQAbstractState_U(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QAbstractTransition_TargetState(this.h)))
 }
 
 func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
@@ -88,7 +95,7 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 	_ret := make([]*QAbstractState, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractState_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -115,7 +122,7 @@ func (this *QAbstractTransition) SetTransitionType(typeVal QAbstractTransition__
 }
 
 func (this *QAbstractTransition) Machine() *QStateMachine {
-	return newQStateMachine_U(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)))
+	return UnsafeNewQStateMachine(unsafe.Pointer(C.QAbstractTransition_Machine(this.h)))
 }
 
 func (this *QAbstractTransition) AddAnimation(animation *QAbstractAnimation) {
@@ -131,7 +138,7 @@ func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractAnimation_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

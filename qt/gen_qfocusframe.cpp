@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qfocusframe.h"
+#include <qfocusframe.h>
 #include "gen_qfocusframe.h"
 #include "_cgo_export.h"
 

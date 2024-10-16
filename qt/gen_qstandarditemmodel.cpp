@@ -14,7 +14,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qstandarditemmodel.h"
+#include <qstandarditemmodel.h>
 #include "gen_qstandarditemmodel.h"
 #include "_cgo_export.h"
 
@@ -316,7 +316,7 @@ void QStandardItem_SetChild2(QStandardItem* self, int row, QStandardItem* item) 
 }
 
 void QStandardItem_InsertRow(QStandardItem* self, int row, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -326,7 +326,7 @@ void QStandardItem_InsertRow(QStandardItem* self, int row, struct miqt_array* /*
 }
 
 void QStandardItem_InsertColumn(QStandardItem* self, int column, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -336,7 +336,7 @@ void QStandardItem_InsertColumn(QStandardItem* self, int column, struct miqt_arr
 }
 
 void QStandardItem_InsertRows(QStandardItem* self, int row, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -370,7 +370,7 @@ void QStandardItem_RemoveColumns(QStandardItem* self, int column, int count) {
 }
 
 void QStandardItem_AppendRow(QStandardItem* self, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -380,7 +380,7 @@ void QStandardItem_AppendRow(QStandardItem* self, struct miqt_array* /* of QStan
 }
 
 void QStandardItem_AppendRows(QStandardItem* self, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -390,7 +390,7 @@ void QStandardItem_AppendRows(QStandardItem* self, struct miqt_array* /* of QSta
 }
 
 void QStandardItem_AppendColumn(QStandardItem* self, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -642,7 +642,7 @@ void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row,
 }
 
 void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
@@ -653,7 +653,7 @@ void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, stru
 }
 
 void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
@@ -672,7 +672,7 @@ void QStandardItemModel_SetColumnCount(QStandardItemModel* self, int columns) {
 }
 
 void QStandardItemModel_AppendRow(QStandardItemModel* self, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -682,7 +682,7 @@ void QStandardItemModel_AppendRow(QStandardItemModel* self, struct miqt_array* /
 }
 
 void QStandardItemModel_AppendColumn(QStandardItemModel* self, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -696,7 +696,7 @@ void QStandardItemModel_AppendRowWithItem(QStandardItemModel* self, QStandardIte
 }
 
 void QStandardItemModel_InsertRow(QStandardItemModel* self, int row, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -706,7 +706,7 @@ void QStandardItemModel_InsertRow(QStandardItemModel* self, int row, struct miqt
 }
 
 void QStandardItemModel_InsertColumn(QStandardItemModel* self, int column, struct miqt_array* /* of QStandardItem* */ items) {
-	QList<QStandardItem*> items_QList;
+	QList<QStandardItem *> items_QList;
 	items_QList.reserve(items->len);
 	QStandardItem** items_arr = static_cast<QStandardItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {
@@ -812,7 +812,7 @@ struct miqt_array* QStandardItemModel_MimeTypes(const QStandardItemModel* self) 
 }
 
 QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
-	QList<QModelIndex> indexes_QList;
+	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
 	for(size_t i = 0; i < indexes->len; ++i) {

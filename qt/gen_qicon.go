@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -40,6 +41,13 @@ func (this *QIcon) cPointer() *C.QIcon {
 	return this.h
 }
 
+func (this *QIcon) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIcon(h *C.QIcon) *QIcon {
 	if h == nil {
 		return nil
@@ -47,7 +55,7 @@ func newQIcon(h *C.QIcon) *QIcon {
 	return &QIcon{h: h}
 }
 
-func newQIcon_U(h unsafe.Pointer) *QIcon {
+func UnsafeNewQIcon(h unsafe.Pointer) *QIcon {
 	return newQIcon((*C.QIcon)(h))
 }
 
@@ -71,7 +79,7 @@ func NewQIcon3(other *QIcon) *QIcon {
 
 // NewQIcon4 constructs a new QIcon object.
 func NewQIcon4(fileName string) *QIcon {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QIcon_new4((*C.struct_miqt_string)(fileName_ms))
 	return newQIcon(ret)
@@ -169,7 +177,7 @@ func (this *QIcon) AddPixmap(pixmap *QPixmap) {
 }
 
 func (this *QIcon) AddFile(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QIcon_AddFile(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -197,7 +205,7 @@ func (this *QIcon) IsMask() bool {
 }
 
 func QIcon_FromTheme(name string) *QIcon {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	_ret := C.QIcon_FromTheme((*C.struct_miqt_string)(name_ms))
 	_goptr := newQIcon(_ret)
@@ -206,7 +214,7 @@ func QIcon_FromTheme(name string) *QIcon {
 }
 
 func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	_ret := C.QIcon_FromTheme2((*C.struct_miqt_string)(name_ms), fallback.cPointer())
 	_goptr := newQIcon(_ret)
@@ -215,7 +223,7 @@ func QIcon_FromTheme2(name string, fallback *QIcon) *QIcon {
 }
 
 func QIcon_HasThemeIcon(name string) bool {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	return (bool)(C.QIcon_HasThemeIcon((*C.struct_miqt_string)(name_ms)))
 }
@@ -239,7 +247,7 @@ func QIcon_SetThemeSearchPaths(searchpath []string) {
 	searchpath_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
 	for i := range searchpath {
-		searchpath_i_ms := miqt_strdupg(searchpath[i])
+		searchpath_i_ms := libmiqt.Strdupg(searchpath[i])
 		defer C.free(searchpath_i_ms)
 		searchpath_CArray[i] = (*C.struct_miqt_string)(searchpath_i_ms)
 	}
@@ -267,7 +275,7 @@ func QIcon_SetFallbackSearchPaths(paths []string) {
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := miqt_strdupg(paths[i])
+		paths_i_ms := libmiqt.Strdupg(paths[i])
 		defer C.free(paths_i_ms)
 		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
@@ -284,7 +292,7 @@ func QIcon_ThemeName() string {
 }
 
 func QIcon_SetThemeName(path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QIcon_SetThemeName((*C.struct_miqt_string)(path_ms))
 }
@@ -297,7 +305,7 @@ func QIcon_FallbackThemeName() string {
 }
 
 func QIcon_SetFallbackThemeName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QIcon_SetFallbackThemeName((*C.struct_miqt_string)(name_ms))
 }
@@ -419,19 +427,19 @@ func (this *QIcon) AddPixmap3(pixmap *QPixmap, mode QIcon__Mode, state QIcon__St
 }
 
 func (this *QIcon) AddFile2(fileName string, size *QSize) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QIcon_AddFile2(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer())
 }
 
 func (this *QIcon) AddFile3(fileName string, size *QSize, mode QIcon__Mode) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QIcon_AddFile3(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.int)(mode))
 }
 
 func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QIcon_AddFile4(this.h, (*C.struct_miqt_string)(fileName_ms), size.cPointer(), (C.int)(mode), (C.int)(state))
 }

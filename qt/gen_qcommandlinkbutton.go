@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QCommandLinkButton) cPointer() *C.QCommandLinkButton {
 	return this.h
 }
 
+func (this *QCommandLinkButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCommandLinkButton(h *C.QCommandLinkButton) *QCommandLinkButton {
 	if h == nil {
 		return nil
 	}
-	return &QCommandLinkButton{h: h, QPushButton: newQPushButton_U(unsafe.Pointer(h))}
+	return &QCommandLinkButton{h: h, QPushButton: UnsafeNewQPushButton(unsafe.Pointer(h))}
 }
 
-func newQCommandLinkButton_U(h unsafe.Pointer) *QCommandLinkButton {
+func UnsafeNewQCommandLinkButton(h unsafe.Pointer) *QCommandLinkButton {
 	return newQCommandLinkButton((*C.QCommandLinkButton)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQCommandLinkButton() *QCommandLinkButton {
 
 // NewQCommandLinkButton2 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton2(text string) *QCommandLinkButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QCommandLinkButton_new2((*C.struct_miqt_string)(text_ms))
 	return newQCommandLinkButton(ret)
@@ -52,9 +60,9 @@ func NewQCommandLinkButton2(text string) *QCommandLinkButton {
 
 // NewQCommandLinkButton3 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton3(text string, description string) *QCommandLinkButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	ret := C.QCommandLinkButton_new3((*C.struct_miqt_string)(text_ms), (*C.struct_miqt_string)(description_ms))
 	return newQCommandLinkButton(ret)
@@ -68,7 +76,7 @@ func NewQCommandLinkButton4(parent *QWidget) *QCommandLinkButton {
 
 // NewQCommandLinkButton5 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton5(text string, parent *QWidget) *QCommandLinkButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QCommandLinkButton_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQCommandLinkButton(ret)
@@ -76,16 +84,16 @@ func NewQCommandLinkButton5(text string, parent *QWidget) *QCommandLinkButton {
 
 // NewQCommandLinkButton6 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton6(text string, description string, parent *QWidget) *QCommandLinkButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	ret := C.QCommandLinkButton_new6((*C.struct_miqt_string)(text_ms), (*C.struct_miqt_string)(description_ms), parent.cPointer())
 	return newQCommandLinkButton(ret)
 }
 
 func (this *QCommandLinkButton) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCommandLinkButton_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCommandLinkButton_MetaObject(this.h)))
 }
 
 func (this *QCommandLinkButton) Metacast(param1 string) unsafe.Pointer {
@@ -120,7 +128,7 @@ func (this *QCommandLinkButton) Description() string {
 }
 
 func (this *QCommandLinkButton) SetDescription(description string) {
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QCommandLinkButton_SetDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }

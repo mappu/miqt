@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QSortFilterProxyModel) cPointer() *C.QSortFilterProxyModel {
 	return this.h
 }
 
+func (this *QSortFilterProxyModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSortFilterProxyModel(h *C.QSortFilterProxyModel) *QSortFilterProxyModel {
 	if h == nil {
 		return nil
 	}
-	return &QSortFilterProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
+	return &QSortFilterProxyModel{h: h, QAbstractProxyModel: UnsafeNewQAbstractProxyModel(unsafe.Pointer(h))}
 }
 
-func newQSortFilterProxyModel_U(h unsafe.Pointer) *QSortFilterProxyModel {
+func UnsafeNewQSortFilterProxyModel(h unsafe.Pointer) *QSortFilterProxyModel {
 	return newQSortFilterProxyModel((*C.QSortFilterProxyModel)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQSortFilterProxyModel2(parent *QObject) *QSortFilterProxyModel {
 }
 
 func (this *QSortFilterProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSortFilterProxyModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSortFilterProxyModel_MetaObject(this.h)))
 }
 
 func (this *QSortFilterProxyModel) Metacast(param1 string) unsafe.Pointer {
@@ -182,7 +190,7 @@ func (this *QSortFilterProxyModel) SetRecursiveFilteringEnabled(recursive bool) 
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegExp(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QSortFilterProxyModel_SetFilterRegExp(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
@@ -192,7 +200,7 @@ func (this *QSortFilterProxyModel) SetFilterRegExpWithRegExp(regExp *QRegExp) {
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QSortFilterProxyModel_SetFilterRegularExpression(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
@@ -202,13 +210,13 @@ func (this *QSortFilterProxyModel) SetFilterRegularExpressionWithRegularExpressi
 }
 
 func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QSortFilterProxyModel_SetFilterWildcard(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
 
 func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QSortFilterProxyModel_SetFilterFixedString(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
@@ -285,7 +293,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	return newQMimeData_U(unsafe.Pointer(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {

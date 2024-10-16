@@ -4,7 +4,7 @@
 #include <QPagedPaintDevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins
 #include <QSizeF>
-#include "qpagedpaintdevice.h"
+#include <qpagedpaintdevice.h>
 #include "gen_qpagedpaintdevice.h"
 #include "_cgo_export.h"
 

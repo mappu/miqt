@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qpushbutton.h"
+#include <qpushbutton.h>
 #include "gen_qpushbutton.h"
 #include "_cgo_export.h"
 

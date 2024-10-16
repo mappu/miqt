@@ -49,6 +49,13 @@ func (this *QMetaMethod) cPointer() *C.QMetaMethod {
 	return this.h
 }
 
+func (this *QMetaMethod) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	if h == nil {
 		return nil
@@ -56,7 +63,7 @@ func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	return &QMetaMethod{h: h}
 }
 
-func newQMetaMethod_U(h unsafe.Pointer) *QMetaMethod {
+func UnsafeNewQMetaMethod(h unsafe.Pointer) *QMetaMethod {
 	return newQMetaMethod((*C.QMetaMethod)(h))
 }
 
@@ -161,7 +168,7 @@ func (this *QMetaMethod) Revision() int {
 }
 
 func (this *QMetaMethod) EnclosingMetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaMethod_EnclosingMetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaMethod_EnclosingMetaObject(this.h)))
 }
 
 func (this *QMetaMethod) Invoke(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument) bool {
@@ -457,6 +464,13 @@ func (this *QMetaEnum) cPointer() *C.QMetaEnum {
 	return this.h
 }
 
+func (this *QMetaEnum) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	if h == nil {
 		return nil
@@ -464,7 +478,7 @@ func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	return &QMetaEnum{h: h}
 }
 
-func newQMetaEnum_U(h unsafe.Pointer) *QMetaEnum {
+func UnsafeNewQMetaEnum(h unsafe.Pointer) *QMetaEnum {
 	return newQMetaEnum((*C.QMetaEnum)(h))
 }
 
@@ -541,7 +555,7 @@ func (this *QMetaEnum) ValueToKeys(value int) *QByteArray {
 }
 
 func (this *QMetaEnum) EnclosingMetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaEnum_EnclosingMetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaEnum_EnclosingMetaObject(this.h)))
 }
 
 func (this *QMetaEnum) IsValid() bool {
@@ -585,6 +599,13 @@ func (this *QMetaProperty) cPointer() *C.QMetaProperty {
 	return this.h
 }
 
+func (this *QMetaProperty) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	if h == nil {
 		return nil
@@ -592,7 +613,7 @@ func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	return &QMetaProperty{h: h}
 }
 
-func newQMetaProperty_U(h unsafe.Pointer) *QMetaProperty {
+func UnsafeNewQMetaProperty(h unsafe.Pointer) *QMetaProperty {
 	return newQMetaProperty((*C.QMetaProperty)(h))
 }
 
@@ -745,7 +766,7 @@ func (this *QMetaProperty) IsValid() bool {
 }
 
 func (this *QMetaProperty) EnclosingMetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaProperty_EnclosingMetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaProperty_EnclosingMetaObject(this.h)))
 }
 
 func (this *QMetaProperty) IsDesignable1(obj *QObject) bool {
@@ -793,6 +814,13 @@ func (this *QMetaClassInfo) cPointer() *C.QMetaClassInfo {
 	return this.h
 }
 
+func (this *QMetaClassInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	if h == nil {
 		return nil
@@ -800,7 +828,7 @@ func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	return &QMetaClassInfo{h: h}
 }
 
-func newQMetaClassInfo_U(h unsafe.Pointer) *QMetaClassInfo {
+func UnsafeNewQMetaClassInfo(h unsafe.Pointer) *QMetaClassInfo {
 	return newQMetaClassInfo((*C.QMetaClassInfo)(h))
 }
 
@@ -821,7 +849,7 @@ func (this *QMetaClassInfo) Value() unsafe.Pointer {
 }
 
 func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaClassInfo_EnclosingMetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaClassInfo_EnclosingMetaObject(this.h)))
 }
 
 // Delete this object from C++ memory.

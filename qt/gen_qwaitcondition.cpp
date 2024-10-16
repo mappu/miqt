@@ -2,7 +2,7 @@
 #include <QMutex>
 #include <QReadWriteLock>
 #include <QWaitCondition>
-#include "qwaitcondition.h"
+#include <qwaitcondition.h>
 #include "gen_qwaitcondition.h"
 #include "_cgo_export.h"
 

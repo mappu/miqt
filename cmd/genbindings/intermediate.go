@@ -5,16 +5,30 @@ import (
 	"strings"
 )
 
+type lookupResultClass struct {
+	PackageName string
+}
+
+type lookupResultTypedef struct {
+	PackageName string
+	Typedef     CppTypedef
+}
+
+type lookupResultEnum struct {
+	PackageName string
+	Enum        CppEnum
+}
+
 var (
-	KnownClassnames map[string]struct{} // Entries of the form QFoo::Bar if it is an inner class
-	KnownTypedefs   map[string]CppTypedef
-	KnownEnums      map[string]CppEnum
+	KnownClassnames map[string]lookupResultClass // Entries of the form QFoo::Bar if it is an inner class
+	KnownTypedefs   map[string]lookupResultTypedef
+	KnownEnums      map[string]lookupResultEnum
 )
 
 func init() {
-	KnownClassnames = make(map[string]struct{})
-	KnownTypedefs = make(map[string]CppTypedef)
-	KnownEnums = make(map[string]CppEnum)
+	KnownClassnames = make(map[string]lookupResultClass)
+	KnownTypedefs = make(map[string]lookupResultTypedef)
+	KnownEnums = make(map[string]lookupResultEnum)
 }
 
 type CppParameter struct {

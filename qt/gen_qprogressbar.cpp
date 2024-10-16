@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qprogressbar.h"
+#include <qprogressbar.h>
 #include "gen_qprogressbar.h"
 #include "_cgo_export.h"
 

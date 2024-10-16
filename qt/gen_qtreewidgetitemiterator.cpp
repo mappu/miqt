@@ -1,7 +1,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QTreeWidgetItemIterator>
-#include "qtreewidgetitemiterator.h"
+#include <qtreewidgetitemiterator.h>
 #include "gen_qtreewidgetitemiterator.h"
 #include "_cgo_export.h"
 

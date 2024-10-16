@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWindow>
-#include "qrasterwindow.h"
+#include <qrasterwindow.h>
 #include "gen_qrasterwindow.h"
 #include "_cgo_export.h"
 

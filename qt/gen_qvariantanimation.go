@@ -26,14 +26,21 @@ func (this *QVariantAnimation) cPointer() *C.QVariantAnimation {
 	return this.h
 }
 
+func (this *QVariantAnimation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVariantAnimation(h *C.QVariantAnimation) *QVariantAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QVariantAnimation{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
+	return &QVariantAnimation{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
 }
 
-func newQVariantAnimation_U(h unsafe.Pointer) *QVariantAnimation {
+func UnsafeNewQVariantAnimation(h unsafe.Pointer) *QVariantAnimation {
 	return newQVariantAnimation((*C.QVariantAnimation)(h))
 }
 
@@ -50,7 +57,7 @@ func NewQVariantAnimation2(parent *QObject) *QVariantAnimation {
 }
 
 func (this *QVariantAnimation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QVariantAnimation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QVariantAnimation_MetaObject(this.h)))
 }
 
 func (this *QVariantAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -151,7 +158,7 @@ func miqt_exec_callback_QVariantAnimation_ValueChanged(cb C.intptr_t, value *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQVariant_U(unsafe.Pointer(value))
+	slotval1 := UnsafeNewQVariant(unsafe.Pointer(value))
 
 	gofunc(slotval1)
 }

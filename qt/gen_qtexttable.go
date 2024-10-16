@@ -24,6 +24,13 @@ func (this *QTextTableCell) cPointer() *C.QTextTableCell {
 	return this.h
 }
 
+func (this *QTextTableCell) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQTextTableCell(h *C.QTextTableCell) *QTextTableCell {
 	return &QTextTableCell{h: h}
 }
 
-func newQTextTableCell_U(h unsafe.Pointer) *QTextTableCell {
+func UnsafeNewQTextTableCell(h unsafe.Pointer) *QTextTableCell {
 	return newQTextTableCell((*C.QTextTableCell)(h))
 }
 
@@ -156,14 +163,21 @@ func (this *QTextTable) cPointer() *C.QTextTable {
 	return this.h
 }
 
+func (this *QTextTable) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextTable(h *C.QTextTable) *QTextTable {
 	if h == nil {
 		return nil
 	}
-	return &QTextTable{h: h, QTextFrame: newQTextFrame_U(unsafe.Pointer(h))}
+	return &QTextTable{h: h, QTextFrame: UnsafeNewQTextFrame(unsafe.Pointer(h))}
 }
 
-func newQTextTable_U(h unsafe.Pointer) *QTextTable {
+func UnsafeNewQTextTable(h unsafe.Pointer) *QTextTable {
 	return newQTextTable((*C.QTextTable)(h))
 }
 
@@ -174,7 +188,7 @@ func NewQTextTable(doc *QTextDocument) *QTextTable {
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextTable_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextTable_MetaObject(this.h)))
 }
 
 func (this *QTextTable) Metacast(param1 string) unsafe.Pointer {

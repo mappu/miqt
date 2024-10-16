@@ -25,14 +25,21 @@ func (this *QBuffer) cPointer() *C.QBuffer {
 	return this.h
 }
 
+func (this *QBuffer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBuffer(h *C.QBuffer) *QBuffer {
 	if h == nil {
 		return nil
 	}
-	return &QBuffer{h: h, QIODevice: newQIODevice_U(unsafe.Pointer(h))}
+	return &QBuffer{h: h, QIODevice: UnsafeNewQIODevice(unsafe.Pointer(h))}
 }
 
-func newQBuffer_U(h unsafe.Pointer) *QBuffer {
+func UnsafeNewQBuffer(h unsafe.Pointer) *QBuffer {
 	return newQBuffer((*C.QBuffer)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQBuffer4(buf *QByteArray, parent *QObject) *QBuffer {
 }
 
 func (this *QBuffer) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QBuffer_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QBuffer_MetaObject(this.h)))
 }
 
 func (this *QBuffer) Metacast(param1 string) unsafe.Pointer {
@@ -89,11 +96,11 @@ func QBuffer_TrUtf8(s string) string {
 }
 
 func (this *QBuffer) Buffer() *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Buffer(this.h)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Buffer(this.h)))
 }
 
 func (this *QBuffer) Buffer2() *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Buffer2(this.h)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Buffer2(this.h)))
 }
 
 func (this *QBuffer) SetBuffer(a *QByteArray) {
@@ -111,7 +118,7 @@ func (this *QBuffer) SetData2(data string, lenVal int) {
 }
 
 func (this *QBuffer) Data() *QByteArray {
-	return newQByteArray_U(unsafe.Pointer(C.QBuffer_Data(this.h)))
+	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Data(this.h)))
 }
 
 func (this *QBuffer) Open(openMode QIODevice__OpenModeFlag) bool {

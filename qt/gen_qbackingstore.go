@@ -24,6 +24,13 @@ func (this *QBackingStore) cPointer() *C.QBackingStore {
 	return this.h
 }
 
+func (this *QBackingStore) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBackingStore(h *C.QBackingStore) *QBackingStore {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQBackingStore(h *C.QBackingStore) *QBackingStore {
 	return &QBackingStore{h: h}
 }
 
-func newQBackingStore_U(h unsafe.Pointer) *QBackingStore {
+func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
 	return newQBackingStore((*C.QBackingStore)(h))
 }
 
@@ -42,11 +49,11 @@ func NewQBackingStore(window *QWindow) *QBackingStore {
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QBackingStore_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QBackingStore_Window(this.h)))
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QBackingStore_PaintDevice(this.h)))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QBackingStore_PaintDevice(this.h)))
 }
 
 func (this *QBackingStore) Flush(region *QRegion) {

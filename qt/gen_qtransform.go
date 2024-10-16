@@ -35,6 +35,13 @@ func (this *QTransform) cPointer() *C.QTransform {
 	return this.h
 }
 
+func (this *QTransform) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTransform(h *C.QTransform) *QTransform {
 	if h == nil {
 		return nil
@@ -42,7 +49,7 @@ func newQTransform(h *C.QTransform) *QTransform {
 	return &QTransform{h: h}
 }
 
-func newQTransform_U(h unsafe.Pointer) *QTransform {
+func UnsafeNewQTransform(h unsafe.Pointer) *QTransform {
 	return newQTransform((*C.QTransform)(h))
 }
 
@@ -198,23 +205,23 @@ func (this *QTransform) Transposed() *QTransform {
 }
 
 func (this *QTransform) Translate(dx float64, dy float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_Translate(this.h, (C.double)(dx), (C.double)(dy))))
 }
 
 func (this *QTransform) Scale(sx float64, sy float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_Scale(this.h, (C.double)(sx), (C.double)(sy))))
 }
 
 func (this *QTransform) Shear(sh float64, sv float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_Shear(this.h, (C.double)(sh), (C.double)(sv))))
 }
 
 func (this *QTransform) Rotate(a float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate(this.h, (C.double)(a))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_Rotate(this.h, (C.double)(a))))
 }
 
 func (this *QTransform) RotateRadians(a float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians(this.h, (C.double)(a))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_RotateRadians(this.h, (C.double)(a))))
 }
 
 func (this *QTransform) OperatorEqual(param1 *QTransform) bool {
@@ -226,7 +233,7 @@ func (this *QTransform) OperatorNotEqual(param1 *QTransform) bool {
 }
 
 func (this *QTransform) OperatorMultiplyAssign(param1 *QTransform) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_OperatorMultiplyAssign(this.h, param1.cPointer())))
 }
 
 func (this *QTransform) OperatorMultiply(o *QTransform) *QTransform {
@@ -305,23 +312,23 @@ func (this *QTransform) Map3(x float64, y float64, tx *float64, ty *float64) {
 }
 
 func (this *QTransform) ToAffine() *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QTransform_ToAffine(this.h)))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QTransform_ToAffine(this.h)))
 }
 
 func (this *QTransform) OperatorMultiplyAssignWithDiv(div float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_OperatorMultiplyAssignWithDiv(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorDivideAssign(div float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_OperatorDivideAssign(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorPlusAssign(div float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_OperatorPlusAssign(this.h, (C.double)(div))))
 }
 
 func (this *QTransform) OperatorMinusAssign(div float64) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_OperatorMinusAssign(this.h, (C.double)(div))))
 }
 
 func QTransform_FromTranslate(dx float64, dy float64) *QTransform {
@@ -346,11 +353,11 @@ func (this *QTransform) Inverted1(invertible *bool) *QTransform {
 }
 
 func (this *QTransform) Rotate2(a float64, axis Axis) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_Rotate2(this.h, (C.double)(a), (C.int)(axis))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_Rotate2(this.h, (C.double)(a), (C.int)(axis))))
 }
 
 func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.int)(axis))))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QTransform_RotateRadians2(this.h, (C.double)(a), (C.int)(axis))))
 }
 
 // Delete this object from C++ memory.

@@ -1,5 +1,5 @@
 #include <QTileRules>
-#include "qdrawutil.h"
+#include <qdrawutil.h>
 #include "gen_qdrawutil.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -92,14 +93,21 @@ func (this *QInputEvent) cPointer() *C.QInputEvent {
 	return this.h
 }
 
+func (this *QInputEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInputEvent(h *C.QInputEvent) *QInputEvent {
 	if h == nil {
 		return nil
 	}
-	return &QInputEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QInputEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQInputEvent_U(h unsafe.Pointer) *QInputEvent {
+func UnsafeNewQInputEvent(h unsafe.Pointer) *QInputEvent {
 	return newQInputEvent((*C.QInputEvent)(h))
 }
 
@@ -163,14 +171,21 @@ func (this *QEnterEvent) cPointer() *C.QEnterEvent {
 	return this.h
 }
 
+func (this *QEnterEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQEnterEvent(h *C.QEnterEvent) *QEnterEvent {
 	if h == nil {
 		return nil
 	}
-	return &QEnterEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QEnterEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQEnterEvent_U(h unsafe.Pointer) *QEnterEvent {
+func UnsafeNewQEnterEvent(h unsafe.Pointer) *QEnterEvent {
 	return newQEnterEvent((*C.QEnterEvent)(h))
 }
 
@@ -217,15 +232,15 @@ func (this *QEnterEvent) GlobalY() int {
 }
 
 func (this *QEnterEvent) LocalPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QEnterEvent_LocalPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_LocalPos(this.h)))
 }
 
 func (this *QEnterEvent) WindowPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QEnterEvent_WindowPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_WindowPos(this.h)))
 }
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QEnterEvent_ScreenPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QEnterEvent_ScreenPos(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -254,14 +269,21 @@ func (this *QMouseEvent) cPointer() *C.QMouseEvent {
 	return this.h
 }
 
+func (this *QMouseEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMouseEvent(h *C.QMouseEvent) *QMouseEvent {
 	if h == nil {
 		return nil
 	}
-	return &QMouseEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QMouseEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQMouseEvent_U(h unsafe.Pointer) *QMouseEvent {
+func UnsafeNewQMouseEvent(h unsafe.Pointer) *QMouseEvent {
 	return newQMouseEvent((*C.QMouseEvent)(h))
 }
 
@@ -326,15 +348,15 @@ func (this *QMouseEvent) GlobalY() int {
 }
 
 func (this *QMouseEvent) LocalPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QMouseEvent_LocalPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_LocalPos(this.h)))
 }
 
 func (this *QMouseEvent) WindowPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QMouseEvent_WindowPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_WindowPos(this.h)))
 }
 
 func (this *QMouseEvent) ScreenPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QMouseEvent_ScreenPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QMouseEvent_ScreenPos(this.h)))
 }
 
 func (this *QMouseEvent) Button() MouseButton {
@@ -383,14 +405,21 @@ func (this *QHoverEvent) cPointer() *C.QHoverEvent {
 	return this.h
 }
 
+func (this *QHoverEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHoverEvent(h *C.QHoverEvent) *QHoverEvent {
 	if h == nil {
 		return nil
 	}
-	return &QHoverEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QHoverEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQHoverEvent_U(h unsafe.Pointer) *QHoverEvent {
+func UnsafeNewQHoverEvent(h unsafe.Pointer) *QHoverEvent {
 	return newQHoverEvent((*C.QHoverEvent)(h))
 }
 
@@ -427,11 +456,11 @@ func (this *QHoverEvent) OldPos() *QPoint {
 }
 
 func (this *QHoverEvent) PosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QHoverEvent_PosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QHoverEvent_PosF(this.h)))
 }
 
 func (this *QHoverEvent) OldPosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QHoverEvent_OldPosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QHoverEvent_OldPosF(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -460,14 +489,21 @@ func (this *QWheelEvent) cPointer() *C.QWheelEvent {
 	return this.h
 }
 
+func (this *QWheelEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWheelEvent(h *C.QWheelEvent) *QWheelEvent {
 	if h == nil {
 		return nil
 	}
-	return &QWheelEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QWheelEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQWheelEvent_U(h unsafe.Pointer) *QWheelEvent {
+func UnsafeNewQWheelEvent(h unsafe.Pointer) *QWheelEvent {
 	return newQWheelEvent((*C.QWheelEvent)(h))
 }
 
@@ -590,11 +626,11 @@ func (this *QWheelEvent) GlobalY() int {
 }
 
 func (this *QWheelEvent) PosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QWheelEvent_PosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QWheelEvent_PosF(this.h)))
 }
 
 func (this *QWheelEvent) GlobalPosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QWheelEvent_GlobalPosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QWheelEvent_GlobalPosF(this.h)))
 }
 
 func (this *QWheelEvent) Position() *QPointF {
@@ -653,14 +689,21 @@ func (this *QTabletEvent) cPointer() *C.QTabletEvent {
 	return this.h
 }
 
+func (this *QTabletEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTabletEvent(h *C.QTabletEvent) *QTabletEvent {
 	if h == nil {
 		return nil
 	}
-	return &QTabletEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QTabletEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQTabletEvent_U(h unsafe.Pointer) *QTabletEvent {
+func UnsafeNewQTabletEvent(h unsafe.Pointer) *QTabletEvent {
 	return newQTabletEvent((*C.QTabletEvent)(h))
 }
 
@@ -697,11 +740,11 @@ func (this *QTabletEvent) GlobalPos() *QPoint {
 }
 
 func (this *QTabletEvent) PosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QTabletEvent_PosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QTabletEvent_PosF(this.h)))
 }
 
 func (this *QTabletEvent) GlobalPosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QTabletEvent_GlobalPosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QTabletEvent_GlobalPosF(this.h)))
 }
 
 func (this *QTabletEvent) X() int {
@@ -802,14 +845,21 @@ func (this *QNativeGestureEvent) cPointer() *C.QNativeGestureEvent {
 	return this.h
 }
 
+func (this *QNativeGestureEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQNativeGestureEvent(h *C.QNativeGestureEvent) *QNativeGestureEvent {
 	if h == nil {
 		return nil
 	}
-	return &QNativeGestureEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QNativeGestureEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQNativeGestureEvent_U(h unsafe.Pointer) *QNativeGestureEvent {
+func UnsafeNewQNativeGestureEvent(h unsafe.Pointer) *QNativeGestureEvent {
 	return newQNativeGestureEvent((*C.QNativeGestureEvent)(h))
 }
 
@@ -854,19 +904,19 @@ func (this *QNativeGestureEvent) GlobalPos() *QPoint {
 }
 
 func (this *QNativeGestureEvent) LocalPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QNativeGestureEvent_LocalPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_LocalPos(this.h)))
 }
 
 func (this *QNativeGestureEvent) WindowPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QNativeGestureEvent_WindowPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_WindowPos(this.h)))
 }
 
 func (this *QNativeGestureEvent) ScreenPos() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QNativeGestureEvent_ScreenPos(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QNativeGestureEvent_ScreenPos(this.h)))
 }
 
 func (this *QNativeGestureEvent) Device() *QTouchDevice {
-	return newQTouchDevice_U(unsafe.Pointer(C.QNativeGestureEvent_Device(this.h)))
+	return UnsafeNewQTouchDevice(unsafe.Pointer(C.QNativeGestureEvent_Device(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -895,14 +945,21 @@ func (this *QKeyEvent) cPointer() *C.QKeyEvent {
 	return this.h
 }
 
+func (this *QKeyEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQKeyEvent(h *C.QKeyEvent) *QKeyEvent {
 	if h == nil {
 		return nil
 	}
-	return &QKeyEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QKeyEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQKeyEvent_U(h unsafe.Pointer) *QKeyEvent {
+func UnsafeNewQKeyEvent(h unsafe.Pointer) *QKeyEvent {
 	return newQKeyEvent((*C.QKeyEvent)(h))
 }
 
@@ -926,7 +983,7 @@ func NewQKeyEvent3(param1 *QKeyEvent) *QKeyEvent {
 
 // NewQKeyEvent4 constructs a new QKeyEvent object.
 func NewQKeyEvent4(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new4((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms))
 	return newQKeyEvent(ret)
@@ -934,7 +991,7 @@ func NewQKeyEvent4(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 
 // NewQKeyEvent5 constructs a new QKeyEvent object.
 func NewQKeyEvent5(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string, autorep bool) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new5((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep))
 	return newQKeyEvent(ret)
@@ -942,7 +999,7 @@ func NewQKeyEvent5(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 
 // NewQKeyEvent6 constructs a new QKeyEvent object.
 func NewQKeyEvent6(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string, autorep bool, count uint16) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new6((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
@@ -950,7 +1007,7 @@ func NewQKeyEvent6(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 
 // NewQKeyEvent7 constructs a new QKeyEvent object.
 func NewQKeyEvent7(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new7((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms))
 	return newQKeyEvent(ret)
@@ -958,7 +1015,7 @@ func NewQKeyEvent7(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 
 // NewQKeyEvent8 constructs a new QKeyEvent object.
 func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new8((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep))
 	return newQKeyEvent(ret)
@@ -966,7 +1023,7 @@ func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 
 // NewQKeyEvent9 constructs a new QKeyEvent object.
 func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16) *QKeyEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QKeyEvent_new9((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
@@ -1037,14 +1094,21 @@ func (this *QFocusEvent) cPointer() *C.QFocusEvent {
 	return this.h
 }
 
+func (this *QFocusEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFocusEvent(h *C.QFocusEvent) *QFocusEvent {
 	if h == nil {
 		return nil
 	}
-	return &QFocusEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QFocusEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQFocusEvent_U(h unsafe.Pointer) *QFocusEvent {
+func UnsafeNewQFocusEvent(h unsafe.Pointer) *QFocusEvent {
 	return newQFocusEvent((*C.QFocusEvent)(h))
 }
 
@@ -1104,14 +1168,21 @@ func (this *QPaintEvent) cPointer() *C.QPaintEvent {
 	return this.h
 }
 
+func (this *QPaintEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPaintEvent(h *C.QPaintEvent) *QPaintEvent {
 	if h == nil {
 		return nil
 	}
-	return &QPaintEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QPaintEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQPaintEvent_U(h unsafe.Pointer) *QPaintEvent {
+func UnsafeNewQPaintEvent(h unsafe.Pointer) *QPaintEvent {
 	return newQPaintEvent((*C.QPaintEvent)(h))
 }
 
@@ -1134,11 +1205,11 @@ func NewQPaintEvent3(param1 *QPaintEvent) *QPaintEvent {
 }
 
 func (this *QPaintEvent) Rect() *QRect {
-	return newQRect_U(unsafe.Pointer(C.QPaintEvent_Rect(this.h)))
+	return UnsafeNewQRect(unsafe.Pointer(C.QPaintEvent_Rect(this.h)))
 }
 
 func (this *QPaintEvent) Region() *QRegion {
-	return newQRegion_U(unsafe.Pointer(C.QPaintEvent_Region(this.h)))
+	return UnsafeNewQRegion(unsafe.Pointer(C.QPaintEvent_Region(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1167,14 +1238,21 @@ func (this *QMoveEvent) cPointer() *C.QMoveEvent {
 	return this.h
 }
 
+func (this *QMoveEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMoveEvent(h *C.QMoveEvent) *QMoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QMoveEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QMoveEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQMoveEvent_U(h unsafe.Pointer) *QMoveEvent {
+func UnsafeNewQMoveEvent(h unsafe.Pointer) *QMoveEvent {
 	return newQMoveEvent((*C.QMoveEvent)(h))
 }
 
@@ -1191,11 +1269,11 @@ func NewQMoveEvent2(param1 *QMoveEvent) *QMoveEvent {
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QMoveEvent_Pos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_Pos(this.h)))
 }
 
 func (this *QMoveEvent) OldPos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QMoveEvent_OldPos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QMoveEvent_OldPos(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1224,14 +1302,21 @@ func (this *QExposeEvent) cPointer() *C.QExposeEvent {
 	return this.h
 }
 
+func (this *QExposeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQExposeEvent(h *C.QExposeEvent) *QExposeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QExposeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QExposeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQExposeEvent_U(h unsafe.Pointer) *QExposeEvent {
+func UnsafeNewQExposeEvent(h unsafe.Pointer) *QExposeEvent {
 	return newQExposeEvent((*C.QExposeEvent)(h))
 }
 
@@ -1248,7 +1333,7 @@ func NewQExposeEvent2(param1 *QExposeEvent) *QExposeEvent {
 }
 
 func (this *QExposeEvent) Region() *QRegion {
-	return newQRegion_U(unsafe.Pointer(C.QExposeEvent_Region(this.h)))
+	return UnsafeNewQRegion(unsafe.Pointer(C.QExposeEvent_Region(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1277,14 +1362,21 @@ func (this *QPlatformSurfaceEvent) cPointer() *C.QPlatformSurfaceEvent {
 	return this.h
 }
 
+func (this *QPlatformSurfaceEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPlatformSurfaceEvent(h *C.QPlatformSurfaceEvent) *QPlatformSurfaceEvent {
 	if h == nil {
 		return nil
 	}
-	return &QPlatformSurfaceEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QPlatformSurfaceEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQPlatformSurfaceEvent_U(h unsafe.Pointer) *QPlatformSurfaceEvent {
+func UnsafeNewQPlatformSurfaceEvent(h unsafe.Pointer) *QPlatformSurfaceEvent {
 	return newQPlatformSurfaceEvent((*C.QPlatformSurfaceEvent)(h))
 }
 
@@ -1330,14 +1422,21 @@ func (this *QResizeEvent) cPointer() *C.QResizeEvent {
 	return this.h
 }
 
+func (this *QResizeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQResizeEvent(h *C.QResizeEvent) *QResizeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QResizeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QResizeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQResizeEvent_U(h unsafe.Pointer) *QResizeEvent {
+func UnsafeNewQResizeEvent(h unsafe.Pointer) *QResizeEvent {
 	return newQResizeEvent((*C.QResizeEvent)(h))
 }
 
@@ -1354,11 +1453,11 @@ func NewQResizeEvent2(param1 *QResizeEvent) *QResizeEvent {
 }
 
 func (this *QResizeEvent) Size() *QSize {
-	return newQSize_U(unsafe.Pointer(C.QResizeEvent_Size(this.h)))
+	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_Size(this.h)))
 }
 
 func (this *QResizeEvent) OldSize() *QSize {
-	return newQSize_U(unsafe.Pointer(C.QResizeEvent_OldSize(this.h)))
+	return UnsafeNewQSize(unsafe.Pointer(C.QResizeEvent_OldSize(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1387,14 +1486,21 @@ func (this *QCloseEvent) cPointer() *C.QCloseEvent {
 	return this.h
 }
 
+func (this *QCloseEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCloseEvent(h *C.QCloseEvent) *QCloseEvent {
 	if h == nil {
 		return nil
 	}
-	return &QCloseEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QCloseEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQCloseEvent_U(h unsafe.Pointer) *QCloseEvent {
+func UnsafeNewQCloseEvent(h unsafe.Pointer) *QCloseEvent {
 	return newQCloseEvent((*C.QCloseEvent)(h))
 }
 
@@ -1440,14 +1546,21 @@ func (this *QIconDragEvent) cPointer() *C.QIconDragEvent {
 	return this.h
 }
 
+func (this *QIconDragEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIconDragEvent(h *C.QIconDragEvent) *QIconDragEvent {
 	if h == nil {
 		return nil
 	}
-	return &QIconDragEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QIconDragEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQIconDragEvent_U(h unsafe.Pointer) *QIconDragEvent {
+func UnsafeNewQIconDragEvent(h unsafe.Pointer) *QIconDragEvent {
 	return newQIconDragEvent((*C.QIconDragEvent)(h))
 }
 
@@ -1493,14 +1606,21 @@ func (this *QShowEvent) cPointer() *C.QShowEvent {
 	return this.h
 }
 
+func (this *QShowEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQShowEvent(h *C.QShowEvent) *QShowEvent {
 	if h == nil {
 		return nil
 	}
-	return &QShowEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QShowEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQShowEvent_U(h unsafe.Pointer) *QShowEvent {
+func UnsafeNewQShowEvent(h unsafe.Pointer) *QShowEvent {
 	return newQShowEvent((*C.QShowEvent)(h))
 }
 
@@ -1546,14 +1666,21 @@ func (this *QHideEvent) cPointer() *C.QHideEvent {
 	return this.h
 }
 
+func (this *QHideEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHideEvent(h *C.QHideEvent) *QHideEvent {
 	if h == nil {
 		return nil
 	}
-	return &QHideEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QHideEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQHideEvent_U(h unsafe.Pointer) *QHideEvent {
+func UnsafeNewQHideEvent(h unsafe.Pointer) *QHideEvent {
 	return newQHideEvent((*C.QHideEvent)(h))
 }
 
@@ -1599,14 +1726,21 @@ func (this *QContextMenuEvent) cPointer() *C.QContextMenuEvent {
 	return this.h
 }
 
+func (this *QContextMenuEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQContextMenuEvent(h *C.QContextMenuEvent) *QContextMenuEvent {
 	if h == nil {
 		return nil
 	}
-	return &QContextMenuEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QContextMenuEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQContextMenuEvent_U(h unsafe.Pointer) *QContextMenuEvent {
+func UnsafeNewQContextMenuEvent(h unsafe.Pointer) *QContextMenuEvent {
 	return newQContextMenuEvent((*C.QContextMenuEvent)(h))
 }
 
@@ -1651,11 +1785,11 @@ func (this *QContextMenuEvent) GlobalY() int {
 }
 
 func (this *QContextMenuEvent) Pos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QContextMenuEvent_Pos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_Pos(this.h)))
 }
 
 func (this *QContextMenuEvent) GlobalPos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QContextMenuEvent_GlobalPos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QContextMenuEvent_GlobalPos(this.h)))
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
@@ -1688,14 +1822,21 @@ func (this *QInputMethodEvent) cPointer() *C.QInputMethodEvent {
 	return this.h
 }
 
+func (this *QInputMethodEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInputMethodEvent(h *C.QInputMethodEvent) *QInputMethodEvent {
 	if h == nil {
 		return nil
 	}
-	return &QInputMethodEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QInputMethodEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQInputMethodEvent_U(h unsafe.Pointer) *QInputMethodEvent {
+func UnsafeNewQInputMethodEvent(h unsafe.Pointer) *QInputMethodEvent {
 	return newQInputMethodEvent((*C.QInputMethodEvent)(h))
 }
 
@@ -1707,7 +1848,7 @@ func NewQInputMethodEvent() *QInputMethodEvent {
 
 // NewQInputMethodEvent2 constructs a new QInputMethodEvent object.
 func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__Attribute) *QInputMethodEvent {
-	preeditText_ms := miqt_strdupg(preeditText)
+	preeditText_ms := libmiqt.Strdupg(preeditText)
 	defer C.free(preeditText_ms)
 	// For the C ABI, malloc a C array of raw pointers
 	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
@@ -1728,7 +1869,7 @@ func NewQInputMethodEvent3(other *QInputMethodEvent) *QInputMethodEvent {
 }
 
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
-	commitString_ms := miqt_strdupg(commitString)
+	commitString_ms := libmiqt.Strdupg(commitString)
 	defer C.free(commitString_ms)
 	C.QInputMethodEvent_SetCommitString(this.h, (*C.struct_miqt_string)(commitString_ms))
 }
@@ -1770,13 +1911,13 @@ func (this *QInputMethodEvent) ReplacementLength() int {
 }
 
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
-	commitString_ms := miqt_strdupg(commitString)
+	commitString_ms := libmiqt.Strdupg(commitString)
 	defer C.free(commitString_ms)
 	C.QInputMethodEvent_SetCommitString2(this.h, (*C.struct_miqt_string)(commitString_ms), (C.int)(replaceFrom))
 }
 
 func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom int, replaceLength int) {
-	commitString_ms := miqt_strdupg(commitString)
+	commitString_ms := libmiqt.Strdupg(commitString)
 	defer C.free(commitString_ms)
 	C.QInputMethodEvent_SetCommitString3(this.h, (*C.struct_miqt_string)(commitString_ms), (C.int)(replaceFrom), (C.int)(replaceLength))
 }
@@ -1807,14 +1948,21 @@ func (this *QInputMethodQueryEvent) cPointer() *C.QInputMethodQueryEvent {
 	return this.h
 }
 
+func (this *QInputMethodQueryEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInputMethodQueryEvent(h *C.QInputMethodQueryEvent) *QInputMethodQueryEvent {
 	if h == nil {
 		return nil
 	}
-	return &QInputMethodQueryEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QInputMethodQueryEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQInputMethodQueryEvent_U(h unsafe.Pointer) *QInputMethodQueryEvent {
+func UnsafeNewQInputMethodQueryEvent(h unsafe.Pointer) *QInputMethodQueryEvent {
 	return newQInputMethodQueryEvent((*C.QInputMethodQueryEvent)(h))
 }
 
@@ -1871,14 +2019,21 @@ func (this *QDropEvent) cPointer() *C.QDropEvent {
 	return this.h
 }
 
+func (this *QDropEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDropEvent(h *C.QDropEvent) *QDropEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDropEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QDropEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQDropEvent_U(h unsafe.Pointer) *QDropEvent {
+func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 	return newQDropEvent((*C.QDropEvent)(h))
 }
 
@@ -1908,7 +2063,7 @@ func (this *QDropEvent) Pos() *QPoint {
 }
 
 func (this *QDropEvent) PosF() *QPointF {
-	return newQPointF_U(unsafe.Pointer(C.QDropEvent_PosF(this.h)))
+	return UnsafeNewQPointF(unsafe.Pointer(C.QDropEvent_PosF(this.h)))
 }
 
 func (this *QDropEvent) MouseButtons() MouseButton {
@@ -1940,11 +2095,11 @@ func (this *QDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QDropEvent) Source() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QDropEvent_Source(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QDropEvent_Source(this.h)))
 }
 
 func (this *QDropEvent) MimeData() *QMimeData {
-	return newQMimeData_U(unsafe.Pointer(C.QDropEvent_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QDropEvent_MimeData(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1973,14 +2128,21 @@ func (this *QDragMoveEvent) cPointer() *C.QDragMoveEvent {
 	return this.h
 }
 
+func (this *QDragMoveEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDragMoveEvent(h *C.QDragMoveEvent) *QDragMoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDragMoveEvent{h: h, QDropEvent: newQDropEvent_U(unsafe.Pointer(h))}
+	return &QDragMoveEvent{h: h, QDropEvent: UnsafeNewQDropEvent(unsafe.Pointer(h))}
 }
 
-func newQDragMoveEvent_U(h unsafe.Pointer) *QDragMoveEvent {
+func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 	return newQDragMoveEvent((*C.QDragMoveEvent)(h))
 }
 
@@ -2051,14 +2213,21 @@ func (this *QDragEnterEvent) cPointer() *C.QDragEnterEvent {
 	return this.h
 }
 
+func (this *QDragEnterEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDragEnterEvent(h *C.QDragEnterEvent) *QDragEnterEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDragEnterEvent{h: h, QDragMoveEvent: newQDragMoveEvent_U(unsafe.Pointer(h))}
+	return &QDragEnterEvent{h: h, QDragMoveEvent: UnsafeNewQDragMoveEvent(unsafe.Pointer(h))}
 }
 
-func newQDragEnterEvent_U(h unsafe.Pointer) *QDragEnterEvent {
+func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 	return newQDragEnterEvent((*C.QDragEnterEvent)(h))
 }
 
@@ -2104,14 +2273,21 @@ func (this *QDragLeaveEvent) cPointer() *C.QDragLeaveEvent {
 	return this.h
 }
 
+func (this *QDragLeaveEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDragLeaveEvent(h *C.QDragLeaveEvent) *QDragLeaveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QDragLeaveEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QDragLeaveEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQDragLeaveEvent_U(h unsafe.Pointer) *QDragLeaveEvent {
+func UnsafeNewQDragLeaveEvent(h unsafe.Pointer) *QDragLeaveEvent {
 	return newQDragLeaveEvent((*C.QDragLeaveEvent)(h))
 }
 
@@ -2157,14 +2333,21 @@ func (this *QHelpEvent) cPointer() *C.QHelpEvent {
 	return this.h
 }
 
+func (this *QHelpEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHelpEvent(h *C.QHelpEvent) *QHelpEvent {
 	if h == nil {
 		return nil
 	}
-	return &QHelpEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QHelpEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQHelpEvent_U(h unsafe.Pointer) *QHelpEvent {
+func UnsafeNewQHelpEvent(h unsafe.Pointer) *QHelpEvent {
 	return newQHelpEvent((*C.QHelpEvent)(h))
 }
 
@@ -2197,11 +2380,11 @@ func (this *QHelpEvent) GlobalY() int {
 }
 
 func (this *QHelpEvent) Pos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QHelpEvent_Pos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_Pos(this.h)))
 }
 
 func (this *QHelpEvent) GlobalPos() *QPoint {
-	return newQPoint_U(unsafe.Pointer(C.QHelpEvent_GlobalPos(this.h)))
+	return UnsafeNewQPoint(unsafe.Pointer(C.QHelpEvent_GlobalPos(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -2230,20 +2413,27 @@ func (this *QStatusTipEvent) cPointer() *C.QStatusTipEvent {
 	return this.h
 }
 
+func (this *QStatusTipEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStatusTipEvent(h *C.QStatusTipEvent) *QStatusTipEvent {
 	if h == nil {
 		return nil
 	}
-	return &QStatusTipEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QStatusTipEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQStatusTipEvent_U(h unsafe.Pointer) *QStatusTipEvent {
+func UnsafeNewQStatusTipEvent(h unsafe.Pointer) *QStatusTipEvent {
 	return newQStatusTipEvent((*C.QStatusTipEvent)(h))
 }
 
 // NewQStatusTipEvent constructs a new QStatusTipEvent object.
 func NewQStatusTipEvent(tip string) *QStatusTipEvent {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	ret := C.QStatusTipEvent_new((*C.struct_miqt_string)(tip_ms))
 	return newQStatusTipEvent(ret)
@@ -2288,20 +2478,27 @@ func (this *QWhatsThisClickedEvent) cPointer() *C.QWhatsThisClickedEvent {
 	return this.h
 }
 
+func (this *QWhatsThisClickedEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWhatsThisClickedEvent(h *C.QWhatsThisClickedEvent) *QWhatsThisClickedEvent {
 	if h == nil {
 		return nil
 	}
-	return &QWhatsThisClickedEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QWhatsThisClickedEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQWhatsThisClickedEvent_U(h unsafe.Pointer) *QWhatsThisClickedEvent {
+func UnsafeNewQWhatsThisClickedEvent(h unsafe.Pointer) *QWhatsThisClickedEvent {
 	return newQWhatsThisClickedEvent((*C.QWhatsThisClickedEvent)(h))
 }
 
 // NewQWhatsThisClickedEvent constructs a new QWhatsThisClickedEvent object.
 func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
-	href_ms := miqt_strdupg(href)
+	href_ms := libmiqt.Strdupg(href)
 	defer C.free(href_ms)
 	ret := C.QWhatsThisClickedEvent_new((*C.struct_miqt_string)(href_ms))
 	return newQWhatsThisClickedEvent(ret)
@@ -2346,14 +2543,21 @@ func (this *QActionEvent) cPointer() *C.QActionEvent {
 	return this.h
 }
 
+func (this *QActionEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQActionEvent(h *C.QActionEvent) *QActionEvent {
 	if h == nil {
 		return nil
 	}
-	return &QActionEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QActionEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQActionEvent_U(h unsafe.Pointer) *QActionEvent {
+func UnsafeNewQActionEvent(h unsafe.Pointer) *QActionEvent {
 	return newQActionEvent((*C.QActionEvent)(h))
 }
 
@@ -2376,11 +2580,11 @@ func NewQActionEvent3(typeVal int, action *QAction, before *QAction) *QActionEve
 }
 
 func (this *QActionEvent) Action() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QActionEvent_Action(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Action(this.h)))
 }
 
 func (this *QActionEvent) Before() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QActionEvent_Before(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QActionEvent_Before(this.h)))
 }
 
 func (this *QActionEvent) OperatorAssign(param1 *QActionEvent) {
@@ -2413,20 +2617,27 @@ func (this *QFileOpenEvent) cPointer() *C.QFileOpenEvent {
 	return this.h
 }
 
+func (this *QFileOpenEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileOpenEvent(h *C.QFileOpenEvent) *QFileOpenEvent {
 	if h == nil {
 		return nil
 	}
-	return &QFileOpenEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QFileOpenEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQFileOpenEvent_U(h unsafe.Pointer) *QFileOpenEvent {
+func UnsafeNewQFileOpenEvent(h unsafe.Pointer) *QFileOpenEvent {
 	return newQFileOpenEvent((*C.QFileOpenEvent)(h))
 }
 
 // NewQFileOpenEvent constructs a new QFileOpenEvent object.
 func NewQFileOpenEvent(file string) *QFileOpenEvent {
-	file_ms := miqt_strdupg(file)
+	file_ms := libmiqt.Strdupg(file)
 	defer C.free(file_ms)
 	ret := C.QFileOpenEvent_new((*C.struct_miqt_string)(file_ms))
 	return newQFileOpenEvent(ret)
@@ -2488,14 +2699,21 @@ func (this *QToolBarChangeEvent) cPointer() *C.QToolBarChangeEvent {
 	return this.h
 }
 
+func (this *QToolBarChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQToolBarChangeEvent(h *C.QToolBarChangeEvent) *QToolBarChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QToolBarChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QToolBarChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQToolBarChangeEvent_U(h unsafe.Pointer) *QToolBarChangeEvent {
+func UnsafeNewQToolBarChangeEvent(h unsafe.Pointer) *QToolBarChangeEvent {
 	return newQToolBarChangeEvent((*C.QToolBarChangeEvent)(h))
 }
 
@@ -2541,14 +2759,21 @@ func (this *QShortcutEvent) cPointer() *C.QShortcutEvent {
 	return this.h
 }
 
+func (this *QShortcutEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQShortcutEvent(h *C.QShortcutEvent) *QShortcutEvent {
 	if h == nil {
 		return nil
 	}
-	return &QShortcutEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QShortcutEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQShortcutEvent_U(h unsafe.Pointer) *QShortcutEvent {
+func UnsafeNewQShortcutEvent(h unsafe.Pointer) *QShortcutEvent {
 	return newQShortcutEvent((*C.QShortcutEvent)(h))
 }
 
@@ -2571,7 +2796,7 @@ func NewQShortcutEvent3(key *QKeySequence, id int, ambiguous bool) *QShortcutEve
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
-	return newQKeySequence_U(unsafe.Pointer(C.QShortcutEvent_Key(this.h)))
+	return UnsafeNewQKeySequence(unsafe.Pointer(C.QShortcutEvent_Key(this.h)))
 }
 
 func (this *QShortcutEvent) ShortcutId() int {
@@ -2608,14 +2833,21 @@ func (this *QWindowStateChangeEvent) cPointer() *C.QWindowStateChangeEvent {
 	return this.h
 }
 
+func (this *QWindowStateChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWindowStateChangeEvent(h *C.QWindowStateChangeEvent) *QWindowStateChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QWindowStateChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QWindowStateChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQWindowStateChangeEvent_U(h unsafe.Pointer) *QWindowStateChangeEvent {
+func UnsafeNewQWindowStateChangeEvent(h unsafe.Pointer) *QWindowStateChangeEvent {
 	return newQWindowStateChangeEvent((*C.QWindowStateChangeEvent)(h))
 }
 
@@ -2670,6 +2902,13 @@ func (this *QPointingDeviceUniqueId) cPointer() *C.QPointingDeviceUniqueId {
 	return this.h
 }
 
+func (this *QPointingDeviceUniqueId) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPointingDeviceUniqueId(h *C.QPointingDeviceUniqueId) *QPointingDeviceUniqueId {
 	if h == nil {
 		return nil
@@ -2677,7 +2916,7 @@ func newQPointingDeviceUniqueId(h *C.QPointingDeviceUniqueId) *QPointingDeviceUn
 	return &QPointingDeviceUniqueId{h: h}
 }
 
-func newQPointingDeviceUniqueId_U(h unsafe.Pointer) *QPointingDeviceUniqueId {
+func UnsafeNewQPointingDeviceUniqueId(h unsafe.Pointer) *QPointingDeviceUniqueId {
 	return newQPointingDeviceUniqueId((*C.QPointingDeviceUniqueId)(h))
 }
 
@@ -2734,14 +2973,21 @@ func (this *QTouchEvent) cPointer() *C.QTouchEvent {
 	return this.h
 }
 
+func (this *QTouchEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTouchEvent(h *C.QTouchEvent) *QTouchEvent {
 	if h == nil {
 		return nil
 	}
-	return &QTouchEvent{h: h, QInputEvent: newQInputEvent_U(unsafe.Pointer(h))}
+	return &QTouchEvent{h: h, QInputEvent: UnsafeNewQInputEvent(unsafe.Pointer(h))}
 }
 
-func newQTouchEvent_U(h unsafe.Pointer) *QTouchEvent {
+func UnsafeNewQTouchEvent(h unsafe.Pointer) *QTouchEvent {
 	return newQTouchEvent((*C.QTouchEvent)(h))
 }
 
@@ -2790,11 +3036,11 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 }
 
 func (this *QTouchEvent) Window() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QTouchEvent_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QTouchEvent_Window(this.h)))
 }
 
 func (this *QTouchEvent) Target() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QTouchEvent_Target(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QTouchEvent_Target(this.h)))
 }
 
 func (this *QTouchEvent) TouchPointStates() TouchPointState {
@@ -2816,7 +3062,7 @@ func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
 }
 
 func (this *QTouchEvent) Device() *QTouchDevice {
-	return newQTouchDevice_U(unsafe.Pointer(C.QTouchEvent_Device(this.h)))
+	return UnsafeNewQTouchDevice(unsafe.Pointer(C.QTouchEvent_Device(this.h)))
 }
 
 func (this *QTouchEvent) SetWindow(awindow *QWindow) {
@@ -2873,14 +3119,21 @@ func (this *QScrollPrepareEvent) cPointer() *C.QScrollPrepareEvent {
 	return this.h
 }
 
+func (this *QScrollPrepareEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScrollPrepareEvent(h *C.QScrollPrepareEvent) *QScrollPrepareEvent {
 	if h == nil {
 		return nil
 	}
-	return &QScrollPrepareEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QScrollPrepareEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQScrollPrepareEvent_U(h unsafe.Pointer) *QScrollPrepareEvent {
+func UnsafeNewQScrollPrepareEvent(h unsafe.Pointer) *QScrollPrepareEvent {
 	return newQScrollPrepareEvent((*C.QScrollPrepareEvent)(h))
 }
 
@@ -2962,14 +3215,21 @@ func (this *QScrollEvent) cPointer() *C.QScrollEvent {
 	return this.h
 }
 
+func (this *QScrollEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScrollEvent(h *C.QScrollEvent) *QScrollEvent {
 	if h == nil {
 		return nil
 	}
-	return &QScrollEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QScrollEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQScrollEvent_U(h unsafe.Pointer) *QScrollEvent {
+func UnsafeNewQScrollEvent(h unsafe.Pointer) *QScrollEvent {
 	return newQScrollEvent((*C.QScrollEvent)(h))
 }
 
@@ -3029,14 +3289,21 @@ func (this *QScreenOrientationChangeEvent) cPointer() *C.QScreenOrientationChang
 	return this.h
 }
 
+func (this *QScreenOrientationChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScreenOrientationChangeEvent(h *C.QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QScreenOrientationChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QScreenOrientationChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQScreenOrientationChangeEvent_U(h unsafe.Pointer) *QScreenOrientationChangeEvent {
+func UnsafeNewQScreenOrientationChangeEvent(h unsafe.Pointer) *QScreenOrientationChangeEvent {
 	return newQScreenOrientationChangeEvent((*C.QScreenOrientationChangeEvent)(h))
 }
 
@@ -3053,7 +3320,7 @@ func NewQScreenOrientationChangeEvent2(param1 *QScreenOrientationChangeEvent) *Q
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
-	return newQScreen_U(unsafe.Pointer(C.QScreenOrientationChangeEvent_Screen(this.h)))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QScreenOrientationChangeEvent_Screen(this.h)))
 }
 
 func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
@@ -3086,14 +3353,21 @@ func (this *QApplicationStateChangeEvent) cPointer() *C.QApplicationStateChangeE
 	return this.h
 }
 
+func (this *QApplicationStateChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQApplicationStateChangeEvent(h *C.QApplicationStateChangeEvent) *QApplicationStateChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QApplicationStateChangeEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QApplicationStateChangeEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQApplicationStateChangeEvent_U(h unsafe.Pointer) *QApplicationStateChangeEvent {
+func UnsafeNewQApplicationStateChangeEvent(h unsafe.Pointer) *QApplicationStateChangeEvent {
 	return newQApplicationStateChangeEvent((*C.QApplicationStateChangeEvent)(h))
 }
 
@@ -3138,6 +3412,13 @@ func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attri
 	return this.h
 }
 
+func (this *QInputMethodEvent__Attribute) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInputMethodEvent__Attribute(h *C.QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
 	if h == nil {
 		return nil
@@ -3145,7 +3426,7 @@ func newQInputMethodEvent__Attribute(h *C.QInputMethodEvent__Attribute) *QInputM
 	return &QInputMethodEvent__Attribute{h: h}
 }
 
-func newQInputMethodEvent__Attribute_U(h unsafe.Pointer) *QInputMethodEvent__Attribute {
+func UnsafeNewQInputMethodEvent__Attribute(h unsafe.Pointer) *QInputMethodEvent__Attribute {
 	return newQInputMethodEvent__Attribute((*C.QInputMethodEvent__Attribute)(h))
 }
 
@@ -3196,6 +3477,13 @@ func (this *QTouchEvent__TouchPoint) cPointer() *C.QTouchEvent__TouchPoint {
 	return this.h
 }
 
+func (this *QTouchEvent__TouchPoint) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTouchEvent__TouchPoint(h *C.QTouchEvent__TouchPoint) *QTouchEvent__TouchPoint {
 	if h == nil {
 		return nil
@@ -3203,7 +3491,7 @@ func newQTouchEvent__TouchPoint(h *C.QTouchEvent__TouchPoint) *QTouchEvent__Touc
 	return &QTouchEvent__TouchPoint{h: h}
 }
 
-func newQTouchEvent__TouchPoint_U(h unsafe.Pointer) *QTouchEvent__TouchPoint {
+func UnsafeNewQTouchEvent__TouchPoint(h unsafe.Pointer) *QTouchEvent__TouchPoint {
 	return newQTouchEvent__TouchPoint((*C.QTouchEvent__TouchPoint)(h))
 }
 

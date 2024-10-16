@@ -25,14 +25,21 @@ func (this *QTransposeProxyModel) cPointer() *C.QTransposeProxyModel {
 	return this.h
 }
 
+func (this *QTransposeProxyModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTransposeProxyModel(h *C.QTransposeProxyModel) *QTransposeProxyModel {
 	if h == nil {
 		return nil
 	}
-	return &QTransposeProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
+	return &QTransposeProxyModel{h: h, QAbstractProxyModel: UnsafeNewQAbstractProxyModel(unsafe.Pointer(h))}
 }
 
-func newQTransposeProxyModel_U(h unsafe.Pointer) *QTransposeProxyModel {
+func UnsafeNewQTransposeProxyModel(h unsafe.Pointer) *QTransposeProxyModel {
 	return newQTransposeProxyModel((*C.QTransposeProxyModel)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQTransposeProxyModel2(parent *QObject) *QTransposeProxyModel {
 }
 
 func (this *QTransposeProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTransposeProxyModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTransposeProxyModel_MetaObject(this.h)))
 }
 
 func (this *QTransposeProxyModel) Metacast(param1 string) unsafe.Pointer {

@@ -7,7 +7,7 @@
 #include <QWidget>
 #include <QWidgetItem>
 #include <QWidgetItemV2>
-#include "qlayoutitem.h"
+#include <qlayoutitem.h>
 #include "gen_qlayoutitem.h"
 #include "_cgo_export.h"
 

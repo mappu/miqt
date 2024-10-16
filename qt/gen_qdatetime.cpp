@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QTime>
 #include <QTimeZone>
-#include "qdatetime.h"
+#include <qdatetime.h>
 #include "gen_qdatetime.h"
 #include "_cgo_export.h"
 

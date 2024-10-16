@@ -7,7 +7,7 @@
 #include <QUndoStack>
 #include <QUndoView>
 #include <QWidget>
-#include "qundoview.h"
+#include <qundoview.h>
 #include "gen_qundoview.h"
 #include "_cgo_export.h"
 

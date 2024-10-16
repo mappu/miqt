@@ -16,7 +16,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextLayout__FormatRange
 #include <QTextLine>
 #include <QTextOption>
-#include "qtextlayout.h"
+#include <qtextlayout.h>
 #include "gen_qtextlayout.h"
 #include "_cgo_export.h"
 

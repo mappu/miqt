@@ -8,7 +8,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qabstracttransition.h"
+#include <qabstracttransition.h>
 #include "gen_qabstracttransition.h"
 #include "_cgo_export.h"
 
@@ -60,7 +60,7 @@ struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* s
 }
 
 void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array* /* of QAbstractState* */ targets) {
-	QList<QAbstractState*> targets_QList;
+	QList<QAbstractState *> targets_QList;
 	targets_QList.reserve(targets->len);
 	QAbstractState** targets_arr = static_cast<QAbstractState**>(targets->data);
 	for(size_t i = 0; i < targets->len; ++i) {

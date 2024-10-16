@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -36,6 +37,13 @@ func (this *QJsonValue) cPointer() *C.QJsonValue {
 	return this.h
 }
 
+func (this *QJsonValue) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonValue(h *C.QJsonValue) *QJsonValue {
 	if h == nil {
 		return nil
@@ -43,7 +51,7 @@ func newQJsonValue(h *C.QJsonValue) *QJsonValue {
 	return &QJsonValue{h: h}
 }
 
-func newQJsonValue_U(h unsafe.Pointer) *QJsonValue {
+func UnsafeNewQJsonValue(h unsafe.Pointer) *QJsonValue {
 	return newQJsonValue((*C.QJsonValue)(h))
 }
 
@@ -79,7 +87,7 @@ func NewQJsonValue5(v int64) *QJsonValue {
 
 // NewQJsonValue6 constructs a new QJsonValue object.
 func NewQJsonValue6(s string) *QJsonValue {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	ret := C.QJsonValue_new6((*C.struct_miqt_string)(s_ms))
 	return newQJsonValue(ret)
@@ -191,7 +199,7 @@ func (this *QJsonValue) ToString() string {
 }
 
 func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_ms := miqt_strdupg(defaultValue)
+	defaultValue_ms := libmiqt.Strdupg(defaultValue)
 	defer C.free(defaultValue_ms)
 	var _ms *C.struct_miqt_string = C.QJsonValue_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -228,7 +236,7 @@ func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJs
 }
 
 func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QJsonValue_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQJsonValue(_ret)
@@ -288,6 +296,13 @@ func (this *QJsonValueRef) cPointer() *C.QJsonValueRef {
 	return this.h
 }
 
+func (this *QJsonValueRef) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
 	if h == nil {
 		return nil
@@ -295,7 +310,7 @@ func newQJsonValueRef(h *C.QJsonValueRef) *QJsonValueRef {
 	return &QJsonValueRef{h: h}
 }
 
-func newQJsonValueRef_U(h unsafe.Pointer) *QJsonValueRef {
+func UnsafeNewQJsonValueRef(h unsafe.Pointer) *QJsonValueRef {
 	return newQJsonValueRef((*C.QJsonValueRef)(h))
 }
 
@@ -410,7 +425,7 @@ func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float6
 }
 
 func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_ms := miqt_strdupg(defaultValue)
+	defaultValue_ms := libmiqt.Strdupg(defaultValue)
 	defer C.free(defaultValue_ms)
 	var _ms *C.struct_miqt_string = C.QJsonValueRef_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -451,6 +466,13 @@ func (this *QJsonValuePtr) cPointer() *C.QJsonValuePtr {
 	return this.h
 }
 
+func (this *QJsonValuePtr) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonValuePtr(h *C.QJsonValuePtr) *QJsonValuePtr {
 	if h == nil {
 		return nil
@@ -458,7 +480,7 @@ func newQJsonValuePtr(h *C.QJsonValuePtr) *QJsonValuePtr {
 	return &QJsonValuePtr{h: h}
 }
 
-func newQJsonValuePtr_U(h unsafe.Pointer) *QJsonValuePtr {
+func UnsafeNewQJsonValuePtr(h unsafe.Pointer) *QJsonValuePtr {
 	return newQJsonValuePtr((*C.QJsonValuePtr)(h))
 }
 
@@ -475,11 +497,11 @@ func NewQJsonValuePtr2(param1 *QJsonValuePtr) *QJsonValuePtr {
 }
 
 func (this *QJsonValuePtr) OperatorMultiply() *QJsonValue {
-	return newQJsonValue_U(unsafe.Pointer(C.QJsonValuePtr_OperatorMultiply(this.h)))
+	return UnsafeNewQJsonValue(unsafe.Pointer(C.QJsonValuePtr_OperatorMultiply(this.h)))
 }
 
 func (this *QJsonValuePtr) OperatorMinusGreater() *QJsonValue {
-	return newQJsonValue_U(unsafe.Pointer(C.QJsonValuePtr_OperatorMinusGreater(this.h)))
+	return UnsafeNewQJsonValue(unsafe.Pointer(C.QJsonValuePtr_OperatorMinusGreater(this.h)))
 }
 
 func (this *QJsonValuePtr) OperatorAssign(param1 *QJsonValuePtr) {
@@ -511,6 +533,13 @@ func (this *QJsonValueRefPtr) cPointer() *C.QJsonValueRefPtr {
 	return this.h
 }
 
+func (this *QJsonValueRefPtr) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonValueRefPtr(h *C.QJsonValueRefPtr) *QJsonValueRefPtr {
 	if h == nil {
 		return nil
@@ -518,7 +547,7 @@ func newQJsonValueRefPtr(h *C.QJsonValueRefPtr) *QJsonValueRefPtr {
 	return &QJsonValueRefPtr{h: h}
 }
 
-func newQJsonValueRefPtr_U(h unsafe.Pointer) *QJsonValueRefPtr {
+func UnsafeNewQJsonValueRefPtr(h unsafe.Pointer) *QJsonValueRefPtr {
 	return newQJsonValueRefPtr((*C.QJsonValueRefPtr)(h))
 }
 
@@ -541,11 +570,11 @@ func NewQJsonValueRefPtr3(param1 *QJsonValueRefPtr) *QJsonValueRefPtr {
 }
 
 func (this *QJsonValueRefPtr) OperatorMultiply() *QJsonValueRef {
-	return newQJsonValueRef_U(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMultiply(this.h)))
+	return UnsafeNewQJsonValueRef(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMultiply(this.h)))
 }
 
 func (this *QJsonValueRefPtr) OperatorMinusGreater() *QJsonValueRef {
-	return newQJsonValueRef_U(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMinusGreater(this.h)))
+	return UnsafeNewQJsonValueRef(unsafe.Pointer(C.QJsonValueRefPtr_OperatorMinusGreater(this.h)))
 }
 
 func (this *QJsonValueRefPtr) OperatorAssign(param1 *QJsonValueRefPtr) {

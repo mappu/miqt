@@ -24,6 +24,13 @@ func (this *QMatrix) cPointer() *C.QMatrix {
 	return this.h
 }
 
+func (this *QMatrix) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMatrix(h *C.QMatrix) *QMatrix {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQMatrix(h *C.QMatrix) *QMatrix {
 	return &QMatrix{h: h}
 }
 
-func newQMatrix_U(h unsafe.Pointer) *QMatrix {
+func UnsafeNewQMatrix(h unsafe.Pointer) *QMatrix {
 	return newQMatrix((*C.QMatrix)(h))
 }
 
@@ -164,19 +171,19 @@ func (this *QMatrix) IsIdentity() bool {
 }
 
 func (this *QMatrix) Translate(dx float64, dy float64) *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Translate(this.h, (C.double)(dx), (C.double)(dy))))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QMatrix_Translate(this.h, (C.double)(dx), (C.double)(dy))))
 }
 
 func (this *QMatrix) Scale(sx float64, sy float64) *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Scale(this.h, (C.double)(sx), (C.double)(sy))))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QMatrix_Scale(this.h, (C.double)(sx), (C.double)(sy))))
 }
 
 func (this *QMatrix) Shear(sh float64, sv float64) *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Shear(this.h, (C.double)(sh), (C.double)(sv))))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QMatrix_Shear(this.h, (C.double)(sh), (C.double)(sv))))
 }
 
 func (this *QMatrix) Rotate(a float64) *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QMatrix_Rotate(this.h, (C.double)(a))))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QMatrix_Rotate(this.h, (C.double)(a))))
 }
 
 func (this *QMatrix) IsInvertible() bool {
@@ -203,7 +210,7 @@ func (this *QMatrix) OperatorNotEqual(param1 *QMatrix) bool {
 }
 
 func (this *QMatrix) OperatorMultiplyAssign(param1 *QMatrix) *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QMatrix_OperatorMultiplyAssign(this.h, param1.cPointer())))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QMatrix_OperatorMultiplyAssign(this.h, param1.cPointer())))
 }
 
 func (this *QMatrix) OperatorMultiply(o *QMatrix) *QMatrix {

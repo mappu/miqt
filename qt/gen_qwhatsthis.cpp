@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QWhatsThis>
 #include <QWidget>
-#include "qwhatsthis.h"
+#include <qwhatsthis.h>
 #include "gen_qwhatsthis.h"
 #include "_cgo_export.h"
 

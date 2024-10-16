@@ -1,5 +1,5 @@
 #include <QSurfaceFormat>
-#include "qsurfaceformat.h"
+#include <qsurfaceformat.h>
 #include "gen_qsurfaceformat.h"
 #include "_cgo_export.h"
 

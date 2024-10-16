@@ -1,5 +1,5 @@
 #include <QDeadlineTimer>
-#include "qdeadlinetimer.h"
+#include <qdeadlinetimer.h>
 #include "gen_qdeadlinetimer.h"
 #include "_cgo_export.h"
 

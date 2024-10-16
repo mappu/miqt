@@ -2,7 +2,7 @@
 #include <QItemEditorCreatorBase>
 #include <QItemEditorFactory>
 #include <QWidget>
-#include "qitemeditorfactory.h"
+#include <qitemeditorfactory.h>
 #include "gen_qitemeditorfactory.h"
 #include "_cgo_export.h"
 

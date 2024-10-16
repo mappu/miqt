@@ -1,6 +1,6 @@
 #include <QBasicTimer>
 #include <QObject>
-#include "qbasictimer.h"
+#include <qbasictimer.h>
 #include "gen_qbasictimer.h"
 #include "_cgo_export.h"
 

@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qfontdialog.h"
+#include <qfontdialog.h>
 #include "gen_qfontdialog.h"
 #include "_cgo_export.h"
 

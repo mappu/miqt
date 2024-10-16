@@ -41,6 +41,13 @@ func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
 	return this.h
 }
 
+func (this *QItemSelectionRange) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	if h == nil {
 		return nil
@@ -48,7 +55,7 @@ func newQItemSelectionRange(h *C.QItemSelectionRange) *QItemSelectionRange {
 	return &QItemSelectionRange{h: h}
 }
 
-func newQItemSelectionRange_U(h unsafe.Pointer) *QItemSelectionRange {
+func UnsafeNewQItemSelectionRange(h unsafe.Pointer) *QItemSelectionRange {
 	return newQItemSelectionRange((*C.QItemSelectionRange)(h))
 }
 
@@ -109,11 +116,11 @@ func (this *QItemSelectionRange) Height() int {
 }
 
 func (this *QItemSelectionRange) TopLeft() *QPersistentModelIndex {
-	return newQPersistentModelIndex_U(unsafe.Pointer(C.QItemSelectionRange_TopLeft(this.h)))
+	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_TopLeft(this.h)))
 }
 
 func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
-	return newQPersistentModelIndex_U(unsafe.Pointer(C.QItemSelectionRange_BottomRight(this.h)))
+	return UnsafeNewQPersistentModelIndex(unsafe.Pointer(C.QItemSelectionRange_BottomRight(this.h)))
 }
 
 func (this *QItemSelectionRange) Parent() *QModelIndex {
@@ -124,7 +131,7 @@ func (this *QItemSelectionRange) Parent() *QModelIndex {
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionRange_Model(this.h)))
 }
 
 func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
@@ -206,14 +213,21 @@ func (this *QItemSelectionModel) cPointer() *C.QItemSelectionModel {
 	return this.h
 }
 
+func (this *QItemSelectionModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQItemSelectionModel(h *C.QItemSelectionModel) *QItemSelectionModel {
 	if h == nil {
 		return nil
 	}
-	return &QItemSelectionModel{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QItemSelectionModel{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQItemSelectionModel_U(h unsafe.Pointer) *QItemSelectionModel {
+func UnsafeNewQItemSelectionModel(h unsafe.Pointer) *QItemSelectionModel {
 	return newQItemSelectionModel((*C.QItemSelectionModel)(h))
 }
 
@@ -236,7 +250,7 @@ func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QItemSelectionModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QItemSelectionModel_MetaObject(this.h)))
 }
 
 func (this *QItemSelectionModel) Metacast(param1 string) unsafe.Pointer {
@@ -337,11 +351,11 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 }
 
 func (this *QItemSelectionModel) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model(this.h)))
 }
 
 func (this *QItemSelectionModel) Model2() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QItemSelectionModel_Model2(this.h)))
 }
 
 func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
@@ -387,8 +401,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentChanged(cb C.intptr_t, curren
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -408,8 +422,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentRowChanged(cb C.intptr_t, cur
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -429,8 +443,8 @@ func miqt_exec_callback_QItemSelectionModel_CurrentColumnChanged(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(current))
-	slotval2 := newQModelIndex_U(unsafe.Pointer(previous))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(current))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(previous))
 
 	gofunc(slotval1, slotval2)
 }
@@ -450,7 +464,7 @@ func miqt_exec_callback_QItemSelectionModel_ModelChanged(cb C.intptr_t, model *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractItemModel_U(unsafe.Pointer(model))
+	slotval1 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model))
 
 	gofunc(slotval1)
 }

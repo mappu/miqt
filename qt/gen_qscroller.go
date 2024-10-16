@@ -52,19 +52,26 @@ func (this *QScroller) cPointer() *C.QScroller {
 	return this.h
 }
 
+func (this *QScroller) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScroller(h *C.QScroller) *QScroller {
 	if h == nil {
 		return nil
 	}
-	return &QScroller{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QScroller{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQScroller_U(h unsafe.Pointer) *QScroller {
+func UnsafeNewQScroller(h unsafe.Pointer) *QScroller {
 	return newQScroller((*C.QScroller)(h))
 }
 
 func (this *QScroller) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QScroller_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScroller_MetaObject(this.h)))
 }
 
 func (this *QScroller) Metacast(param1 string) unsafe.Pointer {
@@ -96,11 +103,11 @@ func QScroller_HasScroller(target *QObject) bool {
 }
 
 func QScroller_Scroller(target *QObject) *QScroller {
-	return newQScroller_U(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())))
+	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_Scroller(target.cPointer())))
 }
 
 func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
-	return newQScroller_U(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())))
+	return UnsafeNewQScroller(unsafe.Pointer(C.QScroller_ScrollerWithTarget(target.cPointer())))
 }
 
 func QScroller_GrabGesture(target *QObject) GestureType {
@@ -120,14 +127,14 @@ func QScroller_ActiveScrollers() []*QScroller {
 	_ret := make([]*QScroller, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQScroller_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQScroller(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QScroller) Target() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QScroller_Target(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QScroller_Target(this.h)))
 }
 
 func (this *QScroller) State() QScroller__State {
@@ -261,7 +268,7 @@ func miqt_exec_callback_QScroller_ScrollerPropertiesChanged(cb C.intptr_t, param
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQScrollerProperties_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQScrollerProperties(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

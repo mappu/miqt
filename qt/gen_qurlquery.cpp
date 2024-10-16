@@ -5,7 +5,7 @@
 #include <cstring>
 #include <QUrl>
 #include <QUrlQuery>
-#include "qurlquery.h"
+#include <qurlquery.h>
 #include "gen_qurlquery.h"
 #include "_cgo_export.h"
 

@@ -36,14 +36,21 @@ func (this *QSlider) cPointer() *C.QSlider {
 	return this.h
 }
 
+func (this *QSlider) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSlider(h *C.QSlider) *QSlider {
 	if h == nil {
 		return nil
 	}
-	return &QSlider{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
+	return &QSlider{h: h, QAbstractSlider: UnsafeNewQAbstractSlider(unsafe.Pointer(h))}
 }
 
-func newQSlider_U(h unsafe.Pointer) *QSlider {
+func UnsafeNewQSlider(h unsafe.Pointer) *QSlider {
 	return newQSlider((*C.QSlider)(h))
 }
 
@@ -72,7 +79,7 @@ func NewQSlider4(orientation Orientation, parent *QWidget) *QSlider {
 }
 
 func (this *QSlider) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSlider_MetaObject(this.h)))
 }
 
 func (this *QSlider) Metacast(param1 string) unsafe.Pointer {

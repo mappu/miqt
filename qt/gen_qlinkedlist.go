@@ -24,6 +24,13 @@ func (this *QLinkedListData) cPointer() *C.QLinkedListData {
 	return this.h
 }
 
+func (this *QLinkedListData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQLinkedListData(h *C.QLinkedListData) *QLinkedListData {
 	return &QLinkedListData{h: h}
 }
 
-func newQLinkedListData_U(h unsafe.Pointer) *QLinkedListData {
+func UnsafeNewQLinkedListData(h unsafe.Pointer) *QLinkedListData {
 	return newQLinkedListData((*C.QLinkedListData)(h))
 }
 

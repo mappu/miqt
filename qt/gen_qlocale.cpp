@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTime>
-#include "qlocale.h"
+#include <qlocale.h>
 #include "gen_qlocale.h"
 #include "_cgo_export.h"
 
@@ -673,7 +673,7 @@ struct miqt_string* QLocale_QuoteString(const QLocale* self, struct miqt_string*
 }
 
 struct miqt_string* QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array* /* of struct miqt_string* */ strl) {
-	QList<QString> strl_QList;
+	QStringList strl_QList;
 	strl_QList.reserve(strl->len);
 	struct miqt_string** strl_arr = static_cast<struct miqt_string**>(strl->data);
 	for(size_t i = 0; i < strl->len; ++i) {

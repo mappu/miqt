@@ -24,6 +24,13 @@ func (this *QQuaternion) cPointer() *C.QQuaternion {
 	return this.h
 }
 
+func (this *QQuaternion) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQQuaternion(h *C.QQuaternion) *QQuaternion {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQQuaternion(h *C.QQuaternion) *QQuaternion {
 	return &QQuaternion{h: h}
 }
 
-func newQQuaternion_U(h unsafe.Pointer) *QQuaternion {
+func UnsafeNewQQuaternion(h unsafe.Pointer) *QQuaternion {
 	return newQQuaternion((*C.QQuaternion)(h))
 }
 
@@ -178,23 +185,23 @@ func (this *QQuaternion) RotatedVector(vector *QVector3D) *QVector3D {
 }
 
 func (this *QQuaternion) OperatorPlusAssign(quaternion *QQuaternion) *QQuaternion {
-	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorPlusAssign(this.h, quaternion.cPointer())))
+	return UnsafeNewQQuaternion(unsafe.Pointer(C.QQuaternion_OperatorPlusAssign(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorMinusAssign(quaternion *QQuaternion) *QQuaternion {
-	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMinusAssign(this.h, quaternion.cPointer())))
+	return UnsafeNewQQuaternion(unsafe.Pointer(C.QQuaternion_OperatorMinusAssign(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorMultiplyAssign(factor float32) *QQuaternion {
-	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssign(this.h, (C.float)(factor))))
+	return UnsafeNewQQuaternion(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssign(this.h, (C.float)(factor))))
 }
 
 func (this *QQuaternion) OperatorMultiplyAssignWithQuaternion(quaternion *QQuaternion) *QQuaternion {
-	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssignWithQuaternion(this.h, quaternion.cPointer())))
+	return UnsafeNewQQuaternion(unsafe.Pointer(C.QQuaternion_OperatorMultiplyAssignWithQuaternion(this.h, quaternion.cPointer())))
 }
 
 func (this *QQuaternion) OperatorDivideAssign(divisor float32) *QQuaternion {
-	return newQQuaternion_U(unsafe.Pointer(C.QQuaternion_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return UnsafeNewQQuaternion(unsafe.Pointer(C.QQuaternion_OperatorDivideAssign(this.h, (C.float)(divisor))))
 }
 
 func (this *QQuaternion) ToVector4D() *QVector4D {

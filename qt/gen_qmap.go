@@ -37,6 +37,13 @@ func (this *QMapNodeBase) cPointer() *C.QMapNodeBase {
 	return this.h
 }
 
+func (this *QMapNodeBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMapNodeBase(h *C.QMapNodeBase) *QMapNodeBase {
 	if h == nil {
 		return nil
@@ -44,7 +51,7 @@ func newQMapNodeBase(h *C.QMapNodeBase) *QMapNodeBase {
 	return &QMapNodeBase{h: h}
 }
 
-func newQMapNodeBase_U(h unsafe.Pointer) *QMapNodeBase {
+func UnsafeNewQMapNodeBase(h unsafe.Pointer) *QMapNodeBase {
 	return newQMapNodeBase((*C.QMapNodeBase)(h))
 }
 
@@ -55,19 +62,19 @@ func NewQMapNodeBase(param1 *QMapNodeBase) *QMapNodeBase {
 }
 
 func (this *QMapNodeBase) NextNode() *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapNodeBase_NextNode(this.h)))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapNodeBase_NextNode(this.h)))
 }
 
 func (this *QMapNodeBase) NextNode2() *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapNodeBase_NextNode2(this.h)))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapNodeBase_NextNode2(this.h)))
 }
 
 func (this *QMapNodeBase) PreviousNode() *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapNodeBase_PreviousNode(this.h)))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapNodeBase_PreviousNode(this.h)))
 }
 
 func (this *QMapNodeBase) PreviousNode2() *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapNodeBase_PreviousNode2(this.h)))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapNodeBase_PreviousNode2(this.h)))
 }
 
 func (this *QMapNodeBase) Color() QMapNodeBase__Color {
@@ -79,7 +86,7 @@ func (this *QMapNodeBase) SetColor(c QMapNodeBase__Color) {
 }
 
 func (this *QMapNodeBase) Parent() *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapNodeBase_Parent(this.h)))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapNodeBase_Parent(this.h)))
 }
 
 func (this *QMapNodeBase) SetParent(pp *QMapNodeBase) {
@@ -115,6 +122,13 @@ func (this *QMapDataBase) cPointer() *C.QMapDataBase {
 	return this.h
 }
 
+func (this *QMapDataBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMapDataBase(h *C.QMapDataBase) *QMapDataBase {
 	if h == nil {
 		return nil
@@ -122,7 +136,7 @@ func newQMapDataBase(h *C.QMapDataBase) *QMapDataBase {
 	return &QMapDataBase{h: h}
 }
 
-func newQMapDataBase_U(h unsafe.Pointer) *QMapDataBase {
+func UnsafeNewQMapDataBase(h unsafe.Pointer) *QMapDataBase {
 	return newQMapDataBase((*C.QMapDataBase)(h))
 }
 
@@ -147,7 +161,7 @@ func (this *QMapDataBase) RecalcMostLeftNode() {
 }
 
 func (this *QMapDataBase) CreateNode(size int, alignment int, parent *QMapNodeBase, left bool) *QMapNodeBase {
-	return newQMapNodeBase_U(unsafe.Pointer(C.QMapDataBase_CreateNode(this.h, (C.int)(size), (C.int)(alignment), parent.cPointer(), (C.bool)(left))))
+	return UnsafeNewQMapNodeBase(unsafe.Pointer(C.QMapDataBase_CreateNode(this.h, (C.int)(size), (C.int)(alignment), parent.cPointer(), (C.bool)(left))))
 }
 
 func (this *QMapDataBase) FreeTree(root *QMapNodeBase, alignment int) {
@@ -155,7 +169,7 @@ func (this *QMapDataBase) FreeTree(root *QMapNodeBase, alignment int) {
 }
 
 func QMapDataBase_CreateData() *QMapDataBase {
-	return newQMapDataBase_U(unsafe.Pointer(C.QMapDataBase_CreateData()))
+	return UnsafeNewQMapDataBase(unsafe.Pointer(C.QMapDataBase_CreateData()))
 }
 
 func QMapDataBase_FreeData(d *QMapDataBase) {

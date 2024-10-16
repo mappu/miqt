@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QUndoCommand>
 #include <QUndoStack>
-#include "qundostack.h"
+#include <qundostack.h>
 #include "gen_qundostack.h"
 #include "_cgo_export.h"
 

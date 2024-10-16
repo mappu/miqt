@@ -1,7 +1,7 @@
 #include <QQuaternion>
 #include <QVector3D>
 #include <QVector4D>
-#include "qquaternion.h"
+#include <qquaternion.h>
 #include "gen_qquaternion.h"
 #include "_cgo_export.h"
 

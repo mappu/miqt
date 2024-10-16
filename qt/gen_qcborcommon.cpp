@@ -2,7 +2,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcborcommon.h"
+#include <qcborcommon.h>
 #include "gen_qcborcommon.h"
 #include "_cgo_export.h"
 

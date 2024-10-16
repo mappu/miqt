@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -78,14 +79,21 @@ func (this *QDialogButtonBox) cPointer() *C.QDialogButtonBox {
 	return this.h
 }
 
+func (this *QDialogButtonBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDialogButtonBox(h *C.QDialogButtonBox) *QDialogButtonBox {
 	if h == nil {
 		return nil
 	}
-	return &QDialogButtonBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QDialogButtonBox{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQDialogButtonBox_U(h unsafe.Pointer) *QDialogButtonBox {
+func UnsafeNewQDialogButtonBox(h unsafe.Pointer) *QDialogButtonBox {
 	return newQDialogButtonBox((*C.QDialogButtonBox)(h))
 }
 
@@ -138,7 +146,7 @@ func NewQDialogButtonBox8(buttons QDialogButtonBox__StandardButton, orientation 
 }
 
 func (this *QDialogButtonBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDialogButtonBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDialogButtonBox_MetaObject(this.h)))
 }
 
 func (this *QDialogButtonBox) Metacast(param1 string) unsafe.Pointer {
@@ -178,13 +186,13 @@ func (this *QDialogButtonBox) AddButton(button *QAbstractButton, role QDialogBut
 }
 
 func (this *QDialogButtonBox) AddButton2(text string, role QDialogButtonBox__ButtonRole) *QPushButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(role))))
+	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_AddButton2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(role))))
 }
 
 func (this *QDialogButtonBox) AddButtonWithButton(button QDialogButtonBox__StandardButton) *QPushButton {
-	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button))))
+	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_AddButtonWithButton(this.h, (C.int)(button))))
 }
 
 func (this *QDialogButtonBox) RemoveButton(button *QAbstractButton) {
@@ -200,7 +208,7 @@ func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractButton_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -223,7 +231,7 @@ func (this *QDialogButtonBox) StandardButton(button *QAbstractButton) QDialogBut
 }
 
 func (this *QDialogButtonBox) Button(which QDialogButtonBox__StandardButton) *QPushButton {
-	return newQPushButton_U(unsafe.Pointer(C.QDialogButtonBox_Button(this.h, (C.int)(which))))
+	return UnsafeNewQPushButton(unsafe.Pointer(C.QDialogButtonBox_Button(this.h, (C.int)(which))))
 }
 
 func (this *QDialogButtonBox) SetCenterButtons(center bool) {
@@ -249,7 +257,7 @@ func miqt_exec_callback_QDialogButtonBox_Clicked(cb C.intptr_t, button *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAbstractButton_U(unsafe.Pointer(button))
+	slotval1 := UnsafeNewQAbstractButton(unsafe.Pointer(button))
 
 	gofunc(slotval1)
 }

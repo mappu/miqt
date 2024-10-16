@@ -30,6 +30,13 @@ func (this *QDeadlineTimer) cPointer() *C.QDeadlineTimer {
 	return this.h
 }
 
+func (this *QDeadlineTimer) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDeadlineTimer(h *C.QDeadlineTimer) *QDeadlineTimer {
 	if h == nil {
 		return nil
@@ -37,7 +44,7 @@ func newQDeadlineTimer(h *C.QDeadlineTimer) *QDeadlineTimer {
 	return &QDeadlineTimer{h: h}
 }
 
-func newQDeadlineTimer_U(h unsafe.Pointer) *QDeadlineTimer {
+func UnsafeNewQDeadlineTimer(h unsafe.Pointer) *QDeadlineTimer {
 	return newQDeadlineTimer((*C.QDeadlineTimer)(h))
 }
 
@@ -150,11 +157,11 @@ func QDeadlineTimer_Current() *QDeadlineTimer {
 }
 
 func (this *QDeadlineTimer) OperatorPlusAssign(msecs int64) *QDeadlineTimer {
-	return newQDeadlineTimer_U(unsafe.Pointer(C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))))
+	return UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QDeadlineTimer_OperatorPlusAssign(this.h, (C.longlong)(msecs))))
 }
 
 func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
-	return newQDeadlineTimer_U(unsafe.Pointer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))))
+	return UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))))
 }
 
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
