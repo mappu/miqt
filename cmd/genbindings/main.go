@@ -15,6 +15,7 @@ import (
 
 const (
 	ClangSubprocessCount = 3
+	BaseModule           = "github.com/mappu/miqt"
 )
 
 func cacheFilePath(inputHeader string) string {

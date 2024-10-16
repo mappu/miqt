@@ -134,7 +134,8 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
-	if strings.HasPrefix(tmp, "const ") {
+
+	if strings.HasPrefix(tmp, "const ") && tmp != "const char" { // Special typedef to make this work for const char* signal parameters
 		tmp = tmp[6:] // Constness doesn't survive the CABI boundary
 	}
 	if strings.HasPrefix(tmp, "unsigned ") {
@@ -234,7 +235,8 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Go: convert string -> miqt_string*
 		// CABI: convert miqt_string* -> real QString
 
-		preamble += nameprefix + "_ms := miqt_strdupg(" + p.ParameterName + ")\n"
+		gfs.imports["libmiqt"] = struct{}{}
+		preamble += nameprefix + "_ms := libmiqt.Strdupg(" + p.ParameterName + ")\n"
 		preamble += "defer C.free(" + nameprefix + "_ms)\n"
 
 		rvalue = "(*C.struct_miqt_string)(" + nameprefix + "_ms)"
@@ -660,14 +662,17 @@ import "C"
 	if len(gfs.imports) > 0 {
 		allImports := make([]string, 0, len(gfs.imports))
 		for k, _ := range gfs.imports {
-			allImports = append(allImports, `"`+k+`"`)
+			if k == "libmiqt" {
+				allImports = append(allImports, `"`+BaseModule+`/libmiqt"`)
+			} else {
+				allImports = append(allImports, `"`+k+`"`)
+			}
 		}
+
 		sort.Strings(allImports)
 		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "import (\n\t"+strings.Join(allImports, "\n\t")+"\n)", 1)
-
 	} else {
 		goSrc = strings.Replace(goSrc, `%%_IMPORTLIBS_%%`, "", 1)
-
 	}
 
 	// Run gofmt over the result

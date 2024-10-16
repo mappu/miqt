@@ -480,6 +480,7 @@ func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 
 	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
 
+	bindingInclude := "../libmiqt/libmiqt.h"
 	ret.WriteString(`#ifndef ` + includeGuard + `
 #define ` + includeGuard + `
 
@@ -489,7 +490,7 @@ func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "binding.h"
+#include "` + bindingInclude + `"
 
 #ifdef __cplusplus
 extern "C" {

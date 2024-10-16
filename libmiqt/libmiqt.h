@@ -1,6 +1,9 @@
 #ifndef MIQT_BINDING_H
 #define MIQT_BINDING_H
 
+#include <string.h>
+#include <stdlib.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15,9 +18,9 @@ struct miqt_array {
     void* data; // Separate, second allocation
 };
 
-// miqt_strdup allocates a miqt_string and copies C data into it.
-// The function is defined in C++.
 struct miqt_string* miqt_strdup(const char* src, size_t len);
+
+typedef const char const_char;
 
 #ifdef __cplusplus
 }
