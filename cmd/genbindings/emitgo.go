@@ -329,7 +329,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue string) string {
 
-	shouldReturn := "return "
+	shouldReturn := assignExpr // "return "
 	afterword := ""
 	namePrefix := makeNamePrefix(rt.ParameterName)
 
@@ -343,10 +343,16 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		// Qt functions normally return QString - anything returning char*
 		// is something like QByteArray.Data() where it returns an unsafe
 		// internal pointer
+		// However in case this is a signal, we need to be able to marshal both
+		// forwards and backwards with the same types, this has to be a string
+		// in both cases
+		// This is not a miqt_string and therefore MIQT did not allocate it,
+		// and therefore we don't have to free it either
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = namePrefix + "_ret := "
-		afterword += assignExpr + " (unsafe.Pointer)(" + namePrefix + "_ret)\n"
+		afterword += assignExpr + " C.GoString(" + namePrefix + "_ret)\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.ParameterType == "QString" {
 		gfs.imports["unsafe"] = struct{}{}
