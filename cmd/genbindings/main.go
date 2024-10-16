@@ -18,6 +18,15 @@ const (
 	BaseModule           = "github.com/mappu/miqt"
 )
 
+func importPathForQtPackage(packageName string) string {
+	switch packageName {
+	case "qt":
+		return BaseModule + "/qt"
+	default:
+		return BaseModule + "/qt/" + packageName
+	}
+}
+
 func cacheFilePath(inputHeader string) string {
 	return filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
 }
@@ -80,24 +89,45 @@ func cleanGeneratedFilesInDir(dirpath string) {
 
 func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
-	cflags := flag.String("cflags", `-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`, "Cflags to pass to clang (e.g. `pkg-config --cflags Qt5Widgets`)")
-	outDir := flag.String("outdir", "../../qt", "Output directory for generated gen_** files")
+	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
 
 	flag.Parse()
 
-	var includeFiles []string
+	generate(
+		"qt",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+			"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		},
+		*clang,
+		// pkg-config --cflags Qt5Widgets
+		strings.Fields(`-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`),
+		filepath.Join(*outDir, "qt"),
+	)
 
-	for _, srcDir := range []string{
-		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
-		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
-		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
-	} {
+	generate(
+		"qprintsupport",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
+		},
+		*clang,
+		// pkg-config --cflags Qt5PrintSupport
+		strings.Fields(`-DQT_PRINTSUPPORT_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -DQT_GUI_LIB -DQT_CORE_LIB`),
+		filepath.Join(*outDir, "qt/qprintsupport"),
+	)
+}
+
+func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string) {
+
+	var includeFiles []string
+	for _, srcDir := range srcDirs {
 		includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
 
-	cleanGeneratedFilesInDir(*outDir)
+	cleanGeneratedFilesInDir(outDir)
 
 	var processHeaders []*CppParsedHeader
 	atr := astTransformRedundant{
@@ -110,7 +140,7 @@ func main() {
 	// PASS 0 (Fill clang cache)
 	//
 
-	generateClangCaches(includeFiles, *clang, strings.Fields(*cflags))
+	generateClangCaches(includeFiles, clangBin, cflags)
 
 	// The cache should now be fully populated.
 
@@ -153,15 +183,14 @@ func main() {
 		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)
-		// Currently, this is only used for inner classes
 		for _, c := range parsed.Classes {
-			KnownClassnames[c.ClassName] = struct{}{}
+			KnownClassnames[c.ClassName] = lookupResultClass{packageName}
 		}
 		for _, td := range parsed.Typedefs {
-			KnownTypedefs[td.Alias] = td // copy
+			KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, td /* copy */}
 		}
 		for _, en := range parsed.Enums {
-			KnownEnums[en.EnumName] = en // copy
+			KnownEnums[en.EnumName] = lookupResultEnum{packageName, en /* copy */}
 		}
 
 		processHeaders = append(processHeaders, parsed)
@@ -199,9 +228,9 @@ func main() {
 		}
 
 		// Emit 3 code files from the intermediate format
-		outputName := filepath.Join(*outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
+		outputName := filepath.Join(outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
 
-		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename))
+		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
 			panic(err)
 		}
@@ -221,7 +250,7 @@ func main() {
 			panic(err)
 		}
 
-		bindingHSrc, err := emitBindingHeader(parsed, filepath.Base(parsed.Filename))
+		bindingHSrc, err := emitBindingHeader(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
 			panic(err)
 		}

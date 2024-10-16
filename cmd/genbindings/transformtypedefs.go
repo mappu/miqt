@@ -11,7 +11,7 @@ func applyTypedefs(p CppParameter) CppParameter {
 		if !ok {
 			break
 		}
-		p.ApplyTypedef(td.UnderlyingType)
+		p.ApplyTypedef(td.Typedef.UnderlyingType)
 	}
 
 	if t, ok := p.QListOf(); ok {

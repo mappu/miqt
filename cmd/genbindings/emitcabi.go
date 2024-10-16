@@ -70,13 +70,13 @@ func (p CppParameter) RenderTypeCabi() string {
 
 	if ft, ok := p.QFlagsOf(); ok {
 		if e, ok := KnownEnums[ft.ParameterType]; ok {
-			ret = e.UnderlyingType.RenderTypeCabi()
+			ret = e.Enum.UnderlyingType.RenderTypeCabi()
 		} else {
 			ret = "int"
 		}
 
 	} else if e, ok := KnownEnums[p.ParameterType]; ok {
-		ret = e.UnderlyingType.RenderTypeCabi()
+		ret = e.Enum.UnderlyingType.RenderTypeCabi()
 
 	}
 
@@ -204,7 +204,7 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 
 	} else if listType, ok := p.QListOf(); ok {
 
-		preamble += indent + p.ParameterType + " " + nameprefix + "_QList;\n"
+		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QList;\n"
 		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + "->len);\n"
 
 		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
@@ -343,7 +343,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
-		afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "// Convert QSet<> from C++ memory to manually-managed C memory\n"
 		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.size()));\n"
 		afterCall += indent + "int " + namePrefix + "_ctr = 0;\n"
 		afterCall += indent + "QSetIterator<" + t.RenderTypeQtCpp() + "> " + namePrefix + "_itr(" + namePrefix + "_ret);\n"
@@ -448,7 +448,7 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
-		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") {
+		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") { // TODO properly exclude via the QListOf() check above
 			continue
 		}
 		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
@@ -475,12 +475,16 @@ func cabiClassName(className string) string {
 	return strings.Replace(className, `::`, `__`, -1)
 }
 
-func emitBindingHeader(src *CppParsedHeader, filename string) (string, error) {
+func emitBindingHeader(src *CppParsedHeader, filename string, packageName string) (string, error) {
 	ret := strings.Builder{}
 
 	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
 
 	bindingInclude := "../libmiqt/libmiqt.h"
+	if packageName != "qt" {
+		bindingInclude = "../" + bindingInclude
+	}
+
 	ret.WriteString(`#ifndef ` + includeGuard + `
 #define ` + includeGuard + `
 
@@ -592,7 +596,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
-	ret.WriteString(`#include "` + filename + "\"\n")
+	ret.WriteString(`#include <` + filename + ">\n")
 	ret.WriteString(`#include "gen_` + filename + "\"\n")
 	ret.WriteString("#include \"_cgo_export.h\"\n\n")
 
