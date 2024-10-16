@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -34,19 +35,26 @@ func (this *QSessionManager) cPointer() *C.QSessionManager {
 	return this.h
 }
 
+func (this *QSessionManager) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSessionManager(h *C.QSessionManager) *QSessionManager {
 	if h == nil {
 		return nil
 	}
-	return &QSessionManager{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSessionManager{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSessionManager_U(h unsafe.Pointer) *QSessionManager {
+func UnsafeNewQSessionManager(h unsafe.Pointer) *QSessionManager {
 	return newQSessionManager((*C.QSessionManager)(h))
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSessionManager_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSessionManager_MetaObject(this.h)))
 }
 
 func (this *QSessionManager) Metacast(param1 string) unsafe.Pointer {
@@ -116,7 +124,7 @@ func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 	restartCommand_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray))
 	for i := range restartCommand {
-		restartCommand_i_ms := miqt_strdupg(restartCommand[i])
+		restartCommand_i_ms := libmiqt.Strdupg(restartCommand[i])
 		defer C.free(restartCommand_i_ms)
 		restartCommand_CArray[i] = (*C.struct_miqt_string)(restartCommand_i_ms)
 	}
@@ -144,7 +152,7 @@ func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 	discardCommand_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray))
 	for i := range discardCommand {
-		discardCommand_i_ms := miqt_strdupg(discardCommand[i])
+		discardCommand_i_ms := libmiqt.Strdupg(discardCommand[i])
 		defer C.free(discardCommand_i_ms)
 		discardCommand_CArray[i] = (*C.struct_miqt_string)(discardCommand_i_ms)
 	}
@@ -168,21 +176,21 @@ func (this *QSessionManager) DiscardCommand() []string {
 }
 
 func (this *QSessionManager) SetManagerProperty(name string, value string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	value_ms := miqt_strdupg(value)
+	value_ms := libmiqt.Strdupg(value)
 	defer C.free(value_ms)
 	C.QSessionManager_SetManagerProperty(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(value_ms))
 }
 
 func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	// For the C ABI, malloc a C array of raw pointers
 	value_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(value))))
 	defer C.free(unsafe.Pointer(value_CArray))
 	for i := range value {
-		value_i_ms := miqt_strdupg(value[i])
+		value_i_ms := libmiqt.Strdupg(value[i])
 		defer C.free(value_i_ms)
 		value_CArray[i] = (*C.struct_miqt_string)(value_i_ms)
 	}

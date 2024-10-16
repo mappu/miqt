@@ -26,19 +26,26 @@ func (this *QGraphicsTransform) cPointer() *C.QGraphicsTransform {
 	return this.h
 }
 
+func (this *QGraphicsTransform) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsTransform(h *C.QGraphicsTransform) *QGraphicsTransform {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsTransform{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGraphicsTransform{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGraphicsTransform_U(h unsafe.Pointer) *QGraphicsTransform {
+func UnsafeNewQGraphicsTransform(h unsafe.Pointer) *QGraphicsTransform {
 	return newQGraphicsTransform((*C.QGraphicsTransform)(h))
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsTransform_MetaObject(this.h)))
 }
 
 func (this *QGraphicsTransform) Metacast(param1 string) unsafe.Pointer {
@@ -139,14 +146,21 @@ func (this *QGraphicsScale) cPointer() *C.QGraphicsScale {
 	return this.h
 }
 
+func (this *QGraphicsScale) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsScale(h *C.QGraphicsScale) *QGraphicsScale {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsScale{h: h, QGraphicsTransform: newQGraphicsTransform_U(unsafe.Pointer(h))}
+	return &QGraphicsScale{h: h, QGraphicsTransform: UnsafeNewQGraphicsTransform(unsafe.Pointer(h))}
 }
 
-func newQGraphicsScale_U(h unsafe.Pointer) *QGraphicsScale {
+func UnsafeNewQGraphicsScale(h unsafe.Pointer) *QGraphicsScale {
 	return newQGraphicsScale((*C.QGraphicsScale)(h))
 }
 
@@ -163,7 +177,7 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsScale_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsScale_MetaObject(this.h)))
 }
 
 func (this *QGraphicsScale) Metacast(param1 string) unsafe.Pointer {
@@ -384,14 +398,21 @@ func (this *QGraphicsRotation) cPointer() *C.QGraphicsRotation {
 	return this.h
 }
 
+func (this *QGraphicsRotation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsRotation(h *C.QGraphicsRotation) *QGraphicsRotation {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsRotation{h: h, QGraphicsTransform: newQGraphicsTransform_U(unsafe.Pointer(h))}
+	return &QGraphicsRotation{h: h, QGraphicsTransform: UnsafeNewQGraphicsTransform(unsafe.Pointer(h))}
 }
 
-func newQGraphicsRotation_U(h unsafe.Pointer) *QGraphicsRotation {
+func UnsafeNewQGraphicsRotation(h unsafe.Pointer) *QGraphicsRotation {
 	return newQGraphicsRotation((*C.QGraphicsRotation)(h))
 }
 
@@ -408,7 +429,7 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsRotation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsRotation_MetaObject(this.h)))
 }
 
 func (this *QGraphicsRotation) Metacast(param1 string) unsafe.Pointer {

@@ -26,19 +26,26 @@ func (this *QAbstractEventDispatcher) cPointer() *C.QAbstractEventDispatcher {
 	return this.h
 }
 
+func (this *QAbstractEventDispatcher) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher) *QAbstractEventDispatcher {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractEventDispatcher{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractEventDispatcher{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractEventDispatcher_U(h unsafe.Pointer) *QAbstractEventDispatcher {
+func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer) *QAbstractEventDispatcher {
 	return newQAbstractEventDispatcher((*C.QAbstractEventDispatcher)(h))
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
 }
 
 func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
@@ -66,7 +73,7 @@ func QAbstractEventDispatcher_TrUtf8(s string) string {
 }
 
 func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()))
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
@@ -230,7 +237,7 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())))
 }
 
 // Delete this object from C++ memory.
@@ -258,6 +265,13 @@ func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDis
 	return this.h
 }
 
+func (this *QAbstractEventDispatcher__TimerInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__TimerInfo) *QAbstractEventDispatcher__TimerInfo {
 	if h == nil {
 		return nil
@@ -265,7 +279,7 @@ func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__Timer
 	return &QAbstractEventDispatcher__TimerInfo{h: h}
 }
 
-func newQAbstractEventDispatcher__TimerInfo_U(h unsafe.Pointer) *QAbstractEventDispatcher__TimerInfo {
+func UnsafeNewQAbstractEventDispatcher__TimerInfo(h unsafe.Pointer) *QAbstractEventDispatcher__TimerInfo {
 	return newQAbstractEventDispatcher__TimerInfo((*C.QAbstractEventDispatcher__TimerInfo)(h))
 }
 

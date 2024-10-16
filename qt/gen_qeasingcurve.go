@@ -78,6 +78,13 @@ func (this *QEasingCurve) cPointer() *C.QEasingCurve {
 	return this.h
 }
 
+func (this *QEasingCurve) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQEasingCurve(h *C.QEasingCurve) *QEasingCurve {
 	if h == nil {
 		return nil
@@ -85,7 +92,7 @@ func newQEasingCurve(h *C.QEasingCurve) *QEasingCurve {
 	return &QEasingCurve{h: h}
 }
 
-func newQEasingCurve_U(h unsafe.Pointer) *QEasingCurve {
+func UnsafeNewQEasingCurve(h unsafe.Pointer) *QEasingCurve {
 	return newQEasingCurve((*C.QEasingCurve)(h))
 }
 

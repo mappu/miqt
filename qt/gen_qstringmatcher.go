@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QStringMatcher) cPointer() *C.QStringMatcher {
 	return this.h
 }
 
+func (this *QStringMatcher) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQStringMatcher(h *C.QStringMatcher) *QStringMatcher {
 	return &QStringMatcher{h: h}
 }
 
-func newQStringMatcher_U(h unsafe.Pointer) *QStringMatcher {
+func UnsafeNewQStringMatcher(h unsafe.Pointer) *QStringMatcher {
 	return newQStringMatcher((*C.QStringMatcher)(h))
 }
 
@@ -43,7 +51,7 @@ func NewQStringMatcher() *QStringMatcher {
 
 // NewQStringMatcher2 constructs a new QStringMatcher object.
 func NewQStringMatcher2(pattern string) *QStringMatcher {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QStringMatcher_new2((*C.struct_miqt_string)(pattern_ms))
 	return newQStringMatcher(ret)
@@ -63,7 +71,7 @@ func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 
 // NewQStringMatcher5 constructs a new QStringMatcher object.
 func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QStringMatcher_new5((*C.struct_miqt_string)(pattern_ms), (C.int)(cs))
 	return newQStringMatcher(ret)
@@ -80,7 +88,7 @@ func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
 }
 
 func (this *QStringMatcher) SetPattern(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QStringMatcher_SetPattern(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
@@ -90,7 +98,7 @@ func (this *QStringMatcher) SetCaseSensitivity(cs CaseSensitivity) {
 }
 
 func (this *QStringMatcher) IndexIn(str string) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QStringMatcher_IndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
@@ -111,7 +119,7 @@ func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
 }
 
 func (this *QStringMatcher) IndexIn22(str string, from int) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QStringMatcher_IndexIn22(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(from)))
 }

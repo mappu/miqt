@@ -13,7 +13,7 @@
 #include <QTime>
 #include <QTimeEdit>
 #include <QWidget>
-#include "qdatetimeedit.h"
+#include <qdatetimeedit.h>
 #include "gen_qdatetimeedit.h"
 #include "_cgo_export.h"
 

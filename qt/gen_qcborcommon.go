@@ -85,6 +85,13 @@ func (this *QCborError) cPointer() *C.QCborError {
 	return this.h
 }
 
+func (this *QCborError) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborError(h *C.QCborError) *QCborError {
 	if h == nil {
 		return nil
@@ -92,7 +99,7 @@ func newQCborError(h *C.QCborError) *QCborError {
 	return &QCborError{h: h}
 }
 
-func newQCborError_U(h unsafe.Pointer) *QCborError {
+func UnsafeNewQCborError(h unsafe.Pointer) *QCborError {
 	return newQCborError((*C.QCborError)(h))
 }
 

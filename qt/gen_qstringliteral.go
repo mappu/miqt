@@ -24,6 +24,13 @@ func (this *QStringDataPtr) cPointer() *C.QStringDataPtr {
 	return this.h
 }
 
+func (this *QStringDataPtr) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStringDataPtr(h *C.QStringDataPtr) *QStringDataPtr {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQStringDataPtr(h *C.QStringDataPtr) *QStringDataPtr {
 	return &QStringDataPtr{h: h}
 }
 
-func newQStringDataPtr_U(h unsafe.Pointer) *QStringDataPtr {
+func UnsafeNewQStringDataPtr(h unsafe.Pointer) *QStringDataPtr {
 	return newQStringDataPtr((*C.QStringDataPtr)(h))
 }
 

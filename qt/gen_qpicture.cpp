@@ -9,7 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpicture.h"
+#include <qpicture.h>
 #include "gen_qpicture.h"
 #include "_cgo_export.h"
 

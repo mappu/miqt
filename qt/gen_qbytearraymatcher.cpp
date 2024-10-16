@@ -1,7 +1,7 @@
 #include <QByteArray>
 #include <QByteArrayMatcher>
 #include <QStaticByteArrayMatcherBase>
-#include "qbytearraymatcher.h"
+#include <qbytearraymatcher.h>
 #include "gen_qbytearraymatcher.h"
 #include "_cgo_export.h"
 

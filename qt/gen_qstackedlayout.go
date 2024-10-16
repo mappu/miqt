@@ -33,14 +33,21 @@ func (this *QStackedLayout) cPointer() *C.QStackedLayout {
 	return this.h
 }
 
+func (this *QStackedLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStackedLayout(h *C.QStackedLayout) *QStackedLayout {
 	if h == nil {
 		return nil
 	}
-	return &QStackedLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
+	return &QStackedLayout{h: h, QLayout: UnsafeNewQLayout(unsafe.Pointer(h))}
 }
 
-func newQStackedLayout_U(h unsafe.Pointer) *QStackedLayout {
+func UnsafeNewQStackedLayout(h unsafe.Pointer) *QStackedLayout {
 	return newQStackedLayout((*C.QStackedLayout)(h))
 }
 
@@ -63,7 +70,7 @@ func NewQStackedLayout3(parentLayout *QLayout) *QStackedLayout {
 }
 
 func (this *QStackedLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStackedLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStackedLayout_MetaObject(this.h)))
 }
 
 func (this *QStackedLayout) Metacast(param1 string) unsafe.Pointer {
@@ -99,7 +106,7 @@ func (this *QStackedLayout) InsertWidget(index int, w *QWidget) int {
 }
 
 func (this *QStackedLayout) CurrentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QStackedLayout_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedLayout_CurrentWidget(this.h)))
 }
 
 func (this *QStackedLayout) CurrentIndex() int {
@@ -107,7 +114,7 @@ func (this *QStackedLayout) CurrentIndex() int {
 }
 
 func (this *QStackedLayout) Widget(param1 int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QStackedLayout_Widget(this.h, (C.int)(param1))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStackedLayout_Widget(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) Count() int {
@@ -141,11 +148,11 @@ func (this *QStackedLayout) MinimumSize() *QSize {
 }
 
 func (this *QStackedLayout) ItemAt(param1 int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QStackedLayout_ItemAt(this.h, (C.int)(param1))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QStackedLayout_ItemAt(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) TakeAt(param1 int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QStackedLayout_TakeAt(this.h, (C.int)(param1))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QStackedLayout_TakeAt(this.h, (C.int)(param1))))
 }
 
 func (this *QStackedLayout) SetGeometry(rect *QRect) {

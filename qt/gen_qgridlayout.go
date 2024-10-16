@@ -25,14 +25,21 @@ func (this *QGridLayout) cPointer() *C.QGridLayout {
 	return this.h
 }
 
+func (this *QGridLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGridLayout(h *C.QGridLayout) *QGridLayout {
 	if h == nil {
 		return nil
 	}
-	return &QGridLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
+	return &QGridLayout{h: h, QLayout: UnsafeNewQLayout(unsafe.Pointer(h))}
 }
 
-func newQGridLayout_U(h unsafe.Pointer) *QGridLayout {
+func UnsafeNewQGridLayout(h unsafe.Pointer) *QGridLayout {
 	return newQGridLayout((*C.QGridLayout)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQGridLayout2() *QGridLayout {
 }
 
 func (this *QGridLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGridLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGridLayout_MetaObject(this.h)))
 }
 
 func (this *QGridLayout) Metacast(param1 string) unsafe.Pointer {
@@ -217,15 +224,15 @@ func (this *QGridLayout) OriginCorner() Corner {
 }
 
 func (this *QGridLayout) ItemAt(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_ItemAt(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_ItemAt(this.h, (C.int)(index))))
 }
 
 func (this *QGridLayout) ItemAtPosition(row int, column int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QGridLayout) TakeAt(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QGridLayout_TakeAt(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QGridLayout) Count() int {

@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcollator.h"
+#include <qcollator.h>
 #include "gen_qcollator.h"
 #include "_cgo_export.h"
 

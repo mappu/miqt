@@ -3,7 +3,7 @@
 #include <QPixmap>
 #include <QPoint>
 #include <QScreen>
-#include "qcursor.h"
+#include <qcursor.h>
 #include "gen_qcursor.h"
 #include "_cgo_export.h"
 

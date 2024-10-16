@@ -25,14 +25,21 @@ func (this *QScrollArea) cPointer() *C.QScrollArea {
 	return this.h
 }
 
+func (this *QScrollArea) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScrollArea(h *C.QScrollArea) *QScrollArea {
 	if h == nil {
 		return nil
 	}
-	return &QScrollArea{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QScrollArea{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQScrollArea_U(h unsafe.Pointer) *QScrollArea {
+func UnsafeNewQScrollArea(h unsafe.Pointer) *QScrollArea {
 	return newQScrollArea((*C.QScrollArea)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQScrollArea2(parent *QWidget) *QScrollArea {
 }
 
 func (this *QScrollArea) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QScrollArea_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QScrollArea_MetaObject(this.h)))
 }
 
 func (this *QScrollArea) Metacast(param1 string) unsafe.Pointer {
@@ -77,7 +84,7 @@ func QScrollArea_TrUtf8(s string) string {
 }
 
 func (this *QScrollArea) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QScrollArea_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QScrollArea_Widget(this.h)))
 }
 
 func (this *QScrollArea) SetWidget(widget *QWidget) {
@@ -85,7 +92,7 @@ func (this *QScrollArea) SetWidget(widget *QWidget) {
 }
 
 func (this *QScrollArea) TakeWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QScrollArea_TakeWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QScrollArea_TakeWidget(this.h)))
 }
 
 func (this *QScrollArea) WidgetResizable() bool {

@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qgenericplugin.h"
+#include <qgenericplugin.h>
 #include "gen_qgenericplugin.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -43,6 +44,13 @@ func (this *QRegExp) cPointer() *C.QRegExp {
 	return this.h
 }
 
+func (this *QRegExp) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRegExp(h *C.QRegExp) *QRegExp {
 	if h == nil {
 		return nil
@@ -50,7 +58,7 @@ func newQRegExp(h *C.QRegExp) *QRegExp {
 	return &QRegExp{h: h}
 }
 
-func newQRegExp_U(h unsafe.Pointer) *QRegExp {
+func UnsafeNewQRegExp(h unsafe.Pointer) *QRegExp {
 	return newQRegExp((*C.QRegExp)(h))
 }
 
@@ -62,7 +70,7 @@ func NewQRegExp() *QRegExp {
 
 // NewQRegExp2 constructs a new QRegExp object.
 func NewQRegExp2(pattern string) *QRegExp {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QRegExp_new2((*C.struct_miqt_string)(pattern_ms))
 	return newQRegExp(ret)
@@ -76,7 +84,7 @@ func NewQRegExp3(rx *QRegExp) *QRegExp {
 
 // NewQRegExp4 constructs a new QRegExp object.
 func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QRegExp_new4((*C.struct_miqt_string)(pattern_ms), (C.int)(cs))
 	return newQRegExp(ret)
@@ -84,7 +92,7 @@ func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 
 // NewQRegExp5 constructs a new QRegExp object.
 func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSyntax) *QRegExp {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	ret := C.QRegExp_new5((*C.struct_miqt_string)(pattern_ms), (C.int)(cs), (C.int)(syntax))
 	return newQRegExp(ret)
@@ -122,7 +130,7 @@ func (this *QRegExp) Pattern() string {
 }
 
 func (this *QRegExp) SetPattern(pattern string) {
-	pattern_ms := miqt_strdupg(pattern)
+	pattern_ms := libmiqt.Strdupg(pattern)
 	defer C.free(pattern_ms)
 	C.QRegExp_SetPattern(this.h, (*C.struct_miqt_string)(pattern_ms))
 }
@@ -152,19 +160,19 @@ func (this *QRegExp) SetMinimal(minimal bool) {
 }
 
 func (this *QRegExp) ExactMatch(str string) bool {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (bool)(C.QRegExp_ExactMatch(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QRegExp) IndexIn(str string) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_IndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
 
 func (this *QRegExp) LastIndexIn(str string) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_LastIndexIn(this.h, (*C.struct_miqt_string)(str_ms)))
 }
@@ -242,7 +250,7 @@ func (this *QRegExp) ErrorString2() string {
 }
 
 func QRegExp_Escape(str string) string {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ms *C.struct_miqt_string = C.QRegExp_Escape((*C.struct_miqt_string)(str_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -251,25 +259,25 @@ func QRegExp_Escape(str string) string {
 }
 
 func (this *QRegExp) IndexIn2(str string, offset int) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_IndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset)))
 }
 
 func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_IndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.int)(caretMode)))
 }
 
 func (this *QRegExp) LastIndexIn2(str string, offset int) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_LastIndexIn2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset)))
 }
 
 func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	return (int)(C.QRegExp_LastIndexIn3(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(offset), (C.int)(caretMode)))
 }

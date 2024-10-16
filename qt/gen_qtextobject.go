@@ -25,19 +25,26 @@ func (this *QTextObject) cPointer() *C.QTextObject {
 	return this.h
 }
 
+func (this *QTextObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextObject(h *C.QTextObject) *QTextObject {
 	if h == nil {
 		return nil
 	}
-	return &QTextObject{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QTextObject{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQTextObject_U(h unsafe.Pointer) *QTextObject {
+func UnsafeNewQTextObject(h unsafe.Pointer) *QTextObject {
 	return newQTextObject((*C.QTextObject)(h))
 }
 
 func (this *QTextObject) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextObject_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextObject_MetaObject(this.h)))
 }
 
 func (this *QTextObject) Metacast(param1 string) unsafe.Pointer {
@@ -76,7 +83,7 @@ func (this *QTextObject) FormatIndex() int {
 }
 
 func (this *QTextObject) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextObject_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextObject_Document(this.h)))
 }
 
 func (this *QTextObject) ObjectIndex() int {
@@ -139,19 +146,26 @@ func (this *QTextBlockGroup) cPointer() *C.QTextBlockGroup {
 	return this.h
 }
 
+func (this *QTextBlockGroup) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBlockGroup(h *C.QTextBlockGroup) *QTextBlockGroup {
 	if h == nil {
 		return nil
 	}
-	return &QTextBlockGroup{h: h, QTextObject: newQTextObject_U(unsafe.Pointer(h))}
+	return &QTextBlockGroup{h: h, QTextObject: UnsafeNewQTextObject(unsafe.Pointer(h))}
 }
 
-func newQTextBlockGroup_U(h unsafe.Pointer) *QTextBlockGroup {
+func UnsafeNewQTextBlockGroup(h unsafe.Pointer) *QTextBlockGroup {
 	return newQTextBlockGroup((*C.QTextBlockGroup)(h))
 }
 
 func (this *QTextBlockGroup) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextBlockGroup_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextBlockGroup_MetaObject(this.h)))
 }
 
 func (this *QTextBlockGroup) Metacast(param1 string) unsafe.Pointer {
@@ -233,6 +247,13 @@ func (this *QTextFrameLayoutData) cPointer() *C.QTextFrameLayoutData {
 	return this.h
 }
 
+func (this *QTextFrameLayoutData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFrameLayoutData(h *C.QTextFrameLayoutData) *QTextFrameLayoutData {
 	if h == nil {
 		return nil
@@ -240,7 +261,7 @@ func newQTextFrameLayoutData(h *C.QTextFrameLayoutData) *QTextFrameLayoutData {
 	return &QTextFrameLayoutData{h: h}
 }
 
-func newQTextFrameLayoutData_U(h unsafe.Pointer) *QTextFrameLayoutData {
+func UnsafeNewQTextFrameLayoutData(h unsafe.Pointer) *QTextFrameLayoutData {
 	return newQTextFrameLayoutData((*C.QTextFrameLayoutData)(h))
 }
 
@@ -274,14 +295,21 @@ func (this *QTextFrame) cPointer() *C.QTextFrame {
 	return this.h
 }
 
+func (this *QTextFrame) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFrame(h *C.QTextFrame) *QTextFrame {
 	if h == nil {
 		return nil
 	}
-	return &QTextFrame{h: h, QTextObject: newQTextObject_U(unsafe.Pointer(h))}
+	return &QTextFrame{h: h, QTextObject: UnsafeNewQTextObject(unsafe.Pointer(h))}
 }
 
-func newQTextFrame_U(h unsafe.Pointer) *QTextFrame {
+func UnsafeNewQTextFrame(h unsafe.Pointer) *QTextFrame {
 	return newQTextFrame((*C.QTextFrame)(h))
 }
 
@@ -292,7 +320,7 @@ func NewQTextFrame(doc *QTextDocument) *QTextFrame {
 }
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextFrame_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextFrame_MetaObject(this.h)))
 }
 
 func (this *QTextFrame) Metacast(param1 string) unsafe.Pointer {
@@ -353,7 +381,7 @@ func (this *QTextFrame) LastPosition() int {
 }
 
 func (this *QTextFrame) LayoutData() *QTextFrameLayoutData {
-	return newQTextFrameLayoutData_U(unsafe.Pointer(C.QTextFrame_LayoutData(this.h)))
+	return UnsafeNewQTextFrameLayoutData(unsafe.Pointer(C.QTextFrame_LayoutData(this.h)))
 }
 
 func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
@@ -365,14 +393,14 @@ func (this *QTextFrame) ChildFrames() []*QTextFrame {
 	_ret := make([]*QTextFrame, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQTextFrame_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQTextFrame(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextFrame) ParentFrame() *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame_ParentFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextFrame_ParentFrame(this.h)))
 }
 
 func (this *QTextFrame) Begin() *QTextFrame__iterator {
@@ -458,6 +486,13 @@ func (this *QTextBlockUserData) cPointer() *C.QTextBlockUserData {
 	return this.h
 }
 
+func (this *QTextBlockUserData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBlockUserData(h *C.QTextBlockUserData) *QTextBlockUserData {
 	if h == nil {
 		return nil
@@ -465,7 +500,7 @@ func newQTextBlockUserData(h *C.QTextBlockUserData) *QTextBlockUserData {
 	return &QTextBlockUserData{h: h}
 }
 
-func newQTextBlockUserData_U(h unsafe.Pointer) *QTextBlockUserData {
+func UnsafeNewQTextBlockUserData(h unsafe.Pointer) *QTextBlockUserData {
 	return newQTextBlockUserData((*C.QTextBlockUserData)(h))
 }
 
@@ -498,6 +533,13 @@ func (this *QTextBlock) cPointer() *C.QTextBlock {
 	return this.h
 }
 
+func (this *QTextBlock) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBlock(h *C.QTextBlock) *QTextBlock {
 	if h == nil {
 		return nil
@@ -505,7 +547,7 @@ func newQTextBlock(h *C.QTextBlock) *QTextBlock {
 	return &QTextBlock{h: h}
 }
 
-func newQTextBlock_U(h unsafe.Pointer) *QTextBlock {
+func UnsafeNewQTextBlock(h unsafe.Pointer) *QTextBlock {
 	return newQTextBlock((*C.QTextBlock)(h))
 }
 
@@ -554,7 +596,7 @@ func (this *QTextBlock) Contains(position int) bool {
 }
 
 func (this *QTextBlock) Layout() *QTextLayout {
-	return newQTextLayout_U(unsafe.Pointer(C.QTextBlock_Layout(this.h)))
+	return UnsafeNewQTextLayout(unsafe.Pointer(C.QTextBlock_Layout(this.h)))
 }
 
 func (this *QTextBlock) ClearLayout() {
@@ -609,15 +651,15 @@ func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
 }
 
 func (this *QTextBlock) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextBlock_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextBlock_Document(this.h)))
 }
 
 func (this *QTextBlock) TextList() *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextBlock_TextList(this.h)))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextBlock_TextList(this.h)))
 }
 
 func (this *QTextBlock) UserData() *QTextBlockUserData {
-	return newQTextBlockUserData_U(unsafe.Pointer(C.QTextBlock_UserData(this.h)))
+	return UnsafeNewQTextBlockUserData(unsafe.Pointer(C.QTextBlock_UserData(this.h)))
 }
 
 func (this *QTextBlock) SetUserData(data *QTextBlockUserData) {
@@ -721,6 +763,13 @@ func (this *QTextFragment) cPointer() *C.QTextFragment {
 	return this.h
 }
 
+func (this *QTextFragment) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFragment(h *C.QTextFragment) *QTextFragment {
 	if h == nil {
 		return nil
@@ -728,7 +777,7 @@ func newQTextFragment(h *C.QTextFragment) *QTextFragment {
 	return &QTextFragment{h: h}
 }
 
-func newQTextFragment_U(h unsafe.Pointer) *QTextFragment {
+func UnsafeNewQTextFragment(h unsafe.Pointer) *QTextFragment {
 	return newQTextFragment((*C.QTextFragment)(h))
 }
 
@@ -861,6 +910,13 @@ func (this *QTextFrame__iterator) cPointer() *C.QTextFrame__iterator {
 	return this.h
 }
 
+func (this *QTextFrame__iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextFrame__iterator(h *C.QTextFrame__iterator) *QTextFrame__iterator {
 	if h == nil {
 		return nil
@@ -868,7 +924,7 @@ func newQTextFrame__iterator(h *C.QTextFrame__iterator) *QTextFrame__iterator {
 	return &QTextFrame__iterator{h: h}
 }
 
-func newQTextFrame__iterator_U(h unsafe.Pointer) *QTextFrame__iterator {
+func UnsafeNewQTextFrame__iterator(h unsafe.Pointer) *QTextFrame__iterator {
 	return newQTextFrame__iterator((*C.QTextFrame__iterator)(h))
 }
 
@@ -889,11 +945,11 @@ func (this *QTextFrame__iterator) OperatorAssign(o *QTextFrame__iterator) {
 }
 
 func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame__iterator_ParentFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextFrame__iterator_ParentFrame(this.h)))
 }
 
 func (this *QTextFrame__iterator) CurrentFrame() *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextFrame__iterator_CurrentFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextFrame__iterator_CurrentFrame(this.h)))
 }
 
 func (this *QTextFrame__iterator) CurrentBlock() *QTextBlock {
@@ -916,7 +972,7 @@ func (this *QTextFrame__iterator) OperatorNotEqual(o *QTextFrame__iterator) bool
 }
 
 func (this *QTextFrame__iterator) OperatorPlusPlus() *QTextFrame__iterator {
-	return newQTextFrame__iterator_U(unsafe.Pointer(C.QTextFrame__iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQTextFrame__iterator(unsafe.Pointer(C.QTextFrame__iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QTextFrame__iterator) OperatorPlusPlusWithInt(param1 int) *QTextFrame__iterator {
@@ -927,7 +983,7 @@ func (this *QTextFrame__iterator) OperatorPlusPlusWithInt(param1 int) *QTextFram
 }
 
 func (this *QTextFrame__iterator) OperatorMinusMinus() *QTextFrame__iterator {
-	return newQTextFrame__iterator_U(unsafe.Pointer(C.QTextFrame__iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQTextFrame__iterator(unsafe.Pointer(C.QTextFrame__iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QTextFrame__iterator) OperatorMinusMinusWithInt(param1 int) *QTextFrame__iterator {
@@ -962,6 +1018,13 @@ func (this *QTextBlock__iterator) cPointer() *C.QTextBlock__iterator {
 	return this.h
 }
 
+func (this *QTextBlock__iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBlock__iterator(h *C.QTextBlock__iterator) *QTextBlock__iterator {
 	if h == nil {
 		return nil
@@ -969,7 +1032,7 @@ func newQTextBlock__iterator(h *C.QTextBlock__iterator) *QTextBlock__iterator {
 	return &QTextBlock__iterator{h: h}
 }
 
-func newQTextBlock__iterator_U(h unsafe.Pointer) *QTextBlock__iterator {
+func UnsafeNewQTextBlock__iterator(h unsafe.Pointer) *QTextBlock__iterator {
 	return newQTextBlock__iterator((*C.QTextBlock__iterator)(h))
 }
 
@@ -1009,7 +1072,7 @@ func (this *QTextBlock__iterator) OperatorNotEqual(o *QTextBlock__iterator) bool
 }
 
 func (this *QTextBlock__iterator) OperatorPlusPlus() *QTextBlock__iterator {
-	return newQTextBlock__iterator_U(unsafe.Pointer(C.QTextBlock__iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQTextBlock__iterator(unsafe.Pointer(C.QTextBlock__iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QTextBlock__iterator) OperatorPlusPlusWithInt(param1 int) *QTextBlock__iterator {
@@ -1020,7 +1083,7 @@ func (this *QTextBlock__iterator) OperatorPlusPlusWithInt(param1 int) *QTextBloc
 }
 
 func (this *QTextBlock__iterator) OperatorMinusMinus() *QTextBlock__iterator {
-	return newQTextBlock__iterator_U(unsafe.Pointer(C.QTextBlock__iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQTextBlock__iterator(unsafe.Pointer(C.QTextBlock__iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QTextBlock__iterator) OperatorMinusMinusWithInt(param1 int) *QTextBlock__iterator {

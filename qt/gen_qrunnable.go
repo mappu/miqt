@@ -24,6 +24,13 @@ func (this *QRunnable) cPointer() *C.QRunnable {
 	return this.h
 }
 
+func (this *QRunnable) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRunnable(h *C.QRunnable) *QRunnable {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQRunnable(h *C.QRunnable) *QRunnable {
 	return &QRunnable{h: h}
 }
 
-func newQRunnable_U(h unsafe.Pointer) *QRunnable {
+func UnsafeNewQRunnable(h unsafe.Pointer) *QRunnable {
 	return newQRunnable((*C.QRunnable)(h))
 }
 

@@ -25,19 +25,26 @@ func (this *QAnimationGroup) cPointer() *C.QAnimationGroup {
 	return this.h
 }
 
+func (this *QAnimationGroup) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAnimationGroup(h *C.QAnimationGroup) *QAnimationGroup {
 	if h == nil {
 		return nil
 	}
-	return &QAnimationGroup{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
+	return &QAnimationGroup{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
 }
 
-func newQAnimationGroup_U(h unsafe.Pointer) *QAnimationGroup {
+func UnsafeNewQAnimationGroup(h unsafe.Pointer) *QAnimationGroup {
 	return newQAnimationGroup((*C.QAnimationGroup)(h))
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAnimationGroup_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAnimationGroup_MetaObject(this.h)))
 }
 
 func (this *QAnimationGroup) Metacast(param1 string) unsafe.Pointer {
@@ -65,7 +72,7 @@ func QAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QAnimationGroup) AnimationAt(index int) *QAbstractAnimation {
-	return newQAbstractAnimation_U(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))))
+	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_AnimationAt(this.h, (C.int)(index))))
 }
 
 func (this *QAnimationGroup) AnimationCount() int {
@@ -89,7 +96,7 @@ func (this *QAnimationGroup) RemoveAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QAnimationGroup) TakeAnimation(index int) *QAbstractAnimation {
-	return newQAbstractAnimation_U(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))))
+	return UnsafeNewQAbstractAnimation(unsafe.Pointer(C.QAnimationGroup_TakeAnimation(this.h, (C.int)(index))))
 }
 
 func (this *QAnimationGroup) Clear() {

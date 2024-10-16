@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -47,14 +48,21 @@ func (this *QComboBox) cPointer() *C.QComboBox {
 	return this.h
 }
 
+func (this *QComboBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQComboBox(h *C.QComboBox) *QComboBox {
 	if h == nil {
 		return nil
 	}
-	return &QComboBox{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QComboBox{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQComboBox_U(h unsafe.Pointer) *QComboBox {
+func UnsafeNewQComboBox(h unsafe.Pointer) *QComboBox {
 	return newQComboBox((*C.QComboBox)(h))
 }
 
@@ -71,7 +79,7 @@ func NewQComboBox2(parent *QWidget) *QComboBox {
 }
 
 func (this *QComboBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QComboBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QComboBox_MetaObject(this.h)))
 }
 
 func (this *QComboBox) Metacast(param1 string) unsafe.Pointer {
@@ -151,7 +159,7 @@ func (this *QComboBox) HasFrame() bool {
 }
 
 func (this *QComboBox) FindText(text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QComboBox_FindText(this.h, (*C.struct_miqt_string)(text_ms)))
 }
@@ -196,7 +204,7 @@ func (this *QComboBox) SetIconSize(size *QSize) {
 }
 
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
-	placeholderText_ms := miqt_strdupg(placeholderText)
+	placeholderText_ms := libmiqt.Strdupg(placeholderText)
 	defer C.free(placeholderText_ms)
 	C.QComboBox_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
@@ -221,7 +229,7 @@ func (this *QComboBox) SetLineEdit(edit *QLineEdit) {
 }
 
 func (this *QComboBox) LineEdit() *QLineEdit {
-	return newQLineEdit_U(unsafe.Pointer(C.QComboBox_LineEdit(this.h)))
+	return UnsafeNewQLineEdit(unsafe.Pointer(C.QComboBox_LineEdit(this.h)))
 }
 
 func (this *QComboBox) SetValidator(v *QValidator) {
@@ -229,7 +237,7 @@ func (this *QComboBox) SetValidator(v *QValidator) {
 }
 
 func (this *QComboBox) Validator() *QValidator {
-	return newQValidator_U(unsafe.Pointer(C.QComboBox_Validator(this.h)))
+	return UnsafeNewQValidator(unsafe.Pointer(C.QComboBox_Validator(this.h)))
 }
 
 func (this *QComboBox) SetCompleter(c *QCompleter) {
@@ -237,11 +245,11 @@ func (this *QComboBox) SetCompleter(c *QCompleter) {
 }
 
 func (this *QComboBox) Completer() *QCompleter {
-	return newQCompleter_U(unsafe.Pointer(C.QComboBox_Completer(this.h)))
+	return UnsafeNewQCompleter(unsafe.Pointer(C.QComboBox_Completer(this.h)))
 }
 
 func (this *QComboBox) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate_U(unsafe.Pointer(C.QComboBox_ItemDelegate(this.h)))
+	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QComboBox_ItemDelegate(this.h)))
 }
 
 func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
@@ -249,7 +257,7 @@ func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QComboBox) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QComboBox_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QComboBox_Model(this.h)))
 }
 
 func (this *QComboBox) SetModel(model *QAbstractItemModel) {
@@ -315,13 +323,13 @@ func (this *QComboBox) ItemData(index int) *QVariant {
 }
 
 func (this *QComboBox) AddItem(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_AddItem(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) AddItem2(icon *QIcon, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_AddItem2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
@@ -331,7 +339,7 @@ func (this *QComboBox) AddItems(texts []string) {
 	texts_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
-		texts_i_ms := miqt_strdupg(texts[i])
+		texts_i_ms := libmiqt.Strdupg(texts[i])
 		defer C.free(texts_i_ms)
 		texts_CArray[i] = (*C.struct_miqt_string)(texts_i_ms)
 	}
@@ -341,13 +349,13 @@ func (this *QComboBox) AddItems(texts []string) {
 }
 
 func (this *QComboBox) InsertItem(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_InsertItem(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
@@ -357,7 +365,7 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 	texts_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
-		texts_i_ms := miqt_strdupg(texts[i])
+		texts_i_ms := libmiqt.Strdupg(texts[i])
 		defer C.free(texts_i_ms)
 		texts_CArray[i] = (*C.struct_miqt_string)(texts_i_ms)
 	}
@@ -375,7 +383,7 @@ func (this *QComboBox) RemoveItem(index int) {
 }
 
 func (this *QComboBox) SetItemText(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_SetItemText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -389,7 +397,7 @@ func (this *QComboBox) SetItemData(index int, value *QVariant) {
 }
 
 func (this *QComboBox) View() *QAbstractItemView {
-	return newQAbstractItemView_U(unsafe.Pointer(C.QComboBox_View(this.h)))
+	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QComboBox_View(this.h)))
 }
 
 func (this *QComboBox) SetView(itemView *QAbstractItemView) {
@@ -445,7 +453,7 @@ func (this *QComboBox) ClearEditText() {
 }
 
 func (this *QComboBox) SetEditText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_SetEditText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -455,13 +463,13 @@ func (this *QComboBox) SetCurrentIndex(index int) {
 }
 
 func (this *QComboBox) SetCurrentText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_SetCurrentText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QComboBox) EditTextChanged(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_EditTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -506,7 +514,7 @@ func miqt_exec_callback_QComboBox_Activated(cb C.intptr_t, index C.int) {
 }
 
 func (this *QComboBox) TextActivated(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_TextActivated(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -551,7 +559,7 @@ func miqt_exec_callback_QComboBox_Highlighted(cb C.intptr_t, index C.int) {
 }
 
 func (this *QComboBox) TextHighlighted(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_TextHighlighted(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -596,7 +604,7 @@ func miqt_exec_callback_QComboBox_CurrentIndexChanged(cb C.intptr_t, index C.int
 }
 
 func (this *QComboBox) CurrentIndexChangedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_CurrentIndexChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -621,7 +629,7 @@ func miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(cb C.intptr_t, 
 }
 
 func (this *QComboBox) CurrentTextChanged(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_CurrentTextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -646,7 +654,7 @@ func miqt_exec_callback_QComboBox_CurrentTextChanged(cb C.intptr_t, param1 *C.st
 }
 
 func (this *QComboBox) ActivatedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_ActivatedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -671,7 +679,7 @@ func miqt_exec_callback_QComboBox_ActivatedWithQString(cb C.intptr_t, param1 *C.
 }
 
 func (this *QComboBox) HighlightedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QComboBox_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -740,7 +748,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QComboBox) FindText2(text string, flags MatchFlag) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QComboBox_FindText2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags)))
 }
@@ -768,25 +776,25 @@ func (this *QComboBox) ItemData2(index int, role int) *QVariant {
 }
 
 func (this *QComboBox) AddItem22(text string, userData *QVariant) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_AddItem22(this.h, (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_AddItem3(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_InsertItem3(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData *QVariant) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms), userData.cPointer())
 }

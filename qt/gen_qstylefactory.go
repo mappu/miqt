@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QStyleFactory) cPointer() *C.QStyleFactory {
 	return this.h
 }
 
+func (this *QStyleFactory) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQStyleFactory(h *C.QStyleFactory) *QStyleFactory {
 	return &QStyleFactory{h: h}
 }
 
-func newQStyleFactory_U(h unsafe.Pointer) *QStyleFactory {
+func UnsafeNewQStyleFactory(h unsafe.Pointer) *QStyleFactory {
 	return newQStyleFactory((*C.QStyleFactory)(h))
 }
 
@@ -50,9 +58,9 @@ func QStyleFactory_Keys() []string {
 }
 
 func QStyleFactory_Create(param1 string) *QStyle {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
-	return newQStyle_U(unsafe.Pointer(C.QStyleFactory_Create((*C.struct_miqt_string)(param1_ms))))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create((*C.struct_miqt_string)(param1_ms))))
 }
 
 // Delete this object from C++ memory.

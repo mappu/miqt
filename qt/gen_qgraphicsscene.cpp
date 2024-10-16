@@ -32,7 +32,7 @@
 #include <QTransform>
 #include <QVariant>
 #include <QWidget>
-#include "qgraphicsscene.h"
+#include <qgraphicsscene.h>
 #include "gen_qgraphicsscene.h"
 #include "_cgo_export.h"
 
@@ -253,7 +253,7 @@ void QGraphicsScene_SetSelectionArea2(QGraphicsScene* self, QPainterPath* path, 
 }
 
 QGraphicsItemGroup* QGraphicsScene_CreateItemGroup(QGraphicsScene* self, struct miqt_array* /* of QGraphicsItem* */ items) {
-	QList<QGraphicsItem*> items_QList;
+	QList<QGraphicsItem *> items_QList;
 	items_QList.reserve(items->len);
 	QGraphicsItem** items_arr = static_cast<QGraphicsItem**>(items->data);
 	for(size_t i = 0; i < items->len; ++i) {

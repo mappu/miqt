@@ -9,7 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qjsonarray.h"
+#include <qjsonarray.h>
 #include "gen_qjsonarray.h"
 #include "_cgo_export.h"
 
@@ -26,7 +26,7 @@ void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other) {
 }
 
 QJsonArray* QJsonArray_FromStringList(struct miqt_array* /* of struct miqt_string* */ list) {
-	QList<QString> list_QList;
+	QStringList list_QList;
 	list_QList.reserve(list->len);
 	struct miqt_string** list_arr = static_cast<struct miqt_string**>(list->data);
 	for(size_t i = 0; i < list->len; ++i) {

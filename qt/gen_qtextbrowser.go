@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QTextBrowser) cPointer() *C.QTextBrowser {
 	return this.h
 }
 
+func (this *QTextBrowser) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextBrowser(h *C.QTextBrowser) *QTextBrowser {
 	if h == nil {
 		return nil
 	}
-	return &QTextBrowser{h: h, QTextEdit: newQTextEdit_U(unsafe.Pointer(h))}
+	return &QTextBrowser{h: h, QTextEdit: UnsafeNewQTextEdit(unsafe.Pointer(h))}
 }
 
-func newQTextBrowser_U(h unsafe.Pointer) *QTextBrowser {
+func UnsafeNewQTextBrowser(h unsafe.Pointer) *QTextBrowser {
 	return newQTextBrowser((*C.QTextBrowser)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQTextBrowser2(parent *QWidget) *QTextBrowser {
 }
 
 func (this *QTextBrowser) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextBrowser_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextBrowser_MetaObject(this.h)))
 }
 
 func (this *QTextBrowser) Metacast(param1 string) unsafe.Pointer {
@@ -107,7 +115,7 @@ func (this *QTextBrowser) SetSearchPaths(paths []string) {
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := miqt_strdupg(paths[i])
+		paths_i_ms := libmiqt.Strdupg(paths[i])
 		defer C.free(paths_i_ms)
 		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}
@@ -269,7 +277,7 @@ func miqt_exec_callback_QTextBrowser_SourceChanged(cb C.intptr_t, param1 *C.QUrl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQUrl_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -289,13 +297,13 @@ func miqt_exec_callback_QTextBrowser_Highlighted(cb C.intptr_t, param1 *C.QUrl) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQUrl_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
 
 func (this *QTextBrowser) HighlightedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QTextBrowser_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -334,7 +342,7 @@ func miqt_exec_callback_QTextBrowser_AnchorClicked(cb C.intptr_t, param1 *C.QUrl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQUrl_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }

@@ -24,6 +24,13 @@ func (this *QBitArray) cPointer() *C.QBitArray {
 	return this.h
 }
 
+func (this *QBitArray) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBitArray(h *C.QBitArray) *QBitArray {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQBitArray(h *C.QBitArray) *QBitArray {
 	return &QBitArray{h: h}
 }
 
-func newQBitArray_U(h unsafe.Pointer) *QBitArray {
+func UnsafeNewQBitArray(h unsafe.Pointer) *QBitArray {
 	return newQBitArray((*C.QBitArray)(h))
 }
 
@@ -231,6 +238,13 @@ func (this *QBitRef) cPointer() *C.QBitRef {
 	return this.h
 }
 
+func (this *QBitRef) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBitRef(h *C.QBitRef) *QBitRef {
 	if h == nil {
 		return nil
@@ -238,7 +252,7 @@ func newQBitRef(h *C.QBitRef) *QBitRef {
 	return &QBitRef{h: h}
 }
 
-func newQBitRef_U(h unsafe.Pointer) *QBitRef {
+func UnsafeNewQBitRef(h unsafe.Pointer) *QBitRef {
 	return newQBitRef((*C.QBitRef)(h))
 }
 

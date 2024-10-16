@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
-#include "qbitmap.h"
+#include <qbitmap.h>
 #include "gen_qbitmap.h"
 #include "_cgo_export.h"
 

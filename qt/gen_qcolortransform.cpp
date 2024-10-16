@@ -1,7 +1,7 @@
 #include <QColor>
 #include <QColorTransform>
 #include <QRgba64>
-#include "qcolortransform.h"
+#include <qcolortransform.h>
 #include "gen_qcolortransform.h"
 #include "_cgo_export.h"
 

@@ -15,7 +15,7 @@
 #include <QUrl>
 #include <QUuid>
 #include <QVariant>
-#include "qcborvalue.h"
+#include <qcborvalue.h>
 #include "gen_qcborvalue.h"
 #include "_cgo_export.h"
 

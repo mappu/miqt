@@ -13,7 +13,7 @@
 #include <cstring>
 #include <QToolBar>
 #include <QWidget>
-#include "qmainwindow.h"
+#include <qmainwindow.h>
 #include "gen_qmainwindow.h"
 #include "_cgo_export.h"
 
@@ -249,7 +249,7 @@ int QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget)
 }
 
 void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWidget* */ docks, struct miqt_array* /* of int */ sizes, int orientation) {
-	QList<QDockWidget*> docks_QList;
+	QList<QDockWidget *> docks_QList;
 	docks_QList.reserve(docks->len);
 	QDockWidget** docks_arr = static_cast<QDockWidget**>(docks->data);
 	for(size_t i = 0; i < docks->len; ++i) {

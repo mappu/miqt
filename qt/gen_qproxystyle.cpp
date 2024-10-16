@@ -17,7 +17,7 @@
 #include <QStyleOption>
 #include <QStyleOptionComplex>
 #include <QWidget>
-#include "qproxystyle.h"
+#include <qproxystyle.h>
 #include "gen_qproxystyle.h"
 #include "_cgo_export.h"
 

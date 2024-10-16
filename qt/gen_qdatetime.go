@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -38,6 +39,13 @@ func (this *QDate) cPointer() *C.QDate {
 	return this.h
 }
 
+func (this *QDate) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDate(h *C.QDate) *QDate {
 	if h == nil {
 		return nil
@@ -45,7 +53,7 @@ func newQDate(h *C.QDate) *QDate {
 	return &QDate{h: h}
 }
 
-func newQDate_U(h unsafe.Pointer) *QDate {
+func UnsafeNewQDate(h unsafe.Pointer) *QDate {
 	return newQDate((*C.QDate)(h))
 }
 
@@ -212,7 +220,7 @@ func (this *QDate) ToString2(format DateFormat, cal QCalendar) string {
 }
 
 func (this *QDate) ToStringWithFormat(format string) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QDate_ToStringWithFormat(this.h, (*C.struct_miqt_string)(format_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -221,7 +229,7 @@ func (this *QDate) ToStringWithFormat(format string) string {
 }
 
 func (this *QDate) ToString3(format string, cal QCalendar) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QDate_ToString3(this.h, (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -316,7 +324,7 @@ func QDate_CurrentDate() *QDate {
 }
 
 func QDate_FromString(s string) *QDate {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QDate_FromString((*C.struct_miqt_string)(s_ms))
 	_goptr := newQDate(_ret)
@@ -325,9 +333,9 @@ func QDate_FromString(s string) *QDate {
 }
 
 func QDate_FromString2(s string, format string) *QDate {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QDate_FromString2((*C.struct_miqt_string)(s_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQDate(_ret)
@@ -336,9 +344,9 @@ func QDate_FromString2(s string, format string) *QDate {
 }
 
 func QDate_FromString3(s string, format string, cal QCalendar) *QDate {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QDate_FromString3((*C.struct_miqt_string)(s_ms), (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_goptr := newQDate(_ret)
@@ -433,7 +441,7 @@ func (this *QDate) ToString1(format DateFormat) string {
 }
 
 func QDate_FromString22(s string, f DateFormat) *QDate {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QDate_FromString22((*C.struct_miqt_string)(s_ms), (C.int)(f))
 	_goptr := newQDate(_ret)
@@ -466,6 +474,13 @@ func (this *QTime) cPointer() *C.QTime {
 	return this.h
 }
 
+func (this *QTime) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTime(h *C.QTime) *QTime {
 	if h == nil {
 		return nil
@@ -473,7 +488,7 @@ func newQTime(h *C.QTime) *QTime {
 	return &QTime{h: h}
 }
 
-func newQTime_U(h unsafe.Pointer) *QTime {
+func UnsafeNewQTime(h unsafe.Pointer) *QTime {
 	return newQTime((*C.QTime)(h))
 }
 
@@ -539,7 +554,7 @@ func (this *QTime) ToString() string {
 }
 
 func (this *QTime) ToStringWithFormat(format string) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QTime_ToStringWithFormat(this.h, (*C.struct_miqt_string)(format_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -616,7 +631,7 @@ func QTime_CurrentTime() *QTime {
 }
 
 func QTime_FromString(s string) *QTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QTime_FromString((*C.struct_miqt_string)(s_ms))
 	_goptr := newQTime(_ret)
@@ -625,9 +640,9 @@ func QTime_FromString(s string) *QTime {
 }
 
 func QTime_FromString2(s string, format string) *QTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QTime_FromString2((*C.struct_miqt_string)(s_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQTime(_ret)
@@ -663,7 +678,7 @@ func (this *QTime) SetHMS4(h int, m int, s int, ms int) bool {
 }
 
 func QTime_FromString22(s string, f DateFormat) *QTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QTime_FromString22((*C.struct_miqt_string)(s_ms), (C.int)(f))
 	_goptr := newQTime(_ret)
@@ -700,6 +715,13 @@ func (this *QDateTime) cPointer() *C.QDateTime {
 	return this.h
 }
 
+func (this *QDateTime) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDateTime(h *C.QDateTime) *QDateTime {
 	if h == nil {
 		return nil
@@ -707,7 +729,7 @@ func newQDateTime(h *C.QDateTime) *QDateTime {
 	return &QDateTime{h: h}
 }
 
-func newQDateTime_U(h unsafe.Pointer) *QDateTime {
+func UnsafeNewQDateTime(h unsafe.Pointer) *QDateTime {
 	return newQDateTime((*C.QDateTime)(h))
 }
 
@@ -847,7 +869,7 @@ func (this *QDateTime) ToString() string {
 }
 
 func (this *QDateTime) ToStringWithFormat(format string) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QDateTime_ToStringWithFormat(this.h, (*C.struct_miqt_string)(format_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -856,7 +878,7 @@ func (this *QDateTime) ToStringWithFormat(format string) string {
 }
 
 func (this *QDateTime) ToString2(format string, cal QCalendar) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QDateTime_ToString2(this.h, (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -993,7 +1015,7 @@ func QDateTime_CurrentDateTimeUtc() *QDateTime {
 }
 
 func QDateTime_FromString(s string) *QDateTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QDateTime_FromString((*C.struct_miqt_string)(s_ms))
 	_goptr := newQDateTime(_ret)
@@ -1002,9 +1024,9 @@ func QDateTime_FromString(s string) *QDateTime {
 }
 
 func QDateTime_FromString2(s string, format string) *QDateTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QDateTime_FromString2((*C.struct_miqt_string)(s_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQDateTime(_ret)
@@ -1013,9 +1035,9 @@ func QDateTime_FromString2(s string, format string) *QDateTime {
 }
 
 func QDateTime_FromString3(s string, format string, cal QCalendar) *QDateTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QDateTime_FromString3((*C.struct_miqt_string)(s_ms), (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_goptr := newQDateTime(_ret)
@@ -1103,7 +1125,7 @@ func (this *QDateTime) ToString1(format DateFormat) string {
 }
 
 func QDateTime_FromString22(s string, f DateFormat) *QDateTime {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	_ret := C.QDateTime_FromString22((*C.struct_miqt_string)(s_ms), (C.int)(f))
 	_goptr := newQDateTime(_ret)

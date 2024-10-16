@@ -2,7 +2,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qoperatingsystemversion.h"
+#include <qoperatingsystemversion.h>
 #include "gen_qoperatingsystemversion.h"
 #include "_cgo_export.h"
 

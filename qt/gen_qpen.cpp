@@ -2,7 +2,7 @@
 #include <QColor>
 #include <QList>
 #include <QPen>
-#include "qpen.h"
+#include <qpen.h>
 #include "gen_qpen.h"
 #include "_cgo_export.h"
 
@@ -69,7 +69,7 @@ struct miqt_array* QPen_DashPattern(const QPen* self) {
 }
 
 void QPen_SetDashPattern(QPen* self, struct miqt_array* /* of double */ pattern) {
-	QVector<double> pattern_QList;
+	QVector<qreal> pattern_QList;
 	pattern_QList.reserve(pattern->len);
 	double* pattern_arr = static_cast<double*>(pattern->data);
 	for(size_t i = 0; i < pattern->len; ++i) {

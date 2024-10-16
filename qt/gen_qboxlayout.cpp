@@ -11,7 +11,7 @@
 #include <cstring>
 #include <QVBoxLayout>
 #include <QWidget>
-#include "qboxlayout.h"
+#include <qboxlayout.h>
 #include "gen_qboxlayout.h"
 #include "_cgo_export.h"
 

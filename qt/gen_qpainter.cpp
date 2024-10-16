@@ -29,7 +29,7 @@
 #include <QTextItem>
 #include <QTextOption>
 #include <QTransform>
-#include "qpainter.h"
+#include <qpainter.h>
 #include "gen_qpainter.h"
 #include "_cgo_export.h"
 

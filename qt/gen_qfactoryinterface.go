@@ -24,6 +24,13 @@ func (this *QFactoryInterface) cPointer() *C.QFactoryInterface {
 	return this.h
 }
 
+func (this *QFactoryInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQFactoryInterface(h *C.QFactoryInterface) *QFactoryInterface {
 	return &QFactoryInterface{h: h}
 }
 
-func newQFactoryInterface_U(h unsafe.Pointer) *QFactoryInterface {
+func UnsafeNewQFactoryInterface(h unsafe.Pointer) *QFactoryInterface {
 	return newQFactoryInterface((*C.QFactoryInterface)(h))
 }
 

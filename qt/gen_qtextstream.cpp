@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QTextCodec>
 #include <QTextStream>
-#include "qtextstream.h"
+#include <qtextstream.h>
 #include "gen_qtextstream.h"
 #include "_cgo_export.h"
 

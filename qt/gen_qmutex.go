@@ -31,6 +31,13 @@ func (this *QBasicMutex) cPointer() *C.QBasicMutex {
 	return this.h
 }
 
+func (this *QBasicMutex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
 	if h == nil {
 		return nil
@@ -38,7 +45,7 @@ func newQBasicMutex(h *C.QBasicMutex) *QBasicMutex {
 	return &QBasicMutex{h: h}
 }
 
-func newQBasicMutex_U(h unsafe.Pointer) *QBasicMutex {
+func UnsafeNewQBasicMutex(h unsafe.Pointer) *QBasicMutex {
 	return newQBasicMutex((*C.QBasicMutex)(h))
 }
 
@@ -98,14 +105,21 @@ func (this *QMutex) cPointer() *C.QMutex {
 	return this.h
 }
 
+func (this *QMutex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMutex(h *C.QMutex) *QMutex {
 	if h == nil {
 		return nil
 	}
-	return &QMutex{h: h, QBasicMutex: newQBasicMutex_U(unsafe.Pointer(h))}
+	return &QMutex{h: h, QBasicMutex: UnsafeNewQBasicMutex(unsafe.Pointer(h))}
 }
 
-func newQMutex_U(h unsafe.Pointer) *QMutex {
+func UnsafeNewQMutex(h unsafe.Pointer) *QMutex {
 	return newQMutex((*C.QMutex)(h))
 }
 
@@ -170,6 +184,13 @@ func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
 	return this.h
 }
 
+func (this *QRecursiveMutex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
 	if h == nil {
 		return nil
@@ -177,7 +198,7 @@ func newQRecursiveMutex(h *C.QRecursiveMutex) *QRecursiveMutex {
 	return &QRecursiveMutex{h: h}
 }
 
-func newQRecursiveMutex_U(h unsafe.Pointer) *QRecursiveMutex {
+func UnsafeNewQRecursiveMutex(h unsafe.Pointer) *QRecursiveMutex {
 	return newQRecursiveMutex((*C.QRecursiveMutex)(h))
 }
 
@@ -212,6 +233,13 @@ func (this *QMutexLocker) cPointer() *C.QMutexLocker {
 	return this.h
 }
 
+func (this *QMutexLocker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
 	if h == nil {
 		return nil
@@ -219,7 +247,7 @@ func newQMutexLocker(h *C.QMutexLocker) *QMutexLocker {
 	return &QMutexLocker{h: h}
 }
 
-func newQMutexLocker_U(h unsafe.Pointer) *QMutexLocker {
+func UnsafeNewQMutexLocker(h unsafe.Pointer) *QMutexLocker {
 	return newQMutexLocker((*C.QMutexLocker)(h))
 }
 
@@ -244,7 +272,7 @@ func (this *QMutexLocker) Relock() {
 }
 
 func (this *QMutexLocker) Mutex() *QMutex {
-	return newQMutex_U(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)))
+	return UnsafeNewQMutex(unsafe.Pointer(C.QMutexLocker_Mutex(this.h)))
 }
 
 // Delete this object from C++ memory.

@@ -10,7 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qmenu.h"
+#include <qmenu.h>
 #include "gen_qmenu.h"
 #include "_cgo_export.h"
 
@@ -171,7 +171,7 @@ QAction* QMenu_ExecWithPos(QMenu* self, QPoint* pos) {
 }
 
 QAction* QMenu_Exec2(struct miqt_array* /* of QAction* */ actions, QPoint* pos) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {
@@ -315,7 +315,7 @@ QAction* QMenu_Exec22(QMenu* self, QPoint* pos, QAction* at) {
 }
 
 QAction* QMenu_Exec3(struct miqt_array* /* of QAction* */ actions, QPoint* pos, QAction* at) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {
@@ -325,7 +325,7 @@ QAction* QMenu_Exec3(struct miqt_array* /* of QAction* */ actions, QPoint* pos, 
 }
 
 QAction* QMenu_Exec4(struct miqt_array* /* of QAction* */ actions, QPoint* pos, QAction* at, QWidget* parent) {
-	QList<QAction*> actions_QList;
+	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions->len);
 	QAction** actions_arr = static_cast<QAction**>(actions->data);
 	for(size_t i = 0; i < actions->len; ++i) {

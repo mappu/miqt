@@ -5,7 +5,7 @@
 #include <cstring>
 #include <QUrl>
 #include <QUrlQuery>
-#include "qurl.h"
+#include <qurl.h>
 #include "gen_qurl.h"
 #include "_cgo_export.h"
 
@@ -357,7 +357,7 @@ struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
 }
 
 struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string* */ uris) {
-	QList<QString> uris_QList;
+	QStringList uris_QList;
 	uris_QList.reserve(uris->len);
 	struct miqt_string** uris_arr = static_cast<struct miqt_string**>(uris->data);
 	for(size_t i = 0; i < uris->len; ++i) {
@@ -377,7 +377,7 @@ struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_stri
 }
 
 void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string* */ idnWhitelist) {
-	QList<QString> idnWhitelist_QList;
+	QStringList idnWhitelist_QList;
 	idnWhitelist_QList.reserve(idnWhitelist->len);
 	struct miqt_string** idnWhitelist_arr = static_cast<struct miqt_string**>(idnWhitelist->data);
 	for(size_t i = 0; i < idnWhitelist->len; ++i) {
@@ -527,7 +527,7 @@ QByteArray* QUrl_ToPercentEncoding3(struct miqt_string* param1, QByteArray* excl
 }
 
 struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string* */ uris, int mode) {
-	QList<QString> uris_QList;
+	QStringList uris_QList;
 	uris_QList.reserve(uris->len);
 	struct miqt_string** uris_arr = static_cast<struct miqt_string**>(uris->data);
 	for(size_t i = 0; i < uris->len; ++i) {

@@ -10,7 +10,7 @@
 #include <cstring>
 #include <QTableView>
 #include <QWidget>
-#include "qtableview.h"
+#include <qtableview.h>
 #include "gen_qtableview.h"
 #include "_cgo_export.h"
 

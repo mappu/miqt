@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qabstractanimation.h"
+#include <qabstractanimation.h>
 #include "gen_qabstractanimation.h"
 #include "_cgo_export.h"
 

@@ -14,7 +14,7 @@
 #include <cstring>
 #include <QSurfaceFormat>
 #include <QWindow>
-#include "qwindow.h"
+#include <qwindow.h>
 #include "gen_qwindow.h"
 #include "_cgo_export.h"
 

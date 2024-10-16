@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -33,6 +34,13 @@ func (this *QLockFile) cPointer() *C.QLockFile {
 	return this.h
 }
 
+func (this *QLockFile) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLockFile(h *C.QLockFile) *QLockFile {
 	if h == nil {
 		return nil
@@ -40,13 +48,13 @@ func newQLockFile(h *C.QLockFile) *QLockFile {
 	return &QLockFile{h: h}
 }
 
-func newQLockFile_U(h unsafe.Pointer) *QLockFile {
+func UnsafeNewQLockFile(h unsafe.Pointer) *QLockFile {
 	return newQLockFile((*C.QLockFile)(h))
 }
 
 // NewQLockFile constructs a new QLockFile object.
 func NewQLockFile(fileName string) *QLockFile {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QLockFile_new((*C.struct_miqt_string)(fileName_ms))
 	return newQLockFile(ret)

@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qdockwidget.h"
+#include <qdockwidget.h>
 #include "gen_qdockwidget.h"
 #include "_cgo_export.h"
 

@@ -42,6 +42,13 @@ func (this *QGenericArgument) cPointer() *C.QGenericArgument {
 	return this.h
 }
 
+func (this *QGenericArgument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGenericArgument(h *C.QGenericArgument) *QGenericArgument {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQGenericArgument(h *C.QGenericArgument) *QGenericArgument {
 	return &QGenericArgument{h: h}
 }
 
-func newQGenericArgument_U(h unsafe.Pointer) *QGenericArgument {
+func UnsafeNewQGenericArgument(h unsafe.Pointer) *QGenericArgument {
 	return newQGenericArgument((*C.QGenericArgument)(h))
 }
 
@@ -116,14 +123,21 @@ func (this *QGenericReturnArgument) cPointer() *C.QGenericReturnArgument {
 	return this.h
 }
 
+func (this *QGenericReturnArgument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGenericReturnArgument(h *C.QGenericReturnArgument) *QGenericReturnArgument {
 	if h == nil {
 		return nil
 	}
-	return &QGenericReturnArgument{h: h, QGenericArgument: newQGenericArgument_U(unsafe.Pointer(h))}
+	return &QGenericReturnArgument{h: h, QGenericArgument: UnsafeNewQGenericArgument(unsafe.Pointer(h))}
 }
 
-func newQGenericReturnArgument_U(h unsafe.Pointer) *QGenericReturnArgument {
+func UnsafeNewQGenericReturnArgument(h unsafe.Pointer) *QGenericReturnArgument {
 	return newQGenericReturnArgument((*C.QGenericReturnArgument)(h))
 }
 
@@ -180,6 +194,13 @@ func (this *QMetaObject) cPointer() *C.QMetaObject {
 	return this.h
 }
 
+func (this *QMetaObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaObject(h *C.QMetaObject) *QMetaObject {
 	if h == nil {
 		return nil
@@ -187,7 +208,7 @@ func newQMetaObject(h *C.QMetaObject) *QMetaObject {
 	return &QMetaObject{h: h}
 }
 
-func newQMetaObject_U(h unsafe.Pointer) *QMetaObject {
+func UnsafeNewQMetaObject(h unsafe.Pointer) *QMetaObject {
 	return newQMetaObject((*C.QMetaObject)(h))
 }
 
@@ -209,7 +230,7 @@ func (this *QMetaObject) ClassName() unsafe.Pointer {
 }
 
 func (this *QMetaObject) SuperClass() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaObject_SuperClass(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaObject_SuperClass(this.h)))
 }
 
 func (this *QMetaObject) Inherits(metaObject *QMetaObject) bool {
@@ -217,11 +238,11 @@ func (this *QMetaObject) Inherits(metaObject *QMetaObject) bool {
 }
 
 func (this *QMetaObject) Cast(obj *QObject) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_Cast(this.h, obj.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_Cast(this.h, obj.cPointer())))
 }
 
 func (this *QMetaObject) CastWithObj(obj *QObject) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_CastWithObj(this.h, obj.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_CastWithObj(this.h, obj.cPointer())))
 }
 
 func (this *QMetaObject) Tr(s string, c string) string {
@@ -429,7 +450,7 @@ func QMetaObject_InvokeMethod4(obj *QObject, member string) bool {
 }
 
 func (this *QMetaObject) NewInstance() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance(this.h)))
 }
 
 func (this *QMetaObject) Tr3(s string, c string, n int) string {
@@ -698,43 +719,43 @@ func QMetaObject_InvokeMethod124(obj *QObject, member string, val0 QGenericArgum
 }
 
 func (this *QMetaObject) NewInstance1(val0 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance1(this.h, val0.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance1(this.h, val0.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance2(val0 QGenericArgument, val1 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance2(this.h, val0.cPointer(), val1.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance2(this.h, val0.cPointer(), val1.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance3(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance3(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance3(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance4(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance4(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance4(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance5(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance5(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance5(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance6(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance6(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance6(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance7(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance7(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance7(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance8(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance8(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance8(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance9(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance9(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance9(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer())))
 }
 
 func (this *QMetaObject) NewInstance10(val0 QGenericArgument, val1 QGenericArgument, val2 QGenericArgument, val3 QGenericArgument, val4 QGenericArgument, val5 QGenericArgument, val6 QGenericArgument, val7 QGenericArgument, val8 QGenericArgument, val9 QGenericArgument) *QObject {
-	return newQObject_U(unsafe.Pointer(C.QMetaObject_NewInstance10(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())))
+	return UnsafeNewQObject(unsafe.Pointer(C.QMetaObject_NewInstance10(this.h, val0.cPointer(), val1.cPointer(), val2.cPointer(), val3.cPointer(), val4.cPointer(), val5.cPointer(), val6.cPointer(), val7.cPointer(), val8.cPointer(), val9.cPointer())))
 }
 
 // Delete this object from C++ memory.
@@ -762,6 +783,13 @@ func (this *QMetaObject__Connection) cPointer() *C.QMetaObject__Connection {
 	return this.h
 }
 
+func (this *QMetaObject__Connection) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaObject__Connection(h *C.QMetaObject__Connection) *QMetaObject__Connection {
 	if h == nil {
 		return nil
@@ -769,7 +797,7 @@ func newQMetaObject__Connection(h *C.QMetaObject__Connection) *QMetaObject__Conn
 	return &QMetaObject__Connection{h: h}
 }
 
-func newQMetaObject__Connection_U(h unsafe.Pointer) *QMetaObject__Connection {
+func UnsafeNewQMetaObject__Connection(h unsafe.Pointer) *QMetaObject__Connection {
 	return newQMetaObject__Connection((*C.QMetaObject__Connection)(h))
 }
 
@@ -814,6 +842,13 @@ func (this *QMetaObject__SuperData) cPointer() *C.QMetaObject__SuperData {
 	return this.h
 }
 
+func (this *QMetaObject__SuperData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMetaObject__SuperData(h *C.QMetaObject__SuperData) *QMetaObject__SuperData {
 	if h == nil {
 		return nil
@@ -821,7 +856,7 @@ func newQMetaObject__SuperData(h *C.QMetaObject__SuperData) *QMetaObject__SuperD
 	return &QMetaObject__SuperData{h: h}
 }
 
-func newQMetaObject__SuperData_U(h unsafe.Pointer) *QMetaObject__SuperData {
+func UnsafeNewQMetaObject__SuperData(h unsafe.Pointer) *QMetaObject__SuperData {
 	return newQMetaObject__SuperData((*C.QMetaObject__SuperData)(h))
 }
 
@@ -844,7 +879,7 @@ func NewQMetaObject__SuperData3(param1 *QMetaObject__SuperData) *QMetaObject__Su
 }
 
 func (this *QMetaObject__SuperData) OperatorMinusGreater() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMetaObject__SuperData_OperatorMinusGreater(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaObject__SuperData_OperatorMinusGreater(this.h)))
 }
 
 func (this *QMetaObject__SuperData) OperatorAssign(param1 *QMetaObject__SuperData) {

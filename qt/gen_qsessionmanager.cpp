@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qsessionmanager.h"
+#include <qsessionmanager.h>
 #include "gen_qsessionmanager.h"
 #include "_cgo_export.h"
 
@@ -70,7 +70,7 @@ int QSessionManager_RestartHint(const QSessionManager* self) {
 }
 
 void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ restartCommand) {
-	QList<QString> restartCommand_QList;
+	QStringList restartCommand_QList;
 	restartCommand_QList.reserve(restartCommand->len);
 	struct miqt_string** restartCommand_arr = static_cast<struct miqt_string**>(restartCommand->data);
 	for(size_t i = 0; i < restartCommand->len; ++i) {
@@ -97,7 +97,7 @@ struct miqt_array* QSessionManager_RestartCommand(const QSessionManager* self) {
 }
 
 void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array* /* of struct miqt_string* */ discardCommand) {
-	QList<QString> discardCommand_QList;
+	QStringList discardCommand_QList;
 	discardCommand_QList.reserve(discardCommand->len);
 	struct miqt_string** discardCommand_arr = static_cast<struct miqt_string**>(discardCommand->data);
 	for(size_t i = 0; i < discardCommand->len; ++i) {
@@ -131,7 +131,7 @@ void QSessionManager_SetManagerProperty(QSessionManager* self, struct miqt_strin
 
 void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string* name, struct miqt_array* /* of struct miqt_string* */ value) {
 	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QList<QString> value_QList;
+	QStringList value_QList;
 	value_QList.reserve(value->len);
 	struct miqt_string** value_arr = static_cast<struct miqt_string**>(value->data);
 	for(size_t i = 0; i < value->len; ++i) {

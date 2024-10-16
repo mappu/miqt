@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qabstractbutton.h"
+#include <qabstractbutton.h>
 #include "gen_qabstractbutton.h"
 #include "_cgo_export.h"
 

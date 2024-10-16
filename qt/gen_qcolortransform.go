@@ -24,6 +24,13 @@ func (this *QColorTransform) cPointer() *C.QColorTransform {
 	return this.h
 }
 
+func (this *QColorTransform) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColorTransform(h *C.QColorTransform) *QColorTransform {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQColorTransform(h *C.QColorTransform) *QColorTransform {
 	return &QColorTransform{h: h}
 }
 
-func newQColorTransform_U(h unsafe.Pointer) *QColorTransform {
+func UnsafeNewQColorTransform(h unsafe.Pointer) *QColorTransform {
 	return newQColorTransform((*C.QColorTransform)(h))
 }
 

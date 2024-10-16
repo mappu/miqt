@@ -24,7 +24,7 @@
 #include <QTextOption>
 #include <QUrl>
 #include <QVariant>
-#include "qtextdocument.h"
+#include <qtextdocument.h>
 #include "gen_qtextdocument.h"
 #include "_cgo_export.h"
 

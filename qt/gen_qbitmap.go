@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QBitmap) cPointer() *C.QBitmap {
 	return this.h
 }
 
+func (this *QBitmap) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBitmap(h *C.QBitmap) *QBitmap {
 	if h == nil {
 		return nil
 	}
-	return &QBitmap{h: h, QPixmap: newQPixmap_U(unsafe.Pointer(h))}
+	return &QBitmap{h: h, QPixmap: UnsafeNewQPixmap(unsafe.Pointer(h))}
 }
 
-func newQBitmap_U(h unsafe.Pointer) *QBitmap {
+func UnsafeNewQBitmap(h unsafe.Pointer) *QBitmap {
 	return newQBitmap((*C.QBitmap)(h))
 }
 
@@ -62,7 +70,7 @@ func NewQBitmap4(param1 *QSize) *QBitmap {
 
 // NewQBitmap5 constructs a new QBitmap object.
 func NewQBitmap5(fileName string) *QBitmap {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QBitmap_new5((*C.struct_miqt_string)(fileName_ms))
 	return newQBitmap(ret)
@@ -76,7 +84,7 @@ func NewQBitmap6(other *QBitmap) *QBitmap {
 
 // NewQBitmap7 constructs a new QBitmap object.
 func NewQBitmap7(fileName string, format string) *QBitmap {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))

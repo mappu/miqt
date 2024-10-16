@@ -6,7 +6,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qfontcombobox.h"
+#include <qfontcombobox.h>
 #include "gen_qfontcombobox.h"
 #include "_cgo_export.h"
 

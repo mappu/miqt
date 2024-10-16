@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qcheckbox.h"
+#include <qcheckbox.h>
 #include "gen_qcheckbox.h"
 #include "_cgo_export.h"
 

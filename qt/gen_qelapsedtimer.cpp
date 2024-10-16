@@ -1,5 +1,5 @@
 #include <QElapsedTimer>
-#include "qelapsedtimer.h"
+#include <qelapsedtimer.h>
 #include "gen_qelapsedtimer.h"
 #include "_cgo_export.h"
 

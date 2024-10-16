@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QToolBox) cPointer() *C.QToolBox {
 	return this.h
 }
 
+func (this *QToolBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQToolBox(h *C.QToolBox) *QToolBox {
 	if h == nil {
 		return nil
 	}
-	return &QToolBox{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QToolBox{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQToolBox_U(h unsafe.Pointer) *QToolBox {
+func UnsafeNewQToolBox(h unsafe.Pointer) *QToolBox {
 	return newQToolBox((*C.QToolBox)(h))
 }
 
@@ -56,7 +64,7 @@ func NewQToolBox3(parent *QWidget, f WindowType) *QToolBox {
 }
 
 func (this *QToolBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QToolBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QToolBox_MetaObject(this.h)))
 }
 
 func (this *QToolBox) Metacast(param1 string) unsafe.Pointer {
@@ -84,25 +92,25 @@ func QToolBox_TrUtf8(s string) string {
 }
 
 func (this *QToolBox) AddItem(widget *QWidget, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QToolBox_AddItem(this.h, widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) AddItem2(widget *QWidget, icon *QIcon, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) InsertItem(index int, widget *QWidget, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QToolBox) InsertItem2(index int, widget *QWidget, icon *QIcon, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
@@ -120,7 +128,7 @@ func (this *QToolBox) IsItemEnabled(index int) bool {
 }
 
 func (this *QToolBox) SetItemText(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QToolBox_SetItemText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -144,7 +152,7 @@ func (this *QToolBox) ItemIcon(index int) *QIcon {
 }
 
 func (this *QToolBox) SetItemToolTip(index int, toolTip string) {
-	toolTip_ms := miqt_strdupg(toolTip)
+	toolTip_ms := libmiqt.Strdupg(toolTip)
 	defer C.free(toolTip_ms)
 	C.QToolBox_SetItemToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(toolTip_ms))
 }
@@ -161,11 +169,11 @@ func (this *QToolBox) CurrentIndex() int {
 }
 
 func (this *QToolBox) CurrentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_CurrentWidget(this.h)))
 }
 
 func (this *QToolBox) Widget(index int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBox_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QToolBox) IndexOf(widget *QWidget) int {

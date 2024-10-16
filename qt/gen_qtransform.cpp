@@ -8,7 +8,7 @@
 #include <QRectF>
 #include <QRegion>
 #include <QTransform>
-#include "qtransform.h"
+#include <qtransform.h>
 #include "gen_qtransform.h"
 #include "_cgo_export.h"
 

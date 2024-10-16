@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -39,20 +40,27 @@ func (this *QDockWidget) cPointer() *C.QDockWidget {
 	return this.h
 }
 
+func (this *QDockWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDockWidget(h *C.QDockWidget) *QDockWidget {
 	if h == nil {
 		return nil
 	}
-	return &QDockWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QDockWidget{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQDockWidget_U(h unsafe.Pointer) *QDockWidget {
+func UnsafeNewQDockWidget(h unsafe.Pointer) *QDockWidget {
 	return newQDockWidget((*C.QDockWidget)(h))
 }
 
 // NewQDockWidget constructs a new QDockWidget object.
 func NewQDockWidget(title string) *QDockWidget {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QDockWidget_new((*C.struct_miqt_string)(title_ms))
 	return newQDockWidget(ret)
@@ -66,7 +74,7 @@ func NewQDockWidget2() *QDockWidget {
 
 // NewQDockWidget3 constructs a new QDockWidget object.
 func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QDockWidget_new3((*C.struct_miqt_string)(title_ms), parent.cPointer())
 	return newQDockWidget(ret)
@@ -74,7 +82,7 @@ func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
 
 // NewQDockWidget4 constructs a new QDockWidget object.
 func NewQDockWidget4(title string, parent *QWidget, flags WindowType) *QDockWidget {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QDockWidget_new4((*C.struct_miqt_string)(title_ms), parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
@@ -93,7 +101,7 @@ func NewQDockWidget6(parent *QWidget, flags WindowType) *QDockWidget {
 }
 
 func (this *QDockWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDockWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDockWidget_MetaObject(this.h)))
 }
 
 func (this *QDockWidget) Metacast(param1 string) unsafe.Pointer {
@@ -121,7 +129,7 @@ func QDockWidget_TrUtf8(s string) string {
 }
 
 func (this *QDockWidget) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDockWidget_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDockWidget_Widget(this.h)))
 }
 
 func (this *QDockWidget) SetWidget(widget *QWidget) {
@@ -157,7 +165,7 @@ func (this *QDockWidget) SetTitleBarWidget(widget *QWidget) {
 }
 
 func (this *QDockWidget) TitleBarWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QDockWidget_TitleBarWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QDockWidget_TitleBarWidget(this.h)))
 }
 
 func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
@@ -165,7 +173,7 @@ func (this *QDockWidget) IsAreaAllowed(area DockWidgetArea) bool {
 }
 
 func (this *QDockWidget) ToggleViewAction() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QDockWidget_ToggleViewAction(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QDockWidget_ToggleViewAction(this.h)))
 }
 
 func (this *QDockWidget) FeaturesChanged(features QDockWidget__DockWidgetFeature) {

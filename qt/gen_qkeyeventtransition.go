@@ -25,14 +25,21 @@ func (this *QKeyEventTransition) cPointer() *C.QKeyEventTransition {
 	return this.h
 }
 
+func (this *QKeyEventTransition) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQKeyEventTransition(h *C.QKeyEventTransition) *QKeyEventTransition {
 	if h == nil {
 		return nil
 	}
-	return &QKeyEventTransition{h: h, QEventTransition: newQEventTransition_U(unsafe.Pointer(h))}
+	return &QKeyEventTransition{h: h, QEventTransition: UnsafeNewQEventTransition(unsafe.Pointer(h))}
 }
 
-func newQKeyEventTransition_U(h unsafe.Pointer) *QKeyEventTransition {
+func UnsafeNewQKeyEventTransition(h unsafe.Pointer) *QKeyEventTransition {
 	return newQKeyEventTransition((*C.QKeyEventTransition)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQKeyEventTransition4(object *QObject, typeVal QEvent__Type, key int, sou
 }
 
 func (this *QKeyEventTransition) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QKeyEventTransition_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QKeyEventTransition_MetaObject(this.h)))
 }
 
 func (this *QKeyEventTransition) Metacast(param1 string) unsafe.Pointer {

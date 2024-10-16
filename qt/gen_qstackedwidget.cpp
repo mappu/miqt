@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qstackedwidget.h"
+#include <qstackedwidget.h>
 #include "gen_qstackedwidget.h"
 #include "_cgo_export.h"
 

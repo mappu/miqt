@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -236,6 +237,13 @@ func (this *QAccessible) cPointer() *C.QAccessible {
 	return this.h
 }
 
+func (this *QAccessible) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessible(h *C.QAccessible) *QAccessible {
 	if h == nil {
 		return nil
@@ -243,7 +251,7 @@ func newQAccessible(h *C.QAccessible) *QAccessible {
 	return &QAccessible{h: h}
 }
 
-func newQAccessible_U(h unsafe.Pointer) *QAccessible {
+func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
 	return newQAccessible((*C.QAccessible)(h))
 }
 
@@ -256,7 +264,7 @@ func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserve
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessible_QueryAccessibleInterface(param1.cPointer())))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_QueryAccessibleInterface(param1.cPointer())))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
@@ -264,7 +272,7 @@ func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessible_AccessibleInterface((C.uint)(uniqueId))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_AccessibleInterface((C.uint)(uniqueId))))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
@@ -320,6 +328,13 @@ func (this *QAccessibleInterface) cPointer() *C.QAccessibleInterface {
 	return this.h
 }
 
+func (this *QAccessibleInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleInterface(h *C.QAccessibleInterface) *QAccessibleInterface {
 	if h == nil {
 		return nil
@@ -327,7 +342,7 @@ func newQAccessibleInterface(h *C.QAccessibleInterface) *QAccessibleInterface {
 	return &QAccessibleInterface{h: h}
 }
 
-func newQAccessibleInterface_U(h unsafe.Pointer) *QAccessibleInterface {
+func UnsafeNewQAccessibleInterface(h unsafe.Pointer) *QAccessibleInterface {
 	return newQAccessibleInterface((*C.QAccessibleInterface)(h))
 }
 
@@ -336,27 +351,27 @@ func (this *QAccessibleInterface) IsValid() bool {
 }
 
 func (this *QAccessibleInterface) Object() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QAccessibleInterface_Object(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QAccessibleInterface_Object(this.h)))
 }
 
 func (this *QAccessibleInterface) Window() *QWindow {
-	return newQWindow_U(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)))
+	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)))
 }
 
 func (this *QAccessibleInterface) FocusChild() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_FocusChild(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleInterface_FocusChild(this.h)))
 }
 
 func (this *QAccessibleInterface) ChildAt(x int, y int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_ChildAt(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleInterface_ChildAt(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QAccessibleInterface) Parent() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_Parent(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleInterface_Parent(this.h)))
 }
 
 func (this *QAccessibleInterface) Child(index int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleInterface_Child(this.h, (C.int)(index))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleInterface_Child(this.h, (C.int)(index))))
 }
 
 func (this *QAccessibleInterface) ChildCount() int {
@@ -375,7 +390,7 @@ func (this *QAccessibleInterface) Text(t QAccessible__Text) string {
 }
 
 func (this *QAccessibleInterface) SetText(t QAccessible__Text, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAccessibleInterface_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
 }
@@ -413,31 +428,31 @@ func (this *QAccessibleInterface) BackgroundColor() *QColor {
 }
 
 func (this *QAccessibleInterface) TextInterface() *QAccessibleTextInterface {
-	return newQAccessibleTextInterface_U(unsafe.Pointer(C.QAccessibleInterface_TextInterface(this.h)))
+	return UnsafeNewQAccessibleTextInterface(unsafe.Pointer(C.QAccessibleInterface_TextInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) EditableTextInterface() *QAccessibleEditableTextInterface {
-	return newQAccessibleEditableTextInterface_U(unsafe.Pointer(C.QAccessibleInterface_EditableTextInterface(this.h)))
+	return UnsafeNewQAccessibleEditableTextInterface(unsafe.Pointer(C.QAccessibleInterface_EditableTextInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ValueInterface() *QAccessibleValueInterface {
-	return newQAccessibleValueInterface_U(unsafe.Pointer(C.QAccessibleInterface_ValueInterface(this.h)))
+	return UnsafeNewQAccessibleValueInterface(unsafe.Pointer(C.QAccessibleInterface_ValueInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ActionInterface() *QAccessibleActionInterface {
-	return newQAccessibleActionInterface_U(unsafe.Pointer(C.QAccessibleInterface_ActionInterface(this.h)))
+	return UnsafeNewQAccessibleActionInterface(unsafe.Pointer(C.QAccessibleInterface_ActionInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) ImageInterface() *QAccessibleImageInterface {
-	return newQAccessibleImageInterface_U(unsafe.Pointer(C.QAccessibleInterface_ImageInterface(this.h)))
+	return UnsafeNewQAccessibleImageInterface(unsafe.Pointer(C.QAccessibleInterface_ImageInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) TableInterface() *QAccessibleTableInterface {
-	return newQAccessibleTableInterface_U(unsafe.Pointer(C.QAccessibleInterface_TableInterface(this.h)))
+	return UnsafeNewQAccessibleTableInterface(unsafe.Pointer(C.QAccessibleInterface_TableInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) TableCellInterface() *QAccessibleTableCellInterface {
-	return newQAccessibleTableCellInterface_U(unsafe.Pointer(C.QAccessibleInterface_TableCellInterface(this.h)))
+	return UnsafeNewQAccessibleTableCellInterface(unsafe.Pointer(C.QAccessibleInterface_TableCellInterface(this.h)))
 }
 
 func (this *QAccessibleInterface) VirtualHook(id int, data unsafe.Pointer) {
@@ -459,6 +474,13 @@ func (this *QAccessibleTextInterface) cPointer() *C.QAccessibleTextInterface {
 	return this.h
 }
 
+func (this *QAccessibleTextInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextInterface(h *C.QAccessibleTextInterface) *QAccessibleTextInterface {
 	if h == nil {
 		return nil
@@ -466,7 +488,7 @@ func newQAccessibleTextInterface(h *C.QAccessibleTextInterface) *QAccessibleText
 	return &QAccessibleTextInterface{h: h}
 }
 
-func newQAccessibleTextInterface_U(h unsafe.Pointer) *QAccessibleTextInterface {
+func UnsafeNewQAccessibleTextInterface(h unsafe.Pointer) *QAccessibleTextInterface {
 	return newQAccessibleTextInterface((*C.QAccessibleTextInterface)(h))
 }
 
@@ -581,6 +603,13 @@ func (this *QAccessibleEditableTextInterface) cPointer() *C.QAccessibleEditableT
 	return this.h
 }
 
+func (this *QAccessibleEditableTextInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleEditableTextInterface(h *C.QAccessibleEditableTextInterface) *QAccessibleEditableTextInterface {
 	if h == nil {
 		return nil
@@ -588,7 +617,7 @@ func newQAccessibleEditableTextInterface(h *C.QAccessibleEditableTextInterface) 
 	return &QAccessibleEditableTextInterface{h: h}
 }
 
-func newQAccessibleEditableTextInterface_U(h unsafe.Pointer) *QAccessibleEditableTextInterface {
+func UnsafeNewQAccessibleEditableTextInterface(h unsafe.Pointer) *QAccessibleEditableTextInterface {
 	return newQAccessibleEditableTextInterface((*C.QAccessibleEditableTextInterface)(h))
 }
 
@@ -597,13 +626,13 @@ func (this *QAccessibleEditableTextInterface) DeleteText(startOffset int, endOff
 }
 
 func (this *QAccessibleEditableTextInterface) InsertText(offset int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOffset int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), (*C.struct_miqt_string)(text_ms))
 }
@@ -637,6 +666,13 @@ func (this *QAccessibleValueInterface) cPointer() *C.QAccessibleValueInterface {
 	return this.h
 }
 
+func (this *QAccessibleValueInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleValueInterface(h *C.QAccessibleValueInterface) *QAccessibleValueInterface {
 	if h == nil {
 		return nil
@@ -644,7 +680,7 @@ func newQAccessibleValueInterface(h *C.QAccessibleValueInterface) *QAccessibleVa
 	return &QAccessibleValueInterface{h: h}
 }
 
-func newQAccessibleValueInterface_U(h unsafe.Pointer) *QAccessibleValueInterface {
+func UnsafeNewQAccessibleValueInterface(h unsafe.Pointer) *QAccessibleValueInterface {
 	return newQAccessibleValueInterface((*C.QAccessibleValueInterface)(h))
 }
 
@@ -709,6 +745,13 @@ func (this *QAccessibleTableCellInterface) cPointer() *C.QAccessibleTableCellInt
 	return this.h
 }
 
+func (this *QAccessibleTableCellInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTableCellInterface(h *C.QAccessibleTableCellInterface) *QAccessibleTableCellInterface {
 	if h == nil {
 		return nil
@@ -716,7 +759,7 @@ func newQAccessibleTableCellInterface(h *C.QAccessibleTableCellInterface) *QAcce
 	return &QAccessibleTableCellInterface{h: h}
 }
 
-func newQAccessibleTableCellInterface_U(h unsafe.Pointer) *QAccessibleTableCellInterface {
+func UnsafeNewQAccessibleTableCellInterface(h unsafe.Pointer) *QAccessibleTableCellInterface {
 	return newQAccessibleTableCellInterface((*C.QAccessibleTableCellInterface)(h))
 }
 
@@ -729,7 +772,7 @@ func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInt
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -740,7 +783,7 @@ func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterf
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -763,7 +806,7 @@ func (this *QAccessibleTableCellInterface) RowExtent() int {
 }
 
 func (this *QAccessibleTableCellInterface) Table() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableCellInterface_Table(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTableCellInterface_Table(this.h)))
 }
 
 func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTableCellInterface) {
@@ -795,6 +838,13 @@ func (this *QAccessibleTableInterface) cPointer() *C.QAccessibleTableInterface {
 	return this.h
 }
 
+func (this *QAccessibleTableInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTableInterface(h *C.QAccessibleTableInterface) *QAccessibleTableInterface {
 	if h == nil {
 		return nil
@@ -802,20 +852,20 @@ func newQAccessibleTableInterface(h *C.QAccessibleTableInterface) *QAccessibleTa
 	return &QAccessibleTableInterface{h: h}
 }
 
-func newQAccessibleTableInterface_U(h unsafe.Pointer) *QAccessibleTableInterface {
+func UnsafeNewQAccessibleTableInterface(h unsafe.Pointer) *QAccessibleTableInterface {
 	return newQAccessibleTableInterface((*C.QAccessibleTableInterface)(h))
 }
 
 func (this *QAccessibleTableInterface) Caption() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_Caption(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTableInterface_Caption(this.h)))
 }
 
 func (this *QAccessibleTableInterface) Summary() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_Summary(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTableInterface_Summary(this.h)))
 }
 
 func (this *QAccessibleTableInterface) CellAt(row int, column int) *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleTableInterface_CellAt(this.h, (C.int)(row), (C.int)(column))))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleTableInterface_CellAt(this.h, (C.int)(row), (C.int)(column))))
 }
 
 func (this *QAccessibleTableInterface) SelectedCellCount() int {
@@ -827,7 +877,7 @@ func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAccessibleInterface_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -938,6 +988,13 @@ func (this *QAccessibleActionInterface) cPointer() *C.QAccessibleActionInterface
 	return this.h
 }
 
+func (this *QAccessibleActionInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleActionInterface(h *C.QAccessibleActionInterface) *QAccessibleActionInterface {
 	if h == nil {
 		return nil
@@ -945,7 +1002,7 @@ func newQAccessibleActionInterface(h *C.QAccessibleActionInterface) *QAccessible
 	return &QAccessibleActionInterface{h: h}
 }
 
-func newQAccessibleActionInterface_U(h unsafe.Pointer) *QAccessibleActionInterface {
+func UnsafeNewQAccessibleActionInterface(h unsafe.Pointer) *QAccessibleActionInterface {
 	return newQAccessibleActionInterface((*C.QAccessibleActionInterface)(h))
 }
 
@@ -982,7 +1039,7 @@ func (this *QAccessibleActionInterface) ActionNames() []string {
 }
 
 func (this *QAccessibleActionInterface) LocalizedActionName(name string) string {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionName(this.h, (*C.struct_miqt_string)(name_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -991,7 +1048,7 @@ func (this *QAccessibleActionInterface) LocalizedActionName(name string) string 
 }
 
 func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) string {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionDescription(this.h, (*C.struct_miqt_string)(name_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1000,13 +1057,13 @@ func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) 
 }
 
 func (this *QAccessibleActionInterface) DoAction(actionName string) {
-	actionName_ms := miqt_strdupg(actionName)
+	actionName_ms := libmiqt.Strdupg(actionName)
 	defer C.free(actionName_ms)
 	C.QAccessibleActionInterface_DoAction(this.h, (*C.struct_miqt_string)(actionName_ms))
 }
 
 func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) []string {
-	actionName_ms := miqt_strdupg(actionName)
+	actionName_ms := libmiqt.Strdupg(actionName)
 	defer C.free(actionName_ms)
 	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, (*C.struct_miqt_string)(actionName_ms))
 	_ret := make([]string, int(_ma.len))
@@ -1178,6 +1235,13 @@ func (this *QAccessibleImageInterface) cPointer() *C.QAccessibleImageInterface {
 	return this.h
 }
 
+func (this *QAccessibleImageInterface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleImageInterface(h *C.QAccessibleImageInterface) *QAccessibleImageInterface {
 	if h == nil {
 		return nil
@@ -1185,7 +1249,7 @@ func newQAccessibleImageInterface(h *C.QAccessibleImageInterface) *QAccessibleIm
 	return &QAccessibleImageInterface{h: h}
 }
 
-func newQAccessibleImageInterface_U(h unsafe.Pointer) *QAccessibleImageInterface {
+func UnsafeNewQAccessibleImageInterface(h unsafe.Pointer) *QAccessibleImageInterface {
 	return newQAccessibleImageInterface((*C.QAccessibleImageInterface)(h))
 }
 
@@ -1239,6 +1303,13 @@ func (this *QAccessibleEvent) cPointer() *C.QAccessibleEvent {
 	return this.h
 }
 
+func (this *QAccessibleEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleEvent(h *C.QAccessibleEvent) *QAccessibleEvent {
 	if h == nil {
 		return nil
@@ -1246,7 +1317,7 @@ func newQAccessibleEvent(h *C.QAccessibleEvent) *QAccessibleEvent {
 	return &QAccessibleEvent{h: h}
 }
 
-func newQAccessibleEvent_U(h unsafe.Pointer) *QAccessibleEvent {
+func UnsafeNewQAccessibleEvent(h unsafe.Pointer) *QAccessibleEvent {
 	return newQAccessibleEvent((*C.QAccessibleEvent)(h))
 }
 
@@ -1267,7 +1338,7 @@ func (this *QAccessibleEvent) Type() QAccessible__Event {
 }
 
 func (this *QAccessibleEvent) Object() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QAccessibleEvent_Object(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QAccessibleEvent_Object(this.h)))
 }
 
 func (this *QAccessibleEvent) UniqueId() uint {
@@ -1283,7 +1354,7 @@ func (this *QAccessibleEvent) Child() int {
 }
 
 func (this *QAccessibleEvent) AccessibleInterface() *QAccessibleInterface {
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessibleEvent_AccessibleInterface(this.h)))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessibleEvent_AccessibleInterface(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -1312,14 +1383,21 @@ func (this *QAccessibleStateChangeEvent) cPointer() *C.QAccessibleStateChangeEve
 	return this.h
 }
 
+func (this *QAccessibleStateChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleStateChangeEvent(h *C.QAccessibleStateChangeEvent) *QAccessibleStateChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleStateChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleStateChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleStateChangeEvent_U(h unsafe.Pointer) *QAccessibleStateChangeEvent {
+func UnsafeNewQAccessibleStateChangeEvent(h unsafe.Pointer) *QAccessibleStateChangeEvent {
 	return newQAccessibleStateChangeEvent((*C.QAccessibleStateChangeEvent)(h))
 }
 
@@ -1368,14 +1446,21 @@ func (this *QAccessibleTextCursorEvent) cPointer() *C.QAccessibleTextCursorEvent
 	return this.h
 }
 
+func (this *QAccessibleTextCursorEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextCursorEvent(h *C.QAccessibleTextCursorEvent) *QAccessibleTextCursorEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextCursorEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTextCursorEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTextCursorEvent_U(h unsafe.Pointer) *QAccessibleTextCursorEvent {
+func UnsafeNewQAccessibleTextCursorEvent(h unsafe.Pointer) *QAccessibleTextCursorEvent {
 	return newQAccessibleTextCursorEvent((*C.QAccessibleTextCursorEvent)(h))
 }
 
@@ -1425,14 +1510,21 @@ func (this *QAccessibleTextSelectionEvent) cPointer() *C.QAccessibleTextSelectio
 	return this.h
 }
 
+func (this *QAccessibleTextSelectionEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextSelectionEvent(h *C.QAccessibleTextSelectionEvent) *QAccessibleTextSelectionEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextSelectionEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTextSelectionEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTextSelectionEvent_U(h unsafe.Pointer) *QAccessibleTextSelectionEvent {
+func UnsafeNewQAccessibleTextSelectionEvent(h unsafe.Pointer) *QAccessibleTextSelectionEvent {
 	return newQAccessibleTextSelectionEvent((*C.QAccessibleTextSelectionEvent)(h))
 }
 
@@ -1486,20 +1578,27 @@ func (this *QAccessibleTextInsertEvent) cPointer() *C.QAccessibleTextInsertEvent
 	return this.h
 }
 
+func (this *QAccessibleTextInsertEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextInsertEvent(h *C.QAccessibleTextInsertEvent) *QAccessibleTextInsertEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextInsertEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTextInsertEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTextInsertEvent_U(h unsafe.Pointer) *QAccessibleTextInsertEvent {
+func UnsafeNewQAccessibleTextInsertEvent(h unsafe.Pointer) *QAccessibleTextInsertEvent {
 	return newQAccessibleTextInsertEvent((*C.QAccessibleTextInsertEvent)(h))
 }
 
 // NewQAccessibleTextInsertEvent constructs a new QAccessibleTextInsertEvent object.
 func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAccessibleTextInsertEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextInsertEvent(ret)
@@ -1507,7 +1606,7 @@ func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAc
 
 // NewQAccessibleTextInsertEvent2 constructs a new QAccessibleTextInsertEvent object.
 func NewQAccessibleTextInsertEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextInsertEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextInsertEvent(ret)
@@ -1550,20 +1649,27 @@ func (this *QAccessibleTextRemoveEvent) cPointer() *C.QAccessibleTextRemoveEvent
 	return this.h
 }
 
+func (this *QAccessibleTextRemoveEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextRemoveEvent(h *C.QAccessibleTextRemoveEvent) *QAccessibleTextRemoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextRemoveEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTextRemoveEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTextRemoveEvent_U(h unsafe.Pointer) *QAccessibleTextRemoveEvent {
+func UnsafeNewQAccessibleTextRemoveEvent(h unsafe.Pointer) *QAccessibleTextRemoveEvent {
 	return newQAccessibleTextRemoveEvent((*C.QAccessibleTextRemoveEvent)(h))
 }
 
 // NewQAccessibleTextRemoveEvent constructs a new QAccessibleTextRemoveEvent object.
 func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAccessibleTextRemoveEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextRemoveEvent(ret)
@@ -1571,7 +1677,7 @@ func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAc
 
 // NewQAccessibleTextRemoveEvent2 constructs a new QAccessibleTextRemoveEvent object.
 func NewQAccessibleTextRemoveEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextRemoveEvent {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextRemoveEvent(ret)
@@ -1614,22 +1720,29 @@ func (this *QAccessibleTextUpdateEvent) cPointer() *C.QAccessibleTextUpdateEvent
 	return this.h
 }
 
+func (this *QAccessibleTextUpdateEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTextUpdateEvent(h *C.QAccessibleTextUpdateEvent) *QAccessibleTextUpdateEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTextUpdateEvent{h: h, QAccessibleTextCursorEvent: newQAccessibleTextCursorEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTextUpdateEvent{h: h, QAccessibleTextCursorEvent: UnsafeNewQAccessibleTextCursorEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTextUpdateEvent_U(h unsafe.Pointer) *QAccessibleTextUpdateEvent {
+func UnsafeNewQAccessibleTextUpdateEvent(h unsafe.Pointer) *QAccessibleTextUpdateEvent {
 	return newQAccessibleTextUpdateEvent((*C.QAccessibleTextUpdateEvent)(h))
 }
 
 // NewQAccessibleTextUpdateEvent constructs a new QAccessibleTextUpdateEvent object.
 func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, text string) *QAccessibleTextUpdateEvent {
-	oldText_ms := miqt_strdupg(oldText)
+	oldText_ms := libmiqt.Strdupg(oldText)
 	defer C.free(oldText_ms)
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(oldText_ms), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextUpdateEvent(ret)
@@ -1637,9 +1750,9 @@ func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, t
 
 // NewQAccessibleTextUpdateEvent2 constructs a new QAccessibleTextUpdateEvent object.
 func NewQAccessibleTextUpdateEvent2(iface *QAccessibleInterface, position int, oldText string, text string) *QAccessibleTextUpdateEvent {
-	oldText_ms := miqt_strdupg(oldText)
+	oldText_ms := libmiqt.Strdupg(oldText)
 	defer C.free(oldText_ms)
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(oldText_ms), (*C.struct_miqt_string)(text_ms))
 	return newQAccessibleTextUpdateEvent(ret)
@@ -1689,14 +1802,21 @@ func (this *QAccessibleValueChangeEvent) cPointer() *C.QAccessibleValueChangeEve
 	return this.h
 }
 
+func (this *QAccessibleValueChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleValueChangeEvent(h *C.QAccessibleValueChangeEvent) *QAccessibleValueChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleValueChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleValueChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleValueChangeEvent_U(h unsafe.Pointer) *QAccessibleValueChangeEvent {
+func UnsafeNewQAccessibleValueChangeEvent(h unsafe.Pointer) *QAccessibleValueChangeEvent {
 	return newQAccessibleValueChangeEvent((*C.QAccessibleValueChangeEvent)(h))
 }
 
@@ -1749,14 +1869,21 @@ func (this *QAccessibleTableModelChangeEvent) cPointer() *C.QAccessibleTableMode
 	return this.h
 }
 
+func (this *QAccessibleTableModelChangeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleTableModelChangeEvent(h *C.QAccessibleTableModelChangeEvent) *QAccessibleTableModelChangeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleTableModelChangeEvent{h: h, QAccessibleEvent: newQAccessibleEvent_U(unsafe.Pointer(h))}
+	return &QAccessibleTableModelChangeEvent{h: h, QAccessibleEvent: UnsafeNewQAccessibleEvent(unsafe.Pointer(h))}
 }
 
-func newQAccessibleTableModelChangeEvent_U(h unsafe.Pointer) *QAccessibleTableModelChangeEvent {
+func UnsafeNewQAccessibleTableModelChangeEvent(h unsafe.Pointer) *QAccessibleTableModelChangeEvent {
 	return newQAccessibleTableModelChangeEvent((*C.QAccessibleTableModelChangeEvent)(h))
 }
 
@@ -1837,6 +1964,13 @@ func (this *QAccessible__State) cPointer() *C.QAccessible__State {
 	return this.h
 }
 
+func (this *QAccessible__State) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	if h == nil {
 		return nil
@@ -1844,7 +1978,7 @@ func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	return &QAccessible__State{h: h}
 }
 
-func newQAccessible__State_U(h unsafe.Pointer) *QAccessible__State {
+func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
 	return newQAccessible__State((*C.QAccessible__State)(h))
 }
 
@@ -1885,6 +2019,13 @@ func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__Activati
 	return this.h
 }
 
+func (this *QAccessible__ActivationObserver) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *QAccessible__ActivationObserver {
 	if h == nil {
 		return nil
@@ -1892,7 +2033,7 @@ func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *Q
 	return &QAccessible__ActivationObserver{h: h}
 }
 
-func newQAccessible__ActivationObserver_U(h unsafe.Pointer) *QAccessible__ActivationObserver {
+func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__ActivationObserver {
 	return newQAccessible__ActivationObserver((*C.QAccessible__ActivationObserver)(h))
 }
 

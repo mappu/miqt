@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -43,6 +44,13 @@ func (this *QTouchDevice) cPointer() *C.QTouchDevice {
 	return this.h
 }
 
+func (this *QTouchDevice) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
 	if h == nil {
 		return nil
@@ -50,7 +58,7 @@ func newQTouchDevice(h *C.QTouchDevice) *QTouchDevice {
 	return &QTouchDevice{h: h}
 }
 
-func newQTouchDevice_U(h unsafe.Pointer) *QTouchDevice {
+func UnsafeNewQTouchDevice(h unsafe.Pointer) *QTouchDevice {
 	return newQTouchDevice((*C.QTouchDevice)(h))
 }
 
@@ -65,7 +73,7 @@ func QTouchDevice_Devices() []*QTouchDevice {
 	_ret := make([]*QTouchDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQTouchDevice_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQTouchDevice(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -91,7 +99,7 @@ func (this *QTouchDevice) MaximumTouchPoints() int {
 }
 
 func (this *QTouchDevice) SetName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTouchDevice_SetName(this.h, (*C.struct_miqt_string)(name_ms))
 }

@@ -9,7 +9,7 @@
 #include <QTextTable>
 #include <QTextTableCell>
 #include <QTextTableFormat>
-#include "qtexttable.h"
+#include <qtexttable.h>
 #include "gen_qtexttable.h"
 #include "_cgo_export.h"
 

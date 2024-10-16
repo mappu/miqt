@@ -2,7 +2,7 @@
 #include <QDataStream>
 #include <QIODevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__StreamStateSaver
-#include "qdatastream.h"
+#include <qdatastream.h>
 #include "gen_qdatastream.h"
 #include "_cgo_export.h"
 

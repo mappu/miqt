@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QTextCodec>
 #include <QVariant>
-#include "qsettings.h"
+#include <qsettings.h>
 #include "gen_qsettings.h"
 #include "_cgo_export.h"
 

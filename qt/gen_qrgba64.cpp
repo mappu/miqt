@@ -1,5 +1,5 @@
 #include <QRgba64>
-#include "qrgba64.h"
+#include <qrgba64.h>
 #include "gen_qrgba64.h"
 #include "_cgo_export.h"
 

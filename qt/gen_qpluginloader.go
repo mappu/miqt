@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QPluginLoader) cPointer() *C.QPluginLoader {
 	return this.h
 }
 
+func (this *QPluginLoader) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPluginLoader(h *C.QPluginLoader) *QPluginLoader {
 	if h == nil {
 		return nil
 	}
-	return &QPluginLoader{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QPluginLoader{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQPluginLoader_U(h unsafe.Pointer) *QPluginLoader {
+func UnsafeNewQPluginLoader(h unsafe.Pointer) *QPluginLoader {
 	return newQPluginLoader((*C.QPluginLoader)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQPluginLoader() *QPluginLoader {
 
 // NewQPluginLoader2 constructs a new QPluginLoader object.
 func NewQPluginLoader2(fileName string) *QPluginLoader {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QPluginLoader_new2((*C.struct_miqt_string)(fileName_ms))
 	return newQPluginLoader(ret)
@@ -58,14 +66,14 @@ func NewQPluginLoader3(parent *QObject) *QPluginLoader {
 
 // NewQPluginLoader4 constructs a new QPluginLoader object.
 func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QPluginLoader_new4((*C.struct_miqt_string)(fileName_ms), parent.cPointer())
 	return newQPluginLoader(ret)
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPluginLoader_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPluginLoader_MetaObject(this.h)))
 }
 
 func (this *QPluginLoader) Metacast(param1 string) unsafe.Pointer {
@@ -93,7 +101,7 @@ func QPluginLoader_TrUtf8(s string) string {
 }
 
 func (this *QPluginLoader) Instance() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QPluginLoader_Instance(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QPluginLoader_Instance(this.h)))
 }
 
 func (this *QPluginLoader) MetaData() *QJsonObject {
@@ -108,7 +116,7 @@ func QPluginLoader_StaticInstances() []*QObject {
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQObject_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -141,7 +149,7 @@ func (this *QPluginLoader) IsLoaded() bool {
 }
 
 func (this *QPluginLoader) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QPluginLoader_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }

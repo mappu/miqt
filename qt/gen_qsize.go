@@ -24,6 +24,13 @@ func (this *QSize) cPointer() *C.QSize {
 	return this.h
 }
 
+func (this *QSize) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSize(h *C.QSize) *QSize {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQSize(h *C.QSize) *QSize {
 	return &QSize{h: h}
 }
 
-func newQSize_U(h unsafe.Pointer) *QSize {
+func UnsafeNewQSize(h unsafe.Pointer) *QSize {
 	return newQSize((*C.QSize)(h))
 }
 
@@ -143,19 +150,19 @@ func (this *QSize) ShrunkBy(m QMargins) *QSize {
 }
 
 func (this *QSize) OperatorPlusAssign(param1 *QSize) *QSize {
-	return newQSize_U(unsafe.Pointer(C.QSize_OperatorPlusAssign(this.h, param1.cPointer())))
+	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorPlusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSize) OperatorMinusAssign(param1 *QSize) *QSize {
-	return newQSize_U(unsafe.Pointer(C.QSize_OperatorMinusAssign(this.h, param1.cPointer())))
+	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorMinusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSize) OperatorMultiplyAssign(c float64) *QSize {
-	return newQSize_U(unsafe.Pointer(C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c))))
+	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSize) OperatorDivideAssign(c float64) *QSize {
-	return newQSize_U(unsafe.Pointer(C.QSize_OperatorDivideAssign(this.h, (C.double)(c))))
+	return UnsafeNewQSize(unsafe.Pointer(C.QSize_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 // Delete this object from C++ memory.
@@ -183,6 +190,13 @@ func (this *QSizeF) cPointer() *C.QSizeF {
 	return this.h
 }
 
+func (this *QSizeF) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSizeF(h *C.QSizeF) *QSizeF {
 	if h == nil {
 		return nil
@@ -190,7 +204,7 @@ func newQSizeF(h *C.QSizeF) *QSizeF {
 	return &QSizeF{h: h}
 }
 
-func newQSizeF_U(h unsafe.Pointer) *QSizeF {
+func UnsafeNewQSizeF(h unsafe.Pointer) *QSizeF {
 	return newQSizeF((*C.QSizeF)(h))
 }
 
@@ -308,19 +322,19 @@ func (this *QSizeF) ShrunkBy(m QMarginsF) *QSizeF {
 }
 
 func (this *QSizeF) OperatorPlusAssign(param1 *QSizeF) *QSizeF {
-	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer())))
+	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorPlusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSizeF) OperatorMinusAssign(param1 *QSizeF) *QSizeF {
-	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer())))
+	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorMinusAssign(this.h, param1.cPointer())))
 }
 
 func (this *QSizeF) OperatorMultiplyAssign(c float64) *QSizeF {
-	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c))))
+	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorMultiplyAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSizeF) OperatorDivideAssign(c float64) *QSizeF {
-	return newQSizeF_U(unsafe.Pointer(C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c))))
+	return UnsafeNewQSizeF(unsafe.Pointer(C.QSizeF_OperatorDivideAssign(this.h, (C.double)(c))))
 }
 
 func (this *QSizeF) ToSize() *QSize {

@@ -25,7 +25,7 @@
 #include <QUrl>
 #include <QVariant>
 #include <QWidget>
-#include "qplaintextedit.h"
+#include <qplaintextedit.h>
 #include "gen_qplaintextedit.h"
 #include "_cgo_export.h"
 

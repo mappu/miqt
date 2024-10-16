@@ -25,14 +25,21 @@ func (this *QGraphicsItemAnimation) cPointer() *C.QGraphicsItemAnimation {
 	return this.h
 }
 
+func (this *QGraphicsItemAnimation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation) *QGraphicsItemAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsItemAnimation{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGraphicsItemAnimation{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGraphicsItemAnimation_U(h unsafe.Pointer) *QGraphicsItemAnimation {
+func UnsafeNewQGraphicsItemAnimation(h unsafe.Pointer) *QGraphicsItemAnimation {
 	return newQGraphicsItemAnimation((*C.QGraphicsItemAnimation)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsItemAnimation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsItemAnimation_MetaObject(this.h)))
 }
 
 func (this *QGraphicsItemAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -77,7 +84,7 @@ func QGraphicsItemAnimation_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItemAnimation_Item(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItemAnimation_Item(this.h)))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
@@ -85,7 +92,7 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	return newQTimeLine_U(unsafe.Pointer(C.QGraphicsItemAnimation_TimeLine(this.h)))
+	return UnsafeNewQTimeLine(unsafe.Pointer(C.QGraphicsItemAnimation_TimeLine(this.h)))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {

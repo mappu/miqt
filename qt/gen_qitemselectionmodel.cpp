@@ -9,7 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qitemselectionmodel.h"
+#include <qitemselectionmodel.h>
 #include "gen_qitemselectionmodel.h"
 #include "_cgo_export.h"
 

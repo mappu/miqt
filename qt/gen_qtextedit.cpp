@@ -19,7 +19,7 @@
 #include <QUrl>
 #include <QVariant>
 #include <QWidget>
-#include "qtextedit.h"
+#include <qtextedit.h>
 #include "gen_qtextedit.h"
 #include "_cgo_export.h"
 

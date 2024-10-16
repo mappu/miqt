@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -174,6 +175,13 @@ func (this *QGraphicsItem) cPointer() *C.QGraphicsItem {
 	return this.h
 }
 
+func (this *QGraphicsItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsItem(h *C.QGraphicsItem) *QGraphicsItem {
 	if h == nil {
 		return nil
@@ -181,40 +189,40 @@ func newQGraphicsItem(h *C.QGraphicsItem) *QGraphicsItem {
 	return &QGraphicsItem{h: h}
 }
 
-func newQGraphicsItem_U(h unsafe.Pointer) *QGraphicsItem {
+func UnsafeNewQGraphicsItem(h unsafe.Pointer) *QGraphicsItem {
 	return newQGraphicsItem((*C.QGraphicsItem)(h))
 }
 
 func (this *QGraphicsItem) Scene() *QGraphicsScene {
-	return newQGraphicsScene_U(unsafe.Pointer(C.QGraphicsItem_Scene(this.h)))
+	return UnsafeNewQGraphicsScene(unsafe.Pointer(C.QGraphicsItem_Scene(this.h)))
 }
 
 func (this *QGraphicsItem) ParentItem() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_ParentItem(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_ParentItem(this.h)))
 }
 
 func (this *QGraphicsItem) TopLevelItem() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_TopLevelItem(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_TopLevelItem(this.h)))
 }
 
 func (this *QGraphicsItem) ParentObject() *QGraphicsObject {
-	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ParentObject(this.h)))
+	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ParentObject(this.h)))
 }
 
 func (this *QGraphicsItem) ParentWidget() *QGraphicsWidget {
-	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_ParentWidget(this.h)))
+	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_ParentWidget(this.h)))
 }
 
 func (this *QGraphicsItem) TopLevelWidget() *QGraphicsWidget {
-	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_TopLevelWidget(this.h)))
+	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_TopLevelWidget(this.h)))
 }
 
 func (this *QGraphicsItem) Window() *QGraphicsWidget {
-	return newQGraphicsWidget_U(unsafe.Pointer(C.QGraphicsItem_Window(this.h)))
+	return UnsafeNewQGraphicsWidget(unsafe.Pointer(C.QGraphicsItem_Window(this.h)))
 }
 
 func (this *QGraphicsItem) Panel() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_Panel(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_Panel(this.h)))
 }
 
 func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
@@ -226,7 +234,7 @@ func (this *QGraphicsItem) ChildItems() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -245,15 +253,15 @@ func (this *QGraphicsItem) IsPanel() bool {
 }
 
 func (this *QGraphicsItem) ToGraphicsObject() *QGraphicsObject {
-	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject(this.h)))
+	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject(this.h)))
 }
 
 func (this *QGraphicsItem) ToGraphicsObject2() *QGraphicsObject {
-	return newQGraphicsObject_U(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject2(this.h)))
+	return UnsafeNewQGraphicsObject(unsafe.Pointer(C.QGraphicsItem_ToGraphicsObject2(this.h)))
 }
 
 func (this *QGraphicsItem) Group() *QGraphicsItemGroup {
-	return newQGraphicsItemGroup_U(unsafe.Pointer(C.QGraphicsItem_Group(this.h)))
+	return UnsafeNewQGraphicsItemGroup(unsafe.Pointer(C.QGraphicsItem_Group(this.h)))
 }
 
 func (this *QGraphicsItem) SetGroup(group *QGraphicsItemGroup) {
@@ -300,7 +308,7 @@ func (this *QGraphicsItem) ToolTip() string {
 }
 
 func (this *QGraphicsItem) SetToolTip(toolTip string) {
-	toolTip_ms := miqt_strdupg(toolTip)
+	toolTip_ms := libmiqt.Strdupg(toolTip)
 	defer C.free(toolTip_ms)
 	C.QGraphicsItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
 }
@@ -381,7 +389,7 @@ func (this *QGraphicsItem) SetOpacity(opacity float64) {
 }
 
 func (this *QGraphicsItem) GraphicsEffect() *QGraphicsEffect {
-	return newQGraphicsEffect_U(unsafe.Pointer(C.QGraphicsItem_GraphicsEffect(this.h)))
+	return UnsafeNewQGraphicsEffect(unsafe.Pointer(C.QGraphicsItem_GraphicsEffect(this.h)))
 }
 
 func (this *QGraphicsItem) SetGraphicsEffect(effect *QGraphicsEffect) {
@@ -449,7 +457,7 @@ func (this *QGraphicsItem) ClearFocus() {
 }
 
 func (this *QGraphicsItem) FocusProxy() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusProxy(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusProxy(this.h)))
 }
 
 func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
@@ -457,11 +465,11 @@ func (this *QGraphicsItem) SetFocusProxy(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) FocusItem() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusItem(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusItem(this.h)))
 }
 
 func (this *QGraphicsItem) FocusScopeItem() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_FocusScopeItem(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_FocusScopeItem(this.h)))
 }
 
 func (this *QGraphicsItem) GrabMouse() {
@@ -609,7 +617,7 @@ func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 	_ret := make([]*QGraphicsTransform, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsTransform_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsTransform(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -714,7 +722,7 @@ func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -985,7 +993,7 @@ func (this *QGraphicsItem) IsAncestorOf(child *QGraphicsItem) bool {
 }
 
 func (this *QGraphicsItem) CommonAncestorItem(other *QGraphicsItem) *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer())))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItem_CommonAncestorItem(this.h, other.cPointer())))
 }
 
 func (this *QGraphicsItem) IsUnderMouse() bool {
@@ -1083,7 +1091,7 @@ func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsI
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQGraphicsItem_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -1132,19 +1140,26 @@ func (this *QGraphicsObject) cPointer() *C.QGraphicsObject {
 	return this.h
 }
 
+func (this *QGraphicsObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsObject(h *C.QGraphicsObject) *QGraphicsObject {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsObject{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
+	return &QGraphicsObject{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QGraphicsItem: UnsafeNewQGraphicsItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsObject_U(h unsafe.Pointer) *QGraphicsObject {
+func UnsafeNewQGraphicsObject(h unsafe.Pointer) *QGraphicsObject {
 	return newQGraphicsObject((*C.QGraphicsObject)(h))
 }
 
 func (this *QGraphicsObject) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsObject_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsObject_MetaObject(this.h)))
 }
 
 func (this *QGraphicsObject) Metacast(param1 string) unsafe.Pointer {
@@ -1457,14 +1472,21 @@ func (this *QAbstractGraphicsShapeItem) cPointer() *C.QAbstractGraphicsShapeItem
 	return this.h
 }
 
+func (this *QAbstractGraphicsShapeItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractGraphicsShapeItem(h *C.QAbstractGraphicsShapeItem) *QAbstractGraphicsShapeItem {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractGraphicsShapeItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
+	return &QAbstractGraphicsShapeItem{h: h, QGraphicsItem: UnsafeNewQGraphicsItem(unsafe.Pointer(h))}
 }
 
-func newQAbstractGraphicsShapeItem_U(h unsafe.Pointer) *QAbstractGraphicsShapeItem {
+func UnsafeNewQAbstractGraphicsShapeItem(h unsafe.Pointer) *QAbstractGraphicsShapeItem {
 	return newQAbstractGraphicsShapeItem((*C.QAbstractGraphicsShapeItem)(h))
 }
 
@@ -1527,14 +1549,21 @@ func (this *QGraphicsPathItem) cPointer() *C.QGraphicsPathItem {
 	return this.h
 }
 
+func (this *QGraphicsPathItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsPathItem(h *C.QGraphicsPathItem) *QGraphicsPathItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsPathItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
+	return &QGraphicsPathItem{h: h, QAbstractGraphicsShapeItem: UnsafeNewQAbstractGraphicsShapeItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsPathItem_U(h unsafe.Pointer) *QGraphicsPathItem {
+func UnsafeNewQGraphicsPathItem(h unsafe.Pointer) *QGraphicsPathItem {
 	return newQGraphicsPathItem((*C.QGraphicsPathItem)(h))
 }
 
@@ -1640,14 +1669,21 @@ func (this *QGraphicsRectItem) cPointer() *C.QGraphicsRectItem {
 	return this.h
 }
 
+func (this *QGraphicsRectItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsRectItem(h *C.QGraphicsRectItem) *QGraphicsRectItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsRectItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
+	return &QGraphicsRectItem{h: h, QAbstractGraphicsShapeItem: UnsafeNewQAbstractGraphicsShapeItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsRectItem_U(h unsafe.Pointer) *QGraphicsRectItem {
+func UnsafeNewQGraphicsRectItem(h unsafe.Pointer) *QGraphicsRectItem {
 	return newQGraphicsRectItem((*C.QGraphicsRectItem)(h))
 }
 
@@ -1769,14 +1805,21 @@ func (this *QGraphicsEllipseItem) cPointer() *C.QGraphicsEllipseItem {
 	return this.h
 }
 
+func (this *QGraphicsEllipseItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsEllipseItem(h *C.QGraphicsEllipseItem) *QGraphicsEllipseItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsEllipseItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
+	return &QGraphicsEllipseItem{h: h, QAbstractGraphicsShapeItem: UnsafeNewQAbstractGraphicsShapeItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsEllipseItem_U(h unsafe.Pointer) *QGraphicsEllipseItem {
+func UnsafeNewQGraphicsEllipseItem(h unsafe.Pointer) *QGraphicsEllipseItem {
 	return newQGraphicsEllipseItem((*C.QGraphicsEllipseItem)(h))
 }
 
@@ -1914,14 +1957,21 @@ func (this *QGraphicsPolygonItem) cPointer() *C.QGraphicsPolygonItem {
 	return this.h
 }
 
+func (this *QGraphicsPolygonItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsPolygonItem(h *C.QGraphicsPolygonItem) *QGraphicsPolygonItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsPolygonItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
+	return &QGraphicsPolygonItem{h: h, QAbstractGraphicsShapeItem: UnsafeNewQAbstractGraphicsShapeItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsPolygonItem_U(h unsafe.Pointer) *QGraphicsPolygonItem {
+func UnsafeNewQGraphicsPolygonItem(h unsafe.Pointer) *QGraphicsPolygonItem {
 	return newQGraphicsPolygonItem((*C.QGraphicsPolygonItem)(h))
 }
 
@@ -2012,14 +2062,21 @@ func (this *QGraphicsLineItem) cPointer() *C.QGraphicsLineItem {
 	return this.h
 }
 
+func (this *QGraphicsLineItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsLineItem(h *C.QGraphicsLineItem) *QGraphicsLineItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsLineItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
+	return &QGraphicsLineItem{h: h, QGraphicsItem: UnsafeNewQGraphicsItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsLineItem_U(h unsafe.Pointer) *QGraphicsLineItem {
+func UnsafeNewQGraphicsLineItem(h unsafe.Pointer) *QGraphicsLineItem {
 	return newQGraphicsLineItem((*C.QGraphicsLineItem)(h))
 }
 
@@ -2152,14 +2209,21 @@ func (this *QGraphicsPixmapItem) cPointer() *C.QGraphicsPixmapItem {
 	return this.h
 }
 
+func (this *QGraphicsPixmapItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsPixmapItem(h *C.QGraphicsPixmapItem) *QGraphicsPixmapItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsPixmapItem{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
+	return &QGraphicsPixmapItem{h: h, QGraphicsItem: UnsafeNewQGraphicsItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsPixmapItem_U(h unsafe.Pointer) *QGraphicsPixmapItem {
+func UnsafeNewQGraphicsPixmapItem(h unsafe.Pointer) *QGraphicsPixmapItem {
 	return newQGraphicsPixmapItem((*C.QGraphicsPixmapItem)(h))
 }
 
@@ -2292,14 +2356,21 @@ func (this *QGraphicsTextItem) cPointer() *C.QGraphicsTextItem {
 	return this.h
 }
 
+func (this *QGraphicsTextItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsTextItem(h *C.QGraphicsTextItem) *QGraphicsTextItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsTextItem{h: h, QGraphicsObject: newQGraphicsObject_U(unsafe.Pointer(h))}
+	return &QGraphicsTextItem{h: h, QGraphicsObject: UnsafeNewQGraphicsObject(unsafe.Pointer(h))}
 }
 
-func newQGraphicsTextItem_U(h unsafe.Pointer) *QGraphicsTextItem {
+func UnsafeNewQGraphicsTextItem(h unsafe.Pointer) *QGraphicsTextItem {
 	return newQGraphicsTextItem((*C.QGraphicsTextItem)(h))
 }
 
@@ -2311,7 +2382,7 @@ func NewQGraphicsTextItem() *QGraphicsTextItem {
 
 // NewQGraphicsTextItem2 constructs a new QGraphicsTextItem object.
 func NewQGraphicsTextItem2(text string) *QGraphicsTextItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QGraphicsTextItem_new2((*C.struct_miqt_string)(text_ms))
 	return newQGraphicsTextItem(ret)
@@ -2325,14 +2396,14 @@ func NewQGraphicsTextItem3(parent *QGraphicsItem) *QGraphicsTextItem {
 
 // NewQGraphicsTextItem4 constructs a new QGraphicsTextItem object.
 func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QGraphicsTextItem_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQGraphicsTextItem(ret)
 }
 
 func (this *QGraphicsTextItem) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsTextItem_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsTextItem_MetaObject(this.h)))
 }
 
 func (this *QGraphicsTextItem) Metacast(param1 string) unsafe.Pointer {
@@ -2367,7 +2438,7 @@ func (this *QGraphicsTextItem) ToHtml() string {
 }
 
 func (this *QGraphicsTextItem) SetHtml(html string) {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	C.QGraphicsTextItem_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
@@ -2380,7 +2451,7 @@ func (this *QGraphicsTextItem) ToPlainText() string {
 }
 
 func (this *QGraphicsTextItem) SetPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QGraphicsTextItem_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -2461,7 +2532,7 @@ func (this *QGraphicsTextItem) SetDocument(document *QTextDocument) {
 }
 
 func (this *QGraphicsTextItem) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QGraphicsTextItem_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QGraphicsTextItem_Document(this.h)))
 }
 
 func (this *QGraphicsTextItem) SetTextInteractionFlags(flags TextInteractionFlag) {
@@ -2500,7 +2571,7 @@ func (this *QGraphicsTextItem) TextCursor() *QTextCursor {
 }
 
 func (this *QGraphicsTextItem) LinkActivated(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QGraphicsTextItem_LinkActivated(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -2525,7 +2596,7 @@ func miqt_exec_callback_QGraphicsTextItem_LinkActivated(cb C.intptr_t, param1 *C
 }
 
 func (this *QGraphicsTextItem) LinkHovered(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QGraphicsTextItem_LinkHovered(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -2619,14 +2690,21 @@ func (this *QGraphicsSimpleTextItem) cPointer() *C.QGraphicsSimpleTextItem {
 	return this.h
 }
 
+func (this *QGraphicsSimpleTextItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSimpleTextItem(h *C.QGraphicsSimpleTextItem) *QGraphicsSimpleTextItem {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSimpleTextItem{h: h, QAbstractGraphicsShapeItem: newQAbstractGraphicsShapeItem_U(unsafe.Pointer(h))}
+	return &QGraphicsSimpleTextItem{h: h, QAbstractGraphicsShapeItem: UnsafeNewQAbstractGraphicsShapeItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSimpleTextItem_U(h unsafe.Pointer) *QGraphicsSimpleTextItem {
+func UnsafeNewQGraphicsSimpleTextItem(h unsafe.Pointer) *QGraphicsSimpleTextItem {
 	return newQGraphicsSimpleTextItem((*C.QGraphicsSimpleTextItem)(h))
 }
 
@@ -2638,7 +2716,7 @@ func NewQGraphicsSimpleTextItem() *QGraphicsSimpleTextItem {
 
 // NewQGraphicsSimpleTextItem2 constructs a new QGraphicsSimpleTextItem object.
 func NewQGraphicsSimpleTextItem2(text string) *QGraphicsSimpleTextItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QGraphicsSimpleTextItem_new2((*C.struct_miqt_string)(text_ms))
 	return newQGraphicsSimpleTextItem(ret)
@@ -2652,14 +2730,14 @@ func NewQGraphicsSimpleTextItem3(parent *QGraphicsItem) *QGraphicsSimpleTextItem
 
 // NewQGraphicsSimpleTextItem4 constructs a new QGraphicsSimpleTextItem object.
 func NewQGraphicsSimpleTextItem4(text string, parent *QGraphicsItem) *QGraphicsSimpleTextItem {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QGraphicsSimpleTextItem_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQGraphicsSimpleTextItem(ret)
 }
 
 func (this *QGraphicsSimpleTextItem) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QGraphicsSimpleTextItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -2745,14 +2823,21 @@ func (this *QGraphicsItemGroup) cPointer() *C.QGraphicsItemGroup {
 	return this.h
 }
 
+func (this *QGraphicsItemGroup) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsItemGroup(h *C.QGraphicsItemGroup) *QGraphicsItemGroup {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsItemGroup{h: h, QGraphicsItem: newQGraphicsItem_U(unsafe.Pointer(h))}
+	return &QGraphicsItemGroup{h: h, QGraphicsItem: UnsafeNewQGraphicsItem(unsafe.Pointer(h))}
 }
 
-func newQGraphicsItemGroup_U(h unsafe.Pointer) *QGraphicsItemGroup {
+func UnsafeNewQGraphicsItemGroup(h unsafe.Pointer) *QGraphicsItemGroup {
 	return newQGraphicsItemGroup((*C.QGraphicsItemGroup)(h))
 }
 

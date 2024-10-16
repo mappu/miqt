@@ -2,7 +2,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qlockfile.h"
+#include <qlockfile.h>
 #include "gen_qlockfile.h"
 #include "_cgo_export.h"
 

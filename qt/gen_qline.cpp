@@ -2,7 +2,7 @@
 #include <QLineF>
 #include <QPoint>
 #include <QPointF>
-#include "qline.h"
+#include <qline.h>
 #include "gen_qline.h"
 #include "_cgo_export.h"
 

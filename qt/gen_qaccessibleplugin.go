@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,19 +26,26 @@ func (this *QAccessiblePlugin) cPointer() *C.QAccessiblePlugin {
 	return this.h
 }
 
+func (this *QAccessiblePlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessiblePlugin(h *C.QAccessiblePlugin) *QAccessiblePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QAccessiblePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAccessiblePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAccessiblePlugin_U(h unsafe.Pointer) *QAccessiblePlugin {
+func UnsafeNewQAccessiblePlugin(h unsafe.Pointer) *QAccessiblePlugin {
 	return newQAccessiblePlugin((*C.QAccessiblePlugin)(h))
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAccessiblePlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAccessiblePlugin_MetaObject(this.h)))
 }
 
 func (this *QAccessiblePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -65,9 +73,9 @@ func QAccessiblePlugin_TrUtf8(s string) string {
 }
 
 func (this *QAccessiblePlugin) Create(key string, object *QObject) *QAccessibleInterface {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	return newQAccessibleInterface_U(unsafe.Pointer(C.QAccessiblePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms), object.cPointer())))
+	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessiblePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms), object.cPointer())))
 }
 
 func QAccessiblePlugin_Tr2(s string, c string) string {

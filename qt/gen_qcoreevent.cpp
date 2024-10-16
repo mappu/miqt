@@ -5,7 +5,7 @@
 #include <QEvent>
 #include <QObject>
 #include <QTimerEvent>
-#include "qcoreevent.h"
+#include <qcoreevent.h>
 #include "gen_qcoreevent.h"
 #include "_cgo_export.h"
 

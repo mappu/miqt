@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -70,6 +71,13 @@ func (this *QTextCursor) cPointer() *C.QTextCursor {
 	return this.h
 }
 
+func (this *QTextCursor) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextCursor(h *C.QTextCursor) *QTextCursor {
 	if h == nil {
 		return nil
@@ -77,7 +85,7 @@ func newQTextCursor(h *C.QTextCursor) *QTextCursor {
 	return &QTextCursor{h: h}
 }
 
-func newQTextCursor_U(h unsafe.Pointer) *QTextCursor {
+func UnsafeNewQTextCursor(h unsafe.Pointer) *QTextCursor {
 	return newQTextCursor((*C.QTextCursor)(h))
 }
 
@@ -140,13 +148,13 @@ func (this *QTextCursor) Anchor() int {
 }
 
 func (this *QTextCursor) InsertText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextCursor_InsertText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextCursor_InsertText2(this.h, (*C.struct_miqt_string)(text_ms), format.cPointer())
 }
@@ -314,43 +322,43 @@ func (this *QTextCursor) InsertBlock2(format *QTextBlockFormat, charFormat *QTex
 }
 
 func (this *QTextCursor) InsertList(format *QTextListFormat) *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextCursor_InsertList(this.h, format.cPointer())))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextCursor_InsertList(this.h, format.cPointer())))
 }
 
 func (this *QTextCursor) InsertListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextCursor_InsertListWithStyle(this.h, (C.int)(style))))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextCursor_InsertListWithStyle(this.h, (C.int)(style))))
 }
 
 func (this *QTextCursor) CreateList(format *QTextListFormat) *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextCursor_CreateList(this.h, format.cPointer())))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextCursor_CreateList(this.h, format.cPointer())))
 }
 
 func (this *QTextCursor) CreateListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextCursor_CreateListWithStyle(this.h, (C.int)(style))))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextCursor_CreateListWithStyle(this.h, (C.int)(style))))
 }
 
 func (this *QTextCursor) CurrentList() *QTextList {
-	return newQTextList_U(unsafe.Pointer(C.QTextCursor_CurrentList(this.h)))
+	return UnsafeNewQTextList(unsafe.Pointer(C.QTextCursor_CurrentList(this.h)))
 }
 
 func (this *QTextCursor) InsertTable(rows int, cols int, format *QTextTableFormat) *QTextTable {
-	return newQTextTable_U(unsafe.Pointer(C.QTextCursor_InsertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer())))
+	return UnsafeNewQTextTable(unsafe.Pointer(C.QTextCursor_InsertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer())))
 }
 
 func (this *QTextCursor) InsertTable2(rows int, cols int) *QTextTable {
-	return newQTextTable_U(unsafe.Pointer(C.QTextCursor_InsertTable2(this.h, (C.int)(rows), (C.int)(cols))))
+	return UnsafeNewQTextTable(unsafe.Pointer(C.QTextCursor_InsertTable2(this.h, (C.int)(rows), (C.int)(cols))))
 }
 
 func (this *QTextCursor) CurrentTable() *QTextTable {
-	return newQTextTable_U(unsafe.Pointer(C.QTextCursor_CurrentTable(this.h)))
+	return UnsafeNewQTextTable(unsafe.Pointer(C.QTextCursor_CurrentTable(this.h)))
 }
 
 func (this *QTextCursor) InsertFrame(format *QTextFrameFormat) *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextCursor_InsertFrame(this.h, format.cPointer())))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextCursor_InsertFrame(this.h, format.cPointer())))
 }
 
 func (this *QTextCursor) CurrentFrame() *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextCursor_CurrentFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextCursor_CurrentFrame(this.h)))
 }
 
 func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
@@ -358,7 +366,7 @@ func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
 }
 
 func (this *QTextCursor) InsertHtml(html string) {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	C.QTextCursor_InsertHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
@@ -372,7 +380,7 @@ func (this *QTextCursor) InsertImageWithFormat(format *QTextImageFormat) {
 }
 
 func (this *QTextCursor) InsertImageWithName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTextCursor_InsertImageWithName(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -430,7 +438,7 @@ func (this *QTextCursor) ColumnNumber() int {
 }
 
 func (this *QTextCursor) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextCursor_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextCursor_Document(this.h)))
 }
 
 func (this *QTextCursor) SetPosition2(pos int, mode QTextCursor__MoveMode) {
@@ -446,7 +454,7 @@ func (this *QTextCursor) MovePosition3(op QTextCursor__MoveOperation, param2 QTe
 }
 
 func (this *QTextCursor) InsertImage2(image *QImage, name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTextCursor_InsertImage2(this.h, image.cPointer(), (*C.struct_miqt_string)(name_ms))
 }

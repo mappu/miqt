@@ -65,6 +65,13 @@ func (this *QSizePolicy) cPointer() *C.QSizePolicy {
 	return this.h
 }
 
+func (this *QSizePolicy) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
 	if h == nil {
 		return nil
@@ -72,7 +79,7 @@ func newQSizePolicy(h *C.QSizePolicy) *QSizePolicy {
 	return &QSizePolicy{h: h}
 }
 
-func newQSizePolicy_U(h unsafe.Pointer) *QSizePolicy {
+func UnsafeNewQSizePolicy(h unsafe.Pointer) *QSizePolicy {
 	return newQSizePolicy((*C.QSizePolicy)(h))
 }
 

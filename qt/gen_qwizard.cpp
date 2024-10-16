@@ -10,7 +10,7 @@
 #include <QWidget>
 #include <QWizard>
 #include <QWizardPage>
-#include "qwizard.h"
+#include <qwizard.h>
 #include "gen_qwizard.h"
 #include "_cgo_export.h"
 

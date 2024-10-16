@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QCheckBox) cPointer() *C.QCheckBox {
 	return this.h
 }
 
+func (this *QCheckBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCheckBox(h *C.QCheckBox) *QCheckBox {
 	if h == nil {
 		return nil
 	}
-	return &QCheckBox{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
+	return &QCheckBox{h: h, QAbstractButton: UnsafeNewQAbstractButton(unsafe.Pointer(h))}
 }
 
-func newQCheckBox_U(h unsafe.Pointer) *QCheckBox {
+func UnsafeNewQCheckBox(h unsafe.Pointer) *QCheckBox {
 	return newQCheckBox((*C.QCheckBox)(h))
 }
 
@@ -45,7 +53,7 @@ func NewQCheckBox() *QCheckBox {
 
 // NewQCheckBox2 constructs a new QCheckBox object.
 func NewQCheckBox2(text string) *QCheckBox {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QCheckBox_new2((*C.struct_miqt_string)(text_ms))
 	return newQCheckBox(ret)
@@ -59,14 +67,14 @@ func NewQCheckBox3(parent *QWidget) *QCheckBox {
 
 // NewQCheckBox4 constructs a new QCheckBox object.
 func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QCheckBox_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQCheckBox(ret)
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCheckBox_MetaObject(this.h)))
 }
 
 func (this *QCheckBox) Metacast(param1 string) unsafe.Pointer {

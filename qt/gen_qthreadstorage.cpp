@@ -1,5 +1,5 @@
 #include <QThreadStorageData>
-#include "qthreadstorage.h"
+#include <qthreadstorage.h>
 #include "gen_qthreadstorage.h"
 #include "_cgo_export.h"
 

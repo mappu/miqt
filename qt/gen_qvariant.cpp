@@ -39,7 +39,7 @@
 #include <QVariantComparisonHelper>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QAssociativeIterableImpl
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtMetaTypePrivate__QSequentialIterableImpl
-#include "qvariant.h"
+#include <qvariant.h>
 #include "gen_qvariant.h"
 #include "_cgo_export.h"
 
@@ -113,7 +113,7 @@ QVariant* QVariant_new17(struct miqt_string* stringVal) {
 }
 
 QVariant* QVariant_new18(struct miqt_array* /* of struct miqt_string* */ stringlist) {
-	QList<QString> stringlist_QList;
+	QStringList stringlist_QList;
 	stringlist_QList.reserve(stringlist->len);
 	struct miqt_string** stringlist_arr = static_cast<struct miqt_string**>(stringlist->data);
 	for(size_t i = 0; i < stringlist->len; ++i) {

@@ -1,6 +1,6 @@
 #include <QBitArray>
 #include <QBitRef>
-#include "qbitarray.h"
+#include <qbitarray.h>
 #include "gen_qbitarray.h"
 #include "_cgo_export.h"
 

@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWindow>
-#include "qaccessibleobject.h"
+#include <qaccessibleobject.h>
 #include "gen_qaccessibleobject.h"
 #include "_cgo_export.h"
 

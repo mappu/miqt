@@ -54,6 +54,13 @@ func (this *QTextOption) cPointer() *C.QTextOption {
 	return this.h
 }
 
+func (this *QTextOption) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextOption(h *C.QTextOption) *QTextOption {
 	if h == nil {
 		return nil
@@ -61,7 +68,7 @@ func newQTextOption(h *C.QTextOption) *QTextOption {
 	return &QTextOption{h: h}
 }
 
-func newQTextOption_U(h unsafe.Pointer) *QTextOption {
+func UnsafeNewQTextOption(h unsafe.Pointer) *QTextOption {
 	return newQTextOption((*C.QTextOption)(h))
 }
 
@@ -217,6 +224,13 @@ func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
 	return this.h
 }
 
+func (this *QTextOption__Tab) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextOption__Tab(h *C.QTextOption__Tab) *QTextOption__Tab {
 	if h == nil {
 		return nil
@@ -224,7 +238,7 @@ func newQTextOption__Tab(h *C.QTextOption__Tab) *QTextOption__Tab {
 	return &QTextOption__Tab{h: h}
 }
 
-func newQTextOption__Tab_U(h unsafe.Pointer) *QTextOption__Tab {
+func UnsafeNewQTextOption__Tab(h unsafe.Pointer) *QTextOption__Tab {
 	return newQTextOption__Tab((*C.QTextOption__Tab)(h))
 }
 

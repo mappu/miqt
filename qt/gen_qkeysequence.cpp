@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qkeysequence.h"
+#include <qkeysequence.h>
 #include "gen_qkeysequence.h"
 #include "_cgo_export.h"
 

@@ -24,6 +24,13 @@ func (this *QCursor) cPointer() *C.QCursor {
 	return this.h
 }
 
+func (this *QCursor) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCursor(h *C.QCursor) *QCursor {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQCursor(h *C.QCursor) *QCursor {
 	return &QCursor{h: h}
 }
 
-func newQCursor_U(h unsafe.Pointer) *QCursor {
+func UnsafeNewQCursor(h unsafe.Pointer) *QCursor {
 	return newQCursor((*C.QCursor)(h))
 }
 
@@ -106,11 +113,11 @@ func (this *QCursor) SetShape(newShape CursorShape) {
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	return newQBitmap_U(unsafe.Pointer(C.QCursor_Bitmap(this.h)))
+	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Bitmap(this.h)))
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	return newQBitmap_U(unsafe.Pointer(C.QCursor_Mask(this.h)))
+	return UnsafeNewQBitmap(unsafe.Pointer(C.QCursor_Mask(this.h)))
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {

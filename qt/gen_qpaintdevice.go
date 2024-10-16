@@ -41,6 +41,13 @@ func (this *QPaintDevice) cPointer() *C.QPaintDevice {
 	return this.h
 }
 
+func (this *QPaintDevice) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
 	if h == nil {
 		return nil
@@ -48,7 +55,7 @@ func newQPaintDevice(h *C.QPaintDevice) *QPaintDevice {
 	return &QPaintDevice{h: h}
 }
 
-func newQPaintDevice_U(h unsafe.Pointer) *QPaintDevice {
+func UnsafeNewQPaintDevice(h unsafe.Pointer) *QPaintDevice {
 	return newQPaintDevice((*C.QPaintDevice)(h))
 }
 
@@ -61,7 +68,7 @@ func (this *QPaintDevice) PaintingActive() bool {
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QPaintDevice_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPaintDevice_PaintEngine(this.h)))
 }
 
 func (this *QPaintDevice) Width() int {

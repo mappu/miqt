@@ -24,6 +24,13 @@ func (this *QWaitCondition) cPointer() *C.QWaitCondition {
 	return this.h
 }
 
+func (this *QWaitCondition) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQWaitCondition(h *C.QWaitCondition) *QWaitCondition {
 	return &QWaitCondition{h: h}
 }
 
-func newQWaitCondition_U(h unsafe.Pointer) *QWaitCondition {
+func UnsafeNewQWaitCondition(h unsafe.Pointer) *QWaitCondition {
 	return newQWaitCondition((*C.QWaitCondition)(h))
 }
 

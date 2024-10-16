@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QTransform>
 #include <QVariant>
-#include "qinputmethod.h"
+#include <qinputmethod.h>
 #include "gen_qinputmethod.h"
 #include "_cgo_export.h"
 

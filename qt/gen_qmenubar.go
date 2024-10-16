@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QMenuBar) cPointer() *C.QMenuBar {
 	return this.h
 }
 
+func (this *QMenuBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMenuBar(h *C.QMenuBar) *QMenuBar {
 	if h == nil {
 		return nil
 	}
-	return &QMenuBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QMenuBar{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQMenuBar_U(h unsafe.Pointer) *QMenuBar {
+func UnsafeNewQMenuBar(h unsafe.Pointer) *QMenuBar {
 	return newQMenuBar((*C.QMenuBar)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQMenuBar2(parent *QWidget) *QMenuBar {
 }
 
 func (this *QMenuBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMenuBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMenuBar_MetaObject(this.h)))
 }
 
 func (this *QMenuBar) Metacast(param1 string) unsafe.Pointer {
@@ -78,37 +86,37 @@ func QMenuBar_TrUtf8(s string) string {
 }
 
 func (this *QMenuBar) AddAction(text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddMenu(this.h, menu.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_AddMenu(this.h, menu.cPointer())))
 }
 
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	return newQMenu_U(unsafe.Pointer(C.QMenuBar_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	return newQMenu_U(unsafe.Pointer(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
 }
 
 func (this *QMenuBar) AddSeparator() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_AddSeparator(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_AddSeparator(this.h)))
 }
 
 func (this *QMenuBar) InsertSeparator(before *QAction) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_InsertSeparator(this.h, before.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_InsertSeparator(this.h, before.cPointer())))
 }
 
 func (this *QMenuBar) InsertMenu(before *QAction, menu *QMenu) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_InsertMenu(this.h, before.cPointer(), menu.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_InsertMenu(this.h, before.cPointer(), menu.cPointer())))
 }
 
 func (this *QMenuBar) Clear() {
@@ -116,7 +124,7 @@ func (this *QMenuBar) Clear() {
 }
 
 func (this *QMenuBar) ActiveAction() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_ActiveAction(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_ActiveAction(this.h)))
 }
 
 func (this *QMenuBar) SetActiveAction(action *QAction) {
@@ -157,7 +165,7 @@ func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
 }
 
 func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QMenuBar_ActionAt(this.h, param1.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_ActionAt(this.h, param1.cPointer())))
 }
 
 func (this *QMenuBar) SetCornerWidget(w *QWidget) {
@@ -165,7 +173,7 @@ func (this *QMenuBar) SetCornerWidget(w *QWidget) {
 }
 
 func (this *QMenuBar) CornerWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMenuBar_CornerWidget(this.h)))
 }
 
 func (this *QMenuBar) IsNativeMenuBar() bool {
@@ -195,7 +203,7 @@ func miqt_exec_callback_QMenuBar_Triggered(cb C.intptr_t, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction_U(unsafe.Pointer(action))
+	slotval1 := UnsafeNewQAction(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -215,7 +223,7 @@ func miqt_exec_callback_QMenuBar_Hovered(cb C.intptr_t, action *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction_U(unsafe.Pointer(action))
+	slotval1 := UnsafeNewQAction(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -269,7 +277,7 @@ func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
 }
 
 func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMenuBar_CornerWidget1(this.h, (C.int)(corner))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMenuBar_CornerWidget1(this.h, (C.int)(corner))))
 }
 
 // Delete this object from C++ memory.

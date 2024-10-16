@@ -35,14 +35,21 @@ func (this *QMdiSubWindow) cPointer() *C.QMdiSubWindow {
 	return this.h
 }
 
+func (this *QMdiSubWindow) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMdiSubWindow(h *C.QMdiSubWindow) *QMdiSubWindow {
 	if h == nil {
 		return nil
 	}
-	return &QMdiSubWindow{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QMdiSubWindow{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQMdiSubWindow_U(h unsafe.Pointer) *QMdiSubWindow {
+func UnsafeNewQMdiSubWindow(h unsafe.Pointer) *QMdiSubWindow {
 	return newQMdiSubWindow((*C.QMdiSubWindow)(h))
 }
 
@@ -65,7 +72,7 @@ func NewQMdiSubWindow3(parent *QWidget, flags WindowType) *QMdiSubWindow {
 }
 
 func (this *QMdiSubWindow) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMdiSubWindow_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMdiSubWindow_MetaObject(this.h)))
 }
 
 func (this *QMdiSubWindow) Metacast(param1 string) unsafe.Pointer {
@@ -111,15 +118,15 @@ func (this *QMdiSubWindow) SetWidget(widget *QWidget) {
 }
 
 func (this *QMdiSubWindow) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_Widget(this.h)))
 }
 
 func (this *QMdiSubWindow) MaximizedButtonsWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_MaximizedButtonsWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_MaximizedButtonsWidget(this.h)))
 }
 
 func (this *QMdiSubWindow) MaximizedSystemMenuIconWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QMdiSubWindow_MaximizedSystemMenuIconWidget(this.h)))
 }
 
 func (this *QMdiSubWindow) IsShaded() bool {
@@ -155,11 +162,11 @@ func (this *QMdiSubWindow) SetSystemMenu(systemMenu *QMenu) {
 }
 
 func (this *QMdiSubWindow) SystemMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QMdiSubWindow_SystemMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMdiSubWindow_SystemMenu(this.h)))
 }
 
 func (this *QMdiSubWindow) MdiArea() *QMdiArea {
-	return newQMdiArea_U(unsafe.Pointer(C.QMdiSubWindow_MdiArea(this.h)))
+	return UnsafeNewQMdiArea(unsafe.Pointer(C.QMdiSubWindow_MdiArea(this.h)))
 }
 
 func (this *QMdiSubWindow) WindowStateChanged(oldState WindowState, newState WindowState) {

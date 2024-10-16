@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpagesize.h"
+#include <qpagesize.h>
 #include "gen_qpagesize.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -33,14 +34,21 @@ func (this *QProgressBar) cPointer() *C.QProgressBar {
 	return this.h
 }
 
+func (this *QProgressBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQProgressBar(h *C.QProgressBar) *QProgressBar {
 	if h == nil {
 		return nil
 	}
-	return &QProgressBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QProgressBar{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQProgressBar_U(h unsafe.Pointer) *QProgressBar {
+func UnsafeNewQProgressBar(h unsafe.Pointer) *QProgressBar {
 	return newQProgressBar((*C.QProgressBar)(h))
 }
 
@@ -57,7 +65,7 @@ func NewQProgressBar2(parent *QWidget) *QProgressBar {
 }
 
 func (this *QProgressBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QProgressBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QProgressBar_MetaObject(this.h)))
 }
 
 func (this *QProgressBar) Metacast(param1 string) unsafe.Pointer {
@@ -154,7 +162,7 @@ func (this *QProgressBar) TextDirection() QProgressBar__Direction {
 }
 
 func (this *QProgressBar) SetFormat(format string) {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	C.QProgressBar_SetFormat(this.h, (*C.struct_miqt_string)(format_ms))
 }

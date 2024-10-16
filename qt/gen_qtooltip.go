@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QToolTip) cPointer() *C.QToolTip {
 	return this.h
 }
 
+func (this *QToolTip) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQToolTip(h *C.QToolTip) *QToolTip {
 	if h == nil {
 		return nil
@@ -31,24 +39,24 @@ func newQToolTip(h *C.QToolTip) *QToolTip {
 	return &QToolTip{h: h}
 }
 
-func newQToolTip_U(h unsafe.Pointer) *QToolTip {
+func UnsafeNewQToolTip(h unsafe.Pointer) *QToolTip {
 	return newQToolTip((*C.QToolTip)(h))
 }
 
 func QToolTip_ShowText(pos *QPoint, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QToolTip_ShowText(pos.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QToolTip_ShowText2(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer(), rect.cPointer())
 }
 
 func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QToolTip_ShowText3(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
 }
@@ -91,7 +99,7 @@ func QToolTip_SetFont(font *QFont) {
 }
 
 func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QToolTip_ShowText32(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer())
 }

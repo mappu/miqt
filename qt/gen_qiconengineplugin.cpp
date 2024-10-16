@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qiconengineplugin.h"
+#include <qiconengineplugin.h>
 #include "gen_qiconengineplugin.h"
 #include "_cgo_export.h"
 

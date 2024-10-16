@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -44,6 +45,13 @@ func (this *QLibraryInfo) cPointer() *C.QLibraryInfo {
 	return this.h
 }
 
+func (this *QLibraryInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	if h == nil {
 		return nil
@@ -51,7 +59,7 @@ func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	return &QLibraryInfo{h: h}
 }
 
-func newQLibraryInfo_U(h unsafe.Pointer) *QLibraryInfo {
+func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
 	return newQLibraryInfo((*C.QLibraryInfo)(h))
 }
 
@@ -100,7 +108,7 @@ func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
 }
 
 func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
-	platformName_ms := miqt_strdupg(platformName)
+	platformName_ms := libmiqt.Strdupg(platformName)
 	defer C.free(platformName_ms)
 	var _ma *C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments((*C.struct_miqt_string)(platformName_ms))
 	_ret := make([]string, int(_ma.len))

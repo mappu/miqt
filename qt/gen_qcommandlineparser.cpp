@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcommandlineparser.h"
+#include <qcommandlineparser.h>
 #include "gen_qcommandlineparser.h"
 #include "_cgo_export.h"
 
@@ -80,7 +80,7 @@ void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self) {
 }
 
 void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
-	QList<QString> arguments_QList;
+	QStringList arguments_QList;
 	arguments_QList.reserve(arguments->len);
 	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {
@@ -95,7 +95,7 @@ void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplicatio
 }
 
 bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string* */ arguments) {
-	QList<QString> arguments_QList;
+	QStringList arguments_QList;
 	arguments_QList.reserve(arguments->len);
 	struct miqt_string** arguments_arr = static_cast<struct miqt_string**>(arguments->data);
 	for(size_t i = 0; i < arguments->len; ++i) {

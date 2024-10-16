@@ -24,6 +24,13 @@ func (this *QFontInfo) cPointer() *C.QFontInfo {
 	return this.h
 }
 
+func (this *QFontInfo) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFontInfo(h *C.QFontInfo) *QFontInfo {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQFontInfo(h *C.QFontInfo) *QFontInfo {
 	return &QFontInfo{h: h}
 }
 
-func newQFontInfo_U(h unsafe.Pointer) *QFontInfo {
+func UnsafeNewQFontInfo(h unsafe.Pointer) *QFontInfo {
 	return newQFontInfo((*C.QFontInfo)(h))
 }
 

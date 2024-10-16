@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QVersionNumber) cPointer() *C.QVersionNumber {
 	return this.h
 }
 
+func (this *QVersionNumber) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	return &QVersionNumber{h: h}
 }
 
-func newQVersionNumber_U(h unsafe.Pointer) *QVersionNumber {
+func UnsafeNewQVersionNumber(h unsafe.Pointer) *QVersionNumber {
 	return newQVersionNumber((*C.QVersionNumber)(h))
 }
 
@@ -142,7 +150,7 @@ func (this *QVersionNumber) ToString() string {
 }
 
 func QVersionNumber_FromString(stringVal string) *QVersionNumber {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QVersionNumber_FromString((*C.struct_miqt_string)(stringVal_ms))
 	_goptr := newQVersionNumber(_ret)
@@ -151,7 +159,7 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 }
 
 func QVersionNumber_FromString22(stringVal string, suffixIndex *int) *QVersionNumber {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QVersionNumber_FromString22((*C.struct_miqt_string)(stringVal_ms), (*C.int)(unsafe.Pointer(suffixIndex)))
 	_goptr := newQVersionNumber(_ret)

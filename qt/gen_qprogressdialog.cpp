@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qprogressdialog.h"
+#include <qprogressdialog.h>
 #include "gen_qprogressdialog.h"
 #include "_cgo_export.h"
 

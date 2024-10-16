@@ -52,6 +52,13 @@ func (this *QCborStreamReader) cPointer() *C.QCborStreamReader {
 	return this.h
 }
 
+func (this *QCborStreamReader) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
 	if h == nil {
 		return nil
@@ -59,7 +66,7 @@ func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
 	return &QCborStreamReader{h: h}
 }
 
-func newQCborStreamReader_U(h unsafe.Pointer) *QCborStreamReader {
+func UnsafeNewQCborStreamReader(h unsafe.Pointer) *QCborStreamReader {
 	return newQCborStreamReader((*C.QCborStreamReader)(h))
 }
 
@@ -100,7 +107,7 @@ func (this *QCborStreamReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QCborStreamReader) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
 }
 
 func (this *QCborStreamReader) AddData(data *QByteArray) {

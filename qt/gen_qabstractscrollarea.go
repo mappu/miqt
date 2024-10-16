@@ -33,14 +33,21 @@ func (this *QAbstractScrollArea) cPointer() *C.QAbstractScrollArea {
 	return this.h
 }
 
+func (this *QAbstractScrollArea) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractScrollArea(h *C.QAbstractScrollArea) *QAbstractScrollArea {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractScrollArea{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QAbstractScrollArea{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQAbstractScrollArea_U(h unsafe.Pointer) *QAbstractScrollArea {
+func UnsafeNewQAbstractScrollArea(h unsafe.Pointer) *QAbstractScrollArea {
 	return newQAbstractScrollArea((*C.QAbstractScrollArea)(h))
 }
 
@@ -57,7 +64,7 @@ func NewQAbstractScrollArea2(parent *QWidget) *QAbstractScrollArea {
 }
 
 func (this *QAbstractScrollArea) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractScrollArea_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractScrollArea_MetaObject(this.h)))
 }
 
 func (this *QAbstractScrollArea) Metacast(param1 string) unsafe.Pointer {
@@ -93,7 +100,7 @@ func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPol
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	return newQScrollBar_U(unsafe.Pointer(C.QAbstractScrollArea_VerticalScrollBar(this.h)))
+	return UnsafeNewQScrollBar(unsafe.Pointer(C.QAbstractScrollArea_VerticalScrollBar(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
@@ -109,7 +116,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBa
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	return newQScrollBar_U(unsafe.Pointer(C.QAbstractScrollArea_HorizontalScrollBar(this.h)))
+	return UnsafeNewQScrollBar(unsafe.Pointer(C.QAbstractScrollArea_HorizontalScrollBar(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
@@ -117,7 +124,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QAbstractScrollArea_CornerWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractScrollArea_CornerWidget(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
@@ -133,14 +140,14 @@ func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QW
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQWidget_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QAbstractScrollArea_Viewport(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractScrollArea_Viewport(this.h)))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {

@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qclipboard.h"
+#include <qclipboard.h>
 #include "gen_qclipboard.h"
 #include "_cgo_export.h"
 

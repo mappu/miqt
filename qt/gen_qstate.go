@@ -39,14 +39,21 @@ func (this *QState) cPointer() *C.QState {
 	return this.h
 }
 
+func (this *QState) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQState(h *C.QState) *QState {
 	if h == nil {
 		return nil
 	}
-	return &QState{h: h, QAbstractState: newQAbstractState_U(unsafe.Pointer(h))}
+	return &QState{h: h, QAbstractState: UnsafeNewQAbstractState(unsafe.Pointer(h))}
 }
 
-func newQState_U(h unsafe.Pointer) *QState {
+func UnsafeNewQState(h unsafe.Pointer) *QState {
 	return newQState((*C.QState)(h))
 }
 
@@ -75,7 +82,7 @@ func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
 }
 
 func (this *QState) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QState_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QState_MetaObject(this.h)))
 }
 
 func (this *QState) Metacast(param1 string) unsafe.Pointer {
@@ -103,7 +110,7 @@ func QState_TrUtf8(s string) string {
 }
 
 func (this *QState) ErrorState() *QAbstractState {
-	return newQAbstractState_U(unsafe.Pointer(C.QState_ErrorState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_ErrorState(this.h)))
 }
 
 func (this *QState) SetErrorState(state *QAbstractState) {
@@ -117,11 +124,11 @@ func (this *QState) AddTransition(transition *QAbstractTransition) {
 func (this *QState) AddTransition2(sender *QObject, signal string, target *QAbstractState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	return newQSignalTransition_U(unsafe.Pointer(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())))
+	return UnsafeNewQSignalTransition(unsafe.Pointer(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())))
 }
 
 func (this *QState) AddTransitionWithTarget(target *QAbstractState) *QAbstractTransition {
-	return newQAbstractTransition_U(unsafe.Pointer(C.QState_AddTransitionWithTarget(this.h, target.cPointer())))
+	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QState_AddTransitionWithTarget(this.h, target.cPointer())))
 }
 
 func (this *QState) RemoveTransition(transition *QAbstractTransition) {
@@ -133,14 +140,14 @@ func (this *QState) Transitions() []*QAbstractTransition {
 	_ret := make([]*QAbstractTransition, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractTransition_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractTransition(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QState) InitialState() *QAbstractState {
-	return newQAbstractState_U(unsafe.Pointer(C.QState_InitialState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_InitialState(this.h)))
 }
 
 func (this *QState) SetInitialState(state *QAbstractState) {

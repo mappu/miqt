@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qsequentialanimationgroup.h"
+#include <qsequentialanimationgroup.h>
 #include "gen_qsequentialanimationgroup.h"
 #include "_cgo_export.h"
 

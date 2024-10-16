@@ -2,7 +2,7 @@
 #include <QGraphicsLayoutItem>
 #include <QRectF>
 #include <QSizeF>
-#include "qgraphicsgridlayout.h"
+#include <qgraphicsgridlayout.h>
 #include "gen_qgraphicsgridlayout.h"
 #include "_cgo_export.h"
 

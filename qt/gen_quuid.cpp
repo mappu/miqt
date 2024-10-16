@@ -3,7 +3,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QUuid>
-#include "quuid.h"
+#include <quuid.h>
 #include "gen_quuid.h"
 #include "_cgo_export.h"
 

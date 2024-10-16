@@ -16,7 +16,7 @@
 #include <QValidator>
 #include <QVariant>
 #include <QWidget>
-#include "qcombobox.h"
+#include <qcombobox.h>
 #include "gen_qcombobox.h"
 #include "_cgo_export.h"
 
@@ -263,7 +263,7 @@ void QComboBox_AddItem2(QComboBox* self, QIcon* icon, struct miqt_string* text) 
 }
 
 void QComboBox_AddItems(QComboBox* self, struct miqt_array* /* of struct miqt_string* */ texts) {
-	QList<QString> texts_QList;
+	QStringList texts_QList;
 	texts_QList.reserve(texts->len);
 	struct miqt_string** texts_arr = static_cast<struct miqt_string**>(texts->data);
 	for(size_t i = 0; i < texts->len; ++i) {
@@ -284,7 +284,7 @@ void QComboBox_InsertItem2(QComboBox* self, int index, QIcon* icon, struct miqt_
 }
 
 void QComboBox_InsertItems(QComboBox* self, int index, struct miqt_array* /* of struct miqt_string* */ texts) {
-	QList<QString> texts_QList;
+	QStringList texts_QList;
 	texts_QList.reserve(texts->len);
 	struct miqt_string** texts_arr = static_cast<struct miqt_string**>(texts->data);
 	for(size_t i = 0; i < texts->len; ++i) {

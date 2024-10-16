@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qmouseeventtransition.h"
+#include <qmouseeventtransition.h>
 #include "gen_qmouseeventtransition.h"
 #include "_cgo_export.h"
 

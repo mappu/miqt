@@ -39,14 +39,21 @@ func (this *QAbstractSlider) cPointer() *C.QAbstractSlider {
 	return this.h
 }
 
+func (this *QAbstractSlider) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractSlider(h *C.QAbstractSlider) *QAbstractSlider {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractSlider{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QAbstractSlider{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQAbstractSlider_U(h unsafe.Pointer) *QAbstractSlider {
+func UnsafeNewQAbstractSlider(h unsafe.Pointer) *QAbstractSlider {
 	return newQAbstractSlider((*C.QAbstractSlider)(h))
 }
 
@@ -63,7 +70,7 @@ func NewQAbstractSlider2(parent *QWidget) *QAbstractSlider {
 }
 
 func (this *QAbstractSlider) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractSlider_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSlider_MetaObject(this.h)))
 }
 
 func (this *QAbstractSlider) Metacast(param1 string) unsafe.Pointer {

@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qsplashscreen.h"
+#include <qsplashscreen.h>
 #include "gen_qsplashscreen.h"
 #include "_cgo_export.h"
 

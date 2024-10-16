@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qscrollarea.h"
+#include <qscrollarea.h>
 #include "gen_qscrollarea.h"
 #include "_cgo_export.h"
 

@@ -32,6 +32,13 @@ func (this *QColormap) cPointer() *C.QColormap {
 	return this.h
 }
 
+func (this *QColormap) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColormap(h *C.QColormap) *QColormap {
 	if h == nil {
 		return nil
@@ -39,7 +46,7 @@ func newQColormap(h *C.QColormap) *QColormap {
 	return &QColormap{h: h}
 }
 
-func newQColormap_U(h unsafe.Pointer) *QColormap {
+func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
 	return newQColormap((*C.QColormap)(h))
 }
 

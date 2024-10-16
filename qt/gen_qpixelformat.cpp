@@ -1,5 +1,5 @@
 #include <QPixelFormat>
-#include "qpixelformat.h"
+#include <qpixelformat.h>
 #include "gen_qpixelformat.h"
 #include "_cgo_export.h"
 

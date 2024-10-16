@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -49,14 +50,21 @@ func (this *QFormLayout) cPointer() *C.QFormLayout {
 	return this.h
 }
 
+func (this *QFormLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFormLayout(h *C.QFormLayout) *QFormLayout {
 	if h == nil {
 		return nil
 	}
-	return &QFormLayout{h: h, QLayout: newQLayout_U(unsafe.Pointer(h))}
+	return &QFormLayout{h: h, QLayout: UnsafeNewQLayout(unsafe.Pointer(h))}
 }
 
-func newQFormLayout_U(h unsafe.Pointer) *QFormLayout {
+func UnsafeNewQFormLayout(h unsafe.Pointer) *QFormLayout {
 	return newQFormLayout((*C.QFormLayout)(h))
 }
 
@@ -73,7 +81,7 @@ func NewQFormLayout2(parent *QWidget) *QFormLayout {
 }
 
 func (this *QFormLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFormLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFormLayout_MetaObject(this.h)))
 }
 
 func (this *QFormLayout) Metacast(param1 string) unsafe.Pointer {
@@ -165,13 +173,13 @@ func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
 	C.QFormLayout_AddRow3(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
 	C.QFormLayout_AddRow4(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
@@ -193,13 +201,13 @@ func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
 	C.QFormLayout_InsertRow3(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
-	labelText_ms := miqt_strdupg(labelText)
+	labelText_ms := libmiqt.Strdupg(labelText)
 	defer C.free(labelText_ms)
 	C.QFormLayout_InsertRow4(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
 }
@@ -258,15 +266,15 @@ func (this *QFormLayout) SetLayout(row int, role QFormLayout__ItemRole, layout *
 }
 
 func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role))))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QFormLayout_LabelForField(this.h, field.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QFormLayout_LabelForField(this.h, field.cPointer())))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer())))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
@@ -274,11 +282,11 @@ func (this *QFormLayout) AddItem(item *QLayoutItem) {
 }
 
 func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index))))
 }
 
 func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
-	return newQLayoutItem_U(unsafe.Pointer(C.QFormLayout_TakeAt(this.h, (C.int)(index))))
+	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QFormLayout_TakeAt(this.h, (C.int)(index))))
 }
 
 func (this *QFormLayout) SetGeometry(rect *QRect) {
@@ -392,6 +400,13 @@ func (this *QFormLayout__TakeRowResult) cPointer() *C.QFormLayout__TakeRowResult
 	return this.h
 }
 
+func (this *QFormLayout__TakeRowResult) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFormLayout__TakeRowResult(h *C.QFormLayout__TakeRowResult) *QFormLayout__TakeRowResult {
 	if h == nil {
 		return nil
@@ -399,7 +414,7 @@ func newQFormLayout__TakeRowResult(h *C.QFormLayout__TakeRowResult) *QFormLayout
 	return &QFormLayout__TakeRowResult{h: h}
 }
 
-func newQFormLayout__TakeRowResult_U(h unsafe.Pointer) *QFormLayout__TakeRowResult {
+func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRowResult {
 	return newQFormLayout__TakeRowResult((*C.QFormLayout__TakeRowResult)(h))
 }
 

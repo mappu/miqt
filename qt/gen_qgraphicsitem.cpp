@@ -39,7 +39,7 @@
 #include <QTransform>
 #include <QVariant>
 #include <QWidget>
-#include "qgraphicsitem.h"
+#include <qgraphicsitem.h>
 #include "gen_qgraphicsitem.h"
 #include "_cgo_export.h"
 
@@ -460,7 +460,7 @@ struct miqt_array* QGraphicsItem_Transformations(const QGraphicsItem* self) {
 }
 
 void QGraphicsItem_SetTransformations(QGraphicsItem* self, struct miqt_array* /* of QGraphicsTransform* */ transformations) {
-	QList<QGraphicsTransform*> transformations_QList;
+	QList<QGraphicsTransform *> transformations_QList;
 	transformations_QList.reserve(transformations->len);
 	QGraphicsTransform** transformations_arr = static_cast<QGraphicsTransform**>(transformations->data);
 	for(size_t i = 0; i < transformations->len; ++i) {

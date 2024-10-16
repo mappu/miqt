@@ -42,6 +42,13 @@ func (this *QTileRules) cPointer() *C.QTileRules {
 	return this.h
 }
 
+func (this *QTileRules) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTileRules(h *C.QTileRules) *QTileRules {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQTileRules(h *C.QTileRules) *QTileRules {
 	return &QTileRules{h: h}
 }
 
-func newQTileRules_U(h unsafe.Pointer) *QTileRules {
+func UnsafeNewQTileRules(h unsafe.Pointer) *QTileRules {
 	return newQTileRules((*C.QTileRules)(h))
 }
 

@@ -17,7 +17,7 @@
 #include <cstring>
 #include <QStyleHints>
 #include <QWindow>
-#include "qguiapplication.h"
+#include <qguiapplication.h>
 #include "gen_qguiapplication.h"
 #include "_cgo_export.h"
 

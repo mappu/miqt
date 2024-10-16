@@ -51,19 +51,26 @@ func (this *QGraphicsEffect) cPointer() *C.QGraphicsEffect {
 	return this.h
 }
 
+func (this *QGraphicsEffect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsEffect(h *C.QGraphicsEffect) *QGraphicsEffect {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsEffect{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QGraphicsEffect{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQGraphicsEffect_U(h unsafe.Pointer) *QGraphicsEffect {
+func UnsafeNewQGraphicsEffect(h unsafe.Pointer) *QGraphicsEffect {
 	return newQGraphicsEffect((*C.QGraphicsEffect)(h))
 }
 
 func (this *QGraphicsEffect) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsEffect_MetaObject(this.h)))
 }
 
 func (this *QGraphicsEffect) Metacast(param1 string) unsafe.Pointer {
@@ -206,14 +213,21 @@ func (this *QGraphicsColorizeEffect) cPointer() *C.QGraphicsColorizeEffect {
 	return this.h
 }
 
+func (this *QGraphicsColorizeEffect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsColorizeEffect(h *C.QGraphicsColorizeEffect) *QGraphicsColorizeEffect {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsColorizeEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
+	return &QGraphicsColorizeEffect{h: h, QGraphicsEffect: UnsafeNewQGraphicsEffect(unsafe.Pointer(h))}
 }
 
-func newQGraphicsColorizeEffect_U(h unsafe.Pointer) *QGraphicsColorizeEffect {
+func UnsafeNewQGraphicsColorizeEffect(h unsafe.Pointer) *QGraphicsColorizeEffect {
 	return newQGraphicsColorizeEffect((*C.QGraphicsColorizeEffect)(h))
 }
 
@@ -230,7 +244,7 @@ func NewQGraphicsColorizeEffect2(parent *QObject) *QGraphicsColorizeEffect {
 }
 
 func (this *QGraphicsColorizeEffect) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsColorizeEffect_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsColorizeEffect_MetaObject(this.h)))
 }
 
 func (this *QGraphicsColorizeEffect) Metacast(param1 string) unsafe.Pointer {
@@ -291,7 +305,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(cb C.intptr_t, colo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor_U(unsafe.Pointer(color))
+	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -386,14 +400,21 @@ func (this *QGraphicsBlurEffect) cPointer() *C.QGraphicsBlurEffect {
 	return this.h
 }
 
+func (this *QGraphicsBlurEffect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsBlurEffect(h *C.QGraphicsBlurEffect) *QGraphicsBlurEffect {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsBlurEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
+	return &QGraphicsBlurEffect{h: h, QGraphicsEffect: UnsafeNewQGraphicsEffect(unsafe.Pointer(h))}
 }
 
-func newQGraphicsBlurEffect_U(h unsafe.Pointer) *QGraphicsBlurEffect {
+func UnsafeNewQGraphicsBlurEffect(h unsafe.Pointer) *QGraphicsBlurEffect {
 	return newQGraphicsBlurEffect((*C.QGraphicsBlurEffect)(h))
 }
 
@@ -410,7 +431,7 @@ func NewQGraphicsBlurEffect2(parent *QObject) *QGraphicsBlurEffect {
 }
 
 func (this *QGraphicsBlurEffect) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsBlurEffect_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsBlurEffect_MetaObject(this.h)))
 }
 
 func (this *QGraphicsBlurEffect) Metacast(param1 string) unsafe.Pointer {
@@ -570,14 +591,21 @@ func (this *QGraphicsDropShadowEffect) cPointer() *C.QGraphicsDropShadowEffect {
 	return this.h
 }
 
+func (this *QGraphicsDropShadowEffect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsDropShadowEffect(h *C.QGraphicsDropShadowEffect) *QGraphicsDropShadowEffect {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsDropShadowEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
+	return &QGraphicsDropShadowEffect{h: h, QGraphicsEffect: UnsafeNewQGraphicsEffect(unsafe.Pointer(h))}
 }
 
-func newQGraphicsDropShadowEffect_U(h unsafe.Pointer) *QGraphicsDropShadowEffect {
+func UnsafeNewQGraphicsDropShadowEffect(h unsafe.Pointer) *QGraphicsDropShadowEffect {
 	return newQGraphicsDropShadowEffect((*C.QGraphicsDropShadowEffect)(h))
 }
 
@@ -594,7 +622,7 @@ func NewQGraphicsDropShadowEffect2(parent *QObject) *QGraphicsDropShadowEffect {
 }
 
 func (this *QGraphicsDropShadowEffect) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsDropShadowEffect_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsDropShadowEffect_MetaObject(this.h)))
 }
 
 func (this *QGraphicsDropShadowEffect) Metacast(param1 string) unsafe.Pointer {
@@ -697,7 +725,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(cb C.intptr_t, o
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF_U(unsafe.Pointer(offset))
+	slotval1 := UnsafeNewQPointF(unsafe.Pointer(offset))
 
 	gofunc(slotval1)
 }
@@ -737,7 +765,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(cb C.intptr_t, co
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor_U(unsafe.Pointer(color))
+	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -812,14 +840,21 @@ func (this *QGraphicsOpacityEffect) cPointer() *C.QGraphicsOpacityEffect {
 	return this.h
 }
 
+func (this *QGraphicsOpacityEffect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsOpacityEffect(h *C.QGraphicsOpacityEffect) *QGraphicsOpacityEffect {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsOpacityEffect{h: h, QGraphicsEffect: newQGraphicsEffect_U(unsafe.Pointer(h))}
+	return &QGraphicsOpacityEffect{h: h, QGraphicsEffect: UnsafeNewQGraphicsEffect(unsafe.Pointer(h))}
 }
 
-func newQGraphicsOpacityEffect_U(h unsafe.Pointer) *QGraphicsOpacityEffect {
+func UnsafeNewQGraphicsOpacityEffect(h unsafe.Pointer) *QGraphicsOpacityEffect {
 	return newQGraphicsOpacityEffect((*C.QGraphicsOpacityEffect)(h))
 }
 
@@ -836,7 +871,7 @@ func NewQGraphicsOpacityEffect2(parent *QObject) *QGraphicsOpacityEffect {
 }
 
 func (this *QGraphicsOpacityEffect) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsOpacityEffect_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsOpacityEffect_MetaObject(this.h)))
 }
 
 func (this *QGraphicsOpacityEffect) Metacast(param1 string) unsafe.Pointer {
@@ -917,7 +952,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQBrush_U(unsafe.Pointer(mask))
+	slotval1 := UnsafeNewQBrush(unsafe.Pointer(mask))
 
 	gofunc(slotval1)
 }

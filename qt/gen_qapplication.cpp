@@ -15,7 +15,7 @@
 #include <cstring>
 #include <QStyle>
 #include <QWidget>
-#include "qapplication.h"
+#include <qapplication.h>
 #include "gen_qapplication.h"
 #include "_cgo_export.h"
 

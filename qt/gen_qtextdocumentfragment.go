@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QTextDocumentFragment) cPointer() *C.QTextDocumentFragment {
 	return this.h
 }
 
+func (this *QTextDocumentFragment) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment
 	return &QTextDocumentFragment{h: h}
 }
 
-func newQTextDocumentFragment_U(h unsafe.Pointer) *QTextDocumentFragment {
+func UnsafeNewQTextDocumentFragment(h unsafe.Pointer) *QTextDocumentFragment {
 	return newQTextDocumentFragment((*C.QTextDocumentFragment)(h))
 }
 
@@ -82,7 +90,7 @@ func (this *QTextDocumentFragment) ToHtml() string {
 }
 
 func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragment {
-	plainText_ms := miqt_strdupg(plainText)
+	plainText_ms := libmiqt.Strdupg(plainText)
 	defer C.free(plainText_ms)
 	_ret := C.QTextDocumentFragment_FromPlainText((*C.struct_miqt_string)(plainText_ms))
 	_goptr := newQTextDocumentFragment(_ret)
@@ -91,7 +99,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 }
 
 func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	_ret := C.QTextDocumentFragment_FromHtml((*C.struct_miqt_string)(html_ms))
 	_goptr := newQTextDocumentFragment(_ret)
@@ -100,7 +108,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 }
 
 func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocument) *QTextDocumentFragment {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	_ret := C.QTextDocumentFragment_FromHtml2((*C.struct_miqt_string)(html_ms), resourceProvider.cPointer())
 	_goptr := newQTextDocumentFragment(_ret)

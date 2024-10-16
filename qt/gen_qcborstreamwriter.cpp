@@ -1,7 +1,7 @@
 #include <QByteArray>
 #include <QCborStreamWriter>
 #include <QIODevice>
-#include "qcborstreamwriter.h"
+#include <qcborstreamwriter.h>
 #include "gen_qcborstreamwriter.h"
 #include "_cgo_export.h"
 

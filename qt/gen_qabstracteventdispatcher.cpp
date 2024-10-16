@@ -10,7 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QThread>
-#include "qabstracteventdispatcher.h"
+#include <qabstracteventdispatcher.h>
 #include "gen_qabstracteventdispatcher.h"
 #include "_cgo_export.h"
 

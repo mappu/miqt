@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QAccessibleBridge) cPointer() *C.QAccessibleBridge {
 	return this.h
 }
 
+func (this *QAccessibleBridge) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQAccessibleBridge(h *C.QAccessibleBridge) *QAccessibleBridge {
 	return &QAccessibleBridge{h: h}
 }
 
-func newQAccessibleBridge_U(h unsafe.Pointer) *QAccessibleBridge {
+func UnsafeNewQAccessibleBridge(h unsafe.Pointer) *QAccessibleBridge {
 	return newQAccessibleBridge((*C.QAccessibleBridge)(h))
 }
 
@@ -73,19 +81,26 @@ func (this *QAccessibleBridgePlugin) cPointer() *C.QAccessibleBridgePlugin {
 	return this.h
 }
 
+func (this *QAccessibleBridgePlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAccessibleBridgePlugin(h *C.QAccessibleBridgePlugin) *QAccessibleBridgePlugin {
 	if h == nil {
 		return nil
 	}
-	return &QAccessibleBridgePlugin{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAccessibleBridgePlugin{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAccessibleBridgePlugin_U(h unsafe.Pointer) *QAccessibleBridgePlugin {
+func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer) *QAccessibleBridgePlugin {
 	return newQAccessibleBridgePlugin((*C.QAccessibleBridgePlugin)(h))
 }
 
 func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAccessibleBridgePlugin_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAccessibleBridgePlugin_MetaObject(this.h)))
 }
 
 func (this *QAccessibleBridgePlugin) Metacast(param1 string) unsafe.Pointer {
@@ -113,9 +128,9 @@ func QAccessibleBridgePlugin_TrUtf8(s string) string {
 }
 
 func (this *QAccessibleBridgePlugin) Create(key string) *QAccessibleBridge {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
-	return newQAccessibleBridge_U(unsafe.Pointer(C.QAccessibleBridgePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))))
+	return UnsafeNewQAccessibleBridge(unsafe.Pointer(C.QAccessibleBridgePlugin_Create(this.h, (*C.struct_miqt_string)(key_ms))))
 }
 
 func QAccessibleBridgePlugin_Tr2(s string, c string) string {

@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpluginloader.h"
+#include <qpluginloader.h>
 #include "gen_qpluginloader.h"
 #include "_cgo_export.h"
 

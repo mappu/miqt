@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -33,14 +34,21 @@ func (this *QDirModel) cPointer() *C.QDirModel {
 	return this.h
 }
 
+func (this *QDirModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDirModel(h *C.QDirModel) *QDirModel {
 	if h == nil {
 		return nil
 	}
-	return &QDirModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
+	return &QDirModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
 }
 
-func newQDirModel_U(h unsafe.Pointer) *QDirModel {
+func UnsafeNewQDirModel(h unsafe.Pointer) *QDirModel {
 	return newQDirModel((*C.QDirModel)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQDirModel(nameFilters []string, filters QDir__Filter, sort QDir__SortFla
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		nameFilters_i_ms := miqt_strdupg(nameFilters[i])
+		nameFilters_i_ms := libmiqt.Strdupg(nameFilters[i])
 		defer C.free(nameFilters_i_ms)
 		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
 	}
@@ -72,7 +80,7 @@ func NewQDirModel3(nameFilters []string, filters QDir__Filter, sort QDir__SortFl
 	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		nameFilters_i_ms := miqt_strdupg(nameFilters[i])
+		nameFilters_i_ms := libmiqt.Strdupg(nameFilters[i])
 		defer C.free(nameFilters_i_ms)
 		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
 	}
@@ -89,7 +97,7 @@ func NewQDirModel4(parent *QObject) *QDirModel {
 }
 
 func (this *QDirModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDirModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDirModel_MetaObject(this.h)))
 }
 
 func (this *QDirModel) Metacast(param1 string) unsafe.Pointer {
@@ -191,7 +199,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	return newQMimeData_U(unsafe.Pointer(C.QDirModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QDirModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QDirModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -207,7 +215,7 @@ func (this *QDirModel) SetIconProvider(provider *QFileIconProvider) {
 }
 
 func (this *QDirModel) IconProvider() *QFileIconProvider {
-	return newQFileIconProvider_U(unsafe.Pointer(C.QDirModel_IconProvider(this.h)))
+	return UnsafeNewQFileIconProvider(unsafe.Pointer(C.QDirModel_IconProvider(this.h)))
 }
 
 func (this *QDirModel) SetNameFilters(filters []string) {
@@ -215,7 +223,7 @@ func (this *QDirModel) SetNameFilters(filters []string) {
 	filters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
-		filters_i_ms := miqt_strdupg(filters[i])
+		filters_i_ms := libmiqt.Strdupg(filters[i])
 		defer C.free(filters_i_ms)
 		filters_CArray[i] = (*C.struct_miqt_string)(filters_i_ms)
 	}
@@ -279,7 +287,7 @@ func (this *QDirModel) LazyChildCount() bool {
 }
 
 func (this *QDirModel) IndexWithPath(path string) *QModelIndex {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	_ret := C.QDirModel_IndexWithPath(this.h, (*C.struct_miqt_string)(path_ms))
 	_goptr := newQModelIndex(_ret)
@@ -292,7 +300,7 @@ func (this *QDirModel) IsDir(index *QModelIndex) bool {
 }
 
 func (this *QDirModel) Mkdir(parent *QModelIndex, name string) *QModelIndex {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	_ret := C.QDirModel_Mkdir(this.h, parent.cPointer(), (*C.struct_miqt_string)(name_ms))
 	_goptr := newQModelIndex(_ret)
@@ -426,7 +434,7 @@ func (this *QDirModel) Sort2(column int, order SortOrder) {
 }
 
 func (this *QDirModel) Index2(path string, column int) *QModelIndex {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	_ret := C.QDirModel_Index2(this.h, (*C.struct_miqt_string)(path_ms), (C.int)(column))
 	_goptr := newQModelIndex(_ret)

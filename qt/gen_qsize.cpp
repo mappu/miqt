@@ -2,7 +2,7 @@
 #include <QMarginsF>
 #include <QSize>
 #include <QSizeF>
-#include "qsize.h"
+#include <qsize.h>
 #include "gen_qsize.h"
 #include "_cgo_export.h"
 

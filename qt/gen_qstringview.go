@@ -24,6 +24,13 @@ func (this *QStringView) cPointer() *C.QStringView {
 	return this.h
 }
 
+func (this *QStringView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStringView(h *C.QStringView) *QStringView {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQStringView(h *C.QStringView) *QStringView {
 	return &QStringView{h: h}
 }
 
-func newQStringView_U(h unsafe.Pointer) *QStringView {
+func UnsafeNewQStringView(h unsafe.Pointer) *QStringView {
 	return newQStringView((*C.QStringView)(h))
 }
 
@@ -53,7 +60,7 @@ func (this *QStringView) Size() int64 {
 }
 
 func (this *QStringView) Data() *QChar {
-	return newQChar_U(unsafe.Pointer(C.QStringView_Data(this.h)))
+	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Data(this.h)))
 }
 
 func (this *QStringView) OperatorSubscript(n int64) *QChar {
@@ -199,19 +206,19 @@ func (this *QStringView) ToDouble() float64 {
 }
 
 func (this *QStringView) Begin() *QChar {
-	return newQChar_U(unsafe.Pointer(C.QStringView_Begin(this.h)))
+	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Begin(this.h)))
 }
 
 func (this *QStringView) End() *QChar {
-	return newQChar_U(unsafe.Pointer(C.QStringView_End(this.h)))
+	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_End(this.h)))
 }
 
 func (this *QStringView) Cbegin() *QChar {
-	return newQChar_U(unsafe.Pointer(C.QStringView_Cbegin(this.h)))
+	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Cbegin(this.h)))
 }
 
 func (this *QStringView) Cend() *QChar {
-	return newQChar_U(unsafe.Pointer(C.QStringView_Cend(this.h)))
+	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Cend(this.h)))
 }
 
 func (this *QStringView) Empty() bool {

@@ -1,7 +1,7 @@
 #include <QColor>
 #include <QColormap>
 #include <QList>
-#include "qcolormap.h"
+#include <qcolormap.h>
 #include "gen_qcolormap.h"
 #include "_cgo_export.h"
 

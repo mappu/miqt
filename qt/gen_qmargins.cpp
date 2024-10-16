@@ -1,6 +1,6 @@
 #include <QMargins>
 #include <QMarginsF>
-#include "qmargins.h"
+#include <qmargins.h>
 #include "gen_qmargins.h"
 #include "_cgo_export.h"
 

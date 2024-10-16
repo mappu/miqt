@@ -6,7 +6,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qslider.h"
+#include <qslider.h>
 #include "gen_qslider.h"
 #include "_cgo_export.h"
 

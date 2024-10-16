@@ -62,14 +62,21 @@ func (this *QListView) cPointer() *C.QListView {
 	return this.h
 }
 
+func (this *QListView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQListView(h *C.QListView) *QListView {
 	if h == nil {
 		return nil
 	}
-	return &QListView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
+	return &QListView{h: h, QAbstractItemView: UnsafeNewQAbstractItemView(unsafe.Pointer(h))}
 }
 
-func newQListView_U(h unsafe.Pointer) *QListView {
+func UnsafeNewQListView(h unsafe.Pointer) *QListView {
 	return newQListView((*C.QListView)(h))
 }
 
@@ -86,7 +93,7 @@ func NewQListView2(parent *QWidget) *QListView {
 }
 
 func (this *QListView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QListView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QListView_MetaObject(this.h)))
 }
 
 func (this *QListView) Metacast(param1 string) unsafe.Pointer {

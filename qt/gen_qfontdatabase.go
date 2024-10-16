@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -74,6 +75,13 @@ func (this *QFontDatabase) cPointer() *C.QFontDatabase {
 	return this.h
 }
 
+func (this *QFontDatabase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	if h == nil {
 		return nil
@@ -81,7 +89,7 @@ func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	return &QFontDatabase{h: h}
 }
 
-func newQFontDatabase_U(h unsafe.Pointer) *QFontDatabase {
+func UnsafeNewQFontDatabase(h unsafe.Pointer) *QFontDatabase {
 	return newQFontDatabase((*C.QFontDatabase)(h))
 }
 
@@ -114,7 +122,7 @@ func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
 }
 
 func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDatabase__WritingSystem {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_WritingSystemsWithFamily(this.h, (*C.struct_miqt_string)(family_ms))
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
@@ -141,7 +149,7 @@ func (this *QFontDatabase) Families() []string {
 }
 
 func (this *QFontDatabase) Styles(family string) []string {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_Styles(this.h, (*C.struct_miqt_string)(family_ms))
 	_ret := make([]string, int(_ma.len))
@@ -157,7 +165,7 @@ func (this *QFontDatabase) Styles(family string) []string {
 }
 
 func (this *QFontDatabase) PointSizes(family string) []int {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_PointSizes(this.h, (*C.struct_miqt_string)(family_ms))
 	_ret := make([]int, int(_ma.len))
@@ -170,9 +178,9 @@ func (this *QFontDatabase) PointSizes(family string) []int {
 }
 
 func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_SmoothSizes(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms))
 	_ret := make([]int, int(_ma.len))
@@ -199,9 +207,9 @@ func (this *QFontDatabase) StyleStringWithFontInfo(fontInfo *QFontInfo) string {
 }
 
 func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFont {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	_ret := C.QFontDatabase_Font(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms), (C.int)(pointSize))
 	_goptr := newQFont(_ret)
@@ -210,61 +218,61 @@ func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFo
 }
 
 func (this *QFontDatabase) IsBitmapScalable(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_IsBitmapScalable(this.h, (*C.struct_miqt_string)(family_ms)))
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_IsSmoothlyScalable(this.h, (*C.struct_miqt_string)(family_ms)))
 }
 
 func (this *QFontDatabase) IsScalable(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_IsScalable(this.h, (*C.struct_miqt_string)(family_ms)))
 }
 
 func (this *QFontDatabase) IsFixedPitch(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_IsFixedPitch(this.h, (*C.struct_miqt_string)(family_ms)))
 }
 
 func (this *QFontDatabase) Italic(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_Italic(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) Bold(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_Bold(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) Weight(family string, style string) int {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (int)(C.QFontDatabase_Weight(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) HasFamily(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_HasFamily(this.h, (*C.struct_miqt_string)(family_ms)))
 }
 
 func (this *QFontDatabase) IsPrivateFamily(family string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
 	return (bool)(C.QFontDatabase_IsPrivateFamily(this.h, (*C.struct_miqt_string)(family_ms)))
 }
@@ -284,7 +292,7 @@ func QFontDatabase_WritingSystemSample(writingSystem QFontDatabase__WritingSyste
 }
 
 func QFontDatabase_AddApplicationFont(fileName string) int {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	return (int)(C.QFontDatabase_AddApplicationFont((*C.struct_miqt_string)(fileName_ms)))
 }
@@ -341,9 +349,9 @@ func (this *QFontDatabase) Families1(writingSystem QFontDatabase__WritingSystem)
 }
 
 func (this *QFontDatabase) PointSizes2(family string, style string) []int {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	var _ma *C.struct_miqt_array = C.QFontDatabase_PointSizes2(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms))
 	_ret := make([]int, int(_ma.len))
@@ -356,33 +364,33 @@ func (this *QFontDatabase) PointSizes2(family string, style string) []int {
 }
 
 func (this *QFontDatabase) IsBitmapScalable2(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_IsBitmapScalable2(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable2(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_IsSmoothlyScalable2(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) IsScalable2(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_IsScalable2(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }
 
 func (this *QFontDatabase) IsFixedPitch2(family string, style string) bool {
-	family_ms := miqt_strdupg(family)
+	family_ms := libmiqt.Strdupg(family)
 	defer C.free(family_ms)
-	style_ms := miqt_strdupg(style)
+	style_ms := libmiqt.Strdupg(style)
 	defer C.free(style_ms)
 	return (bool)(C.QFontDatabase_IsFixedPitch2(this.h, (*C.struct_miqt_string)(family_ms), (*C.struct_miqt_string)(style_ms)))
 }

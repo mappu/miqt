@@ -48,6 +48,13 @@ func (this *QCryptographicHash) cPointer() *C.QCryptographicHash {
 	return this.h
 }
 
+func (this *QCryptographicHash) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
 	if h == nil {
 		return nil
@@ -55,7 +62,7 @@ func newQCryptographicHash(h *C.QCryptographicHash) *QCryptographicHash {
 	return &QCryptographicHash{h: h}
 }
 
-func newQCryptographicHash_U(h unsafe.Pointer) *QCryptographicHash {
+func UnsafeNewQCryptographicHash(h unsafe.Pointer) *QCryptographicHash {
 	return newQCryptographicHash((*C.QCryptographicHash)(h))
 }
 

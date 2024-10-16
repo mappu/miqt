@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qdebug.h"
+#include <qdebug.h>
 #include "gen_qdebug.h"
 #include "_cgo_export.h"
 

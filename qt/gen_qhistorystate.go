@@ -32,14 +32,21 @@ func (this *QHistoryState) cPointer() *C.QHistoryState {
 	return this.h
 }
 
+func (this *QHistoryState) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQHistoryState(h *C.QHistoryState) *QHistoryState {
 	if h == nil {
 		return nil
 	}
-	return &QHistoryState{h: h, QAbstractState: newQAbstractState_U(unsafe.Pointer(h))}
+	return &QHistoryState{h: h, QAbstractState: UnsafeNewQAbstractState(unsafe.Pointer(h))}
 }
 
-func newQHistoryState_U(h unsafe.Pointer) *QHistoryState {
+func UnsafeNewQHistoryState(h unsafe.Pointer) *QHistoryState {
 	return newQHistoryState((*C.QHistoryState)(h))
 }
 
@@ -68,7 +75,7 @@ func NewQHistoryState4(typeVal QHistoryState__HistoryType, parent *QState) *QHis
 }
 
 func (this *QHistoryState) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QHistoryState_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QHistoryState_MetaObject(this.h)))
 }
 
 func (this *QHistoryState) Metacast(param1 string) unsafe.Pointer {
@@ -96,7 +103,7 @@ func QHistoryState_TrUtf8(s string) string {
 }
 
 func (this *QHistoryState) DefaultTransition() *QAbstractTransition {
-	return newQAbstractTransition_U(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)))
+	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QHistoryState_DefaultTransition(this.h)))
 }
 
 func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition) {
@@ -104,7 +111,7 @@ func (this *QHistoryState) SetDefaultTransition(transition *QAbstractTransition)
 }
 
 func (this *QHistoryState) DefaultState() *QAbstractState {
-	return newQAbstractState_U(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)))
+	return UnsafeNewQAbstractState(unsafe.Pointer(C.QHistoryState_DefaultState(this.h)))
 }
 
 func (this *QHistoryState) SetDefaultState(state *QAbstractState) {

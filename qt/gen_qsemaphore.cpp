@@ -1,6 +1,6 @@
 #include <QSemaphore>
 #include <QSemaphoreReleaser>
-#include "qsemaphore.h"
+#include <qsemaphore.h>
 #include "gen_qsemaphore.h"
 #include "_cgo_export.h"
 

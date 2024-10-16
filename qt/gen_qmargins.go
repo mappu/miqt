@@ -24,6 +24,13 @@ func (this *QMargins) cPointer() *C.QMargins {
 	return this.h
 }
 
+func (this *QMargins) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMargins(h *C.QMargins) *QMargins {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQMargins(h *C.QMargins) *QMargins {
 	return &QMargins{h: h}
 }
 
-func newQMargins_U(h unsafe.Pointer) *QMargins {
+func UnsafeNewQMargins(h unsafe.Pointer) *QMargins {
 	return newQMargins((*C.QMargins)(h))
 }
 
@@ -90,35 +97,35 @@ func (this *QMargins) SetBottom(bottom int) {
 }
 
 func (this *QMargins) OperatorPlusAssign(margins *QMargins) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorPlusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QMargins) OperatorMinusAssign(margins *QMargins) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorMinusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QMargins) OperatorPlusAssignWithInt(param1 int) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorPlusAssignWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QMargins) OperatorMinusAssignWithInt(param1 int) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMinusAssignWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QMargins) OperatorMultiplyAssign(param1 int) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMultiplyAssign(this.h, (C.int)(param1))))
 }
 
 func (this *QMargins) OperatorDivideAssign(param1 int) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1))))
 }
 
 func (this *QMargins) OperatorMultiplyAssignWithQreal(param1 float64) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1))))
 }
 
 func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
-	return newQMargins_U(unsafe.Pointer(C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1))))
+	return UnsafeNewQMargins(unsafe.Pointer(C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1))))
 }
 
 // Delete this object from C++ memory.
@@ -146,6 +153,13 @@ func (this *QMarginsF) cPointer() *C.QMarginsF {
 	return this.h
 }
 
+func (this *QMarginsF) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMarginsF(h *C.QMarginsF) *QMarginsF {
 	if h == nil {
 		return nil
@@ -153,7 +167,7 @@ func newQMarginsF(h *C.QMarginsF) *QMarginsF {
 	return &QMarginsF{h: h}
 }
 
-func newQMarginsF_U(h unsafe.Pointer) *QMarginsF {
+func UnsafeNewQMarginsF(h unsafe.Pointer) *QMarginsF {
 	return newQMarginsF((*C.QMarginsF)(h))
 }
 
@@ -218,27 +232,27 @@ func (this *QMarginsF) SetBottom(bottom float64) {
 }
 
 func (this *QMarginsF) OperatorPlusAssign(margins *QMarginsF) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorPlusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QMarginsF) OperatorMinusAssign(margins *QMarginsF) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer())))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMinusAssign(this.h, margins.cPointer())))
 }
 
 func (this *QMarginsF) OperatorPlusAssignWithAddend(addend float64) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend))))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorPlusAssignWithAddend(this.h, (C.double)(addend))))
 }
 
 func (this *QMarginsF) OperatorMinusAssignWithSubtrahend(subtrahend float64) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend))))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend))))
 }
 
 func (this *QMarginsF) OperatorMultiplyAssign(factor float64) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor))))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorMultiplyAssign(this.h, (C.double)(factor))))
 }
 
 func (this *QMarginsF) OperatorDivideAssign(divisor float64) *QMarginsF {
-	return newQMarginsF_U(unsafe.Pointer(C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor))))
+	return UnsafeNewQMarginsF(unsafe.Pointer(C.QMarginsF_OperatorDivideAssign(this.h, (C.double)(divisor))))
 }
 
 func (this *QMarginsF) ToMargins() *QMargins {

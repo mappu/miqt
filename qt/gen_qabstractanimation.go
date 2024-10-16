@@ -48,19 +48,26 @@ func (this *QAbstractAnimation) cPointer() *C.QAbstractAnimation {
 	return this.h
 }
 
+func (this *QAbstractAnimation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractAnimation(h *C.QAbstractAnimation) *QAbstractAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractAnimation{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractAnimation{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractAnimation_U(h unsafe.Pointer) *QAbstractAnimation {
+func UnsafeNewQAbstractAnimation(h unsafe.Pointer) *QAbstractAnimation {
 	return newQAbstractAnimation((*C.QAbstractAnimation)(h))
 }
 
 func (this *QAbstractAnimation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAnimation_MetaObject(this.h)))
 }
 
 func (this *QAbstractAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -92,7 +99,7 @@ func (this *QAbstractAnimation) State() QAbstractAnimation__State {
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
-	return newQAnimationGroup_U(unsafe.Pointer(C.QAbstractAnimation_Group(this.h)))
+	return UnsafeNewQAnimationGroup(unsafe.Pointer(C.QAbstractAnimation_Group(this.h)))
 }
 
 func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
@@ -308,14 +315,21 @@ func (this *QAnimationDriver) cPointer() *C.QAnimationDriver {
 	return this.h
 }
 
+func (this *QAnimationDriver) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAnimationDriver(h *C.QAnimationDriver) *QAnimationDriver {
 	if h == nil {
 		return nil
 	}
-	return &QAnimationDriver{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAnimationDriver{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAnimationDriver_U(h unsafe.Pointer) *QAnimationDriver {
+func UnsafeNewQAnimationDriver(h unsafe.Pointer) *QAnimationDriver {
 	return newQAnimationDriver((*C.QAnimationDriver)(h))
 }
 
@@ -332,7 +346,7 @@ func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
 }
 
 func (this *QAnimationDriver) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAnimationDriver_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAnimationDriver_MetaObject(this.h)))
 }
 
 func (this *QAnimationDriver) Metacast(param1 string) unsafe.Pointer {

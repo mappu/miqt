@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -70,6 +71,13 @@ func (this *QUrl) cPointer() *C.QUrl {
 	return this.h
 }
 
+func (this *QUrl) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQUrl(h *C.QUrl) *QUrl {
 	if h == nil {
 		return nil
@@ -77,7 +85,7 @@ func newQUrl(h *C.QUrl) *QUrl {
 	return &QUrl{h: h}
 }
 
-func newQUrl_U(h unsafe.Pointer) *QUrl {
+func UnsafeNewQUrl(h unsafe.Pointer) *QUrl {
 	return newQUrl((*C.QUrl)(h))
 }
 
@@ -95,7 +103,7 @@ func NewQUrl2(copyVal *QUrl) *QUrl {
 
 // NewQUrl3 constructs a new QUrl object.
 func NewQUrl3(url string) *QUrl {
-	url_ms := miqt_strdupg(url)
+	url_ms := libmiqt.Strdupg(url)
 	defer C.free(url_ms)
 	ret := C.QUrl_new3((*C.struct_miqt_string)(url_ms))
 	return newQUrl(ret)
@@ -103,7 +111,7 @@ func NewQUrl3(url string) *QUrl {
 
 // NewQUrl4 constructs a new QUrl object.
 func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
-	url_ms := miqt_strdupg(url)
+	url_ms := libmiqt.Strdupg(url)
 	defer C.free(url_ms)
 	ret := C.QUrl_new4((*C.struct_miqt_string)(url_ms), (C.int)(mode))
 	return newQUrl(ret)
@@ -114,7 +122,7 @@ func (this *QUrl) OperatorAssign(copyVal *QUrl) {
 }
 
 func (this *QUrl) OperatorAssignWithUrl(url string) {
-	url_ms := miqt_strdupg(url)
+	url_ms := libmiqt.Strdupg(url)
 	defer C.free(url_ms)
 	C.QUrl_OperatorAssignWithUrl(this.h, (*C.struct_miqt_string)(url_ms))
 }
@@ -124,7 +132,7 @@ func (this *QUrl) Swap(other *QUrl) {
 }
 
 func (this *QUrl) SetUrl(url string) {
-	url_ms := miqt_strdupg(url)
+	url_ms := libmiqt.Strdupg(url)
 	defer C.free(url_ms)
 	C.QUrl_SetUrl(this.h, (*C.struct_miqt_string)(url_ms))
 }
@@ -165,7 +173,7 @@ func QUrl_FromEncoded(url *QByteArray) *QUrl {
 }
 
 func QUrl_FromUserInput(userInput string) *QUrl {
-	userInput_ms := miqt_strdupg(userInput)
+	userInput_ms := libmiqt.Strdupg(userInput)
 	defer C.free(userInput_ms)
 	_ret := C.QUrl_FromUserInput((*C.struct_miqt_string)(userInput_ms))
 	_goptr := newQUrl(_ret)
@@ -174,9 +182,9 @@ func QUrl_FromUserInput(userInput string) *QUrl {
 }
 
 func QUrl_FromUserInput2(userInput string, workingDirectory string) *QUrl {
-	userInput_ms := miqt_strdupg(userInput)
+	userInput_ms := libmiqt.Strdupg(userInput)
 	defer C.free(userInput_ms)
-	workingDirectory_ms := miqt_strdupg(workingDirectory)
+	workingDirectory_ms := libmiqt.Strdupg(workingDirectory)
 	defer C.free(workingDirectory_ms)
 	_ret := C.QUrl_FromUserInput2((*C.struct_miqt_string)(userInput_ms), (*C.struct_miqt_string)(workingDirectory_ms))
 	_goptr := newQUrl(_ret)
@@ -204,7 +212,7 @@ func (this *QUrl) Clear() {
 }
 
 func (this *QUrl) SetScheme(scheme string) {
-	scheme_ms := miqt_strdupg(scheme)
+	scheme_ms := libmiqt.Strdupg(scheme)
 	defer C.free(scheme_ms)
 	C.QUrl_SetScheme(this.h, (*C.struct_miqt_string)(scheme_ms))
 }
@@ -217,7 +225,7 @@ func (this *QUrl) Scheme() string {
 }
 
 func (this *QUrl) SetAuthority(authority string) {
-	authority_ms := miqt_strdupg(authority)
+	authority_ms := libmiqt.Strdupg(authority)
 	defer C.free(authority_ms)
 	C.QUrl_SetAuthority(this.h, (*C.struct_miqt_string)(authority_ms))
 }
@@ -230,7 +238,7 @@ func (this *QUrl) Authority() string {
 }
 
 func (this *QUrl) SetUserInfo(userInfo string) {
-	userInfo_ms := miqt_strdupg(userInfo)
+	userInfo_ms := libmiqt.Strdupg(userInfo)
 	defer C.free(userInfo_ms)
 	C.QUrl_SetUserInfo(this.h, (*C.struct_miqt_string)(userInfo_ms))
 }
@@ -243,7 +251,7 @@ func (this *QUrl) UserInfo() string {
 }
 
 func (this *QUrl) SetUserName(userName string) {
-	userName_ms := miqt_strdupg(userName)
+	userName_ms := libmiqt.Strdupg(userName)
 	defer C.free(userName_ms)
 	C.QUrl_SetUserName(this.h, (*C.struct_miqt_string)(userName_ms))
 }
@@ -256,7 +264,7 @@ func (this *QUrl) UserName() string {
 }
 
 func (this *QUrl) SetPassword(password string) {
-	password_ms := miqt_strdupg(password)
+	password_ms := libmiqt.Strdupg(password)
 	defer C.free(password_ms)
 	C.QUrl_SetPassword(this.h, (*C.struct_miqt_string)(password_ms))
 }
@@ -269,7 +277,7 @@ func (this *QUrl) Password() string {
 }
 
 func (this *QUrl) SetHost(host string) {
-	host_ms := miqt_strdupg(host)
+	host_ms := libmiqt.Strdupg(host)
 	defer C.free(host_ms)
 	C.QUrl_SetHost(this.h, (*C.struct_miqt_string)(host_ms))
 }
@@ -297,7 +305,7 @@ func (this *QUrl) Port() int {
 }
 
 func (this *QUrl) SetPath(path string) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QUrl_SetPath(this.h, (*C.struct_miqt_string)(path_ms))
 }
@@ -321,7 +329,7 @@ func (this *QUrl) HasQuery() bool {
 }
 
 func (this *QUrl) SetQuery(query string) {
-	query_ms := miqt_strdupg(query)
+	query_ms := libmiqt.Strdupg(query)
 	defer C.free(query_ms)
 	C.QUrl_SetQuery(this.h, (*C.struct_miqt_string)(query_ms))
 }
@@ -349,7 +357,7 @@ func (this *QUrl) Fragment() string {
 }
 
 func (this *QUrl) SetFragment(fragment string) {
-	fragment_ms := miqt_strdupg(fragment)
+	fragment_ms := libmiqt.Strdupg(fragment)
 	defer C.free(fragment_ms)
 	C.QUrl_SetFragment(this.h, (*C.struct_miqt_string)(fragment_ms))
 }
@@ -374,7 +382,7 @@ func (this *QUrl) IsLocalFile() bool {
 }
 
 func QUrl_FromLocalFile(localfile string) *QUrl {
-	localfile_ms := miqt_strdupg(localfile)
+	localfile_ms := libmiqt.Strdupg(localfile)
 	defer C.free(localfile_ms)
 	_ret := C.QUrl_FromLocalFile((*C.struct_miqt_string)(localfile_ms))
 	_goptr := newQUrl(_ret)
@@ -417,7 +425,7 @@ func QUrl_FromPercentEncoding(param1 *QByteArray) string {
 }
 
 func QUrl_ToPercentEncoding(param1 string) *QByteArray {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	_ret := C.QUrl_ToPercentEncoding((*C.struct_miqt_string)(param1_ms))
 	_goptr := newQByteArray(_ret)
@@ -433,7 +441,7 @@ func QUrl_FromAce(param1 *QByteArray) string {
 }
 
 func QUrl_ToAce(param1 string) *QByteArray {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	_ret := C.QUrl_ToAce((*C.struct_miqt_string)(param1_ms))
 	_goptr := newQByteArray(_ret)
@@ -482,7 +490,7 @@ func QUrl_FromStringList(uris []string) []QUrl {
 	uris_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
-		uris_i_ms := miqt_strdupg(uris[i])
+		uris_i_ms := libmiqt.Strdupg(uris[i])
 		defer C.free(uris_i_ms)
 		uris_CArray[i] = (*C.struct_miqt_string)(uris_i_ms)
 	}
@@ -506,7 +514,7 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 	idnWhitelist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(idnWhitelist))))
 	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
 	for i := range idnWhitelist {
-		idnWhitelist_i_ms := miqt_strdupg(idnWhitelist[i])
+		idnWhitelist_i_ms := libmiqt.Strdupg(idnWhitelist[i])
 		defer C.free(idnWhitelist_i_ms)
 		idnWhitelist_CArray[i] = (*C.struct_miqt_string)(idnWhitelist_i_ms)
 	}
@@ -516,7 +524,7 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 }
 
 func (this *QUrl) SetUrl2(url string, mode QUrl__ParsingMode) {
-	url_ms := miqt_strdupg(url)
+	url_ms := libmiqt.Strdupg(url)
 	defer C.free(url_ms)
 	C.QUrl_SetUrl2(this.h, (*C.struct_miqt_string)(url_ms), (C.int)(mode))
 }
@@ -529,9 +537,9 @@ func QUrl_FromEncoded2(url *QByteArray, mode QUrl__ParsingMode) *QUrl {
 }
 
 func QUrl_FromUserInput3(userInput string, workingDirectory string, options QUrl__UserInputResolutionOption) *QUrl {
-	userInput_ms := miqt_strdupg(userInput)
+	userInput_ms := libmiqt.Strdupg(userInput)
 	defer C.free(userInput_ms)
-	workingDirectory_ms := miqt_strdupg(workingDirectory)
+	workingDirectory_ms := libmiqt.Strdupg(workingDirectory)
 	defer C.free(workingDirectory_ms)
 	_ret := C.QUrl_FromUserInput3((*C.struct_miqt_string)(userInput_ms), (*C.struct_miqt_string)(workingDirectory_ms), (C.int)(options))
 	_goptr := newQUrl(_ret)
@@ -540,7 +548,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options QUrl
 }
 
 func (this *QUrl) SetAuthority2(authority string, mode QUrl__ParsingMode) {
-	authority_ms := miqt_strdupg(authority)
+	authority_ms := libmiqt.Strdupg(authority)
 	defer C.free(authority_ms)
 	C.QUrl_SetAuthority2(this.h, (*C.struct_miqt_string)(authority_ms), (C.int)(mode))
 }
@@ -553,7 +561,7 @@ func (this *QUrl) Authority1(options QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetUserInfo2(userInfo string, mode QUrl__ParsingMode) {
-	userInfo_ms := miqt_strdupg(userInfo)
+	userInfo_ms := libmiqt.Strdupg(userInfo)
 	defer C.free(userInfo_ms)
 	C.QUrl_SetUserInfo2(this.h, (*C.struct_miqt_string)(userInfo_ms), (C.int)(mode))
 }
@@ -566,7 +574,7 @@ func (this *QUrl) UserInfo1(options QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetUserName2(userName string, mode QUrl__ParsingMode) {
-	userName_ms := miqt_strdupg(userName)
+	userName_ms := libmiqt.Strdupg(userName)
 	defer C.free(userName_ms)
 	C.QUrl_SetUserName2(this.h, (*C.struct_miqt_string)(userName_ms), (C.int)(mode))
 }
@@ -579,7 +587,7 @@ func (this *QUrl) UserName1(options QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetPassword2(password string, mode QUrl__ParsingMode) {
-	password_ms := miqt_strdupg(password)
+	password_ms := libmiqt.Strdupg(password)
 	defer C.free(password_ms)
 	C.QUrl_SetPassword2(this.h, (*C.struct_miqt_string)(password_ms), (C.int)(mode))
 }
@@ -592,7 +600,7 @@ func (this *QUrl) Password1(param1 QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetHost2(host string, mode QUrl__ParsingMode) {
-	host_ms := miqt_strdupg(host)
+	host_ms := libmiqt.Strdupg(host)
 	defer C.free(host_ms)
 	C.QUrl_SetHost2(this.h, (*C.struct_miqt_string)(host_ms), (C.int)(mode))
 }
@@ -616,7 +624,7 @@ func (this *QUrl) Port1(defaultPort int) int {
 }
 
 func (this *QUrl) SetPath2(path string, mode QUrl__ParsingMode) {
-	path_ms := miqt_strdupg(path)
+	path_ms := libmiqt.Strdupg(path)
 	defer C.free(path_ms)
 	C.QUrl_SetPath2(this.h, (*C.struct_miqt_string)(path_ms), (C.int)(mode))
 }
@@ -636,7 +644,7 @@ func (this *QUrl) FileName1(options QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetQuery2(query string, mode QUrl__ParsingMode) {
-	query_ms := miqt_strdupg(query)
+	query_ms := libmiqt.Strdupg(query)
 	defer C.free(query_ms)
 	C.QUrl_SetQuery2(this.h, (*C.struct_miqt_string)(query_ms), (C.int)(mode))
 }
@@ -656,13 +664,13 @@ func (this *QUrl) Fragment1(options QUrl__ComponentFormattingOption) string {
 }
 
 func (this *QUrl) SetFragment2(fragment string, mode QUrl__ParsingMode) {
-	fragment_ms := miqt_strdupg(fragment)
+	fragment_ms := libmiqt.Strdupg(fragment)
 	defer C.free(fragment_ms)
 	C.QUrl_SetFragment2(this.h, (*C.struct_miqt_string)(fragment_ms), (C.int)(mode))
 }
 
 func QUrl_ToPercentEncoding2(param1 string, exclude *QByteArray) *QByteArray {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	_ret := C.QUrl_ToPercentEncoding2((*C.struct_miqt_string)(param1_ms), exclude.cPointer())
 	_goptr := newQByteArray(_ret)
@@ -671,7 +679,7 @@ func QUrl_ToPercentEncoding2(param1 string, exclude *QByteArray) *QByteArray {
 }
 
 func QUrl_ToPercentEncoding3(param1 string, exclude *QByteArray, include *QByteArray) *QByteArray {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	_ret := C.QUrl_ToPercentEncoding3((*C.struct_miqt_string)(param1_ms), exclude.cPointer(), include.cPointer())
 	_goptr := newQByteArray(_ret)
@@ -684,7 +692,7 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 	uris_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
-		uris_i_ms := miqt_strdupg(uris[i])
+		uris_i_ms := libmiqt.Strdupg(uris[i])
 		defer C.free(uris_i_ms)
 		uris_CArray[i] = (*C.struct_miqt_string)(uris_i_ms)
 	}

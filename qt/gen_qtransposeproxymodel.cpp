@@ -8,7 +8,7 @@
 #include <cstring>
 #include <QTransposeProxyModel>
 #include <QVariant>
-#include "qtransposeproxymodel.h"
+#include <qtransposeproxymodel.h>
 #include "gen_qtransposeproxymodel.h"
 #include "_cgo_export.h"
 

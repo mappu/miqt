@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qdatawidgetmapper.h"
+#include <qdatawidgetmapper.h>
 #include "gen_qdatawidgetmapper.h"
 #include "_cgo_export.h"
 

@@ -43,14 +43,21 @@ func (this *QStateMachine) cPointer() *C.QStateMachine {
 	return this.h
 }
 
+func (this *QStateMachine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStateMachine(h *C.QStateMachine) *QStateMachine {
 	if h == nil {
 		return nil
 	}
-	return &QStateMachine{h: h, QState: newQState_U(unsafe.Pointer(h))}
+	return &QStateMachine{h: h, QState: UnsafeNewQState(unsafe.Pointer(h))}
 }
 
-func newQStateMachine_U(h unsafe.Pointer) *QStateMachine {
+func UnsafeNewQStateMachine(h unsafe.Pointer) *QStateMachine {
 	return newQStateMachine((*C.QStateMachine)(h))
 }
 
@@ -79,7 +86,7 @@ func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMach
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStateMachine_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStateMachine_MetaObject(this.h)))
 }
 
 func (this *QStateMachine) Metacast(param1 string) unsafe.Pointer {
@@ -150,7 +157,7 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQAbstractAnimation_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -185,7 +192,7 @@ func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_element := newQAbstractState_U(unsafe.Pointer(_outCast[i]))
+		_element := UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]))
 		_ret[_element] = struct{}{}
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -302,14 +309,21 @@ func (this *QStateMachine__SignalEvent) cPointer() *C.QStateMachine__SignalEvent
 	return this.h
 }
 
+func (this *QStateMachine__SignalEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStateMachine__SignalEvent(h *C.QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
 	if h == nil {
 		return nil
 	}
-	return &QStateMachine__SignalEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QStateMachine__SignalEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQStateMachine__SignalEvent_U(h unsafe.Pointer) *QStateMachine__SignalEvent {
+func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer) *QStateMachine__SignalEvent {
 	return newQStateMachine__SignalEvent((*C.QStateMachine__SignalEvent)(h))
 }
 
@@ -320,7 +334,7 @@ func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMa
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QStateMachine__SignalEvent_Sender(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QStateMachine__SignalEvent_Sender(this.h)))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
@@ -353,14 +367,21 @@ func (this *QStateMachine__WrappedEvent) cPointer() *C.QStateMachine__WrappedEve
 	return this.h
 }
 
+func (this *QStateMachine__WrappedEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStateMachine__WrappedEvent(h *C.QStateMachine__WrappedEvent) *QStateMachine__WrappedEvent {
 	if h == nil {
 		return nil
 	}
-	return &QStateMachine__WrappedEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QStateMachine__WrappedEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQStateMachine__WrappedEvent_U(h unsafe.Pointer) *QStateMachine__WrappedEvent {
+func UnsafeNewQStateMachine__WrappedEvent(h unsafe.Pointer) *QStateMachine__WrappedEvent {
 	return newQStateMachine__WrappedEvent((*C.QStateMachine__WrappedEvent)(h))
 }
 
@@ -377,11 +398,11 @@ func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStat
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QStateMachine__WrappedEvent_Object(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QStateMachine__WrappedEvent_Object(this.h)))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
-	return newQEvent_U(unsafe.Pointer(C.QStateMachine__WrappedEvent_Event(this.h)))
+	return UnsafeNewQEvent(unsafe.Pointer(C.QStateMachine__WrappedEvent_Event(this.h)))
 }
 
 // Delete this object from C++ memory.

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -33,14 +34,21 @@ func (this *QPlainTextEdit) cPointer() *C.QPlainTextEdit {
 	return this.h
 }
 
+func (this *QPlainTextEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPlainTextEdit(h *C.QPlainTextEdit) *QPlainTextEdit {
 	if h == nil {
 		return nil
 	}
-	return &QPlainTextEdit{h: h, QAbstractScrollArea: newQAbstractScrollArea_U(unsafe.Pointer(h))}
+	return &QPlainTextEdit{h: h, QAbstractScrollArea: UnsafeNewQAbstractScrollArea(unsafe.Pointer(h))}
 }
 
-func newQPlainTextEdit_U(h unsafe.Pointer) *QPlainTextEdit {
+func UnsafeNewQPlainTextEdit(h unsafe.Pointer) *QPlainTextEdit {
 	return newQPlainTextEdit((*C.QPlainTextEdit)(h))
 }
 
@@ -52,7 +60,7 @@ func NewQPlainTextEdit() *QPlainTextEdit {
 
 // NewQPlainTextEdit2 constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit2(text string) *QPlainTextEdit {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPlainTextEdit_new2((*C.struct_miqt_string)(text_ms))
 	return newQPlainTextEdit(ret)
@@ -66,14 +74,14 @@ func NewQPlainTextEdit3(parent *QWidget) *QPlainTextEdit {
 
 // NewQPlainTextEdit4 constructs a new QPlainTextEdit object.
 func NewQPlainTextEdit4(text string, parent *QWidget) *QPlainTextEdit {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QPlainTextEdit_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQPlainTextEdit(ret)
 }
 
 func (this *QPlainTextEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPlainTextEdit_MetaObject(this.h)))
 }
 
 func (this *QPlainTextEdit) Metacast(param1 string) unsafe.Pointer {
@@ -105,11 +113,11 @@ func (this *QPlainTextEdit) SetDocument(document *QTextDocument) {
 }
 
 func (this *QPlainTextEdit) Document() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QPlainTextEdit_Document(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QPlainTextEdit_Document(this.h)))
 }
 
 func (this *QPlainTextEdit) SetPlaceholderText(placeholderText string) {
-	placeholderText_ms := miqt_strdupg(placeholderText)
+	placeholderText_ms := libmiqt.Strdupg(placeholderText)
 	defer C.free(placeholderText_ms)
 	C.QPlainTextEdit_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
 }
@@ -172,7 +180,7 @@ func (this *QPlainTextEdit) SetTabChangesFocus(b bool) {
 }
 
 func (this *QPlainTextEdit) SetDocumentTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QPlainTextEdit_SetDocumentTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -233,7 +241,7 @@ func (this *QPlainTextEdit) CenterOnScroll() bool {
 }
 
 func (this *QPlainTextEdit) Find(exp string) bool {
-	exp_ms := miqt_strdupg(exp)
+	exp_ms := libmiqt.Strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QPlainTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms)))
 }
@@ -265,11 +273,11 @@ func (this *QPlainTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenu(this.h)))
 }
 
 func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QPlainTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer())))
 }
 
 func (this *QPlainTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
@@ -389,7 +397,7 @@ func (this *QPlainTextEdit) InputMethodQuery2(query InputMethodQuery, argument Q
 }
 
 func (this *QPlainTextEdit) SetPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPlainTextEdit_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -423,19 +431,19 @@ func (this *QPlainTextEdit) SelectAll() {
 }
 
 func (this *QPlainTextEdit) InsertPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPlainTextEdit_InsertPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPlainTextEdit) AppendPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPlainTextEdit_AppendPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPlainTextEdit) AppendHtml(html string) {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	C.QPlainTextEdit_AppendHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
@@ -578,7 +586,7 @@ func miqt_exec_callback_QPlainTextEdit_UpdateRequest(cb C.intptr_t, rect *C.QRec
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect_U(unsafe.Pointer(rect))
+	slotval1 := UnsafeNewQRect(unsafe.Pointer(rect))
 	slotval2 := (int)(dy)
 
 	gofunc(slotval1, slotval2)
@@ -669,7 +677,7 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QPlainTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
-	exp_ms := miqt_strdupg(exp)
+	exp_ms := libmiqt.Strdupg(exp)
 	defer C.free(exp_ms)
 	return (bool)(C.QPlainTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
 }
@@ -720,14 +728,21 @@ func (this *QPlainTextDocumentLayout) cPointer() *C.QPlainTextDocumentLayout {
 	return this.h
 }
 
+func (this *QPlainTextDocumentLayout) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPlainTextDocumentLayout(h *C.QPlainTextDocumentLayout) *QPlainTextDocumentLayout {
 	if h == nil {
 		return nil
 	}
-	return &QPlainTextDocumentLayout{h: h, QAbstractTextDocumentLayout: newQAbstractTextDocumentLayout_U(unsafe.Pointer(h))}
+	return &QPlainTextDocumentLayout{h: h, QAbstractTextDocumentLayout: UnsafeNewQAbstractTextDocumentLayout(unsafe.Pointer(h))}
 }
 
-func newQPlainTextDocumentLayout_U(h unsafe.Pointer) *QPlainTextDocumentLayout {
+func UnsafeNewQPlainTextDocumentLayout(h unsafe.Pointer) *QPlainTextDocumentLayout {
 	return newQPlainTextDocumentLayout((*C.QPlainTextDocumentLayout)(h))
 }
 
@@ -738,7 +753,7 @@ func NewQPlainTextDocumentLayout(document *QTextDocument) *QPlainTextDocumentLay
 }
 
 func (this *QPlainTextDocumentLayout) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPlainTextDocumentLayout_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPlainTextDocumentLayout_MetaObject(this.h)))
 }
 
 func (this *QPlainTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {

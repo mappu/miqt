@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -54,14 +55,21 @@ func (this *QTabBar) cPointer() *C.QTabBar {
 	return this.h
 }
 
+func (this *QTabBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTabBar(h *C.QTabBar) *QTabBar {
 	if h == nil {
 		return nil
 	}
-	return &QTabBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QTabBar{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQTabBar_U(h unsafe.Pointer) *QTabBar {
+func UnsafeNewQTabBar(h unsafe.Pointer) *QTabBar {
 	return newQTabBar((*C.QTabBar)(h))
 }
 
@@ -78,7 +86,7 @@ func NewQTabBar2(parent *QWidget) *QTabBar {
 }
 
 func (this *QTabBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTabBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTabBar_MetaObject(this.h)))
 }
 
 func (this *QTabBar) Metacast(param1 string) unsafe.Pointer {
@@ -114,25 +122,25 @@ func (this *QTabBar) SetShape(shape QTabBar__Shape) {
 }
 
 func (this *QTabBar) AddTab(text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QTabBar_AddTab(this.h, (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) AddTab2(icon *QIcon, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QTabBar_AddTab2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) InsertTab(index int, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QTabBar_InsertTab(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms)))
 }
 
 func (this *QTabBar) InsertTab2(index int, icon *QIcon, text string) int {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (int)(C.QTabBar_InsertTab2(this.h, (C.int)(index), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
 }
@@ -169,7 +177,7 @@ func (this *QTabBar) TabText(index int) string {
 }
 
 func (this *QTabBar) SetTabText(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTabBar_SetTabText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -205,7 +213,7 @@ func (this *QTabBar) SetElideMode(mode TextElideMode) {
 }
 
 func (this *QTabBar) SetTabToolTip(index int, tip string) {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	C.QTabBar_SetTabToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(tip_ms))
 }
@@ -218,7 +226,7 @@ func (this *QTabBar) TabToolTip(index int) string {
 }
 
 func (this *QTabBar) SetTabWhatsThis(index int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTabBar_SetTabWhatsThis(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
 }
@@ -314,7 +322,7 @@ func (this *QTabBar) SetTabButton(index int, position QTabBar__ButtonPosition, w
 }
 
 func (this *QTabBar) TabButton(index int, position QTabBar__ButtonPosition) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QTabBar_TabButton(this.h, (C.int)(index), (C.int)(position))))
 }
 
 func (this *QTabBar) SelectionBehaviorOnRemove() QTabBar__SelectionBehavior {
@@ -373,7 +381,7 @@ func (this *QTabBar) AccessibleTabName(index int) string {
 }
 
 func (this *QTabBar) SetAccessibleTabName(index int, name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QTabBar_SetAccessibleTabName(this.h, (C.int)(index), (*C.struct_miqt_string)(name_ms))
 }

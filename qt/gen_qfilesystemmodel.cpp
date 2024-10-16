@@ -13,7 +13,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qfilesystemmodel.h"
+#include <qfilesystemmodel.h>
 #include "gen_qfilesystemmodel.h"
 #include "_cgo_export.h"
 
@@ -181,7 +181,7 @@ struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
 }
 
 QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
-	QList<QModelIndex> indexes_QList;
+	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
 	for(size_t i = 0; i < indexes->len; ++i) {
@@ -257,7 +257,7 @@ bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self) {
 }
 
 void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
-	QList<QString> filters_QList;
+	QStringList filters_QList;
 	filters_QList.reserve(filters->len);
 	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {

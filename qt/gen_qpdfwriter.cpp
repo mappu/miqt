@@ -7,7 +7,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpdfwriter.h"
+#include <qpdfwriter.h>
 #include "gen_qpdfwriter.h"
 #include "_cgo_export.h"
 

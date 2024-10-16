@@ -1,7 +1,7 @@
 #include <QBrush>
 #include <QColor>
 #include <QPalette>
-#include "qpalette.h"
+#include <qpalette.h>
 #include "gen_qpalette.h"
 #include "_cgo_export.h"
 

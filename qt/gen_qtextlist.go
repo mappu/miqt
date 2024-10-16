@@ -25,14 +25,21 @@ func (this *QTextList) cPointer() *C.QTextList {
 	return this.h
 }
 
+func (this *QTextList) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextList(h *C.QTextList) *QTextList {
 	if h == nil {
 		return nil
 	}
-	return &QTextList{h: h, QTextBlockGroup: newQTextBlockGroup_U(unsafe.Pointer(h))}
+	return &QTextList{h: h, QTextBlockGroup: UnsafeNewQTextBlockGroup(unsafe.Pointer(h))}
 }
 
-func newQTextList_U(h unsafe.Pointer) *QTextList {
+func UnsafeNewQTextList(h unsafe.Pointer) *QTextList {
 	return newQTextList((*C.QTextList)(h))
 }
 
@@ -43,7 +50,7 @@ func NewQTextList(doc *QTextDocument) *QTextList {
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextList_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextList_MetaObject(this.h)))
 }
 
 func (this *QTextList) Metacast(param1 string) unsafe.Pointer {

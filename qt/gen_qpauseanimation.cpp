@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpauseanimation.h"
+#include <qpauseanimation.h>
 #include "gen_qpauseanimation.h"
 #include "_cgo_export.h"
 

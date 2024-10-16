@@ -6,7 +6,7 @@
 #include <QTextDocument>
 #include <QTextList>
 #include <QTextListFormat>
-#include "qtextlist.h"
+#include <qtextlist.h>
 #include "gen_qtextlist.h"
 #include "_cgo_export.h"
 

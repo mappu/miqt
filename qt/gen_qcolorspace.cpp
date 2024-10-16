@@ -2,7 +2,7 @@
 #include <QColorSpace>
 #include <QColorTransform>
 #include <QPointF>
-#include "qcolorspace.h"
+#include <qcolorspace.h>
 #include "gen_qcolorspace.h"
 #include "_cgo_export.h"
 

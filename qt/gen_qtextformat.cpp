@@ -17,7 +17,7 @@
 #include <QTextTableCellFormat>
 #include <QTextTableFormat>
 #include <QVariant>
-#include "qtextformat.h"
+#include <qtextformat.h>
 #include "gen_qtextformat.h"
 #include "_cgo_export.h"
 
@@ -329,7 +329,7 @@ struct miqt_string* QTextCharFormat_FontFamily(const QTextCharFormat* self) {
 }
 
 void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ families) {
-	QList<QString> families_QList;
+	QStringList families_QList;
 	families_QList.reserve(families->len);
 	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
@@ -567,7 +567,7 @@ struct miqt_string* QTextCharFormat_AnchorName(const QTextCharFormat* self) {
 }
 
 void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ names) {
-	QList<QString> names_QList;
+	QStringList names_QList;
 	names_QList.reserve(names->len);
 	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {

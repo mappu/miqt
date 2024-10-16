@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QTemporaryDir) cPointer() *C.QTemporaryDir {
 	return this.h
 }
 
+func (this *QTemporaryDir) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQTemporaryDir(h *C.QTemporaryDir) *QTemporaryDir {
 	return &QTemporaryDir{h: h}
 }
 
-func newQTemporaryDir_U(h unsafe.Pointer) *QTemporaryDir {
+func UnsafeNewQTemporaryDir(h unsafe.Pointer) *QTemporaryDir {
 	return newQTemporaryDir((*C.QTemporaryDir)(h))
 }
 
@@ -43,7 +51,7 @@ func NewQTemporaryDir() *QTemporaryDir {
 
 // NewQTemporaryDir2 constructs a new QTemporaryDir object.
 func NewQTemporaryDir2(templateName string) *QTemporaryDir {
-	templateName_ms := miqt_strdupg(templateName)
+	templateName_ms := libmiqt.Strdupg(templateName)
 	defer C.free(templateName_ms)
 	ret := C.QTemporaryDir_new2((*C.struct_miqt_string)(templateName_ms))
 	return newQTemporaryDir(ret)
@@ -80,7 +88,7 @@ func (this *QTemporaryDir) Path() string {
 }
 
 func (this *QTemporaryDir) FilePath(fileName string) string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QTemporaryDir_FilePath(this.h, (*C.struct_miqt_string)(fileName_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))

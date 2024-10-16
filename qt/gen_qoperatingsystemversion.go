@@ -36,6 +36,13 @@ func (this *QOperatingSystemVersion) cPointer() *C.QOperatingSystemVersion {
 	return this.h
 }
 
+func (this *QOperatingSystemVersion) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemVersion {
 	if h == nil {
 		return nil
@@ -43,7 +50,7 @@ func newQOperatingSystemVersion(h *C.QOperatingSystemVersion) *QOperatingSystemV
 	return &QOperatingSystemVersion{h: h}
 }
 
-func newQOperatingSystemVersion_U(h unsafe.Pointer) *QOperatingSystemVersion {
+func UnsafeNewQOperatingSystemVersion(h unsafe.Pointer) *QOperatingSystemVersion {
 	return newQOperatingSystemVersion((*C.QOperatingSystemVersion)(h))
 }
 

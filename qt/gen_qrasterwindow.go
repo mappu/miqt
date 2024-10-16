@@ -25,14 +25,21 @@ func (this *QRasterWindow) cPointer() *C.QRasterWindow {
 	return this.h
 }
 
+func (this *QRasterWindow) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRasterWindow(h *C.QRasterWindow) *QRasterWindow {
 	if h == nil {
 		return nil
 	}
-	return &QRasterWindow{h: h, QPaintDeviceWindow: newQPaintDeviceWindow_U(unsafe.Pointer(h))}
+	return &QRasterWindow{h: h, QPaintDeviceWindow: UnsafeNewQPaintDeviceWindow(unsafe.Pointer(h))}
 }
 
-func newQRasterWindow_U(h unsafe.Pointer) *QRasterWindow {
+func UnsafeNewQRasterWindow(h unsafe.Pointer) *QRasterWindow {
 	return newQRasterWindow((*C.QRasterWindow)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQRasterWindow2(parent *QWindow) *QRasterWindow {
 }
 
 func (this *QRasterWindow) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QRasterWindow_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRasterWindow_MetaObject(this.h)))
 }
 
 func (this *QRasterWindow) Metacast(param1 string) unsafe.Pointer {

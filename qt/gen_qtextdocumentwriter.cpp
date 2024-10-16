@@ -8,7 +8,7 @@
 #include <QTextDocument>
 #include <QTextDocumentFragment>
 #include <QTextDocumentWriter>
-#include "qtextdocumentwriter.h"
+#include <qtextdocumentwriter.h>
 #include "gen_qtextdocumentwriter.h"
 #include "_cgo_export.h"
 

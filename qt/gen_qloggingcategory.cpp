@@ -2,7 +2,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qloggingcategory.h"
+#include <qloggingcategory.h>
 #include "gen_qloggingcategory.h"
 #include "_cgo_export.h"
 

@@ -24,6 +24,13 @@ func (this *QContiguousCacheData) cPointer() *C.QContiguousCacheData {
 	return this.h
 }
 
+func (this *QContiguousCacheData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
 	if h == nil {
 		return nil
@@ -31,12 +38,12 @@ func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
 	return &QContiguousCacheData{h: h}
 }
 
-func newQContiguousCacheData_U(h unsafe.Pointer) *QContiguousCacheData {
+func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
 	return newQContiguousCacheData((*C.QContiguousCacheData)(h))
 }
 
 func QContiguousCacheData_AllocateData(size int, alignment int) *QContiguousCacheData {
-	return newQContiguousCacheData_U(unsafe.Pointer(C.QContiguousCacheData_AllocateData((C.int)(size), (C.int)(alignment))))
+	return UnsafeNewQContiguousCacheData(unsafe.Pointer(C.QContiguousCacheData_AllocateData((C.int)(size), (C.int)(alignment))))
 }
 
 func QContiguousCacheData_FreeData(data *QContiguousCacheData) {

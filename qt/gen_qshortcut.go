@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QShortcut) cPointer() *C.QShortcut {
 	return this.h
 }
 
+func (this *QShortcut) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQShortcut(h *C.QShortcut) *QShortcut {
 	if h == nil {
 		return nil
 	}
-	return &QShortcut{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QShortcut{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQShortcut_U(h unsafe.Pointer) *QShortcut {
+func UnsafeNewQShortcut(h unsafe.Pointer) *QShortcut {
 	return newQShortcut((*C.QShortcut)(h))
 }
 
@@ -78,7 +86,7 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QShortcut_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QShortcut_MetaObject(this.h)))
 }
 
 func (this *QShortcut) Metacast(param1 string) unsafe.Pointer {
@@ -133,7 +141,7 @@ func (this *QShortcut) Context() ShortcutContext {
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QShortcut_SetWhatsThis(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -158,7 +166,7 @@ func (this *QShortcut) Id() int {
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QShortcut_ParentWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QShortcut_ParentWidget(this.h)))
 }
 
 func (this *QShortcut) Activated() {

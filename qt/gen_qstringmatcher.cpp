@@ -3,7 +3,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QStringMatcher>
-#include "qstringmatcher.h"
+#include <qstringmatcher.h>
 #include "gen_qstringmatcher.h"
 #include "_cgo_export.h"
 

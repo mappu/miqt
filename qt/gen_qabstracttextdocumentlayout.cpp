@@ -16,7 +16,7 @@
 #include <QTextFormat>
 #include <QTextFrame>
 #include <QTextObjectInterface>
-#include "qabstracttextdocumentlayout.h"
+#include <qabstracttextdocumentlayout.h>
 #include "gen_qabstracttextdocumentlayout.h"
 #include "_cgo_export.h"
 

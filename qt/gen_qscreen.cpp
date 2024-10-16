@@ -10,7 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
-#include "qscreen.h"
+#include <qscreen.h>
 #include "gen_qscreen.h"
 #include "_cgo_export.h"
 

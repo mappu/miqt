@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qbuttongroup.h"
+#include <qbuttongroup.h>
 #include "gen_qbuttongroup.h"
 #include "_cgo_export.h"
 

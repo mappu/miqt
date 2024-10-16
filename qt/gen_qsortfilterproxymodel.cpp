@@ -12,7 +12,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qsortfilterproxymodel.h"
+#include <qsortfilterproxymodel.h>
 #include "gen_qsortfilterproxymodel.h"
 #include "_cgo_export.h"
 
@@ -218,7 +218,7 @@ bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int sectio
 }
 
 QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
-	QList<QModelIndex> indexes_QList;
+	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
 	for(size_t i = 0; i < indexes->len; ++i) {

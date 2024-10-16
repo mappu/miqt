@@ -1,6 +1,6 @@
 #include <QMapDataBase>
 #include <QMapNodeBase>
-#include "qmap.h"
+#include <qmap.h>
 #include "gen_qmap.h"
 #include "_cgo_export.h"
 

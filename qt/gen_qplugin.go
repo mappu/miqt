@@ -24,6 +24,13 @@ func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
 	return this.h
 }
 
+func (this *QStaticPlugin) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQStaticPlugin(h *C.QStaticPlugin) *QStaticPlugin {
 	return &QStaticPlugin{h: h}
 }
 
-func newQStaticPlugin_U(h unsafe.Pointer) *QStaticPlugin {
+func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
 	return newQStaticPlugin((*C.QStaticPlugin)(h))
 }
 

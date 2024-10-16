@@ -7,7 +7,7 @@
 #include <QThreadPool>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase
-#include "qfutureinterface.h"
+#include <qfutureinterface.h>
 #include "gen_qfutureinterface.h"
 #include "_cgo_export.h"
 

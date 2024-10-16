@@ -25,19 +25,26 @@ func (this *QAbstractProxyModel) cPointer() *C.QAbstractProxyModel {
 	return this.h
 }
 
+func (this *QAbstractProxyModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractProxyModel(h *C.QAbstractProxyModel) *QAbstractProxyModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractProxyModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
+	return &QAbstractProxyModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
 }
 
-func newQAbstractProxyModel_U(h unsafe.Pointer) *QAbstractProxyModel {
+func UnsafeNewQAbstractProxyModel(h unsafe.Pointer) *QAbstractProxyModel {
 	return newQAbstractProxyModel((*C.QAbstractProxyModel)(h))
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractProxyModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractProxyModel_MetaObject(this.h)))
 }
 
 func (this *QAbstractProxyModel) Metacast(param1 string) unsafe.Pointer {
@@ -69,7 +76,7 @@ func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel)
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QAbstractProxyModel_SourceModel(this.h)))
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
@@ -166,7 +173,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	return newQMimeData_U(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {

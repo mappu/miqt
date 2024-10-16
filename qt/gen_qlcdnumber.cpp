@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qlcdnumber.h"
+#include <qlcdnumber.h>
 #include "gen_qlcdnumber.h"
 #include "_cgo_export.h"
 

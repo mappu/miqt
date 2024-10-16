@@ -7,7 +7,7 @@
 #include <QTabBar>
 #include <QTabWidget>
 #include <QWidget>
-#include "qtabwidget.h"
+#include <qtabwidget.h>
 #include "gen_qtabwidget.h"
 #include "_cgo_export.h"
 

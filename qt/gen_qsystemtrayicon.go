@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -45,14 +46,21 @@ func (this *QSystemTrayIcon) cPointer() *C.QSystemTrayIcon {
 	return this.h
 }
 
+func (this *QSystemTrayIcon) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSystemTrayIcon(h *C.QSystemTrayIcon) *QSystemTrayIcon {
 	if h == nil {
 		return nil
 	}
-	return &QSystemTrayIcon{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QSystemTrayIcon{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQSystemTrayIcon_U(h unsafe.Pointer) *QSystemTrayIcon {
+func UnsafeNewQSystemTrayIcon(h unsafe.Pointer) *QSystemTrayIcon {
 	return newQSystemTrayIcon((*C.QSystemTrayIcon)(h))
 }
 
@@ -81,7 +89,7 @@ func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSystemTrayIcon_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSystemTrayIcon_MetaObject(this.h)))
 }
 
 func (this *QSystemTrayIcon) Metacast(param1 string) unsafe.Pointer {
@@ -113,7 +121,7 @@ func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	return newQMenu_U(unsafe.Pointer(C.QSystemTrayIcon_ContextMenu(this.h)))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QSystemTrayIcon_ContextMenu(this.h)))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
@@ -135,7 +143,7 @@ func (this *QSystemTrayIcon) ToolTip() string {
 }
 
 func (this *QSystemTrayIcon) SetToolTip(tip string) {
-	tip_ms := miqt_strdupg(tip)
+	tip_ms := libmiqt.Strdupg(tip)
 	defer C.free(tip_ms)
 	C.QSystemTrayIcon_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
 }
@@ -172,17 +180,17 @@ func (this *QSystemTrayIcon) Hide() {
 }
 
 func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	msg_ms := miqt_strdupg(msg)
+	msg_ms := libmiqt.Strdupg(msg)
 	defer C.free(msg_ms)
 	C.QSystemTrayIcon_ShowMessage(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	msg_ms := miqt_strdupg(msg)
+	msg_ms := libmiqt.Strdupg(msg)
 	defer C.free(msg_ms)
 	C.QSystemTrayIcon_ShowMessage2(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms))
 }
@@ -269,25 +277,25 @@ func QSystemTrayIcon_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon, msecs int) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	msg_ms := miqt_strdupg(msg)
+	msg_ms := libmiqt.Strdupg(msg)
 	defer C.free(msg_ms)
 	C.QSystemTrayIcon_ShowMessage4(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), icon.cPointer(), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	msg_ms := miqt_strdupg(msg)
+	msg_ms := libmiqt.Strdupg(msg)
 	defer C.free(msg_ms)
 	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
-	msg_ms := miqt_strdupg(msg)
+	msg_ms := libmiqt.Strdupg(msg)
 	defer C.free(msg_ms)
 	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon), (C.int)(msecs))
 }

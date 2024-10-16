@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,6 +65,13 @@ func (this *QCborParserError) cPointer() *C.QCborParserError {
 	return this.h
 }
 
+func (this *QCborParserError) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborParserError(h *C.QCborParserError) *QCborParserError {
 	if h == nil {
 		return nil
@@ -71,7 +79,7 @@ func newQCborParserError(h *C.QCborParserError) *QCborParserError {
 	return &QCborParserError{h: h}
 }
 
-func newQCborParserError_U(h unsafe.Pointer) *QCborParserError {
+func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
 	return newQCborParserError((*C.QCborParserError)(h))
 }
 
@@ -107,6 +115,13 @@ func (this *QCborValue) cPointer() *C.QCborValue {
 	return this.h
 }
 
+func (this *QCborValue) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborValue(h *C.QCborValue) *QCborValue {
 	if h == nil {
 		return nil
@@ -114,7 +129,7 @@ func newQCborValue(h *C.QCborValue) *QCborValue {
 	return &QCborValue{h: h}
 }
 
-func newQCborValue_U(h unsafe.Pointer) *QCborValue {
+func UnsafeNewQCborValue(h unsafe.Pointer) *QCborValue {
 	return newQCborValue((*C.QCborValue)(h))
 }
 
@@ -174,7 +189,7 @@ func NewQCborValue9(ba *QByteArray) *QCborValue {
 
 // NewQCborValue10 constructs a new QCborValue object.
 func NewQCborValue10(s string) *QCborValue {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	ret := C.QCborValue_new10((*C.struct_miqt_string)(s_ms))
 	return newQCborValue(ret)
@@ -444,7 +459,7 @@ func (this *QCborValue) ToMapWithDefaultValue(defaultValue *QCborMap) *QCborMap 
 }
 
 func (this *QCborValue) OperatorSubscript(key string) *QCborValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborValue_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValue(_ret)
@@ -467,7 +482,7 @@ func (this *QCborValue) OperatorSubscript3(key int64) *QCborValueRef {
 }
 
 func (this *QCborValue) OperatorSubscript5(key string) *QCborValueRef {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborValue_OperatorSubscript5(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValueRef(_ret)
@@ -602,7 +617,7 @@ func (this *QCborValue) ToByteArray1(defaultValue *QByteArray) *QByteArray {
 }
 
 func (this *QCborValue) ToString1(defaultValue string) string {
-	defaultValue_ms := miqt_strdupg(defaultValue)
+	defaultValue_ms := libmiqt.Strdupg(defaultValue)
 	defer C.free(defaultValue_ms)
 	var _ms *C.struct_miqt_string = C.QCborValue_ToString1(this.h, (*C.struct_miqt_string)(defaultValue_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -704,6 +719,13 @@ func (this *QCborValueRef) cPointer() *C.QCborValueRef {
 	return this.h
 }
 
+func (this *QCborValueRef) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
 	if h == nil {
 		return nil
@@ -711,7 +733,7 @@ func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
 	return &QCborValueRef{h: h}
 }
 
-func newQCborValueRef_U(h unsafe.Pointer) *QCborValueRef {
+func UnsafeNewQCborValueRef(h unsafe.Pointer) *QCborValueRef {
 	return newQCborValueRef((*C.QCborValueRef)(h))
 }
 
@@ -907,7 +929,7 @@ func (this *QCborValueRef) ToMapWithQCborMap(m *QCborMap) *QCborMap {
 }
 
 func (this *QCborValueRef) OperatorSubscript(key string) *QCborValue {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborValueRef_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValue(_ret)
@@ -930,7 +952,7 @@ func (this *QCborValueRef) OperatorSubscript3(key int64) *QCborValueRef {
 }
 
 func (this *QCborValueRef) OperatorSubscript5(key string) *QCborValueRef {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	_ret := C.QCborValueRef_OperatorSubscript5(this.h, (*C.struct_miqt_string)(key_ms))
 	_goptr := newQCborValueRef(_ret)
@@ -1017,7 +1039,7 @@ func (this *QCborValueRef) ToByteArray1(defaultValue *QByteArray) *QByteArray {
 }
 
 func (this *QCborValueRef) ToString1(defaultValue string) string {
-	defaultValue_ms := miqt_strdupg(defaultValue)
+	defaultValue_ms := libmiqt.Strdupg(defaultValue)
 	defer C.free(defaultValue_ms)
 	var _ms *C.struct_miqt_string = C.QCborValueRef_ToString1(this.h, (*C.struct_miqt_string)(defaultValue_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))

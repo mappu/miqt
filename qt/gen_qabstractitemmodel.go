@@ -42,6 +42,13 @@ func (this *QModelIndex) cPointer() *C.QModelIndex {
 	return this.h
 }
 
+func (this *QModelIndex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQModelIndex(h *C.QModelIndex) *QModelIndex {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQModelIndex(h *C.QModelIndex) *QModelIndex {
 	return &QModelIndex{h: h}
 }
 
-func newQModelIndex_U(h unsafe.Pointer) *QModelIndex {
+func UnsafeNewQModelIndex(h unsafe.Pointer) *QModelIndex {
 	return newQModelIndex((*C.QModelIndex)(h))
 }
 
@@ -128,7 +135,7 @@ func (this *QModelIndex) Flags() ItemFlag {
 }
 
 func (this *QModelIndex) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QModelIndex_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QModelIndex_Model(this.h)))
 }
 
 func (this *QModelIndex) IsValid() bool {
@@ -179,6 +186,13 @@ func (this *QPersistentModelIndex) cPointer() *C.QPersistentModelIndex {
 	return this.h
 }
 
+func (this *QPersistentModelIndex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex {
 	if h == nil {
 		return nil
@@ -186,7 +200,7 @@ func newQPersistentModelIndex(h *C.QPersistentModelIndex) *QPersistentModelIndex
 	return &QPersistentModelIndex{h: h}
 }
 
-func newQPersistentModelIndex_U(h unsafe.Pointer) *QPersistentModelIndex {
+func UnsafeNewQPersistentModelIndex(h unsafe.Pointer) *QPersistentModelIndex {
 	return newQPersistentModelIndex((*C.QPersistentModelIndex)(h))
 }
 
@@ -289,7 +303,7 @@ func (this *QPersistentModelIndex) Flags() ItemFlag {
 }
 
 func (this *QPersistentModelIndex) Model() *QAbstractItemModel {
-	return newQAbstractItemModel_U(unsafe.Pointer(C.QPersistentModelIndex_Model(this.h)))
+	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QPersistentModelIndex_Model(this.h)))
 }
 
 func (this *QPersistentModelIndex) IsValid() bool {
@@ -329,19 +343,26 @@ func (this *QAbstractItemModel) cPointer() *C.QAbstractItemModel {
 	return this.h
 }
 
+func (this *QAbstractItemModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractItemModel(h *C.QAbstractItemModel) *QAbstractItemModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemModel{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractItemModel{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractItemModel_U(h unsafe.Pointer) *QAbstractItemModel {
+func UnsafeNewQAbstractItemModel(h unsafe.Pointer) *QAbstractItemModel {
 	return newQAbstractItemModel((*C.QAbstractItemModel)(h))
 }
 
 func (this *QAbstractItemModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractItemModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractItemModel_MetaObject(this.h)))
 }
 
 func (this *QAbstractItemModel) Metacast(param1 string) unsafe.Pointer {
@@ -450,7 +471,7 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	}
 	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
-	return newQMimeData_U(unsafe.Pointer(C.QAbstractItemModel_MimeData(this.h, indexes_ma)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractItemModel_MimeData(this.h, indexes_ma)))
 }
 
 func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -580,8 +601,8 @@ func miqt_exec_callback_QAbstractItemModel_DataChanged(cb C.intptr_t, topLeft *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(topLeft))
-	slotval2 := newQModelIndex_U(unsafe.Pointer(bottomRight))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
 
 	gofunc(slotval1, slotval2)
 }
@@ -832,8 +853,8 @@ func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(topLeft))
-	slotval2 := newQModelIndex_U(unsafe.Pointer(bottomRight))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
+	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
 	var roles_ma *C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
@@ -1028,19 +1049,26 @@ func (this *QAbstractTableModel) cPointer() *C.QAbstractTableModel {
 	return this.h
 }
 
+func (this *QAbstractTableModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractTableModel(h *C.QAbstractTableModel) *QAbstractTableModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractTableModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
+	return &QAbstractTableModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
 }
 
-func newQAbstractTableModel_U(h unsafe.Pointer) *QAbstractTableModel {
+func UnsafeNewQAbstractTableModel(h unsafe.Pointer) *QAbstractTableModel {
 	return newQAbstractTableModel((*C.QAbstractTableModel)(h))
 }
 
 func (this *QAbstractTableModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractTableModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractTableModel_MetaObject(this.h)))
 }
 
 func (this *QAbstractTableModel) Metacast(param1 string) unsafe.Pointer {
@@ -1166,19 +1194,26 @@ func (this *QAbstractListModel) cPointer() *C.QAbstractListModel {
 	return this.h
 }
 
+func (this *QAbstractListModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractListModel(h *C.QAbstractListModel) *QAbstractListModel {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractListModel{h: h, QAbstractItemModel: newQAbstractItemModel_U(unsafe.Pointer(h))}
+	return &QAbstractListModel{h: h, QAbstractItemModel: UnsafeNewQAbstractItemModel(unsafe.Pointer(h))}
 }
 
-func newQAbstractListModel_U(h unsafe.Pointer) *QAbstractListModel {
+func UnsafeNewQAbstractListModel(h unsafe.Pointer) *QAbstractListModel {
 	return newQAbstractListModel((*C.QAbstractListModel)(h))
 }
 
 func (this *QAbstractListModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractListModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractListModel_MetaObject(this.h)))
 }
 
 func (this *QAbstractListModel) Metacast(param1 string) unsafe.Pointer {

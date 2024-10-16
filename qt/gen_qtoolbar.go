@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,20 +27,27 @@ func (this *QToolBar) cPointer() *C.QToolBar {
 	return this.h
 }
 
+func (this *QToolBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQToolBar(h *C.QToolBar) *QToolBar {
 	if h == nil {
 		return nil
 	}
-	return &QToolBar{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QToolBar{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQToolBar_U(h unsafe.Pointer) *QToolBar {
+func UnsafeNewQToolBar(h unsafe.Pointer) *QToolBar {
 	return newQToolBar((*C.QToolBar)(h))
 }
 
 // NewQToolBar constructs a new QToolBar object.
 func NewQToolBar(title string) *QToolBar {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QToolBar_new((*C.struct_miqt_string)(title_ms))
 	return newQToolBar(ret)
@@ -53,7 +61,7 @@ func NewQToolBar2() *QToolBar {
 
 // NewQToolBar3 constructs a new QToolBar object.
 func NewQToolBar3(title string, parent *QWidget) *QToolBar {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	ret := C.QToolBar_new3((*C.struct_miqt_string)(title_ms), parent.cPointer())
 	return newQToolBar(ret)
@@ -66,7 +74,7 @@ func NewQToolBar4(parent *QWidget) *QToolBar {
 }
 
 func (this *QToolBar) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QToolBar_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QToolBar_MetaObject(this.h)))
 }
 
 func (this *QToolBar) Metacast(param1 string) unsafe.Pointer {
@@ -126,31 +134,31 @@ func (this *QToolBar) Clear() {
 }
 
 func (this *QToolBar) AddAction(text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQAction_U(unsafe.Pointer(C.QToolBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QToolBar) AddAction2(icon *QIcon, text string) *QAction {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
-	return newQAction_U(unsafe.Pointer(C.QToolBar_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
 }
 
 func (this *QToolBar) AddSeparator() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_AddSeparator(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddSeparator(this.h)))
 }
 
 func (this *QToolBar) InsertSeparator(before *QAction) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_InsertSeparator(this.h, before.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_InsertSeparator(this.h, before.cPointer())))
 }
 
 func (this *QToolBar) AddWidget(widget *QWidget) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_AddWidget(this.h, widget.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_AddWidget(this.h, widget.cPointer())))
 }
 
 func (this *QToolBar) InsertWidget(before *QAction, widget *QWidget) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_InsertWidget(this.h, before.cPointer(), widget.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_InsertWidget(this.h, before.cPointer(), widget.cPointer())))
 }
 
 func (this *QToolBar) ActionGeometry(action *QAction) *QRect {
@@ -161,15 +169,15 @@ func (this *QToolBar) ActionGeometry(action *QAction) *QRect {
 }
 
 func (this *QToolBar) ActionAt(p *QPoint) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_ActionAt(this.h, p.cPointer())))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ActionAt(this.h, p.cPointer())))
 }
 
 func (this *QToolBar) ActionAt2(x int, y int) *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_ActionAt2(this.h, (C.int)(x), (C.int)(y))))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ActionAt2(this.h, (C.int)(x), (C.int)(y))))
 }
 
 func (this *QToolBar) ToggleViewAction() *QAction {
-	return newQAction_U(unsafe.Pointer(C.QToolBar_ToggleViewAction(this.h)))
+	return UnsafeNewQAction(unsafe.Pointer(C.QToolBar_ToggleViewAction(this.h)))
 }
 
 func (this *QToolBar) IconSize() *QSize {
@@ -184,7 +192,7 @@ func (this *QToolBar) ToolButtonStyle() ToolButtonStyle {
 }
 
 func (this *QToolBar) WidgetForAction(action *QAction) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QToolBar_WidgetForAction(this.h, action.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QToolBar_WidgetForAction(this.h, action.cPointer())))
 }
 
 func (this *QToolBar) IsFloatable() bool {
@@ -222,7 +230,7 @@ func miqt_exec_callback_QToolBar_ActionTriggered(cb C.intptr_t, action *C.QActio
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQAction_U(unsafe.Pointer(action))
+	slotval1 := UnsafeNewQAction(unsafe.Pointer(action))
 
 	gofunc(slotval1)
 }
@@ -302,7 +310,7 @@ func miqt_exec_callback_QToolBar_IconSizeChanged(cb C.intptr_t, iconSize *C.QSiz
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize_U(unsafe.Pointer(iconSize))
+	slotval1 := UnsafeNewQSize(unsafe.Pointer(iconSize))
 
 	gofunc(slotval1)
 }

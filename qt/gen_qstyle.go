@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -648,19 +649,26 @@ func (this *QStyle) cPointer() *C.QStyle {
 	return this.h
 }
 
+func (this *QStyle) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyle(h *C.QStyle) *QStyle {
 	if h == nil {
 		return nil
 	}
-	return &QStyle{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QStyle{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQStyle_U(h unsafe.Pointer) *QStyle {
+func UnsafeNewQStyle(h unsafe.Pointer) *QStyle {
 	return newQStyle((*C.QStyle)(h))
 }
 
 func (this *QStyle) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStyle_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyle_MetaObject(this.h)))
 }
 
 func (this *QStyle) Metacast(param1 string) unsafe.Pointer {
@@ -708,7 +716,7 @@ func (this *QStyle) PolishWithPalette(palette *QPalette) {
 }
 
 func (this *QStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRect(_ret)
@@ -724,7 +732,7 @@ func (this *QStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect 
 }
 
 func (this *QStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStyle_DrawItemText(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 }
@@ -848,7 +856,7 @@ func (this *QStyle) CombinedLayoutSpacing(controls1 QSizePolicy__ControlType, co
 }
 
 func (this *QStyle) Proxy() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QStyle_Proxy(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStyle_Proxy(this.h)))
 }
 
 func QStyle_Tr2(s string, c string) string {
@@ -896,7 +904,7 @@ func QStyle_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QStyle) DrawItemText7(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStyle_DrawItemText7(this.h, painter.cPointer(), rect.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.int)(textRole))
 }

@@ -51,14 +51,21 @@ func (this *QTimeLine) cPointer() *C.QTimeLine {
 	return this.h
 }
 
+func (this *QTimeLine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimeLine(h *C.QTimeLine) *QTimeLine {
 	if h == nil {
 		return nil
 	}
-	return &QTimeLine{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QTimeLine{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQTimeLine_U(h unsafe.Pointer) *QTimeLine {
+func UnsafeNewQTimeLine(h unsafe.Pointer) *QTimeLine {
 	return newQTimeLine((*C.QTimeLine)(h))
 }
 
@@ -81,7 +88,7 @@ func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTimeLine_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimeLine_MetaObject(this.h)))
 }
 
 func (this *QTimeLine) Metacast(param1 string) unsafe.Pointer {

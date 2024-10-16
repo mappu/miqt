@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QMimeData) cPointer() *C.QMimeData {
 	return this.h
 }
 
+func (this *QMimeData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMimeData(h *C.QMimeData) *QMimeData {
 	if h == nil {
 		return nil
 	}
-	return &QMimeData{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QMimeData{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQMimeData_U(h unsafe.Pointer) *QMimeData {
+func UnsafeNewQMimeData(h unsafe.Pointer) *QMimeData {
 	return newQMimeData((*C.QMimeData)(h))
 }
 
@@ -43,7 +51,7 @@ func NewQMimeData() *QMimeData {
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QMimeData_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMimeData_MetaObject(this.h)))
 }
 
 func (this *QMimeData) Metacast(param1 string) unsafe.Pointer {
@@ -108,7 +116,7 @@ func (this *QMimeData) Text() string {
 }
 
 func (this *QMimeData) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QMimeData_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -125,7 +133,7 @@ func (this *QMimeData) Html() string {
 }
 
 func (this *QMimeData) SetHtml(html string) {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	C.QMimeData_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
@@ -165,7 +173,7 @@ func (this *QMimeData) HasColor() bool {
 }
 
 func (this *QMimeData) Data(mimetype string) *QByteArray {
-	mimetype_ms := miqt_strdupg(mimetype)
+	mimetype_ms := libmiqt.Strdupg(mimetype)
 	defer C.free(mimetype_ms)
 	_ret := C.QMimeData_Data(this.h, (*C.struct_miqt_string)(mimetype_ms))
 	_goptr := newQByteArray(_ret)
@@ -174,19 +182,19 @@ func (this *QMimeData) Data(mimetype string) *QByteArray {
 }
 
 func (this *QMimeData) SetData(mimetype string, data *QByteArray) {
-	mimetype_ms := miqt_strdupg(mimetype)
+	mimetype_ms := libmiqt.Strdupg(mimetype)
 	defer C.free(mimetype_ms)
 	C.QMimeData_SetData(this.h, (*C.struct_miqt_string)(mimetype_ms), data.cPointer())
 }
 
 func (this *QMimeData) RemoveFormat(mimetype string) {
-	mimetype_ms := miqt_strdupg(mimetype)
+	mimetype_ms := libmiqt.Strdupg(mimetype)
 	defer C.free(mimetype_ms)
 	C.QMimeData_RemoveFormat(this.h, (*C.struct_miqt_string)(mimetype_ms))
 }
 
 func (this *QMimeData) HasFormat(mimetype string) bool {
-	mimetype_ms := miqt_strdupg(mimetype)
+	mimetype_ms := libmiqt.Strdupg(mimetype)
 	defer C.free(mimetype_ms)
 	return (bool)(C.QMimeData_HasFormat(this.h, (*C.struct_miqt_string)(mimetype_ms)))
 }

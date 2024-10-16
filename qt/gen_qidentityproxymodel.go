@@ -25,14 +25,21 @@ func (this *QIdentityProxyModel) cPointer() *C.QIdentityProxyModel {
 	return this.h
 }
 
+func (this *QIdentityProxyModel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIdentityProxyModel(h *C.QIdentityProxyModel) *QIdentityProxyModel {
 	if h == nil {
 		return nil
 	}
-	return &QIdentityProxyModel{h: h, QAbstractProxyModel: newQAbstractProxyModel_U(unsafe.Pointer(h))}
+	return &QIdentityProxyModel{h: h, QAbstractProxyModel: UnsafeNewQAbstractProxyModel(unsafe.Pointer(h))}
 }
 
-func newQIdentityProxyModel_U(h unsafe.Pointer) *QIdentityProxyModel {
+func UnsafeNewQIdentityProxyModel(h unsafe.Pointer) *QIdentityProxyModel {
 	return newQIdentityProxyModel((*C.QIdentityProxyModel)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQIdentityProxyModel2(parent *QObject) *QIdentityProxyModel {
 }
 
 func (this *QIdentityProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QIdentityProxyModel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIdentityProxyModel_MetaObject(this.h)))
 }
 
 func (this *QIdentityProxyModel) Metacast(param1 string) unsafe.Pointer {

@@ -2,7 +2,7 @@
 #include <QGesture>
 #include <QGestureRecognizer>
 #include <QObject>
-#include "qgesturerecognizer.h"
+#include <qgesturerecognizer.h>
 #include "gen_qgesturerecognizer.h"
 #include "_cgo_export.h"
 

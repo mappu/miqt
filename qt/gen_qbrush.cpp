@@ -11,7 +11,7 @@
 #include <QPointF>
 #include <QRadialGradient>
 #include <QTransform>
-#include "qbrush.h"
+#include <qbrush.h>
 #include "gen_qbrush.h"
 #include "_cgo_export.h"
 

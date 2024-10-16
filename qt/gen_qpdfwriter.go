@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -26,20 +27,27 @@ func (this *QPdfWriter) cPointer() *C.QPdfWriter {
 	return this.h
 }
 
+func (this *QPdfWriter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPdfWriter(h *C.QPdfWriter) *QPdfWriter {
 	if h == nil {
 		return nil
 	}
-	return &QPdfWriter{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QPagedPaintDevice: newQPagedPaintDevice_U(unsafe.Pointer(h))}
+	return &QPdfWriter{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QPagedPaintDevice: UnsafeNewQPagedPaintDevice(unsafe.Pointer(h))}
 }
 
-func newQPdfWriter_U(h unsafe.Pointer) *QPdfWriter {
+func UnsafeNewQPdfWriter(h unsafe.Pointer) *QPdfWriter {
 	return newQPdfWriter((*C.QPdfWriter)(h))
 }
 
 // NewQPdfWriter constructs a new QPdfWriter object.
 func NewQPdfWriter(filename string) *QPdfWriter {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
 	ret := C.QPdfWriter_new((*C.struct_miqt_string)(filename_ms))
 	return newQPdfWriter(ret)
@@ -52,7 +60,7 @@ func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPdfWriter_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfWriter_MetaObject(this.h)))
 }
 
 func (this *QPdfWriter) Metacast(param1 string) unsafe.Pointer {
@@ -95,7 +103,7 @@ func (this *QPdfWriter) Title() string {
 }
 
 func (this *QPdfWriter) SetTitle(title string) {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	C.QPdfWriter_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
 }
@@ -108,7 +116,7 @@ func (this *QPdfWriter) Creator() string {
 }
 
 func (this *QPdfWriter) SetCreator(creator string) {
-	creator_ms := miqt_strdupg(creator)
+	creator_ms := libmiqt.Strdupg(creator)
 	defer C.free(creator_ms)
 	C.QPdfWriter_SetCreator(this.h, (*C.struct_miqt_string)(creator_ms))
 }
@@ -137,7 +145,7 @@ func (this *QPdfWriter) DocumentXmpMetadata() *QByteArray {
 }
 
 func (this *QPdfWriter) AddFileAttachment(fileName string, data *QByteArray) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QPdfWriter_AddFileAttachment(this.h, (*C.struct_miqt_string)(fileName_ms), data.cPointer())
 }
@@ -199,9 +207,9 @@ func QPdfWriter_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QPdfWriter) AddFileAttachment3(fileName string, data *QByteArray, mimeType string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
-	mimeType_ms := miqt_strdupg(mimeType)
+	mimeType_ms := libmiqt.Strdupg(mimeType)
 	defer C.free(mimeType_ms)
 	C.QPdfWriter_AddFileAttachment3(this.h, (*C.struct_miqt_string)(fileName_ms), data.cPointer(), (*C.struct_miqt_string)(mimeType_ms))
 }

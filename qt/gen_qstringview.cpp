@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QStringView>
-#include "qstringview.h"
+#include <qstringview.h>
 #include "gen_qstringview.h"
 #include "_cgo_export.h"
 

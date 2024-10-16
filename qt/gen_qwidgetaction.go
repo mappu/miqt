@@ -25,14 +25,21 @@ func (this *QWidgetAction) cPointer() *C.QWidgetAction {
 	return this.h
 }
 
+func (this *QWidgetAction) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWidgetAction(h *C.QWidgetAction) *QWidgetAction {
 	if h == nil {
 		return nil
 	}
-	return &QWidgetAction{h: h, QAction: newQAction_U(unsafe.Pointer(h))}
+	return &QWidgetAction{h: h, QAction: UnsafeNewQAction(unsafe.Pointer(h))}
 }
 
-func newQWidgetAction_U(h unsafe.Pointer) *QWidgetAction {
+func UnsafeNewQWidgetAction(h unsafe.Pointer) *QWidgetAction {
 	return newQWidgetAction((*C.QWidgetAction)(h))
 }
 
@@ -43,7 +50,7 @@ func NewQWidgetAction(parent *QObject) *QWidgetAction {
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QWidgetAction_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QWidgetAction_MetaObject(this.h)))
 }
 
 func (this *QWidgetAction) Metacast(param1 string) unsafe.Pointer {
@@ -75,11 +82,11 @@ func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidgetAction_DefaultWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetAction_DefaultWidget(this.h)))
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QWidgetAction_RequestWidget(this.h, parent.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QWidgetAction_RequestWidget(this.h, parent.cPointer())))
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -33,6 +34,13 @@ func (this *QPainterPath) cPointer() *C.QPainterPath {
 	return this.h
 }
 
+func (this *QPainterPath) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPainterPath(h *C.QPainterPath) *QPainterPath {
 	if h == nil {
 		return nil
@@ -40,7 +48,7 @@ func newQPainterPath(h *C.QPainterPath) *QPainterPath {
 	return &QPainterPath{h: h}
 }
 
-func newQPainterPath_U(h unsafe.Pointer) *QPainterPath {
+func UnsafeNewQPainterPath(h unsafe.Pointer) *QPainterPath {
 	return newQPainterPath((*C.QPainterPath)(h))
 }
 
@@ -162,13 +170,13 @@ func (this *QPainterPath) AddEllipse3(center *QPointF, rx float64, ry float64) {
 }
 
 func (this *QPainterPath) AddText(point *QPointF, f *QFont, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainterPath) AddText2(x float64, y float64, f *QFont, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
@@ -402,11 +410,11 @@ func (this *QPainterPath) OperatorBitwiseOrAssign(other *QPainterPath) {
 }
 
 func (this *QPainterPath) OperatorPlusAssign(other *QPainterPath) *QPainterPath {
-	return newQPainterPath_U(unsafe.Pointer(C.QPainterPath_OperatorPlusAssign(this.h, other.cPointer())))
+	return UnsafeNewQPainterPath(unsafe.Pointer(C.QPainterPath_OperatorPlusAssign(this.h, other.cPointer())))
 }
 
 func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath {
-	return newQPainterPath_U(unsafe.Pointer(C.QPainterPath_OperatorMinusAssign(this.h, other.cPointer())))
+	return UnsafeNewQPainterPath(unsafe.Pointer(C.QPainterPath_OperatorMinusAssign(this.h, other.cPointer())))
 }
 
 func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
@@ -442,6 +450,13 @@ func (this *QPainterPathStroker) cPointer() *C.QPainterPathStroker {
 	return this.h
 }
 
+func (this *QPainterPathStroker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
 	if h == nil {
 		return nil
@@ -449,7 +464,7 @@ func newQPainterPathStroker(h *C.QPainterPathStroker) *QPainterPathStroker {
 	return &QPainterPathStroker{h: h}
 }
 
-func newQPainterPathStroker_U(h unsafe.Pointer) *QPainterPathStroker {
+func UnsafeNewQPainterPathStroker(h unsafe.Pointer) *QPainterPathStroker {
 	return newQPainterPathStroker((*C.QPainterPathStroker)(h))
 }
 
@@ -572,6 +587,13 @@ func (this *QPainterPath__Element) cPointer() *C.QPainterPath__Element {
 	return this.h
 }
 
+func (this *QPainterPath__Element) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element {
 	if h == nil {
 		return nil
@@ -579,7 +601,7 @@ func newQPainterPath__Element(h *C.QPainterPath__Element) *QPainterPath__Element
 	return &QPainterPath__Element{h: h}
 }
 
-func newQPainterPath__Element_U(h unsafe.Pointer) *QPainterPath__Element {
+func UnsafeNewQPainterPath__Element(h unsafe.Pointer) *QPainterPath__Element {
 	return newQPainterPath__Element((*C.QPainterPath__Element)(h))
 }
 

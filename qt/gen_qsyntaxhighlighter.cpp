@@ -5,7 +5,7 @@
 #include <QSyntaxHighlighter>
 #include <QTextBlock>
 #include <QTextDocument>
-#include "qsyntaxhighlighter.h"
+#include <qsyntaxhighlighter.h>
 #include "gen_qsyntaxhighlighter.h"
 #include "_cgo_export.h"
 

@@ -17,7 +17,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
-#include "qpixmap.h"
+#include <qpixmap.h>
 #include "gen_qpixmap.h"
 #include "_cgo_export.h"
 

@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QThread>
 #include <QThreadPool>
-#include "qthreadpool.h"
+#include <qthreadpool.h>
 #include "gen_qthreadpool.h"
 #include "_cgo_export.h"
 

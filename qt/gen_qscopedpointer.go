@@ -24,6 +24,13 @@ func (this *QScopedPointerPodDeleter) cPointer() *C.QScopedPointerPodDeleter {
 	return this.h
 }
 
+func (this *QScopedPointerPodDeleter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerPodDeleter {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerP
 	return &QScopedPointerPodDeleter{h: h}
 }
 
-func newQScopedPointerPodDeleter_U(h unsafe.Pointer) *QScopedPointerPodDeleter {
+func UnsafeNewQScopedPointerPodDeleter(h unsafe.Pointer) *QScopedPointerPodDeleter {
 	return newQScopedPointerPodDeleter((*C.QScopedPointerPodDeleter)(h))
 }
 

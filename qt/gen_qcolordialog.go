@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -34,14 +35,21 @@ func (this *QColorDialog) cPointer() *C.QColorDialog {
 	return this.h
 }
 
+func (this *QColorDialog) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColorDialog(h *C.QColorDialog) *QColorDialog {
 	if h == nil {
 		return nil
 	}
-	return &QColorDialog{h: h, QDialog: newQDialog_U(unsafe.Pointer(h))}
+	return &QColorDialog{h: h, QDialog: UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
-func newQColorDialog_U(h unsafe.Pointer) *QColorDialog {
+func UnsafeNewQColorDialog(h unsafe.Pointer) *QColorDialog {
 	return newQColorDialog((*C.QColorDialog)(h))
 }
 
@@ -70,7 +78,7 @@ func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QColorDialog_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QColorDialog_MetaObject(this.h)))
 }
 
 func (this *QColorDialog) Metacast(param1 string) unsafe.Pointer {
@@ -187,7 +195,7 @@ func miqt_exec_callback_QColorDialog_CurrentColorChanged(cb C.intptr_t, color *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor_U(unsafe.Pointer(color))
+	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -207,7 +215,7 @@ func miqt_exec_callback_QColorDialog_ColorSelected(cb C.intptr_t, color *C.QColo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor_U(unsafe.Pointer(color))
+	slotval1 := UnsafeNewQColor(unsafe.Pointer(color))
 
 	gofunc(slotval1)
 }
@@ -275,7 +283,7 @@ func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
 }
 
 func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QColorDialog_GetColor3(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms))
 	_goptr := newQColor(_ret)
@@ -284,7 +292,7 @@ func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QCo
 }
 
 func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options QColorDialog__ColorDialogOption) *QColor {
-	title_ms := miqt_strdupg(title)
+	title_ms := libmiqt.Strdupg(title)
 	defer C.free(title_ms)
 	_ret := C.QColorDialog_GetColor4(initial.cPointer(), parent.cPointer(), (*C.struct_miqt_string)(title_ms), (C.int)(options))
 	_goptr := newQColor(_ret)

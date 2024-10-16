@@ -32,14 +32,21 @@ func (this *QRubberBand) cPointer() *C.QRubberBand {
 	return this.h
 }
 
+func (this *QRubberBand) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRubberBand(h *C.QRubberBand) *QRubberBand {
 	if h == nil {
 		return nil
 	}
-	return &QRubberBand{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QRubberBand{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQRubberBand_U(h unsafe.Pointer) *QRubberBand {
+func UnsafeNewQRubberBand(h unsafe.Pointer) *QRubberBand {
 	return newQRubberBand((*C.QRubberBand)(h))
 }
 
@@ -56,7 +63,7 @@ func NewQRubberBand2(param1 QRubberBand__Shape, param2 *QWidget) *QRubberBand {
 }
 
 func (this *QRubberBand) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QRubberBand_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRubberBand_MetaObject(this.h)))
 }
 
 func (this *QRubberBand) Metacast(param1 string) unsafe.Pointer {

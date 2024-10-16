@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -31,6 +32,13 @@ func (this *QObjectData) cPointer() *C.QObjectData {
 	return this.h
 }
 
+func (this *QObjectData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQObjectData(h *C.QObjectData) *QObjectData {
 	if h == nil {
 		return nil
@@ -38,12 +46,12 @@ func newQObjectData(h *C.QObjectData) *QObjectData {
 	return &QObjectData{h: h}
 }
 
-func newQObjectData_U(h unsafe.Pointer) *QObjectData {
+func UnsafeNewQObjectData(h unsafe.Pointer) *QObjectData {
 	return newQObjectData((*C.QObjectData)(h))
 }
 
 func (this *QObjectData) DynamicMetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QObjectData_DynamicMetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObjectData_DynamicMetaObject(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -71,6 +79,13 @@ func (this *QObject) cPointer() *C.QObject {
 	return this.h
 }
 
+func (this *QObject) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQObject(h *C.QObject) *QObject {
 	if h == nil {
 		return nil
@@ -78,7 +93,7 @@ func newQObject(h *C.QObject) *QObject {
 	return &QObject{h: h}
 }
 
-func newQObject_U(h unsafe.Pointer) *QObject {
+func UnsafeNewQObject(h unsafe.Pointer) *QObject {
 	return newQObject((*C.QObject)(h))
 }
 
@@ -95,7 +110,7 @@ func NewQObject2(parent *QObject) *QObject {
 }
 
 func (this *QObject) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QObject_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObject_MetaObject(this.h)))
 }
 
 func (this *QObject) Metacast(param1 string) unsafe.Pointer {
@@ -138,7 +153,7 @@ func (this *QObject) ObjectName() string {
 }
 
 func (this *QObject) SetObjectName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QObject_SetObjectName(this.h, (*C.struct_miqt_string)(name_ms))
 }
@@ -160,7 +175,7 @@ func (this *QObject) BlockSignals(b bool) bool {
 }
 
 func (this *QObject) Thread() *QThread {
-	return newQThread_U(unsafe.Pointer(C.QObject_Thread(this.h)))
+	return UnsafeNewQThread(unsafe.Pointer(C.QObject_Thread(this.h)))
 }
 
 func (this *QObject) MoveToThread(thread *QThread) {
@@ -180,7 +195,7 @@ func (this *QObject) Children() []*QObject {
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = newQObject_U(unsafe.Pointer(_outCast[i]))
+		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -278,7 +293,7 @@ func (this *QObject) SetUserData(id uint, data *QObjectUserData) {
 }
 
 func (this *QObject) UserData(id uint) *QObjectUserData {
-	return newQObjectUserData_U(unsafe.Pointer(C.QObject_UserData(this.h, (C.uint)(id))))
+	return UnsafeNewQObjectUserData(unsafe.Pointer(C.QObject_UserData(this.h, (C.uint)(id))))
 }
 
 func (this *QObject) Destroyed() {
@@ -299,7 +314,7 @@ func miqt_exec_callback_QObject_Destroyed(cb C.intptr_t) {
 }
 
 func (this *QObject) Parent() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QObject_Parent(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QObject_Parent(this.h)))
 }
 
 func (this *QObject) Inherits(classname string) bool {
@@ -393,7 +408,7 @@ func miqt_exec_callback_QObject_Destroyed1(cb C.intptr_t, param1 *C.QObject) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQObject_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -423,6 +438,13 @@ func (this *QObjectUserData) cPointer() *C.QObjectUserData {
 	return this.h
 }
 
+func (this *QObjectUserData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQObjectUserData(h *C.QObjectUserData) *QObjectUserData {
 	if h == nil {
 		return nil
@@ -430,7 +452,7 @@ func newQObjectUserData(h *C.QObjectUserData) *QObjectUserData {
 	return &QObjectUserData{h: h}
 }
 
-func newQObjectUserData_U(h unsafe.Pointer) *QObjectUserData {
+func UnsafeNewQObjectUserData(h unsafe.Pointer) *QObjectUserData {
 	return newQObjectUserData((*C.QObjectUserData)(h))
 }
 
@@ -465,6 +487,13 @@ func (this *QSignalBlocker) cPointer() *C.QSignalBlocker {
 	return this.h
 }
 
+func (this *QSignalBlocker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSignalBlocker(h *C.QSignalBlocker) *QSignalBlocker {
 	if h == nil {
 		return nil
@@ -472,7 +501,7 @@ func newQSignalBlocker(h *C.QSignalBlocker) *QSignalBlocker {
 	return &QSignalBlocker{h: h}
 }
 
-func newQSignalBlocker_U(h unsafe.Pointer) *QSignalBlocker {
+func UnsafeNewQSignalBlocker(h unsafe.Pointer) *QSignalBlocker {
 	return newQSignalBlocker((*C.QSignalBlocker)(h))
 }
 

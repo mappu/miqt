@@ -32,19 +32,26 @@ func (this *QInputMethod) cPointer() *C.QInputMethod {
 	return this.h
 }
 
+func (this *QInputMethod) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQInputMethod(h *C.QInputMethod) *QInputMethod {
 	if h == nil {
 		return nil
 	}
-	return &QInputMethod{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QInputMethod{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQInputMethod_U(h unsafe.Pointer) *QInputMethod {
+func UnsafeNewQInputMethod(h unsafe.Pointer) *QInputMethod {
 	return newQInputMethod((*C.QInputMethod)(h))
 }
 
 func (this *QInputMethod) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QInputMethod_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QInputMethod_MetaObject(this.h)))
 }
 
 func (this *QInputMethod) Metacast(param1 string) unsafe.Pointer {

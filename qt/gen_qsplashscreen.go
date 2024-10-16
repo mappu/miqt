@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QSplashScreen) cPointer() *C.QSplashScreen {
 	return this.h
 }
 
+func (this *QSplashScreen) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSplashScreen(h *C.QSplashScreen) *QSplashScreen {
 	if h == nil {
 		return nil
 	}
-	return &QSplashScreen{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QSplashScreen{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQSplashScreen_U(h unsafe.Pointer) *QSplashScreen {
+func UnsafeNewQSplashScreen(h unsafe.Pointer) *QSplashScreen {
 	return newQSplashScreen((*C.QSplashScreen)(h))
 }
 
@@ -92,7 +100,7 @@ func NewQSplashScreen9(parent *QWidget, pixmap *QPixmap, f WindowType) *QSplashS
 }
 
 func (this *QSplashScreen) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSplashScreen_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSplashScreen_MetaObject(this.h)))
 }
 
 func (this *QSplashScreen) Metacast(param1 string) unsafe.Pointer {
@@ -146,7 +154,7 @@ func (this *QSplashScreen) Message() string {
 }
 
 func (this *QSplashScreen) ShowMessage(message string) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
 	C.QSplashScreen_ShowMessage(this.h, (*C.struct_miqt_string)(message_ms))
 }
@@ -156,7 +164,7 @@ func (this *QSplashScreen) ClearMessage() {
 }
 
 func (this *QSplashScreen) MessageChanged(message string) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
 	C.QSplashScreen_MessageChanged(this.h, (*C.struct_miqt_string)(message_ms))
 }
@@ -225,13 +233,13 @@ func QSplashScreen_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
 	C.QSplashScreen_ShowMessage2(this.h, (*C.struct_miqt_string)(message_ms), (C.int)(alignment))
 }
 
 func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QColor) {
-	message_ms := miqt_strdupg(message)
+	message_ms := libmiqt.Strdupg(message)
 	defer C.free(message_ms)
 	C.QSplashScreen_ShowMessage3(this.h, (*C.struct_miqt_string)(message_ms), (C.int)(alignment), color.cPointer())
 }

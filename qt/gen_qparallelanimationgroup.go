@@ -25,14 +25,21 @@ func (this *QParallelAnimationGroup) cPointer() *C.QParallelAnimationGroup {
 	return this.h
 }
 
+func (this *QParallelAnimationGroup) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQParallelAnimationGroup(h *C.QParallelAnimationGroup) *QParallelAnimationGroup {
 	if h == nil {
 		return nil
 	}
-	return &QParallelAnimationGroup{h: h, QAnimationGroup: newQAnimationGroup_U(unsafe.Pointer(h))}
+	return &QParallelAnimationGroup{h: h, QAnimationGroup: UnsafeNewQAnimationGroup(unsafe.Pointer(h))}
 }
 
-func newQParallelAnimationGroup_U(h unsafe.Pointer) *QParallelAnimationGroup {
+func UnsafeNewQParallelAnimationGroup(h unsafe.Pointer) *QParallelAnimationGroup {
 	return newQParallelAnimationGroup((*C.QParallelAnimationGroup)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQParallelAnimationGroup2(parent *QObject) *QParallelAnimationGroup {
 }
 
 func (this *QParallelAnimationGroup) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QParallelAnimationGroup_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QParallelAnimationGroup_MetaObject(this.h)))
 }
 
 func (this *QParallelAnimationGroup) Metacast(param1 string) unsafe.Pointer {

@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qmessagebox.h"
+#include <qmessagebox.h>
 #include "gen_qmessagebox.h"
 #include "_cgo_export.h"
 

@@ -10,7 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qcompleter.h"
+#include <qcompleter.h>
 #include "gen_qcompleter.h"
 #include "_cgo_export.h"
 
@@ -23,7 +23,7 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 }
 
 QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions) {
-	QList<QString> completions_QList;
+	QStringList completions_QList;
 	completions_QList.reserve(completions->len);
 	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
@@ -42,7 +42,7 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 }
 
 QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent) {
-	QList<QString> completions_QList;
+	QStringList completions_QList;
 	completions_QList.reserve(completions->len);
 	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {

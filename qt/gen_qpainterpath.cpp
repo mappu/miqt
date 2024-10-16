@@ -10,7 +10,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qpainterpath.h"
+#include <qpainterpath.h>
 #include "gen_qpainterpath.h"
 #include "_cgo_export.h"
 
@@ -399,7 +399,7 @@ void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, int dashPatte
 }
 
 void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array* /* of double */ dashPattern) {
-	QVector<double> dashPattern_QList;
+	QVector<qreal> dashPattern_QList;
 	dashPattern_QList.reserve(dashPattern->len);
 	double* dashPattern_arr = static_cast<double*>(dashPattern->data);
 	for(size_t i = 0; i < dashPattern->len; ++i) {

@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfontdatabase.h"
+#include <qfontdatabase.h>
 #include "gen_qfontdatabase.h"
 #include "_cgo_export.h"
 

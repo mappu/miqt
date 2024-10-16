@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTranslator>
-#include "qtranslator.h"
+#include <qtranslator.h>
 #include "gen_qtranslator.h"
 #include "_cgo_export.h"
 

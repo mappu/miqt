@@ -25,14 +25,21 @@ func (this *QSizeGrip) cPointer() *C.QSizeGrip {
 	return this.h
 }
 
+func (this *QSizeGrip) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSizeGrip(h *C.QSizeGrip) *QSizeGrip {
 	if h == nil {
 		return nil
 	}
-	return &QSizeGrip{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QSizeGrip{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQSizeGrip_U(h unsafe.Pointer) *QSizeGrip {
+func UnsafeNewQSizeGrip(h unsafe.Pointer) *QSizeGrip {
 	return newQSizeGrip((*C.QSizeGrip)(h))
 }
 
@@ -43,7 +50,7 @@ func NewQSizeGrip(parent *QWidget) *QSizeGrip {
 }
 
 func (this *QSizeGrip) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSizeGrip_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSizeGrip_MetaObject(this.h)))
 }
 
 func (this *QSizeGrip) Metacast(param1 string) unsafe.Pointer {

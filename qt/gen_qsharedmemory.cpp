@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qsharedmemory.h"
+#include <qsharedmemory.h>
 #include "gen_qsharedmemory.h"
 #include "_cgo_export.h"
 

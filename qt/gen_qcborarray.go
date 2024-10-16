@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QCborArray) cPointer() *C.QCborArray {
 	return this.h
 }
 
+func (this *QCborArray) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborArray(h *C.QCborArray) *QCborArray {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQCborArray(h *C.QCborArray) *QCborArray {
 	return &QCborArray{h: h}
 }
 
-func newQCborArray_U(h unsafe.Pointer) *QCborArray {
+func UnsafeNewQCborArray(h unsafe.Pointer) *QCborArray {
 	return newQCborArray((*C.QCborArray)(h))
 }
 
@@ -314,11 +322,11 @@ func (this *QCborArray) OperatorPlus(v *QCborValue) *QCborArray {
 }
 
 func (this *QCborArray) OperatorPlusAssign(v *QCborValue) *QCborArray {
-	return newQCborArray_U(unsafe.Pointer(C.QCborArray_OperatorPlusAssign(this.h, v.cPointer())))
+	return UnsafeNewQCborArray(unsafe.Pointer(C.QCborArray_OperatorPlusAssign(this.h, v.cPointer())))
 }
 
 func (this *QCborArray) OperatorShiftLeft(v *QCborValue) *QCborArray {
-	return newQCborArray_U(unsafe.Pointer(C.QCborArray_OperatorShiftLeft(this.h, v.cPointer())))
+	return UnsafeNewQCborArray(unsafe.Pointer(C.QCborArray_OperatorShiftLeft(this.h, v.cPointer())))
 }
 
 func QCborArray_FromStringList(list []string) *QCborArray {
@@ -326,7 +334,7 @@ func QCborArray_FromStringList(list []string) *QCborArray {
 	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		list_i_ms := miqt_strdupg(list[i])
+		list_i_ms := libmiqt.Strdupg(list[i])
 		defer C.free(list_i_ms)
 		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
 	}
@@ -377,6 +385,13 @@ func (this *QCborArray__Iterator) cPointer() *C.QCborArray__Iterator {
 	return this.h
 }
 
+func (this *QCborArray__Iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
 	if h == nil {
 		return nil
@@ -384,7 +399,7 @@ func newQCborArray__Iterator(h *C.QCborArray__Iterator) *QCborArray__Iterator {
 	return &QCborArray__Iterator{h: h}
 }
 
-func newQCborArray__Iterator_U(h unsafe.Pointer) *QCborArray__Iterator {
+func UnsafeNewQCborArray__Iterator(h unsafe.Pointer) *QCborArray__Iterator {
 	return newQCborArray__Iterator((*C.QCborArray__Iterator)(h))
 }
 
@@ -412,7 +427,7 @@ func (this *QCborArray__Iterator) OperatorMultiply() *QCborValueRef {
 }
 
 func (this *QCborArray__Iterator) OperatorMinusGreater() *QCborValueRef {
-	return newQCborValueRef_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusGreater(this.h)))
+	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborArray__Iterator) OperatorSubscript(j int64) *QCborValueRef {
@@ -471,7 +486,7 @@ func (this *QCborArray__Iterator) OperatorGreaterOrEqualWithOther(other *QCborAr
 }
 
 func (this *QCborArray__Iterator) OperatorPlusPlus() *QCborArray__Iterator {
-	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQCborArray__Iterator(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QCborArray__Iterator) OperatorPlusPlusWithInt(param1 int) *QCborArray__Iterator {
@@ -482,7 +497,7 @@ func (this *QCborArray__Iterator) OperatorPlusPlusWithInt(param1 int) *QCborArra
 }
 
 func (this *QCborArray__Iterator) OperatorMinusMinus() *QCborArray__Iterator {
-	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQCborArray__Iterator(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QCborArray__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborArray__Iterator {
@@ -493,11 +508,11 @@ func (this *QCborArray__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborAr
 }
 
 func (this *QCborArray__Iterator) OperatorPlusAssign(j int64) *QCborArray__Iterator {
-	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborArray__Iterator(unsafe.Pointer(C.QCborArray__Iterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborArray__Iterator) OperatorMinusAssign(j int64) *QCborArray__Iterator {
-	return newQCborArray__Iterator_U(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborArray__Iterator(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborArray__Iterator) OperatorPlus(j int64) *QCborArray__Iterator {
@@ -543,6 +558,13 @@ func (this *QCborArray__ConstIterator) cPointer() *C.QCborArray__ConstIterator {
 	return this.h
 }
 
+func (this *QCborArray__ConstIterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__ConstIterator {
 	if h == nil {
 		return nil
@@ -550,7 +572,7 @@ func newQCborArray__ConstIterator(h *C.QCborArray__ConstIterator) *QCborArray__C
 	return &QCborArray__ConstIterator{h: h}
 }
 
-func newQCborArray__ConstIterator_U(h unsafe.Pointer) *QCborArray__ConstIterator {
+func UnsafeNewQCborArray__ConstIterator(h unsafe.Pointer) *QCborArray__ConstIterator {
 	return newQCborArray__ConstIterator((*C.QCborArray__ConstIterator)(h))
 }
 
@@ -578,7 +600,7 @@ func (this *QCborArray__ConstIterator) OperatorMultiply() *QCborValueRef {
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusGreater() *QCborValueRef {
-	return newQCborValueRef_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)))
+	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorSubscript(j int64) *QCborValueRef {
@@ -637,7 +659,7 @@ func (this *QCborArray__ConstIterator) OperatorGreaterOrEqualWithOther(other *QC
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlusPlus() *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQCborArray__ConstIterator(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlusPlusWithInt(param1 int) *QCborArray__ConstIterator {
@@ -648,7 +670,7 @@ func (this *QCborArray__ConstIterator) OperatorPlusPlusWithInt(param1 int) *QCbo
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusMinus() *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQCborArray__ConstIterator(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QCborArray__ConstIterator {
@@ -659,11 +681,11 @@ func (this *QCborArray__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QC
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlusAssign(j int64) *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborArray__ConstIterator(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusAssign(j int64) *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator_U(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
+	return UnsafeNewQCborArray__ConstIterator(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j))))
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlus(j int64) *QCborArray__ConstIterator {

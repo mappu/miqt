@@ -2,7 +2,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QSystemSemaphore>
-#include "qsystemsemaphore.h"
+#include <qsystemsemaphore.h>
 #include "gen_qsystemsemaphore.h"
 #include "_cgo_export.h"
 

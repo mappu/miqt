@@ -25,14 +25,21 @@ func (this *QStyledItemDelegate) cPointer() *C.QStyledItemDelegate {
 	return this.h
 }
 
+func (this *QStyledItemDelegate) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyledItemDelegate(h *C.QStyledItemDelegate) *QStyledItemDelegate {
 	if h == nil {
 		return nil
 	}
-	return &QStyledItemDelegate{h: h, QAbstractItemDelegate: newQAbstractItemDelegate_U(unsafe.Pointer(h))}
+	return &QStyledItemDelegate{h: h, QAbstractItemDelegate: UnsafeNewQAbstractItemDelegate(unsafe.Pointer(h))}
 }
 
-func newQStyledItemDelegate_U(h unsafe.Pointer) *QStyledItemDelegate {
+func UnsafeNewQStyledItemDelegate(h unsafe.Pointer) *QStyledItemDelegate {
 	return newQStyledItemDelegate((*C.QStyledItemDelegate)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQStyledItemDelegate2(parent *QObject) *QStyledItemDelegate {
 }
 
 func (this *QStyledItemDelegate) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QStyledItemDelegate_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyledItemDelegate_MetaObject(this.h)))
 }
 
 func (this *QStyledItemDelegate) Metacast(param1 string) unsafe.Pointer {
@@ -88,7 +95,7 @@ func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index *Q
 }
 
 func (this *QStyledItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QStyledItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QStyledItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
 }
 
 func (this *QStyledItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
@@ -104,7 +111,7 @@ func (this *QStyledItemDelegate) UpdateEditorGeometry(editor *QWidget, option *Q
 }
 
 func (this *QStyledItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	return newQItemEditorFactory_U(unsafe.Pointer(C.QStyledItemDelegate_ItemEditorFactory(this.h)))
+	return UnsafeNewQItemEditorFactory(unsafe.Pointer(C.QStyledItemDelegate_ItemEditorFactory(this.h)))
 }
 
 func (this *QStyledItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {

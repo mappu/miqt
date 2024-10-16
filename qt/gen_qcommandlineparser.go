@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -38,6 +39,13 @@ func (this *QCommandLineParser) cPointer() *C.QCommandLineParser {
 	return this.h
 }
 
+func (this *QCommandLineParser) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	if h == nil {
 		return nil
@@ -45,7 +53,7 @@ func newQCommandLineParser(h *C.QCommandLineParser) *QCommandLineParser {
 	return &QCommandLineParser{h: h}
 }
 
-func newQCommandLineParser_U(h unsafe.Pointer) *QCommandLineParser {
+func UnsafeNewQCommandLineParser(h unsafe.Pointer) *QCommandLineParser {
 	return newQCommandLineParser((*C.QCommandLineParser)(h))
 }
 
@@ -112,7 +120,7 @@ func (this *QCommandLineParser) AddHelpOption() *QCommandLineOption {
 }
 
 func (this *QCommandLineParser) SetApplicationDescription(description string) {
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QCommandLineParser_SetApplicationDescription(this.h, (*C.struct_miqt_string)(description_ms))
 }
@@ -125,9 +133,9 @@ func (this *QCommandLineParser) ApplicationDescription() string {
 }
 
 func (this *QCommandLineParser) AddPositionalArgument(name string, description string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
 	C.QCommandLineParser_AddPositionalArgument(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(description_ms))
 }
@@ -141,7 +149,7 @@ func (this *QCommandLineParser) Process(arguments []string) {
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		arguments_i_ms := miqt_strdupg(arguments[i])
+		arguments_i_ms := libmiqt.Strdupg(arguments[i])
 		defer C.free(arguments_i_ms)
 		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
@@ -159,7 +167,7 @@ func (this *QCommandLineParser) Parse(arguments []string) bool {
 	arguments_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
-		arguments_i_ms := miqt_strdupg(arguments[i])
+		arguments_i_ms := libmiqt.Strdupg(arguments[i])
 		defer C.free(arguments_i_ms)
 		arguments_CArray[i] = (*C.struct_miqt_string)(arguments_i_ms)
 	}
@@ -176,13 +184,13 @@ func (this *QCommandLineParser) ErrorText() string {
 }
 
 func (this *QCommandLineParser) IsSet(name string) bool {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	return (bool)(C.QCommandLineParser_IsSet(this.h, (*C.struct_miqt_string)(name_ms)))
 }
 
 func (this *QCommandLineParser) Value(name string) string {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	var _ms *C.struct_miqt_string = C.QCommandLineParser_Value(this.h, (*C.struct_miqt_string)(name_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -191,7 +199,7 @@ func (this *QCommandLineParser) Value(name string) string {
 }
 
 func (this *QCommandLineParser) Values(name string) []string {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	var _ma *C.struct_miqt_array = C.QCommandLineParser_Values(this.h, (*C.struct_miqt_string)(name_ms))
 	_ret := make([]string, int(_ma.len))
@@ -325,11 +333,11 @@ func QCommandLineParser_TrUtf83(sourceText string, disambiguation string, n int)
 }
 
 func (this *QCommandLineParser) AddPositionalArgument3(name string, description string, syntax string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
-	description_ms := miqt_strdupg(description)
+	description_ms := libmiqt.Strdupg(description)
 	defer C.free(description_ms)
-	syntax_ms := miqt_strdupg(syntax)
+	syntax_ms := libmiqt.Strdupg(syntax)
 	defer C.free(syntax_ms)
 	C.QCommandLineParser_AddPositionalArgument3(this.h, (*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(description_ms), (*C.struct_miqt_string)(syntax_ms))
 }

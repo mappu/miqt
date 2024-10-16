@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QMimeType) cPointer() *C.QMimeType {
 	return this.h
 }
 
+func (this *QMimeType) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQMimeType(h *C.QMimeType) *QMimeType {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQMimeType(h *C.QMimeType) *QMimeType {
 	return &QMimeType{h: h}
 }
 
-func newQMimeType_U(h unsafe.Pointer) *QMimeType {
+func UnsafeNewQMimeType(h unsafe.Pointer) *QMimeType {
 	return newQMimeType((*C.QMimeType)(h))
 }
 
@@ -177,7 +185,7 @@ func (this *QMimeType) PreferredSuffix() string {
 }
 
 func (this *QMimeType) Inherits(mimeTypeName string) bool {
-	mimeTypeName_ms := miqt_strdupg(mimeTypeName)
+	mimeTypeName_ms := libmiqt.Strdupg(mimeTypeName)
 	defer C.free(mimeTypeName_ms)
 	return (bool)(C.QMimeType_Inherits(this.h, (*C.struct_miqt_string)(mimeTypeName_ms)))
 }

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -85,6 +86,13 @@ func (this *QPainter) cPointer() *C.QPainter {
 	return this.h
 }
 
+func (this *QPainter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPainter(h *C.QPainter) *QPainter {
 	if h == nil {
 		return nil
@@ -92,7 +100,7 @@ func newQPainter(h *C.QPainter) *QPainter {
 	return &QPainter{h: h}
 }
 
-func newQPainter_U(h unsafe.Pointer) *QPainter {
+func UnsafeNewQPainter(h unsafe.Pointer) *QPainter {
 	return newQPainter((*C.QPainter)(h))
 }
 
@@ -109,7 +117,7 @@ func NewQPainter2(param1 *QPaintDevice) *QPainter {
 }
 
 func (this *QPainter) Device() *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Device(this.h)))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Device(this.h)))
 }
 
 func (this *QPainter) Begin(param1 *QPaintDevice) bool {
@@ -137,7 +145,7 @@ func (this *QPainter) CompositionMode() QPainter__CompositionMode {
 }
 
 func (this *QPainter) Font() *QFont {
-	return newQFont_U(unsafe.Pointer(C.QPainter_Font(this.h)))
+	return UnsafeNewQFont(unsafe.Pointer(C.QPainter_Font(this.h)))
 }
 
 func (this *QPainter) SetFont(f *QFont) {
@@ -171,7 +179,7 @@ func (this *QPainter) SetPenWithStyle(style PenStyle) {
 }
 
 func (this *QPainter) Pen() *QPen {
-	return newQPen_U(unsafe.Pointer(C.QPainter_Pen(this.h)))
+	return UnsafeNewQPen(unsafe.Pointer(C.QPainter_Pen(this.h)))
 }
 
 func (this *QPainter) SetBrush(brush *QBrush) {
@@ -183,7 +191,7 @@ func (this *QPainter) SetBrushWithStyle(style BrushStyle) {
 }
 
 func (this *QPainter) Brush() *QBrush {
-	return newQBrush_U(unsafe.Pointer(C.QPainter_Brush(this.h)))
+	return UnsafeNewQBrush(unsafe.Pointer(C.QPainter_Brush(this.h)))
 }
 
 func (this *QPainter) SetBackgroundMode(mode BGMode) {
@@ -218,7 +226,7 @@ func (this *QPainter) SetBackground(bg *QBrush) {
 }
 
 func (this *QPainter) Background() *QBrush {
-	return newQBrush_U(unsafe.Pointer(C.QPainter_Background(this.h)))
+	return UnsafeNewQBrush(unsafe.Pointer(C.QPainter_Background(this.h)))
 }
 
 func (this *QPainter) Opacity() float64 {
@@ -291,11 +299,11 @@ func (this *QPainter) SetMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) Matrix() *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QPainter_Matrix(this.h)))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_Matrix(this.h)))
 }
 
 func (this *QPainter) DeviceMatrix() *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QPainter_DeviceMatrix(this.h)))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_DeviceMatrix(this.h)))
 }
 
 func (this *QPainter) ResetMatrix() {
@@ -307,11 +315,11 @@ func (this *QPainter) SetTransform(transform *QTransform) {
 }
 
 func (this *QPainter) Transform() *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QPainter_Transform(this.h)))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_Transform(this.h)))
 }
 
 func (this *QPainter) DeviceTransform() *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QPainter_DeviceTransform(this.h)))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_DeviceTransform(this.h)))
 }
 
 func (this *QPainter) ResetTransform() {
@@ -323,7 +331,7 @@ func (this *QPainter) SetWorldMatrix(matrix *QMatrix) {
 }
 
 func (this *QPainter) WorldMatrix() *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QPainter_WorldMatrix(this.h)))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QPainter_WorldMatrix(this.h)))
 }
 
 func (this *QPainter) CombinedMatrix() *QMatrix {
@@ -346,7 +354,7 @@ func (this *QPainter) SetWorldTransform(matrix *QTransform) {
 }
 
 func (this *QPainter) WorldTransform() *QTransform {
-	return newQTransform_U(unsafe.Pointer(C.QPainter_WorldTransform(this.h)))
+	return UnsafeNewQTransform(unsafe.Pointer(C.QPainter_WorldTransform(this.h)))
 }
 
 func (this *QPainter) CombinedTransform() *QTransform {
@@ -823,55 +831,55 @@ func (this *QPainter) DrawStaticText3(left int, top int, staticText *QStaticText
 }
 
 func (this *QPainter) DrawText(p *QPointF, s string) {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	C.QPainter_DrawText(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText2(p *QPoint, s string) {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	C.QPainter_DrawText2(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText3(x int, y int, s string) {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), (*C.struct_miqt_string)(s_ms))
 }
 
 func (this *QPainter) DrawText4(p *QPointF, str string, tf int, justificationPadding int) {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	C.QPainter_DrawText4(this.h, p.cPointer(), (*C.struct_miqt_string)(str_ms), (C.int)(tf), (C.int)(justificationPadding))
 }
 
 func (this *QPainter) DrawText5(r *QRectF, flags int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText6(r *QRect, flags int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText7(x int, y int, w int, h int, flags int, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) DrawText8(r *QRectF, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText8(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms))
 }
 
 func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRectF(_ret)
@@ -880,7 +888,7 @@ func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF
 }
 
 func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRect(_ret)
@@ -889,7 +897,7 @@ func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect 
 }
 
 func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRect(_ret)
@@ -898,7 +906,7 @@ func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text 
 }
 
 func (this *QPainter) BoundingRect4(rect *QRectF, text string) *QRectF {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms))
 	_goptr := newQRectF(_ret)
@@ -1007,7 +1015,7 @@ func (this *QPainter) TestRenderHint(hint QPainter__RenderHint) bool {
 }
 
 func (this *QPainter) PaintEngine() *QPaintEngine {
-	return newQPaintEngine_U(unsafe.Pointer(C.QPainter_PaintEngine(this.h)))
+	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPainter_PaintEngine(this.h)))
 }
 
 func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
@@ -1015,7 +1023,7 @@ func QPainter_SetRedirected(device *QPaintDevice, replacement *QPaintDevice) {
 }
 
 func QPainter_Redirected(device *QPaintDevice) *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Redirected(device.cPointer())))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Redirected(device.cPointer())))
 }
 
 func QPainter_RestoreRedirected(device *QPaintDevice) {
@@ -1167,31 +1175,31 @@ func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, s
 }
 
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText43(r *QRect, flags int, text string, br *QRect) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText72(x int, y int, w int, h int, flags int, text string, br *QRect) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
 }
 
 func (this *QPainter) DrawText32(r *QRectF, text string, o *QTextOption) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QPainter_DrawText32(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
 }
 
 func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) *QRectF {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	_ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
 	_goptr := newQRectF(_ret)
@@ -1212,7 +1220,7 @@ func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, of
 }
 
 func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QPainter_Redirected2(device.cPointer(), offset.cPointer())))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPainter_Redirected2(device.cPointer(), offset.cPointer())))
 }
 
 // Delete this object from C++ memory.
@@ -1240,6 +1248,13 @@ func (this *QPainter__PixmapFragment) cPointer() *C.QPainter__PixmapFragment {
 	return this.h
 }
 
+func (this *QPainter__PixmapFragment) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__PixmapFragment {
 	if h == nil {
 		return nil
@@ -1247,7 +1262,7 @@ func newQPainter__PixmapFragment(h *C.QPainter__PixmapFragment) *QPainter__Pixma
 	return &QPainter__PixmapFragment{h: h}
 }
 
-func newQPainter__PixmapFragment_U(h unsafe.Pointer) *QPainter__PixmapFragment {
+func UnsafeNewQPainter__PixmapFragment(h unsafe.Pointer) *QPainter__PixmapFragment {
 	return newQPainter__PixmapFragment((*C.QPainter__PixmapFragment)(h))
 }
 

@@ -28,7 +28,7 @@
 #include <QStyleOptionViewItem>
 #include <QTransform>
 #include <QWidget>
-#include "qstyleoption.h"
+#include <qstyleoption.h>
 #include "gen_qstyleoption.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -67,6 +68,13 @@ func (this *QAbstractUndoItem) cPointer() *C.QAbstractUndoItem {
 	return this.h
 }
 
+func (this *QAbstractUndoItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	if h == nil {
 		return nil
@@ -74,7 +82,7 @@ func newQAbstractUndoItem(h *C.QAbstractUndoItem) *QAbstractUndoItem {
 	return &QAbstractUndoItem{h: h}
 }
 
-func newQAbstractUndoItem_U(h unsafe.Pointer) *QAbstractUndoItem {
+func UnsafeNewQAbstractUndoItem(h unsafe.Pointer) *QAbstractUndoItem {
 	return newQAbstractUndoItem((*C.QAbstractUndoItem)(h))
 }
 
@@ -116,14 +124,21 @@ func (this *QTextDocument) cPointer() *C.QTextDocument {
 	return this.h
 }
 
+func (this *QTextDocument) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextDocument(h *C.QTextDocument) *QTextDocument {
 	if h == nil {
 		return nil
 	}
-	return &QTextDocument{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QTextDocument{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQTextDocument_U(h unsafe.Pointer) *QTextDocument {
+func UnsafeNewQTextDocument(h unsafe.Pointer) *QTextDocument {
 	return newQTextDocument((*C.QTextDocument)(h))
 }
 
@@ -135,7 +150,7 @@ func NewQTextDocument() *QTextDocument {
 
 // NewQTextDocument2 constructs a new QTextDocument object.
 func NewQTextDocument2(text string) *QTextDocument {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextDocument_new2((*C.struct_miqt_string)(text_ms))
 	return newQTextDocument(ret)
@@ -149,14 +164,14 @@ func NewQTextDocument3(parent *QObject) *QTextDocument {
 
 // NewQTextDocument4 constructs a new QTextDocument object.
 func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QTextDocument_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQTextDocument(ret)
 }
 
 func (this *QTextDocument) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTextDocument_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextDocument_MetaObject(this.h)))
 }
 
 func (this *QTextDocument) Metacast(param1 string) unsafe.Pointer {
@@ -184,7 +199,7 @@ func QTextDocument_TrUtf8(s string) string {
 }
 
 func (this *QTextDocument) Clone() *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextDocument_Clone(this.h)))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone(this.h)))
 }
 
 func (this *QTextDocument) IsEmpty() bool {
@@ -228,11 +243,11 @@ func (this *QTextDocument) SetDocumentLayout(layout *QAbstractTextDocumentLayout
 }
 
 func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
-	return newQAbstractTextDocumentLayout_U(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)))
+	return UnsafeNewQAbstractTextDocumentLayout(unsafe.Pointer(C.QTextDocument_DocumentLayout(this.h)))
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
-	param2_ms := miqt_strdupg(param2)
+	param2_ms := libmiqt.Strdupg(param2)
 	defer C.free(param2_ms)
 	C.QTextDocument_SetMetaInformation(this.h, (C.int)(info), (*C.struct_miqt_string)(param2_ms))
 }
@@ -252,7 +267,7 @@ func (this *QTextDocument) ToHtml() string {
 }
 
 func (this *QTextDocument) SetHtml(html string) {
-	html_ms := miqt_strdupg(html)
+	html_ms := libmiqt.Strdupg(html)
 	defer C.free(html_ms)
 	C.QTextDocument_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
 }
@@ -265,7 +280,7 @@ func (this *QTextDocument) ToMarkdown() string {
 }
 
 func (this *QTextDocument) SetMarkdown(markdown string) {
-	markdown_ms := miqt_strdupg(markdown)
+	markdown_ms := libmiqt.Strdupg(markdown)
 	defer C.free(markdown_ms)
 	C.QTextDocument_SetMarkdown(this.h, (*C.struct_miqt_string)(markdown_ms))
 }
@@ -285,7 +300,7 @@ func (this *QTextDocument) ToPlainText() string {
 }
 
 func (this *QTextDocument) SetPlainText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QTextDocument_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -298,7 +313,7 @@ func (this *QTextDocument) CharacterAt(pos int) *QChar {
 }
 
 func (this *QTextDocument) Find(subString string) *QTextCursor {
-	subString_ms := miqt_strdupg(subString)
+	subString_ms := libmiqt.Strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find(this.h, (*C.struct_miqt_string)(subString_ms))
 	_goptr := newQTextCursor(_ret)
@@ -307,7 +322,7 @@ func (this *QTextDocument) Find(subString string) *QTextCursor {
 }
 
 func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCursor {
-	subString_ms := miqt_strdupg(subString)
+	subString_ms := libmiqt.Strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find2(this.h, (*C.struct_miqt_string)(subString_ms), cursor.cPointer())
 	_goptr := newQTextCursor(_ret)
@@ -344,19 +359,19 @@ func (this *QTextDocument) Find5(expr *QRegularExpression, cursor *QTextCursor) 
 }
 
 func (this *QTextDocument) FrameAt(pos int) *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_FrameAt(this.h, (C.int)(pos))))
 }
 
 func (this *QTextDocument) RootFrame() *QTextFrame {
-	return newQTextFrame_U(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)))
+	return UnsafeNewQTextFrame(unsafe.Pointer(C.QTextDocument_RootFrame(this.h)))
 }
 
 func (this *QTextDocument) Object(objectIndex int) *QTextObject {
-	return newQTextObject_U(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))))
+	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_Object(this.h, (C.int)(objectIndex))))
 }
 
 func (this *QTextDocument) ObjectForFormat(param1 *QTextFormat) *QTextObject {
-	return newQTextObject_U(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())))
+	return UnsafeNewQTextObject(unsafe.Pointer(C.QTextDocument_ObjectForFormat(this.h, param1.cPointer())))
 }
 
 func (this *QTextDocument) FindBlock(pos int) *QTextBlock {
@@ -535,7 +550,7 @@ func (this *QTextDocument) CharacterCount() int {
 }
 
 func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
-	sheet_ms := miqt_strdupg(sheet)
+	sheet_ms := libmiqt.Strdupg(sheet)
 	defer C.free(sheet_ms)
 	C.QTextDocument_SetDefaultStyleSheet(this.h, (*C.struct_miqt_string)(sheet_ms))
 }
@@ -730,7 +745,7 @@ func miqt_exec_callback_QTextDocument_CursorPositionChanged(cb C.intptr_t, curso
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTextCursor_U(unsafe.Pointer(cursor))
+	slotval1 := UnsafeNewQTextCursor(unsafe.Pointer(cursor))
 
 	gofunc(slotval1)
 }
@@ -770,7 +785,7 @@ func miqt_exec_callback_QTextDocument_BaseUrlChanged(cb C.intptr_t, url *C.QUrl)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQUrl_U(unsafe.Pointer(url))
+	slotval1 := UnsafeNewQUrl(unsafe.Pointer(url))
 
 	gofunc(slotval1)
 }
@@ -853,7 +868,7 @@ func QTextDocument_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	return newQTextDocument_U(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())))
+	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())))
 }
 
 func (this *QTextDocument) ToHtml1(encoding *QByteArray) string {
@@ -871,13 +886,13 @@ func (this *QTextDocument) ToMarkdown1(features QTextDocument__MarkdownFeature) 
 }
 
 func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument__MarkdownFeature) {
-	markdown_ms := miqt_strdupg(markdown)
+	markdown_ms := libmiqt.Strdupg(markdown)
 	defer C.free(markdown_ms)
 	C.QTextDocument_SetMarkdown2(this.h, (*C.struct_miqt_string)(markdown_ms), (C.int)(features))
 }
 
 func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
-	subString_ms := miqt_strdupg(subString)
+	subString_ms := libmiqt.Strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find22(this.h, (*C.struct_miqt_string)(subString_ms), (C.int)(from))
 	_goptr := newQTextCursor(_ret)
@@ -886,7 +901,7 @@ func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
 }
 
 func (this *QTextDocument) Find32(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
-	subString_ms := miqt_strdupg(subString)
+	subString_ms := libmiqt.Strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find32(this.h, (*C.struct_miqt_string)(subString_ms), (C.int)(from), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
@@ -895,7 +910,7 @@ func (this *QTextDocument) Find32(subString string, from int, options QTextDocum
 }
 
 func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
-	subString_ms := miqt_strdupg(subString)
+	subString_ms := libmiqt.Strdupg(subString)
 	defer C.free(subString_ms)
 	_ret := C.QTextDocument_Find33(this.h, (*C.struct_miqt_string)(subString_ms), cursor.cPointer(), (C.int)(options))
 	_goptr := newQTextCursor(_ret)

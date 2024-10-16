@@ -1,6 +1,6 @@
 #include <QJsonObject>
 #include <QStaticPlugin>
-#include "qplugin.h"
+#include <qplugin.h>
 #include "gen_qplugin.h"
 #include "_cgo_export.h"
 

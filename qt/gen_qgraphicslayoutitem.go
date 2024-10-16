@@ -24,6 +24,13 @@ func (this *QGraphicsLayoutItem) cPointer() *C.QGraphicsLayoutItem {
 	return this.h
 }
 
+func (this *QGraphicsLayoutItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQGraphicsLayoutItem(h *C.QGraphicsLayoutItem) *QGraphicsLayoutItem {
 	return &QGraphicsLayoutItem{h: h}
 }
 
-func newQGraphicsLayoutItem_U(h unsafe.Pointer) *QGraphicsLayoutItem {
+func UnsafeNewQGraphicsLayoutItem(h unsafe.Pointer) *QGraphicsLayoutItem {
 	return newQGraphicsLayoutItem((*C.QGraphicsLayoutItem)(h))
 }
 
@@ -177,7 +184,7 @@ func (this *QGraphicsLayoutItem) UpdateGeometry() {
 }
 
 func (this *QGraphicsLayoutItem) ParentLayoutItem() *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem_U(unsafe.Pointer(C.QGraphicsLayoutItem_ParentLayoutItem(this.h)))
+	return UnsafeNewQGraphicsLayoutItem(unsafe.Pointer(C.QGraphicsLayoutItem_ParentLayoutItem(this.h)))
 }
 
 func (this *QGraphicsLayoutItem) SetParentLayoutItem(parent *QGraphicsLayoutItem) {
@@ -189,7 +196,7 @@ func (this *QGraphicsLayoutItem) IsLayout() bool {
 }
 
 func (this *QGraphicsLayoutItem) GraphicsItem() *QGraphicsItem {
-	return newQGraphicsItem_U(unsafe.Pointer(C.QGraphicsLayoutItem_GraphicsItem(this.h)))
+	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsLayoutItem_GraphicsItem(this.h)))
 }
 
 func (this *QGraphicsLayoutItem) OwnedByLayout() bool {

@@ -11,7 +11,7 @@
 #include <cstring>
 #include <QStyleOptionViewItem>
 #include <QWidget>
-#include "qitemdelegate.h"
+#include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
 #include "_cgo_export.h"
 

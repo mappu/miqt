@@ -10,7 +10,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfontmetrics.h"
+#include <qfontmetrics.h>
 #include "gen_qfontmetrics.h"
 #include "_cgo_export.h"
 

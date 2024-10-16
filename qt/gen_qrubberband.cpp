@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qrubberband.h"
+#include <qrubberband.h>
 #include "gen_qrubberband.h"
 #include "_cgo_export.h"
 

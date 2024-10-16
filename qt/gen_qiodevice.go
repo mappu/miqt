@@ -41,19 +41,26 @@ func (this *QIODevice) cPointer() *C.QIODevice {
 	return this.h
 }
 
+func (this *QIODevice) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQIODevice(h *C.QIODevice) *QIODevice {
 	if h == nil {
 		return nil
 	}
-	return &QIODevice{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QIODevice{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQIODevice_U(h unsafe.Pointer) *QIODevice {
+func UnsafeNewQIODevice(h unsafe.Pointer) *QIODevice {
 	return newQIODevice((*C.QIODevice)(h))
 }
 
 func (this *QIODevice) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QIODevice_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QIODevice_MetaObject(this.h)))
 }
 
 func (this *QIODevice) Metacast(param1 string) unsafe.Pointer {

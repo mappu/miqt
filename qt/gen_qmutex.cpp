@@ -2,7 +2,7 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QRecursiveMutex>
-#include "qmutex.h"
+#include <qmutex.h>
 #include "gen_qmutex.h"
 #include "_cgo_export.h"
 

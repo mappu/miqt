@@ -27,14 +27,21 @@ func (this *QOffscreenSurface) cPointer() *C.QOffscreenSurface {
 	return this.h
 }
 
+func (this *QOffscreenSurface) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQOffscreenSurface(h *C.QOffscreenSurface) *QOffscreenSurface {
 	if h == nil {
 		return nil
 	}
-	return &QOffscreenSurface{h: h, QObject: newQObject_U(unsafe.Pointer(h)), QSurface: newQSurface_U(unsafe.Pointer(h))}
+	return &QOffscreenSurface{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h)), QSurface: UnsafeNewQSurface(unsafe.Pointer(h))}
 }
 
-func newQOffscreenSurface_U(h unsafe.Pointer) *QOffscreenSurface {
+func UnsafeNewQOffscreenSurface(h unsafe.Pointer) *QOffscreenSurface {
 	return newQOffscreenSurface((*C.QOffscreenSurface)(h))
 }
 
@@ -57,7 +64,7 @@ func NewQOffscreenSurface3(screen *QScreen) *QOffscreenSurface {
 }
 
 func (this *QOffscreenSurface) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QOffscreenSurface_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QOffscreenSurface_MetaObject(this.h)))
 }
 
 func (this *QOffscreenSurface) Metacast(param1 string) unsafe.Pointer {
@@ -126,7 +133,7 @@ func (this *QOffscreenSurface) Size() *QSize {
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
-	return newQScreen_U(unsafe.Pointer(C.QOffscreenSurface_Screen(this.h)))
+	return UnsafeNewQScreen(unsafe.Pointer(C.QOffscreenSurface_Screen(this.h)))
 }
 
 func (this *QOffscreenSurface) SetScreen(screen *QScreen) {
@@ -156,7 +163,7 @@ func miqt_exec_callback_QOffscreenSurface_ScreenChanged(cb C.intptr_t, screen *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQScreen_U(unsafe.Pointer(screen))
+	slotval1 := UnsafeNewQScreen(unsafe.Pointer(screen))
 
 	gofunc(slotval1)
 }

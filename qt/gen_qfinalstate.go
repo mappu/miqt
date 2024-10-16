@@ -25,14 +25,21 @@ func (this *QFinalState) cPointer() *C.QFinalState {
 	return this.h
 }
 
+func (this *QFinalState) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFinalState(h *C.QFinalState) *QFinalState {
 	if h == nil {
 		return nil
 	}
-	return &QFinalState{h: h, QAbstractState: newQAbstractState_U(unsafe.Pointer(h))}
+	return &QFinalState{h: h, QAbstractState: UnsafeNewQAbstractState(unsafe.Pointer(h))}
 }
 
-func newQFinalState_U(h unsafe.Pointer) *QFinalState {
+func UnsafeNewQFinalState(h unsafe.Pointer) *QFinalState {
 	return newQFinalState((*C.QFinalState)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQFinalState2(parent *QState) *QFinalState {
 }
 
 func (this *QFinalState) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QFinalState_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFinalState_MetaObject(this.h)))
 }
 
 func (this *QFinalState) Metacast(param1 string) unsafe.Pointer {

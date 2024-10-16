@@ -1,7 +1,7 @@
 #include <QEvent>
 #include <QGraphicsLayout>
 #include <QGraphicsLayoutItem>
-#include "qgraphicslayout.h"
+#include <qgraphicslayout.h>
 #include "gen_qgraphicslayout.h"
 #include "_cgo_export.h"
 

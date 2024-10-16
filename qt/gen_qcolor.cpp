@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qcolor.h"
+#include <qcolor.h>
 #include "gen_qcolor.h"
 #include "_cgo_export.h"
 

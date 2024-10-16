@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,20 +26,27 @@ func (this *QSaveFile) cPointer() *C.QSaveFile {
 	return this.h
 }
 
+func (this *QSaveFile) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSaveFile(h *C.QSaveFile) *QSaveFile {
 	if h == nil {
 		return nil
 	}
-	return &QSaveFile{h: h, QFileDevice: newQFileDevice_U(unsafe.Pointer(h))}
+	return &QSaveFile{h: h, QFileDevice: UnsafeNewQFileDevice(unsafe.Pointer(h))}
 }
 
-func newQSaveFile_U(h unsafe.Pointer) *QSaveFile {
+func UnsafeNewQSaveFile(h unsafe.Pointer) *QSaveFile {
 	return newQSaveFile((*C.QSaveFile)(h))
 }
 
 // NewQSaveFile constructs a new QSaveFile object.
 func NewQSaveFile(name string) *QSaveFile {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QSaveFile_new((*C.struct_miqt_string)(name_ms))
 	return newQSaveFile(ret)
@@ -52,7 +60,7 @@ func NewQSaveFile2() *QSaveFile {
 
 // NewQSaveFile3 constructs a new QSaveFile object.
 func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QSaveFile_new3((*C.struct_miqt_string)(name_ms), parent.cPointer())
 	return newQSaveFile(ret)
@@ -65,7 +73,7 @@ func NewQSaveFile4(parent *QObject) *QSaveFile {
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSaveFile_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSaveFile_MetaObject(this.h)))
 }
 
 func (this *QSaveFile) Metacast(param1 string) unsafe.Pointer {
@@ -100,7 +108,7 @@ func (this *QSaveFile) FileName() string {
 }
 
 func (this *QSaveFile) SetFileName(name string) {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	C.QSaveFile_SetFileName(this.h, (*C.struct_miqt_string)(name_ms))
 }

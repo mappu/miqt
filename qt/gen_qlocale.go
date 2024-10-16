@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -902,6 +903,13 @@ func (this *QLocale) cPointer() *C.QLocale {
 	return this.h
 }
 
+func (this *QLocale) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLocale(h *C.QLocale) *QLocale {
 	if h == nil {
 		return nil
@@ -909,7 +917,7 @@ func newQLocale(h *C.QLocale) *QLocale {
 	return &QLocale{h: h}
 }
 
-func newQLocale_U(h unsafe.Pointer) *QLocale {
+func UnsafeNewQLocale(h unsafe.Pointer) *QLocale {
 	return newQLocale((*C.QLocale)(h))
 }
 
@@ -921,7 +929,7 @@ func NewQLocale() *QLocale {
 
 // NewQLocale2 constructs a new QLocale object.
 func NewQLocale2(name string) *QLocale {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QLocale_new2((*C.struct_miqt_string)(name_ms))
 	return newQLocale(ret)
@@ -1000,61 +1008,61 @@ func (this *QLocale) NativeCountryName() string {
 }
 
 func (this *QLocale) ToShort(s string) int16 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int16)(C.QLocale_ToShort(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToUShort(s string) uint16 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint16)(C.QLocale_ToUShort(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToInt(s string) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QLocale_ToInt(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToUInt(s string) uint {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint)(C.QLocale_ToUInt(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToLong(s string) int64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int64)(C.QLocale_ToLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToULong(s string) uint64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint64)(C.QLocale_ToULong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToLongLong(s string) int64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int64)(C.QLocale_ToLongLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToULongLong(s string) uint64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint64)(C.QLocale_ToULongLong(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToFloat(s string) float32 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (float32)(C.QLocale_ToFloat(this.h, (*C.struct_miqt_string)(s_ms)))
 }
 
 func (this *QLocale) ToDouble(s string) float64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (float64)(C.QLocale_ToDouble(this.h, (*C.struct_miqt_string)(s_ms)))
 }
@@ -1130,7 +1138,7 @@ func (this *QLocale) ToStringWithFloat(i float32) string {
 }
 
 func (this *QLocale) ToString2(date *QDate, formatStr string) string {
-	formatStr_ms := miqt_strdupg(formatStr)
+	formatStr_ms := libmiqt.Strdupg(formatStr)
 	defer C.free(formatStr_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToString2(this.h, date.cPointer(), (*C.struct_miqt_string)(formatStr_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1139,7 +1147,7 @@ func (this *QLocale) ToString2(date *QDate, formatStr string) string {
 }
 
 func (this *QLocale) ToString3(time *QTime, formatStr string) string {
-	formatStr_ms := miqt_strdupg(formatStr)
+	formatStr_ms := libmiqt.Strdupg(formatStr)
 	defer C.free(formatStr_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToString3(this.h, time.cPointer(), (*C.struct_miqt_string)(formatStr_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1148,7 +1156,7 @@ func (this *QLocale) ToString3(time *QTime, formatStr string) string {
 }
 
 func (this *QLocale) ToString4(dateTime *QDateTime, format string) string {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToString4(this.h, dateTime.cPointer(), (*C.struct_miqt_string)(format_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1213,7 +1221,7 @@ func (this *QLocale) DateTimeFormat() string {
 }
 
 func (this *QLocale) ToDate(stringVal string) *QDate {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDate(this.h, (*C.struct_miqt_string)(stringVal_ms))
 	_goptr := newQDate(_ret)
@@ -1222,7 +1230,7 @@ func (this *QLocale) ToDate(stringVal string) *QDate {
 }
 
 func (this *QLocale) ToTime(stringVal string) *QTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToTime(this.h, (*C.struct_miqt_string)(stringVal_ms))
 	_goptr := newQTime(_ret)
@@ -1231,7 +1239,7 @@ func (this *QLocale) ToTime(stringVal string) *QTime {
 }
 
 func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDateTime(this.h, (*C.struct_miqt_string)(stringVal_ms))
 	_goptr := newQDateTime(_ret)
@@ -1240,9 +1248,9 @@ func (this *QLocale) ToDateTime(stringVal string) *QDateTime {
 }
 
 func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToDate2(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQDate(_ret)
@@ -1251,9 +1259,9 @@ func (this *QLocale) ToDate2(stringVal string, format string) *QDate {
 }
 
 func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToTime2(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQTime(_ret)
@@ -1262,9 +1270,9 @@ func (this *QLocale) ToTime2(stringVal string, format string) *QTime {
 }
 
 func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToDateTime2(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms))
 	_goptr := newQDateTime(_ret)
@@ -1273,7 +1281,7 @@ func (this *QLocale) ToDateTime2(stringVal string, format string) *QDateTime {
 }
 
 func (this *QLocale) ToDate3(stringVal string, format QLocale__FormatType, cal QCalendar) *QDate {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDate3(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(format), cal.cPointer())
 	_goptr := newQDate(_ret)
@@ -1282,7 +1290,7 @@ func (this *QLocale) ToDate3(stringVal string, format QLocale__FormatType, cal Q
 }
 
 func (this *QLocale) ToDateTime3(stringVal string, format QLocale__FormatType, cal QCalendar) *QDateTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDateTime3(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(format), cal.cPointer())
 	_goptr := newQDateTime(_ret)
@@ -1291,9 +1299,9 @@ func (this *QLocale) ToDateTime3(stringVal string, format QLocale__FormatType, c
 }
 
 func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QDate {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToDate4(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_goptr := newQDate(_ret)
@@ -1302,9 +1310,9 @@ func (this *QLocale) ToDate4(stringVal string, format string, cal QCalendar) *QD
 }
 
 func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar) *QDateTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToDateTime4(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_goptr := newQDateTime(_ret)
@@ -1313,7 +1321,7 @@ func (this *QLocale) ToDateTime4(stringVal string, format string, cal QCalendar)
 }
 
 func (this *QLocale) ToTime3(stringVal string, format QLocale__FormatType, cal QCalendar) *QTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToTime3(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(format), cal.cPointer())
 	_goptr := newQTime(_ret)
@@ -1322,9 +1330,9 @@ func (this *QLocale) ToTime3(stringVal string, format QLocale__FormatType, cal Q
 }
 
 func (this *QLocale) ToTime4(stringVal string, format string, cal QCalendar) *QTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	_ret := C.QLocale_ToTime4(this.h, (*C.struct_miqt_string)(stringVal_ms), (*C.struct_miqt_string)(format_ms), cal.cPointer())
 	_goptr := newQTime(_ret)
@@ -1454,7 +1462,7 @@ func (this *QLocale) TextDirection() LayoutDirection {
 }
 
 func (this *QLocale) ToUpper(str string) string {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToUpper(this.h, (*C.struct_miqt_string)(str_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1463,7 +1471,7 @@ func (this *QLocale) ToUpper(str string) string {
 }
 
 func (this *QLocale) ToLower(str string) string {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToLower(this.h, (*C.struct_miqt_string)(str_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1528,7 +1536,7 @@ func (this *QLocale) ToCurrencyStringWithDouble(param1 float64) string {
 }
 
 func (this *QLocale) ToCurrencyString2(param1 float64, symbol string, precision int) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString2(this.h, (C.double)(param1), (*C.struct_miqt_string)(symbol_ms), (C.int)(precision))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1544,7 +1552,7 @@ func (this *QLocale) ToCurrencyStringWithFloat(i float32) string {
 }
 
 func (this *QLocale) ToCurrencyString3(i float32, symbol string, precision int) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString3(this.h, (C.float)(i), (*C.struct_miqt_string)(symbol_ms), (C.int)(precision))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1661,7 +1669,7 @@ func (this *QLocale) NumberOptions() QLocale__NumberOption {
 }
 
 func (this *QLocale) QuoteString(str string) string {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_QuoteString(this.h, (*C.struct_miqt_string)(str_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1674,7 +1682,7 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 	strl_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray))
 	for i := range strl {
-		strl_i_ms := miqt_strdupg(strl[i])
+		strl_i_ms := libmiqt.Strdupg(strl[i])
 		defer C.free(strl_i_ms)
 		strl_CArray[i] = (*C.struct_miqt_string)(strl_i_ms)
 	}
@@ -1687,61 +1695,61 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 }
 
 func (this *QLocale) ToShort2(s string, ok *bool) int16 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int16)(C.QLocale_ToShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToUShort2(s string, ok *bool) uint16 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint16)(C.QLocale_ToUShort2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToInt2(s string, ok *bool) int {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int)(C.QLocale_ToInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToUInt2(s string, ok *bool) uint {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint)(C.QLocale_ToUInt2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToLong2(s string, ok *bool) int64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int64)(C.QLocale_ToLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToULong2(s string, ok *bool) uint64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint64)(C.QLocale_ToULong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToLongLong2(s string, ok *bool) int64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (int64)(C.QLocale_ToLongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToULongLong2(s string, ok *bool) uint64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (uint64)(C.QLocale_ToULongLong2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToFloat2(s string, ok *bool) float32 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (float32)(C.QLocale_ToFloat2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QLocale) ToDouble2(s string, ok *bool) float64 {
-	s_ms := miqt_strdupg(s)
+	s_ms := libmiqt.Strdupg(s)
 	defer C.free(s_ms)
 	return (float64)(C.QLocale_ToDouble2(this.h, (*C.struct_miqt_string)(s_ms), (*C.bool)(unsafe.Pointer(ok))))
 }
@@ -1817,7 +1825,7 @@ func (this *QLocale) DateTimeFormat1(format QLocale__FormatType) string {
 }
 
 func (this *QLocale) ToDate22(stringVal string, param2 QLocale__FormatType) *QDate {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDate22(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(param2))
 	_goptr := newQDate(_ret)
@@ -1826,7 +1834,7 @@ func (this *QLocale) ToDate22(stringVal string, param2 QLocale__FormatType) *QDa
 }
 
 func (this *QLocale) ToTime22(stringVal string, param2 QLocale__FormatType) *QTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToTime22(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(param2))
 	_goptr := newQTime(_ret)
@@ -1835,7 +1843,7 @@ func (this *QLocale) ToTime22(stringVal string, param2 QLocale__FormatType) *QTi
 }
 
 func (this *QLocale) ToDateTime22(stringVal string, format QLocale__FormatType) *QDateTime {
-	stringVal_ms := miqt_strdupg(stringVal)
+	stringVal_ms := libmiqt.Strdupg(stringVal)
 	defer C.free(stringVal_ms)
 	_ret := C.QLocale_ToDateTime22(this.h, (*C.struct_miqt_string)(stringVal_ms), (C.int)(format))
 	_goptr := newQDateTime(_ret)
@@ -1879,7 +1887,7 @@ func (this *QLocale) CurrencySymbol1(param1 QLocale__CurrencySymbolFormat) strin
 }
 
 func (this *QLocale) ToCurrencyString22(param1 int64, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString22(this.h, (C.longlong)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1888,7 +1896,7 @@ func (this *QLocale) ToCurrencyString22(param1 int64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString23(param1 uint64, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString23(this.h, (C.ulonglong)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1897,7 +1905,7 @@ func (this *QLocale) ToCurrencyString23(param1 uint64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString24(param1 int16, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString24(this.h, (C.int16_t)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1906,7 +1914,7 @@ func (this *QLocale) ToCurrencyString24(param1 int16, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString25(param1 uint16, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString25(this.h, (C.uint16_t)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1915,7 +1923,7 @@ func (this *QLocale) ToCurrencyString25(param1 uint16, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString26(param1 int, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString26(this.h, (C.int)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1924,7 +1932,7 @@ func (this *QLocale) ToCurrencyString26(param1 int, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString27(param1 uint, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString27(this.h, (C.uint)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1933,7 +1941,7 @@ func (this *QLocale) ToCurrencyString27(param1 uint, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString28(param1 float64, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString28(this.h, (C.double)(param1), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1942,7 +1950,7 @@ func (this *QLocale) ToCurrencyString28(param1 float64, symbol string) string {
 }
 
 func (this *QLocale) ToCurrencyString29(i float32, symbol string) string {
-	symbol_ms := miqt_strdupg(symbol)
+	symbol_ms := libmiqt.Strdupg(symbol)
 	defer C.free(symbol_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_ToCurrencyString29(this.h, (C.float)(i), (*C.struct_miqt_string)(symbol_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -1979,7 +1987,7 @@ func (this *QLocale) FormattedDataSize32(bytes int64, precision int, format QLoc
 }
 
 func (this *QLocale) QuoteString2(str string, style QLocale__QuotationStyle) string {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	var _ms *C.struct_miqt_string = C.QLocale_QuoteString2(this.h, (*C.struct_miqt_string)(str_ms), (C.int)(style))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))

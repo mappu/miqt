@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimeLine>
-#include "qtimeline.h"
+#include <qtimeline.h>
 #include "gen_qtimeline.h"
 #include "_cgo_export.h"
 

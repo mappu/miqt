@@ -7,7 +7,7 @@
 #include <QRect>
 #include <QRectF>
 #include <QRegion>
-#include "qmatrix.h"
+#include <qmatrix.h>
 #include "gen_qmatrix.h"
 #include "_cgo_export.h"
 

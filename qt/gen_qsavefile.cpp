@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qsavefile.h"
+#include <qsavefile.h>
 #include "gen_qsavefile.h"
 #include "_cgo_export.h"
 

@@ -1,7 +1,7 @@
 #include <QReadLocker>
 #include <QReadWriteLock>
 #include <QWriteLocker>
-#include "qreadwritelock.h"
+#include <qreadwritelock.h>
 #include "gen_qreadwritelock.h"
 #include "_cgo_export.h"
 

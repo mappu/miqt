@@ -4,7 +4,7 @@
 #include <QPageSize>
 #include <QRect>
 #include <QRectF>
-#include "qpagelayout.h"
+#include <qpagelayout.h>
 #include "gen_qpagelayout.h"
 #include "_cgo_export.h"
 

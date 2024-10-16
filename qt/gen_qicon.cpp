@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWindow>
-#include "qicon.h"
+#include <qicon.h>
 #include "gen_qicon.h"
 #include "_cgo_export.h"
 
@@ -160,7 +160,7 @@ struct miqt_array* QIcon_ThemeSearchPaths() {
 }
 
 void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string* */ searchpath) {
-	QList<QString> searchpath_QList;
+	QStringList searchpath_QList;
 	searchpath_QList.reserve(searchpath->len);
 	struct miqt_string** searchpath_arr = static_cast<struct miqt_string**>(searchpath->data);
 	for(size_t i = 0; i < searchpath->len; ++i) {
@@ -187,7 +187,7 @@ struct miqt_array* QIcon_FallbackSearchPaths() {
 }
 
 void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of struct miqt_string* */ paths) {
-	QList<QString> paths_QList;
+	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
 	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {

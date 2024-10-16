@@ -7,7 +7,7 @@
 #include <cstring>
 #include <QUrl>
 #include <QVariant>
-#include "qmimedata.h"
+#include <qmimedata.h>
 #include "gen_qmimedata.h"
 #include "_cgo_export.h"
 

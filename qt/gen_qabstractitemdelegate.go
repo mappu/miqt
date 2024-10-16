@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -36,19 +37,26 @@ func (this *QAbstractItemDelegate) cPointer() *C.QAbstractItemDelegate {
 	return this.h
 }
 
+func (this *QAbstractItemDelegate) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractItemDelegate(h *C.QAbstractItemDelegate) *QAbstractItemDelegate {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractItemDelegate{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QAbstractItemDelegate{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQAbstractItemDelegate_U(h unsafe.Pointer) *QAbstractItemDelegate {
+func UnsafeNewQAbstractItemDelegate(h unsafe.Pointer) *QAbstractItemDelegate {
 	return newQAbstractItemDelegate((*C.QAbstractItemDelegate)(h))
 }
 
 func (this *QAbstractItemDelegate) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QAbstractItemDelegate_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractItemDelegate_MetaObject(this.h)))
 }
 
 func (this *QAbstractItemDelegate) Metacast(param1 string) unsafe.Pointer {
@@ -87,7 +95,7 @@ func (this *QAbstractItemDelegate) SizeHint(option *QStyleOptionViewItem, index 
 }
 
 func (this *QAbstractItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())))
 }
 
 func (this *QAbstractItemDelegate) DestroyEditor(editor *QWidget, index *QModelIndex) {
@@ -111,7 +119,7 @@ func (this *QAbstractItemDelegate) EditorEvent(event *QEvent, model *QAbstractIt
 }
 
 func QAbstractItemDelegate_ElidedText(fontMetrics *QFontMetrics, width int, mode TextElideMode, text string) string {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	var _ms *C.struct_miqt_string = C.QAbstractItemDelegate_ElidedText(fontMetrics.cPointer(), (C.int)(width), (C.int)(mode), (*C.struct_miqt_string)(text_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -149,7 +157,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CommitData(cb C.intptr_t, editor *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget_U(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
 
 	gofunc(slotval1)
 }
@@ -169,7 +177,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor(cb C.intptr_t, editor 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget_U(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
 
 	gofunc(slotval1)
 }
@@ -189,7 +197,7 @@ func miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(param1))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(param1))
 
 	gofunc(slotval1)
 }
@@ -253,7 +261,7 @@ func miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(cb C.intptr_t, editor
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQWidget_U(unsafe.Pointer(editor))
+	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor))
 	slotval2 := (QAbstractItemDelegate__EndEditHint)(hint)
 
 	gofunc(slotval1, slotval2)

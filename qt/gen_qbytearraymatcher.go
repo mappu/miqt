@@ -24,6 +24,13 @@ func (this *QByteArrayMatcher) cPointer() *C.QByteArrayMatcher {
 	return this.h
 }
 
+func (this *QByteArrayMatcher) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQByteArrayMatcher(h *C.QByteArrayMatcher) *QByteArrayMatcher {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQByteArrayMatcher(h *C.QByteArrayMatcher) *QByteArrayMatcher {
 	return &QByteArrayMatcher{h: h}
 }
 
-func newQByteArrayMatcher_U(h unsafe.Pointer) *QByteArrayMatcher {
+func UnsafeNewQByteArrayMatcher(h unsafe.Pointer) *QByteArrayMatcher {
 	return newQByteArrayMatcher((*C.QByteArrayMatcher)(h))
 }
 
@@ -121,6 +128,13 @@ func (this *QStaticByteArrayMatcherBase) cPointer() *C.QStaticByteArrayMatcherBa
 	return this.h
 }
 
+func (this *QStaticByteArrayMatcherBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStaticByteArrayMatcherBase(h *C.QStaticByteArrayMatcherBase) *QStaticByteArrayMatcherBase {
 	if h == nil {
 		return nil
@@ -128,7 +142,7 @@ func newQStaticByteArrayMatcherBase(h *C.QStaticByteArrayMatcherBase) *QStaticBy
 	return &QStaticByteArrayMatcherBase{h: h}
 }
 
-func newQStaticByteArrayMatcherBase_U(h unsafe.Pointer) *QStaticByteArrayMatcherBase {
+func UnsafeNewQStaticByteArrayMatcherBase(h unsafe.Pointer) *QStaticByteArrayMatcherBase {
 	return newQStaticByteArrayMatcherBase((*C.QStaticByteArrayMatcherBase)(h))
 }
 

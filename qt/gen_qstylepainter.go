@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QStylePainter) cPointer() *C.QStylePainter {
 	return this.h
 }
 
+func (this *QStylePainter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStylePainter(h *C.QStylePainter) *QStylePainter {
 	if h == nil {
 		return nil
 	}
-	return &QStylePainter{h: h, QPainter: newQPainter_U(unsafe.Pointer(h))}
+	return &QStylePainter{h: h, QPainter: UnsafeNewQPainter(unsafe.Pointer(h))}
 }
 
-func newQStylePainter_U(h unsafe.Pointer) *QStylePainter {
+func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
 	return newQStylePainter((*C.QStylePainter)(h))
 }
 
@@ -75,7 +83,7 @@ func (this *QStylePainter) DrawComplexControl(cc QStyle__ComplexControl, opt *QS
 }
 
 func (this *QStylePainter) DrawItemText(r *QRect, flags int, pal *QPalette, enabled bool, text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
 }
@@ -85,11 +93,11 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	return newQStyle_U(unsafe.Pointer(C.QStylePainter_Style(this.h)))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePainter_Style(this.h)))
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.int)(textRole))
 }

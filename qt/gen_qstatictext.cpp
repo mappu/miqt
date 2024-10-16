@@ -6,7 +6,7 @@
 #include <cstring>
 #include <QTextOption>
 #include <QTransform>
-#include "qstatictext.h"
+#include <qstatictext.h>
 #include "gen_qstatictext.h"
 #include "_cgo_export.h"
 

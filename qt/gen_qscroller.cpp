@@ -8,7 +8,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qscroller.h"
+#include <qscroller.h>
 #include "gen_qscroller.h"
 #include "_cgo_export.h"
 
@@ -107,7 +107,7 @@ QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
 }
 
 void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of double */ positions) {
-	QList<double> positions_QList;
+	QList<qreal> positions_QList;
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {
@@ -121,7 +121,7 @@ void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval
 }
 
 void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array* /* of double */ positions) {
-	QList<double> positions_QList;
+	QList<qreal> positions_QList;
 	positions_QList.reserve(positions->len);
 	double* positions_arr = static_cast<double*>(positions->data);
 	for(size_t i = 0; i < positions->len; ++i) {

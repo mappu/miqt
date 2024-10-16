@@ -49,14 +49,21 @@ func (this *QCalendarWidget) cPointer() *C.QCalendarWidget {
 	return this.h
 }
 
+func (this *QCalendarWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCalendarWidget(h *C.QCalendarWidget) *QCalendarWidget {
 	if h == nil {
 		return nil
 	}
-	return &QCalendarWidget{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QCalendarWidget{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQCalendarWidget_U(h unsafe.Pointer) *QCalendarWidget {
+func UnsafeNewQCalendarWidget(h unsafe.Pointer) *QCalendarWidget {
 	return newQCalendarWidget((*C.QCalendarWidget)(h))
 }
 
@@ -73,7 +80,7 @@ func NewQCalendarWidget2(parent *QWidget) *QCalendarWidget {
 }
 
 func (this *QCalendarWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCalendarWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCalendarWidget_MetaObject(this.h)))
 }
 
 func (this *QCalendarWidget) Metacast(param1 string) unsafe.Pointer {
@@ -327,7 +334,7 @@ func miqt_exec_callback_QCalendarWidget_Clicked(cb C.intptr_t, date *C.QDate) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDate_U(unsafe.Pointer(date))
+	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }
@@ -347,7 +354,7 @@ func miqt_exec_callback_QCalendarWidget_Activated(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDate_U(unsafe.Pointer(date))
+	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }

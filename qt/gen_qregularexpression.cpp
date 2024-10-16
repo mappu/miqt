@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qregularexpression.h"
+#include <qregularexpression.h>
 #include "gen_qregularexpression.h"
 #include "_cgo_export.h"
 

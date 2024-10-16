@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QSystemTrayIcon>
-#include "qsystemtrayicon.h"
+#include <qsystemtrayicon.h>
 #include "gen_qsystemtrayicon.h"
 #include "_cgo_export.h"
 

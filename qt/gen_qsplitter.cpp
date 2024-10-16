@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qsplitter.h"
+#include <qsplitter.h>
 #include "gen_qsplitter.h"
 #include "_cgo_export.h"
 

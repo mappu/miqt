@@ -3,7 +3,7 @@
 #include <QPoint>
 #include <QRect>
 #include <QRegion>
-#include "qregion.h"
+#include <qregion.h>
 #include "gen_qregion.h"
 #include "_cgo_export.h"
 

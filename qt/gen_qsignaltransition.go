@@ -25,14 +25,21 @@ func (this *QSignalTransition) cPointer() *C.QSignalTransition {
 	return this.h
 }
 
+func (this *QSignalTransition) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSignalTransition(h *C.QSignalTransition) *QSignalTransition {
 	if h == nil {
 		return nil
 	}
-	return &QSignalTransition{h: h, QAbstractTransition: newQAbstractTransition_U(unsafe.Pointer(h))}
+	return &QSignalTransition{h: h, QAbstractTransition: UnsafeNewQAbstractTransition(unsafe.Pointer(h))}
 }
 
-func newQSignalTransition_U(h unsafe.Pointer) *QSignalTransition {
+func UnsafeNewQSignalTransition(h unsafe.Pointer) *QSignalTransition {
 	return newQSignalTransition((*C.QSignalTransition)(h))
 }
 
@@ -65,7 +72,7 @@ func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) 
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSignalTransition_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSignalTransition_MetaObject(this.h)))
 }
 
 func (this *QSignalTransition) Metacast(param1 string) unsafe.Pointer {
@@ -93,7 +100,7 @@ func QSignalTransition_TrUtf8(s string) string {
 }
 
 func (this *QSignalTransition) SenderObject() *QObject {
-	return newQObject_U(unsafe.Pointer(C.QSignalTransition_SenderObject(this.h)))
+	return UnsafeNewQObject(unsafe.Pointer(C.QSignalTransition_SenderObject(this.h)))
 }
 
 func (this *QSignalTransition) SetSenderObject(sender *QObject) {

@@ -3,7 +3,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qchar.h"
+#include <qchar.h>
 #include "gen_qchar.h"
 #include "_cgo_export.h"
 

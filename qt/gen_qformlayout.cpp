@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qformlayout.h"
+#include <qformlayout.h>
 #include "gen_qformlayout.h"
 #include "_cgo_export.h"
 

@@ -31,14 +31,21 @@ func (this *QGraphicsProxyWidget) cPointer() *C.QGraphicsProxyWidget {
 	return this.h
 }
 
+func (this *QGraphicsProxyWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsProxyWidget(h *C.QGraphicsProxyWidget) *QGraphicsProxyWidget {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsProxyWidget{h: h, QGraphicsWidget: newQGraphicsWidget_U(unsafe.Pointer(h))}
+	return &QGraphicsProxyWidget{h: h, QGraphicsWidget: UnsafeNewQGraphicsWidget(unsafe.Pointer(h))}
 }
 
-func newQGraphicsProxyWidget_U(h unsafe.Pointer) *QGraphicsProxyWidget {
+func UnsafeNewQGraphicsProxyWidget(h unsafe.Pointer) *QGraphicsProxyWidget {
 	return newQGraphicsProxyWidget((*C.QGraphicsProxyWidget)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQGraphicsProxyWidget3(parent *QGraphicsItem, wFlags WindowType) *QGraphi
 }
 
 func (this *QGraphicsProxyWidget) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QGraphicsProxyWidget_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsProxyWidget_MetaObject(this.h)))
 }
 
 func (this *QGraphicsProxyWidget) Metacast(param1 string) unsafe.Pointer {
@@ -93,7 +100,7 @@ func (this *QGraphicsProxyWidget) SetWidget(widget *QWidget) {
 }
 
 func (this *QGraphicsProxyWidget) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QGraphicsProxyWidget_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsProxyWidget_Widget(this.h)))
 }
 
 func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
@@ -116,7 +123,7 @@ func (this *QGraphicsProxyWidget) Type() int {
 }
 
 func (this *QGraphicsProxyWidget) CreateProxyForChildWidget(child *QWidget) *QGraphicsProxyWidget {
-	return newQGraphicsProxyWidget_U(unsafe.Pointer(C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())))
+	return UnsafeNewQGraphicsProxyWidget(unsafe.Pointer(C.QGraphicsProxyWidget_CreateProxyForChildWidget(this.h, child.cPointer())))
 }
 
 func QGraphicsProxyWidget_Tr2(s string, c string) string {

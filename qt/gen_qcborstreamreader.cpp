@@ -2,7 +2,7 @@
 #include <QCborError>
 #include <QCborStreamReader>
 #include <QIODevice>
-#include "qcborstreamreader.h"
+#include <qcborstreamreader.h>
 #include "gen_qcborstreamreader.h"
 #include "_cgo_export.h"
 

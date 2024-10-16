@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qresource.h"
+#include <qresource.h>
 #include "gen_qresource.h"
 #include "_cgo_export.h"
 

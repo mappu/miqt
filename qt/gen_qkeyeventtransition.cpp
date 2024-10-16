@@ -5,7 +5,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qkeyeventtransition.h"
+#include <qkeyeventtransition.h>
 #include "gen_qkeyeventtransition.h"
 #include "_cgo_export.h"
 

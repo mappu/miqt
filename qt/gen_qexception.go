@@ -24,6 +24,13 @@ func (this *QtPrivate__ExceptionHolder) cPointer() *C.QtPrivate__ExceptionHolder
 	return this.h
 }
 
+func (this *QtPrivate__ExceptionHolder) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__ExceptionHolder(h *C.QtPrivate__ExceptionHolder) *QtPrivate__ExceptionHolder {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQtPrivate__ExceptionHolder(h *C.QtPrivate__ExceptionHolder) *QtPrivate__
 	return &QtPrivate__ExceptionHolder{h: h}
 }
 
-func newQtPrivate__ExceptionHolder_U(h unsafe.Pointer) *QtPrivate__ExceptionHolder {
+func UnsafeNewQtPrivate__ExceptionHolder(h unsafe.Pointer) *QtPrivate__ExceptionHolder {
 	return newQtPrivate__ExceptionHolder((*C.QtPrivate__ExceptionHolder)(h))
 }
 
@@ -76,6 +83,13 @@ func (this *QtPrivate__ExceptionStore) cPointer() *C.QtPrivate__ExceptionStore {
 	return this.h
 }
 
+func (this *QtPrivate__ExceptionStore) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__ExceptionStore(h *C.QtPrivate__ExceptionStore) *QtPrivate__ExceptionStore {
 	if h == nil {
 		return nil
@@ -83,7 +97,7 @@ func newQtPrivate__ExceptionStore(h *C.QtPrivate__ExceptionStore) *QtPrivate__Ex
 	return &QtPrivate__ExceptionStore{h: h}
 }
 
-func newQtPrivate__ExceptionStore_U(h unsafe.Pointer) *QtPrivate__ExceptionStore {
+func UnsafeNewQtPrivate__ExceptionStore(h unsafe.Pointer) *QtPrivate__ExceptionStore {
 	return newQtPrivate__ExceptionStore((*C.QtPrivate__ExceptionStore)(h))
 }
 

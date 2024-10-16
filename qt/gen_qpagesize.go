@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -175,6 +176,13 @@ func (this *QPageSize) cPointer() *C.QPageSize {
 	return this.h
 }
 
+func (this *QPageSize) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPageSize(h *C.QPageSize) *QPageSize {
 	if h == nil {
 		return nil
@@ -182,7 +190,7 @@ func newQPageSize(h *C.QPageSize) *QPageSize {
 	return &QPageSize{h: h}
 }
 
-func newQPageSize_U(h unsafe.Pointer) *QPageSize {
+func UnsafeNewQPageSize(h unsafe.Pointer) *QPageSize {
 	return newQPageSize((*C.QPageSize)(h))
 }
 
@@ -218,7 +226,7 @@ func NewQPageSize5(other *QPageSize) *QPageSize {
 
 // NewQPageSize6 constructs a new QPageSize object.
 func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QPageSize_new6(pointSize.cPointer(), (*C.struct_miqt_string)(name_ms))
 	return newQPageSize(ret)
@@ -226,7 +234,7 @@ func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
 
 // NewQPageSize7 constructs a new QPageSize object.
 func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QPageSize_new7(pointSize.cPointer(), (*C.struct_miqt_string)(name_ms), (C.int)(matchPolicy))
 	return newQPageSize(ret)
@@ -234,7 +242,7 @@ func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMat
 
 // NewQPageSize8 constructs a new QPageSize object.
 func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QPageSize_new8(size.cPointer(), (C.int)(units), (*C.struct_miqt_string)(name_ms))
 	return newQPageSize(ret)
@@ -242,7 +250,7 @@ func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize 
 
 // NewQPageSize9 constructs a new QPageSize object.
 func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	name_ms := miqt_strdupg(name)
+	name_ms := libmiqt.Strdupg(name)
 	defer C.free(name_ms)
 	ret := C.QPageSize_new9(size.cPointer(), (C.int)(units), (*C.struct_miqt_string)(name_ms), (C.int)(matchPolicy))
 	return newQPageSize(ret)

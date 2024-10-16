@@ -10,7 +10,7 @@
 #include <QTabBar>
 #include <QVariant>
 #include <QWidget>
-#include "qtabbar.h"
+#include <qtabbar.h>
 #include "gen_qtabbar.h"
 #include "_cgo_export.h"
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QRadioButton) cPointer() *C.QRadioButton {
 	return this.h
 }
 
+func (this *QRadioButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRadioButton(h *C.QRadioButton) *QRadioButton {
 	if h == nil {
 		return nil
 	}
-	return &QRadioButton{h: h, QAbstractButton: newQAbstractButton_U(unsafe.Pointer(h))}
+	return &QRadioButton{h: h, QAbstractButton: UnsafeNewQAbstractButton(unsafe.Pointer(h))}
 }
 
-func newQRadioButton_U(h unsafe.Pointer) *QRadioButton {
+func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
 	return newQRadioButton((*C.QRadioButton)(h))
 }
 
@@ -44,7 +52,7 @@ func NewQRadioButton() *QRadioButton {
 
 // NewQRadioButton2 constructs a new QRadioButton object.
 func NewQRadioButton2(text string) *QRadioButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QRadioButton_new2((*C.struct_miqt_string)(text_ms))
 	return newQRadioButton(ret)
@@ -58,14 +66,14 @@ func NewQRadioButton3(parent *QWidget) *QRadioButton {
 
 // NewQRadioButton4 constructs a new QRadioButton object.
 func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QRadioButton_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQRadioButton(ret)
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QRadioButton_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioButton_MetaObject(this.h)))
 }
 
 func (this *QRadioButton) Metacast(param1 string) unsafe.Pointer {

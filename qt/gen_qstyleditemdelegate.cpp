@@ -13,7 +13,7 @@
 #include <QStyledItemDelegate>
 #include <QVariant>
 #include <QWidget>
-#include "qstyleditemdelegate.h"
+#include <qstyleditemdelegate.h>
 #include "gen_qstyleditemdelegate.h"
 #include "_cgo_export.h"
 

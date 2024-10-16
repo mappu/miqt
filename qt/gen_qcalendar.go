@@ -42,6 +42,13 @@ func (this *QCalendar) cPointer() *C.QCalendar {
 	return this.h
 }
 
+func (this *QCalendar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCalendar(h *C.QCalendar) *QCalendar {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQCalendar(h *C.QCalendar) *QCalendar {
 	return &QCalendar{h: h}
 }
 
-func newQCalendar_U(h unsafe.Pointer) *QCalendar {
+func UnsafeNewQCalendar(h unsafe.Pointer) *QCalendar {
 	return newQCalendar((*C.QCalendar)(h))
 }
 
@@ -270,6 +277,13 @@ func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
 	return this.h
 }
 
+func (this *QCalendar__YearMonthDay) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMonthDay {
 	if h == nil {
 		return nil
@@ -277,7 +291,7 @@ func newQCalendar__YearMonthDay(h *C.QCalendar__YearMonthDay) *QCalendar__YearMo
 	return &QCalendar__YearMonthDay{h: h}
 }
 
-func newQCalendar__YearMonthDay_U(h unsafe.Pointer) *QCalendar__YearMonthDay {
+func UnsafeNewQCalendar__YearMonthDay(h unsafe.Pointer) *QCalendar__YearMonthDay {
 	return newQCalendar__YearMonthDay((*C.QCalendar__YearMonthDay)(h))
 }
 

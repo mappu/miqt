@@ -13,7 +13,7 @@
 #include <QTapAndHoldGesture>
 #include <QTapGesture>
 #include <QWidget>
-#include "qgesture.h"
+#include <qgesture.h>
 #include "gen_qgesture.h"
 #include "_cgo_export.h"
 
@@ -593,7 +593,7 @@ void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self) {
 }
 
 QGestureEvent* QGestureEvent_new(struct miqt_array* /* of QGesture* */ gestures) {
-	QList<QGesture*> gestures_QList;
+	QList<QGesture *> gestures_QList;
 	gestures_QList.reserve(gestures->len);
 	QGesture** gestures_arr = static_cast<QGesture**>(gestures->data);
 	for(size_t i = 0; i < gestures->len; ++i) {

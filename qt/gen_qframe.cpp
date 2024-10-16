@@ -6,7 +6,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qframe.h"
+#include <qframe.h>
 #include "gen_qframe.h"
 #include "_cgo_export.h"
 

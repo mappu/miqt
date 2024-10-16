@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qdialogbuttonbox.h"
+#include <qdialogbuttonbox.h>
 #include "gen_qdialogbuttonbox.h"
 #include "_cgo_export.h"
 

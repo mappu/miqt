@@ -1,5 +1,5 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__RefCount
-#include "qrefcount.h"
+#include <qrefcount.h>
 #include "gen_qrefcount.h"
 #include "_cgo_export.h"
 

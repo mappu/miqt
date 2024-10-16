@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -56,6 +57,13 @@ func (this *QStandardPaths) cPointer() *C.QStandardPaths {
 	return this.h
 }
 
+func (this *QStandardPaths) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
 	if h == nil {
 		return nil
@@ -63,7 +71,7 @@ func newQStandardPaths(h *C.QStandardPaths) *QStandardPaths {
 	return &QStandardPaths{h: h}
 }
 
-func newQStandardPaths_U(h unsafe.Pointer) *QStandardPaths {
+func UnsafeNewQStandardPaths(h unsafe.Pointer) *QStandardPaths {
 	return newQStandardPaths((*C.QStandardPaths)(h))
 }
 
@@ -89,7 +97,7 @@ func QStandardPaths_StandardLocations(typeVal QStandardPaths__StandardLocation) 
 }
 
 func QStandardPaths_Locate(typeVal QStandardPaths__StandardLocation, fileName string) string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -98,7 +106,7 @@ func QStandardPaths_Locate(typeVal QStandardPaths__StandardLocation, fileName st
 }
 
 func QStandardPaths_LocateAll(typeVal QStandardPaths__StandardLocation, fileName string) []string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms))
 	_ret := make([]string, int(_ma.len))
@@ -121,7 +129,7 @@ func QStandardPaths_DisplayName(typeVal QStandardPaths__StandardLocation) string
 }
 
 func QStandardPaths_FindExecutable(executableName string) string {
-	executableName_ms := miqt_strdupg(executableName)
+	executableName_ms := libmiqt.Strdupg(executableName)
 	defer C.free(executableName_ms)
 	var _ms *C.struct_miqt_string = C.QStandardPaths_FindExecutable((*C.struct_miqt_string)(executableName_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -142,7 +150,7 @@ func QStandardPaths_IsTestModeEnabled() bool {
 }
 
 func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ms *C.struct_miqt_string = C.QStandardPaths_Locate3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -151,7 +159,7 @@ func QStandardPaths_Locate3(typeVal QStandardPaths__StandardLocation, fileName s
 }
 
 func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileName string, options QStandardPaths__LocateOption) []string {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	var _ma *C.struct_miqt_array = C.QStandardPaths_LocateAll3((C.int)(typeVal), (*C.struct_miqt_string)(fileName_ms), (C.int)(options))
 	_ret := make([]string, int(_ma.len))
@@ -167,13 +175,13 @@ func QStandardPaths_LocateAll3(typeVal QStandardPaths__StandardLocation, fileNam
 }
 
 func QStandardPaths_FindExecutable2(executableName string, paths []string) string {
-	executableName_ms := miqt_strdupg(executableName)
+	executableName_ms := libmiqt.Strdupg(executableName)
 	defer C.free(executableName_ms)
 	// For the C ABI, malloc a C array of raw pointers
 	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := miqt_strdupg(paths[i])
+		paths_i_ms := libmiqt.Strdupg(paths[i])
 		defer C.free(paths_i_ms)
 		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
 	}

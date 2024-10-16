@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QSpinBox) cPointer() *C.QSpinBox {
 	return this.h
 }
 
+func (this *QSpinBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSpinBox(h *C.QSpinBox) *QSpinBox {
 	if h == nil {
 		return nil
 	}
-	return &QSpinBox{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
+	return &QSpinBox{h: h, QAbstractSpinBox: UnsafeNewQAbstractSpinBox(unsafe.Pointer(h))}
 }
 
-func newQSpinBox_U(h unsafe.Pointer) *QSpinBox {
+func UnsafeNewQSpinBox(h unsafe.Pointer) *QSpinBox {
 	return newQSpinBox((*C.QSpinBox)(h))
 }
 
@@ -50,7 +58,7 @@ func NewQSpinBox2(parent *QWidget) *QSpinBox {
 }
 
 func (this *QSpinBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSpinBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSpinBox_MetaObject(this.h)))
 }
 
 func (this *QSpinBox) Metacast(param1 string) unsafe.Pointer {
@@ -89,7 +97,7 @@ func (this *QSpinBox) Prefix() string {
 }
 
 func (this *QSpinBox) SetPrefix(prefix string) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QSpinBox_SetPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
@@ -102,7 +110,7 @@ func (this *QSpinBox) Suffix() string {
 }
 
 func (this *QSpinBox) SetSuffix(suffix string) {
-	suffix_ms := miqt_strdupg(suffix)
+	suffix_ms := libmiqt.Strdupg(suffix)
 	defer C.free(suffix_ms)
 	C.QSpinBox_SetSuffix(this.h, (*C.struct_miqt_string)(suffix_ms))
 }
@@ -183,7 +191,7 @@ func miqt_exec_callback_QSpinBox_ValueChanged(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QSpinBox) TextChanged(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -208,7 +216,7 @@ func miqt_exec_callback_QSpinBox_TextChanged(cb C.intptr_t, param1 *C.struct_miq
 }
 
 func (this *QSpinBox) ValueChangedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -302,14 +310,21 @@ func (this *QDoubleSpinBox) cPointer() *C.QDoubleSpinBox {
 	return this.h
 }
 
+func (this *QDoubleSpinBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDoubleSpinBox(h *C.QDoubleSpinBox) *QDoubleSpinBox {
 	if h == nil {
 		return nil
 	}
-	return &QDoubleSpinBox{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
+	return &QDoubleSpinBox{h: h, QAbstractSpinBox: UnsafeNewQAbstractSpinBox(unsafe.Pointer(h))}
 }
 
-func newQDoubleSpinBox_U(h unsafe.Pointer) *QDoubleSpinBox {
+func UnsafeNewQDoubleSpinBox(h unsafe.Pointer) *QDoubleSpinBox {
 	return newQDoubleSpinBox((*C.QDoubleSpinBox)(h))
 }
 
@@ -326,7 +341,7 @@ func NewQDoubleSpinBox2(parent *QWidget) *QDoubleSpinBox {
 }
 
 func (this *QDoubleSpinBox) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDoubleSpinBox_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDoubleSpinBox_MetaObject(this.h)))
 }
 
 func (this *QDoubleSpinBox) Metacast(param1 string) unsafe.Pointer {
@@ -365,7 +380,7 @@ func (this *QDoubleSpinBox) Prefix() string {
 }
 
 func (this *QDoubleSpinBox) SetPrefix(prefix string) {
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	C.QDoubleSpinBox_SetPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
 }
@@ -378,7 +393,7 @@ func (this *QDoubleSpinBox) Suffix() string {
 }
 
 func (this *QDoubleSpinBox) SetSuffix(suffix string) {
-	suffix_ms := miqt_strdupg(suffix)
+	suffix_ms := libmiqt.Strdupg(suffix)
 	defer C.free(suffix_ms)
 	C.QDoubleSpinBox_SetSuffix(this.h, (*C.struct_miqt_string)(suffix_ms))
 }
@@ -435,13 +450,13 @@ func (this *QDoubleSpinBox) SetDecimals(prec int) {
 }
 
 func (this *QDoubleSpinBox) Validate(input string, pos *int) QValidator__State {
-	input_ms := miqt_strdupg(input)
+	input_ms := libmiqt.Strdupg(input)
 	defer C.free(input_ms)
 	return (QValidator__State)(C.QDoubleSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QDoubleSpinBox) ValueFromText(text string) float64 {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	return (float64)(C.QDoubleSpinBox_ValueFromText(this.h, (*C.struct_miqt_string)(text_ms)))
 }
@@ -454,7 +469,7 @@ func (this *QDoubleSpinBox) TextFromValue(val float64) string {
 }
 
 func (this *QDoubleSpinBox) Fixup(str string) {
-	str_ms := miqt_strdupg(str)
+	str_ms := libmiqt.Strdupg(str)
 	defer C.free(str_ms)
 	C.QDoubleSpinBox_Fixup(this.h, (*C.struct_miqt_string)(str_ms))
 }
@@ -484,7 +499,7 @@ func miqt_exec_callback_QDoubleSpinBox_ValueChanged(cb C.intptr_t, param1 C.doub
 }
 
 func (this *QDoubleSpinBox) TextChanged(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QDoubleSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
 }
@@ -509,7 +524,7 @@ func miqt_exec_callback_QDoubleSpinBox_TextChanged(cb C.intptr_t, param1 *C.stru
 }
 
 func (this *QDoubleSpinBox) ValueChangedWithQString(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QDoubleSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
 }

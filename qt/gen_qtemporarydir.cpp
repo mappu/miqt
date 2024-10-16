@@ -2,7 +2,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTemporaryDir>
-#include "qtemporarydir.h"
+#include <qtemporarydir.h>
 #include "gen_qtemporarydir.h"
 #include "_cgo_export.h"
 

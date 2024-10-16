@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -25,14 +26,21 @@ func (this *QTranslator) cPointer() *C.QTranslator {
 	return this.h
 }
 
+func (this *QTranslator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTranslator(h *C.QTranslator) *QTranslator {
 	if h == nil {
 		return nil
 	}
-	return &QTranslator{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QTranslator{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQTranslator_U(h unsafe.Pointer) *QTranslator {
+func UnsafeNewQTranslator(h unsafe.Pointer) *QTranslator {
 	return newQTranslator((*C.QTranslator)(h))
 }
 
@@ -49,7 +57,7 @@ func NewQTranslator2(parent *QObject) *QTranslator {
 }
 
 func (this *QTranslator) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTranslator_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTranslator_MetaObject(this.h)))
 }
 
 func (this *QTranslator) Metacast(param1 string) unsafe.Pointer {
@@ -106,13 +114,13 @@ func (this *QTranslator) FilePath() string {
 }
 
 func (this *QTranslator) Load(filename string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
 	return (bool)(C.QTranslator_Load(this.h, (*C.struct_miqt_string)(filename_ms)))
 }
 
 func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
 	return (bool)(C.QTranslator_Load2(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms)))
 }
@@ -192,67 +200,67 @@ func (this *QTranslator) Translate4(context string, sourceText string, disambigu
 }
 
 func (this *QTranslator) Load22(filename string, directory string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
 	return (bool)(C.QTranslator_Load22(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms)))
 }
 
 func (this *QTranslator) Load32(filename string, directory string, search_delimiters string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
-	search_delimiters_ms := miqt_strdupg(search_delimiters)
+	search_delimiters_ms := libmiqt.Strdupg(search_delimiters)
 	defer C.free(search_delimiters_ms)
 	return (bool)(C.QTranslator_Load32(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(search_delimiters_ms)))
 }
 
 func (this *QTranslator) Load4(filename string, directory string, search_delimiters string, suffix string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
-	search_delimiters_ms := miqt_strdupg(search_delimiters)
+	search_delimiters_ms := libmiqt.Strdupg(search_delimiters)
 	defer C.free(search_delimiters_ms)
-	suffix_ms := miqt_strdupg(suffix)
+	suffix_ms := libmiqt.Strdupg(suffix)
 	defer C.free(suffix_ms)
 	return (bool)(C.QTranslator_Load4(this.h, (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(search_delimiters_ms), (*C.struct_miqt_string)(suffix_ms)))
 }
 
 func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
 	return (bool)(C.QTranslator_Load33(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms)))
 }
 
 func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string, directory string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
 	return (bool)(C.QTranslator_Load42(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms), (*C.struct_miqt_string)(directory_ms)))
 }
 
 func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
-	filename_ms := miqt_strdupg(filename)
+	filename_ms := libmiqt.Strdupg(filename)
 	defer C.free(filename_ms)
-	prefix_ms := miqt_strdupg(prefix)
+	prefix_ms := libmiqt.Strdupg(prefix)
 	defer C.free(prefix_ms)
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
-	suffix_ms := miqt_strdupg(suffix)
+	suffix_ms := libmiqt.Strdupg(suffix)
 	defer C.free(suffix_ms)
 	return (bool)(C.QTranslator_Load5(this.h, locale.cPointer(), (*C.struct_miqt_string)(filename_ms), (*C.struct_miqt_string)(prefix_ms), (*C.struct_miqt_string)(directory_ms), (*C.struct_miqt_string)(suffix_ms)))
 }
 
 func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
-	directory_ms := miqt_strdupg(directory)
+	directory_ms := libmiqt.Strdupg(directory)
 	defer C.free(directory_ms)
 	return (bool)(C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), (*C.struct_miqt_string)(directory_ms)))
 }

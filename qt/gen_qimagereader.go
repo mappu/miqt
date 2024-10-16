@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -34,6 +35,13 @@ func (this *QImageReader) cPointer() *C.QImageReader {
 	return this.h
 }
 
+func (this *QImageReader) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQImageReader(h *C.QImageReader) *QImageReader {
 	if h == nil {
 		return nil
@@ -41,7 +49,7 @@ func newQImageReader(h *C.QImageReader) *QImageReader {
 	return &QImageReader{h: h}
 }
 
-func newQImageReader_U(h unsafe.Pointer) *QImageReader {
+func UnsafeNewQImageReader(h unsafe.Pointer) *QImageReader {
 	return newQImageReader((*C.QImageReader)(h))
 }
 
@@ -59,7 +67,7 @@ func NewQImageReader2(device *QIODevice) *QImageReader {
 
 // NewQImageReader3 constructs a new QImageReader object.
 func NewQImageReader3(fileName string) *QImageReader {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QImageReader_new3((*C.struct_miqt_string)(fileName_ms))
 	return newQImageReader(ret)
@@ -73,7 +81,7 @@ func NewQImageReader4(device *QIODevice, format *QByteArray) *QImageReader {
 
 // NewQImageReader5 constructs a new QImageReader object.
 func NewQImageReader5(fileName string, format *QByteArray) *QImageReader {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	ret := C.QImageReader_new5((*C.struct_miqt_string)(fileName_ms), format.cPointer())
 	return newQImageReader(ret)
@@ -129,11 +137,11 @@ func (this *QImageReader) SetDevice(device *QIODevice) {
 }
 
 func (this *QImageReader) Device() *QIODevice {
-	return newQIODevice_U(unsafe.Pointer(C.QImageReader_Device(this.h)))
+	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageReader_Device(this.h)))
 }
 
 func (this *QImageReader) SetFileName(fileName string) {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	C.QImageReader_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
 }
@@ -171,7 +179,7 @@ func (this *QImageReader) TextKeys() []string {
 }
 
 func (this *QImageReader) Text(key string) string {
-	key_ms := miqt_strdupg(key)
+	key_ms := libmiqt.Strdupg(key)
 	defer C.free(key_ms)
 	var _ms *C.struct_miqt_string = C.QImageReader_Text(this.h, (*C.struct_miqt_string)(key_ms))
 	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
@@ -338,7 +346,7 @@ func (this *QImageReader) SupportsOption(option QImageIOHandler__ImageOption) bo
 }
 
 func QImageReader_ImageFormatWithFileName(fileName string) *QByteArray {
-	fileName_ms := miqt_strdupg(fileName)
+	fileName_ms := libmiqt.Strdupg(fileName)
 	defer C.free(fileName_ms)
 	_ret := C.QImageReader_ImageFormatWithFileName((*C.struct_miqt_string)(fileName_ms))
 	_goptr := newQByteArray(_ret)

@@ -4,7 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qfuturewatcher.h"
+#include <qfuturewatcher.h>
 #include "gen_qfuturewatcher.h"
 #include "_cgo_export.h"
 

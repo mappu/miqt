@@ -24,6 +24,13 @@ func (this *QtPrivate__ResultItem) cPointer() *C.QtPrivate__ResultItem {
 	return this.h
 }
 
+func (this *QtPrivate__ResultItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__ResultItem(h *C.QtPrivate__ResultItem) *QtPrivate__ResultItem {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQtPrivate__ResultItem(h *C.QtPrivate__ResultItem) *QtPrivate__ResultItem
 	return &QtPrivate__ResultItem{h: h}
 }
 
-func newQtPrivate__ResultItem_U(h unsafe.Pointer) *QtPrivate__ResultItem {
+func UnsafeNewQtPrivate__ResultItem(h unsafe.Pointer) *QtPrivate__ResultItem {
 	return newQtPrivate__ResultItem((*C.QtPrivate__ResultItem)(h))
 }
 
@@ -90,6 +97,13 @@ func (this *QtPrivate__ResultIteratorBase) cPointer() *C.QtPrivate__ResultIterat
 	return this.h
 }
 
+func (this *QtPrivate__ResultIteratorBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__ResultIteratorBase(h *C.QtPrivate__ResultIteratorBase) *QtPrivate__ResultIteratorBase {
 	if h == nil {
 		return nil
@@ -97,7 +111,7 @@ func newQtPrivate__ResultIteratorBase(h *C.QtPrivate__ResultIteratorBase) *QtPri
 	return &QtPrivate__ResultIteratorBase{h: h}
 }
 
-func newQtPrivate__ResultIteratorBase_U(h unsafe.Pointer) *QtPrivate__ResultIteratorBase {
+func UnsafeNewQtPrivate__ResultIteratorBase(h unsafe.Pointer) *QtPrivate__ResultIteratorBase {
 	return newQtPrivate__ResultIteratorBase((*C.QtPrivate__ResultIteratorBase)(h))
 }
 
@@ -171,6 +185,13 @@ func (this *QtPrivate__ResultStoreBase) cPointer() *C.QtPrivate__ResultStoreBase
 	return this.h
 }
 
+func (this *QtPrivate__ResultStoreBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQtPrivate__ResultStoreBase(h *C.QtPrivate__ResultStoreBase) *QtPrivate__ResultStoreBase {
 	if h == nil {
 		return nil
@@ -178,7 +199,7 @@ func newQtPrivate__ResultStoreBase(h *C.QtPrivate__ResultStoreBase) *QtPrivate__
 	return &QtPrivate__ResultStoreBase{h: h}
 }
 
-func newQtPrivate__ResultStoreBase_U(h unsafe.Pointer) *QtPrivate__ResultStoreBase {
+func UnsafeNewQtPrivate__ResultStoreBase(h unsafe.Pointer) *QtPrivate__ResultStoreBase {
 	return newQtPrivate__ResultStoreBase((*C.QtPrivate__ResultStoreBase)(h))
 }
 

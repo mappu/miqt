@@ -11,12 +11,12 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
-#include "qdirmodel.h"
+#include <qdirmodel.h>
 #include "gen_qdirmodel.h"
 #include "_cgo_export.h"
 
 QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort) {
-	QList<QString> nameFilters_QList;
+	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
 	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
@@ -31,7 +31,7 @@ QDirModel* QDirModel_new2() {
 }
 
 QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent) {
-	QList<QString> nameFilters_QList;
+	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
 	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
@@ -125,7 +125,7 @@ struct miqt_array* QDirModel_MimeTypes(const QDirModel* self) {
 }
 
 QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
-	QList<QModelIndex> indexes_QList;
+	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
 	for(size_t i = 0; i < indexes->len; ++i) {
@@ -152,7 +152,7 @@ QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
 }
 
 void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
-	QList<QString> filters_QList;
+	QStringList filters_QList;
 	filters_QList.reserve(filters->len);
 	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {

@@ -1,5 +1,5 @@
 #include <QInternal>
-#include "qnamespace.h"
+#include <qnamespace.h>
 #include "gen_qnamespace.h"
 #include "_cgo_export.h"
 

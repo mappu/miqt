@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -42,14 +43,21 @@ func (this *QDateTimeEdit) cPointer() *C.QDateTimeEdit {
 	return this.h
 }
 
+func (this *QDateTimeEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDateTimeEdit(h *C.QDateTimeEdit) *QDateTimeEdit {
 	if h == nil {
 		return nil
 	}
-	return &QDateTimeEdit{h: h, QAbstractSpinBox: newQAbstractSpinBox_U(unsafe.Pointer(h))}
+	return &QDateTimeEdit{h: h, QAbstractSpinBox: UnsafeNewQAbstractSpinBox(unsafe.Pointer(h))}
 }
 
-func newQDateTimeEdit_U(h unsafe.Pointer) *QDateTimeEdit {
+func UnsafeNewQDateTimeEdit(h unsafe.Pointer) *QDateTimeEdit {
 	return newQDateTimeEdit((*C.QDateTimeEdit)(h))
 }
 
@@ -102,7 +110,7 @@ func NewQDateTimeEdit8(t *QTime, parent *QWidget) *QDateTimeEdit {
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDateTimeEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDateTimeEdit_MetaObject(this.h)))
 }
 
 func (this *QDateTimeEdit) Metacast(param1 string) unsafe.Pointer {
@@ -288,7 +296,7 @@ func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	return newQCalendarWidget_U(unsafe.Pointer(C.QDateTimeEdit_CalendarWidget(this.h)))
+	return UnsafeNewQCalendarWidget(unsafe.Pointer(C.QDateTimeEdit_CalendarWidget(this.h)))
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
@@ -318,7 +326,7 @@ func (this *QDateTimeEdit) DisplayFormat() string {
 }
 
 func (this *QDateTimeEdit) SetDisplayFormat(format string) {
-	format_ms := miqt_strdupg(format)
+	format_ms := libmiqt.Strdupg(format)
 	defer C.free(format_ms)
 	C.QDateTimeEdit_SetDisplayFormat(this.h, (*C.struct_miqt_string)(format_ms))
 }
@@ -373,7 +381,7 @@ func miqt_exec_callback_QDateTimeEdit_DateTimeChanged(cb C.intptr_t, dateTime *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDateTime_U(unsafe.Pointer(dateTime))
+	slotval1 := UnsafeNewQDateTime(unsafe.Pointer(dateTime))
 
 	gofunc(slotval1)
 }
@@ -393,7 +401,7 @@ func miqt_exec_callback_QDateTimeEdit_TimeChanged(cb C.intptr_t, time *C.QTime) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTime_U(unsafe.Pointer(time))
+	slotval1 := UnsafeNewQTime(unsafe.Pointer(time))
 
 	gofunc(slotval1)
 }
@@ -413,7 +421,7 @@ func miqt_exec_callback_QDateTimeEdit_DateChanged(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDate_U(unsafe.Pointer(date))
+	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }
@@ -500,14 +508,21 @@ func (this *QTimeEdit) cPointer() *C.QTimeEdit {
 	return this.h
 }
 
+func (this *QTimeEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTimeEdit(h *C.QTimeEdit) *QTimeEdit {
 	if h == nil {
 		return nil
 	}
-	return &QTimeEdit{h: h, QDateTimeEdit: newQDateTimeEdit_U(unsafe.Pointer(h))}
+	return &QTimeEdit{h: h, QDateTimeEdit: UnsafeNewQDateTimeEdit(unsafe.Pointer(h))}
 }
 
-func newQTimeEdit_U(h unsafe.Pointer) *QTimeEdit {
+func UnsafeNewQTimeEdit(h unsafe.Pointer) *QTimeEdit {
 	return newQTimeEdit((*C.QTimeEdit)(h))
 }
 
@@ -536,7 +551,7 @@ func NewQTimeEdit4(time *QTime, parent *QWidget) *QTimeEdit {
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTimeEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimeEdit_MetaObject(this.h)))
 }
 
 func (this *QTimeEdit) Metacast(param1 string) unsafe.Pointer {
@@ -578,7 +593,7 @@ func miqt_exec_callback_QTimeEdit_UserTimeChanged(cb C.intptr_t, time *C.QTime) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQTime_U(unsafe.Pointer(time))
+	slotval1 := UnsafeNewQTime(unsafe.Pointer(time))
 
 	gofunc(slotval1)
 }
@@ -653,14 +668,21 @@ func (this *QDateEdit) cPointer() *C.QDateEdit {
 	return this.h
 }
 
+func (this *QDateEdit) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDateEdit(h *C.QDateEdit) *QDateEdit {
 	if h == nil {
 		return nil
 	}
-	return &QDateEdit{h: h, QDateTimeEdit: newQDateTimeEdit_U(unsafe.Pointer(h))}
+	return &QDateEdit{h: h, QDateTimeEdit: UnsafeNewQDateTimeEdit(unsafe.Pointer(h))}
 }
 
-func newQDateEdit_U(h unsafe.Pointer) *QDateEdit {
+func UnsafeNewQDateEdit(h unsafe.Pointer) *QDateEdit {
 	return newQDateEdit((*C.QDateEdit)(h))
 }
 
@@ -689,7 +711,7 @@ func NewQDateEdit4(date *QDate, parent *QWidget) *QDateEdit {
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDateEdit_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDateEdit_MetaObject(this.h)))
 }
 
 func (this *QDateEdit) Metacast(param1 string) unsafe.Pointer {
@@ -731,7 +753,7 @@ func miqt_exec_callback_QDateEdit_UserDateChanged(cb C.intptr_t, date *C.QDate) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQDate_U(unsafe.Pointer(date))
+	slotval1 := UnsafeNewQDate(unsafe.Pointer(date))
 
 	gofunc(slotval1)
 }

@@ -9,7 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qjsonobject.h"
+#include <qjsonobject.h>
 #include "gen_qjsonobject.h"
 #include "_cgo_export.h"
 

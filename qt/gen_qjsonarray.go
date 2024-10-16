@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -24,6 +25,13 @@ func (this *QJsonArray) cPointer() *C.QJsonArray {
 	return this.h
 }
 
+func (this *QJsonArray) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonArray(h *C.QJsonArray) *QJsonArray {
 	if h == nil {
 		return nil
@@ -31,7 +39,7 @@ func newQJsonArray(h *C.QJsonArray) *QJsonArray {
 	return &QJsonArray{h: h}
 }
 
-func newQJsonArray_U(h unsafe.Pointer) *QJsonArray {
+func UnsafeNewQJsonArray(h unsafe.Pointer) *QJsonArray {
 	return newQJsonArray((*C.QJsonArray)(h))
 }
 
@@ -56,7 +64,7 @@ func QJsonArray_FromStringList(list []string) *QJsonArray {
 	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		list_i_ms := miqt_strdupg(list[i])
+		list_i_ms := libmiqt.Strdupg(list[i])
 		defer C.free(list_i_ms)
 		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
 	}
@@ -244,11 +252,11 @@ func (this *QJsonArray) OperatorPlus(v *QJsonValue) *QJsonArray {
 }
 
 func (this *QJsonArray) OperatorPlusAssign(v *QJsonValue) *QJsonArray {
-	return newQJsonArray_U(unsafe.Pointer(C.QJsonArray_OperatorPlusAssign(this.h, v.cPointer())))
+	return UnsafeNewQJsonArray(unsafe.Pointer(C.QJsonArray_OperatorPlusAssign(this.h, v.cPointer())))
 }
 
 func (this *QJsonArray) OperatorShiftLeft(v *QJsonValue) *QJsonArray {
-	return newQJsonArray_U(unsafe.Pointer(C.QJsonArray_OperatorShiftLeft(this.h, v.cPointer())))
+	return UnsafeNewQJsonArray(unsafe.Pointer(C.QJsonArray_OperatorShiftLeft(this.h, v.cPointer())))
 }
 
 func (this *QJsonArray) PushBack(t *QJsonValue) {
@@ -296,6 +304,13 @@ func (this *QJsonArray__iterator) cPointer() *C.QJsonArray__iterator {
 	return this.h
 }
 
+func (this *QJsonArray__iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonArray__iterator(h *C.QJsonArray__iterator) *QJsonArray__iterator {
 	if h == nil {
 		return nil
@@ -303,7 +318,7 @@ func newQJsonArray__iterator(h *C.QJsonArray__iterator) *QJsonArray__iterator {
 	return &QJsonArray__iterator{h: h}
 }
 
-func newQJsonArray__iterator_U(h unsafe.Pointer) *QJsonArray__iterator {
+func UnsafeNewQJsonArray__iterator(h unsafe.Pointer) *QJsonArray__iterator {
 	return newQJsonArray__iterator((*C.QJsonArray__iterator)(h))
 }
 
@@ -395,7 +410,7 @@ func (this *QJsonArray__iterator) OperatorGreaterOrEqualWithOther(other *QJsonAr
 }
 
 func (this *QJsonArray__iterator) OperatorPlusPlus() *QJsonArray__iterator {
-	return newQJsonArray__iterator_U(unsafe.Pointer(C.QJsonArray__iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQJsonArray__iterator(unsafe.Pointer(C.QJsonArray__iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QJsonArray__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonArray__iterator {
@@ -406,7 +421,7 @@ func (this *QJsonArray__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonArra
 }
 
 func (this *QJsonArray__iterator) OperatorMinusMinus() *QJsonArray__iterator {
-	return newQJsonArray__iterator_U(unsafe.Pointer(C.QJsonArray__iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQJsonArray__iterator(unsafe.Pointer(C.QJsonArray__iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QJsonArray__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonArray__iterator {
@@ -417,11 +432,11 @@ func (this *QJsonArray__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonAr
 }
 
 func (this *QJsonArray__iterator) OperatorPlusAssign(j int) *QJsonArray__iterator {
-	return newQJsonArray__iterator_U(unsafe.Pointer(C.QJsonArray__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonArray__iterator(unsafe.Pointer(C.QJsonArray__iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonArray__iterator) OperatorMinusAssign(j int) *QJsonArray__iterator {
-	return newQJsonArray__iterator_U(unsafe.Pointer(C.QJsonArray__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonArray__iterator(unsafe.Pointer(C.QJsonArray__iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonArray__iterator) OperatorPlus(j int) *QJsonArray__iterator {
@@ -467,6 +482,13 @@ func (this *QJsonArray__const_iterator) cPointer() *C.QJsonArray__const_iterator
 	return this.h
 }
 
+func (this *QJsonArray__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQJsonArray__const_iterator(h *C.QJsonArray__const_iterator) *QJsonArray__const_iterator {
 	if h == nil {
 		return nil
@@ -474,7 +496,7 @@ func newQJsonArray__const_iterator(h *C.QJsonArray__const_iterator) *QJsonArray_
 	return &QJsonArray__const_iterator{h: h}
 }
 
-func newQJsonArray__const_iterator_U(h unsafe.Pointer) *QJsonArray__const_iterator {
+func UnsafeNewQJsonArray__const_iterator(h unsafe.Pointer) *QJsonArray__const_iterator {
 	return newQJsonArray__const_iterator((*C.QJsonArray__const_iterator)(h))
 }
 
@@ -548,7 +570,7 @@ func (this *QJsonArray__const_iterator) OperatorGreaterOrEqual(other *QJsonArray
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusPlus() *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator_U(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorPlusPlus(this.h)))
+	return UnsafeNewQJsonArray__const_iterator(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorPlusPlus(this.h)))
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJsonArray__const_iterator {
@@ -559,7 +581,7 @@ func (this *QJsonArray__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJs
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusMinus() *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator_U(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorMinusMinus(this.h)))
+	return UnsafeNewQJsonArray__const_iterator(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorMinusMinus(this.h)))
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusMinusWithInt(param1 int) *QJsonArray__const_iterator {
@@ -570,11 +592,11 @@ func (this *QJsonArray__const_iterator) OperatorMinusMinusWithInt(param1 int) *Q
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusAssign(j int) *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator_U(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonArray__const_iterator(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusAssign(j int) *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator_U(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+	return UnsafeNewQJsonArray__const_iterator(unsafe.Pointer(C.QJsonArray__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlus(j int) *QJsonArray__const_iterator {

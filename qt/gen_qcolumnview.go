@@ -26,14 +26,21 @@ func (this *QColumnView) cPointer() *C.QColumnView {
 	return this.h
 }
 
+func (this *QColumnView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColumnView(h *C.QColumnView) *QColumnView {
 	if h == nil {
 		return nil
 	}
-	return &QColumnView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
+	return &QColumnView{h: h, QAbstractItemView: UnsafeNewQAbstractItemView(unsafe.Pointer(h))}
 }
 
-func newQColumnView_U(h unsafe.Pointer) *QColumnView {
+func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
 	return newQColumnView((*C.QColumnView)(h))
 }
 
@@ -50,7 +57,7 @@ func NewQColumnView2(parent *QWidget) *QColumnView {
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QColumnView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QColumnView_MetaObject(this.h)))
 }
 
 func (this *QColumnView) Metacast(param1 string) unsafe.Pointer {
@@ -92,7 +99,7 @@ func miqt_exec_callback_QColumnView_UpdatePreviewWidget(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex_U(unsafe.Pointer(index))
+	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	gofunc(slotval1)
 }
@@ -147,7 +154,7 @@ func (this *QColumnView) ResizeGripsVisible() bool {
 }
 
 func (this *QColumnView) PreviewWidget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QColumnView_PreviewWidget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QColumnView_PreviewWidget(this.h)))
 }
 
 func (this *QColumnView) SetPreviewWidget(widget *QWidget) {

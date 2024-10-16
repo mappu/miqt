@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qerrormessage.h"
+#include <qerrormessage.h>
 #include "gen_qerrormessage.h"
 #include "_cgo_export.h"
 

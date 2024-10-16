@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -32,14 +33,21 @@ func (this *QCoreApplication) cPointer() *C.QCoreApplication {
 	return this.h
 }
 
+func (this *QCoreApplication) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQCoreApplication(h *C.QCoreApplication) *QCoreApplication {
 	if h == nil {
 		return nil
 	}
-	return &QCoreApplication{h: h, QObject: newQObject_U(unsafe.Pointer(h))}
+	return &QCoreApplication{h: h, QObject: UnsafeNewQObject(unsafe.Pointer(h))}
 }
 
-func newQCoreApplication_U(h unsafe.Pointer) *QCoreApplication {
+func UnsafeNewQCoreApplication(h unsafe.Pointer) *QCoreApplication {
 	return newQCoreApplication((*C.QCoreApplication)(h))
 }
 
@@ -70,7 +78,7 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QCoreApplication_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCoreApplication_MetaObject(this.h)))
 }
 
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
@@ -120,7 +128,7 @@ func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
 }
 
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
-	orgDomain_ms := miqt_strdupg(orgDomain)
+	orgDomain_ms := libmiqt.Strdupg(orgDomain)
 	defer C.free(orgDomain_ms)
 	C.QCoreApplication_SetOrganizationDomain((*C.struct_miqt_string)(orgDomain_ms))
 }
@@ -133,7 +141,7 @@ func QCoreApplication_OrganizationDomain() string {
 }
 
 func QCoreApplication_SetOrganizationName(orgName string) {
-	orgName_ms := miqt_strdupg(orgName)
+	orgName_ms := libmiqt.Strdupg(orgName)
 	defer C.free(orgName_ms)
 	C.QCoreApplication_SetOrganizationName((*C.struct_miqt_string)(orgName_ms))
 }
@@ -146,7 +154,7 @@ func QCoreApplication_OrganizationName() string {
 }
 
 func QCoreApplication_SetApplicationName(application string) {
-	application_ms := miqt_strdupg(application)
+	application_ms := libmiqt.Strdupg(application)
 	defer C.free(application_ms)
 	C.QCoreApplication_SetApplicationName((*C.struct_miqt_string)(application_ms))
 }
@@ -159,7 +167,7 @@ func QCoreApplication_ApplicationName() string {
 }
 
 func QCoreApplication_SetApplicationVersion(version string) {
-	version_ms := miqt_strdupg(version)
+	version_ms := libmiqt.Strdupg(version)
 	defer C.free(version_ms)
 	C.QCoreApplication_SetApplicationVersion((*C.struct_miqt_string)(version_ms))
 }
@@ -180,7 +188,7 @@ func QCoreApplication_IsSetuidAllowed() bool {
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	return newQCoreApplication_U(unsafe.Pointer(C.QCoreApplication_Instance()))
+	return UnsafeNewQCoreApplication(unsafe.Pointer(C.QCoreApplication_Instance()))
 }
 
 func QCoreApplication_Exec() int {
@@ -220,7 +228,7 @@ func QCoreApplication_HasPendingEvents() bool {
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher_U(unsafe.Pointer(C.QCoreApplication_EventDispatcher()))
+	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QCoreApplication_EventDispatcher()))
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -262,7 +270,7 @@ func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 	libraryPaths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	for i := range libraryPaths {
-		libraryPaths_i_ms := miqt_strdupg(libraryPaths[i])
+		libraryPaths_i_ms := libmiqt.Strdupg(libraryPaths[i])
 		defer C.free(libraryPaths_i_ms)
 		libraryPaths_CArray[i] = (*C.struct_miqt_string)(libraryPaths_i_ms)
 	}
@@ -286,13 +294,13 @@ func QCoreApplication_LibraryPaths() []string {
 }
 
 func QCoreApplication_AddLibraryPath(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QCoreApplication_AddLibraryPath((*C.struct_miqt_string)(param1_ms))
 }
 
 func QCoreApplication_RemoveLibraryPath(param1 string) {
-	param1_ms := miqt_strdupg(param1)
+	param1_ms := libmiqt.Strdupg(param1)
 	defer C.free(param1_ms)
 	C.QCoreApplication_RemoveLibraryPath((*C.struct_miqt_string)(param1_ms))
 }

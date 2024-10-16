@@ -31,6 +31,13 @@ func (this *QReadWriteLock) cPointer() *C.QReadWriteLock {
 	return this.h
 }
 
+func (this *QReadWriteLock) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
 	if h == nil {
 		return nil
@@ -38,7 +45,7 @@ func newQReadWriteLock(h *C.QReadWriteLock) *QReadWriteLock {
 	return &QReadWriteLock{h: h}
 }
 
-func newQReadWriteLock_U(h unsafe.Pointer) *QReadWriteLock {
+func UnsafeNewQReadWriteLock(h unsafe.Pointer) *QReadWriteLock {
 	return newQReadWriteLock((*C.QReadWriteLock)(h))
 }
 
@@ -107,6 +114,13 @@ func (this *QReadLocker) cPointer() *C.QReadLocker {
 	return this.h
 }
 
+func (this *QReadLocker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQReadLocker(h *C.QReadLocker) *QReadLocker {
 	if h == nil {
 		return nil
@@ -114,7 +128,7 @@ func newQReadLocker(h *C.QReadLocker) *QReadLocker {
 	return &QReadLocker{h: h}
 }
 
-func newQReadLocker_U(h unsafe.Pointer) *QReadLocker {
+func UnsafeNewQReadLocker(h unsafe.Pointer) *QReadLocker {
 	return newQReadLocker((*C.QReadLocker)(h))
 }
 
@@ -133,7 +147,7 @@ func (this *QReadLocker) Relock() {
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	return newQReadWriteLock_U(unsafe.Pointer(C.QReadLocker_ReadWriteLock(this.h)))
+	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QReadLocker_ReadWriteLock(this.h)))
 }
 
 // Delete this object from C++ memory.
@@ -161,6 +175,13 @@ func (this *QWriteLocker) cPointer() *C.QWriteLocker {
 	return this.h
 }
 
+func (this *QWriteLocker) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
 	if h == nil {
 		return nil
@@ -168,7 +189,7 @@ func newQWriteLocker(h *C.QWriteLocker) *QWriteLocker {
 	return &QWriteLocker{h: h}
 }
 
-func newQWriteLocker_U(h unsafe.Pointer) *QWriteLocker {
+func UnsafeNewQWriteLocker(h unsafe.Pointer) *QWriteLocker {
 	return newQWriteLocker((*C.QWriteLocker)(h))
 }
 
@@ -187,7 +208,7 @@ func (this *QWriteLocker) Relock() {
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	return newQReadWriteLock_U(unsafe.Pointer(C.QWriteLocker_ReadWriteLock(this.h)))
+	return UnsafeNewQReadWriteLock(unsafe.Pointer(C.QWriteLocker_ReadWriteLock(this.h)))
 }
 
 // Delete this object from C++ memory.

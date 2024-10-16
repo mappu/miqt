@@ -25,14 +25,21 @@ func (this *QDial) cPointer() *C.QDial {
 	return this.h
 }
 
+func (this *QDial) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQDial(h *C.QDial) *QDial {
 	if h == nil {
 		return nil
 	}
-	return &QDial{h: h, QAbstractSlider: newQAbstractSlider_U(unsafe.Pointer(h))}
+	return &QDial{h: h, QAbstractSlider: UnsafeNewQAbstractSlider(unsafe.Pointer(h))}
 }
 
-func newQDial_U(h unsafe.Pointer) *QDial {
+func UnsafeNewQDial(h unsafe.Pointer) *QDial {
 	return newQDial((*C.QDial)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQDial2(parent *QWidget) *QDial {
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QDial_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDial_MetaObject(this.h)))
 }
 
 func (this *QDial) Metacast(param1 string) unsafe.Pointer {

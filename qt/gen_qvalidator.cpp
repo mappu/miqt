@@ -11,7 +11,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QValidator>
-#include "qvalidator.h"
+#include <qvalidator.h>
 #include "gen_qvalidator.h"
 #include "_cgo_export.h"
 

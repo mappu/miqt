@@ -25,14 +25,21 @@ func (this *QTableView) cPointer() *C.QTableView {
 	return this.h
 }
 
+func (this *QTableView) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTableView(h *C.QTableView) *QTableView {
 	if h == nil {
 		return nil
 	}
-	return &QTableView{h: h, QAbstractItemView: newQAbstractItemView_U(unsafe.Pointer(h))}
+	return &QTableView{h: h, QAbstractItemView: UnsafeNewQAbstractItemView(unsafe.Pointer(h))}
 }
 
-func newQTableView_U(h unsafe.Pointer) *QTableView {
+func UnsafeNewQTableView(h unsafe.Pointer) *QTableView {
 	return newQTableView((*C.QTableView)(h))
 }
 
@@ -49,7 +56,7 @@ func NewQTableView2(parent *QWidget) *QTableView {
 }
 
 func (this *QTableView) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QTableView_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTableView_MetaObject(this.h)))
 }
 
 func (this *QTableView) Metacast(param1 string) unsafe.Pointer {
@@ -93,11 +100,11 @@ func (this *QTableView) DoItemsLayout() {
 }
 
 func (this *QTableView) HorizontalHeader() *QHeaderView {
-	return newQHeaderView_U(unsafe.Pointer(C.QTableView_HorizontalHeader(this.h)))
+	return UnsafeNewQHeaderView(unsafe.Pointer(C.QTableView_HorizontalHeader(this.h)))
 }
 
 func (this *QTableView) VerticalHeader() *QHeaderView {
-	return newQHeaderView_U(unsafe.Pointer(C.QTableView_VerticalHeader(this.h)))
+	return UnsafeNewQHeaderView(unsafe.Pointer(C.QTableView_VerticalHeader(this.h)))
 }
 
 func (this *QTableView) SetHorizontalHeader(header *QHeaderView) {

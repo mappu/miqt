@@ -42,6 +42,13 @@ func (this *QFileIconProvider) cPointer() *C.QFileIconProvider {
 	return this.h
 }
 
+func (this *QFileIconProvider) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
 	if h == nil {
 		return nil
@@ -49,7 +56,7 @@ func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
 	return &QFileIconProvider{h: h}
 }
 
-func newQFileIconProvider_U(h unsafe.Pointer) *QFileIconProvider {
+func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
 	return newQFileIconProvider((*C.QFileIconProvider)(h))
 }
 

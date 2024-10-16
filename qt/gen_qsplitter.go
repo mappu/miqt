@@ -26,14 +26,21 @@ func (this *QSplitter) cPointer() *C.QSplitter {
 	return this.h
 }
 
+func (this *QSplitter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSplitter(h *C.QSplitter) *QSplitter {
 	if h == nil {
 		return nil
 	}
-	return &QSplitter{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QSplitter{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQSplitter_U(h unsafe.Pointer) *QSplitter {
+func UnsafeNewQSplitter(h unsafe.Pointer) *QSplitter {
 	return newQSplitter((*C.QSplitter)(h))
 }
 
@@ -62,7 +69,7 @@ func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
 }
 
 func (this *QSplitter) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSplitter_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSplitter_MetaObject(this.h)))
 }
 
 func (this *QSplitter) Metacast(param1 string) unsafe.Pointer {
@@ -98,7 +105,7 @@ func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
 }
 
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer())))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer())))
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
@@ -198,7 +205,7 @@ func (this *QSplitter) IndexOf(w *QWidget) int {
 }
 
 func (this *QSplitter) Widget(index int) *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QSplitter_Widget(this.h, (C.int)(index))))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QSplitter_Widget(this.h, (C.int)(index))))
 }
 
 func (this *QSplitter) Count() int {
@@ -210,7 +217,7 @@ func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
 }
 
 func (this *QSplitter) Handle(index int) *QSplitterHandle {
-	return newQSplitterHandle_U(unsafe.Pointer(C.QSplitter_Handle(this.h, (C.int)(index))))
+	return UnsafeNewQSplitterHandle(unsafe.Pointer(C.QSplitter_Handle(this.h, (C.int)(index))))
 }
 
 func (this *QSplitter) SetStretchFactor(index int, stretch int) {
@@ -313,14 +320,21 @@ func (this *QSplitterHandle) cPointer() *C.QSplitterHandle {
 	return this.h
 }
 
+func (this *QSplitterHandle) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQSplitterHandle(h *C.QSplitterHandle) *QSplitterHandle {
 	if h == nil {
 		return nil
 	}
-	return &QSplitterHandle{h: h, QWidget: newQWidget_U(unsafe.Pointer(h))}
+	return &QSplitterHandle{h: h, QWidget: UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
-func newQSplitterHandle_U(h unsafe.Pointer) *QSplitterHandle {
+func UnsafeNewQSplitterHandle(h unsafe.Pointer) *QSplitterHandle {
 	return newQSplitterHandle((*C.QSplitterHandle)(h))
 }
 
@@ -331,7 +345,7 @@ func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
 }
 
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QSplitterHandle_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSplitterHandle_MetaObject(this.h)))
 }
 
 func (this *QSplitterHandle) Metacast(param1 string) unsafe.Pointer {
@@ -371,7 +385,7 @@ func (this *QSplitterHandle) OpaqueResize() bool {
 }
 
 func (this *QSplitterHandle) Splitter() *QSplitter {
-	return newQSplitter_U(unsafe.Pointer(C.QSplitterHandle_Splitter(this.h)))
+	return UnsafeNewQSplitter(unsafe.Pointer(C.QSplitterHandle_Splitter(this.h)))
 }
 
 func (this *QSplitterHandle) SizeHint() *QSize {

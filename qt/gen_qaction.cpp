@@ -13,7 +13,7 @@
 #include <cstring>
 #include <QVariant>
 #include <QWidget>
-#include "qaction.h"
+#include <qaction.h>
 #include "gen_qaction.h"
 #include "_cgo_export.h"
 

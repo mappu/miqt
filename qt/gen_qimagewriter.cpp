@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qimagewriter.h"
+#include <qimagewriter.h>
 #include "gen_qimagewriter.h"
 #include "_cgo_export.h"
 

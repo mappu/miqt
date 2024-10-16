@@ -24,6 +24,13 @@ func (this *QAbstractNativeEventFilter) cPointer() *C.QAbstractNativeEventFilter
 	return this.h
 }
 
+func (this *QAbstractNativeEventFilter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNativeEventFilter {
 	if h == nil {
 		return nil
@@ -31,7 +38,7 @@ func newQAbstractNativeEventFilter(h *C.QAbstractNativeEventFilter) *QAbstractNa
 	return &QAbstractNativeEventFilter{h: h}
 }
 
-func newQAbstractNativeEventFilter_U(h unsafe.Pointer) *QAbstractNativeEventFilter {
+func UnsafeNewQAbstractNativeEventFilter(h unsafe.Pointer) *QAbstractNativeEventFilter {
 	return newQAbstractNativeEventFilter((*C.QAbstractNativeEventFilter)(h))
 }
 

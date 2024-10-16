@@ -112,6 +112,13 @@ func (this *QTextItem) cPointer() *C.QTextItem {
 	return this.h
 }
 
+func (this *QTextItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQTextItem(h *C.QTextItem) *QTextItem {
 	if h == nil {
 		return nil
@@ -119,7 +126,7 @@ func newQTextItem(h *C.QTextItem) *QTextItem {
 	return &QTextItem{h: h}
 }
 
-func newQTextItem_U(h unsafe.Pointer) *QTextItem {
+func UnsafeNewQTextItem(h unsafe.Pointer) *QTextItem {
 	return newQTextItem((*C.QTextItem)(h))
 }
 
@@ -178,6 +185,13 @@ func (this *QPaintEngine) cPointer() *C.QPaintEngine {
 	return this.h
 }
 
+func (this *QPaintEngine) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	if h == nil {
 		return nil
@@ -185,7 +199,7 @@ func newQPaintEngine(h *C.QPaintEngine) *QPaintEngine {
 	return &QPaintEngine{h: h}
 }
 
-func newQPaintEngine_U(h unsafe.Pointer) *QPaintEngine {
+func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
 	return newQPaintEngine((*C.QPaintEngine)(h))
 }
 
@@ -274,7 +288,7 @@ func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
 }
 
 func (this *QPaintEngine) PaintDevice() *QPaintDevice {
-	return newQPaintDevice_U(unsafe.Pointer(C.QPaintEngine_PaintDevice(this.h)))
+	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPaintEngine_PaintDevice(this.h)))
 }
 
 func (this *QPaintEngine) SetSystemClip(baseClip *QRegion) {
@@ -331,7 +345,7 @@ func (this *QPaintEngine) HasFeature(feature QPaintEngine__PaintEngineFeature) b
 }
 
 func (this *QPaintEngine) Painter() *QPainter {
-	return newQPainter_U(unsafe.Pointer(C.QPaintEngine_Painter(this.h)))
+	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngine_Painter(this.h)))
 }
 
 func (this *QPaintEngine) SyncState() {
@@ -371,6 +385,13 @@ func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {
 	return this.h
 }
 
+func (this *QPaintEngineState) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	if h == nil {
 		return nil
@@ -378,7 +399,7 @@ func newQPaintEngineState(h *C.QPaintEngineState) *QPaintEngineState {
 	return &QPaintEngineState{h: h}
 }
 
-func newQPaintEngineState_U(h unsafe.Pointer) *QPaintEngineState {
+func UnsafeNewQPaintEngineState(h unsafe.Pointer) *QPaintEngineState {
 	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
@@ -474,7 +495,7 @@ func (this *QPaintEngineState) Opacity() float64 {
 }
 
 func (this *QPaintEngineState) Painter() *QPainter {
-	return newQPainter_U(unsafe.Pointer(C.QPaintEngineState_Painter(this.h)))
+	return UnsafeNewQPainter(unsafe.Pointer(C.QPaintEngineState_Painter(this.h)))
 }
 
 func (this *QPaintEngineState) BrushNeedsResolving() bool {

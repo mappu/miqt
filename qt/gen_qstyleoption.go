@@ -565,6 +565,13 @@ func (this *QStyleOption) cPointer() *C.QStyleOption {
 	return this.h
 }
 
+func (this *QStyleOption) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOption(h *C.QStyleOption) *QStyleOption {
 	if h == nil {
 		return nil
@@ -572,7 +579,7 @@ func newQStyleOption(h *C.QStyleOption) *QStyleOption {
 	return &QStyleOption{h: h}
 }
 
-func newQStyleOption_U(h unsafe.Pointer) *QStyleOption {
+func UnsafeNewQStyleOption(h unsafe.Pointer) *QStyleOption {
 	return newQStyleOption((*C.QStyleOption)(h))
 }
 
@@ -638,14 +645,21 @@ func (this *QStyleOptionFocusRect) cPointer() *C.QStyleOptionFocusRect {
 	return this.h
 }
 
+func (this *QStyleOptionFocusRect) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionFocusRect(h *C.QStyleOptionFocusRect) *QStyleOptionFocusRect {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionFocusRect{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionFocusRect{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionFocusRect_U(h unsafe.Pointer) *QStyleOptionFocusRect {
+func UnsafeNewQStyleOptionFocusRect(h unsafe.Pointer) *QStyleOptionFocusRect {
 	return newQStyleOptionFocusRect((*C.QStyleOptionFocusRect)(h))
 }
 
@@ -687,14 +701,21 @@ func (this *QStyleOptionFrame) cPointer() *C.QStyleOptionFrame {
 	return this.h
 }
 
+func (this *QStyleOptionFrame) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionFrame(h *C.QStyleOptionFrame) *QStyleOptionFrame {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionFrame{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionFrame{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionFrame_U(h unsafe.Pointer) *QStyleOptionFrame {
+func UnsafeNewQStyleOptionFrame(h unsafe.Pointer) *QStyleOptionFrame {
 	return newQStyleOptionFrame((*C.QStyleOptionFrame)(h))
 }
 
@@ -736,14 +757,21 @@ func (this *QStyleOptionTabWidgetFrame) cPointer() *C.QStyleOptionTabWidgetFrame
 	return this.h
 }
 
+func (this *QStyleOptionTabWidgetFrame) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionTabWidgetFrame(h *C.QStyleOptionTabWidgetFrame) *QStyleOptionTabWidgetFrame {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTabWidgetFrame{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionTabWidgetFrame{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionTabWidgetFrame_U(h unsafe.Pointer) *QStyleOptionTabWidgetFrame {
+func UnsafeNewQStyleOptionTabWidgetFrame(h unsafe.Pointer) *QStyleOptionTabWidgetFrame {
 	return newQStyleOptionTabWidgetFrame((*C.QStyleOptionTabWidgetFrame)(h))
 }
 
@@ -785,14 +813,21 @@ func (this *QStyleOptionTabBarBase) cPointer() *C.QStyleOptionTabBarBase {
 	return this.h
 }
 
+func (this *QStyleOptionTabBarBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionTabBarBase(h *C.QStyleOptionTabBarBase) *QStyleOptionTabBarBase {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTabBarBase{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionTabBarBase{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionTabBarBase_U(h unsafe.Pointer) *QStyleOptionTabBarBase {
+func UnsafeNewQStyleOptionTabBarBase(h unsafe.Pointer) *QStyleOptionTabBarBase {
 	return newQStyleOptionTabBarBase((*C.QStyleOptionTabBarBase)(h))
 }
 
@@ -834,14 +869,21 @@ func (this *QStyleOptionHeader) cPointer() *C.QStyleOptionHeader {
 	return this.h
 }
 
+func (this *QStyleOptionHeader) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionHeader(h *C.QStyleOptionHeader) *QStyleOptionHeader {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionHeader{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionHeader{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionHeader_U(h unsafe.Pointer) *QStyleOptionHeader {
+func UnsafeNewQStyleOptionHeader(h unsafe.Pointer) *QStyleOptionHeader {
 	return newQStyleOptionHeader((*C.QStyleOptionHeader)(h))
 }
 
@@ -883,14 +925,21 @@ func (this *QStyleOptionButton) cPointer() *C.QStyleOptionButton {
 	return this.h
 }
 
+func (this *QStyleOptionButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionButton(h *C.QStyleOptionButton) *QStyleOptionButton {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionButton{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionButton{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionButton_U(h unsafe.Pointer) *QStyleOptionButton {
+func UnsafeNewQStyleOptionButton(h unsafe.Pointer) *QStyleOptionButton {
 	return newQStyleOptionButton((*C.QStyleOptionButton)(h))
 }
 
@@ -932,14 +981,21 @@ func (this *QStyleOptionTab) cPointer() *C.QStyleOptionTab {
 	return this.h
 }
 
+func (this *QStyleOptionTab) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionTab(h *C.QStyleOptionTab) *QStyleOptionTab {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTab{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionTab{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionTab_U(h unsafe.Pointer) *QStyleOptionTab {
+func UnsafeNewQStyleOptionTab(h unsafe.Pointer) *QStyleOptionTab {
 	return newQStyleOptionTab((*C.QStyleOptionTab)(h))
 }
 
@@ -981,14 +1037,21 @@ func (this *QStyleOptionTabV4) cPointer() *C.QStyleOptionTabV4 {
 	return this.h
 }
 
+func (this *QStyleOptionTabV4) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionTabV4(h *C.QStyleOptionTabV4) *QStyleOptionTabV4 {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTabV4{h: h, QStyleOptionTab: newQStyleOptionTab_U(unsafe.Pointer(h))}
+	return &QStyleOptionTabV4{h: h, QStyleOptionTab: UnsafeNewQStyleOptionTab(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionTabV4_U(h unsafe.Pointer) *QStyleOptionTabV4 {
+func UnsafeNewQStyleOptionTabV4(h unsafe.Pointer) *QStyleOptionTabV4 {
 	return newQStyleOptionTabV4((*C.QStyleOptionTabV4)(h))
 }
 
@@ -1034,14 +1097,21 @@ func (this *QStyleOptionToolBar) cPointer() *C.QStyleOptionToolBar {
 	return this.h
 }
 
+func (this *QStyleOptionToolBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionToolBar(h *C.QStyleOptionToolBar) *QStyleOptionToolBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolBar{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionToolBar{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionToolBar_U(h unsafe.Pointer) *QStyleOptionToolBar {
+func UnsafeNewQStyleOptionToolBar(h unsafe.Pointer) *QStyleOptionToolBar {
 	return newQStyleOptionToolBar((*C.QStyleOptionToolBar)(h))
 }
 
@@ -1083,14 +1153,21 @@ func (this *QStyleOptionProgressBar) cPointer() *C.QStyleOptionProgressBar {
 	return this.h
 }
 
+func (this *QStyleOptionProgressBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionProgressBar(h *C.QStyleOptionProgressBar) *QStyleOptionProgressBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionProgressBar{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionProgressBar{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionProgressBar_U(h unsafe.Pointer) *QStyleOptionProgressBar {
+func UnsafeNewQStyleOptionProgressBar(h unsafe.Pointer) *QStyleOptionProgressBar {
 	return newQStyleOptionProgressBar((*C.QStyleOptionProgressBar)(h))
 }
 
@@ -1132,14 +1209,21 @@ func (this *QStyleOptionMenuItem) cPointer() *C.QStyleOptionMenuItem {
 	return this.h
 }
 
+func (this *QStyleOptionMenuItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionMenuItem(h *C.QStyleOptionMenuItem) *QStyleOptionMenuItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionMenuItem{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionMenuItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionMenuItem_U(h unsafe.Pointer) *QStyleOptionMenuItem {
+func UnsafeNewQStyleOptionMenuItem(h unsafe.Pointer) *QStyleOptionMenuItem {
 	return newQStyleOptionMenuItem((*C.QStyleOptionMenuItem)(h))
 }
 
@@ -1181,14 +1265,21 @@ func (this *QStyleOptionDockWidget) cPointer() *C.QStyleOptionDockWidget {
 	return this.h
 }
 
+func (this *QStyleOptionDockWidget) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionDockWidget(h *C.QStyleOptionDockWidget) *QStyleOptionDockWidget {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionDockWidget{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionDockWidget{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionDockWidget_U(h unsafe.Pointer) *QStyleOptionDockWidget {
+func UnsafeNewQStyleOptionDockWidget(h unsafe.Pointer) *QStyleOptionDockWidget {
 	return newQStyleOptionDockWidget((*C.QStyleOptionDockWidget)(h))
 }
 
@@ -1230,14 +1321,21 @@ func (this *QStyleOptionViewItem) cPointer() *C.QStyleOptionViewItem {
 	return this.h
 }
 
+func (this *QStyleOptionViewItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionViewItem(h *C.QStyleOptionViewItem) *QStyleOptionViewItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionViewItem{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionViewItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionViewItem_U(h unsafe.Pointer) *QStyleOptionViewItem {
+func UnsafeNewQStyleOptionViewItem(h unsafe.Pointer) *QStyleOptionViewItem {
 	return newQStyleOptionViewItem((*C.QStyleOptionViewItem)(h))
 }
 
@@ -1279,14 +1377,21 @@ func (this *QStyleOptionToolBox) cPointer() *C.QStyleOptionToolBox {
 	return this.h
 }
 
+func (this *QStyleOptionToolBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionToolBox(h *C.QStyleOptionToolBox) *QStyleOptionToolBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolBox{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionToolBox{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionToolBox_U(h unsafe.Pointer) *QStyleOptionToolBox {
+func UnsafeNewQStyleOptionToolBox(h unsafe.Pointer) *QStyleOptionToolBox {
 	return newQStyleOptionToolBox((*C.QStyleOptionToolBox)(h))
 }
 
@@ -1328,14 +1433,21 @@ func (this *QStyleOptionRubberBand) cPointer() *C.QStyleOptionRubberBand {
 	return this.h
 }
 
+func (this *QStyleOptionRubberBand) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionRubberBand(h *C.QStyleOptionRubberBand) *QStyleOptionRubberBand {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionRubberBand{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionRubberBand{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionRubberBand_U(h unsafe.Pointer) *QStyleOptionRubberBand {
+func UnsafeNewQStyleOptionRubberBand(h unsafe.Pointer) *QStyleOptionRubberBand {
 	return newQStyleOptionRubberBand((*C.QStyleOptionRubberBand)(h))
 }
 
@@ -1377,14 +1489,21 @@ func (this *QStyleOptionComplex) cPointer() *C.QStyleOptionComplex {
 	return this.h
 }
 
+func (this *QStyleOptionComplex) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionComplex(h *C.QStyleOptionComplex) *QStyleOptionComplex {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionComplex{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionComplex{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionComplex_U(h unsafe.Pointer) *QStyleOptionComplex {
+func UnsafeNewQStyleOptionComplex(h unsafe.Pointer) *QStyleOptionComplex {
 	return newQStyleOptionComplex((*C.QStyleOptionComplex)(h))
 }
 
@@ -1438,14 +1557,21 @@ func (this *QStyleOptionSlider) cPointer() *C.QStyleOptionSlider {
 	return this.h
 }
 
+func (this *QStyleOptionSlider) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionSlider(h *C.QStyleOptionSlider) *QStyleOptionSlider {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSlider{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionSlider{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionSlider_U(h unsafe.Pointer) *QStyleOptionSlider {
+func UnsafeNewQStyleOptionSlider(h unsafe.Pointer) *QStyleOptionSlider {
 	return newQStyleOptionSlider((*C.QStyleOptionSlider)(h))
 }
 
@@ -1487,14 +1613,21 @@ func (this *QStyleOptionSpinBox) cPointer() *C.QStyleOptionSpinBox {
 	return this.h
 }
 
+func (this *QStyleOptionSpinBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionSpinBox(h *C.QStyleOptionSpinBox) *QStyleOptionSpinBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSpinBox{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionSpinBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionSpinBox_U(h unsafe.Pointer) *QStyleOptionSpinBox {
+func UnsafeNewQStyleOptionSpinBox(h unsafe.Pointer) *QStyleOptionSpinBox {
 	return newQStyleOptionSpinBox((*C.QStyleOptionSpinBox)(h))
 }
 
@@ -1536,14 +1669,21 @@ func (this *QStyleOptionToolButton) cPointer() *C.QStyleOptionToolButton {
 	return this.h
 }
 
+func (this *QStyleOptionToolButton) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionToolButton(h *C.QStyleOptionToolButton) *QStyleOptionToolButton {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionToolButton{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionToolButton{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionToolButton_U(h unsafe.Pointer) *QStyleOptionToolButton {
+func UnsafeNewQStyleOptionToolButton(h unsafe.Pointer) *QStyleOptionToolButton {
 	return newQStyleOptionToolButton((*C.QStyleOptionToolButton)(h))
 }
 
@@ -1585,14 +1725,21 @@ func (this *QStyleOptionComboBox) cPointer() *C.QStyleOptionComboBox {
 	return this.h
 }
 
+func (this *QStyleOptionComboBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionComboBox(h *C.QStyleOptionComboBox) *QStyleOptionComboBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionComboBox{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionComboBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionComboBox_U(h unsafe.Pointer) *QStyleOptionComboBox {
+func UnsafeNewQStyleOptionComboBox(h unsafe.Pointer) *QStyleOptionComboBox {
 	return newQStyleOptionComboBox((*C.QStyleOptionComboBox)(h))
 }
 
@@ -1634,14 +1781,21 @@ func (this *QStyleOptionTitleBar) cPointer() *C.QStyleOptionTitleBar {
 	return this.h
 }
 
+func (this *QStyleOptionTitleBar) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionTitleBar(h *C.QStyleOptionTitleBar) *QStyleOptionTitleBar {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionTitleBar{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionTitleBar{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionTitleBar_U(h unsafe.Pointer) *QStyleOptionTitleBar {
+func UnsafeNewQStyleOptionTitleBar(h unsafe.Pointer) *QStyleOptionTitleBar {
 	return newQStyleOptionTitleBar((*C.QStyleOptionTitleBar)(h))
 }
 
@@ -1683,14 +1837,21 @@ func (this *QStyleOptionGroupBox) cPointer() *C.QStyleOptionGroupBox {
 	return this.h
 }
 
+func (this *QStyleOptionGroupBox) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionGroupBox(h *C.QStyleOptionGroupBox) *QStyleOptionGroupBox {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionGroupBox{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionGroupBox{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionGroupBox_U(h unsafe.Pointer) *QStyleOptionGroupBox {
+func UnsafeNewQStyleOptionGroupBox(h unsafe.Pointer) *QStyleOptionGroupBox {
 	return newQStyleOptionGroupBox((*C.QStyleOptionGroupBox)(h))
 }
 
@@ -1732,14 +1893,21 @@ func (this *QStyleOptionSizeGrip) cPointer() *C.QStyleOptionSizeGrip {
 	return this.h
 }
 
+func (this *QStyleOptionSizeGrip) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionSizeGrip(h *C.QStyleOptionSizeGrip) *QStyleOptionSizeGrip {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionSizeGrip{h: h, QStyleOptionComplex: newQStyleOptionComplex_U(unsafe.Pointer(h))}
+	return &QStyleOptionSizeGrip{h: h, QStyleOptionComplex: UnsafeNewQStyleOptionComplex(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionSizeGrip_U(h unsafe.Pointer) *QStyleOptionSizeGrip {
+func UnsafeNewQStyleOptionSizeGrip(h unsafe.Pointer) *QStyleOptionSizeGrip {
 	return newQStyleOptionSizeGrip((*C.QStyleOptionSizeGrip)(h))
 }
 
@@ -1781,14 +1949,21 @@ func (this *QStyleOptionGraphicsItem) cPointer() *C.QStyleOptionGraphicsItem {
 	return this.h
 }
 
+func (this *QStyleOptionGraphicsItem) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleOptionGraphicsItem(h *C.QStyleOptionGraphicsItem) *QStyleOptionGraphicsItem {
 	if h == nil {
 		return nil
 	}
-	return &QStyleOptionGraphicsItem{h: h, QStyleOption: newQStyleOption_U(unsafe.Pointer(h))}
+	return &QStyleOptionGraphicsItem{h: h, QStyleOption: UnsafeNewQStyleOption(unsafe.Pointer(h))}
 }
 
-func newQStyleOptionGraphicsItem_U(h unsafe.Pointer) *QStyleOptionGraphicsItem {
+func UnsafeNewQStyleOptionGraphicsItem(h unsafe.Pointer) *QStyleOptionGraphicsItem {
 	return newQStyleOptionGraphicsItem((*C.QStyleOptionGraphicsItem)(h))
 }
 
@@ -1833,6 +2008,13 @@ func (this *QStyleHintReturn) cPointer() *C.QStyleHintReturn {
 	return this.h
 }
 
+func (this *QStyleHintReturn) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleHintReturn(h *C.QStyleHintReturn) *QStyleHintReturn {
 	if h == nil {
 		return nil
@@ -1840,7 +2022,7 @@ func newQStyleHintReturn(h *C.QStyleHintReturn) *QStyleHintReturn {
 	return &QStyleHintReturn{h: h}
 }
 
-func newQStyleHintReturn_U(h unsafe.Pointer) *QStyleHintReturn {
+func UnsafeNewQStyleHintReturn(h unsafe.Pointer) *QStyleHintReturn {
 	return newQStyleHintReturn((*C.QStyleHintReturn)(h))
 }
 
@@ -1898,14 +2080,21 @@ func (this *QStyleHintReturnMask) cPointer() *C.QStyleHintReturnMask {
 	return this.h
 }
 
+func (this *QStyleHintReturnMask) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleHintReturnMask(h *C.QStyleHintReturnMask) *QStyleHintReturnMask {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHintReturnMask{h: h, QStyleHintReturn: newQStyleHintReturn_U(unsafe.Pointer(h))}
+	return &QStyleHintReturnMask{h: h, QStyleHintReturn: UnsafeNewQStyleHintReturn(unsafe.Pointer(h))}
 }
 
-func newQStyleHintReturnMask_U(h unsafe.Pointer) *QStyleHintReturnMask {
+func UnsafeNewQStyleHintReturnMask(h unsafe.Pointer) *QStyleHintReturnMask {
 	return newQStyleHintReturnMask((*C.QStyleHintReturnMask)(h))
 }
 
@@ -1951,14 +2140,21 @@ func (this *QStyleHintReturnVariant) cPointer() *C.QStyleHintReturnVariant {
 	return this.h
 }
 
+func (this *QStyleHintReturnVariant) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQStyleHintReturnVariant(h *C.QStyleHintReturnVariant) *QStyleHintReturnVariant {
 	if h == nil {
 		return nil
 	}
-	return &QStyleHintReturnVariant{h: h, QStyleHintReturn: newQStyleHintReturn_U(unsafe.Pointer(h))}
+	return &QStyleHintReturnVariant{h: h, QStyleHintReturn: UnsafeNewQStyleHintReturn(unsafe.Pointer(h))}
 }
 
-func newQStyleHintReturnVariant_U(h unsafe.Pointer) *QStyleHintReturnVariant {
+func UnsafeNewQStyleHintReturnVariant(h unsafe.Pointer) *QStyleHintReturnVariant {
 	return newQStyleHintReturnVariant((*C.QStyleHintReturnVariant)(h))
 }
 

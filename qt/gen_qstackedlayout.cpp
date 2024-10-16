@@ -8,7 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qstackedlayout.h"
+#include <qstackedlayout.h>
 #include "gen_qstackedlayout.h"
 #include "_cgo_export.h"
 

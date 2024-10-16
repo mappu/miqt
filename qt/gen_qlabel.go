@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -26,14 +27,21 @@ func (this *QLabel) cPointer() *C.QLabel {
 	return this.h
 }
 
+func (this *QLabel) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLabel(h *C.QLabel) *QLabel {
 	if h == nil {
 		return nil
 	}
-	return &QLabel{h: h, QFrame: newQFrame_U(unsafe.Pointer(h))}
+	return &QLabel{h: h, QFrame: UnsafeNewQFrame(unsafe.Pointer(h))}
 }
 
-func newQLabel_U(h unsafe.Pointer) *QLabel {
+func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
 	return newQLabel((*C.QLabel)(h))
 }
 
@@ -45,7 +53,7 @@ func NewQLabel() *QLabel {
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2(text string) *QLabel {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QLabel_new2((*C.struct_miqt_string)(text_ms))
 	return newQLabel(ret)
@@ -65,7 +73,7 @@ func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
 
 // NewQLabel5 constructs a new QLabel object.
 func NewQLabel5(text string, parent *QWidget) *QLabel {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QLabel_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
 	return newQLabel(ret)
@@ -73,14 +81,14 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 
 // NewQLabel6 constructs a new QLabel object.
 func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), (C.int)(f))
 	return newQLabel(ret)
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QLabel_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLabel_MetaObject(this.h)))
 }
 
 func (this *QLabel) Metacast(param1 string) unsafe.Pointer {
@@ -115,7 +123,7 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap() *QPixmap {
-	return newQPixmap_U(unsafe.Pointer(C.QLabel_Pixmap(this.h)))
+	return UnsafeNewQPixmap(unsafe.Pointer(C.QLabel_Pixmap(this.h)))
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
@@ -126,7 +134,7 @@ func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConsta
 }
 
 func (this *QLabel) Picture() *QPicture {
-	return newQPicture_U(unsafe.Pointer(C.QLabel_Picture(this.h)))
+	return UnsafeNewQPicture(unsafe.Pointer(C.QLabel_Picture(this.h)))
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
@@ -137,7 +145,7 @@ func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConst
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return newQMovie_U(unsafe.Pointer(C.QLabel_Movie(this.h)))
+	return UnsafeNewQMovie(unsafe.Pointer(C.QLabel_Movie(this.h)))
 }
 
 func (this *QLabel) TextFormat() TextFormat {
@@ -207,7 +215,7 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QLabel_Buddy(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QLabel_Buddy(this.h)))
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
@@ -250,7 +258,7 @@ func (this *QLabel) SelectionStart() int {
 }
 
 func (this *QLabel) SetText(text string) {
-	text_ms := miqt_strdupg(text)
+	text_ms := libmiqt.Strdupg(text)
 	defer C.free(text_ms)
 	C.QLabel_SetText(this.h, (*C.struct_miqt_string)(text_ms))
 }
@@ -280,7 +288,7 @@ func (this *QLabel) Clear() {
 }
 
 func (this *QLabel) LinkActivated(link string) {
-	link_ms := miqt_strdupg(link)
+	link_ms := libmiqt.Strdupg(link)
 	defer C.free(link_ms)
 	C.QLabel_LinkActivated(this.h, (*C.struct_miqt_string)(link_ms))
 }
@@ -305,7 +313,7 @@ func miqt_exec_callback_QLabel_LinkActivated(cb C.intptr_t, link *C.struct_miqt_
 }
 
 func (this *QLabel) LinkHovered(link string) {
-	link_ms := miqt_strdupg(link)
+	link_ms := libmiqt.Strdupg(link)
 	defer C.free(link_ms)
 	C.QLabel_LinkHovered(this.h, (*C.struct_miqt_string)(link_ms))
 }

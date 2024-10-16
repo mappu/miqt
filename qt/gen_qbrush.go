@@ -231,6 +231,13 @@ func (this *QBrush) cPointer() *C.QBrush {
 	return this.h
 }
 
+func (this *QBrush) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBrush(h *C.QBrush) *QBrush {
 	if h == nil {
 		return nil
@@ -238,7 +245,7 @@ func newQBrush(h *C.QBrush) *QBrush {
 	return &QBrush{h: h}
 }
 
-func newQBrush_U(h unsafe.Pointer) *QBrush {
+func UnsafeNewQBrush(h unsafe.Pointer) *QBrush {
 	return newQBrush((*C.QBrush)(h))
 }
 
@@ -331,7 +338,7 @@ func (this *QBrush) SetStyle(style BrushStyle) {
 }
 
 func (this *QBrush) Matrix() *QMatrix {
-	return newQMatrix_U(unsafe.Pointer(C.QBrush_Matrix(this.h)))
+	return UnsafeNewQMatrix(unsafe.Pointer(C.QBrush_Matrix(this.h)))
 }
 
 func (this *QBrush) SetMatrix(mat *QMatrix) {
@@ -372,7 +379,7 @@ func (this *QBrush) SetTextureImage(image *QImage) {
 }
 
 func (this *QBrush) Color() *QColor {
-	return newQColor_U(unsafe.Pointer(C.QBrush_Color(this.h)))
+	return UnsafeNewQColor(unsafe.Pointer(C.QBrush_Color(this.h)))
 }
 
 func (this *QBrush) SetColor(color *QColor) {
@@ -384,7 +391,7 @@ func (this *QBrush) SetColorWithColor(color GlobalColor) {
 }
 
 func (this *QBrush) Gradient() *QGradient {
-	return newQGradient_U(unsafe.Pointer(C.QBrush_Gradient(this.h)))
+	return UnsafeNewQGradient(unsafe.Pointer(C.QBrush_Gradient(this.h)))
 }
 
 func (this *QBrush) IsOpaque() bool {
@@ -428,6 +435,13 @@ func (this *QBrushData) cPointer() *C.QBrushData {
 	return this.h
 }
 
+func (this *QBrushData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQBrushData(h *C.QBrushData) *QBrushData {
 	if h == nil {
 		return nil
@@ -435,7 +449,7 @@ func newQBrushData(h *C.QBrushData) *QBrushData {
 	return &QBrushData{h: h}
 }
 
-func newQBrushData_U(h unsafe.Pointer) *QBrushData {
+func UnsafeNewQBrushData(h unsafe.Pointer) *QBrushData {
 	return newQBrushData((*C.QBrushData)(h))
 }
 
@@ -474,6 +488,13 @@ func (this *QGradient) cPointer() *C.QGradient {
 	return this.h
 }
 
+func (this *QGradient) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGradient(h *C.QGradient) *QGradient {
 	if h == nil {
 		return nil
@@ -481,7 +502,7 @@ func newQGradient(h *C.QGradient) *QGradient {
 	return &QGradient{h: h}
 }
 
-func newQGradient_U(h unsafe.Pointer) *QGradient {
+func UnsafeNewQGradient(h unsafe.Pointer) *QGradient {
 	return newQGradient((*C.QGradient)(h))
 }
 
@@ -569,14 +590,21 @@ func (this *QLinearGradient) cPointer() *C.QLinearGradient {
 	return this.h
 }
 
+func (this *QLinearGradient) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQLinearGradient(h *C.QLinearGradient) *QLinearGradient {
 	if h == nil {
 		return nil
 	}
-	return &QLinearGradient{h: h, QGradient: newQGradient_U(unsafe.Pointer(h))}
+	return &QLinearGradient{h: h, QGradient: UnsafeNewQGradient(unsafe.Pointer(h))}
 }
 
-func newQLinearGradient_U(h unsafe.Pointer) *QLinearGradient {
+func UnsafeNewQLinearGradient(h unsafe.Pointer) *QLinearGradient {
 	return newQLinearGradient((*C.QLinearGradient)(h))
 }
 
@@ -660,14 +688,21 @@ func (this *QRadialGradient) cPointer() *C.QRadialGradient {
 	return this.h
 }
 
+func (this *QRadialGradient) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQRadialGradient(h *C.QRadialGradient) *QRadialGradient {
 	if h == nil {
 		return nil
 	}
-	return &QRadialGradient{h: h, QGradient: newQGradient_U(unsafe.Pointer(h))}
+	return &QRadialGradient{h: h, QGradient: UnsafeNewQGradient(unsafe.Pointer(h))}
 }
 
-func newQRadialGradient_U(h unsafe.Pointer) *QRadialGradient {
+func UnsafeNewQRadialGradient(h unsafe.Pointer) *QRadialGradient {
 	return newQRadialGradient((*C.QRadialGradient)(h))
 }
 
@@ -799,14 +834,21 @@ func (this *QConicalGradient) cPointer() *C.QConicalGradient {
 	return this.h
 }
 
+func (this *QConicalGradient) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQConicalGradient(h *C.QConicalGradient) *QConicalGradient {
 	if h == nil {
 		return nil
 	}
-	return &QConicalGradient{h: h, QGradient: newQGradient_U(unsafe.Pointer(h))}
+	return &QConicalGradient{h: h, QGradient: UnsafeNewQGradient(unsafe.Pointer(h))}
 }
 
-func newQConicalGradient_U(h unsafe.Pointer) *QConicalGradient {
+func UnsafeNewQConicalGradient(h unsafe.Pointer) *QConicalGradient {
 	return newQConicalGradient((*C.QConicalGradient)(h))
 }
 
@@ -882,6 +924,13 @@ func (this *QGradient__QGradientData) cPointer() *C.QGradient__QGradientData {
 	return this.h
 }
 
+func (this *QGradient__QGradientData) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGradient__QGradientData(h *C.QGradient__QGradientData) *QGradient__QGradientData {
 	if h == nil {
 		return nil
@@ -889,7 +938,7 @@ func newQGradient__QGradientData(h *C.QGradient__QGradientData) *QGradient__QGra
 	return &QGradient__QGradientData{h: h}
 }
 
-func newQGradient__QGradientData_U(h unsafe.Pointer) *QGradient__QGradientData {
+func UnsafeNewQGradient__QGradientData(h unsafe.Pointer) *QGradient__QGradientData {
 	return newQGradient__QGradientData((*C.QGradient__QGradientData)(h))
 }
 

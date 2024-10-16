@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QWidget>
-#include "qlistview.h"
+#include <qlistview.h>
 #include "gen_qlistview.h"
 #include "_cgo_export.h"
 
@@ -198,7 +198,7 @@ void QListView_SetRootIndex(QListView* self, QModelIndex* index) {
 }
 
 void QListView_IndexesMoved(QListView* self, struct miqt_array* /* of QModelIndex* */ indexes) {
-	QList<QModelIndex> indexes_QList;
+	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes->len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
 	for(size_t i = 0; i < indexes->len; ++i) {

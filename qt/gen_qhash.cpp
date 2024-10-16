@@ -1,7 +1,7 @@
 #include <QHashData>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QHashData__Node
 #include <QHashDummyValue>
-#include "qhash.h"
+#include <qhash.h>
 #include "gen_qhash.h"
 #include "_cgo_export.h"
 

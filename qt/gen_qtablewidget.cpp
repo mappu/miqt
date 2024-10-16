@@ -16,7 +16,7 @@
 #include <QTableWidgetSelectionRange>
 #include <QVariant>
 #include <QWidget>
-#include "qtablewidget.h"
+#include <qtablewidget.h>
 #include "gen_qtablewidget.h"
 #include "_cgo_export.h"
 
@@ -381,7 +381,7 @@ QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int 
 }
 
 void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
@@ -392,7 +392,7 @@ void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array*
 }
 
 void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array* /* of struct miqt_string* */ labels) {
-	QList<QString> labels_QList;
+	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
 	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {

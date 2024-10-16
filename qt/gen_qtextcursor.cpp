@@ -15,7 +15,7 @@
 #include <QTextListFormat>
 #include <QTextTable>
 #include <QTextTableFormat>
-#include "qtextcursor.h"
+#include <qtextcursor.h>
 #include "gen_qtextcursor.h"
 #include "_cgo_export.h"
 

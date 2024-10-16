@@ -8,7 +8,7 @@
 #include <cstring>
 #include <QTextCharFormat>
 #include <QWidget>
-#include "qcalendarwidget.h"
+#include <qcalendarwidget.h>
 #include "gen_qcalendarwidget.h"
 #include "_cgo_export.h"
 

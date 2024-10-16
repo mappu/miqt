@@ -1,7 +1,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultItem
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultIteratorBase
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase
-#include "qresultstore.h"
+#include <qresultstore.h>
 #include "gen_qresultstore.h"
 #include "_cgo_export.h"
 

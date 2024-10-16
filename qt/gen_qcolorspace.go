@@ -54,6 +54,13 @@ func (this *QColorSpace) cPointer() *C.QColorSpace {
 	return this.h
 }
 
+func (this *QColorSpace) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQColorSpace(h *C.QColorSpace) *QColorSpace {
 	if h == nil {
 		return nil
@@ -61,7 +68,7 @@ func newQColorSpace(h *C.QColorSpace) *QColorSpace {
 	return &QColorSpace{h: h}
 }
 
-func newQColorSpace_U(h unsafe.Pointer) *QColorSpace {
+func UnsafeNewQColorSpace(h unsafe.Pointer) *QColorSpace {
 	return newQColorSpace((*C.QColorSpace)(h))
 }
 

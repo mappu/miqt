@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QUrl>
-#include "qdesktopservices.h"
+#include <qdesktopservices.h>
 #include "gen_qdesktopservices.h"
 #include "_cgo_export.h"
 

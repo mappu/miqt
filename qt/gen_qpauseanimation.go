@@ -25,14 +25,21 @@ func (this *QPauseAnimation) cPointer() *C.QPauseAnimation {
 	return this.h
 }
 
+func (this *QPauseAnimation) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQPauseAnimation(h *C.QPauseAnimation) *QPauseAnimation {
 	if h == nil {
 		return nil
 	}
-	return &QPauseAnimation{h: h, QAbstractAnimation: newQAbstractAnimation_U(unsafe.Pointer(h))}
+	return &QPauseAnimation{h: h, QAbstractAnimation: UnsafeNewQAbstractAnimation(unsafe.Pointer(h))}
 }
 
-func newQPauseAnimation_U(h unsafe.Pointer) *QPauseAnimation {
+func UnsafeNewQPauseAnimation(h unsafe.Pointer) *QPauseAnimation {
 	return newQPauseAnimation((*C.QPauseAnimation)(h))
 }
 
@@ -61,7 +68,7 @@ func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
-	return newQMetaObject_U(unsafe.Pointer(C.QPauseAnimation_MetaObject(this.h)))
+	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPauseAnimation_MetaObject(this.h)))
 }
 
 func (this *QPauseAnimation) Metacast(param1 string) unsafe.Pointer {

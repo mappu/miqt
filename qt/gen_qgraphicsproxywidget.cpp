@@ -8,7 +8,7 @@
 #include <cstring>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include "qgraphicsproxywidget.h"
+#include <qgraphicsproxywidget.h>
 #include "gen_qgraphicsproxywidget.h"
 #include "_cgo_export.h"
 

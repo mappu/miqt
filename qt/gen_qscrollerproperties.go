@@ -67,6 +67,13 @@ func (this *QScrollerProperties) cPointer() *C.QScrollerProperties {
 	return this.h
 }
 
+func (this *QScrollerProperties) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
 	if h == nil {
 		return nil
@@ -74,7 +81,7 @@ func newQScrollerProperties(h *C.QScrollerProperties) *QScrollerProperties {
 	return &QScrollerProperties{h: h}
 }
 
-func newQScrollerProperties_U(h unsafe.Pointer) *QScrollerProperties {
+func UnsafeNewQScrollerProperties(h unsafe.Pointer) *QScrollerProperties {
 	return newQScrollerProperties((*C.QScrollerProperties)(h))
 }
 

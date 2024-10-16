@@ -33,14 +33,21 @@ func (this *QGraphicsSceneEvent) cPointer() *C.QGraphicsSceneEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneEvent(h *C.QGraphicsSceneEvent) *QGraphicsSceneEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneEvent{h: h, QEvent: newQEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneEvent{h: h, QEvent: UnsafeNewQEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneEvent_U(h unsafe.Pointer) *QGraphicsSceneEvent {
+func UnsafeNewQGraphicsSceneEvent(h unsafe.Pointer) *QGraphicsSceneEvent {
 	return newQGraphicsSceneEvent((*C.QGraphicsSceneEvent)(h))
 }
 
@@ -51,7 +58,7 @@ func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
 }
 
 func (this *QGraphicsSceneEvent) Widget() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QGraphicsSceneEvent_Widget(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneEvent_Widget(this.h)))
 }
 
 func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
@@ -84,14 +91,21 @@ func (this *QGraphicsSceneMouseEvent) cPointer() *C.QGraphicsSceneMouseEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneMouseEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneMouseEvent(h *C.QGraphicsSceneMouseEvent) *QGraphicsSceneMouseEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneMouseEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneMouseEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneMouseEvent_U(h unsafe.Pointer) *QGraphicsSceneMouseEvent {
+func UnsafeNewQGraphicsSceneMouseEvent(h unsafe.Pointer) *QGraphicsSceneMouseEvent {
 	return newQGraphicsSceneMouseEvent((*C.QGraphicsSceneMouseEvent)(h))
 }
 
@@ -272,14 +286,21 @@ func (this *QGraphicsSceneWheelEvent) cPointer() *C.QGraphicsSceneWheelEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneWheelEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneWheelEvent(h *C.QGraphicsSceneWheelEvent) *QGraphicsSceneWheelEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneWheelEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneWheelEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneWheelEvent_U(h unsafe.Pointer) *QGraphicsSceneWheelEvent {
+func UnsafeNewQGraphicsSceneWheelEvent(h unsafe.Pointer) *QGraphicsSceneWheelEvent {
 	return newQGraphicsSceneWheelEvent((*C.QGraphicsSceneWheelEvent)(h))
 }
 
@@ -386,14 +407,21 @@ func (this *QGraphicsSceneContextMenuEvent) cPointer() *C.QGraphicsSceneContextM
 	return this.h
 }
 
+func (this *QGraphicsSceneContextMenuEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneContextMenuEvent(h *C.QGraphicsSceneContextMenuEvent) *QGraphicsSceneContextMenuEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneContextMenuEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneContextMenuEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneContextMenuEvent_U(h unsafe.Pointer) *QGraphicsSceneContextMenuEvent {
+func UnsafeNewQGraphicsSceneContextMenuEvent(h unsafe.Pointer) *QGraphicsSceneContextMenuEvent {
 	return newQGraphicsSceneContextMenuEvent((*C.QGraphicsSceneContextMenuEvent)(h))
 }
 
@@ -484,14 +512,21 @@ func (this *QGraphicsSceneHoverEvent) cPointer() *C.QGraphicsSceneHoverEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneHoverEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneHoverEvent(h *C.QGraphicsSceneHoverEvent) *QGraphicsSceneHoverEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneHoverEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneHoverEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneHoverEvent_U(h unsafe.Pointer) *QGraphicsSceneHoverEvent {
+func UnsafeNewQGraphicsSceneHoverEvent(h unsafe.Pointer) *QGraphicsSceneHoverEvent {
 	return newQGraphicsSceneHoverEvent((*C.QGraphicsSceneHoverEvent)(h))
 }
 
@@ -607,14 +642,21 @@ func (this *QGraphicsSceneHelpEvent) cPointer() *C.QGraphicsSceneHelpEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneHelpEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneHelpEvent(h *C.QGraphicsSceneHelpEvent) *QGraphicsSceneHelpEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneHelpEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneHelpEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneHelpEvent_U(h unsafe.Pointer) *QGraphicsSceneHelpEvent {
+func UnsafeNewQGraphicsSceneHelpEvent(h unsafe.Pointer) *QGraphicsSceneHelpEvent {
 	return newQGraphicsSceneHelpEvent((*C.QGraphicsSceneHelpEvent)(h))
 }
 
@@ -678,14 +720,21 @@ func (this *QGraphicsSceneDragDropEvent) cPointer() *C.QGraphicsSceneDragDropEve
 	return this.h
 }
 
+func (this *QGraphicsSceneDragDropEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneDragDropEvent(h *C.QGraphicsSceneDragDropEvent) *QGraphicsSceneDragDropEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneDragDropEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneDragDropEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneDragDropEvent_U(h unsafe.Pointer) *QGraphicsSceneDragDropEvent {
+func UnsafeNewQGraphicsSceneDragDropEvent(h unsafe.Pointer) *QGraphicsSceneDragDropEvent {
 	return newQGraphicsSceneDragDropEvent((*C.QGraphicsSceneDragDropEvent)(h))
 }
 
@@ -779,7 +828,7 @@ func (this *QGraphicsSceneDragDropEvent) SetDropAction(action DropAction) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) Source() *QWidget {
-	return newQWidget_U(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_Source(this.h)))
+	return UnsafeNewQWidget(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_Source(this.h)))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
@@ -787,7 +836,7 @@ func (this *QGraphicsSceneDragDropEvent) SetSource(source *QWidget) {
 }
 
 func (this *QGraphicsSceneDragDropEvent) MimeData() *QMimeData {
-	return newQMimeData_U(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_MimeData(this.h)))
+	return UnsafeNewQMimeData(unsafe.Pointer(C.QGraphicsSceneDragDropEvent_MimeData(this.h)))
 }
 
 func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
@@ -820,14 +869,21 @@ func (this *QGraphicsSceneResizeEvent) cPointer() *C.QGraphicsSceneResizeEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneResizeEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneResizeEvent(h *C.QGraphicsSceneResizeEvent) *QGraphicsSceneResizeEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneResizeEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneResizeEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneResizeEvent_U(h unsafe.Pointer) *QGraphicsSceneResizeEvent {
+func UnsafeNewQGraphicsSceneResizeEvent(h unsafe.Pointer) *QGraphicsSceneResizeEvent {
 	return newQGraphicsSceneResizeEvent((*C.QGraphicsSceneResizeEvent)(h))
 }
 
@@ -885,14 +941,21 @@ func (this *QGraphicsSceneMoveEvent) cPointer() *C.QGraphicsSceneMoveEvent {
 	return this.h
 }
 
+func (this *QGraphicsSceneMoveEvent) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
 func newQGraphicsSceneMoveEvent(h *C.QGraphicsSceneMoveEvent) *QGraphicsSceneMoveEvent {
 	if h == nil {
 		return nil
 	}
-	return &QGraphicsSceneMoveEvent{h: h, QGraphicsSceneEvent: newQGraphicsSceneEvent_U(unsafe.Pointer(h))}
+	return &QGraphicsSceneMoveEvent{h: h, QGraphicsSceneEvent: UnsafeNewQGraphicsSceneEvent(unsafe.Pointer(h))}
 }
 
-func newQGraphicsSceneMoveEvent_U(h unsafe.Pointer) *QGraphicsSceneMoveEvent {
+func UnsafeNewQGraphicsSceneMoveEvent(h unsafe.Pointer) *QGraphicsSceneMoveEvent {
 	return newQGraphicsSceneMoveEvent((*C.QGraphicsSceneMoveEvent)(h))
 }
 

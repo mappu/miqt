@@ -6,7 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
-#include "qaccessiblebridge.h"
+#include <qaccessiblebridge.h>
 #include "gen_qaccessiblebridge.h"
 #include "_cgo_export.h"
 
