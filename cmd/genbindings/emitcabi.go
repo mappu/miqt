@@ -577,9 +577,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
 	for _, ref := range getReferencedTypes(src) {
-		if !ImportHeaderForClass(ref) {
-			continue
-		}
 
 		if ref == "QString" {
 			ret.WriteString("#include <QString>\n")
@@ -590,6 +587,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		if strings.Contains(ref, `::`) {
 			ret.WriteString(`#define WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ref) + "\n")
+			continue
+		}
+
+		if !ImportHeaderForClass(ref) {
 			continue
 		}
 
