@@ -324,6 +324,18 @@ type CppEnum struct {
 	Entries        []CppEnumEntry
 }
 
+func (e CppEnum) ShortEnumName() string {
+
+	// Strip back one single :: pair from the generated variable name
+	if nameParts := strings.Split(e.EnumName, `::`); len(nameParts) > 1 {
+		nameParts = nameParts[0 : len(nameParts)-1]
+		return strings.Join(nameParts, `::`)
+	}
+
+	// No change
+	return e.EnumName
+}
+
 type CppClass struct {
 	ClassName string
 	Abstract  bool

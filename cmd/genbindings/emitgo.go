@@ -481,13 +481,23 @@ import "C"
 		nameTest := map[string]string{}
 	nextEnum:
 		for _, e := range src.Enums {
+
+			shortEnumName := e.ShortEnumName()
+
+			// Disallow entry<-->entry collisions
 			for _, ee := range e.Entries {
-				if other, ok := nameTest[ee.EntryName]; ok {
-					preventShortNames[e.EnumName] = struct{}{}
-					preventShortNames[other] = struct{}{}
+				if other, ok := nameTest[shortEnumName+"::"+ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{} // Our full enum name
+					preventShortNames[other] = struct{}{}      // Their full enum name
 					continue nextEnum
 				}
-				nameTest[ee.EntryName] = e.EnumName
+				nameTest[shortEnumName+"::"+ee.EntryName] = e.EnumName
+
+				if _, ok := KnownClassnames[shortEnumName+"::"+ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{}
+					continue nextEnum
+				}
+
 			}
 		}
 	}
@@ -497,19 +507,11 @@ import "C"
 			continue // Removed by transformRedundant AST pass
 		}
 
-		// Fully qualified name of the enum itself
-		goEnumName := cabiClassName(e.EnumName)
+		goEnumName := cabiClassName(e.EnumName) // Fully qualified name of the enum itself
 
-		// Shorter name, so that enum elements are reachable from the surrounding
-		// namespace
-		goEnumShortName := goEnumName
+		goEnumShortName := goEnumName // Shorter name, so that enum elements are reachable from the surrounding namespace
 		if _, ok := preventShortNames[e.EnumName]; !ok {
-			// Strip back one single :: pair from the generated variable name
-			nameParts := strings.Split(e.EnumName, `::`)
-			if len(nameParts) > 1 {
-				nameParts = nameParts[0 : len(nameParts)-1]
-			}
-			goEnumShortName = cabiClassName(strings.Join(nameParts, `::`))
+			goEnumShortName = cabiClassName(e.ShortEnumName())
 		}
 
 		ret.WriteString(`
