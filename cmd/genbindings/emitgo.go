@@ -142,7 +142,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 
 func (p CppParameter) parameterTypeCgo() string {
 	if p.ParameterType == "QString" {
-		return "*C.struct_miqt_string"
+		return "C.struct_miqt_string"
 	}
 
 	if _, ok := p.QListOf(); ok {
@@ -256,11 +256,13 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Go: convert string -> miqt_string*
 		// CABI: convert miqt_string* -> real QString
 
-		gfs.imports["libmiqt"] = struct{}{}
-		preamble += nameprefix + "_ms := libmiqt.Strdupg(" + p.ParameterName + ")\n"
-		preamble += "defer C.free(" + nameprefix + "_ms)\n"
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
+		preamble += nameprefix + "_ms.data = C.CString(" + p.ParameterName + ")\n"
+		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.ParameterName + "))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
 
-		rvalue = "(*C.struct_miqt_string)(" + nameprefix + "_ms)"
+		rvalue = nameprefix + "_ms"
 
 	} else if listType, ok := p.QListOf(); ok {
 		// QList<T>
@@ -359,9 +361,9 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 	} else if rt.ParameterType == "QString" {
 		gfs.imports["unsafe"] = struct{}{}
 
-		shouldReturn = "var " + namePrefix + "_ms *C.struct_miqt_string = "
-		afterword += namePrefix + "_ret := C.GoStringN(&" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
-		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms))\n"
+		shouldReturn = "var " + namePrefix + "_ms C.struct_miqt_string = "
+		afterword += namePrefix + "_ret := C.GoStringN(" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms.data))\n"
 		afterword += assignExpr + namePrefix + "_ret"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
