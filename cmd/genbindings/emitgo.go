@@ -26,6 +26,9 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.ParameterType == "QString" {
 		return "string"
 	}
+	if p.ParameterType == "QByteArray" {
+		return "[]byte"
+	}
 
 	if t, ok := p.QListOf(); ok {
 		return "[]" + t.RenderTypeGo(gfs)
@@ -142,6 +145,10 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 
 func (p CppParameter) parameterTypeCgo() string {
 	if p.ParameterType == "QString" {
+		return "C.struct_miqt_string"
+	}
+
+	if p.ParameterType == "QByteArray" {
 		return "C.struct_miqt_string"
 	}
 
@@ -264,6 +271,18 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		rvalue = nameprefix + "_ms"
 
+	} else if p.ParameterType == "QByteArray" {
+		// Go: convert []byte -> miqt_string
+		// CABI: convert miqt_string -> QByteArray
+		// n.b. This can ALIAS the existing []byte data
+
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_alias := C.struct_miqt_string{}\n"
+		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(&" + p.ParameterName + "[0]))\n"
+		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.ParameterName + "))\n"
+
+		rvalue = nameprefix + "_alias"
+
 	} else if listType, ok := p.QListOf(); ok {
 		// QList<T>
 		// Go: convert T[] -> t* and len
@@ -364,6 +383,19 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "var " + namePrefix + "_ms C.struct_miqt_string = "
 		afterword += namePrefix + "_ret := C.GoStringN(" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms.data))\n"
+		afterword += assignExpr + namePrefix + "_ret"
+		return shouldReturn + " " + rvalue + "\n" + afterword
+
+	} else if rt.ParameterType == "QByteArray" {
+		// We receive the CABI type of a miqt_string. Convert it into []byte
+		// We must free the miqt_string data pointer - this is a data copy,
+		// not an alias
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_bytearray C.struct_miqt_string = "
+		afterword += namePrefix + "_ret := C.GoBytes(unsafe.Pointer(" + namePrefix + "_bytearray.data), C.int(int64(" + namePrefix + "_bytearray.len)))\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_bytearray.data))\n"
 		afterword += assignExpr + namePrefix + "_ret"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
@@ -645,7 +677,7 @@ import "C"
 			if returnTypeDecl == "void" {
 				returnTypeDecl = ""
 			}
-			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
+			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && m.ReturnType.ParameterType != "QByteArray" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
 				returnTypeDecl = "*" + returnTypeDecl
 			}
 

@@ -11,6 +11,9 @@ func (p CppParameter) RenderTypeCabi() string {
 	if p.ParameterType == "QString" {
 		return "struct miqt_string"
 
+	} else if p.ParameterType == "QByteArray" {
+		return "struct miqt_string"
+
 	} else if _, ok := p.QListOf(); ok {
 		return "struct miqt_array*"
 
@@ -148,6 +151,9 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 		if p.ParameterType == "QString" {
 			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
 
+		} else if p.ParameterType == "QByteArray" {
+			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
+
 		} else if t, ok := p.QListOf(); ok {
 			tmp = append(tmp, "struct miqt_array* /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
@@ -202,6 +208,12 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		// The caller will free the miqt_string
 		preamble += indent + "QString " + nameprefix + "_QString = QString::fromUtf8(" + p.ParameterName + ".data, " + p.ParameterName + ".len);\n"
 		return preamble, nameprefix + "_QString"
+
+	} else if p.ParameterType == "QByteArray" {
+		// The caller will free the miqt_string data
+		// This ctor makes a deep copy, on the stack which will be dtor'd by RAII
+		preamble += indent + "QByteArray " + nameprefix + "_QByteArray(" + p.ParameterName + ".data, " + p.ParameterName + ".len);\n"
+		return preamble, nameprefix + "_QByteArray"
 
 	} else if listType, ok := p.QListOf(); ok {
 
@@ -320,6 +332,18 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_b.length();\n"
 		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
 		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_b.data(), " + namePrefix + "_ms.len);\n"
+		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+
+	} else if p.ParameterType == "QByteArray" {
+		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
+		// Do not free the data, the caller will free it
+
+		shouldReturn = ifv(p.Const, "const ", "") + "QByteArray " + p.ParameterName + "_qb = "
+
+		afterCall += indent + "struct miqt_string " + namePrefix + "_ms;\n"
+		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_qb.length();\n"
+		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
+		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_qb.data(), " + namePrefix + "_ms.len);\n"
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
 
 	} else if t, ok := p.QListOf(); ok {

@@ -110,7 +110,7 @@ func (p CppParameter) QtClassType() bool {
 		return true
 	}
 
-	if p.ParameterType == "QString" {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
 		return true
 	}
 
