@@ -3,9 +3,7 @@ package main
 import (
 	"os"
 	"reflect"
-	"strings"
 	"testing"
-	"unsafe"
 
 	"github.com/mappu/miqt/qt"
 )
@@ -98,26 +96,14 @@ func TestMarshalling(t *testing.T) {
 
 	})
 
-	t.Run("QByteArray::split", func(t *testing.T) {
-		phrase := "the quick brown fox jumps over the lazy dog"
-		expect := strings.Split(phrase, " ")
+	t.Run("QByteArray", func(t *testing.T) {
 
-		qba := qt.NewQByteArray2(phrase)
-		got := qba.Split(' ')
-		if len(expect) != len(got) {
-			t.Fatalf("split: expected len=%d, got len=%d", len(expect), len(got))
-		}
+		input := "foo bar baz"
+		ba := qt.QFile_EncodeName(input)
+		got := qt.QFile_DecodeName(ba)
 
-		for i := 0; i < len(expect); i++ {
-			if got[i].Length() != len(expect[i]) {
-				t.Errorf("split/idx=%d: expected len=%d, got %d", i, len(expect[i]), got[i].Length())
-			}
-
-			// TODO add more ergnomic QByteArray<-->string conversion
-			var rawData []byte = unsafe.Slice((*byte)(got[i].Data()), got[i].Length())
-			if string(rawData) != expect[i] {
-				t.Errorf("split/idx=%d: expected %#v, got %#v", i, string(rawData), expect[i])
-			}
+		if input != got {
+			t.Fatalf("QByteArray: expected %q, got %q", input, got)
 		}
 
 	})
