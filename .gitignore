@@ -19,6 +19,7 @@ examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
 examples/uidesigner/uidesigner.exe
+examples/libraries/qt-qprintsupport/qt-qprintsupport
 
 # android temporary build files
 android-build
