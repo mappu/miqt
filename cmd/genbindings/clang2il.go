@@ -89,7 +89,7 @@ nextTopLevel:
 
 			} else {
 
-				contents, err := parseHeader(namespaceInner, namespace+"::")
+				contents, err := parseHeader(namespaceInner, addNamePrefix+namespace+"::")
 				if err != nil {
 					panic(err)
 				}
