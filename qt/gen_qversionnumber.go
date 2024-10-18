@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -143,25 +142,29 @@ func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersi
 }
 
 func (this *QVersionNumber) ToString() string {
-	var _ms *C.struct_miqt_string = C.QVersionNumber_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVersionNumber_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QVersionNumber_FromString(stringVal string) *QVersionNumber {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	_ret := C.QVersionNumber_FromString((*C.struct_miqt_string)(stringVal_ms))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_ret := C.QVersionNumber_FromString(stringVal_ms)
 	_goptr := newQVersionNumber(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVersionNumber_FromString22(stringVal string, suffixIndex *int) *QVersionNumber {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	_ret := C.QVersionNumber_FromString22((*C.struct_miqt_string)(stringVal_ms), (*C.int)(unsafe.Pointer(suffixIndex)))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_ret := C.QVersionNumber_FromString22(stringVal_ms, (*C.int)(unsafe.Pointer(suffixIndex)))
 	_goptr := newQVersionNumber(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

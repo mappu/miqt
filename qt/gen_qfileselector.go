@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -63,33 +62,35 @@ func (this *QFileSelector) MetaObject() *QMetaObject {
 func (this *QFileSelector) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QFileSelector_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QFileSelector_Metacast(this.h, param1_Cstring))
 }
 
 func QFileSelector_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QFileSelector_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileSelector) Select(filePath string) string {
-	filePath_ms := libmiqt.Strdupg(filePath)
-	defer C.free(filePath_ms)
-	var _ms *C.struct_miqt_string = C.QFileSelector_Select(this.h, (*C.struct_miqt_string)(filePath_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	filePath_ms := C.struct_miqt_string{}
+	filePath_ms.data = C.CString(filePath)
+	filePath_ms.len = C.size_t(len(filePath))
+	defer C.free(unsafe.Pointer(filePath_ms.data))
+	var _ms C.struct_miqt_string = C.QFileSelector_Select(this.h, filePath_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -103,11 +104,11 @@ func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
 func (this *QFileSelector) ExtraSelectors() []string {
 	var _ma *C.struct_miqt_array = C.QFileSelector_ExtraSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -116,12 +117,14 @@ func (this *QFileSelector) ExtraSelectors() []string {
 
 func (this *QFileSelector) SetExtraSelectors(list []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
+	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		list_i_ms := libmiqt.Strdupg(list[i])
-		defer C.free(list_i_ms)
-		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
+		list_i_ms := C.struct_miqt_string{}
+		list_i_ms.data = C.CString(list[i])
+		list_i_ms.len = C.size_t(len(list[i]))
+		defer C.free(unsafe.Pointer(list_i_ms.data))
+		list_CArray[i] = list_i_ms
 	}
 	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
@@ -131,11 +134,11 @@ func (this *QFileSelector) SetExtraSelectors(list []string) {
 func (this *QFileSelector) AllSelectors() []string {
 	var _ma *C.struct_miqt_array = C.QFileSelector_AllSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -147,9 +150,9 @@ func QFileSelector_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -158,9 +161,9 @@ func QFileSelector_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -169,9 +172,9 @@ func QFileSelector_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -180,9 +183,9 @@ func QFileSelector_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFileSelector_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileSelector_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

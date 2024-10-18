@@ -73,24 +73,24 @@ func (this *QBoxLayout) MetaObject() *QMetaObject {
 func (this *QBoxLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QBoxLayout_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QBoxLayout_Metacast(this.h, param1_Cstring))
 }
 
 func QBoxLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QBoxLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -240,9 +240,9 @@ func QBoxLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -251,9 +251,9 @@ func QBoxLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -262,9 +262,9 @@ func QBoxLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -273,9 +273,9 @@ func QBoxLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -374,24 +374,24 @@ func (this *QHBoxLayout) MetaObject() *QMetaObject {
 func (this *QHBoxLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QHBoxLayout_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QHBoxLayout_Metacast(this.h, param1_Cstring))
 }
 
 func QHBoxLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QHBoxLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -400,9 +400,9 @@ func QHBoxLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -411,9 +411,9 @@ func QHBoxLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -422,9 +422,9 @@ func QHBoxLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -433,9 +433,9 @@ func QHBoxLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QHBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QHBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -502,24 +502,24 @@ func (this *QVBoxLayout) MetaObject() *QMetaObject {
 func (this *QVBoxLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QVBoxLayout_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QVBoxLayout_Metacast(this.h, param1_Cstring))
 }
 
 func QVBoxLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QVBoxLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -528,9 +528,9 @@ func QVBoxLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -539,9 +539,9 @@ func QVBoxLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -550,9 +550,9 @@ func QVBoxLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -561,9 +561,9 @@ func QVBoxLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QVBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVBoxLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

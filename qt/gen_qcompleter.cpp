@@ -22,12 +22,12 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 	return new QCompleter(model);
 }
 
-QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string* */ completions) {
+QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string */ completions) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions->len);
-	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
+	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList);
@@ -41,12 +41,12 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 	return new QCompleter(model, parent);
 }
 
-QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string* */ completions, QObject* parent) {
+QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string */ completions, QObject* parent) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions->len);
-	struct miqt_string** completions_arr = static_cast<struct miqt_string**>(completions->data);
+	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions->data);
 	for(size_t i = 0; i < completions->len; ++i) {
-		QString completions_arr_i_QString = QString::fromUtf8(&completions_arr[i]->data, completions_arr[i]->len);
+		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
 	return new QCompleter(completions_QList, parent);
@@ -60,18 +60,26 @@ void* QCompleter_Metacast(QCompleter* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QCompleter_Tr(const char* s) {
+struct miqt_string QCompleter_Tr(const char* s) {
 	QString _ret = QCompleter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCompleter_TrUtf8(const char* s) {
+struct miqt_string QCompleter_TrUtf8(const char* s) {
 	QString _ret = QCompleter::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCompleter_SetWidget(QCompleter* self, QWidget* widget) {
@@ -178,26 +186,34 @@ QModelIndex* QCompleter_CurrentIndex(const QCompleter* self) {
 	return new QModelIndex(self->currentIndex());
 }
 
-struct miqt_string* QCompleter_CurrentCompletion(const QCompleter* self) {
+struct miqt_string QCompleter_CurrentCompletion(const QCompleter* self) {
 	QString _ret = self->currentCompletion();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QAbstractItemModel* QCompleter_CompletionModel(const QCompleter* self) {
 	return self->completionModel();
 }
 
-struct miqt_string* QCompleter_CompletionPrefix(const QCompleter* self) {
+struct miqt_string QCompleter_CompletionPrefix(const QCompleter* self) {
 	QString _ret = self->completionPrefix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QCompleter_SetCompletionPrefix(QCompleter* self, struct miqt_string* prefix) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+void QCompleter_SetCompletionPrefix(QCompleter* self, struct miqt_string prefix) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	self->setCompletionPrefix(prefix_QString);
 }
 
@@ -209,23 +225,31 @@ void QCompleter_SetWrapAround(QCompleter* self, bool wrap) {
 	self->setWrapAround(wrap);
 }
 
-struct miqt_string* QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index) {
+struct miqt_string QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index) {
 	QString _ret = self->pathFromIndex(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string* path) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string path) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QStringList _ret = self->splitPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -233,8 +257,8 @@ struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_stri
 	return _out;
 }
 
-void QCompleter_Activated(QCompleter* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QCompleter_Activated(QCompleter* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->activated(text_QString);
 }
 
@@ -243,7 +267,11 @@ void QCompleter_connect_Activated(QCompleter* self, intptr_t slot) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(text_b.data(), text_b.length());
+		struct miqt_string text_ms;
+		text_ms.len = text_b.length();
+		text_ms.data = static_cast<char*>(malloc(text_ms.len));
+		memcpy(text_ms.data, text_b.data(), text_ms.len);
+		struct miqt_string sigval1 = text_ms;
 		miqt_exec_callback_QCompleter_Activated(slot, sigval1);
 	});
 }
@@ -261,8 +289,8 @@ void QCompleter_connect_ActivatedWithIndex(QCompleter* self, intptr_t slot) {
 	});
 }
 
-void QCompleter_Highlighted(QCompleter* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QCompleter_Highlighted(QCompleter* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->highlighted(text_QString);
 }
 
@@ -271,7 +299,11 @@ void QCompleter_connect_Highlighted(QCompleter* self, intptr_t slot) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(text_b.data(), text_b.length());
+		struct miqt_string text_ms;
+		text_ms.len = text_b.length();
+		text_ms.data = static_cast<char*>(malloc(text_ms.len));
+		memcpy(text_ms.data, text_b.data(), text_ms.len);
+		struct miqt_string sigval1 = text_ms;
 		miqt_exec_callback_QCompleter_Highlighted(slot, sigval1);
 	});
 }
@@ -289,32 +321,48 @@ void QCompleter_connect_HighlightedWithIndex(QCompleter* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QCompleter_Tr2(const char* s, const char* c) {
+struct miqt_string QCompleter_Tr2(const char* s, const char* c) {
 	QString _ret = QCompleter::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCompleter_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCompleter_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QCompleter::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCompleter_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCompleter_TrUtf82(const char* s, const char* c) {
 	QString _ret = QCompleter::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCompleter_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCompleter_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCompleter::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCompleter_Complete1(QCompleter* self, QRect* rect) {

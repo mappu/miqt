@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -57,9 +56,11 @@ func NewQUrlQuery2(url *QUrl) *QUrlQuery {
 
 // NewQUrlQuery3 constructs a new QUrlQuery object.
 func NewQUrlQuery3(queryString string) *QUrlQuery {
-	queryString_ms := libmiqt.Strdupg(queryString)
-	defer C.free(queryString_ms)
-	ret := C.QUrlQuery_new3((*C.struct_miqt_string)(queryString_ms))
+	queryString_ms := C.struct_miqt_string{}
+	queryString_ms.data = C.CString(queryString)
+	queryString_ms.len = C.size_t(len(queryString))
+	defer C.free(unsafe.Pointer(queryString_ms.data))
+	ret := C.QUrlQuery_new3(queryString_ms)
 	return newQUrlQuery(ret)
 }
 
@@ -98,22 +99,24 @@ func (this *QUrlQuery) Clear() {
 }
 
 func (this *QUrlQuery) Query() string {
-	var _ms *C.struct_miqt_string = C.QUrlQuery_Query(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUrlQuery_Query(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) SetQuery(queryString string) {
-	queryString_ms := libmiqt.Strdupg(queryString)
-	defer C.free(queryString_ms)
-	C.QUrlQuery_SetQuery(this.h, (*C.struct_miqt_string)(queryString_ms))
+	queryString_ms := C.struct_miqt_string{}
+	queryString_ms.data = C.CString(queryString)
+	queryString_ms.len = C.size_t(len(queryString))
+	defer C.free(unsafe.Pointer(queryString_ms.data))
+	C.QUrlQuery_SetQuery(this.h, queryString_ms)
 }
 
 func (this *QUrlQuery) ToString() string {
-	var _ms *C.struct_miqt_string = C.QUrlQuery_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUrlQuery_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -136,44 +139,56 @@ func (this *QUrlQuery) QueryPairDelimiter() *QChar {
 }
 
 func (this *QUrlQuery) HasQueryItem(key string) bool {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	return (bool)(C.QUrlQuery_HasQueryItem(this.h, (*C.struct_miqt_string)(key_ms)))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	return (bool)(C.QUrlQuery_HasQueryItem(this.h, key_ms))
 }
 
 func (this *QUrlQuery) AddQueryItem(key string, value string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	value_ms := libmiqt.Strdupg(value)
-	defer C.free(value_ms)
-	C.QUrlQuery_AddQueryItem(this.h, (*C.struct_miqt_string)(key_ms), (*C.struct_miqt_string)(value_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	value_ms := C.struct_miqt_string{}
+	value_ms.data = C.CString(value)
+	value_ms.len = C.size_t(len(value))
+	defer C.free(unsafe.Pointer(value_ms.data))
+	C.QUrlQuery_AddQueryItem(this.h, key_ms, value_ms)
 }
 
 func (this *QUrlQuery) RemoveQueryItem(key string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QUrlQuery_RemoveQueryItem(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QUrlQuery_RemoveQueryItem(this.h, key_ms)
 }
 
 func (this *QUrlQuery) QueryItemValue(key string) string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ms *C.struct_miqt_string = C.QUrlQuery_QueryItemValue(this.h, (*C.struct_miqt_string)(key_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ms C.struct_miqt_string = C.QUrlQuery_QueryItemValue(this.h, key_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) AllQueryItemValues(key string) []string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, key_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -181,9 +196,11 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 }
 
 func (this *QUrlQuery) RemoveAllQueryItems(key string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QUrlQuery_RemoveAllQueryItems(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QUrlQuery_RemoveAllQueryItems(this.h, key_ms)
 }
 
 func QUrlQuery_DefaultQueryValueDelimiter() *QChar {
@@ -201,38 +218,42 @@ func QUrlQuery_DefaultQueryPairDelimiter() *QChar {
 }
 
 func (this *QUrlQuery) Query1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms *C.struct_miqt_string = C.QUrlQuery_Query1(this.h, (C.int)(encoding))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUrlQuery_Query1(this.h, (C.int)(encoding))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) ToString1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms *C.struct_miqt_string = C.QUrlQuery_ToString1(this.h, (C.int)(encoding))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUrlQuery_ToString1(this.h, (C.int)(encoding))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) QueryItemValue2(key string, encoding QUrl__ComponentFormattingOption) string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ms *C.struct_miqt_string = C.QUrlQuery_QueryItemValue2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(encoding))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ms C.struct_miqt_string = C.QUrlQuery_QueryItemValue2(this.h, key_ms, (C.int)(encoding))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentFormattingOption) []string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(encoding))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, key_ms, (C.int)(encoding))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))

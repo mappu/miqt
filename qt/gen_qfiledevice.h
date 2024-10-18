@@ -25,14 +25,14 @@ typedef struct QMetaObject QMetaObject;
 
 QMetaObject* QFileDevice_MetaObject(const QFileDevice* self);
 void* QFileDevice_Metacast(QFileDevice* self, const char* param1);
-struct miqt_string* QFileDevice_Tr(const char* s);
-struct miqt_string* QFileDevice_TrUtf8(const char* s);
+struct miqt_string QFileDevice_Tr(const char* s);
+struct miqt_string QFileDevice_TrUtf8(const char* s);
 int QFileDevice_Error(const QFileDevice* self);
 void QFileDevice_UnsetError(QFileDevice* self);
 void QFileDevice_Close(QFileDevice* self);
 bool QFileDevice_IsSequential(const QFileDevice* self);
 int QFileDevice_Handle(const QFileDevice* self);
-struct miqt_string* QFileDevice_FileName(const QFileDevice* self);
+struct miqt_string QFileDevice_FileName(const QFileDevice* self);
 long long QFileDevice_Pos(const QFileDevice* self);
 bool QFileDevice_Seek(QFileDevice* self, long long offset);
 bool QFileDevice_AtEnd(const QFileDevice* self);
@@ -45,10 +45,10 @@ unsigned char* QFileDevice_Map(QFileDevice* self, long long offset, long long si
 bool QFileDevice_Unmap(QFileDevice* self, unsigned char* address);
 QDateTime* QFileDevice_FileTime(const QFileDevice* self, int time);
 bool QFileDevice_SetFileTime(QFileDevice* self, QDateTime* newDate, int fileTime);
-struct miqt_string* QFileDevice_Tr2(const char* s, const char* c);
-struct miqt_string* QFileDevice_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QFileDevice_TrUtf82(const char* s, const char* c);
-struct miqt_string* QFileDevice_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QFileDevice_Tr2(const char* s, const char* c);
+struct miqt_string QFileDevice_Tr3(const char* s, const char* c, int n);
+struct miqt_string QFileDevice_TrUtf82(const char* s, const char* c);
+struct miqt_string QFileDevice_TrUtf83(const char* s, const char* c, int n);
 unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long size, int flags);
 void QFileDevice_Delete(QFileDevice* self);
 

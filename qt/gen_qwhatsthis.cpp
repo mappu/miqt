@@ -22,8 +22,8 @@ void QWhatsThis_LeaveWhatsThisMode() {
 	QWhatsThis::leaveWhatsThisMode();
 }
 
-void QWhatsThis_ShowText(QPoint* pos, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QWhatsThis_ShowText(QPoint* pos, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QWhatsThis::showText(*pos, text_QString);
 }
 
@@ -35,8 +35,8 @@ QAction* QWhatsThis_CreateAction() {
 	return QWhatsThis::createAction();
 }
 
-void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string* text, QWidget* w) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QWhatsThis::showText(*pos, text_QString, w);
 }
 

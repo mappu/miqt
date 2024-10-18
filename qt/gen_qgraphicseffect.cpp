@@ -24,18 +24,26 @@ void* QGraphicsEffect_Metacast(QGraphicsEffect* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsEffect_Tr(const char* s) {
+struct miqt_string QGraphicsEffect_Tr(const char* s) {
 	QString _ret = QGraphicsEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsEffect_TrUtf8(const char* s) {
+struct miqt_string QGraphicsEffect_TrUtf8(const char* s) {
 	QString _ret = QGraphicsEffect::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QRectF* QGraphicsEffect_BoundingRectFor(const QGraphicsEffect* self, QRectF* sourceRect) {
@@ -69,32 +77,48 @@ void QGraphicsEffect_connect_EnabledChanged(QGraphicsEffect* self, intptr_t slot
 	});
 }
 
-struct miqt_string* QGraphicsEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsEffect_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsEffect_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsEffect_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsEffect_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsEffect::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsEffect_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsEffect_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsEffect::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsEffect_Delete(QGraphicsEffect* self) {
@@ -117,18 +141,26 @@ void* QGraphicsColorizeEffect_Metacast(QGraphicsColorizeEffect* self, const char
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsColorizeEffect_Tr(const char* s) {
+struct miqt_string QGraphicsColorizeEffect_Tr(const char* s) {
 	QString _ret = QGraphicsColorizeEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsColorizeEffect_TrUtf8(const char* s) {
+struct miqt_string QGraphicsColorizeEffect_TrUtf8(const char* s) {
 	QString _ret = QGraphicsColorizeEffect::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QColor* QGraphicsColorizeEffect_Color(const QGraphicsColorizeEffect* self) {
@@ -173,32 +205,48 @@ void QGraphicsColorizeEffect_connect_StrengthChanged(QGraphicsColorizeEffect* se
 	});
 }
 
-struct miqt_string* QGraphicsColorizeEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsColorizeEffect_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsColorizeEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsColorizeEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsColorizeEffect_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsColorizeEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsColorizeEffect_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsColorizeEffect_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsColorizeEffect::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsColorizeEffect_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsColorizeEffect_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsColorizeEffect::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self) {
@@ -221,18 +269,26 @@ void* QGraphicsBlurEffect_Metacast(QGraphicsBlurEffect* self, const char* param1
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsBlurEffect_Tr(const char* s) {
+struct miqt_string QGraphicsBlurEffect_Tr(const char* s) {
 	QString _ret = QGraphicsBlurEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsBlurEffect_TrUtf8(const char* s) {
+struct miqt_string QGraphicsBlurEffect_TrUtf8(const char* s) {
 	QString _ret = QGraphicsBlurEffect::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QRectF* QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect* self, QRectF* rect) {
@@ -281,32 +337,48 @@ void QGraphicsBlurEffect_connect_BlurHintsChanged(QGraphicsBlurEffect* self, int
 	});
 }
 
-struct miqt_string* QGraphicsBlurEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsBlurEffect_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsBlurEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsBlurEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsBlurEffect_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsBlurEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsBlurEffect_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsBlurEffect_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsBlurEffect::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsBlurEffect_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsBlurEffect_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsBlurEffect::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self) {
@@ -329,18 +401,26 @@ void* QGraphicsDropShadowEffect_Metacast(QGraphicsDropShadowEffect* self, const 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_Tr(const char* s) {
+struct miqt_string QGraphicsDropShadowEffect_Tr(const char* s) {
 	QString _ret = QGraphicsDropShadowEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_TrUtf8(const char* s) {
+struct miqt_string QGraphicsDropShadowEffect_TrUtf8(const char* s) {
 	QString _ret = QGraphicsDropShadowEffect::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QRectF* QGraphicsDropShadowEffect_BoundingRectFor(const QGraphicsDropShadowEffect* self, QRectF* rect) {
@@ -436,32 +516,48 @@ void QGraphicsDropShadowEffect_connect_ColorChanged(QGraphicsDropShadowEffect* s
 	});
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsDropShadowEffect_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsDropShadowEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsDropShadowEffect_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsDropShadowEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsDropShadowEffect_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsDropShadowEffect::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsDropShadowEffect_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsDropShadowEffect_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsDropShadowEffect::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self) {
@@ -484,18 +580,26 @@ void* QGraphicsOpacityEffect_Metacast(QGraphicsOpacityEffect* self, const char* 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsOpacityEffect_Tr(const char* s) {
+struct miqt_string QGraphicsOpacityEffect_Tr(const char* s) {
 	QString _ret = QGraphicsOpacityEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsOpacityEffect_TrUtf8(const char* s) {
+struct miqt_string QGraphicsOpacityEffect_TrUtf8(const char* s) {
 	QString _ret = QGraphicsOpacityEffect::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 double QGraphicsOpacityEffect_Opacity(const QGraphicsOpacityEffect* self) {
@@ -540,32 +644,48 @@ void QGraphicsOpacityEffect_connect_OpacityMaskChanged(QGraphicsOpacityEffect* s
 	});
 }
 
-struct miqt_string* QGraphicsOpacityEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsOpacityEffect_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsOpacityEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsOpacityEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsOpacityEffect_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsOpacityEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsOpacityEffect_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsOpacityEffect_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsOpacityEffect::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsOpacityEffect_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsOpacityEffect_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsOpacityEffect::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self) {

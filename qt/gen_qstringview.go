@@ -49,9 +49,9 @@ func NewQStringView() *QStringView {
 }
 
 func (this *QStringView) ToString() string {
-	var _ms *C.struct_miqt_string = C.QStringView_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringView_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -70,25 +70,25 @@ func (this *QStringView) OperatorSubscript(n int64) *QChar {
 	return _goptr
 }
 
-func (this *QStringView) ToLatin1() *QByteArray {
-	_ret := C.QStringView_ToLatin1(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStringView) ToLatin1() []byte {
+	var _bytearray C.struct_miqt_string = C.QStringView_ToLatin1(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QStringView) ToUtf8() *QByteArray {
-	_ret := C.QStringView_ToUtf8(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStringView) ToUtf8() []byte {
+	var _bytearray C.struct_miqt_string = C.QStringView_ToUtf8(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QStringView) ToLocal8Bit() *QByteArray {
-	_ret := C.QStringView_ToLocal8Bit(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStringView) ToLocal8Bit() []byte {
+	var _bytearray C.struct_miqt_string = C.QStringView_ToLocal8Bit(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QStringView) ToUcs4() []uint {

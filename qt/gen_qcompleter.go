@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -76,12 +75,14 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 // NewQCompleter3 constructs a new QCompleter object.
 func NewQCompleter3(completions []string) *QCompleter {
 	// For the C ABI, malloc a C array of raw pointers
-	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
+	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		completions_i_ms := libmiqt.Strdupg(completions[i])
-		defer C.free(completions_i_ms)
-		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
+		completions_i_ms := C.struct_miqt_string{}
+		completions_i_ms.data = C.CString(completions[i])
+		completions_i_ms.len = C.size_t(len(completions[i]))
+		defer C.free(unsafe.Pointer(completions_i_ms.data))
+		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
@@ -104,12 +105,14 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 	// For the C ABI, malloc a C array of raw pointers
-	completions_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
+	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
-		completions_i_ms := libmiqt.Strdupg(completions[i])
-		defer C.free(completions_i_ms)
-		completions_CArray[i] = (*C.struct_miqt_string)(completions_i_ms)
+		completions_i_ms := C.struct_miqt_string{}
+		completions_i_ms.data = C.CString(completions[i])
+		completions_i_ms.len = C.size_t(len(completions[i]))
+		defer C.free(unsafe.Pointer(completions_i_ms.data))
+		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
@@ -124,24 +127,24 @@ func (this *QCompleter) MetaObject() *QMetaObject {
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QCompleter_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QCompleter_Metacast(this.h, param1_Cstring))
 }
 
 func QCompleter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCompleter_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -249,9 +252,9 @@ func (this *QCompleter) CurrentIndex() *QModelIndex {
 }
 
 func (this *QCompleter) CurrentCompletion() string {
-	var _ms *C.struct_miqt_string = C.QCompleter_CurrentCompletion(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_CurrentCompletion(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -260,16 +263,18 @@ func (this *QCompleter) CompletionModel() *QAbstractItemModel {
 }
 
 func (this *QCompleter) CompletionPrefix() string {
-	var _ms *C.struct_miqt_string = C.QCompleter_CompletionPrefix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_CompletionPrefix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCompleter) SetCompletionPrefix(prefix string) {
-	prefix_ms := libmiqt.Strdupg(prefix)
-	defer C.free(prefix_ms)
-	C.QCompleter_SetCompletionPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QCompleter_SetCompletionPrefix(this.h, prefix_ms)
 }
 
 func (this *QCompleter) Complete() {
@@ -281,22 +286,24 @@ func (this *QCompleter) SetWrapAround(wrap bool) {
 }
 
 func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
-	var _ms *C.struct_miqt_string = C.QCompleter_PathFromIndex(this.h, index.cPointer())
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_PathFromIndex(this.h, index.cPointer())
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCompleter) SplitPath(path string) []string {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	var _ma *C.struct_miqt_array = C.QCompleter_SplitPath(this.h, (*C.struct_miqt_string)(path_ms))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	var _ma *C.struct_miqt_array = C.QCompleter_SplitPath(this.h, path_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -304,25 +311,27 @@ func (this *QCompleter) SplitPath(path string) []string {
 }
 
 func (this *QCompleter) Activated(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QCompleter_Activated(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QCompleter_Activated(this.h, text_ms)
 }
 func (this *QCompleter) OnActivated(slot func(text string)) {
 	C.QCompleter_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_Activated
-func miqt_exec_callback_QCompleter_Activated(cb C.intptr_t, text *C.struct_miqt_string) {
+func miqt_exec_callback_QCompleter_Activated(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var text_ms *C.struct_miqt_string = text
-	text_ret := C.GoStringN(&text_ms.data, C.int(int64(text_ms.len)))
-	C.free(unsafe.Pointer(text_ms))
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
 	slotval1 := text_ret
 
 	gofunc(slotval1)
@@ -349,25 +358,27 @@ func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QM
 }
 
 func (this *QCompleter) Highlighted(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QCompleter_Highlighted(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QCompleter_Highlighted(this.h, text_ms)
 }
 func (this *QCompleter) OnHighlighted(slot func(text string)) {
 	C.QCompleter_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_Highlighted
-func miqt_exec_callback_QCompleter_Highlighted(cb C.intptr_t, text *C.struct_miqt_string) {
+func miqt_exec_callback_QCompleter_Highlighted(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var text_ms *C.struct_miqt_string = text
-	text_ret := C.GoStringN(&text_ms.data, C.int(int64(text_ms.len)))
-	C.free(unsafe.Pointer(text_ms))
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
 	slotval1 := text_ret
 
 	gofunc(slotval1)
@@ -398,9 +409,9 @@ func QCompleter_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -409,9 +420,9 @@ func QCompleter_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -420,9 +431,9 @@ func QCompleter_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -431,9 +442,9 @@ func QCompleter_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCompleter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCompleter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

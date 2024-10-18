@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -71,24 +70,24 @@ func (this *QProgressBar) MetaObject() *QMetaObject {
 func (this *QProgressBar) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QProgressBar_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QProgressBar_Metacast(this.h, param1_Cstring))
 }
 
 func QProgressBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QProgressBar_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -105,9 +104,9 @@ func (this *QProgressBar) Value() int {
 }
 
 func (this *QProgressBar) Text() string {
-	var _ms *C.struct_miqt_string = C.QProgressBar_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -162,9 +161,11 @@ func (this *QProgressBar) TextDirection() QProgressBar__Direction {
 }
 
 func (this *QProgressBar) SetFormat(format string) {
-	format_ms := libmiqt.Strdupg(format)
-	defer C.free(format_ms)
-	C.QProgressBar_SetFormat(this.h, (*C.struct_miqt_string)(format_ms))
+	format_ms := C.struct_miqt_string{}
+	format_ms.data = C.CString(format)
+	format_ms.len = C.size_t(len(format))
+	defer C.free(unsafe.Pointer(format_ms.data))
+	C.QProgressBar_SetFormat(this.h, format_ms)
 }
 
 func (this *QProgressBar) ResetFormat() {
@@ -172,9 +173,9 @@ func (this *QProgressBar) ResetFormat() {
 }
 
 func (this *QProgressBar) Format() string {
-	var _ms *C.struct_miqt_string = C.QProgressBar_Format(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_Format(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -227,9 +228,9 @@ func QProgressBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -238,9 +239,9 @@ func QProgressBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -249,9 +250,9 @@ func QProgressBar_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -260,9 +261,9 @@ func QProgressBar_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QProgressBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QProgressBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

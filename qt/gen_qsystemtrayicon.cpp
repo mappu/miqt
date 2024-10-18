@@ -35,18 +35,26 @@ void* QSystemTrayIcon_Metacast(QSystemTrayIcon* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSystemTrayIcon_Tr(const char* s) {
+struct miqt_string QSystemTrayIcon_Tr(const char* s) {
 	QString _ret = QSystemTrayIcon::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSystemTrayIcon_TrUtf8(const char* s) {
+struct miqt_string QSystemTrayIcon_TrUtf8(const char* s) {
 	QString _ret = QSystemTrayIcon::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSystemTrayIcon_SetContextMenu(QSystemTrayIcon* self, QMenu* menu) {
@@ -65,15 +73,19 @@ void QSystemTrayIcon_SetIcon(QSystemTrayIcon* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-struct miqt_string* QSystemTrayIcon_ToolTip(const QSystemTrayIcon* self) {
+struct miqt_string QSystemTrayIcon_ToolTip(const QSystemTrayIcon* self) {
 	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QSystemTrayIcon_SetToolTip(QSystemTrayIcon* self, struct miqt_string* tip) {
-	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
+void QSystemTrayIcon_SetToolTip(QSystemTrayIcon* self, struct miqt_string tip) {
+	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
 	self->setToolTip(tip_QString);
 }
 
@@ -105,15 +117,15 @@ void QSystemTrayIcon_Hide(QSystemTrayIcon* self) {
 	self->hide();
 }
 
-void QSystemTrayIcon_ShowMessage(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, QIcon* icon) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QString msg_QString = QString::fromUtf8(&msg->data, msg->len);
+void QSystemTrayIcon_ShowMessage(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, *icon);
 }
 
-void QSystemTrayIcon_ShowMessage2(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QString msg_QString = QString::fromUtf8(&msg->data, msg->len);
+void QSystemTrayIcon_ShowMessage2(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString);
 }
 
@@ -139,49 +151,65 @@ void QSystemTrayIcon_connect_MessageClicked(QSystemTrayIcon* self, intptr_t slot
 	});
 }
 
-struct miqt_string* QSystemTrayIcon_Tr2(const char* s, const char* c) {
+struct miqt_string QSystemTrayIcon_Tr2(const char* s, const char* c) {
 	QString _ret = QSystemTrayIcon::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSystemTrayIcon_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSystemTrayIcon_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSystemTrayIcon::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSystemTrayIcon_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSystemTrayIcon_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSystemTrayIcon::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSystemTrayIcon_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSystemTrayIcon_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSystemTrayIcon::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QSystemTrayIcon_ShowMessage4(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, QIcon* icon, int msecs) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QString msg_QString = QString::fromUtf8(&msg->data, msg->len);
+void QSystemTrayIcon_ShowMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, *icon, static_cast<int>(msecs));
 }
 
-void QSystemTrayIcon_ShowMessage3(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, int icon) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QString msg_QString = QString::fromUtf8(&msg->data, msg->len);
+void QSystemTrayIcon_ShowMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon));
 }
 
-void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string* title, struct miqt_string* msg, int icon, int msecs) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
-	QString msg_QString = QString::fromUtf8(&msg->data, msg->len);
+void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon), static_cast<int>(msecs));
 }
 

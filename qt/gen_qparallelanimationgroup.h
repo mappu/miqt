@@ -27,13 +27,13 @@ QParallelAnimationGroup* QParallelAnimationGroup_new();
 QParallelAnimationGroup* QParallelAnimationGroup_new2(QObject* parent);
 QMetaObject* QParallelAnimationGroup_MetaObject(const QParallelAnimationGroup* self);
 void* QParallelAnimationGroup_Metacast(QParallelAnimationGroup* self, const char* param1);
-struct miqt_string* QParallelAnimationGroup_Tr(const char* s);
-struct miqt_string* QParallelAnimationGroup_TrUtf8(const char* s);
+struct miqt_string QParallelAnimationGroup_Tr(const char* s);
+struct miqt_string QParallelAnimationGroup_TrUtf8(const char* s);
 int QParallelAnimationGroup_Duration(const QParallelAnimationGroup* self);
-struct miqt_string* QParallelAnimationGroup_Tr2(const char* s, const char* c);
-struct miqt_string* QParallelAnimationGroup_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QParallelAnimationGroup_TrUtf82(const char* s, const char* c);
-struct miqt_string* QParallelAnimationGroup_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QParallelAnimationGroup_Tr2(const char* s, const char* c);
+struct miqt_string QParallelAnimationGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string QParallelAnimationGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string QParallelAnimationGroup_TrUtf83(const char* s, const char* c, int n);
 void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self);
 
 #ifdef __cplusplus

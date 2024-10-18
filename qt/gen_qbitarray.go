@@ -195,9 +195,9 @@ func (this *QBitArray) Truncate(pos int) {
 	C.QBitArray_Truncate(this.h, (C.int)(pos))
 }
 
-func (this *QBitArray) Bits() unsafe.Pointer {
+func (this *QBitArray) Bits() string {
 	_ret := C.QBitArray_Bits(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func QBitArray_FromBits(data string, lenVal int64) *QBitArray {

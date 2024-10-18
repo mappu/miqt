@@ -46,8 +46,8 @@ void QStylePainter_DrawComplexControl(QStylePainter* self, int cc, QStyleOptionC
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(cc), *opt);
 }
 
-void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString);
 }
 
@@ -59,8 +59,8 @@ QStyle* QStylePainter_Style(const QStylePainter* self) {
 	return self->style();
 }
 
-void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text, int textRole) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 

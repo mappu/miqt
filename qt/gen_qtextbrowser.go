@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -64,24 +63,24 @@ func (this *QTextBrowser) MetaObject() *QMetaObject {
 func (this *QTextBrowser) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTextBrowser_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTextBrowser_Metacast(this.h, param1_Cstring))
 }
 
 func QTextBrowser_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTextBrowser_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -99,11 +98,11 @@ func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
 func (this *QTextBrowser) SearchPaths() []string {
 	var _ma *C.struct_miqt_array = C.QTextBrowser_SearchPaths(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -112,12 +111,14 @@ func (this *QTextBrowser) SearchPaths() []string {
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	paths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
+	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
-		paths_i_ms := libmiqt.Strdupg(paths[i])
-		defer C.free(paths_i_ms)
-		paths_CArray[i] = (*C.struct_miqt_string)(paths_i_ms)
+		paths_i_ms := C.struct_miqt_string{}
+		paths_i_ms.data = C.CString(paths[i])
+		paths_i_ms.len = C.size_t(len(paths[i]))
+		defer C.free(unsafe.Pointer(paths_i_ms.data))
+		paths_CArray[i] = paths_i_ms
 	}
 	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
@@ -144,9 +145,9 @@ func (this *QTextBrowser) ClearHistory() {
 }
 
 func (this *QTextBrowser) HistoryTitle(param1 int) string {
-	var _ms *C.struct_miqt_string = C.QTextBrowser_HistoryTitle(this.h, (C.int)(param1))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_HistoryTitle(this.h, (C.int)(param1))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -303,25 +304,27 @@ func miqt_exec_callback_QTextBrowser_Highlighted(cb C.intptr_t, param1 *C.QUrl) 
 }
 
 func (this *QTextBrowser) HighlightedWithQString(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QTextBrowser_HighlightedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QTextBrowser_HighlightedWithQString(this.h, param1_ms)
 }
 func (this *QTextBrowser) OnHighlightedWithQString(slot func(param1 string)) {
 	C.QTextBrowser_connect_HighlightedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextBrowser_HighlightedWithQString
-func miqt_exec_callback_QTextBrowser_HighlightedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QTextBrowser_HighlightedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
@@ -352,9 +355,9 @@ func QTextBrowser_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -363,9 +366,9 @@ func QTextBrowser_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -374,9 +377,9 @@ func QTextBrowser_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -385,9 +388,9 @@ func QTextBrowser_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextBrowser_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBrowser_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -48,12 +48,6 @@ func NewQCborStreamWriter(device *QIODevice) *QCborStreamWriter {
 	return newQCborStreamWriter(ret)
 }
 
-// NewQCborStreamWriter2 constructs a new QCborStreamWriter object.
-func NewQCborStreamWriter2(data *QByteArray) *QCborStreamWriter {
-	ret := C.QCborStreamWriter_new2(data.cPointer())
-	return newQCborStreamWriter(ret)
-}
-
 func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
 	C.QCborStreamWriter_SetDevice(this.h, device.cPointer())
 }
@@ -74,8 +68,11 @@ func (this *QCborStreamWriter) AppendWithQCborNegativeInteger(n QCborNegativeInt
 	C.QCborStreamWriter_AppendWithQCborNegativeInteger(this.h, (C.uint64_t)(n))
 }
 
-func (this *QCborStreamWriter) AppendWithBa(ba *QByteArray) {
-	C.QCborStreamWriter_AppendWithBa(this.h, ba.cPointer())
+func (this *QCborStreamWriter) AppendWithBa(ba []byte) {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	C.QCborStreamWriter_AppendWithBa(this.h, ba_alias)
 }
 
 func (this *QCborStreamWriter) AppendWithTag(tag QCborTag) {

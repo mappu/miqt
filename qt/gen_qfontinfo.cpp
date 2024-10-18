@@ -23,18 +23,26 @@ void QFontInfo_Swap(QFontInfo* self, QFontInfo* other) {
 	self->swap(*other);
 }
 
-struct miqt_string* QFontInfo_Family(const QFontInfo* self) {
+struct miqt_string QFontInfo_Family(const QFontInfo* self) {
 	QString _ret = self->family();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFontInfo_StyleName(const QFontInfo* self) {
+struct miqt_string QFontInfo_StyleName(const QFontInfo* self) {
 	QString _ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QFontInfo_PixelSize(const QFontInfo* self) {

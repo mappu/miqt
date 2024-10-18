@@ -22,7 +22,7 @@ typedef struct QObject QObject;
 #endif
 
 struct miqt_array* QGenericPluginFactory_Keys();
-QObject* QGenericPluginFactory_Create(struct miqt_string* param1, struct miqt_string* param2);
+QObject* QGenericPluginFactory_Create(struct miqt_string param1, struct miqt_string param2);
 void QGenericPluginFactory_Delete(QGenericPluginFactory* self);
 
 #ifdef __cplusplus

@@ -89,13 +89,13 @@ QTextLayout* QTextLayout_new() {
 	return new QTextLayout();
 }
 
-QTextLayout* QTextLayout_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QTextLayout* QTextLayout_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextLayout(text_QString);
 }
 
-QTextLayout* QTextLayout_new3(struct miqt_string* text, QFont* font) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QTextLayout* QTextLayout_new3(struct miqt_string text, QFont* font) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextLayout(text_QString, *font);
 }
 
@@ -103,8 +103,8 @@ QTextLayout* QTextLayout_new4(QTextBlock* b) {
 	return new QTextLayout(*b);
 }
 
-QTextLayout* QTextLayout_new5(struct miqt_string* text, QFont* font, QPaintDevice* paintdevice) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QTextLayout* QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextLayout(text_QString, *font, paintdevice);
 }
 
@@ -120,16 +120,20 @@ void QTextLayout_SetRawFont(QTextLayout* self, QRawFont* rawFont) {
 	self->setRawFont(*rawFont);
 }
 
-void QTextLayout_SetText(QTextLayout* self, struct miqt_string* stringVal) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+void QTextLayout_SetText(QTextLayout* self, struct miqt_string stringVal) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	self->setText(stringVal_QString);
 }
 
-struct miqt_string* QTextLayout_Text(const QTextLayout* self) {
+struct miqt_string QTextLayout_Text(const QTextLayout* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextLayout_SetTextOption(QTextLayout* self, QTextOption* option) {
@@ -142,8 +146,8 @@ QTextOption* QTextLayout_TextOption(const QTextLayout* self) {
 	return const_cast<QTextOption*>(&_ret);
 }
 
-void QTextLayout_SetPreeditArea(QTextLayout* self, int position, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTextLayout_SetPreeditArea(QTextLayout* self, int position, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setPreeditArea(static_cast<int>(position), text_QString);
 }
 
@@ -151,11 +155,15 @@ int QTextLayout_PreeditAreaPosition(const QTextLayout* self) {
 	return self->preeditAreaPosition();
 }
 
-struct miqt_string* QTextLayout_PreeditAreaText(const QTextLayout* self) {
+struct miqt_string QTextLayout_PreeditAreaText(const QTextLayout* self) {
 	QString _ret = self->preeditAreaText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextLayout_SetAdditionalFormats(QTextLayout* self, struct miqt_array* /* of QTextLayout__FormatRange* */ overrides) {

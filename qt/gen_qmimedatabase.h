@@ -30,18 +30,18 @@ typedef struct QUrl QUrl;
 #endif
 
 QMimeDatabase* QMimeDatabase_new();
-QMimeType* QMimeDatabase_MimeTypeForName(const QMimeDatabase* self, struct miqt_string* nameOrAlias);
-QMimeType* QMimeDatabase_MimeTypeForFile(const QMimeDatabase* self, struct miqt_string* fileName);
+QMimeType* QMimeDatabase_MimeTypeForName(const QMimeDatabase* self, struct miqt_string nameOrAlias);
+QMimeType* QMimeDatabase_MimeTypeForFile(const QMimeDatabase* self, struct miqt_string fileName);
 QMimeType* QMimeDatabase_MimeTypeForFileWithFileInfo(const QMimeDatabase* self, QFileInfo* fileInfo);
-struct miqt_array* QMimeDatabase_MimeTypesForFileName(const QMimeDatabase* self, struct miqt_string* fileName);
-QMimeType* QMimeDatabase_MimeTypeForData(const QMimeDatabase* self, QByteArray* data);
+struct miqt_array* QMimeDatabase_MimeTypesForFileName(const QMimeDatabase* self, struct miqt_string fileName);
+QMimeType* QMimeDatabase_MimeTypeForData(const QMimeDatabase* self, struct miqt_string data);
 QMimeType* QMimeDatabase_MimeTypeForDataWithDevice(const QMimeDatabase* self, QIODevice* device);
 QMimeType* QMimeDatabase_MimeTypeForUrl(const QMimeDatabase* self, QUrl* url);
-QMimeType* QMimeDatabase_MimeTypeForFileNameAndData(const QMimeDatabase* self, struct miqt_string* fileName, QIODevice* device);
-QMimeType* QMimeDatabase_MimeTypeForFileNameAndData2(const QMimeDatabase* self, struct miqt_string* fileName, QByteArray* data);
-struct miqt_string* QMimeDatabase_SuffixForFileName(const QMimeDatabase* self, struct miqt_string* fileName);
+QMimeType* QMimeDatabase_MimeTypeForFileNameAndData(const QMimeDatabase* self, struct miqt_string fileName, QIODevice* device);
+QMimeType* QMimeDatabase_MimeTypeForFileNameAndData2(const QMimeDatabase* self, struct miqt_string fileName, struct miqt_string data);
+struct miqt_string QMimeDatabase_SuffixForFileName(const QMimeDatabase* self, struct miqt_string fileName);
 struct miqt_array* QMimeDatabase_AllMimeTypes(const QMimeDatabase* self);
-QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string* fileName, int mode);
+QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string fileName, int mode);
 QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, int mode);
 void QMimeDatabase_Delete(QMimeDatabase* self);
 

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -83,9 +82,11 @@ func NewQRegularExpression() *QRegularExpression {
 
 // NewQRegularExpression2 constructs a new QRegularExpression object.
 func NewQRegularExpression2(pattern string) *QRegularExpression {
-	pattern_ms := libmiqt.Strdupg(pattern)
-	defer C.free(pattern_ms)
-	ret := C.QRegularExpression_new2((*C.struct_miqt_string)(pattern_ms))
+	pattern_ms := C.struct_miqt_string{}
+	pattern_ms.data = C.CString(pattern)
+	pattern_ms.len = C.size_t(len(pattern))
+	defer C.free(unsafe.Pointer(pattern_ms.data))
+	ret := C.QRegularExpression_new2(pattern_ms)
 	return newQRegularExpression(ret)
 }
 
@@ -97,9 +98,11 @@ func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
 
 // NewQRegularExpression4 constructs a new QRegularExpression object.
 func NewQRegularExpression4(pattern string, options QRegularExpression__PatternOption) *QRegularExpression {
-	pattern_ms := libmiqt.Strdupg(pattern)
-	defer C.free(pattern_ms)
-	ret := C.QRegularExpression_new4((*C.struct_miqt_string)(pattern_ms), (C.int)(options))
+	pattern_ms := C.struct_miqt_string{}
+	pattern_ms.data = C.CString(pattern)
+	pattern_ms.len = C.size_t(len(pattern))
+	defer C.free(unsafe.Pointer(pattern_ms.data))
+	ret := C.QRegularExpression_new4(pattern_ms, (C.int)(options))
 	return newQRegularExpression(ret)
 }
 
@@ -120,16 +123,18 @@ func (this *QRegularExpression) Swap(other *QRegularExpression) {
 }
 
 func (this *QRegularExpression) Pattern() string {
-	var _ms *C.struct_miqt_string = C.QRegularExpression_Pattern(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRegularExpression_Pattern(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegularExpression) SetPattern(pattern string) {
-	pattern_ms := libmiqt.Strdupg(pattern)
-	defer C.free(pattern_ms)
-	C.QRegularExpression_SetPattern(this.h, (*C.struct_miqt_string)(pattern_ms))
+	pattern_ms := C.struct_miqt_string{}
+	pattern_ms.data = C.CString(pattern)
+	pattern_ms.len = C.size_t(len(pattern))
+	defer C.free(unsafe.Pointer(pattern_ms.data))
+	C.QRegularExpression_SetPattern(this.h, pattern_ms)
 }
 
 func (this *QRegularExpression) IsValid() bool {
@@ -141,9 +146,9 @@ func (this *QRegularExpression) PatternErrorOffset() int {
 }
 
 func (this *QRegularExpression) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QRegularExpression_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRegularExpression_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -154,11 +159,11 @@ func (this *QRegularExpression) CaptureCount() int {
 func (this *QRegularExpression) NamedCaptureGroups() []string {
 	var _ma *C.struct_miqt_array = C.QRegularExpression_NamedCaptureGroups(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -166,18 +171,22 @@ func (this *QRegularExpression) NamedCaptureGroups() []string {
 }
 
 func (this *QRegularExpression) Match(subject string) *QRegularExpressionMatch {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_Match(this.h, (*C.struct_miqt_string)(subject_ms))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_Match(this.h, subject_ms)
 	_goptr := newQRegularExpressionMatch(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) GlobalMatch(subject string) *QRegularExpressionMatchIterator {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_GlobalMatch(this.h, (*C.struct_miqt_string)(subject_ms))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_GlobalMatch(this.h, subject_ms)
 	_goptr := newQRegularExpressionMatchIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -188,29 +197,35 @@ func (this *QRegularExpression) Optimize() {
 }
 
 func QRegularExpression_Escape(str string) string {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	var _ms *C.struct_miqt_string = C.QRegularExpression_Escape((*C.struct_miqt_string)(str_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	var _ms C.struct_miqt_string = C.QRegularExpression_Escape(str_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QRegularExpression_WildcardToRegularExpression(str string) string {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	var _ms *C.struct_miqt_string = C.QRegularExpression_WildcardToRegularExpression((*C.struct_miqt_string)(str_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	var _ms C.struct_miqt_string = C.QRegularExpression_WildcardToRegularExpression(str_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QRegularExpression_AnchoredPattern(expression string) string {
-	expression_ms := libmiqt.Strdupg(expression)
-	defer C.free(expression_ms)
-	var _ms *C.struct_miqt_string = C.QRegularExpression_AnchoredPattern((*C.struct_miqt_string)(expression_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	expression_ms := C.struct_miqt_string{}
+	expression_ms.data = C.CString(expression)
+	expression_ms.len = C.size_t(len(expression))
+	defer C.free(unsafe.Pointer(expression_ms.data))
+	var _ms C.struct_miqt_string = C.QRegularExpression_AnchoredPattern(expression_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -223,54 +238,66 @@ func (this *QRegularExpression) OperatorNotEqual(re *QRegularExpression) bool {
 }
 
 func (this *QRegularExpression) Match2(subject string, offset int) *QRegularExpressionMatch {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_Match2(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_Match2(this.h, subject_ms, (C.int)(offset))
 	_goptr := newQRegularExpressionMatch(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) Match3(subject string, offset int, matchType QRegularExpression__MatchType) *QRegularExpressionMatch {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_Match3(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_Match3(this.h, subject_ms, (C.int)(offset), (C.int)(matchType))
 	_goptr := newQRegularExpressionMatch(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) Match4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatch {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_Match4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_Match4(this.h, subject_ms, (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
 	_goptr := newQRegularExpressionMatch(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) GlobalMatch2(subject string, offset int) *QRegularExpressionMatchIterator {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_GlobalMatch2(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_GlobalMatch2(this.h, subject_ms, (C.int)(offset))
 	_goptr := newQRegularExpressionMatchIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) GlobalMatch3(subject string, offset int, matchType QRegularExpression__MatchType) *QRegularExpressionMatchIterator {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_GlobalMatch3(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_GlobalMatch3(this.h, subject_ms, (C.int)(offset), (C.int)(matchType))
 	_goptr := newQRegularExpressionMatchIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchType QRegularExpression__MatchType, matchOptions QRegularExpression__MatchOption) *QRegularExpressionMatchIterator {
-	subject_ms := libmiqt.Strdupg(subject)
-	defer C.free(subject_ms)
-	_ret := C.QRegularExpression_GlobalMatch4(this.h, (*C.struct_miqt_string)(subject_ms), (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
+	subject_ms := C.struct_miqt_string{}
+	subject_ms.data = C.CString(subject)
+	subject_ms.len = C.size_t(len(subject))
+	defer C.free(unsafe.Pointer(subject_ms.data))
+	_ret := C.QRegularExpression_GlobalMatch4(this.h, subject_ms, (C.int)(offset), (C.int)(matchType), (C.int)(matchOptions))
 	_goptr := newQRegularExpressionMatchIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -371,29 +398,31 @@ func (this *QRegularExpressionMatch) LastCapturedIndex() int {
 }
 
 func (this *QRegularExpressionMatch) Captured() string {
-	var _ms *C.struct_miqt_string = C.QRegularExpressionMatch_Captured(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_Captured(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegularExpressionMatch) CapturedWithName(name string) string {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	var _ms *C.struct_miqt_string = C.QRegularExpressionMatch_CapturedWithName(this.h, (*C.struct_miqt_string)(name_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_CapturedWithName(this.h, name_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegularExpressionMatch) CapturedTexts() []string {
 	var _ma *C.struct_miqt_array = C.QRegularExpressionMatch_CapturedTexts(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -413,27 +442,33 @@ func (this *QRegularExpressionMatch) CapturedEnd() int {
 }
 
 func (this *QRegularExpressionMatch) CapturedStartWithName(name string) int {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	return (int)(C.QRegularExpressionMatch_CapturedStartWithName(this.h, (*C.struct_miqt_string)(name_ms)))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	return (int)(C.QRegularExpressionMatch_CapturedStartWithName(this.h, name_ms))
 }
 
 func (this *QRegularExpressionMatch) CapturedLengthWithName(name string) int {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	return (int)(C.QRegularExpressionMatch_CapturedLengthWithName(this.h, (*C.struct_miqt_string)(name_ms)))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	return (int)(C.QRegularExpressionMatch_CapturedLengthWithName(this.h, name_ms))
 }
 
 func (this *QRegularExpressionMatch) CapturedEndWithName(name string) int {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	return (int)(C.QRegularExpressionMatch_CapturedEndWithName(this.h, (*C.struct_miqt_string)(name_ms)))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	return (int)(C.QRegularExpressionMatch_CapturedEndWithName(this.h, name_ms))
 }
 
 func (this *QRegularExpressionMatch) Captured1(nth int) string {
-	var _ms *C.struct_miqt_string = C.QRegularExpressionMatch_Captured1(this.h, (C.int)(nth))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_Captured1(this.h, (C.int)(nth))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

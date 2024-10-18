@@ -46,11 +46,11 @@ func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
 	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())))
 }
 
-func (this *QItemEditorCreatorBase) ValuePropertyName() *QByteArray {
-	_ret := C.QItemEditorCreatorBase_ValuePropertyName(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
+	var _bytearray C.struct_miqt_string = C.QItemEditorCreatorBase_ValuePropertyName(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBase) {
@@ -116,11 +116,11 @@ func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWi
 	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())))
 }
 
-func (this *QItemEditorFactory) ValuePropertyName(userType int) *QByteArray {
-	_ret := C.QItemEditorFactory_ValuePropertyName(this.h, (C.int)(userType))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
+	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_ValuePropertyName(this.h, (C.int)(userType))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEditorCreatorBase) {

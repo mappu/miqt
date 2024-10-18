@@ -25,18 +25,26 @@ void* QProgressBar_Metacast(QProgressBar* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QProgressBar_Tr(const char* s) {
+struct miqt_string QProgressBar_Tr(const char* s) {
 	QString _ret = QProgressBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressBar_TrUtf8(const char* s) {
+struct miqt_string QProgressBar_TrUtf8(const char* s) {
 	QString _ret = QProgressBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QProgressBar_Minimum(const QProgressBar* self) {
@@ -51,11 +59,15 @@ int QProgressBar_Value(const QProgressBar* self) {
 	return self->value();
 }
 
-struct miqt_string* QProgressBar_Text(const QProgressBar* self) {
+struct miqt_string QProgressBar_Text(const QProgressBar* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProgressBar_SetTextVisible(QProgressBar* self, bool visible) {
@@ -105,8 +117,8 @@ int QProgressBar_TextDirection(const QProgressBar* self) {
 	return static_cast<int>(_ret);
 }
 
-void QProgressBar_SetFormat(QProgressBar* self, struct miqt_string* format) {
-	QString format_QString = QString::fromUtf8(&format->data, format->len);
+void QProgressBar_SetFormat(QProgressBar* self, struct miqt_string format) {
+	QString format_QString = QString::fromUtf8(format.data, format.len);
 	self->setFormat(format_QString);
 }
 
@@ -114,11 +126,15 @@ void QProgressBar_ResetFormat(QProgressBar* self) {
 	self->resetFormat();
 }
 
-struct miqt_string* QProgressBar_Format(const QProgressBar* self) {
+struct miqt_string QProgressBar_Format(const QProgressBar* self) {
 	QString _ret = self->format();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProgressBar_Reset(QProgressBar* self) {
@@ -156,32 +172,48 @@ void QProgressBar_connect_ValueChanged(QProgressBar* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QProgressBar_Tr2(const char* s, const char* c) {
+struct miqt_string QProgressBar_Tr2(const char* s, const char* c) {
 	QString _ret = QProgressBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressBar_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QProgressBar_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QProgressBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressBar_TrUtf82(const char* s, const char* c) {
+struct miqt_string QProgressBar_TrUtf82(const char* s, const char* c) {
 	QString _ret = QProgressBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressBar_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QProgressBar_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QProgressBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProgressBar_Delete(QProgressBar* self) {

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -51,9 +50,11 @@ func NewQStorageInfo() *QStorageInfo {
 
 // NewQStorageInfo2 constructs a new QStorageInfo object.
 func NewQStorageInfo2(path string) *QStorageInfo {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	ret := C.QStorageInfo_new2((*C.struct_miqt_string)(path_ms))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	ret := C.QStorageInfo_new2(path_ms)
 	return newQStorageInfo(ret)
 }
 
@@ -78,50 +79,52 @@ func (this *QStorageInfo) Swap(other *QStorageInfo) {
 }
 
 func (this *QStorageInfo) SetPath(path string) {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	C.QStorageInfo_SetPath(this.h, (*C.struct_miqt_string)(path_ms))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	C.QStorageInfo_SetPath(this.h, path_ms)
 }
 
 func (this *QStorageInfo) RootPath() string {
-	var _ms *C.struct_miqt_string = C.QStorageInfo_RootPath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStorageInfo_RootPath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QStorageInfo) Device() *QByteArray {
-	_ret := C.QStorageInfo_Device(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStorageInfo) Device() []byte {
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_Device(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QStorageInfo) Subvolume() *QByteArray {
-	_ret := C.QStorageInfo_Subvolume(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStorageInfo) Subvolume() []byte {
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_Subvolume(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QStorageInfo) FileSystemType() *QByteArray {
-	_ret := C.QStorageInfo_FileSystemType(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStorageInfo) FileSystemType() []byte {
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_FileSystemType(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QStorageInfo) Name() string {
-	var _ms *C.struct_miqt_string = C.QStorageInfo_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStorageInfo_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStorageInfo) DisplayName() string {
-	var _ms *C.struct_miqt_string = C.QStorageInfo_DisplayName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStorageInfo_DisplayName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

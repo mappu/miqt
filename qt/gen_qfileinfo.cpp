@@ -13,8 +13,8 @@ QFileInfo* QFileInfo_new() {
 	return new QFileInfo();
 }
 
-QFileInfo* QFileInfo_new2(struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+QFileInfo* QFileInfo_new2(struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	return new QFileInfo(file_QString);
 }
 
@@ -22,8 +22,8 @@ QFileInfo* QFileInfo_new3(QFile* file) {
 	return new QFileInfo(*file);
 }
 
-QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	return new QFileInfo(*dir, file_QString);
 }
 
@@ -47,8 +47,8 @@ bool QFileInfo_OperatorNotEqual(const QFileInfo* self, QFileInfo* fileinfo) {
 	return self->operator!=(*fileinfo);
 }
 
-void QFileInfo_SetFile(QFileInfo* self, struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+void QFileInfo_SetFile(QFileInfo* self, struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	self->setFile(file_QString);
 }
 
@@ -56,8 +56,8 @@ void QFileInfo_SetFileWithFile(QFileInfo* self, QFile* file) {
 	self->setFile(*file);
 }
 
-void QFileInfo_SetFile2(QFileInfo* self, QDir* dir, struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+void QFileInfo_SetFile2(QFileInfo* self, QDir* dir, struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	self->setFile(*dir, file_QString);
 }
 
@@ -65,8 +65,8 @@ bool QFileInfo_Exists(const QFileInfo* self) {
 	return self->exists();
 }
 
-bool QFileInfo_ExistsWithFile(struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+bool QFileInfo_ExistsWithFile(struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	return QFileInfo::exists(file_QString);
 }
 
@@ -74,88 +74,136 @@ void QFileInfo_Refresh(QFileInfo* self) {
 	self->refresh();
 }
 
-struct miqt_string* QFileInfo_FilePath(const QFileInfo* self) {
+struct miqt_string QFileInfo_FilePath(const QFileInfo* self) {
 	QString _ret = self->filePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_AbsoluteFilePath(const QFileInfo* self) {
+struct miqt_string QFileInfo_AbsoluteFilePath(const QFileInfo* self) {
 	QString _ret = self->absoluteFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_CanonicalFilePath(const QFileInfo* self) {
+struct miqt_string QFileInfo_CanonicalFilePath(const QFileInfo* self) {
 	QString _ret = self->canonicalFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_FileName(const QFileInfo* self) {
+struct miqt_string QFileInfo_FileName(const QFileInfo* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_BaseName(const QFileInfo* self) {
+struct miqt_string QFileInfo_BaseName(const QFileInfo* self) {
 	QString _ret = self->baseName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_CompleteBaseName(const QFileInfo* self) {
+struct miqt_string QFileInfo_CompleteBaseName(const QFileInfo* self) {
 	QString _ret = self->completeBaseName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_Suffix(const QFileInfo* self) {
+struct miqt_string QFileInfo_Suffix(const QFileInfo* self) {
 	QString _ret = self->suffix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_BundleName(const QFileInfo* self) {
+struct miqt_string QFileInfo_BundleName(const QFileInfo* self) {
 	QString _ret = self->bundleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_CompleteSuffix(const QFileInfo* self) {
+struct miqt_string QFileInfo_CompleteSuffix(const QFileInfo* self) {
 	QString _ret = self->completeSuffix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_Path(const QFileInfo* self) {
+struct miqt_string QFileInfo_Path(const QFileInfo* self) {
 	QString _ret = self->path();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_AbsolutePath(const QFileInfo* self) {
+struct miqt_string QFileInfo_AbsolutePath(const QFileInfo* self) {
 	QString _ret = self->absolutePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_CanonicalPath(const QFileInfo* self) {
+struct miqt_string QFileInfo_CanonicalPath(const QFileInfo* self) {
 	QString _ret = self->canonicalPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDir* QFileInfo_Dir(const QFileInfo* self) {
@@ -230,25 +278,37 @@ bool QFileInfo_IsBundle(const QFileInfo* self) {
 	return self->isBundle();
 }
 
-struct miqt_string* QFileInfo_ReadLink(const QFileInfo* self) {
+struct miqt_string QFileInfo_ReadLink(const QFileInfo* self) {
 	QString _ret = self->readLink();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_SymLinkTarget(const QFileInfo* self) {
+struct miqt_string QFileInfo_SymLinkTarget(const QFileInfo* self) {
 	QString _ret = self->symLinkTarget();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFileInfo_Owner(const QFileInfo* self) {
+struct miqt_string QFileInfo_Owner(const QFileInfo* self) {
 	QString _ret = self->owner();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 unsigned int QFileInfo_OwnerId(const QFileInfo* self) {
@@ -256,11 +316,15 @@ unsigned int QFileInfo_OwnerId(const QFileInfo* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-struct miqt_string* QFileInfo_Group(const QFileInfo* self) {
+struct miqt_string QFileInfo_Group(const QFileInfo* self) {
 	QString _ret = self->group();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 unsigned int QFileInfo_GroupId(const QFileInfo* self) {

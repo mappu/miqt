@@ -16,18 +16,26 @@ void* QIODevice_Metacast(QIODevice* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QIODevice_Tr(const char* s) {
+struct miqt_string QIODevice_Tr(const char* s) {
 	QString _ret = QIODevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIODevice_TrUtf8(const char* s) {
+struct miqt_string QIODevice_TrUtf8(const char* s) {
 	QString _ret = QIODevice::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QIODevice_OpenMode(const QIODevice* self) {
@@ -128,12 +136,22 @@ long long QIODevice_Read(QIODevice* self, char* data, long long maxlen) {
 	return static_cast<long long>(_ret);
 }
 
-QByteArray* QIODevice_ReadWithMaxlen(QIODevice* self, long long maxlen) {
-	return new QByteArray(self->read(static_cast<qint64>(maxlen)));
+struct miqt_string QIODevice_ReadWithMaxlen(QIODevice* self, long long maxlen) {
+	QByteArray _qb = self->read(static_cast<qint64>(maxlen));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QIODevice_ReadAll(QIODevice* self) {
-	return new QByteArray(self->readAll());
+struct miqt_string QIODevice_ReadAll(QIODevice* self) {
+	QByteArray _qb = self->readAll();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
@@ -141,8 +159,13 @@ long long QIODevice_ReadLine(QIODevice* self, char* data, long long maxlen) {
 	return static_cast<long long>(_ret);
 }
 
-QByteArray* QIODevice_ReadLine2(QIODevice* self) {
-	return new QByteArray(self->readLine());
+struct miqt_string QIODevice_ReadLine2(QIODevice* self) {
+	QByteArray _qb = self->readLine();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 bool QIODevice_CanReadLine(const QIODevice* self) {
@@ -175,8 +198,9 @@ long long QIODevice_WriteWithData(QIODevice* self, const char* data) {
 	return static_cast<long long>(_ret);
 }
 
-long long QIODevice_Write2(QIODevice* self, QByteArray* data) {
-	qint64 _ret = self->write(*data);
+long long QIODevice_Write2(QIODevice* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	qint64 _ret = self->write(data_QByteArray);
 	return static_cast<long long>(_ret);
 }
 
@@ -185,8 +209,13 @@ long long QIODevice_Peek(QIODevice* self, char* data, long long maxlen) {
 	return static_cast<long long>(_ret);
 }
 
-QByteArray* QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
-	return new QByteArray(self->peek(static_cast<qint64>(maxlen)));
+struct miqt_string QIODevice_PeekWithMaxlen(QIODevice* self, long long maxlen) {
+	QByteArray _qb = self->peek(static_cast<qint64>(maxlen));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 long long QIODevice_Skip(QIODevice* self, long long maxSize) {
@@ -214,11 +243,15 @@ bool QIODevice_GetChar(QIODevice* self, char* c) {
 	return self->getChar(c);
 }
 
-struct miqt_string* QIODevice_ErrorString(const QIODevice* self) {
+struct miqt_string QIODevice_ErrorString(const QIODevice* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QIODevice_ReadyRead(QIODevice* self) {
@@ -287,36 +320,57 @@ void QIODevice_connect_ReadChannelFinished(QIODevice* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QIODevice_Tr2(const char* s, const char* c) {
+struct miqt_string QIODevice_Tr2(const char* s, const char* c) {
 	QString _ret = QIODevice::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIODevice_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QIODevice_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QIODevice::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIODevice_TrUtf82(const char* s, const char* c) {
+struct miqt_string QIODevice_TrUtf82(const char* s, const char* c) {
 	QString _ret = QIODevice::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIODevice_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QIODevice_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QIODevice::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
-	return new QByteArray(self->readLine(static_cast<qint64>(maxlen)));
+struct miqt_string QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
+	QByteArray _qb = self->readLine(static_cast<qint64>(maxlen));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QIODevice_Delete(QIODevice* self) {

@@ -24,8 +24,8 @@ QRect* QAccessibleObject_Rect(const QAccessibleObject* self) {
 	return new QRect(self->rect());
 }
 
-void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(static_cast<QAccessible::Text>(t), text_QString);
 }
 
@@ -61,11 +61,15 @@ QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication*
 	return self->child(static_cast<int>(index));
 }
 
-struct miqt_string* QAccessibleApplication_Text(const QAccessibleApplication* self, int t) {
+struct miqt_string QAccessibleApplication_Text(const QAccessibleApplication* self, int t) {
 	QString _ret = self->text(static_cast<QAccessible::Text>(t));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QAccessibleApplication_Role(const QAccessibleApplication* self) {

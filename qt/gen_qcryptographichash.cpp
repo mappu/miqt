@@ -17,20 +17,32 @@ void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, int 
 	self->addData(data, static_cast<int>(length));
 }
 
-void QCryptographicHash_AddDataWithData(QCryptographicHash* self, QByteArray* data) {
-	self->addData(*data);
+void QCryptographicHash_AddDataWithData(QCryptographicHash* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	self->addData(data_QByteArray);
 }
 
 bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* device) {
 	return self->addData(device);
 }
 
-QByteArray* QCryptographicHash_Result(const QCryptographicHash* self) {
-	return new QByteArray(self->result());
+struct miqt_string QCryptographicHash_Result(const QCryptographicHash* self) {
+	QByteArray _qb = self->result();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QCryptographicHash_Hash(QByteArray* data, int method) {
-	return new QByteArray(QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method)));
+struct miqt_string QCryptographicHash_Hash(struct miqt_string data, int method) {
+	QByteArray data_QByteArray(data.data, data.len);
+	QByteArray _qb = QCryptographicHash::hash(data_QByteArray, static_cast<QCryptographicHash::Algorithm>(method));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 int QCryptographicHash_HashLength(int method) {

@@ -96,26 +96,32 @@ func (this *QImageIOHandler) Device() *QIODevice {
 	return UnsafeNewQIODevice(unsafe.Pointer(C.QImageIOHandler_Device(this.h)))
 }
 
-func (this *QImageIOHandler) SetFormat(format *QByteArray) {
-	C.QImageIOHandler_SetFormat(this.h, format.cPointer())
+func (this *QImageIOHandler) SetFormat(format []byte) {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	C.QImageIOHandler_SetFormat(this.h, format_alias)
 }
 
-func (this *QImageIOHandler) SetFormatWithFormat(format *QByteArray) {
-	C.QImageIOHandler_SetFormatWithFormat(this.h, format.cPointer())
+func (this *QImageIOHandler) SetFormatWithFormat(format []byte) {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	C.QImageIOHandler_SetFormatWithFormat(this.h, format_alias)
 }
 
-func (this *QImageIOHandler) Format() *QByteArray {
-	_ret := C.QImageIOHandler_Format(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QImageIOHandler) Format() []byte {
+	var _bytearray C.struct_miqt_string = C.QImageIOHandler_Format(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QImageIOHandler) Name() *QByteArray {
-	_ret := C.QImageIOHandler_Name(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QImageIOHandler) Name() []byte {
+	var _bytearray C.struct_miqt_string = C.QImageIOHandler_Name(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QImageIOHandler) CanRead() bool {
@@ -227,29 +233,32 @@ func (this *QImageIOPlugin) MetaObject() *QMetaObject {
 func (this *QImageIOPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QImageIOPlugin_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QImageIOPlugin_Metacast(this.h, param1_Cstring))
 }
 
 func QImageIOPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QImageIOPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QImageIOPlugin) Capabilities(device *QIODevice, format *QByteArray) QImageIOPlugin__Capability {
-	return (QImageIOPlugin__Capability)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format.cPointer()))
+func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImageIOPlugin__Capability {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	return (QImageIOPlugin__Capability)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format_alias))
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice) *QImageIOHandler {
@@ -261,9 +270,9 @@ func QImageIOPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -272,9 +281,9 @@ func QImageIOPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -283,9 +292,9 @@ func QImageIOPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -294,14 +303,17 @@ func QImageIOPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageIOPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageIOPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QImageIOPlugin) Create2(device *QIODevice, format *QByteArray) *QImageIOHandler {
-	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create2(this.h, device.cPointer(), format.cPointer())))
+func (this *QImageIOPlugin) Create2(device *QIODevice, format []byte) *QImageIOHandler {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	return UnsafeNewQImageIOHandler(unsafe.Pointer(C.QImageIOPlugin_Create2(this.h, device.cPointer(), format_alias)))
 }
 
 // Delete this object from C++ memory.

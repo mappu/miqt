@@ -31,18 +31,26 @@ void* QTreeView_Metacast(QTreeView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTreeView_Tr(const char* s) {
+struct miqt_string QTreeView_Tr(const char* s) {
 	QString _ret = QTreeView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTreeView_TrUtf8(const char* s) {
+struct miqt_string QTreeView_TrUtf8(const char* s) {
 	QString _ret = QTreeView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTreeView_SetModel(QTreeView* self, QAbstractItemModel* model) {
@@ -213,8 +221,8 @@ int QTreeView_TreePosition(const QTreeView* self) {
 	return self->treePosition();
 }
 
-void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string* search) {
-	QString search_QString = QString::fromUtf8(&search->data, search->len);
+void QTreeView_KeyboardSearch(QTreeView* self, struct miqt_string search) {
+	QString search_QString = QString::fromUtf8(search.data, search.len);
 	self->keyboardSearch(search_QString);
 }
 
@@ -324,32 +332,48 @@ void QTreeView_ExpandToDepth(QTreeView* self, int depth) {
 	self->expandToDepth(static_cast<int>(depth));
 }
 
-struct miqt_string* QTreeView_Tr2(const char* s, const char* c) {
+struct miqt_string QTreeView_Tr2(const char* s, const char* c) {
 	QString _ret = QTreeView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTreeView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTreeView_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTreeView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTreeView_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTreeView_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTreeView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTreeView_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTreeView_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTreeView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint) {

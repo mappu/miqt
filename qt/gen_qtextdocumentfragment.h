@@ -31,12 +31,12 @@ QTextDocumentFragment* QTextDocumentFragment_new3(QTextCursor* rangeVal);
 QTextDocumentFragment* QTextDocumentFragment_new4(QTextDocumentFragment* rhs);
 void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocumentFragment* rhs);
 bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self);
-struct miqt_string* QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self);
-struct miqt_string* QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self);
-QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string* plainText);
-QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string* html);
-QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string* html, QTextDocument* resourceProvider);
-struct miqt_string* QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding);
+struct miqt_string QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self);
+struct miqt_string QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self);
+QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string plainText);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string html);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string html, QTextDocument* resourceProvider);
+struct miqt_string QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, struct miqt_string encoding);
 void QTextDocumentFragment_Delete(QTextDocumentFragment* self);
 
 #ifdef __cplusplus

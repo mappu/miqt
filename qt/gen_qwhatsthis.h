@@ -30,10 +30,10 @@ typedef struct QWidget QWidget;
 void QWhatsThis_EnterWhatsThisMode();
 bool QWhatsThis_InWhatsThisMode();
 void QWhatsThis_LeaveWhatsThisMode();
-void QWhatsThis_ShowText(QPoint* pos, struct miqt_string* text);
+void QWhatsThis_ShowText(QPoint* pos, struct miqt_string text);
 void QWhatsThis_HideText();
 QAction* QWhatsThis_CreateAction();
-void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string* text, QWidget* w);
+void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w);
 QAction* QWhatsThis_CreateAction1(QObject* parent);
 void QWhatsThis_Delete(QWhatsThis* self);
 

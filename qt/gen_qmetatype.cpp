@@ -55,16 +55,18 @@ int QMetaType_RegisterTypedef(const char* typeName, int aliasId) {
 	return QMetaType::registerTypedef(typeName, static_cast<int>(aliasId));
 }
 
-int QMetaType_RegisterNormalizedTypedef(QByteArray* normalizedTypeName, int aliasId) {
-	return QMetaType::registerNormalizedTypedef(*normalizedTypeName, static_cast<int>(aliasId));
+int QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, int aliasId) {
+	QByteArray normalizedTypeName_QByteArray(normalizedTypeName.data, normalizedTypeName.len);
+	return QMetaType::registerNormalizedTypedef(normalizedTypeName_QByteArray, static_cast<int>(aliasId));
 }
 
 int QMetaType_Type(const char* typeName) {
 	return QMetaType::type(typeName);
 }
 
-int QMetaType_TypeWithTypeName(QByteArray* typeName) {
-	return QMetaType::type(*typeName);
+int QMetaType_TypeWithTypeName(struct miqt_string typeName) {
+	QByteArray typeName_QByteArray(typeName.data, typeName.len);
+	return QMetaType::type(typeName_QByteArray);
 }
 
 const char* QMetaType_TypeName(int typeVal) {
@@ -137,8 +139,13 @@ QMetaObject* QMetaType_MetaObject(const QMetaType* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-QByteArray* QMetaType_Name(const QMetaType* self) {
-	return new QByteArray(self->name());
+struct miqt_string QMetaType_Name(const QMetaType* self) {
+	QByteArray _qb = self->name();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void* QMetaType_Create2(const QMetaType* self) {

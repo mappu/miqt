@@ -15,8 +15,8 @@ QTextBoundaryFinder* QTextBoundaryFinder_new2(QTextBoundaryFinder* other) {
 	return new QTextBoundaryFinder(*other);
 }
 
-QTextBoundaryFinder* QTextBoundaryFinder_new3(int typeVal, struct miqt_string* stringVal) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+QTextBoundaryFinder* QTextBoundaryFinder_new3(int typeVal, struct miqt_string stringVal) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(typeVal), stringVal_QString);
 }
 
@@ -45,11 +45,15 @@ int QTextBoundaryFinder_Type(const QTextBoundaryFinder* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QTextBoundaryFinder_String(const QTextBoundaryFinder* self) {
+struct miqt_string QTextBoundaryFinder_String(const QTextBoundaryFinder* self) {
 	QString _ret = self->string();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextBoundaryFinder_ToStart(QTextBoundaryFinder* self) {

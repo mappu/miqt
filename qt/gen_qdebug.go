@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -178,13 +177,18 @@ func (this *QDebug) OperatorShiftLeft2(t string) *QDebug {
 }
 
 func (this *QDebug) OperatorShiftLeftWithQString(t string) *QDebug {
-	t_ms := libmiqt.Strdupg(t)
-	defer C.free(t_ms)
-	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(t_ms))))
+	t_ms := C.struct_miqt_string{}
+	t_ms.data = C.CString(t)
+	t_ms.len = C.size_t(len(t))
+	defer C.free(unsafe.Pointer(t_ms.data))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQString(this.h, t_ms)))
 }
 
-func (this *QDebug) OperatorShiftLeftWithQByteArray(t *QByteArray) *QDebug {
-	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t.cPointer())))
+func (this *QDebug) OperatorShiftLeftWithQByteArray(t []byte) *QDebug {
+	t_alias := C.struct_miqt_string{}
+	t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
+	t_alias.len = C.size_t(len(t))
+	return UnsafeNewQDebug(unsafe.Pointer(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t_alias)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {

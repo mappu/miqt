@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -131,9 +130,11 @@ func NewQImage7(data *byte, width int, height int, bytesPerLine int, format QIma
 
 // NewQImage8 constructs a new QImage object.
 func NewQImage8(fileName string) *QImage {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QImage_new8((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QImage_new8(fileName_ms)
 	return newQImage(ret)
 }
 
@@ -145,11 +146,13 @@ func NewQImage9(param1 *QImage) *QImage {
 
 // NewQImage10 constructs a new QImage object.
 func NewQImage10(fileName string, format string) *QImage {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QImage_new10((*C.struct_miqt_string)(fileName_ms), format_Cstring)
+	ret := C.QImage_new10(fileName_ms, format_Cstring)
 	return newQImage(ret)
 }
 
@@ -563,23 +566,30 @@ func (this *QImage) Load(device *QIODevice, format string) bool {
 }
 
 func (this *QImage) LoadWithFileName(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QImage_LoadWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QImage_LoadWithFileName(this.h, fileName_ms))
 }
 
 func (this *QImage) LoadFromData(buf *byte, lenVal int) bool {
 	return (bool)(C.QImage_LoadFromData(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.int)(lenVal)))
 }
 
-func (this *QImage) LoadFromDataWithData(data *QByteArray) bool {
-	return (bool)(C.QImage_LoadFromDataWithData(this.h, data.cPointer()))
+func (this *QImage) LoadFromDataWithData(data []byte) bool {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	return (bool)(C.QImage_LoadFromDataWithData(this.h, data_alias))
 }
 
 func (this *QImage) Save(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QImage_Save(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QImage_Save(this.h, fileName_ms))
 }
 
 func (this *QImage) SaveWithDevice(device *QIODevice) bool {
@@ -593,8 +603,11 @@ func QImage_FromData(data *byte, size int) *QImage {
 	return _goptr
 }
 
-func QImage_FromDataWithData(data *QByteArray) *QImage {
-	_ret := C.QImage_FromDataWithData(data.cPointer())
+func QImage_FromDataWithData(data []byte) *QImage {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	_ret := C.QImage_FromDataWithData(data_alias)
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -638,11 +651,11 @@ func (this *QImage) SetOffset(offset *QPoint) {
 func (this *QImage) TextKeys() []string {
 	var _ma *C.struct_miqt_array = C.QImage_TextKeys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -650,18 +663,22 @@ func (this *QImage) TextKeys() []string {
 }
 
 func (this *QImage) Text() string {
-	var _ms *C.struct_miqt_string = C.QImage_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImage_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QImage) SetText(key string, value string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	value_ms := libmiqt.Strdupg(value)
-	defer C.free(value_ms)
-	C.QImage_SetText(this.h, (*C.struct_miqt_string)(key_ms), (*C.struct_miqt_string)(value_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	value_ms := C.struct_miqt_string{}
+	value_ms.data = C.CString(value)
+	value_ms.len = C.size_t(len(value))
+	defer C.free(unsafe.Pointer(value_ms.data))
+	C.QImage_SetText(this.h, key_ms, value_ms)
 }
 
 func (this *QImage) PixelFormat() *QPixelFormat {
@@ -811,11 +828,13 @@ func (this *QImage) InvertPixels1(param1 QImage__InvertMode) {
 }
 
 func (this *QImage) Load2(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QImage_Load2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QImage_Load2(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QImage) LoadFromData3(buf *byte, lenVal int, format string) bool {
@@ -824,26 +843,33 @@ func (this *QImage) LoadFromData3(buf *byte, lenVal int, format string) bool {
 	return (bool)(C.QImage_LoadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.int)(lenVal), format_Cstring))
 }
 
-func (this *QImage) LoadFromData2(data *QByteArray, aformat string) bool {
+func (this *QImage) LoadFromData2(data []byte, aformat string) bool {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
 	aformat_Cstring := C.CString(aformat)
 	defer C.free(unsafe.Pointer(aformat_Cstring))
-	return (bool)(C.QImage_LoadFromData2(this.h, data.cPointer(), aformat_Cstring))
+	return (bool)(C.QImage_LoadFromData2(this.h, data_alias, aformat_Cstring))
 }
 
 func (this *QImage) Save2(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QImage_Save2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QImage_Save2(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QImage) Save3(fileName string, format string, quality int) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QImage_Save3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(quality)))
+	return (bool)(C.QImage_Save3(this.h, fileName_ms, format_Cstring, (C.int)(quality)))
 }
 
 func (this *QImage) Save22(device *QIODevice, format string) bool {
@@ -867,21 +893,26 @@ func QImage_FromData3(data *byte, size int, format string) *QImage {
 	return _goptr
 }
 
-func QImage_FromData2(data *QByteArray, format string) *QImage {
+func QImage_FromData2(data []byte, format string) *QImage {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_ret := C.QImage_FromData2(data.cPointer(), format_Cstring)
+	_ret := C.QImage_FromData2(data_alias, format_Cstring)
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImage) Text1(key string) string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ms *C.struct_miqt_string = C.QImage_Text1(this.h, (*C.struct_miqt_string)(key_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ms C.struct_miqt_string = C.QImage_Text1(this.h, key_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

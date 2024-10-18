@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,38 +63,46 @@ func UnsafeNewQSystemSemaphore(h unsafe.Pointer) *QSystemSemaphore {
 
 // NewQSystemSemaphore constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore(key string) *QSystemSemaphore {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	ret := C.QSystemSemaphore_new((*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	ret := C.QSystemSemaphore_new(key_ms)
 	return newQSystemSemaphore(ret)
 }
 
 // NewQSystemSemaphore2 constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore2(key string, initialValue int) *QSystemSemaphore {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	ret := C.QSystemSemaphore_new2((*C.struct_miqt_string)(key_ms), (C.int)(initialValue))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	ret := C.QSystemSemaphore_new2(key_ms, (C.int)(initialValue))
 	return newQSystemSemaphore(ret)
 }
 
 // NewQSystemSemaphore3 constructs a new QSystemSemaphore object.
 func NewQSystemSemaphore3(key string, initialValue int, mode QSystemSemaphore__AccessMode) *QSystemSemaphore {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	ret := C.QSystemSemaphore_new3((*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.int)(mode))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	ret := C.QSystemSemaphore_new3(key_ms, (C.int)(initialValue), (C.int)(mode))
 	return newQSystemSemaphore(ret)
 }
 
 func (this *QSystemSemaphore) SetKey(key string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QSystemSemaphore_SetKey(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QSystemSemaphore_SetKey(this.h, key_ms)
 }
 
 func (this *QSystemSemaphore) Key() string {
-	var _ms *C.struct_miqt_string = C.QSystemSemaphore_Key(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemSemaphore_Key(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -112,22 +119,26 @@ func (this *QSystemSemaphore) Error() QSystemSemaphore__SystemSemaphoreError {
 }
 
 func (this *QSystemSemaphore) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QSystemSemaphore_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemSemaphore_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSystemSemaphore) SetKey2(key string, initialValue int) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QSystemSemaphore_SetKey2(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QSystemSemaphore_SetKey2(this.h, key_ms, (C.int)(initialValue))
 }
 
 func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystemSemaphore__AccessMode) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QSystemSemaphore_SetKey3(this.h, (*C.struct_miqt_string)(key_ms), (C.int)(initialValue), (C.int)(mode))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QSystemSemaphore_SetKey3(this.h, key_ms, (C.int)(initialValue), (C.int)(mode))
 }
 
 func (this *QSystemSemaphore) Release1(n int) bool {

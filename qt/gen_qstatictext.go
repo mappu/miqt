@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -58,9 +57,11 @@ func NewQStaticText() *QStaticText {
 
 // NewQStaticText2 constructs a new QStaticText object.
 func NewQStaticText2(text string) *QStaticText {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QStaticText_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QStaticText_new2(text_ms)
 	return newQStaticText(ret)
 }
 
@@ -79,15 +80,17 @@ func (this *QStaticText) Swap(other *QStaticText) {
 }
 
 func (this *QStaticText) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QStaticText_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QStaticText_SetText(this.h, text_ms)
 }
 
 func (this *QStaticText) Text() string {
-	var _ms *C.struct_miqt_string = C.QStaticText_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStaticText_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

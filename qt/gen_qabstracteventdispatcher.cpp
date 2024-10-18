@@ -22,18 +22,26 @@ void* QAbstractEventDispatcher_Metacast(QAbstractEventDispatcher* self, const ch
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractEventDispatcher_Tr(const char* s) {
+struct miqt_string QAbstractEventDispatcher_Tr(const char* s) {
 	QString _ret = QAbstractEventDispatcher::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractEventDispatcher_TrUtf8(const char* s) {
+struct miqt_string QAbstractEventDispatcher_TrUtf8(const char* s) {
 	QString _ret = QAbstractEventDispatcher::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance() {
@@ -117,8 +125,9 @@ void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* 
 	self->removeNativeEventFilter(filterObj);
 }
 
-bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, QByteArray* eventType, void* message, long* result) {
-	return self->filterNativeEvent(*eventType, message, static_cast<long*>(result));
+bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, long* result) {
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+	return self->filterNativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self) {
@@ -141,32 +150,48 @@ void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, intp
 	});
 }
 
-struct miqt_string* QAbstractEventDispatcher_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractEventDispatcher_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractEventDispatcher::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractEventDispatcher::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractEventDispatcher_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractEventDispatcher_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractEventDispatcher::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractEventDispatcher::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread) {

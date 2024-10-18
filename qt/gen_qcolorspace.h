@@ -43,8 +43,8 @@ QColorSpace* QColorSpace_WithTransferFunction(const QColorSpace* self, int trans
 void QColorSpace_SetPrimaries(QColorSpace* self, int primariesId);
 void QColorSpace_SetPrimaries2(QColorSpace* self, QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint);
 bool QColorSpace_IsValid(const QColorSpace* self);
-QColorSpace* QColorSpace_FromIccProfile(QByteArray* iccProfile);
-QByteArray* QColorSpace_IccProfile(const QColorSpace* self);
+QColorSpace* QColorSpace_FromIccProfile(struct miqt_string iccProfile);
+struct miqt_string QColorSpace_IccProfile(const QColorSpace* self);
 QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace);
 void QColorSpace_SetTransferFunction2(QColorSpace* self, int transferFunction, float gamma);
 QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int transferFunction, float gamma);

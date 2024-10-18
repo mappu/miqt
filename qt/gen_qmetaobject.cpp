@@ -21,12 +21,22 @@ QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
 	return new QMetaMethod(*param1);
 }
 
-QByteArray* QMetaMethod_MethodSignature(const QMetaMethod* self) {
-	return new QByteArray(self->methodSignature());
+struct miqt_string QMetaMethod_MethodSignature(const QMetaMethod* self) {
+	QByteArray _qb = self->methodSignature();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QMetaMethod_Name(const QMetaMethod* self) {
-	return new QByteArray(self->name());
+struct miqt_string QMetaMethod_Name(const QMetaMethod* self) {
+	QByteArray _qb = self->name();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 const char* QMetaMethod_TypeName(const QMetaMethod* self) {
@@ -52,9 +62,14 @@ void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types) {
 struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QByteArray(_ret[i]);
+		QByteArray _lv_qb = _ret[i];
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_qb.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -65,9 +80,14 @@ struct miqt_array* QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 struct miqt_array* QMetaMethod_ParameterNames(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QByteArray(_ret[i]);
+		QByteArray _lv_qb = _ret[i];
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_qb.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -429,8 +449,13 @@ int QMetaEnum_KeysToValue(const QMetaEnum* self, const char* keys) {
 	return self->keysToValue(keys);
 }
 
-QByteArray* QMetaEnum_ValueToKeys(const QMetaEnum* self, int value) {
-	return new QByteArray(self->valueToKeys(static_cast<int>(value)));
+struct miqt_string QMetaEnum_ValueToKeys(const QMetaEnum* self, int value) {
+	QByteArray _qb = self->valueToKeys(static_cast<int>(value));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 QMetaObject* QMetaEnum_EnclosingMetaObject(const QMetaEnum* self) {

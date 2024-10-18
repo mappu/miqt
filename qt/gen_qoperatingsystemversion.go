@@ -104,9 +104,9 @@ func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
 }
 
 func (this *QOperatingSystemVersion) Name() string {
-	var _ms *C.struct_miqt_string = C.QOperatingSystemVersion_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QOperatingSystemVersion_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -27,15 +27,15 @@ typedef struct QRegion QRegion;
 
 QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self);
 void* QPaintDeviceWindow_Metacast(QPaintDeviceWindow* self, const char* param1);
-struct miqt_string* QPaintDeviceWindow_Tr(const char* s);
-struct miqt_string* QPaintDeviceWindow_TrUtf8(const char* s);
+struct miqt_string QPaintDeviceWindow_Tr(const char* s);
+struct miqt_string QPaintDeviceWindow_TrUtf8(const char* s);
 void QPaintDeviceWindow_Update(QPaintDeviceWindow* self, QRect* rect);
 void QPaintDeviceWindow_UpdateWithRegion(QPaintDeviceWindow* self, QRegion* region);
 void QPaintDeviceWindow_Update2(QPaintDeviceWindow* self);
-struct miqt_string* QPaintDeviceWindow_Tr2(const char* s, const char* c);
-struct miqt_string* QPaintDeviceWindow_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QPaintDeviceWindow_TrUtf82(const char* s, const char* c);
-struct miqt_string* QPaintDeviceWindow_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QPaintDeviceWindow_Tr2(const char* s, const char* c);
+struct miqt_string QPaintDeviceWindow_Tr3(const char* s, const char* c, int n);
+struct miqt_string QPaintDeviceWindow_TrUtf82(const char* s, const char* c);
+struct miqt_string QPaintDeviceWindow_TrUtf83(const char* s, const char* c, int n);
 void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self);
 
 #ifdef __cplusplus

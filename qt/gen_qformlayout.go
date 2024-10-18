@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -87,24 +86,24 @@ func (this *QFormLayout) MetaObject() *QMetaObject {
 func (this *QFormLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QFormLayout_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QFormLayout_Metacast(this.h, param1_Cstring))
 }
 
 func QFormLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QFormLayout_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -173,15 +172,19 @@ func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
-	labelText_ms := libmiqt.Strdupg(labelText)
-	defer C.free(labelText_ms)
-	C.QFormLayout_AddRow3(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
+	labelText_ms := C.struct_miqt_string{}
+	labelText_ms.data = C.CString(labelText)
+	labelText_ms.len = C.size_t(len(labelText))
+	defer C.free(unsafe.Pointer(labelText_ms.data))
+	C.QFormLayout_AddRow3(this.h, labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
-	labelText_ms := libmiqt.Strdupg(labelText)
-	defer C.free(labelText_ms)
-	C.QFormLayout_AddRow4(this.h, (*C.struct_miqt_string)(labelText_ms), field.cPointer())
+	labelText_ms := C.struct_miqt_string{}
+	labelText_ms.data = C.CString(labelText)
+	labelText_ms.len = C.size_t(len(labelText))
+	defer C.free(unsafe.Pointer(labelText_ms.data))
+	C.QFormLayout_AddRow4(this.h, labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithWidget(widget *QWidget) {
@@ -201,15 +204,19 @@ func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
 }
 
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
-	labelText_ms := libmiqt.Strdupg(labelText)
-	defer C.free(labelText_ms)
-	C.QFormLayout_InsertRow3(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
+	labelText_ms := C.struct_miqt_string{}
+	labelText_ms.data = C.CString(labelText)
+	labelText_ms.len = C.size_t(len(labelText))
+	defer C.free(unsafe.Pointer(labelText_ms.data))
+	C.QFormLayout_InsertRow3(this.h, (C.int)(row), labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
-	labelText_ms := libmiqt.Strdupg(labelText)
-	defer C.free(labelText_ms)
-	C.QFormLayout_InsertRow4(this.h, (C.int)(row), (*C.struct_miqt_string)(labelText_ms), field.cPointer())
+	labelText_ms := C.struct_miqt_string{}
+	labelText_ms.data = C.CString(labelText)
+	labelText_ms.len = C.size_t(len(labelText))
+	defer C.free(unsafe.Pointer(labelText_ms.data))
+	C.QFormLayout_InsertRow4(this.h, (C.int)(row), labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow5(row int, widget *QWidget) {
@@ -336,9 +343,9 @@ func QFormLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -347,9 +354,9 @@ func QFormLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -358,9 +365,9 @@ func QFormLayout_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -369,9 +376,9 @@ func QFormLayout_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFormLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFormLayout_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

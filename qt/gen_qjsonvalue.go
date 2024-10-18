@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -87,9 +86,11 @@ func NewQJsonValue5(v int64) *QJsonValue {
 
 // NewQJsonValue6 constructs a new QJsonValue object.
 func NewQJsonValue6(s string) *QJsonValue {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	ret := C.QJsonValue_new6((*C.struct_miqt_string)(s_ms))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	ret := C.QJsonValue_new6(s_ms)
 	return newQJsonValue(ret)
 }
 
@@ -192,18 +193,20 @@ func (this *QJsonValue) ToDouble() float64 {
 }
 
 func (this *QJsonValue) ToString() string {
-	var _ms *C.struct_miqt_string = C.QJsonValue_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QJsonValue_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QJsonValue) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	var _ms *C.struct_miqt_string = C.QJsonValue_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	var _ms C.struct_miqt_string = C.QJsonValue_ToStringWithDefaultValue(this.h, defaultValue_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -236,9 +239,11 @@ func (this *QJsonValue) ToObjectWithDefaultValue(defaultValue *QJsonObject) *QJs
 }
 
 func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonValue_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonValue_OperatorSubscript(this.h, key_ms)
 	_goptr := newQJsonValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -392,9 +397,9 @@ func (this *QJsonValueRef) ToDouble() float64 {
 }
 
 func (this *QJsonValueRef) ToString() string {
-	var _ms *C.struct_miqt_string = C.QJsonValueRef_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QJsonValueRef_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -425,11 +430,13 @@ func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float6
 }
 
 func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	var _ms *C.struct_miqt_string = C.QJsonValueRef_ToStringWithDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	var _ms C.struct_miqt_string = C.QJsonValueRef_ToStringWithDefaultValue(this.h, defaultValue_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -47,8 +47,8 @@ QImage* QImage_new7(const unsigned char* data, int width, int height, int bytesP
 	return new QImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<int>(bytesPerLine), static_cast<QImage::Format>(format));
 }
 
-QImage* QImage_new8(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QImage* QImage_new8(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QImage(fileName_QString);
 }
 
@@ -56,8 +56,8 @@ QImage* QImage_new9(QImage* param1) {
 	return new QImage(*param1);
 }
 
-QImage* QImage_new10(struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QImage* QImage_new10(struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QImage(fileName_QString, format);
 }
 
@@ -406,8 +406,8 @@ bool QImage_Load(QImage* self, QIODevice* device, const char* format) {
 	return self->load(device, format);
 }
 
-bool QImage_LoadWithFileName(QImage* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QImage_LoadWithFileName(QImage* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString);
 }
 
@@ -415,12 +415,13 @@ bool QImage_LoadFromData(QImage* self, const unsigned char* buf, int lenVal) {
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<int>(lenVal));
 }
 
-bool QImage_LoadFromDataWithData(QImage* self, QByteArray* data) {
-	return self->loadFromData(*data);
+bool QImage_LoadFromDataWithData(QImage* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return self->loadFromData(data_QByteArray);
 }
 
-bool QImage_Save(const QImage* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QImage_Save(const QImage* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString);
 }
 
@@ -432,8 +433,9 @@ QImage* QImage_FromData(const unsigned char* data, int size) {
 	return new QImage(QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size)));
 }
 
-QImage* QImage_FromDataWithData(QByteArray* data) {
-	return new QImage(QImage::fromData(*data));
+QImage* QImage_FromDataWithData(struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return new QImage(QImage::fromData(data_QByteArray));
 }
 
 long long QImage_CacheKey(const QImage* self) {
@@ -472,12 +474,16 @@ void QImage_SetOffset(QImage* self, QPoint* offset) {
 struct miqt_array* QImage_TextKeys(const QImage* self) {
 	QStringList _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -485,16 +491,20 @@ struct miqt_array* QImage_TextKeys(const QImage* self) {
 	return _out;
 }
 
-struct miqt_string* QImage_Text(const QImage* self) {
+struct miqt_string QImage_Text(const QImage* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QImage_SetText(QImage* self, struct miqt_string* key, struct miqt_string* value) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+void QImage_SetText(QImage* self, struct miqt_string key, struct miqt_string value) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	self->setText(key_QString, value_QString);
 }
 
@@ -589,8 +599,8 @@ void QImage_InvertPixels1(QImage* self, int param1) {
 	self->invertPixels(static_cast<QImage::InvertMode>(param1));
 }
 
-bool QImage_Load2(QImage* self, struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QImage_Load2(QImage* self, struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString, format);
 }
 
@@ -598,17 +608,18 @@ bool QImage_LoadFromData3(QImage* self, const unsigned char* buf, int lenVal, co
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<int>(lenVal), format);
 }
 
-bool QImage_LoadFromData2(QImage* self, QByteArray* data, const char* aformat) {
-	return self->loadFromData(*data, aformat);
+bool QImage_LoadFromData2(QImage* self, struct miqt_string data, const char* aformat) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return self->loadFromData(data_QByteArray, aformat);
 }
 
-bool QImage_Save2(const QImage* self, struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QImage_Save2(const QImage* self, struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString, format);
 }
 
-bool QImage_Save3(const QImage* self, struct miqt_string* fileName, const char* format, int quality) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QImage_Save3(const QImage* self, struct miqt_string fileName, const char* format, int quality) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString, format, static_cast<int>(quality));
 }
 
@@ -624,16 +635,21 @@ QImage* QImage_FromData3(const unsigned char* data, int size, const char* format
 	return new QImage(QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size), format));
 }
 
-QImage* QImage_FromData2(QByteArray* data, const char* format) {
-	return new QImage(QImage::fromData(*data, format));
+QImage* QImage_FromData2(struct miqt_string data, const char* format) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return new QImage(QImage::fromData(data_QByteArray, format));
 }
 
-struct miqt_string* QImage_Text1(const QImage* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+struct miqt_string QImage_Text1(const QImage* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	QString _ret = self->text(key_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QImage_Delete(QImage* self) {

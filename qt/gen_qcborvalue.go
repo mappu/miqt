@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -84,9 +83,9 @@ func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
 }
 
 func (this *QCborParserError) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QCborParserError_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborParserError_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -182,16 +181,21 @@ func NewQCborValue8(st QCborSimpleType) *QCborValue {
 }
 
 // NewQCborValue9 constructs a new QCborValue object.
-func NewQCborValue9(ba *QByteArray) *QCborValue {
-	ret := C.QCborValue_new9(ba.cPointer())
+func NewQCborValue9(ba []byte) *QCborValue {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	ret := C.QCborValue_new9(ba_alias)
 	return newQCborValue(ret)
 }
 
 // NewQCborValue10 constructs a new QCborValue object.
 func NewQCborValue10(s string) *QCborValue {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	ret := C.QCborValue_new10((*C.struct_miqt_string)(s_ms))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	ret := C.QCborValue_new10(s_ms)
 	return newQCborValue(ret)
 }
 
@@ -388,17 +392,17 @@ func (this *QCborValue) TaggedValue() *QCborValue {
 	return _goptr
 }
 
-func (this *QCborValue) ToByteArray() *QByteArray {
-	_ret := C.QCborValue_ToByteArray(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValue) ToByteArray() []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValue_ToByteArray(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValue) ToString() string {
-	var _ms *C.struct_miqt_string = C.QCborValue_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValue_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -459,9 +463,11 @@ func (this *QCborValue) ToMapWithDefaultValue(defaultValue *QCborMap) *QCborMap 
 }
 
 func (this *QCborValue) OperatorSubscript(key string) *QCborValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborValue_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborValue_OperatorSubscript(this.h, key_ms)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -482,9 +488,11 @@ func (this *QCborValue) OperatorSubscript3(key int64) *QCborValueRef {
 }
 
 func (this *QCborValue) OperatorSubscript5(key string) *QCborValueRef {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborValue_OperatorSubscript5(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborValue_OperatorSubscript5(this.h, key_ms)
 	_goptr := newQCborValueRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -541,8 +549,11 @@ func QCborValue_FromCbor(reader *QCborStreamReader) *QCborValue {
 	return _goptr
 }
 
-func QCborValue_FromCborWithBa(ba *QByteArray) *QCborValue {
-	_ret := C.QCborValue_FromCborWithBa(ba.cPointer())
+func QCborValue_FromCborWithBa(ba []byte) *QCborValue {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	_ret := C.QCborValue_FromCborWithBa(ba_alias)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -564,11 +575,11 @@ func QCborValue_FromCbor3(data *byte, lenVal int64) *QCborValue {
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor() *QByteArray {
-	_ret := C.QCborValue_ToCbor(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValue) ToCbor() []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValue_ToCbor(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValue) ToCborWithWriter(writer *QCborStreamWriter) {
@@ -576,9 +587,9 @@ func (this *QCborValue) ToCborWithWriter(writer *QCborStreamWriter) {
 }
 
 func (this *QCborValue) ToDiagnosticNotation() string {
-	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -609,19 +620,24 @@ func (this *QCborValue) TaggedValue1(defaultValue *QCborValue) *QCborValue {
 	return _goptr
 }
 
-func (this *QCborValue) ToByteArray1(defaultValue *QByteArray) *QByteArray {
-	_ret := C.QCborValue_ToByteArray1(this.h, defaultValue.cPointer())
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValue) ToByteArray1(defaultValue []byte) []byte {
+	defaultValue_alias := C.struct_miqt_string{}
+	defaultValue_alias.data = (*C.char)(unsafe.Pointer(&defaultValue[0]))
+	defaultValue_alias.len = C.size_t(len(defaultValue))
+	var _bytearray C.struct_miqt_string = C.QCborValue_ToByteArray1(this.h, defaultValue_alias)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValue) ToString1(defaultValue string) string {
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	var _ms *C.struct_miqt_string = C.QCborValue_ToString1(this.h, (*C.struct_miqt_string)(defaultValue_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	var _ms C.struct_miqt_string = C.QCborValue_ToString1(this.h, defaultValue_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -653,8 +669,11 @@ func (this *QCborValue) ToUuid1(defaultValue *QUuid) *QUuid {
 	return _goptr
 }
 
-func QCborValue_FromCbor22(ba *QByteArray, error *QCborParserError) *QCborValue {
-	_ret := C.QCborValue_FromCbor22(ba.cPointer(), error.cPointer())
+func QCborValue_FromCbor22(ba []byte, error *QCborParserError) *QCborValue {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	_ret := C.QCborValue_FromCbor22(ba_alias, error.cPointer())
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -676,11 +695,11 @@ func QCborValue_FromCbor33(data *byte, lenVal int64, error *QCborParserError) *Q
 	return _goptr
 }
 
-func (this *QCborValue) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
-	_ret := C.QCborValue_ToCbor1(this.h, (C.int)(opt))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValue) ToCbor1(opt QCborValue__EncodingOption) []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValue_ToCbor1(this.h, (C.int)(opt))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
@@ -688,9 +707,9 @@ func (this *QCborValue) ToCbor2(writer *QCborStreamWriter, opt QCborValue__Encod
 }
 
 func (this *QCborValue) ToDiagnosticNotation1(opts QCborValue__DiagnosticNotationOption) string {
-	var _ms *C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, (C.int)(opts))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValue_ToDiagnosticNotation1(this.h, (C.int)(opts))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -858,17 +877,17 @@ func (this *QCborValueRef) ToDouble() float64 {
 	return (float64)(C.QCborValueRef_ToDouble(this.h))
 }
 
-func (this *QCborValueRef) ToByteArray() *QByteArray {
-	_ret := C.QCborValueRef_ToByteArray(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValueRef) ToByteArray() []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValueRef_ToByteArray(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValueRef) ToString() string {
-	var _ms *C.struct_miqt_string = C.QCborValueRef_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValueRef_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -929,9 +948,11 @@ func (this *QCborValueRef) ToMapWithQCborMap(m *QCborMap) *QCborMap {
 }
 
 func (this *QCborValueRef) OperatorSubscript(key string) *QCborValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborValueRef_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborValueRef_OperatorSubscript(this.h, key_ms)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -952,9 +973,11 @@ func (this *QCborValueRef) OperatorSubscript3(key int64) *QCborValueRef {
 }
 
 func (this *QCborValueRef) OperatorSubscript5(key string) *QCborValueRef {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborValueRef_OperatorSubscript5(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborValueRef_OperatorSubscript5(this.h, key_ms)
 	_goptr := newQCborValueRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -990,11 +1013,11 @@ func (this *QCborValueRef) ToJsonValue() *QJsonValue {
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor() *QByteArray {
-	_ret := C.QCborValueRef_ToCbor(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValueRef) ToCbor() []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValueRef_ToCbor(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValueRef) ToCborWithWriter(writer *QCborStreamWriter) {
@@ -1002,9 +1025,9 @@ func (this *QCborValueRef) ToCborWithWriter(writer *QCborStreamWriter) {
 }
 
 func (this *QCborValueRef) ToDiagnosticNotation() string {
-	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1031,19 +1054,24 @@ func (this *QCborValueRef) ToDouble1(defaultValue float64) float64 {
 	return (float64)(C.QCborValueRef_ToDouble1(this.h, (C.double)(defaultValue)))
 }
 
-func (this *QCborValueRef) ToByteArray1(defaultValue *QByteArray) *QByteArray {
-	_ret := C.QCborValueRef_ToByteArray1(this.h, defaultValue.cPointer())
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValueRef) ToByteArray1(defaultValue []byte) []byte {
+	defaultValue_alias := C.struct_miqt_string{}
+	defaultValue_alias.data = (*C.char)(unsafe.Pointer(&defaultValue[0]))
+	defaultValue_alias.len = C.size_t(len(defaultValue))
+	var _bytearray C.struct_miqt_string = C.QCborValueRef_ToByteArray1(this.h, defaultValue_alias)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValueRef) ToString1(defaultValue string) string {
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	var _ms *C.struct_miqt_string = C.QCborValueRef_ToString1(this.h, (*C.struct_miqt_string)(defaultValue_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	var _ms C.struct_miqt_string = C.QCborValueRef_ToString1(this.h, defaultValue_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1075,11 +1103,11 @@ func (this *QCborValueRef) ToUuid1(defaultValue *QUuid) *QUuid {
 	return _goptr
 }
 
-func (this *QCborValueRef) ToCbor1(opt QCborValue__EncodingOption) *QByteArray {
-	_ret := C.QCborValueRef_ToCbor1(this.h, (C.int)(opt))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCborValueRef) ToCbor1(opt QCborValue__EncodingOption) []byte {
+	var _bytearray C.struct_miqt_string = C.QCborValueRef_ToCbor1(this.h, (C.int)(opt))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt QCborValue__EncodingOption) {
@@ -1087,9 +1115,9 @@ func (this *QCborValueRef) ToCbor2(writer *QCborStreamWriter, opt QCborValue__En
 }
 
 func (this *QCborValueRef) ToDiagnosticNotation1(opt QCborValue__DiagnosticNotationOption) string {
-	var _ms *C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, (C.int)(opt))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborValueRef_ToDiagnosticNotation1(this.h, (C.int)(opt))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

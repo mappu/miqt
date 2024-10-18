@@ -102,16 +102,22 @@ void QChildEvent_Delete(QChildEvent* self) {
 	delete self;
 }
 
-QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(QByteArray* name) {
-	return new QDynamicPropertyChangeEvent(*name);
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
+	QByteArray name_QByteArray(name.data, name.len);
+	return new QDynamicPropertyChangeEvent(name_QByteArray);
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1) {
 	return new QDynamicPropertyChangeEvent(*param1);
 }
 
-QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
-	return new QByteArray(self->propertyName());
+struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
+	QByteArray _qb = self->propertyName();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {

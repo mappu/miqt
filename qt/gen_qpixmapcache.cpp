@@ -16,18 +16,18 @@ void QPixmapCache_SetCacheLimit(int cacheLimit) {
 	QPixmapCache::setCacheLimit(static_cast<int>(cacheLimit));
 }
 
-QPixmap* QPixmapCache_Find(struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QPixmap* QPixmapCache_Find(struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return QPixmapCache::find(key_QString);
 }
 
-bool QPixmapCache_Find2(struct miqt_string* key, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+bool QPixmapCache_Find2(struct miqt_string key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return QPixmapCache::find(key_QString, *pixmap);
 }
 
-bool QPixmapCache_Find3(struct miqt_string* key, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+bool QPixmapCache_Find3(struct miqt_string key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return QPixmapCache::find(key_QString, pixmap);
 }
 
@@ -35,8 +35,8 @@ bool QPixmapCache_Find4(QPixmapCache__Key* key, QPixmap* pixmap) {
 	return QPixmapCache::find(*key, pixmap);
 }
 
-bool QPixmapCache_Insert(struct miqt_string* key, QPixmap* pixmap) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+bool QPixmapCache_Insert(struct miqt_string key, QPixmap* pixmap) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return QPixmapCache::insert(key_QString, *pixmap);
 }
 
@@ -48,8 +48,8 @@ bool QPixmapCache_Replace(QPixmapCache__Key* key, QPixmap* pixmap) {
 	return QPixmapCache::replace(*key, *pixmap);
 }
 
-void QPixmapCache_Remove(struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QPixmapCache_Remove(struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	QPixmapCache::remove(key_QString);
 }
 

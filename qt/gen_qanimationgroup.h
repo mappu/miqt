@@ -25,8 +25,8 @@ typedef struct QMetaObject QMetaObject;
 
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
 void* QAnimationGroup_Metacast(QAnimationGroup* self, const char* param1);
-struct miqt_string* QAnimationGroup_Tr(const char* s);
-struct miqt_string* QAnimationGroup_TrUtf8(const char* s);
+struct miqt_string QAnimationGroup_Tr(const char* s);
+struct miqt_string QAnimationGroup_TrUtf8(const char* s);
 QAbstractAnimation* QAnimationGroup_AnimationAt(const QAnimationGroup* self, int index);
 int QAnimationGroup_AnimationCount(const QAnimationGroup* self);
 int QAnimationGroup_IndexOfAnimation(const QAnimationGroup* self, QAbstractAnimation* animation);
@@ -35,10 +35,10 @@ void QAnimationGroup_InsertAnimation(QAnimationGroup* self, int index, QAbstract
 void QAnimationGroup_RemoveAnimation(QAnimationGroup* self, QAbstractAnimation* animation);
 QAbstractAnimation* QAnimationGroup_TakeAnimation(QAnimationGroup* self, int index);
 void QAnimationGroup_Clear(QAnimationGroup* self);
-struct miqt_string* QAnimationGroup_Tr2(const char* s, const char* c);
-struct miqt_string* QAnimationGroup_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAnimationGroup_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAnimationGroup_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAnimationGroup_Tr2(const char* s, const char* c);
+struct miqt_string QAnimationGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAnimationGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string QAnimationGroup_TrUtf83(const char* s, const char* c, int n);
 void QAnimationGroup_Delete(QAnimationGroup* self);
 
 #ifdef __cplusplus

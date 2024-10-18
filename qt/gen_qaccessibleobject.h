@@ -38,7 +38,7 @@ typedef struct QWindow QWindow;
 bool QAccessibleObject_IsValid(const QAccessibleObject* self);
 QObject* QAccessibleObject_Object(const QAccessibleObject* self);
 QRect* QAccessibleObject_Rect(const QAccessibleObject* self);
-void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string* text);
+void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string text);
 QAccessibleInterface* QAccessibleObject_ChildAt(const QAccessibleObject* self, int x, int y);
 
 QAccessibleApplication* QAccessibleApplication_new();
@@ -48,7 +48,7 @@ int QAccessibleApplication_IndexOfChild(const QAccessibleApplication* self, QAcc
 QAccessibleInterface* QAccessibleApplication_FocusChild(const QAccessibleApplication* self);
 QAccessibleInterface* QAccessibleApplication_Parent(const QAccessibleApplication* self);
 QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication* self, int index);
-struct miqt_string* QAccessibleApplication_Text(const QAccessibleApplication* self, int t);
+struct miqt_string QAccessibleApplication_Text(const QAccessibleApplication* self, int t);
 int QAccessibleApplication_Role(const QAccessibleApplication* self);
 QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self);
 void QAccessibleApplication_Delete(QAccessibleApplication* self);

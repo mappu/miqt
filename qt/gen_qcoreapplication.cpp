@@ -29,29 +29,41 @@ void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QCoreApplication_Tr(const char* s) {
+struct miqt_string QCoreApplication_Tr(const char* s) {
 	QString _ret = QCoreApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_TrUtf8(const char* s) {
+struct miqt_string QCoreApplication_TrUtf8(const char* s) {
 	QString _ret = QCoreApplication::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QCoreApplication_Arguments() {
 	QStringList _ret = QCoreApplication::arguments();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -67,52 +79,68 @@ bool QCoreApplication_TestAttribute(int attribute) {
 	return QCoreApplication::testAttribute(static_cast<Qt::ApplicationAttribute>(attribute));
 }
 
-void QCoreApplication_SetOrganizationDomain(struct miqt_string* orgDomain) {
-	QString orgDomain_QString = QString::fromUtf8(&orgDomain->data, orgDomain->len);
+void QCoreApplication_SetOrganizationDomain(struct miqt_string orgDomain) {
+	QString orgDomain_QString = QString::fromUtf8(orgDomain.data, orgDomain.len);
 	QCoreApplication::setOrganizationDomain(orgDomain_QString);
 }
 
-struct miqt_string* QCoreApplication_OrganizationDomain() {
+struct miqt_string QCoreApplication_OrganizationDomain() {
 	QString _ret = QCoreApplication::organizationDomain();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QCoreApplication_SetOrganizationName(struct miqt_string* orgName) {
-	QString orgName_QString = QString::fromUtf8(&orgName->data, orgName->len);
+void QCoreApplication_SetOrganizationName(struct miqt_string orgName) {
+	QString orgName_QString = QString::fromUtf8(orgName.data, orgName.len);
 	QCoreApplication::setOrganizationName(orgName_QString);
 }
 
-struct miqt_string* QCoreApplication_OrganizationName() {
+struct miqt_string QCoreApplication_OrganizationName() {
 	QString _ret = QCoreApplication::organizationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QCoreApplication_SetApplicationName(struct miqt_string* application) {
-	QString application_QString = QString::fromUtf8(&application->data, application->len);
+void QCoreApplication_SetApplicationName(struct miqt_string application) {
+	QString application_QString = QString::fromUtf8(application.data, application.len);
 	QCoreApplication::setApplicationName(application_QString);
 }
 
-struct miqt_string* QCoreApplication_ApplicationName() {
+struct miqt_string QCoreApplication_ApplicationName() {
 	QString _ret = QCoreApplication::applicationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QCoreApplication_SetApplicationVersion(struct miqt_string* version) {
-	QString version_QString = QString::fromUtf8(&version->data, version->len);
+void QCoreApplication_SetApplicationVersion(struct miqt_string version) {
+	QString version_QString = QString::fromUtf8(version.data, version.len);
 	QCoreApplication::setApplicationVersion(version_QString);
 }
 
-struct miqt_string* QCoreApplication_ApplicationVersion() {
+struct miqt_string QCoreApplication_ApplicationVersion() {
 	QString _ret = QCoreApplication::applicationVersion();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCoreApplication_SetSetuidAllowed(bool allow) {
@@ -183,18 +211,26 @@ bool QCoreApplication_ClosingDown() {
 	return QCoreApplication::closingDown();
 }
 
-struct miqt_string* QCoreApplication_ApplicationDirPath() {
+struct miqt_string QCoreApplication_ApplicationDirPath() {
 	QString _ret = QCoreApplication::applicationDirPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_ApplicationFilePath() {
+struct miqt_string QCoreApplication_ApplicationFilePath() {
 	QString _ret = QCoreApplication::applicationFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 long long QCoreApplication_ApplicationPid() {
@@ -202,12 +238,12 @@ long long QCoreApplication_ApplicationPid() {
 	return static_cast<long long>(_ret);
 }
 
-void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string* */ libraryPaths) {
+void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string */ libraryPaths) {
 	QStringList libraryPaths_QList;
 	libraryPaths_QList.reserve(libraryPaths->len);
-	struct miqt_string** libraryPaths_arr = static_cast<struct miqt_string**>(libraryPaths->data);
+	struct miqt_string* libraryPaths_arr = static_cast<struct miqt_string*>(libraryPaths->data);
 	for(size_t i = 0; i < libraryPaths->len; ++i) {
-		QString libraryPaths_arr_i_QString = QString::fromUtf8(&libraryPaths_arr[i]->data, libraryPaths_arr[i]->len);
+		QString libraryPaths_arr_i_QString = QString::fromUtf8(libraryPaths_arr[i].data, libraryPaths_arr[i].len);
 		libraryPaths_QList.push_back(libraryPaths_arr_i_QString);
 	}
 	QCoreApplication::setLibraryPaths(libraryPaths_QList);
@@ -216,12 +252,16 @@ void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_strin
 struct miqt_array* QCoreApplication_LibraryPaths() {
 	QStringList _ret = QCoreApplication::libraryPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -229,13 +269,13 @@ struct miqt_array* QCoreApplication_LibraryPaths() {
 	return _out;
 }
 
-void QCoreApplication_AddLibraryPath(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QCoreApplication_AddLibraryPath(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QCoreApplication::addLibraryPath(param1_QString);
 }
 
-void QCoreApplication_RemoveLibraryPath(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QCoreApplication_RemoveLibraryPath(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QCoreApplication::removeLibraryPath(param1_QString);
 }
 
@@ -247,11 +287,15 @@ bool QCoreApplication_RemoveTranslator(QTranslator* messageFile) {
 	return QCoreApplication::removeTranslator(messageFile);
 }
 
-struct miqt_string* QCoreApplication_Translate(const char* context, const char* key) {
+struct miqt_string QCoreApplication_Translate(const char* context, const char* key) {
 	QString _ret = QCoreApplication::translate(context, key);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCoreApplication_Flush() {
@@ -318,32 +362,48 @@ void QCoreApplication_connect_ApplicationVersionChanged(QCoreApplication* self, 
 	});
 }
 
-struct miqt_string* QCoreApplication_Tr2(const char* s, const char* c) {
+struct miqt_string QCoreApplication_Tr2(const char* s, const char* c) {
 	QString _ret = QCoreApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCoreApplication_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QCoreApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCoreApplication_TrUtf82(const char* s, const char* c) {
 	QString _ret = QCoreApplication::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCoreApplication_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCoreApplication::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCoreApplication_SetAttribute2(int attribute, bool on) {
@@ -374,18 +434,26 @@ void QCoreApplication_RemovePostedEvents2(QObject* receiver, int eventType) {
 	QCoreApplication::removePostedEvents(receiver, static_cast<int>(eventType));
 }
 
-struct miqt_string* QCoreApplication_Translate3(const char* context, const char* key, const char* disambiguation) {
+struct miqt_string QCoreApplication_Translate3(const char* context, const char* key, const char* disambiguation) {
 	QString _ret = QCoreApplication::translate(context, key, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCoreApplication_Translate4(const char* context, const char* key, const char* disambiguation, int n) {
+struct miqt_string QCoreApplication_Translate4(const char* context, const char* key, const char* disambiguation, int n) {
 	QString _ret = QCoreApplication::translate(context, key, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCoreApplication_Delete(QCoreApplication* self) {

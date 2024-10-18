@@ -29,17 +29,17 @@ typedef struct QToolTip QToolTip;
 typedef struct QWidget QWidget;
 #endif
 
-void QToolTip_ShowText(QPoint* pos, struct miqt_string* text);
-void QToolTip_ShowText2(QPoint* pos, struct miqt_string* text, QWidget* w, QRect* rect);
-void QToolTip_ShowText3(QPoint* pos, struct miqt_string* text, QWidget* w, QRect* rect, int msecShowTime);
+void QToolTip_ShowText(QPoint* pos, struct miqt_string text);
+void QToolTip_ShowText2(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect);
+void QToolTip_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime);
 void QToolTip_HideText();
 bool QToolTip_IsVisible();
-struct miqt_string* QToolTip_Text();
+struct miqt_string QToolTip_Text();
 QPalette* QToolTip_Palette();
 void QToolTip_SetPalette(QPalette* palette);
 QFont* QToolTip_Font();
 void QToolTip_SetFont(QFont* font);
-void QToolTip_ShowText32(QPoint* pos, struct miqt_string* text, QWidget* w);
+void QToolTip_ShowText32(QPoint* pos, struct miqt_string text, QWidget* w);
 void QToolTip_Delete(QToolTip* self);
 
 #ifdef __cplusplus

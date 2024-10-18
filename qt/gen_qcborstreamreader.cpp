@@ -18,8 +18,9 @@ QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t l
 	return new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
-QCborStreamReader* QCborStreamReader_new4(QByteArray* data) {
-	return new QCborStreamReader(*data);
+QCborStreamReader* QCborStreamReader_new4(struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return new QCborStreamReader(data_QByteArray);
 }
 
 QCborStreamReader* QCborStreamReader_new5(QIODevice* device) {
@@ -34,8 +35,9 @@ QIODevice* QCborStreamReader_Device(const QCborStreamReader* self) {
 	return self->device();
 }
 
-void QCborStreamReader_AddData(QCborStreamReader* self, QByteArray* data) {
-	self->addData(*data);
+void QCborStreamReader_AddData(QCborStreamReader* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	self->addData(data_QByteArray);
 }
 
 void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, ptrdiff_t lenVal) {

@@ -24,13 +24,12 @@ typedef struct QIODevice QIODevice;
 #endif
 
 QCborStreamWriter* QCborStreamWriter_new(QIODevice* device);
-QCborStreamWriter* QCborStreamWriter_new2(QByteArray* data);
 void QCborStreamWriter_SetDevice(QCborStreamWriter* self, QIODevice* device);
 QIODevice* QCborStreamWriter_Device(const QCborStreamWriter* self);
 void QCborStreamWriter_Append(QCborStreamWriter* self, unsigned long long u);
 void QCborStreamWriter_AppendWithQint64(QCborStreamWriter* self, long long i);
 void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, uint64_t n);
-void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, QByteArray* ba);
+void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, struct miqt_string ba);
 void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, uint64_t tag);
 void QCborStreamWriter_Append3(QCborStreamWriter* self, int tag);
 void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, uint8_t st);

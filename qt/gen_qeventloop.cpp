@@ -27,18 +27,26 @@ void* QEventLoop_Metacast(QEventLoop* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QEventLoop_Tr(const char* s) {
+struct miqt_string QEventLoop_Tr(const char* s) {
 	QString _ret = QEventLoop::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QEventLoop_TrUtf8(const char* s) {
+struct miqt_string QEventLoop_TrUtf8(const char* s) {
 	QString _ret = QEventLoop::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QEventLoop_ProcessEvents(QEventLoop* self) {
@@ -73,32 +81,48 @@ void QEventLoop_Quit(QEventLoop* self) {
 	self->quit();
 }
 
-struct miqt_string* QEventLoop_Tr2(const char* s, const char* c) {
+struct miqt_string QEventLoop_Tr2(const char* s, const char* c) {
 	QString _ret = QEventLoop::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QEventLoop_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QEventLoop_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QEventLoop::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QEventLoop_TrUtf82(const char* s, const char* c) {
+struct miqt_string QEventLoop_TrUtf82(const char* s, const char* c) {
 	QString _ret = QEventLoop::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QEventLoop_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QEventLoop_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QEventLoop::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QEventLoop_ProcessEvents1(QEventLoop* self, int flags) {

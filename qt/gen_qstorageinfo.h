@@ -24,18 +24,18 @@ typedef struct QStorageInfo QStorageInfo;
 #endif
 
 QStorageInfo* QStorageInfo_new();
-QStorageInfo* QStorageInfo_new2(struct miqt_string* path);
+QStorageInfo* QStorageInfo_new2(struct miqt_string path);
 QStorageInfo* QStorageInfo_new3(QDir* dir);
 QStorageInfo* QStorageInfo_new4(QStorageInfo* other);
 void QStorageInfo_OperatorAssign(QStorageInfo* self, QStorageInfo* other);
 void QStorageInfo_Swap(QStorageInfo* self, QStorageInfo* other);
-void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string* path);
-struct miqt_string* QStorageInfo_RootPath(const QStorageInfo* self);
-QByteArray* QStorageInfo_Device(const QStorageInfo* self);
-QByteArray* QStorageInfo_Subvolume(const QStorageInfo* self);
-QByteArray* QStorageInfo_FileSystemType(const QStorageInfo* self);
-struct miqt_string* QStorageInfo_Name(const QStorageInfo* self);
-struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self);
+void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string path);
+struct miqt_string QStorageInfo_RootPath(const QStorageInfo* self);
+struct miqt_string QStorageInfo_Device(const QStorageInfo* self);
+struct miqt_string QStorageInfo_Subvolume(const QStorageInfo* self);
+struct miqt_string QStorageInfo_FileSystemType(const QStorageInfo* self);
+struct miqt_string QStorageInfo_Name(const QStorageInfo* self);
+struct miqt_string QStorageInfo_DisplayName(const QStorageInfo* self);
 long long QStorageInfo_BytesTotal(const QStorageInfo* self);
 long long QStorageInfo_BytesFree(const QStorageInfo* self);
 long long QStorageInfo_BytesAvailable(const QStorageInfo* self);

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -53,12 +52,14 @@ func NewQStringListModel() *QStringListModel {
 // NewQStringListModel2 constructs a new QStringListModel object.
 func NewQStringListModel2(strings []string) *QStringListModel {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -75,12 +76,14 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -95,24 +98,24 @@ func (this *QStringListModel) MetaObject() *QMetaObject {
 func (this *QStringListModel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QStringListModel_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QStringListModel_Metacast(this.h, param1_Cstring))
 }
 
 func QStringListModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QStringListModel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -161,11 +164,11 @@ func (this *QStringListModel) Sort(column int) {
 func (this *QStringListModel) StringList() []string {
 	var _ma *C.struct_miqt_array = C.QStringListModel_StringList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -174,12 +177,14 @@ func (this *QStringListModel) StringList() []string {
 
 func (this *QStringListModel) SetStringList(strings []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -195,9 +200,9 @@ func QStringListModel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -206,9 +211,9 @@ func QStringListModel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -217,9 +222,9 @@ func QStringListModel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -228,9 +233,9 @@ func QStringListModel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStringListModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStringListModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -32,12 +32,16 @@ void QJsonObject_Swap(QJsonObject* self, QJsonObject* other) {
 struct miqt_array* QJsonObject_Keys(const QJsonObject* self) {
 	QStringList _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -61,33 +65,33 @@ bool QJsonObject_IsEmpty(const QJsonObject* self) {
 	return self->isEmpty();
 }
 
-QJsonValue* QJsonObject_Value(const QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonValue* QJsonObject_Value(const QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonValue(self->value(key_QString));
 }
 
-QJsonValue* QJsonObject_OperatorSubscript(const QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonValue* QJsonObject_OperatorSubscript(const QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonValue(self->operator[](key_QString));
 }
 
-QJsonValueRef* QJsonObject_OperatorSubscriptWithKey(QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonValueRef* QJsonObject_OperatorSubscriptWithKey(QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonValueRef(self->operator[](key_QString));
 }
 
-void QJsonObject_Remove(QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QJsonObject_Remove(QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->remove(key_QString);
 }
 
-QJsonValue* QJsonObject_Take(QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonValue* QJsonObject_Take(QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonValue(self->take(key_QString));
 }
 
-bool QJsonObject_Contains(const QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+bool QJsonObject_Contains(const QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return self->contains(key_QString);
 }
 
@@ -127,23 +131,23 @@ QJsonObject__iterator* QJsonObject_Erase(QJsonObject* self, QJsonObject__iterato
 	return new QJsonObject::iterator(self->erase(*it));
 }
 
-QJsonObject__iterator* QJsonObject_Find(QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonObject__iterator* QJsonObject_Find(QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonObject::iterator(self->find(key_QString));
 }
 
-QJsonObject__const_iterator* QJsonObject_FindWithKey(const QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonObject__const_iterator* QJsonObject_FindWithKey(const QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonObject::const_iterator(self->find(key_QString));
 }
 
-QJsonObject__const_iterator* QJsonObject_ConstFind(const QJsonObject* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonObject__const_iterator* QJsonObject_ConstFind(const QJsonObject* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonObject::const_iterator(self->constFind(key_QString));
 }
 
-QJsonObject__iterator* QJsonObject_Insert(QJsonObject* self, struct miqt_string* key, QJsonValue* value) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonObject__iterator* QJsonObject_Insert(QJsonObject* self, struct miqt_string key, QJsonValue* value) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonObject::iterator(self->insert(key_QString, *value));
 }
 
@@ -167,11 +171,15 @@ QJsonObject__iterator* QJsonObject__iterator_new3(QJsonObject__iterator* param1)
 	return new QJsonObject::iterator(*param1);
 }
 
-struct miqt_string* QJsonObject__iterator_Key(const QJsonObject__iterator* self) {
+struct miqt_string QJsonObject__iterator_Key(const QJsonObject__iterator* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QJsonValueRef* QJsonObject__iterator_Value(const QJsonObject__iterator* self) {
@@ -302,11 +310,15 @@ QJsonObject__const_iterator* QJsonObject__const_iterator_new4(QJsonObject__const
 	return new QJsonObject::const_iterator(*param1);
 }
 
-struct miqt_string* QJsonObject__const_iterator_Key(const QJsonObject__const_iterator* self) {
+struct miqt_string QJsonObject__const_iterator_Key(const QJsonObject__const_iterator* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QJsonValue* QJsonObject__const_iterator_Value(const QJsonObject__const_iterator* self) {

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"unsafe"
 )
 
@@ -58,9 +57,11 @@ func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms)
 	return newQAccessibleWidget(ret)
 }
 
@@ -100,9 +101,9 @@ func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.int)(t))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.int)(t))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -132,17 +133,17 @@ func (this *QAccessibleWidget) BackgroundColor() *QColor {
 }
 
 func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsafe.Pointer {
-	return C.QAccessibleWidget_InterfaceCast(this.h, (C.int)(t))
+	return (unsafe.Pointer)(C.QAccessibleWidget_InterfaceCast(this.h, (C.int)(t)))
 }
 
 func (this *QAccessibleWidget) ActionNames() []string {
 	var _ma *C.struct_miqt_array = C.QAccessibleWidget_ActionNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -150,21 +151,25 @@ func (this *QAccessibleWidget) ActionNames() []string {
 }
 
 func (this *QAccessibleWidget) DoAction(actionName string) {
-	actionName_ms := libmiqt.Strdupg(actionName)
-	defer C.free(actionName_ms)
-	C.QAccessibleWidget_DoAction(this.h, (*C.struct_miqt_string)(actionName_ms))
+	actionName_ms := C.struct_miqt_string{}
+	actionName_ms.data = C.CString(actionName)
+	actionName_ms.len = C.size_t(len(actionName))
+	defer C.free(unsafe.Pointer(actionName_ms.data))
+	C.QAccessibleWidget_DoAction(this.h, actionName_ms)
 }
 
 func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string {
-	actionName_ms := libmiqt.Strdupg(actionName)
-	defer C.free(actionName_ms)
-	var _ma *C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, (*C.struct_miqt_string)(actionName_ms))
+	actionName_ms := C.struct_miqt_string{}
+	actionName_ms.data = C.CString(actionName)
+	actionName_ms.len = C.size_t(len(actionName))
+	defer C.free(unsafe.Pointer(actionName_ms.data))
+	var _ma *C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))

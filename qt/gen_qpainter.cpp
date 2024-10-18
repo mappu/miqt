@@ -737,63 +737,63 @@ void QPainter_DrawStaticText3(QPainter* self, int left, int top, QStaticText* st
 	self->drawStaticText(static_cast<int>(left), static_cast<int>(top), *staticText);
 }
 
-void QPainter_DrawText(QPainter* self, QPointF* p, struct miqt_string* s) {
-	QString s_QString = QString::fromUtf8(&s->data, s->len);
+void QPainter_DrawText(QPainter* self, QPointF* p, struct miqt_string s) {
+	QString s_QString = QString::fromUtf8(s.data, s.len);
 	self->drawText(*p, s_QString);
 }
 
-void QPainter_DrawText2(QPainter* self, QPoint* p, struct miqt_string* s) {
-	QString s_QString = QString::fromUtf8(&s->data, s->len);
+void QPainter_DrawText2(QPainter* self, QPoint* p, struct miqt_string s) {
+	QString s_QString = QString::fromUtf8(s.data, s.len);
 	self->drawText(*p, s_QString);
 }
 
-void QPainter_DrawText3(QPainter* self, int x, int y, struct miqt_string* s) {
-	QString s_QString = QString::fromUtf8(&s->data, s->len);
+void QPainter_DrawText3(QPainter* self, int x, int y, struct miqt_string s) {
+	QString s_QString = QString::fromUtf8(s.data, s.len);
 	self->drawText(static_cast<int>(x), static_cast<int>(y), s_QString);
 }
 
-void QPainter_DrawText4(QPainter* self, QPointF* p, struct miqt_string* str, int tf, int justificationPadding) {
-	QString str_QString = QString::fromUtf8(&str->data, str->len);
+void QPainter_DrawText4(QPainter* self, QPointF* p, struct miqt_string str, int tf, int justificationPadding) {
+	QString str_QString = QString::fromUtf8(str.data, str.len);
 	self->drawText(*p, str_QString, static_cast<int>(tf), static_cast<int>(justificationPadding));
 }
 
-void QPainter_DrawText5(QPainter* self, QRectF* r, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText5(QPainter* self, QRectF* r, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, static_cast<int>(flags), text_QString);
 }
 
-void QPainter_DrawText6(QPainter* self, QRect* r, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText6(QPainter* self, QRect* r, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, static_cast<int>(flags), text_QString);
 }
 
-void QPainter_DrawText7(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText7(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString);
 }
 
-void QPainter_DrawText8(QPainter* self, QRectF* r, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText8(QPainter* self, QRectF* r, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, text_QString);
 }
 
-QRectF* QPainter_BoundingRect(QPainter* self, QRectF* rect, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRectF* QPainter_BoundingRect(QPainter* self, QRectF* rect, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRectF(self->boundingRect(*rect, static_cast<int>(flags), text_QString));
 }
 
-QRect* QPainter_BoundingRect2(QPainter* self, QRect* rect, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRect* QPainter_BoundingRect2(QPainter* self, QRect* rect, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self->boundingRect(*rect, static_cast<int>(flags), text_QString));
 }
 
-QRect* QPainter_BoundingRect3(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRect* QPainter_BoundingRect3(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString));
 }
 
-QRectF* QPainter_BoundingRect4(QPainter* self, QRectF* rect, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRectF* QPainter_BoundingRect4(QPainter* self, QRectF* rect, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRectF(self->boundingRect(*rect, text_QString));
 }
 
@@ -1058,28 +1058,28 @@ void QPainter_DrawImage82(QPainter* self, int x, int y, QImage* image, int sx, i
 	self->drawImage(static_cast<int>(x), static_cast<int>(y), *image, static_cast<int>(sx), static_cast<int>(sy), static_cast<int>(sw), static_cast<int>(sh), static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-void QPainter_DrawText42(QPainter* self, QRectF* r, int flags, struct miqt_string* text, QRectF* br) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText42(QPainter* self, QRectF* r, int flags, struct miqt_string text, QRectF* br) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, static_cast<int>(flags), text_QString, br);
 }
 
-void QPainter_DrawText43(QPainter* self, QRect* r, int flags, struct miqt_string* text, QRect* br) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText43(QPainter* self, QRect* r, int flags, struct miqt_string text, QRect* br) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, static_cast<int>(flags), text_QString, br);
 }
 
-void QPainter_DrawText72(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string* text, QRect* br) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText72(QPainter* self, int x, int y, int w, int h, int flags, struct miqt_string text, QRect* br) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, br);
 }
 
-void QPainter_DrawText32(QPainter* self, QRectF* r, struct miqt_string* text, QTextOption* o) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainter_DrawText32(QPainter* self, QRectF* r, struct miqt_string text, QTextOption* o) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawText(*r, text_QString, *o);
 }
 
-QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, struct miqt_string* text, QTextOption* o) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRectF* QPainter_BoundingRect32(QPainter* self, QRectF* rect, struct miqt_string text, QTextOption* o) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRectF(self->boundingRect(*rect, text_QString, *o));
 }
 

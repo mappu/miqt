@@ -45,13 +45,13 @@ void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mo
 QSize* QIconEngine_ActualSize(QIconEngine* self, QSize* size, int mode, int state);
 QPixmap* QIconEngine_Pixmap(QIconEngine* self, QSize* size, int mode, int state);
 void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, int mode, int state);
-void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, int mode, int state);
-struct miqt_string* QIconEngine_Key(const QIconEngine* self);
+void QIconEngine_AddFile(QIconEngine* self, struct miqt_string fileName, QSize* size, int mode, int state);
+struct miqt_string QIconEngine_Key(const QIconEngine* self);
 QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
 bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
 struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self);
-struct miqt_string* QIconEngine_IconName(const QIconEngine* self);
+struct miqt_string QIconEngine_IconName(const QIconEngine* self);
 bool QIconEngine_IsNull(const QIconEngine* self);
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale);
 void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data);

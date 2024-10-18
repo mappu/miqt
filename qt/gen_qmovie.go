@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -74,9 +73,11 @@ func NewQMovie2(device *QIODevice) *QMovie {
 
 // NewQMovie3 constructs a new QMovie object.
 func NewQMovie3(fileName string) *QMovie {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QMovie_new3((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QMovie_new3(fileName_ms)
 	return newQMovie(ret)
 }
 
@@ -87,30 +88,46 @@ func NewQMovie4(parent *QObject) *QMovie {
 }
 
 // NewQMovie5 constructs a new QMovie object.
-func NewQMovie5(device *QIODevice, format *QByteArray) *QMovie {
-	ret := C.QMovie_new5(device.cPointer(), format.cPointer())
+func NewQMovie5(device *QIODevice, format []byte) *QMovie {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QMovie_new5(device.cPointer(), format_alias)
 	return newQMovie(ret)
 }
 
 // NewQMovie6 constructs a new QMovie object.
-func NewQMovie6(device *QIODevice, format *QByteArray, parent *QObject) *QMovie {
-	ret := C.QMovie_new6(device.cPointer(), format.cPointer(), parent.cPointer())
+func NewQMovie6(device *QIODevice, format []byte, parent *QObject) *QMovie {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer())
 	return newQMovie(ret)
 }
 
 // NewQMovie7 constructs a new QMovie object.
-func NewQMovie7(fileName string, format *QByteArray) *QMovie {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QMovie_new7((*C.struct_miqt_string)(fileName_ms), format.cPointer())
+func NewQMovie7(fileName string, format []byte) *QMovie {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QMovie_new7(fileName_ms, format_alias)
 	return newQMovie(ret)
 }
 
 // NewQMovie8 constructs a new QMovie object.
-func NewQMovie8(fileName string, format *QByteArray, parent *QObject) *QMovie {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QMovie_new8((*C.struct_miqt_string)(fileName_ms), format.cPointer(), parent.cPointer())
+func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QMovie_new8(fileName_ms, format_alias, parent.cPointer())
 	return newQMovie(ret)
 }
 
@@ -121,36 +138,36 @@ func (this *QMovie) MetaObject() *QMetaObject {
 func (this *QMovie) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QMovie_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QMovie_Metacast(this.h, param1_Cstring))
 }
 
 func QMovie_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMovie_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func QMovie_SupportedFormats() []QByteArray {
+func QMovie_SupportedFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QMovie_SupportedFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -165,27 +182,32 @@ func (this *QMovie) Device() *QIODevice {
 }
 
 func (this *QMovie) SetFileName(fileName string) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QMovie_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QMovie_SetFileName(this.h, fileName_ms)
 }
 
 func (this *QMovie) FileName() string {
-	var _ms *C.struct_miqt_string = C.QMovie_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QMovie) SetFormat(format *QByteArray) {
-	C.QMovie_SetFormat(this.h, format.cPointer())
+func (this *QMovie) SetFormat(format []byte) {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	C.QMovie_SetFormat(this.h, format_alias)
 }
 
-func (this *QMovie) Format() *QByteArray {
-	_ret := C.QMovie_Format(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMovie) Format() []byte {
+	var _bytearray C.struct_miqt_string = C.QMovie_Format(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QMovie) SetBackgroundColor(color *QColor) {
@@ -233,9 +255,9 @@ func (this *QMovie) LastError() QImageReader__ImageReaderError {
 }
 
 func (this *QMovie) LastErrorString() string {
-	var _ms *C.struct_miqt_string = C.QMovie_LastErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_LastErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -441,9 +463,9 @@ func QMovie_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -452,9 +474,9 @@ func QMovie_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -463,9 +485,9 @@ func QMovie_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -474,9 +496,9 @@ func QMovie_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMovie_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMovie_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

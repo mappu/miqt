@@ -9,8 +9,8 @@
 #include "gen_qdockwidget.h"
 #include "_cgo_export.h"
 
-QDockWidget* QDockWidget_new(struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QDockWidget* QDockWidget_new(struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString);
 }
 
@@ -18,13 +18,13 @@ QDockWidget* QDockWidget_new2() {
 	return new QDockWidget();
 }
 
-QDockWidget* QDockWidget_new3(struct miqt_string* title, QWidget* parent) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QDockWidget* QDockWidget_new3(struct miqt_string title, QWidget* parent) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString, parent);
 }
 
-QDockWidget* QDockWidget_new4(struct miqt_string* title, QWidget* parent, int flags) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QDockWidget* QDockWidget_new4(struct miqt_string title, QWidget* parent, int flags) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString, parent, static_cast<Qt::WindowFlags>(flags));
 }
 
@@ -44,18 +44,26 @@ void* QDockWidget_Metacast(QDockWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QDockWidget_Tr(const char* s) {
+struct miqt_string QDockWidget_Tr(const char* s) {
 	QString _ret = QDockWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDockWidget_TrUtf8(const char* s) {
+struct miqt_string QDockWidget_TrUtf8(const char* s) {
 	QString _ret = QDockWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QWidget* QDockWidget_Widget(const QDockWidget* self) {
@@ -166,32 +174,48 @@ void QDockWidget_connect_DockLocationChanged(QDockWidget* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QDockWidget_Tr2(const char* s, const char* c) {
+struct miqt_string QDockWidget_Tr2(const char* s, const char* c) {
 	QString _ret = QDockWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDockWidget_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDockWidget_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QDockWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDockWidget_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDockWidget_TrUtf82(const char* s, const char* c) {
 	QString _ret = QDockWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDockWidget_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDockWidget_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDockWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QDockWidget_Delete(QDockWidget* self) {

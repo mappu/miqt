@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -62,27 +61,35 @@ func NewQLibrary() *QLibrary {
 
 // NewQLibrary2 constructs a new QLibrary object.
 func NewQLibrary2(fileName string) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QLibrary_new2((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QLibrary_new2(fileName_ms)
 	return newQLibrary(ret)
 }
 
 // NewQLibrary3 constructs a new QLibrary object.
 func NewQLibrary3(fileName string, verNum int) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QLibrary_new3((*C.struct_miqt_string)(fileName_ms), (C.int)(verNum))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QLibrary_new3(fileName_ms, (C.int)(verNum))
 	return newQLibrary(ret)
 }
 
 // NewQLibrary4 constructs a new QLibrary object.
 func NewQLibrary4(fileName string, version string) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	version_ms := libmiqt.Strdupg(version)
-	defer C.free(version_ms)
-	ret := C.QLibrary_new4((*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(version_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	version_ms := C.struct_miqt_string{}
+	version_ms.data = C.CString(version)
+	version_ms.len = C.size_t(len(version))
+	defer C.free(unsafe.Pointer(version_ms.data))
+	ret := C.QLibrary_new4(fileName_ms, version_ms)
 	return newQLibrary(ret)
 }
 
@@ -94,27 +101,35 @@ func NewQLibrary5(parent *QObject) *QLibrary {
 
 // NewQLibrary6 constructs a new QLibrary object.
 func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QLibrary_new6((*C.struct_miqt_string)(fileName_ms), parent.cPointer())
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QLibrary_new6(fileName_ms, parent.cPointer())
 	return newQLibrary(ret)
 }
 
 // NewQLibrary7 constructs a new QLibrary object.
 func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QLibrary_new7((*C.struct_miqt_string)(fileName_ms), (C.int)(verNum), parent.cPointer())
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer())
 	return newQLibrary(ret)
 }
 
 // NewQLibrary8 constructs a new QLibrary object.
 func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	version_ms := libmiqt.Strdupg(version)
-	defer C.free(version_ms)
-	ret := C.QLibrary_new8((*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(version_ms), parent.cPointer())
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	version_ms := C.struct_miqt_string{}
+	version_ms.data = C.CString(version)
+	version_ms.len = C.size_t(len(version))
+	defer C.free(unsafe.Pointer(version_ms.data))
+	ret := C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer())
 	return newQLibrary(ret)
 }
 
@@ -125,24 +140,24 @@ func (this *QLibrary) MetaObject() *QMetaObject {
 func (this *QLibrary) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QLibrary_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QLibrary_Metacast(this.h, param1_Cstring))
 }
 
 func QLibrary_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLibrary_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -159,42 +174,52 @@ func (this *QLibrary) IsLoaded() bool {
 }
 
 func QLibrary_IsLibrary(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QLibrary_IsLibrary((*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QLibrary_IsLibrary(fileName_ms))
 }
 
 func (this *QLibrary) SetFileName(fileName string) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QLibrary_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QLibrary_SetFileName(this.h, fileName_ms)
 }
 
 func (this *QLibrary) FileName() string {
-	var _ms *C.struct_miqt_string = C.QLibrary_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLibrary) SetFileNameAndVersion(fileName string, verNum int) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QLibrary_SetFileNameAndVersion(this.h, (*C.struct_miqt_string)(fileName_ms), (C.int)(verNum))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QLibrary_SetFileNameAndVersion(this.h, fileName_ms, (C.int)(verNum))
 }
 
 func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	version_ms := libmiqt.Strdupg(version)
-	defer C.free(version_ms)
-	C.QLibrary_SetFileNameAndVersion2(this.h, (*C.struct_miqt_string)(fileName_ms), (*C.struct_miqt_string)(version_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	version_ms := C.struct_miqt_string{}
+	version_ms.data = C.CString(version)
+	version_ms.len = C.size_t(len(version))
+	defer C.free(unsafe.Pointer(version_ms.data))
+	C.QLibrary_SetFileNameAndVersion2(this.h, fileName_ms, version_ms)
 }
 
 func (this *QLibrary) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QLibrary_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -211,9 +236,9 @@ func QLibrary_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -222,9 +247,9 @@ func QLibrary_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -233,9 +258,9 @@ func QLibrary_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -244,9 +269,9 @@ func QLibrary_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLibrary_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibrary_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

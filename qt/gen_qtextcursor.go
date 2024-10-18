@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -148,15 +147,19 @@ func (this *QTextCursor) Anchor() int {
 }
 
 func (this *QTextCursor) InsertText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextCursor_InsertText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextCursor_InsertText(this.h, text_ms)
 }
 
 func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextCursor_InsertText2(this.h, (*C.struct_miqt_string)(text_ms), format.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextCursor_InsertText2(this.h, text_ms, format.cPointer())
 }
 
 func (this *QTextCursor) MovePosition(op QTextCursor__MoveOperation) bool {
@@ -224,9 +227,9 @@ func (this *QTextCursor) SelectionEnd() int {
 }
 
 func (this *QTextCursor) SelectedText() string {
-	var _ms *C.struct_miqt_string = C.QTextCursor_SelectedText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextCursor_SelectedText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -366,9 +369,11 @@ func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
 }
 
 func (this *QTextCursor) InsertHtml(html string) {
-	html_ms := libmiqt.Strdupg(html)
-	defer C.free(html_ms)
-	C.QTextCursor_InsertHtml(this.h, (*C.struct_miqt_string)(html_ms))
+	html_ms := C.struct_miqt_string{}
+	html_ms.data = C.CString(html)
+	html_ms.len = C.size_t(len(html))
+	defer C.free(unsafe.Pointer(html_ms.data))
+	C.QTextCursor_InsertHtml(this.h, html_ms)
 }
 
 func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment QTextFrameFormat__Position) {
@@ -380,9 +385,11 @@ func (this *QTextCursor) InsertImageWithFormat(format *QTextImageFormat) {
 }
 
 func (this *QTextCursor) InsertImageWithName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTextCursor_InsertImageWithName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTextCursor_InsertImageWithName(this.h, name_ms)
 }
 
 func (this *QTextCursor) InsertImageWithImage(image *QImage) {
@@ -454,9 +461,11 @@ func (this *QTextCursor) MovePosition3(op QTextCursor__MoveOperation, param2 QTe
 }
 
 func (this *QTextCursor) InsertImage2(image *QImage, name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTextCursor_InsertImage2(this.h, image.cPointer(), (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTextCursor_InsertImage2(this.h, image.cPointer(), name_ms)
 }
 
 // Delete this object from C++ memory.

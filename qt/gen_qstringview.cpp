@@ -13,11 +13,15 @@ QStringView* QStringView_new() {
 	return new QStringView();
 }
 
-struct miqt_string* QStringView_ToString(const QStringView* self) {
+struct miqt_string QStringView_ToString(const QStringView* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 ptrdiff_t QStringView_Size(const QStringView* self) {
@@ -34,16 +38,31 @@ QChar* QStringView_OperatorSubscript(const QStringView* self, ptrdiff_t n) {
 	return new QChar(self->operator[]((qsizetype)(n)));
 }
 
-QByteArray* QStringView_ToLatin1(const QStringView* self) {
-	return new QByteArray(self->toLatin1());
+struct miqt_string QStringView_ToLatin1(const QStringView* self) {
+	QByteArray _qb = self->toLatin1();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QStringView_ToUtf8(const QStringView* self) {
-	return new QByteArray(self->toUtf8());
+struct miqt_string QStringView_ToUtf8(const QStringView* self) {
+	QByteArray _qb = self->toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QStringView_ToLocal8Bit(const QStringView* self) {
-	return new QByteArray(self->toLocal8Bit());
+struct miqt_string QStringView_ToLocal8Bit(const QStringView* self) {
+	QByteArray _qb = self->toLocal8Bit();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QStringView_ToUcs4(const QStringView* self) {

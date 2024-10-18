@@ -81,9 +81,9 @@ func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
 }
 
 func (this *QFileIconProvider) Type(info *QFileInfo) string {
-	var _ms *C.struct_miqt_string = C.QFileIconProvider_Type(this.h, info.cPointer())
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileIconProvider_Type(this.h, info.cPointer())
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -80,17 +79,21 @@ func NewQAction() *QAction {
 
 // NewQAction2 constructs a new QAction object.
 func NewQAction2(text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAction_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAction_new2(text_ms)
 	return newQAction(ret)
 }
 
 // NewQAction3 constructs a new QAction object.
 func NewQAction3(icon *QIcon, text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAction_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAction_new3(icon.cPointer(), text_ms)
 	return newQAction(ret)
 }
 
@@ -102,17 +105,21 @@ func NewQAction4(parent *QObject) *QAction {
 
 // NewQAction5 constructs a new QAction object.
 func NewQAction5(text string, parent *QObject) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAction_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAction_new5(text_ms, parent.cPointer())
 	return newQAction(ret)
 }
 
 // NewQAction6 constructs a new QAction object.
 func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAction_new6(icon.cPointer(), (*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer())
 	return newQAction(ret)
 }
 
@@ -123,24 +130,24 @@ func (this *QAction) MetaObject() *QMetaObject {
 func (this *QAction) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QAction_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QAction_Metacast(this.h, param1_Cstring))
 }
 
 func QAction_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAction_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -164,67 +171,77 @@ func (this *QAction) Icon() *QIcon {
 }
 
 func (this *QAction) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAction_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAction_SetText(this.h, text_ms)
 }
 
 func (this *QAction) Text() string {
-	var _ms *C.struct_miqt_string = C.QAction_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAction) SetIconText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAction_SetIconText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAction_SetIconText(this.h, text_ms)
 }
 
 func (this *QAction) IconText() string {
-	var _ms *C.struct_miqt_string = C.QAction_IconText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_IconText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAction) SetToolTip(tip string) {
-	tip_ms := libmiqt.Strdupg(tip)
-	defer C.free(tip_ms)
-	C.QAction_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
+	tip_ms := C.struct_miqt_string{}
+	tip_ms.data = C.CString(tip)
+	tip_ms.len = C.size_t(len(tip))
+	defer C.free(unsafe.Pointer(tip_ms.data))
+	C.QAction_SetToolTip(this.h, tip_ms)
 }
 
 func (this *QAction) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QAction_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAction) SetStatusTip(statusTip string) {
-	statusTip_ms := libmiqt.Strdupg(statusTip)
-	defer C.free(statusTip_ms)
-	C.QAction_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
+	statusTip_ms := C.struct_miqt_string{}
+	statusTip_ms.data = C.CString(statusTip)
+	statusTip_ms.len = C.size_t(len(statusTip))
+	defer C.free(unsafe.Pointer(statusTip_ms.data))
+	C.QAction_SetStatusTip(this.h, statusTip_ms)
 }
 
 func (this *QAction) StatusTip() string {
-	var _ms *C.struct_miqt_string = C.QAction_StatusTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_StatusTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAction) SetWhatsThis(what string) {
-	what_ms := libmiqt.Strdupg(what)
-	defer C.free(what_ms)
-	C.QAction_SetWhatsThis(this.h, (*C.struct_miqt_string)(what_ms))
+	what_ms := C.struct_miqt_string{}
+	what_ms.data = C.CString(what)
+	what_ms.len = C.size_t(len(what))
+	defer C.free(unsafe.Pointer(what_ms.data))
+	C.QAction_SetWhatsThis(this.h, what_ms)
 }
 
 func (this *QAction) WhatsThis() string {
-	var _ms *C.struct_miqt_string = C.QAction_WhatsThis(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_WhatsThis(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -513,9 +530,9 @@ func QAction_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -524,9 +541,9 @@ func QAction_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -535,9 +552,9 @@ func QAction_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -546,9 +563,9 @@ func QAction_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAction_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAction_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

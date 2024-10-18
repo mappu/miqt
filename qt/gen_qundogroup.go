@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -64,24 +63,24 @@ func (this *QUndoGroup) MetaObject() *QMetaObject {
 func (this *QUndoGroup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QUndoGroup_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QUndoGroup_Metacast(this.h, param1_Cstring))
 }
 
 func QUndoGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QUndoGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -125,16 +124,16 @@ func (this *QUndoGroup) CanRedo() bool {
 }
 
 func (this *QUndoGroup) UndoText() string {
-	var _ms *C.struct_miqt_string = C.QUndoGroup_UndoText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_UndoText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUndoGroup) RedoText() string {
-	var _ms *C.struct_miqt_string = C.QUndoGroup_RedoText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_RedoText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -255,50 +254,54 @@ func miqt_exec_callback_QUndoGroup_CanRedoChanged(cb C.intptr_t, canRedo C.bool)
 }
 
 func (this *QUndoGroup) UndoTextChanged(undoText string) {
-	undoText_ms := libmiqt.Strdupg(undoText)
-	defer C.free(undoText_ms)
-	C.QUndoGroup_UndoTextChanged(this.h, (*C.struct_miqt_string)(undoText_ms))
+	undoText_ms := C.struct_miqt_string{}
+	undoText_ms.data = C.CString(undoText)
+	undoText_ms.len = C.size_t(len(undoText))
+	defer C.free(unsafe.Pointer(undoText_ms.data))
+	C.QUndoGroup_UndoTextChanged(this.h, undoText_ms)
 }
 func (this *QUndoGroup) OnUndoTextChanged(slot func(undoText string)) {
 	C.QUndoGroup_connect_UndoTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoGroup_UndoTextChanged
-func miqt_exec_callback_QUndoGroup_UndoTextChanged(cb C.intptr_t, undoText *C.struct_miqt_string) {
+func miqt_exec_callback_QUndoGroup_UndoTextChanged(cb C.intptr_t, undoText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(undoText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var undoText_ms *C.struct_miqt_string = undoText
-	undoText_ret := C.GoStringN(&undoText_ms.data, C.int(int64(undoText_ms.len)))
-	C.free(unsafe.Pointer(undoText_ms))
+	var undoText_ms C.struct_miqt_string = undoText
+	undoText_ret := C.GoStringN(undoText_ms.data, C.int(int64(undoText_ms.len)))
+	C.free(unsafe.Pointer(undoText_ms.data))
 	slotval1 := undoText_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QUndoGroup) RedoTextChanged(redoText string) {
-	redoText_ms := libmiqt.Strdupg(redoText)
-	defer C.free(redoText_ms)
-	C.QUndoGroup_RedoTextChanged(this.h, (*C.struct_miqt_string)(redoText_ms))
+	redoText_ms := C.struct_miqt_string{}
+	redoText_ms.data = C.CString(redoText)
+	redoText_ms.len = C.size_t(len(redoText))
+	defer C.free(unsafe.Pointer(redoText_ms.data))
+	C.QUndoGroup_RedoTextChanged(this.h, redoText_ms)
 }
 func (this *QUndoGroup) OnRedoTextChanged(slot func(redoText string)) {
 	C.QUndoGroup_connect_RedoTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoGroup_RedoTextChanged
-func miqt_exec_callback_QUndoGroup_RedoTextChanged(cb C.intptr_t, redoText *C.struct_miqt_string) {
+func miqt_exec_callback_QUndoGroup_RedoTextChanged(cb C.intptr_t, redoText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(redoText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var redoText_ms *C.struct_miqt_string = redoText
-	redoText_ret := C.GoStringN(&redoText_ms.data, C.int(int64(redoText_ms.len)))
-	C.free(unsafe.Pointer(redoText_ms))
+	var redoText_ms C.struct_miqt_string = redoText
+	redoText_ret := C.GoStringN(redoText_ms.data, C.int(int64(redoText_ms.len)))
+	C.free(unsafe.Pointer(redoText_ms.data))
 	slotval1 := redoText_ret
 
 	gofunc(slotval1)
@@ -309,9 +312,9 @@ func QUndoGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -320,9 +323,9 @@ func QUndoGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -331,9 +334,9 @@ func QUndoGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -342,22 +345,26 @@ func QUndoGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QUndoGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QUndoGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QAction {
-	prefix_ms := libmiqt.Strdupg(prefix)
-	defer C.free(prefix_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoGroup_CreateUndoAction2(this.h, parent.cPointer(), prefix_ms)))
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
-	prefix_ms := libmiqt.Strdupg(prefix)
-	defer C.free(prefix_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), (*C.struct_miqt_string)(prefix_ms))))
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QUndoGroup_CreateRedoAction2(this.h, parent.cPointer(), prefix_ms)))
 }
 
 // Delete this object from C++ memory.

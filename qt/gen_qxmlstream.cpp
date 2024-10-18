@@ -21,8 +21,8 @@ QXmlStreamStringRef* QXmlStreamStringRef_new() {
 	return new QXmlStreamStringRef();
 }
 
-QXmlStreamStringRef* QXmlStreamStringRef_new2(struct miqt_string* aString) {
-	QString aString_QString = QString::fromUtf8(&aString->data, aString->len);
+QXmlStreamStringRef* QXmlStreamStringRef_new2(struct miqt_string aString) {
+	QString aString_QString = QString::fromUtf8(aString.data, aString.len);
 	return new QXmlStreamStringRef(aString_QString);
 }
 
@@ -42,11 +42,15 @@ void QXmlStreamStringRef_Clear(QXmlStreamStringRef* self) {
 	self->clear();
 }
 
-struct miqt_string* QXmlStreamStringRef_String(const QXmlStreamStringRef* self) {
+struct miqt_string QXmlStreamStringRef_String(const QXmlStreamStringRef* self) {
 	const QString* _ret = self->string();
 	// Convert QString pointer from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret->toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QXmlStreamStringRef_Position(const QXmlStreamStringRef* self) {
@@ -65,16 +69,16 @@ QXmlStreamAttribute* QXmlStreamAttribute_new() {
 	return new QXmlStreamAttribute();
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new2(struct miqt_string* qualifiedName, struct miqt_string* value) {
-	QString qualifiedName_QString = QString::fromUtf8(&qualifiedName->data, qualifiedName->len);
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+QXmlStreamAttribute* QXmlStreamAttribute_new2(struct miqt_string qualifiedName, struct miqt_string value) {
+	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	return new QXmlStreamAttribute(qualifiedName_QString, value_QString);
 }
 
-QXmlStreamAttribute* QXmlStreamAttribute_new3(struct miqt_string* namespaceUri, struct miqt_string* name, struct miqt_string* value) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+QXmlStreamAttribute* QXmlStreamAttribute_new3(struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	return new QXmlStreamAttribute(namespaceUri_QString, name_QString, value_QString);
 }
 
@@ -106,9 +110,9 @@ QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new() {
 	return new QXmlStreamNamespaceDeclaration();
 }
 
-QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new2(struct miqt_string* prefix, struct miqt_string* namespaceUri) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
+QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new2(struct miqt_string prefix, struct miqt_string namespaceUri) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	return new QXmlStreamNamespaceDeclaration(prefix_QString, namespaceUri_QString);
 }
 
@@ -180,21 +184,29 @@ void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self) {
 	delete self;
 }
 
-struct miqt_string* QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string* publicId, struct miqt_string* systemId) {
-	QString publicId_QString = QString::fromUtf8(&publicId->data, publicId->len);
-	QString systemId_QString = QString::fromUtf8(&systemId->data, systemId->len);
+struct miqt_string QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string publicId, struct miqt_string systemId) {
+	QString publicId_QString = QString::fromUtf8(publicId.data, publicId.len);
+	QString systemId_QString = QString::fromUtf8(systemId.data, systemId.len);
 	QString _ret = self->resolveEntity(publicId_QString, systemId_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEntityResolver* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+struct miqt_string QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEntityResolver* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString _ret = self->resolveUndeclaredEntity(name_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QXmlStreamEntityResolver_OperatorAssign(QXmlStreamEntityResolver* self, QXmlStreamEntityResolver* param1) {
@@ -213,12 +225,13 @@ QXmlStreamReader* QXmlStreamReader_new2(QIODevice* device) {
 	return new QXmlStreamReader(device);
 }
 
-QXmlStreamReader* QXmlStreamReader_new3(QByteArray* data) {
-	return new QXmlStreamReader(*data);
+QXmlStreamReader* QXmlStreamReader_new3(struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return new QXmlStreamReader(data_QByteArray);
 }
 
-QXmlStreamReader* QXmlStreamReader_new4(struct miqt_string* data) {
-	QString data_QString = QString::fromUtf8(&data->data, data->len);
+QXmlStreamReader* QXmlStreamReader_new4(struct miqt_string data) {
+	QString data_QString = QString::fromUtf8(data.data, data.len);
 	return new QXmlStreamReader(data_QString);
 }
 
@@ -234,12 +247,13 @@ QIODevice* QXmlStreamReader_Device(const QXmlStreamReader* self) {
 	return self->device();
 }
 
-void QXmlStreamReader_AddData(QXmlStreamReader* self, QByteArray* data) {
-	self->addData(*data);
+void QXmlStreamReader_AddData(QXmlStreamReader* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	self->addData(data_QByteArray);
 }
 
-void QXmlStreamReader_AddDataWithData(QXmlStreamReader* self, struct miqt_string* data) {
-	QString data_QString = QString::fromUtf8(&data->data, data->len);
+void QXmlStreamReader_AddDataWithData(QXmlStreamReader* self, struct miqt_string data) {
+	QString data_QString = QString::fromUtf8(data.data, data.len);
 	self->addData(data_QString);
 }
 
@@ -273,11 +287,15 @@ int QXmlStreamReader_TokenType(const QXmlStreamReader* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QXmlStreamReader_TokenString(const QXmlStreamReader* self) {
+struct miqt_string QXmlStreamReader_TokenString(const QXmlStreamReader* self) {
 	QString _ret = self->tokenString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QXmlStreamReader_SetNamespaceProcessing(QXmlStreamReader* self, bool namespaceProcessing) {
@@ -351,11 +369,15 @@ long long QXmlStreamReader_CharacterOffset(const QXmlStreamReader* self) {
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_string* QXmlStreamReader_ReadElementText(QXmlStreamReader* self) {
+struct miqt_string QXmlStreamReader_ReadElementText(QXmlStreamReader* self) {
 	QString _ret = self->readElementText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self) {
@@ -423,11 +445,15 @@ void QXmlStreamReader_RaiseError(QXmlStreamReader* self) {
 	self->raiseError();
 }
 
-struct miqt_string* QXmlStreamReader_ErrorString(const QXmlStreamReader* self) {
+struct miqt_string QXmlStreamReader_ErrorString(const QXmlStreamReader* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QXmlStreamReader_Error(const QXmlStreamReader* self) {
@@ -447,15 +473,19 @@ QXmlStreamEntityResolver* QXmlStreamReader_EntityResolver(const QXmlStreamReader
 	return self->entityResolver();
 }
 
-struct miqt_string* QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, int behaviour) {
+struct miqt_string QXmlStreamReader_ReadElementText1(QXmlStreamReader* self, int behaviour) {
 	QString _ret = self->readElementText(static_cast<QXmlStreamReader::ReadElementTextBehaviour>(behaviour));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string* message) {
-	QString message_QString = QString::fromUtf8(&message->data, message->len);
+void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string message) {
+	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->raiseError(message_QString);
 }
 
@@ -469,10 +499,6 @@ QXmlStreamWriter* QXmlStreamWriter_new() {
 
 QXmlStreamWriter* QXmlStreamWriter_new2(QIODevice* device) {
 	return new QXmlStreamWriter(device);
-}
-
-QXmlStreamWriter* QXmlStreamWriter_new3(QByteArray* array) {
-	return new QXmlStreamWriter(array);
 }
 
 void QXmlStreamWriter_SetDevice(QXmlStreamWriter* self, QIODevice* device) {
@@ -511,16 +537,16 @@ int QXmlStreamWriter_AutoFormattingIndent(const QXmlStreamWriter* self) {
 	return self->autoFormattingIndent();
 }
 
-void QXmlStreamWriter_WriteAttribute(QXmlStreamWriter* self, struct miqt_string* qualifiedName, struct miqt_string* value) {
-	QString qualifiedName_QString = QString::fromUtf8(&qualifiedName->data, qualifiedName->len);
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+void QXmlStreamWriter_WriteAttribute(QXmlStreamWriter* self, struct miqt_string qualifiedName, struct miqt_string value) {
+	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	self->writeAttribute(qualifiedName_QString, value_QString);
 }
 
-void QXmlStreamWriter_WriteAttribute2(QXmlStreamWriter* self, struct miqt_string* namespaceUri, struct miqt_string* name, struct miqt_string* value) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+void QXmlStreamWriter_WriteAttribute2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string value) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	self->writeAttribute(namespaceUri_QString, name_QString, value_QString);
 }
 
@@ -528,47 +554,47 @@ void QXmlStreamWriter_WriteAttributeWithAttribute(QXmlStreamWriter* self, QXmlSt
 	self->writeAttribute(*attribute);
 }
 
-void QXmlStreamWriter_WriteCDATA(QXmlStreamWriter* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QXmlStreamWriter_WriteCDATA(QXmlStreamWriter* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->writeCDATA(text_QString);
 }
 
-void QXmlStreamWriter_WriteCharacters(QXmlStreamWriter* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QXmlStreamWriter_WriteCharacters(QXmlStreamWriter* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->writeCharacters(text_QString);
 }
 
-void QXmlStreamWriter_WriteComment(QXmlStreamWriter* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QXmlStreamWriter_WriteComment(QXmlStreamWriter* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->writeComment(text_QString);
 }
 
-void QXmlStreamWriter_WriteDTD(QXmlStreamWriter* self, struct miqt_string* dtd) {
-	QString dtd_QString = QString::fromUtf8(&dtd->data, dtd->len);
+void QXmlStreamWriter_WriteDTD(QXmlStreamWriter* self, struct miqt_string dtd) {
+	QString dtd_QString = QString::fromUtf8(dtd.data, dtd.len);
 	self->writeDTD(dtd_QString);
 }
 
-void QXmlStreamWriter_WriteEmptyElement(QXmlStreamWriter* self, struct miqt_string* qualifiedName) {
-	QString qualifiedName_QString = QString::fromUtf8(&qualifiedName->data, qualifiedName->len);
+void QXmlStreamWriter_WriteEmptyElement(QXmlStreamWriter* self, struct miqt_string qualifiedName) {
+	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
 	self->writeEmptyElement(qualifiedName_QString);
 }
 
-void QXmlStreamWriter_WriteEmptyElement2(QXmlStreamWriter* self, struct miqt_string* namespaceUri, struct miqt_string* name) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QXmlStreamWriter_WriteEmptyElement2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string name) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->writeEmptyElement(namespaceUri_QString, name_QString);
 }
 
-void QXmlStreamWriter_WriteTextElement(QXmlStreamWriter* self, struct miqt_string* qualifiedName, struct miqt_string* text) {
-	QString qualifiedName_QString = QString::fromUtf8(&qualifiedName->data, qualifiedName->len);
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QXmlStreamWriter_WriteTextElement(QXmlStreamWriter* self, struct miqt_string qualifiedName, struct miqt_string text) {
+	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->writeTextElement(qualifiedName_QString, text_QString);
 }
 
-void QXmlStreamWriter_WriteTextElement2(QXmlStreamWriter* self, struct miqt_string* namespaceUri, struct miqt_string* name, struct miqt_string* text) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QXmlStreamWriter_WriteTextElement2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string text) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->writeTextElement(namespaceUri_QString, name_QString, text_QString);
 }
 
@@ -580,23 +606,23 @@ void QXmlStreamWriter_WriteEndElement(QXmlStreamWriter* self) {
 	self->writeEndElement();
 }
 
-void QXmlStreamWriter_WriteEntityReference(QXmlStreamWriter* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QXmlStreamWriter_WriteEntityReference(QXmlStreamWriter* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->writeEntityReference(name_QString);
 }
 
-void QXmlStreamWriter_WriteNamespace(QXmlStreamWriter* self, struct miqt_string* namespaceUri) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
+void QXmlStreamWriter_WriteNamespace(QXmlStreamWriter* self, struct miqt_string namespaceUri) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	self->writeNamespace(namespaceUri_QString);
 }
 
-void QXmlStreamWriter_WriteDefaultNamespace(QXmlStreamWriter* self, struct miqt_string* namespaceUri) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
+void QXmlStreamWriter_WriteDefaultNamespace(QXmlStreamWriter* self, struct miqt_string namespaceUri) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	self->writeDefaultNamespace(namespaceUri_QString);
 }
 
-void QXmlStreamWriter_WriteProcessingInstruction(QXmlStreamWriter* self, struct miqt_string* target) {
-	QString target_QString = QString::fromUtf8(&target->data, target->len);
+void QXmlStreamWriter_WriteProcessingInstruction(QXmlStreamWriter* self, struct miqt_string target) {
+	QString target_QString = QString::fromUtf8(target.data, target.len);
 	self->writeProcessingInstruction(target_QString);
 }
 
@@ -604,24 +630,24 @@ void QXmlStreamWriter_WriteStartDocument(QXmlStreamWriter* self) {
 	self->writeStartDocument();
 }
 
-void QXmlStreamWriter_WriteStartDocumentWithVersion(QXmlStreamWriter* self, struct miqt_string* version) {
-	QString version_QString = QString::fromUtf8(&version->data, version->len);
+void QXmlStreamWriter_WriteStartDocumentWithVersion(QXmlStreamWriter* self, struct miqt_string version) {
+	QString version_QString = QString::fromUtf8(version.data, version.len);
 	self->writeStartDocument(version_QString);
 }
 
-void QXmlStreamWriter_WriteStartDocument2(QXmlStreamWriter* self, struct miqt_string* version, bool standalone) {
-	QString version_QString = QString::fromUtf8(&version->data, version->len);
+void QXmlStreamWriter_WriteStartDocument2(QXmlStreamWriter* self, struct miqt_string version, bool standalone) {
+	QString version_QString = QString::fromUtf8(version.data, version.len);
 	self->writeStartDocument(version_QString, standalone);
 }
 
-void QXmlStreamWriter_WriteStartElement(QXmlStreamWriter* self, struct miqt_string* qualifiedName) {
-	QString qualifiedName_QString = QString::fromUtf8(&qualifiedName->data, qualifiedName->len);
+void QXmlStreamWriter_WriteStartElement(QXmlStreamWriter* self, struct miqt_string qualifiedName) {
+	QString qualifiedName_QString = QString::fromUtf8(qualifiedName.data, qualifiedName.len);
 	self->writeStartElement(qualifiedName_QString);
 }
 
-void QXmlStreamWriter_WriteStartElement2(QXmlStreamWriter* self, struct miqt_string* namespaceUri, struct miqt_string* name) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QXmlStreamWriter_WriteStartElement2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string name) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->writeStartElement(namespaceUri_QString, name_QString);
 }
 
@@ -633,15 +659,15 @@ bool QXmlStreamWriter_HasError(const QXmlStreamWriter* self) {
 	return self->hasError();
 }
 
-void QXmlStreamWriter_WriteNamespace2(QXmlStreamWriter* self, struct miqt_string* namespaceUri, struct miqt_string* prefix) {
-	QString namespaceUri_QString = QString::fromUtf8(&namespaceUri->data, namespaceUri->len);
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+void QXmlStreamWriter_WriteNamespace2(QXmlStreamWriter* self, struct miqt_string namespaceUri, struct miqt_string prefix) {
+	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	self->writeNamespace(namespaceUri_QString, prefix_QString);
 }
 
-void QXmlStreamWriter_WriteProcessingInstruction2(QXmlStreamWriter* self, struct miqt_string* target, struct miqt_string* data) {
-	QString target_QString = QString::fromUtf8(&target->data, target->len);
-	QString data_QString = QString::fromUtf8(&data->data, data->len);
+void QXmlStreamWriter_WriteProcessingInstruction2(QXmlStreamWriter* self, struct miqt_string target, struct miqt_string data) {
+	QString target_QString = QString::fromUtf8(target.data, target.len);
+	QString data_QString = QString::fromUtf8(data.data, data.len);
 	self->writeProcessingInstruction(target_QString, data_QString);
 }
 

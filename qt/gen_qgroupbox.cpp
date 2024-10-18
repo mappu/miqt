@@ -13,8 +13,8 @@ QGroupBox* QGroupBox_new() {
 	return new QGroupBox();
 }
 
-QGroupBox* QGroupBox_new2(struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QGroupBox* QGroupBox_new2(struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QGroupBox(title_QString);
 }
 
@@ -22,8 +22,8 @@ QGroupBox* QGroupBox_new3(QWidget* parent) {
 	return new QGroupBox(parent);
 }
 
-QGroupBox* QGroupBox_new4(struct miqt_string* title, QWidget* parent) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QGroupBox* QGroupBox_new4(struct miqt_string title, QWidget* parent) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QGroupBox(title_QString, parent);
 }
 
@@ -35,29 +35,41 @@ void* QGroupBox_Metacast(QGroupBox* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGroupBox_Tr(const char* s) {
+struct miqt_string QGroupBox_Tr(const char* s) {
 	QString _ret = QGroupBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGroupBox_TrUtf8(const char* s) {
+struct miqt_string QGroupBox_TrUtf8(const char* s) {
 	QString _ret = QGroupBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGroupBox_Title(const QGroupBox* self) {
+struct miqt_string QGroupBox_Title(const QGroupBox* self) {
 	QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGroupBox_SetTitle(QGroupBox* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+void QGroupBox_SetTitle(QGroupBox* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	self->setTitle(title_QString);
 }
 
@@ -119,32 +131,48 @@ void QGroupBox_connect_Toggled(QGroupBox* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QGroupBox_Tr2(const char* s, const char* c) {
+struct miqt_string QGroupBox_Tr2(const char* s, const char* c) {
 	QString _ret = QGroupBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGroupBox_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGroupBox_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGroupBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGroupBox_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGroupBox_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGroupBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGroupBox_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGroupBox_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGroupBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGroupBox_Clicked1(QGroupBox* self, bool checked) {

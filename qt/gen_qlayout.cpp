@@ -20,18 +20,26 @@ void* QLayout_Metacast(QLayout* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QLayout_Tr(const char* s) {
+struct miqt_string QLayout_Tr(const char* s) {
 	QString _ret = QLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLayout_TrUtf8(const char* s) {
+struct miqt_string QLayout_TrUtf8(const char* s) {
 	QString _ret = QLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QLayout_Margin(const QLayout* self) {
@@ -213,32 +221,48 @@ QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s) {
 	return new QSize(QLayout::closestAcceptableSize(w, *s));
 }
 
-struct miqt_string* QLayout_Tr2(const char* s, const char* c) {
+struct miqt_string QLayout_Tr2(const char* s, const char* c) {
 	QString _ret = QLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLayout_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QLayout_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLayout_TrUtf82(const char* s, const char* c) {
+struct miqt_string QLayout_TrUtf82(const char* s, const char* c) {
 	QString _ret = QLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLayout_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QLayout_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {

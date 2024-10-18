@@ -33,8 +33,8 @@ QPlainTextEdit* QPlainTextEdit_new() {
 	return new QPlainTextEdit();
 }
 
-QPlainTextEdit* QPlainTextEdit_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QPlainTextEdit* QPlainTextEdit_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QPlainTextEdit(text_QString);
 }
 
@@ -42,8 +42,8 @@ QPlainTextEdit* QPlainTextEdit_new3(QWidget* parent) {
 	return new QPlainTextEdit(parent);
 }
 
-QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string* text, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string text, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QPlainTextEdit(text_QString, parent);
 }
 
@@ -55,18 +55,26 @@ void* QPlainTextEdit_Metacast(QPlainTextEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QPlainTextEdit_Tr(const char* s) {
+struct miqt_string QPlainTextEdit_Tr(const char* s) {
 	QString _ret = QPlainTextEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextEdit_TrUtf8(const char* s) {
+struct miqt_string QPlainTextEdit_TrUtf8(const char* s) {
 	QString _ret = QPlainTextEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPlainTextEdit_SetDocument(QPlainTextEdit* self, QTextDocument* document) {
@@ -77,16 +85,20 @@ QTextDocument* QPlainTextEdit_Document(const QPlainTextEdit* self) {
 	return self->document();
 }
 
-void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, struct miqt_string* placeholderText) {
-	QString placeholderText_QString = QString::fromUtf8(&placeholderText->data, placeholderText->len);
+void QPlainTextEdit_SetPlaceholderText(QPlainTextEdit* self, struct miqt_string placeholderText) {
+	QString placeholderText_QString = QString::fromUtf8(placeholderText.data, placeholderText.len);
 	self->setPlaceholderText(placeholderText_QString);
 }
 
-struct miqt_string* QPlainTextEdit_PlaceholderText(const QPlainTextEdit* self) {
+struct miqt_string QPlainTextEdit_PlaceholderText(const QPlainTextEdit* self) {
 	QString _ret = self->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPlainTextEdit_SetTextCursor(QPlainTextEdit* self, QTextCursor* cursor) {
@@ -134,16 +146,20 @@ void QPlainTextEdit_SetTabChangesFocus(QPlainTextEdit* self, bool b) {
 	self->setTabChangesFocus(b);
 }
 
-void QPlainTextEdit_SetDocumentTitle(QPlainTextEdit* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+void QPlainTextEdit_SetDocumentTitle(QPlainTextEdit* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	self->setDocumentTitle(title_QString);
 }
 
-struct miqt_string* QPlainTextEdit_DocumentTitle(const QPlainTextEdit* self) {
+struct miqt_string QPlainTextEdit_DocumentTitle(const QPlainTextEdit* self) {
 	QString _ret = self->documentTitle();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QPlainTextEdit_IsUndoRedoEnabled(const QPlainTextEdit* self) {
@@ -196,8 +212,8 @@ bool QPlainTextEdit_CenterOnScroll(const QPlainTextEdit* self) {
 	return self->centerOnScroll();
 }
 
-bool QPlainTextEdit_Find(QPlainTextEdit* self, struct miqt_string* exp) {
-	QString exp_QString = QString::fromUtf8(&exp->data, exp->len);
+bool QPlainTextEdit_Find(QPlainTextEdit* self, struct miqt_string exp) {
+	QString exp_QString = QString::fromUtf8(exp.data, exp.len);
 	return self->find(exp_QString);
 }
 
@@ -209,11 +225,15 @@ bool QPlainTextEdit_Find2(QPlainTextEdit* self, QRegularExpression* exp) {
 	return self->find(*exp);
 }
 
-struct miqt_string* QPlainTextEdit_ToPlainText(const QPlainTextEdit* self) {
+struct miqt_string QPlainTextEdit_ToPlainText(const QPlainTextEdit* self) {
 	QString _ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPlainTextEdit_EnsureCursorVisible(QPlainTextEdit* self) {
@@ -244,11 +264,15 @@ QRect* QPlainTextEdit_CursorRect2(const QPlainTextEdit* self) {
 	return new QRect(self->cursorRect());
 }
 
-struct miqt_string* QPlainTextEdit_AnchorAt(const QPlainTextEdit* self, QPoint* pos) {
+struct miqt_string QPlainTextEdit_AnchorAt(const QPlainTextEdit* self, QPoint* pos) {
 	QString _ret = self->anchorAt(*pos);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QPlainTextEdit_OverwriteMode(const QPlainTextEdit* self) {
@@ -331,8 +355,8 @@ QVariant* QPlainTextEdit_InputMethodQuery2(const QPlainTextEdit* self, int query
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(query), *argument));
 }
 
-void QPlainTextEdit_SetPlainText(QPlainTextEdit* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPlainTextEdit_SetPlainText(QPlainTextEdit* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setPlainText(text_QString);
 }
 
@@ -364,18 +388,18 @@ void QPlainTextEdit_SelectAll(QPlainTextEdit* self) {
 	self->selectAll();
 }
 
-void QPlainTextEdit_InsertPlainText(QPlainTextEdit* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPlainTextEdit_InsertPlainText(QPlainTextEdit* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->insertPlainText(text_QString);
 }
 
-void QPlainTextEdit_AppendPlainText(QPlainTextEdit* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPlainTextEdit_AppendPlainText(QPlainTextEdit* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->appendPlainText(text_QString);
 }
 
-void QPlainTextEdit_AppendHtml(QPlainTextEdit* self, struct miqt_string* html) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+void QPlainTextEdit_AppendHtml(QPlainTextEdit* self, struct miqt_string html) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	self->appendHtml(html_QString);
 }
 
@@ -490,36 +514,52 @@ void QPlainTextEdit_connect_ModificationChanged(QPlainTextEdit* self, intptr_t s
 	});
 }
 
-struct miqt_string* QPlainTextEdit_Tr2(const char* s, const char* c) {
+struct miqt_string QPlainTextEdit_Tr2(const char* s, const char* c) {
 	QString _ret = QPlainTextEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPlainTextEdit_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QPlainTextEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string QPlainTextEdit_TrUtf82(const char* s, const char* c) {
 	QString _ret = QPlainTextEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QPlainTextEdit_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QPlainTextEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-bool QPlainTextEdit_Find22(QPlainTextEdit* self, struct miqt_string* exp, int options) {
-	QString exp_QString = QString::fromUtf8(&exp->data, exp->len);
+bool QPlainTextEdit_Find22(QPlainTextEdit* self, struct miqt_string exp, int options) {
+	QString exp_QString = QString::fromUtf8(exp.data, exp.len);
 	return self->find(exp_QString, static_cast<QTextDocument::FindFlags>(options));
 }
 
@@ -559,18 +599,26 @@ void* QPlainTextDocumentLayout_Metacast(QPlainTextDocumentLayout* self, const ch
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QPlainTextDocumentLayout_Tr(const char* s) {
+struct miqt_string QPlainTextDocumentLayout_Tr(const char* s) {
 	QString _ret = QPlainTextDocumentLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextDocumentLayout_TrUtf8(const char* s) {
+struct miqt_string QPlainTextDocumentLayout_TrUtf8(const char* s) {
 	QString _ret = QPlainTextDocumentLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout* self, QPainter* param1, QAbstractTextDocumentLayout__PaintContext* param2) {
@@ -613,32 +661,48 @@ void QPlainTextDocumentLayout_RequestUpdate(QPlainTextDocumentLayout* self) {
 	self->requestUpdate();
 }
 
-struct miqt_string* QPlainTextDocumentLayout_Tr2(const char* s, const char* c) {
+struct miqt_string QPlainTextDocumentLayout_Tr2(const char* s, const char* c) {
 	QString _ret = QPlainTextDocumentLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextDocumentLayout_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPlainTextDocumentLayout_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QPlainTextDocumentLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextDocumentLayout_TrUtf82(const char* s, const char* c) {
+struct miqt_string QPlainTextDocumentLayout_TrUtf82(const char* s, const char* c) {
 	QString _ret = QPlainTextDocumentLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPlainTextDocumentLayout_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QPlainTextDocumentLayout_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QPlainTextDocumentLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self) {

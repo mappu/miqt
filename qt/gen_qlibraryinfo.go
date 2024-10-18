@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,16 +63,16 @@ func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
 }
 
 func QLibraryInfo_Licensee() string {
-	var _ms *C.struct_miqt_string = C.QLibraryInfo_Licensee()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibraryInfo_Licensee()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLibraryInfo_LicensedProducts() string {
-	var _ms *C.struct_miqt_string = C.QLibraryInfo_LicensedProducts()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibraryInfo_LicensedProducts()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -84,9 +83,9 @@ func QLibraryInfo_BuildDate() *QDate {
 	return _goptr
 }
 
-func QLibraryInfo_Build() unsafe.Pointer {
+func QLibraryInfo_Build() string {
 	_ret := C.QLibraryInfo_Build()
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func QLibraryInfo_IsDebugBuild() bool {
@@ -101,22 +100,24 @@ func QLibraryInfo_Version() *QVersionNumber {
 }
 
 func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
-	var _ms *C.struct_miqt_string = C.QLibraryInfo_Location((C.int)(param1))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLibraryInfo_Location((C.int)(param1))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
-	platformName_ms := libmiqt.Strdupg(platformName)
-	defer C.free(platformName_ms)
-	var _ma *C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments((*C.struct_miqt_string)(platformName_ms))
+	platformName_ms := C.struct_miqt_string{}
+	platformName_ms.data = C.CString(platformName)
+	platformName_ms.len = C.size_t(len(platformName))
+	defer C.free(unsafe.Pointer(platformName_ms.data))
+	var _ma *C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments(platformName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))

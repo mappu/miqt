@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -76,50 +75,59 @@ func (this *QTextDocumentFragment) IsEmpty() bool {
 }
 
 func (this *QTextDocumentFragment) ToPlainText() string {
-	var _ms *C.struct_miqt_string = C.QTextDocumentFragment_ToPlainText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToPlainText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocumentFragment) ToHtml() string {
-	var _ms *C.struct_miqt_string = C.QTextDocumentFragment_ToHtml(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToHtml(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragment {
-	plainText_ms := libmiqt.Strdupg(plainText)
-	defer C.free(plainText_ms)
-	_ret := C.QTextDocumentFragment_FromPlainText((*C.struct_miqt_string)(plainText_ms))
+	plainText_ms := C.struct_miqt_string{}
+	plainText_ms.data = C.CString(plainText)
+	plainText_ms.len = C.size_t(len(plainText))
+	defer C.free(unsafe.Pointer(plainText_ms.data))
+	_ret := C.QTextDocumentFragment_FromPlainText(plainText_ms)
 	_goptr := newQTextDocumentFragment(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
-	html_ms := libmiqt.Strdupg(html)
-	defer C.free(html_ms)
-	_ret := C.QTextDocumentFragment_FromHtml((*C.struct_miqt_string)(html_ms))
+	html_ms := C.struct_miqt_string{}
+	html_ms.data = C.CString(html)
+	html_ms.len = C.size_t(len(html))
+	defer C.free(unsafe.Pointer(html_ms.data))
+	_ret := C.QTextDocumentFragment_FromHtml(html_ms)
 	_goptr := newQTextDocumentFragment(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocument) *QTextDocumentFragment {
-	html_ms := libmiqt.Strdupg(html)
-	defer C.free(html_ms)
-	_ret := C.QTextDocumentFragment_FromHtml2((*C.struct_miqt_string)(html_ms), resourceProvider.cPointer())
+	html_ms := C.struct_miqt_string{}
+	html_ms.data = C.CString(html)
+	html_ms.len = C.size_t(len(html))
+	defer C.free(unsafe.Pointer(html_ms.data))
+	_ret := C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer())
 	_goptr := newQTextDocumentFragment(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocumentFragment) ToHtml1(encoding *QByteArray) string {
-	var _ms *C.struct_miqt_string = C.QTextDocumentFragment_ToHtml1(this.h, encoding.cPointer())
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+func (this *QTextDocumentFragment) ToHtml1(encoding []byte) string {
+	encoding_alias := C.struct_miqt_string{}
+	encoding_alias.data = (*C.char)(unsafe.Pointer(&encoding[0]))
+	encoding_alias.len = C.size_t(len(encoding))
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToHtml1(this.h, encoding_alias)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

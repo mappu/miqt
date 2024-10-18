@@ -16,9 +16,9 @@ QProgressDialog* QProgressDialog_new() {
 	return new QProgressDialog();
 }
 
-QProgressDialog* QProgressDialog_new2(struct miqt_string* labelText, struct miqt_string* cancelButtonText, int minimum, int maximum) {
-	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
-	QString cancelButtonText_QString = QString::fromUtf8(&cancelButtonText->data, cancelButtonText->len);
+QProgressDialog* QProgressDialog_new2(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum) {
+	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
+	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
 	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
 }
 
@@ -30,15 +30,15 @@ QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags) {
 	return new QProgressDialog(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-QProgressDialog* QProgressDialog_new5(struct miqt_string* labelText, struct miqt_string* cancelButtonText, int minimum, int maximum, QWidget* parent) {
-	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
-	QString cancelButtonText_QString = QString::fromUtf8(&cancelButtonText->data, cancelButtonText->len);
+QProgressDialog* QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent) {
+	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
+	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
 	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent);
 }
 
-QProgressDialog* QProgressDialog_new6(struct miqt_string* labelText, struct miqt_string* cancelButtonText, int minimum, int maximum, QWidget* parent, int flags) {
-	QString labelText_QString = QString::fromUtf8(&labelText->data, labelText->len);
-	QString cancelButtonText_QString = QString::fromUtf8(&cancelButtonText->data, cancelButtonText->len);
+QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags) {
+	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
+	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
 	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
 }
 
@@ -50,18 +50,26 @@ void* QProgressDialog_Metacast(QProgressDialog* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QProgressDialog_Tr(const char* s) {
+struct miqt_string QProgressDialog_Tr(const char* s) {
 	QString _ret = QProgressDialog::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressDialog_TrUtf8(const char* s) {
+struct miqt_string QProgressDialog_TrUtf8(const char* s) {
 	QString _ret = QProgressDialog::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProgressDialog_SetLabel(QProgressDialog* self, QLabel* label) {
@@ -96,11 +104,15 @@ QSize* QProgressDialog_SizeHint(const QProgressDialog* self) {
 	return new QSize(self->sizeHint());
 }
 
-struct miqt_string* QProgressDialog_LabelText(const QProgressDialog* self) {
+struct miqt_string QProgressDialog_LabelText(const QProgressDialog* self) {
 	QString _ret = self->labelText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QProgressDialog_MinimumDuration(const QProgressDialog* self) {
@@ -147,13 +159,13 @@ void QProgressDialog_SetValue(QProgressDialog* self, int progress) {
 	self->setValue(static_cast<int>(progress));
 }
 
-void QProgressDialog_SetLabelText(QProgressDialog* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QProgressDialog_SetLabelText(QProgressDialog* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setLabelText(text_QString);
 }
 
-void QProgressDialog_SetCancelButtonText(QProgressDialog* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QProgressDialog_SetCancelButtonText(QProgressDialog* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setCancelButtonText(text_QString);
 }
 
@@ -171,32 +183,48 @@ void QProgressDialog_connect_Canceled(QProgressDialog* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QProgressDialog_Tr2(const char* s, const char* c) {
+struct miqt_string QProgressDialog_Tr2(const char* s, const char* c) {
 	QString _ret = QProgressDialog::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressDialog_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QProgressDialog_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QProgressDialog::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressDialog_TrUtf82(const char* s, const char* c) {
+struct miqt_string QProgressDialog_TrUtf82(const char* s, const char* c) {
 	QString _ret = QProgressDialog::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProgressDialog_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QProgressDialog_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QProgressDialog::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProgressDialog_Delete(QProgressDialog* self) {

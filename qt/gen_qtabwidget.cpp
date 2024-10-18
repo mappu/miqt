@@ -27,37 +27,45 @@ void* QTabWidget_Metacast(QTabWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTabWidget_Tr(const char* s) {
+struct miqt_string QTabWidget_Tr(const char* s) {
 	QString _ret = QTabWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTabWidget_TrUtf8(const char* s) {
+struct miqt_string QTabWidget_TrUtf8(const char* s) {
 	QString _ret = QTabWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-int QTabWidget_AddTab(QTabWidget* self, QWidget* widget, struct miqt_string* param2) {
-	QString param2_QString = QString::fromUtf8(&param2->data, param2->len);
+int QTabWidget_AddTab(QTabWidget* self, QWidget* widget, struct miqt_string param2) {
+	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	return self->addTab(widget, param2_QString);
 }
 
-int QTabWidget_AddTab2(QTabWidget* self, QWidget* widget, QIcon* icon, struct miqt_string* label) {
-	QString label_QString = QString::fromUtf8(&label->data, label->len);
+int QTabWidget_AddTab2(QTabWidget* self, QWidget* widget, QIcon* icon, struct miqt_string label) {
+	QString label_QString = QString::fromUtf8(label.data, label.len);
 	return self->addTab(widget, *icon, label_QString);
 }
 
-int QTabWidget_InsertTab(QTabWidget* self, int index, QWidget* widget, struct miqt_string* param3) {
-	QString param3_QString = QString::fromUtf8(&param3->data, param3->len);
+int QTabWidget_InsertTab(QTabWidget* self, int index, QWidget* widget, struct miqt_string param3) {
+	QString param3_QString = QString::fromUtf8(param3.data, param3.len);
 	return self->insertTab(static_cast<int>(index), widget, param3_QString);
 }
 
-int QTabWidget_InsertTab2(QTabWidget* self, int index, QWidget* widget, QIcon* icon, struct miqt_string* label) {
-	QString label_QString = QString::fromUtf8(&label->data, label->len);
+int QTabWidget_InsertTab2(QTabWidget* self, int index, QWidget* widget, QIcon* icon, struct miqt_string label) {
+	QString label_QString = QString::fromUtf8(label.data, label.len);
 	return self->insertTab(static_cast<int>(index), widget, *icon, label_QString);
 }
 
@@ -81,15 +89,19 @@ void QTabWidget_SetTabVisible(QTabWidget* self, int index, bool visible) {
 	self->setTabVisible(static_cast<int>(index), visible);
 }
 
-struct miqt_string* QTabWidget_TabText(const QTabWidget* self, int index) {
+struct miqt_string QTabWidget_TabText(const QTabWidget* self, int index) {
 	QString _ret = self->tabText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTabWidget_SetTabText(QTabWidget* self, int index, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTabWidget_SetTabText(QTabWidget* self, int index, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setTabText(static_cast<int>(index), text_QString);
 }
 
@@ -101,28 +113,36 @@ void QTabWidget_SetTabIcon(QTabWidget* self, int index, QIcon* icon) {
 	self->setTabIcon(static_cast<int>(index), *icon);
 }
 
-void QTabWidget_SetTabToolTip(QTabWidget* self, int index, struct miqt_string* tip) {
-	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
+void QTabWidget_SetTabToolTip(QTabWidget* self, int index, struct miqt_string tip) {
+	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
 	self->setTabToolTip(static_cast<int>(index), tip_QString);
 }
 
-struct miqt_string* QTabWidget_TabToolTip(const QTabWidget* self, int index) {
+struct miqt_string QTabWidget_TabToolTip(const QTabWidget* self, int index) {
 	QString _ret = self->tabToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTabWidget_SetTabWhatsThis(QTabWidget* self, int index, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setTabWhatsThis(static_cast<int>(index), text_QString);
 }
 
-struct miqt_string* QTabWidget_TabWhatsThis(const QTabWidget* self, int index) {
+struct miqt_string QTabWidget_TabWhatsThis(const QTabWidget* self, int index) {
 	QString _ret = self->tabWhatsThis(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QTabWidget_CurrentIndex(const QTabWidget* self) {
@@ -304,32 +324,48 @@ void QTabWidget_connect_TabBarDoubleClicked(QTabWidget* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QTabWidget_Tr2(const char* s, const char* c) {
+struct miqt_string QTabWidget_Tr2(const char* s, const char* c) {
 	QString _ret = QTabWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTabWidget_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTabWidget_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTabWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTabWidget_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTabWidget_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTabWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTabWidget_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTabWidget_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTabWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTabWidget_SetCornerWidget2(QTabWidget* self, QWidget* w, int corner) {

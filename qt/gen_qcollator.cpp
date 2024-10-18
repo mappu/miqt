@@ -82,9 +82,9 @@ bool QCollator_IgnorePunctuation(const QCollator* self) {
 	return self->ignorePunctuation();
 }
 
-int QCollator_Compare(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2) {
-	QString s1_QString = QString::fromUtf8(&s1->data, s1->len);
-	QString s2_QString = QString::fromUtf8(&s2->data, s2->len);
+int QCollator_Compare(const QCollator* self, struct miqt_string s1, struct miqt_string s2) {
+	QString s1_QString = QString::fromUtf8(s1.data, s1.len);
+	QString s2_QString = QString::fromUtf8(s2.data, s2.len);
 	return self->compare(s1_QString, s2_QString);
 }
 
@@ -92,14 +92,14 @@ int QCollator_Compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, in
 	return self->compare(s1, static_cast<int>(len1), s2, static_cast<int>(len2));
 }
 
-bool QCollator_OperatorCall(const QCollator* self, struct miqt_string* s1, struct miqt_string* s2) {
-	QString s1_QString = QString::fromUtf8(&s1->data, s1->len);
-	QString s2_QString = QString::fromUtf8(&s2->data, s2->len);
+bool QCollator_OperatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2) {
+	QString s1_QString = QString::fromUtf8(s1.data, s1.len);
+	QString s2_QString = QString::fromUtf8(s2.data, s2.len);
 	return self->operator()(s1_QString, s2_QString);
 }
 
-QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string* stringVal) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string stringVal) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	return new QCollatorSortKey(self->sortKey(stringVal_QString));
 }
 

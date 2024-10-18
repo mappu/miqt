@@ -43,10 +43,10 @@ bool QStylePainter_Begin2(QStylePainter* self, QPaintDevice* pd, QWidget* w);
 void QStylePainter_DrawPrimitive(QStylePainter* self, int pe, QStyleOption* opt);
 void QStylePainter_DrawControl(QStylePainter* self, int ce, QStyleOption* opt);
 void QStylePainter_DrawComplexControl(QStylePainter* self, int cc, QStyleOptionComplex* opt);
-void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text);
+void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text);
 void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
 QStyle* QStylePainter_Style(const QStylePainter* self);
-void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string* text, int textRole);
+void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
 void QStylePainter_Delete(QStylePainter* self);
 
 #ifdef __cplusplus

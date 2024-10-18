@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,9 +63,11 @@ func NewQPixmap3(param1 *QSize) *QPixmap {
 
 // NewQPixmap4 constructs a new QPixmap object.
 func NewQPixmap4(fileName string) *QPixmap {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QPixmap_new4((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QPixmap_new4(fileName_ms)
 	return newQPixmap(ret)
 }
 
@@ -78,21 +79,25 @@ func NewQPixmap5(param1 *QPixmap) *QPixmap {
 
 // NewQPixmap6 constructs a new QPixmap object.
 func NewQPixmap6(fileName string, format string) *QPixmap {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_new6((*C.struct_miqt_string)(fileName_ms), format_Cstring)
+	ret := C.QPixmap_new6(fileName_ms, format_Cstring)
 	return newQPixmap(ret)
 }
 
 // NewQPixmap7 constructs a new QPixmap object.
 func NewQPixmap7(fileName string, format string, flags ImageConversionFlag) *QPixmap {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPixmap_new7((*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags))
+	ret := C.QPixmap_new7(fileName_ms, format_Cstring, (C.int)(flags))
 	return newQPixmap(ret)
 }
 
@@ -294,23 +299,30 @@ func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
 }
 
 func (this *QPixmap) Load(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QPixmap_Load(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QPixmap_Load(this.h, fileName_ms))
 }
 
 func (this *QPixmap) LoadFromData(buf *byte, lenVal uint) bool {
 	return (bool)(C.QPixmap_LoadFromData(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal)))
 }
 
-func (this *QPixmap) LoadFromDataWithData(data *QByteArray) bool {
-	return (bool)(C.QPixmap_LoadFromDataWithData(this.h, data.cPointer()))
+func (this *QPixmap) LoadFromDataWithData(data []byte) bool {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	return (bool)(C.QPixmap_LoadFromDataWithData(this.h, data_alias))
 }
 
 func (this *QPixmap) Save(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QPixmap_Save(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QPixmap_Save(this.h, fileName_ms))
 }
 
 func (this *QPixmap) SaveWithDevice(device *QIODevice) bool {
@@ -512,19 +524,23 @@ func QPixmap_FromImageReader2(imageReader *QImageReader, flags ImageConversionFl
 }
 
 func (this *QPixmap) Load2(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_Load2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QPixmap_Load2(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPixmap) Load3(fileName string, format string, flags ImageConversionFlag) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_Load3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(flags)))
+	return (bool)(C.QPixmap_Load3(this.h, fileName_ms, format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string) bool {
@@ -539,32 +555,42 @@ func (this *QPixmap) LoadFromData4(buf *byte, lenVal uint, format string, flags 
 	return (bool)(C.QPixmap_LoadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
 }
 
-func (this *QPixmap) LoadFromData2(data *QByteArray, format string) bool {
+func (this *QPixmap) LoadFromData2(data []byte, format string) bool {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_LoadFromData2(this.h, data.cPointer(), format_Cstring))
+	return (bool)(C.QPixmap_LoadFromData2(this.h, data_alias, format_Cstring))
 }
 
-func (this *QPixmap) LoadFromData32(data *QByteArray, format string, flags ImageConversionFlag) bool {
+func (this *QPixmap) LoadFromData32(data []byte, format string, flags ImageConversionFlag) bool {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_LoadFromData32(this.h, data.cPointer(), format_Cstring, (C.int)(flags)))
+	return (bool)(C.QPixmap_LoadFromData32(this.h, data_alias, format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_Save2(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QPixmap_Save2(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_Save3(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring, (C.int)(quality)))
+	return (bool)(C.QPixmap_Save3(this.h, fileName_ms, format_Cstring, (C.int)(quality)))
 }
 
 func (this *QPixmap) Save22(device *QIODevice, format string) bool {

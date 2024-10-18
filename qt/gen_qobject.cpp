@@ -41,18 +41,26 @@ void* QObject_Metacast(QObject* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QObject_Tr(const char* s) {
+struct miqt_string QObject_Tr(const char* s) {
 	QString _ret = QObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QObject_TrUtf8(const char* s) {
+struct miqt_string QObject_TrUtf8(const char* s) {
 	QString _ret = QObject::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QObject_Event(QObject* self, QEvent* event) {
@@ -63,15 +71,19 @@ bool QObject_EventFilter(QObject* self, QObject* watched, QEvent* event) {
 	return self->eventFilter(watched, event);
 }
 
-struct miqt_string* QObject_ObjectName(const QObject* self) {
+struct miqt_string QObject_ObjectName(const QObject* self) {
 	QString _ret = self->objectName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QObject_SetObjectName(QObject* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QObject_SetObjectName(QObject* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->setObjectName(name_QString);
 }
 
@@ -175,9 +187,14 @@ QVariant* QObject_Property(const QObject* self, const char* name) {
 struct miqt_array* QObject_DynamicPropertyNames(const QObject* self) {
 	QList<QByteArray> _ret = self->dynamicPropertyNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QByteArray(_ret[i]);
+		QByteArray _lv_qb = _ret[i];
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_qb.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -220,32 +237,48 @@ void QObject_DeleteLater(QObject* self) {
 	self->deleteLater();
 }
 
-struct miqt_string* QObject_Tr2(const char* s, const char* c) {
+struct miqt_string QObject_Tr2(const char* s, const char* c) {
 	QString _ret = QObject::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QObject_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QObject_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QObject::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QObject_TrUtf82(const char* s, const char* c) {
+struct miqt_string QObject_TrUtf82(const char* s, const char* c) {
 	QString _ret = QObject::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QObject_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QObject_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QObject::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QObject_StartTimer2(QObject* self, int interval, int timerType) {

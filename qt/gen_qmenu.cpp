@@ -18,8 +18,8 @@ QMenu* QMenu_new() {
 	return new QMenu();
 }
 
-QMenu* QMenu_new2(struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QMenu* QMenu_new2(struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QMenu(title_QString);
 }
 
@@ -27,8 +27,8 @@ QMenu* QMenu_new3(QWidget* parent) {
 	return new QMenu(parent);
 }
 
-QMenu* QMenu_new4(struct miqt_string* title, QWidget* parent) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QMenu* QMenu_new4(struct miqt_string title, QWidget* parent) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QMenu(title_QString, parent);
 }
 
@@ -40,27 +40,35 @@ void* QMenu_Metacast(QMenu* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QMenu_Tr(const char* s) {
+struct miqt_string QMenu_Tr(const char* s) {
 	QString _ret = QMenu::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMenu_TrUtf8(const char* s) {
+struct miqt_string QMenu_TrUtf8(const char* s) {
 	QString _ret = QMenu::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QAction* QMenu_AddAction(QMenu* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_AddAction(QMenu* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(text_QString);
 }
 
-QAction* QMenu_AddAction2(QMenu* self, QIcon* icon, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_AddAction2(QMenu* self, QIcon* icon, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(*icon, text_QString);
 }
 
@@ -68,13 +76,13 @@ QAction* QMenu_AddMenu(QMenu* self, QMenu* menu) {
 	return self->addMenu(menu);
 }
 
-QMenu* QMenu_AddMenuWithTitle(QMenu* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QMenu* QMenu_AddMenuWithTitle(QMenu* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return self->addMenu(title_QString);
 }
 
-QMenu* QMenu_AddMenu2(QMenu* self, QIcon* icon, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QMenu* QMenu_AddMenu2(QMenu* self, QIcon* icon, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return self->addMenu(*icon, title_QString);
 }
 
@@ -82,13 +90,13 @@ QAction* QMenu_AddSeparator(QMenu* self) {
 	return self->addSeparator();
 }
 
-QAction* QMenu_AddSection(QMenu* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_AddSection(QMenu* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addSection(text_QString);
 }
 
-QAction* QMenu_AddSection2(QMenu* self, QIcon* icon, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_AddSection2(QMenu* self, QIcon* icon, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addSection(*icon, text_QString);
 }
 
@@ -100,13 +108,13 @@ QAction* QMenu_InsertSeparator(QMenu* self, QAction* before) {
 	return self->insertSeparator(before);
 }
 
-QAction* QMenu_InsertSection(QMenu* self, QAction* before, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_InsertSection(QMenu* self, QAction* before, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->insertSection(before, text_QString);
 }
 
-QAction* QMenu_InsertSection2(QMenu* self, QAction* before, QIcon* icon, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QMenu_InsertSection2(QMenu* self, QAction* before, QIcon* icon, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->insertSection(before, *icon, text_QString);
 }
 
@@ -196,15 +204,19 @@ QAction* QMenu_MenuAction(const QMenu* self) {
 	return self->menuAction();
 }
 
-struct miqt_string* QMenu_Title(const QMenu* self) {
+struct miqt_string QMenu_Title(const QMenu* self) {
 	QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QMenu_SetTitle(QMenu* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+void QMenu_SetTitle(QMenu* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	self->setTitle(title_QString);
 }
 
@@ -278,32 +290,48 @@ void QMenu_connect_Hovered(QMenu* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QMenu_Tr2(const char* s, const char* c) {
+struct miqt_string QMenu_Tr2(const char* s, const char* c) {
 	QString _ret = QMenu::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMenu_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMenu_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QMenu::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMenu_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMenu_TrUtf82(const char* s, const char* c) {
 	QString _ret = QMenu::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMenu_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMenu_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMenu::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QMenu_Popup2(QMenu* self, QPoint* pos, QAction* at) {

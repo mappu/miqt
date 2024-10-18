@@ -122,13 +122,13 @@ void QPainterPath_AddEllipse3(QPainterPath* self, QPointF* center, double rx, do
 	self->addEllipse(*center, static_cast<qreal>(rx), static_cast<qreal>(ry));
 }
 
-void QPainterPath_AddText(QPainterPath* self, QPointF* point, QFont* f, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainterPath_AddText(QPainterPath* self, QPointF* point, QFont* f, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->addText(*point, *f, text_QString);
 }
 
-void QPainterPath_AddText2(QPainterPath* self, double x, double y, QFont* f, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QPainterPath_AddText2(QPainterPath* self, double x, double y, QFont* f, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->addText(static_cast<qreal>(x), static_cast<qreal>(y), *f, text_QString);
 }
 

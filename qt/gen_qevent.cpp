@@ -593,33 +593,33 @@ QKeyEvent* QKeyEvent_new3(QKeyEvent* param1) {
 	return new QKeyEvent(*param1);
 }
 
-QKeyEvent* QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString);
 }
 
-QKeyEvent* QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string* text, bool autorep) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new6(int typeVal, int key, int modifiers, struct miqt_string* text, bool autorep, uint16_t count) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new6(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<ushort>(count));
 }
 
-QKeyEvent* QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString);
 }
 
-QKeyEvent* QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text, bool autorep) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string* text, bool autorep, uint16_t count) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QKeyEvent* QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(typeVal), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<ushort>(count));
 }
 
@@ -636,11 +636,15 @@ int QKeyEvent_Modifiers(const QKeyEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QKeyEvent_Text(const QKeyEvent* self) {
+struct miqt_string QKeyEvent_Text(const QKeyEvent* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QKeyEvent_IsAutoRepeat(const QKeyEvent* self) {
@@ -931,8 +935,8 @@ QInputMethodEvent* QInputMethodEvent_new() {
 	return new QInputMethodEvent();
 }
 
-QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string* preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute* */ attributes) {
-	QString preeditText_QString = QString::fromUtf8(&preeditText->data, preeditText->len);
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array* /* of QInputMethodEvent__Attribute* */ attributes) {
+	QString preeditText_QString = QString::fromUtf8(preeditText.data, preeditText.len);
 	QList<QInputMethodEvent::Attribute> attributes_QList;
 	attributes_QList.reserve(attributes->len);
 	QInputMethodEvent__Attribute** attributes_arr = static_cast<QInputMethodEvent__Attribute**>(attributes->data);
@@ -946,8 +950,8 @@ QInputMethodEvent* QInputMethodEvent_new3(QInputMethodEvent* other) {
 	return new QInputMethodEvent(*other);
 }
 
-void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string* commitString) {
-	QString commitString_QString = QString::fromUtf8(&commitString->data, commitString->len);
+void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string commitString) {
+	QString commitString_QString = QString::fromUtf8(commitString.data, commitString.len);
 	self->setCommitString(commitString_QString);
 }
 
@@ -964,18 +968,26 @@ struct miqt_array* QInputMethodEvent_Attributes(const QInputMethodEvent* self) {
 	return _out;
 }
 
-struct miqt_string* QInputMethodEvent_PreeditString(const QInputMethodEvent* self) {
+struct miqt_string QInputMethodEvent_PreeditString(const QInputMethodEvent* self) {
 	const QString _ret = self->preeditString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QInputMethodEvent_CommitString(const QInputMethodEvent* self) {
+struct miqt_string QInputMethodEvent_CommitString(const QInputMethodEvent* self) {
 	const QString _ret = self->commitString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QInputMethodEvent_ReplacementStart(const QInputMethodEvent* self) {
@@ -986,13 +998,13 @@ int QInputMethodEvent_ReplacementLength(const QInputMethodEvent* self) {
 	return self->replacementLength();
 }
 
-void QInputMethodEvent_SetCommitString2(QInputMethodEvent* self, struct miqt_string* commitString, int replaceFrom) {
-	QString commitString_QString = QString::fromUtf8(&commitString->data, commitString->len);
+void QInputMethodEvent_SetCommitString2(QInputMethodEvent* self, struct miqt_string commitString, int replaceFrom) {
+	QString commitString_QString = QString::fromUtf8(commitString.data, commitString.len);
 	self->setCommitString(commitString_QString, static_cast<int>(replaceFrom));
 }
 
-void QInputMethodEvent_SetCommitString3(QInputMethodEvent* self, struct miqt_string* commitString, int replaceFrom, int replaceLength) {
-	QString commitString_QString = QString::fromUtf8(&commitString->data, commitString->len);
+void QInputMethodEvent_SetCommitString3(QInputMethodEvent* self, struct miqt_string commitString, int replaceFrom, int replaceLength) {
+	QString commitString_QString = QString::fromUtf8(commitString.data, commitString.len);
 	self->setCommitString(commitString_QString, static_cast<int>(replaceFrom), static_cast<int>(replaceLength));
 }
 
@@ -1200,8 +1212,8 @@ void QHelpEvent_Delete(QHelpEvent* self) {
 	delete self;
 }
 
-QStatusTipEvent* QStatusTipEvent_new(struct miqt_string* tip) {
-	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
+QStatusTipEvent* QStatusTipEvent_new(struct miqt_string tip) {
+	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
 	return new QStatusTipEvent(tip_QString);
 }
 
@@ -1209,19 +1221,23 @@ QStatusTipEvent* QStatusTipEvent_new2(QStatusTipEvent* param1) {
 	return new QStatusTipEvent(*param1);
 }
 
-struct miqt_string* QStatusTipEvent_Tip(const QStatusTipEvent* self) {
+struct miqt_string QStatusTipEvent_Tip(const QStatusTipEvent* self) {
 	QString _ret = self->tip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStatusTipEvent_Delete(QStatusTipEvent* self) {
 	delete self;
 }
 
-QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string* href) {
-	QString href_QString = QString::fromUtf8(&href->data, href->len);
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string href) {
+	QString href_QString = QString::fromUtf8(href.data, href.len);
 	return new QWhatsThisClickedEvent(href_QString);
 }
 
@@ -1229,11 +1245,15 @@ QWhatsThisClickedEvent* QWhatsThisClickedEvent_new2(QWhatsThisClickedEvent* para
 	return new QWhatsThisClickedEvent(*param1);
 }
 
-struct miqt_string* QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self) {
+struct miqt_string QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self) {
 	QString _ret = self->href();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self) {
@@ -1268,8 +1288,8 @@ void QActionEvent_Delete(QActionEvent* self) {
 	delete self;
 }
 
-QFileOpenEvent* QFileOpenEvent_new(struct miqt_string* file) {
-	QString file_QString = QString::fromUtf8(&file->data, file->len);
+QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file) {
+	QString file_QString = QString::fromUtf8(file.data, file.len);
 	return new QFileOpenEvent(file_QString);
 }
 
@@ -1281,11 +1301,15 @@ QFileOpenEvent* QFileOpenEvent_new3(QFileOpenEvent* param1) {
 	return new QFileOpenEvent(*param1);
 }
 
-struct miqt_string* QFileOpenEvent_File(const QFileOpenEvent* self) {
+struct miqt_string QFileOpenEvent_File(const QFileOpenEvent* self) {
 	QString _ret = self->file();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QUrl* QFileOpenEvent_Url(const QFileOpenEvent* self) {

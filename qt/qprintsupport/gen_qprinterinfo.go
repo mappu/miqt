@@ -9,7 +9,6 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -67,30 +66,30 @@ func (this *QPrinterInfo) OperatorAssign(other *QPrinterInfo) {
 }
 
 func (this *QPrinterInfo) PrinterName() string {
-	var _ms *C.struct_miqt_string = C.QPrinterInfo_PrinterName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinterInfo_PrinterName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinterInfo) Description() string {
-	var _ms *C.struct_miqt_string = C.QPrinterInfo_Description(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinterInfo_Description(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinterInfo) Location() string {
-	var _ms *C.struct_miqt_string = C.QPrinterInfo_Location(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinterInfo_Location(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinterInfo) MakeAndModel() string {
-	var _ms *C.struct_miqt_string = C.QPrinterInfo_MakeAndModel(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinterInfo_MakeAndModel(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -204,11 +203,11 @@ func (this *QPrinterInfo) SupportedColorModes() []QPrinter__ColorMode {
 func QPrinterInfo_AvailablePrinterNames() []string {
 	var _ma *C.struct_miqt_array = C.QPrinterInfo_AvailablePrinterNames()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -230,9 +229,9 @@ func QPrinterInfo_AvailablePrinters() []QPrinterInfo {
 }
 
 func QPrinterInfo_DefaultPrinterName() string {
-	var _ms *C.struct_miqt_string = C.QPrinterInfo_DefaultPrinterName()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinterInfo_DefaultPrinterName()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -244,9 +243,11 @@ func QPrinterInfo_DefaultPrinter() *QPrinterInfo {
 }
 
 func QPrinterInfo_PrinterInfo(printerName string) *QPrinterInfo {
-	printerName_ms := libmiqt.Strdupg(printerName)
-	defer C.free(printerName_ms)
-	_ret := C.QPrinterInfo_PrinterInfo((*C.struct_miqt_string)(printerName_ms))
+	printerName_ms := C.struct_miqt_string{}
+	printerName_ms.data = C.CString(printerName)
+	printerName_ms.len = C.size_t(len(printerName))
+	defer C.free(unsafe.Pointer(printerName_ms.data))
+	_ret := C.QPrinterInfo_PrinterInfo(printerName_ms)
 	_goptr := newQPrinterInfo(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

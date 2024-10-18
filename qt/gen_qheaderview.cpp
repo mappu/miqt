@@ -28,18 +28,26 @@ void* QHeaderView_Metacast(QHeaderView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QHeaderView_Tr(const char* s) {
+struct miqt_string QHeaderView_Tr(const char* s) {
 	QString _ret = QHeaderView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QHeaderView_TrUtf8(const char* s) {
+struct miqt_string QHeaderView_TrUtf8(const char* s) {
 	QString _ret = QHeaderView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QHeaderView_SetModel(QHeaderView* self, QAbstractItemModel* model) {
@@ -290,12 +298,18 @@ bool QHeaderView_SectionsHidden(const QHeaderView* self) {
 	return self->sectionsHidden();
 }
 
-QByteArray* QHeaderView_SaveState(const QHeaderView* self) {
-	return new QByteArray(self->saveState());
+struct miqt_string QHeaderView_SaveState(const QHeaderView* self) {
+	QByteArray _qb = self->saveState();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-bool QHeaderView_RestoreState(QHeaderView* self, QByteArray* state) {
-	return self->restoreState(*state);
+bool QHeaderView_RestoreState(QHeaderView* self, struct miqt_string state) {
+	QByteArray state_QByteArray(state.data, state.len);
+	return self->restoreState(state_QByteArray);
 }
 
 void QHeaderView_Reset(QHeaderView* self) {
@@ -434,32 +448,48 @@ void QHeaderView_connect_SortIndicatorChanged(QHeaderView* self, intptr_t slot) 
 	});
 }
 
-struct miqt_string* QHeaderView_Tr2(const char* s, const char* c) {
+struct miqt_string QHeaderView_Tr2(const char* s, const char* c) {
 	QString _ret = QHeaderView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QHeaderView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QHeaderView_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QHeaderView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QHeaderView_TrUtf82(const char* s, const char* c) {
+struct miqt_string QHeaderView_TrUtf82(const char* s, const char* c) {
 	QString _ret = QHeaderView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QHeaderView_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QHeaderView_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QHeaderView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QHeaderView_Delete(QHeaderView* self) {

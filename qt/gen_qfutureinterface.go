@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -126,15 +125,17 @@ func (this *QFutureInterfaceBase) ProgressValue() int {
 }
 
 func (this *QFutureInterfaceBase) SetProgressValueAndText(progressValue int, progressText string) {
-	progressText_ms := libmiqt.Strdupg(progressText)
-	defer C.free(progressText_ms)
-	C.QFutureInterfaceBase_SetProgressValueAndText(this.h, (C.int)(progressValue), (*C.struct_miqt_string)(progressText_ms))
+	progressText_ms := C.struct_miqt_string{}
+	progressText_ms.data = C.CString(progressText)
+	progressText_ms.len = C.size_t(len(progressText))
+	defer C.free(unsafe.Pointer(progressText_ms.data))
+	C.QFutureInterfaceBase_SetProgressValueAndText(this.h, (C.int)(progressValue), progressText_ms)
 }
 
 func (this *QFutureInterfaceBase) ProgressText() string {
-	var _ms *C.struct_miqt_string = C.QFutureInterfaceBase_ProgressText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureInterfaceBase_ProgressText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

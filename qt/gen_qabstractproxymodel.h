@@ -33,8 +33,8 @@ typedef struct QVariant QVariant;
 
 QMetaObject* QAbstractProxyModel_MetaObject(const QAbstractProxyModel* self);
 void* QAbstractProxyModel_Metacast(QAbstractProxyModel* self, const char* param1);
-struct miqt_string* QAbstractProxyModel_Tr(const char* s);
-struct miqt_string* QAbstractProxyModel_TrUtf8(const char* s);
+struct miqt_string QAbstractProxyModel_Tr(const char* s);
+struct miqt_string QAbstractProxyModel_TrUtf8(const char* s);
 void QAbstractProxyModel_SetSourceModel(QAbstractProxyModel* self, QAbstractItemModel* sourceModel);
 QAbstractItemModel* QAbstractProxyModel_SourceModel(const QAbstractProxyModel* self);
 QModelIndex* QAbstractProxyModel_MapToSource(const QAbstractProxyModel* self, QModelIndex* proxyIndex);
@@ -59,10 +59,10 @@ bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data
 struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self);
 int QAbstractProxyModel_SupportedDragActions(const QAbstractProxyModel* self);
 int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self);
-struct miqt_string* QAbstractProxyModel_Tr2(const char* s, const char* c);
-struct miqt_string* QAbstractProxyModel_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAbstractProxyModel_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAbstractProxyModel_Tr2(const char* s, const char* c);
+struct miqt_string QAbstractProxyModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractProxyModel_TrUtf82(const char* s, const char* c);
+struct miqt_string QAbstractProxyModel_TrUtf83(const char* s, const char* c, int n);
 QVariant* QAbstractProxyModel_Data2(const QAbstractProxyModel* self, QModelIndex* proxyIndex, int role);
 QVariant* QAbstractProxyModel_HeaderData3(const QAbstractProxyModel* self, int section, int orientation, int role);
 bool QAbstractProxyModel_SetData3(QAbstractProxyModel* self, QModelIndex* index, QVariant* value, int role);

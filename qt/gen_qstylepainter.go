@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -83,9 +82,11 @@ func (this *QStylePainter) DrawComplexControl(cc QStyle__ComplexControl, opt *QS
 }
 
 func (this *QStylePainter) DrawItemText(r *QRect, flags int, pal *QPalette, enabled bool, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QStylePainter_DrawItemText(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_ms)
 }
 
 func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) {
@@ -97,9 +98,11 @@ func (this *QStylePainter) Style() *QStyle {
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), (*C.struct_miqt_string)(text_ms), (C.int)(textRole))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QStylePainter_DrawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_ms, (C.int)(textRole))
 }
 
 // Delete this object from C++ memory.

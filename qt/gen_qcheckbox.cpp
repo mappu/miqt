@@ -13,8 +13,8 @@ QCheckBox* QCheckBox_new() {
 	return new QCheckBox();
 }
 
-QCheckBox* QCheckBox_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QCheckBox* QCheckBox_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QCheckBox(text_QString);
 }
 
@@ -22,8 +22,8 @@ QCheckBox* QCheckBox_new3(QWidget* parent) {
 	return new QCheckBox(parent);
 }
 
-QCheckBox* QCheckBox_new4(struct miqt_string* text, QWidget* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QCheckBox* QCheckBox_new4(struct miqt_string text, QWidget* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QCheckBox(text_QString, parent);
 }
 
@@ -35,18 +35,26 @@ void* QCheckBox_Metacast(QCheckBox* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QCheckBox_Tr(const char* s) {
+struct miqt_string QCheckBox_Tr(const char* s) {
 	QString _ret = QCheckBox::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCheckBox_TrUtf8(const char* s) {
+struct miqt_string QCheckBox_TrUtf8(const char* s) {
 	QString _ret = QCheckBox::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QSize* QCheckBox_SizeHint(const QCheckBox* self) {
@@ -85,32 +93,48 @@ void QCheckBox_connect_StateChanged(QCheckBox* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QCheckBox_Tr2(const char* s, const char* c) {
+struct miqt_string QCheckBox_Tr2(const char* s, const char* c) {
 	QString _ret = QCheckBox::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCheckBox_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCheckBox_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QCheckBox::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCheckBox_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCheckBox_TrUtf82(const char* s, const char* c) {
 	QString _ret = QCheckBox::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCheckBox_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCheckBox_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCheckBox::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCheckBox_SetTristate1(QCheckBox* self, bool y) {

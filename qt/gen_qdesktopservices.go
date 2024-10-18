@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -48,17 +47,21 @@ func QDesktopServices_OpenUrl(url *QUrl) bool {
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {
-	scheme_ms := libmiqt.Strdupg(scheme)
-	defer C.free(scheme_ms)
+	scheme_ms := C.struct_miqt_string{}
+	scheme_ms.data = C.CString(scheme)
+	scheme_ms.len = C.size_t(len(scheme))
+	defer C.free(unsafe.Pointer(scheme_ms.data))
 	method_Cstring := C.CString(method)
 	defer C.free(unsafe.Pointer(method_Cstring))
-	C.QDesktopServices_SetUrlHandler((*C.struct_miqt_string)(scheme_ms), receiver.cPointer(), method_Cstring)
+	C.QDesktopServices_SetUrlHandler(scheme_ms, receiver.cPointer(), method_Cstring)
 }
 
 func QDesktopServices_UnsetUrlHandler(scheme string) {
-	scheme_ms := libmiqt.Strdupg(scheme)
-	defer C.free(scheme_ms)
-	C.QDesktopServices_UnsetUrlHandler((*C.struct_miqt_string)(scheme_ms))
+	scheme_ms := C.struct_miqt_string{}
+	scheme_ms.data = C.CString(scheme)
+	scheme_ms.len = C.size_t(len(scheme))
+	defer C.free(unsafe.Pointer(scheme_ms.data))
+	C.QDesktopServices_UnsetUrlHandler(scheme_ms)
 }
 
 // Delete this object from C++ memory.

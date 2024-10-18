@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -66,15 +65,20 @@ func NewQRawFont() *QRawFont {
 
 // NewQRawFont2 constructs a new QRawFont object.
 func NewQRawFont2(fileName string, pixelSize float64) *QRawFont {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QRawFont_new2((*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QRawFont_new2(fileName_ms, (C.double)(pixelSize))
 	return newQRawFont(ret)
 }
 
 // NewQRawFont3 constructs a new QRawFont object.
-func NewQRawFont3(fontData *QByteArray, pixelSize float64) *QRawFont {
-	ret := C.QRawFont_new3(fontData.cPointer(), (C.double)(pixelSize))
+func NewQRawFont3(fontData []byte, pixelSize float64) *QRawFont {
+	fontData_alias := C.struct_miqt_string{}
+	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	fontData_alias.len = C.size_t(len(fontData))
+	ret := C.QRawFont_new3(fontData_alias, (C.double)(pixelSize))
 	return newQRawFont(ret)
 }
 
@@ -86,15 +90,20 @@ func NewQRawFont4(other *QRawFont) *QRawFont {
 
 // NewQRawFont5 constructs a new QRawFont object.
 func NewQRawFont5(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QRawFont_new5((*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize), (C.int)(hintingPreference))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QRawFont_new5(fileName_ms, (C.double)(pixelSize), (C.int)(hintingPreference))
 	return newQRawFont(ret)
 }
 
 // NewQRawFont6 constructs a new QRawFont object.
-func NewQRawFont6(fontData *QByteArray, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
-	ret := C.QRawFont_new6(fontData.cPointer(), (C.double)(pixelSize), (C.int)(hintingPreference))
+func NewQRawFont6(fontData []byte, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
+	fontData_alias := C.struct_miqt_string{}
+	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	fontData_alias.len = C.size_t(len(fontData))
+	ret := C.QRawFont_new6(fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference))
 	return newQRawFont(ret)
 }
 
@@ -119,16 +128,16 @@ func (this *QRawFont) OperatorNotEqual(other *QRawFont) bool {
 }
 
 func (this *QRawFont) FamilyName() string {
-	var _ms *C.struct_miqt_string = C.QRawFont_FamilyName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRawFont_FamilyName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRawFont) StyleName() string {
-	var _ms *C.struct_miqt_string = C.QRawFont_StyleName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QRawFont_StyleName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -141,9 +150,11 @@ func (this *QRawFont) Weight() int {
 }
 
 func (this *QRawFont) GlyphIndexesForString(text string) []uint {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, text_ms)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -283,13 +294,18 @@ func (this *QRawFont) UnitsPerEm() float64 {
 }
 
 func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPreference QFont__HintingPreference) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QRawFont_LoadFromFile(this.h, (*C.struct_miqt_string)(fileName_ms), (C.double)(pixelSize), (C.int)(hintingPreference))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QRawFont_LoadFromFile(this.h, fileName_ms, (C.double)(pixelSize), (C.int)(hintingPreference))
 }
 
-func (this *QRawFont) LoadFromData(fontData *QByteArray, pixelSize float64, hintingPreference QFont__HintingPreference) {
-	C.QRawFont_LoadFromData(this.h, fontData.cPointer(), (C.double)(pixelSize), (C.int)(hintingPreference))
+func (this *QRawFont) LoadFromData(fontData []byte, pixelSize float64, hintingPreference QFont__HintingPreference) {
+	fontData_alias := C.struct_miqt_string{}
+	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	fontData_alias.len = C.size_t(len(fontData))
+	C.QRawFont_LoadFromData(this.h, fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference))
 }
 
 func (this *QRawFont) SupportsCharacter(ucs4 uint) bool {
@@ -311,13 +327,13 @@ func (this *QRawFont) SupportedWritingSystems() []QFontDatabase__WritingSystem {
 	return _ret
 }
 
-func (this *QRawFont) FontTable(tagName string) *QByteArray {
+func (this *QRawFont) FontTable(tagName string) []byte {
 	tagName_Cstring := C.CString(tagName)
 	defer C.free(unsafe.Pointer(tagName_Cstring))
-	_ret := C.QRawFont_FontTable(this.h, tagName_Cstring)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	var _bytearray C.struct_miqt_string = C.QRawFont_FontTable(this.h, tagName_Cstring)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func QRawFont_FromFont(font *QFont) *QRawFont {

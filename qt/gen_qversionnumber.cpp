@@ -90,20 +90,24 @@ QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* 
 	return new QVersionNumber(QVersionNumber::commonPrefix(*v1, *v2));
 }
 
-struct miqt_string* QVersionNumber_ToString(const QVersionNumber* self) {
+struct miqt_string QVersionNumber_ToString(const QVersionNumber* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QVersionNumber* QVersionNumber_FromString(struct miqt_string* stringVal) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+QVersionNumber* QVersionNumber_FromString(struct miqt_string stringVal) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString));
 }
 
-QVersionNumber* QVersionNumber_FromString22(struct miqt_string* stringVal, int* suffixIndex) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+QVersionNumber* QVersionNumber_FromString22(struct miqt_string stringVal, int* suffixIndex) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex)));
 }
 

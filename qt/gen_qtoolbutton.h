@@ -33,8 +33,8 @@ QToolButton* QToolButton_new();
 QToolButton* QToolButton_new2(QWidget* parent);
 QMetaObject* QToolButton_MetaObject(const QToolButton* self);
 void* QToolButton_Metacast(QToolButton* self, const char* param1);
-struct miqt_string* QToolButton_Tr(const char* s);
-struct miqt_string* QToolButton_TrUtf8(const char* s);
+struct miqt_string QToolButton_Tr(const char* s);
+struct miqt_string QToolButton_TrUtf8(const char* s);
 QSize* QToolButton_SizeHint(const QToolButton* self);
 QSize* QToolButton_MinimumSizeHint(const QToolButton* self);
 int QToolButton_ToolButtonStyle(const QToolButton* self);
@@ -52,10 +52,10 @@ void QToolButton_SetToolButtonStyle(QToolButton* self, int style);
 void QToolButton_SetDefaultAction(QToolButton* self, QAction* defaultAction);
 void QToolButton_Triggered(QToolButton* self, QAction* param1);
 void QToolButton_connect_Triggered(QToolButton* self, intptr_t slot);
-struct miqt_string* QToolButton_Tr2(const char* s, const char* c);
-struct miqt_string* QToolButton_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QToolButton_TrUtf82(const char* s, const char* c);
-struct miqt_string* QToolButton_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QToolButton_Tr2(const char* s, const char* c);
+struct miqt_string QToolButton_Tr3(const char* s, const char* c, int n);
+struct miqt_string QToolButton_TrUtf82(const char* s, const char* c);
+struct miqt_string QToolButton_TrUtf83(const char* s, const char* c, int n);
 void QToolButton_Delete(QToolButton* self);
 
 #ifdef __cplusplus

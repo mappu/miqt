@@ -57,9 +57,9 @@ bool QChildEvent_Polished(const QChildEvent* self);
 bool QChildEvent_Removed(const QChildEvent* self);
 void QChildEvent_Delete(QChildEvent* self);
 
-QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(QByteArray* name);
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name);
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1);
-QByteArray* QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
+struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self);
 
 QDeferredDeleteEvent* QDeferredDeleteEvent_new();

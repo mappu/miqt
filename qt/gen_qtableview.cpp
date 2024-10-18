@@ -30,18 +30,26 @@ void* QTableView_Metacast(QTableView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTableView_Tr(const char* s) {
+struct miqt_string QTableView_Tr(const char* s) {
 	QString _ret = QTableView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTableView_TrUtf8(const char* s) {
+struct miqt_string QTableView_TrUtf8(const char* s) {
 	QString _ret = QTableView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTableView_SetModel(QTableView* self, QAbstractItemModel* model) {
@@ -241,32 +249,48 @@ void QTableView_SetShowGrid(QTableView* self, bool show) {
 	self->setShowGrid(show);
 }
 
-struct miqt_string* QTableView_Tr2(const char* s, const char* c) {
+struct miqt_string QTableView_Tr2(const char* s, const char* c) {
 	QString _ret = QTableView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTableView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTableView_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTableView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTableView_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTableView_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTableView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTableView_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTableView_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTableView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTableView_ScrollTo2(QTableView* self, QModelIndex* index, int hint) {

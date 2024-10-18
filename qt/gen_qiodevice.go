@@ -66,24 +66,24 @@ func (this *QIODevice) MetaObject() *QMetaObject {
 func (this *QIODevice) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QIODevice_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QIODevice_Metacast(this.h, param1_Cstring))
 }
 
 func QIODevice_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QIODevice_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -181,18 +181,18 @@ func (this *QIODevice) Read(data string, maxlen int64) int64 {
 	return (int64)(C.QIODevice_Read(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
-func (this *QIODevice) ReadWithMaxlen(maxlen int64) *QByteArray {
-	_ret := C.QIODevice_ReadWithMaxlen(this.h, (C.longlong)(maxlen))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QIODevice) ReadWithMaxlen(maxlen int64) []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_ReadWithMaxlen(this.h, (C.longlong)(maxlen))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QIODevice) ReadAll() *QByteArray {
-	_ret := C.QIODevice_ReadAll(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QIODevice) ReadAll() []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_ReadAll(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
@@ -201,11 +201,11 @@ func (this *QIODevice) ReadLine(data string, maxlen int64) int64 {
 	return (int64)(C.QIODevice_ReadLine(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
-func (this *QIODevice) ReadLine2() *QByteArray {
-	_ret := C.QIODevice_ReadLine2(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QIODevice) ReadLine2() []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_ReadLine2(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QIODevice) CanReadLine() bool {
@@ -240,8 +240,11 @@ func (this *QIODevice) WriteWithData(data string) int64 {
 	return (int64)(C.QIODevice_WriteWithData(this.h, data_Cstring))
 }
 
-func (this *QIODevice) Write2(data *QByteArray) int64 {
-	return (int64)(C.QIODevice_Write2(this.h, data.cPointer()))
+func (this *QIODevice) Write2(data []byte) int64 {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	return (int64)(C.QIODevice_Write2(this.h, data_alias))
 }
 
 func (this *QIODevice) Peek(data string, maxlen int64) int64 {
@@ -250,11 +253,11 @@ func (this *QIODevice) Peek(data string, maxlen int64) int64 {
 	return (int64)(C.QIODevice_Peek(this.h, data_Cstring, (C.longlong)(maxlen)))
 }
 
-func (this *QIODevice) PeekWithMaxlen(maxlen int64) *QByteArray {
-	_ret := C.QIODevice_PeekWithMaxlen(this.h, (C.longlong)(maxlen))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QIODevice) PeekWithMaxlen(maxlen int64) []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_PeekWithMaxlen(this.h, (C.longlong)(maxlen))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QIODevice) Skip(maxSize int64) int64 {
@@ -284,9 +287,9 @@ func (this *QIODevice) GetChar(c string) bool {
 }
 
 func (this *QIODevice) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QIODevice_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -408,9 +411,9 @@ func QIODevice_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -419,9 +422,9 @@ func QIODevice_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -430,9 +433,9 @@ func QIODevice_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -441,17 +444,17 @@ func QIODevice_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QIODevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QIODevice_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QIODevice) ReadLine1(maxlen int64) *QByteArray {
-	_ret := C.QIODevice_ReadLine1(this.h, (C.longlong)(maxlen))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QIODevice) ReadLine1(maxlen int64) []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_ReadLine1(this.h, (C.longlong)(maxlen))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 // Delete this object from C++ memory.

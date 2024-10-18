@@ -28,8 +28,8 @@ QColor* QColor_new5(QRgba64* rgba64) {
 	return new QColor(*rgba64);
 }
 
-QColor* QColor_new6(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QColor* QColor_new6(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QColor(name_QString);
 }
 
@@ -69,34 +69,46 @@ bool QColor_IsValid(const QColor* self) {
 	return self->isValid();
 }
 
-struct miqt_string* QColor_Name(const QColor* self) {
+struct miqt_string QColor_Name(const QColor* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QColor_NameWithFormat(const QColor* self, int format) {
+struct miqt_string QColor_NameWithFormat(const QColor* self, int format) {
 	QString _ret = self->name(static_cast<QColor::NameFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QColor_SetNamedColor(QColor* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QColor_SetNamedColor(QColor* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->setNamedColor(name_QString);
 }
 
 struct miqt_array* QColor_ColorNames() {
 	QStringList _ret = QColor::colorNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -479,8 +491,8 @@ bool QColor_OperatorNotEqual(const QColor* self, QColor* c) {
 	return self->operator!=(*c);
 }
 
-bool QColor_IsValidColor(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+bool QColor_IsValidColor(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return QColor::isValidColor(name_QString);
 }
 

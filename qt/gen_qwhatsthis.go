@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -56,9 +55,11 @@ func QWhatsThis_LeaveWhatsThisMode() {
 }
 
 func QWhatsThis_ShowText(pos *QPoint, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QWhatsThis_ShowText(pos.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QWhatsThis_ShowText(pos.cPointer(), text_ms)
 }
 
 func QWhatsThis_HideText() {
@@ -70,9 +71,11 @@ func QWhatsThis_CreateAction() *QAction {
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QWhatsThis_ShowText3(pos.cPointer(), (*C.struct_miqt_string)(text_ms), w.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QWhatsThis_ShowText3(pos.cPointer(), text_ms, w.cPointer())
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {

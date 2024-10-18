@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -59,17 +58,21 @@ func NewQListWidgetItem() *QListWidgetItem {
 
 // NewQListWidgetItem2 constructs a new QListWidgetItem object.
 func NewQListWidgetItem2(text string) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new2(text_ms)
 	return newQListWidgetItem(ret)
 }
 
 // NewQListWidgetItem3 constructs a new QListWidgetItem object.
 func NewQListWidgetItem3(icon *QIcon, text string) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new3(icon.cPointer(), text_ms)
 	return newQListWidgetItem(ret)
 }
 
@@ -93,33 +96,41 @@ func NewQListWidgetItem6(listview *QListWidget, typeVal int) *QListWidgetItem {
 
 // NewQListWidgetItem7 constructs a new QListWidgetItem object.
 func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new7((*C.struct_miqt_string)(text_ms), listview.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new7(text_ms, listview.cPointer())
 	return newQListWidgetItem(ret)
 }
 
 // NewQListWidgetItem8 constructs a new QListWidgetItem object.
 func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new8((*C.struct_miqt_string)(text_ms), listview.cPointer(), (C.int)(typeVal))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new8(text_ms, listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
 }
 
 // NewQListWidgetItem9 constructs a new QListWidgetItem object.
 func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new9(icon.cPointer(), (*C.struct_miqt_string)(text_ms), listview.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new9(icon.cPointer(), text_ms, listview.cPointer())
 	return newQListWidgetItem(ret)
 }
 
 // NewQListWidgetItem10 constructs a new QListWidgetItem object.
 func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeVal int) *QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QListWidgetItem_new10(icon.cPointer(), (*C.struct_miqt_string)(text_ms), listview.cPointer(), (C.int)(typeVal))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QListWidgetItem_new10(icon.cPointer(), text_ms, listview.cPointer(), (C.int)(typeVal))
 	return newQListWidgetItem(ret)
 }
 
@@ -156,16 +167,18 @@ func (this *QListWidgetItem) SetFlags(flags ItemFlag) {
 }
 
 func (this *QListWidgetItem) Text() string {
-	var _ms *C.struct_miqt_string = C.QListWidgetItem_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidgetItem_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QListWidgetItem) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QListWidgetItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QListWidgetItem_SetText(this.h, text_ms)
 }
 
 func (this *QListWidgetItem) Icon() *QIcon {
@@ -180,42 +193,48 @@ func (this *QListWidgetItem) SetIcon(icon *QIcon) {
 }
 
 func (this *QListWidgetItem) StatusTip() string {
-	var _ms *C.struct_miqt_string = C.QListWidgetItem_StatusTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidgetItem_StatusTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QListWidgetItem) SetStatusTip(statusTip string) {
-	statusTip_ms := libmiqt.Strdupg(statusTip)
-	defer C.free(statusTip_ms)
-	C.QListWidgetItem_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
+	statusTip_ms := C.struct_miqt_string{}
+	statusTip_ms.data = C.CString(statusTip)
+	statusTip_ms.len = C.size_t(len(statusTip))
+	defer C.free(unsafe.Pointer(statusTip_ms.data))
+	C.QListWidgetItem_SetStatusTip(this.h, statusTip_ms)
 }
 
 func (this *QListWidgetItem) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QListWidgetItem_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidgetItem_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QListWidgetItem) SetToolTip(toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QListWidgetItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QListWidgetItem_SetToolTip(this.h, toolTip_ms)
 }
 
 func (this *QListWidgetItem) WhatsThis() string {
-	var _ms *C.struct_miqt_string = C.QListWidgetItem_WhatsThis(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidgetItem_WhatsThis(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QListWidgetItem) SetWhatsThis(whatsThis string) {
-	whatsThis_ms := libmiqt.Strdupg(whatsThis)
-	defer C.free(whatsThis_ms)
-	C.QListWidgetItem_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
+	whatsThis_ms := C.struct_miqt_string{}
+	whatsThis_ms.data = C.CString(whatsThis)
+	whatsThis_ms.len = C.size_t(len(whatsThis))
+	defer C.free(unsafe.Pointer(whatsThis_ms.data))
+	C.QListWidgetItem_SetWhatsThis(this.h, whatsThis_ms)
 }
 
 func (this *QListWidgetItem) Font() *QFont {
@@ -394,24 +413,24 @@ func (this *QListWidget) MetaObject() *QMetaObject {
 func (this *QListWidget) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QListWidget_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QListWidget_Metacast(this.h, param1_Cstring))
 }
 
 func QListWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QListWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -432,19 +451,23 @@ func (this *QListWidget) InsertItem(row int, item *QListWidgetItem) {
 }
 
 func (this *QListWidget) InsertItem2(row int, label string) {
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	C.QListWidget_InsertItem2(this.h, (C.int)(row), (*C.struct_miqt_string)(label_ms))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	C.QListWidget_InsertItem2(this.h, (C.int)(row), label_ms)
 }
 
 func (this *QListWidget) InsertItems(row int, labels []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := libmiqt.Strdupg(labels[i])
-		defer C.free(labels_i_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
+		labels_i_ms := C.struct_miqt_string{}
+		labels_i_ms.data = C.CString(labels[i])
+		labels_i_ms.len = C.size_t(len(labels[i]))
+		defer C.free(unsafe.Pointer(labels_i_ms.data))
+		labels_CArray[i] = labels_i_ms
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -452,9 +475,11 @@ func (this *QListWidget) InsertItems(row int, labels []string) {
 }
 
 func (this *QListWidget) AddItem(label string) {
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	C.QListWidget_AddItem(this.h, (*C.struct_miqt_string)(label_ms))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	C.QListWidget_AddItem(this.h, label_ms)
 }
 
 func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
@@ -463,12 +488,14 @@ func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
 
 func (this *QListWidget) AddItems(labels []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := libmiqt.Strdupg(labels[i])
-		defer C.free(labels_i_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
+		labels_i_ms := C.struct_miqt_string{}
+		labels_i_ms.data = C.CString(labels[i])
+		labels_i_ms.len = C.size_t(len(labels[i]))
+		defer C.free(unsafe.Pointer(labels_i_ms.data))
+		labels_CArray[i] = labels_i_ms
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -582,9 +609,11 @@ func (this *QListWidget) SelectedItems() []*QListWidgetItem {
 }
 
 func (this *QListWidget) FindItems(text string, flags MatchFlag) []*QListWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -756,25 +785,27 @@ func miqt_exec_callback_QListWidget_CurrentItemChanged(cb C.intptr_t, current *C
 }
 
 func (this *QListWidget) CurrentTextChanged(currentText string) {
-	currentText_ms := libmiqt.Strdupg(currentText)
-	defer C.free(currentText_ms)
-	C.QListWidget_CurrentTextChanged(this.h, (*C.struct_miqt_string)(currentText_ms))
+	currentText_ms := C.struct_miqt_string{}
+	currentText_ms.data = C.CString(currentText)
+	currentText_ms.len = C.size_t(len(currentText))
+	defer C.free(unsafe.Pointer(currentText_ms.data))
+	C.QListWidget_CurrentTextChanged(this.h, currentText_ms)
 }
 func (this *QListWidget) OnCurrentTextChanged(slot func(currentText string)) {
 	C.QListWidget_connect_CurrentTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QListWidget_CurrentTextChanged
-func miqt_exec_callback_QListWidget_CurrentTextChanged(cb C.intptr_t, currentText *C.struct_miqt_string) {
+func miqt_exec_callback_QListWidget_CurrentTextChanged(cb C.intptr_t, currentText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(currentText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var currentText_ms *C.struct_miqt_string = currentText
-	currentText_ret := C.GoStringN(&currentText_ms.data, C.int(int64(currentText_ms.len)))
-	C.free(unsafe.Pointer(currentText_ms))
+	var currentText_ms C.struct_miqt_string = currentText
+	currentText_ret := C.GoStringN(currentText_ms.data, C.int(int64(currentText_ms.len)))
+	C.free(unsafe.Pointer(currentText_ms.data))
 	slotval1 := currentText_ret
 
 	gofunc(slotval1)
@@ -822,9 +853,9 @@ func QListWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -833,9 +864,9 @@ func QListWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -844,9 +875,9 @@ func QListWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -855,9 +886,9 @@ func QListWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QListWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QListWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

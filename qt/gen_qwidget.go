@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -132,24 +131,24 @@ func (this *QWidget) MetaObject() *QMetaObject {
 func (this *QWidget) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QWidget_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QWidget_Metacast(this.h, param1_Cstring))
 }
 
 func QWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -595,28 +594,32 @@ func (this *QWidget) UngrabGesture(typeVal GestureType) {
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
-	windowTitle_ms := libmiqt.Strdupg(windowTitle)
-	defer C.free(windowTitle_ms)
-	C.QWidget_SetWindowTitle(this.h, (*C.struct_miqt_string)(windowTitle_ms))
+	windowTitle_ms := C.struct_miqt_string{}
+	windowTitle_ms.data = C.CString(windowTitle)
+	windowTitle_ms.len = C.size_t(len(windowTitle))
+	defer C.free(unsafe.Pointer(windowTitle_ms.data))
+	C.QWidget_SetWindowTitle(this.h, windowTitle_ms)
 }
 
 func (this *QWidget) SetStyleSheet(styleSheet string) {
-	styleSheet_ms := libmiqt.Strdupg(styleSheet)
-	defer C.free(styleSheet_ms)
-	C.QWidget_SetStyleSheet(this.h, (*C.struct_miqt_string)(styleSheet_ms))
+	styleSheet_ms := C.struct_miqt_string{}
+	styleSheet_ms.data = C.CString(styleSheet)
+	styleSheet_ms.len = C.size_t(len(styleSheet))
+	defer C.free(unsafe.Pointer(styleSheet_ms.data))
+	C.QWidget_SetStyleSheet(this.h, styleSheet_ms)
 }
 
 func (this *QWidget) StyleSheet() string {
-	var _ms *C.struct_miqt_string = C.QWidget_StyleSheet(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_StyleSheet(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) WindowTitle() string {
-	var _ms *C.struct_miqt_string = C.QWidget_WindowTitle(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_WindowTitle(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -632,41 +635,47 @@ func (this *QWidget) WindowIcon() *QIcon {
 }
 
 func (this *QWidget) SetWindowIconText(windowIconText string) {
-	windowIconText_ms := libmiqt.Strdupg(windowIconText)
-	defer C.free(windowIconText_ms)
-	C.QWidget_SetWindowIconText(this.h, (*C.struct_miqt_string)(windowIconText_ms))
+	windowIconText_ms := C.struct_miqt_string{}
+	windowIconText_ms.data = C.CString(windowIconText)
+	windowIconText_ms.len = C.size_t(len(windowIconText))
+	defer C.free(unsafe.Pointer(windowIconText_ms.data))
+	C.QWidget_SetWindowIconText(this.h, windowIconText_ms)
 }
 
 func (this *QWidget) WindowIconText() string {
-	var _ms *C.struct_miqt_string = C.QWidget_WindowIconText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_WindowIconText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) SetWindowRole(windowRole string) {
-	windowRole_ms := libmiqt.Strdupg(windowRole)
-	defer C.free(windowRole_ms)
-	C.QWidget_SetWindowRole(this.h, (*C.struct_miqt_string)(windowRole_ms))
+	windowRole_ms := C.struct_miqt_string{}
+	windowRole_ms.data = C.CString(windowRole)
+	windowRole_ms.len = C.size_t(len(windowRole))
+	defer C.free(unsafe.Pointer(windowRole_ms.data))
+	C.QWidget_SetWindowRole(this.h, windowRole_ms)
 }
 
 func (this *QWidget) WindowRole() string {
-	var _ms *C.struct_miqt_string = C.QWidget_WindowRole(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_WindowRole(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) SetWindowFilePath(filePath string) {
-	filePath_ms := libmiqt.Strdupg(filePath)
-	defer C.free(filePath_ms)
-	C.QWidget_SetWindowFilePath(this.h, (*C.struct_miqt_string)(filePath_ms))
+	filePath_ms := C.struct_miqt_string{}
+	filePath_ms.data = C.CString(filePath)
+	filePath_ms.len = C.size_t(len(filePath))
+	defer C.free(unsafe.Pointer(filePath_ms.data))
+	C.QWidget_SetWindowFilePath(this.h, filePath_ms)
 }
 
 func (this *QWidget) WindowFilePath() string {
-	var _ms *C.struct_miqt_string = C.QWidget_WindowFilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_WindowFilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -683,15 +692,17 @@ func (this *QWidget) IsWindowModified() bool {
 }
 
 func (this *QWidget) SetToolTip(toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QWidget_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QWidget_SetToolTip(this.h, toolTip_ms)
 }
 
 func (this *QWidget) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QWidget_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -704,55 +715,63 @@ func (this *QWidget) ToolTipDuration() int {
 }
 
 func (this *QWidget) SetStatusTip(statusTip string) {
-	statusTip_ms := libmiqt.Strdupg(statusTip)
-	defer C.free(statusTip_ms)
-	C.QWidget_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
+	statusTip_ms := C.struct_miqt_string{}
+	statusTip_ms.data = C.CString(statusTip)
+	statusTip_ms.len = C.size_t(len(statusTip))
+	defer C.free(unsafe.Pointer(statusTip_ms.data))
+	C.QWidget_SetStatusTip(this.h, statusTip_ms)
 }
 
 func (this *QWidget) StatusTip() string {
-	var _ms *C.struct_miqt_string = C.QWidget_StatusTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_StatusTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) SetWhatsThis(whatsThis string) {
-	whatsThis_ms := libmiqt.Strdupg(whatsThis)
-	defer C.free(whatsThis_ms)
-	C.QWidget_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
+	whatsThis_ms := C.struct_miqt_string{}
+	whatsThis_ms.data = C.CString(whatsThis)
+	whatsThis_ms.len = C.size_t(len(whatsThis))
+	defer C.free(unsafe.Pointer(whatsThis_ms.data))
+	C.QWidget_SetWhatsThis(this.h, whatsThis_ms)
 }
 
 func (this *QWidget) WhatsThis() string {
-	var _ms *C.struct_miqt_string = C.QWidget_WhatsThis(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_WhatsThis(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) AccessibleName() string {
-	var _ms *C.struct_miqt_string = C.QWidget_AccessibleName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_AccessibleName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) SetAccessibleName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QWidget_SetAccessibleName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QWidget_SetAccessibleName(this.h, name_ms)
 }
 
 func (this *QWidget) AccessibleDescription() string {
-	var _ms *C.struct_miqt_string = C.QWidget_AccessibleDescription(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_AccessibleDescription(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidget) SetAccessibleDescription(description string) {
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	C.QWidget_SetAccessibleDescription(this.h, (*C.struct_miqt_string)(description_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	C.QWidget_SetAccessibleDescription(this.h, description_ms)
 }
 
 func (this *QWidget) SetLayoutDirection(direction LayoutDirection) {
@@ -1002,15 +1021,18 @@ func (this *QWidget) SetGeometryWithGeometry(geometry *QRect) {
 	C.QWidget_SetGeometryWithGeometry(this.h, geometry.cPointer())
 }
 
-func (this *QWidget) SaveGeometry() *QByteArray {
-	_ret := C.QWidget_SaveGeometry(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) SaveGeometry() []byte {
+	var _bytearray C.struct_miqt_string = C.QWidget_SaveGeometry(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QWidget) RestoreGeometry(geometry *QByteArray) bool {
-	return (bool)(C.QWidget_RestoreGeometry(this.h, geometry.cPointer()))
+func (this *QWidget) RestoreGeometry(geometry []byte) bool {
+	geometry_alias := C.struct_miqt_string{}
+	geometry_alias.data = (*C.char)(unsafe.Pointer(&geometry[0]))
+	geometry_alias.len = C.size_t(len(geometry))
+	return (bool)(C.QWidget_RestoreGeometry(this.h, geometry_alias))
 }
 
 func (this *QWidget) AdjustSize() {
@@ -1299,25 +1321,27 @@ func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	C.QWidget_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	C.QWidget_WindowTitleChanged(this.h, title_ms)
 }
 func (this *QWidget) OnWindowTitleChanged(slot func(title string)) {
 	C.QWidget_connect_WindowTitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_WindowTitleChanged
-func miqt_exec_callback_QWidget_WindowTitleChanged(cb C.intptr_t, title *C.struct_miqt_string) {
+func miqt_exec_callback_QWidget_WindowTitleChanged(cb C.intptr_t, title C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var title_ms *C.struct_miqt_string = title
-	title_ret := C.GoStringN(&title_ms.data, C.int(int64(title_ms.len)))
-	C.free(unsafe.Pointer(title_ms))
+	var title_ms C.struct_miqt_string = title
+	title_ret := C.GoStringN(title_ms.data, C.int(int64(title_ms.len)))
+	C.free(unsafe.Pointer(title_ms.data))
 	slotval1 := title_ret
 
 	gofunc(slotval1)
@@ -1344,25 +1368,27 @@ func miqt_exec_callback_QWidget_WindowIconChanged(cb C.intptr_t, icon *C.QIcon) 
 }
 
 func (this *QWidget) WindowIconTextChanged(iconText string) {
-	iconText_ms := libmiqt.Strdupg(iconText)
-	defer C.free(iconText_ms)
-	C.QWidget_WindowIconTextChanged(this.h, (*C.struct_miqt_string)(iconText_ms))
+	iconText_ms := C.struct_miqt_string{}
+	iconText_ms.data = C.CString(iconText)
+	iconText_ms.len = C.size_t(len(iconText))
+	defer C.free(unsafe.Pointer(iconText_ms.data))
+	C.QWidget_WindowIconTextChanged(this.h, iconText_ms)
 }
 func (this *QWidget) OnWindowIconTextChanged(slot func(iconText string)) {
 	C.QWidget_connect_WindowIconTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_WindowIconTextChanged
-func miqt_exec_callback_QWidget_WindowIconTextChanged(cb C.intptr_t, iconText *C.struct_miqt_string) {
+func miqt_exec_callback_QWidget_WindowIconTextChanged(cb C.intptr_t, iconText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(iconText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var iconText_ms *C.struct_miqt_string = iconText
-	iconText_ret := C.GoStringN(&iconText_ms.data, C.int(int64(iconText_ms.len)))
-	C.free(unsafe.Pointer(iconText_ms))
+	var iconText_ms C.struct_miqt_string = iconText
+	iconText_ret := C.GoStringN(iconText_ms.data, C.int(int64(iconText_ms.len)))
+	C.free(unsafe.Pointer(iconText_ms.data))
 	slotval1 := iconText_ret
 
 	gofunc(slotval1)
@@ -1408,9 +1434,9 @@ func QWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1419,9 +1445,9 @@ func QWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1430,9 +1456,9 @@ func QWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1441,9 +1467,9 @@ func QWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -28,12 +28,12 @@ typedef struct QTransform QTransform;
 #endif
 
 QStaticText* QStaticText_new();
-QStaticText* QStaticText_new2(struct miqt_string* text);
+QStaticText* QStaticText_new2(struct miqt_string text);
 QStaticText* QStaticText_new3(QStaticText* other);
 void QStaticText_OperatorAssign(QStaticText* self, QStaticText* param1);
 void QStaticText_Swap(QStaticText* self, QStaticText* other);
-void QStaticText_SetText(QStaticText* self, struct miqt_string* text);
-struct miqt_string* QStaticText_Text(const QStaticText* self);
+void QStaticText_SetText(QStaticText* self, struct miqt_string text);
+struct miqt_string QStaticText_Text(const QStaticText* self);
 void QStaticText_SetTextFormat(QStaticText* self, int textFormat);
 int QStaticText_TextFormat(const QStaticText* self);
 void QStaticText_SetTextWidth(QStaticText* self, double textWidth);

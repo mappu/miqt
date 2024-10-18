@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -70,49 +69,57 @@ func (this *QToolBox) MetaObject() *QMetaObject {
 func (this *QToolBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QToolBox_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QToolBox_Metacast(this.h, param1_Cstring))
 }
 
 func QToolBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QToolBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QToolBox) AddItem(widget *QWidget, text string) int {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return (int)(C.QToolBox_AddItem(this.h, widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return (int)(C.QToolBox_AddItem(this.h, widget.cPointer(), text_ms))
 }
 
 func (this *QToolBox) AddItem2(widget *QWidget, icon *QIcon, text string) int {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return (int)(C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return (int)(C.QToolBox_AddItem2(this.h, widget.cPointer(), icon.cPointer(), text_ms))
 }
 
 func (this *QToolBox) InsertItem(index int, widget *QWidget, text string) int {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return (int)(C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(text_ms)))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return (int)(C.QToolBox_InsertItem(this.h, (C.int)(index), widget.cPointer(), text_ms))
 }
 
 func (this *QToolBox) InsertItem2(index int, widget *QWidget, icon *QIcon, text string) int {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return (int)(C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms)))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return (int)(C.QToolBox_InsertItem2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), text_ms))
 }
 
 func (this *QToolBox) RemoveItem(index int) {
@@ -128,15 +135,17 @@ func (this *QToolBox) IsItemEnabled(index int) bool {
 }
 
 func (this *QToolBox) SetItemText(index int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QToolBox_SetItemText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QToolBox_SetItemText(this.h, (C.int)(index), text_ms)
 }
 
 func (this *QToolBox) ItemText(index int) string {
-	var _ms *C.struct_miqt_string = C.QToolBox_ItemText(this.h, (C.int)(index))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_ItemText(this.h, (C.int)(index))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -152,15 +161,17 @@ func (this *QToolBox) ItemIcon(index int) *QIcon {
 }
 
 func (this *QToolBox) SetItemToolTip(index int, toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QToolBox_SetItemToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QToolBox_SetItemToolTip(this.h, (C.int)(index), toolTip_ms)
 }
 
 func (this *QToolBox) ItemToolTip(index int) string {
-	var _ms *C.struct_miqt_string = C.QToolBox_ItemToolTip(this.h, (C.int)(index))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_ItemToolTip(this.h, (C.int)(index))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -217,9 +228,9 @@ func QToolBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -228,9 +239,9 @@ func QToolBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -239,9 +250,9 @@ func QToolBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -250,9 +261,9 @@ func QToolBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QToolBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QToolBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

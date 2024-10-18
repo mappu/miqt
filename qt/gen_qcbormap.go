@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -104,9 +103,11 @@ func (this *QCborMap) Value(key int64) *QCborValue {
 }
 
 func (this *QCborMap) Value2(key string) *QCborValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_Value2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_Value2(this.h, key_ms)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -127,9 +128,11 @@ func (this *QCborMap) OperatorSubscript(key int64) *QCborValue {
 }
 
 func (this *QCborMap) OperatorSubscript2(key string) *QCborValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_OperatorSubscript2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_OperatorSubscript2(this.h, key_ms)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -150,9 +153,11 @@ func (this *QCborMap) OperatorSubscript4(key int64) *QCborValueRef {
 }
 
 func (this *QCborMap) OperatorSubscript6(key string) *QCborValueRef {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_OperatorSubscript6(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_OperatorSubscript6(this.h, key_ms)
 	_goptr := newQCborValueRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -173,9 +178,11 @@ func (this *QCborMap) Take(key int64) *QCborValue {
 }
 
 func (this *QCborMap) Take2(key string) *QCborValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_Take2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_Take2(this.h, key_ms)
 	_goptr := newQCborValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -193,9 +200,11 @@ func (this *QCborMap) Remove(key int64) {
 }
 
 func (this *QCborMap) Remove2(key string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QCborMap_Remove2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QCborMap_Remove2(this.h, key_ms)
 }
 
 func (this *QCborMap) Remove3(key *QCborValue) {
@@ -207,9 +216,11 @@ func (this *QCborMap) Contains(key int64) bool {
 }
 
 func (this *QCborMap) Contains2(key string) bool {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	return (bool)(C.QCborMap_Contains2(this.h, (*C.struct_miqt_string)(key_ms)))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	return (bool)(C.QCborMap_Contains2(this.h, key_ms))
 }
 
 func (this *QCborMap) Contains3(key *QCborValue) bool {
@@ -328,9 +339,11 @@ func (this *QCborMap) Find(key int64) *QCborMap__Iterator {
 }
 
 func (this *QCborMap) Find2(key string) *QCborMap__Iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_Find2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_Find2(this.h, key_ms)
 	_goptr := newQCborMap__Iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -351,9 +364,11 @@ func (this *QCborMap) ConstFind(key int64) *QCborMap__ConstIterator {
 }
 
 func (this *QCborMap) ConstFind2(key string) *QCborMap__ConstIterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_ConstFind2(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_ConstFind2(this.h, key_ms)
 	_goptr := newQCborMap__ConstIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -374,9 +389,11 @@ func (this *QCborMap) Find4(key int64) *QCborMap__ConstIterator {
 }
 
 func (this *QCborMap) Find6(key string) *QCborMap__ConstIterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_Find6(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_Find6(this.h, key_ms)
 	_goptr := newQCborMap__ConstIterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -397,9 +414,11 @@ func (this *QCborMap) Insert(key int64, value_ *QCborValue) *QCborMap__Iterator 
 }
 
 func (this *QCborMap) Insert3(key string, value_ *QCborValue) *QCborMap__Iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QCborMap_Insert3(this.h, (*C.struct_miqt_string)(key_ms), value_.cPointer())
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QCborMap_Insert3(this.h, key_ms, value_.cPointer())
 	_goptr := newQCborMap__Iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

@@ -22,18 +22,26 @@ void* QDesktopWidget_Metacast(QDesktopWidget* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QDesktopWidget_Tr(const char* s) {
+struct miqt_string QDesktopWidget_Tr(const char* s) {
 	QString _ret = QDesktopWidget::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDesktopWidget_TrUtf8(const char* s) {
+struct miqt_string QDesktopWidget_TrUtf8(const char* s) {
 	QString _ret = QDesktopWidget::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QDesktopWidget_ScreenNumber(const QDesktopWidget* self) {
@@ -131,32 +139,48 @@ void QDesktopWidget_connect_PrimaryScreenChanged(QDesktopWidget* self, intptr_t 
 	});
 }
 
-struct miqt_string* QDesktopWidget_Tr2(const char* s, const char* c) {
+struct miqt_string QDesktopWidget_Tr2(const char* s, const char* c) {
 	QString _ret = QDesktopWidget::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDesktopWidget_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDesktopWidget_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QDesktopWidget::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDesktopWidget_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDesktopWidget_TrUtf82(const char* s, const char* c) {
 	QString _ret = QDesktopWidget::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDesktopWidget_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDesktopWidget_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDesktopWidget::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QDesktopWidget_ScreenNumber1(const QDesktopWidget* self, QWidget* widget) {

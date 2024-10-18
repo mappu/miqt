@@ -29,17 +29,17 @@ typedef struct QRectF QRectF;
 
 QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self);
 void* QGraphicsAnchor_Metacast(QGraphicsAnchor* self, const char* param1);
-struct miqt_string* QGraphicsAnchor_Tr(const char* s);
-struct miqt_string* QGraphicsAnchor_TrUtf8(const char* s);
+struct miqt_string QGraphicsAnchor_Tr(const char* s);
+struct miqt_string QGraphicsAnchor_TrUtf8(const char* s);
 void QGraphicsAnchor_SetSpacing(QGraphicsAnchor* self, double spacing);
 void QGraphicsAnchor_UnsetSpacing(QGraphicsAnchor* self);
 double QGraphicsAnchor_Spacing(const QGraphicsAnchor* self);
 void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, int policy);
 int QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self);
-struct miqt_string* QGraphicsAnchor_Tr2(const char* s, const char* c);
-struct miqt_string* QGraphicsAnchor_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QGraphicsAnchor_TrUtf82(const char* s, const char* c);
-struct miqt_string* QGraphicsAnchor_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QGraphicsAnchor_Tr2(const char* s, const char* c);
+struct miqt_string QGraphicsAnchor_Tr3(const char* s, const char* c, int n);
+struct miqt_string QGraphicsAnchor_TrUtf82(const char* s, const char* c);
+struct miqt_string QGraphicsAnchor_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsAnchor_Delete(QGraphicsAnchor* self);
 
 QGraphicsAnchorLayout* QGraphicsAnchorLayout_new();

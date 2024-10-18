@@ -18,18 +18,26 @@ void* QAbstractAnimation_Metacast(QAbstractAnimation* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractAnimation_Tr(const char* s) {
+struct miqt_string QAbstractAnimation_Tr(const char* s) {
 	QString _ret = QAbstractAnimation::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractAnimation_TrUtf8(const char* s) {
+struct miqt_string QAbstractAnimation_TrUtf8(const char* s) {
 	QString _ret = QAbstractAnimation::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QAbstractAnimation_State(const QAbstractAnimation* self) {
@@ -149,32 +157,48 @@ void QAbstractAnimation_SetCurrentTime(QAbstractAnimation* self, int msecs) {
 	self->setCurrentTime(static_cast<int>(msecs));
 }
 
-struct miqt_string* QAbstractAnimation_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractAnimation_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractAnimation::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractAnimation_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractAnimation_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractAnimation::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractAnimation_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractAnimation_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractAnimation::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractAnimation_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractAnimation_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractAnimation::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy) {
@@ -201,18 +225,26 @@ void* QAnimationDriver_Metacast(QAnimationDriver* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAnimationDriver_Tr(const char* s) {
+struct miqt_string QAnimationDriver_Tr(const char* s) {
 	QString _ret = QAnimationDriver::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAnimationDriver_TrUtf8(const char* s) {
+struct miqt_string QAnimationDriver_TrUtf8(const char* s) {
 	QString _ret = QAnimationDriver::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAnimationDriver_Advance(QAnimationDriver* self) {
@@ -265,32 +297,48 @@ void QAnimationDriver_connect_Stopped(QAnimationDriver* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QAnimationDriver_Tr2(const char* s, const char* c) {
+struct miqt_string QAnimationDriver_Tr2(const char* s, const char* c) {
 	QString _ret = QAnimationDriver::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAnimationDriver_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAnimationDriver_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAnimationDriver::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAnimationDriver_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAnimationDriver_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAnimationDriver::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAnimationDriver_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAnimationDriver_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAnimationDriver::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAnimationDriver_Delete(QAnimationDriver* self) {

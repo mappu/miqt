@@ -34,13 +34,13 @@ void QAccessibleBridge_Delete(QAccessibleBridge* self);
 
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self);
 void* QAccessibleBridgePlugin_Metacast(QAccessibleBridgePlugin* self, const char* param1);
-struct miqt_string* QAccessibleBridgePlugin_Tr(const char* s);
-struct miqt_string* QAccessibleBridgePlugin_TrUtf8(const char* s);
-QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, struct miqt_string* key);
-struct miqt_string* QAccessibleBridgePlugin_Tr2(const char* s, const char* c);
-struct miqt_string* QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAccessibleBridgePlugin_Tr(const char* s);
+struct miqt_string QAccessibleBridgePlugin_TrUtf8(const char* s);
+QAccessibleBridge* QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin* self, struct miqt_string key);
+struct miqt_string QAccessibleBridgePlugin_Tr2(const char* s, const char* c);
+struct miqt_string QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n);
 void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self);
 
 #ifdef __cplusplus

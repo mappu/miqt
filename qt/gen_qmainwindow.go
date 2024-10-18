@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -81,24 +80,24 @@ func (this *QMainWindow) MetaObject() *QMetaObject {
 func (this *QMainWindow) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QMainWindow_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QMainWindow_Metacast(this.h, param1_Cstring))
 }
 
 func QMainWindow_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMainWindow_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -226,9 +225,11 @@ func (this *QMainWindow) AddToolBarWithToolbar(toolbar *QToolBar) {
 }
 
 func (this *QMainWindow) AddToolBarWithTitle(title string) *QToolBar {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	return UnsafeNewQToolBar(unsafe.Pointer(C.QMainWindow_AddToolBarWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	return UnsafeNewQToolBar(unsafe.Pointer(C.QMainWindow_AddToolBarWithTitle(this.h, title_ms)))
 }
 
 func (this *QMainWindow) InsertToolBar(before *QToolBar, toolbar *QToolBar) {
@@ -314,15 +315,18 @@ func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientat
 	C.QMainWindow_ResizeDocks(this.h, docks_ma, sizes_ma, (C.int)(orientation))
 }
 
-func (this *QMainWindow) SaveState() *QByteArray {
-	_ret := C.QMainWindow_SaveState(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMainWindow) SaveState() []byte {
+	var _bytearray C.struct_miqt_string = C.QMainWindow_SaveState(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QMainWindow) RestoreState(state *QByteArray) bool {
-	return (bool)(C.QMainWindow_RestoreState(this.h, state.cPointer()))
+func (this *QMainWindow) RestoreState(state []byte) bool {
+	state_alias := C.struct_miqt_string{}
+	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	state_alias.len = C.size_t(len(state))
+	return (bool)(C.QMainWindow_RestoreState(this.h, state_alias))
 }
 
 func (this *QMainWindow) CreatePopupMenu() *QMenu {
@@ -406,9 +410,9 @@ func QMainWindow_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -417,9 +421,9 @@ func QMainWindow_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -428,9 +432,9 @@ func QMainWindow_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -439,9 +443,9 @@ func QMainWindow_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMainWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMainWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -449,15 +453,18 @@ func (this *QMainWindow) AddToolBarBreak1(area ToolBarArea) {
 	C.QMainWindow_AddToolBarBreak1(this.h, (C.int)(area))
 }
 
-func (this *QMainWindow) SaveState1(version int) *QByteArray {
-	_ret := C.QMainWindow_SaveState1(this.h, (C.int)(version))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMainWindow) SaveState1(version int) []byte {
+	var _bytearray C.struct_miqt_string = C.QMainWindow_SaveState1(this.h, (C.int)(version))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QMainWindow) RestoreState2(state *QByteArray, version int) bool {
-	return (bool)(C.QMainWindow_RestoreState2(this.h, state.cPointer(), (C.int)(version)))
+func (this *QMainWindow) RestoreState2(state []byte, version int) bool {
+	state_alias := C.struct_miqt_string{}
+	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	state_alias.len = C.size_t(len(state))
+	return (bool)(C.QMainWindow_RestoreState2(this.h, state_alias, (C.int)(version)))
 }
 
 // Delete this object from C++ memory.

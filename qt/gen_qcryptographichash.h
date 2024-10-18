@@ -26,10 +26,10 @@ typedef struct QIODevice QIODevice;
 QCryptographicHash* QCryptographicHash_new(int method);
 void QCryptographicHash_Reset(QCryptographicHash* self);
 void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, int length);
-void QCryptographicHash_AddDataWithData(QCryptographicHash* self, QByteArray* data);
+void QCryptographicHash_AddDataWithData(QCryptographicHash* self, struct miqt_string data);
 bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* device);
-QByteArray* QCryptographicHash_Result(const QCryptographicHash* self);
-QByteArray* QCryptographicHash_Hash(QByteArray* data, int method);
+struct miqt_string QCryptographicHash_Result(const QCryptographicHash* self);
+struct miqt_string QCryptographicHash_Hash(struct miqt_string data, int method);
 int QCryptographicHash_HashLength(int method);
 void QCryptographicHash_Delete(QCryptographicHash* self);
 

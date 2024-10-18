@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -52,21 +51,25 @@ func UnsafeNewQCommandLineOption(h unsafe.Pointer) *QCommandLineOption {
 
 // NewQCommandLineOption constructs a new QCommandLineOption object.
 func NewQCommandLineOption(name string) *QCommandLineOption {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QCommandLineOption_new((*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QCommandLineOption_new(name_ms)
 	return newQCommandLineOption(ret)
 }
 
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
 func NewQCommandLineOption2(names []string) *QCommandLineOption {
 	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := libmiqt.Strdupg(names[i])
-		defer C.free(names_i_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
+		names_i_ms := C.struct_miqt_string{}
+		names_i_ms.data = C.CString(names[i])
+		names_i_ms.len = C.size_t(len(names[i]))
+		defer C.free(unsafe.Pointer(names_i_ms.data))
+		names_CArray[i] = names_i_ms
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -76,29 +79,37 @@ func NewQCommandLineOption2(names []string) *QCommandLineOption {
 
 // NewQCommandLineOption3 constructs a new QCommandLineOption object.
 func NewQCommandLineOption3(name string, description string) *QCommandLineOption {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	ret := C.QCommandLineOption_new3((*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(description_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	ret := C.QCommandLineOption_new3(name_ms, description_ms)
 	return newQCommandLineOption(ret)
 }
 
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
 func NewQCommandLineOption4(names []string, description string) *QCommandLineOption {
 	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := libmiqt.Strdupg(names[i])
-		defer C.free(names_i_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
+		names_i_ms := C.struct_miqt_string{}
+		names_i_ms.data = C.CString(names[i])
+		names_i_ms.len = C.size_t(len(names[i]))
+		defer C.free(unsafe.Pointer(names_i_ms.data))
+		names_CArray[i] = names_i_ms
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	ret := C.QCommandLineOption_new4(names_ma, (*C.struct_miqt_string)(description_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	ret := C.QCommandLineOption_new4(names_ma, description_ms)
 	return newQCommandLineOption(ret)
 }
 
@@ -110,69 +121,97 @@ func NewQCommandLineOption5(other *QCommandLineOption) *QCommandLineOption {
 
 // NewQCommandLineOption6 constructs a new QCommandLineOption object.
 func NewQCommandLineOption6(name string, description string, valueName string) *QCommandLineOption {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	valueName_ms := libmiqt.Strdupg(valueName)
-	defer C.free(valueName_ms)
-	ret := C.QCommandLineOption_new6((*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(description_ms), (*C.struct_miqt_string)(valueName_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	valueName_ms := C.struct_miqt_string{}
+	valueName_ms.data = C.CString(valueName)
+	valueName_ms.len = C.size_t(len(valueName))
+	defer C.free(unsafe.Pointer(valueName_ms.data))
+	ret := C.QCommandLineOption_new6(name_ms, description_ms, valueName_ms)
 	return newQCommandLineOption(ret)
 }
 
 // NewQCommandLineOption7 constructs a new QCommandLineOption object.
 func NewQCommandLineOption7(name string, description string, valueName string, defaultValue string) *QCommandLineOption {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	valueName_ms := libmiqt.Strdupg(valueName)
-	defer C.free(valueName_ms)
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	ret := C.QCommandLineOption_new7((*C.struct_miqt_string)(name_ms), (*C.struct_miqt_string)(description_ms), (*C.struct_miqt_string)(valueName_ms), (*C.struct_miqt_string)(defaultValue_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	valueName_ms := C.struct_miqt_string{}
+	valueName_ms.data = C.CString(valueName)
+	valueName_ms.len = C.size_t(len(valueName))
+	defer C.free(unsafe.Pointer(valueName_ms.data))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	ret := C.QCommandLineOption_new7(name_ms, description_ms, valueName_ms, defaultValue_ms)
 	return newQCommandLineOption(ret)
 }
 
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
 func NewQCommandLineOption8(names []string, description string, valueName string) *QCommandLineOption {
 	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := libmiqt.Strdupg(names[i])
-		defer C.free(names_i_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
+		names_i_ms := C.struct_miqt_string{}
+		names_i_ms.data = C.CString(names[i])
+		names_i_ms.len = C.size_t(len(names[i]))
+		defer C.free(unsafe.Pointer(names_i_ms.data))
+		names_CArray[i] = names_i_ms
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	valueName_ms := libmiqt.Strdupg(valueName)
-	defer C.free(valueName_ms)
-	ret := C.QCommandLineOption_new8(names_ma, (*C.struct_miqt_string)(description_ms), (*C.struct_miqt_string)(valueName_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	valueName_ms := C.struct_miqt_string{}
+	valueName_ms.data = C.CString(valueName)
+	valueName_ms.len = C.size_t(len(valueName))
+	defer C.free(unsafe.Pointer(valueName_ms.data))
+	ret := C.QCommandLineOption_new8(names_ma, description_ms, valueName_ms)
 	return newQCommandLineOption(ret)
 }
 
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
 func NewQCommandLineOption9(names []string, description string, valueName string, defaultValue string) *QCommandLineOption {
 	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := libmiqt.Strdupg(names[i])
-		defer C.free(names_i_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
+		names_i_ms := C.struct_miqt_string{}
+		names_i_ms.data = C.CString(names[i])
+		names_i_ms.len = C.size_t(len(names[i]))
+		defer C.free(unsafe.Pointer(names_i_ms.data))
+		names_CArray[i] = names_i_ms
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	valueName_ms := libmiqt.Strdupg(valueName)
-	defer C.free(valueName_ms)
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	ret := C.QCommandLineOption_new9(names_ma, (*C.struct_miqt_string)(description_ms), (*C.struct_miqt_string)(valueName_ms), (*C.struct_miqt_string)(defaultValue_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	valueName_ms := C.struct_miqt_string{}
+	valueName_ms.data = C.CString(valueName)
+	valueName_ms.len = C.size_t(len(valueName))
+	defer C.free(unsafe.Pointer(valueName_ms.data))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	ret := C.QCommandLineOption_new9(names_ma, description_ms, valueName_ms, defaultValue_ms)
 	return newQCommandLineOption(ret)
 }
 
@@ -187,11 +226,11 @@ func (this *QCommandLineOption) Swap(other *QCommandLineOption) {
 func (this *QCommandLineOption) Names() []string {
 	var _ma *C.struct_miqt_array = C.QCommandLineOption_Names(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -199,45 +238,53 @@ func (this *QCommandLineOption) Names() []string {
 }
 
 func (this *QCommandLineOption) SetValueName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QCommandLineOption_SetValueName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QCommandLineOption_SetValueName(this.h, name_ms)
 }
 
 func (this *QCommandLineOption) ValueName() string {
-	var _ms *C.struct_miqt_string = C.QCommandLineOption_ValueName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCommandLineOption_ValueName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCommandLineOption) SetDescription(description string) {
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	C.QCommandLineOption_SetDescription(this.h, (*C.struct_miqt_string)(description_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	C.QCommandLineOption_SetDescription(this.h, description_ms)
 }
 
 func (this *QCommandLineOption) Description() string {
-	var _ms *C.struct_miqt_string = C.QCommandLineOption_Description(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCommandLineOption_Description(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
-	defaultValue_ms := libmiqt.Strdupg(defaultValue)
-	defer C.free(defaultValue_ms)
-	C.QCommandLineOption_SetDefaultValue(this.h, (*C.struct_miqt_string)(defaultValue_ms))
+	defaultValue_ms := C.struct_miqt_string{}
+	defaultValue_ms.data = C.CString(defaultValue)
+	defaultValue_ms.len = C.size_t(len(defaultValue))
+	defer C.free(unsafe.Pointer(defaultValue_ms.data))
+	C.QCommandLineOption_SetDefaultValue(this.h, defaultValue_ms)
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	defaultValues_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(defaultValues))))
+	defaultValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(defaultValues))))
 	defer C.free(unsafe.Pointer(defaultValues_CArray))
 	for i := range defaultValues {
-		defaultValues_i_ms := libmiqt.Strdupg(defaultValues[i])
-		defer C.free(defaultValues_i_ms)
-		defaultValues_CArray[i] = (*C.struct_miqt_string)(defaultValues_i_ms)
+		defaultValues_i_ms := C.struct_miqt_string{}
+		defaultValues_i_ms.data = C.CString(defaultValues[i])
+		defaultValues_i_ms.len = C.size_t(len(defaultValues[i]))
+		defer C.free(unsafe.Pointer(defaultValues_i_ms.data))
+		defaultValues_CArray[i] = defaultValues_i_ms
 	}
 	defaultValues_ma := &C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(defaultValues_ma))
@@ -247,11 +294,11 @@ func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 func (this *QCommandLineOption) DefaultValues() []string {
 	var _ma *C.struct_miqt_array = C.QCommandLineOption_DefaultValues(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))

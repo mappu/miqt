@@ -6,8 +6,8 @@
 #include "gen_qlockfile.h"
 #include "_cgo_export.h"
 
-QLockFile* QLockFile_new(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QLockFile* QLockFile_new(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QLockFile(fileName_QString);
 }
 

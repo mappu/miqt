@@ -27,8 +27,8 @@ QBitmap* QBitmap_new4(QSize* param1) {
 	return new QBitmap(*param1);
 }
 
-QBitmap* QBitmap_new5(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QBitmap* QBitmap_new5(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QBitmap(fileName_QString);
 }
 
@@ -36,8 +36,8 @@ QBitmap* QBitmap_new6(QBitmap* other) {
 	return new QBitmap(*other);
 }
 
-QBitmap* QBitmap_new7(struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QBitmap* QBitmap_new7(struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QBitmap(fileName_QString, format);
 }
 

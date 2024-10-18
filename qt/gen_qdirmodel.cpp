@@ -15,12 +15,12 @@
 #include "gen_qdirmodel.h"
 #include "_cgo_export.h"
 
-QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort) {
+QDirModel* QDirModel_new(struct miqt_array* /* of struct miqt_string */ nameFilters, int filters, int sort) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
+	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
@@ -30,12 +30,12 @@ QDirModel* QDirModel_new2() {
 	return new QDirModel();
 }
 
-QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string* */ nameFilters, int filters, int sort, QObject* parent) {
+QDirModel* QDirModel_new3(struct miqt_array* /* of struct miqt_string */ nameFilters, int filters, int sort, QObject* parent) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters->len);
-	struct miqt_string** nameFilters_arr = static_cast<struct miqt_string**>(nameFilters->data);
+	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters->data);
 	for(size_t i = 0; i < nameFilters->len; ++i) {
-		QString nameFilters_arr_i_QString = QString::fromUtf8(&nameFilters_arr[i]->data, nameFilters_arr[i]->len);
+		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
 	return new QDirModel(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort), parent);
@@ -53,18 +53,26 @@ void* QDirModel_Metacast(QDirModel* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QDirModel_Tr(const char* s) {
+struct miqt_string QDirModel_Tr(const char* s) {
 	QString _ret = QDirModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDirModel_TrUtf8(const char* s) {
+struct miqt_string QDirModel_TrUtf8(const char* s) {
 	QString _ret = QDirModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QDirModel_Index(const QDirModel* self, int row, int column) {
@@ -111,12 +119,16 @@ void QDirModel_Sort(QDirModel* self, int column) {
 struct miqt_array* QDirModel_MimeTypes(const QDirModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -151,12 +163,12 @@ QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
 	return self->iconProvider();
 }
 
-void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string* */ filters) {
+void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct miqt_string */ filters) {
 	QStringList filters_QList;
 	filters_QList.reserve(filters->len);
-	struct miqt_string** filters_arr = static_cast<struct miqt_string**>(filters->data);
+	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters->data);
 	for(size_t i = 0; i < filters->len; ++i) {
-		QString filters_arr_i_QString = QString::fromUtf8(&filters_arr[i]->data, filters_arr[i]->len);
+		QString filters_arr_i_QString = QString::fromUtf8(filters_arr[i].data, filters_arr[i].len);
 		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
@@ -165,12 +177,16 @@ void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array* /* of struct m
 struct miqt_array* QDirModel_NameFilters(const QDirModel* self) {
 	QStringList _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -220,8 +236,8 @@ bool QDirModel_LazyChildCount(const QDirModel* self) {
 	return self->lazyChildCount();
 }
 
-QModelIndex* QDirModel_IndexWithPath(const QDirModel* self, struct miqt_string* path) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+QModelIndex* QDirModel_IndexWithPath(const QDirModel* self, struct miqt_string path) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new QModelIndex(self->index(path_QString));
 }
 
@@ -229,8 +245,8 @@ bool QDirModel_IsDir(const QDirModel* self, QModelIndex* index) {
 	return self->isDir(*index);
 }
 
-QModelIndex* QDirModel_Mkdir(QDirModel* self, QModelIndex* parent, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QModelIndex* QDirModel_Mkdir(QDirModel* self, QModelIndex* parent, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QModelIndex(self->mkdir(*parent, name_QString));
 }
 
@@ -242,18 +258,26 @@ bool QDirModel_Remove(QDirModel* self, QModelIndex* index) {
 	return self->remove(*index);
 }
 
-struct miqt_string* QDirModel_FilePath(const QDirModel* self, QModelIndex* index) {
+struct miqt_string QDirModel_FilePath(const QDirModel* self, QModelIndex* index) {
 	QString _ret = self->filePath(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDirModel_FileName(const QDirModel* self, QModelIndex* index) {
+struct miqt_string QDirModel_FileName(const QDirModel* self, QModelIndex* index) {
 	QString _ret = self->fileName(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QIcon* QDirModel_FileIcon(const QDirModel* self, QModelIndex* index) {
@@ -268,32 +292,48 @@ void QDirModel_Refresh(QDirModel* self) {
 	self->refresh();
 }
 
-struct miqt_string* QDirModel_Tr2(const char* s, const char* c) {
+struct miqt_string QDirModel_Tr2(const char* s, const char* c) {
 	QString _ret = QDirModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDirModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDirModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QDirModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDirModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDirModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QDirModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDirModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDirModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDirModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QDirModel_Index3(const QDirModel* self, int row, int column, QModelIndex* parent) {
@@ -328,8 +368,8 @@ void QDirModel_Sort2(QDirModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-QModelIndex* QDirModel_Index2(const QDirModel* self, struct miqt_string* path, int column) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+QModelIndex* QDirModel_Index2(const QDirModel* self, struct miqt_string path, int column) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 

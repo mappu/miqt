@@ -163,18 +163,21 @@ func (this *QColorSpace) IsValid() bool {
 	return (bool)(C.QColorSpace_IsValid(this.h))
 }
 
-func QColorSpace_FromIccProfile(iccProfile *QByteArray) *QColorSpace {
-	_ret := C.QColorSpace_FromIccProfile(iccProfile.cPointer())
+func QColorSpace_FromIccProfile(iccProfile []byte) *QColorSpace {
+	iccProfile_alias := C.struct_miqt_string{}
+	iccProfile_alias.data = (*C.char)(unsafe.Pointer(&iccProfile[0]))
+	iccProfile_alias.len = C.size_t(len(iccProfile))
+	_ret := C.QColorSpace_FromIccProfile(iccProfile_alias)
 	_goptr := newQColorSpace(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QColorSpace) IccProfile() *QByteArray {
-	_ret := C.QColorSpace_IccProfile(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QColorSpace) IccProfile() []byte {
+	var _bytearray C.struct_miqt_string = C.QColorSpace_IccProfile(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QColorSpace) TransformationToColorSpace(colorspace *QColorSpace) *QColorTransform {

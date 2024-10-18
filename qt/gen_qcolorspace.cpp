@@ -80,12 +80,18 @@ bool QColorSpace_IsValid(const QColorSpace* self) {
 	return self->isValid();
 }
 
-QColorSpace* QColorSpace_FromIccProfile(QByteArray* iccProfile) {
-	return new QColorSpace(QColorSpace::fromIccProfile(*iccProfile));
+QColorSpace* QColorSpace_FromIccProfile(struct miqt_string iccProfile) {
+	QByteArray iccProfile_QByteArray(iccProfile.data, iccProfile.len);
+	return new QColorSpace(QColorSpace::fromIccProfile(iccProfile_QByteArray));
 }
 
-QByteArray* QColorSpace_IccProfile(const QColorSpace* self) {
-	return new QByteArray(self->iccProfile());
+struct miqt_string QColorSpace_IccProfile(const QColorSpace* self) {
+	QByteArray _qb = self->iccProfile();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace) {

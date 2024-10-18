@@ -27,14 +27,14 @@ QFocusFrame* QFocusFrame_new();
 QFocusFrame* QFocusFrame_new2(QWidget* parent);
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self);
 void* QFocusFrame_Metacast(QFocusFrame* self, const char* param1);
-struct miqt_string* QFocusFrame_Tr(const char* s);
-struct miqt_string* QFocusFrame_TrUtf8(const char* s);
+struct miqt_string QFocusFrame_Tr(const char* s);
+struct miqt_string QFocusFrame_TrUtf8(const char* s);
 void QFocusFrame_SetWidget(QFocusFrame* self, QWidget* widget);
 QWidget* QFocusFrame_Widget(const QFocusFrame* self);
-struct miqt_string* QFocusFrame_Tr2(const char* s, const char* c);
-struct miqt_string* QFocusFrame_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QFocusFrame_TrUtf82(const char* s, const char* c);
-struct miqt_string* QFocusFrame_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QFocusFrame_Tr2(const char* s, const char* c);
+struct miqt_string QFocusFrame_Tr3(const char* s, const char* c, int n);
+struct miqt_string QFocusFrame_TrUtf82(const char* s, const char* c);
+struct miqt_string QFocusFrame_TrUtf83(const char* s, const char* c, int n);
 void QFocusFrame_Delete(QFocusFrame* self);
 
 #ifdef __cplusplus

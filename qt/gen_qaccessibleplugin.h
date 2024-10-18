@@ -27,13 +27,13 @@ typedef struct QObject QObject;
 
 QMetaObject* QAccessiblePlugin_MetaObject(const QAccessiblePlugin* self);
 void* QAccessiblePlugin_Metacast(QAccessiblePlugin* self, const char* param1);
-struct miqt_string* QAccessiblePlugin_Tr(const char* s);
-struct miqt_string* QAccessiblePlugin_TrUtf8(const char* s);
-QAccessibleInterface* QAccessiblePlugin_Create(QAccessiblePlugin* self, struct miqt_string* key, QObject* object);
-struct miqt_string* QAccessiblePlugin_Tr2(const char* s, const char* c);
-struct miqt_string* QAccessiblePlugin_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAccessiblePlugin_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAccessiblePlugin_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAccessiblePlugin_Tr(const char* s);
+struct miqt_string QAccessiblePlugin_TrUtf8(const char* s);
+QAccessibleInterface* QAccessiblePlugin_Create(QAccessiblePlugin* self, struct miqt_string key, QObject* object);
+struct miqt_string QAccessiblePlugin_Tr2(const char* s, const char* c);
+struct miqt_string QAccessiblePlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAccessiblePlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string QAccessiblePlugin_TrUtf83(const char* s, const char* c, int n);
 void QAccessiblePlugin_Delete(QAccessiblePlugin* self);
 
 #ifdef __cplusplus

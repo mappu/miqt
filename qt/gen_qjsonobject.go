@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -66,11 +65,11 @@ func (this *QJsonObject) Swap(other *QJsonObject) {
 func (this *QJsonObject) Keys() []string {
 	var _ma *C.struct_miqt_array = C.QJsonObject_Keys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -94,51 +93,63 @@ func (this *QJsonObject) IsEmpty() bool {
 }
 
 func (this *QJsonObject) Value(key string) *QJsonValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_Value(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_Value(this.h, key_ms)
 	_goptr := newQJsonValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) OperatorSubscript(key string) *QJsonValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_OperatorSubscript(this.h, key_ms)
 	_goptr := newQJsonValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) OperatorSubscriptWithKey(key string) *QJsonValueRef {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_OperatorSubscriptWithKey(this.h, key_ms)
 	_goptr := newQJsonValueRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) Remove(key string) {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	C.QJsonObject_Remove(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QJsonObject_Remove(this.h, key_ms)
 }
 
 func (this *QJsonObject) Take(key string) *QJsonValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_Take(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_Take(this.h, key_ms)
 	_goptr := newQJsonValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) Contains(key string) bool {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	return (bool)(C.QJsonObject_Contains(this.h, (*C.struct_miqt_string)(key_ms)))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	return (bool)(C.QJsonObject_Contains(this.h, key_ms))
 }
 
 func (this *QJsonObject) OperatorEqual(other *QJsonObject) bool {
@@ -199,36 +210,44 @@ func (this *QJsonObject) Erase(it QJsonObject__iterator) *QJsonObject__iterator 
 }
 
 func (this *QJsonObject) Find(key string) *QJsonObject__iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_Find(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_Find(this.h, key_ms)
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) FindWithKey(key string) *QJsonObject__const_iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_FindWithKey(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_FindWithKey(this.h, key_ms)
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) ConstFind(key string) *QJsonObject__const_iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_ConstFind(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_ConstFind(this.h, key_ms)
 	_goptr := newQJsonObject__const_iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonObject) Insert(key string, value *QJsonValue) *QJsonObject__iterator {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonObject_Insert(this.h, (*C.struct_miqt_string)(key_ms), value.cPointer())
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonObject_Insert(this.h, key_ms, value.cPointer())
 	_goptr := newQJsonObject__iterator(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -300,9 +319,9 @@ func NewQJsonObject__iterator3(param1 *QJsonObject__iterator) *QJsonObject__iter
 }
 
 func (this *QJsonObject__iterator) Key() string {
-	var _ms *C.struct_miqt_string = C.QJsonObject__iterator_Key(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QJsonObject__iterator_Key(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -498,9 +517,9 @@ func NewQJsonObject__const_iterator4(param1 *QJsonObject__const_iterator) *QJson
 }
 
 func (this *QJsonObject__const_iterator) Key() string {
-	var _ms *C.struct_miqt_string = C.QJsonObject__const_iterator_Key(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QJsonObject__const_iterator_Key(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

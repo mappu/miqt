@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -226,33 +225,41 @@ func NewQPageSize5(other *QPageSize) *QPageSize {
 
 // NewQPageSize6 constructs a new QPageSize object.
 func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QPageSize_new6(pointSize.cPointer(), (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QPageSize_new6(pointSize.cPointer(), name_ms)
 	return newQPageSize(ret)
 }
 
 // NewQPageSize7 constructs a new QPageSize object.
 func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QPageSize_new7(pointSize.cPointer(), (*C.struct_miqt_string)(name_ms), (C.int)(matchPolicy))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy))
 	return newQPageSize(ret)
 }
 
 // NewQPageSize8 constructs a new QPageSize object.
 func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QPageSize_new8(size.cPointer(), (C.int)(units), (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms)
 	return newQPageSize(ret)
 }
 
 // NewQPageSize9 constructs a new QPageSize object.
 func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QPageSize_new9(size.cPointer(), (C.int)(units), (*C.struct_miqt_string)(name_ms), (C.int)(matchPolicy))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy))
 	return newQPageSize(ret)
 }
 
@@ -273,16 +280,16 @@ func (this *QPageSize) IsValid() bool {
 }
 
 func (this *QPageSize) Key() string {
-	var _ms *C.struct_miqt_string = C.QPageSize_Key(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPageSize_Key(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPageSize) Name() string {
-	var _ms *C.struct_miqt_string = C.QPageSize_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPageSize_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -348,16 +355,16 @@ func (this *QPageSize) RectPixels(resolution int) *QRect {
 }
 
 func QPageSize_KeyWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
-	var _ms *C.struct_miqt_string = C.QPageSize_KeyWithPageSizeId((C.int)(pageSizeId))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPageSize_KeyWithPageSizeId((C.int)(pageSizeId))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QPageSize_NameWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
-	var _ms *C.struct_miqt_string = C.QPageSize_NameWithPageSizeId((C.int)(pageSizeId))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPageSize_NameWithPageSizeId((C.int)(pageSizeId))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

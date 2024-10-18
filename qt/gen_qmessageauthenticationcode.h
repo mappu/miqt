@@ -24,14 +24,14 @@ typedef struct QMessageAuthenticationCode QMessageAuthenticationCode;
 #endif
 
 QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method);
-QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, QByteArray* key);
+QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct miqt_string key);
 void QMessageAuthenticationCode_Reset(QMessageAuthenticationCode* self);
-void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, QByteArray* key);
+void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, struct miqt_string key);
 void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, int length);
-void QMessageAuthenticationCode_AddDataWithData(QMessageAuthenticationCode* self, QByteArray* data);
+void QMessageAuthenticationCode_AddDataWithData(QMessageAuthenticationCode* self, struct miqt_string data);
 bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device);
-QByteArray* QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self);
-QByteArray* QMessageAuthenticationCode_Hash(QByteArray* message, QByteArray* key, int method);
+struct miqt_string QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self);
+struct miqt_string QMessageAuthenticationCode_Hash(struct miqt_string message, struct miqt_string key, int method);
 void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self);
 
 #ifdef __cplusplus

@@ -33,8 +33,8 @@ typedef struct QWidget QWidget;
 
 QMetaObject* QLayout_MetaObject(const QLayout* self);
 void* QLayout_Metacast(QLayout* self, const char* param1);
-struct miqt_string* QLayout_Tr(const char* s);
-struct miqt_string* QLayout_TrUtf8(const char* s);
+struct miqt_string QLayout_Tr(const char* s);
+struct miqt_string QLayout_TrUtf8(const char* s);
 int QLayout_Margin(const QLayout* self);
 void QLayout_SetMargin(QLayout* self, int margin);
 int QLayout_Spacing(const QLayout* self);
@@ -79,10 +79,10 @@ QLayout* QLayout_Layout(QLayout* self);
 void QLayout_SetEnabled(QLayout* self, bool enabled);
 bool QLayout_IsEnabled(const QLayout* self);
 QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s);
-struct miqt_string* QLayout_Tr2(const char* s, const char* c);
-struct miqt_string* QLayout_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QLayout_TrUtf82(const char* s, const char* c);
-struct miqt_string* QLayout_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QLayout_Tr2(const char* s, const char* c);
+struct miqt_string QLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string QLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string QLayout_TrUtf83(const char* s, const char* c, int n);
 QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options);
 void QLayout_Delete(QLayout* self);
 

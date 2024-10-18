@@ -45,11 +45,15 @@ int QTextItem_RenderFlags(const QTextItem* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QTextItem_Text(const QTextItem* self) {
+struct miqt_string QTextItem_Text(const QTextItem* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QFont* QTextItem_Font(const QTextItem* self) {

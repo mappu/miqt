@@ -18,18 +18,26 @@ void* QClipboard_Metacast(QClipboard* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QClipboard_Tr(const char* s) {
+struct miqt_string QClipboard_Tr(const char* s) {
 	QString _ret = QClipboard::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_TrUtf8(const char* s) {
+struct miqt_string QClipboard_TrUtf8(const char* s) {
 	QString _ret = QClipboard::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QClipboard_Clear(QClipboard* self) {
@@ -56,23 +64,31 @@ bool QClipboard_OwnsFindBuffer(const QClipboard* self) {
 	return self->ownsFindBuffer();
 }
 
-struct miqt_string* QClipboard_Text(const QClipboard* self) {
+struct miqt_string QClipboard_Text(const QClipboard* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_TextWithSubtype(const QClipboard* self, struct miqt_string* subtype) {
-	QString subtype_QString = QString::fromUtf8(&subtype->data, subtype->len);
+struct miqt_string QClipboard_TextWithSubtype(const QClipboard* self, struct miqt_string subtype) {
+	QString subtype_QString = QString::fromUtf8(subtype.data, subtype.len);
 	QString _ret = self->text(subtype_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QClipboard_SetText(QClipboard* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QClipboard_SetText(QClipboard* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->setText(param1_QString);
 }
 
@@ -142,55 +158,79 @@ void QClipboard_connect_DataChanged(QClipboard* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QClipboard_Tr2(const char* s, const char* c) {
+struct miqt_string QClipboard_Tr2(const char* s, const char* c) {
 	QString _ret = QClipboard::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QClipboard_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QClipboard::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_TrUtf82(const char* s, const char* c) {
+struct miqt_string QClipboard_TrUtf82(const char* s, const char* c) {
 	QString _ret = QClipboard::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QClipboard_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QClipboard::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QClipboard_Clear1(QClipboard* self, int mode) {
 	self->clear(static_cast<QClipboard::Mode>(mode));
 }
 
-struct miqt_string* QClipboard_Text1(const QClipboard* self, int mode) {
+struct miqt_string QClipboard_Text1(const QClipboard* self, int mode) {
 	QString _ret = self->text(static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QClipboard_Text2(const QClipboard* self, struct miqt_string* subtype, int mode) {
-	QString subtype_QString = QString::fromUtf8(&subtype->data, subtype->len);
+struct miqt_string QClipboard_Text2(const QClipboard* self, struct miqt_string subtype, int mode) {
+	QString subtype_QString = QString::fromUtf8(subtype.data, subtype.len);
 	QString _ret = self->text(subtype_QString, static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QClipboard_SetText2(QClipboard* self, struct miqt_string* param1, int mode) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QClipboard_SetText2(QClipboard* self, struct miqt_string param1, int mode) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->setText(param1_QString, static_cast<QClipboard::Mode>(mode));
 }
 

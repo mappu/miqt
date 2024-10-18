@@ -155,15 +155,19 @@ bool QGraphicsItem_IsBlockedByModalPanel(const QGraphicsItem* self) {
 	return self->isBlockedByModalPanel();
 }
 
-struct miqt_string* QGraphicsItem_ToolTip(const QGraphicsItem* self) {
+struct miqt_string QGraphicsItem_ToolTip(const QGraphicsItem* self) {
 	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGraphicsItem_SetToolTip(QGraphicsItem* self, struct miqt_string* toolTip) {
-	QString toolTip_QString = QString::fromUtf8(&toolTip->data, toolTip->len);
+void QGraphicsItem_SetToolTip(QGraphicsItem* self, struct miqt_string toolTip) {
+	QString toolTip_QString = QString::fromUtf8(toolTip.data, toolTip.len);
 	self->setToolTip(toolTip_QString);
 }
 
@@ -846,18 +850,26 @@ void* QGraphicsObject_Metacast(QGraphicsObject* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsObject_Tr(const char* s) {
+struct miqt_string QGraphicsObject_Tr(const char* s) {
 	QString _ret = QGraphicsObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsObject_TrUtf8(const char* s) {
+struct miqt_string QGraphicsObject_TrUtf8(const char* s) {
 	QString _ret = QGraphicsObject::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsObject_GrabGesture(QGraphicsObject* self, int typeVal) {
@@ -988,32 +1000,48 @@ void QGraphicsObject_connect_HeightChanged(QGraphicsObject* self, intptr_t slot)
 	});
 }
 
-struct miqt_string* QGraphicsObject_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsObject_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsObject::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsObject_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsObject_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsObject::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsObject_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsObject_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsObject::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsObject_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsObject_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsObject::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsObject_GrabGesture2(QGraphicsObject* self, int typeVal, int flags) {
@@ -1495,8 +1523,8 @@ QGraphicsTextItem* QGraphicsTextItem_new() {
 	return new QGraphicsTextItem();
 }
 
-QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QGraphicsTextItem(text_QString);
 }
 
@@ -1504,8 +1532,8 @@ QGraphicsTextItem* QGraphicsTextItem_new3(QGraphicsItem* parent) {
 	return new QGraphicsTextItem(parent);
 }
 
-QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string* text, QGraphicsItem* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsTextItem* QGraphicsTextItem_new4(struct miqt_string text, QGraphicsItem* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QGraphicsTextItem(text_QString, parent);
 }
 
@@ -1517,41 +1545,57 @@ void* QGraphicsTextItem_Metacast(QGraphicsTextItem* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsTextItem_Tr(const char* s) {
+struct miqt_string QGraphicsTextItem_Tr(const char* s) {
 	QString _ret = QGraphicsTextItem::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsTextItem_TrUtf8(const char* s) {
+struct miqt_string QGraphicsTextItem_TrUtf8(const char* s) {
 	QString _ret = QGraphicsTextItem::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self) {
+struct miqt_string QGraphicsTextItem_ToHtml(const QGraphicsTextItem* self) {
 	QString _ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGraphicsTextItem_SetHtml(QGraphicsTextItem* self, struct miqt_string* html) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+void QGraphicsTextItem_SetHtml(QGraphicsTextItem* self, struct miqt_string html) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	self->setHtml(html_QString);
 }
 
-struct miqt_string* QGraphicsTextItem_ToPlainText(const QGraphicsTextItem* self) {
+struct miqt_string QGraphicsTextItem_ToPlainText(const QGraphicsTextItem* self) {
 	QString _ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QGraphicsTextItem_SetPlainText(QGraphicsTextItem* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setPlainText(text_QString);
 }
 
@@ -1653,8 +1697,8 @@ QTextCursor* QGraphicsTextItem_TextCursor(const QGraphicsTextItem* self) {
 	return new QTextCursor(self->textCursor());
 }
 
-void QGraphicsTextItem_LinkActivated(QGraphicsTextItem* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QGraphicsTextItem_LinkActivated(QGraphicsTextItem* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->linkActivated(param1_QString);
 }
 
@@ -1663,13 +1707,17 @@ void QGraphicsTextItem_connect_LinkActivated(QGraphicsTextItem* self, intptr_t s
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(param1_b.data(), param1_b.length());
+		struct miqt_string param1_ms;
+		param1_ms.len = param1_b.length();
+		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+		struct miqt_string sigval1 = param1_ms;
 		miqt_exec_callback_QGraphicsTextItem_LinkActivated(slot, sigval1);
 	});
 }
 
-void QGraphicsTextItem_LinkHovered(QGraphicsTextItem* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QGraphicsTextItem_LinkHovered(QGraphicsTextItem* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->linkHovered(param1_QString);
 }
 
@@ -1678,37 +1726,57 @@ void QGraphicsTextItem_connect_LinkHovered(QGraphicsTextItem* self, intptr_t slo
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(param1_b.data(), param1_b.length());
+		struct miqt_string param1_ms;
+		param1_ms.len = param1_b.length();
+		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+		struct miqt_string sigval1 = param1_ms;
 		miqt_exec_callback_QGraphicsTextItem_LinkHovered(slot, sigval1);
 	});
 }
 
-struct miqt_string* QGraphicsTextItem_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsTextItem_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsTextItem::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsTextItem_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsTextItem_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsTextItem::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsTextItem_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsTextItem_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsTextItem::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsTextItem_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsTextItem_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsTextItem::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsTextItem_Delete(QGraphicsTextItem* self) {
@@ -1719,8 +1787,8 @@ QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new() {
 	return new QGraphicsSimpleTextItem();
 }
 
-QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QGraphicsSimpleTextItem(text_QString);
 }
 
@@ -1728,21 +1796,25 @@ QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new3(QGraphicsItem* parent) {
 	return new QGraphicsSimpleTextItem(parent);
 }
 
-QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new4(struct miqt_string* text, QGraphicsItem* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new4(struct miqt_string text, QGraphicsItem* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QGraphicsSimpleTextItem(text_QString, parent);
 }
 
-void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QGraphicsSimpleTextItem_SetText(QGraphicsSimpleTextItem* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-struct miqt_string* QGraphicsSimpleTextItem_Text(const QGraphicsSimpleTextItem* self) {
+struct miqt_string QGraphicsSimpleTextItem_Text(const QGraphicsSimpleTextItem* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsSimpleTextItem_SetFont(QGraphicsSimpleTextItem* self, QFont* font) {

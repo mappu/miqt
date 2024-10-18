@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -64,31 +63,33 @@ func (this *QMenuBar) MetaObject() *QMetaObject {
 func (this *QMenuBar) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QMenuBar_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QMenuBar_Metacast(this.h, param1_Cstring))
 }
 
 func QMenuBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMenuBar_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMenuBar) AddAction(text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenuBar_AddAction(this.h, text_ms)))
 }
 
 func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
@@ -96,15 +97,19 @@ func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
 }
 
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenuWithTitle(this.h, title_ms)))
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), title_ms)))
 }
 
 func (this *QMenuBar) AddSeparator() *QAction {
@@ -233,9 +238,9 @@ func QMenuBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -244,9 +249,9 @@ func QMenuBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -255,9 +260,9 @@ func QMenuBar_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -266,9 +271,9 @@ func QMenuBar_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenuBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenuBar_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

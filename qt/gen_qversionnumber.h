@@ -36,9 +36,9 @@ int QVersionNumber_SegmentCount(const QVersionNumber* self);
 bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other);
 int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2);
 QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2);
-struct miqt_string* QVersionNumber_ToString(const QVersionNumber* self);
-QVersionNumber* QVersionNumber_FromString(struct miqt_string* stringVal);
-QVersionNumber* QVersionNumber_FromString22(struct miqt_string* stringVal, int* suffixIndex);
+struct miqt_string QVersionNumber_ToString(const QVersionNumber* self);
+QVersionNumber* QVersionNumber_FromString(struct miqt_string stringVal);
+QVersionNumber* QVersionNumber_FromString22(struct miqt_string stringVal, int* suffixIndex);
 void QVersionNumber_Delete(QVersionNumber* self);
 
 #ifdef __cplusplus

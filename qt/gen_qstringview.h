@@ -24,13 +24,13 @@ typedef struct QStringView QStringView;
 #endif
 
 QStringView* QStringView_new();
-struct miqt_string* QStringView_ToString(const QStringView* self);
+struct miqt_string QStringView_ToString(const QStringView* self);
 ptrdiff_t QStringView_Size(const QStringView* self);
 QChar* QStringView_Data(const QStringView* self);
 QChar* QStringView_OperatorSubscript(const QStringView* self, ptrdiff_t n);
-QByteArray* QStringView_ToLatin1(const QStringView* self);
-QByteArray* QStringView_ToUtf8(const QStringView* self);
-QByteArray* QStringView_ToLocal8Bit(const QStringView* self);
+struct miqt_string QStringView_ToLatin1(const QStringView* self);
+struct miqt_string QStringView_ToUtf8(const QStringView* self);
+struct miqt_string QStringView_ToLocal8Bit(const QStringView* self);
 struct miqt_array* QStringView_ToUcs4(const QStringView* self);
 QChar* QStringView_At(const QStringView* self, ptrdiff_t n);
 void QStringView_Truncate(QStringView* self, ptrdiff_t n);

@@ -27,15 +27,15 @@ QErrorMessage* QErrorMessage_new();
 QErrorMessage* QErrorMessage_new2(QWidget* parent);
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self);
 void* QErrorMessage_Metacast(QErrorMessage* self, const char* param1);
-struct miqt_string* QErrorMessage_Tr(const char* s);
-struct miqt_string* QErrorMessage_TrUtf8(const char* s);
+struct miqt_string QErrorMessage_Tr(const char* s);
+struct miqt_string QErrorMessage_TrUtf8(const char* s);
 QErrorMessage* QErrorMessage_QtHandler();
-void QErrorMessage_ShowMessage(QErrorMessage* self, struct miqt_string* message);
-void QErrorMessage_ShowMessage2(QErrorMessage* self, struct miqt_string* message, struct miqt_string* typeVal);
-struct miqt_string* QErrorMessage_Tr2(const char* s, const char* c);
-struct miqt_string* QErrorMessage_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QErrorMessage_TrUtf82(const char* s, const char* c);
-struct miqt_string* QErrorMessage_TrUtf83(const char* s, const char* c, int n);
+void QErrorMessage_ShowMessage(QErrorMessage* self, struct miqt_string message);
+void QErrorMessage_ShowMessage2(QErrorMessage* self, struct miqt_string message, struct miqt_string typeVal);
+struct miqt_string QErrorMessage_Tr2(const char* s, const char* c);
+struct miqt_string QErrorMessage_Tr3(const char* s, const char* c, int n);
+struct miqt_string QErrorMessage_TrUtf82(const char* s, const char* c);
+struct miqt_string QErrorMessage_TrUtf83(const char* s, const char* c, int n);
 void QErrorMessage_Delete(QErrorMessage* self);
 
 #ifdef __cplusplus

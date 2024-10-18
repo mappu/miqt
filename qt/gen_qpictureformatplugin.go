@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -51,47 +50,57 @@ func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
 func (this *QPictureFormatPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QPictureFormatPlugin_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QPictureFormatPlugin_Metacast(this.h, param1_Cstring))
 }
 
 func QPictureFormatPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QPictureFormatPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pic *QPicture) bool {
-	format_ms := libmiqt.Strdupg(format)
-	defer C.free(format_ms)
-	filename_ms := libmiqt.Strdupg(filename)
-	defer C.free(filename_ms)
-	return (bool)(C.QPictureFormatPlugin_LoadPicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
+	format_ms := C.struct_miqt_string{}
+	format_ms.data = C.CString(format)
+	format_ms.len = C.size_t(len(format))
+	defer C.free(unsafe.Pointer(format_ms.data))
+	filename_ms := C.struct_miqt_string{}
+	filename_ms.data = C.CString(filename)
+	filename_ms.len = C.size_t(len(filename))
+	defer C.free(unsafe.Pointer(filename_ms.data))
+	return (bool)(C.QPictureFormatPlugin_LoadPicture(this.h, format_ms, filename_ms, pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
-	format_ms := libmiqt.Strdupg(format)
-	defer C.free(format_ms)
-	filename_ms := libmiqt.Strdupg(filename)
-	defer C.free(filename_ms)
-	return (bool)(C.QPictureFormatPlugin_SavePicture(this.h, (*C.struct_miqt_string)(format_ms), (*C.struct_miqt_string)(filename_ms), pic.cPointer()))
+	format_ms := C.struct_miqt_string{}
+	format_ms.data = C.CString(format)
+	format_ms.len = C.size_t(len(format))
+	defer C.free(unsafe.Pointer(format_ms.data))
+	filename_ms := C.struct_miqt_string{}
+	filename_ms.data = C.CString(filename)
+	filename_ms.len = C.size_t(len(filename))
+	defer C.free(unsafe.Pointer(filename_ms.data))
+	return (bool)(C.QPictureFormatPlugin_SavePicture(this.h, format_ms, filename_ms, pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
-	format_ms := libmiqt.Strdupg(format)
-	defer C.free(format_ms)
-	return (bool)(C.QPictureFormatPlugin_InstallIOHandler(this.h, (*C.struct_miqt_string)(format_ms)))
+	format_ms := C.struct_miqt_string{}
+	format_ms.data = C.CString(format)
+	format_ms.len = C.size_t(len(format))
+	defer C.free(unsafe.Pointer(format_ms.data))
+	return (bool)(C.QPictureFormatPlugin_InstallIOHandler(this.h, format_ms))
 }
 
 func QPictureFormatPlugin_Tr2(s string, c string) string {
@@ -99,9 +108,9 @@ func QPictureFormatPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -110,9 +119,9 @@ func QPictureFormatPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -121,9 +130,9 @@ func QPictureFormatPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -132,9 +141,9 @@ func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

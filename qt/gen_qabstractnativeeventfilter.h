@@ -21,7 +21,7 @@ typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
 typedef struct QByteArray QByteArray;
 #endif
 
-bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, QByteArray* eventType, void* message, long* result);
+bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long* result);
 void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self);
 
 #ifdef __cplusplus

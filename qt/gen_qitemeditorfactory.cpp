@@ -10,8 +10,13 @@ QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self,
 	return self->createWidget(parent);
 }
 
-QByteArray* QItemEditorCreatorBase_ValuePropertyName(const QItemEditorCreatorBase* self) {
-	return new QByteArray(self->valuePropertyName());
+struct miqt_string QItemEditorCreatorBase_ValuePropertyName(const QItemEditorCreatorBase* self) {
+	QByteArray _qb = self->valuePropertyName();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEditorCreatorBase* param1) {
@@ -34,8 +39,13 @@ QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int use
 	return self->createEditor(static_cast<int>(userType), parent);
 }
 
-QByteArray* QItemEditorFactory_ValuePropertyName(const QItemEditorFactory* self, int userType) {
-	return new QByteArray(self->valuePropertyName(static_cast<int>(userType)));
+struct miqt_string QItemEditorFactory_ValuePropertyName(const QItemEditorFactory* self, int userType) {
+	QByteArray _qb = self->valuePropertyName(static_cast<int>(userType));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QItemEditorFactory_RegisterEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator) {

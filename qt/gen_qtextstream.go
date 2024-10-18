@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -92,26 +91,20 @@ func NewQTextStream2(device *QIODevice) *QTextStream {
 }
 
 // NewQTextStream3 constructs a new QTextStream object.
-func NewQTextStream3(array *QByteArray) *QTextStream {
-	ret := C.QTextStream_new3(array.cPointer())
+func NewQTextStream3(array []byte) *QTextStream {
+	array_alias := C.struct_miqt_string{}
+	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	array_alias.len = C.size_t(len(array))
+	ret := C.QTextStream_new3(array_alias)
 	return newQTextStream(ret)
 }
 
 // NewQTextStream4 constructs a new QTextStream object.
-func NewQTextStream4(array *QByteArray) *QTextStream {
-	ret := C.QTextStream_new4(array.cPointer())
-	return newQTextStream(ret)
-}
-
-// NewQTextStream5 constructs a new QTextStream object.
-func NewQTextStream5(array *QByteArray, openMode QIODevice__OpenModeFlag) *QTextStream {
-	ret := C.QTextStream_new5(array.cPointer(), (C.int)(openMode))
-	return newQTextStream(ret)
-}
-
-// NewQTextStream6 constructs a new QTextStream object.
-func NewQTextStream6(array *QByteArray, openMode QIODevice__OpenModeFlag) *QTextStream {
-	ret := C.QTextStream_new6(array.cPointer(), (C.int)(openMode))
+func NewQTextStream4(array []byte, openMode QIODevice__OpenModeFlag) *QTextStream {
+	array_alias := C.struct_miqt_string{}
+	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	array_alias.len = C.size_t(len(array))
+	ret := C.QTextStream_new4(array_alias, (C.int)(openMode))
 	return newQTextStream(ret)
 }
 
@@ -165,9 +158,9 @@ func (this *QTextStream) Device() *QIODevice {
 }
 
 func (this *QTextStream) String() string {
-	var _ms *C.struct_miqt_string = C.QTextStream_String(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextStream_String(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -208,23 +201,23 @@ func (this *QTextStream) SkipWhiteSpace() {
 }
 
 func (this *QTextStream) ReadLine() string {
-	var _ms *C.struct_miqt_string = C.QTextStream_ReadLine(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextStream_ReadLine(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextStream) ReadAll() string {
-	var _ms *C.struct_miqt_string = C.QTextStream_ReadAll(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextStream_ReadAll(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextStream) Read(maxlen int64) string {
-	var _ms *C.struct_miqt_string = C.QTextStream_Read(this.h, (C.longlong)(maxlen))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextStream_Read(this.h, (C.longlong)(maxlen))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -336,13 +329,18 @@ func (this *QTextStream) OperatorShiftRightWithDouble(f *float64) *QTextStream {
 }
 
 func (this *QTextStream) OperatorShiftRightWithQString(s string) *QTextStream {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithQString(this.h, s_ms)))
 }
 
-func (this *QTextStream) OperatorShiftRightWithArray(array *QByteArray) *QTextStream {
-	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithArray(this.h, array.cPointer())))
+func (this *QTextStream) OperatorShiftRightWithArray(array []byte) *QTextStream {
+	array_alias := C.struct_miqt_string{}
+	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	array_alias.len = C.size_t(len(array))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftRightWithArray(this.h, array_alias)))
 }
 
 func (this *QTextStream) OperatorShiftRightWithChar(c string) *QTextStream {
@@ -400,13 +398,18 @@ func (this *QTextStream) OperatorShiftLeftWithDouble(f float64) *QTextStream {
 }
 
 func (this *QTextStream) OperatorShiftLeftWithQString(s string) *QTextStream {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQString(this.h, (*C.struct_miqt_string)(s_ms))))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithQString(this.h, s_ms)))
 }
 
-func (this *QTextStream) OperatorShiftLeftWithArray(array *QByteArray) *QTextStream {
-	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithArray(this.h, array.cPointer())))
+func (this *QTextStream) OperatorShiftLeftWithArray(array []byte) *QTextStream {
+	array_alias := C.struct_miqt_string{}
+	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	array_alias.len = C.size_t(len(array))
+	return UnsafeNewQTextStream(unsafe.Pointer(C.QTextStream_OperatorShiftLeftWithArray(this.h, array_alias)))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithChar(c string) *QTextStream {
@@ -420,9 +423,9 @@ func (this *QTextStream) OperatorShiftLeftWithPtr(ptr unsafe.Pointer) *QTextStre
 }
 
 func (this *QTextStream) ReadLine1(maxlen int64) string {
-	var _ms *C.struct_miqt_string = C.QTextStream_ReadLine1(this.h, (C.longlong)(maxlen))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextStream_ReadLine1(this.h, (C.longlong)(maxlen))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

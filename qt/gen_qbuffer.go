@@ -50,20 +50,8 @@ func NewQBuffer() *QBuffer {
 }
 
 // NewQBuffer2 constructs a new QBuffer object.
-func NewQBuffer2(buf *QByteArray) *QBuffer {
-	ret := C.QBuffer_new2(buf.cPointer())
-	return newQBuffer(ret)
-}
-
-// NewQBuffer3 constructs a new QBuffer object.
-func NewQBuffer3(parent *QObject) *QBuffer {
-	ret := C.QBuffer_new3(parent.cPointer())
-	return newQBuffer(ret)
-}
-
-// NewQBuffer4 constructs a new QBuffer object.
-func NewQBuffer4(buf *QByteArray, parent *QObject) *QBuffer {
-	ret := C.QBuffer_new4(buf.cPointer(), parent.cPointer())
+func NewQBuffer2(parent *QObject) *QBuffer {
+	ret := C.QBuffer_new2(parent.cPointer())
 	return newQBuffer(ret)
 }
 
@@ -74,41 +62,46 @@ func (this *QBuffer) MetaObject() *QMetaObject {
 func (this *QBuffer) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QBuffer_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QBuffer_Metacast(this.h, param1_Cstring))
 }
 
 func QBuffer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QBuffer_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QBuffer) Buffer() *QByteArray {
-	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Buffer(this.h)))
+func (this *QBuffer) Buffer() []byte {
+	var _bytearray C.struct_miqt_string = C.QBuffer_Buffer(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QBuffer) Buffer2() *QByteArray {
-	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Buffer2(this.h)))
+func (this *QBuffer) Buffer2() []byte {
+	var _bytearray C.struct_miqt_string = C.QBuffer_Buffer2(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QBuffer) SetBuffer(a *QByteArray) {
-	C.QBuffer_SetBuffer(this.h, a.cPointer())
-}
-
-func (this *QBuffer) SetData(data *QByteArray) {
-	C.QBuffer_SetData(this.h, data.cPointer())
+func (this *QBuffer) SetData(data []byte) {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	C.QBuffer_SetData(this.h, data_alias)
 }
 
 func (this *QBuffer) SetData2(data string, lenVal int) {
@@ -117,8 +110,11 @@ func (this *QBuffer) SetData2(data string, lenVal int) {
 	C.QBuffer_SetData2(this.h, data_Cstring, (C.int)(lenVal))
 }
 
-func (this *QBuffer) Data() *QByteArray {
-	return UnsafeNewQByteArray(unsafe.Pointer(C.QBuffer_Data(this.h)))
+func (this *QBuffer) Data() []byte {
+	var _bytearray C.struct_miqt_string = C.QBuffer_Data(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QBuffer) Open(openMode QIODevice__OpenModeFlag) bool {
@@ -154,9 +150,9 @@ func QBuffer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -165,9 +161,9 @@ func QBuffer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -176,9 +172,9 @@ func QBuffer_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -187,9 +183,9 @@ func QBuffer_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QBuffer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QBuffer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

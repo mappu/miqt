@@ -43,18 +43,26 @@ void* QUndoView_Metacast(QUndoView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QUndoView_Tr(const char* s) {
+struct miqt_string QUndoView_Tr(const char* s) {
 	QString _ret = QUndoView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoView_TrUtf8(const char* s) {
+struct miqt_string QUndoView_TrUtf8(const char* s) {
 	QString _ret = QUndoView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QUndoStack* QUndoView_Stack(const QUndoView* self) {
@@ -65,16 +73,20 @@ QUndoGroup* QUndoView_Group(const QUndoView* self) {
 	return self->group();
 }
 
-void QUndoView_SetEmptyLabel(QUndoView* self, struct miqt_string* label) {
-	QString label_QString = QString::fromUtf8(&label->data, label->len);
+void QUndoView_SetEmptyLabel(QUndoView* self, struct miqt_string label) {
+	QString label_QString = QString::fromUtf8(label.data, label.len);
 	self->setEmptyLabel(label_QString);
 }
 
-struct miqt_string* QUndoView_EmptyLabel(const QUndoView* self) {
+struct miqt_string QUndoView_EmptyLabel(const QUndoView* self) {
 	QString _ret = self->emptyLabel();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QUndoView_SetCleanIcon(QUndoView* self, QIcon* icon) {
@@ -93,32 +105,48 @@ void QUndoView_SetGroup(QUndoView* self, QUndoGroup* group) {
 	self->setGroup(group);
 }
 
-struct miqt_string* QUndoView_Tr2(const char* s, const char* c) {
+struct miqt_string QUndoView_Tr2(const char* s, const char* c) {
 	QString _ret = QUndoView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QUndoView_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QUndoView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoView_TrUtf82(const char* s, const char* c) {
+struct miqt_string QUndoView_TrUtf82(const char* s, const char* c) {
 	QString _ret = QUndoView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoView_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QUndoView_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QUndoView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QUndoView_Delete(QUndoView* self) {

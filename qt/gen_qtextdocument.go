@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -150,9 +149,11 @@ func NewQTextDocument() *QTextDocument {
 
 // NewQTextDocument2 constructs a new QTextDocument object.
 func NewQTextDocument2(text string) *QTextDocument {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextDocument_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextDocument_new2(text_ms)
 	return newQTextDocument(ret)
 }
 
@@ -164,9 +165,11 @@ func NewQTextDocument3(parent *QObject) *QTextDocument {
 
 // NewQTextDocument4 constructs a new QTextDocument object.
 func NewQTextDocument4(text string, parent *QObject) *QTextDocument {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextDocument_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextDocument_new4(text_ms, parent.cPointer())
 	return newQTextDocument(ret)
 }
 
@@ -177,24 +180,24 @@ func (this *QTextDocument) MetaObject() *QMetaObject {
 func (this *QTextDocument) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTextDocument_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTextDocument_Metacast(this.h, param1_Cstring))
 }
 
 func QTextDocument_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTextDocument_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -247,62 +250,70 @@ func (this *QTextDocument) DocumentLayout() *QAbstractTextDocumentLayout {
 }
 
 func (this *QTextDocument) SetMetaInformation(info QTextDocument__MetaInformation, param2 string) {
-	param2_ms := libmiqt.Strdupg(param2)
-	defer C.free(param2_ms)
-	C.QTextDocument_SetMetaInformation(this.h, (C.int)(info), (*C.struct_miqt_string)(param2_ms))
+	param2_ms := C.struct_miqt_string{}
+	param2_ms.data = C.CString(param2)
+	param2_ms.len = C.size_t(len(param2))
+	defer C.free(unsafe.Pointer(param2_ms.data))
+	C.QTextDocument_SetMetaInformation(this.h, (C.int)(info), param2_ms)
 }
 
 func (this *QTextDocument) MetaInformation(info QTextDocument__MetaInformation) string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_MetaInformation(this.h, (C.int)(info))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_MetaInformation(this.h, (C.int)(info))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) ToHtml() string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToHtml(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToHtml(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) SetHtml(html string) {
-	html_ms := libmiqt.Strdupg(html)
-	defer C.free(html_ms)
-	C.QTextDocument_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
+	html_ms := C.struct_miqt_string{}
+	html_ms.data = C.CString(html)
+	html_ms.len = C.size_t(len(html))
+	defer C.free(unsafe.Pointer(html_ms.data))
+	C.QTextDocument_SetHtml(this.h, html_ms)
 }
 
 func (this *QTextDocument) ToMarkdown() string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToMarkdown(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToMarkdown(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) SetMarkdown(markdown string) {
-	markdown_ms := libmiqt.Strdupg(markdown)
-	defer C.free(markdown_ms)
-	C.QTextDocument_SetMarkdown(this.h, (*C.struct_miqt_string)(markdown_ms))
+	markdown_ms := C.struct_miqt_string{}
+	markdown_ms.data = C.CString(markdown)
+	markdown_ms.len = C.size_t(len(markdown))
+	defer C.free(unsafe.Pointer(markdown_ms.data))
+	C.QTextDocument_SetMarkdown(this.h, markdown_ms)
 }
 
 func (this *QTextDocument) ToRawText() string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToRawText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToRawText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) ToPlainText() string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToPlainText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToPlainText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) SetPlainText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextDocument_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextDocument_SetPlainText(this.h, text_ms)
 }
 
 func (this *QTextDocument) CharacterAt(pos int) *QChar {
@@ -313,18 +324,22 @@ func (this *QTextDocument) CharacterAt(pos int) *QChar {
 }
 
 func (this *QTextDocument) Find(subString string) *QTextCursor {
-	subString_ms := libmiqt.Strdupg(subString)
-	defer C.free(subString_ms)
-	_ret := C.QTextDocument_Find(this.h, (*C.struct_miqt_string)(subString_ms))
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	_ret := C.QTextDocument_Find(this.h, subString_ms)
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find2(subString string, cursor *QTextCursor) *QTextCursor {
-	subString_ms := libmiqt.Strdupg(subString)
-	defer C.free(subString_ms)
-	_ret := C.QTextDocument_Find2(this.h, (*C.struct_miqt_string)(subString_ms), cursor.cPointer())
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	_ret := C.QTextDocument_Find2(this.h, subString_ms, cursor.cPointer())
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -550,15 +565,17 @@ func (this *QTextDocument) CharacterCount() int {
 }
 
 func (this *QTextDocument) SetDefaultStyleSheet(sheet string) {
-	sheet_ms := libmiqt.Strdupg(sheet)
-	defer C.free(sheet_ms)
-	C.QTextDocument_SetDefaultStyleSheet(this.h, (*C.struct_miqt_string)(sheet_ms))
+	sheet_ms := C.struct_miqt_string{}
+	sheet_ms.data = C.CString(sheet)
+	sheet_ms.len = C.size_t(len(sheet))
+	defer C.free(unsafe.Pointer(sheet_ms.data))
+	C.QTextDocument_SetDefaultStyleSheet(this.h, sheet_ms)
 }
 
 func (this *QTextDocument) DefaultStyleSheet() string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_DefaultStyleSheet(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_DefaultStyleSheet(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -828,9 +845,9 @@ func QTextDocument_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -839,9 +856,9 @@ func QTextDocument_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -850,9 +867,9 @@ func QTextDocument_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -861,9 +878,9 @@ func QTextDocument_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextDocument_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -871,48 +888,59 @@ func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
 	return UnsafeNewQTextDocument(unsafe.Pointer(C.QTextDocument_Clone1(this.h, parent.cPointer())))
 }
 
-func (this *QTextDocument) ToHtml1(encoding *QByteArray) string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToHtml1(this.h, encoding.cPointer())
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+func (this *QTextDocument) ToHtml1(encoding []byte) string {
+	encoding_alias := C.struct_miqt_string{}
+	encoding_alias.data = (*C.char)(unsafe.Pointer(&encoding[0]))
+	encoding_alias.len = C.size_t(len(encoding))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToHtml1(this.h, encoding_alias)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms *C.struct_miqt_string = C.QTextDocument_ToMarkdown1(this.h, (C.int)(features))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextDocument_ToMarkdown1(this.h, (C.int)(features))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument__MarkdownFeature) {
-	markdown_ms := libmiqt.Strdupg(markdown)
-	defer C.free(markdown_ms)
-	C.QTextDocument_SetMarkdown2(this.h, (*C.struct_miqt_string)(markdown_ms), (C.int)(features))
+	markdown_ms := C.struct_miqt_string{}
+	markdown_ms.data = C.CString(markdown)
+	markdown_ms.len = C.size_t(len(markdown))
+	defer C.free(unsafe.Pointer(markdown_ms.data))
+	C.QTextDocument_SetMarkdown2(this.h, markdown_ms, (C.int)(features))
 }
 
 func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
-	subString_ms := libmiqt.Strdupg(subString)
-	defer C.free(subString_ms)
-	_ret := C.QTextDocument_Find22(this.h, (*C.struct_miqt_string)(subString_ms), (C.int)(from))
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	_ret := C.QTextDocument_Find22(this.h, subString_ms, (C.int)(from))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find32(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
-	subString_ms := libmiqt.Strdupg(subString)
-	defer C.free(subString_ms)
-	_ret := C.QTextDocument_Find32(this.h, (*C.struct_miqt_string)(subString_ms), (C.int)(from), (C.int)(options))
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	_ret := C.QTextDocument_Find32(this.h, subString_ms, (C.int)(from), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
-	subString_ms := libmiqt.Strdupg(subString)
-	defer C.free(subString_ms)
-	_ret := C.QTextDocument_Find33(this.h, (*C.struct_miqt_string)(subString_ms), cursor.cPointer(), (C.int)(options))
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	_ret := C.QTextDocument_Find33(this.h, subString_ms, cursor.cPointer(), (C.int)(options))
 	_goptr := newQTextCursor(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

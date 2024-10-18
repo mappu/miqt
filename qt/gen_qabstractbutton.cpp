@@ -19,30 +19,42 @@ void* QAbstractButton_Metacast(QAbstractButton* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractButton_Tr(const char* s) {
+struct miqt_string QAbstractButton_Tr(const char* s) {
 	QString _ret = QAbstractButton::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractButton_TrUtf8(const char* s) {
+struct miqt_string QAbstractButton_TrUtf8(const char* s) {
 	QString _ret = QAbstractButton::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QAbstractButton_SetText(QAbstractButton* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QAbstractButton_SetText(QAbstractButton* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-struct miqt_string* QAbstractButton_Text(const QAbstractButton* self) {
+struct miqt_string QAbstractButton_Text(const QAbstractButton* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAbstractButton_SetIcon(QAbstractButton* self, QIcon* icon) {
@@ -182,32 +194,48 @@ void QAbstractButton_connect_Toggled(QAbstractButton* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QAbstractButton_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractButton_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractButton::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractButton_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractButton_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractButton::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractButton_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractButton_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractButton::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractButton_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractButton_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractButton::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAbstractButton_AnimateClick1(QAbstractButton* self, int msec) {

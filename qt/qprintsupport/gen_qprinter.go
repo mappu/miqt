@@ -9,7 +9,6 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -187,15 +186,17 @@ func (this *QPrinter) PdfVersion() qt.QPagedPaintDevice__PdfVersion {
 }
 
 func (this *QPrinter) SetPrinterName(printerName string) {
-	printerName_ms := libmiqt.Strdupg(printerName)
-	defer C.free(printerName_ms)
-	C.QPrinter_SetPrinterName(this.h, (*C.struct_miqt_string)(printerName_ms))
+	printerName_ms := C.struct_miqt_string{}
+	printerName_ms.data = C.CString(printerName)
+	printerName_ms.len = C.size_t(len(printerName))
+	defer C.free(unsafe.Pointer(printerName_ms.data))
+	C.QPrinter_SetPrinterName(this.h, printerName_ms)
 }
 
 func (this *QPrinter) PrinterName() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_PrinterName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_PrinterName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -204,54 +205,62 @@ func (this *QPrinter) IsValid() bool {
 }
 
 func (this *QPrinter) SetOutputFileName(outputFileName string) {
-	outputFileName_ms := libmiqt.Strdupg(outputFileName)
-	defer C.free(outputFileName_ms)
-	C.QPrinter_SetOutputFileName(this.h, (*C.struct_miqt_string)(outputFileName_ms))
+	outputFileName_ms := C.struct_miqt_string{}
+	outputFileName_ms.data = C.CString(outputFileName)
+	outputFileName_ms.len = C.size_t(len(outputFileName))
+	defer C.free(unsafe.Pointer(outputFileName_ms.data))
+	C.QPrinter_SetOutputFileName(this.h, outputFileName_ms)
 }
 
 func (this *QPrinter) OutputFileName() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_OutputFileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_OutputFileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinter) SetPrintProgram(printProgram string) {
-	printProgram_ms := libmiqt.Strdupg(printProgram)
-	defer C.free(printProgram_ms)
-	C.QPrinter_SetPrintProgram(this.h, (*C.struct_miqt_string)(printProgram_ms))
+	printProgram_ms := C.struct_miqt_string{}
+	printProgram_ms.data = C.CString(printProgram)
+	printProgram_ms.len = C.size_t(len(printProgram))
+	defer C.free(unsafe.Pointer(printProgram_ms.data))
+	C.QPrinter_SetPrintProgram(this.h, printProgram_ms)
 }
 
 func (this *QPrinter) PrintProgram() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_PrintProgram(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_PrintProgram(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinter) SetDocName(docName string) {
-	docName_ms := libmiqt.Strdupg(docName)
-	defer C.free(docName_ms)
-	C.QPrinter_SetDocName(this.h, (*C.struct_miqt_string)(docName_ms))
+	docName_ms := C.struct_miqt_string{}
+	docName_ms.data = C.CString(docName)
+	docName_ms.len = C.size_t(len(docName))
+	defer C.free(unsafe.Pointer(docName_ms.data))
+	C.QPrinter_SetDocName(this.h, docName_ms)
 }
 
 func (this *QPrinter) DocName() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_DocName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_DocName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinter) SetCreator(creator string) {
-	creator_ms := libmiqt.Strdupg(creator)
-	defer C.free(creator_ms)
-	C.QPrinter_SetCreator(this.h, (*C.struct_miqt_string)(creator_ms))
+	creator_ms := C.struct_miqt_string{}
+	creator_ms.data = C.CString(creator)
+	creator_ms.len = C.size_t(len(creator))
+	defer C.free(unsafe.Pointer(creator_ms.data))
+	C.QPrinter_SetCreator(this.h, creator_ms)
 }
 
 func (this *QPrinter) Creator() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_Creator(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_Creator(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -295,15 +304,17 @@ func (this *QPrinter) PaperSizeWithUnit(unit QPrinter__Unit) *qt.QSizeF {
 }
 
 func (this *QPrinter) SetPaperName(paperName string) {
-	paperName_ms := libmiqt.Strdupg(paperName)
-	defer C.free(paperName_ms)
-	C.QPrinter_SetPaperName(this.h, (*C.struct_miqt_string)(paperName_ms))
+	paperName_ms := C.struct_miqt_string{}
+	paperName_ms.data = C.CString(paperName)
+	paperName_ms.len = C.size_t(len(paperName))
+	defer C.free(unsafe.Pointer(paperName_ms.data))
+	C.QPrinter_SetPaperName(this.h, paperName_ms)
 }
 
 func (this *QPrinter) PaperName() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_PaperName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_PaperName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -451,16 +462,18 @@ func (this *QPrinter) PageRectWithQPrinterUnit(param1 QPrinter__Unit) *qt.QRectF
 }
 
 func (this *QPrinter) PrinterSelectionOption() string {
-	var _ms *C.struct_miqt_string = C.QPrinter_PrinterSelectionOption(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPrinter_PrinterSelectionOption(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPrinter) SetPrinterSelectionOption(printerSelectionOption string) {
-	printerSelectionOption_ms := libmiqt.Strdupg(printerSelectionOption)
-	defer C.free(printerSelectionOption_ms)
-	C.QPrinter_SetPrinterSelectionOption(this.h, (*C.struct_miqt_string)(printerSelectionOption_ms))
+	printerSelectionOption_ms := C.struct_miqt_string{}
+	printerSelectionOption_ms.data = C.CString(printerSelectionOption)
+	printerSelectionOption_ms.len = C.size_t(len(printerSelectionOption))
+	defer C.free(unsafe.Pointer(printerSelectionOption_ms.data))
+	C.QPrinter_SetPrinterSelectionOption(this.h, printerSelectionOption_ms)
 }
 
 func (this *QPrinter) NewPage() bool {
