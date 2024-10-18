@@ -446,7 +446,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
 
 	} else {
-		panic("what type is this?")
+		panic(fmt.Sprintf("emitgo::emitCabiToGo missing type handler for parameter %+v", rt))
 	}
 
 }
