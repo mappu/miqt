@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -70,9 +69,11 @@ func NewQBitmap4(param1 *QSize) *QBitmap {
 
 // NewQBitmap5 constructs a new QBitmap object.
 func NewQBitmap5(fileName string) *QBitmap {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QBitmap_new5((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QBitmap_new5(fileName_ms)
 	return newQBitmap(ret)
 }
 
@@ -84,11 +85,13 @@ func NewQBitmap6(other *QBitmap) *QBitmap {
 
 // NewQBitmap7 constructs a new QBitmap object.
 func NewQBitmap7(fileName string, format string) *QBitmap {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QBitmap_new7((*C.struct_miqt_string)(fileName_ms), format_Cstring)
+	ret := C.QBitmap_new7(fileName_ms, format_Cstring)
 	return newQBitmap(ret)
 }
 

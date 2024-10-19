@@ -48,8 +48,8 @@ QTextDocument* QTextDocument_new() {
 	return new QTextDocument();
 }
 
-QTextDocument* QTextDocument_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QTextDocument* QTextDocument_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextDocument(text_QString);
 }
 
@@ -57,8 +57,8 @@ QTextDocument* QTextDocument_new3(QObject* parent) {
 	return new QTextDocument(parent);
 }
 
-QTextDocument* QTextDocument_new4(struct miqt_string* text, QObject* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QTextDocument* QTextDocument_new4(struct miqt_string text, QObject* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextDocument(text_QString, parent);
 }
 
@@ -70,18 +70,26 @@ void* QTextDocument_Metacast(QTextDocument* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTextDocument_Tr(const char* s) {
+struct miqt_string QTextDocument_Tr(const char* s) {
 	QString _ret = QTextDocument::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_TrUtf8(const char* s) {
+struct miqt_string QTextDocument_TrUtf8(const char* s) {
 	QString _ret = QTextDocument::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QTextDocument* QTextDocument_Clone(const QTextDocument* self) {
@@ -132,58 +140,78 @@ QAbstractTextDocumentLayout* QTextDocument_DocumentLayout(const QTextDocument* s
 	return self->documentLayout();
 }
 
-void QTextDocument_SetMetaInformation(QTextDocument* self, int info, struct miqt_string* param2) {
-	QString param2_QString = QString::fromUtf8(&param2->data, param2->len);
+void QTextDocument_SetMetaInformation(QTextDocument* self, int info, struct miqt_string param2) {
+	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	self->setMetaInformation(static_cast<QTextDocument::MetaInformation>(info), param2_QString);
 }
 
-struct miqt_string* QTextDocument_MetaInformation(const QTextDocument* self, int info) {
+struct miqt_string QTextDocument_MetaInformation(const QTextDocument* self, int info) {
 	QString _ret = self->metaInformation(static_cast<QTextDocument::MetaInformation>(info));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_ToHtml(const QTextDocument* self) {
+struct miqt_string QTextDocument_ToHtml(const QTextDocument* self) {
 	QString _ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextDocument_SetHtml(QTextDocument* self, struct miqt_string* html) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+void QTextDocument_SetHtml(QTextDocument* self, struct miqt_string html) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	self->setHtml(html_QString);
 }
 
-struct miqt_string* QTextDocument_ToMarkdown(const QTextDocument* self) {
+struct miqt_string QTextDocument_ToMarkdown(const QTextDocument* self) {
 	QString _ret = self->toMarkdown();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextDocument_SetMarkdown(QTextDocument* self, struct miqt_string* markdown) {
-	QString markdown_QString = QString::fromUtf8(&markdown->data, markdown->len);
+void QTextDocument_SetMarkdown(QTextDocument* self, struct miqt_string markdown) {
+	QString markdown_QString = QString::fromUtf8(markdown.data, markdown.len);
 	self->setMarkdown(markdown_QString);
 }
 
-struct miqt_string* QTextDocument_ToRawText(const QTextDocument* self) {
+struct miqt_string QTextDocument_ToRawText(const QTextDocument* self) {
 	QString _ret = self->toRawText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_ToPlainText(const QTextDocument* self) {
+struct miqt_string QTextDocument_ToPlainText(const QTextDocument* self) {
 	QString _ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextDocument_SetPlainText(QTextDocument* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTextDocument_SetPlainText(QTextDocument* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setPlainText(text_QString);
 }
 
@@ -191,13 +219,13 @@ QChar* QTextDocument_CharacterAt(const QTextDocument* self, int pos) {
 	return new QChar(self->characterAt(static_cast<int>(pos)));
 }
 
-QTextCursor* QTextDocument_Find(const QTextDocument* self, struct miqt_string* subString) {
-	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
+QTextCursor* QTextDocument_Find(const QTextDocument* self, struct miqt_string subString) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return new QTextCursor(self->find(subString_QString));
 }
 
-QTextCursor* QTextDocument_Find2(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor) {
-	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
+QTextCursor* QTextDocument_Find2(const QTextDocument* self, struct miqt_string subString, QTextCursor* cursor) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return new QTextCursor(self->find(subString_QString, *cursor));
 }
 
@@ -378,16 +406,20 @@ int QTextDocument_CharacterCount(const QTextDocument* self) {
 	return self->characterCount();
 }
 
-void QTextDocument_SetDefaultStyleSheet(QTextDocument* self, struct miqt_string* sheet) {
-	QString sheet_QString = QString::fromUtf8(&sheet->data, sheet->len);
+void QTextDocument_SetDefaultStyleSheet(QTextDocument* self, struct miqt_string sheet) {
+	QString sheet_QString = QString::fromUtf8(sheet.data, sheet.len);
 	self->setDefaultStyleSheet(sheet_QString);
 }
 
-struct miqt_string* QTextDocument_DefaultStyleSheet(const QTextDocument* self) {
+struct miqt_string QTextDocument_DefaultStyleSheet(const QTextDocument* self) {
 	QString _ret = self->defaultStyleSheet();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextDocument_Undo(QTextDocument* self, QTextCursor* cursor) {
@@ -564,69 +596,94 @@ void QTextDocument_SetModified(QTextDocument* self) {
 	self->setModified();
 }
 
-struct miqt_string* QTextDocument_Tr2(const char* s, const char* c) {
+struct miqt_string QTextDocument_Tr2(const char* s, const char* c) {
 	QString _ret = QTextDocument::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTextDocument_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTextDocument::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTextDocument_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTextDocument::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTextDocument_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTextDocument::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QTextDocument* QTextDocument_Clone1(const QTextDocument* self, QObject* parent) {
 	return self->clone(parent);
 }
 
-struct miqt_string* QTextDocument_ToHtml1(const QTextDocument* self, QByteArray* encoding) {
-	QString _ret = self->toHtml(*encoding);
+struct miqt_string QTextDocument_ToHtml1(const QTextDocument* self, struct miqt_string encoding) {
+	QByteArray encoding_QByteArray(encoding.data, encoding.len);
+	QString _ret = self->toHtml(encoding_QByteArray);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocument_ToMarkdown1(const QTextDocument* self, int features) {
+struct miqt_string QTextDocument_ToMarkdown1(const QTextDocument* self, int features) {
 	QString _ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextDocument_SetMarkdown2(QTextDocument* self, struct miqt_string* markdown, int features) {
-	QString markdown_QString = QString::fromUtf8(&markdown->data, markdown->len);
+void QTextDocument_SetMarkdown2(QTextDocument* self, struct miqt_string markdown, int features) {
+	QString markdown_QString = QString::fromUtf8(markdown.data, markdown.len);
 	self->setMarkdown(markdown_QString, static_cast<QTextDocument::MarkdownFeatures>(features));
 }
 
-QTextCursor* QTextDocument_Find22(const QTextDocument* self, struct miqt_string* subString, int from) {
-	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
+QTextCursor* QTextDocument_Find22(const QTextDocument* self, struct miqt_string subString, int from) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return new QTextCursor(self->find(subString_QString, static_cast<int>(from)));
 }
 
-QTextCursor* QTextDocument_Find32(const QTextDocument* self, struct miqt_string* subString, int from, int options) {
-	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
+QTextCursor* QTextDocument_Find32(const QTextDocument* self, struct miqt_string subString, int from, int options) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return new QTextCursor(self->find(subString_QString, static_cast<int>(from), static_cast<QTextDocument::FindFlags>(options)));
 }
 
-QTextCursor* QTextDocument_Find33(const QTextDocument* self, struct miqt_string* subString, QTextCursor* cursor, int options) {
-	QString subString_QString = QString::fromUtf8(&subString->data, subString->len);
+QTextCursor* QTextDocument_Find33(const QTextDocument* self, struct miqt_string subString, QTextCursor* cursor, int options) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	return new QTextCursor(self->find(subString_QString, *cursor, static_cast<QTextDocument::FindFlags>(options)));
 }
 

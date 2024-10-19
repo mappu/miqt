@@ -25,8 +25,8 @@ QProxyStyle* QProxyStyle_new() {
 	return new QProxyStyle();
 }
 
-QProxyStyle* QProxyStyle_new2(struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QProxyStyle* QProxyStyle_new2(struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QProxyStyle(key_QString);
 }
 
@@ -42,18 +42,26 @@ void* QProxyStyle_Metacast(QProxyStyle* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QProxyStyle_Tr(const char* s) {
+struct miqt_string QProxyStyle_Tr(const char* s) {
 	QString _ret = QProxyStyle::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProxyStyle_TrUtf8(const char* s) {
+struct miqt_string QProxyStyle_TrUtf8(const char* s) {
 	QString _ret = QProxyStyle::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QStyle* QProxyStyle_BaseStyle(const QProxyStyle* self) {
@@ -76,8 +84,8 @@ void QProxyStyle_DrawComplexControl(const QProxyStyle* self, int control, QStyle
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter);
 }
 
-void QProxyStyle_DrawItemText(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QProxyStyle_DrawItemText(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString);
 }
 
@@ -97,8 +105,8 @@ QRect* QProxyStyle_SubControlRect(const QProxyStyle* self, int cc, QStyleOptionC
 	return new QRect(self->subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget));
 }
 
-QRect* QProxyStyle_ItemTextRect(const QProxyStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QRect* QProxyStyle_ItemTextRect(const QProxyStyle* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self->itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
 }
 
@@ -159,32 +167,48 @@ void QProxyStyle_UnpolishWithApp(QProxyStyle* self, QApplication* app) {
 	self->unpolish(app);
 }
 
-struct miqt_string* QProxyStyle_Tr2(const char* s, const char* c) {
+struct miqt_string QProxyStyle_Tr2(const char* s, const char* c) {
 	QString _ret = QProxyStyle::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProxyStyle_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QProxyStyle_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QProxyStyle::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProxyStyle_TrUtf82(const char* s, const char* c) {
+struct miqt_string QProxyStyle_TrUtf82(const char* s, const char* c) {
 	QString _ret = QProxyStyle::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QProxyStyle_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QProxyStyle_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QProxyStyle::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QProxyStyle_DrawPrimitive4(const QProxyStyle* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget) {
@@ -199,8 +223,8 @@ void QProxyStyle_DrawComplexControl4(const QProxyStyle* self, int control, QStyl
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter, widget);
 }
 
-void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string* text, int textRole) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QProxyStyle_DrawItemText7(const QProxyStyle* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 

@@ -175,15 +175,16 @@ QDebug* QDebug_OperatorShiftLeft2(QDebug* self, const char* t) {
 	return &_ret;
 }
 
-QDebug* QDebug_OperatorShiftLeftWithQString(QDebug* self, struct miqt_string* t) {
-	QString t_QString = QString::fromUtf8(&t->data, t->len);
+QDebug* QDebug_OperatorShiftLeftWithQString(QDebug* self, struct miqt_string t) {
+	QString t_QString = QString::fromUtf8(t.data, t.len);
 	QDebug& _ret = self->operator<<(t_QString);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, QByteArray* t) {
-	QDebug& _ret = self->operator<<(*t);
+QDebug* QDebug_OperatorShiftLeftWithQByteArray(QDebug* self, struct miqt_string t) {
+	QByteArray t_QByteArray(t.data, t.len);
+	QDebug& _ret = self->operator<<(t_QByteArray);
 	// Cast returned reference into pointer
 	return &_ret;
 }

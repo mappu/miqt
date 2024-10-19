@@ -33,16 +33,16 @@ QSignalTransition* QSignalTransition_new3(QState* sourceState);
 QSignalTransition* QSignalTransition_new4(QObject* sender, const char* signal, QState* sourceState);
 QMetaObject* QSignalTransition_MetaObject(const QSignalTransition* self);
 void* QSignalTransition_Metacast(QSignalTransition* self, const char* param1);
-struct miqt_string* QSignalTransition_Tr(const char* s);
-struct miqt_string* QSignalTransition_TrUtf8(const char* s);
+struct miqt_string QSignalTransition_Tr(const char* s);
+struct miqt_string QSignalTransition_TrUtf8(const char* s);
 QObject* QSignalTransition_SenderObject(const QSignalTransition* self);
 void QSignalTransition_SetSenderObject(QSignalTransition* self, QObject* sender);
-QByteArray* QSignalTransition_Signal(const QSignalTransition* self);
-void QSignalTransition_SetSignal(QSignalTransition* self, QByteArray* signal);
-struct miqt_string* QSignalTransition_Tr2(const char* s, const char* c);
-struct miqt_string* QSignalTransition_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QSignalTransition_TrUtf82(const char* s, const char* c);
-struct miqt_string* QSignalTransition_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QSignalTransition_Signal(const QSignalTransition* self);
+void QSignalTransition_SetSignal(QSignalTransition* self, struct miqt_string signal);
+struct miqt_string QSignalTransition_Tr2(const char* s, const char* c);
+struct miqt_string QSignalTransition_Tr3(const char* s, const char* c, int n);
+struct miqt_string QSignalTransition_TrUtf82(const char* s, const char* c);
+struct miqt_string QSignalTransition_TrUtf83(const char* s, const char* c, int n);
 void QSignalTransition_Delete(QSignalTransition* self);
 
 #ifdef __cplusplus

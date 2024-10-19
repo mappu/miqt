@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -170,15 +169,19 @@ func (this *QPainterPath) AddEllipse3(center *QPointF, rx float64, ry float64) {
 }
 
 func (this *QPainterPath) AddText(point *QPointF, f *QFont, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainterPath_AddText(this.h, point.cPointer(), f.cPointer(), text_ms)
 }
 
 func (this *QPainterPath) AddText2(x float64, y float64, f *QFont, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainterPath_AddText2(this.h, (C.double)(x), (C.double)(y), f.cPointer(), text_ms)
 }
 
 func (this *QPainterPath) AddPath(path *QPainterPath) {

@@ -41,8 +41,8 @@ QItemDelegate* QItemDelegate_new();
 QItemDelegate* QItemDelegate_new2(QObject* parent);
 QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self);
 void* QItemDelegate_Metacast(QItemDelegate* self, const char* param1);
-struct miqt_string* QItemDelegate_Tr(const char* s);
-struct miqt_string* QItemDelegate_TrUtf8(const char* s);
+struct miqt_string QItemDelegate_Tr(const char* s);
+struct miqt_string QItemDelegate_TrUtf8(const char* s);
 bool QItemDelegate_HasClipping(const QItemDelegate* self);
 void QItemDelegate_SetClipping(QItemDelegate* self, bool clip);
 void QItemDelegate_Paint(const QItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
@@ -53,10 +53,10 @@ void QItemDelegate_SetModelData(const QItemDelegate* self, QWidget* editor, QAbs
 void QItemDelegate_UpdateEditorGeometry(const QItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 QItemEditorFactory* QItemDelegate_ItemEditorFactory(const QItemDelegate* self);
 void QItemDelegate_SetItemEditorFactory(QItemDelegate* self, QItemEditorFactory* factory);
-struct miqt_string* QItemDelegate_Tr2(const char* s, const char* c);
-struct miqt_string* QItemDelegate_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QItemDelegate_TrUtf82(const char* s, const char* c);
-struct miqt_string* QItemDelegate_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QItemDelegate_Tr2(const char* s, const char* c);
+struct miqt_string QItemDelegate_Tr3(const char* s, const char* c, int n);
+struct miqt_string QItemDelegate_TrUtf82(const char* s, const char* c);
+struct miqt_string QItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QItemDelegate_Delete(QItemDelegate* self);
 
 #ifdef __cplusplus

@@ -27,17 +27,17 @@ typedef struct QStateMachine QStateMachine;
 
 QMetaObject* QAbstractState_MetaObject(const QAbstractState* self);
 void* QAbstractState_Metacast(QAbstractState* self, const char* param1);
-struct miqt_string* QAbstractState_Tr(const char* s);
-struct miqt_string* QAbstractState_TrUtf8(const char* s);
+struct miqt_string QAbstractState_Tr(const char* s);
+struct miqt_string QAbstractState_TrUtf8(const char* s);
 QState* QAbstractState_ParentState(const QAbstractState* self);
 QStateMachine* QAbstractState_Machine(const QAbstractState* self);
 bool QAbstractState_Active(const QAbstractState* self);
 void QAbstractState_ActiveChanged(QAbstractState* self, bool active);
 void QAbstractState_connect_ActiveChanged(QAbstractState* self, intptr_t slot);
-struct miqt_string* QAbstractState_Tr2(const char* s, const char* c);
-struct miqt_string* QAbstractState_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAbstractState_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAbstractState_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAbstractState_Tr2(const char* s, const char* c);
+struct miqt_string QAbstractState_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractState_TrUtf82(const char* s, const char* c);
+struct miqt_string QAbstractState_TrUtf83(const char* s, const char* c, int n);
 void QAbstractState_Delete(QAbstractState* self);
 
 #ifdef __cplusplus

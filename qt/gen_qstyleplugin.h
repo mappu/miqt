@@ -25,13 +25,13 @@ typedef struct QStylePlugin QStylePlugin;
 
 QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self);
 void* QStylePlugin_Metacast(QStylePlugin* self, const char* param1);
-struct miqt_string* QStylePlugin_Tr(const char* s);
-struct miqt_string* QStylePlugin_TrUtf8(const char* s);
-QStyle* QStylePlugin_Create(QStylePlugin* self, struct miqt_string* key);
-struct miqt_string* QStylePlugin_Tr2(const char* s, const char* c);
-struct miqt_string* QStylePlugin_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QStylePlugin_TrUtf82(const char* s, const char* c);
-struct miqt_string* QStylePlugin_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QStylePlugin_Tr(const char* s);
+struct miqt_string QStylePlugin_TrUtf8(const char* s);
+QStyle* QStylePlugin_Create(QStylePlugin* self, struct miqt_string key);
+struct miqt_string QStylePlugin_Tr2(const char* s, const char* c);
+struct miqt_string QStylePlugin_Tr3(const char* s, const char* c, int n);
+struct miqt_string QStylePlugin_TrUtf82(const char* s, const char* c);
+struct miqt_string QStylePlugin_TrUtf83(const char* s, const char* c, int n);
 void QStylePlugin_Delete(QStylePlugin* self);
 
 #ifdef __cplusplus

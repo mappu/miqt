@@ -82,26 +82,32 @@ func (this *QCryptographicHash) AddData(data string, length int) {
 	C.QCryptographicHash_AddData(this.h, data_Cstring, (C.int)(length))
 }
 
-func (this *QCryptographicHash) AddDataWithData(data *QByteArray) {
-	C.QCryptographicHash_AddDataWithData(this.h, data.cPointer())
+func (this *QCryptographicHash) AddDataWithData(data []byte) {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	C.QCryptographicHash_AddDataWithData(this.h, data_alias)
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
 	return (bool)(C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer()))
 }
 
-func (this *QCryptographicHash) Result() *QByteArray {
-	_ret := C.QCryptographicHash_Result(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCryptographicHash) Result() []byte {
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_Result(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QCryptographicHash_Hash(data *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	_ret := C.QCryptographicHash_Hash(data.cPointer(), (C.int)(method))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QCryptographicHash_Hash(data []byte, method QCryptographicHash__Algorithm) []byte {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_Hash(data_alias, (C.int)(method))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {

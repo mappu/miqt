@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -95,24 +94,24 @@ func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
 func (this *QSystemTrayIcon) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QSystemTrayIcon_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QSystemTrayIcon_Metacast(this.h, param1_Cstring))
 }
 
 func QSystemTrayIcon_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QSystemTrayIcon_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -136,16 +135,18 @@ func (this *QSystemTrayIcon) SetIcon(icon *QIcon) {
 }
 
 func (this *QSystemTrayIcon) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSystemTrayIcon) SetToolTip(tip string) {
-	tip_ms := libmiqt.Strdupg(tip)
-	defer C.free(tip_ms)
-	C.QSystemTrayIcon_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
+	tip_ms := C.struct_miqt_string{}
+	tip_ms.data = C.CString(tip)
+	tip_ms.len = C.size_t(len(tip))
+	defer C.free(unsafe.Pointer(tip_ms.data))
+	C.QSystemTrayIcon_SetToolTip(this.h, tip_ms)
 }
 
 func QSystemTrayIcon_IsSystemTrayAvailable() bool {
@@ -180,19 +181,27 @@ func (this *QSystemTrayIcon) Hide() {
 }
 
 func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	msg_ms := libmiqt.Strdupg(msg)
-	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), icon.cPointer())
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	msg_ms := C.struct_miqt_string{}
+	msg_ms.data = C.CString(msg)
+	msg_ms.len = C.size_t(len(msg))
+	defer C.free(unsafe.Pointer(msg_ms.data))
+	C.QSystemTrayIcon_ShowMessage(this.h, title_ms, msg_ms, icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	msg_ms := libmiqt.Strdupg(msg)
-	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage2(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	msg_ms := C.struct_miqt_string{}
+	msg_ms.data = C.CString(msg)
+	msg_ms.len = C.size_t(len(msg))
+	defer C.free(unsafe.Pointer(msg_ms.data))
+	C.QSystemTrayIcon_ShowMessage2(this.h, title_ms, msg_ms)
 }
 
 func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason) {
@@ -237,9 +246,9 @@ func QSystemTrayIcon_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -248,9 +257,9 @@ func QSystemTrayIcon_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -259,9 +268,9 @@ func QSystemTrayIcon_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -270,34 +279,46 @@ func QSystemTrayIcon_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSystemTrayIcon_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon, msecs int) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	msg_ms := libmiqt.Strdupg(msg)
-	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage4(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), icon.cPointer(), (C.int)(msecs))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	msg_ms := C.struct_miqt_string{}
+	msg_ms.data = C.CString(msg)
+	msg_ms.len = C.size_t(len(msg))
+	defer C.free(unsafe.Pointer(msg_ms.data))
+	C.QSystemTrayIcon_ShowMessage4(this.h, title_ms, msg_ms, icon.cPointer(), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	msg_ms := libmiqt.Strdupg(msg)
-	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage3(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	msg_ms := C.struct_miqt_string{}
+	msg_ms.data = C.CString(msg)
+	msg_ms.len = C.size_t(len(msg))
+	defer C.free(unsafe.Pointer(msg_ms.data))
+	C.QSystemTrayIcon_ShowMessage3(this.h, title_ms, msg_ms, (C.int)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	msg_ms := libmiqt.Strdupg(msg)
-	defer C.free(msg_ms)
-	C.QSystemTrayIcon_ShowMessage42(this.h, (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(msg_ms), (C.int)(icon), (C.int)(msecs))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	msg_ms := C.struct_miqt_string{}
+	msg_ms.data = C.CString(msg)
+	msg_ms.len = C.size_t(len(msg))
+	defer C.free(unsafe.Pointer(msg_ms.data))
+	C.QSystemTrayIcon_ShowMessage42(this.h, title_ms, msg_ms, (C.int)(icon), (C.int)(msecs))
 }
 
 // Delete this object from C++ memory.

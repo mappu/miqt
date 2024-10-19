@@ -203,18 +203,26 @@ void* QAbstractItemModel_Metacast(QAbstractItemModel* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractItemModel_Tr(const char* s) {
+struct miqt_string QAbstractItemModel_Tr(const char* s) {
 	QString _ret = QAbstractItemModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemModel_TrUtf8(const char* s) {
+struct miqt_string QAbstractItemModel_TrUtf8(const char* s) {
 	QString _ret = QAbstractItemModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QAbstractItemModel_HasIndex(const QAbstractItemModel* self, int row, int column) {
@@ -264,12 +272,16 @@ bool QAbstractItemModel_SetHeaderData(QAbstractItemModel* self, int section, int
 struct miqt_array* QAbstractItemModel_MimeTypes(const QAbstractItemModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -453,32 +465,48 @@ void QAbstractItemModel_Revert(QAbstractItemModel* self) {
 	self->revert();
 }
 
-struct miqt_string* QAbstractItemModel_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractItemModel_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractItemModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractItemModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractItemModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractItemModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractItemModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractItemModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractItemModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QAbstractItemModel_HasIndex3(const QAbstractItemModel* self, int row, int column, QModelIndex* parent) {
@@ -735,18 +763,26 @@ void* QAbstractTableModel_Metacast(QAbstractTableModel* self, const char* param1
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractTableModel_Tr(const char* s) {
+struct miqt_string QAbstractTableModel_Tr(const char* s) {
 	QString _ret = QAbstractTableModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractTableModel_TrUtf8(const char* s) {
+struct miqt_string QAbstractTableModel_TrUtf8(const char* s) {
 	QString _ret = QAbstractTableModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QAbstractTableModel_Index(const QAbstractTableModel* self, int row, int column) {
@@ -766,32 +802,48 @@ int QAbstractTableModel_Flags(const QAbstractTableModel* self, QModelIndex* inde
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QAbstractTableModel_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractTableModel_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractTableModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractTableModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractTableModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractTableModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractTableModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractTableModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractTableModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractTableModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractTableModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractTableModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QAbstractTableModel_Index3(const QAbstractTableModel* self, int row, int column, QModelIndex* parent) {
@@ -810,18 +862,26 @@ void* QAbstractListModel_Metacast(QAbstractListModel* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractListModel_Tr(const char* s) {
+struct miqt_string QAbstractListModel_Tr(const char* s) {
 	QString _ret = QAbstractListModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractListModel_TrUtf8(const char* s) {
+struct miqt_string QAbstractListModel_TrUtf8(const char* s) {
 	QString _ret = QAbstractListModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QAbstractListModel_Index(const QAbstractListModel* self, int row) {
@@ -841,32 +901,48 @@ int QAbstractListModel_Flags(const QAbstractListModel* self, QModelIndex* index)
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QAbstractListModel_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractListModel_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractListModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractListModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractListModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractListModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractListModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractListModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractListModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractListModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractListModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractListModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QAbstractListModel_Index2(const QAbstractListModel* self, int row, int column) {

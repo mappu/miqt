@@ -68,18 +68,26 @@ void* QGraphicsScene_Metacast(QGraphicsScene* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGraphicsScene_Tr(const char* s) {
+struct miqt_string QGraphicsScene_Tr(const char* s) {
 	QString _ret = QGraphicsScene::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsScene_TrUtf8(const char* s) {
+struct miqt_string QGraphicsScene_TrUtf8(const char* s) {
 	QString _ret = QGraphicsScene::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QRectF* QGraphicsScene_SceneRect(const QGraphicsScene* self) {
@@ -290,13 +298,13 @@ QGraphicsRectItem* QGraphicsScene_AddRect(QGraphicsScene* self, QRectF* rect) {
 	return self->addRect(*rect);
 }
 
-QGraphicsTextItem* QGraphicsScene_AddText(QGraphicsScene* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsTextItem* QGraphicsScene_AddText(QGraphicsScene* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addText(text_QString);
 }
 
-QGraphicsSimpleTextItem* QGraphicsScene_AddSimpleText(QGraphicsScene* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsSimpleTextItem* QGraphicsScene_AddSimpleText(QGraphicsScene* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addSimpleText(text_QString);
 }
 
@@ -541,32 +549,48 @@ void QGraphicsScene_connect_FocusItemChanged(QGraphicsScene* self, intptr_t slot
 	});
 }
 
-struct miqt_string* QGraphicsScene_Tr2(const char* s, const char* c) {
+struct miqt_string QGraphicsScene_Tr2(const char* s, const char* c) {
 	QString _ret = QGraphicsScene::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsScene_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsScene_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsScene::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsScene_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGraphicsScene_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGraphicsScene::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGraphicsScene_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGraphicsScene_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGraphicsScene::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGraphicsScene_Render2(QGraphicsScene* self, QPainter* painter, QRectF* target) {
@@ -781,13 +805,13 @@ QGraphicsRectItem* QGraphicsScene_AddRect3(QGraphicsScene* self, QRectF* rect, Q
 	return self->addRect(*rect, *pen, *brush);
 }
 
-QGraphicsTextItem* QGraphicsScene_AddText2(QGraphicsScene* self, struct miqt_string* text, QFont* font) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsTextItem* QGraphicsScene_AddText2(QGraphicsScene* self, struct miqt_string text, QFont* font) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addText(text_QString, *font);
 }
 
-QGraphicsSimpleTextItem* QGraphicsScene_AddSimpleText2(QGraphicsScene* self, struct miqt_string* text, QFont* font) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QGraphicsSimpleTextItem* QGraphicsScene_AddSimpleText2(QGraphicsScene* self, struct miqt_string text, QFont* font) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addSimpleText(text_QString, *font);
 }
 

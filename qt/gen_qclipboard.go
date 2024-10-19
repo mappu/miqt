@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -60,24 +59,24 @@ func (this *QClipboard) MetaObject() *QMetaObject {
 func (this *QClipboard) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QClipboard_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QClipboard_Metacast(this.h, param1_Cstring))
 }
 
 func QClipboard_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QClipboard_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -106,25 +105,29 @@ func (this *QClipboard) OwnsFindBuffer() bool {
 }
 
 func (this *QClipboard) Text() string {
-	var _ms *C.struct_miqt_string = C.QClipboard_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QClipboard) TextWithSubtype(subtype string) string {
-	subtype_ms := libmiqt.Strdupg(subtype)
-	defer C.free(subtype_ms)
-	var _ms *C.struct_miqt_string = C.QClipboard_TextWithSubtype(this.h, (*C.struct_miqt_string)(subtype_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	subtype_ms := C.struct_miqt_string{}
+	subtype_ms.data = C.CString(subtype)
+	subtype_ms.len = C.size_t(len(subtype))
+	defer C.free(unsafe.Pointer(subtype_ms.data))
+	var _ms C.struct_miqt_string = C.QClipboard_TextWithSubtype(this.h, subtype_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QClipboard) SetText(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QClipboard_SetText(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QClipboard_SetText(this.h, param1_ms)
 }
 
 func (this *QClipboard) MimeData() *QMimeData {
@@ -233,9 +236,9 @@ func QClipboard_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -244,9 +247,9 @@ func QClipboard_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -255,9 +258,9 @@ func QClipboard_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -266,9 +269,9 @@ func QClipboard_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QClipboard_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -277,25 +280,29 @@ func (this *QClipboard) Clear1(mode QClipboard__Mode) {
 }
 
 func (this *QClipboard) Text1(mode QClipboard__Mode) string {
-	var _ms *C.struct_miqt_string = C.QClipboard_Text1(this.h, (C.int)(mode))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QClipboard_Text1(this.h, (C.int)(mode))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QClipboard) Text2(subtype string, mode QClipboard__Mode) string {
-	subtype_ms := libmiqt.Strdupg(subtype)
-	defer C.free(subtype_ms)
-	var _ms *C.struct_miqt_string = C.QClipboard_Text2(this.h, (*C.struct_miqt_string)(subtype_ms), (C.int)(mode))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	subtype_ms := C.struct_miqt_string{}
+	subtype_ms.data = C.CString(subtype)
+	subtype_ms.len = C.size_t(len(subtype))
+	defer C.free(unsafe.Pointer(subtype_ms.data))
+	var _ms C.struct_miqt_string = C.QClipboard_Text2(this.h, subtype_ms, (C.int)(mode))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QClipboard_SetText2(this.h, (*C.struct_miqt_string)(param1_ms), (C.int)(mode))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QClipboard_SetText2(this.h, param1_ms, (C.int)(mode))
 }
 
 func (this *QClipboard) MimeData1(mode QClipboard__Mode) *QMimeData {

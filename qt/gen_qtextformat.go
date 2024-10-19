@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -442,9 +441,9 @@ func (this *QTextFormat) DoubleProperty(propertyId int) float64 {
 }
 
 func (this *QTextFormat) StringProperty(propertyId int) string {
-	var _ms *C.struct_miqt_string = C.QTextFormat_StringProperty(this.h, (C.int)(propertyId))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextFormat_StringProperty(this.h, (C.int)(propertyId))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -713,26 +712,30 @@ func (this *QTextCharFormat) Font() *QFont {
 }
 
 func (this *QTextCharFormat) SetFontFamily(family string) {
-	family_ms := libmiqt.Strdupg(family)
-	defer C.free(family_ms)
-	C.QTextCharFormat_SetFontFamily(this.h, (*C.struct_miqt_string)(family_ms))
+	family_ms := C.struct_miqt_string{}
+	family_ms.data = C.CString(family)
+	family_ms.len = C.size_t(len(family))
+	defer C.free(unsafe.Pointer(family_ms.data))
+	C.QTextCharFormat_SetFontFamily(this.h, family_ms)
 }
 
 func (this *QTextCharFormat) FontFamily() string {
-	var _ms *C.struct_miqt_string = C.QTextCharFormat_FontFamily(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextCharFormat_FontFamily(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	families_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(families))))
+	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
-		families_i_ms := libmiqt.Strdupg(families[i])
-		defer C.free(families_i_ms)
-		families_CArray[i] = (*C.struct_miqt_string)(families_i_ms)
+		families_i_ms := C.struct_miqt_string{}
+		families_i_ms.data = C.CString(families[i])
+		families_i_ms.len = C.size_t(len(families[i]))
+		defer C.free(unsafe.Pointer(families_i_ms.data))
+		families_CArray[i] = families_i_ms
 	}
 	families_ma := &C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(families_ma))
@@ -747,9 +750,11 @@ func (this *QTextCharFormat) FontFamilies() *QVariant {
 }
 
 func (this *QTextCharFormat) SetFontStyleName(styleName string) {
-	styleName_ms := libmiqt.Strdupg(styleName)
-	defer C.free(styleName_ms)
-	C.QTextCharFormat_SetFontStyleName(this.h, (*C.struct_miqt_string)(styleName_ms))
+	styleName_ms := C.struct_miqt_string{}
+	styleName_ms.data = C.CString(styleName)
+	styleName_ms.len = C.size_t(len(styleName))
+	defer C.free(unsafe.Pointer(styleName_ms.data))
+	C.QTextCharFormat_SetFontStyleName(this.h, styleName_ms)
 }
 
 func (this *QTextCharFormat) FontStyleName() *QVariant {
@@ -926,15 +931,17 @@ func (this *QTextCharFormat) TextOutline() *QPen {
 }
 
 func (this *QTextCharFormat) SetToolTip(tip string) {
-	tip_ms := libmiqt.Strdupg(tip)
-	defer C.free(tip_ms)
-	C.QTextCharFormat_SetToolTip(this.h, (*C.struct_miqt_string)(tip_ms))
+	tip_ms := C.struct_miqt_string{}
+	tip_ms.data = C.CString(tip)
+	tip_ms.len = C.size_t(len(tip))
+	defer C.free(unsafe.Pointer(tip_ms.data))
+	C.QTextCharFormat_SetToolTip(this.h, tip_ms)
 }
 
 func (this *QTextCharFormat) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QTextCharFormat_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextCharFormat_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -947,39 +954,45 @@ func (this *QTextCharFormat) IsAnchor() bool {
 }
 
 func (this *QTextCharFormat) SetAnchorHref(value string) {
-	value_ms := libmiqt.Strdupg(value)
-	defer C.free(value_ms)
-	C.QTextCharFormat_SetAnchorHref(this.h, (*C.struct_miqt_string)(value_ms))
+	value_ms := C.struct_miqt_string{}
+	value_ms.data = C.CString(value)
+	value_ms.len = C.size_t(len(value))
+	defer C.free(unsafe.Pointer(value_ms.data))
+	C.QTextCharFormat_SetAnchorHref(this.h, value_ms)
 }
 
 func (this *QTextCharFormat) AnchorHref() string {
-	var _ms *C.struct_miqt_string = C.QTextCharFormat_AnchorHref(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextCharFormat_AnchorHref(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextCharFormat) SetAnchorName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTextCharFormat_SetAnchorName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTextCharFormat_SetAnchorName(this.h, name_ms)
 }
 
 func (this *QTextCharFormat) AnchorName() string {
-	var _ms *C.struct_miqt_string = C.QTextCharFormat_AnchorName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextCharFormat_AnchorName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
-		names_i_ms := libmiqt.Strdupg(names[i])
-		defer C.free(names_i_ms)
-		names_CArray[i] = (*C.struct_miqt_string)(names_i_ms)
+		names_i_ms := C.struct_miqt_string{}
+		names_i_ms.data = C.CString(names[i])
+		names_i_ms.len = C.size_t(len(names[i]))
+		defer C.free(unsafe.Pointer(names_i_ms.data))
+		names_CArray[i] = names_i_ms
 	}
 	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
@@ -989,11 +1002,11 @@ func (this *QTextCharFormat) SetAnchorNames(names []string) {
 func (this *QTextCharFormat) AnchorNames() []string {
 	var _ma *C.struct_miqt_array = C.QTextCharFormat_AnchorNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -1287,28 +1300,32 @@ func (this *QTextListFormat) Indent() int {
 }
 
 func (this *QTextListFormat) SetNumberPrefix(numberPrefix string) {
-	numberPrefix_ms := libmiqt.Strdupg(numberPrefix)
-	defer C.free(numberPrefix_ms)
-	C.QTextListFormat_SetNumberPrefix(this.h, (*C.struct_miqt_string)(numberPrefix_ms))
+	numberPrefix_ms := C.struct_miqt_string{}
+	numberPrefix_ms.data = C.CString(numberPrefix)
+	numberPrefix_ms.len = C.size_t(len(numberPrefix))
+	defer C.free(unsafe.Pointer(numberPrefix_ms.data))
+	C.QTextListFormat_SetNumberPrefix(this.h, numberPrefix_ms)
 }
 
 func (this *QTextListFormat) NumberPrefix() string {
-	var _ms *C.struct_miqt_string = C.QTextListFormat_NumberPrefix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextListFormat_NumberPrefix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextListFormat) SetNumberSuffix(numberSuffix string) {
-	numberSuffix_ms := libmiqt.Strdupg(numberSuffix)
-	defer C.free(numberSuffix_ms)
-	C.QTextListFormat_SetNumberSuffix(this.h, (*C.struct_miqt_string)(numberSuffix_ms))
+	numberSuffix_ms := C.struct_miqt_string{}
+	numberSuffix_ms.data = C.CString(numberSuffix)
+	numberSuffix_ms.len = C.size_t(len(numberSuffix))
+	defer C.free(unsafe.Pointer(numberSuffix_ms.data))
+	C.QTextListFormat_SetNumberSuffix(this.h, numberSuffix_ms)
 }
 
 func (this *QTextListFormat) NumberSuffix() string {
-	var _ms *C.struct_miqt_string = C.QTextListFormat_NumberSuffix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextListFormat_NumberSuffix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1367,15 +1384,17 @@ func (this *QTextImageFormat) IsValid() bool {
 }
 
 func (this *QTextImageFormat) SetName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTextImageFormat_SetName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTextImageFormat_SetName(this.h, name_ms)
 }
 
 func (this *QTextImageFormat) Name() string {
-	var _ms *C.struct_miqt_string = C.QTextImageFormat_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextImageFormat_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

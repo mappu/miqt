@@ -29,8 +29,8 @@ QAbstractPrintDialog* QAbstractPrintDialog_new(QPrinter* printer);
 QAbstractPrintDialog* QAbstractPrintDialog_new2(QPrinter* printer, QWidget* parent);
 QMetaObject* QAbstractPrintDialog_MetaObject(const QAbstractPrintDialog* self);
 void* QAbstractPrintDialog_Metacast(QAbstractPrintDialog* self, const char* param1);
-struct miqt_string* QAbstractPrintDialog_Tr(const char* s);
-struct miqt_string* QAbstractPrintDialog_TrUtf8(const char* s);
+struct miqt_string QAbstractPrintDialog_Tr(const char* s);
+struct miqt_string QAbstractPrintDialog_TrUtf8(const char* s);
 void QAbstractPrintDialog_AddEnabledOption(QAbstractPrintDialog* self, int option);
 void QAbstractPrintDialog_SetEnabledOptions(QAbstractPrintDialog* self, int options);
 int QAbstractPrintDialog_EnabledOptions(const QAbstractPrintDialog* self);
@@ -45,10 +45,10 @@ void QAbstractPrintDialog_SetFromTo(QAbstractPrintDialog* self, int fromPage, in
 int QAbstractPrintDialog_FromPage(const QAbstractPrintDialog* self);
 int QAbstractPrintDialog_ToPage(const QAbstractPrintDialog* self);
 QPrinter* QAbstractPrintDialog_Printer(const QAbstractPrintDialog* self);
-struct miqt_string* QAbstractPrintDialog_Tr2(const char* s, const char* c);
-struct miqt_string* QAbstractPrintDialog_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAbstractPrintDialog_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAbstractPrintDialog_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAbstractPrintDialog_Tr2(const char* s, const char* c);
+struct miqt_string QAbstractPrintDialog_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractPrintDialog_TrUtf82(const char* s, const char* c);
+struct miqt_string QAbstractPrintDialog_TrUtf83(const char* s, const char* c, int n);
 void QAbstractPrintDialog_Delete(QAbstractPrintDialog* self);
 
 #ifdef __cplusplus

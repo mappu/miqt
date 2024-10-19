@@ -38,18 +38,26 @@ void* QStateMachine_Metacast(QStateMachine* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QStateMachine_Tr(const char* s) {
+struct miqt_string QStateMachine_Tr(const char* s) {
 	QString _ret = QStateMachine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStateMachine_TrUtf8(const char* s) {
+struct miqt_string QStateMachine_TrUtf8(const char* s) {
 	QString _ret = QStateMachine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStateMachine_AddState(QStateMachine* self, QAbstractState* state) {
@@ -65,11 +73,15 @@ int QStateMachine_Error(const QStateMachine* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QStateMachine_ErrorString(const QStateMachine* self) {
+struct miqt_string QStateMachine_ErrorString(const QStateMachine* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStateMachine_ClearError(QStateMachine* self) {
@@ -172,32 +184,48 @@ void QStateMachine_connect_RunningChanged(QStateMachine* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QStateMachine_Tr2(const char* s, const char* c) {
+struct miqt_string QStateMachine_Tr2(const char* s, const char* c) {
 	QString _ret = QStateMachine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStateMachine_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QStateMachine_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QStateMachine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStateMachine_TrUtf82(const char* s, const char* c) {
+struct miqt_string QStateMachine_TrUtf82(const char* s, const char* c) {
 	QString _ret = QStateMachine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStateMachine_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QStateMachine_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QStateMachine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, int priority) {

@@ -56,6 +56,7 @@ nextTopLevel:
 			"ClassTemplateSpecializationDecl",
 			"ClassTemplatePartialSpecializationDecl",
 			"FunctionTemplateDecl",
+			"BuiltinTemplateDecl",                  // Scintilla
 			"VarTemplatePartialSpecializationDecl", // e.g. Qt6 qcontainerinfo.h
 			"VarTemplateSpecializationDecl",        // e.g. qhashfunctions.h
 			"TypeAliasTemplateDecl",                // e.g. qendian.h
@@ -89,7 +90,7 @@ nextTopLevel:
 
 			} else {
 
-				contents, err := parseHeader(namespaceInner, namespace+"::")
+				contents, err := parseHeader(namespaceInner, addNamePrefix+namespace+"::")
 				if err != nil {
 					panic(err)
 				}
@@ -129,6 +130,12 @@ nextTopLevel:
 		case "LinkageSpecDecl":
 			// TODO e.g. qfuturewatcher.h
 			// Probably can't be supported in the Go binding
+
+		case "AbiTagAttr":
+			// e.g. scintilla.org ScintillaEditBase
+		case "VisibilityAttr":
+			// e.g. scintilla.org ScintillaEditBase
+			// Don't understand why this appears at top level??
 
 		case "UsingDirectiveDecl", // qtextstream.h
 			"UsingDecl",       // qglobal.h

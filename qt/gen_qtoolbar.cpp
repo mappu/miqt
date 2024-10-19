@@ -13,8 +13,8 @@
 #include "gen_qtoolbar.h"
 #include "_cgo_export.h"
 
-QToolBar* QToolBar_new(struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QToolBar* QToolBar_new(struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QToolBar(title_QString);
 }
 
@@ -22,8 +22,8 @@ QToolBar* QToolBar_new2() {
 	return new QToolBar();
 }
 
-QToolBar* QToolBar_new3(struct miqt_string* title, QWidget* parent) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+QToolBar* QToolBar_new3(struct miqt_string title, QWidget* parent) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QToolBar(title_QString, parent);
 }
 
@@ -39,18 +39,26 @@ void* QToolBar_Metacast(QToolBar* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QToolBar_Tr(const char* s) {
+struct miqt_string QToolBar_Tr(const char* s) {
 	QString _ret = QToolBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QToolBar_TrUtf8(const char* s) {
+struct miqt_string QToolBar_TrUtf8(const char* s) {
 	QString _ret = QToolBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QToolBar_SetMovable(QToolBar* self, bool movable) {
@@ -87,13 +95,13 @@ void QToolBar_Clear(QToolBar* self) {
 	self->clear();
 }
 
-QAction* QToolBar_AddAction(QToolBar* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QToolBar_AddAction(QToolBar* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(text_QString);
 }
 
-QAction* QToolBar_AddAction2(QToolBar* self, QIcon* icon, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QAction* QToolBar_AddAction2(QToolBar* self, QIcon* icon, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(*icon, text_QString);
 }
 
@@ -255,32 +263,48 @@ void QToolBar_connect_VisibilityChanged(QToolBar* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QToolBar_Tr2(const char* s, const char* c) {
+struct miqt_string QToolBar_Tr2(const char* s, const char* c) {
 	QString _ret = QToolBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QToolBar_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QToolBar_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QToolBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QToolBar_TrUtf82(const char* s, const char* c) {
+struct miqt_string QToolBar_TrUtf82(const char* s, const char* c) {
 	QString _ret = QToolBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QToolBar_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QToolBar_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QToolBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QToolBar_Delete(QToolBar* self) {

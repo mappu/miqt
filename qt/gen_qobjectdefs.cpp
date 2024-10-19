@@ -92,11 +92,15 @@ QObject* QMetaObject_CastWithObj(const QMetaObject* self, QObject* obj) {
 	return (QObject*) self->cast(obj);
 }
 
-struct miqt_string* QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c) {
+struct miqt_string QMetaObject_Tr(const QMetaObject* self, const char* s, const char* c) {
 	QString _ret = self->tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QMetaObject_MethodOffset(const QMetaObject* self) {
@@ -195,12 +199,22 @@ bool QMetaObject_CheckConnectArgs2(QMetaMethod* signal, QMetaMethod* method) {
 	return QMetaObject::checkConnectArgs(*signal, *method);
 }
 
-QByteArray* QMetaObject_NormalizedSignature(const char* method) {
-	return new QByteArray(QMetaObject::normalizedSignature(method));
+struct miqt_string QMetaObject_NormalizedSignature(const char* method) {
+	QByteArray _qb = QMetaObject::normalizedSignature(method);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QMetaObject_NormalizedType(const char* typeVal) {
-	return new QByteArray(QMetaObject::normalizedType(typeVal));
+struct miqt_string QMetaObject_NormalizedType(const char* typeVal) {
+	QByteArray _qb = QMetaObject::normalizedType(typeVal);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 QMetaObject__Connection* QMetaObject_Connect(QObject* sender, int signal_index, QObject* receiver, int method_index) {
@@ -239,11 +253,15 @@ QObject* QMetaObject_NewInstance(const QMetaObject* self) {
 	return self->newInstance();
 }
 
-struct miqt_string* QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n) {
+struct miqt_string QMetaObject_Tr3(const QMetaObject* self, const char* s, const char* c, int n) {
 	QString _ret = self->tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QMetaObject__Connection* QMetaObject_Connect5(QObject* sender, int signal_index, QObject* receiver, int method_index, int typeVal) {

@@ -104,9 +104,9 @@ func UnsafeNewQCborError(h unsafe.Pointer) *QCborError {
 }
 
 func (this *QCborError) ToString() string {
-	var _ms *C.struct_miqt_string = C.QCborError_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCborError_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -9,8 +9,9 @@ QByteArrayMatcher* QByteArrayMatcher_new() {
 	return new QByteArrayMatcher();
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new2(QByteArray* pattern) {
-	return new QByteArrayMatcher(*pattern);
+QByteArrayMatcher* QByteArrayMatcher_new2(struct miqt_string pattern) {
+	QByteArray pattern_QByteArray(pattern.data, pattern.len);
+	return new QByteArrayMatcher(pattern_QByteArray);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new3(const char* pattern, int length) {
@@ -25,24 +26,32 @@ void QByteArrayMatcher_OperatorAssign(QByteArrayMatcher* self, QByteArrayMatcher
 	self->operator=(*other);
 }
 
-void QByteArrayMatcher_SetPattern(QByteArrayMatcher* self, QByteArray* pattern) {
-	self->setPattern(*pattern);
+void QByteArrayMatcher_SetPattern(QByteArrayMatcher* self, struct miqt_string pattern) {
+	QByteArray pattern_QByteArray(pattern.data, pattern.len);
+	self->setPattern(pattern_QByteArray);
 }
 
-int QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, QByteArray* ba) {
-	return self->indexIn(*ba);
+int QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, struct miqt_string ba) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	return self->indexIn(ba_QByteArray);
 }
 
 int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, int lenVal) {
 	return self->indexIn(str, static_cast<int>(lenVal));
 }
 
-QByteArray* QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
-	return new QByteArray(self->pattern());
+struct miqt_string QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
+	QByteArray _qb = self->pattern();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, QByteArray* ba, int from) {
-	return self->indexIn(*ba, static_cast<int>(from));
+int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, struct miqt_string ba, int from) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	return self->indexIn(ba_QByteArray, static_cast<int>(from));
 }
 
 int QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, int lenVal, int from) {

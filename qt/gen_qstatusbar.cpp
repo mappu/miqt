@@ -24,18 +24,26 @@ void* QStatusBar_Metacast(QStatusBar* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QStatusBar_Tr(const char* s) {
+struct miqt_string QStatusBar_Tr(const char* s) {
 	QString _ret = QStatusBar::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStatusBar_TrUtf8(const char* s) {
+struct miqt_string QStatusBar_TrUtf8(const char* s) {
 	QString _ret = QStatusBar::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStatusBar_AddWidget(QStatusBar* self, QWidget* widget) {
@@ -66,15 +74,19 @@ bool QStatusBar_IsSizeGripEnabled(const QStatusBar* self) {
 	return self->isSizeGripEnabled();
 }
 
-struct miqt_string* QStatusBar_CurrentMessage(const QStatusBar* self) {
+struct miqt_string QStatusBar_CurrentMessage(const QStatusBar* self) {
 	QString _ret = self->currentMessage();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStatusBar_ShowMessage(QStatusBar* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStatusBar_ShowMessage(QStatusBar* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->showMessage(text_QString);
 }
 
@@ -82,8 +94,8 @@ void QStatusBar_ClearMessage(QStatusBar* self) {
 	self->clearMessage();
 }
 
-void QStatusBar_MessageChanged(QStatusBar* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStatusBar_MessageChanged(QStatusBar* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->messageChanged(text_QString);
 }
 
@@ -92,37 +104,57 @@ void QStatusBar_connect_MessageChanged(QStatusBar* self, intptr_t slot) {
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(text_b.data(), text_b.length());
+		struct miqt_string text_ms;
+		text_ms.len = text_b.length();
+		text_ms.data = static_cast<char*>(malloc(text_ms.len));
+		memcpy(text_ms.data, text_b.data(), text_ms.len);
+		struct miqt_string sigval1 = text_ms;
 		miqt_exec_callback_QStatusBar_MessageChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string* QStatusBar_Tr2(const char* s, const char* c) {
+struct miqt_string QStatusBar_Tr2(const char* s, const char* c) {
 	QString _ret = QStatusBar::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStatusBar_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QStatusBar_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QStatusBar::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStatusBar_TrUtf82(const char* s, const char* c) {
+struct miqt_string QStatusBar_TrUtf82(const char* s, const char* c) {
 	QString _ret = QStatusBar::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStatusBar_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QStatusBar_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QStatusBar::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStatusBar_AddWidget2(QStatusBar* self, QWidget* widget, int stretch) {
@@ -141,8 +173,8 @@ int QStatusBar_InsertPermanentWidget3(QStatusBar* self, int index, QWidget* widg
 	return self->insertPermanentWidget(static_cast<int>(index), widget, static_cast<int>(stretch));
 }
 
-void QStatusBar_ShowMessage2(QStatusBar* self, struct miqt_string* text, int timeout) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStatusBar_ShowMessage2(QStatusBar* self, struct miqt_string text, int timeout) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->showMessage(text_QString, static_cast<int>(timeout));
 }
 

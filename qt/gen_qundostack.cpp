@@ -14,8 +14,8 @@ QUndoCommand* QUndoCommand_new() {
 	return new QUndoCommand();
 }
 
-QUndoCommand* QUndoCommand_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QUndoCommand* QUndoCommand_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QUndoCommand(text_QString);
 }
 
@@ -23,8 +23,8 @@ QUndoCommand* QUndoCommand_new3(QUndoCommand* parent) {
 	return new QUndoCommand(parent);
 }
 
-QUndoCommand* QUndoCommand_new4(struct miqt_string* text, QUndoCommand* parent) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QUndoCommand* QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QUndoCommand(text_QString, parent);
 }
 
@@ -36,22 +36,30 @@ void QUndoCommand_Redo(QUndoCommand* self) {
 	self->redo();
 }
 
-struct miqt_string* QUndoCommand_Text(const QUndoCommand* self) {
+struct miqt_string QUndoCommand_Text(const QUndoCommand* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoCommand_ActionText(const QUndoCommand* self) {
+struct miqt_string QUndoCommand_ActionText(const QUndoCommand* self) {
 	QString _ret = self->actionText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QUndoCommand_SetText(QUndoCommand* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QUndoCommand_SetText(QUndoCommand* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
@@ -99,18 +107,26 @@ void* QUndoStack_Metacast(QUndoStack* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QUndoStack_Tr(const char* s) {
+struct miqt_string QUndoStack_Tr(const char* s) {
 	QString _ret = QUndoStack::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoStack_TrUtf8(const char* s) {
+struct miqt_string QUndoStack_TrUtf8(const char* s) {
 	QString _ret = QUndoStack::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QUndoStack_Clear(QUndoStack* self) {
@@ -129,18 +145,26 @@ bool QUndoStack_CanRedo(const QUndoStack* self) {
 	return self->canRedo();
 }
 
-struct miqt_string* QUndoStack_UndoText(const QUndoStack* self) {
+struct miqt_string QUndoStack_UndoText(const QUndoStack* self) {
 	QString _ret = self->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoStack_RedoText(const QUndoStack* self) {
+struct miqt_string QUndoStack_RedoText(const QUndoStack* self) {
 	QString _ret = self->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QUndoStack_Count(const QUndoStack* self) {
@@ -151,11 +175,15 @@ int QUndoStack_Index(const QUndoStack* self) {
 	return self->index();
 }
 
-struct miqt_string* QUndoStack_Text(const QUndoStack* self, int idx) {
+struct miqt_string QUndoStack_Text(const QUndoStack* self, int idx) {
 	QString _ret = self->text(static_cast<int>(idx));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QAction* QUndoStack_CreateUndoAction(const QUndoStack* self, QObject* parent) {
@@ -178,8 +206,8 @@ int QUndoStack_CleanIndex(const QUndoStack* self) {
 	return self->cleanIndex();
 }
 
-void QUndoStack_BeginMacro(QUndoStack* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QUndoStack_BeginMacro(QUndoStack* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->beginMacro(text_QString);
 }
 
@@ -267,8 +295,8 @@ void QUndoStack_connect_CanRedoChanged(QUndoStack* self, intptr_t slot) {
 	});
 }
 
-void QUndoStack_UndoTextChanged(QUndoStack* self, struct miqt_string* undoText) {
-	QString undoText_QString = QString::fromUtf8(&undoText->data, undoText->len);
+void QUndoStack_UndoTextChanged(QUndoStack* self, struct miqt_string undoText) {
+	QString undoText_QString = QString::fromUtf8(undoText.data, undoText.len);
 	self->undoTextChanged(undoText_QString);
 }
 
@@ -277,13 +305,17 @@ void QUndoStack_connect_UndoTextChanged(QUndoStack* self, intptr_t slot) {
 		const QString undoText_ret = undoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray undoText_b = undoText_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(undoText_b.data(), undoText_b.length());
+		struct miqt_string undoText_ms;
+		undoText_ms.len = undoText_b.length();
+		undoText_ms.data = static_cast<char*>(malloc(undoText_ms.len));
+		memcpy(undoText_ms.data, undoText_b.data(), undoText_ms.len);
+		struct miqt_string sigval1 = undoText_ms;
 		miqt_exec_callback_QUndoStack_UndoTextChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_RedoTextChanged(QUndoStack* self, struct miqt_string* redoText) {
-	QString redoText_QString = QString::fromUtf8(&redoText->data, redoText->len);
+void QUndoStack_RedoTextChanged(QUndoStack* self, struct miqt_string redoText) {
+	QString redoText_QString = QString::fromUtf8(redoText.data, redoText.len);
 	self->redoTextChanged(redoText_QString);
 }
 
@@ -292,46 +324,66 @@ void QUndoStack_connect_RedoTextChanged(QUndoStack* self, intptr_t slot) {
 		const QString redoText_ret = redoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray redoText_b = redoText_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(redoText_b.data(), redoText_b.length());
+		struct miqt_string redoText_ms;
+		redoText_ms.len = redoText_b.length();
+		redoText_ms.data = static_cast<char*>(malloc(redoText_ms.len));
+		memcpy(redoText_ms.data, redoText_b.data(), redoText_ms.len);
+		struct miqt_string sigval1 = redoText_ms;
 		miqt_exec_callback_QUndoStack_RedoTextChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string* QUndoStack_Tr2(const char* s, const char* c) {
+struct miqt_string QUndoStack_Tr2(const char* s, const char* c) {
 	QString _ret = QUndoStack::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoStack_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QUndoStack_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QUndoStack::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoStack_TrUtf82(const char* s, const char* c) {
+struct miqt_string QUndoStack_TrUtf82(const char* s, const char* c) {
 	QString _ret = QUndoStack::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoStack_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QUndoStack_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QUndoStack::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QAction* QUndoStack_CreateUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string* prefix) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+QAction* QUndoStack_CreateUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createUndoAction(parent, prefix_QString);
 }
 
-QAction* QUndoStack_CreateRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string* prefix) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+QAction* QUndoStack_CreateRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createRedoAction(parent, prefix_QString);
 }
 

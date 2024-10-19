@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -78,9 +77,9 @@ func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
 }
 
 func (this *QJsonParseError) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QJsonParseError_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QJsonParseError_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -168,23 +167,26 @@ func QJsonDocument_FromRawData(data string, size int) *QJsonDocument {
 	return _goptr
 }
 
-func (this *QJsonDocument) RawData(size *int) unsafe.Pointer {
+func (this *QJsonDocument) RawData(size *int) string {
 	_ret := C.QJsonDocument_RawData(this.h, (*C.int)(unsafe.Pointer(size)))
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
-func QJsonDocument_FromBinaryData(data *QByteArray) *QJsonDocument {
-	_ret := C.QJsonDocument_FromBinaryData(data.cPointer())
+func QJsonDocument_FromBinaryData(data []byte) *QJsonDocument {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	_ret := C.QJsonDocument_FromBinaryData(data_alias)
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonDocument) ToBinaryData() *QByteArray {
-	_ret := C.QJsonDocument_ToBinaryData(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QJsonDocument) ToBinaryData() []byte {
+	var _bytearray C.struct_miqt_string = C.QJsonDocument_ToBinaryData(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func QJsonDocument_FromVariant(variant *QVariant) *QJsonDocument {
@@ -201,25 +203,28 @@ func (this *QJsonDocument) ToVariant() *QVariant {
 	return _goptr
 }
 
-func QJsonDocument_FromJson(json *QByteArray) *QJsonDocument {
-	_ret := C.QJsonDocument_FromJson(json.cPointer())
+func QJsonDocument_FromJson(json []byte) *QJsonDocument {
+	json_alias := C.struct_miqt_string{}
+	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	json_alias.len = C.size_t(len(json))
+	_ret := C.QJsonDocument_FromJson(json_alias)
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJsonDocument) ToJson() *QByteArray {
-	_ret := C.QJsonDocument_ToJson(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QJsonDocument) ToJson() []byte {
+	var _bytearray C.struct_miqt_string = C.QJsonDocument_ToJson(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) *QByteArray {
-	_ret := C.QJsonDocument_ToJsonWithFormat(this.h, (C.int)(format))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) []byte {
+	var _bytearray C.struct_miqt_string = C.QJsonDocument_ToJsonWithFormat(this.h, (C.int)(format))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QJsonDocument) IsEmpty() bool {
@@ -257,9 +262,11 @@ func (this *QJsonDocument) SetArray(array *QJsonArray) {
 }
 
 func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	_ret := C.QJsonDocument_OperatorSubscript(this.h, (*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_ret := C.QJsonDocument_OperatorSubscript(this.h, key_ms)
 	_goptr := newQJsonValue(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -293,15 +300,21 @@ func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument_
 	return _goptr
 }
 
-func QJsonDocument_FromBinaryData2(data *QByteArray, validation QJsonDocument__DataValidation) *QJsonDocument {
-	_ret := C.QJsonDocument_FromBinaryData2(data.cPointer(), (C.int)(validation))
+func QJsonDocument_FromBinaryData2(data []byte, validation QJsonDocument__DataValidation) *QJsonDocument {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	_ret := C.QJsonDocument_FromBinaryData2(data_alias, (C.int)(validation))
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QJsonDocument_FromJson2(json *QByteArray, error *QJsonParseError) *QJsonDocument {
-	_ret := C.QJsonDocument_FromJson2(json.cPointer(), error.cPointer())
+func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument {
+	json_alias := C.struct_miqt_string{}
+	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	json_alias.len = C.size_t(len(json))
+	_ret := C.QJsonDocument_FromJson2(json_alias, error.cPointer())
 	_goptr := newQJsonDocument(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

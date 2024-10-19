@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -59,35 +58,43 @@ func NewQDirIterator(dir *QDir) *QDirIterator {
 
 // NewQDirIterator2 constructs a new QDirIterator object.
 func NewQDirIterator2(path string) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	ret := C.QDirIterator_new2((*C.struct_miqt_string)(path_ms))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	ret := C.QDirIterator_new2(path_ms)
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator3 constructs a new QDirIterator object.
 func NewQDirIterator3(path string, filter QDir__Filter) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	ret := C.QDirIterator_new3((*C.struct_miqt_string)(path_ms), (C.int)(filter))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	ret := C.QDirIterator_new3(path_ms, (C.int)(filter))
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator4 constructs a new QDirIterator object.
 func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		nameFilters_i_ms := libmiqt.Strdupg(nameFilters[i])
-		defer C.free(nameFilters_i_ms)
-		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
+		nameFilters_i_ms := C.struct_miqt_string{}
+		nameFilters_i_ms.data = C.CString(nameFilters[i])
+		nameFilters_i_ms.len = C.size_t(len(nameFilters[i]))
+		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
+		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirIterator_new4((*C.struct_miqt_string)(path_ms), nameFilters_ma)
+	ret := C.QDirIterator_new4(path_ms, nameFilters_ma)
 	return newQDirIterator(ret)
 }
 
@@ -99,60 +106,72 @@ func NewQDirIterator5(dir *QDir, flags QDirIterator__IteratorFlag) *QDirIterator
 
 // NewQDirIterator6 constructs a new QDirIterator object.
 func NewQDirIterator6(path string, flags QDirIterator__IteratorFlag) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	ret := C.QDirIterator_new6((*C.struct_miqt_string)(path_ms), (C.int)(flags))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	ret := C.QDirIterator_new6(path_ms, (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator7 constructs a new QDirIterator object.
 func NewQDirIterator7(path string, filter QDir__Filter, flags QDirIterator__IteratorFlag) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
-	ret := C.QDirIterator_new7((*C.struct_miqt_string)(path_ms), (C.int)(filter), (C.int)(flags))
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	ret := C.QDirIterator_new7(path_ms, (C.int)(filter), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator8 constructs a new QDirIterator object.
 func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		nameFilters_i_ms := libmiqt.Strdupg(nameFilters[i])
-		defer C.free(nameFilters_i_ms)
-		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
+		nameFilters_i_ms := C.struct_miqt_string{}
+		nameFilters_i_ms.data = C.CString(nameFilters[i])
+		nameFilters_i_ms.len = C.size_t(len(nameFilters[i]))
+		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
+		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirIterator_new8((*C.struct_miqt_string)(path_ms), nameFilters_ma, (C.int)(filters))
+	ret := C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters))
 	return newQDirIterator(ret)
 }
 
 // NewQDirIterator9 constructs a new QDirIterator object.
 func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, flags QDirIterator__IteratorFlag) *QDirIterator {
-	path_ms := libmiqt.Strdupg(path)
-	defer C.free(path_ms)
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	nameFilters_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
+	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
-		nameFilters_i_ms := libmiqt.Strdupg(nameFilters[i])
-		defer C.free(nameFilters_i_ms)
-		nameFilters_CArray[i] = (*C.struct_miqt_string)(nameFilters_i_ms)
+		nameFilters_i_ms := C.struct_miqt_string{}
+		nameFilters_i_ms.data = C.CString(nameFilters[i])
+		nameFilters_i_ms.len = C.size_t(len(nameFilters[i]))
+		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
+		nameFilters_CArray[i] = nameFilters_i_ms
 	}
 	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	ret := C.QDirIterator_new9((*C.struct_miqt_string)(path_ms), nameFilters_ma, (C.int)(filters), (C.int)(flags))
+	ret := C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags))
 	return newQDirIterator(ret)
 }
 
 func (this *QDirIterator) Next() string {
-	var _ms *C.struct_miqt_string = C.QDirIterator_Next(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDirIterator_Next(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -161,16 +180,16 @@ func (this *QDirIterator) HasNext() bool {
 }
 
 func (this *QDirIterator) FileName() string {
-	var _ms *C.struct_miqt_string = C.QDirIterator_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDirIterator_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDirIterator) FilePath() string {
-	var _ms *C.struct_miqt_string = C.QDirIterator_FilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDirIterator_FilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -182,9 +201,9 @@ func (this *QDirIterator) FileInfo() *QFileInfo {
 }
 
 func (this *QDirIterator) Path() string {
-	var _ms *C.struct_miqt_string = C.QDirIterator_Path(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDirIterator_Path(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

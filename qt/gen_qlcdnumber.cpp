@@ -33,18 +33,26 @@ void* QLCDNumber_Metacast(QLCDNumber* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QLCDNumber_Tr(const char* s) {
+struct miqt_string QLCDNumber_Tr(const char* s) {
 	QString _ret = QLCDNumber::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLCDNumber_TrUtf8(const char* s) {
+struct miqt_string QLCDNumber_TrUtf8(const char* s) {
 	QString _ret = QLCDNumber::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QLCDNumber_SmallDecimalPoint(const QLCDNumber* self) {
@@ -97,8 +105,8 @@ QSize* QLCDNumber_SizeHint(const QLCDNumber* self) {
 	return new QSize(self->sizeHint());
 }
 
-void QLCDNumber_Display(QLCDNumber* self, struct miqt_string* str) {
-	QString str_QString = QString::fromUtf8(&str->data, str->len);
+void QLCDNumber_Display(QLCDNumber* self, struct miqt_string str) {
+	QString str_QString = QString::fromUtf8(str.data, str.len);
 	self->display(str_QString);
 }
 
@@ -140,32 +148,48 @@ void QLCDNumber_connect_Overflow(QLCDNumber* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QLCDNumber_Tr2(const char* s, const char* c) {
+struct miqt_string QLCDNumber_Tr2(const char* s, const char* c) {
 	QString _ret = QLCDNumber::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLCDNumber_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QLCDNumber_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QLCDNumber::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLCDNumber_TrUtf82(const char* s, const char* c) {
+struct miqt_string QLCDNumber_TrUtf82(const char* s, const char* c) {
 	QString _ret = QLCDNumber::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLCDNumber_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QLCDNumber_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QLCDNumber::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QLCDNumber_Delete(QLCDNumber* self) {

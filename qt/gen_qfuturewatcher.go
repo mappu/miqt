@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -52,24 +51,24 @@ func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
 func (this *QFutureWatcherBase) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QFutureWatcherBase_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QFutureWatcherBase_Metacast(this.h, param1_Cstring))
 }
 
 func QFutureWatcherBase_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QFutureWatcherBase_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -86,9 +85,9 @@ func (this *QFutureWatcherBase) ProgressMaximum() int {
 }
 
 func (this *QFutureWatcherBase) ProgressText() string {
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_ProgressText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_ProgressText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -294,25 +293,27 @@ func miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(cb C.intptr_t, p
 }
 
 func (this *QFutureWatcherBase) ProgressTextChanged(progressText string) {
-	progressText_ms := libmiqt.Strdupg(progressText)
-	defer C.free(progressText_ms)
-	C.QFutureWatcherBase_ProgressTextChanged(this.h, (*C.struct_miqt_string)(progressText_ms))
+	progressText_ms := C.struct_miqt_string{}
+	progressText_ms.data = C.CString(progressText)
+	progressText_ms.len = C.size_t(len(progressText))
+	defer C.free(unsafe.Pointer(progressText_ms.data))
+	C.QFutureWatcherBase_ProgressTextChanged(this.h, progressText_ms)
 }
 func (this *QFutureWatcherBase) OnProgressTextChanged(slot func(progressText string)) {
 	C.QFutureWatcherBase_connect_ProgressTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged
-func miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(cb C.intptr_t, progressText *C.struct_miqt_string) {
+func miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(cb C.intptr_t, progressText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(progressText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var progressText_ms *C.struct_miqt_string = progressText
-	progressText_ret := C.GoStringN(&progressText_ms.data, C.int(int64(progressText_ms.len)))
-	C.free(unsafe.Pointer(progressText_ms))
+	var progressText_ms C.struct_miqt_string = progressText
+	progressText_ret := C.GoStringN(progressText_ms.data, C.int(int64(progressText_ms.len)))
+	C.free(unsafe.Pointer(progressText_ms.data))
 	slotval1 := progressText_ret
 
 	gofunc(slotval1)
@@ -343,9 +344,9 @@ func QFutureWatcherBase_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -354,9 +355,9 @@ func QFutureWatcherBase_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -365,9 +366,9 @@ func QFutureWatcherBase_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -376,9 +377,9 @@ func QFutureWatcherBase_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QFutureWatcherBase_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFutureWatcherBase_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

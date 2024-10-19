@@ -31,8 +31,8 @@ QVariantAnimation* QVariantAnimation_new();
 QVariantAnimation* QVariantAnimation_new2(QObject* parent);
 QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self);
 void* QVariantAnimation_Metacast(QVariantAnimation* self, const char* param1);
-struct miqt_string* QVariantAnimation_Tr(const char* s);
-struct miqt_string* QVariantAnimation_TrUtf8(const char* s);
+struct miqt_string QVariantAnimation_Tr(const char* s);
+struct miqt_string QVariantAnimation_TrUtf8(const char* s);
 QVariant* QVariantAnimation_StartValue(const QVariantAnimation* self);
 void QVariantAnimation_SetStartValue(QVariantAnimation* self, QVariant* value);
 QVariant* QVariantAnimation_EndValue(const QVariantAnimation* self);
@@ -46,10 +46,10 @@ QEasingCurve* QVariantAnimation_EasingCurve(const QVariantAnimation* self);
 void QVariantAnimation_SetEasingCurve(QVariantAnimation* self, QEasingCurve* easing);
 void QVariantAnimation_ValueChanged(QVariantAnimation* self, QVariant* value);
 void QVariantAnimation_connect_ValueChanged(QVariantAnimation* self, intptr_t slot);
-struct miqt_string* QVariantAnimation_Tr2(const char* s, const char* c);
-struct miqt_string* QVariantAnimation_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QVariantAnimation_TrUtf82(const char* s, const char* c);
-struct miqt_string* QVariantAnimation_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QVariantAnimation_Tr2(const char* s, const char* c);
+struct miqt_string QVariantAnimation_Tr3(const char* s, const char* c, int n);
+struct miqt_string QVariantAnimation_TrUtf82(const char* s, const char* c);
+struct miqt_string QVariantAnimation_TrUtf83(const char* s, const char* c, int n);
 void QVariantAnimation_Delete(QVariantAnimation* self);
 
 #ifdef __cplusplus

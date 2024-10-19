@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -89,24 +88,24 @@ func (this *QWindow) MetaObject() *QMetaObject {
 func (this *QWindow) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QWindow_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QWindow_Metacast(this.h, param1_Cstring))
 }
 
 func QWindow_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QWindow_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -201,9 +200,9 @@ func (this *QWindow) Type() WindowType {
 }
 
 func (this *QWindow) Title() string {
-	var _ms *C.struct_miqt_string = C.QWindow_Title(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_Title(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -413,15 +412,17 @@ func (this *QWindow) Resize2(w int, h int) {
 }
 
 func (this *QWindow) SetFilePath(filePath string) {
-	filePath_ms := libmiqt.Strdupg(filePath)
-	defer C.free(filePath_ms)
-	C.QWindow_SetFilePath(this.h, (*C.struct_miqt_string)(filePath_ms))
+	filePath_ms := C.struct_miqt_string{}
+	filePath_ms.data = C.CString(filePath)
+	filePath_ms.len = C.size_t(len(filePath))
+	defer C.free(unsafe.Pointer(filePath_ms.data))
+	C.QWindow_SetFilePath(this.h, filePath_ms)
 }
 
 func (this *QWindow) FilePath() string {
-	var _ms *C.struct_miqt_string = C.QWindow_FilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_FilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -550,9 +551,11 @@ func (this *QWindow) StartSystemMove() bool {
 }
 
 func (this *QWindow) SetTitle(title string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	C.QWindow_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	C.QWindow_SetTitle(this.h, title_ms)
 }
 
 func (this *QWindow) SetX(arg int) {
@@ -664,25 +667,27 @@ func miqt_exec_callback_QWindow_WindowStateChanged(cb C.intptr_t, windowState C.
 }
 
 func (this *QWindow) WindowTitleChanged(title string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	C.QWindow_WindowTitleChanged(this.h, (*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	C.QWindow_WindowTitleChanged(this.h, title_ms)
 }
 func (this *QWindow) OnWindowTitleChanged(slot func(title string)) {
 	C.QWindow_connect_WindowTitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWindow_WindowTitleChanged
-func miqt_exec_callback_QWindow_WindowTitleChanged(cb C.intptr_t, title *C.struct_miqt_string) {
+func miqt_exec_callback_QWindow_WindowTitleChanged(cb C.intptr_t, title C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var title_ms *C.struct_miqt_string = title
-	title_ret := C.GoStringN(&title_ms.data, C.int(int64(title_ms.len)))
-	C.free(unsafe.Pointer(title_ms))
+	var title_ms C.struct_miqt_string = title
+	title_ret := C.GoStringN(title_ms.data, C.int(int64(title_ms.len)))
+	C.free(unsafe.Pointer(title_ms.data))
 	slotval1 := title_ret
 
 	gofunc(slotval1)
@@ -990,9 +995,9 @@ func QWindow_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1001,9 +1006,9 @@ func QWindow_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1012,9 +1017,9 @@ func QWindow_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1023,9 +1028,9 @@ func QWindow_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWindow_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

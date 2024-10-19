@@ -13,16 +13,8 @@ QBuffer* QBuffer_new() {
 	return new QBuffer();
 }
 
-QBuffer* QBuffer_new2(QByteArray* buf) {
-	return new QBuffer(buf);
-}
-
-QBuffer* QBuffer_new3(QObject* parent) {
+QBuffer* QBuffer_new2(QObject* parent) {
 	return new QBuffer(parent);
-}
-
-QBuffer* QBuffer_new4(QByteArray* buf, QObject* parent) {
-	return new QBuffer(buf, parent);
 }
 
 QMetaObject* QBuffer_MetaObject(const QBuffer* self) {
@@ -33,48 +25,62 @@ void* QBuffer_Metacast(QBuffer* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QBuffer_Tr(const char* s) {
+struct miqt_string QBuffer_Tr(const char* s) {
 	QString _ret = QBuffer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QBuffer_TrUtf8(const char* s) {
+struct miqt_string QBuffer_TrUtf8(const char* s) {
 	QString _ret = QBuffer::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QBuffer_Buffer(QBuffer* self) {
-	QByteArray& _ret = self->buffer();
-	// Cast returned reference into pointer
-	return &_ret;
+struct miqt_string QBuffer_Buffer(QBuffer* self) {
+	QByteArray _qb = self->buffer();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QBuffer_Buffer2(const QBuffer* self) {
-	const QByteArray& _ret = self->buffer();
-	// Cast returned reference into pointer
-	return const_cast<QByteArray*>(&_ret);
+struct miqt_string QBuffer_Buffer2(const QBuffer* self) {
+	const QByteArray _qb = self->buffer();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-void QBuffer_SetBuffer(QBuffer* self, QByteArray* a) {
-	self->setBuffer(a);
-}
-
-void QBuffer_SetData(QBuffer* self, QByteArray* data) {
-	self->setData(*data);
+void QBuffer_SetData(QBuffer* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	self->setData(data_QByteArray);
 }
 
 void QBuffer_SetData2(QBuffer* self, const char* data, int lenVal) {
 	self->setData(data, static_cast<int>(lenVal));
 }
 
-QByteArray* QBuffer_Data(const QBuffer* self) {
-	const QByteArray& _ret = self->data();
-	// Cast returned reference into pointer
-	return const_cast<QByteArray*>(&_ret);
+struct miqt_string QBuffer_Data(const QBuffer* self) {
+	const QByteArray _qb = self->data();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 bool QBuffer_Open(QBuffer* self, int openMode) {
@@ -107,32 +113,48 @@ bool QBuffer_CanReadLine(const QBuffer* self) {
 	return self->canReadLine();
 }
 
-struct miqt_string* QBuffer_Tr2(const char* s, const char* c) {
+struct miqt_string QBuffer_Tr2(const char* s, const char* c) {
 	QString _ret = QBuffer::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QBuffer_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QBuffer_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QBuffer::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QBuffer_TrUtf82(const char* s, const char* c) {
+struct miqt_string QBuffer_TrUtf82(const char* s, const char* c) {
 	QString _ret = QBuffer::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QBuffer_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QBuffer_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QBuffer::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QBuffer_Delete(QBuffer* self) {

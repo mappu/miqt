@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -67,53 +66,66 @@ func NewQImageReader2(device *QIODevice) *QImageReader {
 
 // NewQImageReader3 constructs a new QImageReader object.
 func NewQImageReader3(fileName string) *QImageReader {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QImageReader_new3((*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	ret := C.QImageReader_new3(fileName_ms)
 	return newQImageReader(ret)
 }
 
 // NewQImageReader4 constructs a new QImageReader object.
-func NewQImageReader4(device *QIODevice, format *QByteArray) *QImageReader {
-	ret := C.QImageReader_new4(device.cPointer(), format.cPointer())
+func NewQImageReader4(device *QIODevice, format []byte) *QImageReader {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QImageReader_new4(device.cPointer(), format_alias)
 	return newQImageReader(ret)
 }
 
 // NewQImageReader5 constructs a new QImageReader object.
-func NewQImageReader5(fileName string, format *QByteArray) *QImageReader {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	ret := C.QImageReader_new5((*C.struct_miqt_string)(fileName_ms), format.cPointer())
+func NewQImageReader5(fileName string, format []byte) *QImageReader {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	ret := C.QImageReader_new5(fileName_ms, format_alias)
 	return newQImageReader(ret)
 }
 
 func QImageReader_Tr(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_Tr(sourceText_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_Tr(sourceText_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QImageReader_TrUtf8(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_TrUtf8(sourceText_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_TrUtf8(sourceText_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QImageReader) SetFormat(format *QByteArray) {
-	C.QImageReader_SetFormat(this.h, format.cPointer())
+func (this *QImageReader) SetFormat(format []byte) {
+	format_alias := C.struct_miqt_string{}
+	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	format_alias.len = C.size_t(len(format))
+	C.QImageReader_SetFormat(this.h, format_alias)
 }
 
-func (this *QImageReader) Format() *QByteArray {
-	_ret := C.QImageReader_Format(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QImageReader) Format() []byte {
+	var _bytearray C.struct_miqt_string = C.QImageReader_Format(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QImageReader) SetAutoDetectImageFormat(enabled bool) {
@@ -141,15 +153,17 @@ func (this *QImageReader) Device() *QIODevice {
 }
 
 func (this *QImageReader) SetFileName(fileName string) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QImageReader_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QImageReader_SetFileName(this.h, fileName_ms)
 }
 
 func (this *QImageReader) FileName() string {
-	var _ms *C.struct_miqt_string = C.QImageReader_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -167,11 +181,11 @@ func (this *QImageReader) ImageFormat() QImage__Format {
 func (this *QImageReader) TextKeys() []string {
 	var _ma *C.struct_miqt_array = C.QImageReader_TextKeys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -179,11 +193,13 @@ func (this *QImageReader) TextKeys() []string {
 }
 
 func (this *QImageReader) Text(key string) string {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	var _ms *C.struct_miqt_string = C.QImageReader_Text(this.h, (*C.struct_miqt_string)(key_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	var _ms C.struct_miqt_string = C.QImageReader_Text(this.h, key_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -263,22 +279,22 @@ func (this *QImageReader) Gamma() float32 {
 	return (float32)(C.QImageReader_Gamma(this.h))
 }
 
-func (this *QImageReader) SubType() *QByteArray {
-	_ret := C.QImageReader_SubType(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QImageReader) SubType() []byte {
+	var _bytearray C.struct_miqt_string = C.QImageReader_SubType(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QImageReader) SupportedSubTypes() []QByteArray {
+func (this *QImageReader) SupportedSubTypes() [][]byte {
 	var _ma *C.struct_miqt_array = C.QImageReader_SupportedSubTypes(this.h)
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -335,9 +351,9 @@ func (this *QImageReader) Error() QImageReader__ImageReaderError {
 }
 
 func (this *QImageReader) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QImageReader_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -345,59 +361,64 @@ func (this *QImageReader) SupportsOption(option QImageIOHandler__ImageOption) bo
 	return (bool)(C.QImageReader_SupportsOption(this.h, (C.int)(option)))
 }
 
-func QImageReader_ImageFormatWithFileName(fileName string) *QByteArray {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	_ret := C.QImageReader_ImageFormatWithFileName((*C.struct_miqt_string)(fileName_ms))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QImageReader_ImageFormatWithFileName(fileName string) []byte {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	var _bytearray C.struct_miqt_string = C.QImageReader_ImageFormatWithFileName(fileName_ms)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QImageReader_ImageFormatWithDevice(device *QIODevice) *QByteArray {
-	_ret := C.QImageReader_ImageFormatWithDevice(device.cPointer())
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QImageReader_ImageFormatWithDevice(device *QIODevice) []byte {
+	var _bytearray C.struct_miqt_string = C.QImageReader_ImageFormatWithDevice(device.cPointer())
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QImageReader_SupportedImageFormats() []QByteArray {
+func QImageReader_SupportedImageFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QImageReader_SupportedImageFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func QImageReader_SupportedMimeTypes() []QByteArray {
+func QImageReader_SupportedMimeTypes() [][]byte {
 	var _ma *C.struct_miqt_array = C.QImageReader_SupportedMimeTypes()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func QImageReader_ImageFormatsForMimeType(mimeType *QByteArray) []QByteArray {
-	var _ma *C.struct_miqt_array = C.QImageReader_ImageFormatsForMimeType(mimeType.cPointer())
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+func QImageReader_ImageFormatsForMimeType(mimeType []byte) [][]byte {
+	mimeType_alias := C.struct_miqt_string{}
+	mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
+	mimeType_alias.len = C.size_t(len(mimeType))
+	var _ma *C.struct_miqt_array = C.QImageReader_ImageFormatsForMimeType(mimeType_alias)
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -408,9 +429,9 @@ func QImageReader_Tr2(sourceText string, disambiguation string) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_Tr2(sourceText_Cstring, disambiguation_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_Tr2(sourceText_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -419,9 +440,9 @@ func QImageReader_Tr3(sourceText string, disambiguation string, n int) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -430,9 +451,9 @@ func QImageReader_TrUtf82(sourceText string, disambiguation string) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -441,9 +462,9 @@ func QImageReader_TrUtf83(sourceText string, disambiguation string, n int) strin
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QImageReader_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QImageReader_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

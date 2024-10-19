@@ -545,9 +545,9 @@ func (this *QChar) HasMirrored() bool {
 }
 
 func (this *QChar) Decomposition() string {
-	var _ms *C.struct_miqt_string = C.QChar_Decomposition(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QChar_Decomposition(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -759,9 +759,9 @@ func QChar_HasMirroredWithUcs4(ucs4 uint) bool {
 }
 
 func QChar_DecompositionWithUcs4(ucs4 uint) string {
-	var _ms *C.struct_miqt_string = C.QChar_DecompositionWithUcs4((C.uint)(ucs4))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QChar_DecompositionWithUcs4((C.uint)(ucs4))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

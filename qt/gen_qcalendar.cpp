@@ -78,11 +78,15 @@ int QCalendar_MaximumMonthsInYear(const QCalendar* self) {
 	return self->maximumMonthsInYear();
 }
 
-struct miqt_string* QCalendar_Name(const QCalendar* self) {
+struct miqt_string QCalendar_Name(const QCalendar* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDate* QCalendar_DateFromParts(const QCalendar* self, int year, int month, int day) {
@@ -101,43 +105,63 @@ int QCalendar_DayOfWeek(const QCalendar* self, QDate* date) {
 	return self->dayOfWeek(*date);
 }
 
-struct miqt_string* QCalendar_MonthName(const QCalendar* self, QLocale* locale, int month) {
+struct miqt_string QCalendar_MonthName(const QCalendar* self, QLocale* locale, int month) {
 	QString _ret = self->monthName(*locale, static_cast<int>(month));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_StandaloneMonthName(const QCalendar* self, QLocale* locale, int month) {
+struct miqt_string QCalendar_StandaloneMonthName(const QCalendar* self, QLocale* locale, int month) {
 	QString _ret = self->standaloneMonthName(*locale, static_cast<int>(month));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_WeekDayName(const QCalendar* self, QLocale* locale, int day) {
+struct miqt_string QCalendar_WeekDayName(const QCalendar* self, QLocale* locale, int day) {
 	QString _ret = self->weekDayName(*locale, static_cast<int>(day));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_StandaloneWeekDayName(const QCalendar* self, QLocale* locale, int day) {
+struct miqt_string QCalendar_StandaloneWeekDayName(const QCalendar* self, QLocale* locale, int day) {
 	QString _ret = self->standaloneWeekDayName(*locale, static_cast<int>(day));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QCalendar_AvailableCalendars() {
 	QStringList _ret = QCalendar::availableCalendars();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -149,46 +173,70 @@ int QCalendar_DaysInMonth2(const QCalendar* self, int month, int year) {
 	return self->daysInMonth(static_cast<int>(month), static_cast<int>(year));
 }
 
-struct miqt_string* QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year) {
+struct miqt_string QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year) {
 	QString _ret = self->monthName(*locale, static_cast<int>(month), static_cast<int>(year));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format) {
+struct miqt_string QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format) {
 	QString _ret = self->monthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year) {
+struct miqt_string QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year) {
 	QString _ret = self->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format) {
+struct miqt_string QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format) {
 	QString _ret = self->standaloneMonthName(*locale, static_cast<int>(month), static_cast<int>(year), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, int format) {
+struct miqt_string QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, int format) {
 	QString _ret = self->weekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, int format) {
+struct miqt_string QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, int format) {
 	QString _ret = self->standaloneWeekDayName(*locale, static_cast<int>(day), static_cast<QLocale::FormatType>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCalendar_Delete(QCalendar* self) {

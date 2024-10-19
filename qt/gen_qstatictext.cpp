@@ -14,8 +14,8 @@ QStaticText* QStaticText_new() {
 	return new QStaticText();
 }
 
-QStaticText* QStaticText_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QStaticText* QStaticText_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QStaticText(text_QString);
 }
 
@@ -31,16 +31,20 @@ void QStaticText_Swap(QStaticText* self, QStaticText* other) {
 	self->swap(*other);
 }
 
-void QStaticText_SetText(QStaticText* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStaticText_SetText(QStaticText* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-struct miqt_string* QStaticText_Text(const QStaticText* self) {
+struct miqt_string QStaticText_Text(const QStaticText* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QStaticText_SetTextFormat(QStaticText* self, int textFormat) {

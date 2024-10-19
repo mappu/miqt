@@ -55,18 +55,26 @@ void* QSplashScreen_Metacast(QSplashScreen* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSplashScreen_Tr(const char* s) {
+struct miqt_string QSplashScreen_Tr(const char* s) {
 	QString _ret = QSplashScreen::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplashScreen_TrUtf8(const char* s) {
+struct miqt_string QSplashScreen_TrUtf8(const char* s) {
 	QString _ret = QSplashScreen::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSplashScreen_SetPixmap(QSplashScreen* self, QPixmap* pixmap) {
@@ -85,15 +93,19 @@ void QSplashScreen_Repaint(QSplashScreen* self) {
 	self->repaint();
 }
 
-struct miqt_string* QSplashScreen_Message(const QSplashScreen* self) {
+struct miqt_string QSplashScreen_Message(const QSplashScreen* self) {
 	QString _ret = self->message();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QSplashScreen_ShowMessage(QSplashScreen* self, struct miqt_string* message) {
-	QString message_QString = QString::fromUtf8(&message->data, message->len);
+void QSplashScreen_ShowMessage(QSplashScreen* self, struct miqt_string message) {
+	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->showMessage(message_QString);
 }
 
@@ -101,8 +113,8 @@ void QSplashScreen_ClearMessage(QSplashScreen* self) {
 	self->clearMessage();
 }
 
-void QSplashScreen_MessageChanged(QSplashScreen* self, struct miqt_string* message) {
-	QString message_QString = QString::fromUtf8(&message->data, message->len);
+void QSplashScreen_MessageChanged(QSplashScreen* self, struct miqt_string message) {
+	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->messageChanged(message_QString);
 }
 
@@ -111,46 +123,66 @@ void QSplashScreen_connect_MessageChanged(QSplashScreen* self, intptr_t slot) {
 		const QString message_ret = message;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray message_b = message_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(message_b.data(), message_b.length());
+		struct miqt_string message_ms;
+		message_ms.len = message_b.length();
+		message_ms.data = static_cast<char*>(malloc(message_ms.len));
+		memcpy(message_ms.data, message_b.data(), message_ms.len);
+		struct miqt_string sigval1 = message_ms;
 		miqt_exec_callback_QSplashScreen_MessageChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string* QSplashScreen_Tr2(const char* s, const char* c) {
+struct miqt_string QSplashScreen_Tr2(const char* s, const char* c) {
 	QString _ret = QSplashScreen::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplashScreen_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSplashScreen_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSplashScreen::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplashScreen_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSplashScreen_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSplashScreen::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplashScreen_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSplashScreen_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSplashScreen::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QSplashScreen_ShowMessage2(QSplashScreen* self, struct miqt_string* message, int alignment) {
-	QString message_QString = QString::fromUtf8(&message->data, message->len);
+void QSplashScreen_ShowMessage2(QSplashScreen* self, struct miqt_string message, int alignment) {
+	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->showMessage(message_QString, static_cast<int>(alignment));
 }
 
-void QSplashScreen_ShowMessage3(QSplashScreen* self, struct miqt_string* message, int alignment, QColor* color) {
-	QString message_QString = QString::fromUtf8(&message->data, message->len);
+void QSplashScreen_ShowMessage3(QSplashScreen* self, struct miqt_string message, int alignment, QColor* color) {
+	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->showMessage(message_QString, static_cast<int>(alignment), *color);
 }
 

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -35,10 +34,10 @@ const (
 type QTabletEvent__PointerType int
 
 const (
-	QTabletEvent__PointerType__UnknownPointer QTabletEvent__PointerType = 0
-	QTabletEvent__PointerType__Pen            QTabletEvent__PointerType = 1
-	QTabletEvent__PointerType__Cursor         QTabletEvent__PointerType = 2
-	QTabletEvent__PointerType__Eraser         QTabletEvent__PointerType = 3
+	QTabletEvent__UnknownPointer QTabletEvent__PointerType = 0
+	QTabletEvent__Pen            QTabletEvent__PointerType = 1
+	QTabletEvent__Cursor         QTabletEvent__PointerType = 2
+	QTabletEvent__Eraser         QTabletEvent__PointerType = 3
 )
 
 type QPlatformSurfaceEvent__SurfaceEventType int
@@ -59,18 +58,18 @@ const (
 type QInputMethodEvent__AttributeType int
 
 const (
-	QInputMethodEvent__AttributeType__TextFormat QInputMethodEvent__AttributeType = 0
-	QInputMethodEvent__AttributeType__Cursor     QInputMethodEvent__AttributeType = 1
-	QInputMethodEvent__AttributeType__Language   QInputMethodEvent__AttributeType = 2
-	QInputMethodEvent__AttributeType__Ruby       QInputMethodEvent__AttributeType = 3
-	QInputMethodEvent__AttributeType__Selection  QInputMethodEvent__AttributeType = 4
+	QInputMethodEvent__TextFormat QInputMethodEvent__AttributeType = 0
+	QInputMethodEvent__Cursor     QInputMethodEvent__AttributeType = 1
+	QInputMethodEvent__Language   QInputMethodEvent__AttributeType = 2
+	QInputMethodEvent__Ruby       QInputMethodEvent__AttributeType = 3
+	QInputMethodEvent__Selection  QInputMethodEvent__AttributeType = 4
 )
 
 type QTouchEvent__TouchPoint__InfoFlag int
 
 const (
-	QTouchEvent__TouchPoint__InfoFlag__Pen   QTouchEvent__TouchPoint__InfoFlag = 1
-	QTouchEvent__TouchPoint__InfoFlag__Token QTouchEvent__TouchPoint__InfoFlag = 2
+	QTouchEvent__TouchPoint__Pen   QTouchEvent__TouchPoint__InfoFlag = 1
+	QTouchEvent__TouchPoint__Token QTouchEvent__TouchPoint__InfoFlag = 2
 )
 
 type QScrollEvent__ScrollState int
@@ -983,49 +982,61 @@ func NewQKeyEvent3(param1 *QKeyEvent) *QKeyEvent {
 
 // NewQKeyEvent4 constructs a new QKeyEvent object.
 func NewQKeyEvent4(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new4((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new4((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms)
 	return newQKeyEvent(ret)
 }
 
 // NewQKeyEvent5 constructs a new QKeyEvent object.
 func NewQKeyEvent5(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string, autorep bool) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new5((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new5((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep))
 	return newQKeyEvent(ret)
 }
 
 // NewQKeyEvent6 constructs a new QKeyEvent object.
 func NewQKeyEvent6(typeVal QEvent__Type, key int, modifiers KeyboardModifier, text string, autorep bool, count uint16) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new6((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep), (C.uint16_t)(count))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new6((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
 }
 
 // NewQKeyEvent7 constructs a new QKeyEvent object.
 func NewQKeyEvent7(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new7((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new7((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms)
 	return newQKeyEvent(ret)
 }
 
 // NewQKeyEvent8 constructs a new QKeyEvent object.
 func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new8((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new8((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep))
 	return newQKeyEvent(ret)
 }
 
 // NewQKeyEvent9 constructs a new QKeyEvent object.
 func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint, text string, autorep bool, count uint16) *QKeyEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QKeyEvent_new9((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), (*C.struct_miqt_string)(text_ms), (C.bool)(autorep), (C.uint16_t)(count))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QKeyEvent_new9((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count))
 	return newQKeyEvent(ret)
 }
 
@@ -1042,9 +1053,9 @@ func (this *QKeyEvent) Modifiers() KeyboardModifier {
 }
 
 func (this *QKeyEvent) Text() string {
-	var _ms *C.struct_miqt_string = C.QKeyEvent_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QKeyEvent_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1848,8 +1859,10 @@ func NewQInputMethodEvent() *QInputMethodEvent {
 
 // NewQInputMethodEvent2 constructs a new QInputMethodEvent object.
 func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__Attribute) *QInputMethodEvent {
-	preeditText_ms := libmiqt.Strdupg(preeditText)
-	defer C.free(preeditText_ms)
+	preeditText_ms := C.struct_miqt_string{}
+	preeditText_ms.data = C.CString(preeditText)
+	preeditText_ms.len = C.size_t(len(preeditText))
+	defer C.free(unsafe.Pointer(preeditText_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
 	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_CArray))
@@ -1858,7 +1871,7 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	}
 	attributes_ma := &C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(attributes_ma))
-	ret := C.QInputMethodEvent_new2((*C.struct_miqt_string)(preeditText_ms), attributes_ma)
+	ret := C.QInputMethodEvent_new2(preeditText_ms, attributes_ma)
 	return newQInputMethodEvent(ret)
 }
 
@@ -1869,9 +1882,11 @@ func NewQInputMethodEvent3(other *QInputMethodEvent) *QInputMethodEvent {
 }
 
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
-	commitString_ms := libmiqt.Strdupg(commitString)
-	defer C.free(commitString_ms)
-	C.QInputMethodEvent_SetCommitString(this.h, (*C.struct_miqt_string)(commitString_ms))
+	commitString_ms := C.struct_miqt_string{}
+	commitString_ms.data = C.CString(commitString)
+	commitString_ms.len = C.size_t(len(commitString))
+	defer C.free(unsafe.Pointer(commitString_ms.data))
+	C.QInputMethodEvent_SetCommitString(this.h, commitString_ms)
 }
 
 func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
@@ -1889,16 +1904,16 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 }
 
 func (this *QInputMethodEvent) PreeditString() string {
-	var _ms *C.struct_miqt_string = C.QInputMethodEvent_PreeditString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputMethodEvent_PreeditString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputMethodEvent) CommitString() string {
-	var _ms *C.struct_miqt_string = C.QInputMethodEvent_CommitString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputMethodEvent_CommitString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1911,15 +1926,19 @@ func (this *QInputMethodEvent) ReplacementLength() int {
 }
 
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
-	commitString_ms := libmiqt.Strdupg(commitString)
-	defer C.free(commitString_ms)
-	C.QInputMethodEvent_SetCommitString2(this.h, (*C.struct_miqt_string)(commitString_ms), (C.int)(replaceFrom))
+	commitString_ms := C.struct_miqt_string{}
+	commitString_ms.data = C.CString(commitString)
+	commitString_ms.len = C.size_t(len(commitString))
+	defer C.free(unsafe.Pointer(commitString_ms.data))
+	C.QInputMethodEvent_SetCommitString2(this.h, commitString_ms, (C.int)(replaceFrom))
 }
 
 func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom int, replaceLength int) {
-	commitString_ms := libmiqt.Strdupg(commitString)
-	defer C.free(commitString_ms)
-	C.QInputMethodEvent_SetCommitString3(this.h, (*C.struct_miqt_string)(commitString_ms), (C.int)(replaceFrom), (C.int)(replaceLength))
+	commitString_ms := C.struct_miqt_string{}
+	commitString_ms.data = C.CString(commitString)
+	commitString_ms.len = C.size_t(len(commitString))
+	defer C.free(unsafe.Pointer(commitString_ms.data))
+	C.QInputMethodEvent_SetCommitString3(this.h, commitString_ms, (C.int)(replaceFrom), (C.int)(replaceLength))
 }
 
 // Delete this object from C++ memory.
@@ -2433,9 +2452,11 @@ func UnsafeNewQStatusTipEvent(h unsafe.Pointer) *QStatusTipEvent {
 
 // NewQStatusTipEvent constructs a new QStatusTipEvent object.
 func NewQStatusTipEvent(tip string) *QStatusTipEvent {
-	tip_ms := libmiqt.Strdupg(tip)
-	defer C.free(tip_ms)
-	ret := C.QStatusTipEvent_new((*C.struct_miqt_string)(tip_ms))
+	tip_ms := C.struct_miqt_string{}
+	tip_ms.data = C.CString(tip)
+	tip_ms.len = C.size_t(len(tip))
+	defer C.free(unsafe.Pointer(tip_ms.data))
+	ret := C.QStatusTipEvent_new(tip_ms)
 	return newQStatusTipEvent(ret)
 }
 
@@ -2446,9 +2467,9 @@ func NewQStatusTipEvent2(param1 *QStatusTipEvent) *QStatusTipEvent {
 }
 
 func (this *QStatusTipEvent) Tip() string {
-	var _ms *C.struct_miqt_string = C.QStatusTipEvent_Tip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStatusTipEvent_Tip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2498,9 +2519,11 @@ func UnsafeNewQWhatsThisClickedEvent(h unsafe.Pointer) *QWhatsThisClickedEvent {
 
 // NewQWhatsThisClickedEvent constructs a new QWhatsThisClickedEvent object.
 func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
-	href_ms := libmiqt.Strdupg(href)
-	defer C.free(href_ms)
-	ret := C.QWhatsThisClickedEvent_new((*C.struct_miqt_string)(href_ms))
+	href_ms := C.struct_miqt_string{}
+	href_ms.data = C.CString(href)
+	href_ms.len = C.size_t(len(href))
+	defer C.free(unsafe.Pointer(href_ms.data))
+	ret := C.QWhatsThisClickedEvent_new(href_ms)
 	return newQWhatsThisClickedEvent(ret)
 }
 
@@ -2511,9 +2534,9 @@ func NewQWhatsThisClickedEvent2(param1 *QWhatsThisClickedEvent) *QWhatsThisClick
 }
 
 func (this *QWhatsThisClickedEvent) Href() string {
-	var _ms *C.struct_miqt_string = C.QWhatsThisClickedEvent_Href(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QWhatsThisClickedEvent_Href(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2637,9 +2660,11 @@ func UnsafeNewQFileOpenEvent(h unsafe.Pointer) *QFileOpenEvent {
 
 // NewQFileOpenEvent constructs a new QFileOpenEvent object.
 func NewQFileOpenEvent(file string) *QFileOpenEvent {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	ret := C.QFileOpenEvent_new((*C.struct_miqt_string)(file_ms))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	ret := C.QFileOpenEvent_new(file_ms)
 	return newQFileOpenEvent(ret)
 }
 
@@ -2656,9 +2681,9 @@ func NewQFileOpenEvent3(param1 *QFileOpenEvent) *QFileOpenEvent {
 }
 
 func (this *QFileOpenEvent) File() string {
-	var _ms *C.struct_miqt_string = C.QFileOpenEvent_File(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileOpenEvent_File(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

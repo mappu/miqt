@@ -35,8 +35,8 @@ QCalendarWidget* QCalendarWidget_new();
 QCalendarWidget* QCalendarWidget_new2(QWidget* parent);
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self);
 void* QCalendarWidget_Metacast(QCalendarWidget* self, const char* param1);
-struct miqt_string* QCalendarWidget_Tr(const char* s);
-struct miqt_string* QCalendarWidget_TrUtf8(const char* s);
+struct miqt_string QCalendarWidget_Tr(const char* s);
+struct miqt_string QCalendarWidget_TrUtf8(const char* s);
 QSize* QCalendarWidget_SizeHint(const QCalendarWidget* self);
 QSize* QCalendarWidget_MinimumSizeHint(const QCalendarWidget* self);
 QDate* QCalendarWidget_SelectedDate(const QCalendarWidget* self);
@@ -87,10 +87,10 @@ void QCalendarWidget_Activated(QCalendarWidget* self, QDate* date);
 void QCalendarWidget_connect_Activated(QCalendarWidget* self, intptr_t slot);
 void QCalendarWidget_CurrentPageChanged(QCalendarWidget* self, int year, int month);
 void QCalendarWidget_connect_CurrentPageChanged(QCalendarWidget* self, intptr_t slot);
-struct miqt_string* QCalendarWidget_Tr2(const char* s, const char* c);
-struct miqt_string* QCalendarWidget_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QCalendarWidget_TrUtf82(const char* s, const char* c);
-struct miqt_string* QCalendarWidget_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QCalendarWidget_Tr2(const char* s, const char* c);
+struct miqt_string QCalendarWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string QCalendarWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string QCalendarWidget_TrUtf83(const char* s, const char* c, int n);
 void QCalendarWidget_Delete(QCalendarWidget* self);
 
 #ifdef __cplusplus

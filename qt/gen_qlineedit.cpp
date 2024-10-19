@@ -22,8 +22,8 @@ QLineEdit* QLineEdit_new() {
 	return new QLineEdit();
 }
 
-QLineEdit* QLineEdit_new2(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+QLineEdit* QLineEdit_new2(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return new QLineEdit(param1_QString);
 }
 
@@ -31,8 +31,8 @@ QLineEdit* QLineEdit_new3(QWidget* parent) {
 	return new QLineEdit(parent);
 }
 
-QLineEdit* QLineEdit_new4(struct miqt_string* param1, QWidget* parent) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return new QLineEdit(param1_QString, parent);
 }
 
@@ -44,43 +44,63 @@ void* QLineEdit_Metacast(QLineEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QLineEdit_Tr(const char* s) {
+struct miqt_string QLineEdit_Tr(const char* s) {
 	QString _ret = QLineEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_TrUtf8(const char* s) {
+struct miqt_string QLineEdit_TrUtf8(const char* s) {
 	QString _ret = QLineEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_Text(const QLineEdit* self) {
+struct miqt_string QLineEdit_Text(const QLineEdit* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_DisplayText(const QLineEdit* self) {
+struct miqt_string QLineEdit_DisplayText(const QLineEdit* self) {
 	QString _ret = self->displayText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_PlaceholderText(const QLineEdit* self) {
+struct miqt_string QLineEdit_PlaceholderText(const QLineEdit* self) {
 	QString _ret = self->placeholderText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QLineEdit_SetPlaceholderText(QLineEdit* self, struct miqt_string* placeholderText) {
-	QString placeholderText_QString = QString::fromUtf8(&placeholderText->data, placeholderText->len);
+void QLineEdit_SetPlaceholderText(QLineEdit* self, struct miqt_string placeholderText) {
+	QString placeholderText_QString = QString::fromUtf8(placeholderText.data, placeholderText.len);
 	self->setPlaceholderText(placeholderText_QString);
 }
 
@@ -218,11 +238,15 @@ bool QLineEdit_HasSelectedText(const QLineEdit* self) {
 	return self->hasSelectedText();
 }
 
-struct miqt_string* QLineEdit_SelectedText(const QLineEdit* self) {
+struct miqt_string QLineEdit_SelectedText(const QLineEdit* self) {
 	QString _ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QLineEdit_SelectionStart(const QLineEdit* self) {
@@ -262,15 +286,19 @@ int QLineEdit_CursorMoveStyle(const QLineEdit* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QLineEdit_InputMask(const QLineEdit* self) {
+struct miqt_string QLineEdit_InputMask(const QLineEdit* self) {
 	QString _ret = self->inputMask();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QLineEdit_SetInputMask(QLineEdit* self, struct miqt_string* inputMask) {
-	QString inputMask_QString = QString::fromUtf8(&inputMask->data, inputMask->len);
+void QLineEdit_SetInputMask(QLineEdit* self, struct miqt_string inputMask) {
+	QString inputMask_QString = QString::fromUtf8(inputMask.data, inputMask.len);
 	self->setInputMask(inputMask_QString);
 }
 
@@ -302,8 +330,8 @@ QAction* QLineEdit_AddAction2(QLineEdit* self, QIcon* icon, int position) {
 	return self->addAction(*icon, static_cast<QLineEdit::ActionPosition>(position));
 }
 
-void QLineEdit_SetText(QLineEdit* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QLineEdit_SetText(QLineEdit* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
@@ -339,8 +367,8 @@ void QLineEdit_Deselect(QLineEdit* self) {
 	self->deselect();
 }
 
-void QLineEdit_Insert(QLineEdit* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QLineEdit_Insert(QLineEdit* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->insert(param1_QString);
 }
 
@@ -348,8 +376,8 @@ QMenu* QLineEdit_CreateStandardContextMenu(QLineEdit* self) {
 	return self->createStandardContextMenu();
 }
 
-void QLineEdit_TextChanged(QLineEdit* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QLineEdit_TextChanged(QLineEdit* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->textChanged(param1_QString);
 }
 
@@ -358,13 +386,17 @@ void QLineEdit_connect_TextChanged(QLineEdit* self, intptr_t slot) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(param1_b.data(), param1_b.length());
+		struct miqt_string param1_ms;
+		param1_ms.len = param1_b.length();
+		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+		struct miqt_string sigval1 = param1_ms;
 		miqt_exec_callback_QLineEdit_TextChanged(slot, sigval1);
 	});
 }
 
-void QLineEdit_TextEdited(QLineEdit* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QLineEdit_TextEdited(QLineEdit* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	self->textEdited(param1_QString);
 }
 
@@ -373,7 +405,11 @@ void QLineEdit_connect_TextEdited(QLineEdit* self, intptr_t slot) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(param1_b.data(), param1_b.length());
+		struct miqt_string param1_ms;
+		param1_ms.len = param1_b.length();
+		param1_ms.data = static_cast<char*>(malloc(param1_ms.len));
+		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
+		struct miqt_string sigval1 = param1_ms;
 		miqt_exec_callback_QLineEdit_TextEdited(slot, sigval1);
 	});
 }
@@ -442,32 +478,48 @@ bool QLineEdit_Event(QLineEdit* self, QEvent* param1) {
 	return self->event(param1);
 }
 
-struct miqt_string* QLineEdit_Tr2(const char* s, const char* c) {
+struct miqt_string QLineEdit_Tr2(const char* s, const char* c) {
 	QString _ret = QLineEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QLineEdit_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QLineEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string QLineEdit_TrUtf82(const char* s, const char* c) {
 	QString _ret = QLineEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QLineEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QLineEdit_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QLineEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QLineEdit_CursorForward2(QLineEdit* self, bool mark, int steps) {

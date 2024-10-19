@@ -99,25 +99,26 @@ QVariant* QVariant_new14(const char* str) {
 	return new QVariant(str);
 }
 
-QVariant* QVariant_new15(QByteArray* bytearray) {
-	return new QVariant(*bytearray);
+QVariant* QVariant_new15(struct miqt_string bytearray) {
+	QByteArray bytearray_QByteArray(bytearray.data, bytearray.len);
+	return new QVariant(bytearray_QByteArray);
 }
 
 QVariant* QVariant_new16(QBitArray* bitarray) {
 	return new QVariant(*bitarray);
 }
 
-QVariant* QVariant_new17(struct miqt_string* stringVal) {
-	QString stringVal_QString = QString::fromUtf8(&stringVal->data, stringVal->len);
+QVariant* QVariant_new17(struct miqt_string stringVal) {
+	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
 	return new QVariant(stringVal_QString);
 }
 
-QVariant* QVariant_new18(struct miqt_array* /* of struct miqt_string* */ stringlist) {
+QVariant* QVariant_new18(struct miqt_array* /* of struct miqt_string */ stringlist) {
 	QStringList stringlist_QList;
 	stringlist_QList.reserve(stringlist->len);
-	struct miqt_string** stringlist_arr = static_cast<struct miqt_string**>(stringlist->data);
+	struct miqt_string* stringlist_arr = static_cast<struct miqt_string*>(stringlist->data);
 	for(size_t i = 0; i < stringlist->len; ++i) {
-		QString stringlist_arr_i_QString = QString::fromUtf8(&stringlist_arr[i]->data, stringlist_arr[i]->len);
+		QString stringlist_arr_i_QString = QString::fromUtf8(stringlist_arr[i].data, stringlist_arr[i].len);
 		stringlist_QList.push_back(stringlist_arr_i_QString);
 	}
 	return new QVariant(stringlist_QList);
@@ -304,30 +305,43 @@ double QVariant_ToReal(const QVariant* self) {
 	return static_cast<double>(_ret);
 }
 
-QByteArray* QVariant_ToByteArray(const QVariant* self) {
-	return new QByteArray(self->toByteArray());
+struct miqt_string QVariant_ToByteArray(const QVariant* self) {
+	QByteArray _qb = self->toByteArray();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 QBitArray* QVariant_ToBitArray(const QVariant* self) {
 	return new QBitArray(self->toBitArray());
 }
 
-struct miqt_string* QVariant_ToString(const QVariant* self) {
+struct miqt_string QVariant_ToString(const QVariant* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QVariant_ToStringList(const QVariant* self) {
 	QStringList _ret = self->toStringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();

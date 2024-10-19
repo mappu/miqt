@@ -43,7 +43,7 @@ func UnsafeNewQHashData(h unsafe.Pointer) *QHashData {
 }
 
 func (this *QHashData) AllocateNode(nodeAlign int) unsafe.Pointer {
-	return C.QHashData_AllocateNode(this.h, (C.int)(nodeAlign))
+	return (unsafe.Pointer)(C.QHashData_AllocateNode(this.h, (C.int)(nodeAlign)))
 }
 
 func (this *QHashData) FreeNode(node unsafe.Pointer) {

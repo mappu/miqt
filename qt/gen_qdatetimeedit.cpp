@@ -57,18 +57,26 @@ void* QDateTimeEdit_Metacast(QDateTimeEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QDateTimeEdit_Tr(const char* s) {
+struct miqt_string QDateTimeEdit_Tr(const char* s) {
 	QString _ret = QDateTimeEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateTimeEdit_TrUtf8(const char* s) {
+struct miqt_string QDateTimeEdit_TrUtf8(const char* s) {
 	QString _ret = QDateTimeEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDateTime* QDateTimeEdit_DateTime(const QDateTimeEdit* self) {
@@ -218,22 +226,30 @@ void QDateTimeEdit_SetSelectedSection(QDateTimeEdit* self, int section) {
 	self->setSelectedSection(static_cast<QDateTimeEdit::Section>(section));
 }
 
-struct miqt_string* QDateTimeEdit_SectionText(const QDateTimeEdit* self, int section) {
+struct miqt_string QDateTimeEdit_SectionText(const QDateTimeEdit* self, int section) {
 	QString _ret = self->sectionText(static_cast<QDateTimeEdit::Section>(section));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateTimeEdit_DisplayFormat(const QDateTimeEdit* self) {
+struct miqt_string QDateTimeEdit_DisplayFormat(const QDateTimeEdit* self) {
 	QString _ret = self->displayFormat();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QDateTimeEdit_SetDisplayFormat(QDateTimeEdit* self, struct miqt_string* format) {
-	QString format_QString = QString::fromUtf8(&format->data, format->len);
+void QDateTimeEdit_SetDisplayFormat(QDateTimeEdit* self, struct miqt_string format) {
+	QString format_QString = QString::fromUtf8(format.data, format.len);
 	self->setDisplayFormat(format_QString);
 }
 
@@ -321,32 +337,48 @@ void QDateTimeEdit_SetTime(QDateTimeEdit* self, QTime* time) {
 	self->setTime(*time);
 }
 
-struct miqt_string* QDateTimeEdit_Tr2(const char* s, const char* c) {
+struct miqt_string QDateTimeEdit_Tr2(const char* s, const char* c) {
 	QString _ret = QDateTimeEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateTimeEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDateTimeEdit_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QDateTimeEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateTimeEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDateTimeEdit_TrUtf82(const char* s, const char* c) {
 	QString _ret = QDateTimeEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateTimeEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDateTimeEdit_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDateTimeEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QDateTimeEdit_Delete(QDateTimeEdit* self) {
@@ -377,18 +409,26 @@ void* QTimeEdit_Metacast(QTimeEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTimeEdit_Tr(const char* s) {
+struct miqt_string QTimeEdit_Tr(const char* s) {
 	QString _ret = QTimeEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTimeEdit_TrUtf8(const char* s) {
+struct miqt_string QTimeEdit_TrUtf8(const char* s) {
 	QString _ret = QTimeEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTimeEdit_UserTimeChanged(QTimeEdit* self, QTime* time) {
@@ -404,32 +444,48 @@ void QTimeEdit_connect_UserTimeChanged(QTimeEdit* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QTimeEdit_Tr2(const char* s, const char* c) {
+struct miqt_string QTimeEdit_Tr2(const char* s, const char* c) {
 	QString _ret = QTimeEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTimeEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTimeEdit_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTimeEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTimeEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTimeEdit_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTimeEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTimeEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTimeEdit_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTimeEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTimeEdit_Delete(QTimeEdit* self) {
@@ -460,18 +516,26 @@ void* QDateEdit_Metacast(QDateEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QDateEdit_Tr(const char* s) {
+struct miqt_string QDateEdit_Tr(const char* s) {
 	QString _ret = QDateEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateEdit_TrUtf8(const char* s) {
+struct miqt_string QDateEdit_TrUtf8(const char* s) {
 	QString _ret = QDateEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QDateEdit_UserDateChanged(QDateEdit* self, QDate* date) {
@@ -487,32 +551,48 @@ void QDateEdit_connect_UserDateChanged(QDateEdit* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QDateEdit_Tr2(const char* s, const char* c) {
+struct miqt_string QDateEdit_Tr2(const char* s, const char* c) {
 	QString _ret = QDateEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDateEdit_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QDateEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDateEdit_TrUtf82(const char* s, const char* c) {
 	QString _ret = QDateEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QDateEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDateEdit_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDateEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QDateEdit_Delete(QDateEdit* self) {

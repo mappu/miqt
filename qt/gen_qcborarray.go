@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -331,12 +330,14 @@ func (this *QCborArray) OperatorShiftLeft(v *QCborValue) *QCborArray {
 
 func QCborArray_FromStringList(list []string) *QCborArray {
 	// For the C ABI, malloc a C array of raw pointers
-	list_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
+	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
-		list_i_ms := libmiqt.Strdupg(list[i])
-		defer C.free(list_i_ms)
-		list_CArray[i] = (*C.struct_miqt_string)(list_i_ms)
+		list_i_ms := C.struct_miqt_string{}
+		list_i_ms.data = C.CString(list[i])
+		list_i_ms.len = C.size_t(len(list[i]))
+		defer C.free(unsafe.Pointer(list_i_ms.data))
+		list_CArray[i] = list_i_ms
 	}
 	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(list_ma))

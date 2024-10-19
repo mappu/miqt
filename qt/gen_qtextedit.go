@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -70,9 +69,11 @@ func NewQTextEdit() *QTextEdit {
 
 // NewQTextEdit2 constructs a new QTextEdit object.
 func NewQTextEdit2(text string) *QTextEdit {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextEdit_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextEdit_new2(text_ms)
 	return newQTextEdit(ret)
 }
 
@@ -84,9 +85,11 @@ func NewQTextEdit3(parent *QWidget) *QTextEdit {
 
 // NewQTextEdit4 constructs a new QTextEdit object.
 func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextEdit_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextEdit_new4(text_ms, parent.cPointer())
 	return newQTextEdit(ret)
 }
 
@@ -97,24 +100,24 @@ func (this *QTextEdit) MetaObject() *QMetaObject {
 func (this *QTextEdit) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTextEdit_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTextEdit_Metacast(this.h, param1_Cstring))
 }
 
 func QTextEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTextEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -127,15 +130,17 @@ func (this *QTextEdit) Document() *QTextDocument {
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
-	placeholderText_ms := libmiqt.Strdupg(placeholderText)
-	defer C.free(placeholderText_ms)
-	C.QTextEdit_SetPlaceholderText(this.h, (*C.struct_miqt_string)(placeholderText_ms))
+	placeholderText_ms := C.struct_miqt_string{}
+	placeholderText_ms.data = C.CString(placeholderText)
+	placeholderText_ms.len = C.size_t(len(placeholderText))
+	defer C.free(unsafe.Pointer(placeholderText_ms.data))
+	C.QTextEdit_SetPlaceholderText(this.h, placeholderText_ms)
 }
 
 func (this *QTextEdit) PlaceholderText() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_PlaceholderText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_PlaceholderText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -171,9 +176,9 @@ func (this *QTextEdit) FontPointSize() float64 {
 }
 
 func (this *QTextEdit) FontFamily() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_FontFamily(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_FontFamily(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -246,15 +251,17 @@ func (this *QTextEdit) SetTabChangesFocus(b bool) {
 }
 
 func (this *QTextEdit) SetDocumentTitle(title string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	C.QTextEdit_SetDocumentTitle(this.h, (*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	C.QTextEdit_SetDocumentTitle(this.h, title_ms)
 }
 
 func (this *QTextEdit) DocumentTitle() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_DocumentTitle(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_DocumentTitle(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -291,9 +298,11 @@ func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
 }
 
 func (this *QTextEdit) Find(exp string) bool {
-	exp_ms := libmiqt.Strdupg(exp)
-	defer C.free(exp_ms)
-	return (bool)(C.QTextEdit_Find(this.h, (*C.struct_miqt_string)(exp_ms)))
+	exp_ms := C.struct_miqt_string{}
+	exp_ms.data = C.CString(exp)
+	exp_ms.len = C.size_t(len(exp))
+	defer C.free(unsafe.Pointer(exp_ms.data))
+	return (bool)(C.QTextEdit_Find(this.h, exp_ms))
 }
 
 func (this *QTextEdit) FindWithExp(exp *QRegExp) bool {
@@ -305,23 +314,23 @@ func (this *QTextEdit) Find2(exp *QRegularExpression) bool {
 }
 
 func (this *QTextEdit) ToPlainText() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToPlainText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_ToPlainText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) ToHtml() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToHtml(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_ToHtml(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) ToMarkdown() string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_ToMarkdown(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -366,9 +375,9 @@ func (this *QTextEdit) CursorRect2() *QRect {
 }
 
 func (this *QTextEdit) AnchorAt(pos *QPoint) string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_AnchorAt(this.h, pos.cPointer())
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_AnchorAt(this.h, pos.cPointer())
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -469,9 +478,11 @@ func (this *QTextEdit) SetFontPointSize(s float64) {
 }
 
 func (this *QTextEdit) SetFontFamily(fontFamily string) {
-	fontFamily_ms := libmiqt.Strdupg(fontFamily)
-	defer C.free(fontFamily_ms)
-	C.QTextEdit_SetFontFamily(this.h, (*C.struct_miqt_string)(fontFamily_ms))
+	fontFamily_ms := C.struct_miqt_string{}
+	fontFamily_ms.data = C.CString(fontFamily)
+	fontFamily_ms.len = C.size_t(len(fontFamily))
+	defer C.free(unsafe.Pointer(fontFamily_ms.data))
+	C.QTextEdit_SetFontFamily(this.h, fontFamily_ms)
 }
 
 func (this *QTextEdit) SetFontWeight(w int) {
@@ -503,27 +514,35 @@ func (this *QTextEdit) SetAlignment(a AlignmentFlag) {
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_SetPlainText(this.h, text_ms)
 }
 
 func (this *QTextEdit) SetHtml(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_SetHtml(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_SetHtml(this.h, text_ms)
 }
 
 func (this *QTextEdit) SetMarkdown(markdown string) {
-	markdown_ms := libmiqt.Strdupg(markdown)
-	defer C.free(markdown_ms)
-	C.QTextEdit_SetMarkdown(this.h, (*C.struct_miqt_string)(markdown_ms))
+	markdown_ms := C.struct_miqt_string{}
+	markdown_ms.data = C.CString(markdown)
+	markdown_ms.len = C.size_t(len(markdown))
+	defer C.free(unsafe.Pointer(markdown_ms.data))
+	C.QTextEdit_SetMarkdown(this.h, markdown_ms)
 }
 
 func (this *QTextEdit) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_SetText(this.h, text_ms)
 }
 
 func (this *QTextEdit) Cut() {
@@ -555,27 +574,35 @@ func (this *QTextEdit) SelectAll() {
 }
 
 func (this *QTextEdit) InsertPlainText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_InsertPlainText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_InsertPlainText(this.h, text_ms)
 }
 
 func (this *QTextEdit) InsertHtml(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_InsertHtml(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_InsertHtml(this.h, text_ms)
 }
 
 func (this *QTextEdit) Append(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextEdit_Append(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextEdit_Append(this.h, text_ms)
 }
 
 func (this *QTextEdit) ScrollToAnchor(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTextEdit_ScrollToAnchor(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTextEdit_ScrollToAnchor(this.h, name_ms)
 }
 
 func (this *QTextEdit) ZoomIn() {
@@ -722,9 +749,9 @@ func QTextEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -733,9 +760,9 @@ func QTextEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -744,9 +771,9 @@ func QTextEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -755,16 +782,18 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTextEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
-	exp_ms := libmiqt.Strdupg(exp)
-	defer C.free(exp_ms)
-	return (bool)(C.QTextEdit_Find22(this.h, (*C.struct_miqt_string)(exp_ms), (C.int)(options)))
+	exp_ms := C.struct_miqt_string{}
+	exp_ms.data = C.CString(exp)
+	exp_ms.len = C.size_t(len(exp))
+	defer C.free(unsafe.Pointer(exp_ms.data))
+	return (bool)(C.QTextEdit_Find22(this.h, exp_ms, (C.int)(options)))
 }
 
 func (this *QTextEdit) Find23(exp *QRegExp, options QTextDocument__FindFlag) bool {
@@ -776,9 +805,9 @@ func (this *QTextEdit) Find24(exp *QRegularExpression, options QTextDocument__Fi
 }
 
 func (this *QTextEdit) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms *C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

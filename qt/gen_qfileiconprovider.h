@@ -26,7 +26,7 @@ typedef struct QIcon QIcon;
 QFileIconProvider* QFileIconProvider_new();
 QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, int typeVal);
 QIcon* QFileIconProvider_IconWithInfo(const QFileIconProvider* self, QFileInfo* info);
-struct miqt_string* QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info);
+struct miqt_string QFileIconProvider_Type(const QFileIconProvider* self, QFileInfo* info);
 void QFileIconProvider_SetOptions(QFileIconProvider* self, int options);
 int QFileIconProvider_Options(const QFileIconProvider* self);
 void QFileIconProvider_Delete(QFileIconProvider* self);

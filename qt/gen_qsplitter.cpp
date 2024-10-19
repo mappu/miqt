@@ -36,18 +36,26 @@ void* QSplitter_Metacast(QSplitter* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSplitter_Tr(const char* s) {
+struct miqt_string QSplitter_Tr(const char* s) {
 	QString _ret = QSplitter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitter_TrUtf8(const char* s) {
+struct miqt_string QSplitter_TrUtf8(const char* s) {
 	QString _ret = QSplitter::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSplitter_AddWidget(QSplitter* self, QWidget* widget) {
@@ -130,12 +138,18 @@ void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list) {
 	self->setSizes(list_QList);
 }
 
-QByteArray* QSplitter_SaveState(const QSplitter* self) {
-	return new QByteArray(self->saveState());
+struct miqt_string QSplitter_SaveState(const QSplitter* self) {
+	QByteArray _qb = self->saveState();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-bool QSplitter_RestoreState(QSplitter* self, QByteArray* state) {
-	return self->restoreState(*state);
+bool QSplitter_RestoreState(QSplitter* self, struct miqt_string state) {
+	QByteArray state_QByteArray(state.data, state.len);
+	return self->restoreState(state_QByteArray);
 }
 
 int QSplitter_HandleWidth(const QSplitter* self) {
@@ -182,32 +196,48 @@ void QSplitter_connect_SplitterMoved(QSplitter* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QSplitter_Tr2(const char* s, const char* c) {
+struct miqt_string QSplitter_Tr2(const char* s, const char* c) {
 	QString _ret = QSplitter::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitter_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSplitter_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSplitter::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitter_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSplitter_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSplitter::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitter_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSplitter_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSplitter::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSplitter_SetOpaqueResize1(QSplitter* self, bool opaque) {
@@ -230,18 +260,26 @@ void* QSplitterHandle_Metacast(QSplitterHandle* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSplitterHandle_Tr(const char* s) {
+struct miqt_string QSplitterHandle_Tr(const char* s) {
 	QString _ret = QSplitterHandle::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitterHandle_TrUtf8(const char* s) {
+struct miqt_string QSplitterHandle_TrUtf8(const char* s) {
 	QString _ret = QSplitterHandle::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSplitterHandle_SetOrientation(QSplitterHandle* self, int o) {
@@ -265,32 +303,48 @@ QSize* QSplitterHandle_SizeHint(const QSplitterHandle* self) {
 	return new QSize(self->sizeHint());
 }
 
-struct miqt_string* QSplitterHandle_Tr2(const char* s, const char* c) {
+struct miqt_string QSplitterHandle_Tr2(const char* s, const char* c) {
 	QString _ret = QSplitterHandle::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitterHandle_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSplitterHandle_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSplitterHandle::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitterHandle_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSplitterHandle_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSplitterHandle::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSplitterHandle_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSplitterHandle_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSplitterHandle::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSplitterHandle_Delete(QSplitterHandle* self) {

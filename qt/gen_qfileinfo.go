@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -51,9 +50,11 @@ func NewQFileInfo() *QFileInfo {
 
 // NewQFileInfo2 constructs a new QFileInfo object.
 func NewQFileInfo2(file string) *QFileInfo {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	ret := C.QFileInfo_new2((*C.struct_miqt_string)(file_ms))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	ret := C.QFileInfo_new2(file_ms)
 	return newQFileInfo(ret)
 }
 
@@ -65,9 +66,11 @@ func NewQFileInfo3(file *QFile) *QFileInfo {
 
 // NewQFileInfo4 constructs a new QFileInfo object.
 func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	ret := C.QFileInfo_new4(dir.cPointer(), (*C.struct_miqt_string)(file_ms))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	ret := C.QFileInfo_new4(dir.cPointer(), file_ms)
 	return newQFileInfo(ret)
 }
 
@@ -94,9 +97,11 @@ func (this *QFileInfo) OperatorNotEqual(fileinfo *QFileInfo) bool {
 }
 
 func (this *QFileInfo) SetFile(file string) {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	C.QFileInfo_SetFile(this.h, (*C.struct_miqt_string)(file_ms))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	C.QFileInfo_SetFile(this.h, file_ms)
 }
 
 func (this *QFileInfo) SetFileWithFile(file *QFile) {
@@ -104,9 +109,11 @@ func (this *QFileInfo) SetFileWithFile(file *QFile) {
 }
 
 func (this *QFileInfo) SetFile2(dir *QDir, file string) {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	C.QFileInfo_SetFile2(this.h, dir.cPointer(), (*C.struct_miqt_string)(file_ms))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	C.QFileInfo_SetFile2(this.h, dir.cPointer(), file_ms)
 }
 
 func (this *QFileInfo) Exists() bool {
@@ -114,9 +121,11 @@ func (this *QFileInfo) Exists() bool {
 }
 
 func QFileInfo_ExistsWithFile(file string) bool {
-	file_ms := libmiqt.Strdupg(file)
-	defer C.free(file_ms)
-	return (bool)(C.QFileInfo_ExistsWithFile((*C.struct_miqt_string)(file_ms)))
+	file_ms := C.struct_miqt_string{}
+	file_ms.data = C.CString(file)
+	file_ms.len = C.size_t(len(file))
+	defer C.free(unsafe.Pointer(file_ms.data))
+	return (bool)(C.QFileInfo_ExistsWithFile(file_ms))
 }
 
 func (this *QFileInfo) Refresh() {
@@ -124,86 +133,86 @@ func (this *QFileInfo) Refresh() {
 }
 
 func (this *QFileInfo) FilePath() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_FilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_FilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) AbsoluteFilePath() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_AbsoluteFilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_AbsoluteFilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) CanonicalFilePath() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_CanonicalFilePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_CanonicalFilePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) FileName() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) BaseName() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_BaseName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_BaseName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) CompleteBaseName() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_CompleteBaseName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_CompleteBaseName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) Suffix() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_Suffix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_Suffix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) BundleName() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_BundleName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_BundleName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) CompleteSuffix() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_CompleteSuffix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_CompleteSuffix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) Path() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_Path(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_Path(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) AbsolutePath() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_AbsolutePath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_AbsolutePath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) CanonicalPath() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_CanonicalPath(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_CanonicalPath(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -286,23 +295,23 @@ func (this *QFileInfo) IsBundle() bool {
 }
 
 func (this *QFileInfo) ReadLink() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_ReadLink(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_ReadLink(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) SymLinkTarget() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_SymLinkTarget(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_SymLinkTarget(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileInfo) Owner() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_Owner(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_Owner(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -311,9 +320,9 @@ func (this *QFileInfo) OwnerId() uint {
 }
 
 func (this *QFileInfo) Group() string {
-	var _ms *C.struct_miqt_string = C.QFileInfo_Group(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFileInfo_Group(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

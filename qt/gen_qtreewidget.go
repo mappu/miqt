@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -68,12 +67,14 @@ func NewQTreeWidgetItem() *QTreeWidgetItem {
 // NewQTreeWidgetItem2 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -90,12 +91,14 @@ func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
 // NewQTreeWidgetItem4 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -118,12 +121,14 @@ func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
 // NewQTreeWidgetItem7 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -152,12 +157,14 @@ func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
 // NewQTreeWidgetItem11 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -174,12 +181,14 @@ func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -202,12 +211,14 @@ func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem
 // NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
 	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
-		strings_i_ms := libmiqt.Strdupg(strings[i])
-		defer C.free(strings_i_ms)
-		strings_CArray[i] = (*C.struct_miqt_string)(strings_i_ms)
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
 	}
 	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
@@ -286,16 +297,18 @@ func (this *QTreeWidgetItem) SetFlags(flags ItemFlag) {
 }
 
 func (this *QTreeWidgetItem) Text(column int) string {
-	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_Text(this.h, (C.int)(column))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidgetItem_Text(this.h, (C.int)(column))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTreeWidgetItem) SetText(column int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTreeWidgetItem_SetText(this.h, (C.int)(column), text_ms)
 }
 
 func (this *QTreeWidgetItem) Icon(column int) *QIcon {
@@ -310,42 +323,48 @@ func (this *QTreeWidgetItem) SetIcon(column int, icon *QIcon) {
 }
 
 func (this *QTreeWidgetItem) StatusTip(column int) string {
-	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_StatusTip(this.h, (C.int)(column))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidgetItem_StatusTip(this.h, (C.int)(column))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTreeWidgetItem) SetStatusTip(column int, statusTip string) {
-	statusTip_ms := libmiqt.Strdupg(statusTip)
-	defer C.free(statusTip_ms)
-	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), (*C.struct_miqt_string)(statusTip_ms))
+	statusTip_ms := C.struct_miqt_string{}
+	statusTip_ms.data = C.CString(statusTip)
+	statusTip_ms.len = C.size_t(len(statusTip))
+	defer C.free(unsafe.Pointer(statusTip_ms.data))
+	C.QTreeWidgetItem_SetStatusTip(this.h, (C.int)(column), statusTip_ms)
 }
 
 func (this *QTreeWidgetItem) ToolTip(column int) string {
-	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_ToolTip(this.h, (C.int)(column))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidgetItem_ToolTip(this.h, (C.int)(column))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTreeWidgetItem) SetToolTip(column int, toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QTreeWidgetItem_SetToolTip(this.h, (C.int)(column), toolTip_ms)
 }
 
 func (this *QTreeWidgetItem) WhatsThis(column int) string {
-	var _ms *C.struct_miqt_string = C.QTreeWidgetItem_WhatsThis(this.h, (C.int)(column))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidgetItem_WhatsThis(this.h, (C.int)(column))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTreeWidgetItem) SetWhatsThis(column int, whatsThis string) {
-	whatsThis_ms := libmiqt.Strdupg(whatsThis)
-	defer C.free(whatsThis_ms)
-	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), (*C.struct_miqt_string)(whatsThis_ms))
+	whatsThis_ms := C.struct_miqt_string{}
+	whatsThis_ms.data = C.CString(whatsThis)
+	whatsThis_ms.len = C.size_t(len(whatsThis))
+	defer C.free(unsafe.Pointer(whatsThis_ms.data))
+	C.QTreeWidgetItem_SetWhatsThis(this.h, (C.int)(column), whatsThis_ms)
 }
 
 func (this *QTreeWidgetItem) Font(column int) *QFont {
@@ -599,24 +618,24 @@ func (this *QTreeWidget) MetaObject() *QMetaObject {
 func (this *QTreeWidget) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTreeWidget_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTreeWidget_Metacast(this.h, param1_Cstring))
 }
 
 func QTreeWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTreeWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -690,12 +709,14 @@ func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
 
 func (this *QTreeWidget) SetHeaderLabels(labels []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := libmiqt.Strdupg(labels[i])
-		defer C.free(labels_i_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
+		labels_i_ms := C.struct_miqt_string{}
+		labels_i_ms.data = C.CString(labels[i])
+		labels_i_ms.len = C.size_t(len(labels[i]))
+		defer C.free(unsafe.Pointer(labels_i_ms.data))
+		labels_CArray[i] = labels_i_ms
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -703,9 +724,11 @@ func (this *QTreeWidget) SetHeaderLabels(labels []string) {
 }
 
 func (this *QTreeWidget) SetHeaderLabel(label string) {
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	C.QTreeWidget_SetHeaderLabel(this.h, (*C.struct_miqt_string)(label_ms))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	C.QTreeWidget_SetHeaderLabel(this.h, label_ms)
 }
 
 func (this *QTreeWidget) CurrentItem() *QTreeWidgetItem {
@@ -799,9 +822,11 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 }
 
 func (this *QTreeWidget) FindItems(text string, flags MatchFlag) []*QTreeWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1072,9 +1097,9 @@ func QTreeWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1083,9 +1108,9 @@ func QTreeWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1094,9 +1119,9 @@ func QTreeWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1105,9 +1130,9 @@ func QTreeWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTreeWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTreeWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1128,9 +1153,11 @@ func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column i
 }
 
 func (this *QTreeWidget) FindItems3(text string, flags MatchFlag, column int) []*QTreeWidgetItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QTreeWidget_FindItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

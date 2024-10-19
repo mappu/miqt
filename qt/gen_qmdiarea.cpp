@@ -28,18 +28,26 @@ void* QMdiArea_Metacast(QMdiArea* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QMdiArea_Tr(const char* s) {
+struct miqt_string QMdiArea_Tr(const char* s) {
 	QString _ret = QMdiArea::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMdiArea_TrUtf8(const char* s) {
+struct miqt_string QMdiArea_TrUtf8(const char* s) {
 	QString _ret = QMdiArea::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QSize* QMdiArea_SizeHint(const QMdiArea* self) {
@@ -194,32 +202,48 @@ void QMdiArea_ActivatePreviousSubWindow(QMdiArea* self) {
 	self->activatePreviousSubWindow();
 }
 
-struct miqt_string* QMdiArea_Tr2(const char* s, const char* c) {
+struct miqt_string QMdiArea_Tr2(const char* s, const char* c) {
 	QString _ret = QMdiArea::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMdiArea_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMdiArea_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QMdiArea::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMdiArea_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMdiArea_TrUtf82(const char* s, const char* c) {
 	QString _ret = QMdiArea::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMdiArea_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMdiArea_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMdiArea::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QMdiArea_SubWindowList1(const QMdiArea* self, int order) {

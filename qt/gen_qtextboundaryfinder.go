@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -77,9 +76,11 @@ func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 
 // NewQTextBoundaryFinder3 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVal string) *QTextBoundaryFinder {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	ret := C.QTextBoundaryFinder_new3((C.int)(typeVal), (*C.struct_miqt_string)(stringVal_ms))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	ret := C.QTextBoundaryFinder_new3((C.int)(typeVal), stringVal_ms)
 	return newQTextBoundaryFinder(ret)
 }
 
@@ -114,9 +115,9 @@ func (this *QTextBoundaryFinder) Type() QTextBoundaryFinder__BoundaryType {
 }
 
 func (this *QTextBoundaryFinder) String() string {
-	var _ms *C.struct_miqt_string = C.QTextBoundaryFinder_String(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextBoundaryFinder_String(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

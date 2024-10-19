@@ -67,13 +67,13 @@ int QTextCursor_Anchor(const QTextCursor* self) {
 	return self->anchor();
 }
 
-void QTextCursor_InsertText(QTextCursor* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTextCursor_InsertText(QTextCursor* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->insertText(text_QString);
 }
 
-void QTextCursor_InsertText2(QTextCursor* self, struct miqt_string* text, QTextCharFormat* format) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QTextCursor_InsertText2(QTextCursor* self, struct miqt_string text, QTextCharFormat* format) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->insertText(text_QString, *format);
 }
 
@@ -141,11 +141,15 @@ int QTextCursor_SelectionEnd(const QTextCursor* self) {
 	return self->selectionEnd();
 }
 
-struct miqt_string* QTextCursor_SelectedText(const QTextCursor* self) {
+struct miqt_string QTextCursor_SelectedText(const QTextCursor* self) {
 	QString _ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QTextDocumentFragment* QTextCursor_Selection(const QTextCursor* self) {
@@ -268,8 +272,8 @@ void QTextCursor_InsertFragment(QTextCursor* self, QTextDocumentFragment* fragme
 	self->insertFragment(*fragment);
 }
 
-void QTextCursor_InsertHtml(QTextCursor* self, struct miqt_string* html) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+void QTextCursor_InsertHtml(QTextCursor* self, struct miqt_string html) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	self->insertHtml(html_QString);
 }
 
@@ -281,8 +285,8 @@ void QTextCursor_InsertImageWithFormat(QTextCursor* self, QTextImageFormat* form
 	self->insertImage(*format);
 }
 
-void QTextCursor_InsertImageWithName(QTextCursor* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QTextCursor_InsertImageWithName(QTextCursor* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->insertImage(name_QString);
 }
 
@@ -354,8 +358,8 @@ bool QTextCursor_MovePosition3(QTextCursor* self, int op, int param2, int n) {
 	return self->movePosition(static_cast<QTextCursor::MoveOperation>(op), static_cast<QTextCursor::MoveMode>(param2), static_cast<int>(n));
 }
 
-void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->insertImage(*image, name_QString);
 }
 

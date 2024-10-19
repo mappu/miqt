@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -59,17 +58,21 @@ func NewQStandardItem() *QStandardItem {
 
 // NewQStandardItem2 constructs a new QStandardItem object.
 func NewQStandardItem2(text string) *QStandardItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QStandardItem_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QStandardItem_new2(text_ms)
 	return newQStandardItem(ret)
 }
 
 // NewQStandardItem3 constructs a new QStandardItem object.
 func NewQStandardItem3(icon *QIcon, text string) *QStandardItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QStandardItem_new3(icon.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QStandardItem_new3(icon.cPointer(), text_ms)
 	return newQStandardItem(ret)
 }
 
@@ -101,16 +104,18 @@ func (this *QStandardItem) ClearData() {
 }
 
 func (this *QStandardItem) Text() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QStandardItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QStandardItem_SetText(this.h, text_ms)
 }
 
 func (this *QStandardItem) Icon() *QIcon {
@@ -125,42 +130,48 @@ func (this *QStandardItem) SetIcon(icon *QIcon) {
 }
 
 func (this *QStandardItem) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetToolTip(toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QStandardItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QStandardItem_SetToolTip(this.h, toolTip_ms)
 }
 
 func (this *QStandardItem) StatusTip() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_StatusTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_StatusTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetStatusTip(statusTip string) {
-	statusTip_ms := libmiqt.Strdupg(statusTip)
-	defer C.free(statusTip_ms)
-	C.QStandardItem_SetStatusTip(this.h, (*C.struct_miqt_string)(statusTip_ms))
+	statusTip_ms := C.struct_miqt_string{}
+	statusTip_ms.data = C.CString(statusTip)
+	statusTip_ms.len = C.size_t(len(statusTip))
+	defer C.free(unsafe.Pointer(statusTip_ms.data))
+	C.QStandardItem_SetStatusTip(this.h, statusTip_ms)
 }
 
 func (this *QStandardItem) WhatsThis() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_WhatsThis(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_WhatsThis(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetWhatsThis(whatsThis string) {
-	whatsThis_ms := libmiqt.Strdupg(whatsThis)
-	defer C.free(whatsThis_ms)
-	C.QStandardItem_SetWhatsThis(this.h, (*C.struct_miqt_string)(whatsThis_ms))
+	whatsThis_ms := C.struct_miqt_string{}
+	whatsThis_ms.data = C.CString(whatsThis)
+	whatsThis_ms.len = C.size_t(len(whatsThis))
+	defer C.free(unsafe.Pointer(whatsThis_ms.data))
+	C.QStandardItem_SetWhatsThis(this.h, whatsThis_ms)
 }
 
 func (this *QStandardItem) SizeHint() *QSize {
@@ -224,29 +235,33 @@ func (this *QStandardItem) SetCheckState(checkState CheckState) {
 }
 
 func (this *QStandardItem) AccessibleText() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_AccessibleText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_AccessibleText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetAccessibleText(accessibleText string) {
-	accessibleText_ms := libmiqt.Strdupg(accessibleText)
-	defer C.free(accessibleText_ms)
-	C.QStandardItem_SetAccessibleText(this.h, (*C.struct_miqt_string)(accessibleText_ms))
+	accessibleText_ms := C.struct_miqt_string{}
+	accessibleText_ms.data = C.CString(accessibleText)
+	accessibleText_ms.len = C.size_t(len(accessibleText))
+	defer C.free(unsafe.Pointer(accessibleText_ms.data))
+	C.QStandardItem_SetAccessibleText(this.h, accessibleText_ms)
 }
 
 func (this *QStandardItem) AccessibleDescription() string {
-	var _ms *C.struct_miqt_string = C.QStandardItem_AccessibleDescription(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItem_AccessibleDescription(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStandardItem) SetAccessibleDescription(accessibleDescription string) {
-	accessibleDescription_ms := libmiqt.Strdupg(accessibleDescription)
-	defer C.free(accessibleDescription_ms)
-	C.QStandardItem_SetAccessibleDescription(this.h, (*C.struct_miqt_string)(accessibleDescription_ms))
+	accessibleDescription_ms := C.struct_miqt_string{}
+	accessibleDescription_ms.data = C.CString(accessibleDescription)
+	accessibleDescription_ms.len = C.size_t(len(accessibleDescription))
+	defer C.free(unsafe.Pointer(accessibleDescription_ms.data))
+	C.QStandardItem_SetAccessibleDescription(this.h, accessibleDescription_ms)
 }
 
 func (this *QStandardItem) Flags() ItemFlag {
@@ -636,24 +651,24 @@ func (this *QStandardItemModel) MetaObject() *QMetaObject {
 func (this *QStandardItemModel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QStandardItemModel_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QStandardItemModel_Metacast(this.h, param1_Cstring))
 }
 
 func QStandardItemModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QStandardItemModel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -793,12 +808,14 @@ func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardIt
 
 func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := libmiqt.Strdupg(labels[i])
-		defer C.free(labels_i_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
+		labels_i_ms := C.struct_miqt_string{}
+		labels_i_ms.data = C.CString(labels[i])
+		labels_i_ms.len = C.size_t(len(labels[i]))
+		defer C.free(unsafe.Pointer(labels_i_ms.data))
+		labels_CArray[i] = labels_i_ms
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -807,12 +824,14 @@ func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 
 func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
-		labels_i_ms := libmiqt.Strdupg(labels[i])
-		defer C.free(labels_i_ms)
-		labels_CArray[i] = (*C.struct_miqt_string)(labels_i_ms)
+		labels_i_ms := C.struct_miqt_string{}
+		labels_i_ms.data = C.CString(labels[i])
+		labels_i_ms.len = C.size_t(len(labels[i]))
+		defer C.free(unsafe.Pointer(labels_i_ms.data))
+		labels_CArray[i] = labels_i_ms
 	}
 	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
@@ -934,9 +953,11 @@ func (this *QStandardItemModel) SetItemPrototype(item *QStandardItem) {
 }
 
 func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems(this.h, text_ms)
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -957,11 +978,11 @@ func (this *QStandardItemModel) SetSortRole(role int) {
 func (this *QStandardItemModel) MimeTypes() []string {
 	var _ma *C.struct_miqt_array = C.QStandardItemModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -1009,9 +1030,9 @@ func QStandardItemModel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1020,9 +1041,9 @@ func QStandardItemModel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1031,9 +1052,9 @@ func QStandardItemModel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1042,9 +1063,9 @@ func QStandardItemModel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QStandardItemModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QStandardItemModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1126,9 +1147,11 @@ func (this *QStandardItemModel) TakeItem2(row int, column int) *QStandardItem {
 }
 
 func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QStandardItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1139,9 +1162,11 @@ func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QSta
 }
 
 func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column int) []*QStandardItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, (*C.struct_miqt_string)(text_ms), (C.int)(flags), (C.int)(column))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

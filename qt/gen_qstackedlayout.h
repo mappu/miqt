@@ -36,8 +36,8 @@ QStackedLayout* QStackedLayout_new2(QWidget* parent);
 QStackedLayout* QStackedLayout_new3(QLayout* parentLayout);
 QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self);
 void* QStackedLayout_Metacast(QStackedLayout* self, const char* param1);
-struct miqt_string* QStackedLayout_Tr(const char* s);
-struct miqt_string* QStackedLayout_TrUtf8(const char* s);
+struct miqt_string QStackedLayout_Tr(const char* s);
+struct miqt_string QStackedLayout_TrUtf8(const char* s);
 int QStackedLayout_AddWidget(QStackedLayout* self, QWidget* w);
 int QStackedLayout_InsertWidget(QStackedLayout* self, int index, QWidget* w);
 QWidget* QStackedLayout_CurrentWidget(const QStackedLayout* self);
@@ -60,10 +60,10 @@ void QStackedLayout_CurrentChanged(QStackedLayout* self, int index);
 void QStackedLayout_connect_CurrentChanged(QStackedLayout* self, intptr_t slot);
 void QStackedLayout_SetCurrentIndex(QStackedLayout* self, int index);
 void QStackedLayout_SetCurrentWidget(QStackedLayout* self, QWidget* w);
-struct miqt_string* QStackedLayout_Tr2(const char* s, const char* c);
-struct miqt_string* QStackedLayout_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QStackedLayout_TrUtf82(const char* s, const char* c);
-struct miqt_string* QStackedLayout_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QStackedLayout_Tr2(const char* s, const char* c);
+struct miqt_string QStackedLayout_Tr3(const char* s, const char* c, int n);
+struct miqt_string QStackedLayout_TrUtf82(const char* s, const char* c);
+struct miqt_string QStackedLayout_TrUtf83(const char* s, const char* c, int n);
 void QStackedLayout_Delete(QStackedLayout* self);
 
 #ifdef __cplusplus

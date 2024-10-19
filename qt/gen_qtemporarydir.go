@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -51,9 +50,11 @@ func NewQTemporaryDir() *QTemporaryDir {
 
 // NewQTemporaryDir2 constructs a new QTemporaryDir object.
 func NewQTemporaryDir2(templateName string) *QTemporaryDir {
-	templateName_ms := libmiqt.Strdupg(templateName)
-	defer C.free(templateName_ms)
-	ret := C.QTemporaryDir_new2((*C.struct_miqt_string)(templateName_ms))
+	templateName_ms := C.struct_miqt_string{}
+	templateName_ms.data = C.CString(templateName)
+	templateName_ms.len = C.size_t(len(templateName))
+	defer C.free(unsafe.Pointer(templateName_ms.data))
+	ret := C.QTemporaryDir_new2(templateName_ms)
 	return newQTemporaryDir(ret)
 }
 
@@ -62,9 +63,9 @@ func (this *QTemporaryDir) IsValid() bool {
 }
 
 func (this *QTemporaryDir) ErrorString() string {
-	var _ms *C.struct_miqt_string = C.QTemporaryDir_ErrorString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryDir_ErrorString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -81,18 +82,20 @@ func (this *QTemporaryDir) Remove() bool {
 }
 
 func (this *QTemporaryDir) Path() string {
-	var _ms *C.struct_miqt_string = C.QTemporaryDir_Path(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryDir_Path(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryDir) FilePath(fileName string) string {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	var _ms *C.struct_miqt_string = C.QTemporaryDir_FilePath(this.h, (*C.struct_miqt_string)(fileName_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	var _ms C.struct_miqt_string = C.QTemporaryDir_FilePath(this.h, fileName_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

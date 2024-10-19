@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -104,24 +103,24 @@ func (this *QGraphicsScene) MetaObject() *QMetaObject {
 func (this *QGraphicsScene) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QGraphicsScene_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QGraphicsScene_Metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsScene_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QGraphicsScene_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -328,15 +327,19 @@ func (this *QGraphicsScene) AddRect(rect *QRectF) *QGraphicsRectItem {
 }
 
 func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText(this.h, (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText(this.h, text_ms)))
 }
 
 func (this *QGraphicsScene) AddSimpleText(text string) *QGraphicsSimpleTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText(this.h, (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText(this.h, text_ms)))
 }
 
 func (this *QGraphicsScene) AddWidget(widget *QWidget) *QGraphicsProxyWidget {
@@ -631,9 +634,9 @@ func QGraphicsScene_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -642,9 +645,9 @@ func QGraphicsScene_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -653,9 +656,9 @@ func QGraphicsScene_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -664,9 +667,9 @@ func QGraphicsScene_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsScene_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsScene_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -859,15 +862,19 @@ func (this *QGraphicsScene) AddRect3(rect *QRectF, pen *QPen, brush *QBrush) *QG
 }
 
 func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQGraphicsTextItem(unsafe.Pointer(C.QGraphicsScene_AddText2(this.h, text_ms, font.cPointer())))
 }
 
 func (this *QGraphicsScene) AddSimpleText2(text string, font *QFont) *QGraphicsSimpleTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText2(this.h, (*C.struct_miqt_string)(text_ms), font.cPointer())))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQGraphicsSimpleTextItem(unsafe.Pointer(C.QGraphicsScene_AddSimpleText2(this.h, text_ms, font.cPointer())))
 }
 
 func (this *QGraphicsScene) AddWidget2(widget *QWidget, wFlags WindowType) *QGraphicsProxyWidget {

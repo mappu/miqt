@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -86,24 +85,24 @@ func (this *QInputDialog) MetaObject() *QMetaObject {
 func (this *QInputDialog) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QInputDialog_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QInputDialog_Metacast(this.h, param1_Cstring))
 }
 
 func QInputDialog_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -116,15 +115,17 @@ func (this *QInputDialog) InputMode() QInputDialog__InputMode {
 }
 
 func (this *QInputDialog) SetLabelText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_SetLabelText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_SetLabelText(this.h, text_ms)
 }
 
 func (this *QInputDialog) LabelText() string {
-	var _ms *C.struct_miqt_string = C.QInputDialog_LabelText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_LabelText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -145,15 +146,17 @@ func (this *QInputDialog) Options() QInputDialog__InputDialogOption {
 }
 
 func (this *QInputDialog) SetTextValue(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_SetTextValue(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_SetTextValue(this.h, text_ms)
 }
 
 func (this *QInputDialog) TextValue() string {
-	var _ms *C.struct_miqt_string = C.QInputDialog_TextValue(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_TextValue(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -175,12 +178,14 @@ func (this *QInputDialog) IsComboBoxEditable() bool {
 
 func (this *QInputDialog) SetComboBoxItems(items []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
@@ -190,11 +195,11 @@ func (this *QInputDialog) SetComboBoxItems(items []string) {
 func (this *QInputDialog) ComboBoxItems() []string {
 	var _ma *C.struct_miqt_array = C.QInputDialog_ComboBoxItems(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -274,28 +279,32 @@ func (this *QInputDialog) DoubleDecimals() int {
 }
 
 func (this *QInputDialog) SetOkButtonText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_SetOkButtonText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_SetOkButtonText(this.h, text_ms)
 }
 
 func (this *QInputDialog) OkButtonText() string {
-	var _ms *C.struct_miqt_string = C.QInputDialog_OkButtonText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_OkButtonText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputDialog) SetCancelButtonText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_SetCancelButtonText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_SetCancelButtonText(this.h, text_ms)
 }
 
 func (this *QInputDialog) CancelButtonText() string {
-	var _ms *C.struct_miqt_string = C.QInputDialog_CancelButtonText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_CancelButtonText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -318,70 +327,96 @@ func (this *QInputDialog) SetVisible(visible bool) {
 }
 
 func QInputDialog_GetText(parent *QWidget, title string, label string) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText(parent.cPointer(), title_ms, label_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetMultiLineText(parent *QWidget, title string, label string) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetMultiLineText(parent.cPointer(), title_ms, label_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem(parent *QWidget, title string, label string, items []string) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem(parent.cPointer(), title_ms, label_ms, items_ma)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetInt(parent *QWidget, title string, label string) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt(parent.cPointer(), title_ms, label_ms))
 }
 
 func QInputDialog_GetDouble(parent *QWidget, title string, label string) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble(parent.cPointer(), title_ms, label_ms))
 }
 
 func QInputDialog_GetDouble2(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType, step float64) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble2(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.double)(step)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble2(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.double)(step)))
 }
 
 func (this *QInputDialog) SetDoubleStep(step float64) {
@@ -393,50 +428,54 @@ func (this *QInputDialog) DoubleStep() float64 {
 }
 
 func (this *QInputDialog) TextValueChanged(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_TextValueChanged(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_TextValueChanged(this.h, text_ms)
 }
 func (this *QInputDialog) OnTextValueChanged(slot func(text string)) {
 	C.QInputDialog_connect_TextValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_TextValueChanged
-func miqt_exec_callback_QInputDialog_TextValueChanged(cb C.intptr_t, text *C.struct_miqt_string) {
+func miqt_exec_callback_QInputDialog_TextValueChanged(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var text_ms *C.struct_miqt_string = text
-	text_ret := C.GoStringN(&text_ms.data, C.int(int64(text_ms.len)))
-	C.free(unsafe.Pointer(text_ms))
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
 	slotval1 := text_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QInputDialog) TextValueSelected(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QInputDialog_TextValueSelected(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QInputDialog_TextValueSelected(this.h, text_ms)
 }
 func (this *QInputDialog) OnTextValueSelected(slot func(text string)) {
 	C.QInputDialog_connect_TextValueSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDialog_TextValueSelected
-func miqt_exec_callback_QInputDialog_TextValueSelected(cb C.intptr_t, text *C.struct_miqt_string) {
+func miqt_exec_callback_QInputDialog_TextValueSelected(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var text_ms *C.struct_miqt_string = text
-	text_ret := C.GoStringN(&text_ms.data, C.int(int64(text_ms.len)))
-	C.free(unsafe.Pointer(text_ms))
+	var text_ms C.struct_miqt_string = text
+	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
+	C.free(unsafe.Pointer(text_ms.data))
 	slotval1 := text_ret
 
 	gofunc(slotval1)
@@ -531,9 +570,9 @@ func QInputDialog_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -542,9 +581,9 @@ func QInputDialog_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -553,9 +592,9 @@ func QInputDialog_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -564,9 +603,9 @@ func QInputDialog_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QInputDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -575,319 +614,449 @@ func (this *QInputDialog) SetOption2(option QInputDialog__InputDialogOption, on 
 }
 
 func QInputDialog_GetText4(parent *QWidget, title string, label string, echo QLineEdit__EchoMode) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText4(parent.cPointer(), title_ms, label_ms, (C.int)(echo))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetText5(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText5(parent.cPointer(), title_ms, label_ms, (C.int)(echo), text_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetText6(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText6(parent.cPointer(), title_ms, label_ms, (C.int)(echo), text_ms, (*C.bool)(unsafe.Pointer(ok)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetText7(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText7(parent.cPointer(), title_ms, label_ms, (C.int)(echo), text_ms, (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetText8(parent *QWidget, title string, label string, echo QLineEdit__EchoMode, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetText8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(echo), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetText8(parent.cPointer(), title_ms, label_ms, (C.int)(echo), text_ms, (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetMultiLineText4(parent *QWidget, title string, label string, text string) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetMultiLineText4(parent.cPointer(), title_ms, label_ms, text_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetMultiLineText5(parent *QWidget, title string, label string, text string, ok *bool) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetMultiLineText5(parent.cPointer(), title_ms, label_ms, text_ms, (*C.bool)(unsafe.Pointer(ok)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetMultiLineText6(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetMultiLineText6(parent.cPointer(), title_ms, label_ms, text_ms, (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetMultiLineText7(parent *QWidget, title string, label string, text string, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetMultiLineText7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (*C.struct_miqt_string)(text_ms), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetMultiLineText7(parent.cPointer(), title_ms, label_ms, text_ms, (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []string, current int) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem5(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []string, current int, editable bool) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem6(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem7(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem8(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []string, current int, editable bool, ok *bool, flags WindowType, inputMethodHints InputMethodHint) string {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
 	// For the C ABI, malloc a C array of raw pointers
-	items_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
+	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
-		items_i_ms := libmiqt.Strdupg(items[i])
-		defer C.free(items_i_ms)
-		items_CArray[i] = (*C.struct_miqt_string)(items_i_ms)
+		items_i_ms := C.struct_miqt_string{}
+		items_i_ms.data = C.CString(items[i])
+		items_i_ms.len = C.size_t(len(items[i]))
+		defer C.free(unsafe.Pointer(items_i_ms.data))
+		items_CArray[i] = items_i_ms
 	}
 	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
-	var _ms *C.struct_miqt_string = C.QInputDialog_GetItem9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QInputDialog_GetItem9(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QInputDialog_GetInt4(parent *QWidget, title string, label string, value int) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt4(parent.cPointer(), title_ms, label_ms, (C.int)(value)))
 }
 
 func QInputDialog_GetInt5(parent *QWidget, title string, label string, value int, minValue int) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt5(parent.cPointer(), title_ms, label_ms, (C.int)(value), (C.int)(minValue)))
 }
 
 func QInputDialog_GetInt6(parent *QWidget, title string, label string, value int, minValue int, maxValue int) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt6(parent.cPointer(), title_ms, label_ms, (C.int)(value), (C.int)(minValue), (C.int)(maxValue)))
 }
 
 func QInputDialog_GetInt7(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt7(parent.cPointer(), title_ms, label_ms, (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step)))
 }
 
 func QInputDialog_GetInt8(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt8(parent.cPointer(), title_ms, label_ms, (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func QInputDialog_GetInt9(parent *QWidget, title string, label string, value int, minValue int, maxValue int, step int, ok *bool, flags WindowType) int {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QInputDialog_GetInt9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QInputDialog_GetInt9(parent.cPointer(), title_ms, label_ms, (C.int)(value), (C.int)(minValue), (C.int)(maxValue), (C.int)(step), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
 }
 
 func QInputDialog_GetDouble4(parent *QWidget, title string, label string, value float64) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble4(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble4(parent.cPointer(), title_ms, label_ms, (C.double)(value)))
 }
 
 func QInputDialog_GetDouble5(parent *QWidget, title string, label string, value float64, minValue float64) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble5(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble5(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue)))
 }
 
 func QInputDialog_GetDouble6(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble6(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble6(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue)))
 }
 
 func QInputDialog_GetDouble7(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble7(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble7(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals)))
 }
 
 func QInputDialog_GetDouble8(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble8(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble8(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func QInputDialog_GetDouble9(parent *QWidget, title string, label string, value float64, minValue float64, maxValue float64, decimals int, ok *bool, flags WindowType) float64 {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (float64)(C.QInputDialog_GetDouble9(parent.cPointer(), (*C.struct_miqt_string)(title_ms), (*C.struct_miqt_string)(label_ms), (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (float64)(C.QInputDialog_GetDouble9(parent.cPointer(), title_ms, label_ms, (C.double)(value), (C.double)(minValue), (C.double)(maxValue), (C.int)(decimals), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags)))
 }
 
 // Delete this object from C++ memory.

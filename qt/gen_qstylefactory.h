@@ -22,7 +22,7 @@ typedef struct QStyleFactory QStyleFactory;
 #endif
 
 struct miqt_array* QStyleFactory_Keys();
-QStyle* QStyleFactory_Create(struct miqt_string* param1);
+QStyle* QStyleFactory_Create(struct miqt_string param1);
 void QStyleFactory_Delete(QStyleFactory* self);
 
 #ifdef __cplusplus

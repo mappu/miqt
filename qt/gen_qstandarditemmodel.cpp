@@ -22,13 +22,13 @@ QStandardItem* QStandardItem_new() {
 	return new QStandardItem();
 }
 
-QStandardItem* QStandardItem_new2(struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QStandardItem* QStandardItem_new2(struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QStandardItem(text_QString);
 }
 
-QStandardItem* QStandardItem_new3(QIcon* icon, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+QStandardItem* QStandardItem_new3(QIcon* icon, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QStandardItem(*icon, text_QString);
 }
 
@@ -52,15 +52,19 @@ void QStandardItem_ClearData(QStandardItem* self) {
 	self->clearData();
 }
 
-struct miqt_string* QStandardItem_Text(const QStandardItem* self) {
+struct miqt_string QStandardItem_Text(const QStandardItem* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetText(QStandardItem* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QStandardItem_SetText(QStandardItem* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
@@ -72,39 +76,51 @@ void QStandardItem_SetIcon(QStandardItem* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-struct miqt_string* QStandardItem_ToolTip(const QStandardItem* self) {
+struct miqt_string QStandardItem_ToolTip(const QStandardItem* self) {
 	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetToolTip(QStandardItem* self, struct miqt_string* toolTip) {
-	QString toolTip_QString = QString::fromUtf8(&toolTip->data, toolTip->len);
+void QStandardItem_SetToolTip(QStandardItem* self, struct miqt_string toolTip) {
+	QString toolTip_QString = QString::fromUtf8(toolTip.data, toolTip.len);
 	self->setToolTip(toolTip_QString);
 }
 
-struct miqt_string* QStandardItem_StatusTip(const QStandardItem* self) {
+struct miqt_string QStandardItem_StatusTip(const QStandardItem* self) {
 	QString _ret = self->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetStatusTip(QStandardItem* self, struct miqt_string* statusTip) {
-	QString statusTip_QString = QString::fromUtf8(&statusTip->data, statusTip->len);
+void QStandardItem_SetStatusTip(QStandardItem* self, struct miqt_string statusTip) {
+	QString statusTip_QString = QString::fromUtf8(statusTip.data, statusTip.len);
 	self->setStatusTip(statusTip_QString);
 }
 
-struct miqt_string* QStandardItem_WhatsThis(const QStandardItem* self) {
+struct miqt_string QStandardItem_WhatsThis(const QStandardItem* self) {
 	QString _ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetWhatsThis(QStandardItem* self, struct miqt_string* whatsThis) {
-	QString whatsThis_QString = QString::fromUtf8(&whatsThis->data, whatsThis->len);
+void QStandardItem_SetWhatsThis(QStandardItem* self, struct miqt_string whatsThis) {
+	QString whatsThis_QString = QString::fromUtf8(whatsThis.data, whatsThis.len);
 	self->setWhatsThis(whatsThis_QString);
 }
 
@@ -158,27 +174,35 @@ void QStandardItem_SetCheckState(QStandardItem* self, int checkState) {
 	self->setCheckState(static_cast<Qt::CheckState>(checkState));
 }
 
-struct miqt_string* QStandardItem_AccessibleText(const QStandardItem* self) {
+struct miqt_string QStandardItem_AccessibleText(const QStandardItem* self) {
 	QString _ret = self->accessibleText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetAccessibleText(QStandardItem* self, struct miqt_string* accessibleText) {
-	QString accessibleText_QString = QString::fromUtf8(&accessibleText->data, accessibleText->len);
+void QStandardItem_SetAccessibleText(QStandardItem* self, struct miqt_string accessibleText) {
+	QString accessibleText_QString = QString::fromUtf8(accessibleText.data, accessibleText.len);
 	self->setAccessibleText(accessibleText_QString);
 }
 
-struct miqt_string* QStandardItem_AccessibleDescription(const QStandardItem* self) {
+struct miqt_string QStandardItem_AccessibleDescription(const QStandardItem* self) {
 	QString _ret = self->accessibleDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QStandardItem_SetAccessibleDescription(QStandardItem* self, struct miqt_string* accessibleDescription) {
-	QString accessibleDescription_QString = QString::fromUtf8(&accessibleDescription->data, accessibleDescription->len);
+void QStandardItem_SetAccessibleDescription(QStandardItem* self, struct miqt_string accessibleDescription) {
+	QString accessibleDescription_QString = QString::fromUtf8(accessibleDescription.data, accessibleDescription.len);
 	self->setAccessibleDescription(accessibleDescription_QString);
 }
 
@@ -509,18 +533,26 @@ void* QStandardItemModel_Metacast(QStandardItemModel* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QStandardItemModel_Tr(const char* s) {
+struct miqt_string QStandardItemModel_Tr(const char* s) {
 	QString _ret = QStandardItemModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStandardItemModel_TrUtf8(const char* s) {
+struct miqt_string QStandardItemModel_TrUtf8(const char* s) {
 	QString _ret = QStandardItemModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column) {
@@ -641,23 +673,23 @@ void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row,
 	self->setVerticalHeaderItem(static_cast<int>(row), item);
 }
 
-void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
+void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string */ labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
-	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
+	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
-		QString labels_arr_i_QString = QString::fromUtf8(&labels_arr[i]->data, labels_arr[i]->len);
+		QString labels_arr_i_QString = QString::fromUtf8(labels_arr[i].data, labels_arr[i].len);
 		labels_QList.push_back(labels_arr_i_QString);
 	}
 	self->setHorizontalHeaderLabels(labels_QList);
 }
 
-void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string* */ labels) {
+void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array* /* of struct miqt_string */ labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels->len);
-	struct miqt_string** labels_arr = static_cast<struct miqt_string**>(labels->data);
+	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels->data);
 	for(size_t i = 0; i < labels->len; ++i) {
-		QString labels_arr_i_QString = QString::fromUtf8(&labels_arr[i]->data, labels_arr[i]->len);
+		QString labels_arr_i_QString = QString::fromUtf8(labels_arr[i].data, labels_arr[i].len);
 		labels_QList.push_back(labels_arr_i_QString);
 	}
 	self->setVerticalHeaderLabels(labels_QList);
@@ -773,8 +805,8 @@ void QStandardItemModel_SetItemPrototype(QStandardItemModel* self, QStandardItem
 	self->setItemPrototype(item);
 }
 
-struct miqt_array* QStandardItemModel_FindItems(const QStandardItemModel* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+struct miqt_array* QStandardItemModel_FindItems(const QStandardItemModel* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QStandardItem *> _ret = self->findItems(text_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** _arr = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * _ret.length()));
@@ -798,12 +830,16 @@ void QStandardItemModel_SetSortRole(QStandardItemModel* self, int role) {
 struct miqt_array* QStandardItemModel_MimeTypes(const QStandardItemModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -836,32 +872,48 @@ void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, intptr_t s
 	});
 }
 
-struct miqt_string* QStandardItemModel_Tr2(const char* s, const char* c) {
+struct miqt_string QStandardItemModel_Tr2(const char* s, const char* c) {
 	QString _ret = QStandardItemModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStandardItemModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QStandardItemModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QStandardItemModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStandardItemModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QStandardItemModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QStandardItemModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStandardItemModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QStandardItemModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QStandardItemModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QStandardItemModel_Index3(const QStandardItemModel* self, int row, int column, QModelIndex* parent) {
@@ -932,8 +984,8 @@ QStandardItem* QStandardItemModel_TakeItem2(QStandardItemModel* self, int row, i
 	return self->takeItem(static_cast<int>(row), static_cast<int>(column));
 }
 
-struct miqt_array* QStandardItemModel_FindItems2(const QStandardItemModel* self, struct miqt_string* text, int flags) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+struct miqt_array* QStandardItemModel_FindItems2(const QStandardItemModel* self, struct miqt_string text, int flags) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QStandardItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** _arr = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * _ret.length()));
@@ -946,8 +998,8 @@ struct miqt_array* QStandardItemModel_FindItems2(const QStandardItemModel* self,
 	return _out;
 }
 
-struct miqt_array* QStandardItemModel_FindItems3(const QStandardItemModel* self, struct miqt_string* text, int flags, int column) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+struct miqt_array* QStandardItemModel_FindItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QStandardItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStandardItem** _arr = static_cast<QStandardItem**>(malloc(sizeof(QStandardItem*) * _ret.length()));

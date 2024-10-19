@@ -1,7 +1,8 @@
 FROM golang:1.23-bookworm
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -qyy gnupg2 ca-certificates
+    apt-get install -qyy gnupg2 ca-certificates && \
+    apt-get clean
     
 RUN DEBIAN_FRONTEND=noninteractive \
     echo "deb https://pkg.mxe.cc/repos/apt buster main" >/etc/apt/sources.list.d/mxeapt.list && \

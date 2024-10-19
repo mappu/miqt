@@ -30,8 +30,8 @@ QDialog* QDialog_new2(QWidget* parent);
 QDialog* QDialog_new3(QWidget* parent, int f);
 QMetaObject* QDialog_MetaObject(const QDialog* self);
 void* QDialog_Metacast(QDialog* self, const char* param1);
-struct miqt_string* QDialog_Tr(const char* s);
-struct miqt_string* QDialog_TrUtf8(const char* s);
+struct miqt_string QDialog_Tr(const char* s);
+struct miqt_string QDialog_TrUtf8(const char* s);
 int QDialog_Result(const QDialog* self);
 void QDialog_SetVisible(QDialog* self, bool visible);
 void QDialog_SetOrientation(QDialog* self, int orientation);
@@ -56,10 +56,10 @@ void QDialog_Done(QDialog* self, int param1);
 void QDialog_Accept(QDialog* self);
 void QDialog_Reject(QDialog* self);
 void QDialog_ShowExtension(QDialog* self, bool param1);
-struct miqt_string* QDialog_Tr2(const char* s, const char* c);
-struct miqt_string* QDialog_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QDialog_TrUtf82(const char* s, const char* c);
-struct miqt_string* QDialog_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QDialog_Tr2(const char* s, const char* c);
+struct miqt_string QDialog_Tr3(const char* s, const char* c, int n);
+struct miqt_string QDialog_TrUtf82(const char* s, const char* c);
+struct miqt_string QDialog_TrUtf83(const char* s, const char* c, int n);
 void QDialog_Delete(QDialog* self);
 
 #ifdef __cplusplus

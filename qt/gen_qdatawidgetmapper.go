@@ -70,24 +70,24 @@ func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
 func (this *QDataWidgetMapper) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QDataWidgetMapper_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QDataWidgetMapper_Metacast(this.h, param1_Cstring))
 }
 
 func QDataWidgetMapper_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QDataWidgetMapper_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -138,8 +138,11 @@ func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {
 	C.QDataWidgetMapper_AddMapping(this.h, widget.cPointer(), (C.int)(section))
 }
 
-func (this *QDataWidgetMapper) AddMapping2(widget *QWidget, section int, propertyName *QByteArray) {
-	C.QDataWidgetMapper_AddMapping2(this.h, widget.cPointer(), (C.int)(section), propertyName.cPointer())
+func (this *QDataWidgetMapper) AddMapping2(widget *QWidget, section int, propertyName []byte) {
+	propertyName_alias := C.struct_miqt_string{}
+	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	propertyName_alias.len = C.size_t(len(propertyName))
+	C.QDataWidgetMapper_AddMapping2(this.h, widget.cPointer(), (C.int)(section), propertyName_alias)
 }
 
 func (this *QDataWidgetMapper) RemoveMapping(widget *QWidget) {
@@ -150,11 +153,11 @@ func (this *QDataWidgetMapper) MappedSection(widget *QWidget) int {
 	return (int)(C.QDataWidgetMapper_MappedSection(this.h, widget.cPointer()))
 }
 
-func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) *QByteArray {
-	_ret := C.QDataWidgetMapper_MappedPropertyName(this.h, widget.cPointer())
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) []byte {
+	var _bytearray C.struct_miqt_string = C.QDataWidgetMapper_MappedPropertyName(this.h, widget.cPointer())
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
@@ -226,9 +229,9 @@ func QDataWidgetMapper_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -237,9 +240,9 @@ func QDataWidgetMapper_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -248,9 +251,9 @@ func QDataWidgetMapper_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -259,9 +262,9 @@ func QDataWidgetMapper_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDataWidgetMapper_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

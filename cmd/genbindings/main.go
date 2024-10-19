@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	ClangSubprocessCount = 3
+	ClangSubprocessCount = 2
 	BaseModule           = "github.com/mappu/miqt"
 )
 

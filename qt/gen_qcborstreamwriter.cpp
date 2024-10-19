@@ -9,10 +9,6 @@ QCborStreamWriter* QCborStreamWriter_new(QIODevice* device) {
 	return new QCborStreamWriter(device);
 }
 
-QCborStreamWriter* QCborStreamWriter_new2(QByteArray* data) {
-	return new QCborStreamWriter(data);
-}
-
 void QCborStreamWriter_SetDevice(QCborStreamWriter* self, QIODevice* device) {
 	self->setDevice(device);
 }
@@ -33,8 +29,9 @@ void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, u
 	self->append(static_cast<QCborNegativeInteger>(n));
 }
 
-void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, QByteArray* ba) {
-	self->append(*ba);
+void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, struct miqt_string ba) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	self->append(ba_QByteArray);
 }
 
 void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, uint64_t tag) {

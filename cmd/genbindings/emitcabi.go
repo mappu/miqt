@@ -9,7 +9,10 @@ import (
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
-		return "struct miqt_string*"
+		return "struct miqt_string"
+
+	} else if p.ParameterType == "QByteArray" {
+		return "struct miqt_string"
 
 	} else if _, ok := p.QListOf(); ok {
 		return "struct miqt_array*"
@@ -146,7 +149,10 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 
 	for _, p := range m.Parameters {
 		if p.ParameterType == "QString" {
-			tmp = append(tmp, "struct miqt_string* "+p.ParameterName)
+			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
+
+		} else if p.ParameterType == "QByteArray" {
+			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
 
 		} else if t, ok := p.QListOf(); ok {
 			tmp = append(tmp, "struct miqt_array* /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
@@ -197,10 +203,17 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 	nameprefix := makeNamePrefix(p.ParameterName)
 
 	if p.ParameterType == "QString" {
-		// The CABI has accepted two parameters - need to convert to one real QString
-		// Create it on the stack
-		preamble += indent + "QString " + nameprefix + "_QString = QString::fromUtf8(&" + p.ParameterName + "->data, " + p.ParameterName + "->len);\n"
+		// The CABI received parameter is a struct miqt_string, passed by value
+		// C++ needs it as a QString. Create one on the stack for automatic cleanup
+		// The caller will free the miqt_string
+		preamble += indent + "QString " + nameprefix + "_QString = QString::fromUtf8(" + p.ParameterName + ".data, " + p.ParameterName + ".len);\n"
 		return preamble, nameprefix + "_QString"
+
+	} else if p.ParameterType == "QByteArray" {
+		// The caller will free the miqt_string data
+		// This ctor makes a deep copy, on the stack which will be dtor'd by RAII
+		preamble += indent + "QByteArray " + nameprefix + "_QByteArray(" + p.ParameterName + ".data, " + p.ParameterName + ".len);\n"
+		return preamble, nameprefix + "_QByteArray"
 
 	} else if listType, ok := p.QListOf(); ok {
 
@@ -315,7 +328,23 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			afterCall += indent + "QByteArray " + namePrefix + "_b = " + namePrefix + "_ret.toUtf8();\n"
 		}
 
-		afterCall += indent + assignExpression + "miqt_strdup(" + namePrefix + "_b.data(), " + namePrefix + "_b.length());\n"
+		afterCall += indent + "struct miqt_string " + namePrefix + "_ms;\n"
+		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_b.length();\n"
+		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
+		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_b.data(), " + namePrefix + "_ms.len);\n"
+		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+
+	} else if p.ParameterType == "QByteArray" {
+		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
+		// Do not free the data, the caller will free it
+
+		shouldReturn = ifv(p.Const, "const ", "") + "QByteArray " + p.ParameterName + "_qb = "
+
+		afterCall += indent + "struct miqt_string " + namePrefix + "_ms;\n"
+		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_qb.length();\n"
+		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
+		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_qb.data(), " + namePrefix + "_ms.len);\n"
+		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
 
 	} else if t, ok := p.QListOf(); ok {
 
@@ -577,9 +606,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
 	for _, ref := range getReferencedTypes(src) {
-		if !ImportHeaderForClass(ref) {
-			continue
-		}
 
 		if ref == "QString" {
 			ret.WriteString("#include <QString>\n")
@@ -590,6 +616,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		if strings.Contains(ref, `::`) {
 			ret.WriteString(`#define WORKAROUND_INNER_CLASS_DEFINITION_` + cabiClassName(ref) + "\n")
+			continue
+		}
+
+		if !ImportHeaderForClass(ref) {
 			continue
 		}
 

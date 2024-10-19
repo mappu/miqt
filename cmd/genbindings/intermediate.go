@@ -110,7 +110,7 @@ func (p CppParameter) QtClassType() bool {
 		return true
 	}
 
-	if p.ParameterType == "QString" {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
 		return true
 	}
 
@@ -322,6 +322,18 @@ type CppEnum struct {
 	EnumName       string
 	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
+}
+
+func (e CppEnum) ShortEnumName() string {
+
+	// Strip back one single :: pair from the generated variable name
+	if nameParts := strings.Split(e.EnumName, `::`); len(nameParts) > 1 {
+		nameParts = nameParts[0 : len(nameParts)-1]
+		return strings.Join(nameParts, `::`)
+	}
+
+	// No change
+	return e.EnumName
 }
 
 type CppClass struct {

@@ -32,18 +32,26 @@ void* QSortFilterProxyModel_Metacast(QSortFilterProxyModel* self, const char* pa
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSortFilterProxyModel_Tr(const char* s) {
+struct miqt_string QSortFilterProxyModel_Tr(const char* s) {
 	QString _ret = QSortFilterProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSortFilterProxyModel_TrUtf8(const char* s) {
+struct miqt_string QSortFilterProxyModel_TrUtf8(const char* s) {
 	QString _ret = QSortFilterProxyModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel* self, QAbstractItemModel* sourceModel) {
@@ -141,8 +149,8 @@ void QSortFilterProxyModel_SetRecursiveFilteringEnabled(QSortFilterProxyModel* s
 	self->setRecursiveFilteringEnabled(recursive);
 }
 
-void QSortFilterProxyModel_SetFilterRegExp(QSortFilterProxyModel* self, struct miqt_string* pattern) {
-	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
+void QSortFilterProxyModel_SetFilterRegExp(QSortFilterProxyModel* self, struct miqt_string pattern) {
+	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	self->setFilterRegExp(pattern_QString);
 }
 
@@ -150,8 +158,8 @@ void QSortFilterProxyModel_SetFilterRegExpWithRegExp(QSortFilterProxyModel* self
 	self->setFilterRegExp(*regExp);
 }
 
-void QSortFilterProxyModel_SetFilterRegularExpression(QSortFilterProxyModel* self, struct miqt_string* pattern) {
-	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
+void QSortFilterProxyModel_SetFilterRegularExpression(QSortFilterProxyModel* self, struct miqt_string pattern) {
+	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	self->setFilterRegularExpression(pattern_QString);
 }
 
@@ -159,13 +167,13 @@ void QSortFilterProxyModel_SetFilterRegularExpressionWithRegularExpression(QSort
 	self->setFilterRegularExpression(*regularExpression);
 }
 
-void QSortFilterProxyModel_SetFilterWildcard(QSortFilterProxyModel* self, struct miqt_string* pattern) {
-	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
+void QSortFilterProxyModel_SetFilterWildcard(QSortFilterProxyModel* self, struct miqt_string pattern) {
+	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	self->setFilterWildcard(pattern_QString);
 }
 
-void QSortFilterProxyModel_SetFilterFixedString(QSortFilterProxyModel* self, struct miqt_string* pattern) {
-	QString pattern_QString = QString::fromUtf8(&pattern->data, pattern->len);
+void QSortFilterProxyModel_SetFilterFixedString(QSortFilterProxyModel* self, struct miqt_string pattern) {
+	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	self->setFilterFixedString(pattern_QString);
 }
 
@@ -288,12 +296,16 @@ void QSortFilterProxyModel_Sort(QSortFilterProxyModel* self, int column) {
 struct miqt_array* QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -385,32 +397,48 @@ void QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(QSortFilterP
 	});
 }
 
-struct miqt_string* QSortFilterProxyModel_Tr2(const char* s, const char* c) {
+struct miqt_string QSortFilterProxyModel_Tr2(const char* s, const char* c) {
 	QString _ret = QSortFilterProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSortFilterProxyModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSortFilterProxyModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSortFilterProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSortFilterProxyModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSortFilterProxyModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSortFilterProxyModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSortFilterProxyModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSortFilterProxyModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSortFilterProxyModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QSortFilterProxyModel_Index3(const QSortFilterProxyModel* self, int row, int column, QModelIndex* parent) {

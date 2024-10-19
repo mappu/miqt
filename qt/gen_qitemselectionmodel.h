@@ -64,8 +64,8 @@ QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject
 QItemSelectionModel* QItemSelectionModel_new3(QAbstractItemModel* model);
 QMetaObject* QItemSelectionModel_MetaObject(const QItemSelectionModel* self);
 void* QItemSelectionModel_Metacast(QItemSelectionModel* self, const char* param1);
-struct miqt_string* QItemSelectionModel_Tr(const char* s);
-struct miqt_string* QItemSelectionModel_TrUtf8(const char* s);
+struct miqt_string QItemSelectionModel_Tr(const char* s);
+struct miqt_string QItemSelectionModel_TrUtf8(const char* s);
 QModelIndex* QItemSelectionModel_CurrentIndex(const QItemSelectionModel* self);
 bool QItemSelectionModel_IsSelected(const QItemSelectionModel* self, QModelIndex* index);
 bool QItemSelectionModel_IsRowSelected(const QItemSelectionModel* self, int row);
@@ -93,10 +93,10 @@ void QItemSelectionModel_CurrentColumnChanged(QItemSelectionModel* self, QModelI
 void QItemSelectionModel_connect_CurrentColumnChanged(QItemSelectionModel* self, intptr_t slot);
 void QItemSelectionModel_ModelChanged(QItemSelectionModel* self, QAbstractItemModel* model);
 void QItemSelectionModel_connect_ModelChanged(QItemSelectionModel* self, intptr_t slot);
-struct miqt_string* QItemSelectionModel_Tr2(const char* s, const char* c);
-struct miqt_string* QItemSelectionModel_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QItemSelectionModel_TrUtf82(const char* s, const char* c);
-struct miqt_string* QItemSelectionModel_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QItemSelectionModel_Tr2(const char* s, const char* c);
+struct miqt_string QItemSelectionModel_Tr3(const char* s, const char* c, int n);
+struct miqt_string QItemSelectionModel_TrUtf82(const char* s, const char* c);
+struct miqt_string QItemSelectionModel_TrUtf83(const char* s, const char* c, int n);
 bool QItemSelectionModel_IsRowSelected2(const QItemSelectionModel* self, int row, QModelIndex* parent);
 bool QItemSelectionModel_IsColumnSelected2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 bool QItemSelectionModel_RowIntersectsSelection2(const QItemSelectionModel* self, int row, QModelIndex* parent);

@@ -25,8 +25,8 @@ QIcon* QIcon_new3(QIcon* other) {
 	return new QIcon(*other);
 }
 
-QIcon* QIcon_new4(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QIcon* QIcon_new4(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QIcon(fileName_QString);
 }
 
@@ -66,11 +66,15 @@ QSize* QIcon_ActualSize2(const QIcon* self, QWindow* window, QSize* size) {
 	return new QSize(self->actualSize(window, *size));
 }
 
-struct miqt_string* QIcon_Name(const QIcon* self) {
+struct miqt_string QIcon_Name(const QIcon* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QIcon_Paint(const QIcon* self, QPainter* painter, QRect* rect) {
@@ -102,8 +106,8 @@ void QIcon_AddPixmap(QIcon* self, QPixmap* pixmap) {
 	self->addPixmap(*pixmap);
 }
 
-void QIcon_AddFile(QIcon* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QIcon_AddFile(QIcon* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->addFile(fileName_QString);
 }
 
@@ -128,30 +132,34 @@ bool QIcon_IsMask(const QIcon* self) {
 	return self->isMask();
 }
 
-QIcon* QIcon_FromTheme(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QIcon* QIcon_FromTheme(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QIcon(QIcon::fromTheme(name_QString));
 }
 
-QIcon* QIcon_FromTheme2(struct miqt_string* name, QIcon* fallback) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QIcon* QIcon_FromTheme2(struct miqt_string name, QIcon* fallback) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QIcon(QIcon::fromTheme(name_QString, *fallback));
 }
 
-bool QIcon_HasThemeIcon(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+bool QIcon_HasThemeIcon(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return QIcon::hasThemeIcon(name_QString);
 }
 
 struct miqt_array* QIcon_ThemeSearchPaths() {
 	QStringList _ret = QIcon::themeSearchPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -159,12 +167,12 @@ struct miqt_array* QIcon_ThemeSearchPaths() {
 	return _out;
 }
 
-void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string* */ searchpath) {
+void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string */ searchpath) {
 	QStringList searchpath_QList;
 	searchpath_QList.reserve(searchpath->len);
-	struct miqt_string** searchpath_arr = static_cast<struct miqt_string**>(searchpath->data);
+	struct miqt_string* searchpath_arr = static_cast<struct miqt_string*>(searchpath->data);
 	for(size_t i = 0; i < searchpath->len; ++i) {
-		QString searchpath_arr_i_QString = QString::fromUtf8(&searchpath_arr[i]->data, searchpath_arr[i]->len);
+		QString searchpath_arr_i_QString = QString::fromUtf8(searchpath_arr[i].data, searchpath_arr[i].len);
 		searchpath_QList.push_back(searchpath_arr_i_QString);
 	}
 	QIcon::setThemeSearchPaths(searchpath_QList);
@@ -173,12 +181,16 @@ void QIcon_SetThemeSearchPaths(struct miqt_array* /* of struct miqt_string* */ s
 struct miqt_array* QIcon_FallbackSearchPaths() {
 	QStringList _ret = QIcon::fallbackSearchPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -186,38 +198,46 @@ struct miqt_array* QIcon_FallbackSearchPaths() {
 	return _out;
 }
 
-void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of struct miqt_string* */ paths) {
+void QIcon_SetFallbackSearchPaths(struct miqt_array* /* of struct miqt_string */ paths) {
 	QStringList paths_QList;
 	paths_QList.reserve(paths->len);
-	struct miqt_string** paths_arr = static_cast<struct miqt_string**>(paths->data);
+	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths->data);
 	for(size_t i = 0; i < paths->len; ++i) {
-		QString paths_arr_i_QString = QString::fromUtf8(&paths_arr[i]->data, paths_arr[i]->len);
+		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}
 	QIcon::setFallbackSearchPaths(paths_QList);
 }
 
-struct miqt_string* QIcon_ThemeName() {
+struct miqt_string QIcon_ThemeName() {
 	QString _ret = QIcon::themeName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QIcon_SetThemeName(struct miqt_string* path) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+void QIcon_SetThemeName(struct miqt_string path) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QIcon::setThemeName(path_QString);
 }
 
-struct miqt_string* QIcon_FallbackThemeName() {
+struct miqt_string QIcon_FallbackThemeName() {
 	QString _ret = QIcon::fallbackThemeName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QIcon_SetFallbackThemeName(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QIcon_SetFallbackThemeName(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QIcon::setFallbackThemeName(name_QString);
 }
 
@@ -301,18 +321,18 @@ void QIcon_AddPixmap3(QIcon* self, QPixmap* pixmap, int mode, int state) {
 	self->addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-void QIcon_AddFile2(QIcon* self, struct miqt_string* fileName, QSize* size) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QIcon_AddFile2(QIcon* self, struct miqt_string fileName, QSize* size) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->addFile(fileName_QString, *size);
 }
 
-void QIcon_AddFile3(QIcon* self, struct miqt_string* fileName, QSize* size, int mode) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QIcon_AddFile3(QIcon* self, struct miqt_string fileName, QSize* size, int mode) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode));
 }
 
-void QIcon_AddFile4(QIcon* self, struct miqt_string* fileName, QSize* size, int mode, int state) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QIcon_AddFile4(QIcon* self, struct miqt_string fileName, QSize* size, int mode, int state) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 

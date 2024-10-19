@@ -37,42 +37,58 @@ void* QGuiApplication_Metacast(QGuiApplication* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGuiApplication_Tr(const char* s) {
+struct miqt_string QGuiApplication_Tr(const char* s) {
 	QString _ret = QGuiApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGuiApplication_TrUtf8(const char* s) {
+struct miqt_string QGuiApplication_TrUtf8(const char* s) {
 	QString _ret = QGuiApplication::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGuiApplication_SetApplicationDisplayName(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QGuiApplication_SetApplicationDisplayName(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QGuiApplication::setApplicationDisplayName(name_QString);
 }
 
-struct miqt_string* QGuiApplication_ApplicationDisplayName() {
+struct miqt_string QGuiApplication_ApplicationDisplayName() {
 	QString _ret = QGuiApplication::applicationDisplayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QGuiApplication_SetDesktopFileName(struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QGuiApplication_SetDesktopFileName(struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QGuiApplication::setDesktopFileName(name_QString);
 }
 
-struct miqt_string* QGuiApplication_DesktopFileName() {
+struct miqt_string QGuiApplication_DesktopFileName() {
 	QString _ret = QGuiApplication::desktopFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QGuiApplication_AllWindows() {
@@ -113,11 +129,15 @@ QIcon* QGuiApplication_WindowIcon() {
 	return new QIcon(QGuiApplication::windowIcon());
 }
 
-struct miqt_string* QGuiApplication_PlatformName() {
+struct miqt_string QGuiApplication_PlatformName() {
 	QString _ret = QGuiApplication::platformName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QWindow* QGuiApplication_ModalWindow() {
@@ -276,18 +296,26 @@ bool QGuiApplication_IsSessionRestored(const QGuiApplication* self) {
 	return self->isSessionRestored();
 }
 
-struct miqt_string* QGuiApplication_SessionId(const QGuiApplication* self) {
+struct miqt_string QGuiApplication_SessionId(const QGuiApplication* self) {
 	QString _ret = self->sessionId();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGuiApplication_SessionKey(const QGuiApplication* self) {
+struct miqt_string QGuiApplication_SessionKey(const QGuiApplication* self) {
 	QString _ret = self->sessionKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QGuiApplication_IsSavingSession(const QGuiApplication* self) {
@@ -467,32 +495,48 @@ void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QGuiApplication_Tr2(const char* s, const char* c) {
+struct miqt_string QGuiApplication_Tr2(const char* s, const char* c) {
 	QString _ret = QGuiApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGuiApplication_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGuiApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGuiApplication_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGuiApplication_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGuiApplication::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGuiApplication_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGuiApplication_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGuiApplication::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGuiApplication_Delete(QGuiApplication* self) {

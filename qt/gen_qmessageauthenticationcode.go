@@ -49,8 +49,11 @@ func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessa
 }
 
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
-func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key *QByteArray) *QMessageAuthenticationCode {
-	ret := C.QMessageAuthenticationCode_new2((C.int)(method), key.cPointer())
+func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []byte) *QMessageAuthenticationCode {
+	key_alias := C.struct_miqt_string{}
+	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	key_alias.len = C.size_t(len(key))
+	ret := C.QMessageAuthenticationCode_new2((C.int)(method), key_alias)
 	return newQMessageAuthenticationCode(ret)
 }
 
@@ -58,8 +61,11 @@ func (this *QMessageAuthenticationCode) Reset() {
 	C.QMessageAuthenticationCode_Reset(this.h)
 }
 
-func (this *QMessageAuthenticationCode) SetKey(key *QByteArray) {
-	C.QMessageAuthenticationCode_SetKey(this.h, key.cPointer())
+func (this *QMessageAuthenticationCode) SetKey(key []byte) {
+	key_alias := C.struct_miqt_string{}
+	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	key_alias.len = C.size_t(len(key))
+	C.QMessageAuthenticationCode_SetKey(this.h, key_alias)
 }
 
 func (this *QMessageAuthenticationCode) AddData(data string, length int) {
@@ -68,26 +74,35 @@ func (this *QMessageAuthenticationCode) AddData(data string, length int) {
 	C.QMessageAuthenticationCode_AddData(this.h, data_Cstring, (C.int)(length))
 }
 
-func (this *QMessageAuthenticationCode) AddDataWithData(data *QByteArray) {
-	C.QMessageAuthenticationCode_AddDataWithData(this.h, data.cPointer())
+func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
+	data_alias := C.struct_miqt_string{}
+	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	data_alias.len = C.size_t(len(data))
+	C.QMessageAuthenticationCode_AddDataWithData(this.h, data_alias)
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
 	return (bool)(C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer()))
 }
 
-func (this *QMessageAuthenticationCode) Result() *QByteArray {
-	_ret := C.QMessageAuthenticationCode_Result(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMessageAuthenticationCode) Result() []byte {
+	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_Result(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QMessageAuthenticationCode_Hash(message *QByteArray, key *QByteArray, method QCryptographicHash__Algorithm) *QByteArray {
-	_ret := C.QMessageAuthenticationCode_Hash(message.cPointer(), key.cPointer(), (C.int)(method))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptographicHash__Algorithm) []byte {
+	message_alias := C.struct_miqt_string{}
+	message_alias.data = (*C.char)(unsafe.Pointer(&message[0]))
+	message_alias.len = C.size_t(len(message))
+	key_alias := C.struct_miqt_string{}
+	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	key_alias.len = C.size_t(len(key))
+	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_Hash(message_alias, key_alias, (C.int)(method))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 // Delete this object from C++ memory.

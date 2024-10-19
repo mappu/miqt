@@ -24,8 +24,8 @@ QMovie* QMovie_new2(QIODevice* device) {
 	return new QMovie(device);
 }
 
-QMovie* QMovie_new3(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QMovie* QMovie_new3(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QMovie(fileName_QString);
 }
 
@@ -33,22 +33,26 @@ QMovie* QMovie_new4(QObject* parent) {
 	return new QMovie(parent);
 }
 
-QMovie* QMovie_new5(QIODevice* device, QByteArray* format) {
-	return new QMovie(device, *format);
+QMovie* QMovie_new5(QIODevice* device, struct miqt_string format) {
+	QByteArray format_QByteArray(format.data, format.len);
+	return new QMovie(device, format_QByteArray);
 }
 
-QMovie* QMovie_new6(QIODevice* device, QByteArray* format, QObject* parent) {
-	return new QMovie(device, *format, parent);
+QMovie* QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent) {
+	QByteArray format_QByteArray(format.data, format.len);
+	return new QMovie(device, format_QByteArray, parent);
 }
 
-QMovie* QMovie_new7(struct miqt_string* fileName, QByteArray* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
-	return new QMovie(fileName_QString, *format);
+QMovie* QMovie_new7(struct miqt_string fileName, struct miqt_string format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
+	QByteArray format_QByteArray(format.data, format.len);
+	return new QMovie(fileName_QString, format_QByteArray);
 }
 
-QMovie* QMovie_new8(struct miqt_string* fileName, QByteArray* format, QObject* parent) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
-	return new QMovie(fileName_QString, *format, parent);
+QMovie* QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
+	QByteArray format_QByteArray(format.data, format.len);
+	return new QMovie(fileName_QString, format_QByteArray, parent);
 }
 
 QMetaObject* QMovie_MetaObject(const QMovie* self) {
@@ -59,26 +63,39 @@ void* QMovie_Metacast(QMovie* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QMovie_Tr(const char* s) {
+struct miqt_string QMovie_Tr(const char* s) {
 	QString _ret = QMovie::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMovie_TrUtf8(const char* s) {
+struct miqt_string QMovie_TrUtf8(const char* s) {
 	QString _ret = QMovie::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 struct miqt_array* QMovie_SupportedFormats() {
 	QList<QByteArray> _ret = QMovie::supportedFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QByteArray** _arr = static_cast<QByteArray**>(malloc(sizeof(QByteArray*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QByteArray(_ret[i]);
+		QByteArray _lv_qb = _ret[i];
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_qb.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -94,24 +111,34 @@ QIODevice* QMovie_Device(const QMovie* self) {
 	return self->device();
 }
 
-void QMovie_SetFileName(QMovie* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QMovie_SetFileName(QMovie* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->setFileName(fileName_QString);
 }
 
-struct miqt_string* QMovie_FileName(const QMovie* self) {
+struct miqt_string QMovie_FileName(const QMovie* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QMovie_SetFormat(QMovie* self, QByteArray* format) {
-	self->setFormat(*format);
+void QMovie_SetFormat(QMovie* self, struct miqt_string format) {
+	QByteArray format_QByteArray(format.data, format.len);
+	self->setFormat(format_QByteArray);
 }
 
-QByteArray* QMovie_Format(const QMovie* self) {
-	return new QByteArray(self->format());
+struct miqt_string QMovie_Format(const QMovie* self) {
+	QByteArray _qb = self->format();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QMovie_SetBackgroundColor(QMovie* self, QColor* color) {
@@ -148,11 +175,15 @@ int QMovie_LastError(const QMovie* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QMovie_LastErrorString(const QMovie* self) {
+struct miqt_string QMovie_LastErrorString(const QMovie* self) {
 	QString _ret = self->lastErrorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QMovie_JumpToFrame(QMovie* self, int frameNumber) {
@@ -297,32 +328,48 @@ void QMovie_SetSpeed(QMovie* self, int percentSpeed) {
 	self->setSpeed(static_cast<int>(percentSpeed));
 }
 
-struct miqt_string* QMovie_Tr2(const char* s, const char* c) {
+struct miqt_string QMovie_Tr2(const char* s, const char* c) {
 	QString _ret = QMovie::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMovie_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMovie_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QMovie::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMovie_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMovie_TrUtf82(const char* s, const char* c) {
 	QString _ret = QMovie::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QMovie_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMovie_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMovie::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QMovie_Delete(QMovie* self) {

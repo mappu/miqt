@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -166,11 +165,15 @@ func (this *QCollator) IgnorePunctuation() bool {
 }
 
 func (this *QCollator) Compare(s1 string, s2 string) int {
-	s1_ms := libmiqt.Strdupg(s1)
-	defer C.free(s1_ms)
-	s2_ms := libmiqt.Strdupg(s2)
-	defer C.free(s2_ms)
-	return (int)(C.QCollator_Compare(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
+	s1_ms := C.struct_miqt_string{}
+	s1_ms.data = C.CString(s1)
+	s1_ms.len = C.size_t(len(s1))
+	defer C.free(unsafe.Pointer(s1_ms.data))
+	s2_ms := C.struct_miqt_string{}
+	s2_ms.data = C.CString(s2)
+	s2_ms.len = C.size_t(len(s2))
+	defer C.free(unsafe.Pointer(s2_ms.data))
+	return (int)(C.QCollator_Compare(this.h, s1_ms, s2_ms))
 }
 
 func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
@@ -178,17 +181,23 @@ func (this *QCollator) Compare3(s1 *QChar, len1 int, s2 *QChar, len2 int) int {
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
-	s1_ms := libmiqt.Strdupg(s1)
-	defer C.free(s1_ms)
-	s2_ms := libmiqt.Strdupg(s2)
-	defer C.free(s2_ms)
-	return (bool)(C.QCollator_OperatorCall(this.h, (*C.struct_miqt_string)(s1_ms), (*C.struct_miqt_string)(s2_ms)))
+	s1_ms := C.struct_miqt_string{}
+	s1_ms.data = C.CString(s1)
+	s1_ms.len = C.size_t(len(s1))
+	defer C.free(unsafe.Pointer(s1_ms.data))
+	s2_ms := C.struct_miqt_string{}
+	s2_ms.data = C.CString(s2)
+	s2_ms.len = C.size_t(len(s2))
+	defer C.free(unsafe.Pointer(s2_ms.data))
+	return (bool)(C.QCollator_OperatorCall(this.h, s1_ms, s2_ms))
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	_ret := C.QCollator_SortKey(this.h, (*C.struct_miqt_string)(stringVal_ms))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_ret := C.QCollator_SortKey(this.h, stringVal_ms)
 	_goptr := newQCollatorSortKey(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

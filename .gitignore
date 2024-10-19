@@ -4,6 +4,9 @@ cmd/genbindings/cachedir/
 # docker files
 container-build-cache/
 
+# local genbindings configuration
+cmd/genbindings/genbindings.local*
+
 # binaries
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
@@ -19,6 +22,7 @@ examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
 examples/uidesigner/uidesigner.exe
+examples/libraries/qt-qprintsupport/qt-qprintsupport
 
 # android temporary build files
 android-build

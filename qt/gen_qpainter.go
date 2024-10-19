@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -831,84 +830,108 @@ func (this *QPainter) DrawStaticText3(left int, top int, staticText *QStaticText
 }
 
 func (this *QPainter) DrawText(p *QPointF, s string) {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	C.QPainter_DrawText(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	C.QPainter_DrawText(this.h, p.cPointer(), s_ms)
 }
 
 func (this *QPainter) DrawText2(p *QPoint, s string) {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	C.QPainter_DrawText2(this.h, p.cPointer(), (*C.struct_miqt_string)(s_ms))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	C.QPainter_DrawText2(this.h, p.cPointer(), s_ms)
 }
 
 func (this *QPainter) DrawText3(x int, y int, s string) {
-	s_ms := libmiqt.Strdupg(s)
-	defer C.free(s_ms)
-	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), (*C.struct_miqt_string)(s_ms))
+	s_ms := C.struct_miqt_string{}
+	s_ms.data = C.CString(s)
+	s_ms.len = C.size_t(len(s))
+	defer C.free(unsafe.Pointer(s_ms.data))
+	C.QPainter_DrawText3(this.h, (C.int)(x), (C.int)(y), s_ms)
 }
 
 func (this *QPainter) DrawText4(p *QPointF, str string, tf int, justificationPadding int) {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	C.QPainter_DrawText4(this.h, p.cPointer(), (*C.struct_miqt_string)(str_ms), (C.int)(tf), (C.int)(justificationPadding))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	C.QPainter_DrawText4(this.h, p.cPointer(), str_ms, (C.int)(tf), (C.int)(justificationPadding))
 }
 
 func (this *QPainter) DrawText5(r *QRectF, flags int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText5(this.h, r.cPointer(), (C.int)(flags), text_ms)
 }
 
 func (this *QPainter) DrawText6(r *QRect, flags int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText6(this.h, r.cPointer(), (C.int)(flags), text_ms)
 }
 
 func (this *QPainter) DrawText7(x int, y int, w int, h int, flags int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms)
 }
 
 func (this *QPainter) DrawText8(r *QRectF, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText8(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText8(this.h, r.cPointer(), text_ms)
 }
 
 func (this *QPainter) BoundingRect(rect *QRectF, flags int, text string) *QRectF {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QPainter_BoundingRect(this.h, rect.cPointer(), (C.int)(flags), text_ms)
 	_goptr := newQRectF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPainter) BoundingRect2(rect *QRect, flags int, text string) *QRect {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QPainter_BoundingRect2(this.h, rect.cPointer(), (C.int)(flags), text_ms)
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPainter) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QPainter_BoundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms)
 	_goptr := newQRect(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPainter) BoundingRect4(rect *QRectF, text string) *QRectF {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QPainter_BoundingRect4(this.h, rect.cPointer(), text_ms)
 	_goptr := newQRectF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1175,33 +1198,43 @@ func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, s
 }
 
 func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText42(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
 }
 
 func (this *QPainter) DrawText43(r *QRect, flags int, text string, br *QRect) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText43(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
 }
 
 func (this *QPainter) DrawText72(x int, y int, w int, h int, flags int, text string, br *QRect) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), (*C.struct_miqt_string)(text_ms), br.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, br.cPointer())
 }
 
 func (this *QPainter) DrawText32(r *QRectF, text string, o *QTextOption) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QPainter_DrawText32(this.h, r.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QPainter_DrawText32(this.h, r.cPointer(), text_ms, o.cPointer())
 }
 
 func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) *QRectF {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), (*C.struct_miqt_string)(text_ms), o.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QPainter_BoundingRect32(this.h, rect.cPointer(), text_ms, o.cPointer())
 	_goptr := newQRectF(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr

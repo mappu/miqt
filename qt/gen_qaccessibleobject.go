@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -60,9 +59,11 @@ func (this *QAccessibleObject) Rect() *QRect {
 }
 
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAccessibleObject_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAccessibleObject_SetText(this.h, (C.int)(t), text_ms)
 }
 
 func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
@@ -130,9 +131,9 @@ func (this *QAccessibleApplication) Child(index int) *QAccessibleInterface {
 }
 
 func (this *QAccessibleApplication) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.int)(t))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleApplication_Text(this.h, (C.int)(t))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -31,18 +31,18 @@ QSequentialAnimationGroup* QSequentialAnimationGroup_new();
 QSequentialAnimationGroup* QSequentialAnimationGroup_new2(QObject* parent);
 QMetaObject* QSequentialAnimationGroup_MetaObject(const QSequentialAnimationGroup* self);
 void* QSequentialAnimationGroup_Metacast(QSequentialAnimationGroup* self, const char* param1);
-struct miqt_string* QSequentialAnimationGroup_Tr(const char* s);
-struct miqt_string* QSequentialAnimationGroup_TrUtf8(const char* s);
+struct miqt_string QSequentialAnimationGroup_Tr(const char* s);
+struct miqt_string QSequentialAnimationGroup_TrUtf8(const char* s);
 QPauseAnimation* QSequentialAnimationGroup_AddPause(QSequentialAnimationGroup* self, int msecs);
 QPauseAnimation* QSequentialAnimationGroup_InsertPause(QSequentialAnimationGroup* self, int index, int msecs);
 QAbstractAnimation* QSequentialAnimationGroup_CurrentAnimation(const QSequentialAnimationGroup* self);
 int QSequentialAnimationGroup_Duration(const QSequentialAnimationGroup* self);
 void QSequentialAnimationGroup_CurrentAnimationChanged(QSequentialAnimationGroup* self, QAbstractAnimation* current);
 void QSequentialAnimationGroup_connect_CurrentAnimationChanged(QSequentialAnimationGroup* self, intptr_t slot);
-struct miqt_string* QSequentialAnimationGroup_Tr2(const char* s, const char* c);
-struct miqt_string* QSequentialAnimationGroup_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QSequentialAnimationGroup_TrUtf82(const char* s, const char* c);
-struct miqt_string* QSequentialAnimationGroup_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QSequentialAnimationGroup_Tr2(const char* s, const char* c);
+struct miqt_string QSequentialAnimationGroup_Tr3(const char* s, const char* c, int n);
+struct miqt_string QSequentialAnimationGroup_TrUtf82(const char* s, const char* c);
+struct miqt_string QSequentialAnimationGroup_TrUtf83(const char* s, const char* c, int n);
 void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self);
 
 #ifdef __cplusplus

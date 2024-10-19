@@ -133,11 +133,15 @@ double QTextFormat_DoubleProperty(const QTextFormat* self, int propertyId) {
 	return static_cast<double>(_ret);
 }
 
-struct miqt_string* QTextFormat_StringProperty(const QTextFormat* self, int propertyId) {
+struct miqt_string QTextFormat_StringProperty(const QTextFormat* self, int propertyId) {
 	QString _ret = self->stringProperty(static_cast<int>(propertyId));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QColor* QTextFormat_ColorProperty(const QTextFormat* self, int propertyId) {
@@ -316,24 +320,28 @@ QFont* QTextCharFormat_Font(const QTextCharFormat* self) {
 	return new QFont(self->font());
 }
 
-void QTextCharFormat_SetFontFamily(QTextCharFormat* self, struct miqt_string* family) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+void QTextCharFormat_SetFontFamily(QTextCharFormat* self, struct miqt_string family) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	self->setFontFamily(family_QString);
 }
 
-struct miqt_string* QTextCharFormat_FontFamily(const QTextCharFormat* self) {
+struct miqt_string QTextCharFormat_FontFamily(const QTextCharFormat* self) {
 	QString _ret = self->fontFamily();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ families) {
+void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string */ families) {
 	QStringList families_QList;
 	families_QList.reserve(families->len);
-	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
-		QString families_arr_i_QString = QString::fromUtf8(&families_arr[i]->data, families_arr[i]->len);
+		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
 	self->setFontFamilies(families_QList);
@@ -343,8 +351,8 @@ QVariant* QTextCharFormat_FontFamilies(const QTextCharFormat* self) {
 	return new QVariant(self->fontFamilies());
 }
 
-void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, struct miqt_string* styleName) {
-	QString styleName_QString = QString::fromUtf8(&styleName->data, styleName->len);
+void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, struct miqt_string styleName) {
+	QString styleName_QString = QString::fromUtf8(styleName.data, styleName.len);
 	self->setFontStyleName(styleName_QString);
 }
 
@@ -522,16 +530,20 @@ QPen* QTextCharFormat_TextOutline(const QTextCharFormat* self) {
 	return new QPen(self->textOutline());
 }
 
-void QTextCharFormat_SetToolTip(QTextCharFormat* self, struct miqt_string* tip) {
-	QString tip_QString = QString::fromUtf8(&tip->data, tip->len);
+void QTextCharFormat_SetToolTip(QTextCharFormat* self, struct miqt_string tip) {
+	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
 	self->setToolTip(tip_QString);
 }
 
-struct miqt_string* QTextCharFormat_ToolTip(const QTextCharFormat* self) {
+struct miqt_string QTextCharFormat_ToolTip(const QTextCharFormat* self) {
 	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextCharFormat_SetAnchor(QTextCharFormat* self, bool anchor) {
@@ -542,36 +554,44 @@ bool QTextCharFormat_IsAnchor(const QTextCharFormat* self) {
 	return self->isAnchor();
 }
 
-void QTextCharFormat_SetAnchorHref(QTextCharFormat* self, struct miqt_string* value) {
-	QString value_QString = QString::fromUtf8(&value->data, value->len);
+void QTextCharFormat_SetAnchorHref(QTextCharFormat* self, struct miqt_string value) {
+	QString value_QString = QString::fromUtf8(value.data, value.len);
 	self->setAnchorHref(value_QString);
 }
 
-struct miqt_string* QTextCharFormat_AnchorHref(const QTextCharFormat* self) {
+struct miqt_string QTextCharFormat_AnchorHref(const QTextCharFormat* self) {
 	QString _ret = self->anchorHref();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextCharFormat_SetAnchorName(QTextCharFormat* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QTextCharFormat_SetAnchorName(QTextCharFormat* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->setAnchorName(name_QString);
 }
 
-struct miqt_string* QTextCharFormat_AnchorName(const QTextCharFormat* self) {
+struct miqt_string QTextCharFormat_AnchorName(const QTextCharFormat* self) {
 	QString _ret = self->anchorName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string* */ names) {
+void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /* of struct miqt_string */ names) {
 	QStringList names_QList;
 	names_QList.reserve(names->len);
-	struct miqt_string** names_arr = static_cast<struct miqt_string**>(names->data);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names->data);
 	for(size_t i = 0; i < names->len; ++i) {
-		QString names_arr_i_QString = QString::fromUtf8(&names_arr[i]->data, names_arr[i]->len);
+		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
 	self->setAnchorNames(names_QList);
@@ -580,12 +600,16 @@ void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array* /*
 struct miqt_array* QTextCharFormat_AnchorNames(const QTextCharFormat* self) {
 	QStringList _ret = self->anchorNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -799,28 +823,36 @@ int QTextListFormat_Indent(const QTextListFormat* self) {
 	return self->indent();
 }
 
-void QTextListFormat_SetNumberPrefix(QTextListFormat* self, struct miqt_string* numberPrefix) {
-	QString numberPrefix_QString = QString::fromUtf8(&numberPrefix->data, numberPrefix->len);
+void QTextListFormat_SetNumberPrefix(QTextListFormat* self, struct miqt_string numberPrefix) {
+	QString numberPrefix_QString = QString::fromUtf8(numberPrefix.data, numberPrefix.len);
 	self->setNumberPrefix(numberPrefix_QString);
 }
 
-struct miqt_string* QTextListFormat_NumberPrefix(const QTextListFormat* self) {
+struct miqt_string QTextListFormat_NumberPrefix(const QTextListFormat* self) {
 	QString _ret = self->numberPrefix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QTextListFormat_SetNumberSuffix(QTextListFormat* self, struct miqt_string* numberSuffix) {
-	QString numberSuffix_QString = QString::fromUtf8(&numberSuffix->data, numberSuffix->len);
+void QTextListFormat_SetNumberSuffix(QTextListFormat* self, struct miqt_string numberSuffix) {
+	QString numberSuffix_QString = QString::fromUtf8(numberSuffix.data, numberSuffix.len);
 	self->setNumberSuffix(numberSuffix_QString);
 }
 
-struct miqt_string* QTextListFormat_NumberSuffix(const QTextListFormat* self) {
+struct miqt_string QTextListFormat_NumberSuffix(const QTextListFormat* self) {
 	QString _ret = self->numberSuffix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextListFormat_Delete(QTextListFormat* self) {
@@ -835,16 +867,20 @@ bool QTextImageFormat_IsValid(const QTextImageFormat* self) {
 	return self->isValid();
 }
 
-void QTextImageFormat_SetName(QTextImageFormat* self, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+void QTextImageFormat_SetName(QTextImageFormat* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->setName(name_QString);
 }
 
-struct miqt_string* QTextImageFormat_Name(const QTextImageFormat* self) {
+struct miqt_string QTextImageFormat_Name(const QTextImageFormat* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextImageFormat_SetWidth(QTextImageFormat* self, double width) {

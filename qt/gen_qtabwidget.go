@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -80,49 +79,57 @@ func (this *QTabWidget) MetaObject() *QMetaObject {
 func (this *QTabWidget) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTabWidget_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTabWidget_Metacast(this.h, param1_Cstring))
 }
 
 func QTabWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTabWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTabWidget) AddTab(widget *QWidget, param2 string) int {
-	param2_ms := libmiqt.Strdupg(param2)
-	defer C.free(param2_ms)
-	return (int)(C.QTabWidget_AddTab(this.h, widget.cPointer(), (*C.struct_miqt_string)(param2_ms)))
+	param2_ms := C.struct_miqt_string{}
+	param2_ms.data = C.CString(param2)
+	param2_ms.len = C.size_t(len(param2))
+	defer C.free(unsafe.Pointer(param2_ms.data))
+	return (int)(C.QTabWidget_AddTab(this.h, widget.cPointer(), param2_ms))
 }
 
 func (this *QTabWidget) AddTab2(widget *QWidget, icon *QIcon, label string) int {
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QTabWidget_AddTab2(this.h, widget.cPointer(), icon.cPointer(), label_ms))
 }
 
 func (this *QTabWidget) InsertTab(index int, widget *QWidget, param3 string) int {
-	param3_ms := libmiqt.Strdupg(param3)
-	defer C.free(param3_ms)
-	return (int)(C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), (*C.struct_miqt_string)(param3_ms)))
+	param3_ms := C.struct_miqt_string{}
+	param3_ms.data = C.CString(param3)
+	param3_ms.len = C.size_t(len(param3))
+	defer C.free(unsafe.Pointer(param3_ms.data))
+	return (int)(C.QTabWidget_InsertTab(this.h, (C.int)(index), widget.cPointer(), param3_ms))
 }
 
 func (this *QTabWidget) InsertTab2(index int, widget *QWidget, icon *QIcon, label string) int {
-	label_ms := libmiqt.Strdupg(label)
-	defer C.free(label_ms)
-	return (int)(C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(label_ms)))
+	label_ms := C.struct_miqt_string{}
+	label_ms.data = C.CString(label)
+	label_ms.len = C.size_t(len(label))
+	defer C.free(unsafe.Pointer(label_ms.data))
+	return (int)(C.QTabWidget_InsertTab2(this.h, (C.int)(index), widget.cPointer(), icon.cPointer(), label_ms))
 }
 
 func (this *QTabWidget) RemoveTab(index int) {
@@ -146,16 +153,18 @@ func (this *QTabWidget) SetTabVisible(index int, visible bool) {
 }
 
 func (this *QTabWidget) TabText(index int) string {
-	var _ms *C.struct_miqt_string = C.QTabWidget_TabText(this.h, (C.int)(index))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TabText(this.h, (C.int)(index))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTabWidget) SetTabText(index int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTabWidget_SetTabText(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTabWidget_SetTabText(this.h, (C.int)(index), text_ms)
 }
 
 func (this *QTabWidget) TabIcon(index int) *QIcon {
@@ -170,28 +179,32 @@ func (this *QTabWidget) SetTabIcon(index int, icon *QIcon) {
 }
 
 func (this *QTabWidget) SetTabToolTip(index int, tip string) {
-	tip_ms := libmiqt.Strdupg(tip)
-	defer C.free(tip_ms)
-	C.QTabWidget_SetTabToolTip(this.h, (C.int)(index), (*C.struct_miqt_string)(tip_ms))
+	tip_ms := C.struct_miqt_string{}
+	tip_ms.data = C.CString(tip)
+	tip_ms.len = C.size_t(len(tip))
+	defer C.free(unsafe.Pointer(tip_ms.data))
+	C.QTabWidget_SetTabToolTip(this.h, (C.int)(index), tip_ms)
 }
 
 func (this *QTabWidget) TabToolTip(index int) string {
-	var _ms *C.struct_miqt_string = C.QTabWidget_TabToolTip(this.h, (C.int)(index))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TabToolTip(this.h, (C.int)(index))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTabWidget) SetTabWhatsThis(index int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTabWidget_SetTabWhatsThis(this.h, (C.int)(index), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTabWidget_SetTabWhatsThis(this.h, (C.int)(index), text_ms)
 }
 
 func (this *QTabWidget) TabWhatsThis(index int) string {
-	var _ms *C.struct_miqt_string = C.QTabWidget_TabWhatsThis(this.h, (C.int)(index))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TabWhatsThis(this.h, (C.int)(index))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -421,9 +434,9 @@ func QTabWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -432,9 +445,9 @@ func QTabWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -443,9 +456,9 @@ func QTabWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -454,9 +467,9 @@ func QTabWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTabWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTabWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

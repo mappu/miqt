@@ -33,40 +33,53 @@ bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self) {
 	return self->isEmpty();
 }
 
-struct miqt_string* QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self) {
+struct miqt_string QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self) {
 	QString _ret = self->toPlainText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self) {
+struct miqt_string QTextDocumentFragment_ToHtml(const QTextDocumentFragment* self) {
 	QString _ret = self->toHtml();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string* plainText) {
-	QString plainText_QString = QString::fromUtf8(&plainText->data, plainText->len);
+QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string plainText) {
+	QString plainText_QString = QString::fromUtf8(plainText.data, plainText.len);
 	return new QTextDocumentFragment(QTextDocumentFragment::fromPlainText(plainText_QString));
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string* html) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string html) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	return new QTextDocumentFragment(QTextDocumentFragment::fromHtml(html_QString));
 }
 
-QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string* html, QTextDocument* resourceProvider) {
-	QString html_QString = QString::fromUtf8(&html->data, html->len);
+QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string html, QTextDocument* resourceProvider) {
+	QString html_QString = QString::fromUtf8(html.data, html.len);
 	return new QTextDocumentFragment(QTextDocumentFragment::fromHtml(html_QString, resourceProvider));
 }
 
-struct miqt_string* QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, QByteArray* encoding) {
-	QString _ret = self->toHtml(*encoding);
+struct miqt_string QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, struct miqt_string encoding) {
+	QByteArray encoding_QByteArray(encoding.data, encoding.len);
+	QString _ret = self->toHtml(encoding_QByteArray);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTextDocumentFragment_Delete(QTextDocumentFragment* self) {

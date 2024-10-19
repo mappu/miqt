@@ -10,8 +10,8 @@ QTemporaryDir* QTemporaryDir_new() {
 	return new QTemporaryDir();
 }
 
-QTemporaryDir* QTemporaryDir_new2(struct miqt_string* templateName) {
-	QString templateName_QString = QString::fromUtf8(&templateName->data, templateName->len);
+QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName) {
+	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
 	return new QTemporaryDir(templateName_QString);
 }
 
@@ -19,11 +19,15 @@ bool QTemporaryDir_IsValid(const QTemporaryDir* self) {
 	return self->isValid();
 }
 
-struct miqt_string* QTemporaryDir_ErrorString(const QTemporaryDir* self) {
+struct miqt_string QTemporaryDir_ErrorString(const QTemporaryDir* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QTemporaryDir_AutoRemove(const QTemporaryDir* self) {
@@ -38,19 +42,27 @@ bool QTemporaryDir_Remove(QTemporaryDir* self) {
 	return self->remove();
 }
 
-struct miqt_string* QTemporaryDir_Path(const QTemporaryDir* self) {
+struct miqt_string QTemporaryDir_Path(const QTemporaryDir* self) {
 	QString _ret = self->path();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+struct miqt_string QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString _ret = self->filePath(fileName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTemporaryDir_Delete(QTemporaryDir* self) {

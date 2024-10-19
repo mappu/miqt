@@ -75,16 +75,20 @@ int QFutureInterfaceBase_ProgressValue(const QFutureInterfaceBase* self) {
 	return self->progressValue();
 }
 
-void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, struct miqt_string* progressText) {
-	QString progressText_QString = QString::fromUtf8(&progressText->data, progressText->len);
+void QFutureInterfaceBase_SetProgressValueAndText(QFutureInterfaceBase* self, int progressValue, struct miqt_string progressText) {
+	QString progressText_QString = QString::fromUtf8(progressText.data, progressText.len);
 	self->setProgressValueAndText(static_cast<int>(progressValue), progressText_QString);
 }
 
-struct miqt_string* QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self) {
+struct miqt_string QFutureInterfaceBase_ProgressText(const QFutureInterfaceBase* self) {
 	QString _ret = self->progressText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QFutureInterfaceBase_SetExpectedResultCount(QFutureInterfaceBase* self, int resultCount) {

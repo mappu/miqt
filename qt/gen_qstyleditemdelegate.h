@@ -45,8 +45,8 @@ QStyledItemDelegate* QStyledItemDelegate_new();
 QStyledItemDelegate* QStyledItemDelegate_new2(QObject* parent);
 QMetaObject* QStyledItemDelegate_MetaObject(const QStyledItemDelegate* self);
 void* QStyledItemDelegate_Metacast(QStyledItemDelegate* self, const char* param1);
-struct miqt_string* QStyledItemDelegate_Tr(const char* s);
-struct miqt_string* QStyledItemDelegate_TrUtf8(const char* s);
+struct miqt_string QStyledItemDelegate_Tr(const char* s);
+struct miqt_string QStyledItemDelegate_TrUtf8(const char* s);
 void QStyledItemDelegate_Paint(const QStyledItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 QSize* QStyledItemDelegate_SizeHint(const QStyledItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index);
 QWidget* QStyledItemDelegate_CreateEditor(const QStyledItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index);
@@ -55,11 +55,11 @@ void QStyledItemDelegate_SetModelData(const QStyledItemDelegate* self, QWidget* 
 void QStyledItemDelegate_UpdateEditorGeometry(const QStyledItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 QItemEditorFactory* QStyledItemDelegate_ItemEditorFactory(const QStyledItemDelegate* self);
 void QStyledItemDelegate_SetItemEditorFactory(QStyledItemDelegate* self, QItemEditorFactory* factory);
-struct miqt_string* QStyledItemDelegate_DisplayText(const QStyledItemDelegate* self, QVariant* value, QLocale* locale);
-struct miqt_string* QStyledItemDelegate_Tr2(const char* s, const char* c);
-struct miqt_string* QStyledItemDelegate_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QStyledItemDelegate_TrUtf82(const char* s, const char* c);
-struct miqt_string* QStyledItemDelegate_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QStyledItemDelegate_DisplayText(const QStyledItemDelegate* self, QVariant* value, QLocale* locale);
+struct miqt_string QStyledItemDelegate_Tr2(const char* s, const char* c);
+struct miqt_string QStyledItemDelegate_Tr3(const char* s, const char* c, int n);
+struct miqt_string QStyledItemDelegate_TrUtf82(const char* s, const char* c);
+struct miqt_string QStyledItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QStyledItemDelegate_Delete(QStyledItemDelegate* self);
 
 #ifdef __cplusplus

@@ -27,18 +27,26 @@ void* QUndoGroup_Metacast(QUndoGroup* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QUndoGroup_Tr(const char* s) {
+struct miqt_string QUndoGroup_Tr(const char* s) {
 	QString _ret = QUndoGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoGroup_TrUtf8(const char* s) {
+struct miqt_string QUndoGroup_TrUtf8(const char* s) {
 	QString _ret = QUndoGroup::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QUndoGroup_AddStack(QUndoGroup* self, QUndoStack* stack) {
@@ -82,18 +90,26 @@ bool QUndoGroup_CanRedo(const QUndoGroup* self) {
 	return self->canRedo();
 }
 
-struct miqt_string* QUndoGroup_UndoText(const QUndoGroup* self) {
+struct miqt_string QUndoGroup_UndoText(const QUndoGroup* self) {
 	QString _ret = self->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoGroup_RedoText(const QUndoGroup* self) {
+struct miqt_string QUndoGroup_RedoText(const QUndoGroup* self) {
 	QString _ret = self->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QUndoGroup_IsClean(const QUndoGroup* self) {
@@ -167,8 +183,8 @@ void QUndoGroup_connect_CanRedoChanged(QUndoGroup* self, intptr_t slot) {
 	});
 }
 
-void QUndoGroup_UndoTextChanged(QUndoGroup* self, struct miqt_string* undoText) {
-	QString undoText_QString = QString::fromUtf8(&undoText->data, undoText->len);
+void QUndoGroup_UndoTextChanged(QUndoGroup* self, struct miqt_string undoText) {
+	QString undoText_QString = QString::fromUtf8(undoText.data, undoText.len);
 	self->undoTextChanged(undoText_QString);
 }
 
@@ -177,13 +193,17 @@ void QUndoGroup_connect_UndoTextChanged(QUndoGroup* self, intptr_t slot) {
 		const QString undoText_ret = undoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray undoText_b = undoText_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(undoText_b.data(), undoText_b.length());
+		struct miqt_string undoText_ms;
+		undoText_ms.len = undoText_b.length();
+		undoText_ms.data = static_cast<char*>(malloc(undoText_ms.len));
+		memcpy(undoText_ms.data, undoText_b.data(), undoText_ms.len);
+		struct miqt_string sigval1 = undoText_ms;
 		miqt_exec_callback_QUndoGroup_UndoTextChanged(slot, sigval1);
 	});
 }
 
-void QUndoGroup_RedoTextChanged(QUndoGroup* self, struct miqt_string* redoText) {
-	QString redoText_QString = QString::fromUtf8(&redoText->data, redoText->len);
+void QUndoGroup_RedoTextChanged(QUndoGroup* self, struct miqt_string redoText) {
+	QString redoText_QString = QString::fromUtf8(redoText.data, redoText.len);
 	self->redoTextChanged(redoText_QString);
 }
 
@@ -192,46 +212,66 @@ void QUndoGroup_connect_RedoTextChanged(QUndoGroup* self, intptr_t slot) {
 		const QString redoText_ret = redoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray redoText_b = redoText_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(redoText_b.data(), redoText_b.length());
+		struct miqt_string redoText_ms;
+		redoText_ms.len = redoText_b.length();
+		redoText_ms.data = static_cast<char*>(malloc(redoText_ms.len));
+		memcpy(redoText_ms.data, redoText_b.data(), redoText_ms.len);
+		struct miqt_string sigval1 = redoText_ms;
 		miqt_exec_callback_QUndoGroup_RedoTextChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string* QUndoGroup_Tr2(const char* s, const char* c) {
+struct miqt_string QUndoGroup_Tr2(const char* s, const char* c) {
 	QString _ret = QUndoGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoGroup_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QUndoGroup_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QUndoGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoGroup_TrUtf82(const char* s, const char* c) {
+struct miqt_string QUndoGroup_TrUtf82(const char* s, const char* c) {
 	QString _ret = QUndoGroup::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QUndoGroup_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QUndoGroup_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QUndoGroup::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string* prefix) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+QAction* QUndoGroup_CreateUndoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string prefix) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createUndoAction(parent, prefix_QString);
 }
 
-QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string* prefix) {
-	QString prefix_QString = QString::fromUtf8(&prefix->data, prefix->len);
+QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, struct miqt_string prefix) {
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createRedoAction(parent, prefix_QString);
 }
 

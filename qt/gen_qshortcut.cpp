@@ -37,18 +37,26 @@ void* QShortcut_Metacast(QShortcut* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QShortcut_Tr(const char* s) {
+struct miqt_string QShortcut_Tr(const char* s) {
 	QString _ret = QShortcut::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QShortcut_TrUtf8(const char* s) {
+struct miqt_string QShortcut_TrUtf8(const char* s) {
 	QString _ret = QShortcut::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QShortcut_SetKey(QShortcut* self, QKeySequence* key) {
@@ -76,16 +84,20 @@ int QShortcut_Context(const QShortcut* self) {
 	return static_cast<int>(_ret);
 }
 
-void QShortcut_SetWhatsThis(QShortcut* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+void QShortcut_SetWhatsThis(QShortcut* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setWhatsThis(text_QString);
 }
 
-struct miqt_string* QShortcut_WhatsThis(const QShortcut* self) {
+struct miqt_string QShortcut_WhatsThis(const QShortcut* self) {
 	QString _ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QShortcut_SetAutoRepeat(QShortcut* self, bool on) {
@@ -124,32 +136,48 @@ void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QShortcut_Tr2(const char* s, const char* c) {
+struct miqt_string QShortcut_Tr2(const char* s, const char* c) {
 	QString _ret = QShortcut::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QShortcut_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QShortcut::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QShortcut_TrUtf82(const char* s, const char* c) {
+struct miqt_string QShortcut_TrUtf82(const char* s, const char* c) {
 	QString _ret = QShortcut::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QShortcut_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QShortcut_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QShortcut::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QShortcut_Delete(QShortcut* self) {

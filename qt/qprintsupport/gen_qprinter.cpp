@@ -52,68 +52,88 @@ int QPrinter_PdfVersion(const QPrinter* self) {
 	return static_cast<int>(_ret);
 }
 
-void QPrinter_SetPrinterName(QPrinter* self, struct miqt_string* printerName) {
-	QString printerName_QString = QString::fromUtf8(&printerName->data, printerName->len);
+void QPrinter_SetPrinterName(QPrinter* self, struct miqt_string printerName) {
+	QString printerName_QString = QString::fromUtf8(printerName.data, printerName.len);
 	self->setPrinterName(printerName_QString);
 }
 
-struct miqt_string* QPrinter_PrinterName(const QPrinter* self) {
+struct miqt_string QPrinter_PrinterName(const QPrinter* self) {
 	QString _ret = self->printerName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QPrinter_IsValid(const QPrinter* self) {
 	return self->isValid();
 }
 
-void QPrinter_SetOutputFileName(QPrinter* self, struct miqt_string* outputFileName) {
-	QString outputFileName_QString = QString::fromUtf8(&outputFileName->data, outputFileName->len);
+void QPrinter_SetOutputFileName(QPrinter* self, struct miqt_string outputFileName) {
+	QString outputFileName_QString = QString::fromUtf8(outputFileName.data, outputFileName.len);
 	self->setOutputFileName(outputFileName_QString);
 }
 
-struct miqt_string* QPrinter_OutputFileName(const QPrinter* self) {
+struct miqt_string QPrinter_OutputFileName(const QPrinter* self) {
 	QString _ret = self->outputFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QPrinter_SetPrintProgram(QPrinter* self, struct miqt_string* printProgram) {
-	QString printProgram_QString = QString::fromUtf8(&printProgram->data, printProgram->len);
+void QPrinter_SetPrintProgram(QPrinter* self, struct miqt_string printProgram) {
+	QString printProgram_QString = QString::fromUtf8(printProgram.data, printProgram.len);
 	self->setPrintProgram(printProgram_QString);
 }
 
-struct miqt_string* QPrinter_PrintProgram(const QPrinter* self) {
+struct miqt_string QPrinter_PrintProgram(const QPrinter* self) {
 	QString _ret = self->printProgram();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QPrinter_SetDocName(QPrinter* self, struct miqt_string* docName) {
-	QString docName_QString = QString::fromUtf8(&docName->data, docName->len);
+void QPrinter_SetDocName(QPrinter* self, struct miqt_string docName) {
+	QString docName_QString = QString::fromUtf8(docName.data, docName.len);
 	self->setDocName(docName_QString);
 }
 
-struct miqt_string* QPrinter_DocName(const QPrinter* self) {
+struct miqt_string QPrinter_DocName(const QPrinter* self) {
 	QString _ret = self->docName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QPrinter_SetCreator(QPrinter* self, struct miqt_string* creator) {
-	QString creator_QString = QString::fromUtf8(&creator->data, creator->len);
+void QPrinter_SetCreator(QPrinter* self, struct miqt_string creator) {
+	QString creator_QString = QString::fromUtf8(creator.data, creator.len);
 	self->setCreator(creator_QString);
 }
 
-struct miqt_string* QPrinter_Creator(const QPrinter* self) {
+struct miqt_string QPrinter_Creator(const QPrinter* self) {
 	QString _ret = self->creator();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPrinter_SetOrientation(QPrinter* self, int orientation) {
@@ -155,16 +175,20 @@ QSizeF* QPrinter_PaperSizeWithUnit(const QPrinter* self, int unit) {
 	return new QSizeF(self->paperSize(static_cast<QPrinter::Unit>(unit)));
 }
 
-void QPrinter_SetPaperName(QPrinter* self, struct miqt_string* paperName) {
-	QString paperName_QString = QString::fromUtf8(&paperName->data, paperName->len);
+void QPrinter_SetPaperName(QPrinter* self, struct miqt_string paperName) {
+	QString paperName_QString = QString::fromUtf8(paperName.data, paperName.len);
 	self->setPaperName(paperName_QString);
 }
 
-struct miqt_string* QPrinter_PaperName(const QPrinter* self) {
+struct miqt_string QPrinter_PaperName(const QPrinter* self) {
 	QString _ret = self->paperName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPrinter_SetPageOrder(QPrinter* self, int pageOrder) {
@@ -304,15 +328,19 @@ QRectF* QPrinter_PageRectWithQPrinterUnit(const QPrinter* self, int param1) {
 	return new QRectF(self->pageRect(static_cast<QPrinter::Unit>(param1)));
 }
 
-struct miqt_string* QPrinter_PrinterSelectionOption(const QPrinter* self) {
+struct miqt_string QPrinter_PrinterSelectionOption(const QPrinter* self) {
 	QString _ret = self->printerSelectionOption();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QPrinter_SetPrinterSelectionOption(QPrinter* self, struct miqt_string* printerSelectionOption) {
-	QString printerSelectionOption_QString = QString::fromUtf8(&printerSelectionOption->data, printerSelectionOption->len);
+void QPrinter_SetPrinterSelectionOption(QPrinter* self, struct miqt_string printerSelectionOption) {
+	QString printerSelectionOption_QString = QString::fromUtf8(printerSelectionOption.data, printerSelectionOption.len);
 	self->setPrinterSelectionOption(printerSelectionOption_QString);
 }
 

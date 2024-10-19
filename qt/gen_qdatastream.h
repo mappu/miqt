@@ -31,8 +31,7 @@ typedef struct QtPrivate__StreamStateSaver QtPrivate__StreamStateSaver;
 
 QDataStream* QDataStream_new();
 QDataStream* QDataStream_new2(QIODevice* param1);
-QDataStream* QDataStream_new3(QByteArray* param1, int flags);
-QDataStream* QDataStream_new4(QByteArray* param1);
+QDataStream* QDataStream_new3(struct miqt_string param1);
 QIODevice* QDataStream_Device(const QDataStream* self);
 void QDataStream_SetDevice(QDataStream* self, QIODevice* device);
 void QDataStream_UnsetDevice(QDataStream* self);

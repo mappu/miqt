@@ -49,8 +49,11 @@ func NewQByteArrayMatcher() *QByteArrayMatcher {
 }
 
 // NewQByteArrayMatcher2 constructs a new QByteArrayMatcher object.
-func NewQByteArrayMatcher2(pattern *QByteArray) *QByteArrayMatcher {
-	ret := C.QByteArrayMatcher_new2(pattern.cPointer())
+func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
+	pattern_alias := C.struct_miqt_string{}
+	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	pattern_alias.len = C.size_t(len(pattern))
+	ret := C.QByteArrayMatcher_new2(pattern_alias)
 	return newQByteArrayMatcher(ret)
 }
 
@@ -72,12 +75,18 @@ func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
 	C.QByteArrayMatcher_OperatorAssign(this.h, other.cPointer())
 }
 
-func (this *QByteArrayMatcher) SetPattern(pattern *QByteArray) {
-	C.QByteArrayMatcher_SetPattern(this.h, pattern.cPointer())
+func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
+	pattern_alias := C.struct_miqt_string{}
+	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	pattern_alias.len = C.size_t(len(pattern))
+	C.QByteArrayMatcher_SetPattern(this.h, pattern_alias)
 }
 
-func (this *QByteArrayMatcher) IndexIn(ba *QByteArray) int {
-	return (int)(C.QByteArrayMatcher_IndexIn(this.h, ba.cPointer()))
+func (this *QByteArrayMatcher) IndexIn(ba []byte) int {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	return (int)(C.QByteArrayMatcher_IndexIn(this.h, ba_alias))
 }
 
 func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int) int {
@@ -86,15 +95,18 @@ func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int) int {
 	return (int)(C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal)))
 }
 
-func (this *QByteArrayMatcher) Pattern() *QByteArray {
-	_ret := C.QByteArrayMatcher_Pattern(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QByteArrayMatcher) Pattern() []byte {
+	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_Pattern(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QByteArrayMatcher) IndexIn22(ba *QByteArray, from int) int {
-	return (int)(C.QByteArrayMatcher_IndexIn22(this.h, ba.cPointer(), (C.int)(from)))
+func (this *QByteArrayMatcher) IndexIn22(ba []byte, from int) int {
+	ba_alias := C.struct_miqt_string{}
+	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	ba_alias.len = C.size_t(len(ba))
+	return (int)(C.QByteArrayMatcher_IndexIn22(this.h, ba_alias, (C.int)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {

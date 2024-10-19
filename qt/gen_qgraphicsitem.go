@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -98,38 +97,38 @@ const (
 type QGraphicsItem__ int
 
 const (
-	QGraphicsItem____Type     QGraphicsItem__ = 1
-	QGraphicsItem____UserType QGraphicsItem__ = 65536
+	QGraphicsItem__Type     QGraphicsItem__ = 1
+	QGraphicsItem__UserType QGraphicsItem__ = 65536
 )
 
 type QGraphicsPathItem__ int
 
 const (
-	QGraphicsPathItem____Type QGraphicsPathItem__ = 2
+	QGraphicsPathItem__Type QGraphicsPathItem__ = 2
 )
 
 type QGraphicsRectItem__ int
 
 const (
-	QGraphicsRectItem____Type QGraphicsRectItem__ = 3
+	QGraphicsRectItem__Type QGraphicsRectItem__ = 3
 )
 
 type QGraphicsEllipseItem__ int
 
 const (
-	QGraphicsEllipseItem____Type QGraphicsEllipseItem__ = 4
+	QGraphicsEllipseItem__Type QGraphicsEllipseItem__ = 4
 )
 
 type QGraphicsPolygonItem__ int
 
 const (
-	QGraphicsPolygonItem____Type QGraphicsPolygonItem__ = 5
+	QGraphicsPolygonItem__Type QGraphicsPolygonItem__ = 5
 )
 
 type QGraphicsLineItem__ int
 
 const (
-	QGraphicsLineItem____Type QGraphicsLineItem__ = 6
+	QGraphicsLineItem__Type QGraphicsLineItem__ = 6
 )
 
 type QGraphicsPixmapItem__ShapeMode int
@@ -143,25 +142,25 @@ const (
 type QGraphicsPixmapItem__ int
 
 const (
-	QGraphicsPixmapItem____Type QGraphicsPixmapItem__ = 7
+	QGraphicsPixmapItem__Type QGraphicsPixmapItem__ = 7
 )
 
 type QGraphicsTextItem__ int
 
 const (
-	QGraphicsTextItem____Type QGraphicsTextItem__ = 8
+	QGraphicsTextItem__Type QGraphicsTextItem__ = 8
 )
 
 type QGraphicsSimpleTextItem__ int
 
 const (
-	QGraphicsSimpleTextItem____Type QGraphicsSimpleTextItem__ = 9
+	QGraphicsSimpleTextItem__Type QGraphicsSimpleTextItem__ = 9
 )
 
 type QGraphicsItemGroup__ int
 
 const (
-	QGraphicsItemGroup____Type QGraphicsItemGroup__ = 10
+	QGraphicsItemGroup__Type QGraphicsItemGroup__ = 10
 )
 
 type QGraphicsItem struct {
@@ -301,16 +300,18 @@ func (this *QGraphicsItem) IsBlockedByModalPanel() bool {
 }
 
 func (this *QGraphicsItem) ToolTip() string {
-	var _ms *C.struct_miqt_string = C.QGraphicsItem_ToolTip(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsItem_ToolTip(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsItem) SetToolTip(toolTip string) {
-	toolTip_ms := libmiqt.Strdupg(toolTip)
-	defer C.free(toolTip_ms)
-	C.QGraphicsItem_SetToolTip(this.h, (*C.struct_miqt_string)(toolTip_ms))
+	toolTip_ms := C.struct_miqt_string{}
+	toolTip_ms.data = C.CString(toolTip)
+	toolTip_ms.len = C.size_t(len(toolTip))
+	defer C.free(unsafe.Pointer(toolTip_ms.data))
+	C.QGraphicsItem_SetToolTip(this.h, toolTip_ms)
 }
 
 func (this *QGraphicsItem) Cursor() *QCursor {
@@ -1165,24 +1166,24 @@ func (this *QGraphicsObject) MetaObject() *QMetaObject {
 func (this *QGraphicsObject) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QGraphicsObject_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QGraphicsObject_Metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsObject_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QGraphicsObject_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1403,9 +1404,9 @@ func QGraphicsObject_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1414,9 +1415,9 @@ func QGraphicsObject_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1425,9 +1426,9 @@ func QGraphicsObject_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1436,9 +1437,9 @@ func QGraphicsObject_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsObject_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsObject_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2382,9 +2383,11 @@ func NewQGraphicsTextItem() *QGraphicsTextItem {
 
 // NewQGraphicsTextItem2 constructs a new QGraphicsTextItem object.
 func NewQGraphicsTextItem2(text string) *QGraphicsTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QGraphicsTextItem_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QGraphicsTextItem_new2(text_ms)
 	return newQGraphicsTextItem(ret)
 }
 
@@ -2396,9 +2399,11 @@ func NewQGraphicsTextItem3(parent *QGraphicsItem) *QGraphicsTextItem {
 
 // NewQGraphicsTextItem4 constructs a new QGraphicsTextItem object.
 func NewQGraphicsTextItem4(text string, parent *QGraphicsItem) *QGraphicsTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QGraphicsTextItem_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QGraphicsTextItem_new4(text_ms, parent.cPointer())
 	return newQGraphicsTextItem(ret)
 }
 
@@ -2409,51 +2414,55 @@ func (this *QGraphicsTextItem) MetaObject() *QMetaObject {
 func (this *QGraphicsTextItem) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QGraphicsTextItem_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QGraphicsTextItem_Metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsTextItem_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QGraphicsTextItem_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsTextItem) ToHtml() string {
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_ToHtml(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_ToHtml(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsTextItem) SetHtml(html string) {
-	html_ms := libmiqt.Strdupg(html)
-	defer C.free(html_ms)
-	C.QGraphicsTextItem_SetHtml(this.h, (*C.struct_miqt_string)(html_ms))
+	html_ms := C.struct_miqt_string{}
+	html_ms.data = C.CString(html)
+	html_ms.len = C.size_t(len(html))
+	defer C.free(unsafe.Pointer(html_ms.data))
+	C.QGraphicsTextItem_SetHtml(this.h, html_ms)
 }
 
 func (this *QGraphicsTextItem) ToPlainText() string {
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_ToPlainText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_ToPlainText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsTextItem) SetPlainText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QGraphicsTextItem_SetPlainText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QGraphicsTextItem_SetPlainText(this.h, text_ms)
 }
 
 func (this *QGraphicsTextItem) Font() *QFont {
@@ -2571,50 +2580,54 @@ func (this *QGraphicsTextItem) TextCursor() *QTextCursor {
 }
 
 func (this *QGraphicsTextItem) LinkActivated(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QGraphicsTextItem_LinkActivated(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QGraphicsTextItem_LinkActivated(this.h, param1_ms)
 }
 func (this *QGraphicsTextItem) OnLinkActivated(slot func(param1 string)) {
 	C.QGraphicsTextItem_connect_LinkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_LinkActivated
-func miqt_exec_callback_QGraphicsTextItem_LinkActivated(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QGraphicsTextItem_LinkActivated(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QGraphicsTextItem) LinkHovered(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QGraphicsTextItem_LinkHovered(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QGraphicsTextItem_LinkHovered(this.h, param1_ms)
 }
 func (this *QGraphicsTextItem) OnLinkHovered(slot func(param1 string)) {
 	C.QGraphicsTextItem_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_LinkHovered
-func miqt_exec_callback_QGraphicsTextItem_LinkHovered(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QGraphicsTextItem_LinkHovered(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
@@ -2625,9 +2638,9 @@ func QGraphicsTextItem_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2636,9 +2649,9 @@ func QGraphicsTextItem_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2647,9 +2660,9 @@ func QGraphicsTextItem_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2658,9 +2671,9 @@ func QGraphicsTextItem_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QGraphicsTextItem_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsTextItem_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -2716,9 +2729,11 @@ func NewQGraphicsSimpleTextItem() *QGraphicsSimpleTextItem {
 
 // NewQGraphicsSimpleTextItem2 constructs a new QGraphicsSimpleTextItem object.
 func NewQGraphicsSimpleTextItem2(text string) *QGraphicsSimpleTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QGraphicsSimpleTextItem_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QGraphicsSimpleTextItem_new2(text_ms)
 	return newQGraphicsSimpleTextItem(ret)
 }
 
@@ -2730,22 +2745,26 @@ func NewQGraphicsSimpleTextItem3(parent *QGraphicsItem) *QGraphicsSimpleTextItem
 
 // NewQGraphicsSimpleTextItem4 constructs a new QGraphicsSimpleTextItem object.
 func NewQGraphicsSimpleTextItem4(text string, parent *QGraphicsItem) *QGraphicsSimpleTextItem {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QGraphicsSimpleTextItem_new4((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QGraphicsSimpleTextItem_new4(text_ms, parent.cPointer())
 	return newQGraphicsSimpleTextItem(ret)
 }
 
 func (this *QGraphicsSimpleTextItem) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QGraphicsSimpleTextItem_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QGraphicsSimpleTextItem_SetText(this.h, text_ms)
 }
 
 func (this *QGraphicsSimpleTextItem) Text() string {
-	var _ms *C.struct_miqt_string = C.QGraphicsSimpleTextItem_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QGraphicsSimpleTextItem_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

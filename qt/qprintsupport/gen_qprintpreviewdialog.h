@@ -33,17 +33,17 @@ QPrintPreviewDialog* QPrintPreviewDialog_new5(QPrinter* printer, QWidget* parent
 QPrintPreviewDialog* QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent, int flags);
 QMetaObject* QPrintPreviewDialog_MetaObject(const QPrintPreviewDialog* self);
 void* QPrintPreviewDialog_Metacast(QPrintPreviewDialog* self, const char* param1);
-struct miqt_string* QPrintPreviewDialog_Tr(const char* s);
-struct miqt_string* QPrintPreviewDialog_TrUtf8(const char* s);
+struct miqt_string QPrintPreviewDialog_Tr(const char* s);
+struct miqt_string QPrintPreviewDialog_TrUtf8(const char* s);
 QPrinter* QPrintPreviewDialog_Printer(QPrintPreviewDialog* self);
 void QPrintPreviewDialog_SetVisible(QPrintPreviewDialog* self, bool visible);
 void QPrintPreviewDialog_Done(QPrintPreviewDialog* self, int result);
 void QPrintPreviewDialog_PaintRequested(QPrintPreviewDialog* self, QPrinter* printer);
 void QPrintPreviewDialog_connect_PaintRequested(QPrintPreviewDialog* self, intptr_t slot);
-struct miqt_string* QPrintPreviewDialog_Tr2(const char* s, const char* c);
-struct miqt_string* QPrintPreviewDialog_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QPrintPreviewDialog_TrUtf82(const char* s, const char* c);
-struct miqt_string* QPrintPreviewDialog_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QPrintPreviewDialog_Tr2(const char* s, const char* c);
+struct miqt_string QPrintPreviewDialog_Tr3(const char* s, const char* c, int n);
+struct miqt_string QPrintPreviewDialog_TrUtf82(const char* s, const char* c);
+struct miqt_string QPrintPreviewDialog_TrUtf83(const char* s, const char* c, int n);
 void QPrintPreviewDialog_Delete(QPrintPreviewDialog* self);
 
 #ifdef __cplusplus

@@ -12,8 +12,8 @@ QFont* QFont_new() {
 	return new QFont();
 }
 
-QFont* QFont_new2(struct miqt_string* family) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+QFont* QFont_new2(struct miqt_string family) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return new QFont(family_QString);
 }
 
@@ -29,18 +29,18 @@ QFont* QFont_new5(QFont* font) {
 	return new QFont(*font);
 }
 
-QFont* QFont_new6(struct miqt_string* family, int pointSize) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+QFont* QFont_new6(struct miqt_string family, int pointSize) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return new QFont(family_QString, static_cast<int>(pointSize));
 }
 
-QFont* QFont_new7(struct miqt_string* family, int pointSize, int weight) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+QFont* QFont_new7(struct miqt_string family, int pointSize, int weight) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight));
 }
 
-QFont* QFont_new8(struct miqt_string* family, int pointSize, int weight, bool italic) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
 }
 
@@ -48,27 +48,35 @@ void QFont_Swap(QFont* self, QFont* other) {
 	self->swap(*other);
 }
 
-struct miqt_string* QFont_Family(const QFont* self) {
+struct miqt_string QFont_Family(const QFont* self) {
 	QString _ret = self->family();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QFont_SetFamily(QFont* self, struct miqt_string* family) {
-	QString family_QString = QString::fromUtf8(&family->data, family->len);
+void QFont_SetFamily(QFont* self, struct miqt_string family) {
+	QString family_QString = QString::fromUtf8(family.data, family.len);
 	self->setFamily(family_QString);
 }
 
 struct miqt_array* QFont_Families(const QFont* self) {
 	QStringList _ret = self->families();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -76,26 +84,30 @@ struct miqt_array* QFont_Families(const QFont* self) {
 	return _out;
 }
 
-void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string* */ families) {
+void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string */ families) {
 	QStringList families_QList;
 	families_QList.reserve(families->len);
-	struct miqt_string** families_arr = static_cast<struct miqt_string**>(families->data);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
 	for(size_t i = 0; i < families->len; ++i) {
-		QString families_arr_i_QString = QString::fromUtf8(&families_arr[i]->data, families_arr[i]->len);
+		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
 	self->setFamilies(families_QList);
 }
 
-struct miqt_string* QFont_StyleName(const QFont* self) {
+struct miqt_string QFont_StyleName(const QFont* self) {
 	QString _ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QFont_SetStyleName(QFont* self, struct miqt_string* styleName) {
-	QString styleName_QString = QString::fromUtf8(&styleName->data, styleName->len);
+void QFont_SetStyleName(QFont* self, struct miqt_string styleName) {
+	QString styleName_QString = QString::fromUtf8(styleName.data, styleName.len);
 	self->setStyleName(styleName_QString);
 }
 
@@ -296,55 +308,75 @@ bool QFont_IsCopyOf(const QFont* self, QFont* param1) {
 	return self->isCopyOf(*param1);
 }
 
-void QFont_SetRawName(QFont* self, struct miqt_string* rawName) {
-	QString rawName_QString = QString::fromUtf8(&rawName->data, rawName->len);
+void QFont_SetRawName(QFont* self, struct miqt_string rawName) {
+	QString rawName_QString = QString::fromUtf8(rawName.data, rawName.len);
 	self->setRawName(rawName_QString);
 }
 
-struct miqt_string* QFont_RawName(const QFont* self) {
+struct miqt_string QFont_RawName(const QFont* self) {
 	QString _ret = self->rawName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFont_Key(const QFont* self) {
+struct miqt_string QFont_Key(const QFont* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFont_ToString(const QFont* self) {
+struct miqt_string QFont_ToString(const QFont* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-bool QFont_FromString(QFont* self, struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+bool QFont_FromString(QFont* self, struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return self->fromString(param1_QString);
 }
 
-struct miqt_string* QFont_Substitute(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+struct miqt_string QFont_Substitute(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QString _ret = QFont::substitute(param1_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+struct miqt_array* QFont_Substitutes(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QStringList _ret = QFont::substitutes(param1_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -355,12 +387,16 @@ struct miqt_array* QFont_Substitutes(struct miqt_string* param1) {
 struct miqt_array* QFont_Substitutions() {
 	QStringList _ret = QFont::substitutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string** _arr = static_cast<struct miqt_string**>(malloc(sizeof(struct miqt_string*) * _ret.length()));
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
-		_arr[i] = miqt_strdup(_lv_b.data(), _lv_b.length());
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
 	}
 	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
 	_out->len = _ret.length();
@@ -368,26 +404,26 @@ struct miqt_array* QFont_Substitutions() {
 	return _out;
 }
 
-void QFont_InsertSubstitution(struct miqt_string* param1, struct miqt_string* param2) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
-	QString param2_QString = QString::fromUtf8(&param2->data, param2->len);
+void QFont_InsertSubstitution(struct miqt_string param1, struct miqt_string param2) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
+	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	QFont::insertSubstitution(param1_QString, param2_QString);
 }
 
-void QFont_InsertSubstitutions(struct miqt_string* param1, struct miqt_array* /* of struct miqt_string* */ param2) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QFont_InsertSubstitutions(struct miqt_string param1, struct miqt_array* /* of struct miqt_string */ param2) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QStringList param2_QList;
 	param2_QList.reserve(param2->len);
-	struct miqt_string** param2_arr = static_cast<struct miqt_string**>(param2->data);
+	struct miqt_string* param2_arr = static_cast<struct miqt_string*>(param2->data);
 	for(size_t i = 0; i < param2->len; ++i) {
-		QString param2_arr_i_QString = QString::fromUtf8(&param2_arr[i]->data, param2_arr[i]->len);
+		QString param2_arr_i_QString = QString::fromUtf8(param2_arr[i].data, param2_arr[i].len);
 		param2_QList.push_back(param2_arr_i_QString);
 	}
 	QFont::insertSubstitutions(param1_QString, param2_QList);
 }
 
-void QFont_RemoveSubstitutions(struct miqt_string* param1) {
-	QString param1_QString = QString::fromUtf8(&param1->data, param1->len);
+void QFont_RemoveSubstitutions(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QFont::removeSubstitutions(param1_QString);
 }
 
@@ -403,25 +439,37 @@ void QFont_CacheStatistics() {
 	QFont::cacheStatistics();
 }
 
-struct miqt_string* QFont_DefaultFamily(const QFont* self) {
+struct miqt_string QFont_DefaultFamily(const QFont* self) {
 	QString _ret = self->defaultFamily();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFont_LastResortFamily(const QFont* self) {
+struct miqt_string QFont_LastResortFamily(const QFont* self) {
 	QString _ret = self->lastResortFamily();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QFont_LastResortFont(const QFont* self) {
+struct miqt_string QFont_LastResortFont(const QFont* self) {
 	QString _ret = self->lastResortFont();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QFont* QFont_Resolve(const QFont* self, QFont* param1) {

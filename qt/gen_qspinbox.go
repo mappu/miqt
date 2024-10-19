@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -64,24 +63,24 @@ func (this *QSpinBox) MetaObject() *QMetaObject {
 func (this *QSpinBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QSpinBox_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QSpinBox_Metacast(this.h, param1_Cstring))
 }
 
 func QSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QSpinBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -90,35 +89,39 @@ func (this *QSpinBox) Value() int {
 }
 
 func (this *QSpinBox) Prefix() string {
-	var _ms *C.struct_miqt_string = C.QSpinBox_Prefix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_Prefix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSpinBox) SetPrefix(prefix string) {
-	prefix_ms := libmiqt.Strdupg(prefix)
-	defer C.free(prefix_ms)
-	C.QSpinBox_SetPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QSpinBox_SetPrefix(this.h, prefix_ms)
 }
 
 func (this *QSpinBox) Suffix() string {
-	var _ms *C.struct_miqt_string = C.QSpinBox_Suffix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_Suffix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSpinBox) SetSuffix(suffix string) {
-	suffix_ms := libmiqt.Strdupg(suffix)
-	defer C.free(suffix_ms)
-	C.QSpinBox_SetSuffix(this.h, (*C.struct_miqt_string)(suffix_ms))
+	suffix_ms := C.struct_miqt_string{}
+	suffix_ms.data = C.CString(suffix)
+	suffix_ms.len = C.size_t(len(suffix))
+	defer C.free(unsafe.Pointer(suffix_ms.data))
+	C.QSpinBox_SetSuffix(this.h, suffix_ms)
 }
 
 func (this *QSpinBox) CleanText() string {
-	var _ms *C.struct_miqt_string = C.QSpinBox_CleanText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_CleanText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -191,50 +194,54 @@ func miqt_exec_callback_QSpinBox_ValueChanged(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QSpinBox) TextChanged(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QSpinBox_TextChanged(this.h, param1_ms)
 }
 func (this *QSpinBox) OnTextChanged(slot func(param1 string)) {
 	C.QSpinBox_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSpinBox_TextChanged
-func miqt_exec_callback_QSpinBox_TextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QSpinBox_TextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QSpinBox) ValueChangedWithQString(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QSpinBox_ValueChangedWithQString(this.h, param1_ms)
 }
 func (this *QSpinBox) OnValueChangedWithQString(slot func(param1 string)) {
 	C.QSpinBox_connect_ValueChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSpinBox_ValueChangedWithQString
-func miqt_exec_callback_QSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
@@ -245,9 +252,9 @@ func QSpinBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -256,9 +263,9 @@ func QSpinBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -267,9 +274,9 @@ func QSpinBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -278,9 +285,9 @@ func QSpinBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -347,24 +354,24 @@ func (this *QDoubleSpinBox) MetaObject() *QMetaObject {
 func (this *QDoubleSpinBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QDoubleSpinBox_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QDoubleSpinBox_Metacast(this.h, param1_Cstring))
 }
 
 func QDoubleSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QDoubleSpinBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -373,35 +380,39 @@ func (this *QDoubleSpinBox) Value() float64 {
 }
 
 func (this *QDoubleSpinBox) Prefix() string {
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_Prefix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_Prefix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDoubleSpinBox) SetPrefix(prefix string) {
-	prefix_ms := libmiqt.Strdupg(prefix)
-	defer C.free(prefix_ms)
-	C.QDoubleSpinBox_SetPrefix(this.h, (*C.struct_miqt_string)(prefix_ms))
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QDoubleSpinBox_SetPrefix(this.h, prefix_ms)
 }
 
 func (this *QDoubleSpinBox) Suffix() string {
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_Suffix(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_Suffix(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDoubleSpinBox) SetSuffix(suffix string) {
-	suffix_ms := libmiqt.Strdupg(suffix)
-	defer C.free(suffix_ms)
-	C.QDoubleSpinBox_SetSuffix(this.h, (*C.struct_miqt_string)(suffix_ms))
+	suffix_ms := C.struct_miqt_string{}
+	suffix_ms.data = C.CString(suffix)
+	suffix_ms.len = C.size_t(len(suffix))
+	defer C.free(unsafe.Pointer(suffix_ms.data))
+	C.QDoubleSpinBox_SetSuffix(this.h, suffix_ms)
 }
 
 func (this *QDoubleSpinBox) CleanText() string {
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_CleanText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_CleanText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -450,28 +461,34 @@ func (this *QDoubleSpinBox) SetDecimals(prec int) {
 }
 
 func (this *QDoubleSpinBox) Validate(input string, pos *int) QValidator__State {
-	input_ms := libmiqt.Strdupg(input)
-	defer C.free(input_ms)
-	return (QValidator__State)(C.QDoubleSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
+	input_ms := C.struct_miqt_string{}
+	input_ms.data = C.CString(input)
+	input_ms.len = C.size_t(len(input))
+	defer C.free(unsafe.Pointer(input_ms.data))
+	return (QValidator__State)(C.QDoubleSpinBox_Validate(this.h, input_ms, (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QDoubleSpinBox) ValueFromText(text string) float64 {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return (float64)(C.QDoubleSpinBox_ValueFromText(this.h, (*C.struct_miqt_string)(text_ms)))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return (float64)(C.QDoubleSpinBox_ValueFromText(this.h, text_ms))
 }
 
 func (this *QDoubleSpinBox) TextFromValue(val float64) string {
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_TextFromValue(this.h, (C.double)(val))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_TextFromValue(this.h, (C.double)(val))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDoubleSpinBox) Fixup(str string) {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	C.QDoubleSpinBox_Fixup(this.h, (*C.struct_miqt_string)(str_ms))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	C.QDoubleSpinBox_Fixup(this.h, str_ms)
 }
 
 func (this *QDoubleSpinBox) SetValue(val float64) {
@@ -499,50 +516,54 @@ func miqt_exec_callback_QDoubleSpinBox_ValueChanged(cb C.intptr_t, param1 C.doub
 }
 
 func (this *QDoubleSpinBox) TextChanged(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QDoubleSpinBox_TextChanged(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QDoubleSpinBox_TextChanged(this.h, param1_ms)
 }
 func (this *QDoubleSpinBox) OnTextChanged(slot func(param1 string)) {
 	C.QDoubleSpinBox_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleSpinBox_TextChanged
-func miqt_exec_callback_QDoubleSpinBox_TextChanged(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QDoubleSpinBox_TextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QDoubleSpinBox) ValueChangedWithQString(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QDoubleSpinBox_ValueChangedWithQString(this.h, (*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QDoubleSpinBox_ValueChangedWithQString(this.h, param1_ms)
 }
 func (this *QDoubleSpinBox) OnValueChangedWithQString(slot func(param1 string)) {
 	C.QDoubleSpinBox_connect_ValueChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString
-func miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 *C.struct_miqt_string) {
+func miqt_exec_callback_QDoubleSpinBox_ValueChangedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var param1_ms *C.struct_miqt_string = param1
-	param1_ret := C.GoStringN(&param1_ms.data, C.int(int64(param1_ms.len)))
-	C.free(unsafe.Pointer(param1_ms))
+	var param1_ms C.struct_miqt_string = param1
+	param1_ret := C.GoStringN(param1_ms.data, C.int(int64(param1_ms.len)))
+	C.free(unsafe.Pointer(param1_ms.data))
 	slotval1 := param1_ret
 
 	gofunc(slotval1)
@@ -553,9 +574,9 @@ func QDoubleSpinBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -564,9 +585,9 @@ func QDoubleSpinBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -575,9 +596,9 @@ func QDoubleSpinBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -586,9 +607,9 @@ func QDoubleSpinBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QDoubleSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QDoubleSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

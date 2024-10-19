@@ -63,16 +63,16 @@ func (this *QFontInfo) Swap(other *QFontInfo) {
 }
 
 func (this *QFontInfo) Family() string {
-	var _ms *C.struct_miqt_string = C.QFontInfo_Family(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFontInfo_Family(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFontInfo) StyleName() string {
-	var _ms *C.struct_miqt_string = C.QFontInfo_StyleName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QFontInfo_StyleName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

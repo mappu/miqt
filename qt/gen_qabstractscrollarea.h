@@ -31,8 +31,8 @@ QAbstractScrollArea* QAbstractScrollArea_new();
 QAbstractScrollArea* QAbstractScrollArea_new2(QWidget* parent);
 QMetaObject* QAbstractScrollArea_MetaObject(const QAbstractScrollArea* self);
 void* QAbstractScrollArea_Metacast(QAbstractScrollArea* self, const char* param1);
-struct miqt_string* QAbstractScrollArea_Tr(const char* s);
-struct miqt_string* QAbstractScrollArea_TrUtf8(const char* s);
+struct miqt_string QAbstractScrollArea_Tr(const char* s);
+struct miqt_string QAbstractScrollArea_TrUtf8(const char* s);
 int QAbstractScrollArea_VerticalScrollBarPolicy(const QAbstractScrollArea* self);
 void QAbstractScrollArea_SetVerticalScrollBarPolicy(QAbstractScrollArea* self, int verticalScrollBarPolicy);
 QScrollBar* QAbstractScrollArea_VerticalScrollBar(const QAbstractScrollArea* self);
@@ -53,10 +53,10 @@ QSize* QAbstractScrollArea_SizeHint(const QAbstractScrollArea* self);
 void QAbstractScrollArea_SetupViewport(QAbstractScrollArea* self, QWidget* viewport);
 int QAbstractScrollArea_SizeAdjustPolicy(const QAbstractScrollArea* self);
 void QAbstractScrollArea_SetSizeAdjustPolicy(QAbstractScrollArea* self, int policy);
-struct miqt_string* QAbstractScrollArea_Tr2(const char* s, const char* c);
-struct miqt_string* QAbstractScrollArea_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAbstractScrollArea_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAbstractScrollArea_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAbstractScrollArea_Tr2(const char* s, const char* c);
+struct miqt_string QAbstractScrollArea_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractScrollArea_TrUtf82(const char* s, const char* c);
+struct miqt_string QAbstractScrollArea_TrUtf83(const char* s, const char* c, int n);
 void QAbstractScrollArea_Delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus

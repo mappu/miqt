@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -63,24 +62,24 @@ func (this *QErrorMessage) MetaObject() *QMetaObject {
 func (this *QErrorMessage) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QErrorMessage_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QErrorMessage_Metacast(this.h, param1_Cstring))
 }
 
 func QErrorMessage_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QErrorMessage_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -89,17 +88,23 @@ func QErrorMessage_QtHandler() *QErrorMessage {
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	C.QErrorMessage_ShowMessage(this.h, (*C.struct_miqt_string)(message_ms))
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	C.QErrorMessage_ShowMessage(this.h, message_ms)
 }
 
 func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	typeVal_ms := libmiqt.Strdupg(typeVal)
-	defer C.free(typeVal_ms)
-	C.QErrorMessage_ShowMessage2(this.h, (*C.struct_miqt_string)(message_ms), (*C.struct_miqt_string)(typeVal_ms))
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	typeVal_ms := C.struct_miqt_string{}
+	typeVal_ms.data = C.CString(typeVal)
+	typeVal_ms.len = C.size_t(len(typeVal))
+	defer C.free(unsafe.Pointer(typeVal_ms.data))
+	C.QErrorMessage_ShowMessage2(this.h, message_ms, typeVal_ms)
 }
 
 func QErrorMessage_Tr2(s string, c string) string {
@@ -107,9 +112,9 @@ func QErrorMessage_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -118,9 +123,9 @@ func QErrorMessage_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -129,9 +134,9 @@ func QErrorMessage_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -140,9 +145,9 @@ func QErrorMessage_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QErrorMessage_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QErrorMessage_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -37,8 +37,8 @@ QState* QState_new3(QState* parent);
 QState* QState_new4(int childMode, QState* parent);
 QMetaObject* QState_MetaObject(const QState* self);
 void* QState_Metacast(QState* self, const char* param1);
-struct miqt_string* QState_Tr(const char* s);
-struct miqt_string* QState_TrUtf8(const char* s);
+struct miqt_string QState_Tr(const char* s);
+struct miqt_string QState_TrUtf8(const char* s);
 QAbstractState* QState_ErrorState(const QState* self);
 void QState_SetErrorState(QState* self, QAbstractState* state);
 void QState_AddTransition(QState* self, QAbstractTransition* transition);
@@ -51,10 +51,10 @@ void QState_SetInitialState(QState* self, QAbstractState* state);
 int QState_ChildMode(const QState* self);
 void QState_SetChildMode(QState* self, int mode);
 void QState_AssignProperty(QState* self, QObject* object, const char* name, QVariant* value);
-struct miqt_string* QState_Tr2(const char* s, const char* c);
-struct miqt_string* QState_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QState_TrUtf82(const char* s, const char* c);
-struct miqt_string* QState_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QState_Tr2(const char* s, const char* c);
+struct miqt_string QState_Tr3(const char* s, const char* c, int n);
+struct miqt_string QState_TrUtf82(const char* s, const char* c);
+struct miqt_string QState_TrUtf83(const char* s, const char* c, int n);
 void QState_Delete(QState* self);
 
 #ifdef __cplusplus

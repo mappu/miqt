@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -53,9 +52,11 @@ func NewQMenu() *QMenu {
 
 // NewQMenu2 constructs a new QMenu object.
 func NewQMenu2(title string) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	ret := C.QMenu_new2((*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QMenu_new2(title_ms)
 	return newQMenu(ret)
 }
 
@@ -67,9 +68,11 @@ func NewQMenu3(parent *QWidget) *QMenu {
 
 // NewQMenu4 constructs a new QMenu object.
 func NewQMenu4(title string, parent *QWidget) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	ret := C.QMenu_new4((*C.struct_miqt_string)(title_ms), parent.cPointer())
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QMenu_new4(title_ms, parent.cPointer())
 	return newQMenu(ret)
 }
 
@@ -80,37 +83,41 @@ func (this *QMenu) MetaObject() *QMetaObject {
 func (this *QMenu) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QMenu_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QMenu_Metacast(this.h, param1_Cstring))
 }
 
 func QMenu_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMenu_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMenu) AddAction(text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddAction(this.h, (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddAction(this.h, text_ms)))
 }
 
 func (this *QMenu) AddAction2(icon *QIcon, text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddAction2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddAction2(this.h, icon.cPointer(), text_ms)))
 }
 
 func (this *QMenu) AddMenu(menu *QMenu) *QAction {
@@ -118,15 +125,19 @@ func (this *QMenu) AddMenu(menu *QMenu) *QAction {
 }
 
 func (this *QMenu) AddMenuWithTitle(title string) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	return UnsafeNewQMenu(unsafe.Pointer(C.QMenu_AddMenuWithTitle(this.h, (*C.struct_miqt_string)(title_ms))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenu_AddMenuWithTitle(this.h, title_ms)))
 }
 
 func (this *QMenu) AddMenu2(icon *QIcon, title string) *QMenu {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	return UnsafeNewQMenu(unsafe.Pointer(C.QMenu_AddMenu2(this.h, icon.cPointer(), (*C.struct_miqt_string)(title_ms))))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	return UnsafeNewQMenu(unsafe.Pointer(C.QMenu_AddMenu2(this.h, icon.cPointer(), title_ms)))
 }
 
 func (this *QMenu) AddSeparator() *QAction {
@@ -134,15 +145,19 @@ func (this *QMenu) AddSeparator() *QAction {
 }
 
 func (this *QMenu) AddSection(text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddSection(this.h, (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddSection(this.h, text_ms)))
 }
 
 func (this *QMenu) AddSection2(icon *QIcon, text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddSection2(this.h, icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_AddSection2(this.h, icon.cPointer(), text_ms)))
 }
 
 func (this *QMenu) InsertMenu(before *QAction, menu *QMenu) *QAction {
@@ -154,15 +169,19 @@ func (this *QMenu) InsertSeparator(before *QAction) *QAction {
 }
 
 func (this *QMenu) InsertSection(before *QAction, text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_InsertSection(this.h, before.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_InsertSection(this.h, before.cPointer(), text_ms)))
 }
 
 func (this *QMenu) InsertSection2(before *QAction, icon *QIcon, text string) *QAction {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), (*C.struct_miqt_string)(text_ms))))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_InsertSection2(this.h, before.cPointer(), icon.cPointer(), text_ms)))
 }
 
 func (this *QMenu) IsEmpty() bool {
@@ -260,16 +279,18 @@ func (this *QMenu) MenuAction() *QAction {
 }
 
 func (this *QMenu) Title() string {
-	var _ms *C.struct_miqt_string = C.QMenu_Title(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_Title(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMenu) SetTitle(title string) {
-	title_ms := libmiqt.Strdupg(title)
-	defer C.free(title_ms)
-	C.QMenu_SetTitle(this.h, (*C.struct_miqt_string)(title_ms))
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	C.QMenu_SetTitle(this.h, title_ms)
 }
 
 func (this *QMenu) Icon() *QIcon {
@@ -382,9 +403,9 @@ func QMenu_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -393,9 +414,9 @@ func QMenu_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -404,9 +425,9 @@ func QMenu_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -415,9 +436,9 @@ func QMenu_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMenu_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMenu_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

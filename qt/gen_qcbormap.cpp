@@ -62,8 +62,8 @@ QCborValue* QCborMap_Value(const QCborMap* self, long long key) {
 	return new QCborValue(self->value(static_cast<qint64>(key)));
 }
 
-QCborValue* QCborMap_Value2(const QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValue* QCborMap_Value2(const QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValue(self->value(key_QString));
 }
 
@@ -75,8 +75,8 @@ QCborValue* QCborMap_OperatorSubscript(const QCborMap* self, long long key) {
 	return new QCborValue(self->operator[](static_cast<qint64>(key)));
 }
 
-QCborValue* QCborMap_OperatorSubscript2(const QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValue* QCborMap_OperatorSubscript2(const QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValue(self->operator[](key_QString));
 }
 
@@ -88,8 +88,8 @@ QCborValueRef* QCborMap_OperatorSubscript4(QCborMap* self, long long key) {
 	return new QCborValueRef(self->operator[](static_cast<qint64>(key)));
 }
 
-QCborValueRef* QCborMap_OperatorSubscript6(QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValueRef* QCborMap_OperatorSubscript6(QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValueRef(self->operator[](key_QString));
 }
 
@@ -101,8 +101,8 @@ QCborValue* QCborMap_Take(QCborMap* self, long long key) {
 	return new QCborValue(self->take(static_cast<qint64>(key)));
 }
 
-QCborValue* QCborMap_Take2(QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValue* QCborMap_Take2(QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValue(self->take(key_QString));
 }
 
@@ -114,8 +114,8 @@ void QCborMap_Remove(QCborMap* self, long long key) {
 	self->remove(static_cast<qint64>(key));
 }
 
-void QCborMap_Remove2(QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QCborMap_Remove2(QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->remove(key_QString);
 }
 
@@ -127,8 +127,8 @@ bool QCborMap_Contains(const QCborMap* self, long long key) {
 	return self->contains(static_cast<qint64>(key));
 }
 
-bool QCborMap_Contains2(const QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+bool QCborMap_Contains2(const QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return self->contains(key_QString);
 }
 
@@ -208,8 +208,8 @@ QCborMap__Iterator* QCborMap_Find(QCborMap* self, long long key) {
 	return new QCborMap::Iterator(self->find(static_cast<qint64>(key)));
 }
 
-QCborMap__Iterator* QCborMap_Find2(QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborMap__Iterator* QCborMap_Find2(QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborMap::Iterator(self->find(key_QString));
 }
 
@@ -221,8 +221,8 @@ QCborMap__ConstIterator* QCborMap_ConstFind(const QCborMap* self, long long key)
 	return new QCborMap::ConstIterator(self->constFind(static_cast<qint64>(key)));
 }
 
-QCborMap__ConstIterator* QCborMap_ConstFind2(const QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborMap__ConstIterator* QCborMap_ConstFind2(const QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborMap::ConstIterator(self->constFind(key_QString));
 }
 
@@ -234,8 +234,8 @@ QCborMap__ConstIterator* QCborMap_Find4(const QCborMap* self, long long key) {
 	return new QCborMap::ConstIterator(self->find(static_cast<qint64>(key)));
 }
 
-QCborMap__ConstIterator* QCborMap_Find6(const QCborMap* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborMap__ConstIterator* QCborMap_Find6(const QCborMap* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborMap::ConstIterator(self->find(key_QString));
 }
 
@@ -247,8 +247,8 @@ QCborMap__Iterator* QCborMap_Insert(QCborMap* self, long long key, QCborValue* v
 	return new QCborMap::Iterator(self->insert(static_cast<qint64>(key), *value_));
 }
 
-QCborMap__Iterator* QCborMap_Insert3(QCborMap* self, struct miqt_string* key, QCborValue* value_) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborMap__Iterator* QCborMap_Insert3(QCborMap* self, struct miqt_string key, QCborValue* value_) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborMap::Iterator(self->insert(key_QString, *value_));
 }
 

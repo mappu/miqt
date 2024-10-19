@@ -15,8 +15,8 @@ QPluginLoader* QPluginLoader_new() {
 	return new QPluginLoader();
 }
 
-QPluginLoader* QPluginLoader_new2(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QPluginLoader* QPluginLoader_new2(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QPluginLoader(fileName_QString);
 }
 
@@ -24,8 +24,8 @@ QPluginLoader* QPluginLoader_new3(QObject* parent) {
 	return new QPluginLoader(parent);
 }
 
-QPluginLoader* QPluginLoader_new4(struct miqt_string* fileName, QObject* parent) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QPluginLoader* QPluginLoader_new4(struct miqt_string fileName, QObject* parent) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QPluginLoader(fileName_QString, parent);
 }
 
@@ -37,18 +37,26 @@ void* QPluginLoader_Metacast(QPluginLoader* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QPluginLoader_Tr(const char* s) {
+struct miqt_string QPluginLoader_Tr(const char* s) {
 	QString _ret = QPluginLoader::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPluginLoader_TrUtf8(const char* s) {
+struct miqt_string QPluginLoader_TrUtf8(const char* s) {
 	QString _ret = QPluginLoader::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QObject* QPluginLoader_Instance(QPluginLoader* self) {
@@ -97,23 +105,31 @@ bool QPluginLoader_IsLoaded(const QPluginLoader* self) {
 	return self->isLoaded();
 }
 
-void QPluginLoader_SetFileName(QPluginLoader* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QPluginLoader_SetFileName(QPluginLoader* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->setFileName(fileName_QString);
 }
 
-struct miqt_string* QPluginLoader_FileName(const QPluginLoader* self) {
+struct miqt_string QPluginLoader_FileName(const QPluginLoader* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPluginLoader_ErrorString(const QPluginLoader* self) {
+struct miqt_string QPluginLoader_ErrorString(const QPluginLoader* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPluginLoader_SetLoadHints(QPluginLoader* self, int loadHints) {
@@ -125,32 +141,48 @@ int QPluginLoader_LoadHints(const QPluginLoader* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QPluginLoader_Tr2(const char* s, const char* c) {
+struct miqt_string QPluginLoader_Tr2(const char* s, const char* c) {
 	QString _ret = QPluginLoader::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPluginLoader_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPluginLoader_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QPluginLoader::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPluginLoader_TrUtf82(const char* s, const char* c) {
+struct miqt_string QPluginLoader_TrUtf82(const char* s, const char* c) {
 	QString _ret = QPluginLoader::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPluginLoader_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QPluginLoader_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QPluginLoader::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPluginLoader_Delete(QPluginLoader* self) {

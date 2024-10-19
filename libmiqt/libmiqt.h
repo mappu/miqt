@@ -10,12 +10,12 @@ extern "C" {
 
 struct miqt_string {
     size_t len;
-    char data; // Data continues after this element, all in the same allocation
+    char* data;
 };
 
 struct miqt_array {
     size_t len;
-    void* data; // Separate, second allocation
+    void* data;
 };
 
 struct miqt_string* miqt_strdup(const char* src, size_t len);

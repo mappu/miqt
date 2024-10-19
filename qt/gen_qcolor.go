@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -93,9 +92,11 @@ func NewQColor5(rgba64 QRgba64) *QColor {
 
 // NewQColor6 constructs a new QColor object.
 func NewQColor6(name string) *QColor {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	ret := C.QColor_new6((*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	ret := C.QColor_new6(name_ms)
 	return newQColor(ret)
 }
 
@@ -150,33 +151,35 @@ func (this *QColor) IsValid() bool {
 }
 
 func (this *QColor) Name() string {
-	var _ms *C.struct_miqt_string = C.QColor_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QColor_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QColor) NameWithFormat(format QColor__NameFormat) string {
-	var _ms *C.struct_miqt_string = C.QColor_NameWithFormat(this.h, (C.int)(format))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QColor_NameWithFormat(this.h, (C.int)(format))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QColor) SetNamedColor(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QColor_SetNamedColor(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QColor_SetNamedColor(this.h, name_ms)
 }
 
 func QColor_ColorNames() []string {
 	var _ma *C.struct_miqt_array = C.QColor_ColorNames()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -609,9 +612,11 @@ func (this *QColor) OperatorNotEqual(c *QColor) bool {
 }
 
 func QColor_IsValidColor(name string) bool {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	return (bool)(C.QColor_IsValidColor((*C.struct_miqt_string)(name_ms)))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	return (bool)(C.QColor_IsValidColor(name_ms))
 }
 
 func (this *QColor) GetRgb4(r *int, g *int, b *int, a *int) {

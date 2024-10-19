@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -106,24 +105,24 @@ func (this *QSplashScreen) MetaObject() *QMetaObject {
 func (this *QSplashScreen) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QSplashScreen_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QSplashScreen_Metacast(this.h, param1_Cstring))
 }
 
 func QSplashScreen_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QSplashScreen_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -147,16 +146,18 @@ func (this *QSplashScreen) Repaint() {
 }
 
 func (this *QSplashScreen) Message() string {
-	var _ms *C.struct_miqt_string = C.QSplashScreen_Message(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_Message(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSplashScreen) ShowMessage(message string) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	C.QSplashScreen_ShowMessage(this.h, (*C.struct_miqt_string)(message_ms))
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	C.QSplashScreen_ShowMessage(this.h, message_ms)
 }
 
 func (this *QSplashScreen) ClearMessage() {
@@ -164,25 +165,27 @@ func (this *QSplashScreen) ClearMessage() {
 }
 
 func (this *QSplashScreen) MessageChanged(message string) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	C.QSplashScreen_MessageChanged(this.h, (*C.struct_miqt_string)(message_ms))
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	C.QSplashScreen_MessageChanged(this.h, message_ms)
 }
 func (this *QSplashScreen) OnMessageChanged(slot func(message string)) {
 	C.QSplashScreen_connect_MessageChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSplashScreen_MessageChanged
-func miqt_exec_callback_QSplashScreen_MessageChanged(cb C.intptr_t, message *C.struct_miqt_string) {
+func miqt_exec_callback_QSplashScreen_MessageChanged(cb C.intptr_t, message C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(message string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var message_ms *C.struct_miqt_string = message
-	message_ret := C.GoStringN(&message_ms.data, C.int(int64(message_ms.len)))
-	C.free(unsafe.Pointer(message_ms))
+	var message_ms C.struct_miqt_string = message
+	message_ret := C.GoStringN(message_ms.data, C.int(int64(message_ms.len)))
+	C.free(unsafe.Pointer(message_ms.data))
 	slotval1 := message_ret
 
 	gofunc(slotval1)
@@ -193,9 +196,9 @@ func QSplashScreen_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -204,9 +207,9 @@ func QSplashScreen_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -215,9 +218,9 @@ func QSplashScreen_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -226,22 +229,26 @@ func QSplashScreen_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QSplashScreen_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QSplashScreen_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	C.QSplashScreen_ShowMessage2(this.h, (*C.struct_miqt_string)(message_ms), (C.int)(alignment))
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	C.QSplashScreen_ShowMessage2(this.h, message_ms, (C.int)(alignment))
 }
 
 func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QColor) {
-	message_ms := libmiqt.Strdupg(message)
-	defer C.free(message_ms)
-	C.QSplashScreen_ShowMessage3(this.h, (*C.struct_miqt_string)(message_ms), (C.int)(alignment), color.cPointer())
+	message_ms := C.struct_miqt_string{}
+	message_ms.data = C.CString(message)
+	message_ms.len = C.size_t(len(message))
+	defer C.free(unsafe.Pointer(message_ms.data))
+	C.QSplashScreen_ShowMessage3(this.h, message_ms, (C.int)(alignment), color.cPointer())
 }
 
 // Delete this object from C++ memory.

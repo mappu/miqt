@@ -79,23 +79,23 @@ func NewQMetaMethod2(param1 *QMetaMethod) *QMetaMethod {
 	return newQMetaMethod(ret)
 }
 
-func (this *QMetaMethod) MethodSignature() *QByteArray {
-	_ret := C.QMetaMethod_MethodSignature(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMetaMethod) MethodSignature() []byte {
+	var _bytearray C.struct_miqt_string = C.QMetaMethod_MethodSignature(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QMetaMethod) Name() *QByteArray {
-	_ret := C.QMetaMethod_Name(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMetaMethod) Name() []byte {
+	var _bytearray C.struct_miqt_string = C.QMetaMethod_Name(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func (this *QMetaMethod) TypeName() unsafe.Pointer {
+func (this *QMetaMethod) TypeName() string {
 	_ret := C.QMetaMethod_TypeName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaMethod) ReturnType() int {
@@ -114,37 +114,37 @@ func (this *QMetaMethod) GetParameterTypes(types *int) {
 	C.QMetaMethod_GetParameterTypes(this.h, (*C.int)(unsafe.Pointer(types)))
 }
 
-func (this *QMetaMethod) ParameterTypes() []QByteArray {
+func (this *QMetaMethod) ParameterTypes() [][]byte {
 	var _ma *C.struct_miqt_array = C.QMetaMethod_ParameterTypes(this.h)
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func (this *QMetaMethod) ParameterNames() []QByteArray {
+func (this *QMetaMethod) ParameterNames() [][]byte {
 	var _ma *C.struct_miqt_array = C.QMetaMethod_ParameterNames(this.h)
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func (this *QMetaMethod) Tag() unsafe.Pointer {
+func (this *QMetaMethod) Tag() string {
 	_ret := C.QMetaMethod_Tag(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaMethod) Access() QMetaMethod__Access {
@@ -494,14 +494,14 @@ func NewQMetaEnum2(param1 *QMetaEnum) *QMetaEnum {
 	return newQMetaEnum(ret)
 }
 
-func (this *QMetaEnum) Name() unsafe.Pointer {
+func (this *QMetaEnum) Name() string {
 	_ret := C.QMetaEnum_Name(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
-func (this *QMetaEnum) EnumName() unsafe.Pointer {
+func (this *QMetaEnum) EnumName() string {
 	_ret := C.QMetaEnum_EnumName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaEnum) IsFlag() bool {
@@ -516,18 +516,18 @@ func (this *QMetaEnum) KeyCount() int {
 	return (int)(C.QMetaEnum_KeyCount(this.h))
 }
 
-func (this *QMetaEnum) Key(index int) unsafe.Pointer {
+func (this *QMetaEnum) Key(index int) string {
 	_ret := C.QMetaEnum_Key(this.h, (C.int)(index))
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaEnum) Value(index int) int {
 	return (int)(C.QMetaEnum_Value(this.h, (C.int)(index)))
 }
 
-func (this *QMetaEnum) Scope() unsafe.Pointer {
+func (this *QMetaEnum) Scope() string {
 	_ret := C.QMetaEnum_Scope(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaEnum) KeyToValue(key string) int {
@@ -536,9 +536,9 @@ func (this *QMetaEnum) KeyToValue(key string) int {
 	return (int)(C.QMetaEnum_KeyToValue(this.h, key_Cstring))
 }
 
-func (this *QMetaEnum) ValueToKey(value int) unsafe.Pointer {
+func (this *QMetaEnum) ValueToKey(value int) string {
 	_ret := C.QMetaEnum_ValueToKey(this.h, (C.int)(value))
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaEnum) KeysToValue(keys string) int {
@@ -547,11 +547,11 @@ func (this *QMetaEnum) KeysToValue(keys string) int {
 	return (int)(C.QMetaEnum_KeysToValue(this.h, keys_Cstring))
 }
 
-func (this *QMetaEnum) ValueToKeys(value int) *QByteArray {
-	_ret := C.QMetaEnum_ValueToKeys(this.h, (C.int)(value))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMetaEnum) ValueToKeys(value int) []byte {
+	var _bytearray C.struct_miqt_string = C.QMetaEnum_ValueToKeys(this.h, (C.int)(value))
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QMetaEnum) EnclosingMetaObject() *QMetaObject {
@@ -623,14 +623,14 @@ func NewQMetaProperty() *QMetaProperty {
 	return newQMetaProperty(ret)
 }
 
-func (this *QMetaProperty) Name() unsafe.Pointer {
+func (this *QMetaProperty) Name() string {
 	_ret := C.QMetaProperty_Name(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
-func (this *QMetaProperty) TypeName() unsafe.Pointer {
+func (this *QMetaProperty) TypeName() string {
 	_ret := C.QMetaProperty_TypeName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaProperty) Type() QVariant__Type {
@@ -838,14 +838,14 @@ func NewQMetaClassInfo() *QMetaClassInfo {
 	return newQMetaClassInfo(ret)
 }
 
-func (this *QMetaClassInfo) Name() unsafe.Pointer {
+func (this *QMetaClassInfo) Name() string {
 	_ret := C.QMetaClassInfo_Name(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
-func (this *QMetaClassInfo) Value() unsafe.Pointer {
+func (this *QMetaClassInfo) Value() string {
 	_ret := C.QMetaClassInfo_Value(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {

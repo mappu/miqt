@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -52,9 +51,11 @@ func NewQTemporaryFile() *QTemporaryFile {
 
 // NewQTemporaryFile2 constructs a new QTemporaryFile object.
 func NewQTemporaryFile2(templateName string) *QTemporaryFile {
-	templateName_ms := libmiqt.Strdupg(templateName)
-	defer C.free(templateName_ms)
-	ret := C.QTemporaryFile_new2((*C.struct_miqt_string)(templateName_ms))
+	templateName_ms := C.struct_miqt_string{}
+	templateName_ms.data = C.CString(templateName)
+	templateName_ms.len = C.size_t(len(templateName))
+	defer C.free(unsafe.Pointer(templateName_ms.data))
+	ret := C.QTemporaryFile_new2(templateName_ms)
 	return newQTemporaryFile(ret)
 }
 
@@ -66,9 +67,11 @@ func NewQTemporaryFile3(parent *QObject) *QTemporaryFile {
 
 // NewQTemporaryFile4 constructs a new QTemporaryFile object.
 func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
-	templateName_ms := libmiqt.Strdupg(templateName)
-	defer C.free(templateName_ms)
-	ret := C.QTemporaryFile_new4((*C.struct_miqt_string)(templateName_ms), parent.cPointer())
+	templateName_ms := C.struct_miqt_string{}
+	templateName_ms.data = C.CString(templateName)
+	templateName_ms.len = C.size_t(len(templateName))
+	defer C.free(unsafe.Pointer(templateName_ms.data))
+	ret := C.QTemporaryFile_new4(templateName_ms, parent.cPointer())
 	return newQTemporaryFile(ret)
 }
 
@@ -79,24 +82,24 @@ func (this *QTemporaryFile) MetaObject() *QMetaObject {
 func (this *QTemporaryFile) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QTemporaryFile_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QTemporaryFile_Metacast(this.h, param1_Cstring))
 }
 
 func QTemporaryFile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QTemporaryFile_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -113,35 +116,41 @@ func (this *QTemporaryFile) Open() bool {
 }
 
 func (this *QTemporaryFile) FileName() string {
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryFile) FileTemplate() string {
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_FileTemplate(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_FileTemplate(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryFile) SetFileTemplate(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTemporaryFile_SetFileTemplate(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTemporaryFile_SetFileTemplate(this.h, name_ms)
 }
 
 func (this *QTemporaryFile) Rename(newName string) bool {
-	newName_ms := libmiqt.Strdupg(newName)
-	defer C.free(newName_ms)
-	return (bool)(C.QTemporaryFile_Rename(this.h, (*C.struct_miqt_string)(newName_ms)))
+	newName_ms := C.struct_miqt_string{}
+	newName_ms.data = C.CString(newName)
+	newName_ms.len = C.size_t(len(newName))
+	defer C.free(unsafe.Pointer(newName_ms.data))
+	return (bool)(C.QTemporaryFile_Rename(this.h, newName_ms))
 }
 
 func QTemporaryFile_CreateLocalFile(fileName string) *QTemporaryFile {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateLocalFile((*C.struct_miqt_string)(fileName_ms))))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateLocalFile(fileName_ms)))
 }
 
 func QTemporaryFile_CreateLocalFileWithFile(file *QFile) *QTemporaryFile {
@@ -149,9 +158,11 @@ func QTemporaryFile_CreateLocalFileWithFile(file *QFile) *QTemporaryFile {
 }
 
 func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateNativeFile((*C.struct_miqt_string)(fileName_ms))))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return UnsafeNewQTemporaryFile(unsafe.Pointer(C.QTemporaryFile_CreateNativeFile(fileName_ms)))
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
@@ -163,9 +174,9 @@ func QTemporaryFile_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -174,9 +185,9 @@ func QTemporaryFile_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -185,9 +196,9 @@ func QTemporaryFile_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -196,9 +207,9 @@ func QTemporaryFile_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QTemporaryFile_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

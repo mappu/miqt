@@ -26,6 +26,9 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.ParameterType == "QString" {
 		return "string"
 	}
+	if p.ParameterType == "QByteArray" {
+		return "[]byte"
+	}
 
 	if t, ok := p.QListOf(); ok {
 		return "[]" + t.RenderTypeGo(gfs)
@@ -142,7 +145,11 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 
 func (p CppParameter) parameterTypeCgo() string {
 	if p.ParameterType == "QString" {
-		return "*C.struct_miqt_string"
+		return "C.struct_miqt_string"
+	}
+
+	if p.ParameterType == "QByteArray" {
+		return "C.struct_miqt_string"
 	}
 
 	if _, ok := p.QListOf(); ok {
@@ -256,11 +263,25 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Go: convert string -> miqt_string*
 		// CABI: convert miqt_string* -> real QString
 
-		gfs.imports["libmiqt"] = struct{}{}
-		preamble += nameprefix + "_ms := libmiqt.Strdupg(" + p.ParameterName + ")\n"
-		preamble += "defer C.free(" + nameprefix + "_ms)\n"
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
+		preamble += nameprefix + "_ms.data = C.CString(" + p.ParameterName + ")\n"
+		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.ParameterName + "))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
 
-		rvalue = "(*C.struct_miqt_string)(" + nameprefix + "_ms)"
+		rvalue = nameprefix + "_ms"
+
+	} else if p.ParameterType == "QByteArray" {
+		// Go: convert []byte -> miqt_string
+		// CABI: convert miqt_string -> QByteArray
+		// n.b. This can ALIAS the existing []byte data
+
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_alias := C.struct_miqt_string{}\n"
+		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(&" + p.ParameterName + "[0]))\n"
+		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.ParameterName + "))\n"
+
+		rvalue = nameprefix + "_alias"
 
 	} else if listType, ok := p.QListOf(); ok {
 		// QList<T>
@@ -329,32 +350,54 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue string) string {
 
-	shouldReturn := "return "
+	shouldReturn := assignExpr // "return "
 	afterword := ""
 	namePrefix := makeNamePrefix(rt.ParameterName)
 
 	if rt.ParameterType == "void" && !rt.Pointer {
 		shouldReturn = ""
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.ParameterType == "void" && rt.Pointer {
-		// ...
+		gfs.imports["unsafe"] = struct{}{}
+		return assignExpr + " (unsafe.Pointer)(" + rvalue + ")\n"
 
 	} else if rt.ParameterType == "char" && rt.Pointer {
 		// Qt functions normally return QString - anything returning char*
 		// is something like QByteArray.Data() where it returns an unsafe
 		// internal pointer
+		// However in case this is a signal, we need to be able to marshal both
+		// forwards and backwards with the same types, this has to be a string
+		// in both cases
+		// This is not a miqt_string and therefore MIQT did not allocate it,
+		// and therefore we don't have to free it either
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = namePrefix + "_ret := "
-		afterword += assignExpr + " (unsafe.Pointer)(" + namePrefix + "_ret)\n"
+		afterword += assignExpr + " C.GoString(" + namePrefix + "_ret)\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.ParameterType == "QString" {
 		gfs.imports["unsafe"] = struct{}{}
 
-		shouldReturn = "var " + namePrefix + "_ms *C.struct_miqt_string = "
-		afterword += namePrefix + "_ret := C.GoStringN(&" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
-		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms))\n"
+		shouldReturn = "var " + namePrefix + "_ms C.struct_miqt_string = "
+		afterword += namePrefix + "_ret := C.GoStringN(" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms.data))\n"
 		afterword += assignExpr + namePrefix + "_ret"
+		return shouldReturn + " " + rvalue + "\n" + afterword
+
+	} else if rt.ParameterType == "QByteArray" {
+		// We receive the CABI type of a miqt_string. Convert it into []byte
+		// We must free the miqt_string data pointer - this is a data copy,
+		// not an alias
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_bytearray C.struct_miqt_string = "
+		afterword += namePrefix + "_ret := C.GoBytes(unsafe.Pointer(" + namePrefix + "_bytearray.data), C.int(int64(" + namePrefix + "_bytearray.len)))\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_bytearray.data))\n"
+		afterword += assignExpr + namePrefix + "_ret"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if t, ok := rt.QListOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
@@ -370,6 +413,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += "}\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if t, ok := rt.QSetOf(); ok {
 
@@ -387,6 +431,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += "}\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
@@ -427,15 +472,17 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 				afterword += assignExpr + " *" + namePrefix + "_goptr\n"
 			}
 		}
+		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
 
+	} else {
+		panic(fmt.Sprintf("emitgo::emitCabiToGo missing type handler for parameter %+v", rt))
 	}
 
-	return shouldReturn + " " + rvalue + "\n" + afterword
 }
 
 func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, error) {
@@ -468,13 +515,23 @@ import "C"
 		nameTest := map[string]string{}
 	nextEnum:
 		for _, e := range src.Enums {
+
+			shortEnumName := e.ShortEnumName()
+
+			// Disallow entry<-->entry collisions
 			for _, ee := range e.Entries {
-				if other, ok := nameTest[ee.EntryName]; ok {
-					preventShortNames[e.EnumName] = struct{}{}
-					preventShortNames[other] = struct{}{}
+				if other, ok := nameTest[shortEnumName+"::"+ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{} // Our full enum name
+					preventShortNames[other] = struct{}{}      // Their full enum name
 					continue nextEnum
 				}
-				nameTest[ee.EntryName] = e.EnumName
+				nameTest[shortEnumName+"::"+ee.EntryName] = e.EnumName
+
+				if _, ok := KnownClassnames[shortEnumName+"::"+ee.EntryName]; ok {
+					preventShortNames[e.EnumName] = struct{}{}
+					continue nextEnum
+				}
+
 			}
 		}
 	}
@@ -484,19 +541,11 @@ import "C"
 			continue // Removed by transformRedundant AST pass
 		}
 
-		// Fully qualified name of the enum itself
-		goEnumName := cabiClassName(e.EnumName)
+		goEnumName := cabiClassName(e.EnumName) // Fully qualified name of the enum itself
 
-		// Shorter name, so that enum elements are reachable from the surrounding
-		// namespace
-		goEnumShortName := goEnumName
+		goEnumShortName := goEnumName // Shorter name, so that enum elements are reachable from the surrounding namespace
 		if _, ok := preventShortNames[e.EnumName]; !ok {
-			// Strip back one single :: pair from the generated variable name
-			nameParts := strings.Split(e.EnumName, `::`)
-			if len(nameParts) > 1 {
-				nameParts = nameParts[0 : len(nameParts)-1]
-			}
-			goEnumShortName = cabiClassName(strings.Join(nameParts, `::`))
+			goEnumShortName = cabiClassName(e.ShortEnumName())
 		}
 
 		ret.WriteString(`
@@ -628,12 +677,8 @@ import "C"
 			if returnTypeDecl == "void" {
 				returnTypeDecl = ""
 			}
-			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
+			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && m.ReturnType.ParameterType != "QByteArray" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
 				returnTypeDecl = "*" + returnTypeDecl
-			}
-			if (m.ReturnType.ParameterType == "char" || m.ReturnType.ParameterType == "void") && m.ReturnType.Pointer {
-				gfs.imports["unsafe"] = struct{}{}
-				returnTypeDecl = "unsafe.Pointer"
 			}
 
 			rvalue := `C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)`

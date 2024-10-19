@@ -33,8 +33,8 @@ QPixmap* QPixmap_new3(QSize* param1) {
 	return new QPixmap(*param1);
 }
 
-QPixmap* QPixmap_new4(struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QPixmap* QPixmap_new4(struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QPixmap(fileName_QString);
 }
 
@@ -42,13 +42,13 @@ QPixmap* QPixmap_new5(QPixmap* param1) {
 	return new QPixmap(*param1);
 }
 
-QPixmap* QPixmap_new6(struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QPixmap* QPixmap_new6(struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QPixmap(fileName_QString, format);
 }
 
-QPixmap* QPixmap_new7(struct miqt_string* fileName, const char* format, int flags) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QPixmap* QPixmap_new7(struct miqt_string fileName, const char* format, int flags) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QPixmap(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
@@ -193,8 +193,8 @@ QPixmap* QPixmap_FromImageReader(QImageReader* imageReader) {
 	return new QPixmap(QPixmap::fromImageReader(imageReader));
 }
 
-bool QPixmap_Load(QPixmap* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Load(QPixmap* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString);
 }
 
@@ -202,12 +202,13 @@ bool QPixmap_LoadFromData(QPixmap* self, const unsigned char* buf, unsigned int 
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<uint>(lenVal));
 }
 
-bool QPixmap_LoadFromDataWithData(QPixmap* self, QByteArray* data) {
-	return self->loadFromData(*data);
+bool QPixmap_LoadFromDataWithData(QPixmap* self, struct miqt_string data) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return self->loadFromData(data_QByteArray);
 }
 
-bool QPixmap_Save(const QPixmap* self, struct miqt_string* fileName) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Save(const QPixmap* self, struct miqt_string fileName) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString);
 }
 
@@ -344,13 +345,13 @@ QPixmap* QPixmap_FromImageReader2(QImageReader* imageReader, int flags) {
 	return new QPixmap(QPixmap::fromImageReader(imageReader, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-bool QPixmap_Load2(QPixmap* self, struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Load2(QPixmap* self, struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString, format);
 }
 
-bool QPixmap_Load3(QPixmap* self, struct miqt_string* fileName, const char* format, int flags) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Load3(QPixmap* self, struct miqt_string fileName, const char* format, int flags) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
@@ -362,21 +363,23 @@ bool QPixmap_LoadFromData4(QPixmap* self, const unsigned char* buf, unsigned int
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<uint>(lenVal), format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-bool QPixmap_LoadFromData2(QPixmap* self, QByteArray* data, const char* format) {
-	return self->loadFromData(*data, format);
+bool QPixmap_LoadFromData2(QPixmap* self, struct miqt_string data, const char* format) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return self->loadFromData(data_QByteArray, format);
 }
 
-bool QPixmap_LoadFromData32(QPixmap* self, QByteArray* data, const char* format, int flags) {
-	return self->loadFromData(*data, format, static_cast<Qt::ImageConversionFlags>(flags));
+bool QPixmap_LoadFromData32(QPixmap* self, struct miqt_string data, const char* format, int flags) {
+	QByteArray data_QByteArray(data.data, data.len);
+	return self->loadFromData(data_QByteArray, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-bool QPixmap_Save2(const QPixmap* self, struct miqt_string* fileName, const char* format) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Save2(const QPixmap* self, struct miqt_string fileName, const char* format) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString, format);
 }
 
-bool QPixmap_Save3(const QPixmap* self, struct miqt_string* fileName, const char* format, int quality) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+bool QPixmap_Save3(const QPixmap* self, struct miqt_string fileName, const char* format, int quality) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString, format, static_cast<int>(quality));
 }
 

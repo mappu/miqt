@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -53,9 +52,11 @@ func NewQLabel() *QLabel {
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2(text string) *QLabel {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QLabel_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QLabel_new2(text_ms)
 	return newQLabel(ret)
 }
 
@@ -73,17 +74,21 @@ func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
 
 // NewQLabel5 constructs a new QLabel object.
 func NewQLabel5(text string, parent *QWidget) *QLabel {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QLabel_new5((*C.struct_miqt_string)(text_ms), parent.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QLabel_new5(text_ms, parent.cPointer())
 	return newQLabel(ret)
 }
 
 // NewQLabel6 constructs a new QLabel object.
 func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QLabel_new6((*C.struct_miqt_string)(text_ms), parent.cPointer(), (C.int)(f))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f))
 	return newQLabel(ret)
 }
 
@@ -94,31 +99,31 @@ func (this *QLabel) MetaObject() *QMetaObject {
 func (this *QLabel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QLabel_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QLabel_Metacast(this.h, param1_Cstring))
 }
 
 func QLabel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLabel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLabel) Text() string {
-	var _ms *C.struct_miqt_string = C.QLabel_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -247,9 +252,9 @@ func (this *QLabel) HasSelectedText() bool {
 }
 
 func (this *QLabel) SelectedText() string {
-	var _ms *C.struct_miqt_string = C.QLabel_SelectedText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_SelectedText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -258,9 +263,11 @@ func (this *QLabel) SelectionStart() int {
 }
 
 func (this *QLabel) SetText(text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QLabel_SetText(this.h, (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QLabel_SetText(this.h, text_ms)
 }
 
 func (this *QLabel) SetPixmap(pixmap *QPixmap) {
@@ -288,50 +295,54 @@ func (this *QLabel) Clear() {
 }
 
 func (this *QLabel) LinkActivated(link string) {
-	link_ms := libmiqt.Strdupg(link)
-	defer C.free(link_ms)
-	C.QLabel_LinkActivated(this.h, (*C.struct_miqt_string)(link_ms))
+	link_ms := C.struct_miqt_string{}
+	link_ms.data = C.CString(link)
+	link_ms.len = C.size_t(len(link))
+	defer C.free(unsafe.Pointer(link_ms.data))
+	C.QLabel_LinkActivated(this.h, link_ms)
 }
 func (this *QLabel) OnLinkActivated(slot func(link string)) {
 	C.QLabel_connect_LinkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_LinkActivated
-func miqt_exec_callback_QLabel_LinkActivated(cb C.intptr_t, link *C.struct_miqt_string) {
+func miqt_exec_callback_QLabel_LinkActivated(cb C.intptr_t, link C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var link_ms *C.struct_miqt_string = link
-	link_ret := C.GoStringN(&link_ms.data, C.int(int64(link_ms.len)))
-	C.free(unsafe.Pointer(link_ms))
+	var link_ms C.struct_miqt_string = link
+	link_ret := C.GoStringN(link_ms.data, C.int(int64(link_ms.len)))
+	C.free(unsafe.Pointer(link_ms.data))
 	slotval1 := link_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QLabel) LinkHovered(link string) {
-	link_ms := libmiqt.Strdupg(link)
-	defer C.free(link_ms)
-	C.QLabel_LinkHovered(this.h, (*C.struct_miqt_string)(link_ms))
+	link_ms := C.struct_miqt_string{}
+	link_ms.data = C.CString(link)
+	link_ms.len = C.size_t(len(link))
+	defer C.free(unsafe.Pointer(link_ms.data))
+	C.QLabel_LinkHovered(this.h, link_ms)
 }
 func (this *QLabel) OnLinkHovered(slot func(link string)) {
 	C.QLabel_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_LinkHovered
-func miqt_exec_callback_QLabel_LinkHovered(cb C.intptr_t, link *C.struct_miqt_string) {
+func miqt_exec_callback_QLabel_LinkHovered(cb C.intptr_t, link C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var link_ms *C.struct_miqt_string = link
-	link_ret := C.GoStringN(&link_ms.data, C.int(int64(link_ms.len)))
-	C.free(unsafe.Pointer(link_ms))
+	var link_ms C.struct_miqt_string = link
+	link_ret := C.GoStringN(link_ms.data, C.int(int64(link_ms.len)))
+	C.free(unsafe.Pointer(link_ms.data))
 	slotval1 := link_ret
 
 	gofunc(slotval1)
@@ -342,9 +353,9 @@ func QLabel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -353,9 +364,9 @@ func QLabel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -364,9 +375,9 @@ func QLabel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -375,9 +386,9 @@ func QLabel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QLabel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QLabel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

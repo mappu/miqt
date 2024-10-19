@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -67,9 +66,9 @@ func (this *QLoggingCategory) IsCriticalEnabled() bool {
 	return (bool)(C.QLoggingCategory_IsCriticalEnabled(this.h))
 }
 
-func (this *QLoggingCategory) CategoryName() unsafe.Pointer {
+func (this *QLoggingCategory) CategoryName() string {
 	_ret := C.QLoggingCategory_CategoryName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
@@ -85,9 +84,11 @@ func QLoggingCategory_DefaultCategory() *QLoggingCategory {
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {
-	rules_ms := libmiqt.Strdupg(rules)
-	defer C.free(rules_ms)
-	C.QLoggingCategory_SetFilterRules((*C.struct_miqt_string)(rules_ms))
+	rules_ms := C.struct_miqt_string{}
+	rules_ms.data = C.CString(rules)
+	rules_ms.len = C.size_t(len(rules))
+	defer C.free(unsafe.Pointer(rules_ms.data))
+	C.QLoggingCategory_SetFilterRules(rules_ms)
 }
 
 // Delete this object from C++ memory.

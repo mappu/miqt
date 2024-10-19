@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -46,11 +45,11 @@ func UnsafeNewQGenericPluginFactory(h unsafe.Pointer) *QGenericPluginFactory {
 func QGenericPluginFactory_Keys() []string {
 	var _ma *C.struct_miqt_array = C.QGenericPluginFactory_Keys()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -58,11 +57,15 @@ func QGenericPluginFactory_Keys() []string {
 }
 
 func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	param2_ms := libmiqt.Strdupg(param2)
-	defer C.free(param2_ms)
-	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPluginFactory_Create((*C.struct_miqt_string)(param1_ms), (*C.struct_miqt_string)(param2_ms))))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	param2_ms := C.struct_miqt_string{}
+	param2_ms.data = C.CString(param2)
+	param2_ms.len = C.size_t(len(param2))
+	defer C.free(unsafe.Pointer(param2_ms.data))
+	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPluginFactory_Create(param1_ms, param2_ms)))
 }
 
 // Delete this object from C++ memory.

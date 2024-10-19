@@ -444,8 +444,11 @@ func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer) *QDynamicPropertyCha
 }
 
 // NewQDynamicPropertyChangeEvent constructs a new QDynamicPropertyChangeEvent object.
-func NewQDynamicPropertyChangeEvent(name *QByteArray) *QDynamicPropertyChangeEvent {
-	ret := C.QDynamicPropertyChangeEvent_new(name.cPointer())
+func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
+	name_alias := C.struct_miqt_string{}
+	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	name_alias.len = C.size_t(len(name))
+	ret := C.QDynamicPropertyChangeEvent_new(name_alias)
 	return newQDynamicPropertyChangeEvent(ret)
 }
 
@@ -455,11 +458,11 @@ func NewQDynamicPropertyChangeEvent2(param1 *QDynamicPropertyChangeEvent) *QDyna
 	return newQDynamicPropertyChangeEvent(ret)
 }
 
-func (this *QDynamicPropertyChangeEvent) PropertyName() *QByteArray {
-	_ret := C.QDynamicPropertyChangeEvent_PropertyName(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
+	var _bytearray C.struct_miqt_string = C.QDynamicPropertyChangeEvent_PropertyName(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 // Delete this object from C++ memory.

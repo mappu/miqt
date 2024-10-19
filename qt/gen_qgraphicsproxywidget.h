@@ -36,8 +36,8 @@ QGraphicsProxyWidget* QGraphicsProxyWidget_new2(QGraphicsItem* parent);
 QGraphicsProxyWidget* QGraphicsProxyWidget_new3(QGraphicsItem* parent, int wFlags);
 QMetaObject* QGraphicsProxyWidget_MetaObject(const QGraphicsProxyWidget* self);
 void* QGraphicsProxyWidget_Metacast(QGraphicsProxyWidget* self, const char* param1);
-struct miqt_string* QGraphicsProxyWidget_Tr(const char* s);
-struct miqt_string* QGraphicsProxyWidget_TrUtf8(const char* s);
+struct miqt_string QGraphicsProxyWidget_Tr(const char* s);
+struct miqt_string QGraphicsProxyWidget_TrUtf8(const char* s);
 void QGraphicsProxyWidget_SetWidget(QGraphicsProxyWidget* self, QWidget* widget);
 QWidget* QGraphicsProxyWidget_Widget(const QGraphicsProxyWidget* self);
 QRectF* QGraphicsProxyWidget_SubWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget);
@@ -45,10 +45,10 @@ void QGraphicsProxyWidget_SetGeometry(QGraphicsProxyWidget* self, QRectF* rect);
 void QGraphicsProxyWidget_Paint(QGraphicsProxyWidget* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 int QGraphicsProxyWidget_Type(const QGraphicsProxyWidget* self);
 QGraphicsProxyWidget* QGraphicsProxyWidget_CreateProxyForChildWidget(QGraphicsProxyWidget* self, QWidget* child);
-struct miqt_string* QGraphicsProxyWidget_Tr2(const char* s, const char* c);
-struct miqt_string* QGraphicsProxyWidget_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QGraphicsProxyWidget_TrUtf82(const char* s, const char* c);
-struct miqt_string* QGraphicsProxyWidget_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QGraphicsProxyWidget_Tr2(const char* s, const char* c);
+struct miqt_string QGraphicsProxyWidget_Tr3(const char* s, const char* c, int n);
+struct miqt_string QGraphicsProxyWidget_TrUtf82(const char* s, const char* c);
+struct miqt_string QGraphicsProxyWidget_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus

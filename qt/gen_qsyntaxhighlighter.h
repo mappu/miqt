@@ -27,16 +27,16 @@ typedef struct QTextDocument QTextDocument;
 
 QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self);
 void* QSyntaxHighlighter_Metacast(QSyntaxHighlighter* self, const char* param1);
-struct miqt_string* QSyntaxHighlighter_Tr(const char* s);
-struct miqt_string* QSyntaxHighlighter_TrUtf8(const char* s);
+struct miqt_string QSyntaxHighlighter_Tr(const char* s);
+struct miqt_string QSyntaxHighlighter_TrUtf8(const char* s);
 void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc);
 QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self);
 void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self);
 void QSyntaxHighlighter_RehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block);
-struct miqt_string* QSyntaxHighlighter_Tr2(const char* s, const char* c);
-struct miqt_string* QSyntaxHighlighter_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QSyntaxHighlighter_TrUtf82(const char* s, const char* c);
-struct miqt_string* QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QSyntaxHighlighter_Tr2(const char* s, const char* c);
+struct miqt_string QSyntaxHighlighter_Tr3(const char* s, const char* c, int n);
+struct miqt_string QSyntaxHighlighter_TrUtf82(const char* s, const char* c);
+struct miqt_string QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n);
 void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus

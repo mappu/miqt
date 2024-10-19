@@ -13,8 +13,8 @@ QStorageInfo* QStorageInfo_new() {
 	return new QStorageInfo();
 }
 
-QStorageInfo* QStorageInfo_new2(struct miqt_string* path) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+QStorageInfo* QStorageInfo_new2(struct miqt_string path) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new QStorageInfo(path_QString);
 }
 
@@ -34,42 +34,69 @@ void QStorageInfo_Swap(QStorageInfo* self, QStorageInfo* other) {
 	self->swap(*other);
 }
 
-void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string* path) {
-	QString path_QString = QString::fromUtf8(&path->data, path->len);
+void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string path) {
+	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setPath(path_QString);
 }
 
-struct miqt_string* QStorageInfo_RootPath(const QStorageInfo* self) {
+struct miqt_string QStorageInfo_RootPath(const QStorageInfo* self) {
 	QString _ret = self->rootPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QStorageInfo_Device(const QStorageInfo* self) {
-	return new QByteArray(self->device());
+struct miqt_string QStorageInfo_Device(const QStorageInfo* self) {
+	QByteArray _qb = self->device();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QStorageInfo_Subvolume(const QStorageInfo* self) {
-	return new QByteArray(self->subvolume());
+struct miqt_string QStorageInfo_Subvolume(const QStorageInfo* self) {
+	QByteArray _qb = self->subvolume();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-QByteArray* QStorageInfo_FileSystemType(const QStorageInfo* self) {
-	return new QByteArray(self->fileSystemType());
+struct miqt_string QStorageInfo_FileSystemType(const QStorageInfo* self) {
+	QByteArray _qb = self->fileSystemType();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStorageInfo_Name(const QStorageInfo* self) {
+struct miqt_string QStorageInfo_Name(const QStorageInfo* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QStorageInfo_DisplayName(const QStorageInfo* self) {
+struct miqt_string QStorageInfo_DisplayName(const QStorageInfo* self) {
 	QString _ret = self->displayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 long long QStorageInfo_BytesTotal(const QStorageInfo* self) {

@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -74,9 +73,9 @@ func (this *QPicture) Size() uint {
 	return (uint)(C.QPicture_Size(this.h))
 }
 
-func (this *QPicture) Data() unsafe.Pointer {
+func (this *QPicture) Data() string {
 	_ret := C.QPicture_Data(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QPicture) SetData(data string, size uint) {
@@ -94,9 +93,11 @@ func (this *QPicture) Load(dev *QIODevice) bool {
 }
 
 func (this *QPicture) LoadWithFileName(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QPicture_LoadWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QPicture_LoadWithFileName(this.h, fileName_ms))
 }
 
 func (this *QPicture) Save(dev *QIODevice) bool {
@@ -104,9 +105,11 @@ func (this *QPicture) Save(dev *QIODevice) bool {
 }
 
 func (this *QPicture) SaveWithFileName(fileName string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	return (bool)(C.QPicture_SaveWithFileName(this.h, (*C.struct_miqt_string)(fileName_ms)))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	return (bool)(C.QPicture_SaveWithFileName(this.h, fileName_ms))
 }
 
 func (this *QPicture) BoundingRect() *QRect {
@@ -136,36 +139,38 @@ func (this *QPicture) IsDetached() bool {
 	return (bool)(C.QPicture_IsDetached(this.h))
 }
 
-func QPicture_PictureFormat(fileName string) unsafe.Pointer {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	_ret := C.QPicture_PictureFormat((*C.struct_miqt_string)(fileName_ms))
-	return (unsafe.Pointer)(_ret)
+func QPicture_PictureFormat(fileName string) string {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	_ret := C.QPicture_PictureFormat(fileName_ms)
+	return C.GoString(_ret)
 }
 
-func QPicture_InputFormats() []QByteArray {
+func QPicture_InputFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QPicture_InputFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func QPicture_OutputFormats() []QByteArray {
+func QPicture_OutputFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QPicture_OutputFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
@@ -174,11 +179,11 @@ func QPicture_OutputFormats() []QByteArray {
 func QPicture_InputFormatList() []string {
 	var _ma *C.struct_miqt_array = C.QPicture_InputFormatList()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -188,11 +193,11 @@ func QPicture_InputFormatList() []string {
 func QPicture_OutputFormatList() []string {
 	var _ma *C.struct_miqt_array = C.QPicture_OutputFormatList()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -210,11 +215,13 @@ func (this *QPicture) Load2(dev *QIODevice, format string) bool {
 }
 
 func (this *QPicture) Load22(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Load22(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QPicture_Load22(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPicture) Save2(dev *QIODevice, format string) bool {
@@ -224,11 +231,13 @@ func (this *QPicture) Save2(dev *QIODevice, format string) bool {
 }
 
 func (this *QPicture) Save22(fileName string, format string) bool {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Save22(this.h, (*C.struct_miqt_string)(fileName_ms), format_Cstring))
+	return (bool)(C.QPicture_Save22(this.h, fileName_ms, format_Cstring))
 }
 
 // Delete this object from C++ memory.
@@ -290,11 +299,13 @@ func NewQPictureIO2(ioDevice *QIODevice, format string) *QPictureIO {
 
 // NewQPictureIO3 constructs a new QPictureIO object.
 func NewQPictureIO3(fileName string, format string) *QPictureIO {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	ret := C.QPictureIO_new3((*C.struct_miqt_string)(fileName_ms), format_Cstring)
+	ret := C.QPictureIO_new3(fileName_ms, format_Cstring)
 	return newQPictureIO(ret)
 }
 
@@ -306,9 +317,9 @@ func (this *QPictureIO) Status() int {
 	return (int)(C.QPictureIO_Status(this.h))
 }
 
-func (this *QPictureIO) Format() unsafe.Pointer {
+func (this *QPictureIO) Format() string {
 	_ret := C.QPictureIO_Format(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
@@ -316,9 +327,9 @@ func (this *QPictureIO) IoDevice() *QIODevice {
 }
 
 func (this *QPictureIO) FileName() string {
-	var _ms *C.struct_miqt_string = C.QPictureIO_FileName(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureIO_FileName(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -327,15 +338,15 @@ func (this *QPictureIO) Quality() int {
 }
 
 func (this *QPictureIO) Description() string {
-	var _ms *C.struct_miqt_string = C.QPictureIO_Description(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QPictureIO_Description(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QPictureIO) Parameters() unsafe.Pointer {
+func (this *QPictureIO) Parameters() string {
 	_ret := C.QPictureIO_Parameters(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) Gamma() float32 {
@@ -361,9 +372,11 @@ func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
 }
 
 func (this *QPictureIO) SetFileName(fileName string) {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	C.QPictureIO_SetFileName(this.h, (*C.struct_miqt_string)(fileName_ms))
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	C.QPictureIO_SetFileName(this.h, fileName_ms)
 }
 
 func (this *QPictureIO) SetQuality(quality int) {
@@ -371,9 +384,11 @@ func (this *QPictureIO) SetQuality(quality int) {
 }
 
 func (this *QPictureIO) SetDescription(description string) {
-	description_ms := libmiqt.Strdupg(description)
-	defer C.free(description_ms)
-	C.QPictureIO_SetDescription(this.h, (*C.struct_miqt_string)(description_ms))
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	C.QPictureIO_SetDescription(this.h, description_ms)
 }
 
 func (this *QPictureIO) SetParameters(parameters string) {
@@ -394,45 +409,47 @@ func (this *QPictureIO) Write() bool {
 	return (bool)(C.QPictureIO_Write(this.h))
 }
 
-func QPictureIO_PictureFormat(fileName string) *QByteArray {
-	fileName_ms := libmiqt.Strdupg(fileName)
-	defer C.free(fileName_ms)
-	_ret := C.QPictureIO_PictureFormat((*C.struct_miqt_string)(fileName_ms))
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPictureIO_PictureFormat(fileName string) []byte {
+	fileName_ms := C.struct_miqt_string{}
+	fileName_ms.data = C.CString(fileName)
+	fileName_ms.len = C.size_t(len(fileName))
+	defer C.free(unsafe.Pointer(fileName_ms.data))
+	var _bytearray C.struct_miqt_string = C.QPictureIO_PictureFormat(fileName_ms)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) *QByteArray {
-	_ret := C.QPictureIO_PictureFormatWithQIODevice(param1.cPointer())
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
+	var _bytearray C.struct_miqt_string = C.QPictureIO_PictureFormatWithQIODevice(param1.cPointer())
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QPictureIO_InputFormats() []QByteArray {
+func QPictureIO_InputFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QPictureIO_InputFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
-func QPictureIO_OutputFormats() []QByteArray {
+func QPictureIO_OutputFormats() [][]byte {
 	var _ma *C.struct_miqt_array = C.QPictureIO_OutputFormats()
-	_ret := make([]QByteArray, int(_ma.len))
-	_outCast := (*[0xffff]*C.QByteArray)(unsafe.Pointer(_ma.data)) // hey ya
+	_ret := make([][]byte, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQByteArray(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		var _lv_bytearray C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
+		C.free(unsafe.Pointer(_lv_bytearray.data))
+		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret

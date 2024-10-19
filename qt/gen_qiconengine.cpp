@@ -30,16 +30,20 @@ void QIconEngine_AddPixmap(QIconEngine* self, QPixmap* pixmap, int mode, int sta
 	self->addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-void QIconEngine_AddFile(QIconEngine* self, struct miqt_string* fileName, QSize* size, int mode, int state) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QIconEngine_AddFile(QIconEngine* self, struct miqt_string fileName, QSize* size, int mode, int state) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-struct miqt_string* QIconEngine_Key(const QIconEngine* self) {
+struct miqt_string QIconEngine_Key(const QIconEngine* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QIconEngine* QIconEngine_Clone(const QIconEngine* self) {
@@ -67,11 +71,15 @@ struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self) {
 	return _out;
 }
 
-struct miqt_string* QIconEngine_IconName(const QIconEngine* self) {
+struct miqt_string QIconEngine_IconName(const QIconEngine* self) {
 	QString _ret = self->iconName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QIconEngine_IsNull(const QIconEngine* self) {

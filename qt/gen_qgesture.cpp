@@ -33,18 +33,26 @@ void* QGesture_Metacast(QGesture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QGesture_Tr(const char* s) {
+struct miqt_string QGesture_Tr(const char* s) {
 	QString _ret = QGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGesture_TrUtf8(const char* s) {
+struct miqt_string QGesture_TrUtf8(const char* s) {
 	QString _ret = QGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QGesture_GestureType(const QGesture* self) {
@@ -82,32 +90,48 @@ int QGesture_GestureCancelPolicy(const QGesture* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QGesture_Delete(QGesture* self) {
@@ -130,18 +154,26 @@ void* QPanGesture_Metacast(QPanGesture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QPanGesture_Tr(const char* s) {
+struct miqt_string QPanGesture_Tr(const char* s) {
 	QString _ret = QPanGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPanGesture_TrUtf8(const char* s) {
+struct miqt_string QPanGesture_TrUtf8(const char* s) {
 	QString _ret = QPanGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QPointF* QPanGesture_LastOffset(const QPanGesture* self) {
@@ -173,32 +205,48 @@ void QPanGesture_SetAcceleration(QPanGesture* self, double value) {
 	self->setAcceleration(static_cast<qreal>(value));
 }
 
-struct miqt_string* QPanGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QPanGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QPanGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPanGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPanGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QPanGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPanGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QPanGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QPanGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPanGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QPanGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QPanGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPanGesture_Delete(QPanGesture* self) {
@@ -221,18 +269,26 @@ void* QPinchGesture_Metacast(QPinchGesture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QPinchGesture_Tr(const char* s) {
+struct miqt_string QPinchGesture_Tr(const char* s) {
 	QString _ret = QPinchGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPinchGesture_TrUtf8(const char* s) {
+struct miqt_string QPinchGesture_TrUtf8(const char* s) {
 	QString _ret = QPinchGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QPinchGesture_TotalChangeFlags(const QPinchGesture* self) {
@@ -331,32 +387,48 @@ void QPinchGesture_SetRotationAngle(QPinchGesture* self, double value) {
 	self->setRotationAngle(static_cast<qreal>(value));
 }
 
-struct miqt_string* QPinchGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QPinchGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QPinchGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPinchGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPinchGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QPinchGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPinchGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QPinchGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QPinchGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPinchGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QPinchGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QPinchGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QPinchGesture_Delete(QPinchGesture* self) {
@@ -379,18 +451,26 @@ void* QSwipeGesture_Metacast(QSwipeGesture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QSwipeGesture_Tr(const char* s) {
+struct miqt_string QSwipeGesture_Tr(const char* s) {
 	QString _ret = QSwipeGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSwipeGesture_TrUtf8(const char* s) {
+struct miqt_string QSwipeGesture_TrUtf8(const char* s) {
 	QString _ret = QSwipeGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QSwipeGesture_HorizontalDirection(const QSwipeGesture* self) {
@@ -412,32 +492,48 @@ void QSwipeGesture_SetSwipeAngle(QSwipeGesture* self, double value) {
 	self->setSwipeAngle(static_cast<qreal>(value));
 }
 
-struct miqt_string* QSwipeGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QSwipeGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QSwipeGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSwipeGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSwipeGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QSwipeGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSwipeGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSwipeGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QSwipeGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QSwipeGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSwipeGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSwipeGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QSwipeGesture_Delete(QSwipeGesture* self) {
@@ -460,18 +556,26 @@ void* QTapGesture_Metacast(QTapGesture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTapGesture_Tr(const char* s) {
+struct miqt_string QTapGesture_Tr(const char* s) {
 	QString _ret = QTapGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapGesture_TrUtf8(const char* s) {
+struct miqt_string QTapGesture_TrUtf8(const char* s) {
 	QString _ret = QTapGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QPointF* QTapGesture_Position(const QTapGesture* self) {
@@ -482,32 +586,48 @@ void QTapGesture_SetPosition(QTapGesture* self, QPointF* pos) {
 	self->setPosition(*pos);
 }
 
-struct miqt_string* QTapGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QTapGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QTapGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTapGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTapGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTapGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTapGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTapGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTapGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTapGesture_Delete(QTapGesture* self) {
@@ -530,18 +650,26 @@ void* QTapAndHoldGesture_Metacast(QTapAndHoldGesture* self, const char* param1) 
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QTapAndHoldGesture_Tr(const char* s) {
+struct miqt_string QTapAndHoldGesture_Tr(const char* s) {
 	QString _ret = QTapAndHoldGesture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapAndHoldGesture_TrUtf8(const char* s) {
+struct miqt_string QTapAndHoldGesture_TrUtf8(const char* s) {
 	QString _ret = QTapAndHoldGesture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QPointF* QTapAndHoldGesture_Position(const QTapAndHoldGesture* self) {
@@ -560,32 +688,48 @@ int QTapAndHoldGesture_Timeout() {
 	return QTapAndHoldGesture::timeout();
 }
 
-struct miqt_string* QTapAndHoldGesture_Tr2(const char* s, const char* c) {
+struct miqt_string QTapAndHoldGesture_Tr2(const char* s, const char* c) {
 	QString _ret = QTapAndHoldGesture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapAndHoldGesture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTapAndHoldGesture_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QTapAndHoldGesture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapAndHoldGesture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QTapAndHoldGesture_TrUtf82(const char* s, const char* c) {
 	QString _ret = QTapAndHoldGesture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QTapAndHoldGesture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QTapAndHoldGesture_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QTapAndHoldGesture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self) {

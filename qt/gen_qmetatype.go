@@ -343,8 +343,11 @@ func QMetaType_RegisterTypedef(typeName string, aliasId int) int {
 	return (int)(C.QMetaType_RegisterTypedef(typeName_Cstring, (C.int)(aliasId)))
 }
 
-func QMetaType_RegisterNormalizedTypedef(normalizedTypeName *QByteArray, aliasId int) int {
-	return (int)(C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName.cPointer(), (C.int)(aliasId)))
+func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, aliasId int) int {
+	normalizedTypeName_alias := C.struct_miqt_string{}
+	normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(&normalizedTypeName[0]))
+	normalizedTypeName_alias.len = C.size_t(len(normalizedTypeName))
+	return (int)(C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName_alias, (C.int)(aliasId)))
 }
 
 func QMetaType_Type(typeName string) int {
@@ -353,13 +356,16 @@ func QMetaType_Type(typeName string) int {
 	return (int)(C.QMetaType_Type(typeName_Cstring))
 }
 
-func QMetaType_TypeWithTypeName(typeName *QByteArray) int {
-	return (int)(C.QMetaType_TypeWithTypeName(typeName.cPointer()))
+func QMetaType_TypeWithTypeName(typeName []byte) int {
+	typeName_alias := C.struct_miqt_string{}
+	typeName_alias.data = (*C.char)(unsafe.Pointer(&typeName[0]))
+	typeName_alias.len = C.size_t(len(typeName))
+	return (int)(C.QMetaType_TypeWithTypeName(typeName_alias))
 }
 
-func QMetaType_TypeName(typeVal int) unsafe.Pointer {
+func QMetaType_TypeName(typeVal int) string {
 	_ret := C.QMetaType_TypeName((C.int)(typeVal))
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func QMetaType_SizeOf(typeVal int) int {
@@ -379,7 +385,7 @@ func QMetaType_IsRegistered(typeVal int) bool {
 }
 
 func QMetaType_Create(typeVal int) unsafe.Pointer {
-	return C.QMetaType_Create((C.int)(typeVal))
+	return (unsafe.Pointer)(C.QMetaType_Create((C.int)(typeVal)))
 }
 
 func QMetaType_Destroy(typeVal int, data unsafe.Pointer) {
@@ -387,7 +393,7 @@ func QMetaType_Destroy(typeVal int, data unsafe.Pointer) {
 }
 
 func QMetaType_Construct(typeVal int, where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
-	return C.QMetaType_Construct((C.int)(typeVal), where, copyVal)
+	return (unsafe.Pointer)(C.QMetaType_Construct((C.int)(typeVal), where, copyVal))
 }
 
 func QMetaType_Destruct(typeVal int, where unsafe.Pointer) {
@@ -426,15 +432,15 @@ func (this *QMetaType) MetaObject() *QMetaObject {
 	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
 }
 
-func (this *QMetaType) Name() *QByteArray {
-	_ret := C.QMetaType_Name(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMetaType) Name() []byte {
+	var _bytearray C.struct_miqt_string = C.QMetaType_Name(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QMetaType) Create2() unsafe.Pointer {
-	return C.QMetaType_Create2(this.h)
+	return (unsafe.Pointer)(C.QMetaType_Create2(this.h))
 }
 
 func (this *QMetaType) DestroyWithData(data unsafe.Pointer) {
@@ -442,7 +448,7 @@ func (this *QMetaType) DestroyWithData(data unsafe.Pointer) {
 }
 
 func (this *QMetaType) ConstructWithWhere(where unsafe.Pointer) unsafe.Pointer {
-	return C.QMetaType_ConstructWithWhere(this.h, where)
+	return (unsafe.Pointer)(C.QMetaType_ConstructWithWhere(this.h, where))
 }
 
 func (this *QMetaType) DestructWithData(data unsafe.Pointer) {
@@ -478,15 +484,15 @@ func QMetaType_HasRegisteredConverterFunction(fromTypeId int, toTypeId int) bool
 }
 
 func QMetaType_Create22(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
-	return C.QMetaType_Create22((C.int)(typeVal), copyVal)
+	return (unsafe.Pointer)(C.QMetaType_Create22((C.int)(typeVal), copyVal))
 }
 
 func (this *QMetaType) Create1(copyVal unsafe.Pointer) unsafe.Pointer {
-	return C.QMetaType_Create1(this.h, copyVal)
+	return (unsafe.Pointer)(C.QMetaType_Create1(this.h, copyVal))
 }
 
 func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
-	return C.QMetaType_Construct2(this.h, where, copyVal)
+	return (unsafe.Pointer)(C.QMetaType_Construct2(this.h, where, copyVal))
 }
 
 // Delete this object from C++ memory.

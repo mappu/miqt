@@ -19,26 +19,28 @@ QRawFont* QRawFont_new() {
 	return new QRawFont();
 }
 
-QRawFont* QRawFont_new2(struct miqt_string* fileName, double pixelSize) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QRawFont* QRawFont_new2(struct miqt_string fileName, double pixelSize) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize));
 }
 
-QRawFont* QRawFont_new3(QByteArray* fontData, double pixelSize) {
-	return new QRawFont(*fontData, static_cast<qreal>(pixelSize));
+QRawFont* QRawFont_new3(struct miqt_string fontData, double pixelSize) {
+	QByteArray fontData_QByteArray(fontData.data, fontData.len);
+	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize));
 }
 
 QRawFont* QRawFont_new4(QRawFont* other) {
 	return new QRawFont(*other);
 }
 
-QRawFont* QRawFont_new5(struct miqt_string* fileName, double pixelSize, int hintingPreference) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+QRawFont* QRawFont_new5(struct miqt_string fileName, double pixelSize, int hintingPreference) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-QRawFont* QRawFont_new6(QByteArray* fontData, double pixelSize, int hintingPreference) {
-	return new QRawFont(*fontData, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
+QRawFont* QRawFont_new6(struct miqt_string fontData, double pixelSize, int hintingPreference) {
+	QByteArray fontData_QByteArray(fontData.data, fontData.len);
+	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
 void QRawFont_OperatorAssign(QRawFont* self, QRawFont* other) {
@@ -61,18 +63,26 @@ bool QRawFont_OperatorNotEqual(const QRawFont* self, QRawFont* other) {
 	return self->operator!=(*other);
 }
 
-struct miqt_string* QRawFont_FamilyName(const QRawFont* self) {
+struct miqt_string QRawFont_FamilyName(const QRawFont* self) {
 	QString _ret = self->familyName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QRawFont_StyleName(const QRawFont* self) {
+struct miqt_string QRawFont_StyleName(const QRawFont* self) {
 	QString _ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QRawFont_Style(const QRawFont* self) {
@@ -84,8 +94,8 @@ int QRawFont_Weight(const QRawFont* self) {
 	return self->weight();
 }
 
-struct miqt_array* QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string* text) {
-	QString text_QString = QString::fromUtf8(&text->data, text->len);
+struct miqt_array* QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string text) {
+	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QVector<quint32> _ret = self->glyphIndexesForString(text_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
@@ -224,13 +234,14 @@ double QRawFont_UnitsPerEm(const QRawFont* self) {
 	return static_cast<double>(_ret);
 }
 
-void QRawFont_LoadFromFile(QRawFont* self, struct miqt_string* fileName, double pixelSize, int hintingPreference) {
-	QString fileName_QString = QString::fromUtf8(&fileName->data, fileName->len);
+void QRawFont_LoadFromFile(QRawFont* self, struct miqt_string fileName, double pixelSize, int hintingPreference) {
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->loadFromFile(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
-void QRawFont_LoadFromData(QRawFont* self, QByteArray* fontData, double pixelSize, int hintingPreference) {
-	self->loadFromData(*fontData, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
+void QRawFont_LoadFromData(QRawFont* self, struct miqt_string fontData, double pixelSize, int hintingPreference) {
+	QByteArray fontData_QByteArray(fontData.data, fontData.len);
+	self->loadFromData(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
 bool QRawFont_SupportsCharacter(const QRawFont* self, unsigned int ucs4) {
@@ -255,8 +266,13 @@ struct miqt_array* QRawFont_SupportedWritingSystems(const QRawFont* self) {
 	return _out;
 }
 
-QByteArray* QRawFont_FontTable(const QRawFont* self, const char* tagName) {
-	return new QByteArray(self->fontTable(tagName));
+struct miqt_string QRawFont_FontTable(const QRawFont* self, const char* tagName) {
+	QByteArray _qb = self->fontTable(tagName);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 QRawFont* QRawFont_FromFont(QFont* font) {

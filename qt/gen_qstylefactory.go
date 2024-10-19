@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -46,11 +45,11 @@ func UnsafeNewQStyleFactory(h unsafe.Pointer) *QStyleFactory {
 func QStyleFactory_Keys() []string {
 	var _ma *C.struct_miqt_array = C.QStyleFactory_Keys()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -58,9 +57,11 @@ func QStyleFactory_Keys() []string {
 }
 
 func QStyleFactory_Create(param1 string) *QStyle {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create((*C.struct_miqt_string)(param1_ms))))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	return UnsafeNewQStyle(unsafe.Pointer(C.QStyleFactory_Create(param1_ms)))
 }
 
 // Delete this object from C++ memory.

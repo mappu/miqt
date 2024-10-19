@@ -30,23 +30,23 @@ QPageSize* QPageSize_new5(QPageSize* other) {
 	return new QPageSize(*other);
 }
 
-QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QPageSize(*pointSize, name_QString);
 }
 
-QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string* name, int matchPolicy) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QPageSize(*pointSize, name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
-QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string* name) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString);
 }
 
-QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string* name, int matchPolicy) {
-	QString name_QString = QString::fromUtf8(&name->data, name->len);
+QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
@@ -66,18 +66,26 @@ bool QPageSize_IsValid(const QPageSize* self) {
 	return self->isValid();
 }
 
-struct miqt_string* QPageSize_Key(const QPageSize* self) {
+struct miqt_string QPageSize_Key(const QPageSize* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPageSize_Name(const QPageSize* self) {
+struct miqt_string QPageSize_Name(const QPageSize* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QPageSize_Id(const QPageSize* self) {
@@ -122,18 +130,26 @@ QRect* QPageSize_RectPixels(const QPageSize* self, int resolution) {
 	return new QRect(self->rectPixels(static_cast<int>(resolution)));
 }
 
-struct miqt_string* QPageSize_KeyWithPageSizeId(int pageSizeId) {
+struct miqt_string QPageSize_KeyWithPageSizeId(int pageSizeId) {
 	QString _ret = QPageSize::key(static_cast<QPageSize::PageSizeId>(pageSizeId));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QPageSize_NameWithPageSizeId(int pageSizeId) {
+struct miqt_string QPageSize_NameWithPageSizeId(int pageSizeId) {
 	QString _ret = QPageSize::name(static_cast<QPageSize::PageSizeId>(pageSizeId));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QPageSize_IdWithPointSize(QSize* pointSize) {

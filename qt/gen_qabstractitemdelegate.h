@@ -43,8 +43,8 @@ typedef struct QWidget QWidget;
 
 QMetaObject* QAbstractItemDelegate_MetaObject(const QAbstractItemDelegate* self);
 void* QAbstractItemDelegate_Metacast(QAbstractItemDelegate* self, const char* param1);
-struct miqt_string* QAbstractItemDelegate_Tr(const char* s);
-struct miqt_string* QAbstractItemDelegate_TrUtf8(const char* s);
+struct miqt_string QAbstractItemDelegate_Tr(const char* s);
+struct miqt_string QAbstractItemDelegate_TrUtf8(const char* s);
 void QAbstractItemDelegate_Paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 QSize* QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index);
 QWidget* QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index);
@@ -53,7 +53,7 @@ void QAbstractItemDelegate_SetEditorData(const QAbstractItemDelegate* self, QWid
 void QAbstractItemDelegate_SetModelData(const QAbstractItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index);
 void QAbstractItemDelegate_UpdateEditorGeometry(const QAbstractItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 bool QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
-struct miqt_string* QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, int mode, struct miqt_string* text);
+struct miqt_string QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, int mode, struct miqt_string text);
 bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_array* QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self);
 void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* editor);
@@ -62,10 +62,10 @@ void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* edi
 void QAbstractItemDelegate_connect_CloseEditor(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_SizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1);
 void QAbstractItemDelegate_connect_SizeHintChanged(QAbstractItemDelegate* self, intptr_t slot);
-struct miqt_string* QAbstractItemDelegate_Tr2(const char* s, const char* c);
-struct miqt_string* QAbstractItemDelegate_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QAbstractItemDelegate_TrUtf82(const char* s, const char* c);
-struct miqt_string* QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QAbstractItemDelegate_Tr2(const char* s, const char* c);
+struct miqt_string QAbstractItemDelegate_Tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractItemDelegate_TrUtf82(const char* s, const char* c);
+struct miqt_string QAbstractItemDelegate_TrUtf83(const char* s, const char* c, int n);
 void QAbstractItemDelegate_CloseEditor2(QAbstractItemDelegate* self, QWidget* editor, int hint);
 void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self);

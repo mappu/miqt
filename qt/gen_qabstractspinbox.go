@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -94,24 +93,24 @@ func (this *QAbstractSpinBox) MetaObject() *QMetaObject {
 func (this *QAbstractSpinBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QAbstractSpinBox_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QAbstractSpinBox_Metacast(this.h, param1_Cstring))
 }
 
 func QAbstractSpinBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAbstractSpinBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -136,23 +135,25 @@ func (this *QAbstractSpinBox) HasAcceptableInput() bool {
 }
 
 func (this *QAbstractSpinBox) Text() string {
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSpinBox) SpecialValueText() string {
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_SpecialValueText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_SpecialValueText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
-	txt_ms := libmiqt.Strdupg(txt)
-	defer C.free(txt_ms)
-	C.QAbstractSpinBox_SetSpecialValueText(this.h, (*C.struct_miqt_string)(txt_ms))
+	txt_ms := C.struct_miqt_string{}
+	txt_ms.data = C.CString(txt)
+	txt_ms.len = C.size_t(len(txt))
+	defer C.free(unsafe.Pointer(txt_ms.data))
+	C.QAbstractSpinBox_SetSpecialValueText(this.h, txt_ms)
 }
 
 func (this *QAbstractSpinBox) Wrapping() bool {
@@ -241,15 +242,19 @@ func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVarian
 }
 
 func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
-	input_ms := libmiqt.Strdupg(input)
-	defer C.free(input_ms)
-	return (QValidator__State)(C.QAbstractSpinBox_Validate(this.h, (*C.struct_miqt_string)(input_ms), (*C.int)(unsafe.Pointer(pos))))
+	input_ms := C.struct_miqt_string{}
+	input_ms.data = C.CString(input)
+	input_ms.len = C.size_t(len(input))
+	defer C.free(unsafe.Pointer(input_ms.data))
+	return (QValidator__State)(C.QAbstractSpinBox_Validate(this.h, input_ms, (*C.int)(unsafe.Pointer(pos))))
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {
-	input_ms := libmiqt.Strdupg(input)
-	defer C.free(input_ms)
-	C.QAbstractSpinBox_Fixup(this.h, (*C.struct_miqt_string)(input_ms))
+	input_ms := C.struct_miqt_string{}
+	input_ms.data = C.CString(input)
+	input_ms.len = C.size_t(len(input))
+	defer C.free(unsafe.Pointer(input_ms.data))
+	C.QAbstractSpinBox_Fixup(this.h, input_ms)
 }
 
 func (this *QAbstractSpinBox) StepBy(steps int) {
@@ -294,9 +299,9 @@ func QAbstractSpinBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -305,9 +310,9 @@ func QAbstractSpinBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -316,9 +321,9 @@ func QAbstractSpinBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -327,9 +332,9 @@ func QAbstractSpinBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QAbstractSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAbstractSpinBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

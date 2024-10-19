@@ -24,18 +24,26 @@ void* QAbstractItemView_Metacast(QAbstractItemView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QAbstractItemView_Tr(const char* s) {
+struct miqt_string QAbstractItemView_Tr(const char* s) {
 	QString _ret = QAbstractItemView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemView_TrUtf8(const char* s) {
+struct miqt_string QAbstractItemView_TrUtf8(const char* s) {
 	QString _ret = QAbstractItemView::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAbstractItemView_SetModel(QAbstractItemView* self, QAbstractItemModel* model) {
@@ -214,8 +222,8 @@ int QAbstractItemView_TextElideMode(const QAbstractItemView* self) {
 	return static_cast<int>(_ret);
 }
 
-void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, struct miqt_string* search) {
-	QString search_QString = QString::fromUtf8(&search->data, search->len);
+void QAbstractItemView_KeyboardSearch(QAbstractItemView* self, struct miqt_string search) {
+	QString search_QString = QString::fromUtf8(search.data, search.len);
 	self->keyboardSearch(search_QString);
 }
 
@@ -415,32 +423,48 @@ void QAbstractItemView_connect_IconSizeChanged(QAbstractItemView* self, intptr_t
 	});
 }
 
-struct miqt_string* QAbstractItemView_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractItemView_Tr2(const char* s, const char* c) {
 	QString _ret = QAbstractItemView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractItemView_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractItemView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemView_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAbstractItemView_TrUtf82(const char* s, const char* c) {
 	QString _ret = QAbstractItemView::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QAbstractItemView_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAbstractItemView_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAbstractItemView::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QAbstractItemView_ScrollTo2(QAbstractItemView* self, QModelIndex* index, int hint) {

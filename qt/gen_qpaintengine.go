@@ -147,9 +147,9 @@ func (this *QTextItem) RenderFlags() QTextItem__RenderFlag {
 }
 
 func (this *QTextItem) Text() string {
-	var _ms *C.struct_miqt_string = C.QTextItem_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextItem_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

@@ -37,8 +37,8 @@ QGraphicsItemAnimation* QGraphicsItemAnimation_new();
 QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent);
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self);
 void* QGraphicsItemAnimation_Metacast(QGraphicsItemAnimation* self, const char* param1);
-struct miqt_string* QGraphicsItemAnimation_Tr(const char* s);
-struct miqt_string* QGraphicsItemAnimation_TrUtf8(const char* s);
+struct miqt_string QGraphicsItemAnimation_Tr(const char* s);
+struct miqt_string QGraphicsItemAnimation_TrUtf8(const char* s);
 QGraphicsItem* QGraphicsItemAnimation_Item(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetItem(QGraphicsItemAnimation* self, QGraphicsItem* item);
 QTimeLine* QGraphicsItemAnimation_TimeLine(const QGraphicsItemAnimation* self);
@@ -61,10 +61,10 @@ void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step
 void QGraphicsItemAnimation_Clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetStep(QGraphicsItemAnimation* self, double x);
 void QGraphicsItemAnimation_Reset(QGraphicsItemAnimation* self);
-struct miqt_string* QGraphicsItemAnimation_Tr2(const char* s, const char* c);
-struct miqt_string* QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QGraphicsItemAnimation_TrUtf82(const char* s, const char* c);
-struct miqt_string* QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QGraphicsItemAnimation_Tr2(const char* s, const char* c);
+struct miqt_string QGraphicsItemAnimation_Tr3(const char* s, const char* c, int n);
+struct miqt_string QGraphicsItemAnimation_TrUtf82(const char* s, const char* c);
+struct miqt_string QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

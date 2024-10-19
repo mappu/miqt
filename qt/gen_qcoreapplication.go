@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -84,35 +83,35 @@ func (this *QCoreApplication) MetaObject() *QMetaObject {
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return C.QCoreApplication_Metacast(this.h, param1_Cstring)
+	return (unsafe.Pointer)(C.QCoreApplication_Metacast(this.h, param1_Cstring))
 }
 
 func QCoreApplication_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Tr(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Tr(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_TrUtf8(s_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_Arguments() []string {
 	var _ma *C.struct_miqt_array = C.QCoreApplication_Arguments()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -128,54 +127,62 @@ func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
 }
 
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
-	orgDomain_ms := libmiqt.Strdupg(orgDomain)
-	defer C.free(orgDomain_ms)
-	C.QCoreApplication_SetOrganizationDomain((*C.struct_miqt_string)(orgDomain_ms))
+	orgDomain_ms := C.struct_miqt_string{}
+	orgDomain_ms.data = C.CString(orgDomain)
+	orgDomain_ms.len = C.size_t(len(orgDomain))
+	defer C.free(unsafe.Pointer(orgDomain_ms.data))
+	C.QCoreApplication_SetOrganizationDomain(orgDomain_ms)
 }
 
 func QCoreApplication_OrganizationDomain() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_OrganizationDomain()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_OrganizationDomain()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_SetOrganizationName(orgName string) {
-	orgName_ms := libmiqt.Strdupg(orgName)
-	defer C.free(orgName_ms)
-	C.QCoreApplication_SetOrganizationName((*C.struct_miqt_string)(orgName_ms))
+	orgName_ms := C.struct_miqt_string{}
+	orgName_ms.data = C.CString(orgName)
+	orgName_ms.len = C.size_t(len(orgName))
+	defer C.free(unsafe.Pointer(orgName_ms.data))
+	C.QCoreApplication_SetOrganizationName(orgName_ms)
 }
 
 func QCoreApplication_OrganizationName() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_OrganizationName()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_OrganizationName()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_SetApplicationName(application string) {
-	application_ms := libmiqt.Strdupg(application)
-	defer C.free(application_ms)
-	C.QCoreApplication_SetApplicationName((*C.struct_miqt_string)(application_ms))
+	application_ms := C.struct_miqt_string{}
+	application_ms.data = C.CString(application)
+	application_ms.len = C.size_t(len(application))
+	defer C.free(unsafe.Pointer(application_ms.data))
+	C.QCoreApplication_SetApplicationName(application_ms)
 }
 
 func QCoreApplication_ApplicationName() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_ApplicationName()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationName()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_SetApplicationVersion(version string) {
-	version_ms := libmiqt.Strdupg(version)
-	defer C.free(version_ms)
-	C.QCoreApplication_SetApplicationVersion((*C.struct_miqt_string)(version_ms))
+	version_ms := C.struct_miqt_string{}
+	version_ms.data = C.CString(version)
+	version_ms.len = C.size_t(len(version))
+	defer C.free(unsafe.Pointer(version_ms.data))
+	C.QCoreApplication_SetApplicationVersion(version_ms)
 }
 
 func QCoreApplication_ApplicationVersion() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_ApplicationVersion()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationVersion()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -248,16 +255,16 @@ func QCoreApplication_ClosingDown() bool {
 }
 
 func QCoreApplication_ApplicationDirPath() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_ApplicationDirPath()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationDirPath()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_ApplicationFilePath() string {
-	var _ms *C.struct_miqt_string = C.QCoreApplication_ApplicationFilePath()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationFilePath()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -267,12 +274,14 @@ func QCoreApplication_ApplicationPid() int64 {
 
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 	// For the C ABI, malloc a C array of raw pointers
-	libraryPaths_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(libraryPaths))))
+	libraryPaths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	for i := range libraryPaths {
-		libraryPaths_i_ms := libmiqt.Strdupg(libraryPaths[i])
-		defer C.free(libraryPaths_i_ms)
-		libraryPaths_CArray[i] = (*C.struct_miqt_string)(libraryPaths_i_ms)
+		libraryPaths_i_ms := C.struct_miqt_string{}
+		libraryPaths_i_ms.data = C.CString(libraryPaths[i])
+		libraryPaths_i_ms.len = C.size_t(len(libraryPaths[i]))
+		defer C.free(unsafe.Pointer(libraryPaths_i_ms.data))
+		libraryPaths_CArray[i] = libraryPaths_i_ms
 	}
 	libraryPaths_ma := &C.struct_miqt_array{len: C.size_t(len(libraryPaths)), data: unsafe.Pointer(libraryPaths_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(libraryPaths_ma))
@@ -282,11 +291,11 @@ func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 func QCoreApplication_LibraryPaths() []string {
 	var _ma *C.struct_miqt_array = C.QCoreApplication_LibraryPaths()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -294,15 +303,19 @@ func QCoreApplication_LibraryPaths() []string {
 }
 
 func QCoreApplication_AddLibraryPath(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QCoreApplication_AddLibraryPath((*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QCoreApplication_AddLibraryPath(param1_ms)
 }
 
 func QCoreApplication_RemoveLibraryPath(param1 string) {
-	param1_ms := libmiqt.Strdupg(param1)
-	defer C.free(param1_ms)
-	C.QCoreApplication_RemoveLibraryPath((*C.struct_miqt_string)(param1_ms))
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	C.QCoreApplication_RemoveLibraryPath(param1_ms)
 }
 
 func QCoreApplication_InstallTranslator(messageFile *QTranslator) bool {
@@ -318,9 +331,9 @@ func QCoreApplication_Translate(context string, key string) string {
 	defer C.free(unsafe.Pointer(context_Cstring))
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Translate(context_Cstring, key_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Translate(context_Cstring, key_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -421,9 +434,9 @@ func QCoreApplication_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Tr2(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Tr2(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -432,9 +445,9 @@ func QCoreApplication_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Tr3(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -443,9 +456,9 @@ func QCoreApplication_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_TrUtf82(s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -454,9 +467,9 @@ func QCoreApplication_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -495,9 +508,9 @@ func QCoreApplication_Translate3(context string, key string, disambiguation stri
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Translate3(context_Cstring, key_Cstring, disambiguation_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Translate3(context_Cstring, key_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -508,9 +521,9 @@ func QCoreApplication_Translate4(context string, key string, disambiguation stri
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QCoreApplication_Translate4(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QCoreApplication_Translate4(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

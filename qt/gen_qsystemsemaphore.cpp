@@ -6,31 +6,35 @@
 #include "gen_qsystemsemaphore.h"
 #include "_cgo_export.h"
 
-QSystemSemaphore* QSystemSemaphore_new(struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QSystemSemaphore(key_QString);
 }
 
-QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string* key, int initialValue) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string key, int initialValue) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
 }
 
-QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string* key, int initialValue, int mode) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 
-void QSystemSemaphore_SetKey(QSystemSemaphore* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QSystemSemaphore_SetKey(QSystemSemaphore* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->setKey(key_QString);
 }
 
-struct miqt_string* QSystemSemaphore_Key(const QSystemSemaphore* self) {
+struct miqt_string QSystemSemaphore_Key(const QSystemSemaphore* self) {
 	QString _ret = self->key();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QSystemSemaphore_Acquire(QSystemSemaphore* self) {
@@ -46,20 +50,24 @@ int QSystemSemaphore_Error(const QSystemSemaphore* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QSystemSemaphore_ErrorString(const QSystemSemaphore* self) {
+struct miqt_string QSystemSemaphore_ErrorString(const QSystemSemaphore* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-void QSystemSemaphore_SetKey2(QSystemSemaphore* self, struct miqt_string* key, int initialValue) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QSystemSemaphore_SetKey2(QSystemSemaphore* self, struct miqt_string key, int initialValue) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->setKey(key_QString, static_cast<int>(initialValue));
 }
 
-void QSystemSemaphore_SetKey3(QSystemSemaphore* self, struct miqt_string* key, int initialValue, int mode) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+void QSystemSemaphore_SetKey3(QSystemSemaphore* self, struct miqt_string key, int initialValue, int mode) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->setKey(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 

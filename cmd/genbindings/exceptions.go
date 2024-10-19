@@ -47,6 +47,7 @@ func AllowHeader(fullpath string) bool {
 		"qmaccocoaviewcontainer_mac.h", // Needs NSView* headers. TODO allow with darwin build tag
 		"qmacnativewidget_mac.h",       // Needs NSView* headers. TODO allow with darwin build tag
 		"qstring.h",                    // QString does not exist in this binding
+		"qbytearray.h",                 // QByteArray does not exist in this binding
 		"qlist.h",                      // QList does not exist in this binding
 		"qvector.h":                    // QVector does not exist in this binding
 		return false
@@ -208,6 +209,13 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	// QTextStream::readLineInto
 	// QFileDialog::getOpenFileName selectedFilter* param
 	if p.ParameterType == "QString" && p.Pointer && !isReturnType { // Out-parameters
+		return ErrTooComplex
+	}
+
+	// QBuffer can accept a raw pointer to an internal QByteArray, but that
+	// doesn't work when QByteArray is deleted
+	// QDataStream
+	if p.ParameterType == "QByteArray" && p.Pointer && !isReturnType {
 		return ErrTooComplex
 	}
 

@@ -19,11 +19,15 @@
 #include "gen_qcborvalue.h"
 #include "_cgo_export.h"
 
-struct miqt_string* QCborParserError_ErrorString(const QCborParserError* self) {
+struct miqt_string QCborParserError_ErrorString(const QCborParserError* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCborParserError_Delete(QCborParserError* self) {
@@ -62,12 +66,13 @@ QCborValue* QCborValue_new8(uint8_t st) {
 	return new QCborValue(static_cast<QCborSimpleType>(st));
 }
 
-QCborValue* QCborValue_new9(QByteArray* ba) {
-	return new QCborValue(*ba);
+QCborValue* QCborValue_new9(struct miqt_string ba) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	return new QCborValue(ba_QByteArray);
 }
 
-QCborValue* QCborValue_new10(struct miqt_string* s) {
-	QString s_QString = QString::fromUtf8(&s->data, s->len);
+QCborValue* QCborValue_new10(struct miqt_string s) {
+	QString s_QString = QString::fromUtf8(s.data, s.len);
 	return new QCborValue(s_QString);
 }
 
@@ -239,15 +244,24 @@ QCborValue* QCborValue_TaggedValue(const QCborValue* self) {
 	return new QCborValue(self->taggedValue());
 }
 
-QByteArray* QCborValue_ToByteArray(const QCborValue* self) {
-	return new QByteArray(self->toByteArray());
+struct miqt_string QCborValue_ToByteArray(const QCborValue* self) {
+	QByteArray _qb = self->toByteArray();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCborValue_ToString(const QCborValue* self) {
+struct miqt_string QCborValue_ToString(const QCborValue* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDateTime* QCborValue_ToDateTime(const QCborValue* self) {
@@ -282,8 +296,8 @@ QCborMap* QCborValue_ToMapWithDefaultValue(const QCborValue* self, QCborMap* def
 	return new QCborMap(self->toMap(*defaultValue));
 }
 
-QCborValue* QCborValue_OperatorSubscript(const QCborValue* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValue* QCborValue_OperatorSubscript(const QCborValue* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValue(self->operator[](key_QString));
 }
 
@@ -295,8 +309,8 @@ QCborValueRef* QCborValue_OperatorSubscript3(QCborValue* self, long long key) {
 	return new QCborValueRef(self->operator[](static_cast<qint64>(key)));
 }
 
-QCborValueRef* QCborValue_OperatorSubscript5(QCborValue* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValueRef* QCborValue_OperatorSubscript5(QCborValue* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValueRef(self->operator[](key_QString));
 }
 
@@ -336,8 +350,9 @@ QCborValue* QCborValue_FromCbor(QCborStreamReader* reader) {
 	return new QCborValue(QCborValue::fromCbor(*reader));
 }
 
-QCborValue* QCborValue_FromCborWithBa(QByteArray* ba) {
-	return new QCborValue(QCborValue::fromCbor(*ba));
+QCborValue* QCborValue_FromCborWithBa(struct miqt_string ba) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	return new QCborValue(QCborValue::fromCbor(ba_QByteArray));
 }
 
 QCborValue* QCborValue_FromCbor2(const char* data, ptrdiff_t lenVal) {
@@ -348,19 +363,28 @@ QCborValue* QCborValue_FromCbor3(const unsigned char* data, ptrdiff_t lenVal) {
 	return new QCborValue(QCborValue::fromCbor(static_cast<const quint8*>(data), (qsizetype)(lenVal)));
 }
 
-QByteArray* QCborValue_ToCbor(QCborValue* self) {
-	return new QByteArray(self->toCbor());
+struct miqt_string QCborValue_ToCbor(QCborValue* self) {
+	QByteArray _qb = self->toCbor();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValue_ToCborWithWriter(QCborValue* self, QCborStreamWriter* writer) {
 	self->toCbor(*writer);
 }
 
-struct miqt_string* QCborValue_ToDiagnosticNotation(const QCborValue* self) {
+struct miqt_string QCborValue_ToDiagnosticNotation(const QCborValue* self) {
 	QString _ret = self->toDiagnosticNotation();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 uint8_t QCborValue_ToSimpleType1(const QCborValue* self, uint8_t defaultValue) {
@@ -390,16 +414,26 @@ QCborValue* QCborValue_TaggedValue1(const QCborValue* self, QCborValue* defaultV
 	return new QCborValue(self->taggedValue(*defaultValue));
 }
 
-QByteArray* QCborValue_ToByteArray1(const QCborValue* self, QByteArray* defaultValue) {
-	return new QByteArray(self->toByteArray(*defaultValue));
+struct miqt_string QCborValue_ToByteArray1(const QCborValue* self, struct miqt_string defaultValue) {
+	QByteArray defaultValue_QByteArray(defaultValue.data, defaultValue.len);
+	QByteArray _qb = self->toByteArray(defaultValue_QByteArray);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCborValue_ToString1(const QCborValue* self, struct miqt_string* defaultValue) {
-	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+struct miqt_string QCborValue_ToString1(const QCborValue* self, struct miqt_string defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDateTime* QCborValue_ToDateTime1(const QCborValue* self, QDateTime* defaultValue) {
@@ -418,8 +452,9 @@ QUuid* QCborValue_ToUuid1(const QCborValue* self, QUuid* defaultValue) {
 	return new QUuid(self->toUuid(*defaultValue));
 }
 
-QCborValue* QCborValue_FromCbor22(QByteArray* ba, QCborParserError* error) {
-	return new QCborValue(QCborValue::fromCbor(*ba, error));
+QCborValue* QCborValue_FromCbor22(struct miqt_string ba, QCborParserError* error) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+	return new QCborValue(QCborValue::fromCbor(ba_QByteArray, error));
 }
 
 QCborValue* QCborValue_FromCbor32(const char* data, ptrdiff_t lenVal, QCborParserError* error) {
@@ -430,19 +465,28 @@ QCborValue* QCborValue_FromCbor33(const unsigned char* data, ptrdiff_t lenVal, Q
 	return new QCborValue(QCborValue::fromCbor(static_cast<const quint8*>(data), (qsizetype)(lenVal), error));
 }
 
-QByteArray* QCborValue_ToCbor1(QCborValue* self, int opt) {
-	return new QByteArray(self->toCbor(static_cast<QCborValue::EncodingOptions>(opt)));
+struct miqt_string QCborValue_ToCbor1(QCborValue* self, int opt) {
+	QByteArray _qb = self->toCbor(static_cast<QCborValue::EncodingOptions>(opt));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValue_ToCbor2(QCborValue* self, QCborStreamWriter* writer, int opt) {
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-struct miqt_string* QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts) {
+struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts) {
 	QString _ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opts));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValue_Delete(QCborValue* self) {
@@ -568,15 +612,24 @@ double QCborValueRef_ToDouble(const QCborValueRef* self) {
 	return self->toDouble();
 }
 
-QByteArray* QCborValueRef_ToByteArray(const QCborValueRef* self) {
-	return new QByteArray(self->toByteArray());
+struct miqt_string QCborValueRef_ToByteArray(const QCborValueRef* self) {
+	QByteArray _qb = self->toByteArray();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCborValueRef_ToString(const QCborValueRef* self) {
+struct miqt_string QCborValueRef_ToString(const QCborValueRef* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDateTime* QCborValueRef_ToDateTime(const QCborValueRef* self) {
@@ -611,8 +664,8 @@ QCborMap* QCborValueRef_ToMapWithQCborMap(const QCborValueRef* self, QCborMap* m
 	return new QCborMap(self->toMap(*m));
 }
 
-QCborValue* QCborValueRef_OperatorSubscript(const QCborValueRef* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValue* QCborValueRef_OperatorSubscript(const QCborValueRef* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValue(self->operator[](key_QString));
 }
 
@@ -624,8 +677,8 @@ QCborValueRef* QCborValueRef_OperatorSubscript3(QCborValueRef* self, long long k
 	return new QCborValueRef(self->operator[](static_cast<qint64>(key)));
 }
 
-QCborValueRef* QCborValueRef_OperatorSubscript5(QCborValueRef* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QCborValueRef* QCborValueRef_OperatorSubscript5(QCborValueRef* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValueRef(self->operator[](key_QString));
 }
 
@@ -653,19 +706,28 @@ QJsonValue* QCborValueRef_ToJsonValue(const QCborValueRef* self) {
 	return new QJsonValue(self->toJsonValue());
 }
 
-QByteArray* QCborValueRef_ToCbor(QCborValueRef* self) {
-	return new QByteArray(self->toCbor());
+struct miqt_string QCborValueRef_ToCbor(QCborValueRef* self) {
+	QByteArray _qb = self->toCbor();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValueRef_ToCborWithWriter(QCborValueRef* self, QCborStreamWriter* writer) {
 	self->toCbor(*writer);
 }
 
-struct miqt_string* QCborValueRef_ToDiagnosticNotation(QCborValueRef* self) {
+struct miqt_string QCborValueRef_ToDiagnosticNotation(QCborValueRef* self) {
 	QString _ret = self->toDiagnosticNotation();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 uint64_t QCborValueRef_Tag1(const QCborValueRef* self, uint64_t defaultValue) {
@@ -690,16 +752,26 @@ double QCborValueRef_ToDouble1(const QCborValueRef* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-QByteArray* QCborValueRef_ToByteArray1(const QCborValueRef* self, QByteArray* defaultValue) {
-	return new QByteArray(self->toByteArray(*defaultValue));
+struct miqt_string QCborValueRef_ToByteArray1(const QCborValueRef* self, struct miqt_string defaultValue) {
+	QByteArray defaultValue_QByteArray(defaultValue.data, defaultValue.len);
+	QByteArray _qb = self->toByteArray(defaultValue_QByteArray);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QCborValueRef_ToString1(const QCborValueRef* self, struct miqt_string* defaultValue) {
-	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+struct miqt_string QCborValueRef_ToString1(const QCborValueRef* self, struct miqt_string defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QDateTime* QCborValueRef_ToDateTime1(const QCborValueRef* self, QDateTime* defaultValue) {
@@ -718,19 +790,28 @@ QUuid* QCborValueRef_ToUuid1(const QCborValueRef* self, QUuid* defaultValue) {
 	return new QUuid(self->toUuid(*defaultValue));
 }
 
-QByteArray* QCborValueRef_ToCbor1(QCborValueRef* self, int opt) {
-	return new QByteArray(self->toCbor(static_cast<QCborValue::EncodingOptions>(opt)));
+struct miqt_string QCborValueRef_ToCbor1(QCborValueRef* self, int opt) {
+	QByteArray _qb = self->toCbor(static_cast<QCborValue::EncodingOptions>(opt));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValueRef_ToCbor2(QCborValueRef* self, QCborStreamWriter* writer, int opt) {
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-struct miqt_string* QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt) {
+struct miqt_string QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt) {
 	QString _ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opt));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QCborValueRef_Delete(QCborValueRef* self) {

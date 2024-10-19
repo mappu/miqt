@@ -116,14 +116,11 @@ func NewQDataStream2(param1 *QIODevice) *QDataStream {
 }
 
 // NewQDataStream3 constructs a new QDataStream object.
-func NewQDataStream3(param1 *QByteArray, flags QIODevice__OpenModeFlag) *QDataStream {
-	ret := C.QDataStream_new3(param1.cPointer(), (C.int)(flags))
-	return newQDataStream(ret)
-}
-
-// NewQDataStream4 constructs a new QDataStream object.
-func NewQDataStream4(param1 *QByteArray) *QDataStream {
-	ret := C.QDataStream_new4(param1.cPointer())
+func NewQDataStream3(param1 []byte) *QDataStream {
+	param1_alias := C.struct_miqt_string{}
+	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	param1_alias.len = C.size_t(len(param1))
+	ret := C.QDataStream_new3(param1_alias)
 	return newQDataStream(ret)
 }
 

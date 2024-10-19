@@ -88,7 +88,7 @@ bool QCborArray_Empty(const QCborArray* self);
 QCborArray* QCborArray_OperatorPlus(const QCborArray* self, QCborValue* v);
 QCborArray* QCborArray_OperatorPlusAssign(QCborArray* self, QCborValue* v);
 QCborArray* QCborArray_OperatorShiftLeft(QCborArray* self, QCborValue* v);
-QCborArray* QCborArray_FromStringList(struct miqt_array* /* of struct miqt_string* */ list);
+QCborArray* QCborArray_FromStringList(struct miqt_array* /* of struct miqt_string */ list);
 QCborArray* QCborArray_FromJsonArray(QJsonArray* array);
 QJsonArray* QCborArray_ToJsonArray(const QCborArray* self);
 void QCborArray_Delete(QCborArray* self);

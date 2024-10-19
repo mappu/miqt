@@ -33,18 +33,18 @@ QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState);
 QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState);
 QMetaObject* QMouseEventTransition_MetaObject(const QMouseEventTransition* self);
 void* QMouseEventTransition_Metacast(QMouseEventTransition* self, const char* param1);
-struct miqt_string* QMouseEventTransition_Tr(const char* s);
-struct miqt_string* QMouseEventTransition_TrUtf8(const char* s);
+struct miqt_string QMouseEventTransition_Tr(const char* s);
+struct miqt_string QMouseEventTransition_TrUtf8(const char* s);
 int QMouseEventTransition_Button(const QMouseEventTransition* self);
 void QMouseEventTransition_SetButton(QMouseEventTransition* self, int button);
 int QMouseEventTransition_ModifierMask(const QMouseEventTransition* self);
 void QMouseEventTransition_SetModifierMask(QMouseEventTransition* self, int modifiers);
 QPainterPath* QMouseEventTransition_HitTestPath(const QMouseEventTransition* self);
 void QMouseEventTransition_SetHitTestPath(QMouseEventTransition* self, QPainterPath* path);
-struct miqt_string* QMouseEventTransition_Tr2(const char* s, const char* c);
-struct miqt_string* QMouseEventTransition_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QMouseEventTransition_TrUtf82(const char* s, const char* c);
-struct miqt_string* QMouseEventTransition_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QMouseEventTransition_Tr2(const char* s, const char* c);
+struct miqt_string QMouseEventTransition_Tr3(const char* s, const char* c, int n);
+struct miqt_string QMouseEventTransition_TrUtf82(const char* s, const char* c);
+struct miqt_string QMouseEventTransition_TrUtf83(const char* s, const char* c, int n);
 void QMouseEventTransition_Delete(QMouseEventTransition* self);
 
 #ifdef __cplusplus

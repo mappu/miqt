@@ -32,8 +32,8 @@ QJsonValue* QJsonValue_new5(long long v) {
 	return new QJsonValue(static_cast<qint64>(v));
 }
 
-QJsonValue* QJsonValue_new6(struct miqt_string* s) {
-	QString s_QString = QString::fromUtf8(&s->data, s->len);
+QJsonValue* QJsonValue_new6(struct miqt_string s) {
+	QString s_QString = QString::fromUtf8(s.data, s.len);
 	return new QJsonValue(s_QString);
 }
 
@@ -118,19 +118,27 @@ double QJsonValue_ToDouble(const QJsonValue* self) {
 	return self->toDouble();
 }
 
-struct miqt_string* QJsonValue_ToString(const QJsonValue* self) {
+struct miqt_string QJsonValue_ToString(const QJsonValue* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, struct miqt_string* defaultValue) {
-	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+struct miqt_string QJsonValue_ToStringWithDefaultValue(const QJsonValue* self, struct miqt_string defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QJsonArray* QJsonValue_ToArray(const QJsonValue* self) {
@@ -149,8 +157,8 @@ QJsonObject* QJsonValue_ToObjectWithDefaultValue(const QJsonValue* self, QJsonOb
 	return new QJsonObject(self->toObject(*defaultValue));
 }
 
-QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_string* key) {
-	QString key_QString = QString::fromUtf8(&key->data, key->len);
+QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_string key) {
+	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QJsonValue(self->operator[](key_QString));
 }
 
@@ -251,11 +259,15 @@ double QJsonValueRef_ToDouble(const QJsonValueRef* self) {
 	return self->toDouble();
 }
 
-struct miqt_string* QJsonValueRef_ToString(const QJsonValueRef* self) {
+struct miqt_string QJsonValueRef_ToString(const QJsonValueRef* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QJsonArray* QJsonValueRef_ToArray(const QJsonValueRef* self) {
@@ -278,12 +290,16 @@ double QJsonValueRef_ToDoubleWithDefaultValue(const QJsonValueRef* self, double 
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-struct miqt_string* QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string* defaultValue) {
-	QString defaultValue_QString = QString::fromUtf8(&defaultValue->data, defaultValue->len);
+struct miqt_string QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string defaultValue) {
+	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other) {

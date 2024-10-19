@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -142,9 +141,11 @@ func NewQKeySequence() *QKeySequence {
 
 // NewQKeySequence2 constructs a new QKeySequence object.
 func NewQKeySequence2(key string) *QKeySequence {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	ret := C.QKeySequence_new2((*C.struct_miqt_string)(key_ms))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	ret := C.QKeySequence_new2(key_ms)
 	return newQKeySequence(ret)
 }
 
@@ -168,9 +169,11 @@ func NewQKeySequence5(key QKeySequence__StandardKey) *QKeySequence {
 
 // NewQKeySequence6 constructs a new QKeySequence object.
 func NewQKeySequence6(key string, format QKeySequence__SequenceFormat) *QKeySequence {
-	key_ms := libmiqt.Strdupg(key)
-	defer C.free(key_ms)
-	ret := C.QKeySequence_new6((*C.struct_miqt_string)(key_ms), (C.int)(format))
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	ret := C.QKeySequence_new6(key_ms, (C.int)(format))
 	return newQKeySequence(ret)
 }
 
@@ -201,25 +204,29 @@ func (this *QKeySequence) IsEmpty() bool {
 }
 
 func (this *QKeySequence) ToString() string {
-	var _ms *C.struct_miqt_string = C.QKeySequence_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QKeySequence_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QKeySequence_FromString(str string) *QKeySequence {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	_ret := C.QKeySequence_FromString((*C.struct_miqt_string)(str_ms))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	_ret := C.QKeySequence_FromString(str_ms)
 	_goptr := newQKeySequence(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QKeySequence_ListFromString(str string) []QKeySequence {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString((*C.struct_miqt_string)(str_ms))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString(str_ms)
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -241,9 +248,9 @@ func QKeySequence_ListToString(list []QKeySequence) string {
 	}
 	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
-	var _ms *C.struct_miqt_string = C.QKeySequence_ListToString(list_ma)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QKeySequence_ListToString(list_ma)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -252,9 +259,11 @@ func (this *QKeySequence) Matches(seq *QKeySequence) QKeySequence__SequenceMatch
 }
 
 func QKeySequence_Mnemonic(text string) *QKeySequence {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	_ret := C.QKeySequence_Mnemonic((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	_ret := C.QKeySequence_Mnemonic(text_ms)
 	_goptr := newQKeySequence(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -315,25 +324,29 @@ func (this *QKeySequence) IsDetached() bool {
 }
 
 func (this *QKeySequence) ToString1(format QKeySequence__SequenceFormat) string {
-	var _ms *C.struct_miqt_string = C.QKeySequence_ToString1(this.h, (C.int)(format))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QKeySequence_ToString1(this.h, (C.int)(format))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QKeySequence_FromString2(str string, format QKeySequence__SequenceFormat) *QKeySequence {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	_ret := C.QKeySequence_FromString2((*C.struct_miqt_string)(str_ms), (C.int)(format))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	_ret := C.QKeySequence_FromString2(str_ms, (C.int)(format))
 	_goptr := newQKeySequence(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceFormat) []QKeySequence {
-	str_ms := libmiqt.Strdupg(str)
-	defer C.free(str_ms)
-	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString2((*C.struct_miqt_string)(str_ms), (C.int)(format))
+	str_ms := C.struct_miqt_string{}
+	str_ms.data = C.CString(str)
+	str_ms.len = C.size_t(len(str))
+	defer C.free(unsafe.Pointer(str_ms.data))
+	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString2(str_ms, (C.int)(format))
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -355,9 +368,9 @@ func QKeySequence_ListToString2(list []QKeySequence, format QKeySequence__Sequen
 	}
 	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
-	var _ms *C.struct_miqt_string = C.QKeySequence_ListToString2(list_ma, (C.int)(format))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QKeySequence_ListToString2(list_ma, (C.int)(format))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

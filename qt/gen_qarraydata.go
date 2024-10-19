@@ -62,11 +62,11 @@ func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 }
 
 func (this *QArrayData) Data() unsafe.Pointer {
-	return C.QArrayData_Data(this.h)
+	return (unsafe.Pointer)(C.QArrayData_Data(this.h))
 }
 
 func (this *QArrayData) Data2() unsafe.Pointer {
-	return C.QArrayData_Data2(this.h)
+	return (unsafe.Pointer)(C.QArrayData_Data2(this.h))
 }
 
 func (this *QArrayData) IsMutable() bool {

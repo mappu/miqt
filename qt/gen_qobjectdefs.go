@@ -89,12 +89,12 @@ func NewQGenericArgument4(aName string, aData unsafe.Pointer) *QGenericArgument 
 }
 
 func (this *QGenericArgument) Data() unsafe.Pointer {
-	return C.QGenericArgument_Data(this.h)
+	return (unsafe.Pointer)(C.QGenericArgument_Data(this.h))
 }
 
-func (this *QGenericArgument) Name() unsafe.Pointer {
+func (this *QGenericArgument) Name() string {
 	_ret := C.QGenericArgument_Name(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 // Delete this object from C++ memory.
@@ -224,9 +224,9 @@ func NewQMetaObject2(param1 *QMetaObject) *QMetaObject {
 	return newQMetaObject(ret)
 }
 
-func (this *QMetaObject) ClassName() unsafe.Pointer {
+func (this *QMetaObject) ClassName() string {
 	_ret := C.QMetaObject_ClassName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QMetaObject) SuperClass() *QMetaObject {
@@ -250,9 +250,9 @@ func (this *QMetaObject) Tr(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMetaObject_Tr(this.h, s_Cstring, c_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMetaObject_Tr(this.h, s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -388,22 +388,22 @@ func QMetaObject_CheckConnectArgs2(signal *QMetaMethod, method *QMetaMethod) boo
 	return (bool)(C.QMetaObject_CheckConnectArgs2(signal.cPointer(), method.cPointer()))
 }
 
-func QMetaObject_NormalizedSignature(method string) *QByteArray {
+func QMetaObject_NormalizedSignature(method string) []byte {
 	method_Cstring := C.CString(method)
 	defer C.free(unsafe.Pointer(method_Cstring))
-	_ret := C.QMetaObject_NormalizedSignature(method_Cstring)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	var _bytearray C.struct_miqt_string = C.QMetaObject_NormalizedSignature(method_Cstring)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QMetaObject_NormalizedType(typeVal string) *QByteArray {
+func QMetaObject_NormalizedType(typeVal string) []byte {
 	typeVal_Cstring := C.CString(typeVal)
 	defer C.free(unsafe.Pointer(typeVal_Cstring))
-	_ret := C.QMetaObject_NormalizedType(typeVal_Cstring)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	var _bytearray C.struct_miqt_string = C.QMetaObject_NormalizedType(typeVal_Cstring)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func QMetaObject_Connect(sender *QObject, signal_index int, receiver *QObject, method_index int) *QMetaObject__Connection {
@@ -458,9 +458,9 @@ func (this *QMetaObject) Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms *C.struct_miqt_string = C.QMetaObject_Tr3(this.h, s_Cstring, c_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QMetaObject_Tr3(this.h, s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

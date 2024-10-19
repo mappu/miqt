@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -383,16 +382,18 @@ func (this *QAccessibleInterface) IndexOfChild(param1 *QAccessibleInterface) int
 }
 
 func (this *QAccessibleInterface) Text(t QAccessible__Text) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleInterface_Text(this.h, (C.int)(t))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleInterface_Text(this.h, (C.int)(t))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleInterface) SetText(t QAccessible__Text, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAccessibleInterface_SetText(this.h, (C.int)(t), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAccessibleInterface_SetText(this.h, (C.int)(t), text_ms)
 }
 
 func (this *QAccessibleInterface) Rect() *QRect {
@@ -460,7 +461,7 @@ func (this *QAccessibleInterface) VirtualHook(id int, data unsafe.Pointer) {
 }
 
 func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceType) unsafe.Pointer {
-	return C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1))
+	return (unsafe.Pointer)(C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1)))
 }
 
 type QAccessibleTextInterface struct {
@@ -521,30 +522,30 @@ func (this *QAccessibleTextInterface) SetCursorPosition(position int) {
 }
 
 func (this *QAccessibleTextInterface) Text(startOffset int, endOffset int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInterface_Text(this.h, (C.int)(startOffset), (C.int)(endOffset))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_Text(this.h, (C.int)(startOffset), (C.int)(endOffset))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInterface_TextBeforeOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextBeforeOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInterface_TextAfterOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextAfterOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInterface_TextAtOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextAtOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -568,9 +569,9 @@ func (this *QAccessibleTextInterface) ScrollToSubstring(startIndex int, endIndex
 }
 
 func (this *QAccessibleTextInterface) Attributes(offset int, startOffset *int, endOffset *int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInterface_Attributes(this.h, (C.int)(offset), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_Attributes(this.h, (C.int)(offset), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -626,15 +627,19 @@ func (this *QAccessibleEditableTextInterface) DeleteText(startOffset int, endOff
 }
 
 func (this *QAccessibleEditableTextInterface) InsertText(offset int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), text_ms)
 }
 
 func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOffset int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_ms)
 }
 
 func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessibleEditableTextInterface) {
@@ -884,16 +889,16 @@ func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
 }
 
 func (this *QAccessibleTableInterface) ColumnDescription(column int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTableInterface_ColumnDescription(this.h, (C.int)(column))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_ColumnDescription(this.h, (C.int)(column))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTableInterface) RowDescription(row int) string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTableInterface_RowDescription(this.h, (C.int)(row))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_RowDescription(this.h, (C.int)(row))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1009,29 +1014,29 @@ func UnsafeNewQAccessibleActionInterface(h unsafe.Pointer) *QAccessibleActionInt
 func QAccessibleActionInterface_Tr(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_Tr(sourceText_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr(sourceText_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_TrUtf8(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf8(sourceText_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf8(sourceText_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleActionInterface) ActionNames() []string {
 	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_ActionNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -1039,39 +1044,47 @@ func (this *QAccessibleActionInterface) ActionNames() []string {
 }
 
 func (this *QAccessibleActionInterface) LocalizedActionName(name string) string {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionName(this.h, (*C.struct_miqt_string)(name_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionName(this.h, name_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) string {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionDescription(this.h, (*C.struct_miqt_string)(name_ms))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionDescription(this.h, name_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleActionInterface) DoAction(actionName string) {
-	actionName_ms := libmiqt.Strdupg(actionName)
-	defer C.free(actionName_ms)
-	C.QAccessibleActionInterface_DoAction(this.h, (*C.struct_miqt_string)(actionName_ms))
+	actionName_ms := C.struct_miqt_string{}
+	actionName_ms.data = C.CString(actionName)
+	actionName_ms.len = C.size_t(len(actionName))
+	defer C.free(unsafe.Pointer(actionName_ms.data))
+	C.QAccessibleActionInterface_DoAction(this.h, actionName_ms)
 }
 
 func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) []string {
-	actionName_ms := libmiqt.Strdupg(actionName)
-	defer C.free(actionName_ms)
-	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, (*C.struct_miqt_string)(actionName_ms))
+	actionName_ms := C.struct_miqt_string{}
+	actionName_ms.data = C.CString(actionName)
+	actionName_ms.len = C.size_t(len(actionName))
+	defer C.free(unsafe.Pointer(actionName_ms.data))
+	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -1079,86 +1092,86 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 }
 
 func QAccessibleActionInterface_PressAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_PressAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_PressAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_IncreaseAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_IncreaseAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_IncreaseAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_DecreaseAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_DecreaseAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_DecreaseAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ShowMenuAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ShowMenuAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ShowMenuAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_SetFocusAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_SetFocusAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_SetFocusAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ToggleAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ToggleAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ToggleAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollLeftAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ScrollLeftAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollLeftAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollRightAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ScrollRightAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollRightAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollUpAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ScrollUpAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollUpAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollDownAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_ScrollDownAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollDownAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_NextPageAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_NextPageAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_NextPageAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_PreviousPageAction() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_PreviousPageAction()
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_PreviousPageAction()
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1171,9 +1184,9 @@ func QAccessibleActionInterface_Tr2(sourceText string, disambiguation string) st
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_Tr2(sourceText_Cstring, disambiguation_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr2(sourceText_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1182,9 +1195,9 @@ func QAccessibleActionInterface_Tr3(sourceText string, disambiguation string, n 
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1193,9 +1206,9 @@ func QAccessibleActionInterface_TrUtf82(sourceText string, disambiguation string
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1204,9 +1217,9 @@ func QAccessibleActionInterface_TrUtf83(sourceText string, disambiguation string
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms *C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1254,9 +1267,9 @@ func UnsafeNewQAccessibleImageInterface(h unsafe.Pointer) *QAccessibleImageInter
 }
 
 func (this *QAccessibleImageInterface) ImageDescription() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleImageInterface_ImageDescription(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleImageInterface_ImageDescription(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1598,24 +1611,28 @@ func UnsafeNewQAccessibleTextInsertEvent(h unsafe.Pointer) *QAccessibleTextInser
 
 // NewQAccessibleTextInsertEvent constructs a new QAccessibleTextInsertEvent object.
 func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAccessibleTextInsertEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextInsertEvent_new(obj.cPointer(), (C.int)(position), text_ms)
 	return newQAccessibleTextInsertEvent(ret)
 }
 
 // NewQAccessibleTextInsertEvent2 constructs a new QAccessibleTextInsertEvent object.
 func NewQAccessibleTextInsertEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextInsertEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextInsertEvent_new2(iface.cPointer(), (C.int)(position), text_ms)
 	return newQAccessibleTextInsertEvent(ret)
 }
 
 func (this *QAccessibleTextInsertEvent) TextInserted() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextInsertEvent_TextInserted(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInsertEvent_TextInserted(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1669,24 +1686,28 @@ func UnsafeNewQAccessibleTextRemoveEvent(h unsafe.Pointer) *QAccessibleTextRemov
 
 // NewQAccessibleTextRemoveEvent constructs a new QAccessibleTextRemoveEvent object.
 func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAccessibleTextRemoveEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextRemoveEvent_new(obj.cPointer(), (C.int)(position), text_ms)
 	return newQAccessibleTextRemoveEvent(ret)
 }
 
 // NewQAccessibleTextRemoveEvent2 constructs a new QAccessibleTextRemoveEvent object.
 func NewQAccessibleTextRemoveEvent2(iface *QAccessibleInterface, position int, text string) *QAccessibleTextRemoveEvent {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextRemoveEvent_new2(iface.cPointer(), (C.int)(position), text_ms)
 	return newQAccessibleTextRemoveEvent(ret)
 }
 
 func (this *QAccessibleTextRemoveEvent) TextRemoved() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextRemoveEvent_TextRemoved(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextRemoveEvent_TextRemoved(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -1740,35 +1761,43 @@ func UnsafeNewQAccessibleTextUpdateEvent(h unsafe.Pointer) *QAccessibleTextUpdat
 
 // NewQAccessibleTextUpdateEvent constructs a new QAccessibleTextUpdateEvent object.
 func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, text string) *QAccessibleTextUpdateEvent {
-	oldText_ms := libmiqt.Strdupg(oldText)
-	defer C.free(oldText_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), (*C.struct_miqt_string)(oldText_ms), (*C.struct_miqt_string)(text_ms))
+	oldText_ms := C.struct_miqt_string{}
+	oldText_ms.data = C.CString(oldText)
+	oldText_ms.len = C.size_t(len(oldText))
+	defer C.free(unsafe.Pointer(oldText_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextUpdateEvent_new(obj.cPointer(), (C.int)(position), oldText_ms, text_ms)
 	return newQAccessibleTextUpdateEvent(ret)
 }
 
 // NewQAccessibleTextUpdateEvent2 constructs a new QAccessibleTextUpdateEvent object.
 func NewQAccessibleTextUpdateEvent2(iface *QAccessibleInterface, position int, oldText string, text string) *QAccessibleTextUpdateEvent {
-	oldText_ms := libmiqt.Strdupg(oldText)
-	defer C.free(oldText_ms)
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), (*C.struct_miqt_string)(oldText_ms), (*C.struct_miqt_string)(text_ms))
+	oldText_ms := C.struct_miqt_string{}
+	oldText_ms.data = C.CString(oldText)
+	oldText_ms.len = C.size_t(len(oldText))
+	defer C.free(unsafe.Pointer(oldText_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QAccessibleTextUpdateEvent_new2(iface.cPointer(), (C.int)(position), oldText_ms, text_ms)
 	return newQAccessibleTextUpdateEvent(ret)
 }
 
 func (this *QAccessibleTextUpdateEvent) TextRemoved() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextRemoved(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextRemoved(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextUpdateEvent) TextInserted() string {
-	var _ms *C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextInserted(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextInserted(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

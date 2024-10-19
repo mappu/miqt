@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -197,8 +196,11 @@ func NewQVariant14(str string) *QVariant {
 }
 
 // NewQVariant15 constructs a new QVariant object.
-func NewQVariant15(bytearray *QByteArray) *QVariant {
-	ret := C.QVariant_new15(bytearray.cPointer())
+func NewQVariant15(bytearray []byte) *QVariant {
+	bytearray_alias := C.struct_miqt_string{}
+	bytearray_alias.data = (*C.char)(unsafe.Pointer(&bytearray[0]))
+	bytearray_alias.len = C.size_t(len(bytearray))
+	ret := C.QVariant_new15(bytearray_alias)
 	return newQVariant(ret)
 }
 
@@ -210,21 +212,25 @@ func NewQVariant16(bitarray *QBitArray) *QVariant {
 
 // NewQVariant17 constructs a new QVariant object.
 func NewQVariant17(stringVal string) *QVariant {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	ret := C.QVariant_new17((*C.struct_miqt_string)(stringVal_ms))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	ret := C.QVariant_new17(stringVal_ms)
 	return newQVariant(ret)
 }
 
 // NewQVariant18 constructs a new QVariant object.
 func NewQVariant18(stringlist []string) *QVariant {
 	// For the C ABI, malloc a C array of raw pointers
-	stringlist_CArray := (*[0xffff]*C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
+	stringlist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
 	for i := range stringlist {
-		stringlist_i_ms := libmiqt.Strdupg(stringlist[i])
-		defer C.free(stringlist_i_ms)
-		stringlist_CArray[i] = (*C.struct_miqt_string)(stringlist_i_ms)
+		stringlist_i_ms := C.struct_miqt_string{}
+		stringlist_i_ms.data = C.CString(stringlist[i])
+		stringlist_i_ms.len = C.size_t(len(stringlist[i]))
+		defer C.free(unsafe.Pointer(stringlist_i_ms.data))
+		stringlist_CArray[i] = stringlist_i_ms
 	}
 	stringlist_ma := &C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(stringlist_ma))
@@ -392,9 +398,9 @@ func (this *QVariant) UserType() int {
 	return (int)(C.QVariant_UserType(this.h))
 }
 
-func (this *QVariant) TypeName() unsafe.Pointer {
+func (this *QVariant) TypeName() string {
 	_ret := C.QVariant_TypeName(this.h)
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func (this *QVariant) CanConvert(targetTypeId int) bool {
@@ -457,11 +463,11 @@ func (this *QVariant) ToReal() float64 {
 	return (float64)(C.QVariant_ToReal(this.h))
 }
 
-func (this *QVariant) ToByteArray() *QByteArray {
-	_ret := C.QVariant_ToByteArray(this.h)
-	_goptr := newQByteArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QVariant) ToByteArray() []byte {
+	var _bytearray C.struct_miqt_string = C.QVariant_ToByteArray(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
 func (this *QVariant) ToBitArray() *QBitArray {
@@ -472,20 +478,20 @@ func (this *QVariant) ToBitArray() *QBitArray {
 }
 
 func (this *QVariant) ToString() string {
-	var _ms *C.struct_miqt_string = C.QVariant_ToString(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QVariant_ToString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QVariant) ToStringList() []string {
 	var _ma *C.struct_miqt_array = C.QVariant_ToStringList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]*C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		var _lv_ms *C.struct_miqt_string = _outCast[i]
-		_lv_ret := C.GoStringN(&_lv_ms.data, C.int(int64(_lv_ms.len)))
-		C.free(unsafe.Pointer(_lv_ms))
+		var _lv_ms C.struct_miqt_string = _outCast[i]
+		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
+		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
 	C.free(unsafe.Pointer(_ma))
@@ -668,9 +674,9 @@ func (this *QVariant) Save(ds *QDataStream) {
 	C.QVariant_Save(this.h, ds.cPointer())
 }
 
-func QVariant_TypeToName(typeId int) unsafe.Pointer {
+func QVariant_TypeToName(typeId int) string {
 	_ret := C.QVariant_TypeToName((C.int)(typeId))
-	return (unsafe.Pointer)(_ret)
+	return C.GoString(_ret)
 }
 
 func QVariant_NameToType(name string) QVariant__Type {
@@ -680,15 +686,15 @@ func QVariant_NameToType(name string) QVariant__Type {
 }
 
 func (this *QVariant) Data() unsafe.Pointer {
-	return C.QVariant_Data(this.h)
+	return (unsafe.Pointer)(C.QVariant_Data(this.h))
 }
 
 func (this *QVariant) ConstData() unsafe.Pointer {
-	return C.QVariant_ConstData(this.h)
+	return (unsafe.Pointer)(C.QVariant_ConstData(this.h))
 }
 
 func (this *QVariant) Data2() unsafe.Pointer {
-	return C.QVariant_Data2(this.h)
+	return (unsafe.Pointer)(C.QVariant_Data2(this.h))
 }
 
 func (this *QVariant) OperatorEqual(v *QVariant) bool {

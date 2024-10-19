@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -179,17 +178,21 @@ func NewQTextLayout() *QTextLayout {
 
 // NewQTextLayout2 constructs a new QTextLayout object.
 func NewQTextLayout2(text string) *QTextLayout {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextLayout_new2((*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextLayout_new2(text_ms)
 	return newQTextLayout(ret)
 }
 
 // NewQTextLayout3 constructs a new QTextLayout object.
 func NewQTextLayout3(text string, font *QFont) *QTextLayout {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextLayout_new3((*C.struct_miqt_string)(text_ms), font.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextLayout_new3(text_ms, font.cPointer())
 	return newQTextLayout(ret)
 }
 
@@ -201,9 +204,11 @@ func NewQTextLayout4(b *QTextBlock) *QTextLayout {
 
 // NewQTextLayout5 constructs a new QTextLayout object.
 func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QTextLayout {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	ret := C.QTextLayout_new5((*C.struct_miqt_string)(text_ms), font.cPointer(), paintdevice.cPointer())
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer())
 	return newQTextLayout(ret)
 }
 
@@ -223,15 +228,17 @@ func (this *QTextLayout) SetRawFont(rawFont *QRawFont) {
 }
 
 func (this *QTextLayout) SetText(stringVal string) {
-	stringVal_ms := libmiqt.Strdupg(stringVal)
-	defer C.free(stringVal_ms)
-	C.QTextLayout_SetText(this.h, (*C.struct_miqt_string)(stringVal_ms))
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	C.QTextLayout_SetText(this.h, stringVal_ms)
 }
 
 func (this *QTextLayout) Text() string {
-	var _ms *C.struct_miqt_string = C.QTextLayout_Text(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextLayout_Text(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -244,9 +251,11 @@ func (this *QTextLayout) TextOption() *QTextOption {
 }
 
 func (this *QTextLayout) SetPreeditArea(position int, text string) {
-	text_ms := libmiqt.Strdupg(text)
-	defer C.free(text_ms)
-	C.QTextLayout_SetPreeditArea(this.h, (C.int)(position), (*C.struct_miqt_string)(text_ms))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	C.QTextLayout_SetPreeditArea(this.h, (C.int)(position), text_ms)
 }
 
 func (this *QTextLayout) PreeditAreaPosition() int {
@@ -254,9 +263,9 @@ func (this *QTextLayout) PreeditAreaPosition() int {
 }
 
 func (this *QTextLayout) PreeditAreaText() string {
-	var _ms *C.struct_miqt_string = C.QTextLayout_PreeditAreaText(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTextLayout_PreeditAreaText(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 

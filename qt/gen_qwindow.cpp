@@ -38,18 +38,26 @@ void* QWindow_Metacast(QWindow* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QWindow_Tr(const char* s) {
+struct miqt_string QWindow_Tr(const char* s) {
 	QString _ret = QWindow::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QWindow_TrUtf8(const char* s) {
+struct miqt_string QWindow_TrUtf8(const char* s) {
 	QString _ret = QWindow::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QWindow_SetSurfaceType(QWindow* self, int surfaceType) {
@@ -142,11 +150,15 @@ int QWindow_Type(const QWindow* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string* QWindow_Title(const QWindow* self) {
+struct miqt_string QWindow_Title(const QWindow* self) {
 	QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QWindow_SetOpacity(QWindow* self, double level) {
@@ -326,16 +338,20 @@ void QWindow_Resize2(QWindow* self, int w, int h) {
 	self->resize(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWindow_SetFilePath(QWindow* self, struct miqt_string* filePath) {
-	QString filePath_QString = QString::fromUtf8(&filePath->data, filePath->len);
+void QWindow_SetFilePath(QWindow* self, struct miqt_string filePath) {
+	QString filePath_QString = QString::fromUtf8(filePath.data, filePath.len);
 	self->setFilePath(filePath_QString);
 }
 
-struct miqt_string* QWindow_FilePath(const QWindow* self) {
+struct miqt_string QWindow_FilePath(const QWindow* self) {
 	QString _ret = self->filePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QWindow_SetIcon(QWindow* self, QIcon* icon) {
@@ -450,8 +466,8 @@ bool QWindow_StartSystemMove(QWindow* self) {
 	return self->startSystemMove();
 }
 
-void QWindow_SetTitle(QWindow* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+void QWindow_SetTitle(QWindow* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	self->setTitle(title_QString);
 }
 
@@ -538,8 +554,8 @@ void QWindow_connect_WindowStateChanged(QWindow* self, intptr_t slot) {
 	});
 }
 
-void QWindow_WindowTitleChanged(QWindow* self, struct miqt_string* title) {
-	QString title_QString = QString::fromUtf8(&title->data, title->len);
+void QWindow_WindowTitleChanged(QWindow* self, struct miqt_string title) {
+	QString title_QString = QString::fromUtf8(title.data, title.len);
 	self->windowTitleChanged(title_QString);
 }
 
@@ -548,7 +564,11 @@ void QWindow_connect_WindowTitleChanged(QWindow* self, intptr_t slot) {
 		const QString title_ret = title;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray title_b = title_ret.toUtf8();
-		struct miqt_string* sigval1 = miqt_strdup(title_b.data(), title_b.length());
+		struct miqt_string title_ms;
+		title_ms.len = title_b.length();
+		title_ms.data = static_cast<char*>(malloc(title_ms.len));
+		memcpy(title_ms.data, title_b.data(), title_ms.len);
+		struct miqt_string sigval1 = title_ms;
 		miqt_exec_callback_QWindow_WindowTitleChanged(slot, sigval1);
 	});
 }
@@ -720,32 +740,48 @@ void QWindow_connect_TransientParentChanged(QWindow* self, intptr_t slot) {
 	});
 }
 
-struct miqt_string* QWindow_Tr2(const char* s, const char* c) {
+struct miqt_string QWindow_Tr2(const char* s, const char* c) {
 	QString _ret = QWindow::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QWindow_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWindow_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QWindow::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QWindow_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWindow_TrUtf82(const char* s, const char* c) {
 	QString _ret = QWindow::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QWindow_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWindow_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWindow::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 void QWindow_SetFlag2(QWindow* self, int param1, bool on) {

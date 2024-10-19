@@ -30,8 +30,8 @@ QTimeLine* QTimeLine_new2(int duration);
 QTimeLine* QTimeLine_new3(int duration, QObject* parent);
 QMetaObject* QTimeLine_MetaObject(const QTimeLine* self);
 void* QTimeLine_Metacast(QTimeLine* self, const char* param1);
-struct miqt_string* QTimeLine_Tr(const char* s);
-struct miqt_string* QTimeLine_TrUtf8(const char* s);
+struct miqt_string QTimeLine_Tr(const char* s);
+struct miqt_string QTimeLine_TrUtf8(const char* s);
 int QTimeLine_State(const QTimeLine* self);
 int QTimeLine_LoopCount(const QTimeLine* self);
 void QTimeLine_SetLoopCount(QTimeLine* self, int count);
@@ -61,10 +61,10 @@ void QTimeLine_Stop(QTimeLine* self);
 void QTimeLine_SetPaused(QTimeLine* self, bool paused);
 void QTimeLine_SetCurrentTime(QTimeLine* self, int msec);
 void QTimeLine_ToggleDirection(QTimeLine* self);
-struct miqt_string* QTimeLine_Tr2(const char* s, const char* c);
-struct miqt_string* QTimeLine_Tr3(const char* s, const char* c, int n);
-struct miqt_string* QTimeLine_TrUtf82(const char* s, const char* c);
-struct miqt_string* QTimeLine_TrUtf83(const char* s, const char* c, int n);
+struct miqt_string QTimeLine_Tr2(const char* s, const char* c);
+struct miqt_string QTimeLine_Tr3(const char* s, const char* c, int n);
+struct miqt_string QTimeLine_TrUtf82(const char* s, const char* c);
+struct miqt_string QTimeLine_TrUtf83(const char* s, const char* c, int n);
 void QTimeLine_Delete(QTimeLine* self);
 
 #ifdef __cplusplus

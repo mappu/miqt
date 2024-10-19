@@ -154,18 +154,26 @@ void* QItemSelectionModel_Metacast(QItemSelectionModel* self, const char* param1
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QItemSelectionModel_Tr(const char* s) {
+struct miqt_string QItemSelectionModel_Tr(const char* s) {
 	QString _ret = QItemSelectionModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QItemSelectionModel_TrUtf8(const char* s) {
+struct miqt_string QItemSelectionModel_TrUtf8(const char* s) {
 	QString _ret = QItemSelectionModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 QModelIndex* QItemSelectionModel_CurrentIndex(const QItemSelectionModel* self) {
@@ -330,32 +338,48 @@ void QItemSelectionModel_connect_ModelChanged(QItemSelectionModel* self, intptr_
 	});
 }
 
-struct miqt_string* QItemSelectionModel_Tr2(const char* s, const char* c) {
+struct miqt_string QItemSelectionModel_Tr2(const char* s, const char* c) {
 	QString _ret = QItemSelectionModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QItemSelectionModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QItemSelectionModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QItemSelectionModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QItemSelectionModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QItemSelectionModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QItemSelectionModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QItemSelectionModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QItemSelectionModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QItemSelectionModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 bool QItemSelectionModel_IsRowSelected2(const QItemSelectionModel* self, int row, QModelIndex* parent) {

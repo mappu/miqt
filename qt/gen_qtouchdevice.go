@@ -9,7 +9,6 @@ package qt
 import "C"
 
 import (
-	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -80,9 +79,9 @@ func QTouchDevice_Devices() []*QTouchDevice {
 }
 
 func (this *QTouchDevice) Name() string {
-	var _ms *C.struct_miqt_string = C.QTouchDevice_Name(this.h)
-	_ret := C.GoStringN(&_ms.data, C.int(int64(_ms.len)))
-	C.free(unsafe.Pointer(_ms))
+	var _ms C.struct_miqt_string = C.QTouchDevice_Name(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
@@ -99,9 +98,11 @@ func (this *QTouchDevice) MaximumTouchPoints() int {
 }
 
 func (this *QTouchDevice) SetName(name string) {
-	name_ms := libmiqt.Strdupg(name)
-	defer C.free(name_ms)
-	C.QTouchDevice_SetName(this.h, (*C.struct_miqt_string)(name_ms))
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QTouchDevice_SetName(this.h, name_ms)
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {

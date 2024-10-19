@@ -29,18 +29,26 @@ void* QIdentityProxyModel_Metacast(QIdentityProxyModel* self, const char* param1
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string* QIdentityProxyModel_Tr(const char* s) {
+struct miqt_string QIdentityProxyModel_Tr(const char* s) {
 	QString _ret = QIdentityProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIdentityProxyModel_TrUtf8(const char* s) {
+struct miqt_string QIdentityProxyModel_TrUtf8(const char* s) {
 	QString _ret = QIdentityProxyModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QIdentityProxyModel_ColumnCount(const QIdentityProxyModel* self) {
@@ -120,32 +128,48 @@ bool QIdentityProxyModel_MoveColumns(QIdentityProxyModel* self, QModelIndex* sou
 	return self->moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
-struct miqt_string* QIdentityProxyModel_Tr2(const char* s, const char* c) {
+struct miqt_string QIdentityProxyModel_Tr2(const char* s, const char* c) {
 	QString _ret = QIdentityProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIdentityProxyModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QIdentityProxyModel_Tr3(const char* s, const char* c, int n) {
 	QString _ret = QIdentityProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIdentityProxyModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QIdentityProxyModel_TrUtf82(const char* s, const char* c) {
 	QString _ret = QIdentityProxyModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string* QIdentityProxyModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QIdentityProxyModel_TrUtf83(const char* s, const char* c, int n) {
 	QString _ret = QIdentityProxyModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
-	return miqt_strdup(_b.data(), _b.length());
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
 }
 
 int QIdentityProxyModel_ColumnCount1(const QIdentityProxyModel* self, QModelIndex* parent) {
