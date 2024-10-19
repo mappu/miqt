@@ -291,8 +291,17 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		gfs.imports["runtime"] = struct{}{}
 		gfs.imports["unsafe"] = struct{}{}
 
-		preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(8 * len(" + p.ParameterName + "))))\n"
+		var mallocSize string
+		if listType.ParameterType == "QString" || listType.ParameterType == "QByteArray" {
+			preamble += "// For the C ABI, malloc a C array of structs\n"
+			mallocSize = "int(unsafe.Sizeof(C.struct_miqt_string{}))"
+
+		} else {
+			preamble += "// For the C ABI, malloc a C array of raw pointers\n"
+			mallocSize = "8"
+		}
+
+		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.ParameterName + "))))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray))\n"
 
 		preamble += "for i := range " + p.ParameterName + "{\n"
