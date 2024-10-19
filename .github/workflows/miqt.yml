@@ -45,8 +45,8 @@ jobs:
         path: ~/.cache/go-build
         key: linux64-gocache
     
-    - name: Linux64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build'
+    - name: Linux64 bindings compile and test
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build && cd ../examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
     
   miqt_win64:
     runs-on: ubuntu-22.04
