@@ -383,8 +383,8 @@ func (this *QFileSystemModel) NameFilterDisables() bool {
 }
 
 func (this *QFileSystemModel) SetNameFilters(filters []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
+	// For the C ABI, malloc a C array of structs
+	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
 		filters_i_ms := C.struct_miqt_string{}

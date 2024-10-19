@@ -53,8 +53,8 @@ func UnsafeNewQDirModel(h unsafe.Pointer) *QDirModel {
 
 // NewQDirModel constructs a new QDirModel object.
 func NewQDirModel(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag) *QDirModel {
-	// For the C ABI, malloc a C array of raw pointers
-	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
+	// For the C ABI, malloc a C array of structs
+	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
 		nameFilters_i_ms := C.struct_miqt_string{}
@@ -77,8 +77,8 @@ func NewQDirModel2() *QDirModel {
 
 // NewQDirModel3 constructs a new QDirModel object.
 func NewQDirModel3(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag, parent *QObject) *QDirModel {
-	// For the C ABI, malloc a C array of raw pointers
-	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(nameFilters))))
+	// For the C ABI, malloc a C array of structs
+	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
 		nameFilters_i_ms := C.struct_miqt_string{}
@@ -222,8 +222,8 @@ func (this *QDirModel) IconProvider() *QFileIconProvider {
 }
 
 func (this *QDirModel) SetNameFilters(filters []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(filters))))
+	// For the C ABI, malloc a C array of structs
+	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
 		filters_i_ms := C.struct_miqt_string{}

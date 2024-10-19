@@ -342,8 +342,8 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 }
 
 func (this *QComboBox) AddItems(texts []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
+	// For the C ABI, malloc a C array of structs
+	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
 		texts_i_ms := C.struct_miqt_string{}
@@ -374,8 +374,8 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(texts))))
+	// For the C ABI, malloc a C array of structs
+	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
 		texts_i_ms := C.struct_miqt_string{}

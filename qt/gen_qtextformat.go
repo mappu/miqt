@@ -727,8 +727,8 @@ func (this *QTextCharFormat) FontFamily() string {
 }
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(families))))
+	// For the C ABI, malloc a C array of structs
+	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
 		families_i_ms := C.struct_miqt_string{}
@@ -984,8 +984,8 @@ func (this *QTextCharFormat) AnchorName() string {
 }
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	// For the C ABI, malloc a C array of structs
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}

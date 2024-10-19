@@ -110,8 +110,8 @@ func (this *QTextBrowser) SearchPaths() []string {
 }
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(paths))))
+	// For the C ABI, malloc a C array of structs
+	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
