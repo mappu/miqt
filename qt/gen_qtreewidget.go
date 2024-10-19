@@ -66,8 +66,8 @@ func NewQTreeWidgetItem() *QTreeWidgetItem {
 
 // NewQTreeWidgetItem2 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -90,8 +90,8 @@ func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem4 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -120,8 +120,8 @@ func NewQTreeWidgetItem6(parent *QTreeWidgetItem) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem7 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem7(parent *QTreeWidgetItem, strings []string) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -156,8 +156,8 @@ func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem11 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -180,8 +180,8 @@ func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -210,8 +210,8 @@ func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem
 
 // NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
-	// For the C ABI, malloc a C array of raw pointers
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(strings))))
+	// For the C ABI, malloc a C array of structs
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
 		strings_i_ms := C.struct_miqt_string{}
@@ -708,8 +708,8 @@ func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) SetHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	// For the C ABI, malloc a C array of structs
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}

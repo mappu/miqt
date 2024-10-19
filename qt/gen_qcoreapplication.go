@@ -273,8 +273,8 @@ func QCoreApplication_ApplicationPid() int64 {
 }
 
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	libraryPaths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(libraryPaths))))
+	// For the C ABI, malloc a C array of structs
+	libraryPaths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(libraryPaths))))
 	defer C.free(unsafe.Pointer(libraryPaths_CArray))
 	for i := range libraryPaths {
 		libraryPaths_i_ms := C.struct_miqt_string{}

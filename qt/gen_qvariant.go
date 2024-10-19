@@ -222,8 +222,8 @@ func NewQVariant17(stringVal string) *QVariant {
 
 // NewQVariant18 constructs a new QVariant object.
 func NewQVariant18(stringlist []string) *QVariant {
-	// For the C ABI, malloc a C array of raw pointers
-	stringlist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(stringlist))))
+	// For the C ABI, malloc a C array of structs
+	stringlist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(stringlist))))
 	defer C.free(unsafe.Pointer(stringlist_CArray))
 	for i := range stringlist {
 		stringlist_i_ms := C.struct_miqt_string{}

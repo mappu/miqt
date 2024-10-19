@@ -61,8 +61,8 @@ func NewQCommandLineOption(name string) *QCommandLineOption {
 
 // NewQCommandLineOption2 constructs a new QCommandLineOption object.
 func NewQCommandLineOption2(names []string) *QCommandLineOption {
-	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	// For the C ABI, malloc a C array of structs
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
@@ -93,8 +93,8 @@ func NewQCommandLineOption3(name string, description string) *QCommandLineOption
 
 // NewQCommandLineOption4 constructs a new QCommandLineOption object.
 func NewQCommandLineOption4(names []string, description string) *QCommandLineOption {
-	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	// For the C ABI, malloc a C array of structs
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
@@ -161,8 +161,8 @@ func NewQCommandLineOption7(name string, description string, valueName string, d
 
 // NewQCommandLineOption8 constructs a new QCommandLineOption object.
 func NewQCommandLineOption8(names []string, description string, valueName string) *QCommandLineOption {
-	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	// For the C ABI, malloc a C array of structs
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
@@ -187,8 +187,8 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 
 // NewQCommandLineOption9 constructs a new QCommandLineOption object.
 func NewQCommandLineOption9(names []string, description string, valueName string, defaultValue string) *QCommandLineOption {
-	// For the C ABI, malloc a C array of raw pointers
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(names))))
+	// For the C ABI, malloc a C array of structs
+	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
@@ -276,8 +276,8 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	defaultValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(defaultValues))))
+	// For the C ABI, malloc a C array of structs
+	defaultValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(defaultValues))))
 	defer C.free(unsafe.Pointer(defaultValues_CArray))
 	for i := range defaultValues {
 		defaultValues_i_ms := C.struct_miqt_string{}

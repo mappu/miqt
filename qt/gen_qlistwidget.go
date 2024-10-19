@@ -459,8 +459,8 @@ func (this *QListWidget) InsertItem2(row int, label string) {
 }
 
 func (this *QListWidget) InsertItems(row int, labels []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	// For the C ABI, malloc a C array of structs
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}
@@ -487,8 +487,8 @@ func (this *QListWidget) AddItemWithItem(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) AddItems(labels []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(labels))))
+	// For the C ABI, malloc a C array of structs
+	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}

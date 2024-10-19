@@ -119,8 +119,8 @@ func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	restartCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(restartCommand))))
+	// For the C ABI, malloc a C array of structs
+	restartCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray))
 	for i := range restartCommand {
 		restartCommand_i_ms := C.struct_miqt_string{}
@@ -149,8 +149,8 @@ func (this *QSessionManager) RestartCommand() []string {
 }
 
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
-	// For the C ABI, malloc a C array of raw pointers
-	discardCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(discardCommand))))
+	// For the C ABI, malloc a C array of structs
+	discardCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray))
 	for i := range discardCommand {
 		discardCommand_i_ms := C.struct_miqt_string{}
@@ -195,8 +195,8 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	// For the C ABI, malloc a C array of raw pointers
-	value_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(8 * len(value))))
+	// For the C ABI, malloc a C array of structs
+	value_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(value))))
 	defer C.free(unsafe.Pointer(value_CArray))
 	for i := range value {
 		value_i_ms := C.struct_miqt_string{}
