@@ -8,9 +8,7 @@ import (
 	"github.com/mappu/miqt/qt"
 )
 
-func TestMarshalling(t *testing.T) {
-
-	qt.NewQApplication(os.Args)
+func testMarshalling(t *testing.T) {
 
 	// Bool
 	t.Run("Bool", func(t *testing.T) {
@@ -107,5 +105,16 @@ func TestMarshalling(t *testing.T) {
 		}
 
 	})
+}
+
+func TestMarshalling(t *testing.T) {
+
+	qt.NewQApplication(os.Args)
+
+	// In case of heap corruption, run the whole test multiple times.
+
+	for i := 0; i < 5; i++ {
+		testMarshalling(t)
+	}
 
 }
