@@ -25,7 +25,7 @@ var (
 	KnownEnums      map[string]lookupResultEnum
 )
 
-func init() {
+func flushKnownTypes() {
 	KnownClassnames = make(map[string]lookupResultClass)
 	KnownTypedefs = make(map[string]lookupResultTypedef)
 	KnownEnums = make(map[string]lookupResultEnum)

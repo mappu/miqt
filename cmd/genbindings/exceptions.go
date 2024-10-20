@@ -5,25 +5,56 @@ import (
 	"strings"
 )
 
-func InsertTypedefs() {
+func InsertTypedefs(qt6 bool) {
 
 	// Seed well-known typedefs
+	pp := "qt"
+	if qt6 {
+		pp = "qt6"
+	}
 
 	// QString is deleted from this binding
-	KnownTypedefs["QStringList"] = lookupResultTypedef{"qt", CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
+	KnownTypedefs["QStringList"] = lookupResultTypedef{pp, CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
 
 	// FIXME this isn't picked up automatically because QFile inherits QFileDevice and the name refers to its parent class
-	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{"qt", CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
+	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{pp, CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
 
-	// n.b. Qt 5 only
-	KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{"qt", CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
+	if !qt6 {
+		// n.b. Qt 5 only
+		KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{pp, CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
+	} else {
+		// Must be removed for Qt 6
+	}
 
 	// Not sure the reason for this one
-	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{"qt", CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
+	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{pp, CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
 
 	// QFile doesn't see QFileDevice parent class enum
-	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{"qt", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
-	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{"qt", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
+	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
+	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
+	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
+
+	if qt6 {
+		// Qt 6 QVariant helper types - needs investigation
+		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
+		KnownTypedefs["QVariantList"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantList", parseSingleTypeString("QList<QVariant>")}}
+		KnownTypedefs["QVariantMap"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantMap", parseSingleTypeString("QMap<QString,QVariant>")}}
+
+		// Qt 6 renamed the enum to LibraryPath, but left some uses of LibraryLocation with a typedef
+		// We don't find the typedef - needs investigation
+		// ONLY add this on Qt 6 builds, breaks Qt 5
+		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
+
+		// Enums
+
+		// QSysInfo.h is being truncated and not finding any content
+		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", CppEnum{
+			EnumName: "QSysInfo::Endian",
+			UnderlyingType: CppParameter{
+				ParameterType: "int",
+			},
+		}}
+	}
 
 }
 
@@ -50,7 +81,13 @@ func AllowHeader(fullpath string) bool {
 		"qstring.h",                    // QString does not exist in this binding
 		"qbytearray.h",                 // QByteArray does not exist in this binding
 		"qlist.h",                      // QList does not exist in this binding
-		"qvector.h":                    // QVector does not exist in this binding
+		"qvector.h",                    // QVector does not exist in this binding
+		"qtcoreexports.h",              // Nothing bindable here and has Q_CORE_EXPORT definition issues
+		"q20algorithm.h",               // Qt 6 unstable header
+		"q20functional.h",              // Qt 6 unstable header
+		"q20iterator.h",                // Qt 6 unstable header
+		"q23functional.h",              // Qt 6 unstable header
+		"____last____":
 		return false
 	}
 
@@ -79,7 +116,9 @@ func ImportHeaderForClass(className string) bool {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
 		"QAbstractConcatenable", // qstringbuilder.h
 		"QTextEngine",           // qtextlayout.h
-		"QText":                 // e.g. qtextcursor.h
+		"QText",                 // e.g. qtextcursor.h
+		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
+		"____last____":
 		return false
 	}
 
@@ -102,12 +141,22 @@ func AllowClass(className string) bool {
 
 	switch className {
 	case
-		"QTextStreamManipulator", // Only seems to contain garbage methods
-		"QException",             // Extends std::exception, too hard
-		"QUnhandledException",    // As above (child class)
-		"QItemSelection",         // Extends a QList<>, too hard
-		"QXmlStreamAttributes",   // Extends a QList<>, too hard
-		"QPolygon", "QPolygonF":  // Extends a QVector<QPoint> template class, too hard
+		"QTextStreamManipulator",     // Only seems to contain garbage methods
+		"QException",                 // Extends std::exception, too hard
+		"QUnhandledException",        // As above (child class)
+		"QItemSelection",             // Extends a QList<>, too hard
+		"QXmlStreamAttributes",       // Extends a QList<>, too hard
+		"QPolygon",                   // Extends a QVector<QPoint> template class, too hard
+		"QPolygonF",                  // Extends a QVector<QPoint> template class, too hard
+		"QAssociativeIterator",       // Qt 6. Extends a QIterator<>, too hard
+		"QAssociativeConstIterator",  // Qt 6. Extends a QIterator<>, too hard
+		"QAssociativeIterable",       // Qt 6. Extends a QIterator<>, too hard
+		"QSequentialIterator",        // Qt 6. Extends a QIterator<>, too hard
+		"QSequentialConstIterator",   // Qt 6. Extends a QIterator<>, too hard
+		"QSequentialIterable",        // Qt 6. Extends a QIterator<>, too hard
+		"QBrushDataPointerDeleter",   // Qt 6 qbrush.h. Appears in header but cannot be linked
+		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
+		"____last____":
 		return false
 	}
 
@@ -115,8 +164,15 @@ func AllowClass(className string) bool {
 }
 
 func AllowSignal(mm CppMethod) bool {
+	if mm.ReturnType.ParameterType != "void" {
+		// This affects how we cast the signal function pointer for connect
+		// It would be fixable, but, real signals always have void return types anyway
+		return false
+	}
+
 	switch mm.MethodName {
-	case `metaObject`, `qt_metacast`:
+	case `metaObject`, `qt_metacast`,
+		`clone`: // Qt 6 - qcoreevent.h
 		return false
 	default:
 		return true
@@ -194,6 +250,19 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "FillResult<") {
 		return ErrTooComplex // Scintilla
 	}
+	if strings.HasPrefix(p.ParameterType, "QBindable<") {
+		return ErrTooComplex // e.g. Qt 6 qabstractanimation.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QRgbaFloat<") {
+		return ErrTooComplex // e.g. Qt 6 qcolortransform.h
+	}
+	if strings.HasPrefix(p.ParameterType, "QPointer<") {
+		return ErrTooComplex // e.g. Qt 6 qevent.h . It should be possible to support this
+	}
+	if strings.HasPrefix(p.ParameterType, "EncodedData<") {
+		return ErrTooComplex // e.g. Qt 6 qstringconverter.h
+	}
+
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
 		// std::string                QByteArray->toStdString(). There are QString overloads already
@@ -212,11 +281,20 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.Contains(p.GetQtCppType().ParameterType, `::DataPtr`) {
 		return ErrTooComplex // e.g. QImage::data_ptr()
 	}
+	if strings.Contains(p.ParameterType, `::DataPointer`) {
+		return ErrTooComplex // Qt 6 qbytearray.h. This could probably be made to work
+	}
+	if strings.HasPrefix(p.ParameterType, `QArrayDataPointer<`) {
+		return ErrTooComplex // Qt 6 qbytearray.h. This could probably be made to work
+	}
 
 	// Some QFoo constructors take a QFooPrivate
 	// QIcon also returns a QIconPrivate
 	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") {
 		return ErrTooComplex
+	}
+	if strings.HasPrefix(p.ParameterType, "QtPrivate::") {
+		return ErrTooComplex // e.g. Qt 6 qbindingstorage.h
 	}
 
 	// If any parameters are QString*, skip the method
@@ -260,6 +338,8 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QPolygon", "QPolygonF", // QPolygon extends a template type
 		"QGenericMatrix", "QMatrix3x3", // extends a template type
 		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
+		"QLatin1StringView",               // Qt 6 - used in qanystringview
+		"QUtf8StringView",                 // Qt 6 - used in qdebug
 		"QStringRef",                      // e.g. QLocale::toLongLong and similar overloads. As above
 		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
 		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
@@ -289,7 +369,12 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QPlatformScreen",                 // e.g. qscreen.h. as below
 		"QPlatformWindow",                 // e.g. qwindow.h, as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below
-		"QPlatformMenu":                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		"QPlatformMenu",                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		"struct _XDisplay",                // Qt 6 QGuiApplication_platform
+		"xcb_connection_t",                // Qt 6 QGuiApplication_platform
+		"QTextDocument::ResourceProvider", // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
+		"QTransform::Affine",              // Qt 6 qtransform.h - public method returning private type
+		"____last____":
 		return ErrTooComplex
 	}
 

@@ -99,6 +99,9 @@ func main() {
 
 	flag.Parse()
 
+	flushKnownTypes()
+	InsertTypedefs(false)
+
 	generate(
 		"qt",
 		[]string{
@@ -146,6 +149,25 @@ func main() {
 		*outDir,
 		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
 	)
+
+	// FLUSH all known typedefs / ...
+
+	flushKnownTypes()
+	InsertTypedefs(true)
+
+	// Qt 6
+	generate(
+		"qt6",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtCore",
+			"/usr/include/x86_64-linux-gnu/qt6/QtGui",
+			"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+		},
+		*clang,
+		strings.Fields("--std=c++17 "+pkgConfigCflags("Qt6Widgets")),
+		*outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
 }
 
 func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
@@ -169,8 +191,6 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	atr := astTransformRedundant{
 		preserve: make(map[string]*CppEnum),
 	}
-
-	InsertTypedefs()
 
 	//
 	// PASS 0 (Fill clang cache)
