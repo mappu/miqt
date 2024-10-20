@@ -29,7 +29,7 @@ jobs:
     - name: Assert no changes
       run: git update-index --really-refresh && git diff-index HEAD
     
-  miqt_linux64:
+  miqt_linux64_qt5:
     runs-on: ubuntu-22.04
     
     steps:
@@ -47,6 +47,25 @@ jobs:
     
     - name: Linux64 bindings compile and test
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build && cd ../examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
+    
+  miqt_linux64_qt6:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Linux64 docker build
+      run: docker build -t miqt/linux64:latest -f docker/linux64-go1.19-qt6.4-dynamic.Dockerfile .
+    
+    - name: Cache GOCACHE
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/go-build
+        key: linux64-qt6-gocache
+    
+    - name: Linux64 bindings compile
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt6 && go build'
     
   miqt_win64:
     runs-on: ubuntu-22.04
