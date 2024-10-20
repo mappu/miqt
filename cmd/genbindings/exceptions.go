@@ -24,6 +24,7 @@ func InsertTypedefs() {
 	// QFile doesn't see QFileDevice parent class enum
 	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{"qt", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
 	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{"qt", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
+
 }
 
 func AllowHeader(fullpath string) bool {
@@ -69,6 +70,11 @@ func ImportHeaderForClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "Qsci") {
+		// QScintilla - does not produce imports
+		return false
+	}
+
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
 		"QAbstractConcatenable", // qstringbuilder.h
@@ -88,6 +94,10 @@ func AllowClass(className string) bool {
 
 	if strings.Contains(className, "QPrivateSignal") {
 		return false
+	}
+
+	if strings.HasPrefix(className, `std::`) {
+		return false // Scintilla bindings find some of these
 	}
 
 	switch className {
@@ -130,7 +140,6 @@ func AllowMethod(mm CppMethod) error {
 	}
 
 	return nil // OK, allow
-
 }
 
 func CheckComplexity(p CppParameter, isReturnType bool) error {
@@ -149,6 +158,12 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if t, ok := p.QListOf(); ok {
 		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
+		}
+
+		// qsciscintilla.h QsciScintilla_Annotate4: no copy ctor for private type QsciStyledText
+		// Works fine normally, but not in a list
+		if t.ParameterType == "QsciStyledText" {
+			return ErrTooComplex
 		}
 	}
 
@@ -176,12 +191,16 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "QUrlTwoFlags<") {
 		return ErrTooComplex // e.g. qurl.h
 	}
+	if strings.HasPrefix(p.ParameterType, "FillResult<") {
+		return ErrTooComplex // Scintilla
+	}
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
 		// std::string                QByteArray->toStdString(). There are QString overloads already
 		// std::nullptr_t             Qcborstreamwriter
 		// std::chrono::nanoseconds   QDeadlineTimer_RemainingTimeAsDuration
 		// std::seed_seq              QRandom
+		// std::exception             Scintilla
 		return ErrTooComplex
 	}
 	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
@@ -253,6 +272,7 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
 		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
 		"QXmlStreamAttributes",            // e.g. qxmlstream.h
+		"LineLayout::ValidLevel",          // ..
 		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h

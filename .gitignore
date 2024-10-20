@@ -7,6 +7,9 @@ container-build-cache/
 # local genbindings configuration
 cmd/genbindings/genbindings.local*
 
+# local pkg-config configuration
+pkg-config/*.pc
+
 # binaries
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
@@ -23,6 +26,8 @@ examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
 examples/uidesigner/uidesigner.exe
 examples/libraries/qt-qprintsupport/qt-qprintsupport
+examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
+examples/libraries/extras-scintillaedit/extras-scintillaedit
 
 # android temporary build files
 android-build

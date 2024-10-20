@@ -1,0 +1,9 @@
+srcdir=/usr/local/src/scintilla/
+
+Name: ScintillaEdit
+Description: Scintilla's own upstream Qt port
+URL: https://www.scintilla.org/
+Version: 5.5.2
+Requires: Qt5Widgets
+Libs: -L${srcdir}/bin -lScintillaEdit
+Cflags: -include stdint.h -I${srcdir}/qt/ScintillaEdit -I${srcdir}/qt/ScintillaEditBase -I${srcdir}/include -I${srcdir}/src

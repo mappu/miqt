@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -22,6 +23,10 @@ func importPathForQtPackage(packageName string) string {
 	switch packageName {
 	case "qt":
 		return BaseModule + "/qt"
+	case "qscintilla":
+		return BaseModule + "/qt-restricted-extras/" + packageName
+	case "scintillaedit":
+		return BaseModule + "/qt-extras/" + packageName
 	default:
 		return BaseModule + "/qt/" + packageName
 	}
@@ -87,9 +92,19 @@ func cleanGeneratedFilesInDir(dirpath string) {
 	log.Printf("Removed %d file(s).", cleaned)
 }
 
+func pkgConfigCflags(packageName string) string {
+	stdout, err := exec.Command(`pkg-config`, `--cflags`, packageName).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(stdout)
+}
+
 func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
+	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
 
 	flag.Parse()
 
@@ -101,9 +116,9 @@ func main() {
 			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		},
 		*clang,
-		// pkg-config --cflags Qt5Widgets
-		strings.Fields(`-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`),
+		strings.Fields(pkgConfigCflags("Qt5Widgets")),
 		filepath.Join(*outDir, "qt"),
+		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	generate(
@@ -112,17 +127,45 @@ func main() {
 			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
 		},
 		*clang,
-		// pkg-config --cflags Qt5PrintSupport
-		strings.Fields(`-DQT_PRINTSUPPORT_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -DQT_GUI_LIB -DQT_CORE_LIB`),
+		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
 		filepath.Join(*outDir, "qt/qprintsupport"),
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Depends on QtCore/Gui/Widgets, QPrintSupport
+	generate(
+		"qscintilla",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
+		},
+		*clang,
+		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
+		filepath.Join(*outDir, "qt-restricted-extras/qscintilla"),
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"scintillaedit",
+		[]string{
+			filepath.Join(*extraLibsDir, "scintilla/qt/ScintillaEdit/ScintillaEdit.h"),
+		},
+		*clang,
+		strings.Fields("--std=c++1z "+pkgConfigCflags("ScintillaEdit")),
+		filepath.Join(*outDir, "qt-extras/scintillaedit"),
+		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
 	)
 }
 
-func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string) {
+func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
-		includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
+		if strings.HasSuffix(srcDir, `.h`) {
+			includeFiles = append(includeFiles, srcDir) // single .h
+		} else {
+			includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
+		}
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
@@ -140,7 +183,7 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	// PASS 0 (Fill clang cache)
 	//
 
-	generateClangCaches(includeFiles, clangBin, cflags)
+	generateClangCaches(includeFiles, clangBin, cflags, matcher)
 
 	// The cache should now be fully populated.
 
@@ -267,7 +310,7 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	log.Printf("Processing %d file(s) completed", len(includeFiles))
 }
 
-func generateClangCaches(includeFiles []string, clangBin string, cflags []string) {
+func generateClangCaches(includeFiles []string, clangBin string, cflags []string, matcher ClangMatcher) {
 
 	var clangChan = make(chan string, 0)
 	var clangWg sync.WaitGroup
@@ -289,7 +332,7 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 
 				// Parse the file
 				// This seems to intermittently fail, so allow retrying
-				astInner := mustClangExec(ctx, clangBin, inputHeader, cflags)
+				astInner := mustClangExec(ctx, clangBin, inputHeader, cflags, matcher)
 
 				// Write to cache
 				jb, err := json.MarshalIndent(astInner, "", "\t")

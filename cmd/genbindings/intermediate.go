@@ -110,6 +110,10 @@ func (p CppParameter) QtClassType() bool {
 		return true
 	}
 
+	if p.ParameterType == "Scintilla::Internal::Point" {
+		return true
+	}
+
 	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
 		return true
 	}
