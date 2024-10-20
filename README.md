@@ -98,6 +98,27 @@ MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt
 
 MIQT uses the `pkg-config` system to configure `CFLAGS`/`LDFLAGS` for Qt and for any other used Qt libraries.
 
+### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
+
+The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
+
+You can replace the import path in two ways:
+1. A go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`.
+2. Update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
+
+### Q9. How can I add bindings for another Qt library?
+
+1. Git clone this repository
+2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
+    - If your library does not include a pkg-config file, you must create one
+3. Patch `cmd/genbindings/main.go` to add a new `generate` block for your target library
+4. Run genbindings to regenerate all bindings
+    - Add a cflags.go file to the generated binding directory with any extra flags (e.g. `--std=c++17`) that are required but not system-specific
+    - (Optional) Add an example in the `examples/libraries` directory
+5. Commit the generated bindings
+    - You can then use your forked MIQT version with `replace` inside `go.mod`
+    - Or, open a Pull Request to add the library to MIQT
+
 ## Building
 
 ### Linux (native)
