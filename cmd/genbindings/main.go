@@ -130,7 +130,11 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
-		includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
+		if strings.HasSuffix(srcDir, `.h`) {
+			includeFiles = append(includeFiles, srcDir) // single .h
+		} else {
+			includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
+		}
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
