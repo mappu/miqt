@@ -92,97 +92,7 @@ func pkgConfigCflags(packageName string) string {
 	return string(stdout)
 }
 
-func main() {
-	clang := flag.String("clang", "clang", "Custom path to clang")
-	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
-	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
-
-	flag.Parse()
-
-	flushKnownTypes()
-	InsertTypedefs(false)
-
-	generate(
-		"qt",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
-			"/usr/include/x86_64-linux-gnu/qt5/QtGui",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5Widgets")),
-		*outDir,
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	generate(
-		"qt/qprintsupport",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		*outDir,
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	// Depends on QtCore/Gui/Widgets, QPrintSupport
-	generate(
-		"qt-restricted-extras/qscintilla",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		*outDir,
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	// Depends on QtCore/Gui/Widgets
-	generate(
-		"qt-extras/scintillaedit",
-		[]string{
-			filepath.Join(*extraLibsDir, "scintilla/qt/ScintillaEdit/ScintillaEdit.h"),
-		},
-		*clang,
-		strings.Fields("--std=c++1z "+pkgConfigCflags("ScintillaEdit")),
-		*outDir,
-		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
-	)
-
-	// FLUSH all known typedefs / ...
-
-	flushKnownTypes()
-	InsertTypedefs(true)
-
-	// Qt 6
-	generate(
-		"qt6",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtCore",
-			"/usr/include/x86_64-linux-gnu/qt6/QtGui",
-			"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
-		},
-		*clang,
-		strings.Fields("--std=c++17 "+pkgConfigCflags("Qt6Widgets")),
-		*outDir,
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	// Qt 6 QtPrintSupport
-	generate(
-		"qt6/qprintsupport",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtPrintSupport",
-		},
-		*clang,
-		strings.Fields("--std=c++17 "+pkgConfigCflags("Qt6PrintSupport")),
-		*outDir,
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-}
-
-func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
+func generate(packageName string, srcDirs []string, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
@@ -194,6 +104,8 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
+
+	cflags := strings.Fields(cflagsCombined)
 
 	outDir = filepath.Join(outDir, packageName)
 
@@ -395,4 +307,14 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 	// Done with all clang workers
 	close(clangChan)
 	clangWg.Wait()
+}
+
+func main() {
+	clang := flag.String("clang", "clang", "Custom path to clang")
+	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
+	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
+
+	flag.Parse()
+
+	ProcessLibraries(*clang, *outDir, *extraLibsDir)
 }
