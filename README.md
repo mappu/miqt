@@ -94,6 +94,10 @@ Some C++ idioms that were difficult to project were omitted from the binding. Bu
 
 MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) for form design and resource management. After running the `miqt-uic` and `miqt-rcc` tools once, you can rebuild any changes using the convenient `go generate` command.
 
+### Q7. How can I point MIQT to use a custom Qt install location?
+
+MIQT uses the `pkg-config` system to configure `CFLAGS`/`LDFLAGS` for Qt and for any other used Qt libraries.
+
 ## Building
 
 ### Linux (native)
