@@ -27,6 +27,7 @@ examples/uidesigner/uidesigner
 examples/uidesigner/uidesigner.exe
 examples/libraries/qt-qprintsupport/qt-qprintsupport
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
+examples/libraries/extras-scintillaedit/extras-scintillaedit
 
 # android temporary build files
 android-build
