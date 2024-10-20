@@ -510,7 +510,8 @@ func emitBindingHeader(src *CppParsedHeader, filename string, packageName string
 	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
 
 	bindingInclude := "../libmiqt/libmiqt.h"
-	if packageName != "qt" {
+
+	if strings.Contains(packageName, `/`) {
 		bindingInclude = "../" + bindingInclude
 	}
 

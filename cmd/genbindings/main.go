@@ -19,21 +19,12 @@ const (
 	BaseModule           = "github.com/mappu/miqt"
 )
 
-func importPathForQtPackage(packageName string) string {
-	switch packageName {
-	case "qt":
-		return BaseModule + "/qt"
-	case "qscintilla":
-		return BaseModule + "/qt-restricted-extras/" + packageName
-	case "scintillaedit":
-		return BaseModule + "/qt-extras/" + packageName
-	default:
-		return BaseModule + "/qt/" + packageName
-	}
-}
-
 func cacheFilePath(inputHeader string) string {
 	return filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
+}
+
+func importPathForQtPackage(packageName string) string {
+	return BaseModule + "/" + packageName
 }
 
 func findHeadersInDir(srcDir string) []string {
@@ -117,42 +108,42 @@ func main() {
 		},
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5Widgets")),
-		filepath.Join(*outDir, "qt"),
+		*outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	generate(
-		"qprintsupport",
+		"qt/qprintsupport",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
 		},
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		filepath.Join(*outDir, "qt/qprintsupport"),
+		*outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
-		"qscintilla",
+		"qt-restricted-extras/qscintilla",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
 		},
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		filepath.Join(*outDir, "qt-restricted-extras/qscintilla"),
+		*outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	// Depends on QtCore/Gui/Widgets
 	generate(
-		"scintillaedit",
+		"qt-extras/scintillaedit",
 		[]string{
 			filepath.Join(*extraLibsDir, "scintilla/qt/ScintillaEdit/ScintillaEdit.h"),
 		},
 		*clang,
 		strings.Fields("--std=c++1z "+pkgConfigCflags("ScintillaEdit")),
-		filepath.Join(*outDir, "qt-extras/scintillaedit"),
+		*outDir,
 		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
 	)
 }
@@ -169,6 +160,8 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	}
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
+
+	outDir = filepath.Join(outDir, packageName)
 
 	cleanGeneratedFilesInDir(outDir)
 
