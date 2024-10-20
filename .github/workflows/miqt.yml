@@ -8,7 +8,7 @@ on:
 
 jobs:
   miqt_genbindings:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     
     steps:
     - name: Checkout
@@ -30,7 +30,7 @@ jobs:
       run: git update-index --really-refresh && git diff-index HEAD
     
   miqt_linux64_qt5:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     
     steps:
     - name: Checkout
@@ -49,7 +49,7 @@ jobs:
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt && go build && cd ../examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
     
   miqt_linux64_qt6:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     
     steps:
     - name: Checkout
@@ -68,7 +68,7 @@ jobs:
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:latest /bin/bash -c 'cd qt6 && go build'
     
   miqt_win64:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     
     steps:
     - name: Checkout
