@@ -23,6 +23,8 @@ func importPathForQtPackage(packageName string) string {
 	switch packageName {
 	case "qt":
 		return BaseModule + "/qt"
+	case "qscintilla":
+		return BaseModule + "/qt-restricted-extras/" + packageName
 	default:
 		return BaseModule + "/qt/" + packageName
 	}
@@ -124,6 +126,18 @@ func main() {
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
 		filepath.Join(*outDir, "qt/qprintsupport"),
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Depends on QtCore/Gui/Widgets, QPrintSupport
+	generate(
+		"qscintilla",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
+		},
+		*clang,
+		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
+		filepath.Join(*outDir, "qt-restricted-extras/qscintilla"),
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 }

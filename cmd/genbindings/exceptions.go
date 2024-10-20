@@ -69,6 +69,11 @@ func ImportHeaderForClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "Qsci") {
+		// QScintilla - does not produce imports
+		return false
+	}
+
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
 		"QAbstractConcatenable", // qstringbuilder.h
@@ -149,6 +154,12 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 	if t, ok := p.QListOf(); ok {
 		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
+		}
+
+		// qsciscintilla.h QsciScintilla_Annotate4: no copy ctor for private type QsciStyledText
+		// Works fine normally, but not in a list
+		if t.ParameterType == "QsciStyledText" {
+			return ErrTooComplex
 		}
 	}
 
