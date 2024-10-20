@@ -25,6 +25,8 @@ func importPathForQtPackage(packageName string) string {
 		return BaseModule + "/qt"
 	case "qscintilla":
 		return BaseModule + "/qt-restricted-extras/" + packageName
+	case "scintillaedit":
+		return BaseModule + "/qt-extras/" + packageName
 	default:
 		return BaseModule + "/qt/" + packageName
 	}
@@ -102,6 +104,7 @@ func pkgConfigCflags(packageName string) string {
 func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
+	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
 
 	flag.Parse()
 
@@ -139,6 +142,18 @@ func main() {
 		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
 		filepath.Join(*outDir, "qt-restricted-extras/qscintilla"),
 		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"scintillaedit",
+		[]string{
+			filepath.Join(*extraLibsDir, "scintilla/qt/ScintillaEdit/ScintillaEdit.h"),
+		},
+		*clang,
+		strings.Fields("--std=c++1z "+pkgConfigCflags("ScintillaEdit")),
+		filepath.Join(*outDir, "qt-extras/scintillaedit"),
+		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
 	)
 }
 
