@@ -507,7 +507,7 @@ func cabiClassName(className string) string {
 func emitBindingHeader(src *CppParsedHeader, filename string, packageName string) (string, error) {
 	ret := strings.Builder{}
 
-	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(filename, `.`, `_`, -1))
+	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
 
 	bindingInclude := "../libmiqt/libmiqt.h"
 
