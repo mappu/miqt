@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Linux64 docker build
-      run: cd docker && docker build -t miqt/genbindings:latest -f genbindings.Dockerfile .
+      run: docker build -t miqt/genbindings:latest -f docker/genbindings.Dockerfile .
     
     - name: Cache clang ASTs
       uses: actions/cache@v4
@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Linux64 docker build
-      run: cd docker && docker build -t miqt/linux64:latest -f linux64-go1.19-qt5.15-dynamic.Dockerfile .
+      run: docker build -t miqt/linux64:latest -f docker/linux64-go1.19-qt5.15-dynamic.Dockerfile .
     
     - name: Cache GOCACHE
       uses: actions/cache@v4
@@ -62,7 +62,7 @@ jobs:
         key: win64-gocache
     
     - name: Win64 docker build
-      run: cd docker && docker build -t miqt/win64:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .
+      run: docker build -t miqt/win64:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .
     
     - name: Win64 bindings compile
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:latest /bin/bash -c 'cd qt && go build'

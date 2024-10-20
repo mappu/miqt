@@ -149,14 +149,14 @@ Static builds are also available by installing the `mingw-w64-ucrt-x86_64-qt5-st
 For static builds (open source application):
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
+	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
 For dynamically-linked builds (closed-source or open source application):
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
+	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
@@ -179,7 +179,7 @@ Miqt supports compiling for Android. Some extra steps are required to bridge the
 	- Ensure to `import "C"`.
 	- Check `examples/android` to see how to support both Android and desktop platforms.
 2. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/android:latest -f android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
+	- `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
 3. Build your application as `.so` format:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
 4. Build the Qt linking stub:
