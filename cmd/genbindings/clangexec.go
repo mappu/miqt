@@ -9,6 +9,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 	"sync"
 	"time"
 )
@@ -18,7 +19,26 @@ const (
 	ClangRetryDelay = 3 * time.Second
 )
 
-func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []string) ([]interface{}, error) {
+type ClangMatcher func(astNodeFilename string) bool
+
+func ClangMatchSameHeaderDefinitionOnly(astNodeFilename string) bool {
+	return astNodeFilename == ""
+}
+
+type clangMatchUnderPath struct {
+	basePath string
+}
+
+func (c *clangMatchUnderPath) Match(astNodeFilename string) bool {
+	if astNodeFilename == "" {
+		return true
+	}
+	return strings.HasPrefix(astNodeFilename, c.basePath)
+}
+
+//
+
+func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []string, matcher ClangMatcher) ([]interface{}, error) {
 
 	clangArgs := []string{`-x`, `c++`}
 	clangArgs = append(clangArgs, cflags...)
@@ -44,7 +64,7 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		inner, innerErr = clangStripUpToFile(pr, inputHeader)
+		inner, innerErr = clangStripUpToFile(pr, matcher)
 	}()
 
 	err = cmd.Wait()
@@ -57,10 +77,10 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 	return inner, innerErr
 }
 
-func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []string) []interface{} {
+func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []string, matcher ClangMatcher) []interface{} {
 
 	for i := 0; i < ClangMaxRetries; i++ {
-		astInner, err := clangExec(ctx, clangBin, inputHeader, cflags)
+		astInner, err := clangExec(ctx, clangBin, inputHeader, cflags, matcher)
 		if err != nil {
 			// Log and continue with next retry
 			log.Printf("WARNING: Clang execution failed: %v", err)
@@ -83,7 +103,7 @@ func mustClangExec(ctx context.Context, clangBin, inputHeader string, cflags []s
 // This cleans out everything in the translation unit that came from an
 // #included file.
 // @ref https://stackoverflow.com/a/71128654
-func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, error) {
+func clangStripUpToFile(stdout io.Reader, matcher ClangMatcher) ([]interface{}, error) {
 
 	var obj = map[string]interface{}{}
 	err := json.NewDecoder(stdout).Decode(&obj)
@@ -108,10 +128,8 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 			return nil, errors.New("entry is not a map")
 		}
 
-		if _, ok := entry["isImplicit"]; ok {
-			// Don't keep
-			continue
-		}
+		// Check where this AST node came from, if it was directly written
+		// in this header or if it as part of an #include
 
 		var match_filename = ""
 
@@ -140,16 +158,13 @@ func clangStripUpToFile(stdout io.Reader, inputFilePath string) ([]interface{}, 
 
 		// log.Printf("# name=%v kind=%v filename=%q\n", entry["name"], entry["kind"], match_filename)
 
-		if match_filename == "" {
+		if matcher(match_filename) {
 			// Keep
 			ret = append(ret, entry)
-
-		} else if match_filename != inputFilePath {
-			// Skip this
-		} else {
-			// Keep this
-			// ret = append(ret, entry)
 		}
+
+		// Otherwise, discard this AST node, it comes from some imported file
+		// that we will likely scan separately
 	}
 
 	return ret, nil

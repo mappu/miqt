@@ -113,6 +113,7 @@ func main() {
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5Widgets")),
 		filepath.Join(*outDir, "qt"),
+		ClangMatchSameHeaderDefinitionOnly,
 	)
 
 	generate(
@@ -123,10 +124,11 @@ func main() {
 		*clang,
 		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
 		filepath.Join(*outDir, "qt/qprintsupport"),
+		ClangMatchSameHeaderDefinitionOnly,
 	)
 }
 
-func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string) {
+func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
@@ -152,7 +154,7 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	// PASS 0 (Fill clang cache)
 	//
 
-	generateClangCaches(includeFiles, clangBin, cflags)
+	generateClangCaches(includeFiles, clangBin, cflags, matcher)
 
 	// The cache should now be fully populated.
 
@@ -279,7 +281,7 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 	log.Printf("Processing %d file(s) completed", len(includeFiles))
 }
 
-func generateClangCaches(includeFiles []string, clangBin string, cflags []string) {
+func generateClangCaches(includeFiles []string, clangBin string, cflags []string, matcher ClangMatcher) {
 
 	var clangChan = make(chan string, 0)
 	var clangWg sync.WaitGroup
@@ -301,7 +303,7 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 
 				// Parse the file
 				// This seems to intermittently fail, so allow retrying
-				astInner := mustClangExec(ctx, clangBin, inputHeader, cflags)
+				astInner := mustClangExec(ctx, clangBin, inputHeader, cflags, matcher)
 
 				// Write to cache
 				jb, err := json.MarshalIndent(astInner, "", "\t")
