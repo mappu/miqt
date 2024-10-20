@@ -168,6 +168,18 @@ func main() {
 		*outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
+
+	// Qt 6 QtPrintSupport
+	generate(
+		"qt6/qprintsupport",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtPrintSupport",
+		},
+		*clang,
+		strings.Fields("--std=c++17 "+pkgConfigCflags("Qt6PrintSupport")),
+		*outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
 }
 
 func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
