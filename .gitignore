@@ -7,6 +7,9 @@ container-build-cache/
 # local genbindings configuration
 cmd/genbindings/genbindings.local*
 
+# local pkg-config configuration
+pkg-config/*.pc
+
 # binaries
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
