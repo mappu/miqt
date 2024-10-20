@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -87,6 +88,15 @@ func cleanGeneratedFilesInDir(dirpath string) {
 	log.Printf("Removed %d file(s).", cleaned)
 }
 
+func pkgConfigCflags(packageName string) string {
+	stdout, err := exec.Command(`pkg-config`, `--cflags`, packageName).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(stdout)
+}
+
 func main() {
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
@@ -101,8 +111,7 @@ func main() {
 			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		},
 		*clang,
-		// pkg-config --cflags Qt5Widgets
-		strings.Fields(`-DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -DQT_GUI_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_CORE_LIB`),
+		strings.Fields(pkgConfigCflags("Qt5Widgets")),
 		filepath.Join(*outDir, "qt"),
 	)
 
@@ -112,8 +121,7 @@ func main() {
 			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
 		},
 		*clang,
-		// pkg-config --cflags Qt5PrintSupport
-		strings.Fields(`-DQT_PRINTSUPPORT_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/x86_64-linux-gnu/qt5/QtGui -DQT_WIDGETS_LIB -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -DQT_GUI_LIB -DQT_CORE_LIB`),
+		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
 		filepath.Join(*outDir, "qt/qprintsupport"),
 	)
 }
