@@ -25,9 +25,10 @@ examples/windowsmanifest/windowsmanifest
 examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
 examples/uidesigner/uidesigner.exe
-examples/libraries/qt-qprintsupport/qt-qprintsupport
-examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
 examples/libraries/extras-scintillaedit/extras-scintillaedit
+examples/libraries/qt-qprintsupport/qt-qprintsupport
+examples/libraries/qt6/qt6
+examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
 
 # android temporary build files
 android-build

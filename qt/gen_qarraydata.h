@@ -39,7 +39,6 @@ QArrayData* QArrayData_Allocate4(size_t objectSize, size_t alignment, size_t cap
 QArrayData* QArrayData_ReallocateUnaligned4(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions);
 void QArrayData_Delete(QArrayData* self);
 
-int QtPrivate__QContainerImplHelper_Mid(int originalLength, int* position, int* length);
 void QtPrivate__QContainerImplHelper_Delete(QtPrivate__QContainerImplHelper* self);
 
 #ifdef __cplusplus

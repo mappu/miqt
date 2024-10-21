@@ -25,7 +25,7 @@ var (
 	KnownEnums      map[string]lookupResultEnum
 )
 
-func init() {
+func flushKnownTypes() {
 	KnownClassnames = make(map[string]lookupResultClass)
 	KnownTypedefs = make(map[string]lookupResultTypedef)
 	KnownEnums = make(map[string]lookupResultEnum)
@@ -367,9 +367,10 @@ type CppParsedHeader struct {
 }
 
 func (c CppParsedHeader) Empty() bool {
-	return len(c.Typedefs) == 0 &&
-		len(c.Enums) == 0 &&
-		len(c.Classes) == 0
+	// If there are only typedefs, that still counts as empty since typedefs
+	// are fully resolved inside genbindings, not exposed in MIQT classes
+
+	return len(c.Enums) == 0 && len(c.Classes) == 0
 }
 
 func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {

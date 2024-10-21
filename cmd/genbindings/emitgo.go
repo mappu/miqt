@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go/format"
 	"log"
+	"path"
 	"sort"
 	"strings"
 )
@@ -103,7 +104,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 
 			if enumInfo, ok := KnownEnums[ft.ParameterType]; ok && enumInfo.PackageName != gfs.currentPackageName {
 				// Cross-package
-				ret += enumInfo.PackageName + "." + cabiClassName(ft.ParameterType)
+				ret += path.Base(enumInfo.PackageName) + "." + cabiClassName(ft.ParameterType)
 				gfs.imports[importPathForQtPackage(enumInfo.PackageName)] = struct{}{}
 			} else {
 				// Same package
@@ -113,7 +114,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		} else if enumInfo, ok := KnownEnums[p.ParameterType]; ok {
 			if enumInfo.PackageName != gfs.currentPackageName {
 				// Cross-package
-				ret += enumInfo.PackageName + "." + cabiClassName(p.ParameterType)
+				ret += path.Base(enumInfo.PackageName) + "." + cabiClassName(p.ParameterType)
 				gfs.imports[importPathForQtPackage(enumInfo.PackageName)] = struct{}{}
 			} else {
 				// Same package
@@ -132,7 +133,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	}
 
 	if pkg, ok := KnownClassnames[p.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
-		ret = pkg.PackageName + "." + ret
+		ret = path.Base(pkg.PackageName) + "." + ret
 		gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 	}
 
@@ -448,7 +449,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		crossPackage := ""
 		if pkg, ok := KnownClassnames[rt.ParameterType]; ok && pkg.PackageName != gfs.currentPackageName {
-			crossPackage = pkg.PackageName + "."
+			crossPackage = path.Base(pkg.PackageName) + "."
 			gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 		}
 
@@ -497,7 +498,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, error) {
 
 	ret := strings.Builder{}
-	ret.WriteString(`package ` + packageName + `
+	ret.WriteString(`package ` + path.Base(packageName) + `
 
 /*
 
@@ -587,7 +588,7 @@ import "C"
 
 			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
 				// Cross-package parent class
-				ret.WriteString("*" + pkg.PackageName + "." + cabiClassName(base) + "\n")
+				ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
 				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 			} else {
 				// Same-package parent class
@@ -622,7 +623,7 @@ import "C"
 
 			ctorPrefix := ""
 			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
-				ctorPrefix = pkg.PackageName + "."
+				ctorPrefix = path.Base(pkg.PackageName) + "."
 			}
 
 			localInit += ", " + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(h))"

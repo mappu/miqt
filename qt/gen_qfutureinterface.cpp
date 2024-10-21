@@ -5,8 +5,6 @@
 #include <QByteArray>
 #include <cstring>
 #include <QThreadPool>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore
-#define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase
 #include <qfutureinterface.h>
 #include "gen_qfutureinterface.h"
 #include "_cgo_export.h"
@@ -175,24 +173,6 @@ QMutex* QFutureInterfaceBase_MutexWithInt(const QFutureInterfaceBase* self, int 
 	QMutex& _ret = self->mutex(static_cast<int>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
-}
-
-QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceBase* self) {
-	QtPrivate::ExceptionStore& _ret = self->exceptionStore();
-	// Cast returned reference into pointer
-	return &_ret;
-}
-
-QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase(QFutureInterfaceBase* self) {
-	QtPrivate::ResultStoreBase& _ret = self->resultStoreBase();
-	// Cast returned reference into pointer
-	return &_ret;
-}
-
-QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase2(const QFutureInterfaceBase* self) {
-	const QtPrivate::ResultStoreBase& _ret = self->resultStoreBase();
-	// Cast returned reference into pointer
-	return const_cast<QtPrivate::ResultStoreBase*>(&_ret);
 }
 
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other) {

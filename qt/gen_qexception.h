@@ -30,16 +30,11 @@ typedef struct QtPrivate__ExceptionStore QtPrivate__ExceptionStore;
 #endif
 
 QtPrivate__ExceptionHolder* QtPrivate__ExceptionHolder_new();
-QtPrivate__ExceptionHolder* QtPrivate__ExceptionHolder_new2(QtPrivate__ExceptionHolder* other);
-void QtPrivate__ExceptionHolder_OperatorAssign(QtPrivate__ExceptionHolder* self, QtPrivate__ExceptionHolder* other);
 void QtPrivate__ExceptionHolder_Delete(QtPrivate__ExceptionHolder* self);
 
-QtPrivate__ExceptionStore* QtPrivate__ExceptionStore_new(QtPrivate__ExceptionStore* param1);
 bool QtPrivate__ExceptionStore_HasException(const QtPrivate__ExceptionStore* self);
-QtPrivate__ExceptionHolder* QtPrivate__ExceptionStore_Exception(QtPrivate__ExceptionStore* self);
 void QtPrivate__ExceptionStore_ThrowPossibleException(QtPrivate__ExceptionStore* self);
 bool QtPrivate__ExceptionStore_HasThrown(const QtPrivate__ExceptionStore* self);
-void QtPrivate__ExceptionStore_OperatorAssign(QtPrivate__ExceptionStore* self, QtPrivate__ExceptionStore* param1);
 void QtPrivate__ExceptionStore_Delete(QtPrivate__ExceptionStore* self);
 
 #ifdef __cplusplus

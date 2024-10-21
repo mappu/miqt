@@ -152,10 +152,6 @@ func UnsafeNewQtPrivate__QContainerImplHelper(h unsafe.Pointer) *QtPrivate__QCon
 	return newQtPrivate__QContainerImplHelper((*C.QtPrivate__QContainerImplHelper)(h))
 }
 
-func QtPrivate__QContainerImplHelper_Mid(originalLength int, position *int, length *int) QtPrivate__QContainerImplHelper__CutResult {
-	return (QtPrivate__QContainerImplHelper__CutResult)(C.QtPrivate__QContainerImplHelper_Mid((C.int)(originalLength), (*C.int)(unsafe.Pointer(position)), (*C.int)(unsafe.Pointer(length))))
-}
-
 // Delete this object from C++ memory.
 func (this *QtPrivate__QContainerImplHelper) Delete() {
 	C.QtPrivate__QContainerImplHelper_Delete(this.h)

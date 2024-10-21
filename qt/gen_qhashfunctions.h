@@ -30,11 +30,9 @@ typedef struct QtPrivate__QHashCombineCommutative QtPrivate__QHashCombineCommuta
 #endif
 
 QtPrivate__QHashCombine* QtPrivate__QHashCombine_new();
-QtPrivate__QHashCombine* QtPrivate__QHashCombine_new2(QtPrivate__QHashCombine* param1);
 void QtPrivate__QHashCombine_Delete(QtPrivate__QHashCombine* self);
 
 QtPrivate__QHashCombineCommutative* QtPrivate__QHashCombineCommutative_new();
-QtPrivate__QHashCombineCommutative* QtPrivate__QHashCombineCommutative_new2(QtPrivate__QHashCombineCommutative* param1);
 void QtPrivate__QHashCombineCommutative_Delete(QtPrivate__QHashCombineCommutative* self);
 
 #ifdef __cplusplus

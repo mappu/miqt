@@ -45,24 +45,12 @@ int QtPrivate__ResultIteratorBase_ResultIndex(const QtPrivate__ResultIteratorBas
 	return self->resultIndex();
 }
 
-QtPrivate__ResultIteratorBase* QtPrivate__ResultIteratorBase_OperatorPlusPlus(QtPrivate__ResultIteratorBase* self) {
-	return new QtPrivate::ResultIteratorBase(self->operator++());
-}
-
 int QtPrivate__ResultIteratorBase_BatchSize(const QtPrivate__ResultIteratorBase* self) {
 	return self->batchSize();
 }
 
 void QtPrivate__ResultIteratorBase_BatchedAdvance(QtPrivate__ResultIteratorBase* self) {
 	self->batchedAdvance();
-}
-
-bool QtPrivate__ResultIteratorBase_OperatorEqual(const QtPrivate__ResultIteratorBase* self, QtPrivate__ResultIteratorBase* other) {
-	return self->operator==(*other);
-}
-
-bool QtPrivate__ResultIteratorBase_OperatorNotEqual(const QtPrivate__ResultIteratorBase* self, QtPrivate__ResultIteratorBase* other) {
-	return self->operator!=(*other);
 }
 
 bool QtPrivate__ResultIteratorBase_IsVector(const QtPrivate__ResultIteratorBase* self) {
@@ -81,10 +69,6 @@ QtPrivate__ResultStoreBase* QtPrivate__ResultStoreBase_new() {
 	return new QtPrivate::ResultStoreBase();
 }
 
-QtPrivate__ResultStoreBase* QtPrivate__ResultStoreBase_new2(QtPrivate__ResultStoreBase* param1) {
-	return new QtPrivate::ResultStoreBase(*param1);
-}
-
 void QtPrivate__ResultStoreBase_SetFilterMode(QtPrivate__ResultStoreBase* self, bool enable) {
 	self->setFilterMode(enable);
 }
@@ -101,20 +85,8 @@ int QtPrivate__ResultStoreBase_AddResults(QtPrivate__ResultStoreBase* self, int 
 	return self->addResults(static_cast<int>(index), results, static_cast<int>(vectorSize), static_cast<int>(logicalCount));
 }
 
-QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_Begin(const QtPrivate__ResultStoreBase* self) {
-	return new QtPrivate::ResultIteratorBase(self->begin());
-}
-
-QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_End(const QtPrivate__ResultStoreBase* self) {
-	return new QtPrivate::ResultIteratorBase(self->end());
-}
-
 bool QtPrivate__ResultStoreBase_HasNextResult(const QtPrivate__ResultStoreBase* self) {
 	return self->hasNextResult();
-}
-
-QtPrivate__ResultIteratorBase* QtPrivate__ResultStoreBase_ResultAt(const QtPrivate__ResultStoreBase* self, int index) {
-	return new QtPrivate::ResultIteratorBase(self->resultAt(static_cast<int>(index)));
 }
 
 bool QtPrivate__ResultStoreBase_Contains(const QtPrivate__ResultStoreBase* self, int index) {
@@ -127,10 +99,6 @@ int QtPrivate__ResultStoreBase_Count(const QtPrivate__ResultStoreBase* self) {
 
 int QtPrivate__ResultStoreBase_AddCanceledResult(QtPrivate__ResultStoreBase* self, int index) {
 	return self->addCanceledResult(static_cast<int>(index));
-}
-
-void QtPrivate__ResultStoreBase_OperatorAssign(QtPrivate__ResultStoreBase* self, QtPrivate__ResultStoreBase* param1) {
-	self->operator=(*param1);
 }
 
 void QtPrivate__ResultStoreBase_Delete(QtPrivate__ResultStoreBase* self) {

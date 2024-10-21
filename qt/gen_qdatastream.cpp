@@ -216,10 +216,6 @@ QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new(QDataStream* s) {
 	return new QtPrivate::StreamStateSaver(s);
 }
 
-QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new2(QtPrivate__StreamStateSaver* param1) {
-	return new QtPrivate::StreamStateSaver(*param1);
-}
-
 void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self) {
 	delete self;
 }

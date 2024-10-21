@@ -1,0 +1,196 @@
+package qt6
+
+/*
+
+#include "gen_qstringconverter_base.h"
+#include <stdlib.h>
+
+*/
+import "C"
+
+import (
+	"runtime"
+	"unsafe"
+)
+
+type QStringConverterBase__Flag int
+
+const (
+	QStringConverterBase__Default              QStringConverterBase__Flag = 0
+	QStringConverterBase__Stateless            QStringConverterBase__Flag = 1
+	QStringConverterBase__ConvertInvalidToNull QStringConverterBase__Flag = 2
+	QStringConverterBase__WriteBom             QStringConverterBase__Flag = 4
+	QStringConverterBase__ConvertInitialBom    QStringConverterBase__Flag = 8
+	QStringConverterBase__UsesIcu              QStringConverterBase__Flag = 16
+)
+
+type QStringConverter__Encoding int
+
+const (
+	QStringConverter__Utf8         QStringConverter__Encoding = 0
+	QStringConverter__Utf16        QStringConverter__Encoding = 1
+	QStringConverter__Utf16LE      QStringConverter__Encoding = 2
+	QStringConverter__Utf16BE      QStringConverter__Encoding = 3
+	QStringConverter__Utf32        QStringConverter__Encoding = 4
+	QStringConverter__Utf32LE      QStringConverter__Encoding = 5
+	QStringConverter__Utf32BE      QStringConverter__Encoding = 6
+	QStringConverter__Latin1       QStringConverter__Encoding = 7
+	QStringConverter__System       QStringConverter__Encoding = 8
+	QStringConverter__LastEncoding QStringConverter__Encoding = 8
+)
+
+type QStringConverterBase struct {
+	h *C.QStringConverterBase
+}
+
+func (this *QStringConverterBase) cPointer() *C.QStringConverterBase {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QStringConverterBase) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+func newQStringConverterBase(h *C.QStringConverterBase) *QStringConverterBase {
+	if h == nil {
+		return nil
+	}
+	return &QStringConverterBase{h: h}
+}
+
+func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
+	return newQStringConverterBase((*C.QStringConverterBase)(h))
+}
+
+// NewQStringConverterBase constructs a new QStringConverterBase object.
+func NewQStringConverterBase(param1 *QStringConverterBase) *QStringConverterBase {
+	ret := C.QStringConverterBase_new(param1.cPointer())
+	return newQStringConverterBase(ret)
+}
+
+// NewQStringConverterBase2 constructs a new QStringConverterBase object.
+func NewQStringConverterBase2() *QStringConverterBase {
+	ret := C.QStringConverterBase_new2()
+	return newQStringConverterBase(ret)
+}
+
+type QStringConverter struct {
+	h *C.QStringConverter
+	*QStringConverterBase
+}
+
+func (this *QStringConverter) cPointer() *C.QStringConverter {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QStringConverter) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+func newQStringConverter(h *C.QStringConverter) *QStringConverter {
+	if h == nil {
+		return nil
+	}
+	return &QStringConverter{h: h, QStringConverterBase: UnsafeNewQStringConverterBase(unsafe.Pointer(h))}
+}
+
+func UnsafeNewQStringConverter(h unsafe.Pointer) *QStringConverter {
+	return newQStringConverter((*C.QStringConverter)(h))
+}
+
+func (this *QStringConverter) IsValid() bool {
+	return (bool)(C.QStringConverter_IsValid(this.h))
+}
+
+func (this *QStringConverter) ResetState() {
+	C.QStringConverter_ResetState(this.h)
+}
+
+func (this *QStringConverter) HasError() bool {
+	return (bool)(C.QStringConverter_HasError(this.h))
+}
+
+func (this *QStringConverter) Name() string {
+	_ret := C.QStringConverter_Name(this.h)
+	return C.GoString(_ret)
+}
+
+func QStringConverter_NameForEncoding(e QStringConverter__Encoding) string {
+	_ret := C.QStringConverter_NameForEncoding((C.int)(e))
+	return C.GoString(_ret)
+}
+
+type QStringConverterBase__State struct {
+	h *C.QStringConverterBase__State
+}
+
+func (this *QStringConverterBase__State) cPointer() *C.QStringConverterBase__State {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QStringConverterBase__State) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+func newQStringConverterBase__State(h *C.QStringConverterBase__State) *QStringConverterBase__State {
+	if h == nil {
+		return nil
+	}
+	return &QStringConverterBase__State{h: h}
+}
+
+func UnsafeNewQStringConverterBase__State(h unsafe.Pointer) *QStringConverterBase__State {
+	return newQStringConverterBase__State((*C.QStringConverterBase__State)(h))
+}
+
+// NewQStringConverterBase__State constructs a new QStringConverterBase::State object.
+func NewQStringConverterBase__State() *QStringConverterBase__State {
+	ret := C.QStringConverterBase__State_new()
+	return newQStringConverterBase__State(ret)
+}
+
+// NewQStringConverterBase__State2 constructs a new QStringConverterBase::State object.
+func NewQStringConverterBase__State2(f QStringConverterBase__Flag) *QStringConverterBase__State {
+	ret := C.QStringConverterBase__State_new2((C.int)(f))
+	return newQStringConverterBase__State(ret)
+}
+
+func (this *QStringConverterBase__State) Clear() {
+	C.QStringConverterBase__State_Clear(this.h)
+}
+
+func (this *QStringConverterBase__State) Reset() {
+	C.QStringConverterBase__State_Reset(this.h)
+}
+
+// Delete this object from C++ memory.
+func (this *QStringConverterBase__State) Delete() {
+	C.QStringConverterBase__State_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QStringConverterBase__State) GoGC() {
+	runtime.SetFinalizer(this, func(this *QStringConverterBase__State) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
+}
