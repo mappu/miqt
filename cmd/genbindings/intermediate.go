@@ -367,9 +367,10 @@ type CppParsedHeader struct {
 }
 
 func (c CppParsedHeader) Empty() bool {
-	return len(c.Typedefs) == 0 &&
-		len(c.Enums) == 0 &&
-		len(c.Classes) == 0
+	// If there are only typedefs, that still counts as empty since typedefs
+	// are fully resolved inside genbindings, not exposed in MIQT classes
+
+	return len(c.Enums) == 0 && len(c.Classes) == 0
 }
 
 func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {
