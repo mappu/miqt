@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -209,6 +210,25 @@ func generate(packageName string, srcDirs []string, clangBin, cflagsCombined, ou
 
 		// Emit 3 code files from the intermediate format
 		outputName := filepath.Join(outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
+
+		// For packages where we scan multiple directories, it's possible that
+		// there are filename collisions (e.g. Qt 6 has QtWidgets/qaction.h include
+		// QtGui/qaction.h as a compatibility measure).
+		// If the path exists, disambiguate it
+		var counter = 0
+		for {
+			testName := outputName
+			if counter > 0 {
+				testName += fmt.Sprintf(".%d", counter)
+			}
+
+			if _, err := os.Stat(testName + ".go"); err != nil && os.IsNotExist(err) {
+				outputName = testName // Safe
+				break
+			}
+
+			counter++
+		}
 
 		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
