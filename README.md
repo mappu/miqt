@@ -10,7 +10,7 @@
 
 MIQT is MIT-licensed Qt bindings for Go.
 
-This is a straightforward binding of the Qt API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
+This is a straightforward binding of the Qt 5.15 / Qt 6.4+ API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
 These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
@@ -93,6 +93,31 @@ Some C++ idioms that were difficult to project were omitted from the binding. Bu
 ![](doc/architecture-uic.png)
 
 MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) for form design and resource management. After running the `miqt-uic` and `miqt-rcc` tools once, you can rebuild any changes using the convenient `go generate` command.
+
+### Q7. How can I point MIQT to use a custom Qt install location?
+
+MIQT uses the `pkg-config` system to configure `CFLAGS`/`LDFLAGS` for Qt and for any other used Qt libraries.
+
+### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
+
+The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
+
+You can replace the import path in two ways:
+1. A go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`.
+2. Update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
+
+### Q9. How can I add bindings for another Qt library?
+
+1. Git clone this repository
+2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
+    - If your library does not include a pkg-config file, you must create one
+3. Patch `cmd/genbindings/main.go` to add a new `generate` block for your target library
+4. Run genbindings to regenerate all bindings
+    - Add a cflags.go file to the generated binding directory with any extra flags (e.g. `--std=c++17`) that are required but not system-specific
+    - (Optional) Add an example in the `examples/libraries` directory
+5. Commit the generated bindings
+    - You can then use your forked MIQT version with `replace` inside `go.mod`
+    - Or, open a Pull Request to add the library to MIQT
 
 ## Building
 

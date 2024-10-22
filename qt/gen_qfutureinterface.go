@@ -223,18 +223,6 @@ func (this *QFutureInterfaceBase) MutexWithInt(param1 int) *QMutex {
 	return UnsafeNewQMutex(unsafe.Pointer(C.QFutureInterfaceBase_MutexWithInt(this.h, (C.int)(param1))))
 }
 
-func (this *QFutureInterfaceBase) ExceptionStore() *QtPrivate__ExceptionStore {
-	return UnsafeNewQtPrivate__ExceptionStore(unsafe.Pointer(C.QFutureInterfaceBase_ExceptionStore(this.h)))
-}
-
-func (this *QFutureInterfaceBase) ResultStoreBase() *QtPrivate__ResultStoreBase {
-	return UnsafeNewQtPrivate__ResultStoreBase(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase(this.h)))
-}
-
-func (this *QFutureInterfaceBase) ResultStoreBase2() *QtPrivate__ResultStoreBase {
-	return UnsafeNewQtPrivate__ResultStoreBase(unsafe.Pointer(C.QFutureInterfaceBase_ResultStoreBase2(this.h)))
-}
-
 func (this *QFutureInterfaceBase) OperatorEqual(other *QFutureInterfaceBase) bool {
 	return (bool)(C.QFutureInterfaceBase_OperatorEqual(this.h, other.cPointer()))
 }

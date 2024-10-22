@@ -31,5 +31,5 @@ It's tested to work on with Debian 12 / Qt 5.15 / Clang 14 / GCC 12.
 
 You should check the following configuration:
 
-- `main.go`: Input directories containing Qt headers
-- `exceptions.go`: Check everything
+- `config-libraries.go`: Input directories containing Qt headers
+- `config-allowlist.go`: Check everything

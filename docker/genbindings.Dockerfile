@@ -4,6 +4,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install --no-install-recommends -qyy \
         golang-go \
         qtbase5-dev \
+        qt6-base-dev \
         libqscintilla2-qt5-dev \
         clang \
         git \

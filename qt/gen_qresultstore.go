@@ -129,27 +129,12 @@ func (this *QtPrivate__ResultIteratorBase) ResultIndex() int {
 	return (int)(C.QtPrivate__ResultIteratorBase_ResultIndex(this.h))
 }
 
-func (this *QtPrivate__ResultIteratorBase) OperatorPlusPlus() *QtPrivate__ResultIteratorBase {
-	_ret := C.QtPrivate__ResultIteratorBase_OperatorPlusPlus(this.h)
-	_goptr := newQtPrivate__ResultIteratorBase(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
 func (this *QtPrivate__ResultIteratorBase) BatchSize() int {
 	return (int)(C.QtPrivate__ResultIteratorBase_BatchSize(this.h))
 }
 
 func (this *QtPrivate__ResultIteratorBase) BatchedAdvance() {
 	C.QtPrivate__ResultIteratorBase_BatchedAdvance(this.h)
-}
-
-func (this *QtPrivate__ResultIteratorBase) OperatorEqual(other *QtPrivate__ResultIteratorBase) bool {
-	return (bool)(C.QtPrivate__ResultIteratorBase_OperatorEqual(this.h, other.cPointer()))
-}
-
-func (this *QtPrivate__ResultIteratorBase) OperatorNotEqual(other *QtPrivate__ResultIteratorBase) bool {
-	return (bool)(C.QtPrivate__ResultIteratorBase_OperatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QtPrivate__ResultIteratorBase) IsVector() bool {
@@ -209,12 +194,6 @@ func NewQtPrivate__ResultStoreBase() *QtPrivate__ResultStoreBase {
 	return newQtPrivate__ResultStoreBase(ret)
 }
 
-// NewQtPrivate__ResultStoreBase2 constructs a new QtPrivate::ResultStoreBase object.
-func NewQtPrivate__ResultStoreBase2(param1 *QtPrivate__ResultStoreBase) *QtPrivate__ResultStoreBase {
-	ret := C.QtPrivate__ResultStoreBase_new2(param1.cPointer())
-	return newQtPrivate__ResultStoreBase(ret)
-}
-
 func (this *QtPrivate__ResultStoreBase) SetFilterMode(enable bool) {
 	C.QtPrivate__ResultStoreBase_SetFilterMode(this.h, (C.bool)(enable))
 }
@@ -231,29 +210,8 @@ func (this *QtPrivate__ResultStoreBase) AddResults(index int, results unsafe.Poi
 	return (int)(C.QtPrivate__ResultStoreBase_AddResults(this.h, (C.int)(index), results, (C.int)(vectorSize), (C.int)(logicalCount)))
 }
 
-func (this *QtPrivate__ResultStoreBase) Begin() *QtPrivate__ResultIteratorBase {
-	_ret := C.QtPrivate__ResultStoreBase_Begin(this.h)
-	_goptr := newQtPrivate__ResultIteratorBase(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QtPrivate__ResultStoreBase) End() *QtPrivate__ResultIteratorBase {
-	_ret := C.QtPrivate__ResultStoreBase_End(this.h)
-	_goptr := newQtPrivate__ResultIteratorBase(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
 func (this *QtPrivate__ResultStoreBase) HasNextResult() bool {
 	return (bool)(C.QtPrivate__ResultStoreBase_HasNextResult(this.h))
-}
-
-func (this *QtPrivate__ResultStoreBase) ResultAt(index int) *QtPrivate__ResultIteratorBase {
-	_ret := C.QtPrivate__ResultStoreBase_ResultAt(this.h, (C.int)(index))
-	_goptr := newQtPrivate__ResultIteratorBase(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
 }
 
 func (this *QtPrivate__ResultStoreBase) Contains(index int) bool {
@@ -266,10 +224,6 @@ func (this *QtPrivate__ResultStoreBase) Count() int {
 
 func (this *QtPrivate__ResultStoreBase) AddCanceledResult(index int) int {
 	return (int)(C.QtPrivate__ResultStoreBase_AddCanceledResult(this.h, (C.int)(index)))
-}
-
-func (this *QtPrivate__ResultStoreBase) OperatorAssign(param1 *QtPrivate__ResultStoreBase) {
-	C.QtPrivate__ResultStoreBase_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

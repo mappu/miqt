@@ -48,12 +48,6 @@ func NewQtPrivate__QHashCombine() *QtPrivate__QHashCombine {
 	return newQtPrivate__QHashCombine(ret)
 }
 
-// NewQtPrivate__QHashCombine2 constructs a new QtPrivate::QHashCombine object.
-func NewQtPrivate__QHashCombine2(param1 *QtPrivate__QHashCombine) *QtPrivate__QHashCombine {
-	ret := C.QtPrivate__QHashCombine_new2(param1.cPointer())
-	return newQtPrivate__QHashCombine(ret)
-}
-
 // Delete this object from C++ memory.
 func (this *QtPrivate__QHashCombine) Delete() {
 	C.QtPrivate__QHashCombine_Delete(this.h)
@@ -100,12 +94,6 @@ func UnsafeNewQtPrivate__QHashCombineCommutative(h unsafe.Pointer) *QtPrivate__Q
 // NewQtPrivate__QHashCombineCommutative constructs a new QtPrivate::QHashCombineCommutative object.
 func NewQtPrivate__QHashCombineCommutative() *QtPrivate__QHashCombineCommutative {
 	ret := C.QtPrivate__QHashCombineCommutative_new()
-	return newQtPrivate__QHashCombineCommutative(ret)
-}
-
-// NewQtPrivate__QHashCombineCommutative2 constructs a new QtPrivate::QHashCombineCommutative object.
-func NewQtPrivate__QHashCombineCommutative2(param1 *QtPrivate__QHashCombineCommutative) *QtPrivate__QHashCombineCommutative {
-	ret := C.QtPrivate__QHashCombineCommutative_new2(param1.cPointer())
 	return newQtPrivate__QHashCombineCommutative(ret)
 }
 

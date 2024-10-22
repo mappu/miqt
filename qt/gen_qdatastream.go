@@ -369,12 +369,6 @@ func NewQtPrivate__StreamStateSaver(s *QDataStream) *QtPrivate__StreamStateSaver
 	return newQtPrivate__StreamStateSaver(ret)
 }
 
-// NewQtPrivate__StreamStateSaver2 constructs a new QtPrivate::StreamStateSaver object.
-func NewQtPrivate__StreamStateSaver2(param1 *QtPrivate__StreamStateSaver) *QtPrivate__StreamStateSaver {
-	ret := C.QtPrivate__StreamStateSaver_new2(param1.cPointer())
-	return newQtPrivate__StreamStateSaver(ret)
-}
-
 // Delete this object from C++ memory.
 func (this *QtPrivate__StreamStateSaver) Delete() {
 	C.QtPrivate__StreamStateSaver_Delete(this.h)

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -19,21 +20,12 @@ const (
 	BaseModule           = "github.com/mappu/miqt"
 )
 
-func importPathForQtPackage(packageName string) string {
-	switch packageName {
-	case "qt":
-		return BaseModule + "/qt"
-	case "qscintilla":
-		return BaseModule + "/qt-restricted-extras/" + packageName
-	case "scintillaedit":
-		return BaseModule + "/qt-extras/" + packageName
-	default:
-		return BaseModule + "/qt/" + packageName
-	}
-}
-
 func cacheFilePath(inputHeader string) string {
 	return filepath.Join("cachedir", strings.Replace(inputHeader, `/`, `__`, -1)+".json")
+}
+
+func importPathForQtPackage(packageName string) string {
+	return BaseModule + "/" + packageName
 }
 
 func findHeadersInDir(srcDir string) []string {
@@ -101,63 +93,7 @@ func pkgConfigCflags(packageName string) string {
 	return string(stdout)
 }
 
-func main() {
-	clang := flag.String("clang", "clang", "Custom path to clang")
-	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
-	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
-
-	flag.Parse()
-
-	generate(
-		"qt",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
-			"/usr/include/x86_64-linux-gnu/qt5/QtGui",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5Widgets")),
-		filepath.Join(*outDir, "qt"),
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	generate(
-		"qprintsupport",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		filepath.Join(*outDir, "qt/qprintsupport"),
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	// Depends on QtCore/Gui/Widgets, QPrintSupport
-	generate(
-		"qscintilla",
-		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
-		},
-		*clang,
-		strings.Fields(pkgConfigCflags("Qt5PrintSupport")),
-		filepath.Join(*outDir, "qt-restricted-extras/qscintilla"),
-		ClangMatchSameHeaderDefinitionOnly,
-	)
-
-	// Depends on QtCore/Gui/Widgets
-	generate(
-		"scintillaedit",
-		[]string{
-			filepath.Join(*extraLibsDir, "scintilla/qt/ScintillaEdit/ScintillaEdit.h"),
-		},
-		*clang,
-		strings.Fields("--std=c++1z "+pkgConfigCflags("ScintillaEdit")),
-		filepath.Join(*outDir, "qt-extras/scintillaedit"),
-		(&clangMatchUnderPath{filepath.Join(*extraLibsDir, "scintilla")}).Match,
-	)
-}
-
-func generate(packageName string, srcDirs []string, clangBin string, cflags []string, outDir string, matcher ClangMatcher) {
+func generate(packageName string, srcDirs []string, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
@@ -170,14 +106,16 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
 
+	cflags := strings.Fields(cflagsCombined)
+
+	outDir = filepath.Join(outDir, packageName)
+
 	cleanGeneratedFilesInDir(outDir)
 
 	var processHeaders []*CppParsedHeader
 	atr := astTransformRedundant{
 		preserve: make(map[string]*CppEnum),
 	}
-
-	InsertTypedefs()
 
 	//
 	// PASS 0 (Fill clang cache)
@@ -272,6 +210,25 @@ func generate(packageName string, srcDirs []string, clangBin string, cflags []st
 
 		// Emit 3 code files from the intermediate format
 		outputName := filepath.Join(outDir, "gen_"+strings.TrimSuffix(filepath.Base(parsed.Filename), `.h`))
+
+		// For packages where we scan multiple directories, it's possible that
+		// there are filename collisions (e.g. Qt 6 has QtWidgets/qaction.h include
+		// QtGui/qaction.h as a compatibility measure).
+		// If the path exists, disambiguate it
+		var counter = 0
+		for {
+			testName := outputName
+			if counter > 0 {
+				testName += fmt.Sprintf(".%d", counter)
+			}
+
+			if _, err := os.Stat(testName + ".go"); err != nil && os.IsNotExist(err) {
+				outputName = testName // Safe
+				break
+			}
+
+			counter++
+		}
 
 		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
@@ -370,4 +327,14 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 	// Done with all clang workers
 	close(clangChan)
 	clangWg.Wait()
+}
+
+func main() {
+	clang := flag.String("clang", "clang", "Custom path to clang")
+	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
+	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
+
+	flag.Parse()
+
+	ProcessLibraries(*clang, *outDir, *extraLibsDir)
 }

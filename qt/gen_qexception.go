@@ -48,16 +48,6 @@ func NewQtPrivate__ExceptionHolder() *QtPrivate__ExceptionHolder {
 	return newQtPrivate__ExceptionHolder(ret)
 }
 
-// NewQtPrivate__ExceptionHolder2 constructs a new QtPrivate::ExceptionHolder object.
-func NewQtPrivate__ExceptionHolder2(other *QtPrivate__ExceptionHolder) *QtPrivate__ExceptionHolder {
-	ret := C.QtPrivate__ExceptionHolder_new2(other.cPointer())
-	return newQtPrivate__ExceptionHolder(ret)
-}
-
-func (this *QtPrivate__ExceptionHolder) OperatorAssign(other *QtPrivate__ExceptionHolder) {
-	C.QtPrivate__ExceptionHolder_OperatorAssign(this.h, other.cPointer())
-}
-
 // Delete this object from C++ memory.
 func (this *QtPrivate__ExceptionHolder) Delete() {
 	C.QtPrivate__ExceptionHolder_Delete(this.h)
@@ -101,21 +91,8 @@ func UnsafeNewQtPrivate__ExceptionStore(h unsafe.Pointer) *QtPrivate__ExceptionS
 	return newQtPrivate__ExceptionStore((*C.QtPrivate__ExceptionStore)(h))
 }
 
-// NewQtPrivate__ExceptionStore constructs a new QtPrivate::ExceptionStore object.
-func NewQtPrivate__ExceptionStore(param1 *QtPrivate__ExceptionStore) *QtPrivate__ExceptionStore {
-	ret := C.QtPrivate__ExceptionStore_new(param1.cPointer())
-	return newQtPrivate__ExceptionStore(ret)
-}
-
 func (this *QtPrivate__ExceptionStore) HasException() bool {
 	return (bool)(C.QtPrivate__ExceptionStore_HasException(this.h))
-}
-
-func (this *QtPrivate__ExceptionStore) Exception() *QtPrivate__ExceptionHolder {
-	_ret := C.QtPrivate__ExceptionStore_Exception(this.h)
-	_goptr := newQtPrivate__ExceptionHolder(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
 }
 
 func (this *QtPrivate__ExceptionStore) ThrowPossibleException() {
@@ -124,10 +101,6 @@ func (this *QtPrivate__ExceptionStore) ThrowPossibleException() {
 
 func (this *QtPrivate__ExceptionStore) HasThrown() bool {
 	return (bool)(C.QtPrivate__ExceptionStore_HasThrown(this.h))
-}
-
-func (this *QtPrivate__ExceptionStore) OperatorAssign(param1 *QtPrivate__ExceptionStore) {
-	C.QtPrivate__ExceptionStore_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

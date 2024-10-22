@@ -18,23 +18,11 @@ class QFutureInterfaceBase;
 class QMutex;
 class QRunnable;
 class QThreadPool;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ExceptionStore)
-typedef QtPrivate::ExceptionStore QtPrivate__ExceptionStore;
-#else
-class QtPrivate__ExceptionStore;
-#endif
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__ResultStoreBase)
-typedef QtPrivate::ResultStoreBase QtPrivate__ResultStoreBase;
-#else
-class QtPrivate__ResultStoreBase;
-#endif
 #else
 typedef struct QFutureInterfaceBase QFutureInterfaceBase;
 typedef struct QMutex QMutex;
 typedef struct QRunnable QRunnable;
 typedef struct QThreadPool QThreadPool;
-typedef struct QtPrivate__ExceptionStore QtPrivate__ExceptionStore;
-typedef struct QtPrivate__ResultStoreBase QtPrivate__ResultStoreBase;
 #endif
 
 QFutureInterfaceBase* QFutureInterfaceBase_new();
@@ -76,9 +64,6 @@ void QFutureInterfaceBase_WaitForResult(QFutureInterfaceBase* self, int resultIn
 void QFutureInterfaceBase_WaitForResume(QFutureInterfaceBase* self);
 QMutex* QFutureInterfaceBase_Mutex(const QFutureInterfaceBase* self);
 QMutex* QFutureInterfaceBase_MutexWithInt(const QFutureInterfaceBase* self, int param1);
-QtPrivate__ExceptionStore* QFutureInterfaceBase_ExceptionStore(QFutureInterfaceBase* self);
-QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase(QFutureInterfaceBase* self);
-QtPrivate__ResultStoreBase* QFutureInterfaceBase_ResultStoreBase2(const QFutureInterfaceBase* self);
 bool QFutureInterfaceBase_OperatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 bool QFutureInterfaceBase_OperatorNotEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 void QFutureInterfaceBase_OperatorAssign(QFutureInterfaceBase* self, QFutureInterfaceBase* other);

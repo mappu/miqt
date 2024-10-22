@@ -81,7 +81,6 @@ void QDataStream_AbortTransaction(QDataStream* self);
 void QDataStream_Delete(QDataStream* self);
 
 QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new(QDataStream* s);
-QtPrivate__StreamStateSaver* QtPrivate__StreamStateSaver_new2(QtPrivate__StreamStateSaver* param1);
 void QtPrivate__StreamStateSaver_Delete(QtPrivate__StreamStateSaver* self);
 
 #ifdef __cplusplus
