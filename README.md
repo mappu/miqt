@@ -22,7 +22,7 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Windows|x86_64|Static or Dynamic (.dll)|✅ Works
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
 |macOS|x86_64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
-|macOS|ARM64|Static or Dynamic (.dylib)|[Blocked by #11](https://github.com/mappu/miqt/issues/11)
+|macOS|ARM64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
 
 ## License
 
@@ -74,7 +74,7 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-5/classes.html) should be used.
 
-The `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `string` and `[]T`. Therefore, you can't call any of QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
+The `QByteArray`, `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `[]byte`, `string`, and `[]T`. Therefore, you can't call any of QByteArray/QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
 
 - Go strings are internally converted to QString using `QString::fromUtf8`. Therefore, the Go string must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Go string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Go space, this becomes `\xEF\xBF\xBD`.
 
@@ -96,37 +96,50 @@ MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt
 
 ### Q7. How can I point MIQT to use a custom Qt install location?
 
-MIQT uses the `pkg-config` system to configure `CFLAGS`/`LDFLAGS` for Qt and for any other used Qt libraries.
+MIQT uses `pkg-config` to find all used Qt libraries. Every Qt library should have a definition file in `.pc` format, which provides CGO with the necessary `CXXFLAGS`/`LDFLAGS`. Your Qt development environment already included the necessary `.pc` definition files.
+
+You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](pkg-config/README.md)
 
 ### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
 
 The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
 
 You can replace the import path in two ways:
-1. A go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`.
-2. Update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
+1. Add a go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`
+2. Or, update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
 
 ### Q9. How can I add bindings for another Qt library?
 
 1. Git clone this repository
 2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
-    - If your library does not include a pkg-config file, you must create one
-3. Patch `cmd/genbindings/main.go` to add a new `generate` block for your target library
-4. Run genbindings to regenerate all bindings
-    - Add a cflags.go file to the generated binding directory with any extra flags (e.g. `--std=c++17`) that are required but not system-specific
-    - (Optional) Add an example in the `examples/libraries` directory
-5. Commit the generated bindings
-    - You can then use your forked MIQT version with `replace` inside `go.mod`
-    - Or, open a Pull Request to add the library to MIQT
+    - If your library does not include a pkg-config file, [you must create one.](pkg-config/README.md)
+3. Patch `cmd/genbindings/config-libraries.go` to add a new `generate` block for your target library
+4. Run `genbindings` to regenerate all bindings
+	- The first run must populate clang ASTs into a cache directory and may be slower, but it is fast afterwards
+5. Add a `cflags.go` file to the generated binding directory
+	- It should have a `#cgo pkg-config: LibraryName` stanza and any extra flags (e.g. `--std=c++17`) that are required but not system-specific
+6. Try to use the new binding within the repo, by adding an example in the `examples/libraries` directory
+7. Commit the generated bindings
+    - You can then use your forked MIQT repo with `replace` inside `go.mod`
+    - Or, [open a Pull Request](https://github.com/mappu/miqt/compare) to add the library to MIQT
 
 ## Building
 
 ### Linux (native)
 
-*Tested with Debian 12 / Qt 5.15 / GCC 12*
+*Tested with Debian 12 / Qt 5.15 / Qt 6.4 / GCC 12*
+
+For dynamic linking, with the system Qt (Qt 5):
 
 ```bash
 apt install qtbase5-dev build-essential
+go build -ldflags '-s -w'
+```
+
+For dynamic linking, with the system Qt (Qt 6):
+
+```bash
+apt install qt6-base-dev build-essential
 go build -ldflags '-s -w'
 ```
 
@@ -156,29 +169,31 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 *Tested with MSYS2 UCRT64 Qt 5.15 / GCC 14*
 
-For dynamic builds:
+For dynamic linking:
 
 ```bash
 pacman -S mingw-w64-ucrt-x86_64-{go,gcc,qt5-base,pkg-config}
 GOROOT=/ucrt64/lib/go go build -ldflags "-s -w -H windowsgui"
 ```
 
-For dynamic linking, the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
+- Note: the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
 
-Static builds are also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`. The static build will also be smaller as it [does not link to `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-static/PKGBUILD#L280).
+For static linking:
+
+Static linking is also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`. The static build will also be smaller as it [does not link to `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-static/PKGBUILD#L280).
 
 ### Windows (Docker)
 
 *Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation*
 
-For static builds (open source application):
+For static linking:
 
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
-For dynamically-linked builds (closed-source or open source application):
+For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`

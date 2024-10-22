@@ -27,7 +27,7 @@ Pass 2
 
 ## Configuration
 
-It's tested to work on with Debian 12 / Qt 5.15 / Clang 14 / GCC 12.
+It's tested to work on with Debian 12 with system packages (Qt 5.15 / Qt 6.4 / Clang 14 / GCC 12).
 
 You should check the following configuration:
 
