@@ -458,7 +458,7 @@ nextMethod:
 
 			// Once all processing is complete, pass to exceptions for final decision
 
-			if err := AllowMethod(mm); err != nil {
+			if err := AllowMethod(ret.ClassName, mm); err != nil {
 				if errors.Is(err, ErrTooComplex) {
 					log.Printf("Skipping method %q with complex type", mm.MethodName)
 					continue nextMethod
@@ -467,6 +467,8 @@ nextMethod:
 				// Real error
 				return CppClass{}, err
 			}
+
+			ApplyQuirks(ret.ClassName, &mm)
 
 			ret.Methods = append(ret.Methods, mm)
 

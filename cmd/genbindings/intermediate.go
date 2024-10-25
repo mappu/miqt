@@ -209,7 +209,10 @@ type CppMethod struct {
 	IsSignal           bool
 	IsConst            bool
 	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
-	LinuxOnly          bool
+
+	// Special quirks
+	LinuxOnly                bool
+	BecomesNonConstInVersion *string // "6,7"
 }
 
 func (m CppMethod) CppCallTarget() string {

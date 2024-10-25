@@ -179,7 +179,7 @@ func AllowSignal(mm CppMethod) bool {
 	}
 }
 
-func AllowMethod(mm CppMethod) error {
+func AllowMethod(className string, mm CppMethod) error {
 
 	for _, p := range mm.Parameters {
 		if strings.HasSuffix(p.ParameterType, "Private") {
@@ -394,4 +394,10 @@ func LinuxWindowsCompatCheck(p CppParameter) bool {
 		return true // uintptr_t-compatible on Linux, void* on Windows
 	}
 	return false
+}
+
+func ApplyQuirks(className string, mm *CppMethod) {
+	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
+		mm.BecomesNonConstInVersion = addr("6.7")
+	}
 }
