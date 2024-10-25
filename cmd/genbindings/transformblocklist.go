@@ -11,12 +11,12 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j := 0
 	nextCtor:
 		for _, m := range c.Ctors {
-			if err := CheckComplexity(m.ReturnType, true); err != nil {
+			if err := AllowType(m.ReturnType, true); err != nil {
 				continue nextCtor
 			}
 
 			for _, p := range m.Parameters {
-				if err := CheckComplexity(p, false); err != nil {
+				if err := AllowType(p, false); err != nil {
 					continue nextCtor
 				}
 			}
@@ -32,12 +32,12 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j = 0
 	nextMethod:
 		for _, m := range c.Methods {
-			if err := CheckComplexity(m.ReturnType, true); err != nil {
+			if err := AllowType(m.ReturnType, true); err != nil {
 				continue nextMethod
 			}
 
 			for _, p := range m.Parameters {
-				if err := CheckComplexity(p, false); err != nil {
+				if err := AllowType(p, false); err != nil {
 					continue nextMethod
 				}
 			}

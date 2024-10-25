@@ -198,7 +198,7 @@ func AllowMethod(className string, mm CppMethod) error {
 	return nil // OK, allow
 }
 
-func CheckComplexity(p CppParameter, isReturnType bool) error {
+func AllowType(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
 		return ErrTooComplex // Example???
@@ -207,12 +207,12 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex // e.g. QGradientStop
 	}
 	if t, ok := p.QSetOf(); ok {
-		if err := CheckComplexity(t, isReturnType); err != nil {
+		if err := AllowType(t, isReturnType); err != nil {
 			return err
 		}
 	}
 	if t, ok := p.QListOf(); ok {
-		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
+		if err := AllowType(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
 
