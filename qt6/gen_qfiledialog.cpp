@@ -691,9 +691,10 @@ struct miqt_array* QFileDialog_GetOpenFileUrls() {
 	return _out;
 }
 
-void QFileDialog_SaveFileContent(struct miqt_string fileContent) {
+void QFileDialog_SaveFileContent(struct miqt_string fileContent, struct miqt_string fileNameHint) {
 	QByteArray fileContent_QByteArray(fileContent.data, fileContent.len);
-	QFileDialog::saveFileContent(fileContent_QByteArray);
+	QString fileNameHint_QString = QString::fromUtf8(fileNameHint.data, fileNameHint.len);
+	QFileDialog::saveFileContent(fileContent_QByteArray, fileNameHint_QString);
 }
 
 struct miqt_string QFileDialog_Tr2(const char* s, const char* c) {
@@ -1082,12 +1083,6 @@ struct miqt_array* QFileDialog_GetOpenFileUrls4(QWidget* parent, struct miqt_str
 	_out->len = _ret.length();
 	_out->data = static_cast<void*>(_arr);
 	return _out;
-}
-
-void QFileDialog_SaveFileContent2(struct miqt_string fileContent, struct miqt_string fileNameHint) {
-	QByteArray fileContent_QByteArray(fileContent.data, fileContent.len);
-	QString fileNameHint_QString = QString::fromUtf8(fileNameHint.data, fileNameHint.len);
-	QFileDialog::saveFileContent(fileContent_QByteArray, fileNameHint_QString);
 }
 
 void QFileDialog_Delete(QFileDialog* self) {

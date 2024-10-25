@@ -903,11 +903,15 @@ func QFileDialog_GetOpenFileUrls() []QUrl {
 	return _ret
 }
 
-func QFileDialog_SaveFileContent(fileContent []byte) {
+func QFileDialog_SaveFileContent(fileContent []byte, fileNameHint string) {
 	fileContent_alias := C.struct_miqt_string{}
 	fileContent_alias.data = (*C.char)(unsafe.Pointer(&fileContent[0]))
 	fileContent_alias.len = C.size_t(len(fileContent))
-	C.QFileDialog_SaveFileContent(fileContent_alias)
+	fileNameHint_ms := C.struct_miqt_string{}
+	fileNameHint_ms.data = C.CString(fileNameHint)
+	fileNameHint_ms.len = C.size_t(len(fileNameHint))
+	defer C.free(unsafe.Pointer(fileNameHint_ms.data))
+	C.QFileDialog_SaveFileContent(fileContent_alias, fileNameHint_ms)
 }
 
 func QFileDialog_Tr2(s string, c string) string {
@@ -1411,17 +1415,6 @@ func QFileDialog_GetOpenFileUrls4(parent *QWidget, caption string, dir *QUrl, fi
 	}
 	C.free(unsafe.Pointer(_ma))
 	return _ret
-}
-
-func QFileDialog_SaveFileContent2(fileContent []byte, fileNameHint string) {
-	fileContent_alias := C.struct_miqt_string{}
-	fileContent_alias.data = (*C.char)(unsafe.Pointer(&fileContent[0]))
-	fileContent_alias.len = C.size_t(len(fileContent))
-	fileNameHint_ms := C.struct_miqt_string{}
-	fileNameHint_ms.data = C.CString(fileNameHint)
-	fileNameHint_ms.len = C.size_t(len(fileNameHint))
-	defer C.free(unsafe.Pointer(fileNameHint_ms.data))
-	C.QFileDialog_SaveFileContent2(fileContent_alias, fileNameHint_ms)
 }
 
 // Delete this object from C++ memory.

@@ -27,7 +27,13 @@ bool QArrayData_IsShared(const QArrayData* self) {
 }
 
 bool QArrayData_NeedsDetach(const QArrayData* self) {
+
+// This method was changed from const to non-const in Qt 6.7
+#if QT_VERSION < QT_VERSION_CHECK(6,7,0)
 	return self->needsDetach();
+#else
+	return const_cast<QArrayData*>(self)->needsDetach();
+#endif
 }
 
 ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize) {

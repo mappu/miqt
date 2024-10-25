@@ -47,7 +47,6 @@ bool QBitArray_OperatorSubscriptWithQsizetype(const QBitArray* self, ptrdiff_t i
 void QBitArray_OperatorBitwiseAndAssign(QBitArray* self, QBitArray* param1);
 void QBitArray_OperatorBitwiseOrAssign(QBitArray* self, QBitArray* param1);
 void QBitArray_OperatorBitwiseNotAssign(QBitArray* self, QBitArray* param1);
-QBitArray* QBitArray_OperatorBitwiseXor(const QBitArray* self);
 bool QBitArray_OperatorEqual(const QBitArray* self, QBitArray* other);
 bool QBitArray_OperatorNotEqual(const QBitArray* self, QBitArray* other);
 bool QBitArray_Fill(QBitArray* self, bool val);

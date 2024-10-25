@@ -818,50 +818,60 @@ func (this *QVariantComparisonHelper) GoGC() {
 	})
 }
 
-type QVariant__PrivateShared struct {
-	h *C.QVariant__PrivateShared
+type QVariant__Private__Data struct {
+	h *C.QVariant__Private__Data
 }
 
-func (this *QVariant__PrivateShared) cPointer() *C.QVariant__PrivateShared {
+func (this *QVariant__Private__Data) cPointer() *C.QVariant__Private__Data {
 	if this == nil {
 		return nil
 	}
 	return this.h
 }
 
-func (this *QVariant__PrivateShared) UnsafePointer() unsafe.Pointer {
+func (this *QVariant__Private__Data) UnsafePointer() unsafe.Pointer {
 	if this == nil {
 		return nil
 	}
 	return unsafe.Pointer(this.h)
 }
 
-func newQVariant__PrivateShared(h *C.QVariant__PrivateShared) *QVariant__PrivateShared {
+func newQVariant__Private__Data(h *C.QVariant__Private__Data) *QVariant__Private__Data {
 	if h == nil {
 		return nil
 	}
-	return &QVariant__PrivateShared{h: h}
+	return &QVariant__Private__Data{h: h}
 }
 
-func UnsafeNewQVariant__PrivateShared(h unsafe.Pointer) *QVariant__PrivateShared {
-	return newQVariant__PrivateShared((*C.QVariant__PrivateShared)(h))
+func UnsafeNewQVariant__Private__Data(h unsafe.Pointer) *QVariant__Private__Data {
+	return newQVariant__Private__Data((*C.QVariant__Private__Data)(h))
 }
 
-// NewQVariant__PrivateShared constructs a new QVariant::PrivateShared object.
-func NewQVariant__PrivateShared(v unsafe.Pointer) *QVariant__PrivateShared {
-	ret := C.QVariant__PrivateShared_new(v)
-	return newQVariant__PrivateShared(ret)
+// NewQVariant__Private__Data constructs a new QVariant::Private::Data object.
+func NewQVariant__Private__Data() *QVariant__Private__Data {
+	ret := C.QVariant__Private__Data_new()
+	return newQVariant__Private__Data(ret)
+}
+
+// NewQVariant__Private__Data2 constructs a new QVariant::Private::Data object.
+func NewQVariant__Private__Data2(param1 *QVariant__Private__Data) *QVariant__Private__Data {
+	ret := C.QVariant__Private__Data_new2(param1.cPointer())
+	return newQVariant__Private__Data(ret)
+}
+
+func (this *QVariant__Private__Data) OperatorAssign(param1 *QVariant__Private__Data) {
+	C.QVariant__Private__Data_OperatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
-func (this *QVariant__PrivateShared) Delete() {
-	C.QVariant__PrivateShared_Delete(this.h)
+func (this *QVariant__Private__Data) Delete() {
+	C.QVariant__Private__Data_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 // from C++ memory once it is unreachable from Go memory.
-func (this *QVariant__PrivateShared) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVariant__PrivateShared) {
+func (this *QVariant__Private__Data) GoGC() {
+	runtime.SetFinalizer(this, func(this *QVariant__Private__Data) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})
@@ -905,6 +915,244 @@ func (this *QVariant__Handler) Delete() {
 // from C++ memory once it is unreachable from Go memory.
 func (this *QVariant__Handler) GoGC() {
 	runtime.SetFinalizer(this, func(this *QVariant__Handler) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
+}
+
+type QSequentialIterable__const_iterator struct {
+	h *C.QSequentialIterable__const_iterator
+}
+
+func (this *QSequentialIterable__const_iterator) cPointer() *C.QSequentialIterable__const_iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QSequentialIterable__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+func newQSequentialIterable__const_iterator(h *C.QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
+	if h == nil {
+		return nil
+	}
+	return &QSequentialIterable__const_iterator{h: h}
+}
+
+func UnsafeNewQSequentialIterable__const_iterator(h unsafe.Pointer) *QSequentialIterable__const_iterator {
+	return newQSequentialIterable__const_iterator((*C.QSequentialIterable__const_iterator)(h))
+}
+
+// NewQSequentialIterable__const_iterator constructs a new QSequentialIterable::const_iterator object.
+func NewQSequentialIterable__const_iterator(other *QSequentialIterable__const_iterator) *QSequentialIterable__const_iterator {
+	ret := C.QSequentialIterable__const_iterator_new(other.cPointer())
+	return newQSequentialIterable__const_iterator(ret)
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorAssign(other *QSequentialIterable__const_iterator) {
+	C.QSequentialIterable__const_iterator_OperatorAssign(this.h, other.cPointer())
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMultiply() *QVariant {
+	_ret := C.QSequentialIterable__const_iterator_OperatorMultiply(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorEqual(o *QSequentialIterable__const_iterator) bool {
+	return (bool)(C.QSequentialIterable__const_iterator_OperatorEqual(this.h, o.cPointer()))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorNotEqual(o *QSequentialIterable__const_iterator) bool {
+	return (bool)(C.QSequentialIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusPlus() *QSequentialIterable__const_iterator {
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusMinus() *QSequentialIterable__const_iterator {
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlusAssign(j int) *QSequentialIterable__const_iterator {
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinusAssign(j int) *QSequentialIterable__const_iterator {
+	return UnsafeNewQSequentialIterable__const_iterator(unsafe.Pointer(C.QSequentialIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorPlus(j int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QSequentialIterable__const_iterator) OperatorMinus(j int) *QSequentialIterable__const_iterator {
+	_ret := C.QSequentialIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQSequentialIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+// Delete this object from C++ memory.
+func (this *QSequentialIterable__const_iterator) Delete() {
+	C.QSequentialIterable__const_iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QSequentialIterable__const_iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QSequentialIterable__const_iterator) {
+		this.Delete()
+		runtime.KeepAlive(this.h)
+	})
+}
+
+type QAssociativeIterable__const_iterator struct {
+	h *C.QAssociativeIterable__const_iterator
+}
+
+func (this *QAssociativeIterable__const_iterator) cPointer() *C.QAssociativeIterable__const_iterator {
+	if this == nil {
+		return nil
+	}
+	return this.h
+}
+
+func (this *QAssociativeIterable__const_iterator) UnsafePointer() unsafe.Pointer {
+	if this == nil {
+		return nil
+	}
+	return unsafe.Pointer(this.h)
+}
+
+func newQAssociativeIterable__const_iterator(h *C.QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
+	if h == nil {
+		return nil
+	}
+	return &QAssociativeIterable__const_iterator{h: h}
+}
+
+func UnsafeNewQAssociativeIterable__const_iterator(h unsafe.Pointer) *QAssociativeIterable__const_iterator {
+	return newQAssociativeIterable__const_iterator((*C.QAssociativeIterable__const_iterator)(h))
+}
+
+// NewQAssociativeIterable__const_iterator constructs a new QAssociativeIterable::const_iterator object.
+func NewQAssociativeIterable__const_iterator(other *QAssociativeIterable__const_iterator) *QAssociativeIterable__const_iterator {
+	ret := C.QAssociativeIterable__const_iterator_new(other.cPointer())
+	return newQAssociativeIterable__const_iterator(ret)
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorAssign(other *QAssociativeIterable__const_iterator) {
+	C.QAssociativeIterable__const_iterator_OperatorAssign(this.h, other.cPointer())
+}
+
+func (this *QAssociativeIterable__const_iterator) Key() *QVariant {
+	_ret := C.QAssociativeIterable__const_iterator_Key(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) Value() *QVariant {
+	_ret := C.QAssociativeIterable__const_iterator_Value(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMultiply() *QVariant {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMultiply(this.h)
+	_goptr := newQVariant(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorEqual(o *QAssociativeIterable__const_iterator) bool {
+	return (bool)(C.QAssociativeIterable__const_iterator_OperatorEqual(this.h, o.cPointer()))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorNotEqual(o *QAssociativeIterable__const_iterator) bool {
+	return (bool)(C.QAssociativeIterable__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusPlus() *QAssociativeIterable__const_iterator {
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusPlus(this.h)))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusPlusWithInt(param1 int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusMinus() *QAssociativeIterable__const_iterator {
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusMinus(this.h)))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusMinusWithInt(param1 int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlusAssign(j int) *QAssociativeIterable__const_iterator {
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorPlusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinusAssign(j int) *QAssociativeIterable__const_iterator {
+	return UnsafeNewQAssociativeIterable__const_iterator(unsafe.Pointer(C.QAssociativeIterable__const_iterator_OperatorMinusAssign(this.h, (C.int)(j))))
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorPlus(j int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorPlus(this.h, (C.int)(j))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QAssociativeIterable__const_iterator) OperatorMinus(j int) *QAssociativeIterable__const_iterator {
+	_ret := C.QAssociativeIterable__const_iterator_OperatorMinus(this.h, (C.int)(j))
+	_goptr := newQAssociativeIterable__const_iterator(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+// Delete this object from C++ memory.
+func (this *QAssociativeIterable__const_iterator) Delete() {
+	C.QAssociativeIterable__const_iterator_Delete(this.h)
+}
+
+// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
+// from C++ memory once it is unreachable from Go memory.
+func (this *QAssociativeIterable__const_iterator) GoGC() {
+	runtime.SetFinalizer(this, func(this *QAssociativeIterable__const_iterator) {
 		this.Delete()
 		runtime.KeepAlive(this.h)
 	})

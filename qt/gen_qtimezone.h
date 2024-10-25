@@ -40,8 +40,6 @@ QTimeZone* QTimeZone_new6(struct miqt_string zoneId, int offsetSeconds, struct m
 QTimeZone* QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, int country, struct miqt_string comment);
 void QTimeZone_OperatorAssign(QTimeZone* self, QTimeZone* other);
 void QTimeZone_Swap(QTimeZone* self, QTimeZone* other);
-bool QTimeZone_OperatorEqual(const QTimeZone* self, QTimeZone* other);
-bool QTimeZone_OperatorNotEqual(const QTimeZone* self, QTimeZone* other);
 bool QTimeZone_IsValid(const QTimeZone* self);
 struct miqt_string QTimeZone_Id(const QTimeZone* self);
 int QTimeZone_Country(const QTimeZone* self);

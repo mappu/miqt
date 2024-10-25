@@ -157,13 +157,6 @@ func (this *QBitArray) OperatorBitwiseNotAssign(param1 *QBitArray) {
 	C.QBitArray_OperatorBitwiseNotAssign(this.h, param1.cPointer())
 }
 
-func (this *QBitArray) OperatorBitwiseXor() *QBitArray {
-	_ret := C.QBitArray_OperatorBitwiseXor(this.h)
-	_goptr := newQBitArray(_ret)
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
 func (this *QBitArray) OperatorEqual(other *QBitArray) bool {
 	return (bool)(C.QBitArray_OperatorEqual(this.h, other.cPointer()))
 }

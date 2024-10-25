@@ -1,4 +1,3 @@
-#include <QAdoptSharedDataTag>
 #include <QSharedData>
 #include <qshareddata.h>
 #include "gen_qshareddata.h"

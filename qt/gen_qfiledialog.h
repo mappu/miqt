@@ -128,7 +128,7 @@ struct miqt_string QFileDialog_GetExistingDirectory();
 QUrl* QFileDialog_GetExistingDirectoryUrl();
 struct miqt_array* QFileDialog_GetOpenFileNames();
 struct miqt_array* QFileDialog_GetOpenFileUrls();
-void QFileDialog_SaveFileContent(struct miqt_string fileContent);
+void QFileDialog_SaveFileContent(struct miqt_string fileContent, struct miqt_string fileNameHint);
 struct miqt_string QFileDialog_Tr2(const char* s, const char* c);
 struct miqt_string QFileDialog_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFileDialog_TrUtf82(const char* s, const char* c);
@@ -167,7 +167,6 @@ struct miqt_array* QFileDialog_GetOpenFileUrls1(QWidget* parent);
 struct miqt_array* QFileDialog_GetOpenFileUrls2(QWidget* parent, struct miqt_string caption);
 struct miqt_array* QFileDialog_GetOpenFileUrls3(QWidget* parent, struct miqt_string caption, QUrl* dir);
 struct miqt_array* QFileDialog_GetOpenFileUrls4(QWidget* parent, struct miqt_string caption, QUrl* dir, struct miqt_string filter);
-void QFileDialog_SaveFileContent2(struct miqt_string fileContent, struct miqt_string fileNameHint);
 void QFileDialog_Delete(QFileDialog* self);
 
 #ifdef __cplusplus

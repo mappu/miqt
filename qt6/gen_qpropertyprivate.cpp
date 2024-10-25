@@ -2,7 +2,6 @@
 #include <QPropertyProxyBindingData>
 #include <QUntypedPropertyBinding>
 #include <QUntypedPropertyData>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QUntypedPropertyData__InheritsQUntypedPropertyData
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__BindingFunctionVTable
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__MSVCWorkAround
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QPropertyBindingData
@@ -81,10 +80,6 @@ void QtPrivate__QPropertyBindingData_NotifyObservers2(const QtPrivate__QProperty
 }
 
 void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self) {
-	delete self;
-}
-
-void QUntypedPropertyData__InheritsQUntypedPropertyData_Delete(QUntypedPropertyData__InheritsQUntypedPropertyData* self) {
 	delete self;
 }
 

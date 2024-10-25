@@ -16,7 +16,6 @@ extern "C" {
 #ifdef __cplusplus
 class QByteArray;
 class QChildEvent;
-class QDeferredDeleteEvent;
 class QDynamicPropertyChangeEvent;
 class QEvent;
 class QObject;
@@ -24,7 +23,6 @@ class QTimerEvent;
 #else
 typedef struct QByteArray QByteArray;
 typedef struct QChildEvent QChildEvent;
-typedef struct QDeferredDeleteEvent QDeferredDeleteEvent;
 typedef struct QDynamicPropertyChangeEvent QDynamicPropertyChangeEvent;
 typedef struct QEvent QEvent;
 typedef struct QObject QObject;
@@ -61,11 +59,6 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1);
 struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self);
-
-QDeferredDeleteEvent* QDeferredDeleteEvent_new();
-QDeferredDeleteEvent* QDeferredDeleteEvent_new2(QDeferredDeleteEvent* param1);
-int QDeferredDeleteEvent_LoopLevel(const QDeferredDeleteEvent* self);
-void QDeferredDeleteEvent_Delete(QDeferredDeleteEvent* self);
 
 #ifdef __cplusplus
 } /* extern C */

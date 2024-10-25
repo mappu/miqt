@@ -1662,6 +1662,12 @@ const (
 	Scintilla__Message__SetBidirectional                          Scintilla__Message = 2709
 )
 
+type std__nullopt_t___Construct int
+
+const (
+	Std__nullopt_t___Token std__nullopt_t___Construct = 0
+)
+
 type Scintilla__Internal__Surface__Ends int
 
 const (
