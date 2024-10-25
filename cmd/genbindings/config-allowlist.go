@@ -198,6 +198,9 @@ func AllowMethod(className string, mm CppMethod) error {
 	return nil // OK, allow
 }
 
+// AllowType controls whether to permit binding of a method, if a method uses
+// this type in its parameter list or return type.
+// Any type not permitted by AllowClass is also not permitted by this method.
 func AllowType(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
@@ -221,6 +224,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		if t.ParameterType == "QsciStyledText" {
 			return ErrTooComplex
 		}
+	}
+	if !AllowClass(p.ParameterType) {
+		return ErrTooComplex // This whole class type has been blocked, not only as a parameter/return type
 	}
 
 	if strings.Contains(p.ParameterType, "(*)") { // Function pointer.
@@ -356,9 +362,6 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
-		"QItemSelection",                  // used by qabstractproxymodel.h, also blocked in AllowClass above, class extends a List<T>
-		"QTextStreamManipulator",          // used by qdebug.h, also blocked in AllowClass above
-		"QException",                      // used by qfutureinterface.h, also blocked in AllowClass above
 		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
 		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
 		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
