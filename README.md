@@ -129,17 +129,21 @@ You can replace the import path in two ways:
 
 *Tested with Debian 12 / Qt 5.15 / Qt 6.4 / GCC 12*
 
+*Tested with Fedora 40 / Qt 6.7 / GCC 14*
+
 For dynamic linking, with the system Qt (Qt 5):
 
 ```bash
-apt install qtbase5-dev build-essential
+apt install qtbase5-dev build-essential # Debian / Ubuntu
 go build -ldflags '-s -w'
 ```
 
 For dynamic linking, with the system Qt (Qt 6):
 
 ```bash
-apt install qt6-base-dev build-essential
+apt install qt6-base-dev build-essential # Debian / Ubuntu
+dnf install qt6-qtbase-devel golang # Fedora
+
 go build -ldflags '-s -w'
 ```
 
