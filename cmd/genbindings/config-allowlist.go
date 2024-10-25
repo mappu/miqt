@@ -118,6 +118,7 @@ func ImportHeaderForClass(className string) bool {
 		"QTextEngine",           // qtextlayout.h
 		"QText",                 // e.g. qtextcursor.h
 		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
+		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
 		"____last____":
 		return false
 	}
@@ -127,7 +128,7 @@ func ImportHeaderForClass(className string) bool {
 
 func AllowClass(className string) bool {
 
-	if strings.HasSuffix(className, "Private") {
+	if strings.HasSuffix(className, "Private") || strings.HasSuffix(className, "PrivateShared") {
 		return false
 	}
 
@@ -156,6 +157,9 @@ func AllowClass(className string) bool {
 		"QSequentialIterable",        // Qt 6. Extends a QIterator<>, too hard
 		"QBrushDataPointerDeleter",   // Qt 6 qbrush.h. Appears in header but cannot be linked
 		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
+		"QDeferredDeleteEvent",       // Qt 6. Hidden/undocumented class in Qt 6.4, moved to private header in Qt 6.7. Intended for test use only
+
+		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
 		"____last____":
 		return false
 	}
@@ -193,6 +197,14 @@ func AllowMethod(className string, mm CppMethod) error {
 	if mm.IsReceiverMethod() {
 		// Non-projectable receiver pattern parameters
 		return ErrTooComplex
+	}
+
+	if className == "QBitArray" && mm.MethodName == "operator~" {
+		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
+	}
+
+	if className == "QTimeZone" && (mm.MethodName == "operator==" || mm.MethodName == "operator!=") {
+		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
 	}
 
 	return nil // OK, allow
@@ -402,5 +414,14 @@ func LinuxWindowsCompatCheck(p CppParameter) bool {
 func ApplyQuirks(className string, mm *CppMethod) {
 	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
 		mm.BecomesNonConstInVersion = addr("6.7")
+	}
+
+	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic {
+		// The prototype was changed from
+		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
+		// [Qt 6.7]     void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint, QWidget *parent = nullptr)
+		// The 2nd parameter is no longer optional
+		// As a compromise, make it non-optional everywhere
+		mm.Parameters[1].Optional = false
 	}
 }
