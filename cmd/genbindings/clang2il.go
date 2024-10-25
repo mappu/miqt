@@ -212,11 +212,6 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 	log.Printf("-> Processing class %q...\n", nodename)
 
-	// Also skip over any custom exceptions
-	if !AllowClass(nodename) {
-		return CppClass{}, ErrNoContent
-	}
-
 	// Skip over forward class declarations
 	// This is determined in two ways:
 	// 1. If the class has no inner nodes

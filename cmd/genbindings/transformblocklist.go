@@ -4,6 +4,23 @@ package main
 // and entire classes that may be disallowed.
 func astTransformBlocklist(parsed *CppParsedHeader) {
 
+	// Whole-classes
+
+	j := 0
+	for _, c := range parsed.Classes {
+		if !AllowClass(c.ClassName) {
+			continue
+		}
+
+		// Keep
+		parsed.Classes[j] = c
+		j++
+	}
+	parsed.Classes = parsed.Classes[:j] // reslice
+
+	// For the kept classes, filter ctors and methods within the class, based
+	// on the parameter types and return types
+
 	for i, c := range parsed.Classes {
 
 		// Constructors
