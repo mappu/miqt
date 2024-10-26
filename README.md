@@ -21,8 +21,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Linux|x86_64|Static or Dynamic (.so)|✅ Works
 |Windows|x86_64|Static or Dynamic (.dll)|✅ Works
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
-|macOS|x86_64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
-|macOS|ARM64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
+|macOS|x86_64|Static or Dynamic (.dylib)|✅ Works
+|macOS|ARM64|Static or Dynamic (.dylib)|Should work, not tested
 
 ## License
 
@@ -215,6 +215,22 @@ For dynamic linking:
 See FAQ Q3 for advice about docker performance.
 
 To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
+
+### macOS (Homebrew)
+
+*Tested with macOS 12.6 "Monterey" x86_64 / Go 1.23 / Qt 5.15 / Apple Clang 14.0*
+
+For dynamic linking:
+
+```bash
+xcode-select --install
+brew install golang
+brew install pkg-config
+brew install qt@5
+go build -ldflags '-s -w'
+```
+
+Installing `qt@5` from [Homebrew](https://brew.sh/) may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
 
 ### Android (Docker)
 
