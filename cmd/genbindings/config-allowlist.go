@@ -87,6 +87,7 @@ func AllowHeader(fullpath string) bool {
 		"q20functional.h",              // Qt 6 unstable header
 		"q20iterator.h",                // Qt 6 unstable header
 		"q23functional.h",              // Qt 6 unstable header
+		"qguiapplication_platform.h",   // Qt 6 - can be built for X11 but then platform-specific code fails to build on Windows
 		"____last____":
 		return false
 	}
@@ -385,8 +386,6 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPlatformWindow",                 // e.g. qwindow.h, as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below
 		"QPlatformMenu",                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
-		"struct _XDisplay",                // Qt 6 QGuiApplication_platform
-		"xcb_connection_t",                // Qt 6 QGuiApplication_platform
 		"QTextDocument::ResourceProvider", // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
 		"QTransform::Affine",              // Qt 6 qtransform.h - public method returning private type
 		"____last____":
