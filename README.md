@@ -171,13 +171,20 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 ### Windows (MSYS2)
 
-*Tested with MSYS2 UCRT64 Qt 5.15 / GCC 14*
+*Tested with MSYS2 UCRT64 Qt 5.15 / Qt 6.7 / GCC 14*
 
 For dynamic linking:
 
 ```bash
-pacman -S mingw-w64-ucrt-x86_64-{go,gcc,qt5-base,pkg-config}
-GOROOT=/ucrt64/lib/go go build -ldflags "-s -w -H windowsgui"
+# Install Go and C++ toolchains
+pacman -S mingw-w64-ucrt-x86_64-{go,gcc,pkg-config}
+export GOROOT=/ucrt64/lib/go # Needed only if this is the first time installing Go in MSYS2. Otherwise it would be automatically applied when opening a new Bash terminal.
+
+# Install Qt
+pacman -S mingw-w64-ucrt-x86_64-qt5-base # For Qt 5
+pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6
+
+go build -ldflags "-s -w -H windowsgui"
 ```
 
 - Note: the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
