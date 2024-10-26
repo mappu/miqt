@@ -203,7 +203,7 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
 	ret := strings.Builder{}
 
-	ctor := constructorFunctionFor(w.Class)
+	ctor := "New" + w.Class
 
 	ret.WriteString(`
 	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
@@ -244,7 +244,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	// Layout
 
 	if w.Layout != nil {
-		ctor := constructorFunctionFor(w.Layout.Class)
+		ctor := "New" + w.Layout.Class
 
 		ret.WriteString(`
 		ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + `)
