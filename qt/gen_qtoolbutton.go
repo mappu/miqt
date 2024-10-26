@@ -53,14 +53,14 @@ func UnsafeNewQToolButton(h unsafe.Pointer) *QToolButton {
 }
 
 // NewQToolButton constructs a new QToolButton object.
-func NewQToolButton() *QToolButton {
-	ret := C.QToolButton_new()
+func NewQToolButton(parent *QWidget) *QToolButton {
+	ret := C.QToolButton_new(parent.cPointer())
 	return newQToolButton(ret)
 }
 
 // NewQToolButton2 constructs a new QToolButton object.
-func NewQToolButton2(parent *QWidget) *QToolButton {
-	ret := C.QToolButton_new2(parent.cPointer())
+func NewQToolButton2() *QToolButton {
+	ret := C.QToolButton_new2()
 	return newQToolButton(ret)
 }
 

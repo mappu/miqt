@@ -44,24 +44,24 @@ func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
 }
 
 // NewQRadioButton constructs a new QRadioButton object.
-func NewQRadioButton() *QRadioButton {
-	ret := C.QRadioButton_new()
+func NewQRadioButton(parent *QWidget) *QRadioButton {
+	ret := C.QRadioButton_new(parent.cPointer())
 	return newQRadioButton(ret)
 }
 
 // NewQRadioButton2 constructs a new QRadioButton object.
-func NewQRadioButton2(text string) *QRadioButton {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QRadioButton_new2(text_ms)
+func NewQRadioButton2() *QRadioButton {
+	ret := C.QRadioButton_new2()
 	return newQRadioButton(ret)
 }
 
 // NewQRadioButton3 constructs a new QRadioButton object.
-func NewQRadioButton3(parent *QWidget) *QRadioButton {
-	ret := C.QRadioButton_new3(parent.cPointer())
+func NewQRadioButton3(text string) *QRadioButton {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QRadioButton_new3(text_ms)
 	return newQRadioButton(ret)
 }
 

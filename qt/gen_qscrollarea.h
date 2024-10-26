@@ -25,8 +25,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QScrollArea* QScrollArea_new();
-QScrollArea* QScrollArea_new2(QWidget* parent);
+QScrollArea* QScrollArea_new(QWidget* parent);
+QScrollArea* QScrollArea_new2();
 QMetaObject* QScrollArea_MetaObject(const QScrollArea* self);
 void* QScrollArea_Metacast(QScrollArea* self, const char* param1);
 struct miqt_string QScrollArea_Tr(const char* s);

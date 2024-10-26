@@ -9,16 +9,16 @@
 #include "gen_qprintpreviewdialog.h"
 #include "_cgo_export.h"
 
-QPrintPreviewDialog* QPrintPreviewDialog_new() {
+QPrintPreviewDialog* QPrintPreviewDialog_new(QWidget* parent) {
+	return new QPrintPreviewDialog(parent);
+}
+
+QPrintPreviewDialog* QPrintPreviewDialog_new2() {
 	return new QPrintPreviewDialog();
 }
 
-QPrintPreviewDialog* QPrintPreviewDialog_new2(QPrinter* printer) {
+QPrintPreviewDialog* QPrintPreviewDialog_new3(QPrinter* printer) {
 	return new QPrintPreviewDialog(printer);
-}
-
-QPrintPreviewDialog* QPrintPreviewDialog_new3(QWidget* parent) {
-	return new QPrintPreviewDialog(parent);
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new4(QWidget* parent, int flags) {

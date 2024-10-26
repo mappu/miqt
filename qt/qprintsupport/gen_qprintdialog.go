@@ -46,26 +46,26 @@ func UnsafeNewQPrintDialog(h unsafe.Pointer) *QPrintDialog {
 }
 
 // NewQPrintDialog constructs a new QPrintDialog object.
-func NewQPrintDialog(printer *QPrinter) *QPrintDialog {
-	ret := C.QPrintDialog_new(printer.cPointer())
+func NewQPrintDialog(parent *qt.QWidget) *QPrintDialog {
+	ret := C.QPrintDialog_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintDialog(ret)
 }
 
 // NewQPrintDialog2 constructs a new QPrintDialog object.
-func NewQPrintDialog2() *QPrintDialog {
-	ret := C.QPrintDialog_new2()
+func NewQPrintDialog2(printer *QPrinter) *QPrintDialog {
+	ret := C.QPrintDialog_new2(printer.cPointer())
 	return newQPrintDialog(ret)
 }
 
 // NewQPrintDialog3 constructs a new QPrintDialog object.
-func NewQPrintDialog3(printer *QPrinter, parent *qt.QWidget) *QPrintDialog {
-	ret := C.QPrintDialog_new3(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
+func NewQPrintDialog3() *QPrintDialog {
+	ret := C.QPrintDialog_new3()
 	return newQPrintDialog(ret)
 }
 
 // NewQPrintDialog4 constructs a new QPrintDialog object.
-func NewQPrintDialog4(parent *qt.QWidget) *QPrintDialog {
-	ret := C.QPrintDialog_new4((*C.QWidget)(parent.UnsafePointer()))
+func NewQPrintDialog4(printer *QPrinter, parent *qt.QWidget) *QPrintDialog {
+	ret := C.QPrintDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintDialog(ret)
 }
 

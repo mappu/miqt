@@ -14,12 +14,12 @@
 #include "gen_qwizard.h"
 #include "_cgo_export.h"
 
-QWizard* QWizard_new() {
-	return new QWizard();
+QWizard* QWizard_new(QWidget* parent) {
+	return new QWizard(parent);
 }
 
-QWizard* QWizard_new2(QWidget* parent) {
-	return new QWizard(parent);
+QWizard* QWizard_new2() {
+	return new QWizard();
 }
 
 QWizard* QWizard_new3(QWidget* parent, int flags) {
@@ -373,12 +373,12 @@ void QWizard_Delete(QWizard* self) {
 	delete self;
 }
 
-QWizardPage* QWizardPage_new() {
-	return new QWizardPage();
+QWizardPage* QWizardPage_new(QWidget* parent) {
+	return new QWizardPage(parent);
 }
 
-QWizardPage* QWizardPage_new2(QWidget* parent) {
-	return new QWizardPage(parent);
+QWizardPage* QWizardPage_new2() {
+	return new QWizardPage();
 }
 
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self) {

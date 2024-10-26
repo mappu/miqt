@@ -267,12 +267,12 @@ void QBoxLayout_Delete(QBoxLayout* self) {
 	delete self;
 }
 
-QHBoxLayout* QHBoxLayout_new() {
-	return new QHBoxLayout();
+QHBoxLayout* QHBoxLayout_new(QWidget* parent) {
+	return new QHBoxLayout(parent);
 }
 
-QHBoxLayout* QHBoxLayout_new2(QWidget* parent) {
-	return new QHBoxLayout(parent);
+QHBoxLayout* QHBoxLayout_new2() {
+	return new QHBoxLayout();
 }
 
 QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self) {
@@ -353,12 +353,12 @@ void QHBoxLayout_Delete(QHBoxLayout* self) {
 	delete self;
 }
 
-QVBoxLayout* QVBoxLayout_new() {
-	return new QVBoxLayout();
+QVBoxLayout* QVBoxLayout_new(QWidget* parent) {
+	return new QVBoxLayout(parent);
 }
 
-QVBoxLayout* QVBoxLayout_new2(QWidget* parent) {
-	return new QVBoxLayout(parent);
+QVBoxLayout* QVBoxLayout_new2() {
+	return new QVBoxLayout();
 }
 
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self) {

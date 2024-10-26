@@ -25,8 +25,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QDial* QDial_new();
-QDial* QDial_new2(QWidget* parent);
+QDial* QDial_new(QWidget* parent);
+QDial* QDial_new2();
 QMetaObject* QDial_MetaObject(const QDial* self);
 void* QDial_Metacast(QDial* self, const char* param1);
 struct miqt_string QDial_Tr(const char* s);

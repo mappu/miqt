@@ -11,12 +11,12 @@
 #include "gen_qabstractscrollarea.h"
 #include "_cgo_export.h"
 
-QAbstractScrollArea* QAbstractScrollArea_new() {
-	return new QAbstractScrollArea();
+QAbstractScrollArea* QAbstractScrollArea_new(QWidget* parent) {
+	return new QAbstractScrollArea(parent);
 }
 
-QAbstractScrollArea* QAbstractScrollArea_new2(QWidget* parent) {
-	return new QAbstractScrollArea(parent);
+QAbstractScrollArea* QAbstractScrollArea_new2() {
+	return new QAbstractScrollArea();
 }
 
 QMetaObject* QAbstractScrollArea_MetaObject(const QAbstractScrollArea* self) {

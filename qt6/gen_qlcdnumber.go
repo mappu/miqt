@@ -62,20 +62,20 @@ func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
 }
 
 // NewQLCDNumber constructs a new QLCDNumber object.
-func NewQLCDNumber() *QLCDNumber {
-	ret := C.QLCDNumber_new()
+func NewQLCDNumber(parent *QWidget) *QLCDNumber {
+	ret := C.QLCDNumber_new(parent.cPointer())
 	return newQLCDNumber(ret)
 }
 
 // NewQLCDNumber2 constructs a new QLCDNumber object.
-func NewQLCDNumber2(numDigits uint) *QLCDNumber {
-	ret := C.QLCDNumber_new2((C.uint)(numDigits))
+func NewQLCDNumber2() *QLCDNumber {
+	ret := C.QLCDNumber_new2()
 	return newQLCDNumber(ret)
 }
 
 // NewQLCDNumber3 constructs a new QLCDNumber object.
-func NewQLCDNumber3(parent *QWidget) *QLCDNumber {
-	ret := C.QLCDNumber_new3(parent.cPointer())
+func NewQLCDNumber3(numDigits uint) *QLCDNumber {
+	ret := C.QLCDNumber_new3((C.uint)(numDigits))
 	return newQLCDNumber(ret)
 }
 

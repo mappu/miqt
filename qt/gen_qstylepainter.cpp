@@ -14,12 +14,12 @@
 #include "gen_qstylepainter.h"
 #include "_cgo_export.h"
 
-QStylePainter* QStylePainter_new() {
-	return new QStylePainter();
+QStylePainter* QStylePainter_new(QWidget* w) {
+	return new QStylePainter(w);
 }
 
-QStylePainter* QStylePainter_new2(QWidget* w) {
-	return new QStylePainter(w);
+QStylePainter* QStylePainter_new2() {
+	return new QStylePainter();
 }
 
 QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w) {

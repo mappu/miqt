@@ -261,12 +261,12 @@ void QListWidgetItem_Delete(QListWidgetItem* self) {
 	delete self;
 }
 
-QListWidget* QListWidget_new() {
-	return new QListWidget();
+QListWidget* QListWidget_new(QWidget* parent) {
+	return new QListWidget(parent);
 }
 
-QListWidget* QListWidget_new2(QWidget* parent) {
-	return new QListWidget(parent);
+QListWidget* QListWidget_new2() {
+	return new QListWidget();
 }
 
 QMetaObject* QListWidget_MetaObject(const QListWidget* self) {

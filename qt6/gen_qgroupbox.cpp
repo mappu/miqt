@@ -9,17 +9,17 @@
 #include "gen_qgroupbox.h"
 #include "_cgo_export.h"
 
-QGroupBox* QGroupBox_new() {
+QGroupBox* QGroupBox_new(QWidget* parent) {
+	return new QGroupBox(parent);
+}
+
+QGroupBox* QGroupBox_new2() {
 	return new QGroupBox();
 }
 
-QGroupBox* QGroupBox_new2(struct miqt_string title) {
+QGroupBox* QGroupBox_new3(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QGroupBox(title_QString);
-}
-
-QGroupBox* QGroupBox_new3(QWidget* parent) {
-	return new QGroupBox(parent);
 }
 
 QGroupBox* QGroupBox_new4(struct miqt_string title, QWidget* parent) {

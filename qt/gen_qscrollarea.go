@@ -44,14 +44,14 @@ func UnsafeNewQScrollArea(h unsafe.Pointer) *QScrollArea {
 }
 
 // NewQScrollArea constructs a new QScrollArea object.
-func NewQScrollArea() *QScrollArea {
-	ret := C.QScrollArea_new()
+func NewQScrollArea(parent *QWidget) *QScrollArea {
+	ret := C.QScrollArea_new(parent.cPointer())
 	return newQScrollArea(ret)
 }
 
 // NewQScrollArea2 constructs a new QScrollArea object.
-func NewQScrollArea2(parent *QWidget) *QScrollArea {
-	ret := C.QScrollArea_new2(parent.cPointer())
+func NewQScrollArea2() *QScrollArea {
+	ret := C.QScrollArea_new2()
 	return newQScrollArea(ret)
 }
 

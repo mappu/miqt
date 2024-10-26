@@ -29,10 +29,10 @@ typedef struct QUndoView QUndoView;
 typedef struct QWidget QWidget;
 #endif
 
-QUndoView* QUndoView_new();
-QUndoView* QUndoView_new2(QUndoStack* stack);
-QUndoView* QUndoView_new3(QUndoGroup* group);
-QUndoView* QUndoView_new4(QWidget* parent);
+QUndoView* QUndoView_new(QWidget* parent);
+QUndoView* QUndoView_new2();
+QUndoView* QUndoView_new3(QUndoStack* stack);
+QUndoView* QUndoView_new4(QUndoGroup* group);
 QUndoView* QUndoView_new5(QUndoStack* stack, QWidget* parent);
 QUndoView* QUndoView_new6(QUndoGroup* group, QWidget* parent);
 QMetaObject* QUndoView_MetaObject(const QUndoView* self);

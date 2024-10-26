@@ -62,32 +62,32 @@ func UnsafeNewQPrintPreviewWidget(h unsafe.Pointer) *QPrintPreviewWidget {
 }
 
 // NewQPrintPreviewWidget constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget(printer *QPrinter) *QPrintPreviewWidget {
-	ret := C.QPrintPreviewWidget_new(printer.cPointer())
+func NewQPrintPreviewWidget(parent *qt6.QWidget) *QPrintPreviewWidget {
+	ret := C.QPrintPreviewWidget_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget2 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget2() *QPrintPreviewWidget {
-	ret := C.QPrintPreviewWidget_new2()
+func NewQPrintPreviewWidget2(printer *QPrinter) *QPrintPreviewWidget {
+	ret := C.QPrintPreviewWidget_new2(printer.cPointer())
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget3 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget3(printer *QPrinter, parent *qt6.QWidget) *QPrintPreviewWidget {
-	ret := C.QPrintPreviewWidget_new3(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
+func NewQPrintPreviewWidget3() *QPrintPreviewWidget {
+	ret := C.QPrintPreviewWidget_new3()
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget4 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget4(printer *QPrinter, parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
-	ret := C.QPrintPreviewWidget_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags))
+func NewQPrintPreviewWidget4(printer *QPrinter, parent *qt6.QWidget) *QPrintPreviewWidget {
+	ret := C.QPrintPreviewWidget_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget5 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget5(parent *qt6.QWidget) *QPrintPreviewWidget {
-	ret := C.QPrintPreviewWidget_new5((*C.QWidget)(parent.UnsafePointer()))
+func NewQPrintPreviewWidget5(printer *QPrinter, parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
+	ret := C.QPrintPreviewWidget_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags))
 	return newQPrintPreviewWidget(ret)
 }
 

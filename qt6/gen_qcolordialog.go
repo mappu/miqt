@@ -53,20 +53,20 @@ func UnsafeNewQColorDialog(h unsafe.Pointer) *QColorDialog {
 }
 
 // NewQColorDialog constructs a new QColorDialog object.
-func NewQColorDialog() *QColorDialog {
-	ret := C.QColorDialog_new()
+func NewQColorDialog(parent *QWidget) *QColorDialog {
+	ret := C.QColorDialog_new(parent.cPointer())
 	return newQColorDialog(ret)
 }
 
 // NewQColorDialog2 constructs a new QColorDialog object.
-func NewQColorDialog2(initial *QColor) *QColorDialog {
-	ret := C.QColorDialog_new2(initial.cPointer())
+func NewQColorDialog2() *QColorDialog {
+	ret := C.QColorDialog_new2()
 	return newQColorDialog(ret)
 }
 
 // NewQColorDialog3 constructs a new QColorDialog object.
-func NewQColorDialog3(parent *QWidget) *QColorDialog {
-	ret := C.QColorDialog_new3(parent.cPointer())
+func NewQColorDialog3(initial *QColor) *QColorDialog {
+	ret := C.QColorDialog_new3(initial.cPointer())
 	return newQColorDialog(ret)
 }
 

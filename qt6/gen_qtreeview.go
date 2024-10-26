@@ -45,14 +45,14 @@ func UnsafeNewQTreeView(h unsafe.Pointer) *QTreeView {
 }
 
 // NewQTreeView constructs a new QTreeView object.
-func NewQTreeView() *QTreeView {
-	ret := C.QTreeView_new()
+func NewQTreeView(parent *QWidget) *QTreeView {
+	ret := C.QTreeView_new(parent.cPointer())
 	return newQTreeView(ret)
 }
 
 // NewQTreeView2 constructs a new QTreeView object.
-func NewQTreeView2(parent *QWidget) *QTreeView {
-	ret := C.QTreeView_new2(parent.cPointer())
+func NewQTreeView2() *QTreeView {
+	ret := C.QTreeView_new2()
 	return newQTreeView(ret)
 }
 

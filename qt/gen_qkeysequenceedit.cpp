@@ -9,16 +9,16 @@
 #include "gen_qkeysequenceedit.h"
 #include "_cgo_export.h"
 
-QKeySequenceEdit* QKeySequenceEdit_new() {
+QKeySequenceEdit* QKeySequenceEdit_new(QWidget* parent) {
+	return new QKeySequenceEdit(parent);
+}
+
+QKeySequenceEdit* QKeySequenceEdit_new2() {
 	return new QKeySequenceEdit();
 }
 
-QKeySequenceEdit* QKeySequenceEdit_new2(QKeySequence* keySequence) {
+QKeySequenceEdit* QKeySequenceEdit_new3(QKeySequence* keySequence) {
 	return new QKeySequenceEdit(*keySequence);
-}
-
-QKeySequenceEdit* QKeySequenceEdit_new3(QWidget* parent) {
-	return new QKeySequenceEdit(parent);
 }
 
 QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent) {

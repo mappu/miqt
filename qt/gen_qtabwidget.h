@@ -29,8 +29,8 @@ typedef struct QTabWidget QTabWidget;
 typedef struct QWidget QWidget;
 #endif
 
-QTabWidget* QTabWidget_new();
-QTabWidget* QTabWidget_new2(QWidget* parent);
+QTabWidget* QTabWidget_new(QWidget* parent);
+QTabWidget* QTabWidget_new2();
 QMetaObject* QTabWidget_MetaObject(const QTabWidget* self);
 void* QTabWidget_Metacast(QTabWidget* self, const char* param1);
 struct miqt_string QTabWidget_Tr(const char* s);

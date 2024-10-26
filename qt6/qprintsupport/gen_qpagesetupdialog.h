@@ -25,10 +25,10 @@ typedef struct QPrinter QPrinter;
 typedef struct QWidget QWidget;
 #endif
 
-QPageSetupDialog* QPageSetupDialog_new(QPrinter* printer);
-QPageSetupDialog* QPageSetupDialog_new2();
-QPageSetupDialog* QPageSetupDialog_new3(QPrinter* printer, QWidget* parent);
-QPageSetupDialog* QPageSetupDialog_new4(QWidget* parent);
+QPageSetupDialog* QPageSetupDialog_new(QWidget* parent);
+QPageSetupDialog* QPageSetupDialog_new2(QPrinter* printer);
+QPageSetupDialog* QPageSetupDialog_new3();
+QPageSetupDialog* QPageSetupDialog_new4(QPrinter* printer, QWidget* parent);
 QMetaObject* QPageSetupDialog_MetaObject(const QPageSetupDialog* self);
 void* QPageSetupDialog_Metacast(QPageSetupDialog* self, const char* param1);
 struct miqt_string QPageSetupDialog_Tr(const char* s);

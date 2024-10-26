@@ -16,12 +16,12 @@
 #include "gen_qsciscintilla.h"
 #include "_cgo_export.h"
 
-QsciScintilla* QsciScintilla_new() {
-	return new QsciScintilla();
+QsciScintilla* QsciScintilla_new(QWidget* parent) {
+	return new QsciScintilla(parent);
 }
 
-QsciScintilla* QsciScintilla_new2(QWidget* parent) {
-	return new QsciScintilla(parent);
+QsciScintilla* QsciScintilla_new2() {
+	return new QsciScintilla();
 }
 
 QMetaObject* QsciScintilla_MetaObject(const QsciScintilla* self) {

@@ -20,12 +20,12 @@
 #include "gen_qcombobox.h"
 #include "_cgo_export.h"
 
-QComboBox* QComboBox_new() {
-	return new QComboBox();
+QComboBox* QComboBox_new(QWidget* parent) {
+	return new QComboBox(parent);
 }
 
-QComboBox* QComboBox_new2(QWidget* parent) {
-	return new QComboBox(parent);
+QComboBox* QComboBox_new2() {
+	return new QComboBox();
 }
 
 QMetaObject* QComboBox_MetaObject(const QComboBox* self) {

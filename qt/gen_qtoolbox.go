@@ -45,14 +45,14 @@ func UnsafeNewQToolBox(h unsafe.Pointer) *QToolBox {
 }
 
 // NewQToolBox constructs a new QToolBox object.
-func NewQToolBox() *QToolBox {
-	ret := C.QToolBox_new()
+func NewQToolBox(parent *QWidget) *QToolBox {
+	ret := C.QToolBox_new(parent.cPointer())
 	return newQToolBox(ret)
 }
 
 // NewQToolBox2 constructs a new QToolBox object.
-func NewQToolBox2(parent *QWidget) *QToolBox {
-	ret := C.QToolBox_new2(parent.cPointer())
+func NewQToolBox2() *QToolBox {
+	ret := C.QToolBox_new2()
 	return newQToolBox(ret)
 }
 

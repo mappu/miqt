@@ -58,14 +58,14 @@ func UnsafeNewQAbstractSlider(h unsafe.Pointer) *QAbstractSlider {
 }
 
 // NewQAbstractSlider constructs a new QAbstractSlider object.
-func NewQAbstractSlider() *QAbstractSlider {
-	ret := C.QAbstractSlider_new()
+func NewQAbstractSlider(parent *QWidget) *QAbstractSlider {
+	ret := C.QAbstractSlider_new(parent.cPointer())
 	return newQAbstractSlider(ret)
 }
 
 // NewQAbstractSlider2 constructs a new QAbstractSlider object.
-func NewQAbstractSlider2(parent *QWidget) *QAbstractSlider {
-	ret := C.QAbstractSlider_new2(parent.cPointer())
+func NewQAbstractSlider2() *QAbstractSlider {
+	ret := C.QAbstractSlider_new2()
 	return newQAbstractSlider(ret)
 }
 

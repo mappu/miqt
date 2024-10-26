@@ -29,9 +29,9 @@ typedef struct QSplashScreen QSplashScreen;
 typedef struct QWidget QWidget;
 #endif
 
-QSplashScreen* QSplashScreen_new();
-QSplashScreen* QSplashScreen_new2(QScreen* screen);
-QSplashScreen* QSplashScreen_new3(QWidget* parent);
+QSplashScreen* QSplashScreen_new(QWidget* parent);
+QSplashScreen* QSplashScreen_new2();
+QSplashScreen* QSplashScreen_new3(QScreen* screen);
 QSplashScreen* QSplashScreen_new4(QPixmap* pixmap);
 QSplashScreen* QSplashScreen_new5(QPixmap* pixmap, int f);
 QSplashScreen* QSplashScreen_new6(QScreen* screen, QPixmap* pixmap);

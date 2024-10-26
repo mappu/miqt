@@ -87,8 +87,8 @@ void QBoxLayout_InsertWidget4(QBoxLayout* self, int index, QWidget* widget, int 
 void QBoxLayout_InsertLayout3(QBoxLayout* self, int index, QLayout* layout, int stretch);
 void QBoxLayout_Delete(QBoxLayout* self);
 
-QHBoxLayout* QHBoxLayout_new();
-QHBoxLayout* QHBoxLayout_new2(QWidget* parent);
+QHBoxLayout* QHBoxLayout_new(QWidget* parent);
+QHBoxLayout* QHBoxLayout_new2();
 QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self);
 void* QHBoxLayout_Metacast(QHBoxLayout* self, const char* param1);
 struct miqt_string QHBoxLayout_Tr(const char* s);
@@ -96,8 +96,8 @@ struct miqt_string QHBoxLayout_Tr2(const char* s, const char* c);
 struct miqt_string QHBoxLayout_Tr3(const char* s, const char* c, int n);
 void QHBoxLayout_Delete(QHBoxLayout* self);
 
-QVBoxLayout* QVBoxLayout_new();
-QVBoxLayout* QVBoxLayout_new2(QWidget* parent);
+QVBoxLayout* QVBoxLayout_new(QWidget* parent);
+QVBoxLayout* QVBoxLayout_new2();
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self);
 void* QVBoxLayout_Metacast(QVBoxLayout* self, const char* param1);
 struct miqt_string QVBoxLayout_Tr(const char* s);

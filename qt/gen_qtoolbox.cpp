@@ -9,12 +9,12 @@
 #include "gen_qtoolbox.h"
 #include "_cgo_export.h"
 
-QToolBox* QToolBox_new() {
-	return new QToolBox();
+QToolBox* QToolBox_new(QWidget* parent) {
+	return new QToolBox(parent);
 }
 
-QToolBox* QToolBox_new2(QWidget* parent) {
-	return new QToolBox(parent);
+QToolBox* QToolBox_new2() {
+	return new QToolBox();
 }
 
 QToolBox* QToolBox_new3(QWidget* parent, int f) {

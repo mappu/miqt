@@ -90,20 +90,20 @@ func UnsafeNewQFileDialog(h unsafe.Pointer) *QFileDialog {
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
-func NewQFileDialog(parent *QWidget, f WindowType) *QFileDialog {
-	ret := C.QFileDialog_new(parent.cPointer(), (C.int)(f))
+func NewQFileDialog(parent *QWidget) *QFileDialog {
+	ret := C.QFileDialog_new(parent.cPointer())
 	return newQFileDialog(ret)
 }
 
 // NewQFileDialog2 constructs a new QFileDialog object.
-func NewQFileDialog2() *QFileDialog {
-	ret := C.QFileDialog_new2()
+func NewQFileDialog2(parent *QWidget, f WindowType) *QFileDialog {
+	ret := C.QFileDialog_new2(parent.cPointer(), (C.int)(f))
 	return newQFileDialog(ret)
 }
 
 // NewQFileDialog3 constructs a new QFileDialog object.
-func NewQFileDialog3(parent *QWidget) *QFileDialog {
-	ret := C.QFileDialog_new3(parent.cPointer())
+func NewQFileDialog3() *QFileDialog {
+	ret := C.QFileDialog_new3()
 	return newQFileDialog(ret)
 }
 

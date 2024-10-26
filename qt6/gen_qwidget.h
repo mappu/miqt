@@ -87,8 +87,8 @@ QWidgetData* QWidgetData_new(QWidgetData* param1);
 void QWidgetData_OperatorAssign(QWidgetData* self, QWidgetData* param1);
 void QWidgetData_Delete(QWidgetData* self);
 
-QWidget* QWidget_new();
-QWidget* QWidget_new2(QWidget* parent);
+QWidget* QWidget_new(QWidget* parent);
+QWidget* QWidget_new2();
 QWidget* QWidget_new3(QWidget* parent, int f);
 QMetaObject* QWidget_MetaObject(const QWidget* self);
 void* QWidget_Metacast(QWidget* self, const char* param1);

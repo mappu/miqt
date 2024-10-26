@@ -9,17 +9,17 @@
 #include "gen_qcheckbox.h"
 #include "_cgo_export.h"
 
-QCheckBox* QCheckBox_new() {
+QCheckBox* QCheckBox_new(QWidget* parent) {
+	return new QCheckBox(parent);
+}
+
+QCheckBox* QCheckBox_new2() {
 	return new QCheckBox();
 }
 
-QCheckBox* QCheckBox_new2(struct miqt_string text) {
+QCheckBox* QCheckBox_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QCheckBox(text_QString);
-}
-
-QCheckBox* QCheckBox_new3(QWidget* parent) {
-	return new QCheckBox(parent);
 }
 
 QCheckBox* QCheckBox_new4(struct miqt_string text, QWidget* parent) {

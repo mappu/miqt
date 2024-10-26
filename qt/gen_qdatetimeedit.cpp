@@ -17,24 +17,24 @@
 #include "gen_qdatetimeedit.h"
 #include "_cgo_export.h"
 
-QDateTimeEdit* QDateTimeEdit_new() {
+QDateTimeEdit* QDateTimeEdit_new(QWidget* parent) {
+	return new QDateTimeEdit(parent);
+}
+
+QDateTimeEdit* QDateTimeEdit_new2() {
 	return new QDateTimeEdit();
 }
 
-QDateTimeEdit* QDateTimeEdit_new2(QDateTime* dt) {
+QDateTimeEdit* QDateTimeEdit_new3(QDateTime* dt) {
 	return new QDateTimeEdit(*dt);
 }
 
-QDateTimeEdit* QDateTimeEdit_new3(QDate* d) {
+QDateTimeEdit* QDateTimeEdit_new4(QDate* d) {
 	return new QDateTimeEdit(*d);
 }
 
-QDateTimeEdit* QDateTimeEdit_new4(QTime* t) {
+QDateTimeEdit* QDateTimeEdit_new5(QTime* t) {
 	return new QDateTimeEdit(*t);
-}
-
-QDateTimeEdit* QDateTimeEdit_new5(QWidget* parent) {
-	return new QDateTimeEdit(parent);
 }
 
 QDateTimeEdit* QDateTimeEdit_new6(QDateTime* dt, QWidget* parent) {
@@ -385,16 +385,16 @@ void QDateTimeEdit_Delete(QDateTimeEdit* self) {
 	delete self;
 }
 
-QTimeEdit* QTimeEdit_new() {
+QTimeEdit* QTimeEdit_new(QWidget* parent) {
+	return new QTimeEdit(parent);
+}
+
+QTimeEdit* QTimeEdit_new2() {
 	return new QTimeEdit();
 }
 
-QTimeEdit* QTimeEdit_new2(QTime* time) {
+QTimeEdit* QTimeEdit_new3(QTime* time) {
 	return new QTimeEdit(*time);
-}
-
-QTimeEdit* QTimeEdit_new3(QWidget* parent) {
-	return new QTimeEdit(parent);
 }
 
 QTimeEdit* QTimeEdit_new4(QTime* time, QWidget* parent) {
@@ -492,16 +492,16 @@ void QTimeEdit_Delete(QTimeEdit* self) {
 	delete self;
 }
 
-QDateEdit* QDateEdit_new() {
+QDateEdit* QDateEdit_new(QWidget* parent) {
+	return new QDateEdit(parent);
+}
+
+QDateEdit* QDateEdit_new2() {
 	return new QDateEdit();
 }
 
-QDateEdit* QDateEdit_new2(QDate* date) {
+QDateEdit* QDateEdit_new3(QDate* date) {
 	return new QDateEdit(*date);
-}
-
-QDateEdit* QDateEdit_new3(QWidget* parent) {
-	return new QDateEdit(parent);
 }
 
 QDateEdit* QDateEdit_new4(QDate* date, QWidget* parent) {

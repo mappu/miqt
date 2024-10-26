@@ -103,27 +103,19 @@ func UnsafeNewQMessageBox(h unsafe.Pointer) *QMessageBox {
 }
 
 // NewQMessageBox constructs a new QMessageBox object.
-func NewQMessageBox() *QMessageBox {
-	ret := C.QMessageBox_new()
+func NewQMessageBox(parent *QWidget) *QMessageBox {
+	ret := C.QMessageBox_new(parent.cPointer())
 	return newQMessageBox(ret)
 }
 
 // NewQMessageBox2 constructs a new QMessageBox object.
-func NewQMessageBox2(icon QMessageBox__Icon, title string, text string) *QMessageBox {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QMessageBox_new2((C.int)(icon), title_ms, text_ms)
+func NewQMessageBox2() *QMessageBox {
+	ret := C.QMessageBox_new2()
 	return newQMessageBox(ret)
 }
 
 // NewQMessageBox3 constructs a new QMessageBox object.
-func NewQMessageBox3(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int) *QMessageBox {
+func NewQMessageBox3(icon QMessageBox__Icon, title string, text string) *QMessageBox {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -132,13 +124,21 @@ func NewQMessageBox3(title string, text string, icon QMessageBox__Icon, button0 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QMessageBox_new3(title_ms, text_ms, (C.int)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
+	ret := C.QMessageBox_new3((C.int)(icon), title_ms, text_ms)
 	return newQMessageBox(ret)
 }
 
 // NewQMessageBox4 constructs a new QMessageBox object.
-func NewQMessageBox4(parent *QWidget) *QMessageBox {
-	ret := C.QMessageBox_new4(parent.cPointer())
+func NewQMessageBox4(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int) *QMessageBox {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QMessageBox_new4(title_ms, text_ms, (C.int)(icon), (C.int)(button0), (C.int)(button1), (C.int)(button2))
 	return newQMessageBox(ret)
 }
 

@@ -11,12 +11,12 @@
 #include "gen_qmdisubwindow.h"
 #include "_cgo_export.h"
 
-QMdiSubWindow* QMdiSubWindow_new() {
-	return new QMdiSubWindow();
+QMdiSubWindow* QMdiSubWindow_new(QWidget* parent) {
+	return new QMdiSubWindow(parent);
 }
 
-QMdiSubWindow* QMdiSubWindow_new2(QWidget* parent) {
-	return new QMdiSubWindow(parent);
+QMdiSubWindow* QMdiSubWindow_new2() {
+	return new QMdiSubWindow();
 }
 
 QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags) {

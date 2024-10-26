@@ -11,12 +11,12 @@
 #include "gen_qtextbrowser.h"
 #include "_cgo_export.h"
 
-QTextBrowser* QTextBrowser_new() {
-	return new QTextBrowser();
+QTextBrowser* QTextBrowser_new(QWidget* parent) {
+	return new QTextBrowser(parent);
 }
 
-QTextBrowser* QTextBrowser_new2(QWidget* parent) {
-	return new QTextBrowser(parent);
+QTextBrowser* QTextBrowser_new2() {
+	return new QTextBrowser();
 }
 
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self) {

@@ -31,8 +31,8 @@ typedef struct QStackedLayout QStackedLayout;
 typedef struct QWidget QWidget;
 #endif
 
-QStackedLayout* QStackedLayout_new();
-QStackedLayout* QStackedLayout_new2(QWidget* parent);
+QStackedLayout* QStackedLayout_new(QWidget* parent);
+QStackedLayout* QStackedLayout_new2();
 QStackedLayout* QStackedLayout_new3(QLayout* parentLayout);
 QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self);
 void* QStackedLayout_Metacast(QStackedLayout* self, const char* param1);

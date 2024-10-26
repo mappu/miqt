@@ -27,8 +27,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QFrame* QFrame_new();
-QFrame* QFrame_new2(QWidget* parent);
+QFrame* QFrame_new(QWidget* parent);
+QFrame* QFrame_new2();
 QFrame* QFrame_new3(QWidget* parent, int f);
 QMetaObject* QFrame_MetaObject(const QFrame* self);
 void* QFrame_Metacast(QFrame* self, const char* param1);

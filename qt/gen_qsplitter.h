@@ -29,9 +29,9 @@ typedef struct QSplitterHandle QSplitterHandle;
 typedef struct QWidget QWidget;
 #endif
 
-QSplitter* QSplitter_new();
-QSplitter* QSplitter_new2(int param1);
-QSplitter* QSplitter_new3(QWidget* parent);
+QSplitter* QSplitter_new(QWidget* parent);
+QSplitter* QSplitter_new2();
+QSplitter* QSplitter_new3(int param1);
 QSplitter* QSplitter_new4(int param1, QWidget* parent);
 QMetaObject* QSplitter_MetaObject(const QSplitter* self);
 void* QSplitter_Metacast(QSplitter* self, const char* param1);

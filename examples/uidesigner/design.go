@@ -37,7 +37,7 @@ type MainWindowUi struct {
 func NewMainWindowUi() *MainWindowUi {
 	ui := &MainWindowUi{}
 
-	ui.MainWindow = qt.NewQMainWindow2(nil)
+	ui.MainWindow = qt.NewQMainWindow(nil)
 	ui.MainWindow.SetObjectName("MainWindow")
 	ui.MainWindow.Resize(800, 600)
 	ui.MainWindow.SetWindowTitle("MainWindow")
@@ -48,62 +48,67 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.actionE_xit = qt.NewQAction()
 	ui.actionE_xit.SetObjectName("actionE_xit")
 
-	ui.centralwidget = qt.NewQWidget2(ui.MainWindow.QWidget)
+	ui.centralwidget = qt.NewQWidget(ui.MainWindow.QWidget)
 	ui.centralwidget.SetObjectName("centralwidget")
 
 	ui.gridLayout = qt.NewQGridLayout(ui.centralwidget)
 	ui.gridLayout.SetObjectName("gridLayout")
+	ui.gridLayout.SetContentsMargins(11, 11, 11, 11)
+	ui.gridLayout.SetSpacing(6)
 
-	ui.tabWidget = qt.NewQTabWidget2(ui.centralwidget)
+	ui.tabWidget = qt.NewQTabWidget(ui.centralwidget)
 	ui.tabWidget.SetObjectName("tabWidget")
 
-	ui.tab = qt.NewQWidget2(ui.tabWidget.QWidget)
+	ui.tab = qt.NewQWidget(ui.tabWidget.QWidget)
 	ui.tab.SetObjectName("tab")
 
-	ui.formLayout = qt.NewQFormLayout2(ui.tab)
+	ui.formLayout = qt.NewQFormLayout(ui.tab)
 	ui.formLayout.SetObjectName("formLayout")
+	ui.formLayout.SetContentsMargins(11, 11, 11, 11)
+	ui.formLayout.SetSpacing(6)
 
-	ui.label = qt.NewQLabel3(ui.tab)
+	ui.label = qt.NewQLabel(ui.tab)
 	ui.label.SetObjectName("label")
 
 	ui.formLayout.SetWidget(0, qt.QFormLayout__LabelRole, ui.label.QWidget)
 
-	ui.comboBox = qt.NewQComboBox2(ui.tab)
+	ui.comboBox = qt.NewQComboBox(ui.tab)
 	ui.comboBox.SetObjectName("comboBox")
 	ui.comboBox.AddItem("")
 	ui.comboBox.AddItem("")
 
 	ui.formLayout.SetWidget(0, qt.QFormLayout__FieldRole, ui.comboBox.QWidget)
 
-	ui.label_2 = qt.NewQLabel3(ui.tab)
+	ui.label_2 = qt.NewQLabel(ui.tab)
 	ui.label_2.SetObjectName("label_2")
 
 	ui.formLayout.SetWidget(1, qt.QFormLayout__LabelRole, ui.label_2.QWidget)
 
-	ui.spinBox = qt.NewQSpinBox2(ui.tab)
+	ui.spinBox = qt.NewQSpinBox(ui.tab)
 	ui.spinBox.SetObjectName("spinBox")
 
 	ui.formLayout.SetWidget(1, qt.QFormLayout__FieldRole, ui.spinBox.QWidget)
 	ui.tabWidget.AddTab(ui.tab, "")
 
-	ui.tab_2 = qt.NewQWidget2(ui.tabWidget.QWidget)
+	ui.tab_2 = qt.NewQWidget(ui.tabWidget.QWidget)
 	ui.tab_2.SetObjectName("tab_2")
 	ui.tabWidget.AddTab(ui.tab_2, "")
 
 	ui.gridLayout.AddWidget2(ui.tabWidget.QWidget, 0, 0)
 
-	ui.treeWidget = qt.NewQTreeWidget2(ui.centralwidget)
+	ui.treeWidget = qt.NewQTreeWidget(ui.centralwidget)
 	ui.treeWidget.SetObjectName("treeWidget")
 	ui.treeWidget.SetFrameShape(qt.QFrame__Panel)
+	ui.treeWidget.HeaderItem().SetText(0, "1")
 
 	ui.gridLayout.AddWidget2(ui.treeWidget.QWidget, 0, 1)
 	ui.MainWindow.SetCentralWidget(ui.centralwidget) // Set central widget
 
-	ui.menubar = qt.NewQMenuBar2(ui.MainWindow.QWidget)
+	ui.menubar = qt.NewQMenuBar(ui.MainWindow.QWidget)
 	ui.menubar.SetObjectName("menubar")
 	ui.menubar.Resize(800, 29)
 
-	ui.menu_File = qt.NewQMenu3(ui.menubar.QWidget)
+	ui.menu_File = qt.NewQMenu(ui.menubar.QWidget)
 	ui.menu_File.SetObjectName("menu_File")
 	ui.menu_File.QWidget.AddAction(ui.action_New)
 	ui.menu_File.AddSeparator()
@@ -111,21 +116,23 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.menubar.AddMenu(ui.menu_File)
 	ui.MainWindow.SetMenuBar(ui.menubar)
 
-	ui.statusbar = qt.NewQStatusBar2(ui.MainWindow.QWidget)
+	ui.statusbar = qt.NewQStatusBar(ui.MainWindow.QWidget)
 	ui.statusbar.SetObjectName("statusbar")
 	ui.MainWindow.SetStatusBar(ui.statusbar)
 
-	ui.dockWidget = qt.NewQDockWidget5(ui.MainWindow.QWidget)
+	ui.dockWidget = qt.NewQDockWidget(ui.MainWindow.QWidget)
 	ui.dockWidget.SetObjectName("dockWidget")
 	ui.MainWindow.AddDockWidget(qt.DockWidgetArea(1), ui.dockWidget)
 
-	ui.dockWidgetContents = qt.NewQWidget2(ui.dockWidget.QWidget)
+	ui.dockWidgetContents = qt.NewQWidget(ui.dockWidget.QWidget)
 	ui.dockWidgetContents.SetObjectName("dockWidgetContents")
 
-	ui.verticalLayout = qt.NewQVBoxLayout2(ui.dockWidgetContents)
+	ui.verticalLayout = qt.NewQVBoxLayout(ui.dockWidgetContents)
 	ui.verticalLayout.SetObjectName("verticalLayout")
+	ui.verticalLayout.SetContentsMargins(11, 11, 11, 11)
+	ui.verticalLayout.SetSpacing(6)
 
-	ui.calendarWidget = qt.NewQCalendarWidget2(ui.dockWidgetContents)
+	ui.calendarWidget = qt.NewQCalendarWidget(ui.dockWidgetContents)
 	ui.calendarWidget.SetObjectName("calendarWidget")
 
 	ui.verticalLayout.AddWidget(ui.calendarWidget.QWidget)

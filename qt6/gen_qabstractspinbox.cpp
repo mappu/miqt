@@ -11,12 +11,12 @@
 #include "gen_qabstractspinbox.h"
 #include "_cgo_export.h"
 
-QAbstractSpinBox* QAbstractSpinBox_new() {
-	return new QAbstractSpinBox();
+QAbstractSpinBox* QAbstractSpinBox_new(QWidget* parent) {
+	return new QAbstractSpinBox(parent);
 }
 
-QAbstractSpinBox* QAbstractSpinBox_new2(QWidget* parent) {
-	return new QAbstractSpinBox(parent);
+QAbstractSpinBox* QAbstractSpinBox_new2() {
+	return new QAbstractSpinBox();
 }
 
 QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self) {

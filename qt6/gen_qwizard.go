@@ -105,14 +105,14 @@ func UnsafeNewQWizard(h unsafe.Pointer) *QWizard {
 }
 
 // NewQWizard constructs a new QWizard object.
-func NewQWizard() *QWizard {
-	ret := C.QWizard_new()
+func NewQWizard(parent *QWidget) *QWizard {
+	ret := C.QWizard_new(parent.cPointer())
 	return newQWizard(ret)
 }
 
 // NewQWizard2 constructs a new QWizard object.
-func NewQWizard2(parent *QWidget) *QWizard {
-	ret := C.QWizard_new2(parent.cPointer())
+func NewQWizard2() *QWizard {
+	ret := C.QWizard_new2()
 	return newQWizard(ret)
 }
 
@@ -525,14 +525,14 @@ func UnsafeNewQWizardPage(h unsafe.Pointer) *QWizardPage {
 }
 
 // NewQWizardPage constructs a new QWizardPage object.
-func NewQWizardPage() *QWizardPage {
-	ret := C.QWizardPage_new()
+func NewQWizardPage(parent *QWidget) *QWizardPage {
+	ret := C.QWizardPage_new(parent.cPointer())
 	return newQWizardPage(ret)
 }
 
 // NewQWizardPage2 constructs a new QWizardPage object.
-func NewQWizardPage2(parent *QWidget) *QWizardPage {
-	ret := C.QWizardPage_new2(parent.cPointer())
+func NewQWizardPage2() *QWizardPage {
+	ret := C.QWizardPage_new2()
 	return newQWizardPage(ret)
 }
 

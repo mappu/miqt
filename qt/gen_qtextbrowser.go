@@ -45,14 +45,14 @@ func UnsafeNewQTextBrowser(h unsafe.Pointer) *QTextBrowser {
 }
 
 // NewQTextBrowser constructs a new QTextBrowser object.
-func NewQTextBrowser() *QTextBrowser {
-	ret := C.QTextBrowser_new()
+func NewQTextBrowser(parent *QWidget) *QTextBrowser {
+	ret := C.QTextBrowser_new(parent.cPointer())
 	return newQTextBrowser(ret)
 }
 
 // NewQTextBrowser2 constructs a new QTextBrowser object.
-func NewQTextBrowser2(parent *QWidget) *QTextBrowser {
-	ret := C.QTextBrowser_new2(parent.cPointer())
+func NewQTextBrowser2() *QTextBrowser {
+	ret := C.QTextBrowser_new2()
 	return newQTextBrowser(ret)
 }
 

@@ -14,12 +14,12 @@
 #include "gen_qtableview.h"
 #include "_cgo_export.h"
 
-QTableView* QTableView_new() {
-	return new QTableView();
+QTableView* QTableView_new(QWidget* parent) {
+	return new QTableView(parent);
 }
 
-QTableView* QTableView_new2(QWidget* parent) {
-	return new QTableView(parent);
+QTableView* QTableView_new2() {
+	return new QTableView();
 }
 
 QMetaObject* QTableView_MetaObject(const QTableView* self) {

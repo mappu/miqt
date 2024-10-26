@@ -10,12 +10,12 @@
 #include "gen_qframe.h"
 #include "_cgo_export.h"
 
-QFrame* QFrame_new() {
-	return new QFrame();
+QFrame* QFrame_new(QWidget* parent) {
+	return new QFrame(parent);
 }
 
-QFrame* QFrame_new2(QWidget* parent) {
-	return new QFrame(parent);
+QFrame* QFrame_new2() {
+	return new QFrame();
 }
 
 QFrame* QFrame_new3(QWidget* parent, int f) {

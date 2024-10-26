@@ -45,14 +45,14 @@ func UnsafeNewQMenuBar(h unsafe.Pointer) *QMenuBar {
 }
 
 // NewQMenuBar constructs a new QMenuBar object.
-func NewQMenuBar() *QMenuBar {
-	ret := C.QMenuBar_new()
+func NewQMenuBar(parent *QWidget) *QMenuBar {
+	ret := C.QMenuBar_new(parent.cPointer())
 	return newQMenuBar(ret)
 }
 
 // NewQMenuBar2 constructs a new QMenuBar object.
-func NewQMenuBar2(parent *QWidget) *QMenuBar {
-	ret := C.QMenuBar_new2(parent.cPointer())
+func NewQMenuBar2() *QMenuBar {
+	ret := C.QMenuBar_new2()
 	return newQMenuBar(ret)
 }
 

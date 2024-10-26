@@ -23,8 +23,8 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QAbstractSlider* QAbstractSlider_new();
-QAbstractSlider* QAbstractSlider_new2(QWidget* parent);
+QAbstractSlider* QAbstractSlider_new(QWidget* parent);
+QAbstractSlider* QAbstractSlider_new2();
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self);
 void* QAbstractSlider_Metacast(QAbstractSlider* self, const char* param1);
 struct miqt_string QAbstractSlider_Tr(const char* s);

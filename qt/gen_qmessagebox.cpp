@@ -13,24 +13,24 @@
 #include "gen_qmessagebox.h"
 #include "_cgo_export.h"
 
-QMessageBox* QMessageBox_new() {
+QMessageBox* QMessageBox_new(QWidget* parent) {
+	return new QMessageBox(parent);
+}
+
+QMessageBox* QMessageBox_new2() {
 	return new QMessageBox();
 }
 
-QMessageBox* QMessageBox_new2(int icon, struct miqt_string title, struct miqt_string text) {
+QMessageBox* QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
 }
 
-QMessageBox* QMessageBox_new3(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2) {
+QMessageBox* QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
-}
-
-QMessageBox* QMessageBox_new4(QWidget* parent) {
-	return new QMessageBox(parent);
 }
 
 QMessageBox* QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons) {

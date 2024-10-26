@@ -10,16 +10,16 @@
 #include "gen_qslider.h"
 #include "_cgo_export.h"
 
-QSlider* QSlider_new() {
+QSlider* QSlider_new(QWidget* parent) {
+	return new QSlider(parent);
+}
+
+QSlider* QSlider_new2() {
 	return new QSlider();
 }
 
-QSlider* QSlider_new2(int orientation) {
+QSlider* QSlider_new3(int orientation) {
 	return new QSlider(static_cast<Qt::Orientation>(orientation));
-}
-
-QSlider* QSlider_new3(QWidget* parent) {
-	return new QSlider(parent);
 }
 
 QSlider* QSlider_new4(int orientation, QWidget* parent) {

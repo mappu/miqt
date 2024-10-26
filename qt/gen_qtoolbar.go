@@ -45,34 +45,34 @@ func UnsafeNewQToolBar(h unsafe.Pointer) *QToolBar {
 }
 
 // NewQToolBar constructs a new QToolBar object.
-func NewQToolBar(title string) *QToolBar {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QToolBar_new(title_ms)
+func NewQToolBar(parent *QWidget) *QToolBar {
+	ret := C.QToolBar_new(parent.cPointer())
 	return newQToolBar(ret)
 }
 
 // NewQToolBar2 constructs a new QToolBar object.
-func NewQToolBar2() *QToolBar {
-	ret := C.QToolBar_new2()
-	return newQToolBar(ret)
-}
-
-// NewQToolBar3 constructs a new QToolBar object.
-func NewQToolBar3(title string, parent *QWidget) *QToolBar {
+func NewQToolBar2(title string) *QToolBar {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QToolBar_new3(title_ms, parent.cPointer())
+	ret := C.QToolBar_new2(title_ms)
+	return newQToolBar(ret)
+}
+
+// NewQToolBar3 constructs a new QToolBar object.
+func NewQToolBar3() *QToolBar {
+	ret := C.QToolBar_new3()
 	return newQToolBar(ret)
 }
 
 // NewQToolBar4 constructs a new QToolBar object.
-func NewQToolBar4(parent *QWidget) *QToolBar {
-	ret := C.QToolBar_new4(parent.cPointer())
+func NewQToolBar4(title string, parent *QWidget) *QToolBar {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QToolBar_new4(title_ms, parent.cPointer())
 	return newQToolBar(ret)
 }
 

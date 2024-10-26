@@ -126,8 +126,8 @@ int QTreeWidgetItem_Type(const QTreeWidgetItem* self);
 void QTreeWidgetItem_SortChildren(QTreeWidgetItem* self, int column, int order);
 void QTreeWidgetItem_Delete(QTreeWidgetItem* self);
 
-QTreeWidget* QTreeWidget_new();
-QTreeWidget* QTreeWidget_new2(QWidget* parent);
+QTreeWidget* QTreeWidget_new(QWidget* parent);
+QTreeWidget* QTreeWidget_new2();
 QMetaObject* QTreeWidget_MetaObject(const QTreeWidget* self);
 void* QTreeWidget_Metacast(QTreeWidget* self, const char* param1);
 struct miqt_string QTreeWidget_Tr(const char* s);

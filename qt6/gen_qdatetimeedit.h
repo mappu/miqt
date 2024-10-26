@@ -41,11 +41,11 @@ typedef struct QTimeEdit QTimeEdit;
 typedef struct QWidget QWidget;
 #endif
 
-QDateTimeEdit* QDateTimeEdit_new();
-QDateTimeEdit* QDateTimeEdit_new2(QDateTime* dt);
-QDateTimeEdit* QDateTimeEdit_new3(QDate* d);
-QDateTimeEdit* QDateTimeEdit_new4(QTime* t);
-QDateTimeEdit* QDateTimeEdit_new5(QWidget* parent);
+QDateTimeEdit* QDateTimeEdit_new(QWidget* parent);
+QDateTimeEdit* QDateTimeEdit_new2();
+QDateTimeEdit* QDateTimeEdit_new3(QDateTime* dt);
+QDateTimeEdit* QDateTimeEdit_new4(QDate* d);
+QDateTimeEdit* QDateTimeEdit_new5(QTime* t);
 QDateTimeEdit* QDateTimeEdit_new6(QDateTime* dt, QWidget* parent);
 QDateTimeEdit* QDateTimeEdit_new7(QDate* d, QWidget* parent);
 QDateTimeEdit* QDateTimeEdit_new8(QTime* t, QWidget* parent);
@@ -112,9 +112,9 @@ struct miqt_string QDateTimeEdit_Tr2(const char* s, const char* c);
 struct miqt_string QDateTimeEdit_Tr3(const char* s, const char* c, int n);
 void QDateTimeEdit_Delete(QDateTimeEdit* self);
 
-QTimeEdit* QTimeEdit_new();
-QTimeEdit* QTimeEdit_new2(QTime* time);
-QTimeEdit* QTimeEdit_new3(QWidget* parent);
+QTimeEdit* QTimeEdit_new(QWidget* parent);
+QTimeEdit* QTimeEdit_new2();
+QTimeEdit* QTimeEdit_new3(QTime* time);
 QTimeEdit* QTimeEdit_new4(QTime* time, QWidget* parent);
 QMetaObject* QTimeEdit_MetaObject(const QTimeEdit* self);
 void* QTimeEdit_Metacast(QTimeEdit* self, const char* param1);
@@ -125,9 +125,9 @@ struct miqt_string QTimeEdit_Tr2(const char* s, const char* c);
 struct miqt_string QTimeEdit_Tr3(const char* s, const char* c, int n);
 void QTimeEdit_Delete(QTimeEdit* self);
 
-QDateEdit* QDateEdit_new();
-QDateEdit* QDateEdit_new2(QDate* date);
-QDateEdit* QDateEdit_new3(QWidget* parent);
+QDateEdit* QDateEdit_new(QWidget* parent);
+QDateEdit* QDateEdit_new2();
+QDateEdit* QDateEdit_new3(QDate* date);
 QDateEdit* QDateEdit_new4(QDate* date, QWidget* parent);
 QMetaObject* QDateEdit_MetaObject(const QDateEdit* self);
 void* QDateEdit_Metacast(QDateEdit* self, const char* param1);

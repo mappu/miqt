@@ -10,12 +10,12 @@
 #include "gen_qfontcombobox.h"
 #include "_cgo_export.h"
 
-QFontComboBox* QFontComboBox_new() {
-	return new QFontComboBox();
+QFontComboBox* QFontComboBox_new(QWidget* parent) {
+	return new QFontComboBox(parent);
 }
 
-QFontComboBox* QFontComboBox_new2(QWidget* parent) {
-	return new QFontComboBox(parent);
+QFontComboBox* QFontComboBox_new2() {
+	return new QFontComboBox();
 }
 
 QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self) {

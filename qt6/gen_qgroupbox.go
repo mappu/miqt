@@ -45,24 +45,24 @@ func UnsafeNewQGroupBox(h unsafe.Pointer) *QGroupBox {
 }
 
 // NewQGroupBox constructs a new QGroupBox object.
-func NewQGroupBox() *QGroupBox {
-	ret := C.QGroupBox_new()
+func NewQGroupBox(parent *QWidget) *QGroupBox {
+	ret := C.QGroupBox_new(parent.cPointer())
 	return newQGroupBox(ret)
 }
 
 // NewQGroupBox2 constructs a new QGroupBox object.
-func NewQGroupBox2(title string) *QGroupBox {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QGroupBox_new2(title_ms)
+func NewQGroupBox2() *QGroupBox {
+	ret := C.QGroupBox_new2()
 	return newQGroupBox(ret)
 }
 
 // NewQGroupBox3 constructs a new QGroupBox object.
-func NewQGroupBox3(parent *QWidget) *QGroupBox {
-	ret := C.QGroupBox_new3(parent.cPointer())
+func NewQGroupBox3(title string) *QGroupBox {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QGroupBox_new3(title_ms)
 	return newQGroupBox(ret)
 }
 

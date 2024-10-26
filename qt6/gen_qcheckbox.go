@@ -45,24 +45,24 @@ func UnsafeNewQCheckBox(h unsafe.Pointer) *QCheckBox {
 }
 
 // NewQCheckBox constructs a new QCheckBox object.
-func NewQCheckBox() *QCheckBox {
-	ret := C.QCheckBox_new()
+func NewQCheckBox(parent *QWidget) *QCheckBox {
+	ret := C.QCheckBox_new(parent.cPointer())
 	return newQCheckBox(ret)
 }
 
 // NewQCheckBox2 constructs a new QCheckBox object.
-func NewQCheckBox2(text string) *QCheckBox {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QCheckBox_new2(text_ms)
+func NewQCheckBox2() *QCheckBox {
+	ret := C.QCheckBox_new2()
 	return newQCheckBox(ret)
 }
 
 // NewQCheckBox3 constructs a new QCheckBox object.
-func NewQCheckBox3(parent *QWidget) *QCheckBox {
-	ret := C.QCheckBox_new3(parent.cPointer())
+func NewQCheckBox3(text string) *QCheckBox {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QCheckBox_new3(text_ms)
 	return newQCheckBox(ret)
 }
 

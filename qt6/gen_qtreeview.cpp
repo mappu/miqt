@@ -15,12 +15,12 @@
 #include "gen_qtreeview.h"
 #include "_cgo_export.h"
 
-QTreeView* QTreeView_new() {
-	return new QTreeView();
+QTreeView* QTreeView_new(QWidget* parent) {
+	return new QTreeView(parent);
 }
 
-QTreeView* QTreeView_new2(QWidget* parent) {
-	return new QTreeView(parent);
+QTreeView* QTreeView_new2() {
+	return new QTreeView();
 }
 
 QMetaObject* QTreeView_MetaObject(const QTreeView* self) {

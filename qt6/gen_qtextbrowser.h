@@ -27,8 +27,8 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QTextBrowser* QTextBrowser_new();
-QTextBrowser* QTextBrowser_new2(QWidget* parent);
+QTextBrowser* QTextBrowser_new(QWidget* parent);
+QTextBrowser* QTextBrowser_new2();
 QMetaObject* QTextBrowser_MetaObject(const QTextBrowser* self);
 void* QTextBrowser_Metacast(QTextBrowser* self, const char* param1);
 struct miqt_string QTextBrowser_Tr(const char* s);

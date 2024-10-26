@@ -10,12 +10,12 @@
 #include "gen_qinputdialog.h"
 #include "_cgo_export.h"
 
-QInputDialog* QInputDialog_new() {
-	return new QInputDialog();
+QInputDialog* QInputDialog_new(QWidget* parent) {
+	return new QInputDialog(parent);
 }
 
-QInputDialog* QInputDialog_new2(QWidget* parent) {
-	return new QInputDialog(parent);
+QInputDialog* QInputDialog_new2() {
+	return new QInputDialog();
 }
 
 QInputDialog* QInputDialog_new3(QWidget* parent, int flags) {

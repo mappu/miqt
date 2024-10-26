@@ -29,8 +29,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QMdiArea* QMdiArea_new();
-QMdiArea* QMdiArea_new2(QWidget* parent);
+QMdiArea* QMdiArea_new(QWidget* parent);
+QMdiArea* QMdiArea_new2();
 QMetaObject* QMdiArea_MetaObject(const QMdiArea* self);
 void* QMdiArea_Metacast(QMdiArea* self, const char* param1);
 struct miqt_string QMdiArea_Tr(const char* s);

@@ -161,6 +161,7 @@ func generate(packageName string, srcDirs []string, clangBin, cflagsCombined, ou
 		astTransformChildClasses(parsed) // must be first
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
+		astTransformConstructorOrder(parsed)
 		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)

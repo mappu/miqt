@@ -21,16 +21,16 @@
 #include "gen_qgraphicsview.h"
 #include "_cgo_export.h"
 
-QGraphicsView* QGraphicsView_new() {
+QGraphicsView* QGraphicsView_new(QWidget* parent) {
+	return new QGraphicsView(parent);
+}
+
+QGraphicsView* QGraphicsView_new2() {
 	return new QGraphicsView();
 }
 
-QGraphicsView* QGraphicsView_new2(QGraphicsScene* scene) {
+QGraphicsView* QGraphicsView_new3(QGraphicsScene* scene) {
 	return new QGraphicsView(scene);
-}
-
-QGraphicsView* QGraphicsView_new3(QWidget* parent) {
-	return new QGraphicsView(parent);
 }
 
 QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent) {

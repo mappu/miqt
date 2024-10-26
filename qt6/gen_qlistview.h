@@ -31,8 +31,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QListView* QListView_new();
-QListView* QListView_new2(QWidget* parent);
+QListView* QListView_new(QWidget* parent);
+QListView* QListView_new2();
 QMetaObject* QListView_MetaObject(const QListView* self);
 void* QListView_Metacast(QListView* self, const char* param1);
 struct miqt_string QListView_Tr(const char* s);

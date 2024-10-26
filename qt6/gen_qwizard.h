@@ -33,8 +33,8 @@ typedef struct QWizard QWizard;
 typedef struct QWizardPage QWizardPage;
 #endif
 
-QWizard* QWizard_new();
-QWizard* QWizard_new2(QWidget* parent);
+QWizard* QWizard_new(QWidget* parent);
+QWizard* QWizard_new2();
 QWizard* QWizard_new3(QWidget* parent, int flags);
 QMetaObject* QWizard_MetaObject(const QWizard* self);
 void* QWizard_Metacast(QWizard* self, const char* param1);
@@ -95,8 +95,8 @@ struct miqt_string QWizard_Tr3(const char* s, const char* c, int n);
 void QWizard_SetOption2(QWizard* self, int option, bool on);
 void QWizard_Delete(QWizard* self);
 
-QWizardPage* QWizardPage_new();
-QWizardPage* QWizardPage_new2(QWidget* parent);
+QWizardPage* QWizardPage_new(QWidget* parent);
+QWizardPage* QWizardPage_new2();
 QMetaObject* QWizardPage_MetaObject(const QWizardPage* self);
 void* QWizardPage_Metacast(QWizardPage* self, const char* param1);
 struct miqt_string QWizardPage_Tr(const char* s);

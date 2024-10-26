@@ -65,14 +65,14 @@ func UnsafeNewQComboBox(h unsafe.Pointer) *QComboBox {
 }
 
 // NewQComboBox constructs a new QComboBox object.
-func NewQComboBox() *QComboBox {
-	ret := C.QComboBox_new()
+func NewQComboBox(parent *QWidget) *QComboBox {
+	ret := C.QComboBox_new(parent.cPointer())
 	return newQComboBox(ret)
 }
 
 // NewQComboBox2 constructs a new QComboBox object.
-func NewQComboBox2(parent *QWidget) *QComboBox {
-	ret := C.QComboBox_new2(parent.cPointer())
+func NewQComboBox2() *QComboBox {
+	ret := C.QComboBox_new2()
 	return newQComboBox(ret)
 }
 

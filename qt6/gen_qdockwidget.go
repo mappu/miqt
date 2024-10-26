@@ -57,44 +57,44 @@ func UnsafeNewQDockWidget(h unsafe.Pointer) *QDockWidget {
 }
 
 // NewQDockWidget constructs a new QDockWidget object.
-func NewQDockWidget(title string) *QDockWidget {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QDockWidget_new(title_ms)
+func NewQDockWidget(parent *QWidget) *QDockWidget {
+	ret := C.QDockWidget_new(parent.cPointer())
 	return newQDockWidget(ret)
 }
 
 // NewQDockWidget2 constructs a new QDockWidget object.
-func NewQDockWidget2() *QDockWidget {
-	ret := C.QDockWidget_new2()
+func NewQDockWidget2(title string) *QDockWidget {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QDockWidget_new2(title_ms)
 	return newQDockWidget(ret)
 }
 
 // NewQDockWidget3 constructs a new QDockWidget object.
-func NewQDockWidget3(title string, parent *QWidget) *QDockWidget {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QDockWidget_new3(title_ms, parent.cPointer())
+func NewQDockWidget3() *QDockWidget {
+	ret := C.QDockWidget_new3()
 	return newQDockWidget(ret)
 }
 
 // NewQDockWidget4 constructs a new QDockWidget object.
-func NewQDockWidget4(title string, parent *QWidget, flags WindowType) *QDockWidget {
+func NewQDockWidget4(title string, parent *QWidget) *QDockWidget {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QDockWidget_new4(title_ms, parent.cPointer(), (C.int)(flags))
+	ret := C.QDockWidget_new4(title_ms, parent.cPointer())
 	return newQDockWidget(ret)
 }
 
 // NewQDockWidget5 constructs a new QDockWidget object.
-func NewQDockWidget5(parent *QWidget) *QDockWidget {
-	ret := C.QDockWidget_new5(parent.cPointer())
+func NewQDockWidget5(title string, parent *QWidget, flags WindowType) *QDockWidget {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QDockWidget_new5(title_ms, parent.cPointer(), (C.int)(flags))
 	return newQDockWidget(ret)
 }
 

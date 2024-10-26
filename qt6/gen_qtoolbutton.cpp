@@ -11,12 +11,12 @@
 #include "gen_qtoolbutton.h"
 #include "_cgo_export.h"
 
-QToolButton* QToolButton_new() {
-	return new QToolButton();
+QToolButton* QToolButton_new(QWidget* parent) {
+	return new QToolButton(parent);
 }
 
-QToolButton* QToolButton_new2(QWidget* parent) {
-	return new QToolButton(parent);
+QToolButton* QToolButton_new2() {
+	return new QToolButton();
 }
 
 QMetaObject* QToolButton_MetaObject(const QToolButton* self) {

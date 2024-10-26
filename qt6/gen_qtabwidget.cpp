@@ -11,12 +11,12 @@
 #include "gen_qtabwidget.h"
 #include "_cgo_export.h"
 
-QTabWidget* QTabWidget_new() {
-	return new QTabWidget();
+QTabWidget* QTabWidget_new(QWidget* parent) {
+	return new QTabWidget(parent);
 }
 
-QTabWidget* QTabWidget_new2(QWidget* parent) {
-	return new QTabWidget(parent);
+QTabWidget* QTabWidget_new2() {
+	return new QTabWidget();
 }
 
 QMetaObject* QTabWidget_MetaObject(const QTabWidget* self) {

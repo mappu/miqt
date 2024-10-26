@@ -97,32 +97,32 @@ func UnsafeNewQDialogButtonBox(h unsafe.Pointer) *QDialogButtonBox {
 }
 
 // NewQDialogButtonBox constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox() *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new()
+func NewQDialogButtonBox(parent *QWidget) *QDialogButtonBox {
+	ret := C.QDialogButtonBox_new(parent.cPointer())
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox2 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox2(orientation Orientation) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new2((C.int)(orientation))
+func NewQDialogButtonBox2() *QDialogButtonBox {
+	ret := C.QDialogButtonBox_new2()
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox3 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox3(buttons QDialogButtonBox__StandardButton) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new3((C.int)(buttons))
+func NewQDialogButtonBox3(orientation Orientation) *QDialogButtonBox {
+	ret := C.QDialogButtonBox_new3((C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox4 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox4(buttons QDialogButtonBox__StandardButton, orientation Orientation) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new4((C.int)(buttons), (C.int)(orientation))
+func NewQDialogButtonBox4(buttons QDialogButtonBox__StandardButton) *QDialogButtonBox {
+	ret := C.QDialogButtonBox_new4((C.int)(buttons))
 	return newQDialogButtonBox(ret)
 }
 
 // NewQDialogButtonBox5 constructs a new QDialogButtonBox object.
-func NewQDialogButtonBox5(parent *QWidget) *QDialogButtonBox {
-	ret := C.QDialogButtonBox_new5(parent.cPointer())
+func NewQDialogButtonBox5(buttons QDialogButtonBox__StandardButton, orientation Orientation) *QDialogButtonBox {
+	ret := C.QDialogButtonBox_new5((C.int)(buttons), (C.int)(orientation))
 	return newQDialogButtonBox(ret)
 }
 

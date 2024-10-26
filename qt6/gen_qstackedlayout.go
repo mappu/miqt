@@ -52,14 +52,14 @@ func UnsafeNewQStackedLayout(h unsafe.Pointer) *QStackedLayout {
 }
 
 // NewQStackedLayout constructs a new QStackedLayout object.
-func NewQStackedLayout() *QStackedLayout {
-	ret := C.QStackedLayout_new()
+func NewQStackedLayout(parent *QWidget) *QStackedLayout {
+	ret := C.QStackedLayout_new(parent.cPointer())
 	return newQStackedLayout(ret)
 }
 
 // NewQStackedLayout2 constructs a new QStackedLayout object.
-func NewQStackedLayout2(parent *QWidget) *QStackedLayout {
-	ret := C.QStackedLayout_new2(parent.cPointer())
+func NewQStackedLayout2() *QStackedLayout {
+	ret := C.QStackedLayout_new2()
 	return newQStackedLayout(ret)
 }
 

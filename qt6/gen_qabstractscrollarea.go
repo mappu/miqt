@@ -52,14 +52,14 @@ func UnsafeNewQAbstractScrollArea(h unsafe.Pointer) *QAbstractScrollArea {
 }
 
 // NewQAbstractScrollArea constructs a new QAbstractScrollArea object.
-func NewQAbstractScrollArea() *QAbstractScrollArea {
-	ret := C.QAbstractScrollArea_new()
+func NewQAbstractScrollArea(parent *QWidget) *QAbstractScrollArea {
+	ret := C.QAbstractScrollArea_new(parent.cPointer())
 	return newQAbstractScrollArea(ret)
 }
 
 // NewQAbstractScrollArea2 constructs a new QAbstractScrollArea object.
-func NewQAbstractScrollArea2(parent *QWidget) *QAbstractScrollArea {
-	ret := C.QAbstractScrollArea_new2(parent.cPointer())
+func NewQAbstractScrollArea2() *QAbstractScrollArea {
+	ret := C.QAbstractScrollArea_new2()
 	return newQAbstractScrollArea(ret)
 }
 

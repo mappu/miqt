@@ -44,14 +44,14 @@ func UnsafeNewQGridLayout(h unsafe.Pointer) *QGridLayout {
 }
 
 // NewQGridLayout constructs a new QGridLayout object.
-func NewQGridLayout() *QGridLayout {
-	ret := C.QGridLayout_new()
+func NewQGridLayout(parent *QWidget) *QGridLayout {
+	ret := C.QGridLayout_new(parent.cPointer())
 	return newQGridLayout(ret)
 }
 
 // NewQGridLayout2 constructs a new QGridLayout object.
-func NewQGridLayout2(parent *QWidget) *QGridLayout {
-	ret := C.QGridLayout_new2(parent.cPointer())
+func NewQGridLayout2() *QGridLayout {
+	ret := C.QGridLayout_new2()
 	return newQGridLayout(ret)
 }
 

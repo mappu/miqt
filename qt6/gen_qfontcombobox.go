@@ -55,14 +55,14 @@ func UnsafeNewQFontComboBox(h unsafe.Pointer) *QFontComboBox {
 }
 
 // NewQFontComboBox constructs a new QFontComboBox object.
-func NewQFontComboBox() *QFontComboBox {
-	ret := C.QFontComboBox_new()
+func NewQFontComboBox(parent *QWidget) *QFontComboBox {
+	ret := C.QFontComboBox_new(parent.cPointer())
 	return newQFontComboBox(ret)
 }
 
 // NewQFontComboBox2 constructs a new QFontComboBox object.
-func NewQFontComboBox2(parent *QWidget) *QFontComboBox {
-	ret := C.QFontComboBox_new2(parent.cPointer())
+func NewQFontComboBox2() *QFontComboBox {
+	ret := C.QFontComboBox_new2()
 	return newQFontComboBox(ret)
 }
 

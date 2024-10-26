@@ -12,12 +12,12 @@
 #include "gen_qstackedlayout.h"
 #include "_cgo_export.h"
 
-QStackedLayout* QStackedLayout_new() {
-	return new QStackedLayout();
+QStackedLayout* QStackedLayout_new(QWidget* parent) {
+	return new QStackedLayout(parent);
 }
 
-QStackedLayout* QStackedLayout_new2(QWidget* parent) {
-	return new QStackedLayout(parent);
+QStackedLayout* QStackedLayout_new2() {
+	return new QStackedLayout();
 }
 
 QStackedLayout* QStackedLayout_new3(QLayout* parentLayout) {

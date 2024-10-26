@@ -45,14 +45,14 @@ func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
 }
 
 // NewQColumnView constructs a new QColumnView object.
-func NewQColumnView() *QColumnView {
-	ret := C.QColumnView_new()
+func NewQColumnView(parent *QWidget) *QColumnView {
+	ret := C.QColumnView_new(parent.cPointer())
 	return newQColumnView(ret)
 }
 
 // NewQColumnView2 constructs a new QColumnView object.
-func NewQColumnView2(parent *QWidget) *QColumnView {
-	ret := C.QColumnView_new2(parent.cPointer())
+func NewQColumnView2() *QColumnView {
+	ret := C.QColumnView_new2()
 	return newQColumnView(ret)
 }
 

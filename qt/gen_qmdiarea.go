@@ -66,14 +66,14 @@ func UnsafeNewQMdiArea(h unsafe.Pointer) *QMdiArea {
 }
 
 // NewQMdiArea constructs a new QMdiArea object.
-func NewQMdiArea() *QMdiArea {
-	ret := C.QMdiArea_new()
+func NewQMdiArea(parent *QWidget) *QMdiArea {
+	ret := C.QMdiArea_new(parent.cPointer())
 	return newQMdiArea(ret)
 }
 
 // NewQMdiArea2 constructs a new QMdiArea object.
-func NewQMdiArea2(parent *QWidget) *QMdiArea {
-	ret := C.QMdiArea_new2(parent.cPointer())
+func NewQMdiArea2() *QMdiArea {
+	ret := C.QMdiArea_new2()
 	return newQMdiArea(ret)
 }
 

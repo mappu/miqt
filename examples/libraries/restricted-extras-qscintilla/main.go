@@ -11,7 +11,7 @@ func main() {
 
 	qt.NewQApplication(os.Args)
 
-	area := qscintilla.NewQsciScintilla()
+	area := qscintilla.NewQsciScintilla2()
 	area.SetFixedSize2(640, 480)
 	area.Show()
 

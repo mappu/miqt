@@ -25,9 +25,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QKeySequenceEdit* QKeySequenceEdit_new();
-QKeySequenceEdit* QKeySequenceEdit_new2(QKeySequence* keySequence);
-QKeySequenceEdit* QKeySequenceEdit_new3(QWidget* parent);
+QKeySequenceEdit* QKeySequenceEdit_new(QWidget* parent);
+QKeySequenceEdit* QKeySequenceEdit_new2();
+QKeySequenceEdit* QKeySequenceEdit_new3(QKeySequence* keySequence);
 QKeySequenceEdit* QKeySequenceEdit_new4(QKeySequence* keySequence, QWidget* parent);
 QMetaObject* QKeySequenceEdit_MetaObject(const QKeySequenceEdit* self);
 void* QKeySequenceEdit_Metacast(QKeySequenceEdit* self, const char* param1);

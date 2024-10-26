@@ -23,10 +23,10 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QCommandLinkButton* QCommandLinkButton_new();
-QCommandLinkButton* QCommandLinkButton_new2(struct miqt_string text);
-QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string text, struct miqt_string description);
-QCommandLinkButton* QCommandLinkButton_new4(QWidget* parent);
+QCommandLinkButton* QCommandLinkButton_new(QWidget* parent);
+QCommandLinkButton* QCommandLinkButton_new2();
+QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string text);
+QCommandLinkButton* QCommandLinkButton_new4(struct miqt_string text, struct miqt_string description);
 QCommandLinkButton* QCommandLinkButton_new5(struct miqt_string text, QWidget* parent);
 QCommandLinkButton* QCommandLinkButton_new6(struct miqt_string text, struct miqt_string description, QWidget* parent);
 QMetaObject* QCommandLinkButton_MetaObject(const QCommandLinkButton* self);

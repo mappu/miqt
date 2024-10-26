@@ -12,12 +12,12 @@
 #include "gen_qcalendarwidget.h"
 #include "_cgo_export.h"
 
-QCalendarWidget* QCalendarWidget_new() {
-	return new QCalendarWidget();
+QCalendarWidget* QCalendarWidget_new(QWidget* parent) {
+	return new QCalendarWidget(parent);
 }
 
-QCalendarWidget* QCalendarWidget_new2(QWidget* parent) {
-	return new QCalendarWidget(parent);
+QCalendarWidget* QCalendarWidget_new2() {
+	return new QCalendarWidget();
 }
 
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self) {

@@ -11,20 +11,20 @@
 #include "gen_qundoview.h"
 #include "_cgo_export.h"
 
-QUndoView* QUndoView_new() {
+QUndoView* QUndoView_new(QWidget* parent) {
+	return new QUndoView(parent);
+}
+
+QUndoView* QUndoView_new2() {
 	return new QUndoView();
 }
 
-QUndoView* QUndoView_new2(QUndoStack* stack) {
+QUndoView* QUndoView_new3(QUndoStack* stack) {
 	return new QUndoView(stack);
 }
 
-QUndoView* QUndoView_new3(QUndoGroup* group) {
+QUndoView* QUndoView_new4(QUndoGroup* group) {
 	return new QUndoView(group);
-}
-
-QUndoView* QUndoView_new4(QWidget* parent) {
-	return new QUndoView(parent);
 }
 
 QUndoView* QUndoView_new5(QUndoStack* stack, QWidget* parent) {

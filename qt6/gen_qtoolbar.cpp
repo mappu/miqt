@@ -12,22 +12,22 @@
 #include "gen_qtoolbar.h"
 #include "_cgo_export.h"
 
-QToolBar* QToolBar_new(struct miqt_string title) {
+QToolBar* QToolBar_new(QWidget* parent) {
+	return new QToolBar(parent);
+}
+
+QToolBar* QToolBar_new2(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QToolBar(title_QString);
 }
 
-QToolBar* QToolBar_new2() {
+QToolBar* QToolBar_new3() {
 	return new QToolBar();
 }
 
-QToolBar* QToolBar_new3(struct miqt_string title, QWidget* parent) {
+QToolBar* QToolBar_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QToolBar(title_QString, parent);
-}
-
-QToolBar* QToolBar_new4(QWidget* parent) {
-	return new QToolBar(parent);
 }
 
 QMetaObject* QToolBar_MetaObject(const QToolBar* self) {

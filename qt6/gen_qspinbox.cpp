@@ -9,12 +9,12 @@
 #include "gen_qspinbox.h"
 #include "_cgo_export.h"
 
-QSpinBox* QSpinBox_new() {
-	return new QSpinBox();
+QSpinBox* QSpinBox_new(QWidget* parent) {
+	return new QSpinBox(parent);
 }
 
-QSpinBox* QSpinBox_new2(QWidget* parent) {
-	return new QSpinBox(parent);
+QSpinBox* QSpinBox_new2() {
+	return new QSpinBox();
 }
 
 QMetaObject* QSpinBox_MetaObject(const QSpinBox* self) {
@@ -188,12 +188,12 @@ void QSpinBox_Delete(QSpinBox* self) {
 	delete self;
 }
 
-QDoubleSpinBox* QDoubleSpinBox_new() {
-	return new QDoubleSpinBox();
+QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent) {
+	return new QDoubleSpinBox(parent);
 }
 
-QDoubleSpinBox* QDoubleSpinBox_new2(QWidget* parent) {
-	return new QDoubleSpinBox(parent);
+QDoubleSpinBox* QDoubleSpinBox_new2() {
+	return new QDoubleSpinBox();
 }
 
 QMetaObject* QDoubleSpinBox_MetaObject(const QDoubleSpinBox* self) {

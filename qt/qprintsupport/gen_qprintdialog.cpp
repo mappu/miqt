@@ -9,20 +9,20 @@
 #include "gen_qprintdialog.h"
 #include "_cgo_export.h"
 
-QPrintDialog* QPrintDialog_new(QPrinter* printer) {
+QPrintDialog* QPrintDialog_new(QWidget* parent) {
+	return new QPrintDialog(parent);
+}
+
+QPrintDialog* QPrintDialog_new2(QPrinter* printer) {
 	return new QPrintDialog(printer);
 }
 
-QPrintDialog* QPrintDialog_new2() {
+QPrintDialog* QPrintDialog_new3() {
 	return new QPrintDialog();
 }
 
-QPrintDialog* QPrintDialog_new3(QPrinter* printer, QWidget* parent) {
+QPrintDialog* QPrintDialog_new4(QPrinter* printer, QWidget* parent) {
 	return new QPrintDialog(printer, parent);
-}
-
-QPrintDialog* QPrintDialog_new4(QWidget* parent) {
-	return new QPrintDialog(parent);
 }
 
 QMetaObject* QPrintDialog_MetaObject(const QPrintDialog* self) {

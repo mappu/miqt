@@ -31,10 +31,10 @@ typedef struct QToolBar QToolBar;
 typedef struct QWidget QWidget;
 #endif
 
-QToolBar* QToolBar_new(struct miqt_string title);
-QToolBar* QToolBar_new2();
-QToolBar* QToolBar_new3(struct miqt_string title, QWidget* parent);
-QToolBar* QToolBar_new4(QWidget* parent);
+QToolBar* QToolBar_new(QWidget* parent);
+QToolBar* QToolBar_new2(struct miqt_string title);
+QToolBar* QToolBar_new3();
+QToolBar* QToolBar_new4(struct miqt_string title, QWidget* parent);
 QMetaObject* QToolBar_MetaObject(const QToolBar* self);
 void* QToolBar_Metacast(QToolBar* self, const char* param1);
 struct miqt_string QToolBar_Tr(const char* s);

@@ -25,9 +25,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QFontDialog* QFontDialog_new();
-QFontDialog* QFontDialog_new2(QFont* initial);
-QFontDialog* QFontDialog_new3(QWidget* parent);
+QFontDialog* QFontDialog_new(QWidget* parent);
+QFontDialog* QFontDialog_new2();
+QFontDialog* QFontDialog_new3(QFont* initial);
 QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent);
 QMetaObject* QFontDialog_MetaObject(const QFontDialog* self);
 void* QFontDialog_Metacast(QFontDialog* self, const char* param1);

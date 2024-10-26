@@ -430,12 +430,12 @@ void QTreeWidgetItem_Delete(QTreeWidgetItem* self) {
 	delete self;
 }
 
-QTreeWidget* QTreeWidget_new() {
-	return new QTreeWidget();
+QTreeWidget* QTreeWidget_new(QWidget* parent) {
+	return new QTreeWidget(parent);
 }
 
-QTreeWidget* QTreeWidget_new2(QWidget* parent) {
-	return new QTreeWidget(parent);
+QTreeWidget* QTreeWidget_new2() {
+	return new QTreeWidget();
 }
 
 QMetaObject* QTreeWidget_MetaObject(const QTreeWidget* self) {

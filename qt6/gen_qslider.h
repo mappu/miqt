@@ -27,9 +27,9 @@ typedef struct QSlider QSlider;
 typedef struct QWidget QWidget;
 #endif
 
-QSlider* QSlider_new();
-QSlider* QSlider_new2(int orientation);
-QSlider* QSlider_new3(QWidget* parent);
+QSlider* QSlider_new(QWidget* parent);
+QSlider* QSlider_new2();
+QSlider* QSlider_new3(int orientation);
 QSlider* QSlider_new4(int orientation, QWidget* parent);
 QMetaObject* QSlider_MetaObject(const QSlider* self);
 void* QSlider_Metacast(QSlider* self, const char* param1);

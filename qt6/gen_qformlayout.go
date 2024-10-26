@@ -68,14 +68,14 @@ func UnsafeNewQFormLayout(h unsafe.Pointer) *QFormLayout {
 }
 
 // NewQFormLayout constructs a new QFormLayout object.
-func NewQFormLayout() *QFormLayout {
-	ret := C.QFormLayout_new()
+func NewQFormLayout(parent *QWidget) *QFormLayout {
+	ret := C.QFormLayout_new(parent.cPointer())
 	return newQFormLayout(ret)
 }
 
 // NewQFormLayout2 constructs a new QFormLayout object.
-func NewQFormLayout2(parent *QWidget) *QFormLayout {
-	ret := C.QFormLayout_new2(parent.cPointer())
+func NewQFormLayout2() *QFormLayout {
+	ret := C.QFormLayout_new2()
 	return newQFormLayout(ret)
 }
 

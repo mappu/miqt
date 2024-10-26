@@ -56,14 +56,14 @@ func UnsafeNewQMainWindow(h unsafe.Pointer) *QMainWindow {
 }
 
 // NewQMainWindow constructs a new QMainWindow object.
-func NewQMainWindow() *QMainWindow {
-	ret := C.QMainWindow_new()
+func NewQMainWindow(parent *QWidget) *QMainWindow {
+	ret := C.QMainWindow_new(parent.cPointer())
 	return newQMainWindow(ret)
 }
 
 // NewQMainWindow2 constructs a new QMainWindow object.
-func NewQMainWindow2(parent *QWidget) *QMainWindow {
-	ret := C.QMainWindow_new2(parent.cPointer())
+func NewQMainWindow2() *QMainWindow {
+	ret := C.QMainWindow_new2()
 	return newQMainWindow(ret)
 }
 

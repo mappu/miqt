@@ -14,12 +14,12 @@
 #include "gen_qtabbar.h"
 #include "_cgo_export.h"
 
-QTabBar* QTabBar_new() {
-	return new QTabBar();
+QTabBar* QTabBar_new(QWidget* parent) {
+	return new QTabBar(parent);
 }
 
-QTabBar* QTabBar_new2(QWidget* parent) {
-	return new QTabBar(parent);
+QTabBar* QTabBar_new2() {
+	return new QTabBar();
 }
 
 QMetaObject* QTabBar_MetaObject(const QTabBar* self) {

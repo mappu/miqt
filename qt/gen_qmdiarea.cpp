@@ -12,12 +12,12 @@
 #include "gen_qmdiarea.h"
 #include "_cgo_export.h"
 
-QMdiArea* QMdiArea_new() {
-	return new QMdiArea();
+QMdiArea* QMdiArea_new(QWidget* parent) {
+	return new QMdiArea(parent);
 }
 
-QMdiArea* QMdiArea_new2(QWidget* parent) {
-	return new QMdiArea(parent);
+QMdiArea* QMdiArea_new2() {
+	return new QMdiArea();
 }
 
 QMetaObject* QMdiArea_MetaObject(const QMdiArea* self) {

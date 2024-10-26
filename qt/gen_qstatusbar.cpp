@@ -8,12 +8,12 @@
 #include "gen_qstatusbar.h"
 #include "_cgo_export.h"
 
-QStatusBar* QStatusBar_new() {
-	return new QStatusBar();
+QStatusBar* QStatusBar_new(QWidget* parent) {
+	return new QStatusBar(parent);
 }
 
-QStatusBar* QStatusBar_new2(QWidget* parent) {
-	return new QStatusBar(parent);
+QStatusBar* QStatusBar_new2() {
+	return new QStatusBar();
 }
 
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self) {

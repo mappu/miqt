@@ -29,8 +29,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QMdiSubWindow* QMdiSubWindow_new();
-QMdiSubWindow* QMdiSubWindow_new2(QWidget* parent);
+QMdiSubWindow* QMdiSubWindow_new(QWidget* parent);
+QMdiSubWindow* QMdiSubWindow_new2();
 QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self);
 void* QMdiSubWindow_Metacast(QMdiSubWindow* self, const char* param1);

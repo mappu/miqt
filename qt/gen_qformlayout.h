@@ -37,8 +37,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QFormLayout* QFormLayout_new();
-QFormLayout* QFormLayout_new2(QWidget* parent);
+QFormLayout* QFormLayout_new(QWidget* parent);
+QFormLayout* QFormLayout_new2();
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self);
 void* QFormLayout_Metacast(QFormLayout* self, const char* param1);
 struct miqt_string QFormLayout_Tr(const char* s);

@@ -34,19 +34,19 @@ type AppTab struct {
 func NewAppTab() *AppTab {
 	var ret AppTab
 
-	tab := qt.NewQWidget()
+	tab := qt.NewQWidget2()
 	ret.tab = tab
 
-	layout := qt.NewQHBoxLayout2(tab)
+	layout := qt.NewQHBoxLayout(tab)
 
-	panes := qt.NewQSplitter()
+	panes := qt.NewQSplitter2()
 	layout.AddWidget(panes.QWidget)
 
-	ret.outline = qt.NewQListWidget2(tab)
+	ret.outline = qt.NewQListWidget(tab)
 	panes.AddWidget(ret.outline.QWidget)
 	ret.outline.OnCurrentItemChanged(ret.handleJumpToBookmark)
 
-	ret.textArea = qt.NewQTextEdit3(tab)
+	ret.textArea = qt.NewQTextEdit(tab)
 	ret.textArea.OnTextChanged(ret.handleTextChanged)
 
 	panes.AddWidget(ret.textArea.QWidget)
@@ -60,12 +60,12 @@ func NewAppWindow() *AppWindow {
 
 	ret := AppWindow{}
 
-	ret.w = qt.NewQMainWindow()
+	ret.w = qt.NewQMainWindow2()
 	ret.w.SetWindowTitle("Markdown Outliner")
 
 	// Menu
 
-	mnu := qt.NewQMenuBar()
+	mnu := qt.NewQMenuBar2()
 	fileMenu := mnu.AddMenuWithTitle("&File")
 
 	newtab := fileMenu.AddAction("New Tab")
@@ -98,7 +98,7 @@ func NewAppWindow() *AppWindow {
 
 	// Main widgets
 
-	ret.tabs = qt.NewQTabWidget2(ret.w.QWidget)
+	ret.tabs = qt.NewQTabWidget(ret.w.QWidget)
 	ret.tabs.SetTabsClosable(true)
 	ret.tabs.OnTabCloseRequested(func(index int) {
 		ret.handleTabClose(index)

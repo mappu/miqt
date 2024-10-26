@@ -44,14 +44,14 @@ func UnsafeNewQErrorMessage(h unsafe.Pointer) *QErrorMessage {
 }
 
 // NewQErrorMessage constructs a new QErrorMessage object.
-func NewQErrorMessage() *QErrorMessage {
-	ret := C.QErrorMessage_new()
+func NewQErrorMessage(parent *QWidget) *QErrorMessage {
+	ret := C.QErrorMessage_new(parent.cPointer())
 	return newQErrorMessage(ret)
 }
 
 // NewQErrorMessage2 constructs a new QErrorMessage object.
-func NewQErrorMessage2(parent *QWidget) *QErrorMessage {
-	ret := C.QErrorMessage_new2(parent.cPointer())
+func NewQErrorMessage2() *QErrorMessage {
+	ret := C.QErrorMessage_new2()
 	return newQErrorMessage(ret)
 }
 

@@ -298,16 +298,16 @@ void QTableWidgetItem_Delete(QTableWidgetItem* self) {
 	delete self;
 }
 
-QTableWidget* QTableWidget_new() {
+QTableWidget* QTableWidget_new(QWidget* parent) {
+	return new QTableWidget(parent);
+}
+
+QTableWidget* QTableWidget_new2() {
 	return new QTableWidget();
 }
 
-QTableWidget* QTableWidget_new2(int rows, int columns) {
+QTableWidget* QTableWidget_new3(int rows, int columns) {
 	return new QTableWidget(static_cast<int>(rows), static_cast<int>(columns));
-}
-
-QTableWidget* QTableWidget_new3(QWidget* parent) {
-	return new QTableWidget(parent);
 }
 
 QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent) {

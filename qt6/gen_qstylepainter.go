@@ -44,14 +44,14 @@ func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
 }
 
 // NewQStylePainter constructs a new QStylePainter object.
-func NewQStylePainter() *QStylePainter {
-	ret := C.QStylePainter_new()
+func NewQStylePainter(w *QWidget) *QStylePainter {
+	ret := C.QStylePainter_new(w.cPointer())
 	return newQStylePainter(ret)
 }
 
 // NewQStylePainter2 constructs a new QStylePainter object.
-func NewQStylePainter2(w *QWidget) *QStylePainter {
-	ret := C.QStylePainter_new2(w.cPointer())
+func NewQStylePainter2() *QStylePainter {
+	ret := C.QStylePainter_new2()
 	return newQStylePainter(ret)
 }
 

@@ -44,14 +44,14 @@ func UnsafeNewQTableView(h unsafe.Pointer) *QTableView {
 }
 
 // NewQTableView constructs a new QTableView object.
-func NewQTableView() *QTableView {
-	ret := C.QTableView_new()
+func NewQTableView(parent *QWidget) *QTableView {
+	ret := C.QTableView_new(parent.cPointer())
 	return newQTableView(ret)
 }
 
 // NewQTableView2 constructs a new QTableView object.
-func NewQTableView2(parent *QWidget) *QTableView {
-	ret := C.QTableView_new2(parent.cPointer())
+func NewQTableView2() *QTableView {
+	ret := C.QTableView_new2()
 	return newQTableView(ret)
 }
 

@@ -15,16 +15,16 @@
 #include "gen_qfiledialog.h"
 #include "_cgo_export.h"
 
-QFileDialog* QFileDialog_new(QWidget* parent, int f) {
+QFileDialog* QFileDialog_new(QWidget* parent) {
+	return new QFileDialog(parent);
+}
+
+QFileDialog* QFileDialog_new2(QWidget* parent, int f) {
 	return new QFileDialog(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-QFileDialog* QFileDialog_new2() {
+QFileDialog* QFileDialog_new3() {
 	return new QFileDialog();
-}
-
-QFileDialog* QFileDialog_new3(QWidget* parent) {
-	return new QFileDialog(parent);
 }
 
 QFileDialog* QFileDialog_new4(QWidget* parent, struct miqt_string caption) {

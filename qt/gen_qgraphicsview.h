@@ -49,9 +49,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QGraphicsView* QGraphicsView_new();
-QGraphicsView* QGraphicsView_new2(QGraphicsScene* scene);
-QGraphicsView* QGraphicsView_new3(QWidget* parent);
+QGraphicsView* QGraphicsView_new(QWidget* parent);
+QGraphicsView* QGraphicsView_new2();
+QGraphicsView* QGraphicsView_new3(QGraphicsScene* scene);
 QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent);
 QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self);
 void* QGraphicsView_Metacast(QGraphicsView* self, const char* param1);

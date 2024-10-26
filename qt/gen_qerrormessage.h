@@ -23,8 +23,8 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QErrorMessage* QErrorMessage_new();
-QErrorMessage* QErrorMessage_new2(QWidget* parent);
+QErrorMessage* QErrorMessage_new(QWidget* parent);
+QErrorMessage* QErrorMessage_new2();
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self);
 void* QErrorMessage_Metacast(QErrorMessage* self, const char* param1);
 struct miqt_string QErrorMessage_Tr(const char* s);

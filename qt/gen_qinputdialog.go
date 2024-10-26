@@ -61,14 +61,14 @@ func UnsafeNewQInputDialog(h unsafe.Pointer) *QInputDialog {
 }
 
 // NewQInputDialog constructs a new QInputDialog object.
-func NewQInputDialog() *QInputDialog {
-	ret := C.QInputDialog_new()
+func NewQInputDialog(parent *QWidget) *QInputDialog {
+	ret := C.QInputDialog_new(parent.cPointer())
 	return newQInputDialog(ret)
 }
 
 // NewQInputDialog2 constructs a new QInputDialog object.
-func NewQInputDialog2(parent *QWidget) *QInputDialog {
-	ret := C.QInputDialog_new2(parent.cPointer())
+func NewQInputDialog2() *QInputDialog {
+	ret := C.QInputDialog_new2()
 	return newQInputDialog(ret)
 }
 

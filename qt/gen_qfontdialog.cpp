@@ -9,16 +9,16 @@
 #include "gen_qfontdialog.h"
 #include "_cgo_export.h"
 
-QFontDialog* QFontDialog_new() {
+QFontDialog* QFontDialog_new(QWidget* parent) {
+	return new QFontDialog(parent);
+}
+
+QFontDialog* QFontDialog_new2() {
 	return new QFontDialog();
 }
 
-QFontDialog* QFontDialog_new2(QFont* initial) {
+QFontDialog* QFontDialog_new3(QFont* initial) {
 	return new QFontDialog(*initial);
-}
-
-QFontDialog* QFontDialog_new3(QWidget* parent) {
-	return new QFontDialog(parent);
 }
 
 QFontDialog* QFontDialog_new4(QFont* initial, QWidget* parent) {

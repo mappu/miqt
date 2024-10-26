@@ -55,20 +55,20 @@ func UnsafeNewQSlider(h unsafe.Pointer) *QSlider {
 }
 
 // NewQSlider constructs a new QSlider object.
-func NewQSlider() *QSlider {
-	ret := C.QSlider_new()
+func NewQSlider(parent *QWidget) *QSlider {
+	ret := C.QSlider_new(parent.cPointer())
 	return newQSlider(ret)
 }
 
 // NewQSlider2 constructs a new QSlider object.
-func NewQSlider2(orientation Orientation) *QSlider {
-	ret := C.QSlider_new2((C.int)(orientation))
+func NewQSlider2() *QSlider {
+	ret := C.QSlider_new2()
 	return newQSlider(ret)
 }
 
 // NewQSlider3 constructs a new QSlider object.
-func NewQSlider3(parent *QWidget) *QSlider {
-	ret := C.QSlider_new3(parent.cPointer())
+func NewQSlider3(orientation Orientation) *QSlider {
+	ret := C.QSlider_new3((C.int)(orientation))
 	return newQSlider(ret)
 }
 

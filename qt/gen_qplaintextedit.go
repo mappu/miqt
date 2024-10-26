@@ -52,24 +52,24 @@ func UnsafeNewQPlainTextEdit(h unsafe.Pointer) *QPlainTextEdit {
 }
 
 // NewQPlainTextEdit constructs a new QPlainTextEdit object.
-func NewQPlainTextEdit() *QPlainTextEdit {
-	ret := C.QPlainTextEdit_new()
+func NewQPlainTextEdit(parent *QWidget) *QPlainTextEdit {
+	ret := C.QPlainTextEdit_new(parent.cPointer())
 	return newQPlainTextEdit(ret)
 }
 
 // NewQPlainTextEdit2 constructs a new QPlainTextEdit object.
-func NewQPlainTextEdit2(text string) *QPlainTextEdit {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QPlainTextEdit_new2(text_ms)
+func NewQPlainTextEdit2() *QPlainTextEdit {
+	ret := C.QPlainTextEdit_new2()
 	return newQPlainTextEdit(ret)
 }
 
 // NewQPlainTextEdit3 constructs a new QPlainTextEdit object.
-func NewQPlainTextEdit3(parent *QWidget) *QPlainTextEdit {
-	ret := C.QPlainTextEdit_new3(parent.cPointer())
+func NewQPlainTextEdit3(text string) *QPlainTextEdit {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QPlainTextEdit_new3(text_ms)
 	return newQPlainTextEdit(ret)
 }
 

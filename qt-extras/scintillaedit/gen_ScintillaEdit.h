@@ -506,8 +506,8 @@ void Sci_NotifyHeader_Delete(Sci_NotifyHeader* self);
 
 void SCNotification_Delete(SCNotification* self);
 
-ScintillaEditBase* ScintillaEditBase_new();
-ScintillaEditBase* ScintillaEditBase_new2(QWidget* parent);
+ScintillaEditBase* ScintillaEditBase_new(QWidget* parent);
+ScintillaEditBase* ScintillaEditBase_new2();
 QMetaObject* ScintillaEditBase_MetaObject(const ScintillaEditBase* self);
 void* ScintillaEditBase_Metacast(ScintillaEditBase* self, const char* param1);
 struct miqt_string ScintillaEditBase_Tr(const char* s);
@@ -666,8 +666,8 @@ struct miqt_string ScintillaDocument_TrUtf83(const char* s, const char* c, int n
 void ScintillaDocument_BeginUndoAction1(ScintillaDocument* self, bool coalesceWithPrior);
 void ScintillaDocument_Delete(ScintillaDocument* self);
 
-ScintillaEdit* ScintillaEdit_new();
-ScintillaEdit* ScintillaEdit_new2(QWidget* parent);
+ScintillaEdit* ScintillaEdit_new(QWidget* parent);
+ScintillaEdit* ScintillaEdit_new2();
 QMetaObject* ScintillaEdit_MetaObject(const ScintillaEdit* self);
 void* ScintillaEdit_Metacast(ScintillaEdit* self, const char* param1);
 struct miqt_string ScintillaEdit_Tr(const char* s);

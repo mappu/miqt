@@ -61,24 +61,24 @@ func UnsafeNewQLineEdit(h unsafe.Pointer) *QLineEdit {
 }
 
 // NewQLineEdit constructs a new QLineEdit object.
-func NewQLineEdit() *QLineEdit {
-	ret := C.QLineEdit_new()
+func NewQLineEdit(parent *QWidget) *QLineEdit {
+	ret := C.QLineEdit_new(parent.cPointer())
 	return newQLineEdit(ret)
 }
 
 // NewQLineEdit2 constructs a new QLineEdit object.
-func NewQLineEdit2(param1 string) *QLineEdit {
-	param1_ms := C.struct_miqt_string{}
-	param1_ms.data = C.CString(param1)
-	param1_ms.len = C.size_t(len(param1))
-	defer C.free(unsafe.Pointer(param1_ms.data))
-	ret := C.QLineEdit_new2(param1_ms)
+func NewQLineEdit2() *QLineEdit {
+	ret := C.QLineEdit_new2()
 	return newQLineEdit(ret)
 }
 
 // NewQLineEdit3 constructs a new QLineEdit object.
-func NewQLineEdit3(parent *QWidget) *QLineEdit {
-	ret := C.QLineEdit_new3(parent.cPointer())
+func NewQLineEdit3(param1 string) *QLineEdit {
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	ret := C.QLineEdit_new3(param1_ms)
 	return newQLineEdit(ret)
 }
 

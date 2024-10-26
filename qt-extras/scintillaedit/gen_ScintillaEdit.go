@@ -4413,14 +4413,14 @@ func UnsafeNewScintillaEditBase(h unsafe.Pointer) *ScintillaEditBase {
 }
 
 // NewScintillaEditBase constructs a new ScintillaEditBase object.
-func NewScintillaEditBase() *ScintillaEditBase {
-	ret := C.ScintillaEditBase_new()
+func NewScintillaEditBase(parent *qt.QWidget) *ScintillaEditBase {
+	ret := C.ScintillaEditBase_new((*C.QWidget)(parent.UnsafePointer()))
 	return newScintillaEditBase(ret)
 }
 
 // NewScintillaEditBase2 constructs a new ScintillaEditBase object.
-func NewScintillaEditBase2(parent *qt.QWidget) *ScintillaEditBase {
-	ret := C.ScintillaEditBase_new2((*C.QWidget)(parent.UnsafePointer()))
+func NewScintillaEditBase2() *ScintillaEditBase {
+	ret := C.ScintillaEditBase_new2()
 	return newScintillaEditBase(ret)
 }
 
@@ -5785,14 +5785,14 @@ func UnsafeNewScintillaEdit(h unsafe.Pointer) *ScintillaEdit {
 }
 
 // NewScintillaEdit constructs a new ScintillaEdit object.
-func NewScintillaEdit() *ScintillaEdit {
-	ret := C.ScintillaEdit_new()
+func NewScintillaEdit(parent *qt.QWidget) *ScintillaEdit {
+	ret := C.ScintillaEdit_new((*C.QWidget)(parent.UnsafePointer()))
 	return newScintillaEdit(ret)
 }
 
 // NewScintillaEdit2 constructs a new ScintillaEdit object.
-func NewScintillaEdit2(parent *qt.QWidget) *ScintillaEdit {
-	ret := C.ScintillaEdit_new2((*C.QWidget)(parent.UnsafePointer()))
+func NewScintillaEdit2() *ScintillaEdit {
+	ret := C.ScintillaEdit_new2()
 	return newScintillaEdit(ret)
 }
 

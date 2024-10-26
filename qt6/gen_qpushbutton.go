@@ -44,34 +44,34 @@ func UnsafeNewQPushButton(h unsafe.Pointer) *QPushButton {
 }
 
 // NewQPushButton constructs a new QPushButton object.
-func NewQPushButton() *QPushButton {
-	ret := C.QPushButton_new()
+func NewQPushButton(parent *QWidget) *QPushButton {
+	ret := C.QPushButton_new(parent.cPointer())
 	return newQPushButton(ret)
 }
 
 // NewQPushButton2 constructs a new QPushButton object.
-func NewQPushButton2(text string) *QPushButton {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QPushButton_new2(text_ms)
+func NewQPushButton2() *QPushButton {
+	ret := C.QPushButton_new2()
 	return newQPushButton(ret)
 }
 
 // NewQPushButton3 constructs a new QPushButton object.
-func NewQPushButton3(icon *QIcon, text string) *QPushButton {
+func NewQPushButton3(text string) *QPushButton {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QPushButton_new3(icon.cPointer(), text_ms)
+	ret := C.QPushButton_new3(text_ms)
 	return newQPushButton(ret)
 }
 
 // NewQPushButton4 constructs a new QPushButton object.
-func NewQPushButton4(parent *QWidget) *QPushButton {
-	ret := C.QPushButton_new4(parent.cPointer())
+func NewQPushButton4(icon *QIcon, text string) *QPushButton {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QPushButton_new4(icon.cPointer(), text_ms)
 	return newQPushButton(ret)
 }
 

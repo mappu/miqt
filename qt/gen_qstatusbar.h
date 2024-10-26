@@ -23,8 +23,8 @@ typedef struct QStatusBar QStatusBar;
 typedef struct QWidget QWidget;
 #endif
 
-QStatusBar* QStatusBar_new();
-QStatusBar* QStatusBar_new2(QWidget* parent);
+QStatusBar* QStatusBar_new(QWidget* parent);
+QStatusBar* QStatusBar_new2();
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self);
 void* QStatusBar_Metacast(QStatusBar* self, const char* param1);
 struct miqt_string QStatusBar_Tr(const char* s);
