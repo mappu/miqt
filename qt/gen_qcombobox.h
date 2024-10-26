@@ -45,8 +45,8 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QComboBox* QComboBox_new();
-QComboBox* QComboBox_new2(QWidget* parent);
+QComboBox* QComboBox_new(QWidget* parent);
+QComboBox* QComboBox_new2();
 QMetaObject* QComboBox_MetaObject(const QComboBox* self);
 void* QComboBox_Metacast(QComboBox* self, const char* param1);
 struct miqt_string QComboBox_Tr(const char* s);

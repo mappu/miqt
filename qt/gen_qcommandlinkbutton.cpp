@@ -8,23 +8,23 @@
 #include "gen_qcommandlinkbutton.h"
 #include "_cgo_export.h"
 
-QCommandLinkButton* QCommandLinkButton_new() {
+QCommandLinkButton* QCommandLinkButton_new(QWidget* parent) {
+	return new QCommandLinkButton(parent);
+}
+
+QCommandLinkButton* QCommandLinkButton_new2() {
 	return new QCommandLinkButton();
 }
 
-QCommandLinkButton* QCommandLinkButton_new2(struct miqt_string text) {
+QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QCommandLinkButton(text_QString);
 }
 
-QCommandLinkButton* QCommandLinkButton_new3(struct miqt_string text, struct miqt_string description) {
+QCommandLinkButton* QCommandLinkButton_new4(struct miqt_string text, struct miqt_string description) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	return new QCommandLinkButton(text_QString, description_QString);
-}
-
-QCommandLinkButton* QCommandLinkButton_new4(QWidget* parent) {
-	return new QCommandLinkButton(parent);
 }
 
 QCommandLinkButton* QCommandLinkButton_new5(struct miqt_string text, QWidget* parent) {

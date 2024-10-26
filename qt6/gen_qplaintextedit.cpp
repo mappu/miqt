@@ -28,17 +28,17 @@
 #include "gen_qplaintextedit.h"
 #include "_cgo_export.h"
 
-QPlainTextEdit* QPlainTextEdit_new() {
+QPlainTextEdit* QPlainTextEdit_new(QWidget* parent) {
+	return new QPlainTextEdit(parent);
+}
+
+QPlainTextEdit* QPlainTextEdit_new2() {
 	return new QPlainTextEdit();
 }
 
-QPlainTextEdit* QPlainTextEdit_new2(struct miqt_string text) {
+QPlainTextEdit* QPlainTextEdit_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QPlainTextEdit(text_QString);
-}
-
-QPlainTextEdit* QPlainTextEdit_new3(QWidget* parent) {
-	return new QPlainTextEdit(parent);
 }
 
 QPlainTextEdit* QPlainTextEdit_new4(struct miqt_string text, QWidget* parent) {

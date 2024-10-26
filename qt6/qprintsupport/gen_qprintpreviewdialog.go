@@ -46,20 +46,20 @@ func UnsafeNewQPrintPreviewDialog(h unsafe.Pointer) *QPrintPreviewDialog {
 }
 
 // NewQPrintPreviewDialog constructs a new QPrintPreviewDialog object.
-func NewQPrintPreviewDialog() *QPrintPreviewDialog {
-	ret := C.QPrintPreviewDialog_new()
+func NewQPrintPreviewDialog(parent *qt6.QWidget) *QPrintPreviewDialog {
+	ret := C.QPrintPreviewDialog_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintPreviewDialog(ret)
 }
 
 // NewQPrintPreviewDialog2 constructs a new QPrintPreviewDialog object.
-func NewQPrintPreviewDialog2(printer *QPrinter) *QPrintPreviewDialog {
-	ret := C.QPrintPreviewDialog_new2(printer.cPointer())
+func NewQPrintPreviewDialog2() *QPrintPreviewDialog {
+	ret := C.QPrintPreviewDialog_new2()
 	return newQPrintPreviewDialog(ret)
 }
 
 // NewQPrintPreviewDialog3 constructs a new QPrintPreviewDialog object.
-func NewQPrintPreviewDialog3(parent *qt6.QWidget) *QPrintPreviewDialog {
-	ret := C.QPrintPreviewDialog_new3((*C.QWidget)(parent.UnsafePointer()))
+func NewQPrintPreviewDialog3(printer *QPrinter) *QPrintPreviewDialog {
+	ret := C.QPrintPreviewDialog_new3(printer.cPointer())
 	return newQPrintPreviewDialog(ret)
 }
 

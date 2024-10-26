@@ -12,12 +12,12 @@
 #include "gen_qgridlayout.h"
 #include "_cgo_export.h"
 
-QGridLayout* QGridLayout_new() {
-	return new QGridLayout();
+QGridLayout* QGridLayout_new(QWidget* parent) {
+	return new QGridLayout(parent);
 }
 
-QGridLayout* QGridLayout_new2(QWidget* parent) {
-	return new QGridLayout(parent);
+QGridLayout* QGridLayout_new2() {
+	return new QGridLayout();
 }
 
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self) {

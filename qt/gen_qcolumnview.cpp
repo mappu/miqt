@@ -15,12 +15,12 @@
 #include "gen_qcolumnview.h"
 #include "_cgo_export.h"
 
-QColumnView* QColumnView_new() {
-	return new QColumnView();
+QColumnView* QColumnView_new(QWidget* parent) {
+	return new QColumnView(parent);
 }
 
-QColumnView* QColumnView_new2(QWidget* parent) {
-	return new QColumnView(parent);
+QColumnView* QColumnView_new2() {
+	return new QColumnView();
 }
 
 QMetaObject* QColumnView_MetaObject(const QColumnView* self) {

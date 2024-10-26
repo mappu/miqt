@@ -600,14 +600,14 @@ func UnsafeNewQTreeWidget(h unsafe.Pointer) *QTreeWidget {
 }
 
 // NewQTreeWidget constructs a new QTreeWidget object.
-func NewQTreeWidget() *QTreeWidget {
-	ret := C.QTreeWidget_new()
+func NewQTreeWidget(parent *QWidget) *QTreeWidget {
+	ret := C.QTreeWidget_new(parent.cPointer())
 	return newQTreeWidget(ret)
 }
 
 // NewQTreeWidget2 constructs a new QTreeWidget object.
-func NewQTreeWidget2(parent *QWidget) *QTreeWidget {
-	ret := C.QTreeWidget_new2(parent.cPointer())
+func NewQTreeWidget2() *QTreeWidget {
+	ret := C.QTreeWidget_new2()
 	return newQTreeWidget(ret)
 }
 

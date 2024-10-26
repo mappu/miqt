@@ -50,12 +50,12 @@ void QWidgetData_Delete(QWidgetData* self) {
 	delete self;
 }
 
-QWidget* QWidget_new() {
-	return new QWidget();
+QWidget* QWidget_new(QWidget* parent) {
+	return new QWidget(parent);
 }
 
-QWidget* QWidget_new2(QWidget* parent) {
-	return new QWidget(parent);
+QWidget* QWidget_new2() {
+	return new QWidget();
 }
 
 QWidget* QWidget_new3(QWidget* parent, int f) {

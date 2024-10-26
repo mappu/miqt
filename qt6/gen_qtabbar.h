@@ -35,8 +35,8 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QTabBar* QTabBar_new();
-QTabBar* QTabBar_new2(QWidget* parent);
+QTabBar* QTabBar_new(QWidget* parent);
+QTabBar* QTabBar_new2();
 QMetaObject* QTabBar_MetaObject(const QTabBar* self);
 void* QTabBar_Metacast(QTabBar* self, const char* param1);
 struct miqt_string QTabBar_Tr(const char* s);

@@ -25,8 +25,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QProgressBar* QProgressBar_new();
-QProgressBar* QProgressBar_new2(QWidget* parent);
+QProgressBar* QProgressBar_new(QWidget* parent);
+QProgressBar* QProgressBar_new2();
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self);
 void* QProgressBar_Metacast(QProgressBar* self, const char* param1);
 struct miqt_string QProgressBar_Tr(const char* s);

@@ -1217,14 +1217,14 @@ func UnsafeNewQsciScintillaBase(h unsafe.Pointer) *QsciScintillaBase {
 }
 
 // NewQsciScintillaBase constructs a new QsciScintillaBase object.
-func NewQsciScintillaBase() *QsciScintillaBase {
-	ret := C.QsciScintillaBase_new()
+func NewQsciScintillaBase(parent *qt.QWidget) *QsciScintillaBase {
+	ret := C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQsciScintillaBase(ret)
 }
 
 // NewQsciScintillaBase2 constructs a new QsciScintillaBase object.
-func NewQsciScintillaBase2(parent *qt.QWidget) *QsciScintillaBase {
-	ret := C.QsciScintillaBase_new2((*C.QWidget)(parent.UnsafePointer()))
+func NewQsciScintillaBase2() *QsciScintillaBase {
+	ret := C.QsciScintillaBase_new2()
 	return newQsciScintillaBase(ret)
 }
 

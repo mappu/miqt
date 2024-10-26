@@ -9,12 +9,12 @@
 #include "gen_qscrollarea.h"
 #include "_cgo_export.h"
 
-QScrollArea* QScrollArea_new() {
-	return new QScrollArea();
+QScrollArea* QScrollArea_new(QWidget* parent) {
+	return new QScrollArea(parent);
 }
 
-QScrollArea* QScrollArea_new2(QWidget* parent) {
-	return new QScrollArea(parent);
+QScrollArea* QScrollArea_new2() {
+	return new QScrollArea();
 }
 
 QMetaObject* QScrollArea_MetaObject(const QScrollArea* self) {

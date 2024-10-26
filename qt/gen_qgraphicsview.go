@@ -87,20 +87,20 @@ func UnsafeNewQGraphicsView(h unsafe.Pointer) *QGraphicsView {
 }
 
 // NewQGraphicsView constructs a new QGraphicsView object.
-func NewQGraphicsView() *QGraphicsView {
-	ret := C.QGraphicsView_new()
+func NewQGraphicsView(parent *QWidget) *QGraphicsView {
+	ret := C.QGraphicsView_new(parent.cPointer())
 	return newQGraphicsView(ret)
 }
 
 // NewQGraphicsView2 constructs a new QGraphicsView object.
-func NewQGraphicsView2(scene *QGraphicsScene) *QGraphicsView {
-	ret := C.QGraphicsView_new2(scene.cPointer())
+func NewQGraphicsView2() *QGraphicsView {
+	ret := C.QGraphicsView_new2()
 	return newQGraphicsView(ret)
 }
 
 // NewQGraphicsView3 constructs a new QGraphicsView object.
-func NewQGraphicsView3(parent *QWidget) *QGraphicsView {
-	ret := C.QGraphicsView_new3(parent.cPointer())
+func NewQGraphicsView3(scene *QGraphicsScene) *QGraphicsView {
+	ret := C.QGraphicsView_new3(scene.cPointer())
 	return newQGraphicsView(ret)
 }
 

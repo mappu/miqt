@@ -27,11 +27,11 @@ typedef struct QPushButton QPushButton;
 typedef struct QWidget QWidget;
 #endif
 
-QDialogButtonBox* QDialogButtonBox_new();
-QDialogButtonBox* QDialogButtonBox_new2(int orientation);
-QDialogButtonBox* QDialogButtonBox_new3(int buttons);
-QDialogButtonBox* QDialogButtonBox_new4(int buttons, int orientation);
-QDialogButtonBox* QDialogButtonBox_new5(QWidget* parent);
+QDialogButtonBox* QDialogButtonBox_new(QWidget* parent);
+QDialogButtonBox* QDialogButtonBox_new2();
+QDialogButtonBox* QDialogButtonBox_new3(int orientation);
+QDialogButtonBox* QDialogButtonBox_new4(int buttons);
+QDialogButtonBox* QDialogButtonBox_new5(int buttons, int orientation);
 QDialogButtonBox* QDialogButtonBox_new6(int orientation, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new7(int buttons, QWidget* parent);
 QDialogButtonBox* QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent);

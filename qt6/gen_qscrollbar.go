@@ -44,20 +44,20 @@ func UnsafeNewQScrollBar(h unsafe.Pointer) *QScrollBar {
 }
 
 // NewQScrollBar constructs a new QScrollBar object.
-func NewQScrollBar() *QScrollBar {
-	ret := C.QScrollBar_new()
+func NewQScrollBar(parent *QWidget) *QScrollBar {
+	ret := C.QScrollBar_new(parent.cPointer())
 	return newQScrollBar(ret)
 }
 
 // NewQScrollBar2 constructs a new QScrollBar object.
-func NewQScrollBar2(param1 Orientation) *QScrollBar {
-	ret := C.QScrollBar_new2((C.int)(param1))
+func NewQScrollBar2() *QScrollBar {
+	ret := C.QScrollBar_new2()
 	return newQScrollBar(ret)
 }
 
 // NewQScrollBar3 constructs a new QScrollBar object.
-func NewQScrollBar3(parent *QWidget) *QScrollBar {
-	ret := C.QScrollBar_new3(parent.cPointer())
+func NewQScrollBar3(param1 Orientation) *QScrollBar {
+	ret := C.QScrollBar_new3((C.int)(param1))
 	return newQScrollBar(ret)
 }
 

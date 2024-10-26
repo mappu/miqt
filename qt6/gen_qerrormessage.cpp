@@ -8,12 +8,12 @@
 #include "gen_qerrormessage.h"
 #include "_cgo_export.h"
 
-QErrorMessage* QErrorMessage_new() {
-	return new QErrorMessage();
+QErrorMessage* QErrorMessage_new(QWidget* parent) {
+	return new QErrorMessage(parent);
 }
 
-QErrorMessage* QErrorMessage_new2(QWidget* parent) {
-	return new QErrorMessage(parent);
+QErrorMessage* QErrorMessage_new2() {
+	return new QErrorMessage();
 }
 
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self) {

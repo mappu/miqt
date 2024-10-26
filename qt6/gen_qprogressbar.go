@@ -52,14 +52,14 @@ func UnsafeNewQProgressBar(h unsafe.Pointer) *QProgressBar {
 }
 
 // NewQProgressBar constructs a new QProgressBar object.
-func NewQProgressBar() *QProgressBar {
-	ret := C.QProgressBar_new()
+func NewQProgressBar(parent *QWidget) *QProgressBar {
+	ret := C.QProgressBar_new(parent.cPointer())
 	return newQProgressBar(ret)
 }
 
 // NewQProgressBar2 constructs a new QProgressBar object.
-func NewQProgressBar2(parent *QWidget) *QProgressBar {
-	ret := C.QProgressBar_new2(parent.cPointer())
+func NewQProgressBar2() *QProgressBar {
+	ret := C.QProgressBar_new2()
 	return newQProgressBar(ret)
 }
 

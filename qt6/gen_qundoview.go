@@ -44,26 +44,26 @@ func UnsafeNewQUndoView(h unsafe.Pointer) *QUndoView {
 }
 
 // NewQUndoView constructs a new QUndoView object.
-func NewQUndoView() *QUndoView {
-	ret := C.QUndoView_new()
+func NewQUndoView(parent *QWidget) *QUndoView {
+	ret := C.QUndoView_new(parent.cPointer())
 	return newQUndoView(ret)
 }
 
 // NewQUndoView2 constructs a new QUndoView object.
-func NewQUndoView2(stack *QUndoStack) *QUndoView {
-	ret := C.QUndoView_new2(stack.cPointer())
+func NewQUndoView2() *QUndoView {
+	ret := C.QUndoView_new2()
 	return newQUndoView(ret)
 }
 
 // NewQUndoView3 constructs a new QUndoView object.
-func NewQUndoView3(group *QUndoGroup) *QUndoView {
-	ret := C.QUndoView_new3(group.cPointer())
+func NewQUndoView3(stack *QUndoStack) *QUndoView {
+	ret := C.QUndoView_new3(stack.cPointer())
 	return newQUndoView(ret)
 }
 
 // NewQUndoView4 constructs a new QUndoView object.
-func NewQUndoView4(parent *QWidget) *QUndoView {
-	ret := C.QUndoView_new4(parent.cPointer())
+func NewQUndoView4(group *QUndoGroup) *QUndoView {
+	ret := C.QUndoView_new4(group.cPointer())
 	return newQUndoView(ret)
 }
 

@@ -25,9 +25,9 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QGroupBox* QGroupBox_new();
-QGroupBox* QGroupBox_new2(struct miqt_string title);
-QGroupBox* QGroupBox_new3(QWidget* parent);
+QGroupBox* QGroupBox_new(QWidget* parent);
+QGroupBox* QGroupBox_new2();
+QGroupBox* QGroupBox_new3(struct miqt_string title);
 QGroupBox* QGroupBox_new4(struct miqt_string title, QWidget* parent);
 QMetaObject* QGroupBox_MetaObject(const QGroupBox* self);
 void* QGroupBox_Metacast(QGroupBox* self, const char* param1);

@@ -45,20 +45,20 @@ func UnsafeNewQSplitter(h unsafe.Pointer) *QSplitter {
 }
 
 // NewQSplitter constructs a new QSplitter object.
-func NewQSplitter() *QSplitter {
-	ret := C.QSplitter_new()
+func NewQSplitter(parent *QWidget) *QSplitter {
+	ret := C.QSplitter_new(parent.cPointer())
 	return newQSplitter(ret)
 }
 
 // NewQSplitter2 constructs a new QSplitter object.
-func NewQSplitter2(param1 Orientation) *QSplitter {
-	ret := C.QSplitter_new2((C.int)(param1))
+func NewQSplitter2() *QSplitter {
+	ret := C.QSplitter_new2()
 	return newQSplitter(ret)
 }
 
 // NewQSplitter3 constructs a new QSplitter object.
-func NewQSplitter3(parent *QWidget) *QSplitter {
-	ret := C.QSplitter_new3(parent.cPointer())
+func NewQSplitter3(param1 Orientation) *QSplitter {
+	ret := C.QSplitter_new3((C.int)(param1))
 	return newQSplitter(ret)
 }
 

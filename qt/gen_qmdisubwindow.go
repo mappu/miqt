@@ -54,14 +54,14 @@ func UnsafeNewQMdiSubWindow(h unsafe.Pointer) *QMdiSubWindow {
 }
 
 // NewQMdiSubWindow constructs a new QMdiSubWindow object.
-func NewQMdiSubWindow() *QMdiSubWindow {
-	ret := C.QMdiSubWindow_new()
+func NewQMdiSubWindow(parent *QWidget) *QMdiSubWindow {
+	ret := C.QMdiSubWindow_new(parent.cPointer())
 	return newQMdiSubWindow(ret)
 }
 
 // NewQMdiSubWindow2 constructs a new QMdiSubWindow object.
-func NewQMdiSubWindow2(parent *QWidget) *QMdiSubWindow {
-	ret := C.QMdiSubWindow_new2(parent.cPointer())
+func NewQMdiSubWindow2() *QMdiSubWindow {
+	ret := C.QMdiSubWindow_new2()
 	return newQMdiSubWindow(ret)
 }
 

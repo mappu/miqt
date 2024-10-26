@@ -9,12 +9,12 @@
 #include "gen_qdialog.h"
 #include "_cgo_export.h"
 
-QDialog* QDialog_new() {
-	return new QDialog();
+QDialog* QDialog_new(QWidget* parent) {
+	return new QDialog(parent);
 }
 
-QDialog* QDialog_new2(QWidget* parent) {
-	return new QDialog(parent);
+QDialog* QDialog_new2() {
+	return new QDialog();
 }
 
 QDialog* QDialog_new3(QWidget* parent, int f) {

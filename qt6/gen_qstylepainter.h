@@ -35,8 +35,8 @@ typedef struct QStylePainter QStylePainter;
 typedef struct QWidget QWidget;
 #endif
 
-QStylePainter* QStylePainter_new();
-QStylePainter* QStylePainter_new2(QWidget* w);
+QStylePainter* QStylePainter_new(QWidget* w);
+QStylePainter* QStylePainter_new2();
 QStylePainter* QStylePainter_new3(QPaintDevice* pd, QWidget* w);
 bool QStylePainter_Begin(QStylePainter* self, QWidget* w);
 bool QStylePainter_Begin2(QStylePainter* self, QPaintDevice* pd, QWidget* w);

@@ -81,14 +81,14 @@ func UnsafeNewQListView(h unsafe.Pointer) *QListView {
 }
 
 // NewQListView constructs a new QListView object.
-func NewQListView() *QListView {
-	ret := C.QListView_new()
+func NewQListView(parent *QWidget) *QListView {
+	ret := C.QListView_new(parent.cPointer())
 	return newQListView(ret)
 }
 
 // NewQListView2 constructs a new QListView object.
-func NewQListView2(parent *QWidget) *QListView {
-	ret := C.QListView_new2(parent.cPointer())
+func NewQListView2() *QListView {
+	ret := C.QListView_new2()
 	return newQListView(ret)
 }
 

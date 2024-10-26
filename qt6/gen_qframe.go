@@ -71,14 +71,14 @@ func UnsafeNewQFrame(h unsafe.Pointer) *QFrame {
 }
 
 // NewQFrame constructs a new QFrame object.
-func NewQFrame() *QFrame {
-	ret := C.QFrame_new()
+func NewQFrame(parent *QWidget) *QFrame {
+	ret := C.QFrame_new(parent.cPointer())
 	return newQFrame(ret)
 }
 
 // NewQFrame2 constructs a new QFrame object.
-func NewQFrame2(parent *QWidget) *QFrame {
-	ret := C.QFrame_new2(parent.cPointer())
+func NewQFrame2() *QFrame {
+	ret := C.QFrame_new2()
 	return newQFrame(ret)
 }
 

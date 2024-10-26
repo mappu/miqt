@@ -18,17 +18,17 @@
 #include "gen_qlineedit.h"
 #include "_cgo_export.h"
 
-QLineEdit* QLineEdit_new() {
+QLineEdit* QLineEdit_new(QWidget* parent) {
+	return new QLineEdit(parent);
+}
+
+QLineEdit* QLineEdit_new2() {
 	return new QLineEdit();
 }
 
-QLineEdit* QLineEdit_new2(struct miqt_string param1) {
+QLineEdit* QLineEdit_new3(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return new QLineEdit(param1_QString);
-}
-
-QLineEdit* QLineEdit_new3(QWidget* parent) {
-	return new QLineEdit(parent);
 }
 
 QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent) {

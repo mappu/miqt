@@ -45,20 +45,20 @@ func UnsafeNewQSplashScreen(h unsafe.Pointer) *QSplashScreen {
 }
 
 // NewQSplashScreen constructs a new QSplashScreen object.
-func NewQSplashScreen() *QSplashScreen {
-	ret := C.QSplashScreen_new()
+func NewQSplashScreen(parent *QWidget) *QSplashScreen {
+	ret := C.QSplashScreen_new(parent.cPointer())
 	return newQSplashScreen(ret)
 }
 
 // NewQSplashScreen2 constructs a new QSplashScreen object.
-func NewQSplashScreen2(screen *QScreen) *QSplashScreen {
-	ret := C.QSplashScreen_new2(screen.cPointer())
+func NewQSplashScreen2() *QSplashScreen {
+	ret := C.QSplashScreen_new2()
 	return newQSplashScreen(ret)
 }
 
 // NewQSplashScreen3 constructs a new QSplashScreen object.
-func NewQSplashScreen3(parent *QWidget) *QSplashScreen {
-	ret := C.QSplashScreen_new3(parent.cPointer())
+func NewQSplashScreen3(screen *QScreen) *QSplashScreen {
+	ret := C.QSplashScreen_new3(screen.cPointer())
 	return newQSplashScreen(ret)
 }
 

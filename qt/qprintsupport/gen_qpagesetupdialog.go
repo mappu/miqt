@@ -45,26 +45,26 @@ func UnsafeNewQPageSetupDialog(h unsafe.Pointer) *QPageSetupDialog {
 }
 
 // NewQPageSetupDialog constructs a new QPageSetupDialog object.
-func NewQPageSetupDialog(printer *QPrinter) *QPageSetupDialog {
-	ret := C.QPageSetupDialog_new(printer.cPointer())
+func NewQPageSetupDialog(parent *qt.QWidget) *QPageSetupDialog {
+	ret := C.QPageSetupDialog_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQPageSetupDialog(ret)
 }
 
 // NewQPageSetupDialog2 constructs a new QPageSetupDialog object.
-func NewQPageSetupDialog2() *QPageSetupDialog {
-	ret := C.QPageSetupDialog_new2()
+func NewQPageSetupDialog2(printer *QPrinter) *QPageSetupDialog {
+	ret := C.QPageSetupDialog_new2(printer.cPointer())
 	return newQPageSetupDialog(ret)
 }
 
 // NewQPageSetupDialog3 constructs a new QPageSetupDialog object.
-func NewQPageSetupDialog3(printer *QPrinter, parent *qt.QWidget) *QPageSetupDialog {
-	ret := C.QPageSetupDialog_new3(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
+func NewQPageSetupDialog3() *QPageSetupDialog {
+	ret := C.QPageSetupDialog_new3()
 	return newQPageSetupDialog(ret)
 }
 
 // NewQPageSetupDialog4 constructs a new QPageSetupDialog object.
-func NewQPageSetupDialog4(parent *qt.QWidget) *QPageSetupDialog {
-	ret := C.QPageSetupDialog_new4((*C.QWidget)(parent.UnsafePointer()))
+func NewQPageSetupDialog4(printer *QPrinter, parent *qt.QWidget) *QPageSetupDialog {
+	ret := C.QPageSetupDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
 	return newQPageSetupDialog(ret)
 }
 

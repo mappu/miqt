@@ -29,8 +29,8 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QAbstractSpinBox* QAbstractSpinBox_new();
-QAbstractSpinBox* QAbstractSpinBox_new2(QWidget* parent);
+QAbstractSpinBox* QAbstractSpinBox_new(QWidget* parent);
+QAbstractSpinBox* QAbstractSpinBox_new2();
 QMetaObject* QAbstractSpinBox_MetaObject(const QAbstractSpinBox* self);
 void* QAbstractSpinBox_Metacast(QAbstractSpinBox* self, const char* param1);
 struct miqt_string QAbstractSpinBox_Tr(const char* s);

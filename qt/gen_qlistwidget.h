@@ -100,8 +100,8 @@ void QListWidgetItem_OperatorAssign(QListWidgetItem* self, QListWidgetItem* othe
 int QListWidgetItem_Type(const QListWidgetItem* self);
 void QListWidgetItem_Delete(QListWidgetItem* self);
 
-QListWidget* QListWidget_new();
-QListWidget* QListWidget_new2(QWidget* parent);
+QListWidget* QListWidget_new(QWidget* parent);
+QListWidget* QListWidget_new2();
 QMetaObject* QListWidget_MetaObject(const QListWidget* self);
 void* QListWidget_Metacast(QListWidget* self, const char* param1);
 struct miqt_string QListWidget_Tr(const char* s);

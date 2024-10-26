@@ -356,14 +356,14 @@ func UnsafeNewQHBoxLayout(h unsafe.Pointer) *QHBoxLayout {
 }
 
 // NewQHBoxLayout constructs a new QHBoxLayout object.
-func NewQHBoxLayout() *QHBoxLayout {
-	ret := C.QHBoxLayout_new()
+func NewQHBoxLayout(parent *QWidget) *QHBoxLayout {
+	ret := C.QHBoxLayout_new(parent.cPointer())
 	return newQHBoxLayout(ret)
 }
 
 // NewQHBoxLayout2 constructs a new QHBoxLayout object.
-func NewQHBoxLayout2(parent *QWidget) *QHBoxLayout {
-	ret := C.QHBoxLayout_new2(parent.cPointer())
+func NewQHBoxLayout2() *QHBoxLayout {
+	ret := C.QHBoxLayout_new2()
 	return newQHBoxLayout(ret)
 }
 
@@ -484,14 +484,14 @@ func UnsafeNewQVBoxLayout(h unsafe.Pointer) *QVBoxLayout {
 }
 
 // NewQVBoxLayout constructs a new QVBoxLayout object.
-func NewQVBoxLayout() *QVBoxLayout {
-	ret := C.QVBoxLayout_new()
+func NewQVBoxLayout(parent *QWidget) *QVBoxLayout {
+	ret := C.QVBoxLayout_new(parent.cPointer())
 	return newQVBoxLayout(ret)
 }
 
 // NewQVBoxLayout2 constructs a new QVBoxLayout object.
-func NewQVBoxLayout2(parent *QWidget) *QVBoxLayout {
-	ret := C.QVBoxLayout_new2(parent.cPointer())
+func NewQVBoxLayout2() *QVBoxLayout {
+	ret := C.QVBoxLayout_new2()
 	return newQVBoxLayout(ret)
 }
 

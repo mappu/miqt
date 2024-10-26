@@ -35,8 +35,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QColumnView* QColumnView_new();
-QColumnView* QColumnView_new2(QWidget* parent);
+QColumnView* QColumnView_new(QWidget* parent);
+QColumnView* QColumnView_new2();
 QMetaObject* QColumnView_MetaObject(const QColumnView* self);
 void* QColumnView_Metacast(QColumnView* self, const char* param1);
 struct miqt_string QColumnView_Tr(const char* s);

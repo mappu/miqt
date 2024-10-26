@@ -45,13 +45,19 @@ func UnsafeNewQProgressDialog(h unsafe.Pointer) *QProgressDialog {
 }
 
 // NewQProgressDialog constructs a new QProgressDialog object.
-func NewQProgressDialog() *QProgressDialog {
-	ret := C.QProgressDialog_new()
+func NewQProgressDialog(parent *QWidget) *QProgressDialog {
+	ret := C.QProgressDialog_new(parent.cPointer())
 	return newQProgressDialog(ret)
 }
 
 // NewQProgressDialog2 constructs a new QProgressDialog object.
-func NewQProgressDialog2(labelText string, cancelButtonText string, minimum int, maximum int) *QProgressDialog {
+func NewQProgressDialog2() *QProgressDialog {
+	ret := C.QProgressDialog_new2()
+	return newQProgressDialog(ret)
+}
+
+// NewQProgressDialog3 constructs a new QProgressDialog object.
+func NewQProgressDialog3(labelText string, cancelButtonText string, minimum int, maximum int) *QProgressDialog {
 	labelText_ms := C.struct_miqt_string{}
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
@@ -60,13 +66,7 @@ func NewQProgressDialog2(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.data = C.CString(cancelButtonText)
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
-	ret := C.QProgressDialog_new2(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum))
-	return newQProgressDialog(ret)
-}
-
-// NewQProgressDialog3 constructs a new QProgressDialog object.
-func NewQProgressDialog3(parent *QWidget) *QProgressDialog {
-	ret := C.QProgressDialog_new3(parent.cPointer())
+	ret := C.QProgressDialog_new3(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum))
 	return newQProgressDialog(ret)
 }
 

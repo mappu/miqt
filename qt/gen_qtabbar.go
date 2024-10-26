@@ -73,14 +73,14 @@ func UnsafeNewQTabBar(h unsafe.Pointer) *QTabBar {
 }
 
 // NewQTabBar constructs a new QTabBar object.
-func NewQTabBar() *QTabBar {
-	ret := C.QTabBar_new()
+func NewQTabBar(parent *QWidget) *QTabBar {
+	ret := C.QTabBar_new(parent.cPointer())
 	return newQTabBar(ret)
 }
 
 // NewQTabBar2 constructs a new QTabBar object.
-func NewQTabBar2(parent *QWidget) *QTabBar {
-	ret := C.QTabBar_new2(parent.cPointer())
+func NewQTabBar2() *QTabBar {
+	ret := C.QTabBar_new2()
 	return newQTabBar(ret)
 }
 

@@ -35,8 +35,8 @@ typedef struct QTableView QTableView;
 typedef struct QWidget QWidget;
 #endif
 
-QTableView* QTableView_new();
-QTableView* QTableView_new2(QWidget* parent);
+QTableView* QTableView_new(QWidget* parent);
+QTableView* QTableView_new2();
 QMetaObject* QTableView_MetaObject(const QTableView* self);
 void* QTableView_Metacast(QTableView* self, const char* param1);
 struct miqt_string QTableView_Tr(const char* s);

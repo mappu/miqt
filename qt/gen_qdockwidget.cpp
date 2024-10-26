@@ -9,27 +9,27 @@
 #include "gen_qdockwidget.h"
 #include "_cgo_export.h"
 
-QDockWidget* QDockWidget_new(struct miqt_string title) {
+QDockWidget* QDockWidget_new(QWidget* parent) {
+	return new QDockWidget(parent);
+}
+
+QDockWidget* QDockWidget_new2(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString);
 }
 
-QDockWidget* QDockWidget_new2() {
+QDockWidget* QDockWidget_new3() {
 	return new QDockWidget();
 }
 
-QDockWidget* QDockWidget_new3(struct miqt_string title, QWidget* parent) {
+QDockWidget* QDockWidget_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString, parent);
 }
 
-QDockWidget* QDockWidget_new4(struct miqt_string title, QWidget* parent, int flags) {
+QDockWidget* QDockWidget_new5(struct miqt_string title, QWidget* parent, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QDockWidget(title_QString, parent, static_cast<Qt::WindowFlags>(flags));
-}
-
-QDockWidget* QDockWidget_new5(QWidget* parent) {
-	return new QDockWidget(parent);
 }
 
 QDockWidget* QDockWidget_new6(QWidget* parent, int flags) {

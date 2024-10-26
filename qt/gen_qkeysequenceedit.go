@@ -45,20 +45,20 @@ func UnsafeNewQKeySequenceEdit(h unsafe.Pointer) *QKeySequenceEdit {
 }
 
 // NewQKeySequenceEdit constructs a new QKeySequenceEdit object.
-func NewQKeySequenceEdit() *QKeySequenceEdit {
-	ret := C.QKeySequenceEdit_new()
+func NewQKeySequenceEdit(parent *QWidget) *QKeySequenceEdit {
+	ret := C.QKeySequenceEdit_new(parent.cPointer())
 	return newQKeySequenceEdit(ret)
 }
 
 // NewQKeySequenceEdit2 constructs a new QKeySequenceEdit object.
-func NewQKeySequenceEdit2(keySequence *QKeySequence) *QKeySequenceEdit {
-	ret := C.QKeySequenceEdit_new2(keySequence.cPointer())
+func NewQKeySequenceEdit2() *QKeySequenceEdit {
+	ret := C.QKeySequenceEdit_new2()
 	return newQKeySequenceEdit(ret)
 }
 
 // NewQKeySequenceEdit3 constructs a new QKeySequenceEdit object.
-func NewQKeySequenceEdit3(parent *QWidget) *QKeySequenceEdit {
-	ret := C.QKeySequenceEdit_new3(parent.cPointer())
+func NewQKeySequenceEdit3(keySequence *QKeySequence) *QKeySequenceEdit {
+	ret := C.QKeySequenceEdit_new3(keySequence.cPointer())
 	return newQKeySequenceEdit(ret)
 }
 

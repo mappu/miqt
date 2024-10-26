@@ -107,9 +107,9 @@ void QTableWidgetItem_OperatorAssign(QTableWidgetItem* self, QTableWidgetItem* o
 int QTableWidgetItem_Type(const QTableWidgetItem* self);
 void QTableWidgetItem_Delete(QTableWidgetItem* self);
 
-QTableWidget* QTableWidget_new();
-QTableWidget* QTableWidget_new2(int rows, int columns);
-QTableWidget* QTableWidget_new3(QWidget* parent);
+QTableWidget* QTableWidget_new(QWidget* parent);
+QTableWidget* QTableWidget_new2();
+QTableWidget* QTableWidget_new3(int rows, int columns);
 QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent);
 QMetaObject* QTableWidget_MetaObject(const QTableWidget* self);
 void* QTableWidget_Metacast(QTableWidget* self, const char* param1);

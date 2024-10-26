@@ -27,8 +27,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QFontComboBox* QFontComboBox_new();
-QFontComboBox* QFontComboBox_new2(QWidget* parent);
+QFontComboBox* QFontComboBox_new(QWidget* parent);
+QFontComboBox* QFontComboBox_new2();
 QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self);
 void* QFontComboBox_Metacast(QFontComboBox* self, const char* param1);
 struct miqt_string QFontComboBox_Tr(const char* s);

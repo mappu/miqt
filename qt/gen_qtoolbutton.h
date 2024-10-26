@@ -29,8 +29,8 @@ typedef struct QToolButton QToolButton;
 typedef struct QWidget QWidget;
 #endif
 
-QToolButton* QToolButton_new();
-QToolButton* QToolButton_new2(QWidget* parent);
+QToolButton* QToolButton_new(QWidget* parent);
+QToolButton* QToolButton_new2();
 QMetaObject* QToolButton_MetaObject(const QToolButton* self);
 void* QToolButton_Metacast(QToolButton* self, const char* param1);
 struct miqt_string QToolButton_Tr(const char* s);

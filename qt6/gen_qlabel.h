@@ -31,9 +31,9 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QLabel* QLabel_new();
-QLabel* QLabel_new2(struct miqt_string text);
-QLabel* QLabel_new3(QWidget* parent);
+QLabel* QLabel_new(QWidget* parent);
+QLabel* QLabel_new2();
+QLabel* QLabel_new3(struct miqt_string text);
 QLabel* QLabel_new4(QWidget* parent, int f);
 QLabel* QLabel_new5(struct miqt_string text, QWidget* parent);
 QLabel* QLabel_new6(struct miqt_string text, QWidget* parent, int f);

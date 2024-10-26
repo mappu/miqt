@@ -9,24 +9,24 @@
 #include "gen_qprintpreviewwidget.h"
 #include "_cgo_export.h"
 
-QPrintPreviewWidget* QPrintPreviewWidget_new(QPrinter* printer) {
+QPrintPreviewWidget* QPrintPreviewWidget_new(QWidget* parent) {
+	return new QPrintPreviewWidget(parent);
+}
+
+QPrintPreviewWidget* QPrintPreviewWidget_new2(QPrinter* printer) {
 	return new QPrintPreviewWidget(printer);
 }
 
-QPrintPreviewWidget* QPrintPreviewWidget_new2() {
+QPrintPreviewWidget* QPrintPreviewWidget_new3() {
 	return new QPrintPreviewWidget();
 }
 
-QPrintPreviewWidget* QPrintPreviewWidget_new3(QPrinter* printer, QWidget* parent) {
+QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent) {
 	return new QPrintPreviewWidget(printer, parent);
 }
 
-QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent, int flags) {
+QPrintPreviewWidget* QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags) {
 	return new QPrintPreviewWidget(printer, parent, static_cast<Qt::WindowFlags>(flags));
-}
-
-QPrintPreviewWidget* QPrintPreviewWidget_new5(QWidget* parent) {
-	return new QPrintPreviewWidget(parent);
 }
 
 QPrintPreviewWidget* QPrintPreviewWidget_new6(QWidget* parent, int flags) {

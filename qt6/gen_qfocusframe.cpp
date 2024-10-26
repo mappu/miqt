@@ -8,12 +8,12 @@
 #include "gen_qfocusframe.h"
 #include "_cgo_export.h"
 
-QFocusFrame* QFocusFrame_new() {
-	return new QFocusFrame();
+QFocusFrame* QFocusFrame_new(QWidget* parent) {
+	return new QFocusFrame(parent);
 }
 
-QFocusFrame* QFocusFrame_new2(QWidget* parent) {
-	return new QFocusFrame(parent);
+QFocusFrame* QFocusFrame_new2() {
+	return new QFocusFrame();
 }
 
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self) {

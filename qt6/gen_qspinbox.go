@@ -45,14 +45,14 @@ func UnsafeNewQSpinBox(h unsafe.Pointer) *QSpinBox {
 }
 
 // NewQSpinBox constructs a new QSpinBox object.
-func NewQSpinBox() *QSpinBox {
-	ret := C.QSpinBox_new()
+func NewQSpinBox(parent *QWidget) *QSpinBox {
+	ret := C.QSpinBox_new(parent.cPointer())
 	return newQSpinBox(ret)
 }
 
 // NewQSpinBox2 constructs a new QSpinBox object.
-func NewQSpinBox2(parent *QWidget) *QSpinBox {
-	ret := C.QSpinBox_new2(parent.cPointer())
+func NewQSpinBox2() *QSpinBox {
+	ret := C.QSpinBox_new2()
 	return newQSpinBox(ret)
 }
 
@@ -278,14 +278,14 @@ func UnsafeNewQDoubleSpinBox(h unsafe.Pointer) *QDoubleSpinBox {
 }
 
 // NewQDoubleSpinBox constructs a new QDoubleSpinBox object.
-func NewQDoubleSpinBox() *QDoubleSpinBox {
-	ret := C.QDoubleSpinBox_new()
+func NewQDoubleSpinBox(parent *QWidget) *QDoubleSpinBox {
+	ret := C.QDoubleSpinBox_new(parent.cPointer())
 	return newQDoubleSpinBox(ret)
 }
 
 // NewQDoubleSpinBox2 constructs a new QDoubleSpinBox object.
-func NewQDoubleSpinBox2(parent *QWidget) *QDoubleSpinBox {
-	ret := C.QDoubleSpinBox_new2(parent.cPointer())
+func NewQDoubleSpinBox2() *QDoubleSpinBox {
+	ret := C.QDoubleSpinBox_new2()
 	return newQDoubleSpinBox(ret)
 }
 

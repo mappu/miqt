@@ -45,24 +45,24 @@ func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
 }
 
 // NewQLabel constructs a new QLabel object.
-func NewQLabel() *QLabel {
-	ret := C.QLabel_new()
+func NewQLabel(parent *QWidget) *QLabel {
+	ret := C.QLabel_new(parent.cPointer())
 	return newQLabel(ret)
 }
 
 // NewQLabel2 constructs a new QLabel object.
-func NewQLabel2(text string) *QLabel {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QLabel_new2(text_ms)
+func NewQLabel2() *QLabel {
+	ret := C.QLabel_new2()
 	return newQLabel(ret)
 }
 
 // NewQLabel3 constructs a new QLabel object.
-func NewQLabel3(parent *QWidget) *QLabel {
-	ret := C.QLabel_new3(parent.cPointer())
+func NewQLabel3(text string) *QLabel {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QLabel_new3(text_ms)
 	return newQLabel(ret)
 }
 

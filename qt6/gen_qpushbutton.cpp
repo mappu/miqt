@@ -11,22 +11,22 @@
 #include "gen_qpushbutton.h"
 #include "_cgo_export.h"
 
-QPushButton* QPushButton_new() {
+QPushButton* QPushButton_new(QWidget* parent) {
+	return new QPushButton(parent);
+}
+
+QPushButton* QPushButton_new2() {
 	return new QPushButton();
 }
 
-QPushButton* QPushButton_new2(struct miqt_string text) {
+QPushButton* QPushButton_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QPushButton(text_QString);
 }
 
-QPushButton* QPushButton_new3(QIcon* icon, struct miqt_string text) {
+QPushButton* QPushButton_new4(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QPushButton(*icon, text_QString);
-}
-
-QPushButton* QPushButton_new4(QWidget* parent) {
-	return new QPushButton(parent);
 }
 
 QPushButton* QPushButton_new5(struct miqt_string text, QWidget* parent) {

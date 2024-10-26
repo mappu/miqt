@@ -25,9 +25,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QColorDialog* QColorDialog_new();
-QColorDialog* QColorDialog_new2(QColor* initial);
-QColorDialog* QColorDialog_new3(QWidget* parent);
+QColorDialog* QColorDialog_new(QWidget* parent);
+QColorDialog* QColorDialog_new2();
+QColorDialog* QColorDialog_new3(QColor* initial);
 QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent);
 QMetaObject* QColorDialog_MetaObject(const QColorDialog* self);
 void* QColorDialog_Metacast(QColorDialog* self, const char* param1);

@@ -45,14 +45,14 @@ func UnsafeNewQStackedWidget(h unsafe.Pointer) *QStackedWidget {
 }
 
 // NewQStackedWidget constructs a new QStackedWidget object.
-func NewQStackedWidget() *QStackedWidget {
-	ret := C.QStackedWidget_new()
+func NewQStackedWidget(parent *QWidget) *QStackedWidget {
+	ret := C.QStackedWidget_new(parent.cPointer())
 	return newQStackedWidget(ret)
 }
 
 // NewQStackedWidget2 constructs a new QStackedWidget object.
-func NewQStackedWidget2(parent *QWidget) *QStackedWidget {
-	ret := C.QStackedWidget_new2(parent.cPointer())
+func NewQStackedWidget2() *QStackedWidget {
+	ret := C.QStackedWidget_new2()
 	return newQStackedWidget(ret)
 }
 

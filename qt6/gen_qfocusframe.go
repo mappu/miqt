@@ -44,14 +44,14 @@ func UnsafeNewQFocusFrame(h unsafe.Pointer) *QFocusFrame {
 }
 
 // NewQFocusFrame constructs a new QFocusFrame object.
-func NewQFocusFrame() *QFocusFrame {
-	ret := C.QFocusFrame_new()
+func NewQFocusFrame(parent *QWidget) *QFocusFrame {
+	ret := C.QFocusFrame_new(parent.cPointer())
 	return newQFocusFrame(ret)
 }
 
 // NewQFocusFrame2 constructs a new QFocusFrame object.
-func NewQFocusFrame2(parent *QWidget) *QFocusFrame {
-	ret := C.QFocusFrame_new2(parent.cPointer())
+func NewQFocusFrame2() *QFocusFrame {
+	ret := C.QFocusFrame_new2()
 	return newQFocusFrame(ret)
 }
 

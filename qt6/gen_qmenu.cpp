@@ -14,17 +14,17 @@
 #include "gen_qmenu.h"
 #include "_cgo_export.h"
 
-QMenu* QMenu_new() {
+QMenu* QMenu_new(QWidget* parent) {
+	return new QMenu(parent);
+}
+
+QMenu* QMenu_new2() {
 	return new QMenu();
 }
 
-QMenu* QMenu_new2(struct miqt_string title) {
+QMenu* QMenu_new3(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QMenu(title_QString);
-}
-
-QMenu* QMenu_new3(QWidget* parent) {
-	return new QMenu(parent);
 }
 
 QMenu* QMenu_new4(struct miqt_string title, QWidget* parent) {

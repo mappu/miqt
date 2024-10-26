@@ -68,14 +68,14 @@ func UnsafeNewQCalendarWidget(h unsafe.Pointer) *QCalendarWidget {
 }
 
 // NewQCalendarWidget constructs a new QCalendarWidget object.
-func NewQCalendarWidget() *QCalendarWidget {
-	ret := C.QCalendarWidget_new()
+func NewQCalendarWidget(parent *QWidget) *QCalendarWidget {
+	ret := C.QCalendarWidget_new(parent.cPointer())
 	return newQCalendarWidget(ret)
 }
 
 // NewQCalendarWidget2 constructs a new QCalendarWidget object.
-func NewQCalendarWidget2(parent *QWidget) *QCalendarWidget {
-	ret := C.QCalendarWidget_new2(parent.cPointer())
+func NewQCalendarWidget2() *QCalendarWidget {
+	ret := C.QCalendarWidget_new2()
 	return newQCalendarWidget(ret)
 }
 

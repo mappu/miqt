@@ -14,12 +14,12 @@
 #include "gen_qmenubar.h"
 #include "_cgo_export.h"
 
-QMenuBar* QMenuBar_new() {
-	return new QMenuBar();
+QMenuBar* QMenuBar_new(QWidget* parent) {
+	return new QMenuBar(parent);
 }
 
-QMenuBar* QMenuBar_new2(QWidget* parent) {
-	return new QMenuBar(parent);
+QMenuBar* QMenuBar_new2() {
+	return new QMenuBar();
 }
 
 QMetaObject* QMenuBar_MetaObject(const QMenuBar* self) {

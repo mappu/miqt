@@ -25,11 +25,11 @@ typedef struct QPrinter QPrinter;
 typedef struct QWidget QWidget;
 #endif
 
-QPrintPreviewWidget* QPrintPreviewWidget_new(QPrinter* printer);
-QPrintPreviewWidget* QPrintPreviewWidget_new2();
-QPrintPreviewWidget* QPrintPreviewWidget_new3(QPrinter* printer, QWidget* parent);
-QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent, int flags);
-QPrintPreviewWidget* QPrintPreviewWidget_new5(QWidget* parent);
+QPrintPreviewWidget* QPrintPreviewWidget_new(QWidget* parent);
+QPrintPreviewWidget* QPrintPreviewWidget_new2(QPrinter* printer);
+QPrintPreviewWidget* QPrintPreviewWidget_new3();
+QPrintPreviewWidget* QPrintPreviewWidget_new4(QPrinter* printer, QWidget* parent);
+QPrintPreviewWidget* QPrintPreviewWidget_new5(QPrinter* printer, QWidget* parent, int flags);
 QPrintPreviewWidget* QPrintPreviewWidget_new6(QWidget* parent, int flags);
 QMetaObject* QPrintPreviewWidget_MetaObject(const QPrintPreviewWidget* self);
 void* QPrintPreviewWidget_Metacast(QPrintPreviewWidget* self, const char* param1);

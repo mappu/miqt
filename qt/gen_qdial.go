@@ -44,14 +44,14 @@ func UnsafeNewQDial(h unsafe.Pointer) *QDial {
 }
 
 // NewQDial constructs a new QDial object.
-func NewQDial() *QDial {
-	ret := C.QDial_new()
+func NewQDial(parent *QWidget) *QDial {
+	ret := C.QDial_new(parent.cPointer())
 	return newQDial(ret)
 }
 
 // NewQDial2 constructs a new QDial object.
-func NewQDial2(parent *QWidget) *QDial {
-	ret := C.QDial_new2(parent.cPointer())
+func NewQDial2() *QDial {
+	ret := C.QDial_new2()
 	return newQDial(ret)
 }
 

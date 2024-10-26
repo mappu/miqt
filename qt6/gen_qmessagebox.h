@@ -31,10 +31,10 @@ typedef struct QPushButton QPushButton;
 typedef struct QWidget QWidget;
 #endif
 
-QMessageBox* QMessageBox_new();
-QMessageBox* QMessageBox_new2(int icon, struct miqt_string title, struct miqt_string text);
-QMessageBox* QMessageBox_new3(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2);
-QMessageBox* QMessageBox_new4(QWidget* parent);
+QMessageBox* QMessageBox_new(QWidget* parent);
+QMessageBox* QMessageBox_new2();
+QMessageBox* QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text);
+QMessageBox* QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2);
 QMessageBox* QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons);
 QMessageBox* QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent);
 QMessageBox* QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags);

@@ -35,8 +35,8 @@ typedef struct QTreeView QTreeView;
 typedef struct QWidget QWidget;
 #endif
 
-QTreeView* QTreeView_new();
-QTreeView* QTreeView_new2(QWidget* parent);
+QTreeView* QTreeView_new(QWidget* parent);
+QTreeView* QTreeView_new2();
 QMetaObject* QTreeView_MetaObject(const QTreeView* self);
 void* QTreeView_Metacast(QTreeView* self, const char* param1);
 struct miqt_string QTreeView_Tr(const char* s);

@@ -61,32 +61,32 @@ func UnsafeNewQDateTimeEdit(h unsafe.Pointer) *QDateTimeEdit {
 }
 
 // NewQDateTimeEdit constructs a new QDateTimeEdit object.
-func NewQDateTimeEdit() *QDateTimeEdit {
-	ret := C.QDateTimeEdit_new()
+func NewQDateTimeEdit(parent *QWidget) *QDateTimeEdit {
+	ret := C.QDateTimeEdit_new(parent.cPointer())
 	return newQDateTimeEdit(ret)
 }
 
 // NewQDateTimeEdit2 constructs a new QDateTimeEdit object.
-func NewQDateTimeEdit2(dt *QDateTime) *QDateTimeEdit {
-	ret := C.QDateTimeEdit_new2(dt.cPointer())
+func NewQDateTimeEdit2() *QDateTimeEdit {
+	ret := C.QDateTimeEdit_new2()
 	return newQDateTimeEdit(ret)
 }
 
 // NewQDateTimeEdit3 constructs a new QDateTimeEdit object.
-func NewQDateTimeEdit3(d QDate) *QDateTimeEdit {
-	ret := C.QDateTimeEdit_new3(d.cPointer())
+func NewQDateTimeEdit3(dt *QDateTime) *QDateTimeEdit {
+	ret := C.QDateTimeEdit_new3(dt.cPointer())
 	return newQDateTimeEdit(ret)
 }
 
 // NewQDateTimeEdit4 constructs a new QDateTimeEdit object.
-func NewQDateTimeEdit4(t QTime) *QDateTimeEdit {
-	ret := C.QDateTimeEdit_new4(t.cPointer())
+func NewQDateTimeEdit4(d QDate) *QDateTimeEdit {
+	ret := C.QDateTimeEdit_new4(d.cPointer())
 	return newQDateTimeEdit(ret)
 }
 
 // NewQDateTimeEdit5 constructs a new QDateTimeEdit object.
-func NewQDateTimeEdit5(parent *QWidget) *QDateTimeEdit {
-	ret := C.QDateTimeEdit_new5(parent.cPointer())
+func NewQDateTimeEdit5(t QTime) *QDateTimeEdit {
+	ret := C.QDateTimeEdit_new5(t.cPointer())
 	return newQDateTimeEdit(ret)
 }
 
@@ -503,20 +503,20 @@ func UnsafeNewQTimeEdit(h unsafe.Pointer) *QTimeEdit {
 }
 
 // NewQTimeEdit constructs a new QTimeEdit object.
-func NewQTimeEdit() *QTimeEdit {
-	ret := C.QTimeEdit_new()
+func NewQTimeEdit(parent *QWidget) *QTimeEdit {
+	ret := C.QTimeEdit_new(parent.cPointer())
 	return newQTimeEdit(ret)
 }
 
 // NewQTimeEdit2 constructs a new QTimeEdit object.
-func NewQTimeEdit2(time QTime) *QTimeEdit {
-	ret := C.QTimeEdit_new2(time.cPointer())
+func NewQTimeEdit2() *QTimeEdit {
+	ret := C.QTimeEdit_new2()
 	return newQTimeEdit(ret)
 }
 
 // NewQTimeEdit3 constructs a new QTimeEdit object.
-func NewQTimeEdit3(parent *QWidget) *QTimeEdit {
-	ret := C.QTimeEdit_new3(parent.cPointer())
+func NewQTimeEdit3(time QTime) *QTimeEdit {
+	ret := C.QTimeEdit_new3(time.cPointer())
 	return newQTimeEdit(ret)
 }
 
@@ -635,20 +635,20 @@ func UnsafeNewQDateEdit(h unsafe.Pointer) *QDateEdit {
 }
 
 // NewQDateEdit constructs a new QDateEdit object.
-func NewQDateEdit() *QDateEdit {
-	ret := C.QDateEdit_new()
+func NewQDateEdit(parent *QWidget) *QDateEdit {
+	ret := C.QDateEdit_new(parent.cPointer())
 	return newQDateEdit(ret)
 }
 
 // NewQDateEdit2 constructs a new QDateEdit object.
-func NewQDateEdit2(date QDate) *QDateEdit {
-	ret := C.QDateEdit_new2(date.cPointer())
+func NewQDateEdit2() *QDateEdit {
+	ret := C.QDateEdit_new2()
 	return newQDateEdit(ret)
 }
 
 // NewQDateEdit3 constructs a new QDateEdit object.
-func NewQDateEdit3(parent *QWidget) *QDateEdit {
-	ret := C.QDateEdit_new3(parent.cPointer())
+func NewQDateEdit3(date QDate) *QDateEdit {
+	ret := C.QDateEdit_new3(date.cPointer())
 	return newQDateEdit(ret)
 }
 

@@ -250,14 +250,14 @@ func UnsafeNewQsciScintilla(h unsafe.Pointer) *QsciScintilla {
 }
 
 // NewQsciScintilla constructs a new QsciScintilla object.
-func NewQsciScintilla() *QsciScintilla {
-	ret := C.QsciScintilla_new()
+func NewQsciScintilla(parent *qt.QWidget) *QsciScintilla {
+	ret := C.QsciScintilla_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQsciScintilla(ret)
 }
 
 // NewQsciScintilla2 constructs a new QsciScintilla object.
-func NewQsciScintilla2(parent *qt.QWidget) *QsciScintilla {
-	ret := C.QsciScintilla_new2((*C.QWidget)(parent.UnsafePointer()))
+func NewQsciScintilla2() *QsciScintilla {
+	ret := C.QsciScintilla_new2()
 	return newQsciScintilla(ret)
 }
 

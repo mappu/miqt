@@ -12,16 +12,16 @@
 #include "gen_qsplitter.h"
 #include "_cgo_export.h"
 
-QSplitter* QSplitter_new() {
+QSplitter* QSplitter_new(QWidget* parent) {
+	return new QSplitter(parent);
+}
+
+QSplitter* QSplitter_new2() {
 	return new QSplitter();
 }
 
-QSplitter* QSplitter_new2(int param1) {
+QSplitter* QSplitter_new3(int param1) {
 	return new QSplitter(static_cast<Qt::Orientation>(param1));
-}
-
-QSplitter* QSplitter_new3(QWidget* parent) {
-	return new QSplitter(parent);
 }
 
 QSplitter* QSplitter_new4(int param1, QWidget* parent) {

@@ -43,9 +43,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-QLineEdit* QLineEdit_new();
-QLineEdit* QLineEdit_new2(struct miqt_string param1);
-QLineEdit* QLineEdit_new3(QWidget* parent);
+QLineEdit* QLineEdit_new(QWidget* parent);
+QLineEdit* QLineEdit_new2();
+QLineEdit* QLineEdit_new3(struct miqt_string param1);
 QLineEdit* QLineEdit_new4(struct miqt_string param1, QWidget* parent);
 QMetaObject* QLineEdit_MetaObject(const QLineEdit* self);
 void* QLineEdit_Metacast(QLineEdit* self, const char* param1);

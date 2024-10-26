@@ -13,12 +13,12 @@
 #include "gen_qlistview.h"
 #include "_cgo_export.h"
 
-QListView* QListView_new() {
-	return new QListView();
+QListView* QListView_new(QWidget* parent) {
+	return new QListView(parent);
 }
 
-QListView* QListView_new2(QWidget* parent) {
-	return new QListView(parent);
+QListView* QListView_new2() {
+	return new QListView();
 }
 
 QMetaObject* QListView_MetaObject(const QListView* self) {

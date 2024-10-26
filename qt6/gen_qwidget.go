@@ -107,14 +107,14 @@ func UnsafeNewQWidget(h unsafe.Pointer) *QWidget {
 }
 
 // NewQWidget constructs a new QWidget object.
-func NewQWidget() *QWidget {
-	ret := C.QWidget_new()
+func NewQWidget(parent *QWidget) *QWidget {
+	ret := C.QWidget_new(parent.cPointer())
 	return newQWidget(ret)
 }
 
 // NewQWidget2 constructs a new QWidget object.
-func NewQWidget2(parent *QWidget) *QWidget {
-	ret := C.QWidget_new2(parent.cPointer())
+func NewQWidget2() *QWidget {
+	ret := C.QWidget_new2()
 	return newQWidget(ret)
 }
 

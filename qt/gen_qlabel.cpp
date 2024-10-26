@@ -12,17 +12,17 @@
 #include "gen_qlabel.h"
 #include "_cgo_export.h"
 
-QLabel* QLabel_new() {
+QLabel* QLabel_new(QWidget* parent) {
+	return new QLabel(parent);
+}
+
+QLabel* QLabel_new2() {
 	return new QLabel();
 }
 
-QLabel* QLabel_new2(struct miqt_string text) {
+QLabel* QLabel_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QLabel(text_QString);
-}
-
-QLabel* QLabel_new3(QWidget* parent) {
-	return new QLabel(parent);
 }
 
 QLabel* QLabel_new4(QWidget* parent, int f) {

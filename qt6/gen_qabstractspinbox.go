@@ -75,14 +75,14 @@ func UnsafeNewQAbstractSpinBox(h unsafe.Pointer) *QAbstractSpinBox {
 }
 
 // NewQAbstractSpinBox constructs a new QAbstractSpinBox object.
-func NewQAbstractSpinBox() *QAbstractSpinBox {
-	ret := C.QAbstractSpinBox_new()
+func NewQAbstractSpinBox(parent *QWidget) *QAbstractSpinBox {
+	ret := C.QAbstractSpinBox_new(parent.cPointer())
 	return newQAbstractSpinBox(ret)
 }
 
 // NewQAbstractSpinBox2 constructs a new QAbstractSpinBox object.
-func NewQAbstractSpinBox2(parent *QWidget) *QAbstractSpinBox {
-	ret := C.QAbstractSpinBox_new2(parent.cPointer())
+func NewQAbstractSpinBox2() *QAbstractSpinBox {
+	ret := C.QAbstractSpinBox_new2()
 	return newQAbstractSpinBox(ret)
 }
 

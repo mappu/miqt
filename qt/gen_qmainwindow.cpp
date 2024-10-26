@@ -17,12 +17,12 @@
 #include "gen_qmainwindow.h"
 #include "_cgo_export.h"
 
-QMainWindow* QMainWindow_new() {
-	return new QMainWindow();
+QMainWindow* QMainWindow_new(QWidget* parent) {
+	return new QMainWindow(parent);
 }
 
-QMainWindow* QMainWindow_new2(QWidget* parent) {
-	return new QMainWindow(parent);
+QMainWindow* QMainWindow_new2() {
+	return new QMainWindow();
 }
 
 QMainWindow* QMainWindow_new3(QWidget* parent, int flags) {

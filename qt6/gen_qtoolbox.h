@@ -25,8 +25,8 @@ typedef struct QToolBox QToolBox;
 typedef struct QWidget QWidget;
 #endif
 
-QToolBox* QToolBox_new();
-QToolBox* QToolBox_new2(QWidget* parent);
+QToolBox* QToolBox_new(QWidget* parent);
+QToolBox* QToolBox_new2();
 QToolBox* QToolBox_new3(QWidget* parent, int f);
 QMetaObject* QToolBox_MetaObject(const QToolBox* self);
 void* QToolBox_Metacast(QToolBox* self, const char* param1);

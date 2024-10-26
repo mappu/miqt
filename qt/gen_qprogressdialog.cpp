@@ -12,18 +12,18 @@
 #include "gen_qprogressdialog.h"
 #include "_cgo_export.h"
 
-QProgressDialog* QProgressDialog_new() {
+QProgressDialog* QProgressDialog_new(QWidget* parent) {
+	return new QProgressDialog(parent);
+}
+
+QProgressDialog* QProgressDialog_new2() {
 	return new QProgressDialog();
 }
 
-QProgressDialog* QProgressDialog_new2(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum) {
+QProgressDialog* QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
 	return new QProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
-}
-
-QProgressDialog* QProgressDialog_new3(QWidget* parent) {
-	return new QProgressDialog(parent);
 }
 
 QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags) {

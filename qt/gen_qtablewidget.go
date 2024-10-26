@@ -458,20 +458,20 @@ func UnsafeNewQTableWidget(h unsafe.Pointer) *QTableWidget {
 }
 
 // NewQTableWidget constructs a new QTableWidget object.
-func NewQTableWidget() *QTableWidget {
-	ret := C.QTableWidget_new()
+func NewQTableWidget(parent *QWidget) *QTableWidget {
+	ret := C.QTableWidget_new(parent.cPointer())
 	return newQTableWidget(ret)
 }
 
 // NewQTableWidget2 constructs a new QTableWidget object.
-func NewQTableWidget2(rows int, columns int) *QTableWidget {
-	ret := C.QTableWidget_new2((C.int)(rows), (C.int)(columns))
+func NewQTableWidget2() *QTableWidget {
+	ret := C.QTableWidget_new2()
 	return newQTableWidget(ret)
 }
 
 // NewQTableWidget3 constructs a new QTableWidget object.
-func NewQTableWidget3(parent *QWidget) *QTableWidget {
-	ret := C.QTableWidget_new3(parent.cPointer())
+func NewQTableWidget3(rows int, columns int) *QTableWidget {
+	ret := C.QTableWidget_new3((C.int)(rows), (C.int)(columns))
 	return newQTableWidget(ret)
 }
 

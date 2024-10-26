@@ -61,14 +61,14 @@ func UnsafeNewQTabWidget(h unsafe.Pointer) *QTabWidget {
 }
 
 // NewQTabWidget constructs a new QTabWidget object.
-func NewQTabWidget() *QTabWidget {
-	ret := C.QTabWidget_new()
+func NewQTabWidget(parent *QWidget) *QTabWidget {
+	ret := C.QTabWidget_new(parent.cPointer())
 	return newQTabWidget(ret)
 }
 
 // NewQTabWidget2 constructs a new QTabWidget object.
-func NewQTabWidget2(parent *QWidget) *QTabWidget {
-	ret := C.QTabWidget_new2(parent.cPointer())
+func NewQTabWidget2() *QTabWidget {
+	ret := C.QTabWidget_new2()
 	return newQTabWidget(ret)
 }
 

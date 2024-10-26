@@ -37,8 +37,8 @@ typedef struct QWidget QWidget;
 typedef struct QsciScintillaBase QsciScintillaBase;
 #endif
 
-QsciScintillaBase* QsciScintillaBase_new();
-QsciScintillaBase* QsciScintillaBase_new2(QWidget* parent);
+QsciScintillaBase* QsciScintillaBase_new(QWidget* parent);
+QsciScintillaBase* QsciScintillaBase_new2();
 QMetaObject* QsciScintillaBase_MetaObject(const QsciScintillaBase* self);
 void* QsciScintillaBase_Metacast(QsciScintillaBase* self, const char* param1);
 struct miqt_string QsciScintillaBase_Tr(const char* s);

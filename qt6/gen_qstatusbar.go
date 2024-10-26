@@ -45,14 +45,14 @@ func UnsafeNewQStatusBar(h unsafe.Pointer) *QStatusBar {
 }
 
 // NewQStatusBar constructs a new QStatusBar object.
-func NewQStatusBar() *QStatusBar {
-	ret := C.QStatusBar_new()
+func NewQStatusBar(parent *QWidget) *QStatusBar {
+	ret := C.QStatusBar_new(parent.cPointer())
 	return newQStatusBar(ret)
 }
 
 // NewQStatusBar2 constructs a new QStatusBar object.
-func NewQStatusBar2(parent *QWidget) *QStatusBar {
-	ret := C.QStatusBar_new2(parent.cPointer())
+func NewQStatusBar2() *QStatusBar {
+	ret := C.QStatusBar_new2()
 	return newQStatusBar(ret)
 }
 

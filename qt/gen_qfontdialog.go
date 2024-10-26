@@ -56,20 +56,20 @@ func UnsafeNewQFontDialog(h unsafe.Pointer) *QFontDialog {
 }
 
 // NewQFontDialog constructs a new QFontDialog object.
-func NewQFontDialog() *QFontDialog {
-	ret := C.QFontDialog_new()
+func NewQFontDialog(parent *QWidget) *QFontDialog {
+	ret := C.QFontDialog_new(parent.cPointer())
 	return newQFontDialog(ret)
 }
 
 // NewQFontDialog2 constructs a new QFontDialog object.
-func NewQFontDialog2(initial *QFont) *QFontDialog {
-	ret := C.QFontDialog_new2(initial.cPointer())
+func NewQFontDialog2() *QFontDialog {
+	ret := C.QFontDialog_new2()
 	return newQFontDialog(ret)
 }
 
 // NewQFontDialog3 constructs a new QFontDialog object.
-func NewQFontDialog3(parent *QWidget) *QFontDialog {
-	ret := C.QFontDialog_new3(parent.cPointer())
+func NewQFontDialog3(initial *QFont) *QFontDialog {
+	ret := C.QFontDialog_new3(initial.cPointer())
 	return newQFontDialog(ret)
 }
 

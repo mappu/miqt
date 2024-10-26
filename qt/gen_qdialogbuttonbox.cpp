@@ -11,24 +11,24 @@
 #include "gen_qdialogbuttonbox.h"
 #include "_cgo_export.h"
 
-QDialogButtonBox* QDialogButtonBox_new() {
+QDialogButtonBox* QDialogButtonBox_new(QWidget* parent) {
+	return new QDialogButtonBox(parent);
+}
+
+QDialogButtonBox* QDialogButtonBox_new2() {
 	return new QDialogButtonBox();
 }
 
-QDialogButtonBox* QDialogButtonBox_new2(int orientation) {
+QDialogButtonBox* QDialogButtonBox_new3(int orientation) {
 	return new QDialogButtonBox(static_cast<Qt::Orientation>(orientation));
 }
 
-QDialogButtonBox* QDialogButtonBox_new3(int buttons) {
+QDialogButtonBox* QDialogButtonBox_new4(int buttons) {
 	return new QDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons));
 }
 
-QDialogButtonBox* QDialogButtonBox_new4(int buttons, int orientation) {
+QDialogButtonBox* QDialogButtonBox_new5(int buttons, int orientation) {
 	return new QDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation));
-}
-
-QDialogButtonBox* QDialogButtonBox_new5(QWidget* parent) {
-	return new QDialogButtonBox(parent);
 }
 
 QDialogButtonBox* QDialogButtonBox_new6(int orientation, QWidget* parent) {

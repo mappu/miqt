@@ -8,12 +8,12 @@
 #include "gen_qstackedwidget.h"
 #include "_cgo_export.h"
 
-QStackedWidget* QStackedWidget_new() {
-	return new QStackedWidget();
+QStackedWidget* QStackedWidget_new(QWidget* parent) {
+	return new QStackedWidget(parent);
 }
 
-QStackedWidget* QStackedWidget_new2(QWidget* parent) {
-	return new QStackedWidget(parent);
+QStackedWidget* QStackedWidget_new2() {
+	return new QStackedWidget();
 }
 
 QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self) {

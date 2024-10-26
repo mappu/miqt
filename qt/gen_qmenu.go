@@ -45,24 +45,24 @@ func UnsafeNewQMenu(h unsafe.Pointer) *QMenu {
 }
 
 // NewQMenu constructs a new QMenu object.
-func NewQMenu() *QMenu {
-	ret := C.QMenu_new()
+func NewQMenu(parent *QWidget) *QMenu {
+	ret := C.QMenu_new(parent.cPointer())
 	return newQMenu(ret)
 }
 
 // NewQMenu2 constructs a new QMenu object.
-func NewQMenu2(title string) *QMenu {
-	title_ms := C.struct_miqt_string{}
-	title_ms.data = C.CString(title)
-	title_ms.len = C.size_t(len(title))
-	defer C.free(unsafe.Pointer(title_ms.data))
-	ret := C.QMenu_new2(title_ms)
+func NewQMenu2() *QMenu {
+	ret := C.QMenu_new2()
 	return newQMenu(ret)
 }
 
 // NewQMenu3 constructs a new QMenu object.
-func NewQMenu3(parent *QWidget) *QMenu {
-	ret := C.QMenu_new3(parent.cPointer())
+func NewQMenu3(title string) *QMenu {
+	title_ms := C.struct_miqt_string{}
+	title_ms.data = C.CString(title)
+	title_ms.len = C.size_t(len(title))
+	defer C.free(unsafe.Pointer(title_ms.data))
+	ret := C.QMenu_new3(title_ms)
 	return newQMenu(ret)
 }
 

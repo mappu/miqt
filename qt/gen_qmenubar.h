@@ -35,8 +35,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QMenuBar* QMenuBar_new();
-QMenuBar* QMenuBar_new2(QWidget* parent);
+QMenuBar* QMenuBar_new(QWidget* parent);
+QMenuBar* QMenuBar_new2();
 QMetaObject* QMenuBar_MetaObject(const QMenuBar* self);
 void* QMenuBar_Metacast(QMenuBar* self, const char* param1);
 struct miqt_string QMenuBar_Tr(const char* s);

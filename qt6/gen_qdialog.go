@@ -52,14 +52,14 @@ func UnsafeNewQDialog(h unsafe.Pointer) *QDialog {
 }
 
 // NewQDialog constructs a new QDialog object.
-func NewQDialog() *QDialog {
-	ret := C.QDialog_new()
+func NewQDialog(parent *QWidget) *QDialog {
+	ret := C.QDialog_new(parent.cPointer())
 	return newQDialog(ret)
 }
 
 // NewQDialog2 constructs a new QDialog object.
-func NewQDialog2(parent *QWidget) *QDialog {
-	ret := C.QDialog_new2(parent.cPointer())
+func NewQDialog2() *QDialog {
+	ret := C.QDialog_new2()
 	return newQDialog(ret)
 }
 

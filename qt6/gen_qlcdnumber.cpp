@@ -9,16 +9,16 @@
 #include "gen_qlcdnumber.h"
 #include "_cgo_export.h"
 
-QLCDNumber* QLCDNumber_new() {
+QLCDNumber* QLCDNumber_new(QWidget* parent) {
+	return new QLCDNumber(parent);
+}
+
+QLCDNumber* QLCDNumber_new2() {
 	return new QLCDNumber();
 }
 
-QLCDNumber* QLCDNumber_new2(unsigned int numDigits) {
+QLCDNumber* QLCDNumber_new3(unsigned int numDigits) {
 	return new QLCDNumber(static_cast<uint>(numDigits));
-}
-
-QLCDNumber* QLCDNumber_new3(QWidget* parent) {
-	return new QLCDNumber(parent);
 }
 
 QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent) {

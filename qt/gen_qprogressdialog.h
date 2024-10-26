@@ -31,9 +31,9 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QProgressDialog* QProgressDialog_new();
-QProgressDialog* QProgressDialog_new2(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum);
-QProgressDialog* QProgressDialog_new3(QWidget* parent);
+QProgressDialog* QProgressDialog_new(QWidget* parent);
+QProgressDialog* QProgressDialog_new2();
+QProgressDialog* QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum);
 QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags);
 QProgressDialog* QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent);
 QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags);

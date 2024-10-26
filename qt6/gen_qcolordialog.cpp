@@ -9,16 +9,16 @@
 #include "gen_qcolordialog.h"
 #include "_cgo_export.h"
 
-QColorDialog* QColorDialog_new() {
+QColorDialog* QColorDialog_new(QWidget* parent) {
+	return new QColorDialog(parent);
+}
+
+QColorDialog* QColorDialog_new2() {
 	return new QColorDialog();
 }
 
-QColorDialog* QColorDialog_new2(QColor* initial) {
+QColorDialog* QColorDialog_new3(QColor* initial) {
 	return new QColorDialog(*initial);
-}
-
-QColorDialog* QColorDialog_new3(QWidget* parent) {
-	return new QColorDialog(parent);
 }
 
 QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent) {

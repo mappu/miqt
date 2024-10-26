@@ -11,16 +11,16 @@
 #include "gen_qsplashscreen.h"
 #include "_cgo_export.h"
 
-QSplashScreen* QSplashScreen_new() {
+QSplashScreen* QSplashScreen_new(QWidget* parent) {
+	return new QSplashScreen(parent);
+}
+
+QSplashScreen* QSplashScreen_new2() {
 	return new QSplashScreen();
 }
 
-QSplashScreen* QSplashScreen_new2(QScreen* screen) {
+QSplashScreen* QSplashScreen_new3(QScreen* screen) {
 	return new QSplashScreen(screen);
-}
-
-QSplashScreen* QSplashScreen_new3(QWidget* parent) {
-	return new QSplashScreen(parent);
 }
 
 QSplashScreen* QSplashScreen_new4(QPixmap* pixmap) {

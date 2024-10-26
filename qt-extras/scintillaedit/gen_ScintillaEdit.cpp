@@ -922,12 +922,12 @@ void SCNotification_Delete(SCNotification* self) {
 	delete self;
 }
 
-ScintillaEditBase* ScintillaEditBase_new() {
-	return new ScintillaEditBase();
+ScintillaEditBase* ScintillaEditBase_new(QWidget* parent) {
+	return new ScintillaEditBase(parent);
 }
 
-ScintillaEditBase* ScintillaEditBase_new2(QWidget* parent) {
-	return new ScintillaEditBase(parent);
+ScintillaEditBase* ScintillaEditBase_new2() {
+	return new ScintillaEditBase();
 }
 
 QMetaObject* ScintillaEditBase_MetaObject(const ScintillaEditBase* self) {
@@ -1852,12 +1852,12 @@ void ScintillaDocument_Delete(ScintillaDocument* self) {
 	delete self;
 }
 
-ScintillaEdit* ScintillaEdit_new() {
-	return new ScintillaEdit();
+ScintillaEdit* ScintillaEdit_new(QWidget* parent) {
+	return new ScintillaEdit(parent);
 }
 
-ScintillaEdit* ScintillaEdit_new2(QWidget* parent) {
-	return new ScintillaEdit(parent);
+ScintillaEdit* ScintillaEdit_new2() {
+	return new ScintillaEdit();
 }
 
 QMetaObject* ScintillaEdit_MetaObject(const ScintillaEdit* self) {

@@ -25,9 +25,9 @@ typedef struct QPrinter QPrinter;
 typedef struct QWidget QWidget;
 #endif
 
-QPrintPreviewDialog* QPrintPreviewDialog_new();
-QPrintPreviewDialog* QPrintPreviewDialog_new2(QPrinter* printer);
-QPrintPreviewDialog* QPrintPreviewDialog_new3(QWidget* parent);
+QPrintPreviewDialog* QPrintPreviewDialog_new(QWidget* parent);
+QPrintPreviewDialog* QPrintPreviewDialog_new2();
+QPrintPreviewDialog* QPrintPreviewDialog_new3(QPrinter* printer);
 QPrintPreviewDialog* QPrintPreviewDialog_new4(QWidget* parent, int flags);
 QPrintPreviewDialog* QPrintPreviewDialog_new5(QPrinter* printer, QWidget* parent);
 QPrintPreviewDialog* QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent, int flags);

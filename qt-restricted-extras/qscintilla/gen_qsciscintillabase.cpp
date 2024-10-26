@@ -14,12 +14,12 @@
 #include "gen_qsciscintillabase.h"
 #include "_cgo_export.h"
 
-QsciScintillaBase* QsciScintillaBase_new() {
-	return new QsciScintillaBase();
+QsciScintillaBase* QsciScintillaBase_new(QWidget* parent) {
+	return new QsciScintillaBase(parent);
 }
 
-QsciScintillaBase* QsciScintillaBase_new2(QWidget* parent) {
-	return new QsciScintillaBase(parent);
+QsciScintillaBase* QsciScintillaBase_new2() {
+	return new QsciScintillaBase();
 }
 
 QMetaObject* QsciScintillaBase_MetaObject(const QsciScintillaBase* self) {

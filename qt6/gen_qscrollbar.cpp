@@ -10,16 +10,16 @@
 #include "gen_qscrollbar.h"
 #include "_cgo_export.h"
 
-QScrollBar* QScrollBar_new() {
+QScrollBar* QScrollBar_new(QWidget* parent) {
+	return new QScrollBar(parent);
+}
+
+QScrollBar* QScrollBar_new2() {
 	return new QScrollBar();
 }
 
-QScrollBar* QScrollBar_new2(int param1) {
+QScrollBar* QScrollBar_new3(int param1) {
 	return new QScrollBar(static_cast<Qt::Orientation>(param1));
-}
-
-QScrollBar* QScrollBar_new3(QWidget* parent) {
-	return new QScrollBar(parent);
 }
 
 QScrollBar* QScrollBar_new4(int param1, QWidget* parent) {

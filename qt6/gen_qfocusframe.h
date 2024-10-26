@@ -23,8 +23,8 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QWidget QWidget;
 #endif
 
-QFocusFrame* QFocusFrame_new();
-QFocusFrame* QFocusFrame_new2(QWidget* parent);
+QFocusFrame* QFocusFrame_new(QWidget* parent);
+QFocusFrame* QFocusFrame_new2();
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self);
 void* QFocusFrame_Metacast(QFocusFrame* self, const char* param1);
 struct miqt_string QFocusFrame_Tr(const char* s);

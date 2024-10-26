@@ -395,14 +395,14 @@ func UnsafeNewQListWidget(h unsafe.Pointer) *QListWidget {
 }
 
 // NewQListWidget constructs a new QListWidget object.
-func NewQListWidget() *QListWidget {
-	ret := C.QListWidget_new()
+func NewQListWidget(parent *QWidget) *QListWidget {
+	ret := C.QListWidget_new(parent.cPointer())
 	return newQListWidget(ret)
 }
 
 // NewQListWidget2 constructs a new QListWidget object.
-func NewQListWidget2(parent *QWidget) *QListWidget {
-	ret := C.QListWidget_new2(parent.cPointer())
+func NewQListWidget2() *QListWidget {
+	ret := C.QListWidget_new2()
 	return newQListWidget(ret)
 }
 

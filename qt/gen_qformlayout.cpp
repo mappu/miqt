@@ -13,12 +13,12 @@
 #include "gen_qformlayout.h"
 #include "_cgo_export.h"
 
-QFormLayout* QFormLayout_new() {
-	return new QFormLayout();
+QFormLayout* QFormLayout_new(QWidget* parent) {
+	return new QFormLayout(parent);
 }
 
-QFormLayout* QFormLayout_new2(QWidget* parent) {
-	return new QFormLayout(parent);
+QFormLayout* QFormLayout_new2() {
+	return new QFormLayout();
 }
 
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self) {

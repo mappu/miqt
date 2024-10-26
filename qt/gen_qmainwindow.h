@@ -39,8 +39,8 @@ typedef struct QToolBar QToolBar;
 typedef struct QWidget QWidget;
 #endif
 
-QMainWindow* QMainWindow_new();
-QMainWindow* QMainWindow_new2(QWidget* parent);
+QMainWindow* QMainWindow_new(QWidget* parent);
+QMainWindow* QMainWindow_new2();
 QMainWindow* QMainWindow_new3(QWidget* parent, int flags);
 QMetaObject* QMainWindow_MetaObject(const QMainWindow* self);
 void* QMainWindow_Metacast(QMainWindow* self, const char* param1);

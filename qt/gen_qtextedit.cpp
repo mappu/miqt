@@ -23,17 +23,17 @@
 #include "gen_qtextedit.h"
 #include "_cgo_export.h"
 
-QTextEdit* QTextEdit_new() {
+QTextEdit* QTextEdit_new(QWidget* parent) {
+	return new QTextEdit(parent);
+}
+
+QTextEdit* QTextEdit_new2() {
 	return new QTextEdit();
 }
 
-QTextEdit* QTextEdit_new2(struct miqt_string text) {
+QTextEdit* QTextEdit_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QTextEdit(text_QString);
-}
-
-QTextEdit* QTextEdit_new3(QWidget* parent) {
-	return new QTextEdit(parent);
 }
 
 QTextEdit* QTextEdit_new4(struct miqt_string text, QWidget* parent) {

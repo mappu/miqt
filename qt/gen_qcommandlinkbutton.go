@@ -44,23 +44,29 @@ func UnsafeNewQCommandLinkButton(h unsafe.Pointer) *QCommandLinkButton {
 }
 
 // NewQCommandLinkButton constructs a new QCommandLinkButton object.
-func NewQCommandLinkButton() *QCommandLinkButton {
-	ret := C.QCommandLinkButton_new()
+func NewQCommandLinkButton(parent *QWidget) *QCommandLinkButton {
+	ret := C.QCommandLinkButton_new(parent.cPointer())
 	return newQCommandLinkButton(ret)
 }
 
 // NewQCommandLinkButton2 constructs a new QCommandLinkButton object.
-func NewQCommandLinkButton2(text string) *QCommandLinkButton {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	ret := C.QCommandLinkButton_new2(text_ms)
+func NewQCommandLinkButton2() *QCommandLinkButton {
+	ret := C.QCommandLinkButton_new2()
 	return newQCommandLinkButton(ret)
 }
 
 // NewQCommandLinkButton3 constructs a new QCommandLinkButton object.
-func NewQCommandLinkButton3(text string, description string) *QCommandLinkButton {
+func NewQCommandLinkButton3(text string) *QCommandLinkButton {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	ret := C.QCommandLinkButton_new3(text_ms)
+	return newQCommandLinkButton(ret)
+}
+
+// NewQCommandLinkButton4 constructs a new QCommandLinkButton object.
+func NewQCommandLinkButton4(text string, description string) *QCommandLinkButton {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -69,13 +75,7 @@ func NewQCommandLinkButton3(text string, description string) *QCommandLinkButton
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	ret := C.QCommandLinkButton_new3(text_ms, description_ms)
-	return newQCommandLinkButton(ret)
-}
-
-// NewQCommandLinkButton4 constructs a new QCommandLinkButton object.
-func NewQCommandLinkButton4(parent *QWidget) *QCommandLinkButton {
-	ret := C.QCommandLinkButton_new4(parent.cPointer())
+	ret := C.QCommandLinkButton_new4(text_ms, description_ms)
 	return newQCommandLinkButton(ret)
 }
 

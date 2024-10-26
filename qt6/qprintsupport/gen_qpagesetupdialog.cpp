@@ -9,20 +9,20 @@
 #include "gen_qpagesetupdialog.h"
 #include "_cgo_export.h"
 
-QPageSetupDialog* QPageSetupDialog_new(QPrinter* printer) {
+QPageSetupDialog* QPageSetupDialog_new(QWidget* parent) {
+	return new QPageSetupDialog(parent);
+}
+
+QPageSetupDialog* QPageSetupDialog_new2(QPrinter* printer) {
 	return new QPageSetupDialog(printer);
 }
 
-QPageSetupDialog* QPageSetupDialog_new2() {
+QPageSetupDialog* QPageSetupDialog_new3() {
 	return new QPageSetupDialog();
 }
 
-QPageSetupDialog* QPageSetupDialog_new3(QPrinter* printer, QWidget* parent) {
+QPageSetupDialog* QPageSetupDialog_new4(QPrinter* printer, QWidget* parent) {
 	return new QPageSetupDialog(printer, parent);
-}
-
-QPageSetupDialog* QPageSetupDialog_new4(QWidget* parent) {
-	return new QPageSetupDialog(parent);
 }
 
 QMetaObject* QPageSetupDialog_MetaObject(const QPageSetupDialog* self) {

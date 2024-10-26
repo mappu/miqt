@@ -9,12 +9,12 @@
 #include "gen_qdial.h"
 #include "_cgo_export.h"
 
-QDial* QDial_new() {
-	return new QDial();
+QDial* QDial_new(QWidget* parent) {
+	return new QDial(parent);
 }
 
-QDial* QDial_new2(QWidget* parent) {
-	return new QDial(parent);
+QDial* QDial_new2() {
+	return new QDial();
 }
 
 QMetaObject* QDial_MetaObject(const QDial* self) {

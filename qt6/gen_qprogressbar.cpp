@@ -9,12 +9,12 @@
 #include "gen_qprogressbar.h"
 #include "_cgo_export.h"
 
-QProgressBar* QProgressBar_new() {
-	return new QProgressBar();
+QProgressBar* QProgressBar_new(QWidget* parent) {
+	return new QProgressBar(parent);
 }
 
-QProgressBar* QProgressBar_new2(QWidget* parent) {
-	return new QProgressBar(parent);
+QProgressBar* QProgressBar_new2() {
+	return new QProgressBar();
 }
 
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self) {

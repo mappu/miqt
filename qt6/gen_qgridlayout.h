@@ -31,8 +31,8 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-QGridLayout* QGridLayout_new();
-QGridLayout* QGridLayout_new2(QWidget* parent);
+QGridLayout* QGridLayout_new(QWidget* parent);
+QGridLayout* QGridLayout_new2();
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self);
 void* QGridLayout_Metacast(QGridLayout* self, const char* param1);
 struct miqt_string QGridLayout_Tr(const char* s);

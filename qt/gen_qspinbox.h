@@ -25,8 +25,8 @@ typedef struct QSpinBox QSpinBox;
 typedef struct QWidget QWidget;
 #endif
 
-QSpinBox* QSpinBox_new();
-QSpinBox* QSpinBox_new2(QWidget* parent);
+QSpinBox* QSpinBox_new(QWidget* parent);
+QSpinBox* QSpinBox_new2();
 QMetaObject* QSpinBox_MetaObject(const QSpinBox* self);
 void* QSpinBox_Metacast(QSpinBox* self, const char* param1);
 struct miqt_string QSpinBox_Tr(const char* s);
@@ -61,8 +61,8 @@ struct miqt_string QSpinBox_TrUtf82(const char* s, const char* c);
 struct miqt_string QSpinBox_TrUtf83(const char* s, const char* c, int n);
 void QSpinBox_Delete(QSpinBox* self);
 
-QDoubleSpinBox* QDoubleSpinBox_new();
-QDoubleSpinBox* QDoubleSpinBox_new2(QWidget* parent);
+QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent);
+QDoubleSpinBox* QDoubleSpinBox_new2();
 QMetaObject* QDoubleSpinBox_MetaObject(const QDoubleSpinBox* self);
 void* QDoubleSpinBox_Metacast(QDoubleSpinBox* self, const char* param1);
 struct miqt_string QDoubleSpinBox_Tr(const char* s);

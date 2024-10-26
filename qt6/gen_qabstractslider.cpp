@@ -8,12 +8,12 @@
 #include "gen_qabstractslider.h"
 #include "_cgo_export.h"
 
-QAbstractSlider* QAbstractSlider_new() {
-	return new QAbstractSlider();
+QAbstractSlider* QAbstractSlider_new(QWidget* parent) {
+	return new QAbstractSlider(parent);
 }
 
-QAbstractSlider* QAbstractSlider_new2(QWidget* parent) {
-	return new QAbstractSlider(parent);
+QAbstractSlider* QAbstractSlider_new2() {
+	return new QAbstractSlider();
 }
 
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self) {
