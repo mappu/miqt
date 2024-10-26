@@ -58,14 +58,6 @@ void QTimeZone_Swap(QTimeZone* self, QTimeZone* other) {
 	self->swap(*other);
 }
 
-bool QTimeZone_OperatorEqual(const QTimeZone* self, QTimeZone* other) {
-	return self->operator==(*other);
-}
-
-bool QTimeZone_OperatorNotEqual(const QTimeZone* self, QTimeZone* other) {
-	return self->operator!=(*other);
-}
-
 bool QTimeZone_IsValid(const QTimeZone* self) {
 	return self->isValid();
 }

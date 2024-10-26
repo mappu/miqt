@@ -34,3 +34,7 @@ func ifv[T any](condition bool, trueval T, falseval T) T {
 	}
 	return falseval
 }
+
+func addr[T any](s T) *T {
+	return &s
+}

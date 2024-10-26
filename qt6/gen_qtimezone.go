@@ -156,14 +156,6 @@ func (this *QTimeZone) Swap(other *QTimeZone) {
 	C.QTimeZone_Swap(this.h, other.cPointer())
 }
 
-func (this *QTimeZone) OperatorEqual(other *QTimeZone) bool {
-	return (bool)(C.QTimeZone_OperatorEqual(this.h, other.cPointer()))
-}
-
-func (this *QTimeZone) OperatorNotEqual(other *QTimeZone) bool {
-	return (bool)(C.QTimeZone_OperatorNotEqual(this.h, other.cPointer()))
-}
-
 func (this *QTimeZone) IsValid() bool {
 	return (bool)(C.QTimeZone_IsValid(this.h))
 }

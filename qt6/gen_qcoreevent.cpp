@@ -1,6 +1,5 @@
 #include <QByteArray>
 #include <QChildEvent>
-#include <QDeferredDeleteEvent>
 #include <QDynamicPropertyChangeEvent>
 #include <QEvent>
 #include <QObject>
@@ -129,22 +128,6 @@ struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicProper
 }
 
 void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {
-	delete self;
-}
-
-QDeferredDeleteEvent* QDeferredDeleteEvent_new() {
-	return new QDeferredDeleteEvent();
-}
-
-QDeferredDeleteEvent* QDeferredDeleteEvent_Clone(const QDeferredDeleteEvent* self) {
-	return self->clone();
-}
-
-int QDeferredDeleteEvent_LoopLevel(const QDeferredDeleteEvent* self) {
-	return self->loopLevel();
-}
-
-void QDeferredDeleteEvent_Delete(QDeferredDeleteEvent* self) {
 	delete self;
 }
 

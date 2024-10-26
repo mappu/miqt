@@ -4,6 +4,23 @@ package main
 // and entire classes that may be disallowed.
 func astTransformBlocklist(parsed *CppParsedHeader) {
 
+	// Whole-classes
+
+	j := 0
+	for _, c := range parsed.Classes {
+		if !AllowClass(c.ClassName) {
+			continue
+		}
+
+		// Keep
+		parsed.Classes[j] = c
+		j++
+	}
+	parsed.Classes = parsed.Classes[:j] // reslice
+
+	// For the kept classes, filter ctors and methods within the class, based
+	// on the parameter types and return types
+
 	for i, c := range parsed.Classes {
 
 		// Constructors
@@ -11,12 +28,12 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j := 0
 	nextCtor:
 		for _, m := range c.Ctors {
-			if err := CheckComplexity(m.ReturnType, true); err != nil {
+			if err := AllowType(m.ReturnType, true); err != nil {
 				continue nextCtor
 			}
 
 			for _, p := range m.Parameters {
-				if err := CheckComplexity(p, false); err != nil {
+				if err := AllowType(p, false); err != nil {
 					continue nextCtor
 				}
 			}
@@ -32,12 +49,12 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j = 0
 	nextMethod:
 		for _, m := range c.Methods {
-			if err := CheckComplexity(m.ReturnType, true); err != nil {
+			if err := AllowType(m.ReturnType, true); err != nil {
 				continue nextMethod
 			}
 
 			for _, p := range m.Parameters {
-				if err := CheckComplexity(p, false); err != nil {
+				if err := AllowType(p, false); err != nil {
 					continue nextMethod
 				}
 			}

@@ -212,11 +212,6 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 	log.Printf("-> Processing class %q...\n", nodename)
 
-	// Also skip over any custom exceptions
-	if !AllowClass(nodename) {
-		return CppClass{}, ErrNoContent
-	}
-
 	// Skip over forward class declarations
 	// This is determined in two ways:
 	// 1. If the class has no inner nodes
@@ -458,7 +453,7 @@ nextMethod:
 
 			// Once all processing is complete, pass to exceptions for final decision
 
-			if err := AllowMethod(mm); err != nil {
+			if err := AllowMethod(ret.ClassName, mm); err != nil {
 				if errors.Is(err, ErrTooComplex) {
 					log.Printf("Skipping method %q with complex type", mm.MethodName)
 					continue nextMethod
@@ -467,6 +462,8 @@ nextMethod:
 				// Real error
 				return CppClass{}, err
 			}
+
+			ApplyQuirks(ret.ClassName, &mm)
 
 			ret.Methods = append(ret.Methods, mm)
 

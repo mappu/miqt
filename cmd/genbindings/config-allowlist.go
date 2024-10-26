@@ -118,6 +118,7 @@ func ImportHeaderForClass(className string) bool {
 		"QTextEngine",           // qtextlayout.h
 		"QText",                 // e.g. qtextcursor.h
 		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
+		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
 		"____last____":
 		return false
 	}
@@ -127,7 +128,7 @@ func ImportHeaderForClass(className string) bool {
 
 func AllowClass(className string) bool {
 
-	if strings.HasSuffix(className, "Private") {
+	if strings.HasSuffix(className, "Private") || strings.HasSuffix(className, "PrivateShared") {
 		return false
 	}
 
@@ -156,6 +157,9 @@ func AllowClass(className string) bool {
 		"QSequentialIterable",        // Qt 6. Extends a QIterator<>, too hard
 		"QBrushDataPointerDeleter",   // Qt 6 qbrush.h. Appears in header but cannot be linked
 		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
+		"QDeferredDeleteEvent",       // Qt 6. Hidden/undocumented class in Qt 6.4, moved to private header in Qt 6.7. Intended for test use only
+
+		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
 		"____last____":
 		return false
 	}
@@ -179,7 +183,7 @@ func AllowSignal(mm CppMethod) bool {
 	}
 }
 
-func AllowMethod(mm CppMethod) error {
+func AllowMethod(className string, mm CppMethod) error {
 
 	for _, p := range mm.Parameters {
 		if strings.HasSuffix(p.ParameterType, "Private") {
@@ -195,10 +199,21 @@ func AllowMethod(mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "QBitArray" && mm.MethodName == "operator~" {
+		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
+	}
+
+	if className == "QTimeZone" && (mm.MethodName == "operator==" || mm.MethodName == "operator!=") {
+		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
+	}
+
 	return nil // OK, allow
 }
 
-func CheckComplexity(p CppParameter, isReturnType bool) error {
+// AllowType controls whether to permit binding of a method, if a method uses
+// this type in its parameter list or return type.
+// Any type not permitted by AllowClass is also not permitted by this method.
+func AllowType(p CppParameter, isReturnType bool) error {
 
 	if p.QMapOf() {
 		return ErrTooComplex // Example???
@@ -207,12 +222,12 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex // e.g. QGradientStop
 	}
 	if t, ok := p.QSetOf(); ok {
-		if err := CheckComplexity(t, isReturnType); err != nil {
+		if err := AllowType(t, isReturnType); err != nil {
 			return err
 		}
 	}
 	if t, ok := p.QListOf(); ok {
-		if err := CheckComplexity(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
+		if err := AllowType(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
 
@@ -221,6 +236,9 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		if t.ParameterType == "QsciStyledText" {
 			return ErrTooComplex
 		}
+	}
+	if !AllowClass(p.ParameterType) {
+		return ErrTooComplex // This whole class type has been blocked, not only as a parameter/return type
 	}
 
 	if strings.Contains(p.ParameterType, "(*)") { // Function pointer.
@@ -356,9 +374,6 @@ func CheckComplexity(p CppParameter, isReturnType bool) error {
 		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
 		"QTextStreamFunction",             // e.g. qdebug.h
 		"QFactoryInterface",               // qfactoryinterface.h
-		"QItemSelection",                  // used by qabstractproxymodel.h, also blocked in AllowClass above, class extends a List<T>
-		"QTextStreamManipulator",          // used by qdebug.h, also blocked in AllowClass above
-		"QException",                      // used by qfutureinterface.h, also blocked in AllowClass above
 		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
 		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
 		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
@@ -394,4 +409,19 @@ func LinuxWindowsCompatCheck(p CppParameter) bool {
 		return true // uintptr_t-compatible on Linux, void* on Windows
 	}
 	return false
+}
+
+func ApplyQuirks(className string, mm *CppMethod) {
+	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
+		mm.BecomesNonConstInVersion = addr("6.7")
+	}
+
+	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic {
+		// The prototype was changed from
+		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
+		// [Qt 6.7]     void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint, QWidget *parent = nullptr)
+		// The 2nd parameter is no longer optional
+		// As a compromise, make it non-optional everywhere
+		mm.Parameters[1].Optional = false
+	}
 }

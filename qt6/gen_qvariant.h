@@ -43,11 +43,6 @@ class QTime;
 class QUrl;
 class QUuid;
 class QVariant;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QVariant__PrivateShared)
-typedef QVariant::PrivateShared QVariant__PrivateShared;
-#else
-class QVariant__PrivateShared;
-#endif
 class QVariantConstPointer;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QVariantTypeCoercer)
 typedef QtPrivate::QVariantTypeCoercer QtPrivate__QVariantTypeCoercer;
@@ -84,7 +79,6 @@ typedef struct QTime QTime;
 typedef struct QUrl QUrl;
 typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
-typedef struct QVariant__PrivateShared QVariant__PrivateShared;
 typedef struct QVariantConstPointer QVariantConstPointer;
 typedef struct QtPrivate__QVariantTypeCoercer QtPrivate__QVariantTypeCoercer;
 #endif
@@ -209,12 +203,6 @@ QVariant* QVariantConstPointer_OperatorMultiply(const QVariantConstPointer* self
 QVariant* QVariantConstPointer_OperatorMinusGreater(const QVariantConstPointer* self);
 void QVariantConstPointer_OperatorAssign(QVariantConstPointer* self, QVariantConstPointer* param1);
 void QVariantConstPointer_Delete(QVariantConstPointer* self);
-
-QVariant__PrivateShared* QVariant__PrivateShared_new(QVariant__PrivateShared* param1);
-void QVariant__PrivateShared_Free(QVariant__PrivateShared* p);
-const void* QVariant__PrivateShared_Data(const QVariant__PrivateShared* self);
-void* QVariant__PrivateShared_Data2(QVariant__PrivateShared* self);
-void QVariant__PrivateShared_Delete(QVariant__PrivateShared* self);
 
 #ifdef __cplusplus
 } /* extern C */

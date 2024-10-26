@@ -1,3 +1,4 @@
+#define WORKAROUND_INNER_CLASS_DEFINITION_QAssociativeIterable__const_iterator
 #include <QBitArray>
 #include <QByteArray>
 #include <QChar>
@@ -21,6 +22,7 @@
 #include <QRectF>
 #include <QRegExp>
 #include <QRegularExpression>
+#define WORKAROUND_INNER_CLASS_DEFINITION_QSequentialIterable__const_iterator
 #include <QSize>
 #include <QSizeF>
 #include <QString>
@@ -31,7 +33,7 @@
 #include <QUuid>
 #include <QVariant>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Handler
-#define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__PrivateShared
+#define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__Private__Data
 #include <QVariantComparisonHelper>
 #include <qvariant.h>
 #include "gen_qvariant.h"
@@ -540,15 +542,159 @@ void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self) {
 	delete self;
 }
 
-QVariant__PrivateShared* QVariant__PrivateShared_new(void* v) {
-	return new QVariant::PrivateShared(v);
+QVariant__Private__Data* QVariant__Private__Data_new() {
+	return new QVariant::Private::Data();
 }
 
-void QVariant__PrivateShared_Delete(QVariant__PrivateShared* self) {
+QVariant__Private__Data* QVariant__Private__Data_new2(QVariant__Private__Data* param1) {
+	return new QVariant::Private::Data(*param1);
+}
+
+void QVariant__Private__Data_OperatorAssign(QVariant__Private__Data* self, QVariant__Private__Data* param1) {
+	self->operator=(*param1);
+}
+
+void QVariant__Private__Data_Delete(QVariant__Private__Data* self) {
 	delete self;
 }
 
 void QVariant__Handler_Delete(QVariant__Handler* self) {
+	delete self;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSequentialIterable__const_iterator* other) {
+	return new QSequentialIterable::const_iterator(*other);
+}
+
+void QSequentialIterable__const_iterator_OperatorAssign(QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* other) {
+	self->operator=(*other);
+}
+
+QVariant* QSequentialIterable__const_iterator_OperatorMultiply(const QSequentialIterable__const_iterator* self) {
+	return new QVariant(self->operator*());
+}
+
+bool QSequentialIterable__const_iterator_OperatorEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o) {
+	return self->operator==(*o);
+}
+
+bool QSequentialIterable__const_iterator_OperatorNotEqual(const QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* o) {
+	return self->operator!=(*o);
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusPlusWithInt(QSequentialIterable__const_iterator* self, int param1) {
+	return new QSequentialIterable::const_iterator(self->operator++(static_cast<int>(param1)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinus(QSequentialIterable__const_iterator* self) {
+	QSequentialIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusMinusWithInt(QSequentialIterable__const_iterator* self, int param1) {
+	return new QSequentialIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusAssign(QSequentialIterable__const_iterator* self, int j) {
+	QSequentialIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlus(const QSequentialIterable__const_iterator* self, int j) {
+	return new QSequentialIterable::const_iterator(self->operator+(static_cast<int>(j)));
+}
+
+QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinus(const QSequentialIterable__const_iterator* self, int j) {
+	return new QSequentialIterable::const_iterator(self->operator-(static_cast<int>(j)));
+}
+
+void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self) {
+	delete self;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other) {
+	return new QAssociativeIterable::const_iterator(*other);
+}
+
+void QAssociativeIterable__const_iterator_OperatorAssign(QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* other) {
+	self->operator=(*other);
+}
+
+QVariant* QAssociativeIterable__const_iterator_Key(const QAssociativeIterable__const_iterator* self) {
+	return new QVariant(self->key());
+}
+
+QVariant* QAssociativeIterable__const_iterator_Value(const QAssociativeIterable__const_iterator* self) {
+	return new QVariant(self->value());
+}
+
+QVariant* QAssociativeIterable__const_iterator_OperatorMultiply(const QAssociativeIterable__const_iterator* self) {
+	return new QVariant(self->operator*());
+}
+
+bool QAssociativeIterable__const_iterator_OperatorEqual(const QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* o) {
+	return self->operator==(*o);
+}
+
+bool QAssociativeIterable__const_iterator_OperatorNotEqual(const QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* o) {
+	return self->operator!=(*o);
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator++();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusPlusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
+	return new QAssociativeIterable::const_iterator(self->operator++(static_cast<int>(param1)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinus(QAssociativeIterable__const_iterator* self) {
+	QAssociativeIterable::const_iterator& _ret = self->operator--();
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusMinusWithInt(QAssociativeIterable__const_iterator* self, int param1) {
+	return new QAssociativeIterable::const_iterator(self->operator--(static_cast<int>(param1)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator+=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusAssign(QAssociativeIterable__const_iterator* self, int j) {
+	QAssociativeIterable::const_iterator& _ret = self->operator-=(static_cast<int>(j));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlus(const QAssociativeIterable__const_iterator* self, int j) {
+	return new QAssociativeIterable::const_iterator(self->operator+(static_cast<int>(j)));
+}
+
+QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinus(const QAssociativeIterable__const_iterator* self, int j) {
+	return new QAssociativeIterable::const_iterator(self->operator-(static_cast<int>(j)));
+}
+
+void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self) {
 	delete self;
 }
 

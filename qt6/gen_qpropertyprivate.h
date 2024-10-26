@@ -18,11 +18,6 @@ class QBindingStorage;
 class QPropertyProxyBindingData;
 class QUntypedPropertyBinding;
 class QUntypedPropertyData;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_QUntypedPropertyData__InheritsQUntypedPropertyData)
-typedef QUntypedPropertyData::InheritsQUntypedPropertyData QUntypedPropertyData__InheritsQUntypedPropertyData;
-#else
-class QUntypedPropertyData__InheritsQUntypedPropertyData;
-#endif
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__BindingFunctionVTable)
 typedef QtPrivate::BindingFunctionVTable QtPrivate__BindingFunctionVTable;
 #else
@@ -53,7 +48,6 @@ typedef struct QBindingStorage QBindingStorage;
 typedef struct QPropertyProxyBindingData QPropertyProxyBindingData;
 typedef struct QUntypedPropertyBinding QUntypedPropertyBinding;
 typedef struct QUntypedPropertyData QUntypedPropertyData;
-typedef struct QUntypedPropertyData__InheritsQUntypedPropertyData QUntypedPropertyData__InheritsQUntypedPropertyData;
 typedef struct QtPrivate__BindingFunctionVTable QtPrivate__BindingFunctionVTable;
 typedef struct QtPrivate__MSVCWorkAround QtPrivate__MSVCWorkAround;
 typedef struct QtPrivate__QPropertyBindingData QtPrivate__QPropertyBindingData;
@@ -85,8 +79,6 @@ void QtPrivate__QPropertyBindingData_RegisterWithCurrentlyEvaluatingBinding2(con
 void QtPrivate__QPropertyBindingData_NotifyObservers(const QtPrivate__QPropertyBindingData* self, QUntypedPropertyData* propertyDataPtr);
 void QtPrivate__QPropertyBindingData_NotifyObservers2(const QtPrivate__QPropertyBindingData* self, QUntypedPropertyData* propertyDataPtr, QBindingStorage* storage);
 void QtPrivate__QPropertyBindingData_Delete(QtPrivate__QPropertyBindingData* self);
-
-void QUntypedPropertyData__InheritsQUntypedPropertyData_Delete(QUntypedPropertyData__InheritsQUntypedPropertyData* self);
 
 #ifdef __cplusplus
 } /* extern C */

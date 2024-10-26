@@ -31,7 +31,6 @@
 #include <QUrl>
 #include <QUuid>
 #include <QVariant>
-#define WORKAROUND_INNER_CLASS_DEFINITION_QVariant__PrivateShared
 #include <QVariantConstPointer>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QtPrivate__QVariantTypeCoercer
 #include <qvariant.h>
@@ -554,26 +553,6 @@ void QVariantConstPointer_OperatorAssign(QVariantConstPointer* self, QVariantCon
 }
 
 void QVariantConstPointer_Delete(QVariantConstPointer* self) {
-	delete self;
-}
-
-QVariant__PrivateShared* QVariant__PrivateShared_new(QVariant__PrivateShared* param1) {
-	return new QVariant::PrivateShared(*param1);
-}
-
-void QVariant__PrivateShared_Free(QVariant__PrivateShared* p) {
-	QVariant::PrivateShared::free(p);
-}
-
-const void* QVariant__PrivateShared_Data(const QVariant__PrivateShared* self) {
-	return (const void*) self->data();
-}
-
-void* QVariant__PrivateShared_Data2(QVariant__PrivateShared* self) {
-	return self->data();
-}
-
-void QVariant__PrivateShared_Delete(QVariant__PrivateShared* self) {
 	delete self;
 }
 

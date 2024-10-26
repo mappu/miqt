@@ -703,6 +703,23 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					m.ReturnType.RenderTypeCabi(),
 				))
 
+			} else if m.BecomesNonConstInVersion != nil {
+
+				nonConstCallTarget := "const_cast<" + cClassName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
+
+				ret.WriteString("" +
+					m.ReturnType.RenderTypeCabi() + " " + cClassName + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*") + ") {\n" +
+					preamble + "\n" +
+					"// This method was changed from const to non-const in Qt " + *m.BecomesNonConstInVersion + "\n" +
+					"#if QT_VERSION < QT_VERSION_CHECK(" + strings.Replace(*m.BecomesNonConstInVersion, `.`, `,`, -1) + ",0)\n" +
+					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget) +
+					"#else\n" +
+					emitAssignCppToCabi("\treturn ", m.ReturnType, nonConstCallTarget) +
+					"#endif\n" +
+					"}\n" +
+					"\n",
+				)
+
 			} else {
 
 				ret.WriteString(fmt.Sprintf(
