@@ -11,12 +11,12 @@ func main() {
 
 	qt.NewQApplication(os.Args)
 
-	btn := qt.NewQPushButton2("QPrintSupport sample")
+	btn := qt.NewQPushButton3("QPrintSupport sample")
 	btn.SetFixedWidth(320)
 
 	btn.OnPressed(func() {
 
-		dlg := qprintsupport.NewQPrintDialog2()
+		dlg := qprintsupport.NewQPrintDialog3()
 		dlg.OnFinished(func(int) {
 			dlg.DeleteLater()
 		})

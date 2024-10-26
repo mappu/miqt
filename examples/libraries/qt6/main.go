@@ -11,7 +11,7 @@ func main() {
 
 	qt.NewQApplication(os.Args)
 
-	btn := qt.NewQPushButton2("Hello world!")
+	btn := qt.NewQPushButton3("Hello world!")
 	btn.SetFixedWidth(320)
 
 	var counter int = 0

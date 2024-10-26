@@ -12,7 +12,7 @@ func testMarshalling(t *testing.T) {
 
 	// Bool
 	t.Run("Bool", func(t *testing.T) {
-		b := qt.NewQCheckBox()
+		b := qt.NewQCheckBox2()
 		expect := true
 		b.SetChecked(expect)
 
@@ -37,7 +37,7 @@ func testMarshalling(t *testing.T) {
 
 	// QString
 	t.Run("QString", func(t *testing.T) {
-		w := qt.NewQWidget()
+		w := qt.NewQWidget2()
 		expect := "Sample text"
 		w.SetToolTip(expect)
 
@@ -60,7 +60,7 @@ func testMarshalling(t *testing.T) {
 
 	// QStringList
 	t.Run("QStringList", func(t *testing.T) {
-		c := qt.NewQInputDialog()
+		c := qt.NewQInputDialog2()
 		expect := []string{"foo", "bar", "baz", "quux"}
 		c.SetComboBoxItems(expect)
 

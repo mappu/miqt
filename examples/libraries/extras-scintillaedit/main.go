@@ -13,7 +13,7 @@ func main() {
 
 	qt.NewQApplication(os.Args)
 
-	area := scintillaedit.NewScintillaEdit()
+	area := scintillaedit.NewScintillaEdit2()
 	area.SetFixedSize2(640, 480)
 	area.Show()
 
