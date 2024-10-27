@@ -1,5 +1,3 @@
-// +build linux,!android windows darwin
-
 package qt
 
 /*
