@@ -16,6 +16,7 @@ cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
 cmd/genbindings/genbindings
 cmd/miqt-uic/miqt-uic
+cmd/miqt-rcc/miqt-rcc
 
 examples/helloworld/helloworld
 examples/helloworld/helloworld.exe
