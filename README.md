@@ -151,7 +151,7 @@ go build -ldflags '-s -w'
 
 *Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation*
 
-1. Install Go from [the official website](https://go.dev/dl/).
+1. Install Go from [go.dev](https://go.dev/dl/).
 2. Install some Qt toolchain and its matching GCC or Clang compiler (MSVC is not compatible with CGO).
 	- You can use [official Qt binaries](https://www.qt.io/) or any LGPL rebuild.
 	- Example: Download and extract the following into some shared `C:\dev\rootfs`:
@@ -172,6 +172,8 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 ### Windows (MSYS2)
 
 *Tested with MSYS2 UCRT64 Qt 5.15 / Qt 6.7 / GCC 14*
+
+Install MSYS2 from [msys2.org](https://www.msys2.org/).
 
 For dynamic linking:
 
@@ -220,6 +222,8 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 
 *Tested with macOS 12.6 "Monterey" x86_64 / Go 1.23 / Qt 5.15 / Apple Clang 14.0*
 
+Install Homebrew from [brew.sh](https://brew.sh/).
+
 For dynamic linking:
 
 ```bash
@@ -230,7 +234,7 @@ brew install qt@5
 go build -ldflags '-s -w'
 ```
 
-Installing `qt@5` from [Homebrew](https://brew.sh/) may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
+Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
 
 ### macOS (Docker)
 
