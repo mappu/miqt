@@ -202,14 +202,14 @@ For static linking:
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
 
 See FAQ Q3 for advice about docker performance.
