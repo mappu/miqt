@@ -232,6 +232,20 @@ go build -ldflags '-s -w'
 
 Installing `qt@5` from [Homebrew](https://brew.sh/) may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
 
+### macOS (Docker)
+
+*Tested with osxcross 14.5 / Go 1.19 / MacPorts Qt 5.15 / Debian Clang 14.0*
+
+For dynamic linking:
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/osxcross:latest -f docker/macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/osxcross:latest go build -ldflags '-s -w'`
+3. Copy necessary Qt LGPL libraries and plugin files.
+
+See FAQ Q3 for advice about docker performance.
+
 ### Android (Docker)
 
 *Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
