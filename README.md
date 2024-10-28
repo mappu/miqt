@@ -21,8 +21,8 @@ These bindings were newly started in August 2024. The bindings are functional fo
 |Linux|x86_64|Static or Dynamic (.so)|✅ Works
 |Windows|x86_64|Static or Dynamic (.dll)|✅ Works
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
-|macOS|x86_64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
-|macOS|ARM64|Static or Dynamic (.dylib)|Should work, [not tested](https://github.com/mappu/miqt/issues/2)
+|macOS|x86_64|Static or Dynamic (.dylib)|✅ Works
+|macOS|ARM64|Static or Dynamic (.dylib)|Should work, not tested
 
 ## License
 
@@ -151,7 +151,7 @@ go build -ldflags '-s -w'
 
 *Tested with Fsu0413 Qt 5.15 / Clang 18.1 native compilation*
 
-1. Install Go from [the official website](https://go.dev/dl/).
+1. Install Go from [go.dev](https://go.dev/dl/).
 2. Install some Qt toolchain and its matching GCC or Clang compiler (MSVC is not compatible with CGO).
 	- You can use [official Qt binaries](https://www.qt.io/) or any LGPL rebuild.
 	- Example: Download and extract the following into some shared `C:\dev\rootfs`:
@@ -171,13 +171,22 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommenda
 
 ### Windows (MSYS2)
 
-*Tested with MSYS2 UCRT64 Qt 5.15 / GCC 14*
+*Tested with MSYS2 UCRT64 Qt 5.15 / Qt 6.7 / GCC 14*
+
+Install MSYS2 from [msys2.org](https://www.msys2.org/).
 
 For dynamic linking:
 
 ```bash
-pacman -S mingw-w64-ucrt-x86_64-{go,gcc,qt5-base,pkg-config}
-GOROOT=/ucrt64/lib/go go build -ldflags "-s -w -H windowsgui"
+# Install Go and C++ toolchains
+pacman -S mingw-w64-ucrt-x86_64-{go,gcc,pkg-config}
+export GOROOT=/ucrt64/lib/go # Needed only if this is the first time installing Go in MSYS2. Otherwise it would be automatically applied when opening a new Bash terminal.
+
+# Install Qt
+pacman -S mingw-w64-ucrt-x86_64-qt5-base # For Qt 5
+pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6
+
+go build -ldflags "-s -w -H windowsgui"
 ```
 
 - Note: the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
@@ -195,19 +204,51 @@ For static linking:
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build -buildvcs=false --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
 	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -buildvcs=false -ldflags '-s -w -H windowsgui'`
+	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
 
 See FAQ Q3 for advice about docker performance.
 
 To add an icon and other properties to the .exe, you can use [the go-winres tool](https://github.com/tc-hib/go-winres). See the `examples/windowsmanifest` for details.
+
+### macOS (Homebrew)
+
+*Tested with macOS 12.6 "Monterey" x86_64 / Go 1.23 / Qt 5.15 / Apple Clang 14.0*
+
+Install Homebrew from [brew.sh](https://brew.sh/).
+
+For dynamic linking:
+
+```bash
+xcode-select --install
+brew install golang
+brew install pkg-config
+brew install qt@5
+go build -ldflags '-s -w'
+```
+
+Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
+
+### macOS (Docker)
+
+*Tested with osxcross 14.5 / Go 1.19 / MacPorts Qt 5.15 / Debian Clang 14.0*
+
+For dynamic linking:
+
+1. Build the necessary docker container for cross-compilation:
+	- `docker build -t miqt/osxcross:latest -f docker/macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
+2. Build your application:
+	- `docker run --rm -v $(pwd):/src -w /src miqt/osxcross:latest go build -ldflags '-s -w'`
+3. Copy necessary Qt LGPL libraries and plugin files.
+
+See FAQ Q3 for advice about docker performance.
 
 ### Android (Docker)
 

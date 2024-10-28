@@ -1,5 +1,3 @@
-// +build linux,!android
-
 package qt6
 
 /*

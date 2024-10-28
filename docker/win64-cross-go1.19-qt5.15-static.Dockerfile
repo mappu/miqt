@@ -18,3 +18,4 @@ ENV CC=x86_64-w64-mingw32.static-gcc
 ENV PKG_CONFIG=x86_64-w64-mingw32.static-pkg-config
 ENV GOOS=windows
 ENV CGO_ENABLED=1
+ENV GOFLAGS=-buildvcs=false
