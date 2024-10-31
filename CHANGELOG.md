@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2024-10-31 v0.6.0
+
+- **BREAKING:** Represent `QByteArray` as Go `[]byte`
+- **BREAKING:** Reorder class constructors for stability
+- **BREAKING:** More accurate bindings for some namespaces, enums, integer types, void pointers, and type aliases
+- Add macOS support
+- Add Qt 6 binding
+- Add bindings for QPrintSupport, QScintilla, and ScintillaEdit
+- Add `uic` and `rcc` implementations for Qt Designer
+- Add extra `UnsafeNew`, `UnsafePointer` class methods
+- Fix an issue with `cgo.Handle` correctness
+- Docs: Add Windows (MSYS2), macOS (Homebrew / Docker) build guide
+- Docs: Add FAQs for custom locations, pkg-config, Qt 5/6 upgrades, extra library bindings
+
 ## 2024-09-24 v0.5.0
 
 - **BREAKING:** Shorter enum names
