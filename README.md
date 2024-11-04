@@ -254,7 +254,7 @@ See FAQ Q3 for advice about docker performance.
 
 *Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
 
-Miqt supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
+MIQT supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
 ![](doc/android-architecture.png)
 
