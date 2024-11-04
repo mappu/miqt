@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/mappu/miqt/qt"
-	"github.com/mappu/miqt/qt/qprintsupport"
+	"github.com/mappu/miqt/qt/printsupport"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 
 	btn.OnPressed(func() {
 
-		dlg := qprintsupport.NewQPrintDialog3()
+		dlg := printsupport.NewQPrintDialog3()
 		dlg.OnFinished(func(int) {
 			dlg.DeleteLater()
 		})

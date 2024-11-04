@@ -1,4 +1,4 @@
-package qprintsupport
+package printsupport
 
 /*
 
@@ -9,7 +9,7 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/qt"
+	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
 )
@@ -109,22 +109,22 @@ func (this *QPrinterInfo) State() QPrinter__PrinterState {
 	return (QPrinter__PrinterState)(C.QPrinterInfo_State(this.h))
 }
 
-func (this *QPrinterInfo) SupportedPageSizes() []qt.QPageSize {
+func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
 	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedPageSizes(this.h)
-	_ret := make([]qt.QPageSize, int(_ma.len))
+	_ret := make([]qt6.QPageSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQPageSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_lv_ret))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
 	return _ret
 }
 
-func (this *QPrinterInfo) DefaultPageSize() *qt.QPageSize {
+func (this *QPrinterInfo) DefaultPageSize() *qt6.QPageSize {
 	_ret := C.QPrinterInfo_DefaultPageSize(this.h)
-	_goptr := qt.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,28 +133,18 @@ func (this *QPrinterInfo) SupportsCustomPageSizes() bool {
 	return (bool)(C.QPrinterInfo_SupportsCustomPageSizes(this.h))
 }
 
-func (this *QPrinterInfo) MinimumPhysicalPageSize() *qt.QPageSize {
+func (this *QPrinterInfo) MinimumPhysicalPageSize() *qt6.QPageSize {
 	_ret := C.QPrinterInfo_MinimumPhysicalPageSize(this.h)
-	_goptr := qt.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPrinterInfo) MaximumPhysicalPageSize() *qt.QPageSize {
+func (this *QPrinterInfo) MaximumPhysicalPageSize() *qt6.QPageSize {
 	_ret := C.QPrinterInfo_MaximumPhysicalPageSize(this.h)
-	_goptr := qt.UnsafeNewQPageSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQPageSize(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
-}
-
-func (this *QPrinterInfo) SupportedPaperSizes() []qt.QPagedPaintDevice__PageSize {
-	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedPaperSizes(this.h)
-	_ret := make([]qt.QPagedPaintDevice__PageSize, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
-	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = (qt.QPagedPaintDevice__PageSize)(_outCast[i])
-	}
-	return _ret
 }
 
 func (this *QPrinterInfo) SupportedResolutions() []int {

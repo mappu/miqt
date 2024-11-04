@@ -10,14 +10,14 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt"
-	"github.com/mappu/miqt/qt/qprintsupport"
+	"github.com/mappu/miqt/qt/printsupport"
 	"runtime"
 	"unsafe"
 )
 
 type QsciPrinter struct {
 	h *C.QsciPrinter
-	*qprintsupport.QPrinter
+	*printsupport.QPrinter
 }
 
 func (this *QsciPrinter) cPointer() *C.QsciPrinter {
@@ -38,7 +38,7 @@ func newQsciPrinter(h *C.QsciPrinter) *QsciPrinter {
 	if h == nil {
 		return nil
 	}
-	return &QsciPrinter{h: h, QPrinter: qprintsupport.UnsafeNewQPrinter(unsafe.Pointer(h))}
+	return &QsciPrinter{h: h, QPrinter: printsupport.UnsafeNewQPrinter(unsafe.Pointer(h))}
 }
 
 func UnsafeNewQsciPrinter(h unsafe.Pointer) *QsciPrinter {
@@ -52,7 +52,7 @@ func NewQsciPrinter() *QsciPrinter {
 }
 
 // NewQsciPrinter2 constructs a new QsciPrinter object.
-func NewQsciPrinter2(mode qprintsupport.QPrinter__PrinterMode) *QsciPrinter {
+func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
 	ret := C.QsciPrinter_new2((C.int)(mode))
 	return newQsciPrinter(ret)
 }

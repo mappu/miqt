@@ -1,4 +1,4 @@
-package qprintsupport
+package printsupport
 
 /*
 
@@ -9,7 +9,7 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/qt6"
+	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
 )
@@ -26,17 +26,19 @@ const (
 type QAbstractPrintDialog__PrintDialogOption int
 
 const (
+	QAbstractPrintDialog__None               QAbstractPrintDialog__PrintDialogOption = 0
 	QAbstractPrintDialog__PrintToFile        QAbstractPrintDialog__PrintDialogOption = 1
 	QAbstractPrintDialog__PrintSelection     QAbstractPrintDialog__PrintDialogOption = 2
 	QAbstractPrintDialog__PrintPageRange     QAbstractPrintDialog__PrintDialogOption = 4
 	QAbstractPrintDialog__PrintShowPageSize  QAbstractPrintDialog__PrintDialogOption = 8
 	QAbstractPrintDialog__PrintCollateCopies QAbstractPrintDialog__PrintDialogOption = 16
+	QAbstractPrintDialog__DontUseSheet       QAbstractPrintDialog__PrintDialogOption = 32
 	QAbstractPrintDialog__PrintCurrentPage   QAbstractPrintDialog__PrintDialogOption = 64
 )
 
 type QAbstractPrintDialog struct {
 	h *C.QAbstractPrintDialog
-	*qt6.QDialog
+	*qt.QDialog
 }
 
 func (this *QAbstractPrintDialog) cPointer() *C.QAbstractPrintDialog {
@@ -57,7 +59,7 @@ func newQAbstractPrintDialog(h *C.QAbstractPrintDialog) *QAbstractPrintDialog {
 	if h == nil {
 		return nil
 	}
-	return &QAbstractPrintDialog{h: h, QDialog: qt6.UnsafeNewQDialog(unsafe.Pointer(h))}
+	return &QAbstractPrintDialog{h: h, QDialog: qt.UnsafeNewQDialog(unsafe.Pointer(h))}
 }
 
 func UnsafeNewQAbstractPrintDialog(h unsafe.Pointer) *QAbstractPrintDialog {
@@ -71,13 +73,13 @@ func NewQAbstractPrintDialog(printer *QPrinter) *QAbstractPrintDialog {
 }
 
 // NewQAbstractPrintDialog2 constructs a new QAbstractPrintDialog object.
-func NewQAbstractPrintDialog2(printer *QPrinter, parent *qt6.QWidget) *QAbstractPrintDialog {
+func NewQAbstractPrintDialog2(printer *QPrinter, parent *qt.QWidget) *QAbstractPrintDialog {
 	ret := C.QAbstractPrintDialog_new2(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
 	return newQAbstractPrintDialog(ret)
 }
 
-func (this *QAbstractPrintDialog) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractPrintDialog_MetaObject(this.h)))
+func (this *QAbstractPrintDialog) MetaObject() *qt.QMetaObject {
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractPrintDialog_MetaObject(this.h)))
 }
 
 func (this *QAbstractPrintDialog) Metacast(param1 string) unsafe.Pointer {
@@ -95,7 +97,32 @@ func QAbstractPrintDialog_Tr(s string) string {
 	return _ret
 }
 
-func (this *QAbstractPrintDialog) SetOptionTabs(tabs []*qt6.QWidget) {
+func QAbstractPrintDialog_TrUtf8(s string) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	var _ms C.struct_miqt_string = C.QAbstractPrintDialog_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func (this *QAbstractPrintDialog) AddEnabledOption(option QAbstractPrintDialog__PrintDialogOption) {
+	C.QAbstractPrintDialog_AddEnabledOption(this.h, (C.int)(option))
+}
+
+func (this *QAbstractPrintDialog) SetEnabledOptions(options QAbstractPrintDialog__PrintDialogOption) {
+	C.QAbstractPrintDialog_SetEnabledOptions(this.h, (C.int)(options))
+}
+
+func (this *QAbstractPrintDialog) EnabledOptions() QAbstractPrintDialog__PrintDialogOption {
+	return (QAbstractPrintDialog__PrintDialogOption)(C.QAbstractPrintDialog_EnabledOptions(this.h))
+}
+
+func (this *QAbstractPrintDialog) IsOptionEnabled(option QAbstractPrintDialog__PrintDialogOption) bool {
+	return (bool)(C.QAbstractPrintDialog_IsOptionEnabled(this.h, (C.int)(option)))
+}
+
+func (this *QAbstractPrintDialog) SetOptionTabs(tabs []*qt.QWidget) {
 	tabs_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(tabs))))
 	defer C.free(unsafe.Pointer(tabs_CArray))
 	for i := range tabs {
@@ -158,6 +185,28 @@ func QAbstractPrintDialog_Tr3(s string, c string, n int) string {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
 	var _ms C.struct_miqt_string = C.QAbstractPrintDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func QAbstractPrintDialog_TrUtf82(s string, c string) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	var _ms C.struct_miqt_string = C.QAbstractPrintDialog_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func QAbstractPrintDialog_TrUtf83(s string, c string, n int) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	var _ms C.struct_miqt_string = C.QAbstractPrintDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

@@ -1,4 +1,4 @@
-package qprintsupport
+package printsupport
 
 /*
 
@@ -9,7 +9,7 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/qt"
+	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
 )
@@ -80,13 +80,13 @@ func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
 	return newQPrintEngine((*C.QPrintEngine)(h))
 }
 
-func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt.QVariant) {
+func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt6.QVariant) {
 	C.QPrintEngine_SetProperty(this.h, (C.int)(key), (*C.QVariant)(value.UnsafePointer()))
 }
 
-func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt.QVariant {
+func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt6.QVariant {
 	_ret := C.QPrintEngine_Property(this.h, (C.int)(key))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -99,7 +99,7 @@ func (this *QPrintEngine) Abort() bool {
 	return (bool)(C.QPrintEngine_Abort(this.h))
 }
 
-func (this *QPrintEngine) Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+func (this *QPrintEngine) Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
 	return (int)(C.QPrintEngine_Metric(this.h, (C.int)(param1)))
 }
 

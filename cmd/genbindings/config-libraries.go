@@ -23,7 +23,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	)
 
 	generate(
-		"qt/qprintsupport",
+		"qt/printsupport",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
 		},
@@ -78,7 +78,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 	// Qt 6 QtPrintSupport
 	generate(
-		"qt6/qprintsupport",
+		"qt6/printsupport",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt6/QtPrintSupport",
 		},

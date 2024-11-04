@@ -1,4 +1,4 @@
-package qprintsupport
+package printsupport
 
 /*
 
@@ -9,7 +9,7 @@ package qprintsupport
 import "C"
 
 import (
-	"github.com/mappu/miqt/qt6"
+	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -33,7 +33,7 @@ const (
 
 type QPrintPreviewWidget struct {
 	h *C.QPrintPreviewWidget
-	*qt6.QWidget
+	*qt.QWidget
 }
 
 func (this *QPrintPreviewWidget) cPointer() *C.QPrintPreviewWidget {
@@ -54,7 +54,7 @@ func newQPrintPreviewWidget(h *C.QPrintPreviewWidget) *QPrintPreviewWidget {
 	if h == nil {
 		return nil
 	}
-	return &QPrintPreviewWidget{h: h, QWidget: qt6.UnsafeNewQWidget(unsafe.Pointer(h))}
+	return &QPrintPreviewWidget{h: h, QWidget: qt.UnsafeNewQWidget(unsafe.Pointer(h))}
 }
 
 func UnsafeNewQPrintPreviewWidget(h unsafe.Pointer) *QPrintPreviewWidget {
@@ -62,7 +62,7 @@ func UnsafeNewQPrintPreviewWidget(h unsafe.Pointer) *QPrintPreviewWidget {
 }
 
 // NewQPrintPreviewWidget constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget(parent *qt6.QWidget) *QPrintPreviewWidget {
+func NewQPrintPreviewWidget(parent *qt.QWidget) *QPrintPreviewWidget {
 	ret := C.QPrintPreviewWidget_new((*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintPreviewWidget(ret)
 }
@@ -80,25 +80,25 @@ func NewQPrintPreviewWidget3() *QPrintPreviewWidget {
 }
 
 // NewQPrintPreviewWidget4 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget4(printer *QPrinter, parent *qt6.QWidget) *QPrintPreviewWidget {
+func NewQPrintPreviewWidget4(printer *QPrinter, parent *qt.QWidget) *QPrintPreviewWidget {
 	ret := C.QPrintPreviewWidget_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()))
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget5 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget5(printer *QPrinter, parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
+func NewQPrintPreviewWidget5(printer *QPrinter, parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewWidget {
 	ret := C.QPrintPreviewWidget_new5(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), (C.int)(flags))
 	return newQPrintPreviewWidget(ret)
 }
 
 // NewQPrintPreviewWidget6 constructs a new QPrintPreviewWidget object.
-func NewQPrintPreviewWidget6(parent *qt6.QWidget, flags qt6.WindowType) *QPrintPreviewWidget {
+func NewQPrintPreviewWidget6(parent *qt.QWidget, flags qt.WindowType) *QPrintPreviewWidget {
 	ret := C.QPrintPreviewWidget_new6((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags))
 	return newQPrintPreviewWidget(ret)
 }
 
-func (this *QPrintPreviewWidget) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPrintPreviewWidget_MetaObject(this.h)))
+func (this *QPrintPreviewWidget) MetaObject() *qt.QMetaObject {
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPrintPreviewWidget_MetaObject(this.h)))
 }
 
 func (this *QPrintPreviewWidget) Metacast(param1 string) unsafe.Pointer {
@@ -116,12 +116,21 @@ func QPrintPreviewWidget_Tr(s string) string {
 	return _ret
 }
 
+func QPrintPreviewWidget_TrUtf8(s string) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	var _ms C.struct_miqt_string = C.QPrintPreviewWidget_TrUtf8(s_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
 func (this *QPrintPreviewWidget) ZoomFactor() float64 {
 	return (float64)(C.QPrintPreviewWidget_ZoomFactor(this.h))
 }
 
-func (this *QPrintPreviewWidget) Orientation() qt6.QPageLayout__Orientation {
-	return (qt6.QPageLayout__Orientation)(C.QPrintPreviewWidget_Orientation(this.h))
+func (this *QPrintPreviewWidget) Orientation() QPrinter__Orientation {
+	return (QPrinter__Orientation)(C.QPrintPreviewWidget_Orientation(this.h))
 }
 
 func (this *QPrintPreviewWidget) ViewMode() QPrintPreviewWidget__ViewMode {
@@ -160,7 +169,7 @@ func (this *QPrintPreviewWidget) SetZoomFactor(zoomFactor float64) {
 	C.QPrintPreviewWidget_SetZoomFactor(this.h, (C.double)(zoomFactor))
 }
 
-func (this *QPrintPreviewWidget) SetOrientation(orientation qt6.QPageLayout__Orientation) {
+func (this *QPrintPreviewWidget) SetOrientation(orientation QPrinter__Orientation) {
 	C.QPrintPreviewWidget_SetOrientation(this.h, (C.int)(orientation))
 }
 
@@ -262,6 +271,28 @@ func QPrintPreviewWidget_Tr3(s string, c string, n int) string {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
 	var _ms C.struct_miqt_string = C.QPrintPreviewWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func QPrintPreviewWidget_TrUtf82(s string, c string) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	var _ms C.struct_miqt_string = C.QPrintPreviewWidget_TrUtf82(s_Cstring, c_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func QPrintPreviewWidget_TrUtf83(s string, c string, n int) string {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	var _ms C.struct_miqt_string = C.QPrintPreviewWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
