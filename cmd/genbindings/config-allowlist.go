@@ -58,7 +58,7 @@ func InsertTypedefs(qt6 bool) {
 
 }
 
-func AllowHeader(fullpath string) bool {
+func Widgets_AllowHeader(fullpath string) bool {
 	fname := filepath.Base(fullpath)
 
 	if strings.HasSuffix(fname, `_impl.h`) {
