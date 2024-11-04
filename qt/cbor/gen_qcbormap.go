@@ -1,4 +1,4 @@
-package qt6
+package cbor
 
 /*
 
@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
 )
@@ -86,10 +87,10 @@ func (this *QCborMap) Keys() []QCborValue {
 	_ret := make([]QCborValue, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCborValue)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCborValue(_lv_ret)
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_vv_ret := _outCast[i]
+		_vv_goptr := newQCborValue(_vv_ret)
+		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_vv_goptr
 	}
 	return _ret
 }
@@ -430,7 +431,7 @@ func (this *QCborMap) Insert4(key *QCborValue, value_ *QCborValue) *QCborMap__It
 	return _goptr
 }
 
-func QCborMap_FromVariantMap(mapVal map[string]QVariant) *QCborMap {
+func QCborMap_FromVariantMap(mapVal map[string]qt.QVariant) *QCborMap {
 	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
 	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
 	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
@@ -442,7 +443,7 @@ func QCborMap_FromVariantMap(mapVal map[string]QVariant) *QCborMap {
 		mapVal_k_ms.len = C.size_t(len(mapVal_k))
 		defer C.free(unsafe.Pointer(mapVal_k_ms.data))
 		mapVal_Keys_CArray[mapVal_ctr] = mapVal_k_ms
-		mapVal_Values_CArray[mapVal_ctr] = mapVal_v.cPointer()
+		mapVal_Values_CArray[mapVal_ctr] = (*C.QVariant)(mapVal_v.UnsafePointer())
 		mapVal_ctr++
 	}
 	mapVal_mm := C.struct_miqt_map{
@@ -456,7 +457,7 @@ func QCborMap_FromVariantMap(mapVal map[string]QVariant) *QCborMap {
 	return _goptr
 }
 
-func QCborMap_FromVariantHash(hash map[string]QVariant) *QCborMap {
+func QCborMap_FromVariantHash(hash map[string]qt.QVariant) *QCborMap {
 	hash_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
 	defer C.free(unsafe.Pointer(hash_Keys_CArray))
 	hash_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(hash))))
@@ -468,7 +469,7 @@ func QCborMap_FromVariantHash(hash map[string]QVariant) *QCborMap {
 		hash_k_ms.len = C.size_t(len(hash_k))
 		defer C.free(unsafe.Pointer(hash_k_ms.data))
 		hash_Keys_CArray[hash_ctr] = hash_k_ms
-		hash_Values_CArray[hash_ctr] = hash_v.cPointer()
+		hash_Values_CArray[hash_ctr] = (*C.QVariant)(hash_v.UnsafePointer())
 		hash_ctr++
 	}
 	hash_mm := C.struct_miqt_map{
@@ -482,16 +483,16 @@ func QCborMap_FromVariantHash(hash map[string]QVariant) *QCborMap {
 	return _goptr
 }
 
-func QCborMap_FromJsonObject(o *QJsonObject) *QCborMap {
-	_ret := C.QCborMap_FromJsonObject(o.cPointer())
+func QCborMap_FromJsonObject(o *qt.QJsonObject) *QCborMap {
+	_ret := C.QCborMap_FromJsonObject((*C.QJsonObject)(o.UnsafePointer()))
 	_goptr := newQCborMap(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborMap) ToVariantMap() map[string]QVariant {
+func (this *QCborMap) ToVariantMap() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QCborMap_ToVariantMap(this.h)
-	_ret := make(map[string]QVariant, int(_mm.len))
+	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
 	for i := 0; i < int(_mm.len); i++ {
@@ -500,7 +501,7 @@ func (this *QCborMap) ToVariantMap() map[string]QVariant {
 		C.free(unsafe.Pointer(_mapkey_ms.data))
 		_entry_Key := _mapkey_ret
 		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_mapval_ret))
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -509,9 +510,9 @@ func (this *QCborMap) ToVariantMap() map[string]QVariant {
 	return _ret
 }
 
-func (this *QCborMap) ToVariantHash() map[string]QVariant {
+func (this *QCborMap) ToVariantHash() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QCborMap_ToVariantHash(this.h)
-	_ret := make(map[string]QVariant, int(_mm.len))
+	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
 	for i := 0; i < int(_mm.len); i++ {
@@ -520,7 +521,7 @@ func (this *QCborMap) ToVariantHash() map[string]QVariant {
 		C.free(unsafe.Pointer(_hashkey_ms.data))
 		_entry_Key := _hashkey_ret
 		_hashval_ret := _Values[i]
-		_hashval_goptr := newQVariant(_hashval_ret)
+		_hashval_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_hashval_ret))
 		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_hashval_goptr
 
@@ -529,9 +530,9 @@ func (this *QCborMap) ToVariantHash() map[string]QVariant {
 	return _ret
 }
 
-func (this *QCborMap) ToJsonObject() *QJsonObject {
+func (this *QCborMap) ToJsonObject() *qt.QJsonObject {
 	_ret := C.QCborMap_ToJsonObject(this.h)
-	_goptr := newQJsonObject(_ret)
+	_goptr := qt.UnsafeNewQJsonObject(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -597,10 +598,6 @@ func (this *QCborMap__Iterator) OperatorAssign(other *QCborMap__Iterator) {
 
 func (this *QCborMap__Iterator) OperatorMinusGreater() *QCborValueRef {
 	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater(this.h)))
-}
-
-func (this *QCborMap__Iterator) OperatorMinusGreater2() *QCborValueConstRef {
-	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater2(this.h)))
 }
 
 func (this *QCborMap__Iterator) Key() *QCborValue {
@@ -772,8 +769,8 @@ func (this *QCborMap__ConstIterator) OperatorAssign(other *QCborMap__ConstIterat
 	C.QCborMap__ConstIterator_OperatorAssign(this.h, other.cPointer())
 }
 
-func (this *QCborMap__ConstIterator) OperatorMinusGreater() *QCborValueConstRef {
-	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
+func (this *QCborMap__ConstIterator) OperatorMinusGreater() *QCborValueRef {
+	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborMap__ConstIterator) Key() *QCborValue {
@@ -783,9 +780,9 @@ func (this *QCborMap__ConstIterator) Key() *QCborValue {
 	return _goptr
 }
 
-func (this *QCborMap__ConstIterator) Value() *QCborValueConstRef {
+func (this *QCborMap__ConstIterator) Value() *QCborValueRef {
 	_ret := C.QCborMap__ConstIterator_Value(this.h)
-	_goptr := newQCborValueConstRef(_ret)
+	_goptr := newQCborValueRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -1,4 +1,4 @@
-package qt
+package cbor
 
 /*
 
@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
 )
@@ -43,17 +44,17 @@ func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
 }
 
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
-func NewQCborStreamWriter(device *QIODevice) *QCborStreamWriter {
-	ret := C.QCborStreamWriter_new(device.cPointer())
+func NewQCborStreamWriter(device *qt.QIODevice) *QCborStreamWriter {
+	ret := C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer()))
 	return newQCborStreamWriter(ret)
 }
 
-func (this *QCborStreamWriter) SetDevice(device *QIODevice) {
-	C.QCborStreamWriter_SetDevice(this.h, device.cPointer())
+func (this *QCborStreamWriter) SetDevice(device *qt.QIODevice) {
+	C.QCborStreamWriter_SetDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
-func (this *QCborStreamWriter) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
+func (this *QCborStreamWriter) Device() *qt.QIODevice {
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamWriter_Device(this.h)))
 }
 
 func (this *QCborStreamWriter) Append(u uint64) {

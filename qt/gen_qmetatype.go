@@ -13,6 +13,8 @@ import (
 	"unsafe"
 )
 
+type QCborSimpleType byte
+
 type QtMetaTypePrivate__IteratorCapability int
 
 const (

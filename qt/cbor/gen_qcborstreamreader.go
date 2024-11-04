@@ -1,4 +1,4 @@
-package qt
+package cbor
 
 /*
 
@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
 )
@@ -100,17 +101,17 @@ func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 }
 
 // NewQCborStreamReader5 constructs a new QCborStreamReader object.
-func NewQCborStreamReader5(device *QIODevice) *QCborStreamReader {
-	ret := C.QCborStreamReader_new5(device.cPointer())
+func NewQCborStreamReader5(device *qt.QIODevice) *QCborStreamReader {
+	ret := C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer()))
 	return newQCborStreamReader(ret)
 }
 
-func (this *QCborStreamReader) SetDevice(device *QIODevice) {
-	C.QCborStreamReader_SetDevice(this.h, device.cPointer())
+func (this *QCborStreamReader) SetDevice(device *qt.QIODevice) {
+	C.QCborStreamReader_SetDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
-func (this *QCborStreamReader) Device() *QIODevice {
-	return UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
+func (this *QCborStreamReader) Device() *qt.QIODevice {
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
 }
 
 func (this *QCborStreamReader) AddData(data []byte) {

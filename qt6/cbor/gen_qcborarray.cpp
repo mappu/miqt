@@ -2,7 +2,6 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborArray__ConstIterator
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborArray__Iterator
 #include <QCborValue>
-#include <QCborValueConstRef>
 #include <QCborValueRef>
 #include <QJsonArray>
 #include <QList>
@@ -261,15 +260,11 @@ QCborValueRef* QCborArray__Iterator_OperatorMultiply(const QCborArray__Iterator*
 	return new QCborValueRef(self->operator*());
 }
 
-QCborValueRef* QCborArray__Iterator_OperatorMinusGreater(QCborArray__Iterator* self) {
+QCborValueRef* QCborArray__Iterator_OperatorMinusGreater(const QCborArray__Iterator* self) {
 	return self->operator->();
 }
 
-QCborValueConstRef* QCborArray__Iterator_OperatorMinusGreater2(const QCborArray__Iterator* self) {
-	return (QCborValueConstRef*) self->operator->();
-}
-
-QCborValueRef* QCborArray__Iterator_OperatorSubscript(const QCborArray__Iterator* self, ptrdiff_t j) {
+QCborValueRef* QCborArray__Iterator_OperatorSubscript(QCborArray__Iterator* self, ptrdiff_t j) {
 	return new QCborValueRef(self->operator[]((qsizetype)(j)));
 }
 
@@ -382,16 +377,16 @@ void QCborArray__ConstIterator_OperatorAssign(QCborArray__ConstIterator* self, Q
 	self->operator=(*other);
 }
 
-QCborValueConstRef* QCborArray__ConstIterator_OperatorMultiply(const QCborArray__ConstIterator* self) {
-	return new QCborValueConstRef(self->operator*());
+QCborValueRef* QCborArray__ConstIterator_OperatorMultiply(const QCborArray__ConstIterator* self) {
+	return new QCborValueRef(self->operator*());
 }
 
-QCborValueConstRef* QCborArray__ConstIterator_OperatorMinusGreater(const QCborArray__ConstIterator* self) {
-	return (QCborValueConstRef*) self->operator->();
+QCborValueRef* QCborArray__ConstIterator_OperatorMinusGreater(const QCborArray__ConstIterator* self) {
+	return (QCborValueRef*) self->operator->();
 }
 
-QCborValueConstRef* QCborArray__ConstIterator_OperatorSubscript(const QCborArray__ConstIterator* self, ptrdiff_t j) {
-	return new QCborValueConstRef(self->operator[]((qsizetype)(j)));
+QCborValueRef* QCborArray__ConstIterator_OperatorSubscript(QCborArray__ConstIterator* self, ptrdiff_t j) {
+	return new QCborValueRef(self->operator[]((qsizetype)(j)));
 }
 
 bool QCborArray__ConstIterator_OperatorEqual(const QCborArray__ConstIterator* self, QCborArray__Iterator* o) {

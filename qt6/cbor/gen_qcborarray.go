@@ -1,4 +1,4 @@
-package qt
+package cbor
 
 /*
 
@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
 )
@@ -345,16 +346,16 @@ func QCborArray_FromStringList(list []string) *QCborArray {
 	return _goptr
 }
 
-func QCborArray_FromJsonArray(array *QJsonArray) *QCborArray {
-	_ret := C.QCborArray_FromJsonArray(array.cPointer())
+func QCborArray_FromJsonArray(array *qt6.QJsonArray) *QCborArray {
+	_ret := C.QCborArray_FromJsonArray((*C.QJsonArray)(array.UnsafePointer()))
 	_goptr := newQCborArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborArray) ToJsonArray() *QJsonArray {
+func (this *QCborArray) ToJsonArray() *qt6.QJsonArray {
 	_ret := C.QCborArray_ToJsonArray(this.h)
-	_goptr := newQJsonArray(_ret)
+	_goptr := qt6.UnsafeNewQJsonArray(unsafe.Pointer(_ret))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

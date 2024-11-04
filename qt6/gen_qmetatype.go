@@ -13,6 +13,8 @@ import (
 	"unsafe"
 )
 
+type QCborSimpleType byte
+
 type QMetaType__Type int
 
 const (

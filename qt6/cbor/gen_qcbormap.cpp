@@ -2,7 +2,6 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborMap__ConstIterator
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborMap__Iterator
 #include <QCborValue>
-#include <QCborValueConstRef>
 #include <QCborValueRef>
 #include <QJsonObject>
 #include <QList>
@@ -49,7 +48,7 @@ void QCborMap_Clear(QCborMap* self) {
 }
 
 struct miqt_array QCborMap_Keys(const QCborMap* self) {
-	QList<QCborValue> _ret = self->keys();
+	QVector<QCborValue> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -356,12 +355,8 @@ void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Itera
 	self->operator=(*other);
 }
 
-QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(QCborMap__Iterator* self) {
+QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator* self) {
 	return self->operator->();
-}
-
-QCborValueConstRef* QCborMap__Iterator_OperatorMinusGreater2(const QCborMap__Iterator* self) {
-	return (QCborValueConstRef*) self->operator->();
 }
 
 QCborValue* QCborMap__Iterator_Key(const QCborMap__Iterator* self) {
@@ -481,16 +476,16 @@ void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCbor
 	self->operator=(*other);
 }
 
-QCborValueConstRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self) {
-	return (QCborValueConstRef*) self->operator->();
+QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self) {
+	return (QCborValueRef*) self->operator->();
 }
 
 QCborValue* QCborMap__ConstIterator_Key(const QCborMap__ConstIterator* self) {
 	return new QCborValue(self->key());
 }
 
-QCborValueConstRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self) {
-	return new QCborValueConstRef(self->value());
+QCborValueRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self) {
+	return new QCborValueRef(self->value());
 }
 
 bool QCborMap__ConstIterator_OperatorEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* o) {

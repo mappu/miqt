@@ -7,7 +7,7 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "../libmiqt/libmiqt.h"
+#include "../../libmiqt/libmiqt.h"
 
 #ifdef __cplusplus
 extern "C" {
