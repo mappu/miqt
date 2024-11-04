@@ -11,6 +11,8 @@ cmd/genbindings/genbindings.local*
 pkg-config/*.pc
 
 # binaries
+*.exe
+
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
@@ -20,13 +22,9 @@ cmd/miqt-rcc/miqt-rcc
 
 examples/helloworld/helloworld
 examples/helloworld6/helloworld6
-examples/helloworld/helloworld.exe
 examples/mdoutliner/mdoutliner
-examples/mdoutliner/mdoutliner.exe
 examples/windowsmanifest/windowsmanifest
-examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
-examples/uidesigner/uidesigner.exe
 examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-printsupport/qt-printsupport
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
