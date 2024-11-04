@@ -182,6 +182,15 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 }
 
+func (p CppParameter) mallocSizeCgoExpression() string {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+		return "int(unsafe.Sizeof(C.struct_miqt_string{}))"
+	}
+
+	// Default (sizeof pointer)
+	return "8"
+}
+
 func (gfs *goFileState) emitParametersGo(params []CppParameter) string {
 	tmp := make([]string, 0, len(params))
 
@@ -292,15 +301,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		gfs.imports["runtime"] = struct{}{}
 		gfs.imports["unsafe"] = struct{}{}
 
-		var mallocSize string
-		if listType.ParameterType == "QString" || listType.ParameterType == "QByteArray" {
-			preamble += "// For the C ABI, malloc a C array of structs\n"
-			mallocSize = "int(unsafe.Sizeof(C.struct_miqt_string{}))"
-
-		} else {
-			preamble += "// For the C ABI, malloc a C array of raw pointers\n"
-			mallocSize = "8"
-		}
+		mallocSize := listType.mallocSizeCgoExpression()
 
 		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.ParameterName + "))))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray))\n"
