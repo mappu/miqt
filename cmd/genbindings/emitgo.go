@@ -154,11 +154,11 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	if _, ok := p.QListOf(); ok {
-		return "*C.struct_miqt_array"
+		return "C.struct_miqt_array"
 	}
 
 	if _, ok := p.QSetOf(); ok {
-		return "*C.struct_miqt_array"
+		return "C.struct_miqt_array"
 	}
 
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
@@ -298,7 +298,6 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		// Go: convert T[] -> t* and len
 		// CABI: create a real QList<>
 
-		gfs.imports["runtime"] = struct{}{}
 		gfs.imports["unsafe"] = struct{}{}
 
 		mallocSize := listType.mallocSizeCgoExpression()
@@ -314,8 +313,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
 
-		preamble += p.ParameterName + "_ma := &C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
-		preamble += "defer runtime.KeepAlive(unsafe.Pointer(" + nameprefix + "_ma))\n"
+		preamble += p.ParameterName + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
 
 		rvalue = p.ParameterName + "_ma"
 
@@ -413,7 +411,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 	} else if t, ok := rt.QListOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
 
-		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
+		shouldReturn = "var " + namePrefix + "_ma C.struct_miqt_array = "
 
 		afterword += namePrefix + "_ret := make([]" + t.RenderTypeGo(gfs) + ", int(" + namePrefix + "_ma.len))\n"
 		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
@@ -422,7 +420,6 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += gfs.emitCabiToGo(namePrefix+"_ret[i] = ", t, namePrefix+"_outCast[i]")
 
 		afterword += "}\n"
-		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
@@ -430,7 +427,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		gfs.imports["unsafe"] = struct{}{}
 
-		shouldReturn = "var " + namePrefix + "_ma *C.struct_miqt_array = "
+		shouldReturn = "var " + namePrefix + "_ma C.struct_miqt_array = "
 
 		afterword += namePrefix + "_ret := make(map[" + t.RenderTypeGo(gfs) + "]struct{}, int(" + namePrefix + "_ma.len))\n"
 		afterword += namePrefix + "_outCast := (*[0xffff]" + t.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_ma.data)) // hey ya\n"
@@ -440,7 +437,6 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += namePrefix + "_ret[" + namePrefix + "_element] = struct{}{}\n"
 
 		afterword += "}\n"
-		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ma))\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 

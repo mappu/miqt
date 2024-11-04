@@ -15,10 +15,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		return "struct miqt_string"
 
 	} else if _, ok := p.QListOf(); ok {
-		return "struct miqt_array*"
+		return "struct miqt_array"
 
 	} else if _, ok := p.QSetOf(); ok {
-		return "struct miqt_array*"
+		return "struct miqt_array"
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return cabiClassName(p.ParameterType) + "*"
@@ -155,10 +155,10 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
 
 		} else if t, ok := p.QListOf(); ok {
-			tmp = append(tmp, "struct miqt_array* /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
+			tmp = append(tmp, "struct miqt_array /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
 		} else if t, ok := p.QSetOf(); ok {
-			tmp = append(tmp, "struct miqt_array* /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
+			tmp = append(tmp, "struct miqt_array /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
 		} else if p.QtClassType() {
 			if p.ByRef || p.Pointer {
@@ -218,10 +218,10 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 	} else if listType, ok := p.QListOf(); ok {
 
 		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QList;\n"
-		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + "->len);\n"
+		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + ".len);\n"
 
-		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
+		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + ".data);\n"
+		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + ".len; ++i) {\n"
 
 		listType.ParameterName = nameprefix + "_arr[i]"
 		addPre, addFwd := emitCABI2CppForwarding(listType, indent+"\t")
@@ -362,9 +362,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr[i] = ", t, namePrefix+"_ret[i]")
 		afterCall += indent + "}\n"
 
-		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
-		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+		afterCall += indent + "struct miqt_array " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
@@ -380,9 +380,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr["+namePrefix+"_ctr++] = ", t, namePrefix+"_itr.next()")
 		afterCall += indent + "}\n"
 
-		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.size();\n"
-		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+		afterCall += indent + "struct miqt_array " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.size();\n"
+		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
