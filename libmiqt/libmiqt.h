@@ -18,6 +18,12 @@ struct miqt_array {
     void* data;
 };
 
+struct miqt_map {
+    size_t len;
+    void* keys;
+    void* values;
+};
+
 struct miqt_string* miqt_strdup(const char* src, size_t len);
 
 typedef const char const_char;

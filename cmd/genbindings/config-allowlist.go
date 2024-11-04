@@ -82,6 +82,8 @@ func AllowHeader(fullpath string) bool {
 		"qbytearray.h",                 // QByteArray does not exist in this binding
 		"qlist.h",                      // QList does not exist in this binding
 		"qvector.h",                    // QVector does not exist in this binding
+		"qhash.h",                      // QHash does not exist in this binding
+		"qmap.h",                       // QMap does not exist in this binding
 		"qtcoreexports.h",              // Nothing bindable here and has Q_CORE_EXPORT definition issues
 		"q20algorithm.h",               // Qt 6 unstable header
 		"q20functional.h",              // Qt 6 unstable header
@@ -216,9 +218,6 @@ func AllowMethod(className string, mm CppMethod) error {
 // Any type not permitted by AllowClass is also not permitted by this method.
 func AllowType(p CppParameter, isReturnType bool) error {
 
-	if p.QMapOf() {
-		return ErrTooComplex // Example???
-	}
 	if p.QPairOf() {
 		return ErrTooComplex // e.g. QGradientStop
 	}
@@ -238,6 +237,15 @@ func AllowType(p CppParameter, isReturnType bool) error {
 			return ErrTooComplex
 		}
 	}
+	if kType, vType, ok := p.QMapOf(); ok {
+		if err := AllowType(kType, isReturnType); err != nil {
+			return err
+		}
+		if err := AllowType(vType, isReturnType); err != nil {
+			return err
+		}
+	}
+
 	if !AllowClass(p.ParameterType) {
 		return ErrTooComplex // This whole class type has been blocked, not only as a parameter/return type
 	}
@@ -293,6 +301,12 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	}
 	if strings.Contains(p.ParameterType, `Iterator::value_type`) {
 		return ErrTooComplex // e.g. qcbormap
+	}
+	if strings.Contains(p.ParameterType, `>::iterator`) ||
+		strings.Contains(p.ParameterType, `>::const_iterator`) {
+		// qresultstore.h tries to create a
+		// NewQtPrivate__ResultIteratorBase2(_mapIterator QMap<int, ResultItem>__const_iterator)
+		return ErrTooComplex
 	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
