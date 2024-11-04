@@ -275,7 +275,6 @@ func (this *QAction) Shortcut() *QKeySequence {
 }
 
 func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
-	// For the C ABI, malloc a C array of raw pointers
 	shortcuts_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(shortcuts))))
 	defer C.free(unsafe.Pointer(shortcuts_CArray))
 	for i := range shortcuts {

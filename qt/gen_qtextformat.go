@@ -490,7 +490,6 @@ func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 }
 
 func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
-	// For the C ABI, malloc a C array of raw pointers
 	lengths_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(lengths))))
 	defer C.free(unsafe.Pointer(lengths_CArray))
 	for i := range lengths {
@@ -727,7 +726,6 @@ func (this *QTextCharFormat) FontFamily() string {
 }
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -984,7 +982,6 @@ func (this *QTextCharFormat) AnchorName() string {
 }
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
-	// For the C ABI, malloc a C array of structs
 	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
@@ -1190,7 +1187,6 @@ func (this *QTextBlockFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
 }
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabs))))
 	defer C.free(unsafe.Pointer(tabs_CArray))
 	for i := range tabs {
@@ -1670,7 +1666,6 @@ func (this *QTextTableFormat) SetColumns(columns int) {
 }
 
 func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLength) {
-	// For the C ABI, malloc a C array of raw pointers
 	constraints_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(constraints))))
 	defer C.free(unsafe.Pointer(constraints_CArray))
 	for i := range constraints {

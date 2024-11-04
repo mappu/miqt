@@ -1223,7 +1223,6 @@ func (this *QWidget) AddAction(action *QAction) {
 }
 
 func (this *QWidget) AddActions(actions []*QAction) {
-	// For the C ABI, malloc a C array of raw pointers
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
@@ -1235,7 +1234,6 @@ func (this *QWidget) AddActions(actions []*QAction) {
 }
 
 func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
-	// For the C ABI, malloc a C array of raw pointers
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {

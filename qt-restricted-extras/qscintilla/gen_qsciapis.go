@@ -135,7 +135,6 @@ func (this *QsciAPIs) SavePrepared() bool {
 }
 
 func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) {
-	// For the C ABI, malloc a C array of structs
 	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray))
 	for i := range context {
@@ -147,7 +146,6 @@ func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) 
 	}
 	context_ma := &C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(context_ma))
-	// For the C ABI, malloc a C array of structs
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
@@ -171,7 +169,6 @@ func (this *QsciAPIs) AutoCompletionSelected(sel string) {
 }
 
 func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
-	// For the C ABI, malloc a C array of structs
 	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray))
 	for i := range context {
@@ -183,7 +180,6 @@ func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla
 	}
 	context_ma := &C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
 	defer runtime.KeepAlive(unsafe.Pointer(context_ma))
-	// For the C ABI, malloc a C array of raw pointers
 	shifts_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(shifts))))
 	defer C.free(unsafe.Pointer(shifts_CArray))
 	for i := range shifts {

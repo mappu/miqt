@@ -153,7 +153,6 @@ func (this *QShortcut) SetKeys(key QKeySequence__StandardKey) {
 }
 
 func (this *QShortcut) SetKeysWithKeys(keys []QKeySequence) {
-	// For the C ABI, malloc a C array of raw pointers
 	keys_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(keys))))
 	defer C.free(unsafe.Pointer(keys_CArray))
 	for i := range keys {

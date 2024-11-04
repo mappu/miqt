@@ -180,7 +180,6 @@ func NewQPointerEvent2(typeVal QEvent__Type, dev *QPointingDevice, modifiers Key
 
 // NewQPointerEvent3 constructs a new QPointerEvent object.
 func NewQPointerEvent3(typeVal QEvent__Type, dev *QPointingDevice, modifiers KeyboardModifier, points []QEventPoint) *QPointerEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	points_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray))
 	for i := range points {
@@ -2045,7 +2044,6 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	preeditText_ms.data = C.CString(preeditText)
 	preeditText_ms.len = C.size_t(len(preeditText))
 	defer C.free(unsafe.Pointer(preeditText_ms.data))
-	// For the C ABI, malloc a C array of raw pointers
 	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_CArray))
 	for i := range attributes {
@@ -3132,7 +3130,6 @@ func NewQTouchEvent4(eventType QEvent__Type, device *QPointingDevice, modifiers 
 
 // NewQTouchEvent5 constructs a new QTouchEvent object.
 func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPoints []QEventPoint) *QTouchEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	touchPoints_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray))
 	for i := range touchPoints {
@@ -3146,7 +3143,6 @@ func NewQTouchEvent5(eventType QEvent__Type, device *QPointingDevice, modifiers 
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State, touchPoints []QEventPoint) *QTouchEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	touchPoints_CArray := (*[0xffff]*C.QEventPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray))
 	for i := range touchPoints {

@@ -270,7 +270,6 @@ func (this *QTextLayout) PreeditAreaText() string {
 }
 
 func (this *QTextLayout) SetAdditionalFormats(overrides []QTextLayout__FormatRange) {
-	// For the C ABI, malloc a C array of raw pointers
 	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(overrides))))
 	defer C.free(unsafe.Pointer(overrides_CArray))
 	for i := range overrides {
@@ -300,7 +299,6 @@ func (this *QTextLayout) ClearAdditionalFormats() {
 }
 
 func (this *QTextLayout) SetFormats(overrides []QTextLayout__FormatRange) {
-	// For the C ABI, malloc a C array of raw pointers
 	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(overrides))))
 	defer C.free(unsafe.Pointer(overrides_CArray))
 	for i := range overrides {
@@ -467,7 +465,6 @@ func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__C
 }
 
 func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
@@ -479,7 +476,6 @@ func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayo
 }
 
 func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {

@@ -259,7 +259,6 @@ func QIcon_ThemeSearchPaths() []string {
 }
 
 func QIcon_SetThemeSearchPaths(searchpath []string) {
-	// For the C ABI, malloc a C array of structs
 	searchpath_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(searchpath))))
 	defer C.free(unsafe.Pointer(searchpath_CArray))
 	for i := range searchpath {
@@ -289,7 +288,6 @@ func QIcon_FallbackSearchPaths() []string {
 }
 
 func QIcon_SetFallbackSearchPaths(paths []string) {
-	// For the C ABI, malloc a C array of structs
 	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {

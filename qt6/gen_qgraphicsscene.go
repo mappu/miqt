@@ -266,7 +266,6 @@ func (this *QGraphicsScene) SetSelectionAreaWithPath(path *QPainterPath) {
 }
 
 func (this *QGraphicsScene) CreateItemGroup(items []*QGraphicsItem) *QGraphicsItemGroup {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QGraphicsItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -512,7 +511,6 @@ func (this *QGraphicsScene) Clear() {
 }
 
 func (this *QGraphicsScene) Changed(region []QRectF) {
-	// For the C ABI, malloc a C array of raw pointers
 	region_CArray := (*[0xffff]*C.QRectF)(C.malloc(C.size_t(8 * len(region))))
 	defer C.free(unsafe.Pointer(region_CArray))
 	for i := range region {

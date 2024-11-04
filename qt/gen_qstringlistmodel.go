@@ -51,7 +51,6 @@ func NewQStringListModel() *QStringListModel {
 
 // NewQStringListModel2 constructs a new QStringListModel object.
 func NewQStringListModel2(strings []string) *QStringListModel {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -75,7 +74,6 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -176,7 +174,6 @@ func (this *QStringListModel) StringList() []string {
 }
 
 func (this *QStringListModel) SetStringList(strings []string) {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {

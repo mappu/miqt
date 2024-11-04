@@ -183,7 +183,6 @@ func NewQFont2(family string) *QFont {
 
 // NewQFont3 constructs a new QFont object.
 func NewQFont3(families []string) *QFont {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -243,7 +242,6 @@ func NewQFont8(family string, pointSize int, weight int, italic bool) *QFont {
 
 // NewQFont9 constructs a new QFont object.
 func NewQFont9(families []string, pointSize int) *QFont {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -261,7 +259,6 @@ func NewQFont9(families []string, pointSize int) *QFont {
 
 // NewQFont10 constructs a new QFont object.
 func NewQFont10(families []string, pointSize int, weight int) *QFont {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -279,7 +276,6 @@ func NewQFont10(families []string, pointSize int, weight int) *QFont {
 
 // NewQFont11 constructs a new QFont object.
 func NewQFont11(families []string, pointSize int, weight int, italic bool) *QFont {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -329,7 +325,6 @@ func (this *QFont) Families() []string {
 }
 
 func (this *QFont) SetFamilies(families []string) {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -621,7 +616,6 @@ func QFont_InsertSubstitutions(param1 string, param2 []string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	// For the C ABI, malloc a C array of structs
 	param2_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray))
 	for i := range param2 {

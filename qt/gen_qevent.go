@@ -1863,7 +1863,6 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	preeditText_ms.data = C.CString(preeditText)
 	preeditText_ms.len = C.size_t(len(preeditText))
 	defer C.free(unsafe.Pointer(preeditText_ms.data))
-	// For the C ABI, malloc a C array of raw pointers
 	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_CArray))
 	for i := range attributes {
@@ -3048,7 +3047,6 @@ func NewQTouchEvent5(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers KeyboardModifier, touchPointStates TouchPointState, touchPoints []QTouchEvent__TouchPoint) *QTouchEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	touchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray))
 	for i := range touchPoints {
@@ -3103,7 +3101,6 @@ func (this *QTouchEvent) SetTouchPointStates(aTouchPointStates TouchPointState) 
 }
 
 func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) {
-	// For the C ABI, malloc a C array of raw pointers
 	atouchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(atouchPoints))))
 	defer C.free(unsafe.Pointer(atouchPoints_CArray))
 	for i := range atouchPoints {
@@ -3799,7 +3796,6 @@ func (this *QTouchEvent__TouchPoint) SetFlags(flags QTouchEvent__TouchPoint__Inf
 }
 
 func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {

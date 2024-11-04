@@ -371,7 +371,6 @@ func (this *QProcess) Arguments() []string {
 }
 
 func (this *QProcess) SetArguments(arguments []string) {
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -462,7 +461,6 @@ func (this *QProcess) SetWorkingDirectory(dir string) {
 }
 
 func (this *QProcess) SetEnvironment(environment []string) {
-	// For the C ABI, malloc a C array of structs
 	environment_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(environment))))
 	defer C.free(unsafe.Pointer(environment_CArray))
 	for i := range environment {
@@ -676,7 +674,6 @@ func (this *QProcess) Start22(program string, arguments []string) {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -696,7 +693,6 @@ func (this *QProcess) Start3(program string, arguments []string, mode QIODeviceB
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -768,7 +764,6 @@ func QProcess_Execute2(program string, arguments []string) int {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -788,7 +783,6 @@ func QProcess_StartDetached2(program string, arguments []string) bool {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -808,7 +802,6 @@ func QProcess_StartDetached3(program string, arguments []string, workingDirector
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
@@ -832,7 +825,6 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	// For the C ABI, malloc a C array of structs
 	arguments_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {

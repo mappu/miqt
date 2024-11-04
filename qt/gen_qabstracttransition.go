@@ -102,7 +102,6 @@ func (this *QAbstractTransition) TargetStates() []*QAbstractState {
 }
 
 func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
-	// For the C ABI, malloc a C array of raw pointers
 	targets_CArray := (*[0xffff]*C.QAbstractState)(C.malloc(C.size_t(8 * len(targets))))
 	defer C.free(unsafe.Pointer(targets_CArray))
 	for i := range targets {

@@ -96,7 +96,6 @@ func QAbstractPrintDialog_Tr(s string) string {
 }
 
 func (this *QAbstractPrintDialog) SetOptionTabs(tabs []*qt6.QWidget) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabs_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(tabs))))
 	defer C.free(unsafe.Pointer(tabs_CArray))
 	for i := range tabs {

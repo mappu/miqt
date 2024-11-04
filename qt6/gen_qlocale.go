@@ -1738,7 +1738,6 @@ func (this *QLocale) QuoteString(str string) string {
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
-	// For the C ABI, malloc a C array of structs
 	strl_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray))
 	for i := range strl {

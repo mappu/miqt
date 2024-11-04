@@ -168,7 +168,6 @@ func (this *QInputDialog) IsComboBoxEditable() bool {
 }
 
 func (this *QInputDialog) SetComboBoxItems(items []string) {
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -356,7 +355,6 @@ func QInputDialog_GetItem(parent *QWidget, title string, label string, items []s
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -746,7 +744,6 @@ func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -773,7 +770,6 @@ func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -800,7 +796,6 @@ func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -827,7 +822,6 @@ func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -854,7 +848,6 @@ func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	// For the C ABI, malloc a C array of structs
 	items_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {

@@ -266,7 +266,6 @@ func (this *QFileDialog) SetNameFilter(filter string) {
 }
 
 func (this *QFileDialog) SetNameFilters(filters []string) {
-	// For the C ABI, malloc a C array of structs
 	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
@@ -318,7 +317,6 @@ func (this *QFileDialog) SelectedNameFilter() string {
 }
 
 func (this *QFileDialog) SetMimeTypeFilters(filters []string) {
-	// For the C ABI, malloc a C array of structs
 	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
@@ -404,7 +402,6 @@ func (this *QFileDialog) ResolveSymlinks() bool {
 }
 
 func (this *QFileDialog) SetSidebarUrls(urls []QUrl) {
-	// For the C ABI, malloc a C array of raw pointers
 	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray))
 	for i := range urls {
@@ -467,7 +464,6 @@ func (this *QFileDialog) DefaultSuffix() string {
 }
 
 func (this *QFileDialog) SetHistory(paths []string) {
-	// For the C ABI, malloc a C array of structs
 	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
@@ -528,7 +524,6 @@ func (this *QFileDialog) LabelText(label QFileDialog__DialogLabel) string {
 }
 
 func (this *QFileDialog) SetSupportedSchemes(schemes []string) {
-	// For the C ABI, malloc a C array of structs
 	schemes_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(schemes))))
 	defer C.free(unsafe.Pointer(schemes_CArray))
 	for i := range schemes {
@@ -613,7 +608,6 @@ func miqt_exec_callback_QFileDialog_FileSelected(cb C.intptr_t, file C.struct_mi
 }
 
 func (this *QFileDialog) FilesSelected(files []string) {
-	// For the C ABI, malloc a C array of structs
 	files_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	for i := range files {
@@ -729,7 +723,6 @@ func miqt_exec_callback_QFileDialog_UrlSelected(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QFileDialog) UrlsSelected(urls []QUrl) {
-	// For the C ABI, malloc a C array of raw pointers
 	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray))
 	for i := range urls {
@@ -1247,7 +1240,6 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	// For the C ABI, malloc a C array of structs
 	supportedSchemes_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(supportedSchemes))))
 	defer C.free(unsafe.Pointer(supportedSchemes_CArray))
 	for i := range supportedSchemes {

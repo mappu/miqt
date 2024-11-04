@@ -701,7 +701,6 @@ func (this *QXmlStreamReader) AddExtraNamespaceDeclaration(extraNamespaceDeclara
 }
 
 func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclaractions []QXmlStreamNamespaceDeclaration) {
-	// For the C ABI, malloc a C array of raw pointers
 	extraNamespaceDeclaractions_CArray := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(C.malloc(C.size_t(8 * len(extraNamespaceDeclaractions))))
 	defer C.free(unsafe.Pointer(extraNamespaceDeclaractions_CArray))
 	for i := range extraNamespaceDeclaractions {

@@ -485,7 +485,6 @@ func (this *QGraphicsView) SetForegroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsView) UpdateScene(rects []QRectF) {
-	// For the C ABI, malloc a C array of raw pointers
 	rects_CArray := (*[0xffff]*C.QRectF)(C.malloc(C.size_t(8 * len(rects))))
 	defer C.free(unsafe.Pointer(rects_CArray))
 	for i := range rects {

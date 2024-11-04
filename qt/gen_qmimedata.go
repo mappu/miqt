@@ -92,7 +92,6 @@ func (this *QMimeData) Urls() []QUrl {
 }
 
 func (this *QMimeData) SetUrls(urls []QUrl) {
-	// For the C ABI, malloc a C array of raw pointers
 	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray))
 	for i := range urls {

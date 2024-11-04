@@ -143,7 +143,6 @@ func (this *QTextOption) TabStopDistance() float64 {
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabStops_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray))
 	for i := range tabStops {
@@ -166,7 +165,6 @@ func (this *QTextOption) TabArray() []float64 {
 }
 
 func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabStops_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray))
 	for i := range tabStops {

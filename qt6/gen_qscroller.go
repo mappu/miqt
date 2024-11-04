@@ -169,7 +169,6 @@ func (this *QScroller) ScrollerProperties() *QScrollerProperties {
 }
 
 func (this *QScroller) SetSnapPositionsX(positions []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
@@ -185,7 +184,6 @@ func (this *QScroller) SetSnapPositionsX2(first float64, interval float64) {
 }
 
 func (this *QScroller) SetSnapPositionsY(positions []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {

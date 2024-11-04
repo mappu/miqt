@@ -153,7 +153,6 @@ func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
 }
 
 func (this *QColumnView) SetColumnWidths(list []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	list_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {

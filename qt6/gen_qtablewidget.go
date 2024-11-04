@@ -559,7 +559,6 @@ func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem
 }
 
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
@@ -575,7 +574,6 @@ func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {

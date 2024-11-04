@@ -786,7 +786,6 @@ func (this *QsciScintilla) SetAutoCompletionFillups(fillups string) {
 }
 
 func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) {
-	// For the C ABI, malloc a C array of structs
 	separators_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(separators))))
 	defer C.free(unsafe.Pointer(separators_CArray))
 	for i := range separators {
@@ -826,7 +825,6 @@ func (this *QsciScintilla) SetCallTipsVisible(nr int) {
 }
 
 func (this *QsciScintilla) SetContractedFolds(folds []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	folds_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(folds))))
 	defer C.free(unsafe.Pointer(folds_CArray))
 	for i := range folds {
@@ -1041,7 +1039,6 @@ func (this *QsciScintilla) SetWrapIndentMode(mode QsciScintilla__WrapIndentMode)
 }
 
 func (this *QsciScintilla) ShowUserList(id int, list []string) {
-	// For the C ABI, malloc a C array of structs
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {

@@ -396,7 +396,6 @@ func (this *QStandardItem) SetChild2(row int, item *QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -408,7 +407,6 @@ func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -420,7 +418,6 @@ func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -456,7 +453,6 @@ func (this *QStandardItem) RemoveColumns(column int, count int) {
 }
 
 func (this *QStandardItem) AppendRow(items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -468,7 +464,6 @@ func (this *QStandardItem) AppendRow(items []*QStandardItem) {
 }
 
 func (this *QStandardItem) AppendRows(items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -480,7 +475,6 @@ func (this *QStandardItem) AppendRows(items []*QStandardItem) {
 }
 
 func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -791,7 +785,6 @@ func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardIt
 }
 
 func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
@@ -807,7 +800,6 @@ func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
@@ -831,7 +823,6 @@ func (this *QStandardItemModel) SetColumnCount(columns int) {
 }
 
 func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -843,7 +834,6 @@ func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
 }
 
 func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -859,7 +849,6 @@ func (this *QStandardItemModel) AppendRowWithItem(item *QStandardItem) {
 }
 
 func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -871,7 +860,6 @@ func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
 }
 
 func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem) {
-	// For the C ABI, malloc a C array of raw pointers
 	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray))
 	for i := range items {
@@ -974,7 +962,6 @@ func (this *QStandardItemModel) MimeTypes() []string {
 }
 
 func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {

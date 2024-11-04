@@ -441,7 +441,6 @@ func (this *QTreeView) ScrollTo2(index *QModelIndex, hint QAbstractItemView__Scr
 }
 
 func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray))
 	for i := range roles {

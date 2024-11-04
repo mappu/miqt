@@ -495,7 +495,6 @@ func QUrl_IdnWhitelist() []string {
 }
 
 func QUrl_ToStringList(uris []QUrl) []string {
-	// For the C ABI, malloc a C array of raw pointers
 	uris_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
@@ -517,7 +516,6 @@ func QUrl_ToStringList(uris []QUrl) []string {
 }
 
 func QUrl_FromStringList(uris []string) []QUrl {
-	// For the C ABI, malloc a C array of structs
 	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
@@ -543,7 +541,6 @@ func QUrl_FromStringList(uris []string) []QUrl {
 }
 
 func QUrl_SetIdnWhitelist(idnWhitelist []string) {
-	// For the C ABI, malloc a C array of structs
 	idnWhitelist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(idnWhitelist))))
 	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
 	for i := range idnWhitelist {
@@ -790,7 +787,6 @@ func QUrl_ToAce2(domain string, options QUrl__AceProcessingOption) []byte {
 }
 
 func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
-	// For the C ABI, malloc a C array of structs
 	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {

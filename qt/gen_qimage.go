@@ -214,7 +214,6 @@ func (this *QImage) ConvertToFormat(f QImage__Format) *QImage {
 }
 
 func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImage {
-	// For the C ABI, malloc a C array of raw pointers
 	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray))
 	for i := range colorTable {
@@ -392,7 +391,6 @@ func (this *QImage) ColorTable() []uint {
 }
 
 func (this *QImage) SetColorTable(colors []uint) {
-	// For the C ABI, malloc a C array of raw pointers
 	colors_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colors))))
 	defer C.free(unsafe.Pointer(colors_CArray))
 	for i := range colors {
@@ -714,7 +712,6 @@ func (this *QImage) ConvertToFormat22(f QImage__Format, flags ImageConversionFla
 }
 
 func (this *QImage) ConvertToFormat3(f QImage__Format, colorTable []uint, flags ImageConversionFlag) *QImage {
-	// For the C ABI, malloc a C array of raw pointers
 	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray))
 	for i := range colorTable {

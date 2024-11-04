@@ -630,7 +630,6 @@ func (this *QAbstractItemModel) MimeTypes() []string {
 }
 
 func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
@@ -980,7 +979,6 @@ func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstrac
 }
 
 func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray))
 	for i := range roles {
@@ -1017,7 +1015,6 @@ func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *
 }
 
 func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
@@ -1055,7 +1052,6 @@ func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb C.intptr_t, parents
 }
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
@@ -1095,7 +1091,6 @@ func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentModelIndex) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
@@ -1133,7 +1128,6 @@ func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb C.intptr_t
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {

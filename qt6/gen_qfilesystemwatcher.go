@@ -51,7 +51,6 @@ func NewQFileSystemWatcher() *QFileSystemWatcher {
 
 // NewQFileSystemWatcher2 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
-	// For the C ABI, malloc a C array of structs
 	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
@@ -75,7 +74,6 @@ func NewQFileSystemWatcher3(parent *QObject) *QFileSystemWatcher {
 
 // NewQFileSystemWatcher4 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher {
-	// For the C ABI, malloc a C array of structs
 	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
@@ -119,7 +117,6 @@ func (this *QFileSystemWatcher) AddPath(file string) bool {
 }
 
 func (this *QFileSystemWatcher) AddPaths(files []string) []string {
-	// For the C ABI, malloc a C array of structs
 	files_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	for i := range files {
@@ -153,7 +150,6 @@ func (this *QFileSystemWatcher) RemovePath(file string) bool {
 }
 
 func (this *QFileSystemWatcher) RemovePaths(files []string) []string {
-	// For the C ABI, malloc a C array of structs
 	files_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(files))))
 	defer C.free(unsafe.Pointer(files_CArray))
 	for i := range files {

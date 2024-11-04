@@ -165,7 +165,6 @@ func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {

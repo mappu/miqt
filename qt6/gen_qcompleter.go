@@ -74,7 +74,6 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 
 // NewQCompleter3 constructs a new QCompleter object.
 func NewQCompleter3(completions []string) *QCompleter {
-	// For the C ABI, malloc a C array of structs
 	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {
@@ -104,7 +103,6 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
-	// For the C ABI, malloc a C array of structs
 	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
 	defer C.free(unsafe.Pointer(completions_CArray))
 	for i := range completions {

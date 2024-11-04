@@ -265,7 +265,6 @@ func (this *QFont) Families() []string {
 }
 
 func (this *QFont) SetFamilies(families []string) {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -580,7 +579,6 @@ func QFont_InsertSubstitutions(param1 string, param2 []string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	// For the C ABI, malloc a C array of structs
 	param2_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(param2))))
 	defer C.free(unsafe.Pointer(param2_CArray))
 	for i := range param2 {

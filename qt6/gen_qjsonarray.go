@@ -59,7 +59,6 @@ func (this *QJsonArray) OperatorAssign(other *QJsonArray) {
 }
 
 func QJsonArray_FromStringList(list []string) *QJsonArray {
-	// For the C ABI, malloc a C array of structs
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {

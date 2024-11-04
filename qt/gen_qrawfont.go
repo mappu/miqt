@@ -165,7 +165,6 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
-	// For the C ABI, malloc a C array of raw pointers
 	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
 	for i := range glyphIndexes {
@@ -187,7 +186,6 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags QRawFont__LayoutFlag) []QPointF {
-	// For the C ABI, malloc a C array of raw pointers
 	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
 	for i := range glyphIndexes {

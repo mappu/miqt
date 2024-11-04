@@ -422,7 +422,6 @@ func (this *QTextEdit) SetAcceptRichText(accept bool) {
 }
 
 func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextEdit__ExtraSelection)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {

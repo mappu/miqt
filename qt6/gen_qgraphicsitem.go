@@ -602,7 +602,6 @@ func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 }
 
 func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransform) {
-	// For the C ABI, malloc a C array of raw pointers
 	transformations_CArray := (*[0xffff]*C.QGraphicsTransform)(C.malloc(C.size_t(8 * len(transformations))))
 	defer C.free(unsafe.Pointer(transformations_CArray))
 	for i := range transformations {
