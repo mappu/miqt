@@ -90,7 +90,7 @@ void QFileDialog_SelectFile(QFileDialog* self, struct miqt_string filename) {
 	self->selectFile(filename_QString);
 }
 
-struct miqt_array* QFileDialog_SelectedFiles(const QFileDialog* self) {
+struct miqt_array QFileDialog_SelectedFiles(const QFileDialog* self) {
 	QStringList _ret = self->selectedFiles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -104,9 +104,9 @@ struct miqt_array* QFileDialog_SelectedFiles(const QFileDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -114,16 +114,16 @@ void QFileDialog_SelectUrl(QFileDialog* self, QUrl* url) {
 	self->selectUrl(*url);
 }
 
-struct miqt_array* QFileDialog_SelectedUrls(const QFileDialog* self) {
+struct miqt_array QFileDialog_SelectedUrls(const QFileDialog* self) {
 	QList<QUrl> _ret = self->selectedUrls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -132,18 +132,18 @@ void QFileDialog_SetNameFilter(QFileDialog* self, struct miqt_string filter) {
 	self->setNameFilter(filter_QString);
 }
 
-void QFileDialog_SetNameFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string */ filters) {
+void QFileDialog_SetNameFilters(QFileDialog* self, struct miqt_array /* of struct miqt_string */ filters) {
 	QStringList filters_QList;
-	filters_QList.reserve(filters->len);
-	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters->data);
-	for(size_t i = 0; i < filters->len; ++i) {
+	filters_QList.reserve(filters.len);
+	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
+	for(size_t i = 0; i < filters.len; ++i) {
 		QString filters_arr_i_QString = QString::fromUtf8(filters_arr[i].data, filters_arr[i].len);
 		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setNameFilters(filters_QList);
 }
 
-struct miqt_array* QFileDialog_NameFilters(const QFileDialog* self) {
+struct miqt_array QFileDialog_NameFilters(const QFileDialog* self) {
 	QStringList _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -157,9 +157,9 @@ struct miqt_array* QFileDialog_NameFilters(const QFileDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -190,18 +190,18 @@ struct miqt_string QFileDialog_SelectedNameFilter(const QFileDialog* self) {
 	return _ms;
 }
 
-void QFileDialog_SetMimeTypeFilters(QFileDialog* self, struct miqt_array* /* of struct miqt_string */ filters) {
+void QFileDialog_SetMimeTypeFilters(QFileDialog* self, struct miqt_array /* of struct miqt_string */ filters) {
 	QStringList filters_QList;
-	filters_QList.reserve(filters->len);
-	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters->data);
-	for(size_t i = 0; i < filters->len; ++i) {
+	filters_QList.reserve(filters.len);
+	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
+	for(size_t i = 0; i < filters.len; ++i) {
 		QString filters_arr_i_QString = QString::fromUtf8(filters_arr[i].data, filters_arr[i].len);
 		filters_QList.push_back(filters_arr_i_QString);
 	}
 	self->setMimeTypeFilters(filters_QList);
 }
 
-struct miqt_array* QFileDialog_MimeTypeFilters(const QFileDialog* self) {
+struct miqt_array QFileDialog_MimeTypeFilters(const QFileDialog* self) {
 	QStringList _ret = self->mimeTypeFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -215,9 +215,9 @@ struct miqt_array* QFileDialog_MimeTypeFilters(const QFileDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -262,26 +262,26 @@ int QFileDialog_AcceptMode(const QFileDialog* self) {
 	return static_cast<int>(_ret);
 }
 
-void QFileDialog_SetSidebarUrls(QFileDialog* self, struct miqt_array* /* of QUrl* */ urls) {
+void QFileDialog_SetSidebarUrls(QFileDialog* self, struct miqt_array /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
-	urls_QList.reserve(urls->len);
-	QUrl** urls_arr = static_cast<QUrl**>(urls->data);
-	for(size_t i = 0; i < urls->len; ++i) {
+	urls_QList.reserve(urls.len);
+	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
+	for(size_t i = 0; i < urls.len; ++i) {
 		urls_QList.push_back(*(urls_arr[i]));
 	}
 	self->setSidebarUrls(urls_QList);
 }
 
-struct miqt_array* QFileDialog_SidebarUrls(const QFileDialog* self) {
+struct miqt_array QFileDialog_SidebarUrls(const QFileDialog* self) {
 	QList<QUrl> _ret = self->sidebarUrls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -315,18 +315,18 @@ struct miqt_string QFileDialog_DefaultSuffix(const QFileDialog* self) {
 	return _ms;
 }
 
-void QFileDialog_SetHistory(QFileDialog* self, struct miqt_array* /* of struct miqt_string */ paths) {
+void QFileDialog_SetHistory(QFileDialog* self, struct miqt_array /* of struct miqt_string */ paths) {
 	QStringList paths_QList;
-	paths_QList.reserve(paths->len);
-	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths->data);
-	for(size_t i = 0; i < paths->len; ++i) {
+	paths_QList.reserve(paths.len);
+	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
+	for(size_t i = 0; i < paths.len; ++i) {
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}
 	self->setHistory(paths_QList);
 }
 
-struct miqt_array* QFileDialog_History(const QFileDialog* self) {
+struct miqt_array QFileDialog_History(const QFileDialog* self) {
 	QStringList _ret = self->history();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -340,9 +340,9 @@ struct miqt_array* QFileDialog_History(const QFileDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -378,18 +378,18 @@ struct miqt_string QFileDialog_LabelText(const QFileDialog* self, int label) {
 	return _ms;
 }
 
-void QFileDialog_SetSupportedSchemes(QFileDialog* self, struct miqt_array* /* of struct miqt_string */ schemes) {
+void QFileDialog_SetSupportedSchemes(QFileDialog* self, struct miqt_array /* of struct miqt_string */ schemes) {
 	QStringList schemes_QList;
-	schemes_QList.reserve(schemes->len);
-	struct miqt_string* schemes_arr = static_cast<struct miqt_string*>(schemes->data);
-	for(size_t i = 0; i < schemes->len; ++i) {
+	schemes_QList.reserve(schemes.len);
+	struct miqt_string* schemes_arr = static_cast<struct miqt_string*>(schemes.data);
+	for(size_t i = 0; i < schemes.len; ++i) {
 		QString schemes_arr_i_QString = QString::fromUtf8(schemes_arr[i].data, schemes_arr[i].len);
 		schemes_QList.push_back(schemes_arr_i_QString);
 	}
 	self->setSupportedSchemes(schemes_QList);
 }
 
-struct miqt_array* QFileDialog_SupportedSchemes(const QFileDialog* self) {
+struct miqt_array QFileDialog_SupportedSchemes(const QFileDialog* self) {
 	QStringList _ret = self->supportedSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -403,9 +403,9 @@ struct miqt_array* QFileDialog_SupportedSchemes(const QFileDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -457,11 +457,11 @@ void QFileDialog_connect_FileSelected(QFileDialog* self, intptr_t slot) {
 	});
 }
 
-void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array* /* of struct miqt_string */ files) {
+void QFileDialog_FilesSelected(QFileDialog* self, struct miqt_array /* of struct miqt_string */ files) {
 	QStringList files_QList;
-	files_QList.reserve(files->len);
-	struct miqt_string* files_arr = static_cast<struct miqt_string*>(files->data);
-	for(size_t i = 0; i < files->len; ++i) {
+	files_QList.reserve(files.len);
+	struct miqt_string* files_arr = static_cast<struct miqt_string*>(files.data);
+	for(size_t i = 0; i < files.len; ++i) {
 		QString files_arr_i_QString = QString::fromUtf8(files_arr[i].data, files_arr[i].len);
 		files_QList.push_back(files_arr_i_QString);
 	}
@@ -483,10 +483,10 @@ void QFileDialog_connect_FilesSelected(QFileDialog* self, intptr_t slot) {
 			memcpy(files_lv_ms.data, files_lv_b.data(), files_lv_ms.len);
 			files_arr[i] = files_lv_ms;
 		}
-		struct miqt_array* files_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-		files_out->len = files_ret.length();
-		files_out->data = static_cast<void*>(files_arr);
-		struct miqt_array* sigval1 = files_out;
+		struct miqt_array files_out;
+		files_out.len = files_ret.length();
+		files_out.data = static_cast<void*>(files_arr);
+		struct miqt_array sigval1 = files_out;
 		miqt_exec_callback_QFileDialog_FilesSelected(slot, sigval1);
 	});
 }
@@ -542,11 +542,11 @@ void QFileDialog_connect_UrlSelected(QFileDialog* self, intptr_t slot) {
 	});
 }
 
-void QFileDialog_UrlsSelected(QFileDialog* self, struct miqt_array* /* of QUrl* */ urls) {
+void QFileDialog_UrlsSelected(QFileDialog* self, struct miqt_array /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
-	urls_QList.reserve(urls->len);
-	QUrl** urls_arr = static_cast<QUrl**>(urls->data);
-	for(size_t i = 0; i < urls->len; ++i) {
+	urls_QList.reserve(urls.len);
+	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
+	for(size_t i = 0; i < urls.len; ++i) {
 		urls_QList.push_back(*(urls_arr[i]));
 	}
 	self->urlsSelected(urls_QList);
@@ -560,10 +560,10 @@ void QFileDialog_connect_UrlsSelected(QFileDialog* self, intptr_t slot) {
 		for (size_t i = 0, e = urls_ret.length(); i < e; ++i) {
 			urls_arr[i] = new QUrl(urls_ret[i]);
 		}
-		struct miqt_array* urls_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-		urls_out->len = urls_ret.length();
-		urls_out->data = static_cast<void*>(urls_arr);
-		struct miqt_array* sigval1 = urls_out;
+		struct miqt_array urls_out;
+		urls_out.len = urls_ret.length();
+		urls_out.data = static_cast<void*>(urls_arr);
+		struct miqt_array sigval1 = urls_out;
 		miqt_exec_callback_QFileDialog_UrlsSelected(slot, sigval1);
 	});
 }
@@ -658,7 +658,7 @@ QUrl* QFileDialog_GetExistingDirectoryUrl() {
 	return new QUrl(QFileDialog::getExistingDirectoryUrl());
 }
 
-struct miqt_array* QFileDialog_GetOpenFileNames() {
+struct miqt_array QFileDialog_GetOpenFileNames() {
 	QStringList _ret = QFileDialog::getOpenFileNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -672,22 +672,22 @@ struct miqt_array* QFileDialog_GetOpenFileNames() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileUrls() {
+struct miqt_array QFileDialog_GetOpenFileUrls() {
 	QList<QUrl> _ret = QFileDialog::getOpenFileUrls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -931,19 +931,19 @@ QUrl* QFileDialog_GetExistingDirectoryUrl4(QWidget* parent, struct miqt_string c
 	return new QUrl(QFileDialog::getExistingDirectoryUrl(parent, caption_QString, *dir, static_cast<QFileDialog::Options>(options)));
 }
 
-QUrl* QFileDialog_GetExistingDirectoryUrl5(QWidget* parent, struct miqt_string caption, QUrl* dir, int options, struct miqt_array* /* of struct miqt_string */ supportedSchemes) {
+QUrl* QFileDialog_GetExistingDirectoryUrl5(QWidget* parent, struct miqt_string caption, QUrl* dir, int options, struct miqt_array /* of struct miqt_string */ supportedSchemes) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QStringList supportedSchemes_QList;
-	supportedSchemes_QList.reserve(supportedSchemes->len);
-	struct miqt_string* supportedSchemes_arr = static_cast<struct miqt_string*>(supportedSchemes->data);
-	for(size_t i = 0; i < supportedSchemes->len; ++i) {
+	supportedSchemes_QList.reserve(supportedSchemes.len);
+	struct miqt_string* supportedSchemes_arr = static_cast<struct miqt_string*>(supportedSchemes.data);
+	for(size_t i = 0; i < supportedSchemes.len; ++i) {
 		QString supportedSchemes_arr_i_QString = QString::fromUtf8(supportedSchemes_arr[i].data, supportedSchemes_arr[i].len);
 		supportedSchemes_QList.push_back(supportedSchemes_arr_i_QString);
 	}
 	return new QUrl(QFileDialog::getExistingDirectoryUrl(parent, caption_QString, *dir, static_cast<QFileDialog::Options>(options), supportedSchemes_QList));
 }
 
-struct miqt_array* QFileDialog_GetOpenFileNames1(QWidget* parent) {
+struct miqt_array QFileDialog_GetOpenFileNames1(QWidget* parent) {
 	QStringList _ret = QFileDialog::getOpenFileNames(parent);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -957,13 +957,13 @@ struct miqt_array* QFileDialog_GetOpenFileNames1(QWidget* parent) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileNames2(QWidget* parent, struct miqt_string caption) {
+struct miqt_array QFileDialog_GetOpenFileNames2(QWidget* parent, struct miqt_string caption) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QStringList _ret = QFileDialog::getOpenFileNames(parent, caption_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -978,13 +978,13 @@ struct miqt_array* QFileDialog_GetOpenFileNames2(QWidget* parent, struct miqt_st
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileNames3(QWidget* parent, struct miqt_string caption, struct miqt_string dir) {
+struct miqt_array QFileDialog_GetOpenFileNames3(QWidget* parent, struct miqt_string caption, struct miqt_string dir) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QString dir_QString = QString::fromUtf8(dir.data, dir.len);
 	QStringList _ret = QFileDialog::getOpenFileNames(parent, caption_QString, dir_QString);
@@ -1000,13 +1000,13 @@ struct miqt_array* QFileDialog_GetOpenFileNames3(QWidget* parent, struct miqt_st
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileNames4(QWidget* parent, struct miqt_string caption, struct miqt_string dir, struct miqt_string filter) {
+struct miqt_array QFileDialog_GetOpenFileNames4(QWidget* parent, struct miqt_string caption, struct miqt_string dir, struct miqt_string filter) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QString dir_QString = QString::fromUtf8(dir.data, dir.len);
 	QString filter_QString = QString::fromUtf8(filter.data, filter.len);
@@ -1023,26 +1023,26 @@ struct miqt_array* QFileDialog_GetOpenFileNames4(QWidget* parent, struct miqt_st
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileUrls1(QWidget* parent) {
+struct miqt_array QFileDialog_GetOpenFileUrls1(QWidget* parent) {
 	QList<QUrl> _ret = QFileDialog::getOpenFileUrls(parent);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileUrls2(QWidget* parent, struct miqt_string caption) {
+struct miqt_array QFileDialog_GetOpenFileUrls2(QWidget* parent, struct miqt_string caption) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QList<QUrl> _ret = QFileDialog::getOpenFileUrls(parent, caption_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1050,13 +1050,13 @@ struct miqt_array* QFileDialog_GetOpenFileUrls2(QWidget* parent, struct miqt_str
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileUrls3(QWidget* parent, struct miqt_string caption, QUrl* dir) {
+struct miqt_array QFileDialog_GetOpenFileUrls3(QWidget* parent, struct miqt_string caption, QUrl* dir) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QList<QUrl> _ret = QFileDialog::getOpenFileUrls(parent, caption_QString, *dir);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1064,13 +1064,13 @@ struct miqt_array* QFileDialog_GetOpenFileUrls3(QWidget* parent, struct miqt_str
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFileDialog_GetOpenFileUrls4(QWidget* parent, struct miqt_string caption, QUrl* dir, struct miqt_string filter) {
+struct miqt_array QFileDialog_GetOpenFileUrls4(QWidget* parent, struct miqt_string caption, QUrl* dir, struct miqt_string filter) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QString filter_QString = QString::fromUtf8(filter.data, filter.len);
 	QList<QUrl> _ret = QFileDialog::getOpenFileUrls(parent, caption_QString, *dir, filter_QString);
@@ -1079,9 +1079,9 @@ struct miqt_array* QFileDialog_GetOpenFileUrls4(QWidget* parent, struct miqt_str
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

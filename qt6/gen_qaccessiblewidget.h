@@ -52,9 +52,9 @@ QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self);
 void* QAccessibleWidget_InterfaceCast(QAccessibleWidget* self, int t);
-struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self);
+struct miqt_array QAccessibleWidget_ActionNames(const QAccessibleWidget* self);
 void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string actionName);
-struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName);
+struct miqt_array QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName);
 
 #ifdef __cplusplus
 } /* extern C */

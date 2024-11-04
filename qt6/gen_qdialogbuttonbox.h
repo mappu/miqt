@@ -45,7 +45,7 @@ QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, struct miqt_str
 QPushButton* QDialogButtonBox_AddButtonWithButton(QDialogButtonBox* self, int button);
 void QDialogButtonBox_RemoveButton(QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_Clear(QDialogButtonBox* self);
-struct miqt_array* QDialogButtonBox_Buttons(const QDialogButtonBox* self);
+struct miqt_array QDialogButtonBox_Buttons(const QDialogButtonBox* self);
 int QDialogButtonBox_ButtonRole(const QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons);
 int QDialogButtonBox_StandardButtons(const QDialogButtonBox* self);

@@ -346,26 +346,26 @@ void QTextEdit_SetAcceptRichText(QTextEdit* self, bool accept) {
 	self->setAcceptRichText(accept);
 }
 
-void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array* /* of QTextEdit__ExtraSelection* */ selections) {
+void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */ selections) {
 	QList<QTextEdit::ExtraSelection> selections_QList;
-	selections_QList.reserve(selections->len);
-	QTextEdit__ExtraSelection** selections_arr = static_cast<QTextEdit__ExtraSelection**>(selections->data);
-	for(size_t i = 0; i < selections->len; ++i) {
+	selections_QList.reserve(selections.len);
+	QTextEdit__ExtraSelection** selections_arr = static_cast<QTextEdit__ExtraSelection**>(selections.data);
+	for(size_t i = 0; i < selections.len; ++i) {
 		selections_QList.push_back(*(selections_arr[i]));
 	}
 	self->setExtraSelections(selections_QList);
 }
 
-struct miqt_array* QTextEdit_ExtraSelections(const QTextEdit* self) {
+struct miqt_array QTextEdit_ExtraSelections(const QTextEdit* self) {
 	QList<QTextEdit::ExtraSelection> _ret = self->extraSelections();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextEdit__ExtraSelection** _arr = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextEdit::ExtraSelection(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

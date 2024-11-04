@@ -128,13 +128,12 @@ func (this *QMdiArea) ActiveSubWindow() *QMdiSubWindow {
 }
 
 func (this *QMdiArea) SubWindowList() []*QMdiSubWindow {
-	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList(this.h)
+	var _ma C.struct_miqt_array = C.QMdiArea_SubWindowList(this.h)
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQMdiSubWindow(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -314,13 +313,12 @@ func QMdiArea_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWindow {
-	var _ma *C.struct_miqt_array = C.QMdiArea_SubWindowList1(this.h, (C.int)(order))
+	var _ma C.struct_miqt_array = C.QMdiArea_SubWindowList1(this.h, (C.int)(order))
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQMdiSubWindow(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -48,7 +48,7 @@ void QMessageBox_AddButton(QMessageBox* self, QAbstractButton* button, int role)
 QPushButton* QMessageBox_AddButton2(QMessageBox* self, struct miqt_string text, int role);
 QPushButton* QMessageBox_AddButtonWithButton(QMessageBox* self, int button);
 void QMessageBox_RemoveButton(QMessageBox* self, QAbstractButton* button);
-struct miqt_array* QMessageBox_Buttons(const QMessageBox* self);
+struct miqt_array QMessageBox_Buttons(const QMessageBox* self);
 int QMessageBox_ButtonRole(const QMessageBox* self, QAbstractButton* button);
 void QMessageBox_SetStandardButtons(QMessageBox* self, int buttons);
 int QMessageBox_StandardButtons(const QMessageBox* self);

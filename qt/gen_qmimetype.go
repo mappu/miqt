@@ -107,7 +107,7 @@ func (this *QMimeType) IconName() string {
 }
 
 func (this *QMimeType) GlobPatterns() []string {
-	var _ma *C.struct_miqt_array = C.QMimeType_GlobPatterns(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_GlobPatterns(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -116,12 +116,11 @@ func (this *QMimeType) GlobPatterns() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMimeType) ParentMimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QMimeType_ParentMimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_ParentMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -130,12 +129,11 @@ func (this *QMimeType) ParentMimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMimeType) AllAncestors() []string {
-	var _ma *C.struct_miqt_array = C.QMimeType_AllAncestors(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_AllAncestors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -144,12 +142,11 @@ func (this *QMimeType) AllAncestors() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMimeType) Aliases() []string {
-	var _ma *C.struct_miqt_array = C.QMimeType_Aliases(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_Aliases(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -158,12 +155,11 @@ func (this *QMimeType) Aliases() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMimeType) Suffixes() []string {
-	var _ma *C.struct_miqt_array = C.QMimeType_Suffixes(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_Suffixes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -172,7 +168,6 @@ func (this *QMimeType) Suffixes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

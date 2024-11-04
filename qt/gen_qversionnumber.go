@@ -50,14 +50,12 @@ func NewQVersionNumber() *QVersionNumber {
 
 // NewQVersionNumber2 constructs a new QVersionNumber object.
 func NewQVersionNumber2(seg []int) *QVersionNumber {
-	// For the C ABI, malloc a C array of raw pointers
 	seg_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(seg))))
 	defer C.free(unsafe.Pointer(seg_CArray))
 	for i := range seg {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
-	seg_ma := &C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(seg_ma))
+	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
 	ret := C.QVersionNumber_new2(seg_ma)
 	return newQVersionNumber(ret)
 }
@@ -108,13 +106,12 @@ func (this *QVersionNumber) Normalized() *QVersionNumber {
 }
 
 func (this *QVersionNumber) Segments() []int {
-	var _ma *C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
+	var _ma C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -122,7 +122,7 @@ bool QTextDocument_IsModified(const QTextDocument* self);
 void QTextDocument_Print(const QTextDocument* self, QPagedPaintDevice* printer);
 QVariant* QTextDocument_Resource(const QTextDocument* self, int typeVal, QUrl* name);
 void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVariant* resource);
-struct miqt_array* QTextDocument_AllFormats(const QTextDocument* self);
+struct miqt_array QTextDocument_AllFormats(const QTextDocument* self);
 void QTextDocument_MarkContentsDirty(QTextDocument* self, int from, int length);
 void QTextDocument_SetUseDesignMetrics(QTextDocument* self, bool b);
 bool QTextDocument_UseDesignMetrics(const QTextDocument* self);

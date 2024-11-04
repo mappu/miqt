@@ -19,7 +19,7 @@ class QFactoryInterface;
 typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
-struct miqt_array* QFactoryInterface_Keys(const QFactoryInterface* self);
+struct miqt_array QFactoryInterface_Keys(const QFactoryInterface* self);
 void QFactoryInterface_Delete(QFactoryInterface* self);
 
 #ifdef __cplusplus

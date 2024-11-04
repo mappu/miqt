@@ -91,25 +91,22 @@ func (this *QAbstractTransition) SetTargetState(target *QAbstractState) {
 }
 
 func (this *QAbstractTransition) TargetStates() []*QAbstractState {
-	var _ma *C.struct_miqt_array = C.QAbstractTransition_TargetStates(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractTransition_TargetStates(this.h)
 	_ret := make([]*QAbstractState, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractTransition) SetTargetStates(targets []*QAbstractState) {
-	// For the C ABI, malloc a C array of raw pointers
 	targets_CArray := (*[0xffff]*C.QAbstractState)(C.malloc(C.size_t(8 * len(targets))))
 	defer C.free(unsafe.Pointer(targets_CArray))
 	for i := range targets {
 		targets_CArray[i] = targets[i].cPointer()
 	}
-	targets_ma := &C.struct_miqt_array{len: C.size_t(len(targets)), data: unsafe.Pointer(targets_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(targets_ma))
+	targets_ma := C.struct_miqt_array{len: C.size_t(len(targets)), data: unsafe.Pointer(targets_CArray)}
 	C.QAbstractTransition_SetTargetStates(this.h, targets_ma)
 }
 
@@ -134,13 +131,12 @@ func (this *QAbstractTransition) RemoveAnimation(animation *QAbstractAnimation) 
 }
 
 func (this *QAbstractTransition) Animations() []*QAbstractAnimation {
-	var _ma *C.struct_miqt_array = C.QAbstractTransition_Animations(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractTransition_Animations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

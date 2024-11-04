@@ -270,19 +270,17 @@ func (this *QTextLayout) PreeditAreaText() string {
 }
 
 func (this *QTextLayout) SetFormats(overrides []QTextLayout__FormatRange) {
-	// For the C ABI, malloc a C array of raw pointers
 	overrides_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(overrides))))
 	defer C.free(unsafe.Pointer(overrides_CArray))
 	for i := range overrides {
 		overrides_CArray[i] = overrides[i].cPointer()
 	}
-	overrides_ma := &C.struct_miqt_array{len: C.size_t(len(overrides)), data: unsafe.Pointer(overrides_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(overrides_ma))
+	overrides_ma := C.struct_miqt_array{len: C.size_t(len(overrides)), data: unsafe.Pointer(overrides_CArray)}
 	C.QTextLayout_SetFormats(this.h, overrides_ma)
 }
 
 func (this *QTextLayout) Formats() []QTextLayout__FormatRange {
-	var _ma *C.struct_miqt_array = C.QTextLayout_Formats(this.h)
+	var _ma C.struct_miqt_array = C.QTextLayout_Formats(this.h)
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -291,7 +289,6 @@ func (this *QTextLayout) Formats() []QTextLayout__FormatRange {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -411,7 +408,7 @@ func (this *QTextLayout) MaximumWidth() float64 {
 }
 
 func (this *QTextLayout) GlyphRuns() []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLayout_GlyphRuns(this.h)
+	var _ma C.struct_miqt_array = C.QTextLayout_GlyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -420,7 +417,6 @@ func (this *QTextLayout) GlyphRuns() []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -437,31 +433,27 @@ func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__C
 }
 
 func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	selections_ma := &C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(selections_ma))
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
 	C.QTextLayout_Draw3(this.h, p.cPointer(), pos.cPointer(), selections_ma)
 }
 
 func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	selections_ma := &C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(selections_ma))
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
 	C.QTextLayout_Draw4(this.h, p.cPointer(), pos.cPointer(), selections_ma, clip.cPointer())
 }
 
 func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLayout_GlyphRuns1(this.h, (C.int)(from))
+	var _ma C.struct_miqt_array = C.QTextLayout_GlyphRuns1(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -470,12 +462,11 @@ func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextLayout) GlyphRuns2(from int, length int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLayout_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
+	var _ma C.struct_miqt_array = C.QTextLayout_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -484,7 +475,6 @@ func (this *QTextLayout) GlyphRuns2(from int, length int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -651,7 +641,7 @@ func (this *QTextLine) Draw(painter *QPainter, position *QPointF) {
 }
 
 func (this *QTextLine) GlyphRuns() []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLine_GlyphRuns(this.h)
+	var _ma C.struct_miqt_array = C.QTextLine_GlyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -660,7 +650,6 @@ func (this *QTextLine) GlyphRuns() []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -677,7 +666,7 @@ func (this *QTextLine) XToCursor2(x float64, param2 QTextLine__CursorPosition) i
 }
 
 func (this *QTextLine) GlyphRuns1(from int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLine_GlyphRuns1(this.h, (C.int)(from))
+	var _ma C.struct_miqt_array = C.QTextLine_GlyphRuns1(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -686,12 +675,11 @@ func (this *QTextLine) GlyphRuns1(from int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextLine_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
+	var _ma C.struct_miqt_array = C.QTextLine_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -700,7 +688,6 @@ func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

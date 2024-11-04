@@ -80,10 +80,10 @@ struct miqt_string QUrl_FromPercentEncoding(struct miqt_string param1);
 struct miqt_string QUrl_ToPercentEncoding(struct miqt_string param1);
 struct miqt_string QUrl_FromAce(struct miqt_string domain);
 struct miqt_string QUrl_ToAce(struct miqt_string domain);
-struct miqt_array* QUrl_IdnWhitelist();
-struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris);
-struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string */ uris);
-void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string */ idnWhitelist);
+struct miqt_array QUrl_IdnWhitelist();
+struct miqt_array QUrl_ToStringList(struct miqt_array /* of QUrl* */ uris);
+struct miqt_array QUrl_FromStringList(struct miqt_array /* of struct miqt_string */ uris);
+void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */ idnWhitelist);
 void QUrl_SetUrl2(QUrl* self, struct miqt_string url, int mode);
 QUrl* QUrl_FromEncoded2(struct miqt_string url, int mode);
 QUrl* QUrl_FromUserInput2(struct miqt_string userInput, struct miqt_string workingDirectory);
@@ -110,7 +110,7 @@ struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miq
 struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include);
 struct miqt_string QUrl_FromAce2(struct miqt_string domain, unsigned int options);
 struct miqt_string QUrl_ToAce2(struct miqt_string domain, unsigned int options);
-struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string */ uris, int mode);
+struct miqt_array QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */ uris, int mode);
 void QUrl_Delete(QUrl* self);
 
 #ifdef __cplusplus

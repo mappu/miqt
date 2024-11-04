@@ -25,7 +25,7 @@ QTextCodec* QTextCodec_CodecForMib(int mib) {
 	return QTextCodec::codecForMib(static_cast<int>(mib));
 }
 
-struct miqt_array* QTextCodec_AvailableCodecs() {
+struct miqt_array QTextCodec_AvailableCodecs() {
 	QList<QByteArray> _ret = QTextCodec::availableCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -37,22 +37,22 @@ struct miqt_array* QTextCodec_AvailableCodecs() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QTextCodec_AvailableMibs() {
+struct miqt_array QTextCodec_AvailableMibs() {
 	QList<int> _ret = QTextCodec::availableMibs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -163,7 +163,7 @@ struct miqt_string QTextCodec_Name(const QTextCodec* self) {
 	return _ms;
 }
 
-struct miqt_array* QTextCodec_Aliases(const QTextCodec* self) {
+struct miqt_array QTextCodec_Aliases(const QTextCodec* self) {
 	QList<QByteArray> _ret = self->aliases();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -175,9 +175,9 @@ struct miqt_array* QTextCodec_Aliases(const QTextCodec* self) {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

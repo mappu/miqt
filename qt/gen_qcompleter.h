@@ -35,10 +35,10 @@ typedef struct QWidget QWidget;
 
 QCompleter* QCompleter_new();
 QCompleter* QCompleter_new2(QAbstractItemModel* model);
-QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string */ completions);
+QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */ completions);
 QCompleter* QCompleter_new4(QObject* parent);
 QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent);
-QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string */ completions, QObject* parent);
+QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */ completions, QObject* parent);
 QMetaObject* QCompleter_MetaObject(const QCompleter* self);
 void* QCompleter_Metacast(QCompleter* self, const char* param1);
 struct miqt_string QCompleter_Tr(const char* s);
@@ -75,7 +75,7 @@ void QCompleter_SetCompletionPrefix(QCompleter* self, struct miqt_string prefix)
 void QCompleter_Complete(QCompleter* self);
 void QCompleter_SetWrapAround(QCompleter* self, bool wrap);
 struct miqt_string QCompleter_PathFromIndex(const QCompleter* self, QModelIndex* index);
-struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string path);
+struct miqt_array QCompleter_SplitPath(const QCompleter* self, struct miqt_string path);
 void QCompleter_Activated(QCompleter* self, struct miqt_string text);
 void QCompleter_connect_Activated(QCompleter* self, intptr_t slot);
 void QCompleter_ActivatedWithIndex(QCompleter* self, QModelIndex* index);

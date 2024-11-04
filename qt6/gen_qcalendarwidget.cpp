@@ -1,6 +1,7 @@
 #include <QCalendar>
 #include <QCalendarWidget>
 #include <QDate>
+#include <QMap>
 #include <QMetaObject>
 #include <QSize>
 #include <QString>
@@ -141,6 +142,24 @@ QTextCharFormat* QCalendarWidget_WeekdayTextFormat(const QCalendarWidget* self, 
 
 void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, int dayOfWeek, QTextCharFormat* format) {
 	self->setWeekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek), *format);
+}
+
+struct miqt_map QCalendarWidget_DateTextFormat(const QCalendarWidget* self) {
+	QMap<QDate, QTextCharFormat> _ret = self->dateTextFormat();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	QDate** _karr = static_cast<QDate**>(malloc(sizeof(QDate*) * _ret.size()));
+	QTextCharFormat** _varr = static_cast<QTextCharFormat**>(malloc(sizeof(QTextCharFormat*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = new QDate(_itr->first);
+		_varr[_ctr] = new QTextCharFormat(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 QTextCharFormat* QCalendarWidget_DateTextFormatWithDate(const QCalendarWidget* self, QDate* date) {

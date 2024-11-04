@@ -165,7 +165,7 @@ func (this *QStorageInfo) Refresh() {
 }
 
 func QStorageInfo_MountedVolumes() []QStorageInfo {
-	var _ma *C.struct_miqt_array = C.QStorageInfo_MountedVolumes()
+	var _ma C.struct_miqt_array = C.QStorageInfo_MountedVolumes()
 	_ret := make([]QStorageInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -174,7 +174,6 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

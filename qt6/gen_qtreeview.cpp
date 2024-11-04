@@ -343,11 +343,11 @@ void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles) {
+void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */ roles) {
 	QList<int> roles_QList;
-	roles_QList.reserve(roles->len);
-	int* roles_arr = static_cast<int*>(roles->data);
-	for(size_t i = 0; i < roles->len; ++i) {
+	roles_QList.reserve(roles.len);
+	int* roles_arr = static_cast<int*>(roles.data);
+	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
 	self->dataChanged(*topLeft, *bottomRight, roles_QList);

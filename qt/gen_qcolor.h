@@ -39,7 +39,7 @@ bool QColor_IsValid(const QColor* self);
 struct miqt_string QColor_Name(const QColor* self);
 struct miqt_string QColor_NameWithFormat(const QColor* self, int format);
 void QColor_SetNamedColor(QColor* self, struct miqt_string name);
-struct miqt_array* QColor_ColorNames();
+struct miqt_array QColor_ColorNames();
 int QColor_Spec(const QColor* self);
 int QColor_Alpha(const QColor* self);
 void QColor_SetAlpha(QColor* self, int alpha);

@@ -482,7 +482,7 @@ func (this *QTextFormat) LengthProperty(propertyId int) *QTextLength {
 }
 
 func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
-	var _ma *C.struct_miqt_array = C.QTextFormat_LengthVectorProperty(this.h, (C.int)(propertyId))
+	var _ma C.struct_miqt_array = C.QTextFormat_LengthVectorProperty(this.h, (C.int)(propertyId))
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -491,20 +491,35 @@ func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
-	// For the C ABI, malloc a C array of raw pointers
 	lengths_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(lengths))))
 	defer C.free(unsafe.Pointer(lengths_CArray))
 	for i := range lengths {
 		lengths_CArray[i] = lengths[i].cPointer()
 	}
-	lengths_ma := &C.struct_miqt_array{len: C.size_t(len(lengths)), data: unsafe.Pointer(lengths_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(lengths_ma))
+	lengths_ma := C.struct_miqt_array{len: C.size_t(len(lengths)), data: unsafe.Pointer(lengths_CArray)}
 	C.QTextFormat_SetProperty2(this.h, (C.int)(propertyId), lengths_ma)
+}
+
+func (this *QTextFormat) Properties() map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QTextFormat_Properties(this.h)
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
 }
 
 func (this *QTextFormat) PropertyCount() int {
@@ -729,7 +744,6 @@ func (this *QTextCharFormat) FontFamily() string {
 }
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
-	// For the C ABI, malloc a C array of structs
 	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
 	defer C.free(unsafe.Pointer(families_CArray))
 	for i := range families {
@@ -739,8 +753,7 @@ func (this *QTextCharFormat) SetFontFamilies(families []string) {
 		defer C.free(unsafe.Pointer(families_i_ms.data))
 		families_CArray[i] = families_i_ms
 	}
-	families_ma := &C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(families_ma))
+	families_ma := C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
 	C.QTextCharFormat_SetFontFamilies(this.h, families_ma)
 }
 
@@ -995,7 +1008,6 @@ func (this *QTextCharFormat) AnchorHref() string {
 }
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
-	// For the C ABI, malloc a C array of structs
 	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
 	defer C.free(unsafe.Pointer(names_CArray))
 	for i := range names {
@@ -1005,13 +1017,12 @@ func (this *QTextCharFormat) SetAnchorNames(names []string) {
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	C.QTextCharFormat_SetAnchorNames(this.h, names_ma)
 }
 
 func (this *QTextCharFormat) AnchorNames() []string {
-	var _ma *C.struct_miqt_array = C.QTextCharFormat_AnchorNames(this.h)
+	var _ma C.struct_miqt_array = C.QTextCharFormat_AnchorNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1020,7 +1031,6 @@ func (this *QTextCharFormat) AnchorNames() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1205,19 +1215,17 @@ func (this *QTextBlockFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
 }
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabs))))
 	defer C.free(unsafe.Pointer(tabs_CArray))
 	for i := range tabs {
 		tabs_CArray[i] = tabs[i].cPointer()
 	}
-	tabs_ma := &C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(tabs_ma))
+	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
 	C.QTextBlockFormat_SetTabPositions(this.h, tabs_ma)
 }
 
 func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
-	var _ma *C.struct_miqt_array = C.QTextBlockFormat_TabPositions(this.h)
+	var _ma C.struct_miqt_array = C.QTextBlockFormat_TabPositions(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1226,7 +1234,6 @@ func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1685,19 +1692,17 @@ func (this *QTextTableFormat) SetColumns(columns int) {
 }
 
 func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLength) {
-	// For the C ABI, malloc a C array of raw pointers
 	constraints_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(constraints))))
 	defer C.free(unsafe.Pointer(constraints_CArray))
 	for i := range constraints {
 		constraints_CArray[i] = constraints[i].cPointer()
 	}
-	constraints_ma := &C.struct_miqt_array{len: C.size_t(len(constraints)), data: unsafe.Pointer(constraints_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(constraints_ma))
+	constraints_ma := C.struct_miqt_array{len: C.size_t(len(constraints)), data: unsafe.Pointer(constraints_CArray)}
 	C.QTextTableFormat_SetColumnWidthConstraints(this.h, constraints_ma)
 }
 
 func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
-	var _ma *C.struct_miqt_array = C.QTextTableFormat_ColumnWidthConstraints(this.h)
+	var _ma C.struct_miqt_array = C.QTextTableFormat_ColumnWidthConstraints(this.h)
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1706,7 +1711,6 @@ func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

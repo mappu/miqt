@@ -88,30 +88,27 @@ func (this *QGlyphRun) SetRawData(glyphIndexArray *uint, glyphPositionArray *QPo
 }
 
 func (this *QGlyphRun) GlyphIndexes() []uint {
-	var _ma *C.struct_miqt_array = C.QGlyphRun_GlyphIndexes(this.h)
+	var _ma C.struct_miqt_array = C.QGlyphRun_GlyphIndexes(this.h)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint) {
-	// For the C ABI, malloc a C array of raw pointers
 	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
 	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	glyphIndexes_ma := &C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
+	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
 	C.QGlyphRun_SetGlyphIndexes(this.h, glyphIndexes_ma)
 }
 
 func (this *QGlyphRun) Positions() []QPointF {
-	var _ma *C.struct_miqt_array = C.QGlyphRun_Positions(this.h)
+	var _ma C.struct_miqt_array = C.QGlyphRun_Positions(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -120,19 +117,16 @@ func (this *QGlyphRun) Positions() []QPointF {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGlyphRun) SetPositions(positions []QPointF) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()
 	}
-	positions_ma := &C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(positions_ma))
+	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
 	C.QGlyphRun_SetPositions(this.h, positions_ma)
 }
 

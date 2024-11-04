@@ -448,8 +448,45 @@ func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientati
 	return (bool)(C.QAbstractItemModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer()))
 }
 
+func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QAbstractItemModel_ItemData(this.h, index.cPointer())
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
+func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray))
+	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_ctr := 0
+	for roles_k, roles_v := range roles {
+		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
+		roles_Values_CArray[roles_ctr] = roles_v.cPointer()
+		roles_ctr++
+	}
+	roles_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roles)),
+		keys:   unsafe.Pointer(roles_Keys_CArray),
+		values: unsafe.Pointer(roles_Values_CArray),
+	}
+	return (bool)(C.QAbstractItemModel_SetItemData(this.h, index.cPointer(), roles_mm))
+}
+
 func (this *QAbstractItemModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QAbstractItemModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractItemModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -458,19 +495,16 @@ func (this *QAbstractItemModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractItemModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -562,7 +596,7 @@ func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 }
 
 func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
+	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -571,7 +605,6 @@ func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVari
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -580,6 +613,23 @@ func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
 	_goptr := newQSize(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QAbstractItemModel) RoleNames() map[int][]byte {
+	var _mm C.struct_miqt_map = C.QAbstractItemModel_RoleNames(this.h)
+	_ret := make(map[int][]byte, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		var _hashval_bytearray C.struct_miqt_string = _Values[i]
+		_hashval_ret := C.GoBytes(unsafe.Pointer(_hashval_bytearray.data), C.int(int64(_hashval_bytearray.len)))
+		C.free(unsafe.Pointer(_hashval_bytearray.data))
+		_entry_Value := _hashval_ret
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
 }
 
 func (this *QAbstractItemModel) CheckIndex(index *QModelIndex) bool {
@@ -799,7 +849,7 @@ func (this *QAbstractItemModel) Sort2(column int, order SortOrder) {
 }
 
 func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
+	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -808,12 +858,11 @@ func (this *QAbstractItemModel) Match4(start *QModelIndex, role int, value *QVar
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QAbstractItemModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -822,7 +871,6 @@ func (this *QAbstractItemModel) Match5(start *QModelIndex, role int, value *QVar
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -831,14 +879,12 @@ func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstrac
 }
 
 func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	roles_ma := &C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(roles_ma))
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
 	C.QAbstractItemModel_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
 func (this *QAbstractItemModel) OnDataChanged3(slot func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
@@ -846,7 +892,7 @@ func (this *QAbstractItemModel) OnDataChanged3(slot func(topLeft *QModelIndex, b
 }
 
 //export miqt_exec_callback_QAbstractItemModel_DataChanged3
-func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles *C.struct_miqt_array) {
+func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -855,27 +901,24 @@ func miqt_exec_callback_QAbstractItemModel_DataChanged3(cb C.intptr_t, topLeft *
 	// Convert all CABI parameters to Go parameters
 	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(topLeft))
 	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(bottomRight))
-	var roles_ma *C.struct_miqt_array = roles
+	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
 	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
 	for i := 0; i < int(roles_ma.len); i++ {
 		roles_ret[i] = (int)(roles_outCast[i])
 	}
-	C.free(unsafe.Pointer(roles_ma))
 	slotval3 := roles_ret
 
 	gofunc(slotval1, slotval2, slotval3)
 }
 
 func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	C.QAbstractItemModel_LayoutChanged1(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutChanged1(slot func(parents []QPersistentModelIndex)) {
@@ -883,14 +926,14 @@ func (this *QAbstractItemModel) OnLayoutChanged1(slot func(parents []QPersistent
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged1
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb C.intptr_t, parents *C.struct_miqt_array) {
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb C.intptr_t, parents C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var parents_ma *C.struct_miqt_array = parents
+	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
 	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
 	for i := 0; i < int(parents_ma.len); i++ {
@@ -899,21 +942,18 @@ func miqt_exec_callback_QAbstractItemModel_LayoutChanged1(cb C.intptr_t, parents
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		parents_ret[i] = *parents_lv_goptr
 	}
-	C.free(unsafe.Pointer(parents_ma))
 	slotval1 := parents_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	C.QAbstractItemModel_LayoutChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
@@ -921,14 +961,14 @@ func (this *QAbstractItemModel) OnLayoutChanged2(slot func(parents []QPersistent
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents *C.struct_miqt_array, hint C.int) {
+func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents C.struct_miqt_array, hint C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var parents_ma *C.struct_miqt_array = parents
+	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
 	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
 	for i := 0; i < int(parents_ma.len); i++ {
@@ -937,7 +977,6 @@ func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		parents_ret[i] = *parents_lv_goptr
 	}
-	C.free(unsafe.Pointer(parents_ma))
 	slotval1 := parents_ret
 
 	slotval2 := (QAbstractItemModel__LayoutChangeHint)(hint)
@@ -946,14 +985,12 @@ func miqt_exec_callback_QAbstractItemModel_LayoutChanged2(cb C.intptr_t, parents
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentModelIndex) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	C.QAbstractItemModel_LayoutAboutToBeChanged1(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged1(slot func(parents []QPersistentModelIndex)) {
@@ -961,14 +998,14 @@ func (this *QAbstractItemModel) OnLayoutAboutToBeChanged1(slot func(parents []QP
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb C.intptr_t, parents *C.struct_miqt_array) {
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb C.intptr_t, parents C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var parents_ma *C.struct_miqt_array = parents
+	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
 	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
 	for i := 0; i < int(parents_ma.len); i++ {
@@ -977,21 +1014,18 @@ func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged1(cb C.intptr_t
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		parents_ret[i] = *parents_lv_goptr
 	}
-	C.free(unsafe.Pointer(parents_ma))
 	slotval1 := parents_ret
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	// For the C ABI, malloc a C array of raw pointers
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := &C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(parents_ma))
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
 	C.QAbstractItemModel_LayoutAboutToBeChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
@@ -999,14 +1033,14 @@ func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func(parents []QP
 }
 
 //export miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2
-func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb C.intptr_t, parents *C.struct_miqt_array, hint C.int) {
+func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb C.intptr_t, parents C.struct_miqt_array, hint C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var parents_ma *C.struct_miqt_array = parents
+	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
 	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
 	for i := 0; i < int(parents_ma.len); i++ {
@@ -1015,7 +1049,6 @@ func miqt_exec_callback_QAbstractItemModel_LayoutAboutToBeChanged2(cb C.intptr_t
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		parents_ret[i] = *parents_lv_goptr
 	}
-	C.free(unsafe.Pointer(parents_ma))
 	slotval1 := parents_ret
 
 	slotval2 := (QAbstractItemModel__LayoutChangeHint)(hint)

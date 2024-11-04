@@ -35,7 +35,7 @@ struct miqt_string QsciLexerPerl_Tr(const char* s);
 struct miqt_string QsciLexerPerl_TrUtf8(const char* s);
 const char* QsciLexerPerl_Language(const QsciLexerPerl* self);
 const char* QsciLexerPerl_Lexer(const QsciLexerPerl* self);
-struct miqt_array* QsciLexerPerl_AutoCompletionWordSeparators(const QsciLexerPerl* self);
+struct miqt_array QsciLexerPerl_AutoCompletionWordSeparators(const QsciLexerPerl* self);
 const char* QsciLexerPerl_BlockEnd(const QsciLexerPerl* self);
 const char* QsciLexerPerl_BlockStart(const QsciLexerPerl* self);
 int QsciLexerPerl_BraceStyle(const QsciLexerPerl* self);

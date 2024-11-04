@@ -35,7 +35,7 @@ struct miqt_string QsciLexerCoffeeScript_Tr(const char* s);
 struct miqt_string QsciLexerCoffeeScript_TrUtf8(const char* s);
 const char* QsciLexerCoffeeScript_Language(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_Lexer(const QsciLexerCoffeeScript* self);
-struct miqt_array* QsciLexerCoffeeScript_AutoCompletionWordSeparators(const QsciLexerCoffeeScript* self);
+struct miqt_array QsciLexerCoffeeScript_AutoCompletionWordSeparators(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockEnd(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockStart(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockStartKeyword(const QsciLexerCoffeeScript* self);

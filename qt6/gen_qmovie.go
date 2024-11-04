@@ -151,7 +151,7 @@ func QMovie_Tr(s string) string {
 }
 
 func QMovie_SupportedFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QMovie_SupportedFormats()
+	var _ma C.struct_miqt_array = C.QMovie_SupportedFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -160,7 +160,6 @@ func QMovie_SupportedFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -115,24 +115,24 @@ QSize* QSplitter_MinimumSizeHint(const QSplitter* self) {
 	return new QSize(self->minimumSizeHint());
 }
 
-struct miqt_array* QSplitter_Sizes(const QSplitter* self) {
+struct miqt_array QSplitter_Sizes(const QSplitter* self) {
 	QList<int> _ret = self->sizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QSplitter_SetSizes(QSplitter* self, struct miqt_array* /* of int */ list) {
+void QSplitter_SetSizes(QSplitter* self, struct miqt_array /* of int */ list) {
 	QList<int> list_QList;
-	list_QList.reserve(list->len);
-	int* list_arr = static_cast<int*>(list->data);
-	for(size_t i = 0; i < list->len; ++i) {
+	list_QList.reserve(list.len);
+	int* list_arr = static_cast<int*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
 		list_QList.push_back(static_cast<int>(list_arr[i]));
 	}
 	self->setSizes(list_QList);

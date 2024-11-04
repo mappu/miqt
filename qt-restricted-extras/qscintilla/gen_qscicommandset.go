@@ -51,13 +51,12 @@ func (this *QsciCommandSet) WriteSettings(qs *qt.QSettings) bool {
 }
 
 func (this *QsciCommandSet) Commands() []*QsciCommand {
-	var _ma *C.struct_miqt_array = C.QsciCommandSet_Commands(this.h)
+	var _ma C.struct_miqt_array = C.QsciCommandSet_Commands(this.h)
 	_ret := make([]*QsciCommand, int(_ma.len))
 	_outCast := (*[0xffff]*C.QsciCommand)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQsciCommand(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

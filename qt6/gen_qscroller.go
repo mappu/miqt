@@ -9,7 +9,6 @@ package qt6
 import "C"
 
 import (
-	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -114,13 +113,12 @@ func QScroller_UngrabGesture(target *QObject) {
 }
 
 func QScroller_ActiveScrollers() []*QScroller {
-	var _ma *C.struct_miqt_array = C.QScroller_ActiveScrollers()
+	var _ma C.struct_miqt_array = C.QScroller_ActiveScrollers()
 	_ret := make([]*QScroller, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScroller)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQScroller(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -169,14 +167,12 @@ func (this *QScroller) ScrollerProperties() *QScrollerProperties {
 }
 
 func (this *QScroller) SetSnapPositionsX(positions []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = (C.double)(positions[i])
 	}
-	positions_ma := &C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(positions_ma))
+	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
 	C.QScroller_SetSnapPositionsX(this.h, positions_ma)
 }
 
@@ -185,14 +181,12 @@ func (this *QScroller) SetSnapPositionsX2(first float64, interval float64) {
 }
 
 func (this *QScroller) SetSnapPositionsY(positions []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = (C.double)(positions[i])
 	}
-	positions_ma := &C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(positions_ma))
+	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
 	C.QScroller_SetSnapPositionsY(this.h, positions_ma)
 }
 

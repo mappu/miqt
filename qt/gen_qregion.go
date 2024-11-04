@@ -211,7 +211,7 @@ func (this *QRegion) BoundingRect() *QRect {
 }
 
 func (this *QRegion) Rects() []QRect {
-	var _ma *C.struct_miqt_array = C.QRegion_Rects(this.h)
+	var _ma C.struct_miqt_array = C.QRegion_Rects(this.h)
 	_ret := make([]QRect, int(_ma.len))
 	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -220,7 +220,6 @@ func (this *QRegion) Rects() []QRect {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -31,7 +31,7 @@ void QPageRanges_OperatorAssign(QPageRanges* self, QPageRanges* other);
 void QPageRanges_Swap(QPageRanges* self, QPageRanges* other);
 void QPageRanges_AddPage(QPageRanges* self, int pageNumber);
 void QPageRanges_AddRange(QPageRanges* self, int from, int to);
-struct miqt_array* QPageRanges_ToRangeList(const QPageRanges* self);
+struct miqt_array QPageRanges_ToRangeList(const QPageRanges* self);
 void QPageRanges_Clear(QPageRanges* self);
 struct miqt_string QPageRanges_ToString(const QPageRanges* self);
 QPageRanges* QPageRanges_FromString(struct miqt_string ranges);

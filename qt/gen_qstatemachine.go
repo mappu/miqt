@@ -153,13 +153,12 @@ func (this *QStateMachine) AddDefaultAnimation(animation *QAbstractAnimation) {
 }
 
 func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
-	var _ma *C.struct_miqt_array = C.QStateMachine_DefaultAnimations(this.h)
+	var _ma C.struct_miqt_array = C.QStateMachine_DefaultAnimations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractAnimation(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -188,14 +187,13 @@ func (this *QStateMachine) CancelDelayedEvent(id int) bool {
 }
 
 func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
-	var _ma *C.struct_miqt_array = C.QStateMachine_Configuration(this.h)
+	var _ma C.struct_miqt_array = C.QStateMachine_Configuration(this.h)
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_element := UnsafeNewQAbstractState(unsafe.Pointer(_outCast[i]))
 		_ret[_element] = struct{}{}
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

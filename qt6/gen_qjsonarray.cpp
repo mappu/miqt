@@ -24,11 +24,11 @@ void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other) {
 	self->operator=(*other);
 }
 
-QJsonArray* QJsonArray_FromStringList(struct miqt_array* /* of struct miqt_string */ list) {
+QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */ list) {
 	QStringList list_QList;
-	list_QList.reserve(list->len);
-	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list->data);
-	for(size_t i = 0; i < list->len; ++i) {
+	list_QList.reserve(list.len);
+	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
 		list_QList.push_back(list_arr_i_QString);
 	}

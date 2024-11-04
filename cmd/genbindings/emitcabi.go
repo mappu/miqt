@@ -15,10 +15,13 @@ func (p CppParameter) RenderTypeCabi() string {
 		return "struct miqt_string"
 
 	} else if _, ok := p.QListOf(); ok {
-		return "struct miqt_array*"
+		return "struct miqt_array"
 
 	} else if _, ok := p.QSetOf(); ok {
-		return "struct miqt_array*"
+		return "struct miqt_array"
+
+	} else if _, _, ok := p.QMapOf(); ok {
+		return "struct miqt_map"
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return cabiClassName(p.ParameterType) + "*"
@@ -155,10 +158,10 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
 
 		} else if t, ok := p.QListOf(); ok {
-			tmp = append(tmp, "struct miqt_array* /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
+			tmp = append(tmp, "struct miqt_array /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
 		} else if t, ok := p.QSetOf(); ok {
-			tmp = append(tmp, "struct miqt_array* /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
+			tmp = append(tmp, "struct miqt_array /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
 
 		} else if p.QtClassType() {
 			if p.ByRef || p.Pointer {
@@ -218,10 +221,10 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 	} else if listType, ok := p.QListOf(); ok {
 
 		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QList;\n"
-		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + "->len);\n"
+		preamble += indent + nameprefix + "_QList.reserve(" + p.ParameterName + ".len);\n"
 
-		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + "->data);\n"
-		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + "->len; ++i) {\n"
+		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.ParameterName + ".data);\n"
+		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + ".len; ++i) {\n"
 
 		listType.ParameterName = nameprefix + "_arr[i]"
 		addPre, addFwd := emitCABI2CppForwarding(listType, indent+"\t")
@@ -230,6 +233,32 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QList"
+
+	} else if kType, vType, ok := p.QMapOf(); ok {
+		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QMap;\n"
+
+		// This container may be a QMap or a QHash
+		// QHash supports .reserve(), but QMap doesn't
+		if strings.HasPrefix(p.ParameterType, "QHash<") {
+			preamble += indent + nameprefix + "_QMap.reserve(" + p.ParameterName + ".len);\n"
+		}
+
+		preamble += indent + kType.RenderTypeCabi() + "* " + nameprefix + "_karr = static_cast<" + kType.RenderTypeCabi() + "*>(" + p.ParameterName + ".keys);\n"
+		preamble += indent + vType.RenderTypeCabi() + "* " + nameprefix + "_varr = static_cast<" + vType.RenderTypeCabi() + "*>(" + p.ParameterName + ".values);\n"
+		preamble += indent + "for(size_t i = 0; i < " + p.ParameterName + ".len; ++i) {\n"
+
+		kType.ParameterName = nameprefix + "_karr[i]"
+		addPreK, addFwdK := emitCABI2CppForwarding(kType, indent+"\t")
+		preamble += addPreK
+
+		vType.ParameterName = nameprefix + "_varr[i]"
+		addPreV, addFwdV := emitCABI2CppForwarding(vType, indent+"\t")
+		preamble += addPreV
+
+		preamble += indent + "\t" + nameprefix + "_QMap[" + addFwdK + "] = " + addFwdV + ";\n"
+
+		preamble += indent + "}\n"
+		return preamble, nameprefix + "_QMap"
 
 	} else if p.IsFlagType() || p.IntType() || p.IsKnownEnum() {
 		castSrc := p.ParameterName
@@ -362,9 +391,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr[i] = ", t, namePrefix+"_ret[i]")
 		afterCall += indent + "}\n"
 
-		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.length();\n"
-		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+		afterCall += indent + "struct miqt_array " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
@@ -380,9 +409,33 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr["+namePrefix+"_ctr++] = ", t, namePrefix+"_itr.next()")
 		afterCall += indent + "}\n"
 
-		afterCall += indent + "struct miqt_array* " + namePrefix + "_out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));\n"
-		afterCall += indent + "" + namePrefix + "_out->len = " + namePrefix + "_ret.size();\n"
-		afterCall += indent + "" + namePrefix + "_out->data = static_cast<void*>(" + namePrefix + "_arr);\n"
+		afterCall += indent + "struct miqt_array " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.size();\n"
+		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
+
+		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+
+	} else if kType, vType, ok := p.QMapOf(); ok {
+		// QMap<K,V>
+
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+
+		afterCall += indent + "// Convert QMap<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "" + kType.RenderTypeCabi() + "* " + namePrefix + "_karr = static_cast<" + kType.RenderTypeCabi() + "*>(malloc(sizeof(" + kType.RenderTypeCabi() + ") * " + namePrefix + "_ret.size()));\n"
+		afterCall += indent + "" + vType.RenderTypeCabi() + "* " + namePrefix + "_varr = static_cast<" + vType.RenderTypeCabi() + "*>(malloc(sizeof(" + vType.RenderTypeCabi() + ") * " + namePrefix + "_ret.size()));\n"
+
+		afterCall += indent + "int " + namePrefix + "_ctr = 0;\n"
+		afterCall += indent + "for (auto " + namePrefix + "_itr = " + namePrefix + "_ret.keyValueBegin(); " + namePrefix + "_itr != " + namePrefix + "_ret.keyValueEnd(); ++" + namePrefix + "_itr) {\n"
+		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_karr["+namePrefix+"_ctr] = ", kType, namePrefix+"_itr->first")
+		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_varr["+namePrefix+"_ctr] = ", vType, namePrefix+"_itr->second")
+		afterCall += indent + "\t" + namePrefix + "_ctr++;\n"
+
+		afterCall += indent + "}\n"
+
+		afterCall += indent + "struct miqt_map " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.size();\n"
+		afterCall += indent + "" + namePrefix + "_out.keys = static_cast<void*>(" + namePrefix + "_karr);\n"
+		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_varr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 
@@ -428,44 +481,42 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 func getReferencedTypes(src *CppParsedHeader) []string {
 
 	foundTypes := map[string]struct{}{}
+
+	maybeAddType := func(p CppParameter) {
+		if p.QtClassType() {
+			foundTypes[p.ParameterType] = struct{}{}
+		}
+		if t, ok := p.QListOf(); ok {
+			foundTypes["QList"] = struct{}{} // FIXME or QVector?
+			if t.QtClassType() {
+				foundTypes[t.ParameterType] = struct{}{}
+			}
+		}
+		if kType, vType, ok := p.QMapOf(); ok {
+			foundTypes["QMap"] = struct{}{} // FIXME or QHash?
+			if kType.QtClassType() {
+				foundTypes[kType.ParameterType] = struct{}{}
+			}
+			if vType.QtClassType() {
+				foundTypes[vType.ParameterType] = struct{}{}
+			}
+		}
+	}
+
 	for _, c := range src.Classes {
 
 		foundTypes[c.ClassName] = struct{}{}
 
 		for _, ctor := range c.Ctors {
 			for _, p := range ctor.Parameters {
-				if p.QtClassType() {
-					foundTypes[p.ParameterType] = struct{}{}
-				}
-				if t, ok := p.QListOf(); ok {
-					foundTypes["QList"] = struct{}{} // FIXME or QVector?
-					if t.QtClassType() {
-						foundTypes[t.ParameterType] = struct{}{}
-					}
-				}
+				maybeAddType(p)
 			}
 		}
 		for _, m := range c.Methods {
 			for _, p := range m.Parameters {
-				if p.QtClassType() {
-					foundTypes[p.ParameterType] = struct{}{}
-				}
-				if t, ok := p.QListOf(); ok {
-					foundTypes["QList"] = struct{}{} // FIXME or QVector?
-					if t.QtClassType() {
-						foundTypes[t.ParameterType] = struct{}{}
-					}
-				}
+				maybeAddType(p)
 			}
-			if m.ReturnType.QtClassType() {
-				foundTypes[m.ReturnType.ParameterType] = struct{}{}
-			}
-			if t, ok := m.ReturnType.QListOf(); ok {
-				foundTypes["QList"] = struct{}{} // FIXME or QVector?
-				if t.QtClassType() {
-					foundTypes[t.ParameterType] = struct{}{}
-				}
-			}
+			maybeAddType(m.ReturnType)
 		}
 	}
 
@@ -477,10 +528,7 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
-		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") { // TODO properly exclude via the QListOf() check above
-			continue
-		}
-		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
+		if !AllowClass(ft) {
 			continue
 		}
 
@@ -502,6 +550,15 @@ func cabiClassName(className string) string {
 
 	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
 	return strings.Replace(className, `::`, `__`, -1)
+}
+
+func cabiPreventStructDeclaration(className string) bool {
+	switch className {
+	case "QList", "QString", "QSet", "QMap", "QHash":
+		return true // These types are reprojected
+	default:
+		return false
+	}
 }
 
 func emitBindingHeader(src *CppParsedHeader, filename string, packageName string) (string, error) {
@@ -537,7 +594,7 @@ extern "C" {
 	ret.WriteString("#ifdef __cplusplus\n")
 
 	for _, ft := range foundTypesList {
-		if ft == "QList" || ft == "QString" { // These types are reprojected
+		if cabiPreventStructDeclaration(ft) {
 			continue
 		}
 
@@ -559,7 +616,7 @@ extern "C" {
 	ret.WriteString("#else\n")
 
 	for _, ft := range foundTypesList {
-		if ft == "QList" || ft == "QString" { // These types are reprojected
+		if cabiPreventStructDeclaration(ft) {
 			continue
 		}
 		ret.WriteString(`typedef struct ` + cabiClassName(ft) + " " + cabiClassName(ft) + ";\n")

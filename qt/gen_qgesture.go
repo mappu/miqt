@@ -1053,14 +1053,12 @@ func UnsafeNewQGestureEvent(h unsafe.Pointer) *QGestureEvent {
 
 // NewQGestureEvent constructs a new QGestureEvent object.
 func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	gestures_CArray := (*[0xffff]*C.QGesture)(C.malloc(C.size_t(8 * len(gestures))))
 	defer C.free(unsafe.Pointer(gestures_CArray))
 	for i := range gestures {
 		gestures_CArray[i] = gestures[i].cPointer()
 	}
-	gestures_ma := &C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(gestures_ma))
+	gestures_ma := C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray)}
 	ret := C.QGestureEvent_new(gestures_ma)
 	return newQGestureEvent(ret)
 }
@@ -1072,13 +1070,12 @@ func NewQGestureEvent2(param1 *QGestureEvent) *QGestureEvent {
 }
 
 func (this *QGestureEvent) Gestures() []*QGesture {
-	var _ma *C.struct_miqt_array = C.QGestureEvent_Gestures(this.h)
+	var _ma C.struct_miqt_array = C.QGestureEvent_Gestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1087,24 +1084,22 @@ func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
 }
 
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
-	var _ma *C.struct_miqt_array = C.QGestureEvent_ActiveGestures(this.h)
+	var _ma C.struct_miqt_array = C.QGestureEvent_ActiveGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGestureEvent) CanceledGestures() []*QGesture {
-	var _ma *C.struct_miqt_array = C.QGestureEvent_CanceledGestures(this.h)
+	var _ma C.struct_miqt_array = C.QGestureEvent_CanceledGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGesture(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -15,6 +15,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractFileIconProvider;
+class QByteArray;
 class QDateTime;
 class QDir;
 class QFileInfo;
@@ -27,6 +28,7 @@ class QObject;
 class QVariant;
 #else
 typedef struct QAbstractFileIconProvider QAbstractFileIconProvider;
+typedef struct QByteArray QByteArray;
 typedef struct QDateTime QDateTime;
 typedef struct QDir QDir;
 typedef struct QFileInfo QFileInfo;
@@ -65,10 +67,11 @@ bool QFileSystemModel_SetData(QFileSystemModel* self, QModelIndex* index, QVaria
 QVariant* QFileSystemModel_HeaderData(const QFileSystemModel* self, int section, int orientation);
 int QFileSystemModel_Flags(const QFileSystemModel* self, QModelIndex* index);
 void QFileSystemModel_Sort(QFileSystemModel* self, int column);
-struct miqt_array* QFileSystemModel_MimeTypes(const QFileSystemModel* self);
-QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
+struct miqt_array QFileSystemModel_MimeTypes(const QFileSystemModel* self);
+QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array /* of QModelIndex* */ indexes);
 bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self);
+struct miqt_map QFileSystemModel_RoleNames(const QFileSystemModel* self);
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string path);
 struct miqt_string QFileSystemModel_RootPath(const QFileSystemModel* self);
 QDir* QFileSystemModel_RootDirectory(const QFileSystemModel* self);
@@ -82,8 +85,8 @@ void QFileSystemModel_SetReadOnly(QFileSystemModel* self, bool enable);
 bool QFileSystemModel_IsReadOnly(const QFileSystemModel* self);
 void QFileSystemModel_SetNameFilterDisables(QFileSystemModel* self, bool enable);
 bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self);
-void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array* /* of struct miqt_string */ filters);
-struct miqt_array* QFileSystemModel_NameFilters(const QFileSystemModel* self);
+void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array /* of struct miqt_string */ filters);
+struct miqt_array QFileSystemModel_NameFilters(const QFileSystemModel* self);
 void QFileSystemModel_SetOption(QFileSystemModel* self, int option);
 bool QFileSystemModel_TestOption(const QFileSystemModel* self, int option);
 void QFileSystemModel_SetOptions(QFileSystemModel* self, int options);

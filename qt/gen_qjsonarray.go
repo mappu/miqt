@@ -59,7 +59,6 @@ func (this *QJsonArray) OperatorAssign(other *QJsonArray) {
 }
 
 func QJsonArray_FromStringList(list []string) *QJsonArray {
-	// For the C ABI, malloc a C array of structs
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
@@ -69,8 +68,7 @@ func QJsonArray_FromStringList(list []string) *QJsonArray {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	_ret := C.QJsonArray_FromStringList(list_ma)
 	_goptr := newQJsonArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

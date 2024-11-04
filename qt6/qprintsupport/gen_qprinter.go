@@ -326,13 +326,12 @@ func (this *QPrinter) Duplex() QPrinter__DuplexMode {
 }
 
 func (this *QPrinter) SupportedResolutions() []int {
-	var _ma *C.struct_miqt_array = C.QPrinter_SupportedResolutions(this.h)
+	var _ma C.struct_miqt_array = C.QPrinter_SupportedResolutions(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

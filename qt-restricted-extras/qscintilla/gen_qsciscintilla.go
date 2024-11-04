@@ -290,7 +290,7 @@ func QsciScintilla_TrUtf8(s string) string {
 }
 
 func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_start *int) []string {
-	var _ma *C.struct_miqt_array = C.QsciScintilla_ApiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
+	var _ma C.struct_miqt_array = C.QsciScintilla_ApiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -299,7 +299,6 @@ func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_sta
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -433,13 +432,12 @@ func (this *QsciScintilla) Color() *qt.QColor {
 }
 
 func (this *QsciScintilla) ContractedFolds() []int {
-	var _ma *C.struct_miqt_array = C.QsciScintilla_ContractedFolds(this.h)
+	var _ma C.struct_miqt_array = C.QsciScintilla_ContractedFolds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -786,7 +784,6 @@ func (this *QsciScintilla) SetAutoCompletionFillups(fillups string) {
 }
 
 func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) {
-	// For the C ABI, malloc a C array of structs
 	separators_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(separators))))
 	defer C.free(unsafe.Pointer(separators_CArray))
 	for i := range separators {
@@ -796,8 +793,7 @@ func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) 
 		defer C.free(unsafe.Pointer(separators_i_ms.data))
 		separators_CArray[i] = separators_i_ms
 	}
-	separators_ma := &C.struct_miqt_array{len: C.size_t(len(separators)), data: unsafe.Pointer(separators_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(separators_ma))
+	separators_ma := C.struct_miqt_array{len: C.size_t(len(separators)), data: unsafe.Pointer(separators_CArray)}
 	C.QsciScintilla_SetAutoCompletionWordSeparators(this.h, separators_ma)
 }
 
@@ -826,14 +822,12 @@ func (this *QsciScintilla) SetCallTipsVisible(nr int) {
 }
 
 func (this *QsciScintilla) SetContractedFolds(folds []int) {
-	// For the C ABI, malloc a C array of raw pointers
 	folds_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(folds))))
 	defer C.free(unsafe.Pointer(folds_CArray))
 	for i := range folds {
 		folds_CArray[i] = (C.int)(folds[i])
 	}
-	folds_ma := &C.struct_miqt_array{len: C.size_t(len(folds)), data: unsafe.Pointer(folds_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(folds_ma))
+	folds_ma := C.struct_miqt_array{len: C.size_t(len(folds)), data: unsafe.Pointer(folds_CArray)}
 	C.QsciScintilla_SetContractedFolds(this.h, folds_ma)
 }
 
@@ -1041,7 +1035,6 @@ func (this *QsciScintilla) SetWrapIndentMode(mode QsciScintilla__WrapIndentMode)
 }
 
 func (this *QsciScintilla) ShowUserList(id int, list []string) {
-	// For the C ABI, malloc a C array of structs
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
@@ -1051,8 +1044,7 @@ func (this *QsciScintilla) ShowUserList(id int, list []string) {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	C.QsciScintilla_ShowUserList(this.h, (C.int)(id), list_ma)
 }
 

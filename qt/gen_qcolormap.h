@@ -31,7 +31,7 @@ int QColormap_Depth(const QColormap* self);
 int QColormap_Size(const QColormap* self);
 unsigned int QColormap_Pixel(const QColormap* self, QColor* color);
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel);
-struct miqt_array* QColormap_Colormap(const QColormap* self);
+struct miqt_array QColormap_Colormap(const QColormap* self);
 QColormap* QColormap_Instance1(int screen);
 void QColormap_Delete(QColormap* self);
 

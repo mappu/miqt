@@ -163,7 +163,7 @@ void QSettings_SetArrayIndex(QSettings* self, int i) {
 	self->setArrayIndex(static_cast<int>(i));
 }
 
-struct miqt_array* QSettings_AllKeys(const QSettings* self) {
+struct miqt_array QSettings_AllKeys(const QSettings* self) {
 	QStringList _ret = self->allKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -177,13 +177,13 @@ struct miqt_array* QSettings_AllKeys(const QSettings* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QSettings_ChildKeys(const QSettings* self) {
+struct miqt_array QSettings_ChildKeys(const QSettings* self) {
 	QStringList _ret = self->childKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -197,13 +197,13 @@ struct miqt_array* QSettings_ChildKeys(const QSettings* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QSettings_ChildGroups(const QSettings* self) {
+struct miqt_array QSettings_ChildGroups(const QSettings* self) {
 	QStringList _ret = self->childGroups();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -217,9 +217,9 @@ struct miqt_array* QSettings_ChildGroups(const QSettings* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

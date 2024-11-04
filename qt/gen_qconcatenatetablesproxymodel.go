@@ -84,13 +84,12 @@ func QConcatenateTablesProxyModel_TrUtf8(s string) string {
 }
 
 func (this *QConcatenateTablesProxyModel) SourceModels() []*QAbstractItemModel {
-	var _ma *C.struct_miqt_array = C.QConcatenateTablesProxyModel_SourceModels(this.h)
+	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_SourceModels(this.h)
 	_ret := make([]*QAbstractItemModel, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractItemModel)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractItemModel(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -127,6 +126,43 @@ func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVa
 	return (bool)(C.QConcatenateTablesProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
 }
 
+func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex *QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_ItemData(this.h, proxyIndex.cPointer())
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
+func (this *QConcatenateTablesProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray))
+	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_ctr := 0
+	for roles_k, roles_v := range roles {
+		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
+		roles_Values_CArray[roles_ctr] = roles_v.cPointer()
+		roles_ctr++
+	}
+	roles_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roles)),
+		keys:   unsafe.Pointer(roles_Keys_CArray),
+		values: unsafe.Pointer(roles_Values_CArray),
+	}
+	return (bool)(C.QConcatenateTablesProxyModel_SetItemData(this.h, index.cPointer(), roles_mm))
+}
+
 func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) ItemFlag {
 	return (ItemFlag)(C.QConcatenateTablesProxyModel_Flags(this.h, index.cPointer()))
 }
@@ -161,7 +197,7 @@ func (this *QConcatenateTablesProxyModel) ColumnCount() int {
 }
 
 func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QConcatenateTablesProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -170,19 +206,16 @@ func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QConcatenateTablesProxyModel_MimeData(this.h, indexes_ma)))
 }
 

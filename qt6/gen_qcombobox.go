@@ -316,7 +316,6 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 }
 
 func (this *QComboBox) AddItems(texts []string) {
-	// For the C ABI, malloc a C array of structs
 	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
@@ -326,8 +325,7 @@ func (this *QComboBox) AddItems(texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
 	C.QComboBox_AddItems(this.h, texts_ma)
 }
 
@@ -348,7 +346,6 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
-	// For the C ABI, malloc a C array of structs
 	texts_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(texts))))
 	defer C.free(unsafe.Pointer(texts_CArray))
 	for i := range texts {
@@ -358,8 +355,7 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
 	C.QComboBox_InsertItems(this.h, (C.int)(index), texts_ma)
 }
 

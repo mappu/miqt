@@ -138,7 +138,7 @@ func (this *QIdentityProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
+	var _ma C.struct_miqt_array = C.QIdentityProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -147,7 +147,6 @@ func (this *QIdentityProxyModel) Match(start *QModelIndex, role int, value *QVar
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -246,7 +245,7 @@ func (this *QIdentityProxyModel) HeaderData3(section int, orientation Orientatio
 }
 
 func (this *QIdentityProxyModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
+	var _ma C.struct_miqt_array = C.QIdentityProxyModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -255,12 +254,11 @@ func (this *QIdentityProxyModel) Match4(start *QModelIndex, role int, value *QVa
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QIdentityProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QIdentityProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -269,7 +267,6 @@ func (this *QIdentityProxyModel) Match5(start *QModelIndex, role int, value *QVa
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -1077,21 +1077,21 @@ void QWidget_AddAction(QWidget* self, QAction* action) {
 	self->addAction(action);
 }
 
-void QWidget_AddActions(QWidget* self, struct miqt_array* /* of QAction* */ actions) {
+void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */ actions) {
 	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions->len);
-	QAction** actions_arr = static_cast<QAction**>(actions->data);
-	for(size_t i = 0; i < actions->len; ++i) {
+	actions_QList.reserve(actions.len);
+	QAction** actions_arr = static_cast<QAction**>(actions.data);
+	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
 	self->addActions(actions_QList);
 }
 
-void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array* /* of QAction* */ actions) {
+void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */ actions) {
 	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions->len);
-	QAction** actions_arr = static_cast<QAction**>(actions->data);
-	for(size_t i = 0; i < actions->len; ++i) {
+	actions_QList.reserve(actions.len);
+	QAction** actions_arr = static_cast<QAction**>(actions.data);
+	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
 	self->insertActions(before, actions_QList);
@@ -1105,16 +1105,16 @@ void QWidget_RemoveAction(QWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-struct miqt_array* QWidget_Actions(const QWidget* self) {
+struct miqt_array QWidget_Actions(const QWidget* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

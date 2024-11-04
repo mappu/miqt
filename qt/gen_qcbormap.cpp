@@ -5,9 +5,11 @@
 #include <QCborValueRef>
 #include <QJsonObject>
 #include <QList>
+#include <QMap>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qcbormap.h>
 #include "gen_qcbormap.h"
 #include "_cgo_export.h"
@@ -45,16 +47,16 @@ void QCborMap_Clear(QCborMap* self) {
 	self->clear();
 }
 
-struct miqt_array* QCborMap_Keys(const QCborMap* self) {
+struct miqt_array QCborMap_Keys(const QCborMap* self) {
 	QVector<QCborValue> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QCborValue(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -256,8 +258,81 @@ QCborMap__Iterator* QCborMap_Insert4(QCborMap* self, QCborValue* key, QCborValue
 	return new QCborMap::Iterator(self->insert(*key, *value_));
 }
 
+QCborMap* QCborMap_FromVariantMap(struct miqt_map mapVal) {
+	QVariantMap mapVal_QMap;
+	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
+	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
+	for(size_t i = 0; i < mapVal.len; ++i) {
+		QString mapVal_karr_i_QString = QString::fromUtf8(mapVal_karr[i].data, mapVal_karr[i].len);
+		mapVal_QMap[mapVal_karr_i_QString] = *(mapVal_varr[i]);
+	}
+	return new QCborMap(QCborMap::fromVariantMap(mapVal_QMap));
+}
+
+QCborMap* QCborMap_FromVariantHash(struct miqt_map hash) {
+	QVariantHash hash_QMap;
+	hash_QMap.reserve(hash.len);
+	struct miqt_string* hash_karr = static_cast<struct miqt_string*>(hash.keys);
+	QVariant** hash_varr = static_cast<QVariant**>(hash.values);
+	for(size_t i = 0; i < hash.len; ++i) {
+		QString hash_karr_i_QString = QString::fromUtf8(hash_karr[i].data, hash_karr[i].len);
+		hash_QMap[hash_karr_i_QString] = *(hash_varr[i]);
+	}
+	return new QCborMap(QCborMap::fromVariantHash(hash_QMap));
+}
+
 QCborMap* QCborMap_FromJsonObject(QJsonObject* o) {
 	return new QCborMap(QCborMap::fromJsonObject(*o));
+}
+
+struct miqt_map QCborMap_ToVariantMap(const QCborMap* self) {
+	QVariantMap _ret = self->toVariantMap();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _mapkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _mapkey_b = _mapkey_ret.toUtf8();
+		struct miqt_string _mapkey_ms;
+		_mapkey_ms.len = _mapkey_b.length();
+		_mapkey_ms.data = static_cast<char*>(malloc(_mapkey_ms.len));
+		memcpy(_mapkey_ms.data, _mapkey_b.data(), _mapkey_ms.len);
+		_karr[_ctr] = _mapkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
+struct miqt_map QCborMap_ToVariantHash(const QCborMap* self) {
+	QVariantHash _ret = self->toVariantHash();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _hashkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _hashkey_b = _hashkey_ret.toUtf8();
+		struct miqt_string _hashkey_ms;
+		_hashkey_ms.len = _hashkey_b.length();
+		_hashkey_ms.data = static_cast<char*>(malloc(_hashkey_ms.len));
+		memcpy(_hashkey_ms.data, _hashkey_b.data(), _hashkey_ms.len);
+		_karr[_ctr] = _hashkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 QJsonObject* QCborMap_ToJsonObject(const QCborMap* self) {

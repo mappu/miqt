@@ -106,12 +106,49 @@ func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation
 	return _goptr
 }
 
+func (this *QAbstractProxyModel) ItemData(index *QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_ItemData(this.h, index.cPointer())
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
 func (this *QAbstractProxyModel) Flags(index *QModelIndex) ItemFlag {
 	return (ItemFlag)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant) bool {
 	return (bool)(C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer()))
+}
+
+func (this *QAbstractProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray))
+	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_ctr := 0
+	for roles_k, roles_v := range roles {
+		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
+		roles_Values_CArray[roles_ctr] = roles_v.cPointer()
+		roles_ctr++
+	}
+	roles_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roles)),
+		keys:   unsafe.Pointer(roles_Keys_CArray),
+		values: unsafe.Pointer(roles_Values_CArray),
+	}
+	return (bool)(C.QAbstractProxyModel_SetItemData(this.h, index.cPointer(), roles_mm))
 }
 
 func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant) bool {
@@ -160,14 +197,12 @@ func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
-	// For the C ABI, malloc a C array of raw pointers
 	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -180,7 +215,7 @@ func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction
 }
 
 func (this *QAbstractProxyModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -189,7 +224,6 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -199,6 +233,23 @@ func (this *QAbstractProxyModel) SupportedDragActions() DropAction {
 
 func (this *QAbstractProxyModel) SupportedDropActions() DropAction {
 	return (DropAction)(C.QAbstractProxyModel_SupportedDropActions(this.h))
+}
+
+func (this *QAbstractProxyModel) RoleNames() map[int][]byte {
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_RoleNames(this.h)
+	_ret := make(map[int][]byte, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		var _hashval_bytearray C.struct_miqt_string = _Values[i]
+		_hashval_ret := C.GoBytes(unsafe.Pointer(_hashval_bytearray.data), C.int(int64(_hashval_bytearray.len)))
+		C.free(unsafe.Pointer(_hashval_bytearray.data))
+		_entry_Value := _hashval_ret
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
 }
 
 func QAbstractProxyModel_Tr2(s string, c string) string {

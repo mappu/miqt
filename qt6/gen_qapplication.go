@@ -160,24 +160,22 @@ func QApplication_FontMetrics() *QFontMetrics {
 }
 
 func QApplication_AllWidgets() []*QWidget {
-	var _ma *C.struct_miqt_array = C.QApplication_AllWidgets()
+	var _ma C.struct_miqt_array = C.QApplication_AllWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QApplication_TopLevelWidgets() []*QWidget {
-	var _ma *C.struct_miqt_array = C.QApplication_TopLevelWidgets()
+	var _ma C.struct_miqt_array = C.QApplication_TopLevelWidgets()
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

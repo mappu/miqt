@@ -220,14 +220,12 @@ func (this *QImage) ConvertToFormat(f QImage__Format) *QImage {
 }
 
 func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImage {
-	// For the C ABI, malloc a C array of raw pointers
 	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray))
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	colorTable_ma := &C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(colorTable_ma))
+	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
 	_ret := C.QImage_ConvertToFormat2(this.h, (C.int)(f), colorTable_ma)
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -390,25 +388,22 @@ func (this *QImage) SetPixelColor2(pt *QPoint, c *QColor) {
 }
 
 func (this *QImage) ColorTable() []uint {
-	var _ma *C.struct_miqt_array = C.QImage_ColorTable(this.h)
+	var _ma C.struct_miqt_array = C.QImage_ColorTable(this.h)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QImage) SetColorTable(colors []uint) {
-	// For the C ABI, malloc a C array of raw pointers
 	colors_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colors))))
 	defer C.free(unsafe.Pointer(colors_CArray))
 	for i := range colors {
 		colors_CArray[i] = (C.uint)(colors[i])
 	}
-	colors_ma := &C.struct_miqt_array{len: C.size_t(len(colors)), data: unsafe.Pointer(colors_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(colors_ma))
+	colors_ma := C.struct_miqt_array{len: C.size_t(len(colors)), data: unsafe.Pointer(colors_CArray)}
 	C.QImage_SetColorTable(this.h, colors_ma)
 }
 
@@ -670,7 +665,7 @@ func (this *QImage) SetOffset(offset *QPoint) {
 }
 
 func (this *QImage) TextKeys() []string {
-	var _ma *C.struct_miqt_array = C.QImage_TextKeys(this.h)
+	var _ma C.struct_miqt_array = C.QImage_TextKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -679,7 +674,6 @@ func (this *QImage) TextKeys() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -735,14 +729,12 @@ func (this *QImage) ConvertToFormat22(f QImage__Format, flags ImageConversionFla
 }
 
 func (this *QImage) ConvertToFormat3(f QImage__Format, colorTable []uint, flags ImageConversionFlag) *QImage {
-	// For the C ABI, malloc a C array of raw pointers
 	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
 	defer C.free(unsafe.Pointer(colorTable_CArray))
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	colorTable_ma := &C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(colorTable_ma))
+	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
 	_ret := C.QImage_ConvertToFormat3(this.h, (C.int)(f), colorTable_ma, (C.int)(flags))
 	_goptr := newQImage(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

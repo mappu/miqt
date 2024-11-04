@@ -281,14 +281,12 @@ func (this *QAction) Shortcut() *QKeySequence {
 }
 
 func (this *QAction) SetShortcuts(shortcuts []QKeySequence) {
-	// For the C ABI, malloc a C array of raw pointers
 	shortcuts_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(shortcuts))))
 	defer C.free(unsafe.Pointer(shortcuts_CArray))
 	for i := range shortcuts {
 		shortcuts_CArray[i] = shortcuts[i].cPointer()
 	}
-	shortcuts_ma := &C.struct_miqt_array{len: C.size_t(len(shortcuts)), data: unsafe.Pointer(shortcuts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(shortcuts_ma))
+	shortcuts_ma := C.struct_miqt_array{len: C.size_t(len(shortcuts)), data: unsafe.Pointer(shortcuts_CArray)}
 	C.QAction_SetShortcuts(this.h, shortcuts_ma)
 }
 
@@ -297,7 +295,7 @@ func (this *QAction) SetShortcutsWithShortcuts(shortcuts QKeySequence__StandardK
 }
 
 func (this *QAction) Shortcuts() []QKeySequence {
-	var _ma *C.struct_miqt_array = C.QAction_Shortcuts(this.h)
+	var _ma C.struct_miqt_array = C.QAction_Shortcuts(this.h)
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -306,7 +304,6 @@ func (this *QAction) Shortcuts() []QKeySequence {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -405,24 +402,22 @@ func (this *QAction) ParentWidget() *QWidget {
 }
 
 func (this *QAction) AssociatedWidgets() []*QWidget {
-	var _ma *C.struct_miqt_array = C.QAction_AssociatedWidgets(this.h)
+	var _ma C.struct_miqt_array = C.QAction_AssociatedWidgets(this.h)
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAction) AssociatedGraphicsWidgets() []*QGraphicsWidget {
-	var _ma *C.struct_miqt_array = C.QAction_AssociatedGraphicsWidgets(this.h)
+	var _ma C.struct_miqt_array = C.QAction_AssociatedGraphicsWidgets(this.h)
 	_ret := make([]*QGraphicsWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGraphicsWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

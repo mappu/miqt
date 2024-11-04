@@ -82,7 +82,6 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -92,8 +91,7 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	ret := C.QDirIterator_new4(path_ms, nameFilters_ma)
 	return newQDirIterator(ret)
 }
@@ -130,7 +128,6 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -140,8 +137,7 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	ret := C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters))
 	return newQDirIterator(ret)
 }
@@ -152,7 +148,6 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -162,8 +157,7 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	ret := C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags))
 	return newQDirIterator(ret)
 }

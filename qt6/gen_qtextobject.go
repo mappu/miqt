@@ -318,13 +318,12 @@ func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
 }
 
 func (this *QTextFrame) ChildFrames() []*QTextFrame {
-	var _ma *C.struct_miqt_array = C.QTextFrame_ChildFrames(this.h)
+	var _ma C.struct_miqt_array = C.QTextFrame_ChildFrames(this.h)
 	_ret := make([]*QTextFrame, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQTextFrame(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -544,7 +543,7 @@ func (this *QTextBlock) Text() string {
 }
 
 func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
-	var _ma *C.struct_miqt_array = C.QTextBlock_TextFormats(this.h)
+	var _ma C.struct_miqt_array = C.QTextBlock_TextFormats(this.h)
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -553,7 +552,6 @@ func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -751,7 +749,7 @@ func (this *QTextFragment) Text() string {
 }
 
 func (this *QTextFragment) GlyphRuns() []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns(this.h)
+	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -760,12 +758,11 @@ func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns1(this.h, (C.int)(from))
+	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns1(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -774,12 +771,11 @@ func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
-	var _ma *C.struct_miqt_array = C.QTextFragment_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
+	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -788,7 +784,6 @@ func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

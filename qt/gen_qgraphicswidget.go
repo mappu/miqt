@@ -299,26 +299,22 @@ func (this *QGraphicsWidget) AddAction(action *QAction) {
 }
 
 func (this *QGraphicsWidget) AddActions(actions []*QAction) {
-	// For the C ABI, malloc a C array of raw pointers
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	C.QGraphicsWidget_AddActions(this.h, actions_ma)
 }
 
 func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) {
-	// For the C ABI, malloc a C array of raw pointers
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	C.QGraphicsWidget_InsertActions(this.h, before.cPointer(), actions_ma)
 }
 
@@ -331,13 +327,12 @@ func (this *QGraphicsWidget) RemoveAction(action *QAction) {
 }
 
 func (this *QGraphicsWidget) Actions() []*QAction {
-	var _ma *C.struct_miqt_array = C.QGraphicsWidget_Actions(this.h)
+	var _ma C.struct_miqt_array = C.QGraphicsWidget_Actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

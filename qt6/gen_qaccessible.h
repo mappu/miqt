@@ -134,8 +134,8 @@ void QAccessibleValueInterface_OperatorAssign(QAccessibleValueInterface* self, Q
 void QAccessibleValueInterface_Delete(QAccessibleValueInterface* self);
 
 bool QAccessibleTableCellInterface_IsSelected(const QAccessibleTableCellInterface* self);
-struct miqt_array* QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessibleTableCellInterface* self);
-struct miqt_array* QAccessibleTableCellInterface_RowHeaderCells(const QAccessibleTableCellInterface* self);
+struct miqt_array QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessibleTableCellInterface* self);
+struct miqt_array QAccessibleTableCellInterface_RowHeaderCells(const QAccessibleTableCellInterface* self);
 int QAccessibleTableCellInterface_ColumnIndex(const QAccessibleTableCellInterface* self);
 int QAccessibleTableCellInterface_RowIndex(const QAccessibleTableCellInterface* self);
 int QAccessibleTableCellInterface_ColumnExtent(const QAccessibleTableCellInterface* self);
@@ -148,15 +148,15 @@ QAccessibleInterface* QAccessibleTableInterface_Caption(const QAccessibleTableIn
 QAccessibleInterface* QAccessibleTableInterface_Summary(const QAccessibleTableInterface* self);
 QAccessibleInterface* QAccessibleTableInterface_CellAt(const QAccessibleTableInterface* self, int row, int column);
 int QAccessibleTableInterface_SelectedCellCount(const QAccessibleTableInterface* self);
-struct miqt_array* QAccessibleTableInterface_SelectedCells(const QAccessibleTableInterface* self);
+struct miqt_array QAccessibleTableInterface_SelectedCells(const QAccessibleTableInterface* self);
 struct miqt_string QAccessibleTableInterface_ColumnDescription(const QAccessibleTableInterface* self, int column);
 struct miqt_string QAccessibleTableInterface_RowDescription(const QAccessibleTableInterface* self, int row);
 int QAccessibleTableInterface_SelectedColumnCount(const QAccessibleTableInterface* self);
 int QAccessibleTableInterface_SelectedRowCount(const QAccessibleTableInterface* self);
 int QAccessibleTableInterface_ColumnCount(const QAccessibleTableInterface* self);
 int QAccessibleTableInterface_RowCount(const QAccessibleTableInterface* self);
-struct miqt_array* QAccessibleTableInterface_SelectedColumns(const QAccessibleTableInterface* self);
-struct miqt_array* QAccessibleTableInterface_SelectedRows(const QAccessibleTableInterface* self);
+struct miqt_array QAccessibleTableInterface_SelectedColumns(const QAccessibleTableInterface* self);
+struct miqt_array QAccessibleTableInterface_SelectedRows(const QAccessibleTableInterface* self);
 bool QAccessibleTableInterface_IsColumnSelected(const QAccessibleTableInterface* self, int column);
 bool QAccessibleTableInterface_IsRowSelected(const QAccessibleTableInterface* self, int row);
 bool QAccessibleTableInterface_SelectRow(QAccessibleTableInterface* self, int row);
@@ -167,11 +167,11 @@ void QAccessibleTableInterface_ModelChange(QAccessibleTableInterface* self, QAcc
 void QAccessibleTableInterface_Delete(QAccessibleTableInterface* self);
 
 struct miqt_string QAccessibleActionInterface_Tr(const char* sourceText);
-struct miqt_array* QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self);
+struct miqt_array QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self);
 struct miqt_string QAccessibleActionInterface_LocalizedActionName(const QAccessibleActionInterface* self, struct miqt_string name);
 struct miqt_string QAccessibleActionInterface_LocalizedActionDescription(const QAccessibleActionInterface* self, struct miqt_string name);
 void QAccessibleActionInterface_DoAction(QAccessibleActionInterface* self, struct miqt_string actionName);
-struct miqt_array* QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, struct miqt_string actionName);
+struct miqt_array QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, struct miqt_string actionName);
 struct miqt_string QAccessibleActionInterface_PressAction();
 struct miqt_string QAccessibleActionInterface_IncreaseAction();
 struct miqt_string QAccessibleActionInterface_DecreaseAction();

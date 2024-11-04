@@ -231,6 +231,27 @@ func (this *QCalendarWidget) SetWeekdayTextFormat(dayOfWeek DayOfWeek, format *Q
 	C.QCalendarWidget_SetWeekdayTextFormat(this.h, (C.int)(dayOfWeek), format.cPointer())
 }
 
+func (this *QCalendarWidget) DateTextFormat() map[QDate]QTextCharFormat {
+	var _mm C.struct_miqt_map = C.QCalendarWidget_DateTextFormat(this.h)
+	_ret := make(map[QDate]QTextCharFormat, int(_mm.len))
+	_Keys := (*[0xffff]*C.QDate)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QTextCharFormat)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_mapkey_ret := _Keys[i]
+		_mapkey_goptr := newQDate(_mapkey_ret)
+		_mapkey_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Key := *_mapkey_goptr
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQTextCharFormat(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
 func (this *QCalendarWidget) DateTextFormatWithDate(date *QDate) *QTextCharFormat {
 	_ret := C.QCalendarWidget_DateTextFormatWithDate(this.h, date.cPointer())
 	_goptr := newQTextCharFormat(_ret)

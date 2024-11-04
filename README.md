@@ -74,9 +74,11 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-5/classes.html) should be used.
 
-The `QByteArray`, `QString`, `QList<T>`, and `QVector<T>` types are projected as plain Go `[]byte`, `string`, and `[]T`. Therefore, you can't call any of QByteArray/QString/QList/QVector's helper methods, you must use some Go equivalent method instead.
+The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Go `[]byte`, `string`, `[]T`, and `map[K]V`. Therefore, you can't call any of the Qt type's methods, you must use some Go equivalent method instead.
 
 - Go strings are internally converted to QString using `QString::fromUtf8`. Therefore, the Go string must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Go string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Go space, this becomes `\xEF\xBF\xBD`.
+
+- The iteration order of a Qt QMap/QHash will differ from the Go map iteration order. QMap is iterated by key order, but Go maps and QHash iterate in an undefined internal order.
 
 Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
 
@@ -189,7 +191,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6
 go build -ldflags "-s -w -H windowsgui"
 ```
 
-- Note: the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
+- Note: the MSYS2 `qt5-base` package [is built to use `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages are not. [ICU is included by default with Windows 10 1703 and later](https://devblogs.microsoft.com/oldnewthing/20210527-00/?p=105255). If you are targeting older versions of Windows, then when using MSYS2, your distribution size including `.dll` files will be larger.
 
 For static linking:
 
@@ -254,7 +256,7 @@ See FAQ Q3 for advice about docker performance.
 
 *Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
 
-Miqt supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
+MIQT supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
 ![](doc/android-architecture.png)
 

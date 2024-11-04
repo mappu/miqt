@@ -490,14 +490,12 @@ func (this *QPainter) DrawLines(lines *QLineF, lineCount int) {
 }
 
 func (this *QPainter) DrawLinesWithLines(lines []QLineF) {
-	// For the C ABI, malloc a C array of raw pointers
 	lines_CArray := (*[0xffff]*C.QLineF)(C.malloc(C.size_t(8 * len(lines))))
 	defer C.free(unsafe.Pointer(lines_CArray))
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	lines_ma := &C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(lines_ma))
+	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
 	C.QPainter_DrawLinesWithLines(this.h, lines_ma)
 }
 
@@ -506,14 +504,12 @@ func (this *QPainter) DrawLines2(pointPairs *QPointF, lineCount int) {
 }
 
 func (this *QPainter) DrawLinesWithPointPairs(pointPairs []QPointF) {
-	// For the C ABI, malloc a C array of raw pointers
 	pointPairs_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(pointPairs))))
 	defer C.free(unsafe.Pointer(pointPairs_CArray))
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	pointPairs_ma := &C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(pointPairs_ma))
+	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
 	C.QPainter_DrawLinesWithPointPairs(this.h, pointPairs_ma)
 }
 
@@ -522,14 +518,12 @@ func (this *QPainter) DrawLines3(lines *QLine, lineCount int) {
 }
 
 func (this *QPainter) DrawLines4(lines []QLine) {
-	// For the C ABI, malloc a C array of raw pointers
 	lines_CArray := (*[0xffff]*C.QLine)(C.malloc(C.size_t(8 * len(lines))))
 	defer C.free(unsafe.Pointer(lines_CArray))
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	lines_ma := &C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(lines_ma))
+	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
 	C.QPainter_DrawLines4(this.h, lines_ma)
 }
 
@@ -538,14 +532,12 @@ func (this *QPainter) DrawLines5(pointPairs *QPoint, lineCount int) {
 }
 
 func (this *QPainter) DrawLines6(pointPairs []QPoint) {
-	// For the C ABI, malloc a C array of raw pointers
 	pointPairs_CArray := (*[0xffff]*C.QPoint)(C.malloc(C.size_t(8 * len(pointPairs))))
 	defer C.free(unsafe.Pointer(pointPairs_CArray))
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	pointPairs_ma := &C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(pointPairs_ma))
+	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
 	C.QPainter_DrawLines6(this.h, pointPairs_ma)
 }
 
@@ -566,14 +558,12 @@ func (this *QPainter) DrawRects(rects *QRectF, rectCount int) {
 }
 
 func (this *QPainter) DrawRectsWithRectangles(rectangles []QRectF) {
-	// For the C ABI, malloc a C array of raw pointers
 	rectangles_CArray := (*[0xffff]*C.QRectF)(C.malloc(C.size_t(8 * len(rectangles))))
 	defer C.free(unsafe.Pointer(rectangles_CArray))
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	rectangles_ma := &C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(rectangles_ma))
+	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
 	C.QPainter_DrawRectsWithRectangles(this.h, rectangles_ma)
 }
 
@@ -582,14 +572,12 @@ func (this *QPainter) DrawRects2(rects *QRect, rectCount int) {
 }
 
 func (this *QPainter) DrawRects3(rectangles []QRect) {
-	// For the C ABI, malloc a C array of raw pointers
 	rectangles_CArray := (*[0xffff]*C.QRect)(C.malloc(C.size_t(8 * len(rectangles))))
 	defer C.free(unsafe.Pointer(rectangles_CArray))
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	rectangles_ma := &C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(rectangles_ma))
+	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
 	C.QPainter_DrawRects3(this.h, rectangles_ma)
 }
 

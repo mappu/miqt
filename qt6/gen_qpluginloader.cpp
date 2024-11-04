@@ -56,29 +56,29 @@ QJsonObject* QPluginLoader_MetaData(const QPluginLoader* self) {
 	return new QJsonObject(self->metaData());
 }
 
-struct miqt_array* QPluginLoader_StaticInstances() {
+struct miqt_array QPluginLoader_StaticInstances() {
 	QObjectList _ret = QPluginLoader::staticInstances();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QPluginLoader_StaticPlugins() {
+struct miqt_array QPluginLoader_StaticPlugins() {
 	QList<QStaticPlugin> _ret = QPluginLoader::staticPlugins();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QStaticPlugin** _arr = static_cast<QStaticPlugin**>(malloc(sizeof(QStaticPlugin*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QStaticPlugin(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

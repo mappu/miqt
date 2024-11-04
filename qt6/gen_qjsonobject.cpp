@@ -5,9 +5,11 @@
 #include <QJsonValueConstRef>
 #include <QJsonValueRef>
 #include <QList>
+#include <QMap>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qjsonobject.h>
 #include "gen_qjsonobject.h"
 #include "_cgo_export.h"
@@ -28,7 +30,80 @@ void QJsonObject_Swap(QJsonObject* self, QJsonObject* other) {
 	self->swap(*other);
 }
 
-struct miqt_array* QJsonObject_Keys(const QJsonObject* self) {
+QJsonObject* QJsonObject_FromVariantMap(struct miqt_map mapVal) {
+	QVariantMap mapVal_QMap;
+	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
+	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
+	for(size_t i = 0; i < mapVal.len; ++i) {
+		QString mapVal_karr_i_QString = QString::fromUtf8(mapVal_karr[i].data, mapVal_karr[i].len);
+		mapVal_QMap[mapVal_karr_i_QString] = *(mapVal_varr[i]);
+	}
+	return new QJsonObject(QJsonObject::fromVariantMap(mapVal_QMap));
+}
+
+struct miqt_map QJsonObject_ToVariantMap(const QJsonObject* self) {
+	QVariantMap _ret = self->toVariantMap();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _mapkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _mapkey_b = _mapkey_ret.toUtf8();
+		struct miqt_string _mapkey_ms;
+		_mapkey_ms.len = _mapkey_b.length();
+		_mapkey_ms.data = static_cast<char*>(malloc(_mapkey_ms.len));
+		memcpy(_mapkey_ms.data, _mapkey_b.data(), _mapkey_ms.len);
+		_karr[_ctr] = _mapkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
+QJsonObject* QJsonObject_FromVariantHash(struct miqt_map mapVal) {
+	QVariantHash mapVal_QMap;
+	mapVal_QMap.reserve(mapVal.len);
+	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
+	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
+	for(size_t i = 0; i < mapVal.len; ++i) {
+		QString mapVal_karr_i_QString = QString::fromUtf8(mapVal_karr[i].data, mapVal_karr[i].len);
+		mapVal_QMap[mapVal_karr_i_QString] = *(mapVal_varr[i]);
+	}
+	return new QJsonObject(QJsonObject::fromVariantHash(mapVal_QMap));
+}
+
+struct miqt_map QJsonObject_ToVariantHash(const QJsonObject* self) {
+	QVariantHash _ret = self->toVariantHash();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _hashkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _hashkey_b = _hashkey_ret.toUtf8();
+		struct miqt_string _hashkey_ms;
+		_hashkey_ms.len = _hashkey_b.length();
+		_hashkey_ms.data = static_cast<char*>(malloc(_hashkey_ms.len));
+		memcpy(_hashkey_ms.data, _hashkey_b.data(), _hashkey_ms.len);
+		_karr[_ctr] = _hashkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
+struct miqt_array QJsonObject_Keys(const QJsonObject* self) {
 	QStringList _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -42,9 +117,9 @@ struct miqt_array* QJsonObject_Keys(const QJsonObject* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

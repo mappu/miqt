@@ -101,7 +101,7 @@ func (this *QIconEngine) Write(out *QDataStream) bool {
 }
 
 func (this *QIconEngine) AvailableSizes() []QSize {
-	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h)
+	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -110,7 +110,6 @@ func (this *QIconEngine) AvailableSizes() []QSize {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -137,7 +136,7 @@ func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
 }
 
 func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.int)(mode))
+	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes1(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -146,12 +145,11 @@ func (this *QIconEngine) AvailableSizes1(mode QIcon__Mode) []QSize {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _ma *C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
+	var _ma C.struct_miqt_array = C.QIconEngine_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -160,7 +158,6 @@ func (this *QIconEngine) AvailableSizes2(mode QIcon__Mode, state QIcon__State) [
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

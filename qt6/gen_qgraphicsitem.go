@@ -228,13 +228,12 @@ func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
 }
 
 func (this *QGraphicsItem) ChildItems() []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsItem_ChildItems(this.h)
+	var _ma C.struct_miqt_array = C.QGraphicsItem_ChildItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -591,25 +590,22 @@ func (this *QGraphicsItem) Scale() float64 {
 }
 
 func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
-	var _ma *C.struct_miqt_array = C.QGraphicsItem_Transformations(this.h)
+	var _ma C.struct_miqt_array = C.QGraphicsItem_Transformations(this.h)
 	_ret := make([]*QGraphicsTransform, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGraphicsTransform(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransform) {
-	// For the C ABI, malloc a C array of raw pointers
 	transformations_CArray := (*[0xffff]*C.QGraphicsTransform)(C.malloc(C.size_t(8 * len(transformations))))
 	defer C.free(unsafe.Pointer(transformations_CArray))
 	for i := range transformations {
 		transformations_CArray[i] = transformations[i].cPointer()
 	}
-	transformations_ma := &C.struct_miqt_array{len: C.size_t(len(transformations)), data: unsafe.Pointer(transformations_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(transformations_ma))
+	transformations_ma := C.struct_miqt_array{len: C.size_t(len(transformations)), data: unsafe.Pointer(transformations_CArray)}
 	C.QGraphicsItem_SetTransformations(this.h, transformations_ma)
 }
 
@@ -696,13 +692,12 @@ func (this *QGraphicsItem) CollidesWithPath(path *QPainterPath) bool {
 }
 
 func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems(this.h)
+	var _ma C.struct_miqt_array = C.QGraphicsItem_CollidingItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1061,13 +1056,12 @@ func (this *QGraphicsItem) CollidesWithPath2(path *QPainterPath, mode ItemSelect
 }
 
 func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma *C.struct_miqt_array = C.QGraphicsItem_CollidingItems1(this.h, (C.int)(mode))
+	var _ma C.struct_miqt_array = C.QGraphicsItem_CollidingItems1(this.h, (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQGraphicsItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

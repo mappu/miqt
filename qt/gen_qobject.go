@@ -192,13 +192,12 @@ func (this *QObject) KillTimer(id int) {
 }
 
 func (this *QObject) Children() []*QObject {
-	var _ma *C.struct_miqt_array = C.QObject_Children(this.h)
+	var _ma C.struct_miqt_array = C.QObject_Children(this.h)
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -272,7 +271,7 @@ func (this *QObject) Property(name string) *QVariant {
 }
 
 func (this *QObject) DynamicPropertyNames() [][]byte {
-	var _ma *C.struct_miqt_array = C.QObject_DynamicPropertyNames(this.h)
+	var _ma C.struct_miqt_array = C.QObject_DynamicPropertyNames(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -281,7 +280,6 @@ func (this *QObject) DynamicPropertyNames() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

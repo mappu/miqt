@@ -110,7 +110,7 @@ func (this *QPrinterInfo) State() QPrinter__PrinterState {
 }
 
 func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_SupportedPageSizes(this.h)
+	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedPageSizes(this.h)
 	_ret := make([]qt6.QPageSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -119,7 +119,6 @@ func (this *QPrinterInfo) SupportedPageSizes() []qt6.QPageSize {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -149,13 +148,12 @@ func (this *QPrinterInfo) MaximumPhysicalPageSize() *qt6.QPageSize {
 }
 
 func (this *QPrinterInfo) SupportedResolutions() []int {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_SupportedResolutions(this.h)
+	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedResolutions(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -164,13 +162,12 @@ func (this *QPrinterInfo) DefaultDuplexMode() QPrinter__DuplexMode {
 }
 
 func (this *QPrinterInfo) SupportedDuplexModes() []QPrinter__DuplexMode {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_SupportedDuplexModes(this.h)
+	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedDuplexModes(this.h)
 	_ret := make([]QPrinter__DuplexMode, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QPrinter__DuplexMode)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -179,18 +176,17 @@ func (this *QPrinterInfo) DefaultColorMode() QPrinter__ColorMode {
 }
 
 func (this *QPrinterInfo) SupportedColorModes() []QPrinter__ColorMode {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_SupportedColorModes(this.h)
+	var _ma C.struct_miqt_array = C.QPrinterInfo_SupportedColorModes(this.h)
 	_ret := make([]QPrinter__ColorMode, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QPrinter__ColorMode)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPrinterInfo_AvailablePrinterNames() []string {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_AvailablePrinterNames()
+	var _ma C.struct_miqt_array = C.QPrinterInfo_AvailablePrinterNames()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -199,12 +195,11 @@ func QPrinterInfo_AvailablePrinterNames() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPrinterInfo_AvailablePrinters() []QPrinterInfo {
-	var _ma *C.struct_miqt_array = C.QPrinterInfo_AvailablePrinters()
+	var _ma C.struct_miqt_array = C.QPrinterInfo_AvailablePrinters()
 	_ret := make([]QPrinterInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPrinterInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -213,7 +208,6 @@ func QPrinterInfo_AvailablePrinters() []QPrinterInfo {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

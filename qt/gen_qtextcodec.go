@@ -69,7 +69,7 @@ func QTextCodec_CodecForMib(mib int) *QTextCodec {
 }
 
 func QTextCodec_AvailableCodecs() [][]byte {
-	var _ma *C.struct_miqt_array = C.QTextCodec_AvailableCodecs()
+	var _ma C.struct_miqt_array = C.QTextCodec_AvailableCodecs()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -78,18 +78,16 @@ func QTextCodec_AvailableCodecs() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QTextCodec_AvailableMibs() []int {
-	var _ma *C.struct_miqt_array = C.QTextCodec_AvailableMibs()
+	var _ma C.struct_miqt_array = C.QTextCodec_AvailableMibs()
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -203,7 +201,7 @@ func (this *QTextCodec) Name() []byte {
 }
 
 func (this *QTextCodec) Aliases() [][]byte {
-	var _ma *C.struct_miqt_array = C.QTextCodec_Aliases(this.h)
+	var _ma C.struct_miqt_array = C.QTextCodec_Aliases(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -212,7 +210,6 @@ func (this *QTextCodec) Aliases() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

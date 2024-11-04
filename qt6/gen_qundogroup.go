@@ -84,13 +84,12 @@ func (this *QUndoGroup) RemoveStack(stack *QUndoStack) {
 }
 
 func (this *QUndoGroup) Stacks() []*QUndoStack {
-	var _ma *C.struct_miqt_array = C.QUndoGroup_Stacks(this.h)
+	var _ma C.struct_miqt_array = C.QUndoGroup_Stacks(this.h)
 	_ret := make([]*QUndoStack, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQUndoStack(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

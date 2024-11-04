@@ -45,7 +45,7 @@ bool QStorageInfo_IsReadOnly(const QStorageInfo* self);
 bool QStorageInfo_IsReady(const QStorageInfo* self);
 bool QStorageInfo_IsValid(const QStorageInfo* self);
 void QStorageInfo_Refresh(QStorageInfo* self);
-struct miqt_array* QStorageInfo_MountedVolumes();
+struct miqt_array QStorageInfo_MountedVolumes();
 QStorageInfo* QStorageInfo_Root();
 void QStorageInfo_Delete(QStorageInfo* self);
 

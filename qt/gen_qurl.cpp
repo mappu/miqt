@@ -408,7 +408,7 @@ struct miqt_string QUrl_ToAce(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_array* QUrl_IdnWhitelist() {
+struct miqt_array QUrl_IdnWhitelist() {
 	QStringList _ret = QUrl::idnWhitelist();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -422,17 +422,17 @@ struct miqt_array* QUrl_IdnWhitelist() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
+struct miqt_array QUrl_ToStringList(struct miqt_array /* of QUrl* */ uris) {
 	QList<QUrl> uris_QList;
-	uris_QList.reserve(uris->len);
-	QUrl** uris_arr = static_cast<QUrl**>(uris->data);
-	for(size_t i = 0; i < uris->len; ++i) {
+	uris_QList.reserve(uris.len);
+	QUrl** uris_arr = static_cast<QUrl**>(uris.data);
+	for(size_t i = 0; i < uris.len; ++i) {
 		uris_QList.push_back(*(uris_arr[i]));
 	}
 	QStringList _ret = QUrl::toStringList(uris_QList);
@@ -448,17 +448,17 @@ struct miqt_array* QUrl_ToStringList(struct miqt_array* /* of QUrl* */ uris) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_string */ uris) {
+struct miqt_array QUrl_FromStringList(struct miqt_array /* of struct miqt_string */ uris) {
 	QStringList uris_QList;
-	uris_QList.reserve(uris->len);
-	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris->data);
-	for(size_t i = 0; i < uris->len; ++i) {
+	uris_QList.reserve(uris.len);
+	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);
+	for(size_t i = 0; i < uris.len; ++i) {
 		QString uris_arr_i_QString = QString::fromUtf8(uris_arr[i].data, uris_arr[i].len);
 		uris_QList.push_back(uris_arr_i_QString);
 	}
@@ -468,17 +468,17 @@ struct miqt_array* QUrl_FromStringList(struct miqt_array* /* of struct miqt_stri
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QUrl_SetIdnWhitelist(struct miqt_array* /* of struct miqt_string */ idnWhitelist) {
+void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */ idnWhitelist) {
 	QStringList idnWhitelist_QList;
-	idnWhitelist_QList.reserve(idnWhitelist->len);
-	struct miqt_string* idnWhitelist_arr = static_cast<struct miqt_string*>(idnWhitelist->data);
-	for(size_t i = 0; i < idnWhitelist->len; ++i) {
+	idnWhitelist_QList.reserve(idnWhitelist.len);
+	struct miqt_string* idnWhitelist_arr = static_cast<struct miqt_string*>(idnWhitelist.data);
+	for(size_t i = 0; i < idnWhitelist.len; ++i) {
 		QString idnWhitelist_arr_i_QString = QString::fromUtf8(idnWhitelist_arr[i].data, idnWhitelist_arr[i].len);
 		idnWhitelist_QList.push_back(idnWhitelist_arr_i_QString);
 	}
@@ -678,11 +678,11 @@ struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miq
 	return _ms;
 }
 
-struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_string */ uris, int mode) {
+struct miqt_array QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */ uris, int mode) {
 	QStringList uris_QList;
-	uris_QList.reserve(uris->len);
-	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris->data);
-	for(size_t i = 0; i < uris->len; ++i) {
+	uris_QList.reserve(uris.len);
+	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);
+	for(size_t i = 0; i < uris.len; ++i) {
 		QString uris_arr_i_QString = QString::fromUtf8(uris_arr[i].data, uris_arr[i].len);
 		uris_QList.push_back(uris_arr_i_QString);
 	}
@@ -692,9 +692,9 @@ struct miqt_array* QUrl_FromStringList2(struct miqt_array* /* of struct miqt_str
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

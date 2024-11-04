@@ -71,7 +71,7 @@ func (this *QPageRanges) AddRange(from int, to int) {
 }
 
 func (this *QPageRanges) ToRangeList() []QPageRanges__Range {
-	var _ma *C.struct_miqt_array = C.QPageRanges_ToRangeList(this.h)
+	var _ma C.struct_miqt_array = C.QPageRanges_ToRangeList(this.h)
 	_ret := make([]QPageRanges__Range, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPageRanges__Range)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -80,7 +80,6 @@ func (this *QPageRanges) ToRangeList() []QPageRanges__Range {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

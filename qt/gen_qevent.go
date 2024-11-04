@@ -1863,14 +1863,12 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	preeditText_ms.data = C.CString(preeditText)
 	preeditText_ms.len = C.size_t(len(preeditText))
 	defer C.free(unsafe.Pointer(preeditText_ms.data))
-	// For the C ABI, malloc a C array of raw pointers
 	attributes_CArray := (*[0xffff]*C.QInputMethodEvent__Attribute)(C.malloc(C.size_t(8 * len(attributes))))
 	defer C.free(unsafe.Pointer(attributes_CArray))
 	for i := range attributes {
 		attributes_CArray[i] = attributes[i].cPointer()
 	}
-	attributes_ma := &C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(attributes_ma))
+	attributes_ma := C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray)}
 	ret := C.QInputMethodEvent_new2(preeditText_ms, attributes_ma)
 	return newQInputMethodEvent(ret)
 }
@@ -1890,7 +1888,7 @@ func (this *QInputMethodEvent) SetCommitString(commitString string) {
 }
 
 func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
-	var _ma *C.struct_miqt_array = C.QInputMethodEvent_Attributes(this.h)
+	var _ma C.struct_miqt_array = C.QInputMethodEvent_Attributes(this.h)
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1899,7 +1897,6 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -3048,14 +3045,12 @@ func NewQTouchEvent5(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
 func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers KeyboardModifier, touchPointStates TouchPointState, touchPoints []QTouchEvent__TouchPoint) *QTouchEvent {
-	// For the C ABI, malloc a C array of raw pointers
 	touchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(touchPoints))))
 	defer C.free(unsafe.Pointer(touchPoints_CArray))
 	for i := range touchPoints {
 		touchPoints_CArray[i] = touchPoints[i].cPointer()
 	}
-	touchPoints_ma := &C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(touchPoints_ma))
+	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
 	ret := C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), touchPoints_ma)
 	return newQTouchEvent(ret)
 }
@@ -3073,7 +3068,7 @@ func (this *QTouchEvent) TouchPointStates() TouchPointState {
 }
 
 func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
-	var _ma *C.struct_miqt_array = C.QTouchEvent_TouchPoints(this.h)
+	var _ma C.struct_miqt_array = C.QTouchEvent_TouchPoints(this.h)
 	_ret := make([]QTouchEvent__TouchPoint, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchEvent__TouchPoint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -3082,7 +3077,6 @@ func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -3103,14 +3097,12 @@ func (this *QTouchEvent) SetTouchPointStates(aTouchPointStates TouchPointState) 
 }
 
 func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) {
-	// For the C ABI, malloc a C array of raw pointers
 	atouchPoints_CArray := (*[0xffff]*C.QTouchEvent__TouchPoint)(C.malloc(C.size_t(8 * len(atouchPoints))))
 	defer C.free(unsafe.Pointer(atouchPoints_CArray))
 	for i := range atouchPoints {
 		atouchPoints_CArray[i] = atouchPoints[i].cPointer()
 	}
-	atouchPoints_ma := &C.struct_miqt_array{len: C.size_t(len(atouchPoints)), data: unsafe.Pointer(atouchPoints_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(atouchPoints_ma))
+	atouchPoints_ma := C.struct_miqt_array{len: C.size_t(len(atouchPoints)), data: unsafe.Pointer(atouchPoints_CArray)}
 	C.QTouchEvent_SetTouchPoints(this.h, atouchPoints_ma)
 }
 
@@ -3705,7 +3697,7 @@ func (this *QTouchEvent__TouchPoint) Flags() QTouchEvent__TouchPoint__InfoFlag {
 }
 
 func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
-	var _ma *C.struct_miqt_array = C.QTouchEvent__TouchPoint_RawScreenPositions(this.h)
+	var _ma C.struct_miqt_array = C.QTouchEvent__TouchPoint_RawScreenPositions(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -3714,7 +3706,6 @@ func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -3799,14 +3790,12 @@ func (this *QTouchEvent__TouchPoint) SetFlags(flags QTouchEvent__TouchPoint__Inf
 }
 
 func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) {
-	// For the C ABI, malloc a C array of raw pointers
 	positions_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray))
 	for i := range positions {
 		positions_CArray[i] = positions[i].cPointer()
 	}
-	positions_ma := &C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(positions_ma))
+	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
 	C.QTouchEvent__TouchPoint_SetRawScreenPositions(this.h, positions_ma)
 }
 

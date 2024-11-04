@@ -401,19 +401,17 @@ func (this *QTextEdit) SetAcceptRichText(accept bool) {
 }
 
 func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection) {
-	// For the C ABI, malloc a C array of raw pointers
 	selections_CArray := (*[0xffff]*C.QTextEdit__ExtraSelection)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	selections_ma := &C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(selections_ma))
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
 	C.QTextEdit_SetExtraSelections(this.h, selections_ma)
 }
 
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
-	var _ma *C.struct_miqt_array = C.QTextEdit_ExtraSelections(this.h)
+	var _ma C.struct_miqt_array = C.QTextEdit_ExtraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -422,7 +420,6 @@ func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

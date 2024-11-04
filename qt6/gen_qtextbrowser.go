@@ -87,7 +87,7 @@ func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
 }
 
 func (this *QTextBrowser) SearchPaths() []string {
-	var _ma *C.struct_miqt_array = C.QTextBrowser_SearchPaths(this.h)
+	var _ma C.struct_miqt_array = C.QTextBrowser_SearchPaths(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -96,12 +96,10 @@ func (this *QTextBrowser) SearchPaths() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
-	// For the C ABI, malloc a C array of structs
 	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray))
 	for i := range paths {
@@ -111,8 +109,7 @@ func (this *QTextBrowser) SetSearchPaths(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 	C.QTextBrowser_SetSearchPaths(this.h, paths_ma)
 }
 

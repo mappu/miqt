@@ -311,7 +311,7 @@ func (this *QSettings) SetArrayIndex(i int) {
 }
 
 func (this *QSettings) AllKeys() []string {
-	var _ma *C.struct_miqt_array = C.QSettings_AllKeys(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_AllKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -320,12 +320,11 @@ func (this *QSettings) AllKeys() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QSettings) ChildKeys() []string {
-	var _ma *C.struct_miqt_array = C.QSettings_ChildKeys(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_ChildKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -334,12 +333,11 @@ func (this *QSettings) ChildKeys() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QSettings) ChildGroups() []string {
-	var _ma *C.struct_miqt_array = C.QSettings_ChildGroups(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_ChildGroups(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -348,7 +346,6 @@ func (this *QSettings) ChildGroups() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

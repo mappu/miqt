@@ -51,7 +51,6 @@ func NewQStringListModel() *QStringListModel {
 
 // NewQStringListModel2 constructs a new QStringListModel object.
 func NewQStringListModel2(strings []string) *QStringListModel {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -61,8 +60,7 @@ func NewQStringListModel2(strings []string) *QStringListModel {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	ret := C.QStringListModel_new2(strings_ma)
 	return newQStringListModel(ret)
 }
@@ -75,7 +73,6 @@ func NewQStringListModel3(parent *QObject) *QStringListModel {
 
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -85,8 +82,7 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	ret := C.QStringListModel_new4(strings_ma, parent.cPointer())
 	return newQStringListModel(ret)
 }
@@ -152,12 +148,49 @@ func (this *QStringListModel) MoveRows(sourceParent *QModelIndex, sourceRow int,
 	return (bool)(C.QStringListModel_MoveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
+func (this *QStringListModel) ItemData(index *QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QStringListModel_ItemData(this.h, index.cPointer())
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
+func (this *QStringListModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray))
+	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_ctr := 0
+	for roles_k, roles_v := range roles {
+		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
+		roles_Values_CArray[roles_ctr] = roles_v.cPointer()
+		roles_ctr++
+	}
+	roles_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roles)),
+		keys:   unsafe.Pointer(roles_Keys_CArray),
+		values: unsafe.Pointer(roles_Values_CArray),
+	}
+	return (bool)(C.QStringListModel_SetItemData(this.h, index.cPointer(), roles_mm))
+}
+
 func (this *QStringListModel) Sort(column int) {
 	C.QStringListModel_Sort(this.h, (C.int)(column))
 }
 
 func (this *QStringListModel) StringList() []string {
-	var _ma *C.struct_miqt_array = C.QStringListModel_StringList(this.h)
+	var _ma C.struct_miqt_array = C.QStringListModel_StringList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -166,12 +199,10 @@ func (this *QStringListModel) StringList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QStringListModel) SetStringList(strings []string) {
-	// For the C ABI, malloc a C array of structs
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -181,8 +212,7 @@ func (this *QStringListModel) SetStringList(strings []string) {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	C.QStringListModel_SetStringList(this.h, strings_ma)
 }
 

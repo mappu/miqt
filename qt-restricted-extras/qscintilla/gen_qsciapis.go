@@ -135,7 +135,6 @@ func (this *QsciAPIs) SavePrepared() bool {
 }
 
 func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) {
-	// For the C ABI, malloc a C array of structs
 	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray))
 	for i := range context {
@@ -145,9 +144,7 @@ func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) 
 		defer C.free(unsafe.Pointer(context_i_ms.data))
 		context_CArray[i] = context_i_ms
 	}
-	context_ma := &C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(context_ma))
-	// For the C ABI, malloc a C array of structs
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
 	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
 	defer C.free(unsafe.Pointer(list_CArray))
 	for i := range list {
@@ -157,8 +154,7 @@ func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) 
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	C.QsciAPIs_UpdateAutoCompletionList(this.h, context_ma, list_ma)
 }
 
@@ -171,7 +167,6 @@ func (this *QsciAPIs) AutoCompletionSelected(sel string) {
 }
 
 func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
-	// For the C ABI, malloc a C array of structs
 	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray))
 	for i := range context {
@@ -181,17 +176,14 @@ func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla
 		defer C.free(unsafe.Pointer(context_i_ms.data))
 		context_CArray[i] = context_i_ms
 	}
-	context_ma := &C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(context_ma))
-	// For the C ABI, malloc a C array of raw pointers
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
 	shifts_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(shifts))))
 	defer C.free(unsafe.Pointer(shifts_CArray))
 	for i := range shifts {
 		shifts_CArray[i] = (C.int)(shifts[i])
 	}
-	shifts_ma := &C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(shifts_ma))
-	var _ma *C.struct_miqt_array = C.QsciAPIs_CallTips(this.h, context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
+	shifts_ma := C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray)}
+	var _ma C.struct_miqt_array = C.QsciAPIs_CallTips(this.h, context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -200,7 +192,6 @@ func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -209,7 +200,7 @@ func (this *QsciAPIs) Event(e *qt.QEvent) bool {
 }
 
 func (this *QsciAPIs) InstalledAPIFiles() []string {
-	var _ma *C.struct_miqt_array = C.QsciAPIs_InstalledAPIFiles(this.h)
+	var _ma C.struct_miqt_array = C.QsciAPIs_InstalledAPIFiles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -218,7 +209,6 @@ func (this *QsciAPIs) InstalledAPIFiles() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

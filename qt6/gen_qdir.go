@@ -190,7 +190,6 @@ func QDir_SetSearchPaths(prefix string, searchPaths []string) {
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	// For the C ABI, malloc a C array of structs
 	searchPaths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(searchPaths))))
 	defer C.free(unsafe.Pointer(searchPaths_CArray))
 	for i := range searchPaths {
@@ -200,8 +199,7 @@ func QDir_SetSearchPaths(prefix string, searchPaths []string) {
 		defer C.free(unsafe.Pointer(searchPaths_i_ms.data))
 		searchPaths_CArray[i] = searchPaths_i_ms
 	}
-	searchPaths_ma := &C.struct_miqt_array{len: C.size_t(len(searchPaths)), data: unsafe.Pointer(searchPaths_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(searchPaths_ma))
+	searchPaths_ma := C.struct_miqt_array{len: C.size_t(len(searchPaths)), data: unsafe.Pointer(searchPaths_CArray)}
 	C.QDir_SetSearchPaths(prefix_ms, searchPaths_ma)
 }
 
@@ -222,7 +220,7 @@ func QDir_SearchPaths(prefix string) []string {
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	var _ma *C.struct_miqt_array = C.QDir_SearchPaths(prefix_ms)
+	var _ma C.struct_miqt_array = C.QDir_SearchPaths(prefix_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -231,7 +229,6 @@ func QDir_SearchPaths(prefix string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -310,7 +307,7 @@ func (this *QDir) CdUp() bool {
 }
 
 func (this *QDir) NameFilters() []string {
-	var _ma *C.struct_miqt_array = C.QDir_NameFilters(this.h)
+	var _ma C.struct_miqt_array = C.QDir_NameFilters(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -319,12 +316,10 @@ func (this *QDir) NameFilters() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) SetNameFilters(nameFilters []string) {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -334,8 +329,7 @@ func (this *QDir) SetNameFilters(nameFilters []string) {
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	C.QDir_SetNameFilters(this.h, nameFilters_ma)
 }
 
@@ -375,7 +369,7 @@ func QDir_NameFiltersFromString(nameFilter string) []string {
 	nameFilter_ms.data = C.CString(nameFilter)
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
-	var _ma *C.struct_miqt_array = C.QDir_NameFiltersFromString(nameFilter_ms)
+	var _ma C.struct_miqt_array = C.QDir_NameFiltersFromString(nameFilter_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -384,12 +378,11 @@ func QDir_NameFiltersFromString(nameFilter string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryList() []string {
-	var _ma *C.struct_miqt_array = C.QDir_EntryList(this.h)
+	var _ma C.struct_miqt_array = C.QDir_EntryList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -398,12 +391,10 @@ func (this *QDir) EntryList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryListWithNameFilters(nameFilters []string) []string {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -413,9 +404,8 @@ func (this *QDir) EntryListWithNameFilters(nameFilters []string) []string {
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryListWithNameFilters(this.h, nameFilters_ma)
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryListWithNameFilters(this.h, nameFilters_ma)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -424,12 +414,11 @@ func (this *QDir) EntryListWithNameFilters(nameFilters []string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoList() []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList(this.h)
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoList(this.h)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -438,12 +427,10 @@ func (this *QDir) EntryInfoList() []QFileInfo {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -453,9 +440,8 @@ func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoListWithNameFilters(this.h, nameFilters_ma)
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoListWithNameFilters(this.h, nameFilters_ma)
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -464,7 +450,6 @@ func (this *QDir) EntryInfoListWithNameFilters(nameFilters []string) []QFileInfo
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -589,7 +574,7 @@ func (this *QDir) ExistsWithName(name string) bool {
 }
 
 func QDir_Drives() []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_Drives()
+	var _ma C.struct_miqt_array = C.QDir_Drives()
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -598,7 +583,6 @@ func QDir_Drives() []QFileInfo {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -681,7 +665,6 @@ func QDir_TempPath() string {
 }
 
 func QDir_Match(filters []string, fileName string) bool {
-	// For the C ABI, malloc a C array of structs
 	filters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(filters))))
 	defer C.free(unsafe.Pointer(filters_CArray))
 	for i := range filters {
@@ -691,8 +674,7 @@ func QDir_Match(filters []string, fileName string) bool {
 		defer C.free(unsafe.Pointer(filters_i_ms.data))
 		filters_CArray[i] = filters_i_ms
 	}
-	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
+	filters_ma := C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -732,7 +714,7 @@ func (this *QDir) IsEmpty1(filters QDir__Filter) bool {
 }
 
 func (this *QDir) EntryList1(filters QDir__Filter) []string {
-	var _ma *C.struct_miqt_array = C.QDir_EntryList1(this.h, (C.int)(filters))
+	var _ma C.struct_miqt_array = C.QDir_EntryList1(this.h, (C.int)(filters))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -741,12 +723,11 @@ func (this *QDir) EntryList1(filters QDir__Filter) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryList2(filters QDir__Filter, sort QDir__SortFlag) []string {
-	var _ma *C.struct_miqt_array = C.QDir_EntryList2(this.h, (C.int)(filters), (C.int)(sort))
+	var _ma C.struct_miqt_array = C.QDir_EntryList2(this.h, (C.int)(filters), (C.int)(sort))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -755,12 +736,10 @@ func (this *QDir) EntryList2(filters QDir__Filter, sort QDir__SortFlag) []string
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryList22(nameFilters []string, filters QDir__Filter) []string {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -770,9 +749,8 @@ func (this *QDir) EntryList22(nameFilters []string, filters QDir__Filter) []stri
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryList22(this.h, nameFilters_ma, (C.int)(filters))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryList22(this.h, nameFilters_ma, (C.int)(filters))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -781,12 +759,10 @@ func (this *QDir) EntryList22(nameFilters []string, filters QDir__Filter) []stri
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryList3(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag) []string {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -796,9 +772,8 @@ func (this *QDir) EntryList3(nameFilters []string, filters QDir__Filter, sort QD
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -807,12 +782,11 @@ func (this *QDir) EntryList3(nameFilters []string, filters QDir__Filter, sort QD
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoList1(filters QDir__Filter) []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList1(this.h, (C.int)(filters))
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoList1(this.h, (C.int)(filters))
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -821,12 +795,11 @@ func (this *QDir) EntryInfoList1(filters QDir__Filter) []QFileInfo {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoList2(filters QDir__Filter, sort QDir__SortFlag) []QFileInfo {
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList2(this.h, (C.int)(filters), (C.int)(sort))
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoList2(this.h, (C.int)(filters), (C.int)(sort))
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -835,12 +808,10 @@ func (this *QDir) EntryInfoList2(filters QDir__Filter, sort QDir__SortFlag) []QF
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoList22(nameFilters []string, filters QDir__Filter) []QFileInfo {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -850,9 +821,8 @@ func (this *QDir) EntryInfoList22(nameFilters []string, filters QDir__Filter) []
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList22(this.h, nameFilters_ma, (C.int)(filters))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoList22(this.h, nameFilters_ma, (C.int)(filters))
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -861,12 +831,10 @@ func (this *QDir) EntryInfoList22(nameFilters []string, filters QDir__Filter) []
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sort QDir__SortFlag) []QFileInfo {
-	// For the C ABI, malloc a C array of structs
 	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
 	defer C.free(unsafe.Pointer(nameFilters_CArray))
 	for i := range nameFilters {
@@ -876,9 +844,8 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sor
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
-	var _ma *C.struct_miqt_array = C.QDir_EntryInfoList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	var _ma C.struct_miqt_array = C.QDir_EntryInfoList3(this.h, nameFilters_ma, (C.int)(filters), (C.int)(sort))
 	_ret := make([]QFileInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QFileInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -887,7 +854,6 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sor
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

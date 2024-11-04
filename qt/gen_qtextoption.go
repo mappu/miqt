@@ -143,42 +143,37 @@ func (this *QTextOption) TabStopDistance() float64 {
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabStops_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray))
 	for i := range tabStops {
 		tabStops_CArray[i] = (C.double)(tabStops[i])
 	}
-	tabStops_ma := &C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(tabStops_ma))
+	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
 	C.QTextOption_SetTabArray(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) TabArray() []float64 {
-	var _ma *C.struct_miqt_array = C.QTextOption_TabArray(this.h)
+	var _ma C.struct_miqt_array = C.QTextOption_TabArray(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
-	// For the C ABI, malloc a C array of raw pointers
 	tabStops_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabStops))))
 	defer C.free(unsafe.Pointer(tabStops_CArray))
 	for i := range tabStops {
 		tabStops_CArray[i] = tabStops[i].cPointer()
 	}
-	tabStops_ma := &C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(tabStops_ma))
+	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
 	C.QTextOption_SetTabs(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) Tabs() []QTextOption__Tab {
-	var _ma *C.struct_miqt_array = C.QTextOption_Tabs(this.h)
+	var _ma C.struct_miqt_array = C.QTextOption_Tabs(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -187,7 +182,6 @@ func (this *QTextOption) Tabs() []QTextOption__Tab {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

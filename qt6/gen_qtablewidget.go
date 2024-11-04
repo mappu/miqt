@@ -513,13 +513,12 @@ func (this *QTableWidget) TakeItem(row int, column int) *QTableWidgetItem {
 }
 
 func (this *QTableWidget) Items(data *QMimeData) []*QTableWidgetItem {
-	var _ma *C.struct_miqt_array = C.QTableWidget_Items(this.h, data.cPointer())
+	var _ma C.struct_miqt_array = C.QTableWidget_Items(this.h, data.cPointer())
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQTableWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -559,7 +558,6 @@ func (this *QTableWidget) TakeHorizontalHeaderItem(column int) *QTableWidgetItem
 }
 
 func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
@@ -569,13 +567,11 @@ func (this *QTableWidget) SetVerticalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QTableWidget_SetVerticalHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
-	// For the C ABI, malloc a C array of structs
 	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray))
 	for i := range labels {
@@ -585,8 +581,7 @@ func (this *QTableWidget) SetHorizontalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QTableWidget_SetHorizontalHeaderLabels(this.h, labels_ma)
 }
 
@@ -663,7 +658,7 @@ func (this *QTableWidget) SetRangeSelected(rangeVal *QTableWidgetSelectionRange,
 }
 
 func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
-	var _ma *C.struct_miqt_array = C.QTableWidget_SelectedRanges(this.h)
+	var _ma C.struct_miqt_array = C.QTableWidget_SelectedRanges(this.h)
 	_ret := make([]QTableWidgetSelectionRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetSelectionRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -672,18 +667,16 @@ func (this *QTableWidget) SelectedRanges() []QTableWidgetSelectionRange {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QTableWidget) SelectedItems() []*QTableWidgetItem {
-	var _ma *C.struct_miqt_array = C.QTableWidget_SelectedItems(this.h)
+	var _ma C.struct_miqt_array = C.QTableWidget_SelectedItems(this.h)
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQTableWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -692,13 +685,12 @@ func (this *QTableWidget) FindItems(text string, flags MatchFlag) []*QTableWidge
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QTableWidget_FindItems(this.h, text_ms, (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QTableWidget_FindItems(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QTableWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTableWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQTableWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

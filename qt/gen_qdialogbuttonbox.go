@@ -205,13 +205,12 @@ func (this *QDialogButtonBox) Clear() {
 }
 
 func (this *QDialogButtonBox) Buttons() []*QAbstractButton {
-	var _ma *C.struct_miqt_array = C.QDialogButtonBox_Buttons(this.h)
+	var _ma C.struct_miqt_array = C.QDialogButtonBox_Buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractButton(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

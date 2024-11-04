@@ -79,16 +79,16 @@ void QGraphicsItem_SetParentItem(QGraphicsItem* self, QGraphicsItem* parent) {
 	self->setParentItem(parent);
 }
 
-struct miqt_array* QGraphicsItem_ChildItems(const QGraphicsItem* self) {
+struct miqt_array QGraphicsItem_ChildItems(const QGraphicsItem* self) {
 	QList<QGraphicsItem *> _ret = self->childItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -450,24 +450,24 @@ double QGraphicsItem_Scale(const QGraphicsItem* self) {
 	return static_cast<double>(_ret);
 }
 
-struct miqt_array* QGraphicsItem_Transformations(const QGraphicsItem* self) {
+struct miqt_array QGraphicsItem_Transformations(const QGraphicsItem* self) {
 	QList<QGraphicsTransform *> _ret = self->transformations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsTransform** _arr = static_cast<QGraphicsTransform**>(malloc(sizeof(QGraphicsTransform*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QGraphicsItem_SetTransformations(QGraphicsItem* self, struct miqt_array* /* of QGraphicsTransform* */ transformations) {
+void QGraphicsItem_SetTransformations(QGraphicsItem* self, struct miqt_array /* of QGraphicsTransform* */ transformations) {
 	QList<QGraphicsTransform *> transformations_QList;
-	transformations_QList.reserve(transformations->len);
-	QGraphicsTransform** transformations_arr = static_cast<QGraphicsTransform**>(transformations->data);
-	for(size_t i = 0; i < transformations->len; ++i) {
+	transformations_QList.reserve(transformations.len);
+	QGraphicsTransform** transformations_arr = static_cast<QGraphicsTransform**>(transformations.data);
+	for(size_t i = 0; i < transformations.len; ++i) {
 		transformations_QList.push_back(transformations_arr[i]);
 	}
 	self->setTransformations(transformations_QList);
@@ -538,16 +538,16 @@ bool QGraphicsItem_CollidesWithPath(const QGraphicsItem* self, QPainterPath* pat
 	return self->collidesWithPath(*path);
 }
 
-struct miqt_array* QGraphicsItem_CollidingItems(const QGraphicsItem* self) {
+struct miqt_array QGraphicsItem_CollidingItems(const QGraphicsItem* self) {
 	QList<QGraphicsItem *> _ret = self->collidingItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -809,16 +809,16 @@ bool QGraphicsItem_CollidesWithPath2(const QGraphicsItem* self, QPainterPath* pa
 	return self->collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-struct miqt_array* QGraphicsItem_CollidingItems1(const QGraphicsItem* self, int mode) {
+struct miqt_array QGraphicsItem_CollidingItems1(const QGraphicsItem* self, int mode) {
 	QList<QGraphicsItem *> _ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

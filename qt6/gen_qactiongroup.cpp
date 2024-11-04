@@ -52,16 +52,16 @@ void QActionGroup_RemoveAction(QActionGroup* self, QAction* a) {
 	self->removeAction(a);
 }
 
-struct miqt_array* QActionGroup_Actions(const QActionGroup* self) {
+struct miqt_array QActionGroup_Actions(const QActionGroup* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

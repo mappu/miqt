@@ -99,7 +99,7 @@ func (this *QColormap) ColorAt(pixel uint) *QColor {
 }
 
 func (this *QColormap) Colormap() []QColor {
-	var _ma *C.struct_miqt_array = C.QColormap_Colormap(this.h)
+	var _ma C.struct_miqt_array = C.QColormap_Colormap(this.h)
 	_ret := make([]QColor, int(_ma.len))
 	_outCast := (*[0xffff]*C.QColor)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -108,7 +108,6 @@ func (this *QColormap) Colormap() []QColor {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

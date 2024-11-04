@@ -35,7 +35,7 @@ struct miqt_string QsciLexerPascal_Tr(const char* s);
 struct miqt_string QsciLexerPascal_TrUtf8(const char* s);
 const char* QsciLexerPascal_Language(const QsciLexerPascal* self);
 const char* QsciLexerPascal_Lexer(const QsciLexerPascal* self);
-struct miqt_array* QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self);
+struct miqt_array QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockEnd(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockStart(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockStartKeyword(const QsciLexerPascal* self);

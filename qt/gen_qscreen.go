@@ -168,13 +168,12 @@ func (this *QScreen) AvailableGeometry() *QRect {
 }
 
 func (this *QScreen) VirtualSiblings() []*QScreen {
-	var _ma *C.struct_miqt_array = C.QScreen_VirtualSiblings(this.h)
+	var _ma C.struct_miqt_array = C.QScreen_VirtualSiblings(this.h)
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

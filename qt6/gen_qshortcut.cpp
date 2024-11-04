@@ -77,26 +77,26 @@ void QShortcut_SetKeys(QShortcut* self, int key) {
 	self->setKeys(static_cast<QKeySequence::StandardKey>(key));
 }
 
-void QShortcut_SetKeysWithKeys(QShortcut* self, struct miqt_array* /* of QKeySequence* */ keys) {
+void QShortcut_SetKeysWithKeys(QShortcut* self, struct miqt_array /* of QKeySequence* */ keys) {
 	QList<QKeySequence> keys_QList;
-	keys_QList.reserve(keys->len);
-	QKeySequence** keys_arr = static_cast<QKeySequence**>(keys->data);
-	for(size_t i = 0; i < keys->len; ++i) {
+	keys_QList.reserve(keys.len);
+	QKeySequence** keys_arr = static_cast<QKeySequence**>(keys.data);
+	for(size_t i = 0; i < keys.len; ++i) {
 		keys_QList.push_back(*(keys_arr[i]));
 	}
 	self->setKeys(keys_QList);
 }
 
-struct miqt_array* QShortcut_Keys(const QShortcut* self) {
+struct miqt_array QShortcut_Keys(const QShortcut* self) {
 	QList<QKeySequence> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QKeySequence(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

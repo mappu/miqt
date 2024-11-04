@@ -107,25 +107,22 @@ func (this *QPen) SetStyle(style PenStyle) {
 }
 
 func (this *QPen) DashPattern() []float64 {
-	var _ma *C.struct_miqt_array = C.QPen_DashPattern(this.h)
+	var _ma C.struct_miqt_array = C.QPen_DashPattern(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QPen) SetDashPattern(pattern []float64) {
-	// For the C ABI, malloc a C array of raw pointers
 	pattern_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(pattern))))
 	defer C.free(unsafe.Pointer(pattern_CArray))
 	for i := range pattern {
 		pattern_CArray[i] = (C.double)(pattern[i])
 	}
-	pattern_ma := &C.struct_miqt_array{len: C.size_t(len(pattern)), data: unsafe.Pointer(pattern_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(pattern_ma))
+	pattern_ma := C.struct_miqt_array{len: C.size_t(len(pattern)), data: unsafe.Pointer(pattern_CArray)}
 	C.QPen_SetDashPattern(this.h, pattern_ma)
 }
 

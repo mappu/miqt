@@ -9,7 +9,6 @@ package qt6
 import "C"
 
 import (
-	"runtime"
 	"unsafe"
 )
 
@@ -110,7 +109,6 @@ func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
-	// For the C ABI, malloc a C array of structs
 	restartCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(restartCommand))))
 	defer C.free(unsafe.Pointer(restartCommand_CArray))
 	for i := range restartCommand {
@@ -120,13 +118,12 @@ func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 		defer C.free(unsafe.Pointer(restartCommand_i_ms.data))
 		restartCommand_CArray[i] = restartCommand_i_ms
 	}
-	restartCommand_ma := &C.struct_miqt_array{len: C.size_t(len(restartCommand)), data: unsafe.Pointer(restartCommand_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(restartCommand_ma))
+	restartCommand_ma := C.struct_miqt_array{len: C.size_t(len(restartCommand)), data: unsafe.Pointer(restartCommand_CArray)}
 	C.QSessionManager_SetRestartCommand(this.h, restartCommand_ma)
 }
 
 func (this *QSessionManager) RestartCommand() []string {
-	var _ma *C.struct_miqt_array = C.QSessionManager_RestartCommand(this.h)
+	var _ma C.struct_miqt_array = C.QSessionManager_RestartCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -135,12 +132,10 @@ func (this *QSessionManager) RestartCommand() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
-	// For the C ABI, malloc a C array of structs
 	discardCommand_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(discardCommand))))
 	defer C.free(unsafe.Pointer(discardCommand_CArray))
 	for i := range discardCommand {
@@ -150,13 +145,12 @@ func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 		defer C.free(unsafe.Pointer(discardCommand_i_ms.data))
 		discardCommand_CArray[i] = discardCommand_i_ms
 	}
-	discardCommand_ma := &C.struct_miqt_array{len: C.size_t(len(discardCommand)), data: unsafe.Pointer(discardCommand_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(discardCommand_ma))
+	discardCommand_ma := C.struct_miqt_array{len: C.size_t(len(discardCommand)), data: unsafe.Pointer(discardCommand_CArray)}
 	C.QSessionManager_SetDiscardCommand(this.h, discardCommand_ma)
 }
 
 func (this *QSessionManager) DiscardCommand() []string {
-	var _ma *C.struct_miqt_array = C.QSessionManager_DiscardCommand(this.h)
+	var _ma C.struct_miqt_array = C.QSessionManager_DiscardCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -165,7 +159,6 @@ func (this *QSessionManager) DiscardCommand() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -186,7 +179,6 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	// For the C ABI, malloc a C array of structs
 	value_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(value))))
 	defer C.free(unsafe.Pointer(value_CArray))
 	for i := range value {
@@ -196,8 +188,7 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 		defer C.free(unsafe.Pointer(value_i_ms.data))
 		value_CArray[i] = value_i_ms
 	}
-	value_ma := &C.struct_miqt_array{len: C.size_t(len(value)), data: unsafe.Pointer(value_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(value_ma))
+	value_ma := C.struct_miqt_array{len: C.size_t(len(value)), data: unsafe.Pointer(value_CArray)}
 	C.QSessionManager_SetManagerProperty2(this.h, name_ms, value_ma)
 }
 

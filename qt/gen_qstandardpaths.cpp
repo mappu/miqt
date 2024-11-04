@@ -18,7 +18,7 @@ struct miqt_string QStandardPaths_WritableLocation(int typeVal) {
 	return _ms;
 }
 
-struct miqt_array* QStandardPaths_StandardLocations(int typeVal) {
+struct miqt_array QStandardPaths_StandardLocations(int typeVal) {
 	QStringList _ret = QStandardPaths::standardLocations(static_cast<QStandardPaths::StandardLocation>(typeVal));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -32,9 +32,9 @@ struct miqt_array* QStandardPaths_StandardLocations(int typeVal) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -50,7 +50,7 @@ struct miqt_string QStandardPaths_Locate(int typeVal, struct miqt_string fileNam
 	return _ms;
 }
 
-struct miqt_array* QStandardPaths_LocateAll(int typeVal, struct miqt_string fileName) {
+struct miqt_array QStandardPaths_LocateAll(int typeVal, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QStringList _ret = QStandardPaths::locateAll(static_cast<QStandardPaths::StandardLocation>(typeVal), fileName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -65,9 +65,9 @@ struct miqt_array* QStandardPaths_LocateAll(int typeVal, struct miqt_string file
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -118,7 +118,7 @@ struct miqt_string QStandardPaths_Locate3(int typeVal, struct miqt_string fileNa
 	return _ms;
 }
 
-struct miqt_array* QStandardPaths_LocateAll3(int typeVal, struct miqt_string fileName, int options) {
+struct miqt_array QStandardPaths_LocateAll3(int typeVal, struct miqt_string fileName, int options) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QStringList _ret = QStandardPaths::locateAll(static_cast<QStandardPaths::StandardLocation>(typeVal), fileName_QString, static_cast<QStandardPaths::LocateOptions>(options));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -133,18 +133,18 @@ struct miqt_array* QStandardPaths_LocateAll3(int typeVal, struct miqt_string fil
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_string QStandardPaths_FindExecutable2(struct miqt_string executableName, struct miqt_array* /* of struct miqt_string */ paths) {
+struct miqt_string QStandardPaths_FindExecutable2(struct miqt_string executableName, struct miqt_array /* of struct miqt_string */ paths) {
 	QString executableName_QString = QString::fromUtf8(executableName.data, executableName.len);
 	QStringList paths_QList;
-	paths_QList.reserve(paths->len);
-	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths->data);
-	for(size_t i = 0; i < paths->len; ++i) {
+	paths_QList.reserve(paths.len);
+	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
+	for(size_t i = 0; i < paths.len; ++i) {
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}

@@ -123,7 +123,7 @@ func (this *QsciLexerD) Lexer() string {
 }
 
 func (this *QsciLexerD) AutoCompletionWordSeparators() []string {
-	var _ma *C.struct_miqt_array = C.QsciLexerD_AutoCompletionWordSeparators(this.h)
+	var _ma C.struct_miqt_array = C.QsciLexerD_AutoCompletionWordSeparators(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -132,7 +132,6 @@ func (this *QsciLexerD) AutoCompletionWordSeparators() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

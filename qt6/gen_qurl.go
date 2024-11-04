@@ -481,7 +481,7 @@ func QUrl_ToAce(domain string) []byte {
 }
 
 func QUrl_IdnWhitelist() []string {
-	var _ma *C.struct_miqt_array = C.QUrl_IdnWhitelist()
+	var _ma C.struct_miqt_array = C.QUrl_IdnWhitelist()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -490,20 +490,17 @@ func QUrl_IdnWhitelist() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QUrl_ToStringList(uris []QUrl) []string {
-	// For the C ABI, malloc a C array of raw pointers
 	uris_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
 		uris_CArray[i] = uris[i].cPointer()
 	}
-	uris_ma := &C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(uris_ma))
-	var _ma *C.struct_miqt_array = C.QUrl_ToStringList(uris_ma)
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	var _ma C.struct_miqt_array = C.QUrl_ToStringList(uris_ma)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -512,12 +509,10 @@ func QUrl_ToStringList(uris []QUrl) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QUrl_FromStringList(uris []string) []QUrl {
-	// For the C ABI, malloc a C array of structs
 	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
@@ -527,9 +522,8 @@ func QUrl_FromStringList(uris []string) []QUrl {
 		defer C.free(unsafe.Pointer(uris_i_ms.data))
 		uris_CArray[i] = uris_i_ms
 	}
-	uris_ma := &C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(uris_ma))
-	var _ma *C.struct_miqt_array = C.QUrl_FromStringList(uris_ma)
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	var _ma C.struct_miqt_array = C.QUrl_FromStringList(uris_ma)
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -538,12 +532,10 @@ func QUrl_FromStringList(uris []string) []QUrl {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QUrl_SetIdnWhitelist(idnWhitelist []string) {
-	// For the C ABI, malloc a C array of structs
 	idnWhitelist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(idnWhitelist))))
 	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
 	for i := range idnWhitelist {
@@ -553,8 +545,7 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 		defer C.free(unsafe.Pointer(idnWhitelist_i_ms.data))
 		idnWhitelist_CArray[i] = idnWhitelist_i_ms
 	}
-	idnWhitelist_ma := &C.struct_miqt_array{len: C.size_t(len(idnWhitelist)), data: unsafe.Pointer(idnWhitelist_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(idnWhitelist_ma))
+	idnWhitelist_ma := C.struct_miqt_array{len: C.size_t(len(idnWhitelist)), data: unsafe.Pointer(idnWhitelist_CArray)}
 	C.QUrl_SetIdnWhitelist(idnWhitelist_ma)
 }
 
@@ -790,7 +781,6 @@ func QUrl_ToAce2(domain string, options QUrl__AceProcessingOption) []byte {
 }
 
 func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
-	// For the C ABI, malloc a C array of structs
 	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
 	defer C.free(unsafe.Pointer(uris_CArray))
 	for i := range uris {
@@ -800,9 +790,8 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 		defer C.free(unsafe.Pointer(uris_i_ms.data))
 		uris_CArray[i] = uris_i_ms
 	}
-	uris_ma := &C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(uris_ma))
-	var _ma *C.struct_miqt_array = C.QUrl_FromStringList2(uris_ma, (C.int)(mode))
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	var _ma C.struct_miqt_array = C.QUrl_FromStringList2(uris_ma, (C.int)(mode))
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -811,7 +800,6 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

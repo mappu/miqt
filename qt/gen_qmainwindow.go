@@ -273,13 +273,12 @@ func (this *QMainWindow) TabifyDockWidget(first *QDockWidget, second *QDockWidge
 }
 
 func (this *QMainWindow) TabifiedDockWidgets(dockwidget *QDockWidget) []*QDockWidget {
-	var _ma *C.struct_miqt_array = C.QMainWindow_TabifiedDockWidgets(this.h, dockwidget.cPointer())
+	var _ma C.struct_miqt_array = C.QMainWindow_TabifiedDockWidgets(this.h, dockwidget.cPointer())
 	_ret := make([]*QDockWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDockWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQDockWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -296,22 +295,18 @@ func (this *QMainWindow) DockWidgetArea(dockwidget *QDockWidget) DockWidgetArea 
 }
 
 func (this *QMainWindow) ResizeDocks(docks []*QDockWidget, sizes []int, orientation Orientation) {
-	// For the C ABI, malloc a C array of raw pointers
 	docks_CArray := (*[0xffff]*C.QDockWidget)(C.malloc(C.size_t(8 * len(docks))))
 	defer C.free(unsafe.Pointer(docks_CArray))
 	for i := range docks {
 		docks_CArray[i] = docks[i].cPointer()
 	}
-	docks_ma := &C.struct_miqt_array{len: C.size_t(len(docks)), data: unsafe.Pointer(docks_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(docks_ma))
-	// For the C ABI, malloc a C array of raw pointers
+	docks_ma := C.struct_miqt_array{len: C.size_t(len(docks)), data: unsafe.Pointer(docks_CArray)}
 	sizes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(sizes))))
 	defer C.free(unsafe.Pointer(sizes_CArray))
 	for i := range sizes {
 		sizes_CArray[i] = (C.int)(sizes[i])
 	}
-	sizes_ma := &C.struct_miqt_array{len: C.size_t(len(sizes)), data: unsafe.Pointer(sizes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(sizes_ma))
+	sizes_ma := C.struct_miqt_array{len: C.size_t(len(sizes)), data: unsafe.Pointer(sizes_CArray)}
 	C.QMainWindow_ResizeDocks(this.h, docks_ma, sizes_ma, (C.int)(orientation))
 }
 

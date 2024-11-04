@@ -484,7 +484,7 @@ func (this *QTextDocument) AddResource(typeVal int, name *QUrl, resource *QVaria
 }
 
 func (this *QTextDocument) AllFormats() []QTextFormat {
-	var _ma *C.struct_miqt_array = C.QTextDocument_AllFormats(this.h)
+	var _ma C.struct_miqt_array = C.QTextDocument_AllFormats(this.h)
 	_ret := make([]QTextFormat, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextFormat)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -493,7 +493,6 @@ func (this *QTextDocument) AllFormats() []QTextFormat {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

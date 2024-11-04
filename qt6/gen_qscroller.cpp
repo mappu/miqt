@@ -57,16 +57,16 @@ void QScroller_UngrabGesture(QObject* target) {
 	QScroller::ungrabGesture(target);
 }
 
-struct miqt_array* QScroller_ActiveScrollers() {
+struct miqt_array QScroller_ActiveScrollers() {
 	QList<QScroller *> _ret = QScroller::activeScrollers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -103,11 +103,11 @@ QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
 	return new QScrollerProperties(self->scrollerProperties());
 }
 
-void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array* /* of double */ positions) {
+void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */ positions) {
 	QList<qreal> positions_QList;
-	positions_QList.reserve(positions->len);
-	double* positions_arr = static_cast<double*>(positions->data);
-	for(size_t i = 0; i < positions->len; ++i) {
+	positions_QList.reserve(positions.len);
+	double* positions_arr = static_cast<double*>(positions.data);
+	for(size_t i = 0; i < positions.len; ++i) {
 		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsX(positions_QList);
@@ -117,11 +117,11 @@ void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval
 	self->setSnapPositionsX(static_cast<qreal>(first), static_cast<qreal>(interval));
 }
 
-void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array* /* of double */ positions) {
+void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */ positions) {
 	QList<qreal> positions_QList;
-	positions_QList.reserve(positions->len);
-	double* positions_arr = static_cast<double*>(positions->data);
-	for(size_t i = 0; i < positions->len; ++i) {
+	positions_QList.reserve(positions.len);
+	double* positions_arr = static_cast<double*>(positions.data);
+	for(size_t i = 0; i < positions.len; ++i) {
 		positions_QList.push_back(static_cast<double>(positions_arr[i]));
 	}
 	self->setSnapPositionsY(positions_QList);

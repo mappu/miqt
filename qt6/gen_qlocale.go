@@ -1474,13 +1474,12 @@ func (this *QLocale) FirstDayOfWeek() DayOfWeek {
 }
 
 func (this *QLocale) Weekdays() []DayOfWeek {
-	var _ma *C.struct_miqt_array = C.QLocale_Weekdays(this.h)
+	var _ma C.struct_miqt_array = C.QLocale_Weekdays(this.h)
 	_ret := make([]DayOfWeek, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (DayOfWeek)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1606,7 +1605,7 @@ func (this *QLocale) FormattedDataSize(bytes int64) string {
 }
 
 func (this *QLocale) UiLanguages() []string {
-	var _ma *C.struct_miqt_array = C.QLocale_UiLanguages(this.h)
+	var _ma C.struct_miqt_array = C.QLocale_UiLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1615,7 +1614,6 @@ func (this *QLocale) UiLanguages() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1694,7 +1692,7 @@ func QLocale_System() *QLocale {
 }
 
 func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script, territory QLocale__Country) []QLocale {
-	var _ma *C.struct_miqt_array = C.QLocale_MatchingLocales((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory))
+	var _ma C.struct_miqt_array = C.QLocale_MatchingLocales((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory))
 	_ret := make([]QLocale, int(_ma.len))
 	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1703,18 +1701,16 @@ func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script,
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
-	var _ma *C.struct_miqt_array = C.QLocale_CountriesForLanguage((C.uint16_t)(lang))
+	var _ma C.struct_miqt_array = C.QLocale_CountriesForLanguage((C.uint16_t)(lang))
 	_ret := make([]QLocale__Country, int(_ma.len))
 	_outCast := (*[0xffff]C.uint16_t)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QLocale__Country)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1738,7 +1734,6 @@ func (this *QLocale) QuoteString(str string) string {
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
-	// For the C ABI, malloc a C array of structs
 	strl_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strl))))
 	defer C.free(unsafe.Pointer(strl_CArray))
 	for i := range strl {
@@ -1748,8 +1743,7 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 		defer C.free(unsafe.Pointer(strl_i_ms.data))
 		strl_CArray[i] = strl_i_ms
 	}
-	strl_ma := &C.struct_miqt_array{len: C.size_t(len(strl)), data: unsafe.Pointer(strl_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strl_ma))
+	strl_ma := C.struct_miqt_array{len: C.size_t(len(strl)), data: unsafe.Pointer(strl_CArray)}
 	var _ms C.struct_miqt_string = C.QLocale_CreateSeparatedList(this.h, strl_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

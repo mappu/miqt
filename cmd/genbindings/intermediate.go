@@ -105,6 +105,9 @@ func (p CppParameter) IsFlagType() bool {
 
 func (p CppParameter) QtClassType() bool {
 
+	// QtClassType returns false for our customized container types (QList,
+	// QMap, QSet, etc)
+
 	// Maybe if it's an inner class
 	if _, ok := KnownClassnames[p.ParameterType]; ok {
 		return true
@@ -142,9 +145,36 @@ func (p CppParameter) QListOf() (CppParameter, bool) {
 	return CppParameter{}, false
 }
 
-func (p CppParameter) QMapOf() bool {
-	return strings.HasPrefix(p.ParameterType, `QMap<`) ||
-		strings.HasPrefix(p.ParameterType, `QHash<`) // TODO support this
+func (p CppParameter) QMapOf() (CppParameter, CppParameter, bool) {
+	// n.b. Need to block QMap<k,v>::const_terator
+
+	if strings.HasPrefix(p.ParameterType, `QMap<`) && strings.HasSuffix(p.ParameterType, `>`) {
+		interior := tokenizeMultipleParameters(p.ParameterType[5 : len(p.ParameterType)-1])
+		if len(interior) != 2 {
+			panic("QMap<> has unexpected number of template arguments")
+		}
+
+		first := parseSingleTypeString(interior[0])
+		first.ParameterName = p.ParameterName + "_mapkey"
+		second := parseSingleTypeString(interior[1])
+		second.ParameterName = p.ParameterName + "_mapval"
+		return first, second, true
+	}
+
+	if strings.HasPrefix(p.ParameterType, `QHash<`) && strings.HasSuffix(p.ParameterType, `>`) {
+		interior := tokenizeMultipleParameters(p.ParameterType[6 : len(p.ParameterType)-1])
+		if len(interior) != 2 {
+			panic("QHash<> has unexpected number of template arguments")
+		}
+
+		first := parseSingleTypeString(interior[0])
+		first.ParameterName = p.ParameterName + "_hashkey"
+		second := parseSingleTypeString(interior[1])
+		second.ParameterName = p.ParameterName + "_hashval"
+		return first, second, true
+	}
+
+	return CppParameter{}, CppParameter{}, false
 }
 
 func (p CppParameter) QPairOf() bool {

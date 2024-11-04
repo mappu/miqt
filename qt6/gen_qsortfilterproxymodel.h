@@ -79,7 +79,7 @@ QVariant* QSortFilterProxyModel_Data(const QSortFilterProxyModel* self, QModelIn
 bool QSortFilterProxyModel_SetData(QSortFilterProxyModel* self, QModelIndex* index, QVariant* value);
 QVariant* QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel* self, int section, int orientation);
 bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int section, int orientation, QVariant* value);
-QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
+QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes);
 bool QSortFilterProxyModel_DropMimeData(QSortFilterProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QSortFilterProxyModel_InsertRows(QSortFilterProxyModel* self, int row, int count);
 bool QSortFilterProxyModel_InsertColumns(QSortFilterProxyModel* self, int column, int count);
@@ -89,10 +89,10 @@ void QSortFilterProxyModel_FetchMore(QSortFilterProxyModel* self, QModelIndex* p
 bool QSortFilterProxyModel_CanFetchMore(const QSortFilterProxyModel* self, QModelIndex* parent);
 int QSortFilterProxyModel_Flags(const QSortFilterProxyModel* self, QModelIndex* index);
 QModelIndex* QSortFilterProxyModel_Buddy(const QSortFilterProxyModel* self, QModelIndex* index);
-struct miqt_array* QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value);
+struct miqt_array QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value);
 QSize* QSortFilterProxyModel_Span(const QSortFilterProxyModel* self, QModelIndex* index);
 void QSortFilterProxyModel_Sort(QSortFilterProxyModel* self, int column);
-struct miqt_array* QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self);
+struct miqt_array QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self);
 int QSortFilterProxyModel_SupportedDropActions(const QSortFilterProxyModel* self);
 void QSortFilterProxyModel_DynamicSortFilterChanged(QSortFilterProxyModel* self, bool dynamicSortFilter);
 void QSortFilterProxyModel_connect_DynamicSortFilterChanged(QSortFilterProxyModel* self, intptr_t slot);
@@ -124,8 +124,8 @@ bool QSortFilterProxyModel_InsertRows3(QSortFilterProxyModel* self, int row, int
 bool QSortFilterProxyModel_InsertColumns3(QSortFilterProxyModel* self, int column, int count, QModelIndex* parent);
 bool QSortFilterProxyModel_RemoveRows3(QSortFilterProxyModel* self, int row, int count, QModelIndex* parent);
 bool QSortFilterProxyModel_RemoveColumns3(QSortFilterProxyModel* self, int column, int count, QModelIndex* parent);
-struct miqt_array* QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits);
-struct miqt_array* QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
+struct miqt_array QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits);
+struct miqt_array QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 void QSortFilterProxyModel_Sort2(QSortFilterProxyModel* self, int column, int order);
 void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self);
 

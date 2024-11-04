@@ -40,7 +40,7 @@ const char* QsciLexer_Lexer(const QsciLexer* self);
 int QsciLexer_LexerId(const QsciLexer* self);
 QsciAbstractAPIs* QsciLexer_Apis(const QsciLexer* self);
 const char* QsciLexer_AutoCompletionFillups(const QsciLexer* self);
-struct miqt_array* QsciLexer_AutoCompletionWordSeparators(const QsciLexer* self);
+struct miqt_array QsciLexer_AutoCompletionWordSeparators(const QsciLexer* self);
 int QsciLexer_AutoIndentStyle(QsciLexer* self);
 const char* QsciLexer_BlockEnd(const QsciLexer* self);
 int QsciLexer_BlockLookback(const QsciLexer* self);

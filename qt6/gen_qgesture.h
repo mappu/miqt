@@ -140,12 +140,12 @@ struct miqt_string QTapAndHoldGesture_Tr2(const char* s, const char* c);
 struct miqt_string QTapAndHoldGesture_Tr3(const char* s, const char* c, int n);
 void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self);
 
-QGestureEvent* QGestureEvent_new(struct miqt_array* /* of QGesture* */ gestures);
+QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */ gestures);
 QGestureEvent* QGestureEvent_new2(QGestureEvent* param1);
-struct miqt_array* QGestureEvent_Gestures(const QGestureEvent* self);
+struct miqt_array QGestureEvent_Gestures(const QGestureEvent* self);
 QGesture* QGestureEvent_Gesture(const QGestureEvent* self, int typeVal);
-struct miqt_array* QGestureEvent_ActiveGestures(const QGestureEvent* self);
-struct miqt_array* QGestureEvent_CanceledGestures(const QGestureEvent* self);
+struct miqt_array QGestureEvent_ActiveGestures(const QGestureEvent* self);
+struct miqt_array QGestureEvent_CanceledGestures(const QGestureEvent* self);
 void QGestureEvent_SetAccepted(QGestureEvent* self, QGesture* param1, bool param2);
 void QGestureEvent_Accept(QGestureEvent* self, QGesture* param1);
 void QGestureEvent_Ignore(QGestureEvent* self, QGesture* param1);

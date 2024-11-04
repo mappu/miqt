@@ -115,7 +115,7 @@ func (this *QMetaMethod) GetParameterTypes(types *int) {
 }
 
 func (this *QMetaMethod) ParameterTypes() [][]byte {
-	var _ma *C.struct_miqt_array = C.QMetaMethod_ParameterTypes(this.h)
+	var _ma C.struct_miqt_array = C.QMetaMethod_ParameterTypes(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -124,12 +124,11 @@ func (this *QMetaMethod) ParameterTypes() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QMetaMethod) ParameterNames() [][]byte {
-	var _ma *C.struct_miqt_array = C.QMetaMethod_ParameterNames(this.h)
+	var _ma C.struct_miqt_array = C.QMetaMethod_ParameterNames(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -138,7 +137,6 @@ func (this *QMetaMethod) ParameterNames() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

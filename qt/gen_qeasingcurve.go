@@ -163,7 +163,7 @@ func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64
 }
 
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
-	var _ma *C.struct_miqt_array = C.QEasingCurve_ToCubicSpline(this.h)
+	var _ma C.struct_miqt_array = C.QEasingCurve_ToCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -172,7 +172,6 @@ func (this *QEasingCurve) ToCubicSpline() []QPointF {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

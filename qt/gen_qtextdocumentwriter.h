@@ -43,7 +43,7 @@ bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* documen
 bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment);
 void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec);
 QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self);
-struct miqt_array* QTextDocumentWriter_SupportedDocumentFormats();
+struct miqt_array QTextDocumentWriter_SupportedDocumentFormats();
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self);
 
 #ifdef __cplusplus

@@ -170,7 +170,7 @@ func (this *QImageReader) ImageFormat() QImage__Format {
 }
 
 func (this *QImageReader) TextKeys() []string {
-	var _ma *C.struct_miqt_array = C.QImageReader_TextKeys(this.h)
+	var _ma C.struct_miqt_array = C.QImageReader_TextKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -179,7 +179,6 @@ func (this *QImageReader) TextKeys() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -270,7 +269,7 @@ func (this *QImageReader) SubType() []byte {
 }
 
 func (this *QImageReader) SupportedSubTypes() [][]byte {
-	var _ma *C.struct_miqt_array = C.QImageReader_SupportedSubTypes(this.h)
+	var _ma C.struct_miqt_array = C.QImageReader_SupportedSubTypes(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -279,7 +278,6 @@ func (this *QImageReader) SupportedSubTypes() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -363,7 +361,7 @@ func QImageReader_ImageFormatWithDevice(device *QIODevice) []byte {
 }
 
 func QImageReader_SupportedImageFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QImageReader_SupportedImageFormats()
+	var _ma C.struct_miqt_array = C.QImageReader_SupportedImageFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -372,12 +370,11 @@ func QImageReader_SupportedImageFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QImageReader_SupportedMimeTypes() [][]byte {
-	var _ma *C.struct_miqt_array = C.QImageReader_SupportedMimeTypes()
+	var _ma C.struct_miqt_array = C.QImageReader_SupportedMimeTypes()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -386,7 +383,6 @@ func QImageReader_SupportedMimeTypes() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -394,7 +390,7 @@ func QImageReader_ImageFormatsForMimeType(mimeType []byte) [][]byte {
 	mimeType_alias := C.struct_miqt_string{}
 	mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
 	mimeType_alias.len = C.size_t(len(mimeType))
-	var _ma *C.struct_miqt_array = C.QImageReader_ImageFormatsForMimeType(mimeType_alias)
+	var _ma C.struct_miqt_array = C.QImageReader_ImageFormatsForMimeType(mimeType_alias)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -403,7 +399,6 @@ func QImageReader_ImageFormatsForMimeType(mimeType []byte) [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

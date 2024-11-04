@@ -28,9 +28,9 @@ typedef struct QVariant QVariant;
 #endif
 
 QStringListModel* QStringListModel_new();
-QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string */ strings);
+QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */ strings);
 QStringListModel* QStringListModel_new3(QObject* parent);
-QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string */ strings, QObject* parent);
+QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */ strings, QObject* parent);
 QMetaObject* QStringListModel_MetaObject(const QStringListModel* self);
 void* QStringListModel_Metacast(QStringListModel* self, const char* param1);
 struct miqt_string QStringListModel_Tr(const char* s);
@@ -43,9 +43,11 @@ int QStringListModel_Flags(const QStringListModel* self, QModelIndex* index);
 bool QStringListModel_InsertRows(QStringListModel* self, int row, int count);
 bool QStringListModel_RemoveRows(QStringListModel* self, int row, int count);
 bool QStringListModel_MoveRows(QStringListModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
+struct miqt_map QStringListModel_ItemData(const QStringListModel* self, QModelIndex* index);
+bool QStringListModel_SetItemData(QStringListModel* self, QModelIndex* index, struct miqt_map roles);
 void QStringListModel_Sort(QStringListModel* self, int column);
-struct miqt_array* QStringListModel_StringList(const QStringListModel* self);
-void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string */ strings);
+struct miqt_array QStringListModel_StringList(const QStringListModel* self);
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array /* of struct miqt_string */ strings);
 int QStringListModel_SupportedDropActions(const QStringListModel* self);
 struct miqt_string QStringListModel_Tr2(const char* s, const char* c);
 struct miqt_string QStringListModel_Tr3(const char* s, const char* c, int n);

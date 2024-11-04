@@ -773,24 +773,22 @@ func (this *QAccessibleTableCellInterface) IsSelected() bool {
 }
 
 func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInterface {
-	var _ma *C.struct_miqt_array = C.QAccessibleTableCellInterface_ColumnHeaderCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_ColumnHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterface {
-	var _ma *C.struct_miqt_array = C.QAccessibleTableCellInterface_RowHeaderCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_RowHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -878,13 +876,12 @@ func (this *QAccessibleTableInterface) SelectedCellCount() int {
 }
 
 func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
-	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAccessibleInterface(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -919,24 +916,22 @@ func (this *QAccessibleTableInterface) RowCount() int {
 }
 
 func (this *QAccessibleTableInterface) SelectedColumns() []int {
-	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedColumns(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedColumns(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QAccessibleTableInterface) SelectedRows() []int {
-	var _ma *C.struct_miqt_array = C.QAccessibleTableInterface_SelectedRows(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedRows(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1030,7 +1025,7 @@ func QAccessibleActionInterface_TrUtf8(sourceText string) string {
 }
 
 func (this *QAccessibleActionInterface) ActionNames() []string {
-	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_ActionNames(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_ActionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1039,7 +1034,6 @@ func (this *QAccessibleActionInterface) ActionNames() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1078,7 +1072,7 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	var _ma *C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_ms)
+	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1087,7 +1081,6 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

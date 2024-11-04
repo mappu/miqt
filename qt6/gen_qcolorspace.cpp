@@ -26,11 +26,11 @@ QColorSpace* QColorSpace_new4(int primaries, float gamma) {
 	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_new5(int primaries, struct miqt_array* /* of uint16_t */ transferFunctionTable) {
+QColorSpace* QColorSpace_new5(int primaries, struct miqt_array /* of uint16_t */ transferFunctionTable) {
 	QList<uint16_t> transferFunctionTable_QList;
-	transferFunctionTable_QList.reserve(transferFunctionTable->len);
-	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable->data);
-	for(size_t i = 0; i < transferFunctionTable->len; ++i) {
+	transferFunctionTable_QList.reserve(transferFunctionTable.len);
+	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable.data);
+	for(size_t i = 0; i < transferFunctionTable.len; ++i) {
 		transferFunctionTable_QList.push_back(static_cast<uint16_t>(transferFunctionTable_arr[i]));
 	}
 	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), transferFunctionTable_QList);
@@ -40,33 +40,33 @@ QColorSpace* QColorSpace_new6(QPointF* whitePoint, QPointF* redPoint, QPointF* g
 	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
-QColorSpace* QColorSpace_new7(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, struct miqt_array* /* of uint16_t */ transferFunctionTable) {
+QColorSpace* QColorSpace_new7(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, struct miqt_array /* of uint16_t */ transferFunctionTable) {
 	QList<uint16_t> transferFunctionTable_QList;
-	transferFunctionTable_QList.reserve(transferFunctionTable->len);
-	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable->data);
-	for(size_t i = 0; i < transferFunctionTable->len; ++i) {
+	transferFunctionTable_QList.reserve(transferFunctionTable.len);
+	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable.data);
+	for(size_t i = 0; i < transferFunctionTable.len; ++i) {
 		transferFunctionTable_QList.push_back(static_cast<uint16_t>(transferFunctionTable_arr[i]));
 	}
 	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, transferFunctionTable_QList);
 }
 
-QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, struct miqt_array* /* of uint16_t */ redTransferFunctionTable, struct miqt_array* /* of uint16_t */ greenTransferFunctionTable, struct miqt_array* /* of uint16_t */ blueTransferFunctionTable) {
+QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, struct miqt_array /* of uint16_t */ redTransferFunctionTable, struct miqt_array /* of uint16_t */ greenTransferFunctionTable, struct miqt_array /* of uint16_t */ blueTransferFunctionTable) {
 	QList<uint16_t> redTransferFunctionTable_QList;
-	redTransferFunctionTable_QList.reserve(redTransferFunctionTable->len);
-	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable->data);
-	for(size_t i = 0; i < redTransferFunctionTable->len; ++i) {
+	redTransferFunctionTable_QList.reserve(redTransferFunctionTable.len);
+	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable.data);
+	for(size_t i = 0; i < redTransferFunctionTable.len; ++i) {
 		redTransferFunctionTable_QList.push_back(static_cast<uint16_t>(redTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> greenTransferFunctionTable_QList;
-	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable->len);
-	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable->data);
-	for(size_t i = 0; i < greenTransferFunctionTable->len; ++i) {
+	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable.len);
+	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable.data);
+	for(size_t i = 0; i < greenTransferFunctionTable.len; ++i) {
 		greenTransferFunctionTable_QList.push_back(static_cast<uint16_t>(greenTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> blueTransferFunctionTable_QList;
-	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable->len);
-	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable->data);
-	for(size_t i = 0; i < blueTransferFunctionTable->len; ++i) {
+	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable.len);
+	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable.data);
+	for(size_t i = 0; i < blueTransferFunctionTable.len; ++i) {
 		blueTransferFunctionTable_QList.push_back(static_cast<uint16_t>(blueTransferFunctionTable_arr[i]));
 	}
 	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, redTransferFunctionTable_QList, greenTransferFunctionTable_QList, blueTransferFunctionTable_QList);
@@ -126,33 +126,33 @@ void QColorSpace_SetTransferFunction(QColorSpace* self, int transferFunction) {
 	self->setTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
-void QColorSpace_SetTransferFunctionWithTransferFunctionTable(QColorSpace* self, struct miqt_array* /* of uint16_t */ transferFunctionTable) {
+void QColorSpace_SetTransferFunctionWithTransferFunctionTable(QColorSpace* self, struct miqt_array /* of uint16_t */ transferFunctionTable) {
 	QList<uint16_t> transferFunctionTable_QList;
-	transferFunctionTable_QList.reserve(transferFunctionTable->len);
-	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable->data);
-	for(size_t i = 0; i < transferFunctionTable->len; ++i) {
+	transferFunctionTable_QList.reserve(transferFunctionTable.len);
+	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable.data);
+	for(size_t i = 0; i < transferFunctionTable.len; ++i) {
 		transferFunctionTable_QList.push_back(static_cast<uint16_t>(transferFunctionTable_arr[i]));
 	}
 	self->setTransferFunction(transferFunctionTable_QList);
 }
 
-void QColorSpace_SetTransferFunctions(QColorSpace* self, struct miqt_array* /* of uint16_t */ redTransferFunctionTable, struct miqt_array* /* of uint16_t */ greenTransferFunctionTable, struct miqt_array* /* of uint16_t */ blueTransferFunctionTable) {
+void QColorSpace_SetTransferFunctions(QColorSpace* self, struct miqt_array /* of uint16_t */ redTransferFunctionTable, struct miqt_array /* of uint16_t */ greenTransferFunctionTable, struct miqt_array /* of uint16_t */ blueTransferFunctionTable) {
 	QList<uint16_t> redTransferFunctionTable_QList;
-	redTransferFunctionTable_QList.reserve(redTransferFunctionTable->len);
-	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable->data);
-	for(size_t i = 0; i < redTransferFunctionTable->len; ++i) {
+	redTransferFunctionTable_QList.reserve(redTransferFunctionTable.len);
+	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable.data);
+	for(size_t i = 0; i < redTransferFunctionTable.len; ++i) {
 		redTransferFunctionTable_QList.push_back(static_cast<uint16_t>(redTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> greenTransferFunctionTable_QList;
-	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable->len);
-	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable->data);
-	for(size_t i = 0; i < greenTransferFunctionTable->len; ++i) {
+	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable.len);
+	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable.data);
+	for(size_t i = 0; i < greenTransferFunctionTable.len; ++i) {
 		greenTransferFunctionTable_QList.push_back(static_cast<uint16_t>(greenTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> blueTransferFunctionTable_QList;
-	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable->len);
-	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable->data);
-	for(size_t i = 0; i < blueTransferFunctionTable->len; ++i) {
+	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable.len);
+	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable.data);
+	for(size_t i = 0; i < blueTransferFunctionTable.len; ++i) {
 		blueTransferFunctionTable_QList.push_back(static_cast<uint16_t>(blueTransferFunctionTable_arr[i]));
 	}
 	self->setTransferFunctions(redTransferFunctionTable_QList, greenTransferFunctionTable_QList, blueTransferFunctionTable_QList);
@@ -162,33 +162,33 @@ QColorSpace* QColorSpace_WithTransferFunction(const QColorSpace* self, int trans
 	return new QColorSpace(self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction)));
 }
 
-QColorSpace* QColorSpace_WithTransferFunctionWithTransferFunctionTable(const QColorSpace* self, struct miqt_array* /* of uint16_t */ transferFunctionTable) {
+QColorSpace* QColorSpace_WithTransferFunctionWithTransferFunctionTable(const QColorSpace* self, struct miqt_array /* of uint16_t */ transferFunctionTable) {
 	QList<uint16_t> transferFunctionTable_QList;
-	transferFunctionTable_QList.reserve(transferFunctionTable->len);
-	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable->data);
-	for(size_t i = 0; i < transferFunctionTable->len; ++i) {
+	transferFunctionTable_QList.reserve(transferFunctionTable.len);
+	uint16_t* transferFunctionTable_arr = static_cast<uint16_t*>(transferFunctionTable.data);
+	for(size_t i = 0; i < transferFunctionTable.len; ++i) {
 		transferFunctionTable_QList.push_back(static_cast<uint16_t>(transferFunctionTable_arr[i]));
 	}
 	return new QColorSpace(self->withTransferFunction(transferFunctionTable_QList));
 }
 
-QColorSpace* QColorSpace_WithTransferFunctions(const QColorSpace* self, struct miqt_array* /* of uint16_t */ redTransferFunctionTable, struct miqt_array* /* of uint16_t */ greenTransferFunctionTable, struct miqt_array* /* of uint16_t */ blueTransferFunctionTable) {
+QColorSpace* QColorSpace_WithTransferFunctions(const QColorSpace* self, struct miqt_array /* of uint16_t */ redTransferFunctionTable, struct miqt_array /* of uint16_t */ greenTransferFunctionTable, struct miqt_array /* of uint16_t */ blueTransferFunctionTable) {
 	QList<uint16_t> redTransferFunctionTable_QList;
-	redTransferFunctionTable_QList.reserve(redTransferFunctionTable->len);
-	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable->data);
-	for(size_t i = 0; i < redTransferFunctionTable->len; ++i) {
+	redTransferFunctionTable_QList.reserve(redTransferFunctionTable.len);
+	uint16_t* redTransferFunctionTable_arr = static_cast<uint16_t*>(redTransferFunctionTable.data);
+	for(size_t i = 0; i < redTransferFunctionTable.len; ++i) {
 		redTransferFunctionTable_QList.push_back(static_cast<uint16_t>(redTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> greenTransferFunctionTable_QList;
-	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable->len);
-	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable->data);
-	for(size_t i = 0; i < greenTransferFunctionTable->len; ++i) {
+	greenTransferFunctionTable_QList.reserve(greenTransferFunctionTable.len);
+	uint16_t* greenTransferFunctionTable_arr = static_cast<uint16_t*>(greenTransferFunctionTable.data);
+	for(size_t i = 0; i < greenTransferFunctionTable.len; ++i) {
 		greenTransferFunctionTable_QList.push_back(static_cast<uint16_t>(greenTransferFunctionTable_arr[i]));
 	}
 	QList<uint16_t> blueTransferFunctionTable_QList;
-	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable->len);
-	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable->data);
-	for(size_t i = 0; i < blueTransferFunctionTable->len; ++i) {
+	blueTransferFunctionTable_QList.reserve(blueTransferFunctionTable.len);
+	uint16_t* blueTransferFunctionTable_arr = static_cast<uint16_t*>(blueTransferFunctionTable.data);
+	for(size_t i = 0; i < blueTransferFunctionTable.len; ++i) {
 		blueTransferFunctionTable_QList.push_back(static_cast<uint16_t>(blueTransferFunctionTable_arr[i]));
 	}
 	return new QColorSpace(self->withTransferFunctions(redTransferFunctionTable_QList, greenTransferFunctionTable_QList, blueTransferFunctionTable_QList));
