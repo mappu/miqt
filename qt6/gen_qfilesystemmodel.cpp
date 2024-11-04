@@ -1,10 +1,12 @@
 #include <QAbstractFileIconProvider>
+#include <QByteArray>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
 #include <QFileSystemModel>
 #include <QIcon>
 #include <QList>
+#include <QMap>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
@@ -218,6 +220,29 @@ bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, int 
 int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self) {
 	Qt::DropActions _ret = self->supportedDropActions();
 	return static_cast<int>(_ret);
+}
+
+struct miqt_map QFileSystemModel_RoleNames(const QFileSystemModel* self) {
+	QHash<int, QByteArray> _ret = self->roleNames();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		QByteArray _hashval_qb = _itr->second;
+		struct miqt_string _hashval_ms;
+		_hashval_ms.len = _hashval_qb.length();
+		_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+		memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+		_varr[_ctr] = _hashval_ms;
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string path) {

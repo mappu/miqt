@@ -62,6 +62,98 @@ func (this *QJsonObject) Swap(other *QJsonObject) {
 	C.QJsonObject_Swap(this.h, other.cPointer())
 }
 
+func QJsonObject_FromVariantMap(mapVal map[string]QVariant) *QJsonObject {
+	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
+	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_ctr := 0
+	for mapVal_k, mapVal_v := range mapVal {
+		mapVal_k_ms := C.struct_miqt_string{}
+		mapVal_k_ms.data = C.CString(mapVal_k)
+		mapVal_k_ms.len = C.size_t(len(mapVal_k))
+		defer C.free(unsafe.Pointer(mapVal_k_ms.data))
+		mapVal_Keys_CArray[mapVal_ctr] = mapVal_k_ms
+		mapVal_Values_CArray[mapVal_ctr] = mapVal_v.cPointer()
+		mapVal_ctr++
+	}
+	mapVal_mm := C.struct_miqt_map{
+		len:    C.size_t(len(mapVal)),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray),
+		values: unsafe.Pointer(mapVal_Values_CArray),
+	}
+	_ret := C.QJsonObject_FromVariantMap(mapVal_mm)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QJsonObject) ToVariantMap() map[string]QVariant {
+	var _mm C.struct_miqt_map = C.QJsonObject_ToVariantMap(this.h)
+	_ret := make(map[string]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		var _mapkey_ms C.struct_miqt_string = _Keys[i]
+		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
+		C.free(unsafe.Pointer(_mapkey_ms.data))
+		_entry_Key := _mapkey_ret
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
+func QJsonObject_FromVariantHash(mapVal map[string]QVariant) *QJsonObject {
+	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
+	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_ctr := 0
+	for mapVal_k, mapVal_v := range mapVal {
+		mapVal_k_ms := C.struct_miqt_string{}
+		mapVal_k_ms.data = C.CString(mapVal_k)
+		mapVal_k_ms.len = C.size_t(len(mapVal_k))
+		defer C.free(unsafe.Pointer(mapVal_k_ms.data))
+		mapVal_Keys_CArray[mapVal_ctr] = mapVal_k_ms
+		mapVal_Values_CArray[mapVal_ctr] = mapVal_v.cPointer()
+		mapVal_ctr++
+	}
+	mapVal_mm := C.struct_miqt_map{
+		len:    C.size_t(len(mapVal)),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray),
+		values: unsafe.Pointer(mapVal_Values_CArray),
+	}
+	_ret := C.QJsonObject_FromVariantHash(mapVal_mm)
+	_goptr := newQJsonObject(_ret)
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QJsonObject) ToVariantHash() map[string]QVariant {
+	var _mm C.struct_miqt_map = C.QJsonObject_ToVariantHash(this.h)
+	_ret := make(map[string]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		var _hashkey_ms C.struct_miqt_string = _Keys[i]
+		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
+		C.free(unsafe.Pointer(_hashkey_ms.data))
+		_entry_Key := _hashkey_ret
+		_hashval_ret := _Values[i]
+		_hashval_goptr := newQVariant(_hashval_ret)
+		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_hashval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
 func (this *QJsonObject) Keys() []string {
 	var _ma C.struct_miqt_array = C.QJsonObject_Keys(this.h)
 	_ret := make([]string, int(_ma.len))

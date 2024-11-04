@@ -14,6 +14,7 @@
 #include <QLineF>
 #include <QList>
 #include <QLocale>
+#include <QMap>
 #include <QModelIndex>
 #include <QPersistentModelIndex>
 #include <QPoint>
@@ -136,83 +137,106 @@ QVariant* QVariant_new22(QDateTime* datetime) {
 	return new QVariant(*datetime);
 }
 
-QVariant* QVariant_new23(QSize* size) {
+QVariant* QVariant_new23(struct miqt_map mapVal) {
+	QMap<QString, QVariant> mapVal_QMap;
+	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
+	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
+	for(size_t i = 0; i < mapVal.len; ++i) {
+		QString mapVal_karr_i_QString = QString::fromUtf8(mapVal_karr[i].data, mapVal_karr[i].len);
+		mapVal_QMap[mapVal_karr_i_QString] = *(mapVal_varr[i]);
+	}
+	return new QVariant(mapVal_QMap);
+}
+
+QVariant* QVariant_new24(struct miqt_map hash) {
+	QHash<QString, QVariant> hash_QMap;
+	hash_QMap.reserve(hash.len);
+	struct miqt_string* hash_karr = static_cast<struct miqt_string*>(hash.keys);
+	QVariant** hash_varr = static_cast<QVariant**>(hash.values);
+	for(size_t i = 0; i < hash.len; ++i) {
+		QString hash_karr_i_QString = QString::fromUtf8(hash_karr[i].data, hash_karr[i].len);
+		hash_QMap[hash_karr_i_QString] = *(hash_varr[i]);
+	}
+	return new QVariant(hash_QMap);
+}
+
+QVariant* QVariant_new25(QSize* size) {
 	return new QVariant(*size);
 }
 
-QVariant* QVariant_new24(QSizeF* size) {
+QVariant* QVariant_new26(QSizeF* size) {
 	return new QVariant(*size);
 }
 
-QVariant* QVariant_new25(QPoint* pt) {
+QVariant* QVariant_new27(QPoint* pt) {
 	return new QVariant(*pt);
 }
 
-QVariant* QVariant_new26(QPointF* pt) {
+QVariant* QVariant_new28(QPointF* pt) {
 	return new QVariant(*pt);
 }
 
-QVariant* QVariant_new27(QLine* line) {
+QVariant* QVariant_new29(QLine* line) {
 	return new QVariant(*line);
 }
 
-QVariant* QVariant_new28(QLineF* line) {
+QVariant* QVariant_new30(QLineF* line) {
 	return new QVariant(*line);
 }
 
-QVariant* QVariant_new29(QRect* rect) {
+QVariant* QVariant_new31(QRect* rect) {
 	return new QVariant(*rect);
 }
 
-QVariant* QVariant_new30(QRectF* rect) {
+QVariant* QVariant_new32(QRectF* rect) {
 	return new QVariant(*rect);
 }
 
-QVariant* QVariant_new31(QLocale* locale) {
+QVariant* QVariant_new33(QLocale* locale) {
 	return new QVariant(*locale);
 }
 
-QVariant* QVariant_new32(QRegExp* regExp) {
+QVariant* QVariant_new34(QRegExp* regExp) {
 	return new QVariant(*regExp);
 }
 
-QVariant* QVariant_new33(QRegularExpression* re) {
+QVariant* QVariant_new35(QRegularExpression* re) {
 	return new QVariant(*re);
 }
 
-QVariant* QVariant_new34(QEasingCurve* easing) {
+QVariant* QVariant_new36(QEasingCurve* easing) {
 	return new QVariant(*easing);
 }
 
-QVariant* QVariant_new35(QUuid* uuid) {
+QVariant* QVariant_new37(QUuid* uuid) {
 	return new QVariant(*uuid);
 }
 
-QVariant* QVariant_new36(QUrl* url) {
+QVariant* QVariant_new38(QUrl* url) {
 	return new QVariant(*url);
 }
 
-QVariant* QVariant_new37(QJsonValue* jsonValue) {
+QVariant* QVariant_new39(QJsonValue* jsonValue) {
 	return new QVariant(*jsonValue);
 }
 
-QVariant* QVariant_new38(QJsonObject* jsonObject) {
+QVariant* QVariant_new40(QJsonObject* jsonObject) {
 	return new QVariant(*jsonObject);
 }
 
-QVariant* QVariant_new39(QJsonArray* jsonArray) {
+QVariant* QVariant_new41(QJsonArray* jsonArray) {
 	return new QVariant(*jsonArray);
 }
 
-QVariant* QVariant_new40(QJsonDocument* jsonDocument) {
+QVariant* QVariant_new42(QJsonDocument* jsonDocument) {
 	return new QVariant(*jsonDocument);
 }
 
-QVariant* QVariant_new41(QModelIndex* modelIndex) {
+QVariant* QVariant_new43(QModelIndex* modelIndex) {
 	return new QVariant(*modelIndex);
 }
 
-QVariant* QVariant_new42(QPersistentModelIndex* modelIndex) {
+QVariant* QVariant_new44(QPersistentModelIndex* modelIndex) {
 	return new QVariant(*modelIndex);
 }
 
@@ -359,6 +383,56 @@ QTime* QVariant_ToTime(const QVariant* self) {
 
 QDateTime* QVariant_ToDateTime(const QVariant* self) {
 	return new QDateTime(self->toDateTime());
+}
+
+struct miqt_map QVariant_ToMap(const QVariant* self) {
+	QMap<QString, QVariant> _ret = self->toMap();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _mapkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _mapkey_b = _mapkey_ret.toUtf8();
+		struct miqt_string _mapkey_ms;
+		_mapkey_ms.len = _mapkey_b.length();
+		_mapkey_ms.data = static_cast<char*>(malloc(_mapkey_ms.len));
+		memcpy(_mapkey_ms.data, _mapkey_b.data(), _mapkey_ms.len);
+		_karr[_ctr] = _mapkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
+struct miqt_map QVariant_ToHash(const QVariant* self) {
+	QHash<QString, QVariant> _ret = self->toHash();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		QString _hashkey_ret = _itr->first;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _hashkey_b = _hashkey_ret.toUtf8();
+		struct miqt_string _hashkey_ms;
+		_hashkey_ms.len = _hashkey_b.length();
+		_hashkey_ms.data = static_cast<char*>(malloc(_hashkey_ms.len));
+		memcpy(_hashkey_ms.data, _hashkey_b.data(), _hashkey_ms.len);
+		_karr[_ctr] = _hashkey_ms;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 QPoint* QVariant_ToPoint(const QVariant* self) {

@@ -658,6 +658,28 @@ func QStandardItemModel_TrUtf8(s string) string {
 	return _ret
 }
 
+func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
+	roleNames_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roleNames))))
+	defer C.free(unsafe.Pointer(roleNames_Keys_CArray))
+	roleNames_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(roleNames))))
+	defer C.free(unsafe.Pointer(roleNames_Values_CArray))
+	roleNames_ctr := 0
+	for roleNames_k, roleNames_v := range roleNames {
+		roleNames_Keys_CArray[roleNames_ctr] = (C.int)(roleNames_k)
+		roleNames_v_alias := C.struct_miqt_string{}
+		roleNames_v_alias.data = (*C.char)(unsafe.Pointer(&roleNames_v[0]))
+		roleNames_v_alias.len = C.size_t(len(roleNames_v))
+		roleNames_Values_CArray[roleNames_ctr] = roleNames_v_alias
+		roleNames_ctr++
+	}
+	roleNames_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roleNames)),
+		keys:   unsafe.Pointer(roleNames_Keys_CArray),
+		values: unsafe.Pointer(roleNames_Values_CArray),
+	}
+	C.QStandardItemModel_SetItemRoleNames(this.h, roleNames_mm)
+}
+
 func (this *QStandardItemModel) Index(row int, column int) *QModelIndex {
 	_ret := C.QStandardItemModel_Index(this.h, (C.int)(row), (C.int)(column))
 	_goptr := newQModelIndex(_ret)
@@ -739,6 +761,43 @@ func (this *QStandardItemModel) Flags(index *QModelIndex) ItemFlag {
 
 func (this *QStandardItemModel) SupportedDropActions() DropAction {
 	return (DropAction)(C.QStandardItemModel_SupportedDropActions(this.h))
+}
+
+func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QStandardItemModel_ItemData(this.h, index.cPointer())
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
+func (this *QStandardItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
+	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray))
+	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_ctr := 0
+	for roles_k, roles_v := range roles {
+		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
+		roles_Values_CArray[roles_ctr] = roles_v.cPointer()
+		roles_ctr++
+	}
+	roles_mm := C.struct_miqt_map{
+		len:    C.size_t(len(roles)),
+		keys:   unsafe.Pointer(roles_Keys_CArray),
+		values: unsafe.Pointer(roles_Values_CArray),
+	}
+	return (bool)(C.QStandardItemModel_SetItemData(this.h, index.cPointer(), roles_mm))
 }
 
 func (this *QStandardItemModel) Clear() {

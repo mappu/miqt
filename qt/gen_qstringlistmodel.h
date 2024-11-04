@@ -43,6 +43,8 @@ int QStringListModel_Flags(const QStringListModel* self, QModelIndex* index);
 bool QStringListModel_InsertRows(QStringListModel* self, int row, int count);
 bool QStringListModel_RemoveRows(QStringListModel* self, int row, int count);
 bool QStringListModel_MoveRows(QStringListModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
+struct miqt_map QStringListModel_ItemData(const QStringListModel* self, QModelIndex* index);
+bool QStringListModel_SetItemData(QStringListModel* self, QModelIndex* index, struct miqt_map roles);
 void QStringListModel_Sort(QStringListModel* self, int column);
 struct miqt_array QStringListModel_StringList(const QStringListModel* self);
 void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array /* of struct miqt_string */ strings);

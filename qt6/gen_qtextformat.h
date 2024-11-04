@@ -86,6 +86,7 @@ QBrush* QTextFormat_BrushProperty(const QTextFormat* self, int propertyId);
 QTextLength* QTextFormat_LengthProperty(const QTextFormat* self, int propertyId);
 struct miqt_array QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId);
 void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array /* of QTextLength* */ lengths);
+struct miqt_map QTextFormat_Properties(const QTextFormat* self);
 int QTextFormat_PropertyCount(const QTextFormat* self);
 void QTextFormat_SetObjectType(QTextFormat* self, int typeVal);
 int QTextFormat_ObjectType(const QTextFormat* self);

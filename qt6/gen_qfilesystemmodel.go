@@ -305,6 +305,23 @@ func (this *QFileSystemModel) SupportedDropActions() DropAction {
 	return (DropAction)(C.QFileSystemModel_SupportedDropActions(this.h))
 }
 
+func (this *QFileSystemModel) RoleNames() map[int][]byte {
+	var _mm C.struct_miqt_map = C.QFileSystemModel_RoleNames(this.h)
+	_ret := make(map[int][]byte, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		var _hashval_bytearray C.struct_miqt_string = _Values[i]
+		_hashval_ret := C.GoBytes(unsafe.Pointer(_hashval_bytearray.data), C.int(int64(_hashval_bytearray.len)))
+		C.free(unsafe.Pointer(_hashval_bytearray.data))
+		_entry_Value := _hashval_ret
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
 func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)

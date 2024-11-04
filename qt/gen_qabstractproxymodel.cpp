@@ -1,6 +1,7 @@
 #include <QAbstractItemModel>
 #include <QAbstractProxyModel>
 #include <QList>
+#include <QMap>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
@@ -75,6 +76,24 @@ QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int se
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
+struct miqt_map QAbstractProxyModel_ItemData(const QAbstractProxyModel* self, QModelIndex* index) {
+	QMap<int, QVariant> _ret = self->itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
 int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* index) {
 	Qt::ItemFlags _ret = self->flags(*index);
 	return static_cast<int>(_ret);
@@ -82,6 +101,16 @@ int QAbstractProxyModel_Flags(const QAbstractProxyModel* self, QModelIndex* inde
 
 bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, QVariant* value) {
 	return self->setData(*index, *value);
+}
+
+bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* index, struct miqt_map roles) {
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+	return self->setItemData(*index, roles_QMap);
 }
 
 bool QAbstractProxyModel_SetHeaderData(QAbstractProxyModel* self, int section, int orientation, QVariant* value) {

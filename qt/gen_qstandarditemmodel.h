@@ -15,6 +15,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QBrush;
+class QByteArray;
 class QDataStream;
 class QFont;
 class QIcon;
@@ -28,6 +29,7 @@ class QStandardItemModel;
 class QVariant;
 #else
 typedef struct QBrush QBrush;
+typedef struct QByteArray QByteArray;
 typedef struct QDataStream QDataStream;
 typedef struct QFont QFont;
 typedef struct QIcon QIcon;
@@ -146,6 +148,7 @@ QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self);
 void* QStandardItemModel_Metacast(QStandardItemModel* self, const char* param1);
 struct miqt_string QStandardItemModel_Tr(const char* s);
 struct miqt_string QStandardItemModel_TrUtf8(const char* s);
+void QStandardItemModel_SetItemRoleNames(QStandardItemModel* self, struct miqt_map roleNames);
 QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column);
 QModelIndex* QStandardItemModel_Parent(const QStandardItemModel* self, QModelIndex* child);
 int QStandardItemModel_RowCount(const QStandardItemModel* self);
@@ -163,6 +166,8 @@ bool QStandardItemModel_RemoveRows(QStandardItemModel* self, int row, int count)
 bool QStandardItemModel_RemoveColumns(QStandardItemModel* self, int column, int count);
 int QStandardItemModel_Flags(const QStandardItemModel* self, QModelIndex* index);
 int QStandardItemModel_SupportedDropActions(const QStandardItemModel* self);
+struct miqt_map QStandardItemModel_ItemData(const QStandardItemModel* self, QModelIndex* index);
+bool QStandardItemModel_SetItemData(QStandardItemModel* self, QModelIndex* index, struct miqt_map roles);
 void QStandardItemModel_Clear(QStandardItemModel* self);
 void QStandardItemModel_Sort(QStandardItemModel* self, int column);
 QStandardItem* QStandardItemModel_ItemFromIndex(const QStandardItemModel* self, QModelIndex* index);

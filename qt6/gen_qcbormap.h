@@ -29,6 +29,7 @@ class QCborValue;
 class QCborValueConstRef;
 class QCborValueRef;
 class QJsonObject;
+class QVariant;
 #else
 typedef struct QCborMap QCborMap;
 typedef struct QCborMap__ConstIterator QCborMap__ConstIterator;
@@ -37,6 +38,7 @@ typedef struct QCborValue QCborValue;
 typedef struct QCborValueConstRef QCborValueConstRef;
 typedef struct QCborValueRef QCborValueRef;
 typedef struct QJsonObject QJsonObject;
+typedef struct QVariant QVariant;
 #endif
 
 QCborMap* QCborMap_new();
@@ -95,7 +97,11 @@ QCborMap__ConstIterator* QCborMap_Find7(const QCborMap* self, QCborValue* key);
 QCborMap__Iterator* QCborMap_Insert(QCborMap* self, long long key, QCborValue* value_);
 QCborMap__Iterator* QCborMap_Insert3(QCborMap* self, struct miqt_string key, QCborValue* value_);
 QCborMap__Iterator* QCborMap_Insert4(QCborMap* self, QCborValue* key, QCborValue* value_);
+QCborMap* QCborMap_FromVariantMap(struct miqt_map mapVal);
+QCborMap* QCborMap_FromVariantHash(struct miqt_map hash);
 QCborMap* QCborMap_FromJsonObject(QJsonObject* o);
+struct miqt_map QCborMap_ToVariantMap(const QCborMap* self);
+struct miqt_map QCborMap_ToVariantHash(const QCborMap* self);
 QJsonObject* QCborMap_ToJsonObject(const QCborMap* self);
 void QCborMap_Delete(QCborMap* self);
 

@@ -15,6 +15,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractFileIconProvider;
+class QByteArray;
 class QDateTime;
 class QDir;
 class QFileInfo;
@@ -27,6 +28,7 @@ class QObject;
 class QVariant;
 #else
 typedef struct QAbstractFileIconProvider QAbstractFileIconProvider;
+typedef struct QByteArray QByteArray;
 typedef struct QDateTime QDateTime;
 typedef struct QDir QDir;
 typedef struct QFileInfo QFileInfo;
@@ -69,6 +71,7 @@ struct miqt_array QFileSystemModel_MimeTypes(const QFileSystemModel* self);
 QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array /* of QModelIndex* */ indexes);
 bool QFileSystemModel_DropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self);
+struct miqt_map QFileSystemModel_RoleNames(const QFileSystemModel* self);
 QModelIndex* QFileSystemModel_SetRootPath(QFileSystemModel* self, struct miqt_string path);
 struct miqt_string QFileSystemModel_RootPath(const QFileSystemModel* self);
 QDir* QFileSystemModel_RootDirectory(const QFileSystemModel* self);

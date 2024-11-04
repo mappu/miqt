@@ -29,6 +29,7 @@ class QJsonValue;
 class QJsonValuePtr;
 class QJsonValueRef;
 class QJsonValueRefPtr;
+class QVariant;
 #else
 typedef struct QJsonObject QJsonObject;
 typedef struct QJsonObject__const_iterator QJsonObject__const_iterator;
@@ -37,12 +38,17 @@ typedef struct QJsonValue QJsonValue;
 typedef struct QJsonValuePtr QJsonValuePtr;
 typedef struct QJsonValueRef QJsonValueRef;
 typedef struct QJsonValueRefPtr QJsonValueRefPtr;
+typedef struct QVariant QVariant;
 #endif
 
 QJsonObject* QJsonObject_new();
 QJsonObject* QJsonObject_new2(QJsonObject* other);
 void QJsonObject_OperatorAssign(QJsonObject* self, QJsonObject* other);
 void QJsonObject_Swap(QJsonObject* self, QJsonObject* other);
+QJsonObject* QJsonObject_FromVariantMap(struct miqt_map mapVal);
+struct miqt_map QJsonObject_ToVariantMap(const QJsonObject* self);
+QJsonObject* QJsonObject_FromVariantHash(struct miqt_map mapVal);
+struct miqt_map QJsonObject_ToVariantHash(const QJsonObject* self);
 struct miqt_array QJsonObject_Keys(const QJsonObject* self);
 int QJsonObject_Size(const QJsonObject* self);
 int QJsonObject_Count(const QJsonObject* self);

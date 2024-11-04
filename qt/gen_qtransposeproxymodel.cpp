@@ -1,4 +1,5 @@
 #include <QAbstractItemModel>
+#include <QMap>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QObject>
@@ -70,8 +71,36 @@ bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section,
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
+bool QTransposeProxyModel_SetItemData(QTransposeProxyModel* self, QModelIndex* index, struct miqt_map roles) {
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+	return self->setItemData(*index, roles_QMap);
+}
+
 QSize* QTransposeProxyModel_Span(const QTransposeProxyModel* self, QModelIndex* index) {
 	return new QSize(self->span(*index));
+}
+
+struct miqt_map QTransposeProxyModel_ItemData(const QTransposeProxyModel* self, QModelIndex* index) {
+	QMap<int, QVariant> _ret = self->itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 QModelIndex* QTransposeProxyModel_MapFromSource(const QTransposeProxyModel* self, QModelIndex* sourceIndex) {

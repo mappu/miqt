@@ -1,8 +1,10 @@
 #include <QBrush>
+#include <QByteArray>
 #include <QDataStream>
 #include <QFont>
 #include <QIcon>
 #include <QList>
+#include <QMap>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
@@ -541,6 +543,41 @@ struct miqt_string QStandardItemModel_Tr(const char* s) {
 	return _ms;
 }
 
+void QStandardItemModel_SetItemRoleNames(QStandardItemModel* self, struct miqt_map roleNames) {
+	QHash<int, QByteArray> roleNames_QMap;
+	roleNames_QMap.reserve(roleNames.len);
+	int* roleNames_karr = static_cast<int*>(roleNames.keys);
+	struct miqt_string* roleNames_varr = static_cast<struct miqt_string*>(roleNames.values);
+	for(size_t i = 0; i < roleNames.len; ++i) {
+		QByteArray roleNames_varr_i_QByteArray(roleNames_varr[i].data, roleNames_varr[i].len);
+		roleNames_QMap[static_cast<int>(roleNames_karr[i])] = roleNames_varr_i_QByteArray;
+	}
+	self->setItemRoleNames(roleNames_QMap);
+}
+
+struct miqt_map QStandardItemModel_RoleNames(const QStandardItemModel* self) {
+	QHash<int, QByteArray> _ret = self->roleNames();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		QByteArray _hashval_qb = _itr->second;
+		struct miqt_string _hashval_ms;
+		_hashval_ms.len = _hashval_qb.length();
+		_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+		memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+		_varr[_ctr] = _hashval_ms;
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
 QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column) {
 	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column)));
 }
@@ -609,6 +646,34 @@ int QStandardItemModel_Flags(const QStandardItemModel* self, QModelIndex* index)
 int QStandardItemModel_SupportedDropActions(const QStandardItemModel* self) {
 	Qt::DropActions _ret = self->supportedDropActions();
 	return static_cast<int>(_ret);
+}
+
+struct miqt_map QStandardItemModel_ItemData(const QStandardItemModel* self, QModelIndex* index) {
+	QMap<int, QVariant> _ret = self->itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+}
+
+bool QStandardItemModel_SetItemData(QStandardItemModel* self, QModelIndex* index, struct miqt_map roles) {
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+	return self->setItemData(*index, roles_QMap);
 }
 
 void QStandardItemModel_Clear(QStandardItemModel* self) {

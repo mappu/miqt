@@ -504,6 +504,24 @@ func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
 	C.QTextFormat_SetProperty2(this.h, (C.int)(propertyId), lengths_ma)
 }
 
+func (this *QTextFormat) Properties() map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QTextFormat_Properties(this.h)
+	_ret := make(map[int]QVariant, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		_mapval_ret := _Values[i]
+		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_entry_Value := *_mapval_goptr
+
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+}
+
 func (this *QTextFormat) PropertyCount() int {
 	return (int)(C.QTextFormat_PropertyCount(this.h))
 }

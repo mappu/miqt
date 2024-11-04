@@ -2,6 +2,7 @@
 #include <QColor>
 #include <QFont>
 #include <QList>
+#include <QMap>
 #include <QPen>
 #include <QString>
 #include <QByteArray>
@@ -181,6 +182,24 @@ void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_arr
 		lengths_QList.push_back(*(lengths_arr[i]));
 	}
 	self->setProperty(static_cast<int>(propertyId), lengths_QList);
+}
+
+struct miqt_map QTextFormat_Properties(const QTextFormat* self) {
+	QMap<int, QVariant> _ret = self->properties();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
 }
 
 int QTextFormat_PropertyCount(const QTextFormat* self) {
