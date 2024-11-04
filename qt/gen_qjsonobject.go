@@ -63,7 +63,7 @@ func (this *QJsonObject) Swap(other *QJsonObject) {
 }
 
 func (this *QJsonObject) Keys() []string {
-	var _ma *C.struct_miqt_array = C.QJsonObject_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QJsonObject_Keys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -72,7 +72,6 @@ func (this *QJsonObject) Keys() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

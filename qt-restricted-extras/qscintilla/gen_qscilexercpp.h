@@ -36,7 +36,7 @@ struct miqt_string QsciLexerCPP_Tr(const char* s);
 struct miqt_string QsciLexerCPP_TrUtf8(const char* s);
 const char* QsciLexerCPP_Language(const QsciLexerCPP* self);
 const char* QsciLexerCPP_Lexer(const QsciLexerCPP* self);
-struct miqt_array* QsciLexerCPP_AutoCompletionWordSeparators(const QsciLexerCPP* self);
+struct miqt_array QsciLexerCPP_AutoCompletionWordSeparators(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockEnd(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockStart(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockStartKeyword(const QsciLexerCPP* self);

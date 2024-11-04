@@ -54,7 +54,7 @@ struct miqt_string QsciScintilla_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array* QsciScintilla_ApiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start) {
+struct miqt_array QsciScintilla_ApiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start) {
 	QStringList _ret = self->apiContext(static_cast<int>(pos), static_cast<int&>(*context_start), static_cast<int&>(*last_word_start));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -68,9 +68,9 @@ struct miqt_array* QsciScintilla_ApiContext(QsciScintilla* self, int pos, int* c
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -206,16 +206,16 @@ QColor* QsciScintilla_Color(const QsciScintilla* self) {
 	return new QColor(self->color());
 }
 
-struct miqt_array* QsciScintilla_ContractedFolds(const QsciScintilla* self) {
+struct miqt_array QsciScintilla_ContractedFolds(const QsciScintilla* self) {
 	QList<int> _ret = self->contractedFolds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -542,11 +542,11 @@ void QsciScintilla_SetAutoCompletionFillups(QsciScintilla* self, const char* fil
 	self->setAutoCompletionFillups(fillups);
 }
 
-void QsciScintilla_SetAutoCompletionWordSeparators(QsciScintilla* self, struct miqt_array* /* of struct miqt_string */ separators) {
+void QsciScintilla_SetAutoCompletionWordSeparators(QsciScintilla* self, struct miqt_array /* of struct miqt_string */ separators) {
 	QStringList separators_QList;
-	separators_QList.reserve(separators->len);
-	struct miqt_string* separators_arr = static_cast<struct miqt_string*>(separators->data);
-	for(size_t i = 0; i < separators->len; ++i) {
+	separators_QList.reserve(separators.len);
+	struct miqt_string* separators_arr = static_cast<struct miqt_string*>(separators.data);
+	for(size_t i = 0; i < separators.len; ++i) {
 		QString separators_arr_i_QString = QString::fromUtf8(separators_arr[i].data, separators_arr[i].len);
 		separators_QList.push_back(separators_arr_i_QString);
 	}
@@ -577,11 +577,11 @@ void QsciScintilla_SetCallTipsVisible(QsciScintilla* self, int nr) {
 	self->setCallTipsVisible(static_cast<int>(nr));
 }
 
-void QsciScintilla_SetContractedFolds(QsciScintilla* self, struct miqt_array* /* of int */ folds) {
+void QsciScintilla_SetContractedFolds(QsciScintilla* self, struct miqt_array /* of int */ folds) {
 	QList<int> folds_QList;
-	folds_QList.reserve(folds->len);
-	int* folds_arr = static_cast<int*>(folds->data);
-	for(size_t i = 0; i < folds->len; ++i) {
+	folds_QList.reserve(folds.len);
+	int* folds_arr = static_cast<int*>(folds.data);
+	for(size_t i = 0; i < folds.len; ++i) {
 		folds_QList.push_back(static_cast<int>(folds_arr[i]));
 	}
 	self->setContractedFolds(folds_QList);
@@ -788,11 +788,11 @@ void QsciScintilla_SetWrapIndentMode(QsciScintilla* self, int mode) {
 	self->setWrapIndentMode(static_cast<QsciScintilla::WrapIndentMode>(mode));
 }
 
-void QsciScintilla_ShowUserList(QsciScintilla* self, int id, struct miqt_array* /* of struct miqt_string */ list) {
+void QsciScintilla_ShowUserList(QsciScintilla* self, int id, struct miqt_array /* of struct miqt_string */ list) {
 	QStringList list_QList;
-	list_QList.reserve(list->len);
-	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list->data);
-	for(size_t i = 0; i < list->len; ++i) {
+	list_QList.reserve(list.len);
+	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
 		list_QList.push_back(list_arr_i_QString);
 	}

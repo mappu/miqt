@@ -35,7 +35,7 @@ struct miqt_string QsciLexerPython_Tr(const char* s);
 struct miqt_string QsciLexerPython_TrUtf8(const char* s);
 const char* QsciLexerPython_Language(const QsciLexerPython* self);
 const char* QsciLexerPython_Lexer(const QsciLexerPython* self);
-struct miqt_array* QsciLexerPython_AutoCompletionWordSeparators(const QsciLexerPython* self);
+struct miqt_array QsciLexerPython_AutoCompletionWordSeparators(const QsciLexerPython* self);
 int QsciLexerPython_BlockLookback(const QsciLexerPython* self);
 const char* QsciLexerPython_BlockStart(const QsciLexerPython* self);
 int QsciLexerPython_BraceStyle(const QsciLexerPython* self);

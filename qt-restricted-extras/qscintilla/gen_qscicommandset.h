@@ -25,7 +25,7 @@ typedef struct QsciCommandSet QsciCommandSet;
 
 bool QsciCommandSet_ReadSettings(QsciCommandSet* self, QSettings* qs);
 bool QsciCommandSet_WriteSettings(QsciCommandSet* self, QSettings* qs);
-struct miqt_array* QsciCommandSet_Commands(QsciCommandSet* self);
+struct miqt_array QsciCommandSet_Commands(QsciCommandSet* self);
 void QsciCommandSet_ClearKeys(QsciCommandSet* self);
 void QsciCommandSet_ClearAlternateKeys(QsciCommandSet* self);
 QsciCommand* QsciCommandSet_BoundTo(const QsciCommandSet* self, int key);

@@ -104,16 +104,16 @@ void QStateMachine_AddDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 	self->addDefaultAnimation(animation);
 }
 
-struct miqt_array* QStateMachine_DefaultAnimations(const QStateMachine* self) {
+struct miqt_array QStateMachine_DefaultAnimations(const QStateMachine* self) {
 	QList<QAbstractAnimation *> _ret = self->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -142,7 +142,7 @@ bool QStateMachine_CancelDelayedEvent(QStateMachine* self, int id) {
 	return self->cancelDelayedEvent(static_cast<int>(id));
 }
 
-struct miqt_array* QStateMachine_Configuration(const QStateMachine* self) {
+struct miqt_array QStateMachine_Configuration(const QStateMachine* self) {
 	QSet<QAbstractState *> _ret = self->configuration();
 	// Convert QSet<> from C++ memory to manually-managed C memory
 	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.size()));
@@ -151,9 +151,9 @@ struct miqt_array* QStateMachine_Configuration(const QStateMachine* self) {
 	while (_itr.hasNext()) {
 		_arr[_ctr++] = _itr.next();
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.size();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.size();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

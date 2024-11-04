@@ -127,18 +127,18 @@ bool QInputDialog_IsComboBoxEditable(const QInputDialog* self) {
 	return self->isComboBoxEditable();
 }
 
-void QInputDialog_SetComboBoxItems(QInputDialog* self, struct miqt_array* /* of struct miqt_string */ items) {
+void QInputDialog_SetComboBoxItems(QInputDialog* self, struct miqt_array /* of struct miqt_string */ items) {
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
 	self->setComboBoxItems(items_QList);
 }
 
-struct miqt_array* QInputDialog_ComboBoxItems(const QInputDialog* self) {
+struct miqt_array QInputDialog_ComboBoxItems(const QInputDialog* self) {
 	QStringList _ret = self->comboBoxItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -152,9 +152,9 @@ struct miqt_array* QInputDialog_ComboBoxItems(const QInputDialog* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -300,13 +300,13 @@ struct miqt_string QInputDialog_GetMultiLineText(QWidget* parent, struct miqt_st
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items) {
+struct miqt_string QInputDialog_GetItem(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
@@ -605,13 +605,13 @@ struct miqt_string QInputDialog_GetMultiLineText7(QWidget* parent, struct miqt_s
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem5(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items, int current) {
+struct miqt_string QInputDialog_GetItem5(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items, int current) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
@@ -625,13 +625,13 @@ struct miqt_string QInputDialog_GetItem5(QWidget* parent, struct miqt_string tit
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem6(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items, int current, bool editable) {
+struct miqt_string QInputDialog_GetItem6(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items, int current, bool editable) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
@@ -645,13 +645,13 @@ struct miqt_string QInputDialog_GetItem6(QWidget* parent, struct miqt_string tit
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem7(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items, int current, bool editable, bool* ok) {
+struct miqt_string QInputDialog_GetItem7(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items, int current, bool editable, bool* ok) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
@@ -665,13 +665,13 @@ struct miqt_string QInputDialog_GetItem7(QWidget* parent, struct miqt_string tit
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem8(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items, int current, bool editable, bool* ok, int flags) {
+struct miqt_string QInputDialog_GetItem8(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items, int current, bool editable, bool* ok, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}
@@ -685,13 +685,13 @@ struct miqt_string QInputDialog_GetItem8(QWidget* parent, struct miqt_string tit
 	return _ms;
 }
 
-struct miqt_string QInputDialog_GetItem9(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array* /* of struct miqt_string */ items, int current, bool editable, bool* ok, int flags, int inputMethodHints) {
+struct miqt_string QInputDialog_GetItem9(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */ items, int current, bool editable, bool* ok, int flags, int inputMethodHints) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	QStringList items_QList;
-	items_QList.reserve(items->len);
-	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items->data);
-	for(size_t i = 0; i < items->len; ++i) {
+	items_QList.reserve(items.len);
+	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
+	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
 		items_QList.push_back(items_arr_i_QString);
 	}

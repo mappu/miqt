@@ -39,7 +39,7 @@ QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesPro
 void* QConcatenateTablesProxyModel_Metacast(QConcatenateTablesProxyModel* self, const char* param1);
 struct miqt_string QConcatenateTablesProxyModel_Tr(const char* s);
 struct miqt_string QConcatenateTablesProxyModel_TrUtf8(const char* s);
-struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);
+struct miqt_array QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);
 void QConcatenateTablesProxyModel_AddSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 void QConcatenateTablesProxyModel_RemoveSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 QModelIndex* QConcatenateTablesProxyModel_MapFromSource(const QConcatenateTablesProxyModel* self, QModelIndex* sourceIndex);
@@ -52,8 +52,8 @@ QModelIndex* QConcatenateTablesProxyModel_Parent(const QConcatenateTablesProxyMo
 int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* self);
 QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, int orientation);
 int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel* self);
-struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes);
+struct miqt_array QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes);
 bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 QSize* QConcatenateTablesProxyModel_Span(const QConcatenateTablesProxyModel* self, QModelIndex* index);

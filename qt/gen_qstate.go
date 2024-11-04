@@ -136,13 +136,12 @@ func (this *QState) RemoveTransition(transition *QAbstractTransition) {
 }
 
 func (this *QState) Transitions() []*QAbstractTransition {
-	var _ma *C.struct_miqt_array = C.QState_Transitions(this.h)
+	var _ma C.struct_miqt_array = C.QState_Transitions(this.h)
 	_ret := make([]*QAbstractTransition, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAbstractTransition(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

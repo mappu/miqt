@@ -171,35 +171,32 @@ func (this *QWizard) HasVisitedPage(id int) bool {
 }
 
 func (this *QWizard) VisitedPages() []int {
-	var _ma *C.struct_miqt_array = C.QWizard_VisitedPages(this.h)
+	var _ma C.struct_miqt_array = C.QWizard_VisitedPages(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QWizard) VisitedIds() []int {
-	var _ma *C.struct_miqt_array = C.QWizard_VisitedIds(this.h)
+	var _ma C.struct_miqt_array = C.QWizard_VisitedIds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QWizard) PageIds() []int {
-	var _ma *C.struct_miqt_array = C.QWizard_PageIds(this.h)
+	var _ma C.struct_miqt_array = C.QWizard_PageIds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -291,8 +288,7 @@ func (this *QWizard) SetButtonLayout(layout []QWizard__WizardButton) {
 	for i := range layout {
 		layout_CArray[i] = (C.int)(layout[i])
 	}
-	layout_ma := &C.struct_miqt_array{len: C.size_t(len(layout)), data: unsafe.Pointer(layout_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(layout_ma))
+	layout_ma := C.struct_miqt_array{len: C.size_t(len(layout)), data: unsafe.Pointer(layout_CArray)}
 	C.QWizard_SetButtonLayout(this.h, layout_ma)
 }
 

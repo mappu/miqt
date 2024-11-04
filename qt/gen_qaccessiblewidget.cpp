@@ -90,7 +90,7 @@ void* QAccessibleWidget_InterfaceCast(QAccessibleWidget* self, int t) {
 	return self->interface_cast(static_cast<QAccessible::InterfaceType>(t));
 }
 
-struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self) {
+struct miqt_array QAccessibleWidget_ActionNames(const QAccessibleWidget* self) {
 	QStringList _ret = self->actionNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -104,9 +104,9 @@ struct miqt_array* QAccessibleWidget_ActionNames(const QAccessibleWidget* self) 
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -115,7 +115,7 @@ void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string acti
 	self->doAction(actionName_QString);
 }
 
-struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName) {
+struct miqt_array QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName) {
 	QString actionName_QString = QString::fromUtf8(actionName.data, actionName.len);
 	QStringList _ret = self->keyBindingsForAction(actionName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -130,9 +130,9 @@ struct miqt_array* QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidge
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

@@ -134,7 +134,7 @@ func (this *QTextDocumentWriter) Codec() *QTextCodec {
 }
 
 func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QTextDocumentWriter_SupportedDocumentFormats()
+	var _ma C.struct_miqt_array = C.QTextDocumentWriter_SupportedDocumentFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -143,7 +143,6 @@ func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

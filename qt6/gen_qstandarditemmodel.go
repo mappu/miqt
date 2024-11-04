@@ -401,8 +401,7 @@ func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_InsertRow(this.h, (C.int)(row), items_ma)
 }
 
@@ -412,8 +411,7 @@ func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_InsertColumn(this.h, (C.int)(column), items_ma)
 }
 
@@ -423,8 +421,7 @@ func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_InsertRows(this.h, (C.int)(row), items_ma)
 }
 
@@ -458,8 +455,7 @@ func (this *QStandardItem) AppendRow(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_AppendRow(this.h, items_ma)
 }
 
@@ -469,8 +465,7 @@ func (this *QStandardItem) AppendRows(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_AppendRows(this.h, items_ma)
 }
 
@@ -480,8 +475,7 @@ func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItem_AppendColumn(this.h, items_ma)
 }
 
@@ -498,24 +492,22 @@ func (this *QStandardItem) TakeChild(row int) *QStandardItem {
 }
 
 func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
-	var _ma *C.struct_miqt_array = C.QStandardItem_TakeRow(this.h, (C.int)(row))
+	var _ma C.struct_miqt_array = C.QStandardItem_TakeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QStandardItem) TakeColumn(column int) []*QStandardItem {
-	var _ma *C.struct_miqt_array = C.QStandardItem_TakeColumn(this.h, (C.int)(column))
+	var _ma C.struct_miqt_array = C.QStandardItem_TakeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -794,8 +786,7 @@ func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QStandardItemModel_SetHorizontalHeaderLabels(this.h, labels_ma)
 }
 
@@ -809,8 +800,7 @@ func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QStandardItemModel_SetVerticalHeaderLabels(this.h, labels_ma)
 }
 
@@ -828,8 +818,7 @@ func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItemModel_AppendRow(this.h, items_ma)
 }
 
@@ -839,8 +828,7 @@ func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItemModel_AppendColumn(this.h, items_ma)
 }
 
@@ -854,8 +842,7 @@ func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItemModel_InsertRow(this.h, (C.int)(row), items_ma)
 }
 
@@ -865,8 +852,7 @@ func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem)
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QStandardItemModel_InsertColumn(this.h, (C.int)(column), items_ma)
 }
 
@@ -887,24 +873,22 @@ func (this *QStandardItemModel) TakeItem(row int) *QStandardItem {
 }
 
 func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_TakeRow(this.h, (C.int)(row))
+	var _ma C.struct_miqt_array = C.QStandardItemModel_TakeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QStandardItemModel) TakeColumn(column int) []*QStandardItem {
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_TakeColumn(this.h, (C.int)(column))
+	var _ma C.struct_miqt_array = C.QStandardItemModel_TakeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -929,13 +913,12 @@ func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems(this.h, text_ms)
+	var _ma C.struct_miqt_array = C.QStandardItemModel_FindItems(this.h, text_ms)
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -948,7 +931,7 @@ func (this *QStandardItemModel) SetSortRole(role int) {
 }
 
 func (this *QStandardItemModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QStandardItemModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -957,7 +940,6 @@ func (this *QStandardItemModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -967,8 +949,7 @@ func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QStandardItemModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -1100,13 +1081,12 @@ func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QSta
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, text_ms, (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QStandardItemModel_FindItems2(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -1115,13 +1095,12 @@ func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
+	var _ma C.struct_miqt_array = C.QStandardItemModel_FindItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQStandardItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -351,8 +351,7 @@ func (this *QComboBox) AddItems(texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
 	C.QComboBox_AddItems(this.h, texts_ma)
 }
 
@@ -382,8 +381,7 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 		defer C.free(unsafe.Pointer(texts_i_ms.data))
 		texts_CArray[i] = texts_i_ms
 	}
-	texts_ma := &C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(texts_ma))
+	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
 	C.QComboBox_InsertItems(this.h, (C.int)(index), texts_ma)
 }
 

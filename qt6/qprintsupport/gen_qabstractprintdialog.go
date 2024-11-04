@@ -101,8 +101,7 @@ func (this *QAbstractPrintDialog) SetOptionTabs(tabs []*qt6.QWidget) {
 	for i := range tabs {
 		tabs_CArray[i] = (*C.QWidget)(tabs[i].UnsafePointer())
 	}
-	tabs_ma := &C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(tabs_ma))
+	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
 	C.QAbstractPrintDialog_SetOptionTabs(this.h, tabs_ma)
 }
 

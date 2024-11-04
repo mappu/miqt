@@ -445,8 +445,7 @@ func (this *QListWidget) InsertItems(row int, labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QListWidget_InsertItems(this.h, (C.int)(row), labels_ma)
 }
 
@@ -472,8 +471,7 @@ func (this *QListWidget) AddItems(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := &C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(labels_ma))
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
 	C.QListWidget_AddItems(this.h, labels_ma)
 }
 
@@ -565,13 +563,12 @@ func (this *QListWidget) RemoveItemWidget(item *QListWidgetItem) {
 }
 
 func (this *QListWidget) SelectedItems() []*QListWidgetItem {
-	var _ma *C.struct_miqt_array = C.QListWidget_SelectedItems(this.h)
+	var _ma C.struct_miqt_array = C.QListWidget_SelectedItems(this.h)
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -580,24 +577,22 @@ func (this *QListWidget) FindItems(text string, flags MatchFlag) []*QListWidgetI
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QListWidget_FindItems(this.h, text_ms, (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QListWidget_FindItems(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QListWidget) Items(data *QMimeData) []*QListWidgetItem {
-	var _ma *C.struct_miqt_array = C.QListWidget_Items(this.h, data.cPointer())
+	var _ma C.struct_miqt_array = C.QListWidget_Items(this.h, data.cPointer())
 	_ret := make([]*QListWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QListWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQListWidgetItem(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

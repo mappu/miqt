@@ -60,8 +60,7 @@ func NewQStringListModel2(strings []string) *QStringListModel {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	ret := C.QStringListModel_new2(strings_ma)
 	return newQStringListModel(ret)
 }
@@ -83,8 +82,7 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	ret := C.QStringListModel_new4(strings_ma, parent.cPointer())
 	return newQStringListModel(ret)
 }
@@ -160,7 +158,7 @@ func (this *QStringListModel) Sort(column int) {
 }
 
 func (this *QStringListModel) StringList() []string {
-	var _ma *C.struct_miqt_array = C.QStringListModel_StringList(this.h)
+	var _ma C.struct_miqt_array = C.QStringListModel_StringList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -169,7 +167,6 @@ func (this *QStringListModel) StringList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -183,8 +180,7 @@ func (this *QStringListModel) SetStringList(strings []string) {
 		defer C.free(unsafe.Pointer(strings_i_ms.data))
 		strings_CArray[i] = strings_i_ms
 	}
-	strings_ma := &C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(strings_ma))
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 	C.QStringListModel_SetStringList(this.h, strings_ma)
 }
 

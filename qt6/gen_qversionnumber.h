@@ -24,7 +24,7 @@ typedef struct QVersionNumber QVersionNumber;
 #endif
 
 QVersionNumber* QVersionNumber_new();
-QVersionNumber* QVersionNumber_new2(struct miqt_array* /* of int */ seg);
+QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */ seg);
 QVersionNumber* QVersionNumber_new3(int maj);
 QVersionNumber* QVersionNumber_new4(int maj, int min);
 QVersionNumber* QVersionNumber_new5(int maj, int min, int mic);
@@ -35,7 +35,7 @@ int QVersionNumber_MajorVersion(const QVersionNumber* self);
 int QVersionNumber_MinorVersion(const QVersionNumber* self);
 int QVersionNumber_MicroVersion(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self);
-struct miqt_array* QVersionNumber_Segments(const QVersionNumber* self);
+struct miqt_array QVersionNumber_Segments(const QVersionNumber* self);
 int QVersionNumber_SegmentAt(const QVersionNumber* self, ptrdiff_t index);
 ptrdiff_t QVersionNumber_SegmentCount(const QVersionNumber* self);
 bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other);

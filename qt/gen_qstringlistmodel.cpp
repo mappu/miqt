@@ -15,11 +15,11 @@ QStringListModel* QStringListModel_new() {
 	return new QStringListModel();
 }
 
-QStringListModel* QStringListModel_new2(struct miqt_array* /* of struct miqt_string */ strings) {
+QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */ strings) {
 	QStringList strings_QList;
-	strings_QList.reserve(strings->len);
-	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings->data);
-	for(size_t i = 0; i < strings->len; ++i) {
+	strings_QList.reserve(strings.len);
+	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
+	for(size_t i = 0; i < strings.len; ++i) {
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
@@ -30,11 +30,11 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 	return new QStringListModel(parent);
 }
 
-QStringListModel* QStringListModel_new4(struct miqt_array* /* of struct miqt_string */ strings, QObject* parent) {
+QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */ strings, QObject* parent) {
 	QStringList strings_QList;
-	strings_QList.reserve(strings->len);
-	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings->data);
-	for(size_t i = 0; i < strings->len; ++i) {
+	strings_QList.reserve(strings.len);
+	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
+	for(size_t i = 0; i < strings.len; ++i) {
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
@@ -108,7 +108,7 @@ void QStringListModel_Sort(QStringListModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
+struct miqt_array QStringListModel_StringList(const QStringListModel* self) {
 	QStringList _ret = self->stringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -122,17 +122,17 @@ struct miqt_array* QStringListModel_StringList(const QStringListModel* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array* /* of struct miqt_string */ strings) {
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array /* of struct miqt_string */ strings) {
 	QStringList strings_QList;
-	strings_QList.reserve(strings->len);
-	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings->data);
-	for(size_t i = 0; i < strings->len; ++i) {
+	strings_QList.reserve(strings.len);
+	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
+	for(size_t i = 0; i < strings.len; ++i) {
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}

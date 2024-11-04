@@ -34,7 +34,7 @@ void QButtonGroup_SetExclusive(QButtonGroup* self, bool exclusive);
 bool QButtonGroup_Exclusive(const QButtonGroup* self);
 void QButtonGroup_AddButton(QButtonGroup* self, QAbstractButton* param1);
 void QButtonGroup_RemoveButton(QButtonGroup* self, QAbstractButton* param1);
-struct miqt_array* QButtonGroup_Buttons(const QButtonGroup* self);
+struct miqt_array QButtonGroup_Buttons(const QButtonGroup* self);
 QAbstractButton* QButtonGroup_CheckedButton(const QButtonGroup* self);
 QAbstractButton* QButtonGroup_Button(const QButtonGroup* self, int id);
 void QButtonGroup_SetId(QButtonGroup* self, QAbstractButton* button, int id);

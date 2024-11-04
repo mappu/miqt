@@ -283,8 +283,7 @@ func (this *QListView) IndexesMoved(indexes []QModelIndex) {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	C.QListView_IndexesMoved(this.h, indexes_ma)
 }
 func (this *QListView) OnIndexesMoved(slot func(indexes []QModelIndex)) {
@@ -292,14 +291,14 @@ func (this *QListView) OnIndexesMoved(slot func(indexes []QModelIndex)) {
 }
 
 //export miqt_exec_callback_QListView_IndexesMoved
-func miqt_exec_callback_QListView_IndexesMoved(cb C.intptr_t, indexes *C.struct_miqt_array) {
+func miqt_exec_callback_QListView_IndexesMoved(cb C.intptr_t, indexes C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(indexes []QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	var indexes_ma *C.struct_miqt_array = indexes
+	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
@@ -308,7 +307,6 @@ func miqt_exec_callback_QListView_IndexesMoved(cb C.intptr_t, indexes *C.struct_
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
-	C.free(unsafe.Pointer(indexes_ma))
 	slotval1 := indexes_ret
 
 	gofunc(slotval1)

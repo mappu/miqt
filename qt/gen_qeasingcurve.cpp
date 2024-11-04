@@ -68,16 +68,16 @@ void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t
 	self->addTCBSegment(*nextPoint, static_cast<qreal>(t), static_cast<qreal>(c), static_cast<qreal>(b));
 }
 
-struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self) {
+struct miqt_array QEasingCurve_ToCubicSpline(const QEasingCurve* self) {
 	QVector<QPointF> _ret = self->toCubicSpline();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

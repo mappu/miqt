@@ -36,7 +36,7 @@ double QEasingCurve_Overshoot(const QEasingCurve* self);
 void QEasingCurve_SetOvershoot(QEasingCurve* self, double overshoot);
 void QEasingCurve_AddCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint);
 void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b);
-struct miqt_array* QEasingCurve_ToCubicSpline(const QEasingCurve* self);
+struct miqt_array QEasingCurve_ToCubicSpline(const QEasingCurve* self);
 int QEasingCurve_Type(const QEasingCurve* self);
 void QEasingCurve_SetType(QEasingCurve* self, int typeVal);
 double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress);

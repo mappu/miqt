@@ -378,26 +378,26 @@ void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, int dashPatte
 	self->setDashPattern(static_cast<Qt::PenStyle>(dashPattern));
 }
 
-void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array* /* of double */ dashPattern) {
+void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array /* of double */ dashPattern) {
 	QList<qreal> dashPattern_QList;
-	dashPattern_QList.reserve(dashPattern->len);
-	double* dashPattern_arr = static_cast<double*>(dashPattern->data);
-	for(size_t i = 0; i < dashPattern->len; ++i) {
+	dashPattern_QList.reserve(dashPattern.len);
+	double* dashPattern_arr = static_cast<double*>(dashPattern.data);
+	for(size_t i = 0; i < dashPattern.len; ++i) {
 		dashPattern_QList.push_back(static_cast<double>(dashPattern_arr[i]));
 	}
 	self->setDashPattern(dashPattern_QList);
 }
 
-struct miqt_array* QPainterPathStroker_DashPattern(const QPainterPathStroker* self) {
+struct miqt_array QPainterPathStroker_DashPattern(const QPainterPathStroker* self) {
 	QList<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

@@ -338,8 +338,7 @@ func QCborArray_FromStringList(list []string) *QCborArray {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	_ret := C.QCborArray_FromStringList(list_ma)
 	_goptr := newQCborArray(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

@@ -55,8 +55,7 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 	for i := range seg {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
-	seg_ma := &C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(seg_ma))
+	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
 	ret := C.QVersionNumber_new2(seg_ma)
 	return newQVersionNumber(ret)
 }
@@ -113,13 +112,12 @@ func (this *QVersionNumber) Normalized() *QVersionNumber {
 }
 
 func (this *QVersionNumber) Segments() []int {
-	var _ma *C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
+	var _ma C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

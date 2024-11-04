@@ -328,11 +328,11 @@ void QListWidget_InsertItem2(QListWidget* self, int row, struct miqt_string labe
 	self->insertItem(static_cast<int>(row), label_QString);
 }
 
-void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array* /* of struct miqt_string */ labels) {
+void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array /* of struct miqt_string */ labels) {
 	QStringList labels_QList;
-	labels_QList.reserve(labels->len);
-	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels->data);
-	for(size_t i = 0; i < labels->len; ++i) {
+	labels_QList.reserve(labels.len);
+	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
+	for(size_t i = 0; i < labels.len; ++i) {
 		QString labels_arr_i_QString = QString::fromUtf8(labels_arr[i].data, labels_arr[i].len);
 		labels_QList.push_back(labels_arr_i_QString);
 	}
@@ -348,11 +348,11 @@ void QListWidget_AddItemWithItem(QListWidget* self, QListWidgetItem* item) {
 	self->addItem(item);
 }
 
-void QListWidget_AddItems(QListWidget* self, struct miqt_array* /* of struct miqt_string */ labels) {
+void QListWidget_AddItems(QListWidget* self, struct miqt_array /* of struct miqt_string */ labels) {
 	QStringList labels_QList;
-	labels_QList.reserve(labels->len);
-	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels->data);
-	for(size_t i = 0; i < labels->len; ++i) {
+	labels_QList.reserve(labels.len);
+	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
+	for(size_t i = 0; i < labels.len; ++i) {
 		QString labels_arr_i_QString = QString::fromUtf8(labels_arr[i].data, labels_arr[i].len);
 		labels_QList.push_back(labels_arr_i_QString);
 	}
@@ -451,20 +451,20 @@ void QListWidget_SetItemSelected(QListWidget* self, QListWidgetItem* item, bool 
 	self->setItemSelected(item, selectVal);
 }
 
-struct miqt_array* QListWidget_SelectedItems(const QListWidget* self) {
+struct miqt_array QListWidget_SelectedItems(const QListWidget* self) {
 	QList<QListWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** _arr = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QListWidget_FindItems(const QListWidget* self, struct miqt_string text, int flags) {
+struct miqt_array QListWidget_FindItems(const QListWidget* self, struct miqt_string text, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QListWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -472,9 +472,9 @@ struct miqt_array* QListWidget_FindItems(const QListWidget* self, struct miqt_st
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

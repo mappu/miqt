@@ -170,8 +170,7 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QAbstractProxyModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -184,7 +183,7 @@ func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction
 }
 
 func (this *QAbstractProxyModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -193,7 +192,6 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

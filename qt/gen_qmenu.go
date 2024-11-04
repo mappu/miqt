@@ -250,8 +250,7 @@ func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_Exec2(actions_ma, pos.cPointer())))
 }
 
@@ -455,8 +454,7 @@ func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_Exec3(actions_ma, pos.cPointer(), at.cPointer())))
 }
 
@@ -466,8 +464,7 @@ func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) 
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := &C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(actions_ma))
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
 	return UnsafeNewQAction(unsafe.Pointer(C.QMenu_Exec4(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer())))
 }
 

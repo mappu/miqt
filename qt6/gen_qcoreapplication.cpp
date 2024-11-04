@@ -40,7 +40,7 @@ struct miqt_string QCoreApplication_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array* QCoreApplication_Arguments() {
+struct miqt_array QCoreApplication_Arguments() {
 	QStringList _ret = QCoreApplication::arguments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -54,9 +54,9 @@ struct miqt_array* QCoreApplication_Arguments() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -219,18 +219,18 @@ long long QCoreApplication_ApplicationPid() {
 	return static_cast<long long>(_ret);
 }
 
-void QCoreApplication_SetLibraryPaths(struct miqt_array* /* of struct miqt_string */ libraryPaths) {
+void QCoreApplication_SetLibraryPaths(struct miqt_array /* of struct miqt_string */ libraryPaths) {
 	QStringList libraryPaths_QList;
-	libraryPaths_QList.reserve(libraryPaths->len);
-	struct miqt_string* libraryPaths_arr = static_cast<struct miqt_string*>(libraryPaths->data);
-	for(size_t i = 0; i < libraryPaths->len; ++i) {
+	libraryPaths_QList.reserve(libraryPaths.len);
+	struct miqt_string* libraryPaths_arr = static_cast<struct miqt_string*>(libraryPaths.data);
+	for(size_t i = 0; i < libraryPaths.len; ++i) {
 		QString libraryPaths_arr_i_QString = QString::fromUtf8(libraryPaths_arr[i].data, libraryPaths_arr[i].len);
 		libraryPaths_QList.push_back(libraryPaths_arr_i_QString);
 	}
 	QCoreApplication::setLibraryPaths(libraryPaths_QList);
 }
 
-struct miqt_array* QCoreApplication_LibraryPaths() {
+struct miqt_array QCoreApplication_LibraryPaths() {
 	QStringList _ret = QCoreApplication::libraryPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -244,9 +244,9 @@ struct miqt_array* QCoreApplication_LibraryPaths() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

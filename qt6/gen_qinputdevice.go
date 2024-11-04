@@ -186,7 +186,7 @@ func (this *QInputDevice) AvailableVirtualGeometry() *QRect {
 }
 
 func QInputDevice_SeatNames() []string {
-	var _ma *C.struct_miqt_array = C.QInputDevice_SeatNames()
+	var _ma C.struct_miqt_array = C.QInputDevice_SeatNames()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -195,18 +195,16 @@ func QInputDevice_SeatNames() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QInputDevice_Devices() []*QInputDevice {
-	var _ma *C.struct_miqt_array = C.QInputDevice_Devices()
+	var _ma C.struct_miqt_array = C.QInputDevice_Devices()
 	_ret := make([]*QInputDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQInputDevice(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

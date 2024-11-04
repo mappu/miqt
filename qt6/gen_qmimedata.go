@@ -69,7 +69,7 @@ func QMimeData_Tr(s string) string {
 }
 
 func (this *QMimeData) Urls() []QUrl {
-	var _ma *C.struct_miqt_array = C.QMimeData_Urls(this.h)
+	var _ma C.struct_miqt_array = C.QMimeData_Urls(this.h)
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -78,7 +78,6 @@ func (this *QMimeData) Urls() []QUrl {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -88,8 +87,7 @@ func (this *QMimeData) SetUrls(urls []QUrl) {
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	urls_ma := &C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(urls_ma))
+	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
 	C.QMimeData_SetUrls(this.h, urls_ma)
 }
 
@@ -204,7 +202,7 @@ func (this *QMimeData) HasFormat(mimetype string) bool {
 }
 
 func (this *QMimeData) Formats() []string {
-	var _ma *C.struct_miqt_array = C.QMimeData_Formats(this.h)
+	var _ma C.struct_miqt_array = C.QMimeData_Formats(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -213,7 +211,6 @@ func (this *QMimeData) Formats() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

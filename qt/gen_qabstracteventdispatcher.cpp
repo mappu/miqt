@@ -80,16 +80,16 @@ bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, Q
 	return self->unregisterTimers(object);
 }
 
-struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object) {
+struct miqt_array QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object) {
 	QList<QAbstractEventDispatcher::TimerInfo> _ret = self->registeredTimers(object);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractEventDispatcher__TimerInfo** _arr = static_cast<QAbstractEventDispatcher__TimerInfo**>(malloc(sizeof(QAbstractEventDispatcher__TimerInfo*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QAbstractEventDispatcher::TimerInfo(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

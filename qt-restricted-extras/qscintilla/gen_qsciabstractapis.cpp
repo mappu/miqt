@@ -41,18 +41,18 @@ QsciLexer* QsciAbstractAPIs_Lexer(const QsciAbstractAPIs* self) {
 	return self->lexer();
 }
 
-void QsciAbstractAPIs_UpdateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array* /* of struct miqt_string */ context, struct miqt_array* /* of struct miqt_string */ list) {
+void QsciAbstractAPIs_UpdateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */ context, struct miqt_array /* of struct miqt_string */ list) {
 	QStringList context_QList;
-	context_QList.reserve(context->len);
-	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context->data);
-	for(size_t i = 0; i < context->len; ++i) {
+	context_QList.reserve(context.len);
+	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
 		context_QList.push_back(context_arr_i_QString);
 	}
 	QStringList list_QList;
-	list_QList.reserve(list->len);
-	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list->data);
-	for(size_t i = 0; i < list->len; ++i) {
+	list_QList.reserve(list.len);
+	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
 		list_QList.push_back(list_arr_i_QString);
 	}
@@ -64,18 +64,18 @@ void QsciAbstractAPIs_AutoCompletionSelected(QsciAbstractAPIs* self, struct miqt
 	self->autoCompletionSelected(selection_QString);
 }
 
-struct miqt_array* QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array* /* of struct miqt_string */ context, int commas, int style, struct miqt_array* /* of int */ shifts) {
+struct miqt_array QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */ context, int commas, int style, struct miqt_array /* of int */ shifts) {
 	QStringList context_QList;
-	context_QList.reserve(context->len);
-	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context->data);
-	for(size_t i = 0; i < context->len; ++i) {
+	context_QList.reserve(context.len);
+	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
 		context_QList.push_back(context_arr_i_QString);
 	}
 	QList<int> shifts_QList;
-	shifts_QList.reserve(shifts->len);
-	int* shifts_arr = static_cast<int*>(shifts->data);
-	for(size_t i = 0; i < shifts->len; ++i) {
+	shifts_QList.reserve(shifts.len);
+	int* shifts_arr = static_cast<int*>(shifts.data);
+	for(size_t i = 0; i < shifts.len; ++i) {
 		shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
 	}
 	QStringList _ret = self->callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
@@ -91,9 +91,9 @@ struct miqt_array* QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

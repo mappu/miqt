@@ -154,13 +154,12 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma *C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, text_ms)
+	var _ma C.struct_miqt_array = C.QRawFont_GlyphIndexesForString(this.h, text_ms)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -170,9 +169,8 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	glyphIndexes_ma := &C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
-	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes(this.h, glyphIndexes_ma)
+	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
+	var _ma C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes(this.h, glyphIndexes_ma)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -181,7 +179,6 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -191,9 +188,8 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	glyphIndexes_ma := &C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(glyphIndexes_ma))
-	var _ma *C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
+	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
+	var _ma C.struct_miqt_array = C.QRawFont_AdvancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -202,7 +198,6 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -315,13 +310,12 @@ func (this *QRawFont) SupportsCharacterWithCharacter(character QChar) bool {
 }
 
 func (this *QRawFont) SupportedWritingSystems() []QFontDatabase__WritingSystem {
-	var _ma *C.struct_miqt_array = C.QRawFont_SupportedWritingSystems(this.h)
+	var _ma C.struct_miqt_array = C.QRawFont_SupportedWritingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

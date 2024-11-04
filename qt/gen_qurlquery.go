@@ -182,7 +182,7 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, key_ms)
+	var _ma C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, key_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -191,7 +191,6 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -247,7 +246,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ma *C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, key_ms, (C.int)(encoding))
+	var _ma C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, key_ms, (C.int)(encoding))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -256,7 +255,6 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

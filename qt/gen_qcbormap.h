@@ -45,7 +45,7 @@ QCborValue* QCborMap_ToCborValue(const QCborMap* self);
 ptrdiff_t QCborMap_Size(const QCborMap* self);
 bool QCborMap_IsEmpty(const QCborMap* self);
 void QCborMap_Clear(QCborMap* self);
-struct miqt_array* QCborMap_Keys(const QCborMap* self);
+struct miqt_array QCborMap_Keys(const QCborMap* self);
 QCborValue* QCborMap_Value(const QCborMap* self, long long key);
 QCborValue* QCborMap_Value2(const QCborMap* self, struct miqt_string key);
 QCborValue* QCborMap_Value3(const QCborMap* self, QCborValue* key);

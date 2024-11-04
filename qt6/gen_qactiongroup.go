@@ -102,13 +102,12 @@ func (this *QActionGroup) RemoveAction(a *QAction) {
 }
 
 func (this *QActionGroup) Actions() []*QAction {
-	var _ma *C.struct_miqt_array = C.QActionGroup_Actions(this.h)
+	var _ma C.struct_miqt_array = C.QActionGroup_Actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

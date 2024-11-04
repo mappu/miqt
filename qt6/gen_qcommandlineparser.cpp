@@ -36,11 +36,11 @@ bool QCommandLineParser_AddOption(QCommandLineParser* self, QCommandLineOption* 
 	return self->addOption(*commandLineOption);
 }
 
-bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array* /* of QCommandLineOption* */ options) {
+bool QCommandLineParser_AddOptions(QCommandLineParser* self, struct miqt_array /* of QCommandLineOption* */ options) {
 	QList<QCommandLineOption> options_QList;
-	options_QList.reserve(options->len);
-	QCommandLineOption** options_arr = static_cast<QCommandLineOption**>(options->data);
-	for(size_t i = 0; i < options->len; ++i) {
+	options_QList.reserve(options.len);
+	QCommandLineOption** options_arr = static_cast<QCommandLineOption**>(options.data);
+	for(size_t i = 0; i < options.len; ++i) {
 		options_QList.push_back(*(options_arr[i]));
 	}
 	return self->addOptions(options_QList);
@@ -80,11 +80,11 @@ void QCommandLineParser_ClearPositionalArguments(QCommandLineParser* self) {
 	self->clearPositionalArguments();
 }
 
-void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string */ arguments) {
+void QCommandLineParser_Process(QCommandLineParser* self, struct miqt_array /* of struct miqt_string */ arguments) {
 	QStringList arguments_QList;
-	arguments_QList.reserve(arguments->len);
-	struct miqt_string* arguments_arr = static_cast<struct miqt_string*>(arguments->data);
-	for(size_t i = 0; i < arguments->len; ++i) {
+	arguments_QList.reserve(arguments.len);
+	struct miqt_string* arguments_arr = static_cast<struct miqt_string*>(arguments.data);
+	for(size_t i = 0; i < arguments.len; ++i) {
 		QString arguments_arr_i_QString = QString::fromUtf8(arguments_arr[i].data, arguments_arr[i].len);
 		arguments_QList.push_back(arguments_arr_i_QString);
 	}
@@ -95,11 +95,11 @@ void QCommandLineParser_ProcessWithApp(QCommandLineParser* self, QCoreApplicatio
 	self->process(*app);
 }
 
-bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array* /* of struct miqt_string */ arguments) {
+bool QCommandLineParser_Parse(QCommandLineParser* self, struct miqt_array /* of struct miqt_string */ arguments) {
 	QStringList arguments_QList;
-	arguments_QList.reserve(arguments->len);
-	struct miqt_string* arguments_arr = static_cast<struct miqt_string*>(arguments->data);
-	for(size_t i = 0; i < arguments->len; ++i) {
+	arguments_QList.reserve(arguments.len);
+	struct miqt_string* arguments_arr = static_cast<struct miqt_string*>(arguments.data);
+	for(size_t i = 0; i < arguments.len; ++i) {
 		QString arguments_arr_i_QString = QString::fromUtf8(arguments_arr[i].data, arguments_arr[i].len);
 		arguments_QList.push_back(arguments_arr_i_QString);
 	}
@@ -134,7 +134,7 @@ struct miqt_string QCommandLineParser_Value(const QCommandLineParser* self, stru
 	return _ms;
 }
 
-struct miqt_array* QCommandLineParser_Values(const QCommandLineParser* self, struct miqt_string name) {
+struct miqt_array QCommandLineParser_Values(const QCommandLineParser* self, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QStringList _ret = self->values(name_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -149,9 +149,9 @@ struct miqt_array* QCommandLineParser_Values(const QCommandLineParser* self, str
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -170,7 +170,7 @@ struct miqt_string QCommandLineParser_ValueWithOption(const QCommandLineParser* 
 	return _ms;
 }
 
-struct miqt_array* QCommandLineParser_ValuesWithOption(const QCommandLineParser* self, QCommandLineOption* option) {
+struct miqt_array QCommandLineParser_ValuesWithOption(const QCommandLineParser* self, QCommandLineOption* option) {
 	QStringList _ret = self->values(*option);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -184,13 +184,13 @@ struct miqt_array* QCommandLineParser_ValuesWithOption(const QCommandLineParser*
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QCommandLineParser_PositionalArguments(const QCommandLineParser* self) {
+struct miqt_array QCommandLineParser_PositionalArguments(const QCommandLineParser* self) {
 	QStringList _ret = self->positionalArguments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -204,13 +204,13 @@ struct miqt_array* QCommandLineParser_PositionalArguments(const QCommandLinePars
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QCommandLineParser_OptionNames(const QCommandLineParser* self) {
+struct miqt_array QCommandLineParser_OptionNames(const QCommandLineParser* self) {
 	QStringList _ret = self->optionNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -224,13 +224,13 @@ struct miqt_array* QCommandLineParser_OptionNames(const QCommandLineParser* self
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QCommandLineParser_UnknownOptionNames(const QCommandLineParser* self) {
+struct miqt_array QCommandLineParser_UnknownOptionNames(const QCommandLineParser* self) {
 	QStringList _ret = self->unknownOptionNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -244,9 +244,9 @@ struct miqt_array* QCommandLineParser_UnknownOptionNames(const QCommandLineParse
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

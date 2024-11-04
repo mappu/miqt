@@ -53,7 +53,7 @@ double QScreen_LogicalDotsPerInch(const QScreen* self);
 double QScreen_DevicePixelRatio(const QScreen* self);
 QSize* QScreen_AvailableSize(const QScreen* self);
 QRect* QScreen_AvailableGeometry(const QScreen* self);
-struct miqt_array* QScreen_VirtualSiblings(const QScreen* self);
+struct miqt_array QScreen_VirtualSiblings(const QScreen* self);
 QScreen* QScreen_VirtualSiblingAt(QScreen* self, QPoint* point);
 QSize* QScreen_VirtualSize(const QScreen* self);
 QRect* QScreen_VirtualGeometry(const QScreen* self);

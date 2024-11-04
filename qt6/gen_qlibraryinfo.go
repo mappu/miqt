@@ -97,7 +97,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 	platformName_ms.data = C.CString(platformName)
 	platformName_ms.len = C.size_t(len(platformName))
 	defer C.free(unsafe.Pointer(platformName_ms.data))
-	var _ma *C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments(platformName_ms)
+	var _ma C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments(platformName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -106,7 +106,6 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

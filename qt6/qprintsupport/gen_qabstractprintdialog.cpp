@@ -37,11 +37,11 @@ struct miqt_string QAbstractPrintDialog_Tr(const char* s) {
 	return _ms;
 }
 
-void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array* /* of QWidget* */ tabs) {
+void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */ tabs) {
 	QList<QWidget *> tabs_QList;
-	tabs_QList.reserve(tabs->len);
-	QWidget** tabs_arr = static_cast<QWidget**>(tabs->data);
-	for(size_t i = 0; i < tabs->len; ++i) {
+	tabs_QList.reserve(tabs.len);
+	QWidget** tabs_arr = static_cast<QWidget**>(tabs.data);
+	for(size_t i = 0; i < tabs.len; ++i) {
 		tabs_QList.push_back(tabs_arr[i]);
 	}
 	self->setOptionTabs(tabs_QList);

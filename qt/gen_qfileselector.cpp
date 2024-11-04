@@ -64,7 +64,7 @@ QUrl* QFileSelector_SelectWithFilePath(const QFileSelector* self, QUrl* filePath
 	return new QUrl(self->select(*filePath));
 }
 
-struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
+struct miqt_array QFileSelector_ExtraSelectors(const QFileSelector* self) {
 	QStringList _ret = self->extraSelectors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -78,24 +78,24 @@ struct miqt_array* QFileSelector_ExtraSelectors(const QFileSelector* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array* /* of struct miqt_string */ list) {
+void QFileSelector_SetExtraSelectors(QFileSelector* self, struct miqt_array /* of struct miqt_string */ list) {
 	QStringList list_QList;
-	list_QList.reserve(list->len);
-	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list->data);
-	for(size_t i = 0; i < list->len; ++i) {
+	list_QList.reserve(list.len);
+	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
 		list_QList.push_back(list_arr_i_QString);
 	}
 	self->setExtraSelectors(list_QList);
 }
 
-struct miqt_array* QFileSelector_AllSelectors(const QFileSelector* self) {
+struct miqt_array QFileSelector_AllSelectors(const QFileSelector* self) {
 	QStringList _ret = self->allSelectors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -109,9 +109,9 @@ struct miqt_array* QFileSelector_AllSelectors(const QFileSelector* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

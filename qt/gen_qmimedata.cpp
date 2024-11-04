@@ -45,24 +45,24 @@ struct miqt_string QMimeData_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array* QMimeData_Urls(const QMimeData* self) {
+struct miqt_array QMimeData_Urls(const QMimeData* self) {
 	QList<QUrl> _ret = self->urls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array* /* of QUrl* */ urls) {
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */ urls) {
 	QList<QUrl> urls_QList;
-	urls_QList.reserve(urls->len);
-	QUrl** urls_arr = static_cast<QUrl**>(urls->data);
-	for(size_t i = 0; i < urls->len; ++i) {
+	urls_QList.reserve(urls.len);
+	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
+	for(size_t i = 0; i < urls.len; ++i) {
 		urls_QList.push_back(*(urls_arr[i]));
 	}
 	self->setUrls(urls_QList);
@@ -162,7 +162,7 @@ bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string mimetype) {
 	return self->hasFormat(mimetype_QString);
 }
 
-struct miqt_array* QMimeData_Formats(const QMimeData* self) {
+struct miqt_array QMimeData_Formats(const QMimeData* self) {
 	QStringList _ret = self->formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -176,9 +176,9 @@ struct miqt_array* QMimeData_Formats(const QMimeData* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

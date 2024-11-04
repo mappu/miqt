@@ -82,7 +82,7 @@ func (this *QCborMap) Clear() {
 }
 
 func (this *QCborMap) Keys() []QCborValue {
-	var _ma *C.struct_miqt_array = C.QCborMap_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QCborMap_Keys(this.h)
 	_ret := make([]QCborValue, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCborValue)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -91,7 +91,6 @@ func (this *QCborMap) Keys() []QCborValue {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

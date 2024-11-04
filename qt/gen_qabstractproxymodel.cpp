@@ -116,11 +116,11 @@ QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int ro
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
 	QModelIndexList indexes_QList;
-	indexes_QList.reserve(indexes->len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
-	for(size_t i = 0; i < indexes->len; ++i) {
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
@@ -134,7 +134,7 @@ bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self) {
+struct miqt_array QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -148,9 +148,9 @@ struct miqt_array* QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

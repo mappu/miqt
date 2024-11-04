@@ -70,8 +70,7 @@ func NewQCommandLineOption2(names []string) *QCommandLineOption {
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	ret := C.QCommandLineOption_new2(names_ma)
 	return newQCommandLineOption(ret)
 }
@@ -101,8 +100,7 @@ func NewQCommandLineOption4(names []string, description string) *QCommandLineOpt
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -168,8 +166,7 @@ func NewQCommandLineOption8(names []string, description string, valueName string
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -193,8 +190,7 @@ func NewQCommandLineOption9(names []string, description string, valueName string
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := &C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(names_ma))
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -220,7 +216,7 @@ func (this *QCommandLineOption) Swap(other *QCommandLineOption) {
 }
 
 func (this *QCommandLineOption) Names() []string {
-	var _ma *C.struct_miqt_array = C.QCommandLineOption_Names(this.h)
+	var _ma C.struct_miqt_array = C.QCommandLineOption_Names(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -229,7 +225,6 @@ func (this *QCommandLineOption) Names() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -281,13 +276,12 @@ func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 		defer C.free(unsafe.Pointer(defaultValues_i_ms.data))
 		defaultValues_CArray[i] = defaultValues_i_ms
 	}
-	defaultValues_ma := &C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(defaultValues_ma))
+	defaultValues_ma := C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
 	C.QCommandLineOption_SetDefaultValues(this.h, defaultValues_ma)
 }
 
 func (this *QCommandLineOption) DefaultValues() []string {
-	var _ma *C.struct_miqt_array = C.QCommandLineOption_DefaultValues(this.h)
+	var _ma C.struct_miqt_array = C.QCommandLineOption_DefaultValues(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -296,7 +290,6 @@ func (this *QCommandLineOption) DefaultValues() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

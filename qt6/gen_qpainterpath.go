@@ -510,19 +510,17 @@ func (this *QPainterPathStroker) SetDashPatternWithDashPattern(dashPattern []flo
 	for i := range dashPattern {
 		dashPattern_CArray[i] = (C.double)(dashPattern[i])
 	}
-	dashPattern_ma := &C.struct_miqt_array{len: C.size_t(len(dashPattern)), data: unsafe.Pointer(dashPattern_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(dashPattern_ma))
+	dashPattern_ma := C.struct_miqt_array{len: C.size_t(len(dashPattern)), data: unsafe.Pointer(dashPattern_CArray)}
 	C.QPainterPathStroker_SetDashPatternWithDashPattern(this.h, dashPattern_ma)
 }
 
 func (this *QPainterPathStroker) DashPattern() []float64 {
-	var _ma *C.struct_miqt_array = C.QPainterPathStroker_DashPattern(this.h)
+	var _ma C.struct_miqt_array = C.QPainterPathStroker_DashPattern(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

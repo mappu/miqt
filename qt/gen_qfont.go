@@ -251,7 +251,7 @@ func (this *QFont) SetFamily(family string) {
 }
 
 func (this *QFont) Families() []string {
-	var _ma *C.struct_miqt_array = C.QFont_Families(this.h)
+	var _ma C.struct_miqt_array = C.QFont_Families(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -260,7 +260,6 @@ func (this *QFont) Families() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -274,8 +273,7 @@ func (this *QFont) SetFamilies(families []string) {
 		defer C.free(unsafe.Pointer(families_i_ms.data))
 		families_CArray[i] = families_i_ms
 	}
-	families_ma := &C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(families_ma))
+	families_ma := C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
 	C.QFont_SetFamilies(this.h, families_ma)
 }
 
@@ -535,7 +533,7 @@ func QFont_Substitutes(param1 string) []string {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	var _ma *C.struct_miqt_array = C.QFont_Substitutes(param1_ms)
+	var _ma C.struct_miqt_array = C.QFont_Substitutes(param1_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -544,12 +542,11 @@ func QFont_Substitutes(param1 string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QFont_Substitutions() []string {
-	var _ma *C.struct_miqt_array = C.QFont_Substitutions()
+	var _ma C.struct_miqt_array = C.QFont_Substitutions()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -558,7 +555,6 @@ func QFont_Substitutions() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -588,8 +584,7 @@ func QFont_InsertSubstitutions(param1 string, param2 []string) {
 		defer C.free(unsafe.Pointer(param2_i_ms.data))
 		param2_CArray[i] = param2_i_ms
 	}
-	param2_ma := &C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(param2_ma))
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
 	C.QFont_InsertSubstitutions(param1_ms, param2_ma)
 }
 

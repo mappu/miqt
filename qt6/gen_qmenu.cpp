@@ -157,11 +157,11 @@ QAction* QMenu_ExecWithPos(QMenu* self, QPoint* pos) {
 	return self->exec(*pos);
 }
 
-QAction* QMenu_Exec2(struct miqt_array* /* of QAction* */ actions, QPoint* pos) {
+QAction* QMenu_Exec2(struct miqt_array /* of QAction* */ actions, QPoint* pos) {
 	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions->len);
-	QAction** actions_arr = static_cast<QAction**>(actions->data);
-	for(size_t i = 0; i < actions->len; ++i) {
+	actions_QList.reserve(actions.len);
+	QAction** actions_arr = static_cast<QAction**>(actions.data);
+	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
 	return QMenu::exec(actions_QList, *pos);
@@ -303,21 +303,21 @@ QAction* QMenu_Exec22(QMenu* self, QPoint* pos, QAction* at) {
 	return self->exec(*pos, at);
 }
 
-QAction* QMenu_Exec3(struct miqt_array* /* of QAction* */ actions, QPoint* pos, QAction* at) {
+QAction* QMenu_Exec3(struct miqt_array /* of QAction* */ actions, QPoint* pos, QAction* at) {
 	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions->len);
-	QAction** actions_arr = static_cast<QAction**>(actions->data);
-	for(size_t i = 0; i < actions->len; ++i) {
+	actions_QList.reserve(actions.len);
+	QAction** actions_arr = static_cast<QAction**>(actions.data);
+	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
 	return QMenu::exec(actions_QList, *pos, at);
 }
 
-QAction* QMenu_Exec4(struct miqt_array* /* of QAction* */ actions, QPoint* pos, QAction* at, QWidget* parent) {
+QAction* QMenu_Exec4(struct miqt_array /* of QAction* */ actions, QPoint* pos, QAction* at, QWidget* parent) {
 	QList<QAction *> actions_QList;
-	actions_QList.reserve(actions->len);
-	QAction** actions_arr = static_cast<QAction**>(actions->data);
-	for(size_t i = 0; i < actions->len; ++i) {
+	actions_QList.reserve(actions.len);
+	QAction** actions_arr = static_cast<QAction**>(actions.data);
+	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
 	return QMenu::exec(actions_QList, *pos, at, parent);

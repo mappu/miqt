@@ -41,7 +41,7 @@ long long QResource_UncompressedSize(const QResource* self);
 struct miqt_string QResource_UncompressedData(const QResource* self);
 QDateTime* QResource_LastModified(const QResource* self);
 void QResource_AddSearchPath(struct miqt_string path);
-struct miqt_array* QResource_SearchPaths();
+struct miqt_array QResource_SearchPaths();
 bool QResource_IsCompressed(const QResource* self);
 bool QResource_RegisterResource(struct miqt_string rccFilename);
 bool QResource_UnregisterResource(struct miqt_string rccFilename);

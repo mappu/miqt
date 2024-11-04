@@ -193,7 +193,7 @@ func (this *QIcon) AddFile(fileName string) {
 }
 
 func (this *QIcon) AvailableSizes() []QSize {
-	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes(this.h)
+	var _ma C.struct_miqt_array = C.QIcon_AvailableSizes(this.h)
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -202,7 +202,6 @@ func (this *QIcon) AvailableSizes() []QSize {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -245,7 +244,7 @@ func QIcon_HasThemeIcon(name string) bool {
 }
 
 func QIcon_ThemeSearchPaths() []string {
-	var _ma *C.struct_miqt_array = C.QIcon_ThemeSearchPaths()
+	var _ma C.struct_miqt_array = C.QIcon_ThemeSearchPaths()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -254,7 +253,6 @@ func QIcon_ThemeSearchPaths() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -268,13 +266,12 @@ func QIcon_SetThemeSearchPaths(searchpath []string) {
 		defer C.free(unsafe.Pointer(searchpath_i_ms.data))
 		searchpath_CArray[i] = searchpath_i_ms
 	}
-	searchpath_ma := &C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(searchpath_ma))
+	searchpath_ma := C.struct_miqt_array{len: C.size_t(len(searchpath)), data: unsafe.Pointer(searchpath_CArray)}
 	C.QIcon_SetThemeSearchPaths(searchpath_ma)
 }
 
 func QIcon_FallbackSearchPaths() []string {
-	var _ma *C.struct_miqt_array = C.QIcon_FallbackSearchPaths()
+	var _ma C.struct_miqt_array = C.QIcon_FallbackSearchPaths()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -283,7 +280,6 @@ func QIcon_FallbackSearchPaths() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -297,8 +293,7 @@ func QIcon_SetFallbackSearchPaths(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := &C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(paths_ma))
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 	C.QIcon_SetFallbackSearchPaths(paths_ma)
 }
 
@@ -487,7 +482,7 @@ func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, stat
 }
 
 func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes1(this.h, (C.int)(mode))
+	var _ma C.struct_miqt_array = C.QIcon_AvailableSizes1(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -496,12 +491,11 @@ func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize {
-	var _ma *C.struct_miqt_array = C.QIcon_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
+	var _ma C.struct_miqt_array = C.QIcon_AvailableSizes2(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -510,7 +504,6 @@ func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -22,11 +22,11 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 	return new QCompleter(model);
 }
 
-QCompleter* QCompleter_new3(struct miqt_array* /* of struct miqt_string */ completions) {
+QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */ completions) {
 	QStringList completions_QList;
-	completions_QList.reserve(completions->len);
-	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions->data);
-	for(size_t i = 0; i < completions->len; ++i) {
+	completions_QList.reserve(completions.len);
+	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
+	for(size_t i = 0; i < completions.len; ++i) {
 		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
@@ -41,11 +41,11 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 	return new QCompleter(model, parent);
 }
 
-QCompleter* QCompleter_new6(struct miqt_array* /* of struct miqt_string */ completions, QObject* parent) {
+QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */ completions, QObject* parent) {
 	QStringList completions_QList;
-	completions_QList.reserve(completions->len);
-	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions->data);
-	for(size_t i = 0; i < completions->len; ++i) {
+	completions_QList.reserve(completions.len);
+	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
+	for(size_t i = 0; i < completions.len; ++i) {
 		QString completions_arr_i_QString = QString::fromUtf8(completions_arr[i].data, completions_arr[i].len);
 		completions_QList.push_back(completions_arr_i_QString);
 	}
@@ -225,7 +225,7 @@ struct miqt_string QCompleter_PathFromIndex(const QCompleter* self, QModelIndex*
 	return _ms;
 }
 
-struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_string path) {
+struct miqt_array QCompleter_SplitPath(const QCompleter* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QStringList _ret = self->splitPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -240,9 +240,9 @@ struct miqt_array* QCompleter_SplitPath(const QCompleter* self, struct miqt_stri
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

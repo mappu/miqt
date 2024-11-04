@@ -174,7 +174,7 @@ func (this *QItemSelectionRange) IsEmpty() bool {
 }
 
 func (this *QItemSelectionRange) Indexes() []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionRange_Indexes(this.h)
+	var _ma C.struct_miqt_array = C.QItemSelectionRange_Indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -183,7 +183,6 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -309,7 +308,7 @@ func (this *QItemSelectionModel) HasSelection() bool {
 }
 
 func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedIndexes(this.h)
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_SelectedIndexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -318,12 +317,11 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedRows(this.h)
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_SelectedRows(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -332,12 +330,11 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns(this.h)
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -346,7 +343,6 @@ func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -530,7 +526,7 @@ func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *
 }
 
 func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedRows1(this.h, (C.int)(column))
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_SelectedRows1(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -539,12 +535,11 @@ func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns1(this.h, (C.int)(row))
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_SelectedColumns1(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -553,7 +548,6 @@ func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -83,16 +83,16 @@ void QState_RemoveTransition(QState* self, QAbstractTransition* transition) {
 	self->removeTransition(transition);
 }
 
-struct miqt_array* QState_Transitions(const QState* self) {
+struct miqt_array QState_Transitions(const QState* self) {
 	QList<QAbstractTransition *> _ret = self->transitions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractTransition** _arr = static_cast<QAbstractTransition**>(malloc(sizeof(QAbstractTransition*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

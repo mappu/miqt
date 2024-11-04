@@ -64,7 +64,7 @@ void QPrinter_SetPaperSource(QPrinter* self, int paperSource);
 int QPrinter_PaperSource(const QPrinter* self);
 void QPrinter_SetDuplex(QPrinter* self, int duplex);
 int QPrinter_Duplex(const QPrinter* self);
-struct miqt_array* QPrinter_SupportedResolutions(const QPrinter* self);
+struct miqt_array QPrinter_SupportedResolutions(const QPrinter* self);
 void QPrinter_SetFontEmbeddingEnabled(QPrinter* self, bool enable);
 bool QPrinter_FontEmbeddingEnabled(const QPrinter* self);
 QRectF* QPrinter_PaperRect(const QPrinter* self, int param1);

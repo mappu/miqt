@@ -109,7 +109,7 @@ struct miqt_string QImageWriter_SubType(const QImageWriter* self) {
 	return _ms;
 }
 
-struct miqt_array* QImageWriter_SupportedSubTypes(const QImageWriter* self) {
+struct miqt_array QImageWriter_SupportedSubTypes(const QImageWriter* self) {
 	QList<QByteArray> _ret = self->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -121,9 +121,9 @@ struct miqt_array* QImageWriter_SupportedSubTypes(const QImageWriter* self) {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -186,7 +186,7 @@ bool QImageWriter_SupportsOption(const QImageWriter* self, int option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 
-struct miqt_array* QImageWriter_SupportedImageFormats() {
+struct miqt_array QImageWriter_SupportedImageFormats() {
 	QList<QByteArray> _ret = QImageWriter::supportedImageFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -198,13 +198,13 @@ struct miqt_array* QImageWriter_SupportedImageFormats() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QImageWriter_SupportedMimeTypes() {
+struct miqt_array QImageWriter_SupportedMimeTypes() {
 	QList<QByteArray> _ret = QImageWriter::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -216,13 +216,13 @@ struct miqt_array* QImageWriter_SupportedMimeTypes() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType) {
+struct miqt_array QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType) {
 	QByteArray mimeType_QByteArray(mimeType.data, mimeType.len);
 	QList<QByteArray> _ret = QImageWriter::imageFormatsForMimeType(mimeType_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -235,9 +235,9 @@ struct miqt_array* QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeT
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

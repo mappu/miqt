@@ -109,11 +109,11 @@ QVariant* QVariant_new17(struct miqt_string stringVal) {
 	return new QVariant(stringVal_QString);
 }
 
-QVariant* QVariant_new18(struct miqt_array* /* of struct miqt_string */ stringlist) {
+QVariant* QVariant_new18(struct miqt_array /* of struct miqt_string */ stringlist) {
 	QStringList stringlist_QList;
-	stringlist_QList.reserve(stringlist->len);
-	struct miqt_string* stringlist_arr = static_cast<struct miqt_string*>(stringlist->data);
-	for(size_t i = 0; i < stringlist->len; ++i) {
+	stringlist_QList.reserve(stringlist.len);
+	struct miqt_string* stringlist_arr = static_cast<struct miqt_string*>(stringlist.data);
+	for(size_t i = 0; i < stringlist.len; ++i) {
 		QString stringlist_arr_i_QString = QString::fromUtf8(stringlist_arr[i].data, stringlist_arr[i].len);
 		stringlist_QList.push_back(stringlist_arr_i_QString);
 	}
@@ -325,7 +325,7 @@ struct miqt_string QVariant_ToString(const QVariant* self) {
 	return _ms;
 }
 
-struct miqt_array* QVariant_ToStringList(const QVariant* self) {
+struct miqt_array QVariant_ToStringList(const QVariant* self) {
 	QStringList _ret = self->toStringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -339,9 +339,9 @@ struct miqt_array* QVariant_ToStringList(const QVariant* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

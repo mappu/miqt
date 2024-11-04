@@ -109,7 +109,7 @@ func (this *QAbstractEventDispatcher) UnregisterTimers(object *QObject) bool {
 }
 
 func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstractEventDispatcher__TimerInfo {
-	var _ma *C.struct_miqt_array = C.QAbstractEventDispatcher_RegisteredTimers(this.h, object.cPointer())
+	var _ma C.struct_miqt_array = C.QAbstractEventDispatcher_RegisteredTimers(this.h, object.cPointer())
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -118,7 +118,6 @@ func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstr
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

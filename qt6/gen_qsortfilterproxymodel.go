@@ -273,8 +273,7 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -318,7 +317,7 @@ func (this *QSortFilterProxyModel) Buddy(index *QModelIndex) *QModelIndex {
 }
 
 func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QVariant) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer())
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -327,7 +326,6 @@ func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QV
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -343,7 +341,7 @@ func (this *QSortFilterProxyModel) Sort(column int) {
 }
 
 func (this *QSortFilterProxyModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -352,7 +350,6 @@ func (this *QSortFilterProxyModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -600,7 +597,7 @@ func (this *QSortFilterProxyModel) RemoveColumns3(column int, count int, parent 
 }
 
 func (this *QSortFilterProxyModel) Match4(start *QModelIndex, role int, value *QVariant, hits int) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_Match4(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -609,12 +606,11 @@ func (this *QSortFilterProxyModel) Match4(start *QModelIndex, role int, value *Q
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	var _ma *C.struct_miqt_array = C.QSortFilterProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_Match5(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -623,7 +619,6 @@ func (this *QSortFilterProxyModel) Match5(start *QModelIndex, role int, value *Q
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

@@ -45,16 +45,16 @@ void QCborMap_Clear(QCborMap* self) {
 	self->clear();
 }
 
-struct miqt_array* QCborMap_Keys(const QCborMap* self) {
+struct miqt_array QCborMap_Keys(const QCborMap* self) {
 	QVector<QCborValue> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QCborValue(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

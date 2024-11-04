@@ -149,7 +149,7 @@ func QPicture_PictureFormat(fileName string) string {
 }
 
 func QPicture_InputFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QPicture_InputFormats()
+	var _ma C.struct_miqt_array = C.QPicture_InputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -158,12 +158,11 @@ func QPicture_InputFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPicture_OutputFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QPicture_OutputFormats()
+	var _ma C.struct_miqt_array = C.QPicture_OutputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -172,12 +171,11 @@ func QPicture_OutputFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPicture_InputFormatList() []string {
-	var _ma *C.struct_miqt_array = C.QPicture_InputFormatList()
+	var _ma C.struct_miqt_array = C.QPicture_InputFormatList()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -186,12 +184,11 @@ func QPicture_InputFormatList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPicture_OutputFormatList() []string {
-	var _ma *C.struct_miqt_array = C.QPicture_OutputFormatList()
+	var _ma C.struct_miqt_array = C.QPicture_OutputFormatList()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -200,7 +197,6 @@ func QPicture_OutputFormatList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -428,7 +424,7 @@ func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
 }
 
 func QPictureIO_InputFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QPictureIO_InputFormats()
+	var _ma C.struct_miqt_array = C.QPictureIO_InputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -437,12 +433,11 @@ func QPictureIO_InputFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPictureIO_OutputFormats() [][]byte {
-	var _ma *C.struct_miqt_array = C.QPictureIO_OutputFormats()
+	var _ma C.struct_miqt_array = C.QPictureIO_OutputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -451,7 +446,6 @@ func QPictureIO_OutputFormats() [][]byte {
 		C.free(unsafe.Pointer(_lv_bytearray.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

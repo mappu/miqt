@@ -57,16 +57,16 @@ void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack) {
 	self->removeStack(stack);
 }
 
-struct miqt_array* QUndoGroup_Stacks(const QUndoGroup* self) {
+struct miqt_array QUndoGroup_Stacks(const QUndoGroup* self) {
 	QList<QUndoStack *> _ret = self->stacks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUndoStack** _arr = static_cast<QUndoStack**>(malloc(sizeof(QUndoStack*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

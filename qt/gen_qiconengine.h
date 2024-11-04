@@ -50,13 +50,13 @@ struct miqt_string QIconEngine_Key(const QIconEngine* self);
 QIconEngine* QIconEngine_Clone(const QIconEngine* self);
 bool QIconEngine_Read(QIconEngine* self, QDataStream* in);
 bool QIconEngine_Write(const QIconEngine* self, QDataStream* out);
-struct miqt_array* QIconEngine_AvailableSizes(const QIconEngine* self);
+struct miqt_array QIconEngine_AvailableSizes(const QIconEngine* self);
 struct miqt_string QIconEngine_IconName(const QIconEngine* self);
 bool QIconEngine_IsNull(const QIconEngine* self);
 QPixmap* QIconEngine_ScaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale);
 void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data);
-struct miqt_array* QIconEngine_AvailableSizes1(const QIconEngine* self, int mode);
-struct miqt_array* QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state);
+struct miqt_array QIconEngine_AvailableSizes1(const QIconEngine* self, int mode);
+struct miqt_array QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state);
 void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);

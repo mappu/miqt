@@ -35,7 +35,7 @@ void QAbstractPrintDialog_AddEnabledOption(QAbstractPrintDialog* self, int optio
 void QAbstractPrintDialog_SetEnabledOptions(QAbstractPrintDialog* self, int options);
 int QAbstractPrintDialog_EnabledOptions(const QAbstractPrintDialog* self);
 bool QAbstractPrintDialog_IsOptionEnabled(const QAbstractPrintDialog* self, int option);
-void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array* /* of QWidget* */ tabs);
+void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */ tabs);
 void QAbstractPrintDialog_SetPrintRange(QAbstractPrintDialog* self, int rangeVal);
 int QAbstractPrintDialog_PrintRange(const QAbstractPrintDialog* self);
 void QAbstractPrintDialog_SetMinMax(QAbstractPrintDialog* self, int min, int max);

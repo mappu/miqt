@@ -330,16 +330,16 @@ struct miqt_string QXmlStreamReader_ReadElementText(QXmlStreamReader* self) {
 	return _ms;
 }
 
-struct miqt_array* QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self) {
+struct miqt_array QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamNamespaceDeclarations _ret = self->namespaceDeclarations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QXmlStreamNamespaceDeclaration** _arr = static_cast<QXmlStreamNamespaceDeclaration**>(malloc(sizeof(QXmlStreamNamespaceDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamNamespaceDeclaration(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -347,39 +347,39 @@ void QXmlStreamReader_AddExtraNamespaceDeclaration(QXmlStreamReader* self, QXmlS
 	self->addExtraNamespaceDeclaration(*extraNamespaceDeclaraction);
 }
 
-void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array* /* of QXmlStreamNamespaceDeclaration* */ extraNamespaceDeclaractions) {
+void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array /* of QXmlStreamNamespaceDeclaration* */ extraNamespaceDeclaractions) {
 	QXmlStreamNamespaceDeclarations extraNamespaceDeclaractions_QList;
-	extraNamespaceDeclaractions_QList.reserve(extraNamespaceDeclaractions->len);
-	QXmlStreamNamespaceDeclaration** extraNamespaceDeclaractions_arr = static_cast<QXmlStreamNamespaceDeclaration**>(extraNamespaceDeclaractions->data);
-	for(size_t i = 0; i < extraNamespaceDeclaractions->len; ++i) {
+	extraNamespaceDeclaractions_QList.reserve(extraNamespaceDeclaractions.len);
+	QXmlStreamNamespaceDeclaration** extraNamespaceDeclaractions_arr = static_cast<QXmlStreamNamespaceDeclaration**>(extraNamespaceDeclaractions.data);
+	for(size_t i = 0; i < extraNamespaceDeclaractions.len; ++i) {
 		extraNamespaceDeclaractions_QList.push_back(*(extraNamespaceDeclaractions_arr[i]));
 	}
 	self->addExtraNamespaceDeclarations(extraNamespaceDeclaractions_QList);
 }
 
-struct miqt_array* QXmlStreamReader_NotationDeclarations(const QXmlStreamReader* self) {
+struct miqt_array QXmlStreamReader_NotationDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamNotationDeclarations _ret = self->notationDeclarations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QXmlStreamNotationDeclaration** _arr = static_cast<QXmlStreamNotationDeclaration**>(malloc(sizeof(QXmlStreamNotationDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamNotationDeclaration(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QXmlStreamReader_EntityDeclarations(const QXmlStreamReader* self) {
+struct miqt_array QXmlStreamReader_EntityDeclarations(const QXmlStreamReader* self) {
 	QXmlStreamEntityDeclarations _ret = self->entityDeclarations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QXmlStreamEntityDeclaration** _arr = static_cast<QXmlStreamEntityDeclaration**>(malloc(sizeof(QXmlStreamEntityDeclaration*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QXmlStreamEntityDeclaration(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

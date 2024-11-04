@@ -62,8 +62,7 @@ func NewQDirModel(nameFilters []string, filters QDir__Filter, sort QDir__SortFla
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	ret := C.QDirModel_new(nameFilters_ma, (C.int)(filters), (C.int)(sort))
 	return newQDirModel(ret)
 }
@@ -85,8 +84,7 @@ func NewQDirModel3(nameFilters []string, filters QDir__Filter, sort QDir__SortFl
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := &C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(nameFilters_ma))
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
 	ret := C.QDirModel_new3(nameFilters_ma, (C.int)(filters), (C.int)(sort), parent.cPointer())
 	return newQDirModel(ret)
 }
@@ -178,7 +176,7 @@ func (this *QDirModel) Sort(column int) {
 }
 
 func (this *QDirModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QDirModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QDirModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -187,7 +185,6 @@ func (this *QDirModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -197,8 +194,7 @@ func (this *QDirModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QDirModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -228,13 +224,12 @@ func (this *QDirModel) SetNameFilters(filters []string) {
 		defer C.free(unsafe.Pointer(filters_i_ms.data))
 		filters_CArray[i] = filters_i_ms
 	}
-	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
+	filters_ma := C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
 	C.QDirModel_SetNameFilters(this.h, filters_ma)
 }
 
 func (this *QDirModel) NameFilters() []string {
-	var _ma *C.struct_miqt_array = C.QDirModel_NameFilters(this.h)
+	var _ma C.struct_miqt_array = C.QDirModel_NameFilters(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -243,7 +238,6 @@ func (this *QDirModel) NameFilters() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

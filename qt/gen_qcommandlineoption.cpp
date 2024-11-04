@@ -12,11 +12,11 @@ QCommandLineOption* QCommandLineOption_new(struct miqt_string name) {
 	return new QCommandLineOption(name_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new2(struct miqt_array* /* of struct miqt_string */ names) {
+QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */ names) {
 	QStringList names_QList;
-	names_QList.reserve(names->len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names->data);
-	for(size_t i = 0; i < names->len; ++i) {
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
@@ -29,11 +29,11 @@ QCommandLineOption* QCommandLineOption_new3(struct miqt_string name, struct miqt
 	return new QCommandLineOption(name_QString, description_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new4(struct miqt_array* /* of struct miqt_string */ names, struct miqt_string description) {
+QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description) {
 	QStringList names_QList;
-	names_QList.reserve(names->len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names->data);
-	for(size_t i = 0; i < names->len; ++i) {
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
@@ -60,11 +60,11 @@ QCommandLineOption* QCommandLineOption_new7(struct miqt_string name, struct miqt
 	return new QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new8(struct miqt_array* /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName) {
+QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName) {
 	QStringList names_QList;
-	names_QList.reserve(names->len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names->data);
-	for(size_t i = 0; i < names->len; ++i) {
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
@@ -73,11 +73,11 @@ QCommandLineOption* QCommandLineOption_new8(struct miqt_array* /* of struct miqt
 	return new QCommandLineOption(names_QList, description_QString, valueName_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new9(struct miqt_array* /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
+QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
 	QStringList names_QList;
-	names_QList.reserve(names->len);
-	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names->data);
-	for(size_t i = 0; i < names->len; ++i) {
+	names_QList.reserve(names.len);
+	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
+	for(size_t i = 0; i < names.len; ++i) {
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
@@ -95,7 +95,7 @@ void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other
 	self->swap(*other);
 }
 
-struct miqt_array* QCommandLineOption_Names(const QCommandLineOption* self) {
+struct miqt_array QCommandLineOption_Names(const QCommandLineOption* self) {
 	QStringList _ret = self->names();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -109,9 +109,9 @@ struct miqt_array* QCommandLineOption_Names(const QCommandLineOption* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -152,18 +152,18 @@ void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, struct miqt_st
 	self->setDefaultValue(defaultValue_QString);
 }
 
-void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array* /* of struct miqt_string */ defaultValues) {
+void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array /* of struct miqt_string */ defaultValues) {
 	QStringList defaultValues_QList;
-	defaultValues_QList.reserve(defaultValues->len);
-	struct miqt_string* defaultValues_arr = static_cast<struct miqt_string*>(defaultValues->data);
-	for(size_t i = 0; i < defaultValues->len; ++i) {
+	defaultValues_QList.reserve(defaultValues.len);
+	struct miqt_string* defaultValues_arr = static_cast<struct miqt_string*>(defaultValues.data);
+	for(size_t i = 0; i < defaultValues.len; ++i) {
 		QString defaultValues_arr_i_QString = QString::fromUtf8(defaultValues_arr[i].data, defaultValues_arr[i].len);
 		defaultValues_QList.push_back(defaultValues_arr_i_QString);
 	}
 	self->setDefaultValues(defaultValues_QList);
 }
 
-struct miqt_array* QCommandLineOption_DefaultValues(const QCommandLineOption* self) {
+struct miqt_array QCommandLineOption_DefaultValues(const QCommandLineOption* self) {
 	QStringList _ret = self->defaultValues();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -177,9 +177,9 @@ struct miqt_array* QCommandLineOption_DefaultValues(const QCommandLineOption* se
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

@@ -83,8 +83,7 @@ func NewQCompleter3(completions []string) *QCompleter {
 		defer C.free(unsafe.Pointer(completions_i_ms.data))
 		completions_CArray[i] = completions_i_ms
 	}
-	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
+	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	ret := C.QCompleter_new3(completions_ma)
 	return newQCompleter(ret)
 }
@@ -112,8 +111,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 		defer C.free(unsafe.Pointer(completions_i_ms.data))
 		completions_CArray[i] = completions_i_ms
 	}
-	completions_ma := &C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(completions_ma))
+	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
 	ret := C.QCompleter_new6(completions_ma, parent.cPointer())
 	return newQCompleter(ret)
 }
@@ -295,7 +293,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var _ma *C.struct_miqt_array = C.QCompleter_SplitPath(this.h, path_ms)
+	var _ma C.struct_miqt_array = C.QCompleter_SplitPath(this.h, path_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -304,7 +302,6 @@ func (this *QCompleter) SplitPath(path string) []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

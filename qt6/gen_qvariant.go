@@ -211,8 +211,7 @@ func NewQVariant15(stringlist []string) *QVariant {
 		defer C.free(unsafe.Pointer(stringlist_i_ms.data))
 		stringlist_CArray[i] = stringlist_i_ms
 	}
-	stringlist_ma := &C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(stringlist_ma))
+	stringlist_ma := C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
 	ret := C.QVariant_new15(stringlist_ma)
 	return newQVariant(ret)
 }
@@ -489,7 +488,7 @@ func (this *QVariant) ToString() string {
 }
 
 func (this *QVariant) ToStringList() []string {
-	var _ma *C.struct_miqt_array = C.QVariant_ToStringList(this.h)
+	var _ma C.struct_miqt_array = C.QVariant_ToStringList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -498,7 +497,6 @@ func (this *QVariant) ToStringList() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

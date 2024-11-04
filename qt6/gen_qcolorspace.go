@@ -103,8 +103,7 @@ func NewQColorSpace5(primaries QColorSpace__Primaries, transferFunctionTable []u
 	for i := range transferFunctionTable {
 		transferFunctionTable_CArray[i] = (C.uint16_t)(transferFunctionTable[i])
 	}
-	transferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(transferFunctionTable_ma))
+	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 	ret := C.QColorSpace_new5((C.int)(primaries), transferFunctionTable_ma)
 	return newQColorSpace(ret)
 }
@@ -122,8 +121,7 @@ func NewQColorSpace7(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF
 	for i := range transferFunctionTable {
 		transferFunctionTable_CArray[i] = (C.uint16_t)(transferFunctionTable[i])
 	}
-	transferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(transferFunctionTable_ma))
+	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 	ret := C.QColorSpace_new7(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), transferFunctionTable_ma)
 	return newQColorSpace(ret)
 }
@@ -135,22 +133,19 @@ func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF
 	for i := range redTransferFunctionTable {
 		redTransferFunctionTable_CArray[i] = (C.uint16_t)(redTransferFunctionTable[i])
 	}
-	redTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(redTransferFunctionTable_ma))
+	redTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
 	greenTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(greenTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(greenTransferFunctionTable_CArray))
 	for i := range greenTransferFunctionTable {
 		greenTransferFunctionTable_CArray[i] = (C.uint16_t)(greenTransferFunctionTable[i])
 	}
-	greenTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(greenTransferFunctionTable_ma))
+	greenTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
 	blueTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(blueTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(blueTransferFunctionTable_CArray))
 	for i := range blueTransferFunctionTable {
 		blueTransferFunctionTable_CArray[i] = (C.uint16_t)(blueTransferFunctionTable[i])
 	}
-	blueTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(blueTransferFunctionTable_ma))
+	blueTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
 	ret := C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), redTransferFunctionTable_ma, greenTransferFunctionTable_ma, blueTransferFunctionTable_ma)
 	return newQColorSpace(ret)
 }
@@ -218,8 +213,7 @@ func (this *QColorSpace) SetTransferFunctionWithTransferFunctionTable(transferFu
 	for i := range transferFunctionTable {
 		transferFunctionTable_CArray[i] = (C.uint16_t)(transferFunctionTable[i])
 	}
-	transferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(transferFunctionTable_ma))
+	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 	C.QColorSpace_SetTransferFunctionWithTransferFunctionTable(this.h, transferFunctionTable_ma)
 }
 
@@ -229,22 +223,19 @@ func (this *QColorSpace) SetTransferFunctions(redTransferFunctionTable []uint16,
 	for i := range redTransferFunctionTable {
 		redTransferFunctionTable_CArray[i] = (C.uint16_t)(redTransferFunctionTable[i])
 	}
-	redTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(redTransferFunctionTable_ma))
+	redTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
 	greenTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(greenTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(greenTransferFunctionTable_CArray))
 	for i := range greenTransferFunctionTable {
 		greenTransferFunctionTable_CArray[i] = (C.uint16_t)(greenTransferFunctionTable[i])
 	}
-	greenTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(greenTransferFunctionTable_ma))
+	greenTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
 	blueTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(blueTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(blueTransferFunctionTable_CArray))
 	for i := range blueTransferFunctionTable {
 		blueTransferFunctionTable_CArray[i] = (C.uint16_t)(blueTransferFunctionTable[i])
 	}
-	blueTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(blueTransferFunctionTable_ma))
+	blueTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
 	C.QColorSpace_SetTransferFunctions(this.h, redTransferFunctionTable_ma, greenTransferFunctionTable_ma, blueTransferFunctionTable_ma)
 }
 
@@ -261,8 +252,7 @@ func (this *QColorSpace) WithTransferFunctionWithTransferFunctionTable(transferF
 	for i := range transferFunctionTable {
 		transferFunctionTable_CArray[i] = (C.uint16_t)(transferFunctionTable[i])
 	}
-	transferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(transferFunctionTable_ma))
+	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 	_ret := C.QColorSpace_WithTransferFunctionWithTransferFunctionTable(this.h, transferFunctionTable_ma)
 	_goptr := newQColorSpace(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -275,22 +265,19 @@ func (this *QColorSpace) WithTransferFunctions(redTransferFunctionTable []uint16
 	for i := range redTransferFunctionTable {
 		redTransferFunctionTable_CArray[i] = (C.uint16_t)(redTransferFunctionTable[i])
 	}
-	redTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(redTransferFunctionTable_ma))
+	redTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(redTransferFunctionTable)), data: unsafe.Pointer(redTransferFunctionTable_CArray)}
 	greenTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(greenTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(greenTransferFunctionTable_CArray))
 	for i := range greenTransferFunctionTable {
 		greenTransferFunctionTable_CArray[i] = (C.uint16_t)(greenTransferFunctionTable[i])
 	}
-	greenTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(greenTransferFunctionTable_ma))
+	greenTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(greenTransferFunctionTable)), data: unsafe.Pointer(greenTransferFunctionTable_CArray)}
 	blueTransferFunctionTable_CArray := (*[0xffff]C.uint16_t)(C.malloc(C.size_t(8 * len(blueTransferFunctionTable))))
 	defer C.free(unsafe.Pointer(blueTransferFunctionTable_CArray))
 	for i := range blueTransferFunctionTable {
 		blueTransferFunctionTable_CArray[i] = (C.uint16_t)(blueTransferFunctionTable[i])
 	}
-	blueTransferFunctionTable_ma := &C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(blueTransferFunctionTable_ma))
+	blueTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
 	_ret := C.QColorSpace_WithTransferFunctions(this.h, redTransferFunctionTable_ma, greenTransferFunctionTable_ma, blueTransferFunctionTable_ma)
 	_goptr := newQColorSpace(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

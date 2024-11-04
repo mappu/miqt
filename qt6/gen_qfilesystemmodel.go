@@ -275,7 +275,7 @@ func (this *QFileSystemModel) Sort(column int) {
 }
 
 func (this *QFileSystemModel) MimeTypes() []string {
-	var _ma *C.struct_miqt_array = C.QFileSystemModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QFileSystemModel_MimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -284,7 +284,6 @@ func (this *QFileSystemModel) MimeTypes() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -294,8 +293,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := &C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(indexes_ma))
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 	return UnsafeNewQMimeData(unsafe.Pointer(C.QFileSystemModel_MimeData(this.h, indexes_ma)))
 }
 
@@ -382,13 +380,12 @@ func (this *QFileSystemModel) SetNameFilters(filters []string) {
 		defer C.free(unsafe.Pointer(filters_i_ms.data))
 		filters_CArray[i] = filters_i_ms
 	}
-	filters_ma := &C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(filters_ma))
+	filters_ma := C.struct_miqt_array{len: C.size_t(len(filters)), data: unsafe.Pointer(filters_CArray)}
 	C.QFileSystemModel_SetNameFilters(this.h, filters_ma)
 }
 
 func (this *QFileSystemModel) NameFilters() []string {
-	var _ma *C.struct_miqt_array = C.QFileSystemModel_NameFilters(this.h)
+	var _ma C.struct_miqt_array = C.QFileSystemModel_NameFilters(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -397,7 +394,6 @@ func (this *QFileSystemModel) NameFilters() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

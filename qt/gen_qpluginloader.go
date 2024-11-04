@@ -115,18 +115,17 @@ func (this *QPluginLoader) MetaData() *QJsonObject {
 }
 
 func QPluginLoader_StaticInstances() []*QObject {
-	var _ma *C.struct_miqt_array = C.QPluginLoader_StaticInstances()
+	var _ma C.struct_miqt_array = C.QPluginLoader_StaticInstances()
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QPluginLoader_StaticPlugins() []QStaticPlugin {
-	var _ma *C.struct_miqt_array = C.QPluginLoader_StaticPlugins()
+	var _ma C.struct_miqt_array = C.QPluginLoader_StaticPlugins()
 	_ret := make([]QStaticPlugin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -135,7 +134,6 @@ func QPluginLoader_StaticPlugins() []QStaticPlugin {
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

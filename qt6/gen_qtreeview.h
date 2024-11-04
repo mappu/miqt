@@ -109,7 +109,7 @@ void QTreeView_ExpandToDepth(QTreeView* self, int depth);
 struct miqt_string QTreeView_Tr2(const char* s, const char* c);
 struct miqt_string QTreeView_Tr3(const char* s, const char* c, int n);
 void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint);
-void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array* /* of int */ roles);
+void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */ roles);
 void QTreeView_ExpandRecursively2(QTreeView* self, QModelIndex* index, int depth);
 void QTreeView_Delete(QTreeView* self);
 

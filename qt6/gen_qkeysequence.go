@@ -250,7 +250,7 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString(str_ms)
+	var _ma C.struct_miqt_array = C.QKeySequence_ListFromString(str_ms)
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -259,7 +259,6 @@ func QKeySequence_ListFromString(str string) []QKeySequence {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -269,8 +268,7 @@ func QKeySequence_ListToString(list []QKeySequence) string {
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	var _ms C.struct_miqt_string = C.QKeySequence_ListToString(list_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -293,7 +291,7 @@ func QKeySequence_Mnemonic(text string) *QKeySequence {
 }
 
 func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
-	var _ma *C.struct_miqt_array = C.QKeySequence_KeyBindings((C.int)(key))
+	var _ma C.struct_miqt_array = C.QKeySequence_KeyBindings((C.int)(key))
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -302,7 +300,6 @@ func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -372,7 +369,7 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	var _ma *C.struct_miqt_array = C.QKeySequence_ListFromString2(str_ms, (C.int)(format))
+	var _ma C.struct_miqt_array = C.QKeySequence_ListFromString2(str_ms, (C.int)(format))
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -381,7 +378,6 @@ func QKeySequence_ListFromString2(str string, format QKeySequence__SequenceForma
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -391,8 +387,7 @@ func QKeySequence_ListToString2(list []QKeySequence, format QKeySequence__Sequen
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	var _ms C.struct_miqt_string = C.QKeySequence_ListToString2(list_ma, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

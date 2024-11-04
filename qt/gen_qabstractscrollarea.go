@@ -136,13 +136,12 @@ func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment A
 }
 
 func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QWidget {
-	var _ma *C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
+	var _ma C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

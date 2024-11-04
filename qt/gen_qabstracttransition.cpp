@@ -54,24 +54,24 @@ void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractStat
 	self->setTargetState(target);
 }
 
-struct miqt_array* QAbstractTransition_TargetStates(const QAbstractTransition* self) {
+struct miqt_array QAbstractTransition_TargetStates(const QAbstractTransition* self) {
 	QList<QAbstractState *> _ret = self->targetStates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractState** _arr = static_cast<QAbstractState**>(malloc(sizeof(QAbstractState*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array* /* of QAbstractState* */ targets) {
+void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array /* of QAbstractState* */ targets) {
 	QList<QAbstractState *> targets_QList;
-	targets_QList.reserve(targets->len);
-	QAbstractState** targets_arr = static_cast<QAbstractState**>(targets->data);
-	for(size_t i = 0; i < targets->len; ++i) {
+	targets_QList.reserve(targets.len);
+	QAbstractState** targets_arr = static_cast<QAbstractState**>(targets.data);
+	for(size_t i = 0; i < targets.len; ++i) {
 		targets_QList.push_back(targets_arr[i]);
 	}
 	self->setTargetStates(targets_QList);
@@ -98,16 +98,16 @@ void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAni
 	self->removeAnimation(animation);
 }
 
-struct miqt_array* QAbstractTransition_Animations(const QAbstractTransition* self) {
+struct miqt_array QAbstractTransition_Animations(const QAbstractTransition* self) {
 	QList<QAbstractAnimation *> _ret = self->animations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

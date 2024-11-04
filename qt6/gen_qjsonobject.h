@@ -41,7 +41,7 @@ QJsonObject* QJsonObject_new();
 QJsonObject* QJsonObject_new2(QJsonObject* other);
 void QJsonObject_OperatorAssign(QJsonObject* self, QJsonObject* other);
 void QJsonObject_Swap(QJsonObject* self, QJsonObject* other);
-struct miqt_array* QJsonObject_Keys(const QJsonObject* self);
+struct miqt_array QJsonObject_Keys(const QJsonObject* self);
 ptrdiff_t QJsonObject_Size(const QJsonObject* self);
 ptrdiff_t QJsonObject_Count(const QJsonObject* self);
 ptrdiff_t QJsonObject_Length(const QJsonObject* self);

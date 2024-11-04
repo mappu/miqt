@@ -161,16 +161,16 @@ QTimeZone__OffsetData* QTimeZone_PreviousTransition(const QTimeZone* self, QDate
 	return new QTimeZone::OffsetData(self->previousTransition(*beforeDateTime));
 }
 
-struct miqt_array* QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime) {
+struct miqt_array QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime) {
 	QTimeZone::OffsetDataList _ret = self->transitions(*fromDateTime, *toDateTime);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTimeZone__OffsetData** _arr = static_cast<QTimeZone__OffsetData**>(malloc(sizeof(QTimeZone__OffsetData*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTimeZone::OffsetData(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -196,7 +196,7 @@ bool QTimeZone_IsTimeZoneIdAvailable(struct miqt_string ianaId) {
 	return QTimeZone::isTimeZoneIdAvailable(ianaId_QByteArray);
 }
 
-struct miqt_array* QTimeZone_AvailableTimeZoneIds() {
+struct miqt_array QTimeZone_AvailableTimeZoneIds() {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -208,13 +208,13 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIds() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithTerritory(uint16_t territory) {
+struct miqt_array QTimeZone_AvailableTimeZoneIdsWithTerritory(uint16_t territory) {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds(static_cast<QLocale::Territory>(territory));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -226,13 +226,13 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithTerritory(uint16_t territor
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds) {
+struct miqt_array QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds) {
 	QList<QByteArray> _ret = QTimeZone::availableTimeZoneIds(static_cast<int>(offsetSeconds));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -244,9 +244,9 @@ struct miqt_array* QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSec
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -280,7 +280,7 @@ struct miqt_string QTimeZone_WindowsIdToDefaultIanaId2(struct miqt_string window
 	return _ms;
 }
 
-struct miqt_array* QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId) {
+struct miqt_array QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId) {
 	QByteArray windowsId_QByteArray(windowsId.data, windowsId.len);
 	QList<QByteArray> _ret = QTimeZone::windowsIdToIanaIds(windowsId_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -293,13 +293,13 @@ struct miqt_array* QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId) {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, uint16_t territory) {
+struct miqt_array QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, uint16_t territory) {
 	QByteArray windowsId_QByteArray(windowsId.data, windowsId.len);
 	QList<QByteArray> _ret = QTimeZone::windowsIdToIanaIds(windowsId_QByteArray, static_cast<QLocale::Territory>(territory));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -312,9 +312,9 @@ struct miqt_array* QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, u
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

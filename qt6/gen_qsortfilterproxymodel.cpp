@@ -204,11 +204,11 @@ bool QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel* self, int sectio
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
-QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
+QMimeData* QSortFilterProxyModel_MimeData(const QSortFilterProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
 	QModelIndexList indexes_QList;
-	indexes_QList.reserve(indexes->len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
-	for(size_t i = 0; i < indexes->len; ++i) {
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
@@ -251,16 +251,16 @@ QModelIndex* QSortFilterProxyModel_Buddy(const QSortFilterProxyModel* self, QMod
 	return new QModelIndex(self->buddy(*index));
 }
 
-struct miqt_array* QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value) {
+struct miqt_array QSortFilterProxyModel_Match(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -272,7 +272,7 @@ void QSortFilterProxyModel_Sort(QSortFilterProxyModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-struct miqt_array* QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self) {
+struct miqt_array QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -286,9 +286,9 @@ struct miqt_array* QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel* 
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -457,29 +457,29 @@ bool QSortFilterProxyModel_RemoveColumns3(QSortFilterProxyModel* self, int colum
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-struct miqt_array* QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits) {
+struct miqt_array QSortFilterProxyModel_Match4(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+struct miqt_array QSortFilterProxyModel_Match5(const QSortFilterProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

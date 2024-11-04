@@ -48,7 +48,7 @@ int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, long 
 void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, long long interval, int timerType, QObject* object);
 bool QAbstractEventDispatcher_UnregisterTimer(QAbstractEventDispatcher* self, int timerId);
 bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, QObject* object);
-struct miqt_array* QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object);
+struct miqt_array QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object);
 int QAbstractEventDispatcher_RemainingTime(QAbstractEventDispatcher* self, int timerId);
 void QAbstractEventDispatcher_WakeUp(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_Interrupt(QAbstractEventDispatcher* self);

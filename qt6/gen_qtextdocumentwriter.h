@@ -39,7 +39,7 @@ void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, struct miqt_stri
 struct miqt_string QTextDocumentWriter_FileName(const QTextDocumentWriter* self);
 bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* document);
 bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment);
-struct miqt_array* QTextDocumentWriter_SupportedDocumentFormats();
+struct miqt_array QTextDocumentWriter_SupportedDocumentFormats();
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self);
 
 #ifdef __cplusplus

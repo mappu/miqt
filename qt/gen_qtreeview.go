@@ -446,8 +446,7 @@ func (this *QTreeView) DataChanged3(topLeft *QModelIndex, bottomRight *QModelInd
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	roles_ma := &C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(roles_ma))
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
 	C.QTreeView_DataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
 

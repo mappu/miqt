@@ -111,7 +111,7 @@ int QImageReader_ImageFormat(const QImageReader* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array* QImageReader_TextKeys(const QImageReader* self) {
+struct miqt_array QImageReader_TextKeys(const QImageReader* self) {
 	QStringList _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -125,9 +125,9 @@ struct miqt_array* QImageReader_TextKeys(const QImageReader* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -209,7 +209,7 @@ struct miqt_string QImageReader_SubType(const QImageReader* self) {
 	return _ms;
 }
 
-struct miqt_array* QImageReader_SupportedSubTypes(const QImageReader* self) {
+struct miqt_array QImageReader_SupportedSubTypes(const QImageReader* self) {
 	QList<QByteArray> _ret = self->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -221,9 +221,9 @@ struct miqt_array* QImageReader_SupportedSubTypes(const QImageReader* self) {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -306,7 +306,7 @@ struct miqt_string QImageReader_ImageFormatWithDevice(QIODevice* device) {
 	return _ms;
 }
 
-struct miqt_array* QImageReader_SupportedImageFormats() {
+struct miqt_array QImageReader_SupportedImageFormats() {
 	QList<QByteArray> _ret = QImageReader::supportedImageFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -318,13 +318,13 @@ struct miqt_array* QImageReader_SupportedImageFormats() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QImageReader_SupportedMimeTypes() {
+struct miqt_array QImageReader_SupportedMimeTypes() {
 	QList<QByteArray> _ret = QImageReader::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -336,13 +336,13 @@ struct miqt_array* QImageReader_SupportedMimeTypes() {
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QImageReader_ImageFormatsForMimeType(struct miqt_string mimeType) {
+struct miqt_array QImageReader_ImageFormatsForMimeType(struct miqt_string mimeType) {
 	QByteArray mimeType_QByteArray(mimeType.data, mimeType.len);
 	QList<QByteArray> _ret = QImageReader::imageFormatsForMimeType(mimeType_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -355,9 +355,9 @@ struct miqt_array* QImageReader_ImageFormatsForMimeType(struct miqt_string mimeT
 		memcpy(_lv_ms.data, _lv_qb.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

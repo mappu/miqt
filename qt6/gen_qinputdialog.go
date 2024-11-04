@@ -177,13 +177,12 @@ func (this *QInputDialog) SetComboBoxItems(items []string) {
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	C.QInputDialog_SetComboBoxItems(this.h, items_ma)
 }
 
 func (this *QInputDialog) ComboBoxItems() []string {
-	var _ma *C.struct_miqt_array = C.QInputDialog_ComboBoxItems(this.h)
+	var _ma C.struct_miqt_array = C.QInputDialog_ComboBoxItems(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -192,7 +191,6 @@ func (this *QInputDialog) ComboBoxItems() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -364,8 +362,7 @@ func QInputDialog_GetItem(parent *QWidget, title string, label string, items []s
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem(parent.cPointer(), title_ms, label_ms, items_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -753,8 +750,7 @@ func QInputDialog_GetItem5(parent *QWidget, title string, label string, items []
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem5(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -779,8 +775,7 @@ func QInputDialog_GetItem6(parent *QWidget, title string, label string, items []
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem6(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -805,8 +800,7 @@ func QInputDialog_GetItem7(parent *QWidget, title string, label string, items []
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem7(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -831,8 +825,7 @@ func QInputDialog_GetItem8(parent *QWidget, title string, label string, items []
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem8(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -857,8 +850,7 @@ func QInputDialog_GetItem9(parent *QWidget, title string, label string, items []
 		defer C.free(unsafe.Pointer(items_i_ms.data))
 		items_CArray[i] = items_i_ms
 	}
-	items_ma := &C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(items_ma))
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
 	var _ms C.struct_miqt_string = C.QInputDialog_GetItem9(parent.cPointer(), title_ms, label_ms, items_ma, (C.int)(current), (C.bool)(editable), (*C.bool)(unsafe.Pointer(ok)), (C.int)(flags), (C.int)(inputMethodHints))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

@@ -96,7 +96,7 @@ func QCoreApplication_Tr(s string) string {
 }
 
 func QCoreApplication_Arguments() []string {
-	var _ma *C.struct_miqt_array = C.QCoreApplication_Arguments()
+	var _ma C.struct_miqt_array = C.QCoreApplication_Arguments()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -105,7 +105,6 @@ func QCoreApplication_Arguments() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -265,13 +264,12 @@ func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 		defer C.free(unsafe.Pointer(libraryPaths_i_ms.data))
 		libraryPaths_CArray[i] = libraryPaths_i_ms
 	}
-	libraryPaths_ma := &C.struct_miqt_array{len: C.size_t(len(libraryPaths)), data: unsafe.Pointer(libraryPaths_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(libraryPaths_ma))
+	libraryPaths_ma := C.struct_miqt_array{len: C.size_t(len(libraryPaths)), data: unsafe.Pointer(libraryPaths_CArray)}
 	C.QCoreApplication_SetLibraryPaths(libraryPaths_ma)
 }
 
 func QCoreApplication_LibraryPaths() []string {
-	var _ma *C.struct_miqt_array = C.QCoreApplication_LibraryPaths()
+	var _ma C.struct_miqt_array = C.QCoreApplication_LibraryPaths()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -280,7 +278,6 @@ func QCoreApplication_LibraryPaths() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

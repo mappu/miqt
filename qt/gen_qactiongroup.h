@@ -36,7 +36,7 @@ QAction* QActionGroup_AddAction(QActionGroup* self, QAction* a);
 QAction* QActionGroup_AddActionWithText(QActionGroup* self, struct miqt_string text);
 QAction* QActionGroup_AddAction2(QActionGroup* self, QIcon* icon, struct miqt_string text);
 void QActionGroup_RemoveAction(QActionGroup* self, QAction* a);
-struct miqt_array* QActionGroup_Actions(const QActionGroup* self);
+struct miqt_array QActionGroup_Actions(const QActionGroup* self);
 QAction* QActionGroup_CheckedAction(const QActionGroup* self);
 bool QActionGroup_IsExclusive(const QActionGroup* self);
 bool QActionGroup_IsEnabled(const QActionGroup* self);

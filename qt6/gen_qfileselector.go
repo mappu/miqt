@@ -93,7 +93,7 @@ func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
 }
 
 func (this *QFileSelector) ExtraSelectors() []string {
-	var _ma *C.struct_miqt_array = C.QFileSelector_ExtraSelectors(this.h)
+	var _ma C.struct_miqt_array = C.QFileSelector_ExtraSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -102,7 +102,6 @@ func (this *QFileSelector) ExtraSelectors() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -116,13 +115,12 @@ func (this *QFileSelector) SetExtraSelectors(list []string) {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	C.QFileSelector_SetExtraSelectors(this.h, list_ma)
 }
 
 func (this *QFileSelector) AllSelectors() []string {
-	var _ma *C.struct_miqt_array = C.QFileSelector_AllSelectors(this.h)
+	var _ma C.struct_miqt_array = C.QFileSelector_AllSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -131,7 +129,6 @@ func (this *QFileSelector) AllSelectors() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

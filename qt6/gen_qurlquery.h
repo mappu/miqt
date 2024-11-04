@@ -44,12 +44,12 @@ bool QUrlQuery_HasQueryItem(const QUrlQuery* self, struct miqt_string key);
 void QUrlQuery_AddQueryItem(QUrlQuery* self, struct miqt_string key, struct miqt_string value);
 void QUrlQuery_RemoveQueryItem(QUrlQuery* self, struct miqt_string key);
 struct miqt_string QUrlQuery_QueryItemValue(const QUrlQuery* self, struct miqt_string key);
-struct miqt_array* QUrlQuery_AllQueryItemValues(const QUrlQuery* self, struct miqt_string key);
+struct miqt_array QUrlQuery_AllQueryItemValues(const QUrlQuery* self, struct miqt_string key);
 void QUrlQuery_RemoveAllQueryItems(QUrlQuery* self, struct miqt_string key);
 struct miqt_string QUrlQuery_Query1(const QUrlQuery* self, unsigned int encoding);
 struct miqt_string QUrlQuery_ToString1(const QUrlQuery* self, unsigned int encoding);
 struct miqt_string QUrlQuery_QueryItemValue2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
-struct miqt_array* QUrlQuery_AllQueryItemValues2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
+struct miqt_array QUrlQuery_AllQueryItemValues2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
 void QUrlQuery_Delete(QUrlQuery* self);
 
 #ifdef __cplusplus

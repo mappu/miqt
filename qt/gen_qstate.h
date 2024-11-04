@@ -45,7 +45,7 @@ void QState_AddTransition(QState* self, QAbstractTransition* transition);
 QSignalTransition* QState_AddTransition2(QState* self, QObject* sender, const char* signal, QAbstractState* target);
 QAbstractTransition* QState_AddTransitionWithTarget(QState* self, QAbstractState* target);
 void QState_RemoveTransition(QState* self, QAbstractTransition* transition);
-struct miqt_array* QState_Transitions(const QState* self);
+struct miqt_array QState_Transitions(const QState* self);
 QAbstractState* QState_InitialState(const QState* self);
 void QState_SetInitialState(QState* self, QAbstractState* state);
 int QState_ChildMode(const QState* self);

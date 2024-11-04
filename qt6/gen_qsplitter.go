@@ -150,13 +150,12 @@ func (this *QSplitter) MinimumSizeHint() *QSize {
 }
 
 func (this *QSplitter) Sizes() []int {
-	var _ma *C.struct_miqt_array = C.QSplitter_Sizes(this.h)
+	var _ma C.struct_miqt_array = C.QSplitter_Sizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -166,8 +165,7 @@ func (this *QSplitter) SetSizes(list []int) {
 	for i := range list {
 		list_CArray[i] = (C.int)(list[i])
 	}
-	list_ma := &C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(list_ma))
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
 	C.QSplitter_SetSizes(this.h, list_ma)
 }
 

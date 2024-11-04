@@ -80,29 +80,29 @@ struct miqt_string QGuiApplication_DesktopFileName() {
 	return _ms;
 }
 
-struct miqt_array* QGuiApplication_AllWindows() {
+struct miqt_array QGuiApplication_AllWindows() {
 	QWindowList _ret = QGuiApplication::allWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QGuiApplication_TopLevelWindows() {
+struct miqt_array QGuiApplication_TopLevelWindows() {
 	QWindowList _ret = QGuiApplication::topLevelWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -145,16 +145,16 @@ QScreen* QGuiApplication_PrimaryScreen() {
 	return QGuiApplication::primaryScreen();
 }
 
-struct miqt_array* QGuiApplication_Screens() {
+struct miqt_array QGuiApplication_Screens() {
 	QList<QScreen *> _ret = QGuiApplication::screens();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

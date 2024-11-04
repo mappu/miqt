@@ -230,16 +230,16 @@ void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWi
 	self->tabifyDockWidget(first, second);
 }
 
-struct miqt_array* QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget) {
+struct miqt_array QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget) {
 	QList<QDockWidget *> _ret = self->tabifiedDockWidgets(dockwidget);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDockWidget** _arr = static_cast<QDockWidget**>(malloc(sizeof(QDockWidget*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -256,17 +256,17 @@ int QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget)
 	return static_cast<int>(_ret);
 }
 
-void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array* /* of QDockWidget* */ docks, struct miqt_array* /* of int */ sizes, int orientation) {
+void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array /* of QDockWidget* */ docks, struct miqt_array /* of int */ sizes, int orientation) {
 	QList<QDockWidget *> docks_QList;
-	docks_QList.reserve(docks->len);
-	QDockWidget** docks_arr = static_cast<QDockWidget**>(docks->data);
-	for(size_t i = 0; i < docks->len; ++i) {
+	docks_QList.reserve(docks.len);
+	QDockWidget** docks_arr = static_cast<QDockWidget**>(docks.data);
+	for(size_t i = 0; i < docks.len; ++i) {
 		docks_QList.push_back(docks_arr[i]);
 	}
 	QList<int> sizes_QList;
-	sizes_QList.reserve(sizes->len);
-	int* sizes_arr = static_cast<int*>(sizes->data);
-	for(size_t i = 0; i < sizes->len; ++i) {
+	sizes_QList.reserve(sizes.len);
+	int* sizes_arr = static_cast<int*>(sizes.data);
+	for(size_t i = 0; i < sizes.len; ++i) {
 		sizes_QList.push_back(static_cast<int>(sizes_arr[i]));
 	}
 	self->resizeDocks(docks_QList, sizes_QList, static_cast<Qt::Orientation>(orientation));

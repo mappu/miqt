@@ -47,7 +47,7 @@ int QTextBrowser_SourceType(const QTextBrowser* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
+struct miqt_array QTextBrowser_SearchPaths(const QTextBrowser* self) {
 	QStringList _ret = self->searchPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -61,17 +61,17 @@ struct miqt_array* QTextBrowser_SearchPaths(const QTextBrowser* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array* /* of struct miqt_string */ paths) {
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array /* of struct miqt_string */ paths) {
 	QStringList paths_QList;
-	paths_QList.reserve(paths->len);
-	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths->data);
-	for(size_t i = 0; i < paths->len; ++i) {
+	paths_QList.reserve(paths.len);
+	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
+	for(size_t i = 0; i < paths.len; ++i) {
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}

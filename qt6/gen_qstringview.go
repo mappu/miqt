@@ -96,13 +96,12 @@ func (this *QStringView) ToLocal8Bit() []byte {
 }
 
 func (this *QStringView) ToUcs4() []uint {
-	var _ma *C.struct_miqt_array = C.QStringView_ToUcs4(this.h)
+	var _ma C.struct_miqt_array = C.QStringView_ToUcs4(this.h)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

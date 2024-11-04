@@ -55,24 +55,24 @@ void QPen_SetStyle(QPen* self, int style) {
 	self->setStyle(static_cast<Qt::PenStyle>(style));
 }
 
-struct miqt_array* QPen_DashPattern(const QPen* self) {
+struct miqt_array QPen_DashPattern(const QPen* self) {
 	QVector<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QPen_SetDashPattern(QPen* self, struct miqt_array* /* of double */ pattern) {
+void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */ pattern) {
 	QVector<qreal> pattern_QList;
-	pattern_QList.reserve(pattern->len);
-	double* pattern_arr = static_cast<double*>(pattern->data);
-	for(size_t i = 0; i < pattern->len; ++i) {
+	pattern_QList.reserve(pattern.len);
+	double* pattern_arr = static_cast<double*>(pattern.data);
+	for(size_t i = 0; i < pattern.len; ++i) {
 		pattern_QList.push_back(static_cast<double>(pattern_arr[i]));
 	}
 	self->setDashPattern(pattern_QList);

@@ -38,11 +38,11 @@ int QKeySequence_Count(const QKeySequence* self);
 bool QKeySequence_IsEmpty(const QKeySequence* self);
 struct miqt_string QKeySequence_ToString(const QKeySequence* self);
 QKeySequence* QKeySequence_FromString(struct miqt_string str);
-struct miqt_array* QKeySequence_ListFromString(struct miqt_string str);
-struct miqt_string QKeySequence_ListToString(struct miqt_array* /* of QKeySequence* */ list);
+struct miqt_array QKeySequence_ListFromString(struct miqt_string str);
+struct miqt_string QKeySequence_ListToString(struct miqt_array /* of QKeySequence* */ list);
 int QKeySequence_Matches(const QKeySequence* self, QKeySequence* seq);
 QKeySequence* QKeySequence_Mnemonic(struct miqt_string text);
-struct miqt_array* QKeySequence_KeyBindings(int key);
+struct miqt_array QKeySequence_KeyBindings(int key);
 QKeyCombination* QKeySequence_OperatorSubscript(const QKeySequence* self, unsigned int i);
 void QKeySequence_OperatorAssign(QKeySequence* self, QKeySequence* other);
 void QKeySequence_Swap(QKeySequence* self, QKeySequence* other);
@@ -55,8 +55,8 @@ bool QKeySequence_OperatorGreaterOrEqual(const QKeySequence* self, QKeySequence*
 bool QKeySequence_IsDetached(const QKeySequence* self);
 struct miqt_string QKeySequence_ToString1(const QKeySequence* self, int format);
 QKeySequence* QKeySequence_FromString2(struct miqt_string str, int format);
-struct miqt_array* QKeySequence_ListFromString2(struct miqt_string str, int format);
-struct miqt_string QKeySequence_ListToString2(struct miqt_array* /* of QKeySequence* */ list, int format);
+struct miqt_array QKeySequence_ListFromString2(struct miqt_string str, int format);
+struct miqt_string QKeySequence_ListToString2(struct miqt_array /* of QKeySequence* */ list, int format);
 void QKeySequence_Delete(QKeySequence* self);
 
 #ifdef __cplusplus

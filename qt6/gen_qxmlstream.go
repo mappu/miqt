@@ -683,7 +683,7 @@ func (this *QXmlStreamReader) ReadElementText() string {
 }
 
 func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDeclaration {
-	var _ma *C.struct_miqt_array = C.QXmlStreamReader_NamespaceDeclarations(this.h)
+	var _ma C.struct_miqt_array = C.QXmlStreamReader_NamespaceDeclarations(this.h)
 	_ret := make([]QXmlStreamNamespaceDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -692,7 +692,6 @@ func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDecla
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -706,13 +705,12 @@ func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclar
 	for i := range extraNamespaceDeclaractions {
 		extraNamespaceDeclaractions_CArray[i] = extraNamespaceDeclaractions[i].cPointer()
 	}
-	extraNamespaceDeclaractions_ma := &C.struct_miqt_array{len: C.size_t(len(extraNamespaceDeclaractions)), data: unsafe.Pointer(extraNamespaceDeclaractions_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(extraNamespaceDeclaractions_ma))
+	extraNamespaceDeclaractions_ma := C.struct_miqt_array{len: C.size_t(len(extraNamespaceDeclaractions)), data: unsafe.Pointer(extraNamespaceDeclaractions_CArray)}
 	C.QXmlStreamReader_AddExtraNamespaceDeclarations(this.h, extraNamespaceDeclaractions_ma)
 }
 
 func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclaration {
-	var _ma *C.struct_miqt_array = C.QXmlStreamReader_NotationDeclarations(this.h)
+	var _ma C.struct_miqt_array = C.QXmlStreamReader_NotationDeclarations(this.h)
 	_ret := make([]QXmlStreamNotationDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -721,12 +719,11 @@ func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclara
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration {
-	var _ma *C.struct_miqt_array = C.QXmlStreamReader_EntityDeclarations(this.h)
+	var _ma C.struct_miqt_array = C.QXmlStreamReader_EntityDeclarations(this.h)
 	_ret := make([]QXmlStreamEntityDeclaration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -735,7 +732,6 @@ func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

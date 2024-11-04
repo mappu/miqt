@@ -99,7 +99,7 @@ QRect* QInputDevice_AvailableVirtualGeometry(const QInputDevice* self) {
 	return new QRect(self->availableVirtualGeometry());
 }
 
-struct miqt_array* QInputDevice_SeatNames() {
+struct miqt_array QInputDevice_SeatNames() {
 	QStringList _ret = QInputDevice::seatNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -113,22 +113,22 @@ struct miqt_array* QInputDevice_SeatNames() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QInputDevice_Devices() {
+struct miqt_array QInputDevice_Devices() {
 	QList<const QInputDevice *> _ret = QInputDevice::devices();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QInputDevice** _arr = static_cast<QInputDevice**>(malloc(sizeof(QInputDevice*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = (QInputDevice*) _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 

@@ -52,16 +52,16 @@ struct miqt_string QConcatenateTablesProxyModel_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array* QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self) {
+struct miqt_array QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self) {
 	QList<QAbstractItemModel *> _ret = self->sourceModels();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractItemModel** _arr = static_cast<QAbstractItemModel**>(malloc(sizeof(QAbstractItemModel*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -114,7 +114,7 @@ int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel*
 	return self->columnCount();
 }
 
-struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self) {
+struct miqt_array QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -128,17 +128,17 @@ struct miqt_array* QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTabl
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array* /* of QModelIndex* */ indexes) {
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
 	QModelIndexList indexes_QList;
-	indexes_QList.reserve(indexes->len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes->data);
-	for(size_t i = 0; i < indexes->len; ++i) {
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);

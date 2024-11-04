@@ -17,11 +17,11 @@ QFont* QFont_new2(struct miqt_string family) {
 	return new QFont(family_QString);
 }
 
-QFont* QFont_new3(struct miqt_array* /* of struct miqt_string */ families) {
+QFont* QFont_new3(struct miqt_array /* of struct miqt_string */ families) {
 	QStringList families_QList;
-	families_QList.reserve(families->len);
-	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
-	for(size_t i = 0; i < families->len; ++i) {
+	families_QList.reserve(families.len);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
+	for(size_t i = 0; i < families.len; ++i) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
@@ -51,33 +51,33 @@ QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool ita
 	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
 }
 
-QFont* QFont_new9(struct miqt_array* /* of struct miqt_string */ families, int pointSize) {
+QFont* QFont_new9(struct miqt_array /* of struct miqt_string */ families, int pointSize) {
 	QStringList families_QList;
-	families_QList.reserve(families->len);
-	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
-	for(size_t i = 0; i < families->len; ++i) {
+	families_QList.reserve(families.len);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
+	for(size_t i = 0; i < families.len; ++i) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
 	return new QFont(families_QList, static_cast<int>(pointSize));
 }
 
-QFont* QFont_new10(struct miqt_array* /* of struct miqt_string */ families, int pointSize, int weight) {
+QFont* QFont_new10(struct miqt_array /* of struct miqt_string */ families, int pointSize, int weight) {
 	QStringList families_QList;
-	families_QList.reserve(families->len);
-	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
-	for(size_t i = 0; i < families->len; ++i) {
+	families_QList.reserve(families.len);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
+	for(size_t i = 0; i < families.len; ++i) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
 	return new QFont(families_QList, static_cast<int>(pointSize), static_cast<int>(weight));
 }
 
-QFont* QFont_new11(struct miqt_array* /* of struct miqt_string */ families, int pointSize, int weight, bool italic) {
+QFont* QFont_new11(struct miqt_array /* of struct miqt_string */ families, int pointSize, int weight, bool italic) {
 	QStringList families_QList;
-	families_QList.reserve(families->len);
-	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
-	for(size_t i = 0; i < families->len; ++i) {
+	families_QList.reserve(families.len);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
+	for(size_t i = 0; i < families.len; ++i) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
@@ -104,7 +104,7 @@ void QFont_SetFamily(QFont* self, struct miqt_string family) {
 	self->setFamily(family_QString);
 }
 
-struct miqt_array* QFont_Families(const QFont* self) {
+struct miqt_array QFont_Families(const QFont* self) {
 	QStringList _ret = self->families();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -118,17 +118,17 @@ struct miqt_array* QFont_Families(const QFont* self) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-void QFont_SetFamilies(QFont* self, struct miqt_array* /* of struct miqt_string */ families) {
+void QFont_SetFamilies(QFont* self, struct miqt_array /* of struct miqt_string */ families) {
 	QStringList families_QList;
-	families_QList.reserve(families->len);
-	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families->data);
-	for(size_t i = 0; i < families->len; ++i) {
+	families_QList.reserve(families.len);
+	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
+	for(size_t i = 0; i < families.len; ++i) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
@@ -380,7 +380,7 @@ struct miqt_string QFont_Substitute(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_array* QFont_Substitutes(struct miqt_string param1) {
+struct miqt_array QFont_Substitutes(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QStringList _ret = QFont::substitutes(param1_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -395,13 +395,13 @@ struct miqt_array* QFont_Substitutes(struct miqt_string param1) {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
-struct miqt_array* QFont_Substitutions() {
+struct miqt_array QFont_Substitutions() {
 	QStringList _ret = QFont::substitutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -415,9 +415,9 @@ struct miqt_array* QFont_Substitutions() {
 		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
 		_arr[i] = _lv_ms;
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
@@ -427,12 +427,12 @@ void QFont_InsertSubstitution(struct miqt_string param1, struct miqt_string para
 	QFont::insertSubstitution(param1_QString, param2_QString);
 }
 
-void QFont_InsertSubstitutions(struct miqt_string param1, struct miqt_array* /* of struct miqt_string */ param2) {
+void QFont_InsertSubstitutions(struct miqt_string param1, struct miqt_array /* of struct miqt_string */ param2) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QStringList param2_QList;
-	param2_QList.reserve(param2->len);
-	struct miqt_string* param2_arr = static_cast<struct miqt_string*>(param2->data);
-	for(size_t i = 0; i < param2->len; ++i) {
+	param2_QList.reserve(param2.len);
+	struct miqt_string* param2_arr = static_cast<struct miqt_string*>(param2.data);
+	for(size_t i = 0; i < param2.len; ++i) {
 		QString param2_arr_i_QString = QString::fromUtf8(param2_arr[i].data, param2_arr[i].len);
 		param2_QList.push_back(param2_arr_i_QString);
 	}

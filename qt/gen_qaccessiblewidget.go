@@ -137,7 +137,7 @@ func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsaf
 }
 
 func (this *QAccessibleWidget) ActionNames() []string {
-	var _ma *C.struct_miqt_array = C.QAccessibleWidget_ActionNames(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_ActionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -146,7 +146,6 @@ func (this *QAccessibleWidget) ActionNames() []string {
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -163,7 +162,7 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	var _ma *C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_ms)
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -172,6 +171,5 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 		C.free(unsafe.Pointer(_lv_ms.data))
 		_ret[i] = _lv_ret
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }

@@ -65,7 +65,7 @@ struct miqt_string QCalendar_MonthName(const QCalendar* self, QLocale* locale, i
 struct miqt_string QCalendar_StandaloneMonthName(const QCalendar* self, QLocale* locale, int month);
 struct miqt_string QCalendar_WeekDayName(const QCalendar* self, QLocale* locale, int day);
 struct miqt_string QCalendar_StandaloneWeekDayName(const QCalendar* self, QLocale* locale, int day);
-struct miqt_array* QCalendar_AvailableCalendars();
+struct miqt_array QCalendar_AvailableCalendars();
 int QCalendar_DaysInMonth2(const QCalendar* self, int month, int year);
 struct miqt_string QCalendar_MonthName3(const QCalendar* self, QLocale* locale, int month, int year);
 struct miqt_string QCalendar_MonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format);

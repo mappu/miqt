@@ -158,13 +158,12 @@ func (this *QShortcut) SetKeysWithKeys(keys []QKeySequence) {
 	for i := range keys {
 		keys_CArray[i] = keys[i].cPointer()
 	}
-	keys_ma := &C.struct_miqt_array{len: C.size_t(len(keys)), data: unsafe.Pointer(keys_CArray)}
-	defer runtime.KeepAlive(unsafe.Pointer(keys_ma))
+	keys_ma := C.struct_miqt_array{len: C.size_t(len(keys)), data: unsafe.Pointer(keys_CArray)}
 	C.QShortcut_SetKeysWithKeys(this.h, keys_ma)
 }
 
 func (this *QShortcut) Keys() []QKeySequence {
-	var _ma *C.struct_miqt_array = C.QShortcut_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QShortcut_Keys(this.h)
 	_ret := make([]QKeySequence, int(_ma.len))
 	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -173,7 +172,6 @@ func (this *QShortcut) Keys() []QKeySequence {
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

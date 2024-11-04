@@ -120,24 +120,22 @@ func QGuiApplication_DesktopFileName() string {
 }
 
 func QGuiApplication_AllWindows() []*QWindow {
-	var _ma *C.struct_miqt_array = C.QGuiApplication_AllWindows()
+	var _ma C.struct_miqt_array = C.QGuiApplication_AllWindows()
 	_ret := make([]*QWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
 func QGuiApplication_TopLevelWindows() []*QWindow {
-	var _ma *C.struct_miqt_array = C.QGuiApplication_TopLevelWindows()
+	var _ma C.struct_miqt_array = C.QGuiApplication_TopLevelWindows()
 	_ret := make([]*QWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQWindow(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 
@@ -180,13 +178,12 @@ func QGuiApplication_PrimaryScreen() *QScreen {
 }
 
 func QGuiApplication_Screens() []*QScreen {
-	var _ma *C.struct_miqt_array = C.QGuiApplication_Screens()
+	var _ma C.struct_miqt_array = C.QGuiApplication_Screens()
 	_ret := make([]*QScreen, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = UnsafeNewQScreen(unsafe.Pointer(_outCast[i]))
 	}
-	C.free(unsafe.Pointer(_ma))
 	return _ret
 }
 

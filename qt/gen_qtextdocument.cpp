@@ -325,16 +325,16 @@ void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVa
 	self->addResource(static_cast<int>(typeVal), *name, *resource);
 }
 
-struct miqt_array* QTextDocument_AllFormats(const QTextDocument* self) {
+struct miqt_array QTextDocument_AllFormats(const QTextDocument* self) {
 	QVector<QTextFormat> _ret = self->allFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextFormat** _arr = static_cast<QTextFormat**>(malloc(sizeof(QTextFormat*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		_arr[i] = new QTextFormat(_ret[i]);
 	}
-	struct miqt_array* _out = static_cast<struct miqt_array*>(malloc(sizeof(struct miqt_array)));
-	_out->len = _ret.length();
-	_out->data = static_cast<void*>(_arr);
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
