@@ -189,7 +189,7 @@ pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6
 go build -ldflags "-s -w -H windowsgui"
 ```
 
-- Note: the MSYS2 `qt5-base` package [links against `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages do not. When using MSYS2, your distribution size including `.dll` files will be larger.
+- Note: the MSYS2 `qt5-base` package [is built to use `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages are not. [ICU is included by default with Windows 10 1703 and later](https://devblogs.microsoft.com/oldnewthing/20210527-00/?p=105255). If you are targeting older versions of Windows, then when using MSYS2, your distribution size including `.dll` files will be larger.
 
 For static linking:
 
