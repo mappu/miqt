@@ -409,8 +409,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPlatformWindow",                 // e.g. qwindow.h, as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below
 		"QPlatformMenu",                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		"QPlatformMediaCaptureSession",    // Qt 6 Multimedia qmediacapturesession.h
+		"QPlatformMediaRecorder",          // Qt 6 Multimedia qmediarecorder.h
+		"QPlatformVideoSink",              // Qt 6 Multimedia qvideosink.h
 		"QTextDocument::ResourceProvider", // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
 		"QTransform::Affine",              // Qt 6 qtransform.h - public method returning private type
+		"QAbstractAudioBuffer",            // Qt 5 Multimedia, this is a private/internal type only
+		"QAbstractVideoBuffer",            // Works in Qt 5, but in Qt 6 Multimedia this type is used in qvideoframe.h but is not defined anywhere (it was later added in Qt 6.8)
+		"QRhi",                            // Qt 6 unstable types, used in Multimedia
 		"____last____":
 		return ErrTooComplex
 	}

@@ -78,6 +78,22 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	generate(
+		"qt/multimedia",
+		[]string{
+			// Theoretically, QtMultimediaWidgets and QtMultimedia are different
+			// packages, but QtMultimedia qcamera.h has a dependency on qvideowidget.
+			// Bind them together since our base /qt/ package is Widgets anyway.
+			"/usr/include/x86_64-linux-gnu/qt5/QtMultimedia",
+			"/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5MultimediaWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -183,4 +199,32 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
+
+	// Qt 6 QtMultimedia
+	generate(
+		"qt6/multimedia",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtMultimedia",
+			"/usr/include/x86_64-linux-gnu/qt6/QtMultimediaWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6MultimediaWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Spatial Audio (on Debian this is a dependency of Qt6Multimedia)
+	generate(
+		"qt6/spatialaudio",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtSpatialAudio",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6SpatialAudio"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 }
