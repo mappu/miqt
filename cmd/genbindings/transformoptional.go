@@ -32,7 +32,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 
 			// Add method copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
-				dupMethod := m // copy
+				dupMethod := m // shallow copy
 				dupMethod.Rename(m.MethodName + fmt.Sprintf("%d", x+1))
 				dupMethod.Parameters = m.Parameters[0 : x+1]
 				dupMethod.HiddenParams = m.Parameters[x+1:]
@@ -68,7 +68,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 
 			// Add ctor copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
-				dupCtor := m // copy
+				dupCtor := m // shallow copy
 				dupCtor.Parameters = m.Parameters[0 : x+1]
 				dupCtor.HiddenParams = m.Parameters[x+1:]
 				c.Ctors = append(c.Ctors, dupCtor)

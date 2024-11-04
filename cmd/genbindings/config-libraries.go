@@ -66,6 +66,18 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	generate(
+		"qt/network",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Network"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -149,6 +161,25 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PrintSupport"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 QtNetwork
+	generate(
+		"qt6/network",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
+		},
+		func(fullpath string) bool {
+			fname := filepath.Base(fullpath)
+			if fname == "qtnetwork-config.h" {
+				return false
+			}
+			return true
+		},
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)

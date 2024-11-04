@@ -244,6 +244,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		if err := AllowType(vType, isReturnType); err != nil {
 			return err
 		}
+		// Additionally, Go maps do not support []byte keys
+		// This affects qnetwork qsslconfiguration BackendConfiguration
+		if kType.ParameterType == "QByteArray" {
+			return ErrTooComplex
+		}
+	}
+	if p.QMultiMapOf() {
+		return ErrTooComplex // e.g. Qt5 QNetwork qsslcertificate.h has a QMultiMap<QSsl::AlternativeNameEntryType, QString>
 	}
 
 	if !AllowClass(p.ParameterType) {
@@ -379,6 +387,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
 		"FILE",                            // e.g. qfile.h constructors
+		"sockaddr",                        // Qt network Qhostaddress. Should be possible to make this work but may be platform-specific
 		"qInternalCallback",               // e.g. qnamespace.h
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either

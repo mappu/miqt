@@ -191,6 +191,15 @@ func (p CppParameter) QSetOf() (CppParameter, bool) {
 	return CppParameter{}, false
 }
 
+func (p CppParameter) QMultiMapOf() bool {
+	if strings.HasPrefix(p.ParameterType, `QMultiMap<`) ||
+		strings.HasPrefix(p.ParameterType, `QMultiHash<`) {
+		return true
+	}
+
+	return false
+}
+
 func (p CppParameter) IntType() bool {
 
 	if p.IsKnownEnum() {
