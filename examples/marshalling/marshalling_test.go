@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/mappu/miqt/qt"
@@ -91,9 +92,9 @@ func testMarshalling(t *testing.T) {
 				t.Errorf("QList<Q*>: expected %#v, got %#v", expect, got)
 			}
 		}
-
 	})
 
+	// QByteArray
 	t.Run("QByteArray", func(t *testing.T) {
 
 		input := "foo bar baz"
@@ -103,8 +104,36 @@ func testMarshalling(t *testing.T) {
 		if input != got {
 			t.Fatalf("QByteArray: expected %q, got %q", input, got)
 		}
-
 	})
+
+	// QMap
+	t.Run("QMap", func(t *testing.T) {
+		input := make(map[string]qt.QVariant)
+		input["foo"] = *qt.NewQVariant14("FOO")
+		input["bar"] = *qt.NewQVariant14("BAR")
+		input["baz"] = *qt.NewQVariant14("BAZ")
+
+		qtobj := qt.QJsonObject_FromVariantMap(input)
+		got := qtobj.ToVariantMap()
+
+		if len(got) != len(input) {
+			t.Fatalf("QMap: expected len %d, got len %d", len(input), len(got))
+		}
+
+		for src_key, _ := range input {
+			qvalue, ok := got[src_key]
+			if !ok {
+				t.Fatalf("QMap: missing entry %q", src_key)
+			}
+
+			gotValue := qvalue.ToString()
+			expectValue := strings.ToUpper(src_key)
+			if gotValue != expectValue {
+				t.Fatalf("QMap: single value expected %q, got %q", expectValue, gotValue)
+			}
+		}
+	})
+
 }
 
 func TestMarshalling(t *testing.T) {
