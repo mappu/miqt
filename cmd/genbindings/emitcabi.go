@@ -428,44 +428,33 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 func getReferencedTypes(src *CppParsedHeader) []string {
 
 	foundTypes := map[string]struct{}{}
+
+	maybeAddType := func(p CppParameter) {
+		if p.QtClassType() {
+			foundTypes[p.ParameterType] = struct{}{}
+		}
+		if t, ok := p.QListOf(); ok {
+			foundTypes["QList"] = struct{}{} // FIXME or QVector?
+			if t.QtClassType() {
+				foundTypes[t.ParameterType] = struct{}{}
+			}
+		}
+	}
+
 	for _, c := range src.Classes {
 
 		foundTypes[c.ClassName] = struct{}{}
 
 		for _, ctor := range c.Ctors {
 			for _, p := range ctor.Parameters {
-				if p.QtClassType() {
-					foundTypes[p.ParameterType] = struct{}{}
-				}
-				if t, ok := p.QListOf(); ok {
-					foundTypes["QList"] = struct{}{} // FIXME or QVector?
-					if t.QtClassType() {
-						foundTypes[t.ParameterType] = struct{}{}
-					}
-				}
+				maybeAddType(p)
 			}
 		}
 		for _, m := range c.Methods {
 			for _, p := range m.Parameters {
-				if p.QtClassType() {
-					foundTypes[p.ParameterType] = struct{}{}
-				}
-				if t, ok := p.QListOf(); ok {
-					foundTypes["QList"] = struct{}{} // FIXME or QVector?
-					if t.QtClassType() {
-						foundTypes[t.ParameterType] = struct{}{}
-					}
-				}
+				maybeAddType(p)
 			}
-			if m.ReturnType.QtClassType() {
-				foundTypes[m.ReturnType.ParameterType] = struct{}{}
-			}
-			if t, ok := m.ReturnType.QListOf(); ok {
-				foundTypes["QList"] = struct{}{} // FIXME or QVector?
-				if t.QtClassType() {
-					foundTypes[t.ParameterType] = struct{}{}
-				}
-			}
+			maybeAddType(m.ReturnType)
 		}
 	}
 
@@ -477,10 +466,7 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
-		if strings.HasPrefix(ft, "QList<") || strings.HasPrefix(ft, "QVector<") { // TODO properly exclude via the QListOf() check above
-			continue
-		}
-		if strings.HasSuffix(ft, "Private") { // qbrush.h finds QGradientPrivate
+		if !AllowClass(ft) {
 			continue
 		}
 
