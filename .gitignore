@@ -26,6 +26,7 @@ examples/mdoutliner/mdoutliner
 examples/windowsmanifest/windowsmanifest
 examples/uidesigner/uidesigner
 examples/libraries/extras-scintillaedit/extras-scintillaedit
+examples/libraries/qt-multimedia/qt-multimedia
 examples/libraries/qt-network/qt-network
 examples/libraries/qt-printsupport/qt-printsupport
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
