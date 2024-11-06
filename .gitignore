@@ -11,6 +11,8 @@ cmd/genbindings/genbindings.local*
 pkg-config/*.pc
 
 # binaries
+*.exe
+
 cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
@@ -19,16 +21,14 @@ cmd/miqt-uic/miqt-uic
 cmd/miqt-rcc/miqt-rcc
 
 examples/helloworld/helloworld
-examples/helloworld/helloworld.exe
+examples/helloworld6/helloworld6
 examples/mdoutliner/mdoutliner
-examples/mdoutliner/mdoutliner.exe
 examples/windowsmanifest/windowsmanifest
-examples/windowsmanifest/windowsmanifest.exe
 examples/uidesigner/uidesigner
-examples/uidesigner/uidesigner.exe
 examples/libraries/extras-scintillaedit/extras-scintillaedit
-examples/libraries/qt-qprintsupport/qt-qprintsupport
-examples/libraries/qt6/qt6
+examples/libraries/qt-multimedia/qt-multimedia
+examples/libraries/qt-network/qt-network
+examples/libraries/qt-printsupport/qt-printsupport
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
 
 # android temporary build files

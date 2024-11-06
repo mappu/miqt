@@ -28,7 +28,7 @@ func importPathForQtPackage(packageName string) string {
 	return BaseModule + "/" + packageName
 }
 
-func findHeadersInDir(srcDir string) []string {
+func findHeadersInDir(srcDir string, allowHeader func(string) bool) []string {
 	content, err := os.ReadDir(srcDir)
 	if err != nil {
 		panic(err)
@@ -44,7 +44,7 @@ func findHeadersInDir(srcDir string) []string {
 			continue
 		}
 		fullPath := filepath.Join(srcDir, includeFile.Name())
-		if !AllowHeader(fullPath) {
+		if !allowHeader(fullPath) {
 			continue
 		}
 		ret = append(ret, fullPath)
@@ -93,14 +93,14 @@ func pkgConfigCflags(packageName string) string {
 	return string(stdout)
 }
 
-func generate(packageName string, srcDirs []string, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
+func generate(packageName string, srcDirs []string, allowHeaderFn func(string) bool, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
 		if strings.HasSuffix(srcDir, `.h`) {
 			includeFiles = append(includeFiles, srcDir) // single .h
 		} else {
-			includeFiles = append(includeFiles, findHeadersInDir(srcDir)...)
+			includeFiles = append(includeFiles, findHeadersInDir(srcDir, allowHeaderFn)...)
 		}
 	}
 

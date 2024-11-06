@@ -58,7 +58,7 @@ func InsertTypedefs(qt6 bool) {
 
 }
 
-func AllowHeader(fullpath string) bool {
+func Widgets_AllowHeader(fullpath string) bool {
 	fname := filepath.Base(fullpath)
 
 	if strings.HasSuffix(fname, `_impl.h`) {
@@ -244,6 +244,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		if err := AllowType(vType, isReturnType); err != nil {
 			return err
 		}
+		// Additionally, Go maps do not support []byte keys
+		// This affects qnetwork qsslconfiguration BackendConfiguration
+		if kType.ParameterType == "QByteArray" {
+			return ErrTooComplex
+		}
+	}
+	if p.QMultiMapOf() {
+		return ErrTooComplex // e.g. Qt5 QNetwork qsslcertificate.h has a QMultiMap<QSsl::AlternativeNameEntryType, QString>
 	}
 
 	if !AllowClass(p.ParameterType) {
@@ -379,6 +387,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
 		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
 		"FILE",                            // e.g. qfile.h constructors
+		"sockaddr",                        // Qt network Qhostaddress. Should be possible to make this work but may be platform-specific
 		"qInternalCallback",               // e.g. qnamespace.h
 		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
 		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
@@ -400,8 +409,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPlatformWindow",                 // e.g. qwindow.h, as below
 		"QPlatformSurface",                // e.g. qsurface.h. as below
 		"QPlatformMenu",                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		"QPlatformMediaCaptureSession",    // Qt 6 Multimedia qmediacapturesession.h
+		"QPlatformMediaRecorder",          // Qt 6 Multimedia qmediarecorder.h
+		"QPlatformVideoSink",              // Qt 6 Multimedia qvideosink.h
 		"QTextDocument::ResourceProvider", // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
 		"QTransform::Affine",              // Qt 6 qtransform.h - public method returning private type
+		"QAbstractAudioBuffer",            // Qt 5 Multimedia, this is a private/internal type only
+		"QAbstractVideoBuffer",            // Works in Qt 5, but in Qt 6 Multimedia this type is used in qvideoframe.h but is not defined anywhere (it was later added in Qt 6.8)
+		"QRhi",                            // Qt 6 unstable types, used in Multimedia
 		"____last____":
 		return ErrTooComplex
 	}

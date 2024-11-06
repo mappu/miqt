@@ -232,7 +232,13 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "\t" + nameprefix + "_QList.push_back(" + addFwd + ");\n"
 
 		preamble += indent + "}\n"
-		return preamble, nameprefix + "_QList"
+
+		// Support passing QList<>* (very rare, but used in qnetwork)
+		if p.Pointer {
+			return preamble, "&" + nameprefix + "_QList"
+		} else {
+			return preamble, nameprefix + "_QList"
+		}
 
 	} else if kType, vType, ok := p.QMapOf(); ok {
 		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QMap;\n"

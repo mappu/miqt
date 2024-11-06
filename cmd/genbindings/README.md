@@ -33,3 +33,18 @@ You should check the following configuration:
 
 - `config-libraries.go`: Input directories containing Qt headers
 - `config-allowlist.go`: Check everything
+
+## Steps to add extra libraries to MIQT
+
+1. Git clone this repository
+2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
+    - If your library does not include a pkg-config file, [you must create one.](pkg-config/README.md)
+3. Patch `cmd/genbindings/config-libraries.go` to add a new `generate` block for your target library
+4. Run `genbindings` to regenerate all bindings
+	- The first run must populate clang ASTs into a cache directory and may be slower, but it is fast afterwards
+5. Add a `cflags.go` file to the generated binding directory
+	- It should have a `#cgo pkg-config: LibraryName` stanza and any extra flags (e.g. `--std=c++17`) that are required but not system-specific
+6. Try to use the new binding within the repo, by adding an example in the `examples/libraries` directory
+7. Commit the generated bindings
+    - You can then use your forked MIQT repo with `replace` inside `go.mod`
+    - Or, [open a Pull Request](https://github.com/mappu/miqt/compare) to add the library to MIQT

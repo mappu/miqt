@@ -865,6 +865,10 @@ func parseSingleTypeString(p string) CppParameter {
 		} else if tok == "const" {
 			insert.Const = true
 
+		} else if tok == "class" {
+			// QNetwork has some references to 'class QSslCertificate'. Flatten
+			continue
+
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
 

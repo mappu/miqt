@@ -12,7 +12,7 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt 5.15 / Qt 6.4+ API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-These bindings were newly started in August 2024. The bindings are functional for all of QtCore, QtGui, and QtWidgets, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
+These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QScintilla, ScintillaEdit, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
@@ -112,18 +112,7 @@ You can replace the import path in two ways:
 
 ### Q9. How can I add bindings for another Qt library?
 
-1. Git clone this repository
-2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
-    - If your library does not include a pkg-config file, [you must create one.](pkg-config/README.md)
-3. Patch `cmd/genbindings/config-libraries.go` to add a new `generate` block for your target library
-4. Run `genbindings` to regenerate all bindings
-	- The first run must populate clang ASTs into a cache directory and may be slower, but it is fast afterwards
-5. Add a `cflags.go` file to the generated binding directory
-	- It should have a `#cgo pkg-config: LibraryName` stanza and any extra flags (e.g. `--std=c++17`) that are required but not system-specific
-6. Try to use the new binding within the repo, by adding an example in the `examples/libraries` directory
-7. Commit the generated bindings
-    - You can then use your forked MIQT repo with `replace` inside `go.mod`
-    - Or, [open a Pull Request](https://github.com/mappu/miqt/compare) to add the library to MIQT
+Fork this repository and add your library to the `genbindings/config-libraries` file. [Read more »](cmd/genbindings/README.md)
 
 ## Building
 
