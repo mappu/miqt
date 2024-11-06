@@ -227,4 +227,16 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Depends on QtCore/Gui/Widgets, QPrintSupport
+	generate(
+		"qt-restricted-extras/qscintilla6",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/Qsci",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6PrintSupport"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
 }
