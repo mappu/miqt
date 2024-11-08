@@ -19,6 +19,7 @@ These bindings were newly started in August 2024. The bindings are complete for 
 |OS|Arch|Linkage|Status
 |---|---|---|---
 |Linux|x86_64|Static or Dynamic (.so)|✅ Works
+|Linux|ARM64|Static or Dynamic (.so)|✅ Works
 |Windows|x86_64|Static or Dynamic (.dll)|✅ Works
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
 |macOS|x86_64|Static or Dynamic (.dylib)|✅ Works
