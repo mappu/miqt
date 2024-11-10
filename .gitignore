@@ -25,6 +25,7 @@ examples/helloworld6/helloworld6
 examples/mdoutliner/mdoutliner
 examples/windowsmanifest/windowsmanifest
 examples/uidesigner/uidesigner
+examples/trivialwizard6/trivialwizard6
 examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-multimedia/qt-multimedia
 examples/libraries/qt-network/qt-network
