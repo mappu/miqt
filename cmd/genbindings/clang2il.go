@@ -460,6 +460,14 @@ nextMethod:
 			}
 
 			mm.IsSignal = isSignal && !mm.IsStatic && AllowSignal(mm)
+			mm.IsProtected = (visibility == VsProtected)
+
+			if mm.IsProtected && !mm.IsVirtual {
+				// Protected method, so we can't call it
+				// Non-virtual, so we can't override it
+				// There is nothing we can do with this function
+				continue nextMethod
+			}
 
 			// Once all processing is complete, pass to exceptions for final decision
 

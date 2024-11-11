@@ -238,6 +238,8 @@ type CppMethod struct {
 	IsStatic           bool
 	IsSignal           bool
 	IsConst            bool
+	IsVirtual          bool
+	IsProtected        bool           // If true, we can't call this method but we may still be able to overload it
 	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
 
 	// Special quirks
@@ -380,6 +382,56 @@ type CppClass struct {
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
 	ChildEnums     []CppEnum
+}
+
+// Virtual checks if the class has any virtual methods. This requires global
+// state knowledge as virtual methods might have been inherited.
+// C++ constructors cannot be virtual.
+func (c *CppClass) VirtualMethods() []CppMethod {
+	var ret []CppMethod
+	var retNames = make(map[string]struct{}, 0) // if name is present, a child class found it first
+
+	for _, m := range c.Methods {
+		if !m.IsVirtual {
+			continue
+		}
+		if m.IsSignal {
+			continue
+		}
+		if !AllowVirtual(m) {
+			continue
+		}
+
+		ret = append(ret, m)
+		retNames[m.MethodName] = struct{}{}
+	}
+
+	for _, inh := range c.Inherits {
+		cinfo, ok := KnownClassnames[inh]
+		if !ok {
+			panic("Class " + c.ClassName + " inherits from unknown class " + inh)
+		}
+
+		for _, m := range cinfo.Class.Methods {
+			if !m.IsVirtual {
+				continue
+			}
+			if m.IsSignal {
+				continue
+			}
+			if !AllowVirtual(m) {
+				continue
+			}
+			if _, ok := retNames[m.MethodName]; ok {
+				continue // Already found in a child class
+			}
+
+			ret = append(ret, m)
+			retNames[m.MethodName] = struct{}{}
+		}
+	}
+
+	return ret
 }
 
 type CppTypedef struct {

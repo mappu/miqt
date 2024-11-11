@@ -186,6 +186,10 @@ func AllowSignal(mm CppMethod) bool {
 	}
 }
 
+func AllowVirtual(mm CppMethod) bool {
+	return true // AllowSignal(mm)
+}
+
 func AllowMethod(className string, mm CppMethod) error {
 
 	for _, p := range mm.Parameters {

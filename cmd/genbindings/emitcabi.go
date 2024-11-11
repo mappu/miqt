@@ -674,23 +674,27 @@ extern "C" {
 
 	for _, c := range src.Classes {
 
-		cClassName := cabiClassName(c.ClassName)
+		methodPrefixName := cabiClassName(c.ClassName)
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", cClassName+"*", cClassName, maybeSuffix(i), emitParametersCabi(ctor, "")))
+			ret.WriteString(fmt.Sprintf("%s %s_new%s(%s);\n", methodPrefixName+"*", methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, "")))
 		}
 
 		for _, m := range c.Methods {
-			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_%s(%s);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*")))
 
 			if m.IsSignal {
-				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, intptr_t slot);\n", m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), cClassName))
+				ret.WriteString(fmt.Sprintf("%s %s_connect_%s(%s* self, intptr_t slot);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), methodPrefixName))
 			}
+		}
+
+		for _, m := range c.VirtualMethods() {
+			ret.WriteString(fmt.Sprintf("void %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), methodPrefixName))
 		}
 
 		// delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", cClassName, cClassName))
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", methodPrefixName, methodPrefixName))
 		}
 
 		ret.WriteString("\n")
@@ -736,7 +740,49 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 	for _, c := range src.Classes {
 
-		cClassName := cabiClassName(c.ClassName)
+		methodPrefixName := cabiClassName(c.ClassName)
+		cppClassName := c.ClassName
+		virtualMethods := c.VirtualMethods()
+
+		if len(virtualMethods) > 0 {
+			ret.WriteString("class MiqtVirtual" + cppClassName + " : public virtual " + cppClassName + " {\n" +
+				"public:\n" +
+				"\tusing " + cppClassName + "::" + cppClassName + ";\n" + // inherit constructors
+				"\n",
+			)
+			for _, m := range virtualMethods {
+
+				maybeReturn := ifv(m.ReturnType.RenderTypeQtCpp() == "void", "", "return ")
+
+				ret.WriteString(
+					"\tintptr_t handle__" + m.SafeMethodName() + " = 0;\n" +
+
+						"\n" +
+
+						"\t" + m.ReturnType.RenderTypeQtCpp() + " " + m.MethodName + "(...) override {\n" +
+						"\t\tif (handle__" + m.SafeMethodName() + " == 0) {\n" +
+						"\t\t\t" + maybeReturn + methodPrefixName + "::" + m.MethodName + "(...);\n" +
+						"\t\t} else {\n" +
+						"\t\t\t" + maybeReturn + "miqt_exec_callback_" + methodPrefixName + "_" + m.SafeMethodName() + "(...);\n" +
+						"\t\t}\n" +
+						"\t}\n" +
+
+						"\n" +
+
+						"\t" + m.ReturnType.RenderTypeQtCpp() + " virtualbase_" + m.SafeMethodName() + "(...) {\n" +
+						"\t\t" + maybeReturn + methodPrefixName + "::" + m.MethodName + "(...);\n" +
+						"\t}\n" +
+
+						"\n",
+				)
+			}
+
+			ret.WriteString(
+				"};\n" +
+					"\n")
+
+			cppClassName = "MiqtVirtual" + cppClassName
+		}
 
 		for i, ctor := range c.Ctors {
 
@@ -754,9 +800,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+					methodPrefixName, methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 					preamble,
-					c.ClassName, forwarding,
+					cppClassName, forwarding,
 				))
 
 			} else {
@@ -766,9 +812,9 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"\treturn new %s(%s);\n"+
 						"}\n"+
 						"\n",
-					cClassName, cClassName, maybeSuffix(i), emitParametersCabi(ctor, ""),
+					methodPrefixName, methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, ""),
 					preamble,
-					c.ClassName, forwarding,
+					cppClassName, forwarding,
 				))
 
 			}
@@ -800,7 +846,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
+					m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 					m.ReturnType.RenderTypeCabi(),
@@ -808,10 +854,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			} else if m.BecomesNonConstInVersion != nil {
 
-				nonConstCallTarget := "const_cast<" + cClassName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
+				nonConstCallTarget := "const_cast<" + methodPrefixName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
 
 				ret.WriteString("" +
-					m.ReturnType.RenderTypeCabi() + " " + cClassName + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*") + ") {\n" +
 					preamble + "\n" +
 					"// This method was changed from const to non-const in Qt " + *m.BecomesNonConstInVersion + "\n" +
 					"#if QT_VERSION < QT_VERSION_CHECK(" + strings.Replace(*m.BecomesNonConstInVersion, `.`, `,`, -1) + ",0)\n" +
@@ -831,7 +877,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						"%s"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), cClassName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+cClassName+"*"),
+					m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 				))
@@ -860,14 +906,25 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
 
 				ret.WriteString(
-					`void ` + cClassName + `_connect_` + m.SafeMethodName() + `(` + cClassName + `* self, intptr_t slot) {` + "\n" +
-						"\t" + c.ClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
+					`void ` + methodPrefixName + `_connect_` + m.SafeMethodName() + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
+						"\t" + cppClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
 						signalCode +
 						"\t});\n" +
 						"}\n" +
 						"\n",
 				)
 			}
+
+		}
+
+		// Virtual override helpers
+		for _, m := range virtualMethods {
+			ret.WriteString(
+				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
+					"\tstatic_cast<" + cppClassName + ">(self)->handle__" + m.SafeMethodName() + " = slot;\n" +
+					"}\n" +
+					"\n",
+			)
 
 		}
 
@@ -878,7 +935,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"\tdelete self;\n"+
 					"}\n"+
 					"\n",
-				cClassName, cClassName,
+				methodPrefixName, methodPrefixName,
 			))
 		}
 	}
