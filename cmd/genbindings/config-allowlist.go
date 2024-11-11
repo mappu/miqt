@@ -197,6 +197,10 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Skip private type
 	}
 
+	if strings.Contains(mm.MethodName, `QGADGET`) {
+		return ErrTooComplex // Skipping method with weird QGADGET behaviour
+	}
+
 	if mm.IsReceiverMethod() {
 		// Non-projectable receiver pattern parameters
 		return ErrTooComplex

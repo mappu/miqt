@@ -433,11 +433,6 @@ nextMethod:
 			var mm CppMethod
 			mm.MethodName = methodName
 
-			if strings.Contains(methodName, `QGADGET`) {
-				log.Printf("Skipping method %q with weird QGADGET behaviour\n", mm.MethodName)
-				continue
-			}
-
 			err := parseMethod(node, &mm)
 			if err != nil {
 				if errors.Is(err, ErrTooComplex) {
