@@ -123,10 +123,6 @@ func (this *QWaveDecoder) Pos() int64 {
 	return (int64)(C.QWaveDecoder_Pos(this.h))
 }
 
-func (this *QWaveDecoder) SetIODevice(device *qt6.QIODevice) {
-	C.QWaveDecoder_SetIODevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
-}
-
 func (this *QWaveDecoder) Size() int64 {
 	return (int64)(C.QWaveDecoder_Size(this.h))
 }

@@ -42,7 +42,6 @@ bool QWaveDecoder_Open(QWaveDecoder* self, int mode);
 void QWaveDecoder_Close(QWaveDecoder* self);
 bool QWaveDecoder_Seek(QWaveDecoder* self, long long pos);
 long long QWaveDecoder_Pos(const QWaveDecoder* self);
-void QWaveDecoder_SetIODevice(QWaveDecoder* self, QIODevice* device);
 long long QWaveDecoder_Size(const QWaveDecoder* self);
 bool QWaveDecoder_IsSequential(const QWaveDecoder* self);
 long long QWaveDecoder_BytesAvailable(const QWaveDecoder* self);
