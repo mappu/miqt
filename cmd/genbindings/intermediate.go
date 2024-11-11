@@ -7,6 +7,7 @@ import (
 
 type lookupResultClass struct {
 	PackageName string
+	Class       CppClass
 }
 
 type lookupResultTypedef struct {

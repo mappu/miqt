@@ -165,7 +165,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 		// Update global state tracker (AFTER astTransformChildClasses)
 		for _, c := range parsed.Classes {
-			KnownClassnames[c.ClassName] = lookupResultClass{packageName}
+			KnownClassnames[c.ClassName] = lookupResultClass{packageName, c /* copy */}
 		}
 		for _, td := range parsed.Typedefs {
 			KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, td /* copy */}
