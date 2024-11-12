@@ -79,10 +79,6 @@ long long QWaveDecoder_Pos(const QWaveDecoder* self) {
 	return static_cast<long long>(_ret);
 }
 
-void QWaveDecoder_SetIODevice(QWaveDecoder* self, QIODevice* device) {
-	self->setIODevice(device);
-}
-
 long long QWaveDecoder_Size(const QWaveDecoder* self) {
 	qint64 _ret = self->size();
 	return static_cast<long long>(_ret);

@@ -210,6 +210,10 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
 	}
 
+	if className == "QWaveDecoder" && mm.MethodName == "setIODevice" {
+		return ErrTooComplex // Qt 6: Present in header, but no-op method was not included in compiled library
+	}
+
 	return nil // OK, allow
 }
 
