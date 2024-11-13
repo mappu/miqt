@@ -839,7 +839,7 @@ import "C"
 	// Fixup imports
 	if len(gfs.imports) > 0 {
 		allImports := make([]string, 0, len(gfs.imports))
-		for k, _ := range gfs.imports {
+		for k := range gfs.imports {
 			if k == "libmiqt" {
 				allImports = append(allImports, `"`+BaseModule+`/libmiqt"`)
 			} else {

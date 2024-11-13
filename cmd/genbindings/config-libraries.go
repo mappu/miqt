@@ -42,11 +42,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		func(fullpath string) bool {
 			// Only include the same json, xml, cbor files excluded above
 			fname := filepath.Base(fullpath)
-			if strings.HasPrefix(fname, "qcbor") {
-				return true
-			}
-
-			return false
+			return strings.HasPrefix(fname, "qcbor")
 		},
 		clangBin,
 		pkgConfigCflags("Qt5Core"),
@@ -156,11 +152,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		func(fullpath string) bool {
 			// Only include the same json, xml, cbor files excluded above
 			fname := filepath.Base(fullpath)
-			if strings.HasPrefix(fname, "qcbor") {
-				return true
-			}
-
-			return false
+			return strings.HasPrefix(fname, "qcbor")
 		},
 		clangBin,
 		pkgConfigCflags("Qt6Core"),
@@ -189,10 +181,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		},
 		func(fullpath string) bool {
 			fname := filepath.Base(fullpath)
-			if fname == "qtnetwork-config.h" {
-				return false
-			}
-			return true
+			return fname != "qtnetwork-config.h"
 		},
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
