@@ -307,13 +307,8 @@ func (nm CppMethod) IsReceiverMethod() bool {
 }
 
 func (nm CppMethod) SafeMethodName() string {
-
-	tmp := nm.MethodName
-
 	// Strip redundant Qt prefix, we know these are all Qt functions
-	if strings.HasPrefix(tmp, "qt_") {
-		tmp = tmp[3:]
-	}
+	tmp := strings.TrimPrefix(nm.MethodName, "qt_")
 
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first

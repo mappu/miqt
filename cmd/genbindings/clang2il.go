@@ -890,10 +890,7 @@ func parseSingleTypeString(p string) CppParameter {
 		}
 	}
 	insert.ParameterType = strings.TrimSpace(insert.ParameterType)
-
-	if strings.HasPrefix(insert.ParameterType, `::`) {
-		insert.ParameterType = insert.ParameterType[2:]
-	}
+	insert.ParameterType = strings.TrimPrefix(insert.ParameterType, "::")
 
 	return insert
 }

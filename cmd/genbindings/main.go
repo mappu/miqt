@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -133,7 +132,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 		cacheFile := cacheFilePath(inputHeader)
 
-		astJson, err := ioutil.ReadFile(cacheFile)
+		astJson, err := os.ReadFile(cacheFile)
 		if err != nil {
 			panic("Expected cache to be created for " + inputHeader + ", but got error " + err.Error())
 		}
@@ -197,7 +196,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 				panic(err)
 			}
 
-			err = ioutil.WriteFile(cacheFilePath(parsed.Filename)+".ours.json", jb, 0644)
+			err = os.WriteFile(cacheFilePath(parsed.Filename)+".ours.json", jb, 0644)
 			if err != nil {
 				panic(err)
 			}
@@ -236,7 +235,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 			panic(err)
 		}
 
-		err = ioutil.WriteFile(outputName+".go", []byte(goSrc), 0644)
+		err = os.WriteFile(outputName+".go", []byte(goSrc), 0644)
 		if err != nil {
 			panic(err)
 		}
@@ -246,7 +245,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 			panic(err)
 		}
 
-		err = ioutil.WriteFile(outputName+".cpp", []byte(bindingCppSrc), 0644)
+		err = os.WriteFile(outputName+".cpp", []byte(bindingCppSrc), 0644)
 		if err != nil {
 			panic(err)
 		}
@@ -256,7 +255,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 			panic(err)
 		}
 
-		err = ioutil.WriteFile(outputName+".h", []byte(bindingHSrc), 0644)
+		err = os.WriteFile(outputName+".h", []byte(bindingHSrc), 0644)
 		if err != nil {
 			panic(err)
 		}
@@ -270,7 +269,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 func generateClangCaches(includeFiles []string, clangBin string, cflags []string, matcher ClangMatcher) {
 
-	var clangChan = make(chan string, 0)
+	var clangChan = make(chan string)
 	var clangWg sync.WaitGroup
 	ctx := context.Background()
 
@@ -298,7 +297,7 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 					panic(err)
 				}
 
-				err = ioutil.WriteFile(cacheFilePath(inputHeader), jb, 0644)
+				err = os.WriteFile(cacheFilePath(inputHeader), jb, 0644)
 				if err != nil {
 					panic(err)
 				}
