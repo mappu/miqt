@@ -34,6 +34,25 @@ func applyTypedefs(p CppParameter) CppParameter {
 	return p
 }
 
+func applyTypedefs_Method(m *CppMethod) {
+
+	for k, p := range m.Parameters {
+		transformed := applyTypedefs(p)
+		m.Parameters[k] = transformed
+
+		if LinuxWindowsCompatCheck(transformed) {
+			m.LinuxOnly = true
+		}
+	}
+
+	m.ReturnType = applyTypedefs(m.ReturnType)
+
+	// Also apply OS compatibility rules
+	if LinuxWindowsCompatCheck(m.ReturnType) {
+		m.LinuxOnly = true
+	}
+}
+
 // astTransformTypedefs replaces the ParameterType with any known typedef value.
 func astTransformTypedefs(parsed *CppParsedHeader) {
 
@@ -41,36 +60,13 @@ func astTransformTypedefs(parsed *CppParsedHeader) {
 
 		for j, m := range c.Methods {
 
-			for k, p := range m.Parameters {
-				transformed := applyTypedefs(p)
-				m.Parameters[k] = transformed
-
-				if LinuxWindowsCompatCheck(transformed) {
-					m.LinuxOnly = true
-				}
-			}
-
-			m.ReturnType = applyTypedefs(m.ReturnType)
-
-			// Also apply OS compatibility rules
-			if LinuxWindowsCompatCheck(m.ReturnType) {
-				m.LinuxOnly = true
-			}
-
+			applyTypedefs_Method(&m)
 			c.Methods[j] = m
 		}
 
 		for j, m := range c.Ctors {
 
-			for k, p := range m.Parameters {
-				transformed := applyTypedefs(p)
-				m.Parameters[k] = transformed
-
-				if LinuxWindowsCompatCheck(transformed) {
-					m.LinuxOnly = true
-				}
-			}
-
+			applyTypedefs_Method(&m)
 			c.Ctors[j] = m
 		}
 		parsed.Classes[i] = c
