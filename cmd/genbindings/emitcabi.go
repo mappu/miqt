@@ -198,7 +198,8 @@ func emitParametersCABI2CppForwarding(params []CppParameter, indent string) (pre
 }
 
 func makeNamePrefix(in string) string {
-	return strings.Replace(strings.Replace(in, `[`, `_`, -1), `]`, "", -1)
+	replacer := strings.NewReplacer(`[`, `_`, `]`, "", `.`, `_`)
+	return replacer.Replace(in)
 }
 
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {

@@ -326,9 +326,9 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
 
-		preamble += p.ParameterName + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
+		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
 
-		rvalue = p.ParameterName + "_ma"
+		rvalue = nameprefix + "_ma"
 
 	} else if _, ok := p.QSetOf(); ok {
 		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
@@ -362,9 +362,10 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		preamble += "}\n"
 
-		preamble += p.ParameterName + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.ParameterName + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
+		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.ParameterName + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
 
-		rvalue = p.ParameterName + "_mm"
+		rvalue = nameprefix + "_mm"
+
 
 	} else if p.Pointer && p.ParameterType == "char" {
 		// Single char* argument
