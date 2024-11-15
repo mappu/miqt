@@ -343,7 +343,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	namePrefix := makeNamePrefix(p.ParameterName)
 
-	if p.ParameterType == "void" && !p.Pointer {
+	if p.Void() {
 		shouldReturn = ""
 
 	} else if p.ParameterType == "QString" {

@@ -404,7 +404,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 	afterword := ""
 	namePrefix := makeNamePrefix(rt.ParameterName)
 
-	if rt.ParameterType == "void" && !rt.Pointer {
+	if rt.Void() {
 		shouldReturn = ""
 		return shouldReturn + " " + rvalue + "\n" + afterword
 

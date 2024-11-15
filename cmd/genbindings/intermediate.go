@@ -207,6 +207,10 @@ func (p CppParameter) IntType() bool {
 	}
 }
 
+func (p CppParameter) Void() bool {
+	return p.ParameterType == "void" && !p.Pointer
+}
+
 type CppProperty struct {
 	PropertyName string
 	PropertyType string

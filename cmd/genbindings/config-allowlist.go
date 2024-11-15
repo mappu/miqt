@@ -171,7 +171,7 @@ func AllowClass(className string) bool {
 }
 
 func AllowSignal(mm CppMethod) bool {
-	if mm.ReturnType.ParameterType != "void" {
+	if !mm.ReturnType.Void() {
 		// This affects how we cast the signal function pointer for connect
 		// It would be fixable, but, real signals always have void return types anyway
 		return false
