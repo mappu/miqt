@@ -43,6 +43,12 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		return "map[" + t1.RenderTypeGo(gfs) + "]" + t2.RenderTypeGo(gfs)
 	}
 
+	if t1, t2, ok := p.QPairOf(); ok {
+		// Design QPair using capital-named members, in case it gets passed
+		// across packages
+		return "struct { First " + t1.RenderTypeGo(gfs) + " ; Second " + t2.RenderTypeGo(gfs) + " }"
+	}
+
 	if p.ParameterType == "void" && p.Pointer {
 		return "unsafe.Pointer"
 	}
@@ -166,6 +172,10 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	if _, _, ok := p.QMapOf(); ok {
+		return "C.struct_miqt_map"
+	}
+
+	if _, _, ok := p.QPairOf(); ok {
 		return "C.struct_miqt_map"
 	}
 
@@ -366,6 +376,30 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		rvalue = nameprefix + "_mm"
 
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		// QPair<T>
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		preamble += nameprefix + "_First_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + ")))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_First_CArray))\n"
+
+		preamble += nameprefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + ")))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Second_CArray))\n"
+
+		kType.ParameterName = p.ParameterName + ".First"
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
+		preamble += addPreamble
+		preamble += nameprefix + "_First_CArray[0] = " + innerRvalue + "\n"
+
+		vType.ParameterName = p.ParameterName + ".Second"
+		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType)
+		preamble += addPreamble
+		preamble += nameprefix + "_Second_CArray[0] = " + innerRvalue + "\n"
+
+		preamble += nameprefix + "_pair := C.struct_miqt_map{\nlen: 1,\nkeys: unsafe.Pointer(" + nameprefix + "_First_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Second_CArray),\n}\n"
+
+		rvalue = nameprefix + "_pair"
 
 	} else if p.Pointer && p.ParameterType == "char" {
 		// Single char* argument
@@ -504,6 +538,20 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		afterword += "}\n"
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
+
+	} else if kType, vType, ok := rt.QPairOf(); ok {
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_mm C.struct_miqt_map = "
+
+		afterword += namePrefix + "_First_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.keys))\n"
+		afterword += namePrefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.values))\n"
+
+		afterword += gfs.emitCabiToGo(namePrefix+"_entry_First := ", kType, namePrefix+"_First_CArray[0]") + "\n"
+		afterword += gfs.emitCabiToGo(namePrefix+"_entry_Second := ", vType, namePrefix+"_Second_CArray[0]") + "\n"
+
+		afterword += assignExpr + " " + rt.RenderTypeGo(gfs) + " { First: " + namePrefix + "_entry_First , Second: " + namePrefix + "_entry_Second }\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.QtClassType() {

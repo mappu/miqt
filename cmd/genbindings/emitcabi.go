@@ -23,6 +23,9 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if _, _, ok := p.QMapOf(); ok {
 		return "struct miqt_map"
 
+	} else if _, _, ok := p.QPairOf(); ok {
+		return "struct miqt_map"
+
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return cabiClassName(p.ParameterType) + "*"
 
@@ -267,6 +270,25 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QMap"
 
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QPair;\n"
+
+		preamble += indent + kType.RenderTypeCabi() + "* " + nameprefix + "_first_arr = static_cast<" + kType.RenderTypeCabi() + "*>(" + p.ParameterName + ".keys);\n"
+		preamble += indent + vType.RenderTypeCabi() + "* " + nameprefix + "_second_arr = static_cast<" + vType.RenderTypeCabi() + "*>(" + p.ParameterName + ".values);\n"
+
+		kType.ParameterName = nameprefix + "_first_arr[0]"
+		addPreK, addFwdK := emitCABI2CppForwarding(kType, indent+"\t")
+		preamble += addPreK
+
+		vType.ParameterName = nameprefix + "_second_arr[0]"
+		addPreV, addFwdV := emitCABI2CppForwarding(vType, indent+"\t")
+		preamble += addPreV
+
+		preamble += indent + nameprefix + "_QPair.first = " + addFwdK + ";\n"
+		preamble += indent + nameprefix + "_QPair.second = " + addFwdV + ";\n"
+
+		return preamble, nameprefix + "_QPair"
+
 	} else if p.IsFlagType() || p.IntType() || p.IsKnownEnum() {
 		castSrc := p.ParameterName
 		castType := p.RenderTypeQtCpp()
@@ -448,6 +470,26 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.size();\n"
 		afterCall += indent + "" + namePrefix + "_out.keys = static_cast<void*>(" + namePrefix + "_karr);\n"
 		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_varr);\n"
+
+		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
+
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		// QPair<T1,T2>
+
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+
+		afterCall += indent + "// Convert QPair<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "" + kType.RenderTypeCabi() + "* " + namePrefix + "_first_arr = static_cast<" + kType.RenderTypeCabi() + "*>(malloc(sizeof(" + kType.RenderTypeCabi() + ")));\n"
+		afterCall += indent + "" + vType.RenderTypeCabi() + "* " + namePrefix + "_second_arr = static_cast<" + vType.RenderTypeCabi() + "*>(malloc(sizeof(" + vType.RenderTypeCabi() + ")));\n"
+
+		afterCall += emitAssignCppToCabi(indent+namePrefix+"_first_arr[0] = ", kType, namePrefix+"_ret.first")
+		afterCall += emitAssignCppToCabi(indent+namePrefix+"_second_arr[0] = ", vType, namePrefix+"_ret.second")
+
+		afterCall += indent + "struct miqt_map " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = 1;\n"
+		afterCall += indent + "" + namePrefix + "_out.keys = static_cast<void*>(" + namePrefix + "_first_arr);\n"
+		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_second_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 		return indent + shouldReturn + rvalue + ";\n" + afterCall

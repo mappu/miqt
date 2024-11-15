@@ -151,8 +151,21 @@ func (p CppParameter) QMapOf() (CppParameter, CppParameter, bool) {
 	return CppParameter{}, CppParameter{}, false
 }
 
-func (p CppParameter) QPairOf() bool {
-	return strings.HasPrefix(p.ParameterType, `QPair<`) // TODO support this
+func (p CppParameter) QPairOf() (CppParameter, CppParameter, bool) {
+	if strings.HasPrefix(p.ParameterType, `QPair<`) && strings.HasSuffix(p.ParameterType, `>`) {
+		interior := tokenizeMultipleParameters(p.ParameterType[6 : len(p.ParameterType)-1])
+		if len(interior) != 2 {
+			panic("QPair<> has unexpected number of template arguments")
+		}
+
+		first := parseSingleTypeString(interior[0])
+		first.ParameterName = p.ParameterName + "_first"
+		second := parseSingleTypeString(interior[1])
+		second.ParameterName = p.ParameterName + "_second"
+		return first, second, true
+	}
+
+	return CppParameter{}, CppParameter{}, false
 }
 
 func (p CppParameter) QSetOf() (CppParameter, bool) {

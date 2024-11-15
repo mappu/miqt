@@ -44,6 +44,20 @@ func applyTypedefs(p CppParameter) CppParameter {
 			p.QtCppOriginalType = &tmp
 		}
 		p.ParameterType = p.ParameterType[0:bpos] + `<` + kType2.RenderTypeQtCpp() + `, ` + vType2.RenderTypeQtCpp() + `>`
+
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		kType2 := applyTypedefs(kType)
+		kType2.QtCppOriginalType = nil
+
+		vType2 := applyTypedefs(vType)
+		vType2.QtCppOriginalType = nil
+
+		if p.QtCppOriginalType == nil {
+			tmp := p // copy
+			p.QtCppOriginalType = &tmp
+		}
+		p.ParameterType = `QPair<` + kType2.RenderTypeQtCpp() + `, ` + vType2.RenderTypeQtCpp() + `>`
+
 	}
 
 	return p

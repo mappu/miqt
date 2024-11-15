@@ -226,9 +226,6 @@ func AllowMethod(className string, mm CppMethod) error {
 // Any type not permitted by AllowClass is also not permitted by this method.
 func AllowType(p CppParameter, isReturnType bool) error {
 
-	if p.QPairOf() {
-		return ErrTooComplex // e.g. QGradientStop
-	}
 	if t, ok := p.QSetOf(); ok {
 		if err := AllowType(t, isReturnType); err != nil {
 			return err
@@ -256,6 +253,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		// This affects qnetwork qsslconfiguration BackendConfiguration
 		if kType.ParameterType == "QByteArray" {
 			return ErrTooComplex
+		}
+	}
+	if kType, vType, ok := p.QPairOf(); ok {
+		if err := AllowType(kType, isReturnType); err != nil {
+			return err
+		}
+		if err := AllowType(vType, isReturnType); err != nil {
+			return err
 		}
 	}
 	if p.QMultiMapOf() {
