@@ -718,9 +718,9 @@ extern "C" {
 		}
 
 		for _, m := range c.VirtualMethods() {
-			ret.WriteString(fmt.Sprintf("void %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), methodPrefixName))
+			ret.WriteString(fmt.Sprintf("void %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), "void" /*methodPrefixName*/))
 
-			ret.WriteString(fmt.Sprintf("%s %s_virtualbase_%s(%s);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*")))
+			ret.WriteString(fmt.Sprintf("%s %s_virtualbase_%s(%s);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*methodPrefixName*/ +"*")))
 		}
 
 		// delete
@@ -786,16 +786,25 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 			ret.WriteString("class " + overriddenClassName + " : public virtual " + cppClassName + " {\n" +
 				"public:\n" +
-				"\tusing " + fullyQualifiedConstructor(cppClassName) + ";\n" + // inherit constructors
 				"\n",
 			)
+
+			for _, ctor := range c.Ctors {
+				ret.WriteString("\t" + overriddenClassName + "(" + emitParametersCpp(ctor) + "): " + cppClassName + "(" + emitParameterNames(ctor) + ") {};\n")
+			}
+			ret.WriteString("\n")
 
 			if !c.CanDelete {
 				ret.WriteString(
 					"private:\n" +
-						"\t~" + overriddenClassName + "();\n" + //  = delete;\n" +
+						"\tvirtual ~" + overriddenClassName + "();\n" + //  = delete;\n" +
 						"\n" +
 						"public:\n" +
+						"\n",
+				)
+			} else {
+				ret.WriteString(
+					"\tvirtual ~" + overriddenClassName + "() = default;\n" +
 						"\n",
 				)
 			}
@@ -834,7 +843,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 					ret.WriteString(
 						"\t// Subclass to allow providing a Go implementation\n" +
-							"\t" + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + "override {\n" +
+							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + "override {\n" +
 							"\t\tif (handle__" + m.SafeMethodName() + " == 0) {\n",
 					)
 					if m.IsPureVirtual {
@@ -845,6 +854,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						}
 					} else {
 						ret.WriteString("\t\t\t" + maybeReturn + methodPrefixName + "::" + m.CppCallTarget() + "(" + emitParameterNames(m) + ");\n")
+
+						if m.ReturnType.Void() {
+							ret.WriteString("\t\t\treturn;\n")
+						}
 					}
 					ret.WriteString(
 						"\t\t}\n" +
@@ -874,12 +887,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					}
 					vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t")
 
-					// To call the super/parent's version of this method, normally
-					// we use the scope operator (Base::Foo()), but that only works
-					// inside the actual overridden method itself
-					// Use a reinterpret_cast<> instead
-
-					// vbCallTarget := "reinterpret_cast<" + ifv(m.IsConst, "const ", "") + c.ClassName + "*>(this)->" + m.CppCallTarget() + "(" + vbforwarding + ")"
 					vbCallTarget := methodPrefixName + "::" + m.CppCallTarget() + "(" + vbforwarding + ")"
 
 					ret.WriteString(
@@ -903,18 +910,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		}
 
 		for i, ctor := range c.Ctors {
-
-			if len(virtualMethods) > 0 &&
-				len(ctor.Parameters) == 1 &&
-				ctor.Parameters[0].ParameterType == c.ClassName &&
-				(ctor.Parameters[0].Pointer || ctor.Parameters[0].ByRef) {
-				// This is a copy-constructor for the base class
-				// We can't just call it on the derived class, that doesn't work:
-				// ""an inherited constructor is not a candidate for initialization from an expression of the same or derived type""
-				// @ref https://stackoverflow.com/q/57926023
-				// FIXME need to block this in the header and in Go as well
-				continue
-			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
@@ -1063,8 +1058,8 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			// (Never use a const self*)
 
 			ret.WriteString(
-				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
-					"\tdynamic_cast<" + cppClassName + "*>(self)->handle__" + m.SafeMethodName() + " = slot;\n" +
+				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(void* self, intptr_t slot) {` + "\n" +
+					"\t( (" + cppClassName + "*)(self) )->handle__" + m.SafeMethodName() + " = slot;\n" +
 					"}\n" +
 					"\n",
 			)
@@ -1088,10 +1083,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				// callTarget is an rvalue representing the full C++ function call.
 				// These are never static
 
-				callTarget := "dynamic_cast<" + ifv(m.IsConst, "const ", "") + cppClassName + "*>(self)->virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parameterNames, `, `) + ")"
+				callTarget := "( (" + ifv(m.IsConst, "const ", "") + cppClassName + "*)(self) )->virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parameterNames, `, `) + ")"
 
 				ret.WriteString(
-					m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_virtualbase_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_virtualbase_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ") {\n" +
 						"\t" + ifv(m.ReturnType.Void(), "", "return ") + callTarget + ";\n" +
 						"}\n" +
 						"\n",

@@ -394,6 +394,28 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 	var retNames = make(map[string]struct{}, 0) // if name is present, a child class found it first
 	var block = slice_to_set(c.PrivateMethods)
 
+	if len(c.Ctors) == 0 {
+		// This class can't be constructed
+		// Therefore there's no way to get a derived version of it for subclassing
+		// (Unless we add custom constructors, but that seems like there would be
+		// no in-Qt use for such a thing)
+		// Pretend that this class is non-virtual
+		return nil
+	}
+
+	// FIXME Allowing the subclassing of QAccessibleWidget compiles fine,
+	// but, always gives a linker error:
+	//
+	//   /usr/lib/go-1.19/pkg/tool/linux_amd64/link: running g++ failed: exit status 1
+	//   /usr/bin/ld: /tmp/go-link-1745036494/000362.o: in function `MiqtVirtualQAccessibleWidget::MiqtVirtualQAccessibleWidget(QWidget*)':
+	//   undefined reference to `vtable for MiqtVirtualQAccessibleWidget'
+	//
+	// An undefined vtable usually indicates that the virtual class is missing
+	// definitions for some virtual methods, but AFAICT we have complete coverage.
+	if c.ClassName == "QAccessibleWidget" {
+		return nil
+	}
+
 	for _, m := range c.Methods {
 		if !m.IsVirtual {
 			continue

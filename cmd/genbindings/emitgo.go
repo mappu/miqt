@@ -806,6 +806,11 @@ import "C"
 		}
 
 		for _, m := range c.Methods {
+
+			if m.IsProtected {
+				continue // Don't add a direct call for it
+			}
+
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
 			returnTypeDecl := m.ReturnType.RenderTypeGo(&gfs)
@@ -910,7 +915,7 @@ import "C"
 			}
 
 			ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
-					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
+					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
