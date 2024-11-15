@@ -345,6 +345,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	if p.Void() {
 		shouldReturn = ""
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.ParameterType == "QString" {
 
@@ -368,6 +369,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
 		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_b.data(), " + namePrefix + "_ms.len);\n"
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.ParameterType == "QByteArray" {
 		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
@@ -380,6 +382,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
 		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_qb.data(), " + namePrefix + "_ms.len);\n"
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if t, ok := p.QListOf(); ok {
 
@@ -402,6 +405,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if t, ok := p.QSetOf(); ok {
 
@@ -420,6 +424,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if kType, vType, ok := p.QMapOf(); ok {
 		// QMap<K,V>
@@ -444,6 +449,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_varr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
@@ -459,6 +465,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else {
 			afterCall += indent + "" + assignExpression + "&" + namePrefix + "_ret;\n"
 		}
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.QtClassType() && !p.Pointer {
 
@@ -474,9 +481,11 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.Const {
 		shouldReturn += "(" + p.RenderTypeCabi() + ") "
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else {
 		// Basic type
@@ -485,9 +494,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			shouldReturn += "&"
 		}
 
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 	}
 
-	return indent + shouldReturn + rvalue + ";\n" + afterCall
 }
 
 // getReferencedTypes finds all referenced Qt types in this file.
