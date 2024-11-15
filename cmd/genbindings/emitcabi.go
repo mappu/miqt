@@ -478,6 +478,13 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 	} else if p.Const {
 		shouldReturn += "(" + p.RenderTypeCabi() + ") "
 
+	} else {
+		// Basic type
+		if p.ByRef {
+			// The C++ type is a reference, the CABI type is a pointer type
+			shouldReturn += "&"
+		}
+
 	}
 
 	return indent + shouldReturn + rvalue + ";\n" + afterCall

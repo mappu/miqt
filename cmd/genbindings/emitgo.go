@@ -169,6 +169,11 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.struct_miqt_map"
 	}
 
+	// Cgo internally binds void* as unsafe.Pointer{}
+	if p.ParameterType == "void" && p.Pointer {
+		return "unsafe.Pointer"
+	}
+
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
 
 	if strings.HasPrefix(tmp, "const ") && tmp != "const char" { // Special typedef to make this work for const char* signal parameters
@@ -542,6 +547,14 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
+
+		if rt.Pointer || rt.ByRef {
+			// Cast must go via unsafe.Pointer
+			gfs.imports["unsafe"] = struct{}{}
+			return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(unsafe.Pointer(" + rvalue + "))\n"
+
+		}
+
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
