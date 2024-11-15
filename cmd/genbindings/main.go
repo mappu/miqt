@@ -164,15 +164,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)
-		for _, c := range parsed.Classes {
-			KnownClassnames[c.ClassName] = lookupResultClass{packageName, c /* copy */}
-		}
-		for _, td := range parsed.Typedefs {
-			KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, td /* copy */}
-		}
-		for _, en := range parsed.Enums {
-			KnownEnums[en.EnumName] = lookupResultEnum{packageName, en /* copy */}
-		}
+		addKnownTypes(packageName, parsed)
 
 		processHeaders = append(processHeaders, parsed)
 	}

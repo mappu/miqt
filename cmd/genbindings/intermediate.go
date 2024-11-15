@@ -5,33 +5,6 @@ import (
 	"strings"
 )
 
-type lookupResultClass struct {
-	PackageName string
-	Class       CppClass
-}
-
-type lookupResultTypedef struct {
-	PackageName string
-	Typedef     CppTypedef
-}
-
-type lookupResultEnum struct {
-	PackageName string
-	Enum        CppEnum
-}
-
-var (
-	KnownClassnames map[string]lookupResultClass // Entries of the form QFoo::Bar if it is an inner class
-	KnownTypedefs   map[string]lookupResultTypedef
-	KnownEnums      map[string]lookupResultEnum
-)
-
-func flushKnownTypes() {
-	KnownClassnames = make(map[string]lookupResultClass)
-	KnownTypedefs = make(map[string]lookupResultTypedef)
-	KnownEnums = make(map[string]lookupResultEnum)
-}
-
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
