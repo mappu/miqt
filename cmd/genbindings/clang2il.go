@@ -676,6 +676,10 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 		mm.IsVirtual = true
 	}
 
+	if pure, ok := node["pure"].(bool); ok && pure {
+		mm.IsPureVirtual = true
+	}
+
 	if methodInner, ok := node["inner"].([]interface{}); ok {
 		paramCounter := 0
 		for _, methodObj := range methodInner {
@@ -717,6 +721,12 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 				// Next
 				paramCounter++
+
+			case "OverrideAttr":
+				// void keyPressEvent(QKeyEvent *e) override;
+				// This is a virtual method being overridden and is a replacement
+				// for actually using the 'virtual' keyword
+				mm.IsVirtual = true
 
 			default:
 				// Something else inside a declaration??
