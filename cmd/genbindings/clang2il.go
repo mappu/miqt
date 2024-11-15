@@ -351,8 +351,8 @@ nextMethod:
 		case "EnumDecl":
 			// Child class enum
 
-			if visibility != VsPublic {
-				continue // Skip private/protected
+			if visibility == VsPrivate {
+				continue // Skip private, ALLOW protected
 			}
 
 			en, err := processEnum(node, nodename+"::")
@@ -427,22 +427,23 @@ nextMethod:
 
 		case "CXXMethodDecl":
 
+			// Method
+			methodName, ok := node["name"].(string)
+			if !ok {
+				return CppClass{}, errors.New("method has no name")
+			}
+
 			// If this is a virtual method, we want to allow overriding it even
 			// if it is protected
 			// But we can only call it if it is public
 			if visibility == VsPrivate {
+				ret.PrivateMethods = append(ret.PrivateMethods, methodName)
 				continue // Skip private, ALLOW protected
 			}
 
 			// Check if this is `= delete`
 			if isExplicitlyDeleted(node) {
 				continue
-			}
-
-			// Method
-			methodName, ok := node["name"].(string)
-			if !ok {
-				return CppClass{}, errors.New("method has no name")
 			}
 
 			var mm CppMethod

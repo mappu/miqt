@@ -382,6 +382,7 @@ type CppClass struct {
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
 	ChildEnums     []CppEnum
+	PrivateMethods []string
 }
 
 // Virtual checks if the class has any virtual methods. This requires global
@@ -390,6 +391,7 @@ type CppClass struct {
 func (c *CppClass) VirtualMethods() []CppMethod {
 	var ret []CppMethod
 	var retNames = make(map[string]struct{}, 0) // if name is present, a child class found it first
+	var block = slice_to_set(c.PrivateMethods)
 
 	for _, m := range c.Methods {
 		if !m.IsVirtual {
@@ -426,8 +428,30 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 				continue // Already found in a child class
 			}
 
+			// It's possible that a child class marked a parent method as private
+			// (e.g. Qt 5 QAbstractTableModel marks parent() as private)
+			// But then we find the protected version further down
+			// Use a blocklist to prevent exposing any deeper methods in the call chain
+			if _, ok := block[m.MethodName]; ok {
+				continue // Marked as private in a child class
+			}
+
+			// The class info we loaded has not had all typedefs applied to it
+			// m is copied by value. Mutate it
+			applyTypedefs_Method(&m)
+			// Same with astTransformBlocklist
+			if !blocklist_MethodAllowed(&m) {
+				continue
+			}
+
 			ret = append(ret, m)
 			retNames[m.MethodName] = struct{}{}
+		}
+
+		// Append this parent's private-virtuals to blocklist so that we
+		// do not consider them for grandparent classes
+		for _, privMethod := range c.PrivateMethods {
+			block[privMethod] = struct{}{}
 		}
 	}
 
