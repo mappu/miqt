@@ -16,6 +16,11 @@ func astTransformOptional(parsed *CppParsedHeader) {
 
 		for j, m := range c.Methods {
 
+			// Treat virtual methods as if all parameters are mandatory
+			if m.IsVirtual {
+				continue
+			}
+
 			// Search for first optional parameter (they all must be last)
 			optionalStart := -1
 			for k, p := range m.Parameters {

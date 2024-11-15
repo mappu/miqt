@@ -406,7 +406,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		}
 
 		ret = append(ret, m)
-		retNames[m.MethodName] = struct{}{}
+		retNames[m.CppCallTarget()] = struct{}{}
 	}
 
 	for _, inh := range c.Inherits {
@@ -425,7 +425,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 			if !AllowVirtual(m) {
 				continue
 			}
-			if _, ok := retNames[m.MethodName]; ok {
+			if _, ok := retNames[m.CppCallTarget()]; ok {
 				continue // Already found in a child class
 			}
 
@@ -446,7 +446,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 			}
 
 			ret = append(ret, m)
-			retNames[m.MethodName] = struct{}{}
+			retNames[m.CppCallTarget()] = struct{}{}
 		}
 
 		// Append this parent's private-virtuals to blocklist so that we

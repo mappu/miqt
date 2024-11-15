@@ -859,13 +859,15 @@ import "C"
 					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
 				}
 
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot func(` + gfs.emitParametersGo(m.Parameters) + `)) {
+				goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
+
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
 					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
 				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
-					gofunc, ok := cgo.Handle(cb).Value().(func(` + gfs.emitParametersGo(m.Parameters) + `))
+					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
@@ -877,6 +879,64 @@ import "C"
 
 				`)
 			}
+		}
+
+		for _, m := range c.VirtualMethods() {
+			gfs.imports["unsafe"] = struct{}{}
+			gfs.imports["runtime/cgo"] = struct{}{}
+
+			var cgoNamedParams []string
+			var paramNames []string
+			conversion := ""
+
+			if len(m.Parameters) > 0 {
+				conversion = "// Convert all CABI parameters to Go parameters\n"
+			}
+			for i, pp := range m.Parameters {
+				cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+
+				paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
+				conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
+			}
+
+			cabiReturnType := m.ReturnType.parameterTypeCgo()
+			if cabiReturnType == "C.void" {
+				cabiReturnType = ""
+			}
+
+			goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
+			if !m.ReturnType.Void() {
+				goCbType += " " + m.ReturnType.RenderTypeGo(&gfs)
+			}
+
+			ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
+					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
+				}
+				
+				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
+				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
+					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
+					if !ok {
+						panic("miqt: callback of non-callback type (heap corruption?)")
+					}
+				
+			`)
+			ret.WriteString(conversion + "\n")
+			if cabiReturnType == "" {
+				ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+			} else {
+				ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+				virtualRetP := m.ReturnType // copy
+				virtualRetP.ParameterName = "virtualReturn"
+				binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+				ret.WriteString(binding + "\n")
+				ret.WriteString("return " + rvalue + "\n")
+			}
+			ret.WriteString(`
+				}
+			`)
+
+			// TODO add package-private function to call the C++ base class method
 		}
 
 		if c.CanDelete {

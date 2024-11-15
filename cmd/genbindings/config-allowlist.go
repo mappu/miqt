@@ -440,6 +440,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QAbstractAudioBuffer",            // Qt 5 Multimedia, this is a private/internal type only
 		"QAbstractVideoBuffer",            // Works in Qt 5, but in Qt 6 Multimedia this type is used in qvideoframe.h but is not defined anywhere (it was later added in Qt 6.8)
 		"QRhi",                            // Qt 6 unstable types, used in Multimedia
+		"QPostEventList",                  // Qt QCoreApplication: private headers required
+		"QMetaCallEvent",                  // ..
+		"QPostEvent",                      // ..
 		"____last____":
 		return ErrTooComplex
 	}

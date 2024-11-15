@@ -140,6 +140,15 @@ func emitParametersCpp(m CppMethod) string {
 	return strings.Join(tmp, `, `)
 }
 
+func emitParameterNames(m CppMethod) string {
+	tmp := make([]string, 0, len(m.Parameters))
+	for _, p := range m.Parameters {
+		tmp = append(tmp, p.ParameterName)
+	}
+
+	return strings.Join(tmp, `, `)
+}
+
 func emitParameterTypesCpp(m CppMethod, includeHidden bool) string {
 	tmp := make([]string, 0, len(m.Parameters))
 	for _, p := range m.Parameters {
@@ -522,6 +531,20 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 }
 
+func getCppZeroValue(p CppParameter) string {
+	if p.Pointer {
+		return "nullptr"
+	} else if p.IsKnownEnum() {
+		return "(" + p.RenderTypeQtCpp() + ")(0)"
+	} else if p.IntType() {
+		return "0"
+	} else if p.ParameterType == "bool" {
+		return "false"
+	} else {
+		return p.RenderTypeQtCpp() + "()"
+	}
+}
+
 // getReferencedTypes finds all referenced Qt types in this file.
 func getReferencedTypes(src *CppParsedHeader) []string {
 
@@ -562,6 +585,12 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 				maybeAddType(p)
 			}
 			maybeAddType(m.ReturnType)
+		}
+		for _, vm := range c.VirtualMethods() {
+			for _, p := range vm.Parameters {
+				maybeAddType(p)
+			}
+			maybeAddType(vm.ReturnType)
 		}
 	}
 
@@ -690,6 +719,8 @@ extern "C" {
 
 		for _, m := range c.VirtualMethods() {
 			ret.WriteString(fmt.Sprintf("void %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), methodPrefixName))
+
+			ret.WriteString(fmt.Sprintf("%s %s_virtualbase_%s(%s);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*")))
 		}
 
 		// delete
@@ -708,6 +739,11 @@ extern "C" {
 #endif
 `)
 	return ret.String(), nil
+}
+
+func fullyQualifiedConstructor(className string) string {
+	parts := strings.Split(className, `::`)
+	return className + "::" + parts[len(parts)-1]
 }
 
 func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
@@ -745,46 +781,140 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		virtualMethods := c.VirtualMethods()
 
 		if len(virtualMethods) > 0 {
-			ret.WriteString("class MiqtVirtual" + cppClassName + " : public virtual " + cppClassName + " {\n" +
+
+			overriddenClassName := "MiqtVirtual" + strings.Replace(cppClassName, `::`, ``, -1)
+
+			ret.WriteString("class " + overriddenClassName + " : public virtual " + cppClassName + " {\n" +
 				"public:\n" +
-				"\tusing " + cppClassName + "::" + cppClassName + ";\n" + // inherit constructors
+				"\tusing " + fullyQualifiedConstructor(cppClassName) + ";\n" + // inherit constructors
 				"\n",
 			)
-			for _, m := range virtualMethods {
 
-				maybeReturn := ifv(m.ReturnType.RenderTypeQtCpp() == "void", "", "return ")
-
+			if !c.CanDelete {
 				ret.WriteString(
-					"\tintptr_t handle__" + m.SafeMethodName() + " = 0;\n" +
-
+					"private:\n" +
+						"\t~" + overriddenClassName + "();\n" + //  = delete;\n" +
 						"\n" +
-
-						"\t" + m.ReturnType.RenderTypeQtCpp() + " " + m.MethodName + "(...) override {\n" +
-						"\t\tif (handle__" + m.SafeMethodName() + " == 0) {\n" +
-						"\t\t\t" + maybeReturn + methodPrefixName + "::" + m.MethodName + "(...);\n" +
-						"\t\t} else {\n" +
-						"\t\t\t" + maybeReturn + "miqt_exec_callback_" + methodPrefixName + "_" + m.SafeMethodName() + "(...);\n" +
-						"\t\t}\n" +
-						"\t}\n" +
-
-						"\n" +
-
-						"\t" + m.ReturnType.RenderTypeQtCpp() + " virtualbase_" + m.SafeMethodName() + "(...) {\n" +
-						"\t\t" + maybeReturn + methodPrefixName + "::" + m.MethodName + "(...);\n" +
-						"\t}\n" +
-
+						"public:\n" +
 						"\n",
 				)
+			}
+
+			for _, m := range virtualMethods {
+
+				{
+					var maybeReturn, maybeReturn2 string
+					var returnTransformP, returnTransformF string
+					if !m.ReturnType.Void() {
+						maybeReturn = "return "
+
+						maybeReturn2 = m.ReturnType.RenderTypeCabi() + " callback_return_value = "
+						returnParam := m.ReturnType // copy
+						returnParam.ParameterName = "callback_return_value"
+						returnTransformP, returnTransformF = emitCABI2CppForwarding(returnParam, "\t\t")
+					}
+
+					paramArgs := []string{"handle__" + m.SafeMethodName()}
+
+					var signalCode string
+
+					for i, p := range m.Parameters {
+						signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.ParameterName)
+						paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
+					}
+
+					ret.WriteString(
+						"\t// cgo.Handle value for overwritten implementation\n" +
+							"\tintptr_t handle__" + m.SafeMethodName() + " = 0;\n" +
+							"\n",
+					)
+
+					// In the case of method overloads, we always need to use the
+					// original method name (CppCallTarget), not the MethodName
+
+					ret.WriteString(
+						"\t// Subclass to allow providing a Go implementation\n" +
+							"\t" + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + "override {\n" +
+							"\t\tif (handle__" + m.SafeMethodName() + " == 0) {\n",
+					)
+					if m.IsPureVirtual {
+						if m.ReturnType.Void() {
+							ret.WriteString("\t\t\treturn; // Pure virtual, there is no base we can call\n")
+						} else {
+							ret.WriteString("\t\t\treturn " + getCppZeroValue(m.ReturnType) + "; // Pure virtual, there is no base we can call\n")
+						}
+					} else {
+						ret.WriteString("\t\t\t" + maybeReturn + methodPrefixName + "::" + m.CppCallTarget() + "(" + emitParameterNames(m) + ");\n")
+					}
+					ret.WriteString(
+						"\t\t}\n" +
+							"\t\t\n" +
+							signalCode + "\n" +
+							"\t\t" + maybeReturn2 + "miqt_exec_callback_" + methodPrefixName + "_" + m.SafeMethodName() + "(" + strings.Join(paramArgs, `, `) + ");\n" +
+							returnTransformP + "\n" +
+							"\t\t" + ifv(maybeReturn == "", "", "return "+returnTransformF+";") + "\n" +
+							"\t}\n" +
+
+							"\n",
+					)
+				}
+
+				// If there is a base version of this method, add a helper to
+				// allow calling it
+
+				if !m.IsPureVirtual {
+
+					// The virtualbase wrapper needs to take CABI parameters, not
+					// real Qt parameters, in case there are protected enum types
+					// (e.g. QAbstractItemView::CursorAction)
+
+					var parametersCabi []string
+					for _, p := range m.Parameters {
+						parametersCabi = append(parametersCabi, p.RenderTypeCabi()+" "+p.ParameterName)
+					}
+					vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t")
+
+					// To call the super/parent's version of this method, normally
+					// we use the scope operator (Base::Foo()), but that only works
+					// inside the actual overridden method itself
+					// Use a reinterpret_cast<> instead
+
+					// vbCallTarget := "reinterpret_cast<" + ifv(m.IsConst, "const ", "") + c.ClassName + "*>(this)->" + m.CppCallTarget() + "(" + vbforwarding + ")"
+					vbCallTarget := methodPrefixName + "::" + m.CppCallTarget() + "(" + vbforwarding + ")"
+
+					ret.WriteString(
+						"\t// Wrapper to allow calling protected method\n" +
+							"\t" + m.ReturnType.RenderTypeCabi() + " virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parametersCabi, ", ") + ") " + ifv(m.IsConst, "const ", "") + "{\n" +
+							vbpreamble + "\n" +
+							emitAssignCppToCabi("\t\treturn ", m.ReturnType, vbCallTarget) + "\n" +
+							"\t}\n" +
+
+							"\n",
+					)
+
+				}
 			}
 
 			ret.WriteString(
 				"};\n" +
 					"\n")
 
-			cppClassName = "MiqtVirtual" + cppClassName
+			cppClassName = overriddenClassName
 		}
 
 		for i, ctor := range c.Ctors {
+
+			if len(virtualMethods) > 0 &&
+				len(ctor.Parameters) == 1 &&
+				ctor.Parameters[0].ParameterType == c.ClassName &&
+				(ctor.Parameters[0].Pointer || ctor.Parameters[0].ByRef) {
+				// This is a copy-constructor for the base class
+				// We can't just call it on the derived class, that doesn't work:
+				// ""an inherited constructor is not a candidate for initialization from an expression of the same or derived type""
+				// @ref https://stackoverflow.com/q/57926023
+				// FIXME need to block this in the header and in Go as well
+				continue
+			}
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
@@ -822,6 +952,14 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		}
 
 		for _, m := range c.Methods {
+
+			// Protected virtual methods will be bound separately (the only
+			// useful thing is to expose calling the virtual base)
+			// Protected non-virtual methods should always be hidden
+			if m.IsProtected {
+				continue
+			}
+
 			// Need to take an extra 'self' parameter
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t")
@@ -919,12 +1057,47 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		// Virtual override helpers
 		for _, m := range virtualMethods {
+
+			// Virtual methods:
+			// 1. Allow overriding
+			// (Never use a const self*)
+
 			ret.WriteString(
 				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
-					"\tstatic_cast<" + cppClassName + ">(self)->handle__" + m.SafeMethodName() + " = slot;\n" +
+					"\tdynamic_cast<" + cppClassName + "*>(self)->handle__" + m.SafeMethodName() + " = slot;\n" +
 					"}\n" +
 					"\n",
 			)
+
+			// 2. Add CABI function to call the base method
+
+			if !m.IsPureVirtual {
+				// This is not generally exposed in the Go binding, but when overriding
+				// the method, allows Go code to call super()
+
+				// It uses CABI-CABI, the CABI-QtC++ type conversion will be done
+				// inside the class method so as to allow for accessing protected
+				// types.
+				// Both the parameters and return type are given in CABI format.
+
+				var parameterNames []string
+				for _, param := range m.Parameters {
+					parameterNames = append(parameterNames, param.ParameterName)
+				}
+
+				// callTarget is an rvalue representing the full C++ function call.
+				// These are never static
+
+				callTarget := "dynamic_cast<" + ifv(m.IsConst, "const ", "") + cppClassName + "*>(self)->virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parameterNames, `, `) + ")"
+
+				ret.WriteString(
+					m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_virtualbase_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*") + ") {\n" +
+						"\t" + ifv(m.ReturnType.Void(), "", "return ") + callTarget + ";\n" +
+						"}\n" +
+						"\n",
+				)
+
+			}
 
 		}
 
