@@ -1,5 +1,6 @@
-#ifndef MIQT_BINDING_H
-#define MIQT_BINDING_H
+#pragma once
+#ifndef MIQT_LIBMIQT_LIBMIQT_H
+#define MIQT_LIBMIQT_LIBMIQT_H
 
 #include <string.h>
 #include <stdlib.h>

@@ -609,7 +609,7 @@ func cabiPreventStructDeclaration(className string) bool {
 func emitBindingHeader(src *CppParsedHeader, filename string, packageName string) (string, error) {
 	ret := strings.Builder{}
 
-	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
+	includeGuard := "MIQT_" + strings.ToUpper(strings.Replace(strings.Replace(packageName, `/`, `_`, -1), `-`, `_`, -1)) + "_GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
 
 	bindingInclude := "../libmiqt/libmiqt.h"
 
@@ -617,7 +617,8 @@ func emitBindingHeader(src *CppParsedHeader, filename string, packageName string
 		bindingInclude = "../" + bindingInclude
 	}
 
-	ret.WriteString(`#ifndef ` + includeGuard + `
+	ret.WriteString(`#pragma once
+#ifndef ` + includeGuard + `
 #define ` + includeGuard + `
 
 #include <stdbool.h>
