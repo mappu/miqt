@@ -604,7 +604,7 @@ nextEnumEntry:
 		if !foundValidInner {
 			// Enum case without definition e.g. QCalendar::Gregorian
 			// This means one more than the last value
-			cee.EntryValue = fmt.Sprintf("%d", lastImplicitValue+1)
+			cee.EntryValue = strconv.FormatInt(lastImplicitValue+1, 10)
 		}
 
 	afterParse:

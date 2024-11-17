@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"strconv"
 )
 
 // astTransformOptional expands all methods with optional parameters into
@@ -33,7 +33,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 			// Add method copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
 				dupMethod := m // shallow copy
-				dupMethod.Rename(m.MethodName + fmt.Sprintf("%d", x+1))
+				dupMethod.Rename(m.MethodName + strconv.Itoa(x+1))
 				dupMethod.Parameters = m.Parameters[0 : x+1]
 				dupMethod.HiddenParams = m.Parameters[x+1:]
 
