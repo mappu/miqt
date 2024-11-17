@@ -1,5 +1,6 @@
-#ifndef GEN_QFILEICONPROVIDER_H
-#define GEN_QFILEICONPROVIDER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFILEICONPROVIDER_H
+#define MIQT_QT_GEN_QFILEICONPROVIDER_H
 
 #include <stdbool.h>
 #include <stddef.h>

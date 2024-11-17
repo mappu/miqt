@@ -1,5 +1,6 @@
-#ifndef GEN_QGENERICPLUGINFACTORY_H
-#define GEN_QGENERICPLUGINFACTORY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGENERICPLUGINFACTORY_H
+#define MIQT_QT6_GEN_QGENERICPLUGINFACTORY_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -21,7 +22,7 @@ typedef struct QGenericPluginFactory QGenericPluginFactory;
 typedef struct QObject QObject;
 #endif
 
-struct miqt_array QGenericPluginFactory_Keys();
+struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_Keys();
 QObject* QGenericPluginFactory_Create(struct miqt_string param1, struct miqt_string param2);
 void QGenericPluginFactory_Delete(QGenericPluginFactory* self);
 

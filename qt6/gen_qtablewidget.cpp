@@ -354,7 +354,7 @@ QTableWidgetItem* QTableWidget_TakeItem(QTableWidget* self, int row, int column)
 	return self->takeItem(static_cast<int>(row), static_cast<int>(column));
 }
 
-struct miqt_array QTableWidget_Items(const QTableWidget* self, QMimeData* data) {
+struct miqt_array /* of QTableWidgetItem* */  QTableWidget_Items(const QTableWidget* self, QMimeData* data) {
 	QList<QTableWidgetItem *> _ret = self->items(data);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetItem** _arr = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * _ret.length()));
@@ -399,7 +399,7 @@ QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int 
 	return self->takeHorizontalHeaderItem(static_cast<int>(column));
 }
 
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */ labels) {
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */  labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels.len);
 	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
@@ -410,7 +410,7 @@ void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array 
 	self->setVerticalHeaderLabels(labels_QList);
 }
 
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */ labels) {
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */  labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels.len);
 	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
@@ -493,7 +493,7 @@ void QTableWidget_SetRangeSelected(QTableWidget* self, QTableWidgetSelectionRang
 	self->setRangeSelected(*rangeVal, selectVal);
 }
 
-struct miqt_array QTableWidget_SelectedRanges(const QTableWidget* self) {
+struct miqt_array /* of QTableWidgetSelectionRange* */  QTableWidget_SelectedRanges(const QTableWidget* self) {
 	QList<QTableWidgetSelectionRange> _ret = self->selectedRanges();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetSelectionRange** _arr = static_cast<QTableWidgetSelectionRange**>(malloc(sizeof(QTableWidgetSelectionRange*) * _ret.length()));
@@ -506,7 +506,7 @@ struct miqt_array QTableWidget_SelectedRanges(const QTableWidget* self) {
 	return _out;
 }
 
-struct miqt_array QTableWidget_SelectedItems(const QTableWidget* self) {
+struct miqt_array /* of QTableWidgetItem* */  QTableWidget_SelectedItems(const QTableWidget* self) {
 	QList<QTableWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTableWidgetItem** _arr = static_cast<QTableWidgetItem**>(malloc(sizeof(QTableWidgetItem*) * _ret.length()));
@@ -519,7 +519,7 @@ struct miqt_array QTableWidget_SelectedItems(const QTableWidget* self) {
 	return _out;
 }
 
-struct miqt_array QTableWidget_FindItems(const QTableWidget* self, struct miqt_string text, int flags) {
+struct miqt_array /* of QTableWidgetItem* */  QTableWidget_FindItems(const QTableWidget* self, struct miqt_string text, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QTableWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory

@@ -1,5 +1,6 @@
-#ifndef GEN_QINPUTDEVICE_H
-#define GEN_QINPUTDEVICE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QINPUTDEVICE_H
+#define MIQT_QT6_GEN_QINPUTDEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,8 +41,8 @@ bool QInputDevice_HasCapability(const QInputDevice* self, int cap);
 long long QInputDevice_SystemId(const QInputDevice* self);
 struct miqt_string QInputDevice_SeatName(const QInputDevice* self);
 QRect* QInputDevice_AvailableVirtualGeometry(const QInputDevice* self);
-struct miqt_array QInputDevice_SeatNames();
-struct miqt_array QInputDevice_Devices();
+struct miqt_array /* of struct miqt_string */  QInputDevice_SeatNames();
+struct miqt_array /* of QInputDevice* */  QInputDevice_Devices();
 QInputDevice* QInputDevice_PrimaryKeyboard();
 bool QInputDevice_OperatorEqual(const QInputDevice* self, QInputDevice* other);
 void QInputDevice_AvailableVirtualGeometryChanged(QInputDevice* self, QRect* area);

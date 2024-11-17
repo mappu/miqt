@@ -22,7 +22,7 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 	return new QCompleter(model);
 }
 
-QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */ completions) {
+QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
@@ -41,7 +41,7 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 	return new QCompleter(model, parent);
 }
 
-QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */ completions, QObject* parent) {
+QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent) {
 	QStringList completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
@@ -236,7 +236,7 @@ struct miqt_string QCompleter_PathFromIndex(const QCompleter* self, QModelIndex*
 	return _ms;
 }
 
-struct miqt_array QCompleter_SplitPath(const QCompleter* self, struct miqt_string path) {
+struct miqt_array /* of struct miqt_string */  QCompleter_SplitPath(const QCompleter* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QStringList _ret = self->splitPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory

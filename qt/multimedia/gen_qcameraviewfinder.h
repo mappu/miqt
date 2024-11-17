@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAVIEWFINDER_H
-#define GEN_QCAMERAVIEWFINDER_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAVIEWFINDER_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAVIEWFINDER_H
 
 #include <stdbool.h>
 #include <stddef.h>

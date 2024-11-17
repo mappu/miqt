@@ -1,5 +1,6 @@
-#ifndef GEN_QWIDGET_H
-#define GEN_QWIDGET_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QWIDGET_H
+#define MIQT_QT6_GEN_QWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -316,11 +317,11 @@ QWidget* QWidget_PreviousInFocusChain(const QWidget* self);
 bool QWidget_AcceptDrops(const QWidget* self);
 void QWidget_SetAcceptDrops(QWidget* self, bool on);
 void QWidget_AddAction(QWidget* self, QAction* action);
-void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */ actions);
-void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */ actions);
+void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */  actions);
+void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions);
 void QWidget_InsertAction(QWidget* self, QAction* before, QAction* action);
 void QWidget_RemoveAction(QWidget* self, QAction* action);
-struct miqt_array QWidget_Actions(const QWidget* self);
+struct miqt_array /* of QAction* */  QWidget_Actions(const QWidget* self);
 QAction* QWidget_AddActionWithText(QWidget* self, struct miqt_string text);
 QAction* QWidget_AddAction2(QWidget* self, QIcon* icon, struct miqt_string text);
 QAction* QWidget_AddAction3(QWidget* self, struct miqt_string text, QKeySequence* shortcut);

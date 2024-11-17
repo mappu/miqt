@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOSOURCE_H
-#define GEN_QAUDIOSOURCE_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QAUDIOSOURCE_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QAUDIOSOURCE_H
 
 #include <stdbool.h>
 #include <stddef.h>

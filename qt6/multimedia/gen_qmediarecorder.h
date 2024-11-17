@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIARECORDER_H
-#define GEN_QMEDIARECORDER_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIARECORDER_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIARECORDER_H
 
 #include <stdbool.h>
 #include <stddef.h>

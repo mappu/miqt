@@ -54,7 +54,7 @@ void QCustomAudioRoleControl_SetCustomAudioRole(QCustomAudioRoleControl* self, s
 	self->setCustomAudioRole(role_QString);
 }
 
-struct miqt_array QCustomAudioRoleControl_SupportedCustomAudioRoles(const QCustomAudioRoleControl* self) {
+struct miqt_array /* of struct miqt_string */  QCustomAudioRoleControl_SupportedCustomAudioRoles(const QCustomAudioRoleControl* self) {
 	QStringList _ret = self->supportedCustomAudioRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

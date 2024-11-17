@@ -171,11 +171,11 @@ func (this *QVideoFrame) BytesPerLine(plane int) int {
 }
 
 func (this *QVideoFrame) Bits(plane int) *byte {
-	return (*byte)(C.QVideoFrame_Bits(this.h, (C.int)(plane)))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_Bits(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) BitsWithPlane(plane int) *byte {
-	return (*byte)(C.QVideoFrame_BitsWithPlane(this.h, (C.int)(plane)))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_BitsWithPlane(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) MappedBytes(plane int) int {

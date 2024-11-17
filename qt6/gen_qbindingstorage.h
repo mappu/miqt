@@ -1,5 +1,6 @@
-#ifndef GEN_QBINDINGSTORAGE_H
-#define GEN_QBINDINGSTORAGE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QBINDINGSTORAGE_H
+#define MIQT_QT6_GEN_QBINDINGSTORAGE_H
 
 #include <stdbool.h>
 #include <stddef.h>

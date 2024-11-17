@@ -249,7 +249,7 @@ unsigned int QDnsTextRecord_TimeToLive(const QDnsTextRecord* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-struct miqt_array QDnsTextRecord_Values(const QDnsTextRecord* self) {
+struct miqt_array /* of struct miqt_string */  QDnsTextRecord_Values(const QDnsTextRecord* self) {
 	QList<QByteArray> _ret = self->values();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -382,7 +382,7 @@ void QDnsLookup_SetNameserver(QDnsLookup* self, QHostAddress* nameserver) {
 	self->setNameserver(*nameserver);
 }
 
-struct miqt_array QDnsLookup_CanonicalNameRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_CanonicalNameRecords(const QDnsLookup* self) {
 	QList<QDnsDomainNameRecord> _ret = self->canonicalNameRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsDomainNameRecord** _arr = static_cast<QDnsDomainNameRecord**>(malloc(sizeof(QDnsDomainNameRecord*) * _ret.length()));
@@ -395,7 +395,7 @@ struct miqt_array QDnsLookup_CanonicalNameRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_HostAddressRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsHostAddressRecord* */  QDnsLookup_HostAddressRecords(const QDnsLookup* self) {
 	QList<QDnsHostAddressRecord> _ret = self->hostAddressRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsHostAddressRecord** _arr = static_cast<QDnsHostAddressRecord**>(malloc(sizeof(QDnsHostAddressRecord*) * _ret.length()));
@@ -408,7 +408,7 @@ struct miqt_array QDnsLookup_HostAddressRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_MailExchangeRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsMailExchangeRecord* */  QDnsLookup_MailExchangeRecords(const QDnsLookup* self) {
 	QList<QDnsMailExchangeRecord> _ret = self->mailExchangeRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsMailExchangeRecord** _arr = static_cast<QDnsMailExchangeRecord**>(malloc(sizeof(QDnsMailExchangeRecord*) * _ret.length()));
@@ -421,7 +421,7 @@ struct miqt_array QDnsLookup_MailExchangeRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_NameServerRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_NameServerRecords(const QDnsLookup* self) {
 	QList<QDnsDomainNameRecord> _ret = self->nameServerRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsDomainNameRecord** _arr = static_cast<QDnsDomainNameRecord**>(malloc(sizeof(QDnsDomainNameRecord*) * _ret.length()));
@@ -434,7 +434,7 @@ struct miqt_array QDnsLookup_NameServerRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_PointerRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_PointerRecords(const QDnsLookup* self) {
 	QList<QDnsDomainNameRecord> _ret = self->pointerRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsDomainNameRecord** _arr = static_cast<QDnsDomainNameRecord**>(malloc(sizeof(QDnsDomainNameRecord*) * _ret.length()));
@@ -447,7 +447,7 @@ struct miqt_array QDnsLookup_PointerRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_ServiceRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsServiceRecord* */  QDnsLookup_ServiceRecords(const QDnsLookup* self) {
 	QList<QDnsServiceRecord> _ret = self->serviceRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsServiceRecord** _arr = static_cast<QDnsServiceRecord**>(malloc(sizeof(QDnsServiceRecord*) * _ret.length()));
@@ -460,7 +460,7 @@ struct miqt_array QDnsLookup_ServiceRecords(const QDnsLookup* self) {
 	return _out;
 }
 
-struct miqt_array QDnsLookup_TextRecords(const QDnsLookup* self) {
+struct miqt_array /* of QDnsTextRecord* */  QDnsLookup_TextRecords(const QDnsLookup* self) {
 	QList<QDnsTextRecord> _ret = self->textRecords();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDnsTextRecord** _arr = static_cast<QDnsTextRecord**>(malloc(sizeof(QDnsTextRecord*) * _ret.length()));

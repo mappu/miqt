@@ -1,5 +1,6 @@
-#ifndef GEN_QMAINWINDOW_H
-#define GEN_QMAINWINDOW_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMAINWINDOW_H
+#define MIQT_QT6_GEN_QMAINWINDOW_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -86,11 +87,11 @@ void QMainWindow_AddDockWidget(QMainWindow* self, int area, QDockWidget* dockwid
 void QMainWindow_AddDockWidget2(QMainWindow* self, int area, QDockWidget* dockwidget, int orientation);
 void QMainWindow_SplitDockWidget(QMainWindow* self, QDockWidget* after, QDockWidget* dockwidget, int orientation);
 void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWidget* second);
-struct miqt_array QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget);
+struct miqt_array /* of QDockWidget* */  QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget);
 void QMainWindow_RemoveDockWidget(QMainWindow* self, QDockWidget* dockwidget);
 bool QMainWindow_RestoreDockWidget(QMainWindow* self, QDockWidget* dockwidget);
 int QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget);
-void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array /* of QDockWidget* */ docks, struct miqt_array /* of int */ sizes, int orientation);
+void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array /* of QDockWidget* */  docks, struct miqt_array /* of int */  sizes, int orientation);
 struct miqt_string QMainWindow_SaveState(const QMainWindow* self);
 bool QMainWindow_RestoreState(QMainWindow* self, struct miqt_string state);
 QMenu* QMainWindow_CreatePopupMenu(QMainWindow* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QFONTDATABASE_H
-#define GEN_QFONTDATABASE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QFONTDATABASE_H
+#define MIQT_QT6_GEN_QFONTDATABASE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -26,13 +27,13 @@ typedef struct QFontInfo QFontInfo;
 #endif
 
 QFontDatabase* QFontDatabase_new();
-struct miqt_array QFontDatabase_StandardSizes();
-struct miqt_array QFontDatabase_WritingSystems();
-struct miqt_array QFontDatabase_WritingSystemsWithFamily(struct miqt_string family);
-struct miqt_array QFontDatabase_Families();
-struct miqt_array QFontDatabase_Styles(struct miqt_string family);
-struct miqt_array QFontDatabase_PointSizes(struct miqt_string family);
-struct miqt_array QFontDatabase_SmoothSizes(struct miqt_string family, struct miqt_string style);
+struct miqt_array /* of int */  QFontDatabase_StandardSizes();
+struct miqt_array /* of int */  QFontDatabase_WritingSystems();
+struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(struct miqt_string family);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_Families();
+struct miqt_array /* of struct miqt_string */  QFontDatabase_Styles(struct miqt_string family);
+struct miqt_array /* of int */  QFontDatabase_PointSizes(struct miqt_string family);
+struct miqt_array /* of int */  QFontDatabase_SmoothSizes(struct miqt_string family, struct miqt_string style);
 struct miqt_string QFontDatabase_StyleString(QFont* font);
 struct miqt_string QFontDatabase_StyleStringWithFontInfo(QFontInfo* fontInfo);
 QFont* QFontDatabase_Font(struct miqt_string family, struct miqt_string style, int pointSize);
@@ -49,12 +50,12 @@ struct miqt_string QFontDatabase_WritingSystemName(int writingSystem);
 struct miqt_string QFontDatabase_WritingSystemSample(int writingSystem);
 int QFontDatabase_AddApplicationFont(struct miqt_string fileName);
 int QFontDatabase_AddApplicationFontFromData(struct miqt_string fontData);
-struct miqt_array QFontDatabase_ApplicationFontFamilies(int id);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_ApplicationFontFamilies(int id);
 bool QFontDatabase_RemoveApplicationFont(int id);
 bool QFontDatabase_RemoveAllApplicationFonts();
 QFont* QFontDatabase_SystemFont(int typeVal);
-struct miqt_array QFontDatabase_Families1(int writingSystem);
-struct miqt_array QFontDatabase_PointSizes2(struct miqt_string family, struct miqt_string style);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_Families1(int writingSystem);
+struct miqt_array /* of int */  QFontDatabase_PointSizes2(struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_IsBitmapScalable2(struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_IsSmoothlyScalable2(struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_IsScalable2(struct miqt_string family, struct miqt_string style);

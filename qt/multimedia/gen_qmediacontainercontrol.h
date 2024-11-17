@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIACONTAINERCONTROL_H
-#define GEN_QMEDIACONTAINERCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIACONTAINERCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIACONTAINERCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -25,7 +26,7 @@ QMetaObject* QMediaContainerControl_MetaObject(const QMediaContainerControl* sel
 void* QMediaContainerControl_Metacast(QMediaContainerControl* self, const char* param1);
 struct miqt_string QMediaContainerControl_Tr(const char* s);
 struct miqt_string QMediaContainerControl_TrUtf8(const char* s);
-struct miqt_array QMediaContainerControl_SupportedContainers(const QMediaContainerControl* self);
+struct miqt_array /* of struct miqt_string */  QMediaContainerControl_SupportedContainers(const QMediaContainerControl* self);
 struct miqt_string QMediaContainerControl_ContainerFormat(const QMediaContainerControl* self);
 void QMediaContainerControl_SetContainerFormat(QMediaContainerControl* self, struct miqt_string format);
 struct miqt_string QMediaContainerControl_ContainerDescription(const QMediaContainerControl* self, struct miqt_string formatMimeType);

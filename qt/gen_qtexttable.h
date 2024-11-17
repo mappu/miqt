@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTTABLE_H
-#define GEN_QTEXTTABLE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTTABLE_H
+#define MIQT_QT_GEN_QTEXTTABLE_H
 
 #include <stdbool.h>
 #include <stddef.h>

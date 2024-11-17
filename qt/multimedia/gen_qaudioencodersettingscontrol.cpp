@@ -39,7 +39,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAudioEncoderSettingsControl_SupportedAudioCodecs(const QAudioEncoderSettingsControl* self) {
+struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_SupportedAudioCodecs(const QAudioEncoderSettingsControl* self) {
 	QStringList _ret = self->supportedAudioCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -71,7 +71,7 @@ struct miqt_string QAudioEncoderSettingsControl_CodecDescription(const QAudioEnc
 	return _ms;
 }
 
-struct miqt_array QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings) {
+struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings) {
 	QList<int> _ret = self->supportedSampleRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -136,7 +136,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_array QAudioEncoderSettingsControl_SupportedSampleRates2(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates2(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous) {
 	QList<int> _ret = self->supportedSampleRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

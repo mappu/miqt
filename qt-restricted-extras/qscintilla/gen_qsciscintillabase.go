@@ -1783,7 +1783,7 @@ func (this *QsciScintillaBase) OnSCN_MACRORECORD(slot func(param1 uint, param2 u
 }
 
 //export miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD
-func miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(cb C.intptr_t, param1 C.uint, param2 C.ulong, param3 *C.void) {
+func miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(cb C.intptr_t, param1 C.uint, param2 C.ulong, param3 unsafe.Pointer) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 uint, param2 uint64, param3 unsafe.Pointer))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

@@ -131,7 +131,7 @@ struct miqt_string QCameraViewfinderSettingsControl2_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QCameraViewfinderSettingsControl2_SupportedViewfinderSettings(const QCameraViewfinderSettingsControl2* self) {
+struct miqt_array /* of QCameraViewfinderSettings* */  QCameraViewfinderSettingsControl2_SupportedViewfinderSettings(const QCameraViewfinderSettingsControl2* self) {
 	QList<QCameraViewfinderSettings> _ret = self->supportedViewfinderSettings();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraViewfinderSettings** _arr = static_cast<QCameraViewfinderSettings**>(malloc(sizeof(QCameraViewfinderSettings*) * _ret.length()));

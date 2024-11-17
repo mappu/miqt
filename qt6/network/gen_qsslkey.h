@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLKEY_H
-#define GEN_QSSLKEY_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QSSLKEY_H
+#define MIQT_QT6_NETWORK_GEN_QSSLKEY_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QSCIMACRO_H
-#define GEN_QSCIMACRO_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCIMACRO_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCIMACRO_H
 
 #include <stdbool.h>
 #include <stddef.h>

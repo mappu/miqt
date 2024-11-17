@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSSCENE_H
-#define GEN_QGRAPHICSSCENE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSSCENE_H
+#define MIQT_QT6_GEN_QGRAPHICSSCENE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -97,19 +98,19 @@ void QGraphicsScene_SetItemIndexMethod(QGraphicsScene* self, int method);
 int QGraphicsScene_BspTreeDepth(const QGraphicsScene* self);
 void QGraphicsScene_SetBspTreeDepth(QGraphicsScene* self, int depth);
 QRectF* QGraphicsScene_ItemsBoundingRect(const QGraphicsScene* self);
-struct miqt_array QGraphicsScene_Items(const QGraphicsScene* self);
-struct miqt_array QGraphicsScene_ItemsWithPos(const QGraphicsScene* self, QPointF* pos);
-struct miqt_array QGraphicsScene_ItemsWithRect(const QGraphicsScene* self, QRectF* rect);
-struct miqt_array QGraphicsScene_ItemsWithPath(const QGraphicsScene* self, QPainterPath* path);
-struct miqt_array QGraphicsScene_Items2(const QGraphicsScene* self, double x, double y, double w, double h, int mode, int order);
-struct miqt_array QGraphicsScene_CollidingItems(const QGraphicsScene* self, QGraphicsItem* item);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items(const QGraphicsScene* self);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_ItemsWithPos(const QGraphicsScene* self, QPointF* pos);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_ItemsWithRect(const QGraphicsScene* self, QRectF* rect);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_ItemsWithPath(const QGraphicsScene* self, QPainterPath* path);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items2(const QGraphicsScene* self, double x, double y, double w, double h, int mode, int order);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_CollidingItems(const QGraphicsScene* self, QGraphicsItem* item);
 QGraphicsItem* QGraphicsScene_ItemAt(const QGraphicsScene* self, QPointF* pos, QTransform* deviceTransform);
 QGraphicsItem* QGraphicsScene_ItemAt2(const QGraphicsScene* self, double x, double y, QTransform* deviceTransform);
-struct miqt_array QGraphicsScene_SelectedItems(const QGraphicsScene* self);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_SelectedItems(const QGraphicsScene* self);
 QPainterPath* QGraphicsScene_SelectionArea(const QGraphicsScene* self);
 void QGraphicsScene_SetSelectionArea(QGraphicsScene* self, QPainterPath* path, QTransform* deviceTransform);
 void QGraphicsScene_SetSelectionAreaWithPath(QGraphicsScene* self, QPainterPath* path);
-QGraphicsItemGroup* QGraphicsScene_CreateItemGroup(QGraphicsScene* self, struct miqt_array /* of QGraphicsItem* */ items);
+QGraphicsItemGroup* QGraphicsScene_CreateItemGroup(QGraphicsScene* self, struct miqt_array /* of QGraphicsItem* */  items);
 void QGraphicsScene_DestroyItemGroup(QGraphicsScene* self, QGraphicsItemGroup* group);
 void QGraphicsScene_AddItem(QGraphicsScene* self, QGraphicsItem* item);
 QGraphicsEllipseItem* QGraphicsScene_AddEllipse(QGraphicsScene* self, QRectF* rect);
@@ -137,7 +138,7 @@ void QGraphicsScene_SetBackgroundBrush(QGraphicsScene* self, QBrush* brush);
 QBrush* QGraphicsScene_ForegroundBrush(const QGraphicsScene* self);
 void QGraphicsScene_SetForegroundBrush(QGraphicsScene* self, QBrush* brush);
 QVariant* QGraphicsScene_InputMethodQuery(const QGraphicsScene* self, int query);
-struct miqt_array QGraphicsScene_Views(const QGraphicsScene* self);
+struct miqt_array /* of QGraphicsView* */  QGraphicsScene_Views(const QGraphicsScene* self);
 void QGraphicsScene_Update(QGraphicsScene* self, double x, double y, double w, double h);
 void QGraphicsScene_Invalidate(QGraphicsScene* self, double x, double y, double w, double h);
 QStyle* QGraphicsScene_Style(const QGraphicsScene* self);
@@ -161,7 +162,7 @@ void QGraphicsScene_Invalidate2(QGraphicsScene* self);
 void QGraphicsScene_Advance(QGraphicsScene* self);
 void QGraphicsScene_ClearSelection(QGraphicsScene* self);
 void QGraphicsScene_Clear(QGraphicsScene* self);
-void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array /* of QRectF* */ region);
+void QGraphicsScene_Changed(QGraphicsScene* self, struct miqt_array /* of QRectF* */  region);
 void QGraphicsScene_connect_Changed(QGraphicsScene* self, intptr_t slot);
 void QGraphicsScene_SceneRectChanged(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_connect_SceneRectChanged(QGraphicsScene* self, intptr_t slot);
@@ -174,18 +175,18 @@ struct miqt_string QGraphicsScene_Tr3(const char* s, const char* c, int n);
 void QGraphicsScene_Render2(QGraphicsScene* self, QPainter* painter, QRectF* target);
 void QGraphicsScene_Render3(QGraphicsScene* self, QPainter* painter, QRectF* target, QRectF* source);
 void QGraphicsScene_Render4(QGraphicsScene* self, QPainter* painter, QRectF* target, QRectF* source, int aspectRatioMode);
-struct miqt_array QGraphicsScene_Items1(const QGraphicsScene* self, int order);
-struct miqt_array QGraphicsScene_Items22(const QGraphicsScene* self, QPointF* pos, int mode);
-struct miqt_array QGraphicsScene_Items3(const QGraphicsScene* self, QPointF* pos, int mode, int order);
-struct miqt_array QGraphicsScene_Items4(const QGraphicsScene* self, QPointF* pos, int mode, int order, QTransform* deviceTransform);
-struct miqt_array QGraphicsScene_Items23(const QGraphicsScene* self, QRectF* rect, int mode);
-struct miqt_array QGraphicsScene_Items32(const QGraphicsScene* self, QRectF* rect, int mode, int order);
-struct miqt_array QGraphicsScene_Items42(const QGraphicsScene* self, QRectF* rect, int mode, int order, QTransform* deviceTransform);
-struct miqt_array QGraphicsScene_Items25(const QGraphicsScene* self, QPainterPath* path, int mode);
-struct miqt_array QGraphicsScene_Items34(const QGraphicsScene* self, QPainterPath* path, int mode, int order);
-struct miqt_array QGraphicsScene_Items44(const QGraphicsScene* self, QPainterPath* path, int mode, int order, QTransform* deviceTransform);
-struct miqt_array QGraphicsScene_Items7(const QGraphicsScene* self, double x, double y, double w, double h, int mode, int order, QTransform* deviceTransform);
-struct miqt_array QGraphicsScene_CollidingItems2(const QGraphicsScene* self, QGraphicsItem* item, int mode);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items1(const QGraphicsScene* self, int order);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items22(const QGraphicsScene* self, QPointF* pos, int mode);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items3(const QGraphicsScene* self, QPointF* pos, int mode, int order);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items4(const QGraphicsScene* self, QPointF* pos, int mode, int order, QTransform* deviceTransform);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items23(const QGraphicsScene* self, QRectF* rect, int mode);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items32(const QGraphicsScene* self, QRectF* rect, int mode, int order);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items42(const QGraphicsScene* self, QRectF* rect, int mode, int order, QTransform* deviceTransform);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items25(const QGraphicsScene* self, QPainterPath* path, int mode);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items34(const QGraphicsScene* self, QPainterPath* path, int mode, int order);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items44(const QGraphicsScene* self, QPainterPath* path, int mode, int order, QTransform* deviceTransform);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_Items7(const QGraphicsScene* self, double x, double y, double w, double h, int mode, int order, QTransform* deviceTransform);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsScene_CollidingItems2(const QGraphicsScene* self, QGraphicsItem* item, int mode);
 void QGraphicsScene_SetSelectionArea2(QGraphicsScene* self, QPainterPath* path, int selectionOperation);
 void QGraphicsScene_SetSelectionArea3(QGraphicsScene* self, QPainterPath* path, int selectionOperation, int mode);
 void QGraphicsScene_SetSelectionArea4(QGraphicsScene* self, QPainterPath* path, int selectionOperation, int mode, QTransform* deviceTransform);

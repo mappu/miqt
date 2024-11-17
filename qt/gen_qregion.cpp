@@ -131,7 +131,7 @@ QRect* QRegion_BoundingRect(const QRegion* self) {
 	return new QRect(self->boundingRect());
 }
 
-struct miqt_array QRegion_Rects(const QRegion* self) {
+struct miqt_array /* of QRect* */  QRegion_Rects(const QRegion* self) {
 	QVector<QRect> _ret = self->rects();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect*) * _ret.length()));

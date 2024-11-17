@@ -1,5 +1,6 @@
-#ifndef GEN_QIMAGECAPTURE_H
-#define GEN_QIMAGECAPTURE_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QIMAGECAPTURE_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QIMAGECAPTURE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -45,7 +46,7 @@ struct miqt_string QImageCapture_ErrorString(const QImageCapture* self);
 bool QImageCapture_IsReadyForCapture(const QImageCapture* self);
 int QImageCapture_FileFormat(const QImageCapture* self);
 void QImageCapture_SetFileFormat(QImageCapture* self, int format);
-struct miqt_array QImageCapture_SupportedFormats();
+struct miqt_array /* of int */  QImageCapture_SupportedFormats();
 struct miqt_string QImageCapture_FileFormatName(int c);
 struct miqt_string QImageCapture_FileFormatDescription(int c);
 QSize* QImageCapture_Resolution(const QImageCapture* self);

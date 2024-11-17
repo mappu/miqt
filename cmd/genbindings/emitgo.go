@@ -43,6 +43,12 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		return "map[" + t1.RenderTypeGo(gfs) + "]" + t2.RenderTypeGo(gfs)
 	}
 
+	if t1, t2, ok := p.QPairOf(); ok {
+		// Design QPair using capital-named members, in case it gets passed
+		// across packages
+		return "struct { First " + t1.RenderTypeGo(gfs) + " ; Second " + t2.RenderTypeGo(gfs) + " }"
+	}
+
 	if p.ParameterType == "void" && p.Pointer {
 		return "unsafe.Pointer"
 	}
@@ -167,6 +173,15 @@ func (p CppParameter) parameterTypeCgo() string {
 
 	if _, _, ok := p.QMapOf(); ok {
 		return "C.struct_miqt_map"
+	}
+
+	if _, _, ok := p.QPairOf(); ok {
+		return "C.struct_miqt_map"
+	}
+
+	// Cgo internally binds void* as unsafe.Pointer{}
+	if p.ParameterType == "void" && p.Pointer {
+		return "unsafe.Pointer"
 	}
 
 	tmp := strings.Replace(p.RenderTypeCabi(), `*`, "", -1)
@@ -321,9 +336,9 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
 
-		preamble += p.ParameterName + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
+		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
 
-		rvalue = p.ParameterName + "_ma"
+		rvalue = nameprefix + "_ma"
 
 	} else if _, ok := p.QSetOf(); ok {
 		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
@@ -357,9 +372,34 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		preamble += "}\n"
 
-		preamble += p.ParameterName + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.ParameterName + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
+		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.ParameterName + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
 
-		rvalue = p.ParameterName + "_mm"
+		rvalue = nameprefix + "_mm"
+
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		// QPair<T>
+
+		gfs.imports["unsafe"] = struct{}{}
+
+		preamble += nameprefix + "_First_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + ")))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_First_CArray))\n"
+
+		preamble += nameprefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + ")))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Second_CArray))\n"
+
+		kType.ParameterName = p.ParameterName + ".First"
+		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
+		preamble += addPreamble
+		preamble += nameprefix + "_First_CArray[0] = " + innerRvalue + "\n"
+
+		vType.ParameterName = p.ParameterName + ".Second"
+		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType)
+		preamble += addPreamble
+		preamble += nameprefix + "_Second_CArray[0] = " + innerRvalue + "\n"
+
+		preamble += nameprefix + "_pair := C.struct_miqt_map{\nlen: 1,\nkeys: unsafe.Pointer(" + nameprefix + "_First_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Second_CArray),\n}\n"
+
+		rvalue = nameprefix + "_pair"
 
 	} else if p.Pointer && p.ParameterType == "char" {
 		// Single char* argument
@@ -404,7 +444,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 	afterword := ""
 	namePrefix := makeNamePrefix(rt.ParameterName)
 
-	if rt.ParameterType == "void" && !rt.Pointer {
+	if rt.Void() {
 		shouldReturn = ""
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
@@ -500,6 +540,20 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
+	} else if kType, vType, ok := rt.QPairOf(); ok {
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_mm C.struct_miqt_map = "
+
+		afterword += namePrefix + "_First_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.keys))\n"
+		afterword += namePrefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(unsafe.Pointer(" + namePrefix + "_mm.values))\n"
+
+		afterword += gfs.emitCabiToGo(namePrefix+"_entry_First := ", kType, namePrefix+"_First_CArray[0]") + "\n"
+		afterword += gfs.emitCabiToGo(namePrefix+"_entry_Second := ", vType, namePrefix+"_Second_CArray[0]") + "\n"
+
+		afterword += assignExpr + " " + rt.RenderTypeGo(gfs) + " { First: " + namePrefix + "_entry_First , Second: " + namePrefix + "_entry_Second }\n"
+		return shouldReturn + " " + rvalue + "\n" + afterword
+
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
 		shouldReturn = "" + namePrefix + "_ret := "
@@ -542,6 +596,14 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
+
+		if rt.Pointer || rt.ByRef {
+			// Cast must go via unsafe.Pointer
+			gfs.imports["unsafe"] = struct{}{}
+			return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(unsafe.Pointer(" + rvalue + "))\n"
+
+		}
+
 		// Need to cast Cgo type to Go int type
 		// Optimize assignment to avoid temporary
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"

@@ -1,5 +1,6 @@
-#ifndef GEN_QEVENTTRANSITION_H
-#define GEN_QEVENTTRANSITION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QEVENTTRANSITION_H
+#define MIQT_QT_GEN_QEVENTTRANSITION_H
 
 #include <stdbool.h>
 #include <stddef.h>

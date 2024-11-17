@@ -1,5 +1,6 @@
-#ifndef GEN_QVECTOR3D_H
-#define GEN_QVECTOR3D_H
+#pragma once
+#ifndef MIQT_QT_GEN_QVECTOR3D_H
+#define MIQT_QT_GEN_QVECTOR3D_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -5,32 +5,6 @@ import (
 	"strings"
 )
 
-type lookupResultClass struct {
-	PackageName string
-}
-
-type lookupResultTypedef struct {
-	PackageName string
-	Typedef     CppTypedef
-}
-
-type lookupResultEnum struct {
-	PackageName string
-	Enum        CppEnum
-}
-
-var (
-	KnownClassnames map[string]lookupResultClass // Entries of the form QFoo::Bar if it is an inner class
-	KnownTypedefs   map[string]lookupResultTypedef
-	KnownEnums      map[string]lookupResultEnum
-)
-
-func flushKnownTypes() {
-	KnownClassnames = make(map[string]lookupResultClass)
-	KnownTypedefs = make(map[string]lookupResultTypedef)
-	KnownEnums = make(map[string]lookupResultEnum)
-}
-
 type CppParameter struct {
 	ParameterName string
 	ParameterType string
@@ -177,8 +151,21 @@ func (p CppParameter) QMapOf() (CppParameter, CppParameter, bool) {
 	return CppParameter{}, CppParameter{}, false
 }
 
-func (p CppParameter) QPairOf() bool {
-	return strings.HasPrefix(p.ParameterType, `QPair<`) // TODO support this
+func (p CppParameter) QPairOf() (CppParameter, CppParameter, bool) {
+	if strings.HasPrefix(p.ParameterType, `QPair<`) && strings.HasSuffix(p.ParameterType, `>`) {
+		interior := tokenizeMultipleParameters(p.ParameterType[6 : len(p.ParameterType)-1])
+		if len(interior) != 2 {
+			panic("QPair<> has unexpected number of template arguments")
+		}
+
+		first := parseSingleTypeString(interior[0])
+		first.ParameterName = p.ParameterName + "_first"
+		second := parseSingleTypeString(interior[1])
+		second.ParameterName = p.ParameterName + "_second"
+		return first, second, true
+	}
+
+	return CppParameter{}, CppParameter{}, false
 }
 
 func (p CppParameter) QSetOf() (CppParameter, bool) {
@@ -231,6 +218,10 @@ func (p CppParameter) IntType() bool {
 	default:
 		return false
 	}
+}
+
+func (p CppParameter) Void() bool {
+	return p.ParameterType == "void" && !p.Pointer
 }
 
 type CppProperty struct {

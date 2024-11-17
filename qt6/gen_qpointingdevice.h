@@ -1,5 +1,6 @@
-#ifndef GEN_QPOINTINGDEVICE_H
-#define GEN_QPOINTINGDEVICE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPOINTINGDEVICE_H
+#define MIQT_QT6_GEN_QPOINTINGDEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>

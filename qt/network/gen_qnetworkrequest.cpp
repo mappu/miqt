@@ -62,7 +62,7 @@ bool QNetworkRequest_HasRawHeader(const QNetworkRequest* self, struct miqt_strin
 	return self->hasRawHeader(headerName_QByteArray);
 }
 
-struct miqt_array QNetworkRequest_RawHeaderList(const QNetworkRequest* self) {
+struct miqt_array /* of struct miqt_string */  QNetworkRequest_RawHeaderList(const QNetworkRequest* self) {
 	QList<QByteArray> _ret = self->rawHeaderList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

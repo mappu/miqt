@@ -32,7 +32,7 @@ void QPageRanges_AddRange(QPageRanges* self, int from, int to) {
 	self->addRange(static_cast<int>(from), static_cast<int>(to));
 }
 
-struct miqt_array QPageRanges_ToRangeList(const QPageRanges* self) {
+struct miqt_array /* of QPageRanges__Range* */  QPageRanges_ToRangeList(const QPageRanges* self) {
 	QList<QPageRanges::Range> _ret = self->toRangeList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QPageRanges__Range** _arr = static_cast<QPageRanges__Range**>(malloc(sizeof(QPageRanges__Range*) * _ret.length()));

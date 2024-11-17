@@ -155,7 +155,7 @@ void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, int dayOfWeek, 
 	self->setWeekdayTextFormat(static_cast<Qt::DayOfWeek>(dayOfWeek), *format);
 }
 
-struct miqt_map QCalendarWidget_DateTextFormat(const QCalendarWidget* self) {
+struct miqt_map /* of QDate* to QTextCharFormat* */  QCalendarWidget_DateTextFormat(const QCalendarWidget* self) {
 	QMap<QDate, QTextCharFormat> _ret = self->dateTextFormat();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	QDate** _karr = static_cast<QDate**>(malloc(sizeof(QDate*) * _ret.size()));

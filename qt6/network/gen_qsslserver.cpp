@@ -56,7 +56,7 @@ int QSslServer_HandshakeTimeout(const QSslServer* self) {
 	return self->handshakeTimeout();
 }
 
-void QSslServer_SslErrors(QSslServer* self, QSslSocket* socket, struct miqt_array /* of QSslError* */ errors) {
+void QSslServer_SslErrors(QSslServer* self, QSslSocket* socket, struct miqt_array /* of QSslError* */  errors) {
 	QList<QSslError> errors_QList;
 	errors_QList.reserve(errors.len);
 	QSslError** errors_arr = static_cast<QSslError**>(errors.data);
@@ -78,7 +78,7 @@ void QSslServer_connect_SslErrors(QSslServer* self, intptr_t slot) {
 		struct miqt_array errors_out;
 		errors_out.len = errors_ret.length();
 		errors_out.data = static_cast<void*>(errors_arr);
-		struct miqt_array sigval2 = errors_out;
+		struct miqt_array /* of QSslError* */  sigval2 = errors_out;
 		miqt_exec_callback_QSslServer_SslErrors(slot, sigval1, sigval2);
 	});
 }

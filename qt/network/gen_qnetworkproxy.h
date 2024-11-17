@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKPROXY_H
-#define GEN_QNETWORKPROXY_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKPROXY_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKPROXY_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -99,20 +100,20 @@ QNetworkProxy* QNetworkProxy_ApplicationProxy();
 QVariant* QNetworkProxy_Header(const QNetworkProxy* self, int header);
 void QNetworkProxy_SetHeader(QNetworkProxy* self, int header, QVariant* value);
 bool QNetworkProxy_HasRawHeader(const QNetworkProxy* self, struct miqt_string headerName);
-struct miqt_array QNetworkProxy_RawHeaderList(const QNetworkProxy* self);
+struct miqt_array /* of struct miqt_string */  QNetworkProxy_RawHeaderList(const QNetworkProxy* self);
 struct miqt_string QNetworkProxy_RawHeader(const QNetworkProxy* self, struct miqt_string headerName);
 void QNetworkProxy_SetRawHeader(QNetworkProxy* self, struct miqt_string headerName, struct miqt_string value);
 void QNetworkProxy_Delete(QNetworkProxy* self);
 
-struct miqt_array QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self);
 bool QNetworkProxyFactory_UsesSystemConfiguration();
 void QNetworkProxyFactory_SetUseSystemConfiguration(bool enable);
 void QNetworkProxyFactory_SetApplicationProxyFactory(QNetworkProxyFactory* factory);
-struct miqt_array QNetworkProxyFactory_ProxyForQuery(QNetworkProxyQuery* query);
-struct miqt_array QNetworkProxyFactory_SystemProxyForQuery();
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_ProxyForQuery(QNetworkProxyQuery* query);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery();
 void QNetworkProxyFactory_OperatorAssign(QNetworkProxyFactory* self, QNetworkProxyFactory* param1);
-struct miqt_array QNetworkProxyFactory_QueryProxy1(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
-struct miqt_array QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy1(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
 void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self);
 
 #ifdef __cplusplus

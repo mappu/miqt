@@ -252,7 +252,7 @@ void QGraphicsWidget_AddAction(QGraphicsWidget* self, QAction* action) {
 	self->addAction(action);
 }
 
-void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */ actions) {
+void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */  actions) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
@@ -262,7 +262,7 @@ void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array /* of Q
 	self->addActions(actions_QList);
 }
 
-void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */ actions) {
+void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
@@ -280,7 +280,7 @@ void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-struct miqt_array QGraphicsWidget_Actions(const QGraphicsWidget* self) {
+struct miqt_array /* of QAction* */  QGraphicsWidget_Actions(const QGraphicsWidget* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));

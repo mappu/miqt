@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERCPP_H
-#define GEN_QSCILEXERCPP_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERCPP_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERCPP_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ void* QsciLexerCPP_Metacast(QsciLexerCPP* self, const char* param1);
 struct miqt_string QsciLexerCPP_Tr(const char* s);
 const char* QsciLexerCPP_Language(const QsciLexerCPP* self);
 const char* QsciLexerCPP_Lexer(const QsciLexerCPP* self);
-struct miqt_array QsciLexerCPP_AutoCompletionWordSeparators(const QsciLexerCPP* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerCPP_AutoCompletionWordSeparators(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockEnd(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockStart(const QsciLexerCPP* self);
 const char* QsciLexerCPP_BlockStartKeyword(const QsciLexerCPP* self);

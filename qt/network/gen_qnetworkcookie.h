@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKCOOKIE_H
-#define GEN_QNETWORKCOOKIE_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKCOOKIE_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKCOOKIE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -51,7 +52,7 @@ void QNetworkCookie_SetValue(QNetworkCookie* self, struct miqt_string value);
 struct miqt_string QNetworkCookie_ToRawForm(const QNetworkCookie* self);
 bool QNetworkCookie_HasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other);
 void QNetworkCookie_Normalize(QNetworkCookie* self, QUrl* url);
-struct miqt_array QNetworkCookie_ParseCookies(struct miqt_string cookieString);
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct miqt_string cookieString);
 struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int form);
 void QNetworkCookie_Delete(QNetworkCookie* self);
 

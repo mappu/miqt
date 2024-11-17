@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERPYTHON_H
-#define GEN_QSCILEXERPYTHON_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERPYTHON_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERPYTHON_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -34,7 +35,7 @@ void* QsciLexerPython_Metacast(QsciLexerPython* self, const char* param1);
 struct miqt_string QsciLexerPython_Tr(const char* s);
 const char* QsciLexerPython_Language(const QsciLexerPython* self);
 const char* QsciLexerPython_Lexer(const QsciLexerPython* self);
-struct miqt_array QsciLexerPython_AutoCompletionWordSeparators(const QsciLexerPython* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerPython_AutoCompletionWordSeparators(const QsciLexerPython* self);
 int QsciLexerPython_BlockLookback(const QsciLexerPython* self);
 const char* QsciLexerPython_BlockStart(const QsciLexerPython* self);
 int QsciLexerPython_BraceStyle(const QsciLexerPython* self);

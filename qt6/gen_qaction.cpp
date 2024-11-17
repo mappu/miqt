@@ -61,7 +61,7 @@ struct miqt_string QAction_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAction_AssociatedObjects(const QAction* self) {
+struct miqt_array /* of QObject* */  QAction_AssociatedObjects(const QAction* self) {
 	QList<QObject *> _ret = self->associatedObjects();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
@@ -195,7 +195,7 @@ QKeySequence* QAction_Shortcut(const QAction* self) {
 	return new QKeySequence(self->shortcut());
 }
 
-void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */ shortcuts) {
+void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */  shortcuts) {
 	QList<QKeySequence> shortcuts_QList;
 	shortcuts_QList.reserve(shortcuts.len);
 	QKeySequence** shortcuts_arr = static_cast<QKeySequence**>(shortcuts.data);
@@ -209,7 +209,7 @@ void QAction_SetShortcutsWithShortcuts(QAction* self, int shortcuts) {
 	self->setShortcuts(static_cast<QKeySequence::StandardKey>(shortcuts));
 }
 
-struct miqt_array QAction_Shortcuts(const QAction* self) {
+struct miqt_array /* of QKeySequence* */  QAction_Shortcuts(const QAction* self) {
 	QList<QKeySequence> _ret = self->shortcuts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence*) * _ret.length()));

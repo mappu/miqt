@@ -64,7 +64,7 @@ int QMediaPlayer_HasSupport(struct miqt_string mimeType) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QMediaPlayer_SupportedMimeTypes() {
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes() {
 	QStringList _ret = QMediaPlayer::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -96,7 +96,7 @@ void QMediaPlayer_SetVideoOutputWithSurface(QMediaPlayer* self, QAbstractVideoSu
 	self->setVideoOutput(surface);
 }
 
-void QMediaPlayer_SetVideoOutputWithSurfaces(QMediaPlayer* self, struct miqt_array /* of QAbstractVideoSurface* */ surfaces) {
+void QMediaPlayer_SetVideoOutputWithSurfaces(QMediaPlayer* self, struct miqt_array /* of QAbstractVideoSurface* */  surfaces) {
 	QVector<QAbstractVideoSurface *> surfaces_QList;
 	surfaces_QList.reserve(surfaces.len);
 	QAbstractVideoSurface** surfaces_arr = static_cast<QAbstractVideoSurface**>(surfaces.data);
@@ -205,7 +205,7 @@ void QMediaPlayer_SetAudioRole(QMediaPlayer* self, int audioRole) {
 	self->setAudioRole(static_cast<QAudio::Role>(audioRole));
 }
 
-struct miqt_array QMediaPlayer_SupportedAudioRoles(const QMediaPlayer* self) {
+struct miqt_array /* of int */  QMediaPlayer_SupportedAudioRoles(const QMediaPlayer* self) {
 	QList<QAudio::Role> _ret = self->supportedAudioRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -235,7 +235,7 @@ void QMediaPlayer_SetCustomAudioRole(QMediaPlayer* self, struct miqt_string audi
 	self->setCustomAudioRole(audioRole_QString);
 }
 
-struct miqt_array QMediaPlayer_SupportedCustomAudioRoles(const QMediaPlayer* self) {
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedCustomAudioRoles(const QMediaPlayer* self) {
 	QStringList _ret = self->supportedCustomAudioRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -291,7 +291,7 @@ void QMediaPlayer_SetPlaylist(QMediaPlayer* self, QMediaPlaylist* playlist) {
 	self->setPlaylist(playlist);
 }
 
-void QMediaPlayer_SetNetworkConfigurations(QMediaPlayer* self, struct miqt_array /* of QNetworkConfiguration* */ configurations) {
+void QMediaPlayer_SetNetworkConfigurations(QMediaPlayer* self, struct miqt_array /* of QNetworkConfiguration* */  configurations) {
 	QList<QNetworkConfiguration> configurations_QList;
 	configurations_QList.reserve(configurations.len);
 	QNetworkConfiguration** configurations_arr = static_cast<QNetworkConfiguration**>(configurations.data);
@@ -561,7 +561,7 @@ struct miqt_string QMediaPlayer_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs) {
+int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -574,7 +574,7 @@ int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* o
 	return static_cast<int>(_ret);
 }
 
-int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs, int flags) {
+int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -587,7 +587,7 @@ int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* o
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QMediaPlayer_SupportedMimeTypes1(int flags) {
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes1(int flags) {
 	QStringList _ret = QMediaPlayer::supportedMimeTypes(static_cast<QMediaPlayer::Flags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

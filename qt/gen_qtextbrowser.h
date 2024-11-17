@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTBROWSER_H
-#define GEN_QTEXTBROWSER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTBROWSER_H
+#define MIQT_QT_GEN_QTEXTBROWSER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,8 +36,8 @@ struct miqt_string QTextBrowser_Tr(const char* s);
 struct miqt_string QTextBrowser_TrUtf8(const char* s);
 QUrl* QTextBrowser_Source(const QTextBrowser* self);
 int QTextBrowser_SourceType(const QTextBrowser* self);
-struct miqt_array QTextBrowser_SearchPaths(const QTextBrowser* self);
-void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array /* of struct miqt_string */ paths);
+struct miqt_array /* of struct miqt_string */  QTextBrowser_SearchPaths(const QTextBrowser* self);
+void QTextBrowser_SetSearchPaths(QTextBrowser* self, struct miqt_array /* of struct miqt_string */  paths);
 QVariant* QTextBrowser_LoadResource(QTextBrowser* self, int typeVal, QUrl* name);
 bool QTextBrowser_IsBackwardAvailable(const QTextBrowser* self);
 bool QTextBrowser_IsForwardAvailable(const QTextBrowser* self);

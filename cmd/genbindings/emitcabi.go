@@ -6,6 +6,14 @@ import (
 	"strings"
 )
 
+// cppComment renders a string safely in a C++ block comment.
+// It strips interior nested comments.
+func cppComment(s string) string {
+	// Remove nested comments
+	uncomment := strings.NewReplacer("/*", "", "*/", "")
+	return "/* " + uncomment.Replace(s) + " */ "
+}
+
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
@@ -14,14 +22,17 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if p.ParameterType == "QByteArray" {
 		return "struct miqt_string"
 
-	} else if _, ok := p.QListOf(); ok {
-		return "struct miqt_array"
+	} else if inner, ok := p.QListOf(); ok {
+		return "struct miqt_array " + cppComment("of "+inner.RenderTypeCabi())
 
-	} else if _, ok := p.QSetOf(); ok {
-		return "struct miqt_array"
+	} else if inner, ok := p.QSetOf(); ok {
+		return "struct miqt_array " + cppComment("set of "+inner.RenderTypeCabi())
 
-	} else if _, _, ok := p.QMapOf(); ok {
-		return "struct miqt_map"
+	} else if inner1, inner2, ok := p.QMapOf(); ok {
+		return "struct miqt_map " + cppComment("of "+inner1.RenderTypeCabi()+" to "+inner2.RenderTypeCabi())
+
+	} else if inner1, inner2, ok := p.QPairOf(); ok {
+		return "struct miqt_map " + cppComment("tuple of "+inner1.RenderTypeCabi()+" and "+inner2.RenderTypeCabi())
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return cabiClassName(p.ParameterType) + "*"
@@ -151,35 +162,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	}
 
 	for _, p := range m.Parameters {
-		if p.ParameterType == "QString" {
-			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
-
-		} else if p.ParameterType == "QByteArray" {
-			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
-
-		} else if t, ok := p.QListOf(); ok {
-			tmp = append(tmp, "struct miqt_array /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
-
-		} else if t, ok := p.QSetOf(); ok {
-			tmp = append(tmp, "struct miqt_array /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
-
-		} else if p.QtClassType() {
-			if p.ByRef || p.Pointer {
-
-				// Pointer to Qt type
-				// Replace with taking our PQ typedef by value
-				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
-			} else {
-				// Qt type passed by value
-				// The CABI will unconditionally take these by pointer and dereference them
-				// when passing to C++
-				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
-			}
-
-		} else {
-			// RenderTypeCabi renders both pointer+reference as pointers
-			tmp = append(tmp, p.RenderTypeCabi()+" "+p.ParameterName)
-		}
+		tmp = append(tmp, p.RenderTypeCabi()+" "+p.ParameterName)
 	}
 
 	return strings.Join(tmp, ", ")
@@ -198,7 +181,8 @@ func emitParametersCABI2CppForwarding(params []CppParameter, indent string) (pre
 }
 
 func makeNamePrefix(in string) string {
-	return strings.Replace(strings.Replace(in, `[`, `_`, -1), `]`, "", -1)
+	replacer := strings.NewReplacer(`[`, `_`, `]`, "", `.`, `_`)
+	return replacer.Replace(in)
 }
 
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
@@ -265,6 +249,25 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 
 		preamble += indent + "}\n"
 		return preamble, nameprefix + "_QMap"
+
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QPair;\n"
+
+		preamble += indent + kType.RenderTypeCabi() + "* " + nameprefix + "_first_arr = static_cast<" + kType.RenderTypeCabi() + "*>(" + p.ParameterName + ".keys);\n"
+		preamble += indent + vType.RenderTypeCabi() + "* " + nameprefix + "_second_arr = static_cast<" + vType.RenderTypeCabi() + "*>(" + p.ParameterName + ".values);\n"
+
+		kType.ParameterName = nameprefix + "_first_arr[0]"
+		addPreK, addFwdK := emitCABI2CppForwarding(kType, indent+"\t")
+		preamble += addPreK
+
+		vType.ParameterName = nameprefix + "_second_arr[0]"
+		addPreV, addFwdV := emitCABI2CppForwarding(vType, indent+"\t")
+		preamble += addPreV
+
+		preamble += indent + nameprefix + "_QPair.first = " + addFwdK + ";\n"
+		preamble += indent + nameprefix + "_QPair.second = " + addFwdV + ";\n"
+
+		return preamble, nameprefix + "_QPair"
 
 	} else if p.IsFlagType() || p.IntType() || p.IsKnownEnum() {
 		castSrc := p.ParameterName
@@ -343,8 +346,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 
 	namePrefix := makeNamePrefix(p.ParameterName)
 
-	if p.ParameterType == "void" && !p.Pointer {
+	if p.Void() {
 		shouldReturn = ""
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.ParameterType == "QString" {
 
@@ -368,6 +372,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
 		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_b.data(), " + namePrefix + "_ms.len);\n"
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.ParameterType == "QByteArray" {
 		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
@@ -380,6 +385,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + namePrefix + "_ms.data = static_cast<char*>(malloc(" + namePrefix + "_ms.len));\n"
 		afterCall += indent + "memcpy(" + namePrefix + "_ms.data, " + namePrefix + "_qb.data(), " + namePrefix + "_ms.len);\n"
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if t, ok := p.QListOf(); ok {
 
@@ -402,6 +408,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if t, ok := p.QSetOf(); ok {
 
@@ -420,6 +427,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if kType, vType, ok := p.QMapOf(); ok {
 		// QMap<K,V>
@@ -444,6 +452,27 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_varr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
+
+	} else if kType, vType, ok := p.QPairOf(); ok {
+		// QPair<T1,T2>
+
+		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
+
+		afterCall += indent + "// Convert QPair<> from C++ memory to manually-managed C memory\n"
+		afterCall += indent + "" + kType.RenderTypeCabi() + "* " + namePrefix + "_first_arr = static_cast<" + kType.RenderTypeCabi() + "*>(malloc(sizeof(" + kType.RenderTypeCabi() + ")));\n"
+		afterCall += indent + "" + vType.RenderTypeCabi() + "* " + namePrefix + "_second_arr = static_cast<" + vType.RenderTypeCabi() + "*>(malloc(sizeof(" + vType.RenderTypeCabi() + ")));\n"
+
+		afterCall += emitAssignCppToCabi(indent+namePrefix+"_first_arr[0] = ", kType, namePrefix+"_ret.first")
+		afterCall += emitAssignCppToCabi(indent+namePrefix+"_second_arr[0] = ", vType, namePrefix+"_ret.second")
+
+		afterCall += indent + "struct miqt_map " + namePrefix + "_out;\n"
+		afterCall += indent + "" + namePrefix + "_out.len = 1;\n"
+		afterCall += indent + "" + namePrefix + "_out.keys = static_cast<void*>(" + namePrefix + "_first_arr);\n"
+		afterCall += indent + "" + namePrefix + "_out.values = static_cast<void*>(" + namePrefix + "_second_arr);\n"
+
+		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
@@ -459,6 +488,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else {
 			afterCall += indent + "" + assignExpression + "&" + namePrefix + "_ret;\n"
 		}
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.QtClassType() && !p.Pointer {
 
@@ -474,13 +504,22 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
 	} else if p.Const {
 		shouldReturn += "(" + p.RenderTypeCabi() + ") "
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
+	} else {
+		// Basic type
+		if p.ByRef {
+			// The C++ type is a reference, the CABI type is a pointer type
+			shouldReturn += "&"
+		}
+
+		return indent + shouldReturn + rvalue + ";\n" + afterCall
 	}
 
-	return indent + shouldReturn + rvalue + ";\n" + afterCall
 }
 
 // getReferencedTypes finds all referenced Qt types in this file.
@@ -570,7 +609,7 @@ func cabiPreventStructDeclaration(className string) bool {
 func emitBindingHeader(src *CppParsedHeader, filename string, packageName string) (string, error) {
 	ret := strings.Builder{}
 
-	includeGuard := "GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
+	includeGuard := "MIQT_" + strings.ToUpper(strings.Replace(strings.Replace(packageName, `/`, `_`, -1), `-`, `_`, -1)) + "_GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
 
 	bindingInclude := "../libmiqt/libmiqt.h"
 
@@ -578,7 +617,8 @@ func emitBindingHeader(src *CppParsedHeader, filename string, packageName string
 		bindingInclude = "../" + bindingInclude
 	}
 
-	ret.WriteString(`#ifndef ` + includeGuard + `
+	ret.WriteString(`#pragma once
+#ifndef ` + includeGuard + `
 #define ` + includeGuard + `
 
 #include <stdbool.h>

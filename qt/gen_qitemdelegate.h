@@ -1,5 +1,6 @@
-#ifndef GEN_QITEMDELEGATE_H
-#define GEN_QITEMDELEGATE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QITEMDELEGATE_H
+#define MIQT_QT_GEN_QITEMDELEGATE_H
 
 #include <stdbool.h>
 #include <stddef.h>

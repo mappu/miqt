@@ -1,5 +1,6 @@
-#ifndef GEN_SCINTILLAEDIT_H
-#define GEN_SCINTILLAEDIT_H
+#pragma once
+#ifndef MIQT_QT_EXTRAS_SCINTILLAEDIT_GEN_SCINTILLAEDIT_H
+#define MIQT_QT_EXTRAS_SCINTILLAEDIT_GEN_SCINTILLAEDIT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -673,9 +674,11 @@ void* ScintillaEdit_Metacast(ScintillaEdit* self, const char* param1);
 struct miqt_string ScintillaEdit_Tr(const char* s);
 struct miqt_string ScintillaEdit_TrUtf8(const char* s);
 struct miqt_string ScintillaEdit_TextReturner(const ScintillaEdit* self, int message, uintptr_t wParam);
+struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax);
 struct miqt_string ScintillaEdit_GetTextRange(ScintillaEdit* self, int start, int end);
 ScintillaDocument* ScintillaEdit_GetDoc(ScintillaEdit* self);
 void ScintillaEdit_SetDoc(ScintillaEdit* self, ScintillaDocument* pdoc_);
+struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText2(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax);
 struct miqt_string ScintillaEdit_TextRange(ScintillaEdit* self, int start, int end);
 long ScintillaEdit_FormatRange(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end);
 long ScintillaEdit_FormatRange2(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end);

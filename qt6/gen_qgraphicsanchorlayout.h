@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSANCHORLAYOUT_H
-#define GEN_QGRAPHICSANCHORLAYOUT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSANCHORLAYOUT_H
+#define MIQT_QT6_GEN_QGRAPHICSANCHORLAYOUT_H
 
 #include <stdbool.h>
 #include <stddef.h>

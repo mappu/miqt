@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAIMAGECAPTURE_H
-#define GEN_QCAMERAIMAGECAPTURE_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAIMAGECAPTURE_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAIMAGECAPTURE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -47,12 +48,12 @@ QMediaObject* QCameraImageCapture_MediaObject(const QCameraImageCapture* self);
 int QCameraImageCapture_Error(const QCameraImageCapture* self);
 struct miqt_string QCameraImageCapture_ErrorString(const QCameraImageCapture* self);
 bool QCameraImageCapture_IsReadyForCapture(const QCameraImageCapture* self);
-struct miqt_array QCameraImageCapture_SupportedImageCodecs(const QCameraImageCapture* self);
+struct miqt_array /* of struct miqt_string */  QCameraImageCapture_SupportedImageCodecs(const QCameraImageCapture* self);
 struct miqt_string QCameraImageCapture_ImageCodecDescription(const QCameraImageCapture* self, struct miqt_string codecName);
-struct miqt_array QCameraImageCapture_SupportedResolutions(const QCameraImageCapture* self);
+struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions(const QCameraImageCapture* self);
 QImageEncoderSettings* QCameraImageCapture_EncodingSettings(const QCameraImageCapture* self);
 void QCameraImageCapture_SetEncodingSettings(QCameraImageCapture* self, QImageEncoderSettings* settings);
-struct miqt_array QCameraImageCapture_SupportedBufferFormats(const QCameraImageCapture* self);
+struct miqt_array /* of int */  QCameraImageCapture_SupportedBufferFormats(const QCameraImageCapture* self);
 int QCameraImageCapture_BufferFormat(const QCameraImageCapture* self);
 void QCameraImageCapture_SetBufferFormat(QCameraImageCapture* self, int format);
 bool QCameraImageCapture_IsCaptureDestinationSupported(const QCameraImageCapture* self, int destination);
@@ -82,8 +83,8 @@ struct miqt_string QCameraImageCapture_Tr2(const char* s, const char* c);
 struct miqt_string QCameraImageCapture_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraImageCapture_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraImageCapture_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array QCameraImageCapture_SupportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings);
-struct miqt_array QCameraImageCapture_SupportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings);
+struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
 int QCameraImageCapture_Capture1(QCameraImageCapture* self, struct miqt_string location);
 void QCameraImageCapture_Delete(QCameraImageCapture* self);
 

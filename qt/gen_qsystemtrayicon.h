@@ -1,5 +1,6 @@
-#ifndef GEN_QSYSTEMTRAYICON_H
-#define GEN_QSYSTEMTRAYICON_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSYSTEMTRAYICON_H
+#define MIQT_QT_GEN_QSYSTEMTRAYICON_H
 
 #include <stdbool.h>
 #include <stddef.h>

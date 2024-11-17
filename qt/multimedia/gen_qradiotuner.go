@@ -150,6 +150,23 @@ func (this *QRadioTuner) FrequencyStep(band QRadioTuner__Band) int {
 	return (int)(C.QRadioTuner_FrequencyStep(this.h, (C.int)(band)))
 }
 
+func (this *QRadioTuner) FrequencyRange(band QRadioTuner__Band) struct {
+	First  int
+	Second int
+} {
+	var _mm C.struct_miqt_map = C.QRadioTuner_FrequencyRange(this.h, (C.int)(band))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 func (this *QRadioTuner) IsStereo() bool {
 	return (bool)(C.QRadioTuner_IsStereo(this.h))
 }

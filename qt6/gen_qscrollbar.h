@@ -1,5 +1,6 @@
-#ifndef GEN_QSCROLLBAR_H
-#define GEN_QSCROLLBAR_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSCROLLBAR_H
+#define MIQT_QT6_GEN_QSCROLLBAR_H
 
 #include <stdbool.h>
 #include <stddef.h>

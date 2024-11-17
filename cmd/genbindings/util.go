@@ -1,8 +1,8 @@
 package main
 
 import (
+	"strconv"
 	"encoding/json"
-	"fmt"
 	"log"
 	"strings"
 )
@@ -12,7 +12,7 @@ func maybeSuffix(counter int) string {
 		return ""
 	}
 
-	return fmt.Sprintf("%d", counter+1)
+	return strconv.Itoa(counter+1)
 }
 
 func titleCase(s string) string {

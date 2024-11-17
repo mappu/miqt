@@ -1,5 +1,6 @@
-#ifndef GEN_QVIDEOFRAME_H
-#define GEN_QVIDEOFRAME_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QVIDEOFRAME_H
+#define MIQT_QT_MULTIMEDIA_GEN_QVIDEOFRAME_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -59,7 +60,7 @@ long long QVideoFrame_StartTime(const QVideoFrame* self);
 void QVideoFrame_SetStartTime(QVideoFrame* self, long long time);
 long long QVideoFrame_EndTime(const QVideoFrame* self);
 void QVideoFrame_SetEndTime(QVideoFrame* self, long long time);
-struct miqt_map QVideoFrame_AvailableMetaData(const QVideoFrame* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QVideoFrame_AvailableMetaData(const QVideoFrame* self);
 QVariant* QVideoFrame_MetaData(const QVideoFrame* self, struct miqt_string key);
 void QVideoFrame_SetMetaData(QVideoFrame* self, struct miqt_string key, QVariant* value);
 QImage* QVideoFrame_Image(const QVideoFrame* self);

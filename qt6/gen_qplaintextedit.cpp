@@ -284,7 +284,7 @@ void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width) {
 	self->setCursorWidth(static_cast<int>(width));
 }
 
-void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */ selections) {
+void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */  selections) {
 	QList<QTextEdit::ExtraSelection> selections_QList;
 	selections_QList.reserve(selections.len);
 	QTextEdit__ExtraSelection** selections_arr = static_cast<QTextEdit__ExtraSelection**>(selections.data);
@@ -294,7 +294,7 @@ void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array /
 	self->setExtraSelections(selections_QList);
 }
 
-struct miqt_array QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self) {
+struct miqt_array /* of QTextEdit__ExtraSelection* */  QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self) {
 	QList<QTextEdit::ExtraSelection> _ret = self->extraSelections();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextEdit__ExtraSelection** _arr = static_cast<QTextEdit__ExtraSelection**>(malloc(sizeof(QTextEdit__ExtraSelection*) * _ret.length()));

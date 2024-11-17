@@ -1,5 +1,6 @@
-#ifndef GEN_QSCICOMMAND_H
-#define GEN_QSCICOMMAND_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCICOMMAND_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCICOMMAND_H
 
 #include <stdbool.h>
 #include <stddef.h>

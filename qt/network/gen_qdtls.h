@@ -1,5 +1,6 @@
-#ifndef GEN_QDTLS_H
-#define GEN_QDTLS_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QDTLS_H
+#define MIQT_QT_NETWORK_GEN_QDTLS_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -94,8 +95,8 @@ long long QDtls_WriteDatagramEncrypted(QDtls* self, QUdpSocket* socket, struct m
 struct miqt_string QDtls_DecryptDatagram(QDtls* self, QUdpSocket* socket, struct miqt_string dgram);
 unsigned char QDtls_DtlsError(const QDtls* self);
 struct miqt_string QDtls_DtlsErrorString(const QDtls* self);
-struct miqt_array QDtls_PeerVerificationErrors(const QDtls* self);
-void QDtls_IgnoreVerificationErrors(QDtls* self, struct miqt_array /* of QSslError* */ errorsToIgnore);
+struct miqt_array /* of QSslError* */  QDtls_PeerVerificationErrors(const QDtls* self);
+void QDtls_IgnoreVerificationErrors(QDtls* self, struct miqt_array /* of QSslError* */  errorsToIgnore);
 void QDtls_PskRequired(QDtls* self, QSslPreSharedKeyAuthenticator* authenticator);
 void QDtls_connect_PskRequired(QDtls* self, intptr_t slot);
 void QDtls_HandshakeTimeout(QDtls* self);

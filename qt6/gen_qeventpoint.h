@@ -1,5 +1,6 @@
-#ifndef GEN_QEVENTPOINT_H
-#define GEN_QEVENTPOINT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QEVENTPOINT_H
+#define MIQT_QT6_GEN_QEVENTPOINT_H
 
 #include <stdbool.h>
 #include <stddef.h>

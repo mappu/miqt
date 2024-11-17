@@ -1,5 +1,6 @@
-#ifndef GEN_QLIBRARY_H
-#define GEN_QLIBRARY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QLIBRARY_H
+#define MIQT_QT6_GEN_QLIBRARY_H
 
 #include <stdbool.h>
 #include <stddef.h>

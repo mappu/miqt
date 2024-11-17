@@ -122,6 +122,20 @@ int QSurfaceFormat_MinorVersion(const QSurfaceFormat* self) {
 	return self->minorVersion();
 }
 
+struct miqt_map /* tuple of int and int */  QSurfaceFormat_Version(const QSurfaceFormat* self) {
+	QPair<int, int> _ret = self->version();
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
+	int* _second_arr = static_cast<int*>(malloc(sizeof(int)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
 void QSurfaceFormat_SetVersion(QSurfaceFormat* self, int major, int minor) {
 	self->setVersion(static_cast<int>(major), static_cast<int>(minor));
 }

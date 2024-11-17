@@ -1,5 +1,6 @@
-#ifndef GEN_QPROPERTYANIMATION_H
-#define GEN_QPROPERTYANIMATION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPROPERTYANIMATION_H
+#define MIQT_QT_GEN_QPROPERTYANIMATION_H
 
 #include <stdbool.h>
 #include <stddef.h>

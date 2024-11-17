@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOROLECONTROL_H
-#define GEN_QAUDIOROLECONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIOROLECONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIOROLECONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -27,7 +28,7 @@ struct miqt_string QAudioRoleControl_Tr(const char* s);
 struct miqt_string QAudioRoleControl_TrUtf8(const char* s);
 int QAudioRoleControl_AudioRole(const QAudioRoleControl* self);
 void QAudioRoleControl_SetAudioRole(QAudioRoleControl* self, int role);
-struct miqt_array QAudioRoleControl_SupportedAudioRoles(const QAudioRoleControl* self);
+struct miqt_array /* of int */  QAudioRoleControl_SupportedAudioRoles(const QAudioRoleControl* self);
 void QAudioRoleControl_AudioRoleChanged(QAudioRoleControl* self, int role);
 void QAudioRoleControl_connect_AudioRoleChanged(QAudioRoleControl* self, intptr_t slot);
 struct miqt_string QAudioRoleControl_Tr2(const char* s, const char* c);

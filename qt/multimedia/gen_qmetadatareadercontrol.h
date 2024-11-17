@@ -1,5 +1,6 @@
-#ifndef GEN_QMETADATAREADERCONTROL_H
-#define GEN_QMETADATAREADERCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMETADATAREADERCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMETADATAREADERCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -29,7 +30,7 @@ struct miqt_string QMetaDataReaderControl_Tr(const char* s);
 struct miqt_string QMetaDataReaderControl_TrUtf8(const char* s);
 bool QMetaDataReaderControl_IsMetaDataAvailable(const QMetaDataReaderControl* self);
 QVariant* QMetaDataReaderControl_MetaData(const QMetaDataReaderControl* self, struct miqt_string key);
-struct miqt_array QMetaDataReaderControl_AvailableMetaData(const QMetaDataReaderControl* self);
+struct miqt_array /* of struct miqt_string */  QMetaDataReaderControl_AvailableMetaData(const QMetaDataReaderControl* self);
 void QMetaDataReaderControl_MetaDataChanged(QMetaDataReaderControl* self);
 void QMetaDataReaderControl_connect_MetaDataChanged(QMetaDataReaderControl* self, intptr_t slot);
 void QMetaDataReaderControl_MetaDataChanged2(QMetaDataReaderControl* self, struct miqt_string key, QVariant* value);

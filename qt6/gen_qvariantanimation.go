@@ -108,6 +108,59 @@ func (this *QVariantAnimation) SetKeyValueAt(step float64, value *QVariant) {
 	C.QVariantAnimation_SetKeyValueAt(this.h, (C.double)(step), value.cPointer())
 }
 
+func (this *QVariantAnimation) KeyValues() []struct {
+	First  float64
+	Second QVariant
+} {
+	var _ma C.struct_miqt_array = C.QVariantAnimation_KeyValues(this.h)
+	_ret := make([]struct {
+		First  float64
+		Second QVariant
+	}, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_mm C.struct_miqt_map = _outCast[i]
+		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
+		_lv_Second_CArray := (*[0xffff]*C.QVariant)(unsafe.Pointer(_lv_mm.values))
+		_lv_entry_First := (float64)(_lv_First_CArray[0])
+
+		_lv_second_ret := _lv_Second_CArray[0]
+		_lv_second_goptr := newQVariant(_lv_second_ret)
+		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_lv_entry_Second := *_lv_second_goptr
+
+		_ret[i] = struct {
+			First  float64
+			Second QVariant
+		}{First: _lv_entry_First, Second: _lv_entry_Second}
+	}
+	return _ret
+}
+
+func (this *QVariantAnimation) SetKeyValues(values []struct {
+	First  float64
+	Second QVariant
+}) {
+	values_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_CArray))
+	for i := range values {
+		values_i_First_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8)))
+		defer C.free(unsafe.Pointer(values_i_First_CArray))
+		values_i_Second_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8)))
+		defer C.free(unsafe.Pointer(values_i_Second_CArray))
+		values_i_First_CArray[0] = (C.double)(values[i].First)
+		values_i_Second_CArray[0] = values[i].Second.cPointer()
+		values_i_pair := C.struct_miqt_map{
+			len:    1,
+			keys:   unsafe.Pointer(values_i_First_CArray),
+			values: unsafe.Pointer(values_i_Second_CArray),
+		}
+		values_CArray[i] = values_i_pair
+	}
+	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
+	C.QVariantAnimation_SetKeyValues(this.h, values_ma)
+}
+
 func (this *QVariantAnimation) CurrentValue() *QVariant {
 	_ret := C.QVariantAnimation_CurrentValue(this.h)
 	_goptr := newQVariant(_ret)

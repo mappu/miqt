@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAEXPOSURE_H
-#define GEN_QCAMERAEXPOSURE_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAEXPOSURE_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAEXPOSURE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -44,9 +45,9 @@ double QCameraExposure_ShutterSpeed(const QCameraExposure* self);
 int QCameraExposure_RequestedIsoSensitivity(const QCameraExposure* self);
 double QCameraExposure_RequestedAperture(const QCameraExposure* self);
 double QCameraExposure_RequestedShutterSpeed(const QCameraExposure* self);
-struct miqt_array QCameraExposure_SupportedIsoSensitivities(const QCameraExposure* self);
-struct miqt_array QCameraExposure_SupportedApertures(const QCameraExposure* self);
-struct miqt_array QCameraExposure_SupportedShutterSpeeds(const QCameraExposure* self);
+struct miqt_array /* of int */  QCameraExposure_SupportedIsoSensitivities(const QCameraExposure* self);
+struct miqt_array /* of double */  QCameraExposure_SupportedApertures(const QCameraExposure* self);
+struct miqt_array /* of double */  QCameraExposure_SupportedShutterSpeeds(const QCameraExposure* self);
 void QCameraExposure_SetFlashMode(QCameraExposure* self, int mode);
 void QCameraExposure_SetExposureMode(QCameraExposure* self, int mode);
 void QCameraExposure_SetMeteringMode(QCameraExposure* self, int mode);
@@ -75,9 +76,9 @@ struct miqt_string QCameraExposure_Tr2(const char* s, const char* c);
 struct miqt_string QCameraExposure_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraExposure_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraExposure_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array QCameraExposure_SupportedIsoSensitivities1(const QCameraExposure* self, bool* continuous);
-struct miqt_array QCameraExposure_SupportedApertures1(const QCameraExposure* self, bool* continuous);
-struct miqt_array QCameraExposure_SupportedShutterSpeeds1(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of int */  QCameraExposure_SupportedIsoSensitivities1(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of double */  QCameraExposure_SupportedApertures1(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of double */  QCameraExposure_SupportedShutterSpeeds1(const QCameraExposure* self, bool* continuous);
 
 #ifdef __cplusplus
 } /* extern C */

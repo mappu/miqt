@@ -1,5 +1,6 @@
-#ifndef GEN_QSTACKEDLAYOUT_H
-#define GEN_QSTACKEDLAYOUT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSTACKEDLAYOUT_H
+#define MIQT_QT6_GEN_QSTACKEDLAYOUT_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QMIMETYPE_H
-#define GEN_QMIMETYPE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMIMETYPE_H
+#define MIQT_QT6_GEN_QMIMETYPE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,11 +32,11 @@ struct miqt_string QMimeType_Name(const QMimeType* self);
 struct miqt_string QMimeType_Comment(const QMimeType* self);
 struct miqt_string QMimeType_GenericIconName(const QMimeType* self);
 struct miqt_string QMimeType_IconName(const QMimeType* self);
-struct miqt_array QMimeType_GlobPatterns(const QMimeType* self);
-struct miqt_array QMimeType_ParentMimeTypes(const QMimeType* self);
-struct miqt_array QMimeType_AllAncestors(const QMimeType* self);
-struct miqt_array QMimeType_Aliases(const QMimeType* self);
-struct miqt_array QMimeType_Suffixes(const QMimeType* self);
+struct miqt_array /* of struct miqt_string */  QMimeType_GlobPatterns(const QMimeType* self);
+struct miqt_array /* of struct miqt_string */  QMimeType_ParentMimeTypes(const QMimeType* self);
+struct miqt_array /* of struct miqt_string */  QMimeType_AllAncestors(const QMimeType* self);
+struct miqt_array /* of struct miqt_string */  QMimeType_Aliases(const QMimeType* self);
+struct miqt_array /* of struct miqt_string */  QMimeType_Suffixes(const QMimeType* self);
 struct miqt_string QMimeType_PreferredSuffix(const QMimeType* self);
 bool QMimeType_Inherits(const QMimeType* self, struct miqt_string mimeTypeName);
 struct miqt_string QMimeType_FilterString(const QMimeType* self);

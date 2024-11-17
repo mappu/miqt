@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTDOCUMENTFRAGMENT_H
-#define GEN_QTEXTDOCUMENTFRAGMENT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTDOCUMENTFRAGMENT_H
+#define MIQT_QT_GEN_QTEXTDOCUMENTFRAGMENT_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAFORMAT_H
-#define GEN_QMEDIAFORMAT_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIAFORMAT_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIAFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -34,9 +35,9 @@ void QMediaFormat_SetAudioCodec(QMediaFormat* self, int codec);
 int QMediaFormat_AudioCodec(const QMediaFormat* self);
 bool QMediaFormat_IsSupported(const QMediaFormat* self, int mode);
 QMimeType* QMediaFormat_MimeType(const QMediaFormat* self);
-struct miqt_array QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m);
-struct miqt_array QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m);
-struct miqt_array QMediaFormat_SupportedAudioCodecs(QMediaFormat* self, int m);
+struct miqt_array /* of int */  QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m);
+struct miqt_array /* of int */  QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m);
+struct miqt_array /* of int */  QMediaFormat_SupportedAudioCodecs(QMediaFormat* self, int m);
 struct miqt_string QMediaFormat_FileFormatName(int fileFormat);
 struct miqt_string QMediaFormat_AudioCodecName(int codec);
 struct miqt_string QMediaFormat_VideoCodecName(int codec);

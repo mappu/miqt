@@ -163,7 +163,7 @@ void QSettings_SetArrayIndex(QSettings* self, int i) {
 	self->setArrayIndex(static_cast<int>(i));
 }
 
-struct miqt_array QSettings_AllKeys(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_AllKeys(const QSettings* self) {
 	QStringList _ret = self->allKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -183,7 +183,7 @@ struct miqt_array QSettings_AllKeys(const QSettings* self) {
 	return _out;
 }
 
-struct miqt_array QSettings_ChildKeys(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_ChildKeys(const QSettings* self) {
 	QStringList _ret = self->childKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -203,7 +203,7 @@ struct miqt_array QSettings_ChildKeys(const QSettings* self) {
 	return _out;
 }
 
-struct miqt_array QSettings_ChildGroups(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_ChildGroups(const QSettings* self) {
 	QStringList _ret = self->childGroups();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

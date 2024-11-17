@@ -1,5 +1,6 @@
-#ifndef GEN_QMENUBAR_H
-#define GEN_QMENUBAR_H
+#pragma once
+#ifndef MIQT_QT_GEN_QMENUBAR_H
+#define MIQT_QT_GEN_QMENUBAR_H
 
 #include <stdbool.h>
 #include <stddef.h>

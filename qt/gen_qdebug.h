@@ -1,5 +1,6 @@
-#ifndef GEN_QDEBUG_H
-#define GEN_QDEBUG_H
+#pragma once
+#ifndef MIQT_QT_GEN_QDEBUG_H
+#define MIQT_QT_GEN_QDEBUG_H
 
 #include <stdbool.h>
 #include <stddef.h>

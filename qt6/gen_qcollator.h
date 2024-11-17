@@ -1,5 +1,6 @@
-#ifndef GEN_QCOLLATOR_H
-#define GEN_QCOLLATOR_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCOLLATOR_H
+#define MIQT_QT6_GEN_QCOLLATOR_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -41,7 +41,7 @@ struct miqt_string QAbstractVideoSurface_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self) {
+struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface* self) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedPixelFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -183,7 +183,7 @@ struct miqt_string QAbstractVideoSurface_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-struct miqt_array QAbstractVideoSurface_SupportedPixelFormats1(const QAbstractVideoSurface* self, int typeVal) {
+struct miqt_array /* of int */  QAbstractVideoSurface_SupportedPixelFormats1(const QAbstractVideoSurface* self, int typeVal) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedPixelFormats(static_cast<QAbstractVideoBuffer::HandleType>(typeVal));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

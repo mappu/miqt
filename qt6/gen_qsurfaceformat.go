@@ -207,6 +207,23 @@ func (this *QSurfaceFormat) MinorVersion() int {
 	return (int)(C.QSurfaceFormat_MinorVersion(this.h))
 }
 
+func (this *QSurfaceFormat) Version() struct {
+	First  int
+	Second int
+} {
+	var _mm C.struct_miqt_map = C.QSurfaceFormat_Version(this.h)
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 func (this *QSurfaceFormat) SetVersion(major int, minor int) {
 	C.QSurfaceFormat_SetVersion(this.h, (C.int)(major), (C.int)(minor))
 }

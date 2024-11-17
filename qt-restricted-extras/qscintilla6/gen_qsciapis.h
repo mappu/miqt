@@ -1,5 +1,6 @@
-#ifndef GEN_QSCIAPIS_H
-#define GEN_QSCIAPIS_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCIAPIS_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCIAPIS_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -39,11 +40,11 @@ struct miqt_string QsciAPIs_DefaultPreparedName(const QsciAPIs* self);
 bool QsciAPIs_IsPrepared(const QsciAPIs* self);
 bool QsciAPIs_LoadPrepared(QsciAPIs* self);
 bool QsciAPIs_SavePrepared(const QsciAPIs* self);
-void QsciAPIs_UpdateAutoCompletionList(QsciAPIs* self, struct miqt_array /* of struct miqt_string */ context, struct miqt_array /* of struct miqt_string */ list);
+void QsciAPIs_UpdateAutoCompletionList(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
 void QsciAPIs_AutoCompletionSelected(QsciAPIs* self, struct miqt_string sel);
-struct miqt_array QsciAPIs_CallTips(QsciAPIs* self, struct miqt_array /* of struct miqt_string */ context, int commas, int style, struct miqt_array /* of int */ shifts);
+struct miqt_array /* of struct miqt_string */  QsciAPIs_CallTips(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 bool QsciAPIs_Event(QsciAPIs* self, QEvent* e);
-struct miqt_array QsciAPIs_InstalledAPIFiles(const QsciAPIs* self);
+struct miqt_array /* of struct miqt_string */  QsciAPIs_InstalledAPIFiles(const QsciAPIs* self);
 void QsciAPIs_ApiPreparationCancelled(QsciAPIs* self);
 void QsciAPIs_connect_ApiPreparationCancelled(QsciAPIs* self, intptr_t slot);
 void QsciAPIs_ApiPreparationStarted(QsciAPIs* self);

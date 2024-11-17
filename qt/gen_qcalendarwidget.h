@@ -1,5 +1,6 @@
-#ifndef GEN_QCALENDARWIDGET_H
-#define GEN_QCALENDARWIDGET_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCALENDARWIDGET_H
+#define MIQT_QT_GEN_QCALENDARWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -62,7 +63,7 @@ QTextCharFormat* QCalendarWidget_HeaderTextFormat(const QCalendarWidget* self);
 void QCalendarWidget_SetHeaderTextFormat(QCalendarWidget* self, QTextCharFormat* format);
 QTextCharFormat* QCalendarWidget_WeekdayTextFormat(const QCalendarWidget* self, int dayOfWeek);
 void QCalendarWidget_SetWeekdayTextFormat(QCalendarWidget* self, int dayOfWeek, QTextCharFormat* format);
-struct miqt_map QCalendarWidget_DateTextFormat(const QCalendarWidget* self);
+struct miqt_map /* of QDate* to QTextCharFormat* */  QCalendarWidget_DateTextFormat(const QCalendarWidget* self);
 QTextCharFormat* QCalendarWidget_DateTextFormatWithDate(const QCalendarWidget* self, QDate* date);
 void QCalendarWidget_SetDateTextFormat(QCalendarWidget* self, QDate* date, QTextCharFormat* format);
 bool QCalendarWidget_IsDateEditEnabled(const QCalendarWidget* self);

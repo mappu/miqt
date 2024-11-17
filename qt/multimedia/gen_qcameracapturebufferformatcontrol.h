@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERACAPTUREBUFFERFORMATCONTROL_H
-#define GEN_QCAMERACAPTUREBUFFERFORMATCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERACAPTUREBUFFERFORMATCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERACAPTUREBUFFERFORMATCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -25,7 +26,7 @@ QMetaObject* QCameraCaptureBufferFormatControl_MetaObject(const QCameraCaptureBu
 void* QCameraCaptureBufferFormatControl_Metacast(QCameraCaptureBufferFormatControl* self, const char* param1);
 struct miqt_string QCameraCaptureBufferFormatControl_Tr(const char* s);
 struct miqt_string QCameraCaptureBufferFormatControl_TrUtf8(const char* s);
-struct miqt_array QCameraCaptureBufferFormatControl_SupportedBufferFormats(const QCameraCaptureBufferFormatControl* self);
+struct miqt_array /* of int */  QCameraCaptureBufferFormatControl_SupportedBufferFormats(const QCameraCaptureBufferFormatControl* self);
 int QCameraCaptureBufferFormatControl_BufferFormat(const QCameraCaptureBufferFormatControl* self);
 void QCameraCaptureBufferFormatControl_SetBufferFormat(QCameraCaptureBufferFormatControl* self, int format);
 void QCameraCaptureBufferFormatControl_BufferFormatChanged(QCameraCaptureBufferFormatControl* self, int format);

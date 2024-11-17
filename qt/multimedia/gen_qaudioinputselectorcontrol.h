@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOINPUTSELECTORCONTROL_H
-#define GEN_QAUDIOINPUTSELECTORCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIOINPUTSELECTORCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIOINPUTSELECTORCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -25,7 +26,7 @@ QMetaObject* QAudioInputSelectorControl_MetaObject(const QAudioInputSelectorCont
 void* QAudioInputSelectorControl_Metacast(QAudioInputSelectorControl* self, const char* param1);
 struct miqt_string QAudioInputSelectorControl_Tr(const char* s);
 struct miqt_string QAudioInputSelectorControl_TrUtf8(const char* s);
-struct miqt_array QAudioInputSelectorControl_AvailableInputs(const QAudioInputSelectorControl* self);
+struct miqt_array /* of struct miqt_string */  QAudioInputSelectorControl_AvailableInputs(const QAudioInputSelectorControl* self);
 struct miqt_string QAudioInputSelectorControl_InputDescription(const QAudioInputSelectorControl* self, struct miqt_string name);
 struct miqt_string QAudioInputSelectorControl_DefaultInput(const QAudioInputSelectorControl* self);
 struct miqt_string QAudioInputSelectorControl_ActiveInput(const QAudioInputSelectorControl* self);

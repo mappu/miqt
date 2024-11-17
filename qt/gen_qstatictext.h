@@ -1,5 +1,6 @@
-#ifndef GEN_QSTATICTEXT_H
-#define GEN_QSTATICTEXT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTATICTEXT_H
+#define MIQT_QT_GEN_QSTATICTEXT_H
 
 #include <stdbool.h>
 #include <stddef.h>

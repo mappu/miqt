@@ -1,5 +1,6 @@
-#ifndef GEN_QTCPSERVER_H
-#define GEN_QTCPSERVER_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QTCPSERVER_H
+#define MIQT_QT6_NETWORK_GEN_QTCPSERVER_H
 
 #include <stdbool.h>
 #include <stddef.h>

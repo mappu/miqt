@@ -1,5 +1,6 @@
-#ifndef GEN_QDOCKWIDGET_H
-#define GEN_QDOCKWIDGET_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QDOCKWIDGET_H
+#define MIQT_QT6_GEN_QDOCKWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>

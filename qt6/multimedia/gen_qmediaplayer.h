@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAPLAYER_H
-#define GEN_QMEDIAPLAYER_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIAPLAYER_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIAPLAYER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,9 +41,9 @@ QMediaPlayer* QMediaPlayer_new2(QObject* parent);
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self);
 void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);
-struct miqt_array QMediaPlayer_AudioTracks(const QMediaPlayer* self);
-struct miqt_array QMediaPlayer_VideoTracks(const QMediaPlayer* self);
-struct miqt_array QMediaPlayer_SubtitleTracks(const QMediaPlayer* self);
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_AudioTracks(const QMediaPlayer* self);
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_VideoTracks(const QMediaPlayer* self);
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_SubtitleTracks(const QMediaPlayer* self);
 int QMediaPlayer_ActiveAudioTrack(const QMediaPlayer* self);
 int QMediaPlayer_ActiveVideoTrack(const QMediaPlayer* self);
 int QMediaPlayer_ActiveSubtitleTrack(const QMediaPlayer* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QPIXMAP_H
-#define GEN_QPIXMAP_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPIXMAP_H
+#define MIQT_QT6_GEN_QPIXMAP_H
 
 #include <stdbool.h>
 #include <stddef.h>

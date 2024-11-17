@@ -1,5 +1,6 @@
-#ifndef GEN_QPAGESETUPDIALOG_H
-#define GEN_QPAGESETUPDIALOG_H
+#pragma once
+#ifndef MIQT_QT_PRINTSUPPORT_GEN_QPAGESETUPDIALOG_H
+#define MIQT_QT_PRINTSUPPORT_GEN_QPAGESETUPDIALOG_H
 
 #include <stdbool.h>
 #include <stddef.h>

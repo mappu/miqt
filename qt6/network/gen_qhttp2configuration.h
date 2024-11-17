@@ -1,5 +1,6 @@
-#ifndef GEN_QHTTP2CONFIGURATION_H
-#define GEN_QHTTP2CONFIGURATION_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QHTTP2CONFIGURATION_H
+#define MIQT_QT6_NETWORK_GEN_QHTTP2CONFIGURATION_H
 
 #include <stdbool.h>
 #include <stddef.h>

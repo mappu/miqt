@@ -1,5 +1,6 @@
-#ifndef GEN_QMOVIE_H
-#define GEN_QMOVIE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QMOVIE_H
+#define MIQT_QT_GEN_QMOVIE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -49,7 +50,7 @@ QMetaObject* QMovie_MetaObject(const QMovie* self);
 void* QMovie_Metacast(QMovie* self, const char* param1);
 struct miqt_string QMovie_Tr(const char* s);
 struct miqt_string QMovie_TrUtf8(const char* s);
-struct miqt_array QMovie_SupportedFormats();
+struct miqt_array /* of struct miqt_string */  QMovie_SupportedFormats();
 void QMovie_SetDevice(QMovie* self, QIODevice* device);
 QIODevice* QMovie_Device(const QMovie* self);
 void QMovie_SetFileName(QMovie* self, struct miqt_string fileName);

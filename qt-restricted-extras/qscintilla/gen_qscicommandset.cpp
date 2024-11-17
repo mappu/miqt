@@ -12,7 +12,7 @@ bool QsciCommandSet_WriteSettings(QsciCommandSet* self, QSettings* qs) {
 	return self->writeSettings(*qs);
 }
 
-struct miqt_array QsciCommandSet_Commands(QsciCommandSet* self) {
+struct miqt_array /* of QsciCommand* */  QsciCommandSet_Commands(QsciCommandSet* self) {
 	QList<QsciCommand *>& _ret = self->commands();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QsciCommand** _arr = static_cast<QsciCommand**>(malloc(sizeof(QsciCommand*) * _ret.length()));

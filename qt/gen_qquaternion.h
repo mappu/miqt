@@ -1,5 +1,6 @@
-#ifndef GEN_QQUATERNION_H
-#define GEN_QQUATERNION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QQUATERNION_H
+#define MIQT_QT_GEN_QQUATERNION_H
 
 #include <stdbool.h>
 #include <stddef.h>

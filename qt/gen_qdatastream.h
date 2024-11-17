@@ -1,5 +1,6 @@
-#ifndef GEN_QDATASTREAM_H
-#define GEN_QDATASTREAM_H
+#pragma once
+#ifndef MIQT_QT_GEN_QDATASTREAM_H
+#define MIQT_QT_GEN_QDATASTREAM_H
 
 #include <stdbool.h>
 #include <stddef.h>

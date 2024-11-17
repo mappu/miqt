@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTTRANSITION_H
-#define GEN_QABSTRACTTRANSITION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QABSTRACTTRANSITION_H
+#define MIQT_QT_GEN_QABSTRACTTRANSITION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,14 +37,14 @@ struct miqt_string QAbstractTransition_TrUtf8(const char* s);
 QState* QAbstractTransition_SourceState(const QAbstractTransition* self);
 QAbstractState* QAbstractTransition_TargetState(const QAbstractTransition* self);
 void QAbstractTransition_SetTargetState(QAbstractTransition* self, QAbstractState* target);
-struct miqt_array QAbstractTransition_TargetStates(const QAbstractTransition* self);
-void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array /* of QAbstractState* */ targets);
+struct miqt_array /* of QAbstractState* */  QAbstractTransition_TargetStates(const QAbstractTransition* self);
+void QAbstractTransition_SetTargetStates(QAbstractTransition* self, struct miqt_array /* of QAbstractState* */  targets);
 int QAbstractTransition_TransitionType(const QAbstractTransition* self);
 void QAbstractTransition_SetTransitionType(QAbstractTransition* self, int typeVal);
 QStateMachine* QAbstractTransition_Machine(const QAbstractTransition* self);
 void QAbstractTransition_AddAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
 void QAbstractTransition_RemoveAnimation(QAbstractTransition* self, QAbstractAnimation* animation);
-struct miqt_array QAbstractTransition_Animations(const QAbstractTransition* self);
+struct miqt_array /* of QAbstractAnimation* */  QAbstractTransition_Animations(const QAbstractTransition* self);
 struct miqt_string QAbstractTransition_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractTransition_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractTransition_TrUtf82(const char* s, const char* c);

@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKACCESSMANAGER_H
-#define GEN_QNETWORKACCESSMANAGER_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKACCESSMANAGER_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKACCESSMANAGER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -56,7 +57,7 @@ QNetworkAccessManager* QNetworkAccessManager_new2(QObject* parent);
 QMetaObject* QNetworkAccessManager_MetaObject(const QNetworkAccessManager* self);
 void* QNetworkAccessManager_Metacast(QNetworkAccessManager* self, const char* param1);
 struct miqt_string QNetworkAccessManager_Tr(const char* s);
-struct miqt_array QNetworkAccessManager_SupportedSchemes(const QNetworkAccessManager* self);
+struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_SupportedSchemes(const QNetworkAccessManager* self);
 void QNetworkAccessManager_ClearAccessCache(QNetworkAccessManager* self);
 void QNetworkAccessManager_ClearConnectionCache(QNetworkAccessManager* self);
 QNetworkProxy* QNetworkAccessManager_Proxy(const QNetworkAccessManager* self);
@@ -71,8 +72,8 @@ void QNetworkAccessManager_SetStrictTransportSecurityEnabled(QNetworkAccessManag
 bool QNetworkAccessManager_IsStrictTransportSecurityEnabled(const QNetworkAccessManager* self);
 void QNetworkAccessManager_EnableStrictTransportSecurityStore(QNetworkAccessManager* self, bool enabled);
 bool QNetworkAccessManager_IsStrictTransportSecurityStoreEnabled(const QNetworkAccessManager* self);
-void QNetworkAccessManager_AddStrictTransportSecurityHosts(QNetworkAccessManager* self, struct miqt_array /* of QHstsPolicy* */ knownHosts);
-struct miqt_array QNetworkAccessManager_StrictTransportSecurityHosts(const QNetworkAccessManager* self);
+void QNetworkAccessManager_AddStrictTransportSecurityHosts(QNetworkAccessManager* self, struct miqt_array /* of QHstsPolicy* */  knownHosts);
+struct miqt_array /* of QHstsPolicy* */  QNetworkAccessManager_StrictTransportSecurityHosts(const QNetworkAccessManager* self);
 QNetworkReply* QNetworkAccessManager_Head(QNetworkAccessManager* self, QNetworkRequest* request);
 QNetworkReply* QNetworkAccessManager_Get(QNetworkAccessManager* self, QNetworkRequest* request);
 QNetworkReply* QNetworkAccessManager_Post(QNetworkAccessManager* self, QNetworkRequest* request, QIODevice* data);
@@ -102,7 +103,7 @@ void QNetworkAccessManager_Finished(QNetworkAccessManager* self, QNetworkReply* 
 void QNetworkAccessManager_connect_Finished(QNetworkAccessManager* self, intptr_t slot);
 void QNetworkAccessManager_Encrypted(QNetworkAccessManager* self, QNetworkReply* reply);
 void QNetworkAccessManager_connect_Encrypted(QNetworkAccessManager* self, intptr_t slot);
-void QNetworkAccessManager_SslErrors(QNetworkAccessManager* self, QNetworkReply* reply, struct miqt_array /* of QSslError* */ errors);
+void QNetworkAccessManager_SslErrors(QNetworkAccessManager* self, QNetworkReply* reply, struct miqt_array /* of QSslError* */  errors);
 void QNetworkAccessManager_connect_SslErrors(QNetworkAccessManager* self, intptr_t slot);
 void QNetworkAccessManager_PreSharedKeyAuthenticationRequired(QNetworkAccessManager* self, QNetworkReply* reply, QSslPreSharedKeyAuthenticator* authenticator);
 void QNetworkAccessManager_connect_PreSharedKeyAuthenticationRequired(QNetworkAccessManager* self, intptr_t slot);

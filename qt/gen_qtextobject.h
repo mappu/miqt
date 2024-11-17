@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTOBJECT_H
-#define GEN_QTEXTOBJECT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTOBJECT_H
+#define MIQT_QT_GEN_QTEXTOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -107,7 +108,7 @@ int QTextFrame_FirstPosition(const QTextFrame* self);
 int QTextFrame_LastPosition(const QTextFrame* self);
 QTextFrameLayoutData* QTextFrame_LayoutData(const QTextFrame* self);
 void QTextFrame_SetLayoutData(QTextFrame* self, QTextFrameLayoutData* data);
-struct miqt_array QTextFrame_ChildFrames(const QTextFrame* self);
+struct miqt_array /* of QTextFrame* */  QTextFrame_ChildFrames(const QTextFrame* self);
 QTextFrame* QTextFrame_ParentFrame(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_Begin(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_End(const QTextFrame* self);
@@ -138,7 +139,7 @@ QTextCharFormat* QTextBlock_CharFormat(const QTextBlock* self);
 int QTextBlock_CharFormatIndex(const QTextBlock* self);
 int QTextBlock_TextDirection(const QTextBlock* self);
 struct miqt_string QTextBlock_Text(const QTextBlock* self);
-struct miqt_array QTextBlock_TextFormats(const QTextBlock* self);
+struct miqt_array /* of QTextLayout__FormatRange* */  QTextBlock_TextFormats(const QTextBlock* self);
 QTextDocument* QTextBlock_Document(const QTextBlock* self);
 QTextList* QTextBlock_TextList(const QTextBlock* self);
 QTextBlockUserData* QTextBlock_UserData(const QTextBlock* self);
@@ -173,9 +174,9 @@ bool QTextFragment_Contains(const QTextFragment* self, int position);
 QTextCharFormat* QTextFragment_CharFormat(const QTextFragment* self);
 int QTextFragment_CharFormatIndex(const QTextFragment* self);
 struct miqt_string QTextFragment_Text(const QTextFragment* self);
-struct miqt_array QTextFragment_GlyphRuns(const QTextFragment* self);
-struct miqt_array QTextFragment_GlyphRuns1(const QTextFragment* self, int from);
-struct miqt_array QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length);
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns(const QTextFragment* self);
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns1(const QTextFragment* self, int from);
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length);
 void QTextFragment_Delete(QTextFragment* self);
 
 QTextFrame__iterator* QTextFrame__iterator_new();

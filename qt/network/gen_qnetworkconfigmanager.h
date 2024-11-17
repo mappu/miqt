@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKCONFIGMANAGER_H
-#define GEN_QNETWORKCONFIGMANAGER_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKCONFIGMANAGER_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKCONFIGMANAGER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -33,7 +34,7 @@ struct miqt_string QNetworkConfigurationManager_Tr(const char* s);
 struct miqt_string QNetworkConfigurationManager_TrUtf8(const char* s);
 int QNetworkConfigurationManager_Capabilities(const QNetworkConfigurationManager* self);
 QNetworkConfiguration* QNetworkConfigurationManager_DefaultConfiguration(const QNetworkConfigurationManager* self);
-struct miqt_array QNetworkConfigurationManager_AllConfigurations(const QNetworkConfigurationManager* self);
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_AllConfigurations(const QNetworkConfigurationManager* self);
 QNetworkConfiguration* QNetworkConfigurationManager_ConfigurationFromIdentifier(const QNetworkConfigurationManager* self, struct miqt_string identifier);
 bool QNetworkConfigurationManager_IsOnline(const QNetworkConfigurationManager* self);
 void QNetworkConfigurationManager_UpdateConfigurations(QNetworkConfigurationManager* self);
@@ -51,7 +52,7 @@ struct miqt_string QNetworkConfigurationManager_Tr2(const char* s, const char* c
 struct miqt_string QNetworkConfigurationManager_Tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkConfigurationManager_TrUtf82(const char* s, const char* c);
 struct miqt_string QNetworkConfigurationManager_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array QNetworkConfigurationManager_AllConfigurations1(const QNetworkConfigurationManager* self, int flags);
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_AllConfigurations1(const QNetworkConfigurationManager* self, int flags);
 void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self);
 
 #ifdef __cplusplus

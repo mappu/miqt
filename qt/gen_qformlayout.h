@@ -1,5 +1,6 @@
-#ifndef GEN_QFORMLAYOUT_H
-#define GEN_QFORMLAYOUT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFORMLAYOUT_H
+#define MIQT_QT_GEN_QFORMLAYOUT_H
 
 #include <stdbool.h>
 #include <stddef.h>

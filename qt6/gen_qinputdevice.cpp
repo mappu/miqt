@@ -99,7 +99,7 @@ QRect* QInputDevice_AvailableVirtualGeometry(const QInputDevice* self) {
 	return new QRect(self->availableVirtualGeometry());
 }
 
-struct miqt_array QInputDevice_SeatNames() {
+struct miqt_array /* of struct miqt_string */  QInputDevice_SeatNames() {
 	QStringList _ret = QInputDevice::seatNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -119,7 +119,7 @@ struct miqt_array QInputDevice_SeatNames() {
 	return _out;
 }
 
-struct miqt_array QInputDevice_Devices() {
+struct miqt_array /* of QInputDevice* */  QInputDevice_Devices() {
 	QList<const QInputDevice *> _ret = QInputDevice::devices();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QInputDevice** _arr = static_cast<QInputDevice**>(malloc(sizeof(QInputDevice*) * _ret.length()));

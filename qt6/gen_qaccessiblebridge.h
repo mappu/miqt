@@ -1,5 +1,6 @@
-#ifndef GEN_QACCESSIBLEBRIDGE_H
-#define GEN_QACCESSIBLEBRIDGE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QACCESSIBLEBRIDGE_H
+#define MIQT_QT6_GEN_QACCESSIBLEBRIDGE_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QPIXELFORMAT_H
-#define GEN_QPIXELFORMAT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPIXELFORMAT_H
+#define MIQT_QT6_GEN_QPIXELFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>

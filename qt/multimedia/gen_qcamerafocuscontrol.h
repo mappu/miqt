@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAFOCUSCONTROL_H
-#define GEN_QCAMERAFOCUSCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAFOCUSCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAFOCUSCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -37,7 +38,7 @@ void QCameraFocusControl_SetFocusPointMode(QCameraFocusControl* self, int mode);
 bool QCameraFocusControl_IsFocusPointModeSupported(const QCameraFocusControl* self, int mode);
 QPointF* QCameraFocusControl_CustomFocusPoint(const QCameraFocusControl* self);
 void QCameraFocusControl_SetCustomFocusPoint(QCameraFocusControl* self, QPointF* point);
-struct miqt_array QCameraFocusControl_FocusZones(const QCameraFocusControl* self);
+struct miqt_array /* of QCameraFocusZone* */  QCameraFocusControl_FocusZones(const QCameraFocusControl* self);
 void QCameraFocusControl_FocusModeChanged(QCameraFocusControl* self, int mode);
 void QCameraFocusControl_connect_FocusModeChanged(QCameraFocusControl* self, intptr_t slot);
 void QCameraFocusControl_FocusPointModeChanged(QCameraFocusControl* self, int mode);

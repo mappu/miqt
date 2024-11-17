@@ -79,7 +79,7 @@ QVariant* QMediaObject_MetaData(const QMediaObject* self, struct miqt_string key
 	return new QVariant(self->metaData(key_QString));
 }
 
-struct miqt_array QMediaObject_AvailableMetaData(const QMediaObject* self) {
+struct miqt_array /* of struct miqt_string */  QMediaObject_AvailableMetaData(const QMediaObject* self) {
 	QStringList _ret = self->availableMetaData();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

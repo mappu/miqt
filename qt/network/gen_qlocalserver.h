@@ -1,5 +1,6 @@
-#ifndef GEN_QLOCALSERVER_H
-#define GEN_QLOCALSERVER_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QLOCALSERVER_H
+#define MIQT_QT_NETWORK_GEN_QLOCALSERVER_H
 
 #include <stdbool.h>
 #include <stddef.h>

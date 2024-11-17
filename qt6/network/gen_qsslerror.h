@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLERROR_H
-#define GEN_QSSLERROR_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QSSLERROR_H
+#define MIQT_QT6_NETWORK_GEN_QSSLERROR_H
 
 #include <stdbool.h>
 #include <stddef.h>

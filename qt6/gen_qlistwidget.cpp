@@ -309,7 +309,7 @@ void QListWidget_InsertItem2(QListWidget* self, int row, struct miqt_string labe
 	self->insertItem(static_cast<int>(row), label_QString);
 }
 
-void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array /* of struct miqt_string */ labels) {
+void QListWidget_InsertItems(QListWidget* self, int row, struct miqt_array /* of struct miqt_string */  labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels.len);
 	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
@@ -329,7 +329,7 @@ void QListWidget_AddItemWithItem(QListWidget* self, QListWidgetItem* item) {
 	self->addItem(item);
 }
 
-void QListWidget_AddItems(QListWidget* self, struct miqt_array /* of struct miqt_string */ labels) {
+void QListWidget_AddItems(QListWidget* self, struct miqt_array /* of struct miqt_string */  labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels.len);
 	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
@@ -424,7 +424,7 @@ void QListWidget_RemoveItemWidget(QListWidget* self, QListWidgetItem* item) {
 	self->removeItemWidget(item);
 }
 
-struct miqt_array QListWidget_SelectedItems(const QListWidget* self) {
+struct miqt_array /* of QListWidgetItem* */  QListWidget_SelectedItems(const QListWidget* self) {
 	QList<QListWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** _arr = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * _ret.length()));
@@ -437,7 +437,7 @@ struct miqt_array QListWidget_SelectedItems(const QListWidget* self) {
 	return _out;
 }
 
-struct miqt_array QListWidget_FindItems(const QListWidget* self, struct miqt_string text, int flags) {
+struct miqt_array /* of QListWidgetItem* */  QListWidget_FindItems(const QListWidget* self, struct miqt_string text, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QListWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -451,7 +451,7 @@ struct miqt_array QListWidget_FindItems(const QListWidget* self, struct miqt_str
 	return _out;
 }
 
-struct miqt_array QListWidget_Items(const QListWidget* self, QMimeData* data) {
+struct miqt_array /* of QListWidgetItem* */  QListWidget_Items(const QListWidget* self, QMimeData* data) {
 	QList<QListWidgetItem *> _ret = self->items(data);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QListWidgetItem** _arr = static_cast<QListWidgetItem**>(malloc(sizeof(QListWidgetItem*) * _ret.length()));

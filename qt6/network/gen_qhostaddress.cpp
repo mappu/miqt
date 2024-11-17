@@ -151,6 +151,15 @@ bool QHostAddress_IsInSubnet(const QHostAddress* self, QHostAddress* subnet, int
 	return self->isInSubnet(*subnet, static_cast<int>(netmask));
 }
 
+bool QHostAddress_IsInSubnetWithSubnet(const QHostAddress* self, struct miqt_map /* tuple of QHostAddress* and int */  subnet) {
+	QPair<QHostAddress, int> subnet_QPair;
+	QHostAddress** subnet_first_arr = static_cast<QHostAddress**>(subnet.keys);
+	int* subnet_second_arr = static_cast<int*>(subnet.values);
+	subnet_QPair.first = *(subnet_first_arr[0]);
+	subnet_QPair.second = static_cast<int>(subnet_second_arr[0]);
+	return self->isInSubnet(subnet_QPair);
+}
+
 bool QHostAddress_IsLoopback(const QHostAddress* self) {
 	return self->isLoopback();
 }
@@ -177,6 +186,21 @@ bool QHostAddress_IsMulticast(const QHostAddress* self) {
 
 bool QHostAddress_IsBroadcast(const QHostAddress* self) {
 	return self->isBroadcast();
+}
+
+struct miqt_map /* tuple of QHostAddress* and int */  QHostAddress_ParseSubnet(struct miqt_string subnet) {
+	QString subnet_QString = QString::fromUtf8(subnet.data, subnet.len);
+	QPair<QHostAddress, int> _ret = QHostAddress::parseSubnet(subnet_QString);
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	QHostAddress** _first_arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*)));
+	int* _second_arr = static_cast<int*>(malloc(sizeof(int)));
+	_first_arr[0] = new QHostAddress(_ret.first);
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
 }
 
 unsigned int QHostAddress_ToIPv4Address1(const QHostAddress* self, bool* ok) {

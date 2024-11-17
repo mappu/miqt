@@ -1,5 +1,6 @@
-#ifndef GEN_QREFCOUNT_H
-#define GEN_QREFCOUNT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QREFCOUNT_H
+#define MIQT_QT_GEN_QREFCOUNT_H
 
 #include <stdbool.h>
 #include <stddef.h>

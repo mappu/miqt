@@ -44,7 +44,7 @@ void QHostInfo_SetHostName(QHostInfo* self, struct miqt_string name) {
 	self->setHostName(name_QString);
 }
 
-struct miqt_array QHostInfo_Addresses(const QHostInfo* self) {
+struct miqt_array /* of QHostAddress* */  QHostInfo_Addresses(const QHostInfo* self) {
 	QList<QHostAddress> _ret = self->addresses();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.length()));
@@ -57,7 +57,7 @@ struct miqt_array QHostInfo_Addresses(const QHostInfo* self) {
 	return _out;
 }
 
-void QHostInfo_SetAddresses(QHostInfo* self, struct miqt_array /* of QHostAddress* */ addresses) {
+void QHostInfo_SetAddresses(QHostInfo* self, struct miqt_array /* of QHostAddress* */  addresses) {
 	QList<QHostAddress> addresses_QList;
 	addresses_QList.reserve(addresses.len);
 	QHostAddress** addresses_arr = static_cast<QHostAddress**>(addresses.data);

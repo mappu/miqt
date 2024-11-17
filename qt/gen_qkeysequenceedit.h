@@ -1,5 +1,6 @@
-#ifndef GEN_QKEYSEQUENCEEDIT_H
-#define GEN_QKEYSEQUENCEEDIT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QKEYSEQUENCEEDIT_H
+#define MIQT_QT_GEN_QKEYSEQUENCEEDIT_H
 
 #include <stdbool.h>
 #include <stddef.h>

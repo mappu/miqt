@@ -1,5 +1,6 @@
-#ifndef GEN_QLOCALE_H
-#define GEN_QLOCALE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QLOCALE_H
+#define MIQT_QT_GEN_QLOCALE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -99,7 +100,7 @@ struct miqt_string QLocale_StandaloneMonthName(const QLocale* self, int param1);
 struct miqt_string QLocale_DayName(const QLocale* self, int param1);
 struct miqt_string QLocale_StandaloneDayName(const QLocale* self, int param1);
 int QLocale_FirstDayOfWeek(const QLocale* self);
-struct miqt_array QLocale_Weekdays(const QLocale* self);
+struct miqt_array /* of int */  QLocale_Weekdays(const QLocale* self);
 struct miqt_string QLocale_AmText(const QLocale* self);
 struct miqt_string QLocale_PmText(const QLocale* self);
 int QLocale_MeasurementSystem(const QLocale* self);
@@ -120,7 +121,7 @@ struct miqt_string QLocale_ToCurrencyStringWithFloat(const QLocale* self, float 
 struct miqt_string QLocale_ToCurrencyString3(const QLocale* self, float i, struct miqt_string symbol, int precision);
 struct miqt_string QLocale_FormattedDataSize(QLocale* self, long long bytes);
 struct miqt_string QLocale_FormattedDataSizeWithBytes(const QLocale* self, long long bytes);
-struct miqt_array QLocale_UiLanguages(const QLocale* self);
+struct miqt_array /* of struct miqt_string */  QLocale_UiLanguages(const QLocale* self);
 bool QLocale_OperatorEqual(const QLocale* self, QLocale* other);
 bool QLocale_OperatorNotEqual(const QLocale* self, QLocale* other);
 struct miqt_string QLocale_LanguageToString(int language);
@@ -129,12 +130,12 @@ struct miqt_string QLocale_ScriptToString(int script);
 void QLocale_SetDefault(QLocale* locale);
 QLocale* QLocale_C();
 QLocale* QLocale_System();
-struct miqt_array QLocale_MatchingLocales(int language, int script, int country);
-struct miqt_array QLocale_CountriesForLanguage(int lang);
+struct miqt_array /* of QLocale* */  QLocale_MatchingLocales(int language, int script, int country);
+struct miqt_array /* of int */  QLocale_CountriesForLanguage(int lang);
 void QLocale_SetNumberOptions(QLocale* self, int options);
 int QLocale_NumberOptions(const QLocale* self);
 struct miqt_string QLocale_QuoteString(const QLocale* self, struct miqt_string str);
-struct miqt_string QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array /* of struct miqt_string */ strl);
+struct miqt_string QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array /* of struct miqt_string */  strl);
 int16_t QLocale_ToShort2(const QLocale* self, struct miqt_string s, bool* ok);
 uint16_t QLocale_ToUShort2(const QLocale* self, struct miqt_string s, bool* ok);
 int QLocale_ToInt2(const QLocale* self, struct miqt_string s, bool* ok);

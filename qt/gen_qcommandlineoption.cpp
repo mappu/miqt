@@ -12,7 +12,7 @@ QCommandLineOption* QCommandLineOption_new(struct miqt_string name) {
 	return new QCommandLineOption(name_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */ names) {
+QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */  names) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -29,7 +29,7 @@ QCommandLineOption* QCommandLineOption_new3(struct miqt_string name, struct miqt
 	return new QCommandLineOption(name_QString, description_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description) {
+QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -60,7 +60,7 @@ QCommandLineOption* QCommandLineOption_new7(struct miqt_string name, struct miqt
 	return new QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName) {
+QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -73,7 +73,7 @@ QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_
 	return new QCommandLineOption(names_QList, description_QString, valueName_QString);
 }
 
-QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */ names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
+QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -95,7 +95,7 @@ void QCommandLineOption_Swap(QCommandLineOption* self, QCommandLineOption* other
 	self->swap(*other);
 }
 
-struct miqt_array QCommandLineOption_Names(const QCommandLineOption* self) {
+struct miqt_array /* of struct miqt_string */  QCommandLineOption_Names(const QCommandLineOption* self) {
 	QStringList _ret = self->names();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -152,7 +152,7 @@ void QCommandLineOption_SetDefaultValue(QCommandLineOption* self, struct miqt_st
 	self->setDefaultValue(defaultValue_QString);
 }
 
-void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array /* of struct miqt_string */ defaultValues) {
+void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_array /* of struct miqt_string */  defaultValues) {
 	QStringList defaultValues_QList;
 	defaultValues_QList.reserve(defaultValues.len);
 	struct miqt_string* defaultValues_arr = static_cast<struct miqt_string*>(defaultValues.data);
@@ -163,7 +163,7 @@ void QCommandLineOption_SetDefaultValues(QCommandLineOption* self, struct miqt_a
 	self->setDefaultValues(defaultValues_QList);
 }
 
-struct miqt_array QCommandLineOption_DefaultValues(const QCommandLineOption* self) {
+struct miqt_array /* of struct miqt_string */  QCommandLineOption_DefaultValues(const QCommandLineOption* self) {
 	QStringList _ret = self->defaultValues();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

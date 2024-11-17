@@ -16,7 +16,7 @@ QStringListModel* QStringListModel_new() {
 	return new QStringListModel();
 }
 
-QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */ strings) {
+QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -31,7 +31,7 @@ QStringListModel* QStringListModel_new3(QObject* parent) {
 	return new QStringListModel(parent);
 }
 
-QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */ strings, QObject* parent) {
+QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */  strings, QObject* parent) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -98,7 +98,7 @@ bool QStringListModel_MoveRows(QStringListModel* self, QModelIndex* sourceParent
 	return self->moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
-struct miqt_map QStringListModel_ItemData(const QStringListModel* self, QModelIndex* index) {
+struct miqt_map /* of int to QVariant* */  QStringListModel_ItemData(const QStringListModel* self, QModelIndex* index) {
 	QMap<int, QVariant> _ret = self->itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
@@ -116,7 +116,7 @@ struct miqt_map QStringListModel_ItemData(const QStringListModel* self, QModelIn
 	return _out;
 }
 
-bool QStringListModel_SetItemData(QStringListModel* self, QModelIndex* index, struct miqt_map roles) {
+bool QStringListModel_SetItemData(QStringListModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
@@ -130,7 +130,7 @@ void QStringListModel_Sort(QStringListModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-struct miqt_array QStringListModel_StringList(const QStringListModel* self) {
+struct miqt_array /* of struct miqt_string */  QStringListModel_StringList(const QStringListModel* self) {
 	QStringList _ret = self->stringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -150,7 +150,7 @@ struct miqt_array QStringListModel_StringList(const QStringListModel* self) {
 	return _out;
 }
 
-void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array /* of struct miqt_string */ strings) {
+void QStringListModel_SetStringList(QStringListModel* self, struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);

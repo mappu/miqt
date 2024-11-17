@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERADEVICE_H
-#define GEN_QCAMERADEVICE_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QCAMERADEVICE_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QCAMERADEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -47,8 +48,8 @@ struct miqt_string QCameraDevice_Id(const QCameraDevice* self);
 struct miqt_string QCameraDevice_Description(const QCameraDevice* self);
 bool QCameraDevice_IsDefault(const QCameraDevice* self);
 int QCameraDevice_Position(const QCameraDevice* self);
-struct miqt_array QCameraDevice_PhotoResolutions(const QCameraDevice* self);
-struct miqt_array QCameraDevice_VideoFormats(const QCameraDevice* self);
+struct miqt_array /* of QSize* */  QCameraDevice_PhotoResolutions(const QCameraDevice* self);
+struct miqt_array /* of QCameraFormat* */  QCameraDevice_VideoFormats(const QCameraDevice* self);
 void QCameraDevice_Delete(QCameraDevice* self);
 
 #ifdef __cplusplus

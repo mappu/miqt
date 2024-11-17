@@ -1,5 +1,6 @@
-#ifndef GEN_QSETTINGS_H
-#define GEN_QSETTINGS_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSETTINGS_H
+#define MIQT_QT6_GEN_QSETTINGS_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -57,9 +58,9 @@ int QSettings_BeginReadArray(QSettings* self, QAnyStringView* prefix);
 void QSettings_BeginWriteArray(QSettings* self, QAnyStringView* prefix);
 void QSettings_EndArray(QSettings* self);
 void QSettings_SetArrayIndex(QSettings* self, int i);
-struct miqt_array QSettings_AllKeys(const QSettings* self);
-struct miqt_array QSettings_ChildKeys(const QSettings* self);
-struct miqt_array QSettings_ChildGroups(const QSettings* self);
+struct miqt_array /* of struct miqt_string */  QSettings_AllKeys(const QSettings* self);
+struct miqt_array /* of struct miqt_string */  QSettings_ChildKeys(const QSettings* self);
+struct miqt_array /* of struct miqt_string */  QSettings_ChildGroups(const QSettings* self);
 bool QSettings_IsWritable(const QSettings* self);
 void QSettings_SetValue(QSettings* self, QAnyStringView* key, QVariant* value);
 QVariant* QSettings_Value(const QSettings* self, QAnyStringView* key, QVariant* defaultValue);

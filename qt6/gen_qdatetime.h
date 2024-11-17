@@ -1,5 +1,6 @@
-#ifndef GEN_QDATETIME_H
-#define GEN_QDATETIME_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QDATETIME_H
+#define MIQT_QT6_GEN_QDATETIME_H
 
 #include <stdbool.h>
 #include <stddef.h>

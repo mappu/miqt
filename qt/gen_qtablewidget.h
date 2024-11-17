@@ -1,5 +1,6 @@
-#ifndef GEN_QTABLEWIDGET_H
-#define GEN_QTABLEWIDGET_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTABLEWIDGET_H
+#define MIQT_QT_GEN_QTABLEWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -130,8 +131,8 @@ QTableWidgetItem* QTableWidget_TakeVerticalHeaderItem(QTableWidget* self, int ro
 QTableWidgetItem* QTableWidget_HorizontalHeaderItem(const QTableWidget* self, int column);
 void QTableWidget_SetHorizontalHeaderItem(QTableWidget* self, int column, QTableWidgetItem* item);
 QTableWidgetItem* QTableWidget_TakeHorizontalHeaderItem(QTableWidget* self, int column);
-void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */ labels);
-void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */ labels);
+void QTableWidget_SetVerticalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */  labels);
+void QTableWidget_SetHorizontalHeaderLabels(QTableWidget* self, struct miqt_array /* of struct miqt_string */  labels);
 int QTableWidget_CurrentRow(const QTableWidget* self);
 int QTableWidget_CurrentColumn(const QTableWidget* self);
 QTableWidgetItem* QTableWidget_CurrentItem(const QTableWidget* self);
@@ -152,9 +153,9 @@ void QTableWidget_RemoveCellWidget(QTableWidget* self, int row, int column);
 bool QTableWidget_IsItemSelected(const QTableWidget* self, QTableWidgetItem* item);
 void QTableWidget_SetItemSelected(QTableWidget* self, QTableWidgetItem* item, bool selectVal);
 void QTableWidget_SetRangeSelected(QTableWidget* self, QTableWidgetSelectionRange* rangeVal, bool selectVal);
-struct miqt_array QTableWidget_SelectedRanges(const QTableWidget* self);
-struct miqt_array QTableWidget_SelectedItems(const QTableWidget* self);
-struct miqt_array QTableWidget_FindItems(const QTableWidget* self, struct miqt_string text, int flags);
+struct miqt_array /* of QTableWidgetSelectionRange* */  QTableWidget_SelectedRanges(const QTableWidget* self);
+struct miqt_array /* of QTableWidgetItem* */  QTableWidget_SelectedItems(const QTableWidget* self);
+struct miqt_array /* of QTableWidgetItem* */  QTableWidget_FindItems(const QTableWidget* self, struct miqt_string text, int flags);
 int QTableWidget_VisualRow(const QTableWidget* self, int logicalRow);
 int QTableWidget_VisualColumn(const QTableWidget* self, int logicalColumn);
 QTableWidgetItem* QTableWidget_ItemAt(const QTableWidget* self, QPoint* p);

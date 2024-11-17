@@ -1,5 +1,6 @@
-#ifndef GEN_QPDFWRITER_H
-#define GEN_QPDFWRITER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPDFWRITER_H
+#define MIQT_QT_GEN_QPDFWRITER_H
 
 #include <stdbool.h>
 #include <stddef.h>

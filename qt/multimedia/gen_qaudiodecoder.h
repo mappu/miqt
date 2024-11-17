@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIODECODER_H
-#define GEN_QAUDIODECODER_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIODECODER_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIODECODER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -75,7 +76,7 @@ struct miqt_string QAudioDecoder_Tr2(const char* s, const char* c);
 struct miqt_string QAudioDecoder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoder_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoder_TrUtf83(const char* s, const char* c, int n);
-int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs);
+int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
 void QAudioDecoder_Delete(QAudioDecoder* self);
 
 #ifdef __cplusplus

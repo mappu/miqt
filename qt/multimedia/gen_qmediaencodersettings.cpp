@@ -98,7 +98,7 @@ QVariant* QAudioEncoderSettings_EncodingOption(const QAudioEncoderSettings* self
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map QAudioEncoderSettings_EncodingOptions(const QAudioEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_EncodingOptions(const QAudioEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -128,7 +128,7 @@ void QAudioEncoderSettings_SetEncodingOption(QAudioEncoderSettings* self, struct
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struct miqt_map options) {
+void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);
@@ -235,7 +235,7 @@ QVariant* QVideoEncoderSettings_EncodingOption(const QVideoEncoderSettings* self
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map QVideoEncoderSettings_EncodingOptions(const QVideoEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_EncodingOptions(const QVideoEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -265,7 +265,7 @@ void QVideoEncoderSettings_SetEncodingOption(QVideoEncoderSettings* self, struct
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struct miqt_map options) {
+void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);
@@ -346,7 +346,7 @@ QVariant* QImageEncoderSettings_EncodingOption(const QImageEncoderSettings* self
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map QImageEncoderSettings_EncodingOptions(const QImageEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_EncodingOptions(const QImageEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -376,7 +376,7 @@ void QImageEncoderSettings_SetEncodingOption(QImageEncoderSettings* self, struct
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struct miqt_map options) {
+void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);

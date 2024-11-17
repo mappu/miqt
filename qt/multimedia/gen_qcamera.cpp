@@ -84,7 +84,7 @@ struct miqt_string QCamera_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QCamera_AvailableDevices() {
+struct miqt_array /* of struct miqt_string */  QCamera_AvailableDevices() {
 	QList<QByteArray> _ret = QCamera::availableDevices();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -170,7 +170,7 @@ void QCamera_SetViewfinderSettings(QCamera* self, QCameraViewfinderSettings* set
 	self->setViewfinderSettings(*settings);
 }
 
-struct miqt_array QCamera_SupportedViewfinderSettings(const QCamera* self) {
+struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_SupportedViewfinderSettings(const QCamera* self) {
 	QList<QCameraViewfinderSettings> _ret = self->supportedViewfinderSettings();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraViewfinderSettings** _arr = static_cast<QCameraViewfinderSettings**>(malloc(sizeof(QCameraViewfinderSettings*) * _ret.length()));
@@ -183,7 +183,7 @@ struct miqt_array QCamera_SupportedViewfinderSettings(const QCamera* self) {
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderResolutions(const QCamera* self) {
+struct miqt_array /* of QSize* */  QCamera_SupportedViewfinderResolutions(const QCamera* self) {
 	QList<QSize> _ret = self->supportedViewfinderResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -196,7 +196,7 @@ struct miqt_array QCamera_SupportedViewfinderResolutions(const QCamera* self) {
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderFrameRateRanges(const QCamera* self) {
+struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_SupportedViewfinderFrameRateRanges(const QCamera* self) {
 	QList<QCamera::FrameRateRange> _ret = self->supportedViewfinderFrameRateRanges();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCamera__FrameRateRange** _arr = static_cast<QCamera__FrameRateRange**>(malloc(sizeof(QCamera__FrameRateRange*) * _ret.length()));
@@ -209,7 +209,7 @@ struct miqt_array QCamera_SupportedViewfinderFrameRateRanges(const QCamera* self
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderPixelFormats(const QCamera* self) {
+struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats(const QCamera* self) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedViewfinderPixelFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -449,7 +449,7 @@ struct miqt_string QCamera_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array QCamera_SupportedViewfinderSettings1(const QCamera* self, QCameraViewfinderSettings* settings) {
+struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_SupportedViewfinderSettings1(const QCamera* self, QCameraViewfinderSettings* settings) {
 	QList<QCameraViewfinderSettings> _ret = self->supportedViewfinderSettings(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraViewfinderSettings** _arr = static_cast<QCameraViewfinderSettings**>(malloc(sizeof(QCameraViewfinderSettings*) * _ret.length()));
@@ -462,7 +462,7 @@ struct miqt_array QCamera_SupportedViewfinderSettings1(const QCamera* self, QCam
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderResolutions1(const QCamera* self, QCameraViewfinderSettings* settings) {
+struct miqt_array /* of QSize* */  QCamera_SupportedViewfinderResolutions1(const QCamera* self, QCameraViewfinderSettings* settings) {
 	QList<QSize> _ret = self->supportedViewfinderResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -475,7 +475,7 @@ struct miqt_array QCamera_SupportedViewfinderResolutions1(const QCamera* self, Q
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderFrameRateRanges1(const QCamera* self, QCameraViewfinderSettings* settings) {
+struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_SupportedViewfinderFrameRateRanges1(const QCamera* self, QCameraViewfinderSettings* settings) {
 	QList<QCamera::FrameRateRange> _ret = self->supportedViewfinderFrameRateRanges(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCamera__FrameRateRange** _arr = static_cast<QCamera__FrameRateRange**>(malloc(sizeof(QCamera__FrameRateRange*) * _ret.length()));
@@ -488,7 +488,7 @@ struct miqt_array QCamera_SupportedViewfinderFrameRateRanges1(const QCamera* sel
 	return _out;
 }
 
-struct miqt_array QCamera_SupportedViewfinderPixelFormats1(const QCamera* self, QCameraViewfinderSettings* settings) {
+struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const QCamera* self, QCameraViewfinderSettings* settings) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedViewfinderPixelFormats(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

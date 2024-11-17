@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTSOCKET_H
-#define GEN_QABSTRACTSOCKET_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QABSTRACTSOCKET_H
+#define MIQT_QT_NETWORK_GEN_QABSTRACTSOCKET_H
 
 #include <stdbool.h>
 #include <stddef.h>

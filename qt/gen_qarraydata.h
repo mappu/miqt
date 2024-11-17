@@ -1,5 +1,6 @@
-#ifndef GEN_QARRAYDATA_H
-#define GEN_QARRAYDATA_H
+#pragma once
+#ifndef MIQT_QT_GEN_QARRAYDATA_H
+#define MIQT_QT_GEN_QARRAYDATA_H
 
 #include <stdbool.h>
 #include <stddef.h>

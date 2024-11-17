@@ -91,7 +91,7 @@ struct miqt_string QGuiApplication_DesktopFileName() {
 	return _ms;
 }
 
-struct miqt_array QGuiApplication_AllWindows() {
+struct miqt_array /* of QWindow* */  QGuiApplication_AllWindows() {
 	QWindowList _ret = QGuiApplication::allWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
@@ -104,7 +104,7 @@ struct miqt_array QGuiApplication_AllWindows() {
 	return _out;
 }
 
-struct miqt_array QGuiApplication_TopLevelWindows() {
+struct miqt_array /* of QWindow* */  QGuiApplication_TopLevelWindows() {
 	QWindowList _ret = QGuiApplication::topLevelWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
@@ -156,7 +156,7 @@ QScreen* QGuiApplication_PrimaryScreen() {
 	return QGuiApplication::primaryScreen();
 }
 
-struct miqt_array QGuiApplication_Screens() {
+struct miqt_array /* of QScreen* */  QGuiApplication_Screens() {
 	QList<QScreen *> _ret = QGuiApplication::screens();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));

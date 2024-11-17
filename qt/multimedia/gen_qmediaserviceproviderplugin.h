@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIASERVICEPROVIDERPLUGIN_H
-#define GEN_QMEDIASERVICEPROVIDERPLUGIN_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIASERVICEPROVIDERPLUGIN_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIASERVICEPROVIDERPLUGIN_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ typedef struct QMetaObject QMetaObject;
 #endif
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new();
-QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
 QMediaServiceProviderHint* QMediaServiceProviderHint_new3(struct miqt_string device);
 QMediaServiceProviderHint* QMediaServiceProviderHint_new4(int position);
 QMediaServiceProviderHint* QMediaServiceProviderHint_new5(int features);
@@ -51,7 +52,7 @@ bool QMediaServiceProviderHint_OperatorNotEqual(const QMediaServiceProviderHint*
 bool QMediaServiceProviderHint_IsNull(const QMediaServiceProviderHint* self);
 int QMediaServiceProviderHint_Type(const QMediaServiceProviderHint* self);
 struct miqt_string QMediaServiceProviderHint_MimeType(const QMediaServiceProviderHint* self);
-struct miqt_array QMediaServiceProviderHint_Codecs(const QMediaServiceProviderHint* self);
+struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_Codecs(const QMediaServiceProviderHint* self);
 struct miqt_string QMediaServiceProviderHint_Device(const QMediaServiceProviderHint* self);
 int QMediaServiceProviderHint_CameraPosition(const QMediaServiceProviderHint* self);
 int QMediaServiceProviderHint_Features(const QMediaServiceProviderHint* self);
@@ -62,12 +63,12 @@ void QMediaServiceProviderFactoryInterface_Release(QMediaServiceProviderFactoryI
 void QMediaServiceProviderFactoryInterface_OperatorAssign(QMediaServiceProviderFactoryInterface* self, QMediaServiceProviderFactoryInterface* param1);
 void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self);
 
-int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs);
-struct miqt_array QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self);
+int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self);
 void QMediaServiceSupportedFormatsInterface_OperatorAssign(QMediaServiceSupportedFormatsInterface* self, QMediaServiceSupportedFormatsInterface* param1);
 void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self);
 
-struct miqt_array QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service);
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service);
 struct miqt_string QMediaServiceSupportedDevicesInterface_DeviceDescription(QMediaServiceSupportedDevicesInterface* self, struct miqt_string service, struct miqt_string device);
 void QMediaServiceSupportedDevicesInterface_OperatorAssign(QMediaServiceSupportedDevicesInterface* self, QMediaServiceSupportedDevicesInterface* param1);
 void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self);

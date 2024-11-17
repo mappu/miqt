@@ -1,5 +1,6 @@
-#ifndef GEN_QHEADERVIEW_H
-#define GEN_QHEADERVIEW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QHEADERVIEW_H
+#define MIQT_QT_GEN_QHEADERVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>

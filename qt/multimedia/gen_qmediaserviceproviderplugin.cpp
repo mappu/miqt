@@ -21,7 +21,7 @@ QMediaServiceProviderHint* QMediaServiceProviderHint_new() {
 	return new QMediaServiceProviderHint();
 }
 
-QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs) {
+QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -82,7 +82,7 @@ struct miqt_string QMediaServiceProviderHint_MimeType(const QMediaServiceProvide
 	return _ms;
 }
 
-struct miqt_array QMediaServiceProviderHint_Codecs(const QMediaServiceProviderHint* self) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_Codecs(const QMediaServiceProviderHint* self) {
 	QStringList _ret = self->codecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -142,7 +142,7 @@ void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryIn
 	delete self;
 }
 
-int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs) {
+int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -155,7 +155,7 @@ int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupport
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self) {
 	QStringList _ret = self->supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -183,7 +183,7 @@ void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormats
 	delete self;
 }
 
-struct miqt_array QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
 	QByteArray service_QByteArray(service.data, service.len);
 	QList<QByteArray> _ret = self->devices(service_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory

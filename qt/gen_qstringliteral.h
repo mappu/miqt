@@ -1,5 +1,6 @@
-#ifndef GEN_QSTRINGLITERAL_H
-#define GEN_QSTRINGLITERAL_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTRINGLITERAL_H
+#define MIQT_QT_GEN_QSTRINGLITERAL_H
 
 #include <stdbool.h>
 #include <stddef.h>

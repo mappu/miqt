@@ -1,5 +1,6 @@
-#ifndef GEN_QJSONOBJECT_H
-#define GEN_QJSONOBJECT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QJSONOBJECT_H
+#define MIQT_QT_GEN_QJSONOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -45,11 +46,11 @@ QJsonObject* QJsonObject_new();
 QJsonObject* QJsonObject_new2(QJsonObject* other);
 void QJsonObject_OperatorAssign(QJsonObject* self, QJsonObject* other);
 void QJsonObject_Swap(QJsonObject* self, QJsonObject* other);
-QJsonObject* QJsonObject_FromVariantMap(struct miqt_map mapVal);
-struct miqt_map QJsonObject_ToVariantMap(const QJsonObject* self);
-QJsonObject* QJsonObject_FromVariantHash(struct miqt_map mapVal);
-struct miqt_map QJsonObject_ToVariantHash(const QJsonObject* self);
-struct miqt_array QJsonObject_Keys(const QJsonObject* self);
+QJsonObject* QJsonObject_FromVariantMap(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
+struct miqt_map /* of struct miqt_string to QVariant* */  QJsonObject_ToVariantMap(const QJsonObject* self);
+QJsonObject* QJsonObject_FromVariantHash(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
+struct miqt_map /* of struct miqt_string to QVariant* */  QJsonObject_ToVariantHash(const QJsonObject* self);
+struct miqt_array /* of struct miqt_string */  QJsonObject_Keys(const QJsonObject* self);
 int QJsonObject_Size(const QJsonObject* self);
 int QJsonObject_Count(const QJsonObject* self);
 int QJsonObject_Length(const QJsonObject* self);

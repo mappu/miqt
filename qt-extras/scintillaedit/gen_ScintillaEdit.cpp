@@ -1899,6 +1899,20 @@ struct miqt_string ScintillaEdit_TextReturner(const ScintillaEdit* self, int mes
 	return _ms;
 }
 
+struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
+	QPair<int, int> _ret = self->find_text(static_cast<int>(flags), text, static_cast<int>(cpMin), static_cast<int>(cpMax));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
+	int* _second_arr = static_cast<int*>(malloc(sizeof(int)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
 struct miqt_string ScintillaEdit_GetTextRange(ScintillaEdit* self, int start, int end) {
 	QByteArray _qb = self->get_text_range(static_cast<int>(start), static_cast<int>(end));
 	struct miqt_string _ms;
@@ -1914,6 +1928,20 @@ ScintillaDocument* ScintillaEdit_GetDoc(ScintillaEdit* self) {
 
 void ScintillaEdit_SetDoc(ScintillaEdit* self, ScintillaDocument* pdoc_) {
 	self->set_doc(pdoc_);
+}
+
+struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText2(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
+	QPair<int, int> _ret = self->findText(static_cast<int>(flags), text, static_cast<int>(cpMin), static_cast<int>(cpMax));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
+	int* _second_arr = static_cast<int*>(malloc(sizeof(int)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
 }
 
 struct miqt_string ScintillaEdit_TextRange(ScintillaEdit* self, int start, int end) {

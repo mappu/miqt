@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIANETWORKACCESSCONTROL_H
-#define GEN_QMEDIANETWORKACCESSCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIANETWORKACCESSCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIANETWORKACCESSCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -27,7 +28,7 @@ QMetaObject* QMediaNetworkAccessControl_MetaObject(const QMediaNetworkAccessCont
 void* QMediaNetworkAccessControl_Metacast(QMediaNetworkAccessControl* self, const char* param1);
 struct miqt_string QMediaNetworkAccessControl_Tr(const char* s);
 struct miqt_string QMediaNetworkAccessControl_TrUtf8(const char* s);
-void QMediaNetworkAccessControl_SetConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */ configuration);
+void QMediaNetworkAccessControl_SetConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */  configuration);
 QNetworkConfiguration* QMediaNetworkAccessControl_CurrentConfiguration(const QMediaNetworkAccessControl* self);
 void QMediaNetworkAccessControl_ConfigurationChanged(QMediaNetworkAccessControl* self, QNetworkConfiguration* configuration);
 void QMediaNetworkAccessControl_connect_ConfigurationChanged(QMediaNetworkAccessControl* self, intptr_t slot);

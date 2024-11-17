@@ -1,5 +1,6 @@
-#ifndef GEN_QHASHFUNCTIONS_H
-#define GEN_QHASHFUNCTIONS_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QHASHFUNCTIONS_H
+#define MIQT_QT6_GEN_QHASHFUNCTIONS_H
 
 #include <stdbool.h>
 #include <stddef.h>

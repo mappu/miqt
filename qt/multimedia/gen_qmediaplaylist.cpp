@@ -101,7 +101,7 @@ bool QMediaPlaylist_AddMedia(QMediaPlaylist* self, QMediaContent* content) {
 	return self->addMedia(*content);
 }
 
-bool QMediaPlaylist_AddMediaWithItems(QMediaPlaylist* self, struct miqt_array /* of QMediaContent* */ items) {
+bool QMediaPlaylist_AddMediaWithItems(QMediaPlaylist* self, struct miqt_array /* of QMediaContent* */  items) {
 	QList<QMediaContent> items_QList;
 	items_QList.reserve(items.len);
 	QMediaContent** items_arr = static_cast<QMediaContent**>(items.data);
@@ -115,7 +115,7 @@ bool QMediaPlaylist_InsertMedia(QMediaPlaylist* self, int index, QMediaContent* 
 	return self->insertMedia(static_cast<int>(index), *content);
 }
 
-bool QMediaPlaylist_InsertMedia2(QMediaPlaylist* self, int index, struct miqt_array /* of QMediaContent* */ items) {
+bool QMediaPlaylist_InsertMedia2(QMediaPlaylist* self, int index, struct miqt_array /* of QMediaContent* */  items) {
 	QList<QMediaContent> items_QList;
 	items_QList.reserve(items.len);
 	QMediaContent** items_arr = static_cast<QMediaContent**>(items.data);

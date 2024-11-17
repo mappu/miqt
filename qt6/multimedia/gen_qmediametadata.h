@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAMETADATA_H
-#define GEN_QMEDIAMETADATA_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIAMETADATA_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIAMETADATA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -26,7 +27,7 @@ QMediaMetaData* QMediaMetaData_new2();
 QVariant* QMediaMetaData_Value(const QMediaMetaData* self, int k);
 void QMediaMetaData_Insert(QMediaMetaData* self, int k, QVariant* value);
 void QMediaMetaData_Remove(QMediaMetaData* self, int k);
-struct miqt_array QMediaMetaData_Keys(const QMediaMetaData* self);
+struct miqt_array /* of int */  QMediaMetaData_Keys(const QMediaMetaData* self);
 QVariant* QMediaMetaData_OperatorSubscript(QMediaMetaData* self, int k);
 void QMediaMetaData_Clear(QMediaMetaData* self);
 bool QMediaMetaData_IsEmpty(const QMediaMetaData* self);

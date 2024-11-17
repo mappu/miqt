@@ -1,5 +1,6 @@
-#ifndef GEN_QRECT_H
-#define GEN_QRECT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QRECT_H
+#define MIQT_QT6_GEN_QRECT_H
 
 #include <stdbool.h>
 #include <stddef.h>

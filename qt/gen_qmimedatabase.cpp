@@ -30,7 +30,7 @@ QMimeType* QMimeDatabase_MimeTypeForFileWithFileInfo(const QMimeDatabase* self, 
 	return new QMimeType(self->mimeTypeForFile(*fileInfo));
 }
 
-struct miqt_array QMimeDatabase_MimeTypesForFileName(const QMimeDatabase* self, struct miqt_string fileName) {
+struct miqt_array /* of QMimeType* */  QMimeDatabase_MimeTypesForFileName(const QMimeDatabase* self, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QList<QMimeType> _ret = self->mimeTypesForFileName(fileName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -80,7 +80,7 @@ struct miqt_string QMimeDatabase_SuffixForFileName(const QMimeDatabase* self, st
 	return _ms;
 }
 
-struct miqt_array QMimeDatabase_AllMimeTypes(const QMimeDatabase* self) {
+struct miqt_array /* of QMimeType* */  QMimeDatabase_AllMimeTypes(const QMimeDatabase* self) {
 	QList<QMimeType> _ret = self->allMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMimeType** _arr = static_cast<QMimeType**>(malloc(sizeof(QMimeType*) * _ret.length()));

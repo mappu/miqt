@@ -1,5 +1,6 @@
-#ifndef GEN_QLINE_H
-#define GEN_QLINE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QLINE_H
+#define MIQT_QT_GEN_QLINE_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIACONTROL_H
-#define GEN_QMEDIACONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIACONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIACONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>

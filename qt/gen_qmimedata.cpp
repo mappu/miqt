@@ -45,7 +45,7 @@ struct miqt_string QMimeData_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QMimeData_Urls(const QMimeData* self) {
+struct miqt_array /* of QUrl* */  QMimeData_Urls(const QMimeData* self) {
 	QList<QUrl> _ret = self->urls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
@@ -58,7 +58,7 @@ struct miqt_array QMimeData_Urls(const QMimeData* self) {
 	return _out;
 }
 
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */ urls) {
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */  urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls.len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
@@ -162,7 +162,7 @@ bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string mimetype) {
 	return self->hasFormat(mimetype_QString);
 }
 
-struct miqt_array QMimeData_Formats(const QMimeData* self) {
+struct miqt_array /* of struct miqt_string */  QMimeData_Formats(const QMimeData* self) {
 	QStringList _ret = self->formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

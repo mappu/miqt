@@ -1,5 +1,6 @@
-#ifndef GEN_QHOSTINFO_H
-#define GEN_QHOSTINFO_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QHOSTINFO_H
+#define MIQT_QT6_NETWORK_GEN_QHOSTINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -28,8 +29,8 @@ void QHostInfo_OperatorAssign(QHostInfo* self, QHostInfo* d);
 void QHostInfo_Swap(QHostInfo* self, QHostInfo* other);
 struct miqt_string QHostInfo_HostName(const QHostInfo* self);
 void QHostInfo_SetHostName(QHostInfo* self, struct miqt_string name);
-struct miqt_array QHostInfo_Addresses(const QHostInfo* self);
-void QHostInfo_SetAddresses(QHostInfo* self, struct miqt_array /* of QHostAddress* */ addresses);
+struct miqt_array /* of QHostAddress* */  QHostInfo_Addresses(const QHostInfo* self);
+void QHostInfo_SetAddresses(QHostInfo* self, struct miqt_array /* of QHostAddress* */  addresses);
 int QHostInfo_Error(const QHostInfo* self);
 void QHostInfo_SetError(QHostInfo* self, int error);
 struct miqt_string QHostInfo_ErrorString(const QHostInfo* self);

@@ -183,7 +183,7 @@ void QFileSystemModel_Sort(QFileSystemModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-struct miqt_array QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
+struct miqt_array /* of struct miqt_string */  QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -203,7 +203,7 @@ struct miqt_array QFileSystemModel_MimeTypes(const QFileSystemModel* self) {
 	return _out;
 }
 
-QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
+QMimeData* QFileSystemModel_MimeData(const QFileSystemModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -222,7 +222,7 @@ int QFileSystemModel_SupportedDropActions(const QFileSystemModel* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_map QFileSystemModel_RoleNames(const QFileSystemModel* self) {
+struct miqt_map /* of int to struct miqt_string */  QFileSystemModel_RoleNames(const QFileSystemModel* self) {
 	QHash<int, QByteArray> _ret = self->roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
@@ -306,7 +306,7 @@ bool QFileSystemModel_NameFilterDisables(const QFileSystemModel* self) {
 	return self->nameFilterDisables();
 }
 
-void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array /* of struct miqt_string */ filters) {
+void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array /* of struct miqt_string */  filters) {
 	QStringList filters_QList;
 	filters_QList.reserve(filters.len);
 	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
@@ -317,7 +317,7 @@ void QFileSystemModel_SetNameFilters(QFileSystemModel* self, struct miqt_array /
 	self->setNameFilters(filters_QList);
 }
 
-struct miqt_array QFileSystemModel_NameFilters(const QFileSystemModel* self) {
+struct miqt_array /* of struct miqt_string */  QFileSystemModel_NameFilters(const QFileSystemModel* self) {
 	QStringList _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

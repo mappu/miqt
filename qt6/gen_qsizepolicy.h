@@ -1,5 +1,6 @@
-#ifndef GEN_QSIZEPOLICY_H
-#define GEN_QSIZEPOLICY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSIZEPOLICY_H
+#define MIQT_QT6_GEN_QSIZEPOLICY_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QCOMBOBOX_H
-#define GEN_QCOMBOBOX_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCOMBOBOX_H
+#define MIQT_QT_GEN_QCOMBOBOX_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -100,10 +101,10 @@ QIcon* QComboBox_ItemIcon(const QComboBox* self, int index);
 QVariant* QComboBox_ItemData(const QComboBox* self, int index);
 void QComboBox_AddItem(QComboBox* self, struct miqt_string text);
 void QComboBox_AddItem2(QComboBox* self, QIcon* icon, struct miqt_string text);
-void QComboBox_AddItems(QComboBox* self, struct miqt_array /* of struct miqt_string */ texts);
+void QComboBox_AddItems(QComboBox* self, struct miqt_array /* of struct miqt_string */  texts);
 void QComboBox_InsertItem(QComboBox* self, int index, struct miqt_string text);
 void QComboBox_InsertItem2(QComboBox* self, int index, QIcon* icon, struct miqt_string text);
-void QComboBox_InsertItems(QComboBox* self, int index, struct miqt_array /* of struct miqt_string */ texts);
+void QComboBox_InsertItems(QComboBox* self, int index, struct miqt_array /* of struct miqt_string */  texts);
 void QComboBox_InsertSeparator(QComboBox* self, int index);
 void QComboBox_RemoveItem(QComboBox* self, int index);
 void QComboBox_SetItemText(QComboBox* self, int index, struct miqt_string text);

@@ -1,5 +1,6 @@
-#ifndef GEN_QSTRINGCONVERTER_H
-#define GEN_QSTRINGCONVERTER_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSTRINGCONVERTER_H
+#define MIQT_QT6_GEN_QSTRINGCONVERTER_H
 
 #include <stdbool.h>
 #include <stddef.h>

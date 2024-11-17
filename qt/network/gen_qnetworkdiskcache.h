@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKDISKCACHE_H
-#define GEN_QNETWORKDISKCACHE_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKDISKCACHE_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKDISKCACHE_H
 
 #include <stdbool.h>
 #include <stddef.h>

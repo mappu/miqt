@@ -1,5 +1,6 @@
-#ifndef GEN_QMETAOBJECT_H
-#define GEN_QMETAOBJECT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMETAOBJECT_H
+#define MIQT_QT6_GEN_QMETAOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -52,9 +53,9 @@ int QMetaMethod_ParameterCount(const QMetaMethod* self);
 int QMetaMethod_ParameterType(const QMetaMethod* self, int index);
 QMetaType* QMetaMethod_ParameterMetaType(const QMetaMethod* self, int index);
 void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types);
-struct miqt_array QMetaMethod_ParameterTypes(const QMetaMethod* self);
+struct miqt_array /* of struct miqt_string */  QMetaMethod_ParameterTypes(const QMetaMethod* self);
 struct miqt_string QMetaMethod_ParameterTypeName(const QMetaMethod* self, int index);
-struct miqt_array QMetaMethod_ParameterNames(const QMetaMethod* self);
+struct miqt_array /* of struct miqt_string */  QMetaMethod_ParameterNames(const QMetaMethod* self);
 const char* QMetaMethod_Tag(const QMetaMethod* self);
 int QMetaMethod_Access(const QMetaMethod* self);
 int QMetaMethod_MethodType(const QMetaMethod* self);

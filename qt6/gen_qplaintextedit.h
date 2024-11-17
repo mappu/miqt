@@ -1,5 +1,6 @@
-#ifndef GEN_QPLAINTEXTEDIT_H
-#define GEN_QPLAINTEXTEDIT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPLAINTEXTEDIT_H
+#define MIQT_QT6_GEN_QPLAINTEXTEDIT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -122,8 +123,8 @@ double QPlainTextEdit_TabStopDistance(const QPlainTextEdit* self);
 void QPlainTextEdit_SetTabStopDistance(QPlainTextEdit* self, double distance);
 int QPlainTextEdit_CursorWidth(const QPlainTextEdit* self);
 void QPlainTextEdit_SetCursorWidth(QPlainTextEdit* self, int width);
-void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */ selections);
-struct miqt_array QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self);
+void QPlainTextEdit_SetExtraSelections(QPlainTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */  selections);
+struct miqt_array /* of QTextEdit__ExtraSelection* */  QPlainTextEdit_ExtraSelections(const QPlainTextEdit* self);
 void QPlainTextEdit_MoveCursor(QPlainTextEdit* self, int operation);
 bool QPlainTextEdit_CanPaste(const QPlainTextEdit* self);
 void QPlainTextEdit_Print(const QPlainTextEdit* self, QPagedPaintDevice* printer);

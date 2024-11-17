@@ -1,4 +1,5 @@
 #include <QEasingCurve>
+#include <QList>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
@@ -59,6 +60,44 @@ QVariant* QVariantAnimation_KeyValueAt(const QVariantAnimation* self, double ste
 
 void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVariant* value) {
 	self->setKeyValueAt(static_cast<qreal>(step), *value);
+}
+
+struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  QVariantAnimation_KeyValues(const QVariantAnimation* self) {
+	QVariantAnimation::KeyValues _ret = self->keyValues();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_map /* tuple of double and QVariant* */ * _arr = static_cast<struct miqt_map /* tuple of double and QVariant* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QVariant* */ ) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QPair<double, QVariant> _lv_ret = _ret[i];
+		// Convert QPair<> from C++ memory to manually-managed C memory
+		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
+		QVariant** _lv_second_arr = static_cast<QVariant**>(malloc(sizeof(QVariant*)));
+		_lv_first_arr[0] = _lv_ret.first;
+		_lv_second_arr[0] = new QVariant(_lv_ret.second);
+		struct miqt_map _lv_out;
+		_lv_out.len = 1;
+		_lv_out.keys = static_cast<void*>(_lv_first_arr);
+		_lv_out.values = static_cast<void*>(_lv_second_arr);
+		_arr[i] = _lv_out;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+}
+
+void QVariantAnimation_SetKeyValues(QVariantAnimation* self, struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  values) {
+	QVariantAnimation::KeyValues values_QList;
+	values_QList.reserve(values.len);
+	struct miqt_map /* tuple of double and QVariant* */ * values_arr = static_cast<struct miqt_map /* tuple of double and QVariant* */ *>(values.data);
+	for(size_t i = 0; i < values.len; ++i) {
+		QPair<double, QVariant> values_arr_i_QPair;
+		double* values_arr_i_first_arr = static_cast<double*>(values_arr[i].keys);
+		QVariant** values_arr_i_second_arr = static_cast<QVariant**>(values_arr[i].values);
+		values_arr_i_QPair.first = static_cast<double>(values_arr_i_first_arr[0]);
+		values_arr_i_QPair.second = *(values_arr_i_second_arr[0]);
+		values_QList.push_back(values_arr_i_QPair);
+	}
+	self->setKeyValues(values_QList);
 }
 
 QVariant* QVariantAnimation_CurrentValue(const QVariantAnimation* self) {

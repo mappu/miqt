@@ -92,7 +92,7 @@ bool QsciAPIs_SavePrepared(const QsciAPIs* self) {
 	return self->savePrepared();
 }
 
-void QsciAPIs_UpdateAutoCompletionList(QsciAPIs* self, struct miqt_array /* of struct miqt_string */ context, struct miqt_array /* of struct miqt_string */ list) {
+void QsciAPIs_UpdateAutoCompletionList(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
 	QStringList context_QList;
 	context_QList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
@@ -115,7 +115,7 @@ void QsciAPIs_AutoCompletionSelected(QsciAPIs* self, struct miqt_string sel) {
 	self->autoCompletionSelected(sel_QString);
 }
 
-struct miqt_array QsciAPIs_CallTips(QsciAPIs* self, struct miqt_array /* of struct miqt_string */ context, int commas, int style, struct miqt_array /* of int */ shifts) {
+struct miqt_array /* of struct miqt_string */  QsciAPIs_CallTips(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
 	QStringList context_QList;
 	context_QList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
@@ -152,7 +152,7 @@ bool QsciAPIs_Event(QsciAPIs* self, QEvent* e) {
 	return self->event(e);
 }
 
-struct miqt_array QsciAPIs_InstalledAPIFiles(const QsciAPIs* self) {
+struct miqt_array /* of struct miqt_string */  QsciAPIs_InstalledAPIFiles(const QsciAPIs* self) {
 	QStringList _ret = self->installedAPIFiles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

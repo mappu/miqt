@@ -96,7 +96,7 @@ QVariant* QVariant_new14(struct miqt_string stringVal) {
 	return new QVariant(stringVal_QString);
 }
 
-QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */ stringlist) {
+QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */  stringlist) {
 	QStringList stringlist_QList;
 	stringlist_QList.reserve(stringlist.len);
 	struct miqt_string* stringlist_arr = static_cast<struct miqt_string*>(stringlist.data);
@@ -123,7 +123,7 @@ QVariant* QVariant_new19(QDateTime* datetime) {
 	return new QVariant(*datetime);
 }
 
-QVariant* QVariant_new20(struct miqt_map mapVal) {
+QVariant* QVariant_new20(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal) {
 	QMap<QString, QVariant> mapVal_QMap;
 	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
 	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
@@ -134,7 +134,7 @@ QVariant* QVariant_new20(struct miqt_map mapVal) {
 	return new QVariant(mapVal_QMap);
 }
 
-QVariant* QVariant_new21(struct miqt_map hash) {
+QVariant* QVariant_new21(struct miqt_map /* of struct miqt_string to QVariant* */  hash) {
 	QHash<QString, QVariant> hash_QMap;
 	hash_QMap.reserve(hash.len);
 	struct miqt_string* hash_karr = static_cast<struct miqt_string*>(hash.keys);
@@ -354,7 +354,7 @@ struct miqt_string QVariant_ToString(const QVariant* self) {
 	return _ms;
 }
 
-struct miqt_array QVariant_ToStringList(const QVariant* self) {
+struct miqt_array /* of struct miqt_string */  QVariant_ToStringList(const QVariant* self) {
 	QStringList _ret = self->toStringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -390,7 +390,7 @@ QDateTime* QVariant_ToDateTime(const QVariant* self) {
 	return new QDateTime(self->toDateTime());
 }
 
-struct miqt_map QVariant_ToMap(const QVariant* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToMap(const QVariant* self) {
 	QMap<QString, QVariant> _ret = self->toMap();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -415,7 +415,7 @@ struct miqt_map QVariant_ToMap(const QVariant* self) {
 	return _out;
 }
 
-struct miqt_map QVariant_ToHash(const QVariant* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToHash(const QVariant* self) {
 	QHash<QString, QVariant> _ret = self->toHash();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QSURFACEFORMAT_H
-#define GEN_QSURFACEFORMAT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSURFACEFORMAT_H
+#define MIQT_QT_GEN_QSURFACEFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -48,6 +49,7 @@ void QSurfaceFormat_SetMajorVersion(QSurfaceFormat* self, int majorVersion);
 int QSurfaceFormat_MajorVersion(const QSurfaceFormat* self);
 void QSurfaceFormat_SetMinorVersion(QSurfaceFormat* self, int minorVersion);
 int QSurfaceFormat_MinorVersion(const QSurfaceFormat* self);
+struct miqt_map /* tuple of int and int */  QSurfaceFormat_Version(const QSurfaceFormat* self);
 void QSurfaceFormat_SetVersion(QSurfaceFormat* self, int major, int minor);
 bool QSurfaceFormat_Stereo(const QSurfaceFormat* self);
 void QSurfaceFormat_SetStereo(QSurfaceFormat* self, bool enable);

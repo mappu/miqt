@@ -63,6 +63,20 @@ int QRadioTunerControl_FrequencyStep(const QRadioTunerControl* self, int b) {
 	return self->frequencyStep(static_cast<QRadioTuner::Band>(b));
 }
 
+struct miqt_map /* tuple of int and int */  QRadioTunerControl_FrequencyRange(const QRadioTunerControl* self, int b) {
+	QPair<int, int> _ret = self->frequencyRange(static_cast<QRadioTuner::Band>(b));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
+	int* _second_arr = static_cast<int*>(malloc(sizeof(int)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
 void QRadioTunerControl_SetFrequency(QRadioTunerControl* self, int frequency) {
 	self->setFrequency(static_cast<int>(frequency));
 }

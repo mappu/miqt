@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTCURSOR_H
-#define GEN_QTEXTCURSOR_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTCURSOR_H
+#define MIQT_QT_GEN_QTEXTCURSOR_H
 
 #include <stdbool.h>
 #include <stddef.h>

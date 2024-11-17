@@ -1,5 +1,6 @@
-#ifndef GEN_QSPLITTER_H
-#define GEN_QSPLITTER_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSPLITTER_H
+#define MIQT_QT6_GEN_QSPLITTER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -50,8 +51,8 @@ bool QSplitter_OpaqueResize(const QSplitter* self);
 void QSplitter_Refresh(QSplitter* self);
 QSize* QSplitter_SizeHint(const QSplitter* self);
 QSize* QSplitter_MinimumSizeHint(const QSplitter* self);
-struct miqt_array QSplitter_Sizes(const QSplitter* self);
-void QSplitter_SetSizes(QSplitter* self, struct miqt_array /* of int */ list);
+struct miqt_array /* of int */  QSplitter_Sizes(const QSplitter* self);
+void QSplitter_SetSizes(QSplitter* self, struct miqt_array /* of int */  list);
 struct miqt_string QSplitter_SaveState(const QSplitter* self);
 bool QSplitter_RestoreState(QSplitter* self, struct miqt_string state);
 int QSplitter_HandleWidth(const QSplitter* self);

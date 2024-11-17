@@ -38,7 +38,7 @@ struct miqt_string QAudioOutputSelectorControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAudioOutputSelectorControl_AvailableOutputs(const QAudioOutputSelectorControl* self) {
+struct miqt_array /* of struct miqt_string */  QAudioOutputSelectorControl_AvailableOutputs(const QAudioOutputSelectorControl* self) {
 	QList<QString> _ret = self->availableOutputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

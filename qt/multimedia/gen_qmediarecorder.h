@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIARECORDER_H
-#define GEN_QMEDIARECORDER_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIARECORDER_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIARECORDER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -54,15 +55,15 @@ struct miqt_string QMediaRecorder_ErrorString(const QMediaRecorder* self);
 long long QMediaRecorder_Duration(const QMediaRecorder* self);
 bool QMediaRecorder_IsMuted(const QMediaRecorder* self);
 double QMediaRecorder_Volume(const QMediaRecorder* self);
-struct miqt_array QMediaRecorder_SupportedContainers(const QMediaRecorder* self);
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedContainers(const QMediaRecorder* self);
 struct miqt_string QMediaRecorder_ContainerDescription(const QMediaRecorder* self, struct miqt_string format);
-struct miqt_array QMediaRecorder_SupportedAudioCodecs(const QMediaRecorder* self);
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedAudioCodecs(const QMediaRecorder* self);
 struct miqt_string QMediaRecorder_AudioCodecDescription(const QMediaRecorder* self, struct miqt_string codecName);
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates(const QMediaRecorder* self);
-struct miqt_array QMediaRecorder_SupportedVideoCodecs(const QMediaRecorder* self);
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates(const QMediaRecorder* self);
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedVideoCodecs(const QMediaRecorder* self);
 struct miqt_string QMediaRecorder_VideoCodecDescription(const QMediaRecorder* self, struct miqt_string codecName);
-struct miqt_array QMediaRecorder_SupportedResolutions(const QMediaRecorder* self);
-struct miqt_array QMediaRecorder_SupportedFrameRates(const QMediaRecorder* self);
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions(const QMediaRecorder* self);
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates(const QMediaRecorder* self);
 QAudioEncoderSettings* QMediaRecorder_AudioSettings(const QMediaRecorder* self);
 QVideoEncoderSettings* QMediaRecorder_VideoSettings(const QMediaRecorder* self);
 struct miqt_string QMediaRecorder_ContainerFormat(const QMediaRecorder* self);
@@ -74,7 +75,7 @@ bool QMediaRecorder_IsMetaDataAvailable(const QMediaRecorder* self);
 bool QMediaRecorder_IsMetaDataWritable(const QMediaRecorder* self);
 QVariant* QMediaRecorder_MetaData(const QMediaRecorder* self, struct miqt_string key);
 void QMediaRecorder_SetMetaData(QMediaRecorder* self, struct miqt_string key, QVariant* value);
-struct miqt_array QMediaRecorder_AvailableMetaData(const QMediaRecorder* self);
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_AvailableMetaData(const QMediaRecorder* self);
 void QMediaRecorder_Record(QMediaRecorder* self);
 void QMediaRecorder_Pause(QMediaRecorder* self);
 void QMediaRecorder_Stop(QMediaRecorder* self);
@@ -110,12 +111,12 @@ struct miqt_string QMediaRecorder_Tr2(const char* s, const char* c);
 struct miqt_string QMediaRecorder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaRecorder_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaRecorder_TrUtf83(const char* s, const char* c, int n);
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates1(const QMediaRecorder* self, QAudioEncoderSettings* settings);
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates2(const QMediaRecorder* self, QAudioEncoderSettings* settings, bool* continuous);
-struct miqt_array QMediaRecorder_SupportedResolutions1(const QMediaRecorder* self, QVideoEncoderSettings* settings);
-struct miqt_array QMediaRecorder_SupportedResolutions2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
-struct miqt_array QMediaRecorder_SupportedFrameRates1(const QMediaRecorder* self, QVideoEncoderSettings* settings);
-struct miqt_array QMediaRecorder_SupportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates1(const QMediaRecorder* self, QAudioEncoderSettings* settings);
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates2(const QMediaRecorder* self, QAudioEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions1(const QMediaRecorder* self, QVideoEncoderSettings* settings);
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates1(const QMediaRecorder* self, QVideoEncoderSettings* settings);
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
 void QMediaRecorder_SetEncodingSettings2(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings);
 void QMediaRecorder_SetEncodingSettings3(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings, struct miqt_string containerMimeType);
 void QMediaRecorder_Delete(QMediaRecorder* self);

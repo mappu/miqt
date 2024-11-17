@@ -1071,7 +1071,7 @@ void QWidget_AddAction(QWidget* self, QAction* action) {
 	self->addAction(action);
 }
 
-void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */ actions) {
+void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */  actions) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
@@ -1081,7 +1081,7 @@ void QWidget_AddActions(QWidget* self, struct miqt_array /* of QAction* */ actio
 	self->addActions(actions_QList);
 }
 
-void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */ actions) {
+void QWidget_InsertActions(QWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
@@ -1099,7 +1099,7 @@ void QWidget_RemoveAction(QWidget* self, QAction* action) {
 	self->removeAction(action);
 }
 
-struct miqt_array QWidget_Actions(const QWidget* self) {
+struct miqt_array /* of QAction* */  QWidget_Actions(const QWidget* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));

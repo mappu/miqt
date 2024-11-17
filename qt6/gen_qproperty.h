@@ -1,5 +1,6 @@
-#ifndef GEN_QPROPERTY_H
-#define GEN_QPROPERTY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPROPERTY_H
+#define MIQT_QT6_GEN_QPROPERTY_H
 
 #include <stdbool.h>
 #include <stddef.h>

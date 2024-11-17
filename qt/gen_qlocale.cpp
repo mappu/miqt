@@ -536,7 +536,7 @@ int QLocale_FirstDayOfWeek(const QLocale* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QLocale_Weekdays(const QLocale* self) {
+struct miqt_array /* of int */  QLocale_Weekdays(const QLocale* self) {
 	QList<Qt::DayOfWeek> _ret = self->weekdays();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -755,7 +755,7 @@ struct miqt_string QLocale_FormattedDataSizeWithBytes(const QLocale* self, long 
 	return _ms;
 }
 
-struct miqt_array QLocale_UiLanguages(const QLocale* self) {
+struct miqt_array /* of struct miqt_string */  QLocale_UiLanguages(const QLocale* self) {
 	QStringList _ret = self->uiLanguages();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -828,7 +828,7 @@ QLocale* QLocale_System() {
 	return new QLocale(QLocale::system());
 }
 
-struct miqt_array QLocale_MatchingLocales(int language, int script, int country) {
+struct miqt_array /* of QLocale* */  QLocale_MatchingLocales(int language, int script, int country) {
 	QList<QLocale> _ret = QLocale::matchingLocales(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Country>(country));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QLocale** _arr = static_cast<QLocale**>(malloc(sizeof(QLocale*) * _ret.length()));
@@ -841,7 +841,7 @@ struct miqt_array QLocale_MatchingLocales(int language, int script, int country)
 	return _out;
 }
 
-struct miqt_array QLocale_CountriesForLanguage(int lang) {
+struct miqt_array /* of int */  QLocale_CountriesForLanguage(int lang) {
 	QList<QLocale::Country> _ret = QLocale::countriesForLanguage(static_cast<QLocale::Language>(lang));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -876,7 +876,7 @@ struct miqt_string QLocale_QuoteString(const QLocale* self, struct miqt_string s
 	return _ms;
 }
 
-struct miqt_string QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array /* of struct miqt_string */ strl) {
+struct miqt_string QLocale_CreateSeparatedList(const QLocale* self, struct miqt_array /* of struct miqt_string */  strl) {
 	QStringList strl_QList;
 	strl_QList.reserve(strl.len);
 	struct miqt_string* strl_arr = static_cast<struct miqt_string*>(strl.data);

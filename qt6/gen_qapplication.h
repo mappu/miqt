@@ -1,5 +1,6 @@
-#ifndef GEN_QAPPLICATION_H
-#define GEN_QAPPLICATION_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QAPPLICATION_H
+#define MIQT_QT6_GEN_QAPPLICATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -53,8 +54,8 @@ QFont* QApplication_FontWithQWidget(QWidget* param1);
 QFont* QApplication_FontWithClassName(const char* className);
 void QApplication_SetFont(QFont* param1);
 QFontMetrics* QApplication_FontMetrics();
-struct miqt_array QApplication_AllWidgets();
-struct miqt_array QApplication_TopLevelWidgets();
+struct miqt_array /* of QWidget* */  QApplication_AllWidgets();
+struct miqt_array /* of QWidget* */  QApplication_TopLevelWidgets();
 QWidget* QApplication_ActivePopupWidget();
 QWidget* QApplication_ActiveModalWidget();
 QWidget* QApplication_FocusWidget();

@@ -1,5 +1,6 @@
-#ifndef GEN_QREADWRITELOCK_H
-#define GEN_QREADWRITELOCK_H
+#pragma once
+#ifndef MIQT_QT_GEN_QREADWRITELOCK_H
+#define MIQT_QT_GEN_QREADWRITELOCK_H
 
 #include <stdbool.h>
 #include <stddef.h>

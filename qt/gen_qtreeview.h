@@ -1,5 +1,6 @@
-#ifndef GEN_QTREEVIEW_H
-#define GEN_QTREEVIEW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTREEVIEW_H
+#define MIQT_QT_GEN_QTREEVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -113,7 +114,7 @@ struct miqt_string QTreeView_Tr3(const char* s, const char* c, int n);
 struct miqt_string QTreeView_TrUtf82(const char* s, const char* c);
 struct miqt_string QTreeView_TrUtf83(const char* s, const char* c, int n);
 void QTreeView_ScrollTo2(QTreeView* self, QModelIndex* index, int hint);
-void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */ roles);
+void QTreeView_DataChanged3(QTreeView* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
 void QTreeView_ExpandRecursively2(QTreeView* self, QModelIndex* index, int depth);
 void QTreeView_Delete(QTreeView* self);
 

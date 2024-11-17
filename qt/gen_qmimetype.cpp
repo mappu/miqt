@@ -83,7 +83,7 @@ struct miqt_string QMimeType_IconName(const QMimeType* self) {
 	return _ms;
 }
 
-struct miqt_array QMimeType_GlobPatterns(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_GlobPatterns(const QMimeType* self) {
 	QStringList _ret = self->globPatterns();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -103,7 +103,7 @@ struct miqt_array QMimeType_GlobPatterns(const QMimeType* self) {
 	return _out;
 }
 
-struct miqt_array QMimeType_ParentMimeTypes(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_ParentMimeTypes(const QMimeType* self) {
 	QStringList _ret = self->parentMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -123,7 +123,7 @@ struct miqt_array QMimeType_ParentMimeTypes(const QMimeType* self) {
 	return _out;
 }
 
-struct miqt_array QMimeType_AllAncestors(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_AllAncestors(const QMimeType* self) {
 	QStringList _ret = self->allAncestors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -143,7 +143,7 @@ struct miqt_array QMimeType_AllAncestors(const QMimeType* self) {
 	return _out;
 }
 
-struct miqt_array QMimeType_Aliases(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_Aliases(const QMimeType* self) {
 	QStringList _ret = self->aliases();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -163,7 +163,7 @@ struct miqt_array QMimeType_Aliases(const QMimeType* self) {
 	return _out;
 }
 
-struct miqt_array QMimeType_Suffixes(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_Suffixes(const QMimeType* self) {
 	QStringList _ret = self->suffixes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

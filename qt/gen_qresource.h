@@ -1,5 +1,6 @@
-#ifndef GEN_QRESOURCE_H
-#define GEN_QRESOURCE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QRESOURCE_H
+#define MIQT_QT_GEN_QRESOURCE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -41,7 +42,7 @@ long long QResource_UncompressedSize(const QResource* self);
 struct miqt_string QResource_UncompressedData(const QResource* self);
 QDateTime* QResource_LastModified(const QResource* self);
 void QResource_AddSearchPath(struct miqt_string path);
-struct miqt_array QResource_SearchPaths();
+struct miqt_array /* of struct miqt_string */  QResource_SearchPaths();
 bool QResource_IsCompressed(const QResource* self);
 bool QResource_RegisterResource(struct miqt_string rccFilename);
 bool QResource_UnregisterResource(struct miqt_string rccFilename);

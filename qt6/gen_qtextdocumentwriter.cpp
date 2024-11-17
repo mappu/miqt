@@ -77,7 +77,7 @@ bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocum
 	return self->write(*fragment);
 }
 
-struct miqt_array QTextDocumentWriter_SupportedDocumentFormats() {
+struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocumentFormats() {
 	QList<QByteArray> _ret = QTextDocumentWriter::supportedDocumentFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

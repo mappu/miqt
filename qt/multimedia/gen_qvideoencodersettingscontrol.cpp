@@ -40,7 +40,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -53,7 +53,7 @@ struct miqt_array QVideoEncoderSettingsControl_SupportedResolutions(const QVideo
 	return _out;
 }
 
-struct miqt_array QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -66,7 +66,7 @@ struct miqt_array QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoE
 	return _out;
 }
 
-struct miqt_array QVideoEncoderSettingsControl_SupportedVideoCodecs(const QVideoEncoderSettingsControl* self) {
+struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_SupportedVideoCodecs(const QVideoEncoderSettingsControl* self) {
 	QStringList _ret = self->supportedVideoCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -150,7 +150,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_array QVideoEncoderSettingsControl_SupportedResolutions2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -163,7 +163,7 @@ struct miqt_array QVideoEncoderSettingsControl_SupportedResolutions2(const QVide
 	return _out;
 }
 
-struct miqt_array QVideoEncoderSettingsControl_SupportedFrameRates2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates2(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));

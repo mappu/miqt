@@ -1,5 +1,6 @@
-#ifndef GEN_QEXCEPTION_H
-#define GEN_QEXCEPTION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QEXCEPTION_H
+#define MIQT_QT_GEN_QEXCEPTION_H
 
 #include <stdbool.h>
 #include <stddef.h>

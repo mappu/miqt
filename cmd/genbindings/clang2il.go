@@ -433,11 +433,6 @@ nextMethod:
 			var mm CppMethod
 			mm.MethodName = methodName
 
-			if strings.Contains(methodName, `QGADGET`) {
-				log.Printf("Skipping method %q with weird QGADGET behaviour\n", mm.MethodName)
-				continue
-			}
-
 			err := parseMethod(node, &mm)
 			if err != nil {
 				if errors.Is(err, ErrTooComplex) {
@@ -585,11 +580,9 @@ nextEnumEntry:
 			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
 			// e.g. QCalendar (when there is a int typecast)
 			if ei1Kind == "ImplicitCastExpr" {
-				log.Printf("Got ImplicitCastExpr OK")
 				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
 					ei2_0 := ei2[0].(map[string]interface{})
 					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
-						log.Printf("Got ConstantExpr OK")
 						if ei2Value, ok := ei2_0["value"].(string); ok {
 							cee.EntryValue = ei2Value
 							goto afterParse
@@ -609,7 +602,7 @@ nextEnumEntry:
 		if !foundValidInner {
 			// Enum case without definition e.g. QCalendar::Gregorian
 			// This means one more than the last value
-			cee.EntryValue = fmt.Sprintf("%d", lastImplicitValue+1)
+			cee.EntryValue = strconv.FormatInt(lastImplicitValue+1, 10)
 		}
 
 	afterParse:

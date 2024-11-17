@@ -82,7 +82,7 @@ bool QNetworkConfiguration_IsRoamingAvailable(const QNetworkConfiguration* self)
 	return self->isRoamingAvailable();
 }
 
-struct miqt_array QNetworkConfiguration_Children(const QNetworkConfiguration* self) {
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfiguration_Children(const QNetworkConfiguration* self) {
 	QList<QNetworkConfiguration> _ret = self->children();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkConfiguration** _arr = static_cast<QNetworkConfiguration**>(malloc(sizeof(QNetworkConfiguration*) * _ret.length()));

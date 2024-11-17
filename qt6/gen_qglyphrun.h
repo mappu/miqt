@@ -1,5 +1,6 @@
-#ifndef GEN_QGLYPHRUN_H
-#define GEN_QGLYPHRUN_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGLYPHRUN_H
+#define MIQT_QT6_GEN_QGLYPHRUN_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -32,10 +33,10 @@ void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other);
 QRawFont* QGlyphRun_RawFont(const QGlyphRun* self);
 void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont);
 void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size);
-struct miqt_array QGlyphRun_GlyphIndexes(const QGlyphRun* self);
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */ glyphIndexes);
-struct miqt_array QGlyphRun_Positions(const QGlyphRun* self);
-void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */ positions);
+struct miqt_array /* of unsigned int */  QGlyphRun_GlyphIndexes(const QGlyphRun* self);
+void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes);
+struct miqt_array /* of QPointF* */  QGlyphRun_Positions(const QGlyphRun* self);
+void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions);
 void QGlyphRun_Clear(QGlyphRun* self);
 bool QGlyphRun_OperatorEqual(const QGlyphRun* self, QGlyphRun* other);
 bool QGlyphRun_OperatorNotEqual(const QGlyphRun* self, QGlyphRun* other);

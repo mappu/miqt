@@ -1,5 +1,6 @@
-#ifndef GEN_QPEN_H
-#define GEN_QPEN_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPEN_H
+#define MIQT_QT_GEN_QPEN_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,8 +36,8 @@ void QPen_OperatorAssign(QPen* self, QPen* pen);
 void QPen_Swap(QPen* self, QPen* other);
 int QPen_Style(const QPen* self);
 void QPen_SetStyle(QPen* self, int style);
-struct miqt_array QPen_DashPattern(const QPen* self);
-void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */ pattern);
+struct miqt_array /* of double */  QPen_DashPattern(const QPen* self);
+void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */  pattern);
 double QPen_DashOffset(const QPen* self);
 void QPen_SetDashOffset(QPen* self, double doffset);
 double QPen_MiterLimit(const QPen* self);

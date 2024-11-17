@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTSCROLLAREA_H
-#define GEN_QABSTRACTSCROLLAREA_H
+#pragma once
+#ifndef MIQT_QT_GEN_QABSTRACTSCROLLAREA_H
+#define MIQT_QT_GEN_QABSTRACTSCROLLAREA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -44,7 +45,7 @@ void QAbstractScrollArea_SetHorizontalScrollBar(QAbstractScrollArea* self, QScro
 QWidget* QAbstractScrollArea_CornerWidget(const QAbstractScrollArea* self);
 void QAbstractScrollArea_SetCornerWidget(QAbstractScrollArea* self, QWidget* widget);
 void QAbstractScrollArea_AddScrollBarWidget(QAbstractScrollArea* self, QWidget* widget, int alignment);
-struct miqt_array QAbstractScrollArea_ScrollBarWidgets(QAbstractScrollArea* self, int alignment);
+struct miqt_array /* of QWidget* */  QAbstractScrollArea_ScrollBarWidgets(QAbstractScrollArea* self, int alignment);
 QWidget* QAbstractScrollArea_Viewport(const QAbstractScrollArea* self);
 void QAbstractScrollArea_SetViewport(QAbstractScrollArea* self, QWidget* widget);
 QSize* QAbstractScrollArea_MaximumViewportSize(const QAbstractScrollArea* self);

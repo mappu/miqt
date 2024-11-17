@@ -99,7 +99,7 @@ void QMessageBox_RemoveButton(QMessageBox* self, QAbstractButton* button) {
 	self->removeButton(button);
 }
 
-struct miqt_array QMessageBox_Buttons(const QMessageBox* self) {
+struct miqt_array /* of QAbstractButton* */  QMessageBox_Buttons(const QMessageBox* self) {
 	QList<QAbstractButton *> _ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** _arr = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QRASTERWINDOW_H
-#define GEN_QRASTERWINDOW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QRASTERWINDOW_H
+#define MIQT_QT_GEN_QRASTERWINDOW_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QTREEWIDGET_H
-#define GEN_QTREEWIDGET_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTREEWIDGET_H
+#define MIQT_QT_GEN_QTREEWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -46,21 +47,21 @@ typedef struct QWidget QWidget;
 #endif
 
 QTreeWidgetItem* QTreeWidgetItem_new();
-QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */ strings);
+QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings);
 QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview);
-QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */ strings);
+QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings);
 QTreeWidgetItem* QTreeWidgetItem_new5(QTreeWidget* treeview, QTreeWidgetItem* after);
 QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent);
-QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */ strings);
+QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings);
 QTreeWidgetItem* QTreeWidgetItem_new8(QTreeWidgetItem* parent, QTreeWidgetItem* after);
 QTreeWidgetItem* QTreeWidgetItem_new9(QTreeWidgetItem* other);
 QTreeWidgetItem* QTreeWidgetItem_new10(int typeVal);
-QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */ strings, int typeVal);
+QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int typeVal);
 QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal);
-QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */ strings, int typeVal);
+QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int typeVal);
 QTreeWidgetItem* QTreeWidgetItem_new14(QTreeWidget* treeview, QTreeWidgetItem* after, int typeVal);
 QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal);
-QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */ strings, int typeVal);
+QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int typeVal);
 QTreeWidgetItem* QTreeWidgetItem_new17(QTreeWidgetItem* parent, QTreeWidgetItem* after, int typeVal);
 QTreeWidgetItem* QTreeWidgetItem_Clone(const QTreeWidgetItem* self);
 QTreeWidget* QTreeWidgetItem_TreeWidget(const QTreeWidgetItem* self);
@@ -119,9 +120,9 @@ void QTreeWidgetItem_AddChild(QTreeWidgetItem* self, QTreeWidgetItem* child);
 void QTreeWidgetItem_InsertChild(QTreeWidgetItem* self, int index, QTreeWidgetItem* child);
 void QTreeWidgetItem_RemoveChild(QTreeWidgetItem* self, QTreeWidgetItem* child);
 QTreeWidgetItem* QTreeWidgetItem_TakeChild(QTreeWidgetItem* self, int index);
-void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array /* of QTreeWidgetItem* */ children);
-void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array /* of QTreeWidgetItem* */ children);
-struct miqt_array QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self);
+void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array /* of QTreeWidgetItem* */  children);
+void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array /* of QTreeWidgetItem* */  children);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self);
 int QTreeWidgetItem_Type(const QTreeWidgetItem* self);
 void QTreeWidgetItem_SortChildren(QTreeWidgetItem* self, int column, int order);
 void QTreeWidgetItem_Delete(QTreeWidgetItem* self);
@@ -141,11 +142,11 @@ void QTreeWidget_InsertTopLevelItem(QTreeWidget* self, int index, QTreeWidgetIte
 void QTreeWidget_AddTopLevelItem(QTreeWidget* self, QTreeWidgetItem* item);
 QTreeWidgetItem* QTreeWidget_TakeTopLevelItem(QTreeWidget* self, int index);
 int QTreeWidget_IndexOfTopLevelItem(const QTreeWidget* self, QTreeWidgetItem* item);
-void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array /* of QTreeWidgetItem* */ items);
-void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array /* of QTreeWidgetItem* */ items);
+void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array /* of QTreeWidgetItem* */  items);
+void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array /* of QTreeWidgetItem* */  items);
 QTreeWidgetItem* QTreeWidget_HeaderItem(const QTreeWidget* self);
 void QTreeWidget_SetHeaderItem(QTreeWidget* self, QTreeWidgetItem* item);
-void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array /* of struct miqt_string */ labels);
+void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array /* of struct miqt_string */  labels);
 void QTreeWidget_SetHeaderLabel(QTreeWidget* self, struct miqt_string label);
 QTreeWidgetItem* QTreeWidget_CurrentItem(const QTreeWidget* self);
 int QTreeWidget_CurrentColumn(const QTreeWidget* self);
@@ -166,8 +167,8 @@ void QTreeWidget_SetItemWidget(QTreeWidget* self, QTreeWidgetItem* item, int col
 void QTreeWidget_RemoveItemWidget(QTreeWidget* self, QTreeWidgetItem* item, int column);
 bool QTreeWidget_IsItemSelected(const QTreeWidget* self, QTreeWidgetItem* item);
 void QTreeWidget_SetItemSelected(QTreeWidget* self, QTreeWidgetItem* item, bool selectVal);
-struct miqt_array QTreeWidget_SelectedItems(const QTreeWidget* self);
-struct miqt_array QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string text, int flags);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_SelectedItems(const QTreeWidget* self);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string text, int flags);
 bool QTreeWidget_IsItemHidden(const QTreeWidget* self, QTreeWidgetItem* item);
 void QTreeWidget_SetItemHidden(QTreeWidget* self, QTreeWidgetItem* item, bool hide);
 bool QTreeWidget_IsItemExpanded(const QTreeWidget* self, QTreeWidgetItem* item);
@@ -209,7 +210,7 @@ void QTreeWidget_EditItem2(QTreeWidget* self, QTreeWidgetItem* item, int column)
 void QTreeWidget_OpenPersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_ClosePersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 bool QTreeWidget_IsPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
-struct miqt_array QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column);
 void QTreeWidget_ScrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint);
 void QTreeWidget_Delete(QTreeWidget* self);
 

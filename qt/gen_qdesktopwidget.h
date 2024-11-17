@@ -1,5 +1,6 @@
-#ifndef GEN_QDESKTOPWIDGET_H
-#define GEN_QDESKTOPWIDGET_H
+#pragma once
+#ifndef MIQT_QT_GEN_QDESKTOPWIDGET_H
+#define MIQT_QT_GEN_QDESKTOPWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>

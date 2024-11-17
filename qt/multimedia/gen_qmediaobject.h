@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAOBJECT_H
-#define GEN_QMEDIAOBJECT_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIAOBJECT_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIAOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ bool QMediaObject_Bind(QMediaObject* self, QObject* param1);
 void QMediaObject_Unbind(QMediaObject* self, QObject* param1);
 bool QMediaObject_IsMetaDataAvailable(const QMediaObject* self);
 QVariant* QMediaObject_MetaData(const QMediaObject* self, struct miqt_string key);
-struct miqt_array QMediaObject_AvailableMetaData(const QMediaObject* self);
+struct miqt_array /* of struct miqt_string */  QMediaObject_AvailableMetaData(const QMediaObject* self);
 void QMediaObject_NotifyIntervalChanged(QMediaObject* self, int milliSeconds);
 void QMediaObject_connect_NotifyIntervalChanged(QMediaObject* self, intptr_t slot);
 void QMediaObject_MetaDataAvailableChanged(QMediaObject* self, bool available);

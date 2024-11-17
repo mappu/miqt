@@ -1,5 +1,6 @@
-#ifndef GEN_QGUIAPPLICATION_H
-#define GEN_QGUIAPPLICATION_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGUIAPPLICATION_H
+#define MIQT_QT6_GEN_QGUIAPPLICATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -56,8 +57,8 @@ void QGuiApplication_SetApplicationDisplayName(struct miqt_string name);
 struct miqt_string QGuiApplication_ApplicationDisplayName();
 void QGuiApplication_SetDesktopFileName(struct miqt_string name);
 struct miqt_string QGuiApplication_DesktopFileName();
-struct miqt_array QGuiApplication_AllWindows();
-struct miqt_array QGuiApplication_TopLevelWindows();
+struct miqt_array /* of QWindow* */  QGuiApplication_AllWindows();
+struct miqt_array /* of QWindow* */  QGuiApplication_TopLevelWindows();
 QWindow* QGuiApplication_TopLevelAt(QPoint* pos);
 void QGuiApplication_SetWindowIcon(QIcon* icon);
 QIcon* QGuiApplication_WindowIcon();
@@ -66,7 +67,7 @@ QWindow* QGuiApplication_ModalWindow();
 QWindow* QGuiApplication_FocusWindow();
 QObject* QGuiApplication_FocusObject();
 QScreen* QGuiApplication_PrimaryScreen();
-struct miqt_array QGuiApplication_Screens();
+struct miqt_array /* of QScreen* */  QGuiApplication_Screens();
 QScreen* QGuiApplication_ScreenAt(QPoint* point);
 double QGuiApplication_DevicePixelRatio(const QGuiApplication* self);
 QCursor* QGuiApplication_OverrideCursor();

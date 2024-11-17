@@ -1,5 +1,6 @@
-#ifndef GEN_QJSONARRAY_H
-#define GEN_QJSONARRAY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QJSONARRAY_H
+#define MIQT_QT6_GEN_QJSONARRAY_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ typedef struct QJsonValueRef QJsonValueRef;
 QJsonArray* QJsonArray_new();
 QJsonArray* QJsonArray_new2(QJsonArray* other);
 void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other);
-QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */ list);
+QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */  list);
 ptrdiff_t QJsonArray_Size(const QJsonArray* self);
 ptrdiff_t QJsonArray_Count(const QJsonArray* self);
 bool QJsonArray_IsEmpty(const QJsonArray* self);

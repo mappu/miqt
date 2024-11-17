@@ -1,5 +1,6 @@
-#ifndef GEN_QACCESSIBLEPLUGIN_H
-#define GEN_QACCESSIBLEPLUGIN_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QACCESSIBLEPLUGIN_H
+#define MIQT_QT6_GEN_QACCESSIBLEPLUGIN_H
 
 #include <stdbool.h>
 #include <stddef.h>

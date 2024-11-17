@@ -1,5 +1,6 @@
-#ifndef GEN_QPLUGIN_H
-#define GEN_QPLUGIN_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPLUGIN_H
+#define MIQT_QT_GEN_QPLUGIN_H
 
 #include <stdbool.h>
 #include <stddef.h>

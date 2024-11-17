@@ -97,6 +97,23 @@ func (this *QRadioTunerControl) FrequencyStep(b QRadioTuner__Band) int {
 	return (int)(C.QRadioTunerControl_FrequencyStep(this.h, (C.int)(b)))
 }
 
+func (this *QRadioTunerControl) FrequencyRange(b QRadioTuner__Band) struct {
+	First  int
+	Second int
+} {
+	var _mm C.struct_miqt_map = C.QRadioTunerControl_FrequencyRange(this.h, (C.int)(b))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 func (this *QRadioTunerControl) SetFrequency(frequency int) {
 	C.QRadioTunerControl_SetFrequency(this.h, (C.int)(frequency))
 }

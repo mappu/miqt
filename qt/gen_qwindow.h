@@ -1,5 +1,6 @@
-#ifndef GEN_QWINDOW_H
-#define GEN_QWINDOW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QWINDOW_H
+#define MIQT_QT_GEN_QWINDOW_H
 
 #include <stdbool.h>
 #include <stddef.h>

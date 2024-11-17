@@ -1,5 +1,6 @@
-#ifndef GEN_QFUTUREINTERFACE_H
-#define GEN_QFUTUREINTERFACE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QFUTUREINTERFACE_H
+#define MIQT_QT6_GEN_QFUTUREINTERFACE_H
 
 #include <stdbool.h>
 #include <stddef.h>

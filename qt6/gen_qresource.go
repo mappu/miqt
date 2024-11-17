@@ -122,7 +122,7 @@ func (this *QResource) Size() int64 {
 }
 
 func (this *QResource) Data() *byte {
-	return (*byte)(C.QResource_Data(this.h))
+	return (*byte)(unsafe.Pointer(C.QResource_Data(this.h)))
 }
 
 func (this *QResource) UncompressedSize() int64 {

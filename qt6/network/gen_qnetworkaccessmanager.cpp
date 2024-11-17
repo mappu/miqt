@@ -50,7 +50,7 @@ struct miqt_string QNetworkAccessManager_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QNetworkAccessManager_SupportedSchemes(const QNetworkAccessManager* self) {
+struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_SupportedSchemes(const QNetworkAccessManager* self) {
 	QStringList _ret = self->supportedSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -126,7 +126,7 @@ bool QNetworkAccessManager_IsStrictTransportSecurityStoreEnabled(const QNetworkA
 	return self->isStrictTransportSecurityStoreEnabled();
 }
 
-void QNetworkAccessManager_AddStrictTransportSecurityHosts(QNetworkAccessManager* self, struct miqt_array /* of QHstsPolicy* */ knownHosts) {
+void QNetworkAccessManager_AddStrictTransportSecurityHosts(QNetworkAccessManager* self, struct miqt_array /* of QHstsPolicy* */  knownHosts) {
 	QList<QHstsPolicy> knownHosts_QList;
 	knownHosts_QList.reserve(knownHosts.len);
 	QHstsPolicy** knownHosts_arr = static_cast<QHstsPolicy**>(knownHosts.data);
@@ -136,7 +136,7 @@ void QNetworkAccessManager_AddStrictTransportSecurityHosts(QNetworkAccessManager
 	self->addStrictTransportSecurityHosts(knownHosts_QList);
 }
 
-struct miqt_array QNetworkAccessManager_StrictTransportSecurityHosts(const QNetworkAccessManager* self) {
+struct miqt_array /* of QHstsPolicy* */  QNetworkAccessManager_StrictTransportSecurityHosts(const QNetworkAccessManager* self) {
 	QList<QHstsPolicy> _ret = self->strictTransportSecurityHosts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QHstsPolicy** _arr = static_cast<QHstsPolicy**>(malloc(sizeof(QHstsPolicy*) * _ret.length()));
@@ -292,7 +292,7 @@ void QNetworkAccessManager_connect_Encrypted(QNetworkAccessManager* self, intptr
 	});
 }
 
-void QNetworkAccessManager_SslErrors(QNetworkAccessManager* self, QNetworkReply* reply, struct miqt_array /* of QSslError* */ errors) {
+void QNetworkAccessManager_SslErrors(QNetworkAccessManager* self, QNetworkReply* reply, struct miqt_array /* of QSslError* */  errors) {
 	QList<QSslError> errors_QList;
 	errors_QList.reserve(errors.len);
 	QSslError** errors_arr = static_cast<QSslError**>(errors.data);
@@ -314,7 +314,7 @@ void QNetworkAccessManager_connect_SslErrors(QNetworkAccessManager* self, intptr
 		struct miqt_array errors_out;
 		errors_out.len = errors_ret.length();
 		errors_out.data = static_cast<void*>(errors_arr);
-		struct miqt_array sigval2 = errors_out;
+		struct miqt_array /* of QSslError* */  sigval2 = errors_out;
 		miqt_exec_callback_QNetworkAccessManager_SslErrors(slot, sigval1, sigval2);
 	});
 }

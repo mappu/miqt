@@ -302,15 +302,15 @@ func (this *QImage) IsGrayscale() bool {
 }
 
 func (this *QImage) Bits() *byte {
-	return (*byte)(C.QImage_Bits(this.h))
+	return (*byte)(unsafe.Pointer(C.QImage_Bits(this.h)))
 }
 
 func (this *QImage) Bits2() *byte {
-	return (*byte)(C.QImage_Bits2(this.h))
+	return (*byte)(unsafe.Pointer(C.QImage_Bits2(this.h)))
 }
 
 func (this *QImage) ConstBits() *byte {
-	return (*byte)(C.QImage_ConstBits(this.h))
+	return (*byte)(unsafe.Pointer(C.QImage_ConstBits(this.h)))
 }
 
 func (this *QImage) SizeInBytes() int64 {
@@ -318,15 +318,15 @@ func (this *QImage) SizeInBytes() int64 {
 }
 
 func (this *QImage) ScanLine(param1 int) *byte {
-	return (*byte)(C.QImage_ScanLine(this.h, (C.int)(param1)))
+	return (*byte)(unsafe.Pointer(C.QImage_ScanLine(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) ScanLineWithInt(param1 int) *byte {
-	return (*byte)(C.QImage_ScanLineWithInt(this.h, (C.int)(param1)))
+	return (*byte)(unsafe.Pointer(C.QImage_ScanLineWithInt(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) ConstScanLine(param1 int) *byte {
-	return (*byte)(C.QImage_ConstScanLine(this.h, (C.int)(param1)))
+	return (*byte)(unsafe.Pointer(C.QImage_ConstScanLine(this.h, (C.int)(param1))))
 }
 
 func (this *QImage) BytesPerLine() int64 {

@@ -1,5 +1,6 @@
-#ifndef GEN_QPRINTER_H
-#define GEN_QPRINTER_H
+#pragma once
+#ifndef MIQT_QT_PRINTSUPPORT_GEN_QPRINTER_H
+#define MIQT_QT_PRINTSUPPORT_GEN_QPRINTER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -88,7 +89,7 @@ void QPrinter_SetPaperSource(QPrinter* self, int paperSource);
 int QPrinter_PaperSource(const QPrinter* self);
 void QPrinter_SetDuplex(QPrinter* self, int duplex);
 int QPrinter_Duplex(const QPrinter* self);
-struct miqt_array QPrinter_SupportedResolutions(const QPrinter* self);
+struct miqt_array /* of int */  QPrinter_SupportedResolutions(const QPrinter* self);
 void QPrinter_SetFontEmbeddingEnabled(QPrinter* self, bool enable);
 bool QPrinter_FontEmbeddingEnabled(const QPrinter* self);
 void QPrinter_SetDoubleSidedPrinting(QPrinter* self, bool enable);

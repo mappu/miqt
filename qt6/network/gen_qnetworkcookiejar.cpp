@@ -38,7 +38,7 @@ struct miqt_string QNetworkCookieJar_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar* self, QUrl* url) {
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar* self, QUrl* url) {
 	QList<QNetworkCookie> _ret = self->cookiesForUrl(*url);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
@@ -51,7 +51,7 @@ struct miqt_array QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar* self,
 	return _out;
 }
 
-bool QNetworkCookieJar_SetCookiesFromUrl(QNetworkCookieJar* self, struct miqt_array /* of QNetworkCookie* */ cookieList, QUrl* url) {
+bool QNetworkCookieJar_SetCookiesFromUrl(QNetworkCookieJar* self, struct miqt_array /* of QNetworkCookie* */  cookieList, QUrl* url) {
 	QList<QNetworkCookie> cookieList_QList;
 	cookieList_QList.reserve(cookieList.len);
 	QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(cookieList.data);

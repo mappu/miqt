@@ -76,7 +76,7 @@ bool QWizard_HasVisitedPage(const QWizard* self, int id) {
 	return self->hasVisitedPage(static_cast<int>(id));
 }
 
-struct miqt_array QWizard_VisitedPages(const QWizard* self) {
+struct miqt_array /* of int */  QWizard_VisitedPages(const QWizard* self) {
 	QList<int> _ret = self->visitedPages();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -89,7 +89,7 @@ struct miqt_array QWizard_VisitedPages(const QWizard* self) {
 	return _out;
 }
 
-struct miqt_array QWizard_VisitedIds(const QWizard* self) {
+struct miqt_array /* of int */  QWizard_VisitedIds(const QWizard* self) {
 	QList<int> _ret = self->visitedIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -102,7 +102,7 @@ struct miqt_array QWizard_VisitedIds(const QWizard* self) {
 	return _out;
 }
 
-struct miqt_array QWizard_PageIds(const QWizard* self) {
+struct miqt_array /* of int */  QWizard_PageIds(const QWizard* self) {
 	QList<int> _ret = self->pageIds();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -191,7 +191,7 @@ struct miqt_string QWizard_ButtonText(const QWizard* self, int which) {
 	return _ms;
 }
 
-void QWizard_SetButtonLayout(QWizard* self, struct miqt_array /* of int */ layout) {
+void QWizard_SetButtonLayout(QWizard* self, struct miqt_array /* of int */  layout) {
 	QList<QWizard::WizardButton> layout_QList;
 	layout_QList.reserve(layout.len);
 	int* layout_arr = static_cast<int*>(layout.data);

@@ -1,5 +1,6 @@
-#ifndef GEN_QSOUNDEFFECT_H
-#define GEN_QSOUNDEFFECT_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QSOUNDEFFECT_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QSOUNDEFFECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -34,7 +35,7 @@ QSoundEffect* QSoundEffect_new4(QAudioDevice* audioDevice, QObject* parent);
 QMetaObject* QSoundEffect_MetaObject(const QSoundEffect* self);
 void* QSoundEffect_Metacast(QSoundEffect* self, const char* param1);
 struct miqt_string QSoundEffect_Tr(const char* s);
-struct miqt_array QSoundEffect_SupportedMimeTypes();
+struct miqt_array /* of struct miqt_string */  QSoundEffect_SupportedMimeTypes();
 QUrl* QSoundEffect_Source(const QSoundEffect* self);
 void QSoundEffect_SetSource(QSoundEffect* self, QUrl* url);
 int QSoundEffect_LoopCount(const QSoundEffect* self);

@@ -60,7 +60,7 @@ bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section,
 	return self->setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value);
 }
 
-bool QTransposeProxyModel_SetItemData(QTransposeProxyModel* self, QModelIndex* index, struct miqt_map roles) {
+bool QTransposeProxyModel_SetItemData(QTransposeProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
@@ -74,7 +74,7 @@ QSize* QTransposeProxyModel_Span(const QTransposeProxyModel* self, QModelIndex* 
 	return new QSize(self->span(*index));
 }
 
-struct miqt_map QTransposeProxyModel_ItemData(const QTransposeProxyModel* self, QModelIndex* index) {
+struct miqt_map /* of int to QVariant* */  QTransposeProxyModel_ItemData(const QTransposeProxyModel* self, QModelIndex* index) {
 	QMap<int, QVariant> _ret = self->itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));

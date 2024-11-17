@@ -15,7 +15,7 @@
 #include "gen_qdirmodel.h"
 #include "_cgo_export.h"
 
-QDirModel* QDirModel_new(struct miqt_array /* of struct miqt_string */ nameFilters, int filters, int sort) {
+QDirModel* QDirModel_new(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
@@ -30,7 +30,7 @@ QDirModel* QDirModel_new2() {
 	return new QDirModel();
 }
 
-QDirModel* QDirModel_new3(struct miqt_array /* of struct miqt_string */ nameFilters, int filters, int sort, QObject* parent) {
+QDirModel* QDirModel_new3(struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort, QObject* parent) {
 	QStringList nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
@@ -116,7 +116,7 @@ void QDirModel_Sort(QDirModel* self, int column) {
 	self->sort(static_cast<int>(column));
 }
 
-struct miqt_array QDirModel_MimeTypes(const QDirModel* self) {
+struct miqt_array /* of struct miqt_string */  QDirModel_MimeTypes(const QDirModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -136,7 +136,7 @@ struct miqt_array QDirModel_MimeTypes(const QDirModel* self) {
 	return _out;
 }
 
-QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
+QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -163,7 +163,7 @@ QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
 	return self->iconProvider();
 }
 
-void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array /* of struct miqt_string */ filters) {
+void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array /* of struct miqt_string */  filters) {
 	QStringList filters_QList;
 	filters_QList.reserve(filters.len);
 	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
@@ -174,7 +174,7 @@ void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array /* of struct mi
 	self->setNameFilters(filters_QList);
 }
 
-struct miqt_array QDirModel_NameFilters(const QDirModel* self) {
+struct miqt_array /* of struct miqt_string */  QDirModel_NameFilters(const QDirModel* self) {
 	QStringList _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOFORMAT_H
-#define GEN_QAUDIOFORMAT_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIOFORMAT_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIOFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>

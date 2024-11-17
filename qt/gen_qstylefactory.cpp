@@ -8,7 +8,7 @@
 #include "gen_qstylefactory.h"
 #include "_cgo_export.h"
 
-struct miqt_array QStyleFactory_Keys() {
+struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys() {
 	QStringList _ret = QStyleFactory::keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

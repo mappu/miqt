@@ -129,7 +129,7 @@ QSize* QVideoSurfaceFormat_SizeHint(const QVideoSurfaceFormat* self) {
 	return new QSize(self->sizeHint());
 }
 
-struct miqt_array QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self) {
+struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self) {
 	QList<QByteArray> _ret = self->propertyNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

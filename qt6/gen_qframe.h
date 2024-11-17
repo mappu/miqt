@@ -1,5 +1,6 @@
-#ifndef GEN_QFRAME_H
-#define GEN_QFRAME_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QFRAME_H
+#define MIQT_QT6_GEN_QFRAME_H
 
 #include <stdbool.h>
 #include <stddef.h>

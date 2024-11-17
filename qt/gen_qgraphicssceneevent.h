@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSSCENEEVENT_H
-#define GEN_QGRAPHICSSCENEEVENT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QGRAPHICSSCENEEVENT_H
+#define MIQT_QT_GEN_QGRAPHICSSCENEEVENT_H
 
 #include <stdbool.h>
 #include <stddef.h>

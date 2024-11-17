@@ -171,7 +171,7 @@ func AllowClass(className string) bool {
 }
 
 func AllowSignal(mm CppMethod) bool {
-	if mm.ReturnType.ParameterType != "void" {
+	if !mm.ReturnType.Void() {
 		// This affects how we cast the signal function pointer for connect
 		// It would be fixable, but, real signals always have void return types anyway
 		return false
@@ -197,6 +197,10 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Skip private type
 	}
 
+	if strings.Contains(mm.MethodName, `QGADGET`) {
+		return ErrTooComplex // Skipping method with weird QGADGET behaviour
+	}
+
 	if mm.IsReceiverMethod() {
 		// Non-projectable receiver pattern parameters
 		return ErrTooComplex
@@ -214,6 +218,12 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Qt 6: Present in header, but no-op method was not included in compiled library
 	}
 
+	if className == "QDeadlineTimer" && mm.MethodName == "_q_data" {
+		// Qt 6.4: Present in header with "not a public method" comment, not present in Qt 6.6
+		// @ref https://github.com/qt/qtbase/blob/v6.4.0/src/corelib/kernel/qdeadlinetimer.h#L156C29-L156C36
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 
@@ -222,9 +232,6 @@ func AllowMethod(className string, mm CppMethod) error {
 // Any type not permitted by AllowClass is also not permitted by this method.
 func AllowType(p CppParameter, isReturnType bool) error {
 
-	if p.QPairOf() {
-		return ErrTooComplex // e.g. QGradientStop
-	}
 	if t, ok := p.QSetOf(); ok {
 		if err := AllowType(t, isReturnType); err != nil {
 			return err
@@ -252,6 +259,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		// This affects qnetwork qsslconfiguration BackendConfiguration
 		if kType.ParameterType == "QByteArray" {
 			return ErrTooComplex
+		}
+	}
+	if kType, vType, ok := p.QPairOf(); ok {
+		if err := AllowType(kType, isReturnType); err != nil {
+			return err
+		}
+		if err := AllowType(vType, isReturnType); err != nil {
+			return err
 		}
 	}
 	if p.QMultiMapOf() {

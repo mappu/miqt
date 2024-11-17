@@ -191,7 +191,7 @@ func (this *QFileDevice) SetPermissions(permissionSpec QFileDevice__Permission) 
 }
 
 func (this *QFileDevice) Map(offset int64, size int64) *byte {
-	return (*byte)(C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size)))
+	return (*byte)(unsafe.Pointer(C.QFileDevice_Map(this.h, (C.longlong)(offset), (C.longlong)(size))))
 }
 
 func (this *QFileDevice) Unmap(address *byte) bool {
@@ -254,7 +254,7 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
-	return (*byte)(C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags)))
+	return (*byte)(unsafe.Pointer(C.QFileDevice_Map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags))))
 }
 
 // Delete this object from C++ memory.

@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTOPTION_H
-#define GEN_QTEXTOPTION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTOPTION_H
+#define MIQT_QT_GEN_QTEXTOPTION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -43,10 +44,10 @@ void QTextOption_SetTabStop(QTextOption* self, double tabStop);
 double QTextOption_TabStop(const QTextOption* self);
 void QTextOption_SetTabStopDistance(QTextOption* self, double tabStopDistance);
 double QTextOption_TabStopDistance(const QTextOption* self);
-void QTextOption_SetTabArray(QTextOption* self, struct miqt_array /* of double */ tabStops);
-struct miqt_array QTextOption_TabArray(const QTextOption* self);
-void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */ tabStops);
-struct miqt_array QTextOption_Tabs(const QTextOption* self);
+void QTextOption_SetTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops);
+struct miqt_array /* of double */  QTextOption_TabArray(const QTextOption* self);
+void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */  tabStops);
+struct miqt_array /* of QTextOption__Tab* */  QTextOption_Tabs(const QTextOption* self);
 void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b);
 bool QTextOption_UseDesignMetrics(const QTextOption* self);
 void QTextOption_Delete(QTextOption* self);

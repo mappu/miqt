@@ -1,5 +1,6 @@
-#ifndef GEN_QSEMAPHORE_H
-#define GEN_QSEMAPHORE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSEMAPHORE_H
+#define MIQT_QT_GEN_QSEMAPHORE_H
 
 #include <stdbool.h>
 #include <stddef.h>

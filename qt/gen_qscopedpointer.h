@@ -1,5 +1,6 @@
-#ifndef GEN_QSCOPEDPOINTER_H
-#define GEN_QSCOPEDPOINTER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSCOPEDPOINTER_H
+#define MIQT_QT_GEN_QSCOPEDPOINTER_H
 
 #include <stdbool.h>
 #include <stddef.h>

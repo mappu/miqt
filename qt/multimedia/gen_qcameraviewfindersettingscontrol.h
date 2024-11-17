@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAVIEWFINDERSETTINGSCONTROL_H
-#define GEN_QCAMERAVIEWFINDERSETTINGSCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAVIEWFINDERSETTINGSCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAVIEWFINDERSETTINGSCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -44,7 +45,7 @@ QMetaObject* QCameraViewfinderSettingsControl2_MetaObject(const QCameraViewfinde
 void* QCameraViewfinderSettingsControl2_Metacast(QCameraViewfinderSettingsControl2* self, const char* param1);
 struct miqt_string QCameraViewfinderSettingsControl2_Tr(const char* s);
 struct miqt_string QCameraViewfinderSettingsControl2_TrUtf8(const char* s);
-struct miqt_array QCameraViewfinderSettingsControl2_SupportedViewfinderSettings(const QCameraViewfinderSettingsControl2* self);
+struct miqt_array /* of QCameraViewfinderSettings* */  QCameraViewfinderSettingsControl2_SupportedViewfinderSettings(const QCameraViewfinderSettingsControl2* self);
 QCameraViewfinderSettings* QCameraViewfinderSettingsControl2_ViewfinderSettings(const QCameraViewfinderSettingsControl2* self);
 void QCameraViewfinderSettingsControl2_SetViewfinderSettings(QCameraViewfinderSettingsControl2* self, QCameraViewfinderSettings* settings);
 struct miqt_string QCameraViewfinderSettingsControl2_Tr2(const char* s, const char* c);

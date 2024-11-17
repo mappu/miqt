@@ -138,6 +138,68 @@ func (this *QUrlQuery) QueryPairDelimiter() *QChar {
 	return _goptr
 }
 
+func (this *QUrlQuery) SetQueryItems(query []struct {
+	First  string
+	Second string
+}) {
+	query_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(query))))
+	defer C.free(unsafe.Pointer(query_CArray))
+	for i := range query {
+		query_i_First_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})))))
+		defer C.free(unsafe.Pointer(query_i_First_CArray))
+		query_i_Second_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})))))
+		defer C.free(unsafe.Pointer(query_i_Second_CArray))
+		query_i_First_ms := C.struct_miqt_string{}
+		query_i_First_ms.data = C.CString(query[i].First)
+		query_i_First_ms.len = C.size_t(len(query[i].First))
+		defer C.free(unsafe.Pointer(query_i_First_ms.data))
+		query_i_First_CArray[0] = query_i_First_ms
+		query_i_Second_ms := C.struct_miqt_string{}
+		query_i_Second_ms.data = C.CString(query[i].Second)
+		query_i_Second_ms.len = C.size_t(len(query[i].Second))
+		defer C.free(unsafe.Pointer(query_i_Second_ms.data))
+		query_i_Second_CArray[0] = query_i_Second_ms
+		query_i_pair := C.struct_miqt_map{
+			len:    1,
+			keys:   unsafe.Pointer(query_i_First_CArray),
+			values: unsafe.Pointer(query_i_Second_CArray),
+		}
+		query_CArray[i] = query_i_pair
+	}
+	query_ma := C.struct_miqt_array{len: C.size_t(len(query)), data: unsafe.Pointer(query_CArray)}
+	C.QUrlQuery_SetQueryItems(this.h, query_ma)
+}
+
+func (this *QUrlQuery) QueryItems() []struct {
+	First  string
+	Second string
+} {
+	var _ma C.struct_miqt_array = C.QUrlQuery_QueryItems(this.h)
+	_ret := make([]struct {
+		First  string
+		Second string
+	}, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_mm C.struct_miqt_map = _outCast[i]
+		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.values))
+		var _lv_first_ms C.struct_miqt_string = _lv_First_CArray[0]
+		_lv_first_ret := C.GoStringN(_lv_first_ms.data, C.int(int64(_lv_first_ms.len)))
+		C.free(unsafe.Pointer(_lv_first_ms.data))
+		_lv_entry_First := _lv_first_ret
+		var _lv_second_ms C.struct_miqt_string = _lv_Second_CArray[0]
+		_lv_second_ret := C.GoStringN(_lv_second_ms.data, C.int(int64(_lv_second_ms.len)))
+		C.free(unsafe.Pointer(_lv_second_ms.data))
+		_lv_entry_Second := _lv_second_ret
+		_ret[i] = struct {
+			First  string
+			Second string
+		}{First: _lv_entry_First, Second: _lv_entry_Second}
+	}
+	return _ret
+}
+
 func (this *QUrlQuery) HasQueryItem(key string) bool {
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
@@ -213,6 +275,36 @@ func (this *QUrlQuery) ToString1(encoding QUrl__ComponentFormattingOption) strin
 	var _ms C.struct_miqt_string = C.QUrlQuery_ToString1(this.h, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
+func (this *QUrlQuery) QueryItems1(encoding QUrl__ComponentFormattingOption) []struct {
+	First  string
+	Second string
+} {
+	var _ma C.struct_miqt_array = C.QUrlQuery_QueryItems1(this.h, (C.uint)(encoding))
+	_ret := make([]struct {
+		First  string
+		Second string
+	}, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _lv_mm C.struct_miqt_map = _outCast[i]
+		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.values))
+		var _lv_first_ms C.struct_miqt_string = _lv_First_CArray[0]
+		_lv_first_ret := C.GoStringN(_lv_first_ms.data, C.int(int64(_lv_first_ms.len)))
+		C.free(unsafe.Pointer(_lv_first_ms.data))
+		_lv_entry_First := _lv_first_ret
+		var _lv_second_ms C.struct_miqt_string = _lv_Second_CArray[0]
+		_lv_second_ret := C.GoStringN(_lv_second_ms.data, C.int(int64(_lv_second_ms.len)))
+		C.free(unsafe.Pointer(_lv_second_ms.data))
+		_lv_entry_Second := _lv_second_ret
+		_ret[i] = struct {
+			First  string
+			Second string
+		}{First: _lv_entry_First, Second: _lv_entry_Second}
+	}
 	return _ret
 }
 

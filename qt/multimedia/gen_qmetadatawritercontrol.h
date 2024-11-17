@@ -1,5 +1,6 @@
-#ifndef GEN_QMETADATAWRITERCONTROL_H
-#define GEN_QMETADATAWRITERCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMETADATAWRITERCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMETADATAWRITERCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,7 +32,7 @@ bool QMetaDataWriterControl_IsWritable(const QMetaDataWriterControl* self);
 bool QMetaDataWriterControl_IsMetaDataAvailable(const QMetaDataWriterControl* self);
 QVariant* QMetaDataWriterControl_MetaData(const QMetaDataWriterControl* self, struct miqt_string key);
 void QMetaDataWriterControl_SetMetaData(QMetaDataWriterControl* self, struct miqt_string key, QVariant* value);
-struct miqt_array QMetaDataWriterControl_AvailableMetaData(const QMetaDataWriterControl* self);
+struct miqt_array /* of struct miqt_string */  QMetaDataWriterControl_AvailableMetaData(const QMetaDataWriterControl* self);
 void QMetaDataWriterControl_MetaDataChanged(QMetaDataWriterControl* self);
 void QMetaDataWriterControl_connect_MetaDataChanged(QMetaDataWriterControl* self, intptr_t slot);
 void QMetaDataWriterControl_MetaDataChanged2(QMetaDataWriterControl* self, struct miqt_string key, QVariant* value);

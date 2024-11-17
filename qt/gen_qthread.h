@@ -1,5 +1,6 @@
-#ifndef GEN_QTHREAD_H
-#define GEN_QTHREAD_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTHREAD_H
+#define MIQT_QT_GEN_QTHREAD_H
 
 #include <stdbool.h>
 #include <stddef.h>
