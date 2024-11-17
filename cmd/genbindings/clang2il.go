@@ -580,11 +580,9 @@ nextEnumEntry:
 			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
 			// e.g. QCalendar (when there is a int typecast)
 			if ei1Kind == "ImplicitCastExpr" {
-				log.Printf("Got ImplicitCastExpr OK")
 				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
 					ei2_0 := ei2[0].(map[string]interface{})
 					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
-						log.Printf("Got ConstantExpr OK")
 						if ei2Value, ok := ei2_0["value"].(string); ok {
 							cee.EntryValue = ei2Value
 							goto afterParse
