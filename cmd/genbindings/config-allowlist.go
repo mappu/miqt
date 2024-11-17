@@ -218,6 +218,12 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Qt 6: Present in header, but no-op method was not included in compiled library
 	}
 
+	if className == "QDeadlineTimer" && mm.MethodName == "_q_data" {
+		// Qt 6.4: Present in header with "not a public method" comment, not present in Qt 6.6
+		// @ref https://github.com/qt/qtbase/blob/v6.4.0/src/corelib/kernel/qdeadlinetimer.h#L156C29-L156C36
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 

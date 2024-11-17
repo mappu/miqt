@@ -164,23 +164,6 @@ func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
 	return UnsafeNewQDeadlineTimer(unsafe.Pointer(C.QDeadlineTimer_OperatorMinusAssign(this.h, (C.longlong)(msecs))))
 }
 
-func (this *QDeadlineTimer) QData() struct {
-	First  int64
-	Second uint
-} {
-	var _mm C.struct_miqt_map = C.QDeadlineTimer_QData(this.h)
-	_First_CArray := (*[0xffff]C.longlong)(unsafe.Pointer(_mm.keys))
-	_Second_CArray := (*[0xffff]C.uint)(unsafe.Pointer(_mm.values))
-	_entry_First := (int64)(_First_CArray[0])
-
-	_entry_Second := (uint)(_Second_CArray[0])
-
-	return struct {
-		First  int64
-		Second uint
-	}{First: _entry_First, Second: _entry_Second}
-}
-
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
 	C.QDeadlineTimer_OperatorAssign(this.h, param1.cPointer())
 }
