@@ -6,6 +6,14 @@ import (
 	"strings"
 )
 
+// cppComment renders a string safely in a C++ block comment.
+// It strips interior nested comments.
+func cppComment(s string) string {
+	// Remove nested comments
+	uncomment := strings.NewReplacer("/*", "", "*/", "")
+	return "/* " + uncomment.Replace(s) + " */ "
+}
+
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
@@ -14,17 +22,17 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if p.ParameterType == "QByteArray" {
 		return "struct miqt_string"
 
-	} else if _, ok := p.QListOf(); ok {
-		return "struct miqt_array"
+	} else if inner, ok := p.QListOf(); ok {
+		return "struct miqt_array " + cppComment("of "+inner.RenderTypeCabi())
 
-	} else if _, ok := p.QSetOf(); ok {
-		return "struct miqt_array"
+	} else if inner, ok := p.QSetOf(); ok {
+		return "struct miqt_array " + cppComment("set of "+inner.RenderTypeCabi())
 
-	} else if _, _, ok := p.QMapOf(); ok {
-		return "struct miqt_map"
+	} else if inner1, inner2, ok := p.QMapOf(); ok {
+		return "struct miqt_map " + cppComment("of "+inner1.RenderTypeCabi()+" to "+inner2.RenderTypeCabi())
 
-	} else if _, _, ok := p.QPairOf(); ok {
-		return "struct miqt_map"
+	} else if inner1, inner2, ok := p.QPairOf(); ok {
+		return "struct miqt_map " + cppComment("tuple of "+inner1.RenderTypeCabi()+" and "+inner2.RenderTypeCabi())
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		return cabiClassName(p.ParameterType) + "*"
@@ -154,35 +162,7 @@ func emitParametersCabi(m CppMethod, selfType string) string {
 	}
 
 	for _, p := range m.Parameters {
-		if p.ParameterType == "QString" {
-			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
-
-		} else if p.ParameterType == "QByteArray" {
-			tmp = append(tmp, "struct miqt_string "+p.ParameterName)
-
-		} else if t, ok := p.QListOf(); ok {
-			tmp = append(tmp, "struct miqt_array /* of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
-
-		} else if t, ok := p.QSetOf(); ok {
-			tmp = append(tmp, "struct miqt_array /* Set of "+t.RenderTypeCabi()+" */ "+p.ParameterName)
-
-		} else if p.QtClassType() {
-			if p.ByRef || p.Pointer {
-
-				// Pointer to Qt type
-				// Replace with taking our PQ typedef by value
-				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
-			} else {
-				// Qt type passed by value
-				// The CABI will unconditionally take these by pointer and dereference them
-				// when passing to C++
-				tmp = append(tmp, cabiClassName(p.ParameterType)+"* "+p.ParameterName)
-			}
-
-		} else {
-			// RenderTypeCabi renders both pointer+reference as pointers
-			tmp = append(tmp, p.RenderTypeCabi()+" "+p.ParameterName)
-		}
+		tmp = append(tmp, p.RenderTypeCabi()+" "+p.ParameterName)
 	}
 
 	return strings.Join(tmp, ", ")
