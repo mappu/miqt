@@ -7,7 +7,7 @@
 #include "gen_qfactoryinterface.h"
 #include "_cgo_export.h"
 
-struct miqt_array QFactoryInterface_Keys(const QFactoryInterface* self) {
+struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self) {
 	QStringList _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QAMBIENTSOUND_H
-#define GEN_QAMBIENTSOUND_H
+#pragma once
+#ifndef MIQT_QT6_SPATIALAUDIO_GEN_QAMBIENTSOUND_H
+#define MIQT_QT6_SPATIALAUDIO_GEN_QAMBIENTSOUND_H
 
 #include <stdbool.h>
 #include <stddef.h>

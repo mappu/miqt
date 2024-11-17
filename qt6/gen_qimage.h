@@ -1,5 +1,6 @@
-#ifndef GEN_QIMAGE_H
-#define GEN_QIMAGE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QIMAGE_H
+#define MIQT_QT6_GEN_QIMAGE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -67,7 +68,7 @@ QImage* QImage_Copy(const QImage* self);
 QImage* QImage_Copy2(const QImage* self, int x, int y, int w, int h);
 int QImage_Format(const QImage* self);
 QImage* QImage_ConvertToFormat(const QImage* self, int f);
-QImage* QImage_ConvertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */ colorTable);
+QImage* QImage_ConvertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable);
 bool QImage_ReinterpretAsFormat(QImage* self, int f);
 QImage* QImage_ConvertedTo(const QImage* self, int f);
 void QImage_ConvertTo(QImage* self, int f);
@@ -103,8 +104,8 @@ QColor* QImage_PixelColor(const QImage* self, int x, int y);
 QColor* QImage_PixelColorWithPt(const QImage* self, QPoint* pt);
 void QImage_SetPixelColor(QImage* self, int x, int y, QColor* c);
 void QImage_SetPixelColor2(QImage* self, QPoint* pt, QColor* c);
-struct miqt_array QImage_ColorTable(const QImage* self);
-void QImage_SetColorTable(QImage* self, struct miqt_array /* of unsigned int */ colors);
+struct miqt_array /* of unsigned int */  QImage_ColorTable(const QImage* self);
+void QImage_SetColorTable(QImage* self, struct miqt_array /* of unsigned int */  colors);
 double QImage_DevicePixelRatio(const QImage* self);
 void QImage_SetDevicePixelRatio(QImage* self, double scaleFactor);
 QSizeF* QImage_DeviceIndependentSize(const QImage* self);
@@ -151,7 +152,7 @@ void QImage_SetDotsPerMeterX(QImage* self, int dotsPerMeterX);
 void QImage_SetDotsPerMeterY(QImage* self, int dotsPerMeterY);
 QPoint* QImage_Offset(const QImage* self);
 void QImage_SetOffset(QImage* self, QPoint* offset);
-struct miqt_array QImage_TextKeys(const QImage* self);
+struct miqt_array /* of struct miqt_string */  QImage_TextKeys(const QImage* self);
 struct miqt_string QImage_Text(const QImage* self);
 void QImage_SetText(QImage* self, struct miqt_string key, struct miqt_string value);
 QPixelFormat* QImage_PixelFormat(const QImage* self);
@@ -159,7 +160,7 @@ QPixelFormat* QImage_ToPixelFormat(int format);
 int QImage_ToImageFormat(QPixelFormat* format);
 QImage* QImage_Copy1(const QImage* self, QRect* rect);
 QImage* QImage_ConvertToFormat22(const QImage* self, int f, int flags);
-QImage* QImage_ConvertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */ colorTable, int flags);
+QImage* QImage_ConvertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags);
 QImage* QImage_ConvertedTo2(const QImage* self, int f, int flags);
 void QImage_ConvertTo2(QImage* self, int f, int flags);
 QImage* QImage_CreateAlphaMask1(const QImage* self, int flags);

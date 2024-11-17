@@ -1,5 +1,6 @@
-#ifndef GEN_QRGBA64_H
-#define GEN_QRGBA64_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QRGBA64_H
+#define MIQT_QT6_GEN_QRGBA64_H
 
 #include <stdbool.h>
 #include <stddef.h>

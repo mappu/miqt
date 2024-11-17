@@ -1,5 +1,6 @@
-#ifndef GEN_QOBJECT_H
-#define GEN_QOBJECT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QOBJECT_H
+#define MIQT_QT6_GEN_QOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -66,7 +67,7 @@ QThread* QObject_Thread(const QObject* self);
 void QObject_MoveToThread(QObject* self, QThread* thread);
 int QObject_StartTimer(QObject* self, int interval);
 void QObject_KillTimer(QObject* self, int id);
-struct miqt_array QObject_Children(const QObject* self);
+struct miqt_array /* of QObject* */  QObject_Children(const QObject* self);
 void QObject_SetParent(QObject* self, QObject* parent);
 void QObject_InstallEventFilter(QObject* self, QObject* filterObj);
 void QObject_RemoveEventFilter(QObject* self, QObject* obj);
@@ -78,7 +79,7 @@ void QObject_DumpObjectTree(const QObject* self);
 void QObject_DumpObjectInfo(const QObject* self);
 bool QObject_SetProperty(QObject* self, const char* name, QVariant* value);
 QVariant* QObject_Property(const QObject* self, const char* name);
-struct miqt_array QObject_DynamicPropertyNames(const QObject* self);
+struct miqt_array /* of struct miqt_string */  QObject_DynamicPropertyNames(const QObject* self);
 QBindingStorage* QObject_BindingStorage(QObject* self);
 QBindingStorage* QObject_BindingStorage2(const QObject* self);
 void QObject_Destroyed(QObject* self);

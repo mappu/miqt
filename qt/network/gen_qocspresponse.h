@@ -1,5 +1,6 @@
-#ifndef GEN_QOCSPRESPONSE_H
-#define GEN_QOCSPRESPONSE_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QOCSPRESPONSE_H
+#define MIQT_QT_NETWORK_GEN_QOCSPRESPONSE_H
 
 #include <stdbool.h>
 #include <stddef.h>

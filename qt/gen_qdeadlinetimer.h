@@ -1,5 +1,6 @@
-#ifndef GEN_QDEADLINETIMER_H
-#define GEN_QDEADLINETIMER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QDEADLINETIMER_H
+#define MIQT_QT_GEN_QDEADLINETIMER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -43,6 +44,7 @@ QDeadlineTimer* QDeadlineTimer_AddNSecs(QDeadlineTimer* dt, long long nsecs);
 QDeadlineTimer* QDeadlineTimer_Current();
 QDeadlineTimer* QDeadlineTimer_OperatorPlusAssign(QDeadlineTimer* self, long long msecs);
 QDeadlineTimer* QDeadlineTimer_OperatorMinusAssign(QDeadlineTimer* self, long long msecs);
+struct miqt_map /* tuple of long long and unsigned int */  QDeadlineTimer_QData(const QDeadlineTimer* self);
 void QDeadlineTimer_OperatorAssign(QDeadlineTimer* self, QDeadlineTimer* param1);
 void QDeadlineTimer_SetRemainingTime2(QDeadlineTimer* self, long long msecs, int typeVal);
 void QDeadlineTimer_SetPreciseRemainingTime2(QDeadlineTimer* self, long long secs, long long nsecs);

@@ -114,7 +114,7 @@ void QColumnView_SetPreviewWidget(QColumnView* self, QWidget* widget) {
 	self->setPreviewWidget(widget);
 }
 
-void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array /* of int */ list) {
+void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array /* of int */  list) {
 	QList<int> list_QList;
 	list_QList.reserve(list.len);
 	int* list_arr = static_cast<int*>(list.data);
@@ -124,7 +124,7 @@ void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array /* of int 
 	self->setColumnWidths(list_QList);
 }
 
-struct miqt_array QColumnView_ColumnWidths(const QColumnView* self) {
+struct miqt_array /* of int */  QColumnView_ColumnWidths(const QColumnView* self) {
 	QList<int> _ret = self->columnWidths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

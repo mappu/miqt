@@ -1,5 +1,6 @@
-#ifndef GEN_QPICTURE_H
-#define GEN_QPICTURE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPICTURE_H
+#define MIQT_QT_GEN_QPICTURE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -51,10 +52,10 @@ void QPicture_Swap(QPicture* self, QPicture* other);
 void QPicture_Detach(QPicture* self);
 bool QPicture_IsDetached(const QPicture* self);
 const char* QPicture_PictureFormat(struct miqt_string fileName);
-struct miqt_array QPicture_InputFormats();
-struct miqt_array QPicture_OutputFormats();
-struct miqt_array QPicture_InputFormatList();
-struct miqt_array QPicture_OutputFormatList();
+struct miqt_array /* of struct miqt_string */  QPicture_InputFormats();
+struct miqt_array /* of struct miqt_string */  QPicture_OutputFormats();
+struct miqt_array /* of struct miqt_string */  QPicture_InputFormatList();
+struct miqt_array /* of struct miqt_string */  QPicture_OutputFormatList();
 QPaintEngine* QPicture_PaintEngine(const QPicture* self);
 bool QPicture_Load2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_Load22(QPicture* self, struct miqt_string fileName, const char* format);
@@ -87,8 +88,8 @@ bool QPictureIO_Read(QPictureIO* self);
 bool QPictureIO_Write(QPictureIO* self);
 struct miqt_string QPictureIO_PictureFormat(struct miqt_string fileName);
 struct miqt_string QPictureIO_PictureFormatWithQIODevice(QIODevice* param1);
-struct miqt_array QPictureIO_InputFormats();
-struct miqt_array QPictureIO_OutputFormats();
+struct miqt_array /* of struct miqt_string */  QPictureIO_InputFormats();
+struct miqt_array /* of struct miqt_string */  QPictureIO_OutputFormats();
 void QPictureIO_Delete(QPictureIO* self);
 
 #ifdef __cplusplus

@@ -1,5 +1,6 @@
-#ifndef GEN_QPLUGINLOADER_H
-#define GEN_QPLUGINLOADER_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPLUGINLOADER_H
+#define MIQT_QT6_GEN_QPLUGINLOADER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,8 +37,8 @@ void* QPluginLoader_Metacast(QPluginLoader* self, const char* param1);
 struct miqt_string QPluginLoader_Tr(const char* s);
 QObject* QPluginLoader_Instance(QPluginLoader* self);
 QJsonObject* QPluginLoader_MetaData(const QPluginLoader* self);
-struct miqt_array QPluginLoader_StaticInstances();
-struct miqt_array QPluginLoader_StaticPlugins();
+struct miqt_array /* of QObject* */  QPluginLoader_StaticInstances();
+struct miqt_array /* of QStaticPlugin* */  QPluginLoader_StaticPlugins();
 bool QPluginLoader_Load(QPluginLoader* self);
 bool QPluginLoader_Unload(QPluginLoader* self);
 bool QPluginLoader_IsLoaded(const QPluginLoader* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QCONTIGUOUSCACHE_H
-#define GEN_QCONTIGUOUSCACHE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCONTIGUOUSCACHE_H
+#define MIQT_QT6_GEN_QCONTIGUOUSCACHE_H
 
 #include <stdbool.h>
 #include <stddef.h>

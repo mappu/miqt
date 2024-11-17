@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLSOCKET_H
-#define GEN_QSSLSOCKET_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QSSLSOCKET_H
+#define MIQT_QT6_NETWORK_GEN_QSSLSOCKET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -74,16 +75,16 @@ long long QSslSocket_EncryptedBytesAvailable(const QSslSocket* self);
 long long QSslSocket_EncryptedBytesToWrite(const QSslSocket* self);
 QSslConfiguration* QSslSocket_SslConfiguration(const QSslSocket* self);
 void QSslSocket_SetSslConfiguration(QSslSocket* self, QSslConfiguration* config);
-void QSslSocket_SetLocalCertificateChain(QSslSocket* self, struct miqt_array /* of QSslCertificate* */ localChain);
-struct miqt_array QSslSocket_LocalCertificateChain(const QSslSocket* self);
+void QSslSocket_SetLocalCertificateChain(QSslSocket* self, struct miqt_array /* of QSslCertificate* */  localChain);
+struct miqt_array /* of QSslCertificate* */  QSslSocket_LocalCertificateChain(const QSslSocket* self);
 void QSslSocket_SetLocalCertificate(QSslSocket* self, QSslCertificate* certificate);
 void QSslSocket_SetLocalCertificateWithFileName(QSslSocket* self, struct miqt_string fileName);
 QSslCertificate* QSslSocket_LocalCertificate(const QSslSocket* self);
 QSslCertificate* QSslSocket_PeerCertificate(const QSslSocket* self);
-struct miqt_array QSslSocket_PeerCertificateChain(const QSslSocket* self);
+struct miqt_array /* of QSslCertificate* */  QSslSocket_PeerCertificateChain(const QSslSocket* self);
 QSslCipher* QSslSocket_SessionCipher(const QSslSocket* self);
 int QSslSocket_SessionProtocol(const QSslSocket* self);
-struct miqt_array QSslSocket_OcspResponses(const QSslSocket* self);
+struct miqt_array /* of QOcspResponse* */  QSslSocket_OcspResponses(const QSslSocket* self);
 void QSslSocket_SetPrivateKey(QSslSocket* self, QSslKey* key);
 void QSslSocket_SetPrivateKeyWithFileName(QSslSocket* self, struct miqt_string fileName);
 QSslKey* QSslSocket_PrivateKey(const QSslSocket* self);
@@ -92,22 +93,22 @@ bool QSslSocket_WaitForEncrypted(QSslSocket* self);
 bool QSslSocket_WaitForReadyRead(QSslSocket* self);
 bool QSslSocket_WaitForBytesWritten(QSslSocket* self);
 bool QSslSocket_WaitForDisconnected(QSslSocket* self);
-struct miqt_array QSslSocket_SslHandshakeErrors(const QSslSocket* self);
+struct miqt_array /* of QSslError* */  QSslSocket_SslHandshakeErrors(const QSslSocket* self);
 bool QSslSocket_SupportsSsl();
 long QSslSocket_SslLibraryVersionNumber();
 struct miqt_string QSslSocket_SslLibraryVersionString();
 long QSslSocket_SslLibraryBuildVersionNumber();
 struct miqt_string QSslSocket_SslLibraryBuildVersionString();
-struct miqt_array QSslSocket_AvailableBackends();
+struct miqt_array /* of struct miqt_string */  QSslSocket_AvailableBackends();
 struct miqt_string QSslSocket_ActiveBackend();
 bool QSslSocket_SetActiveBackend(struct miqt_string backendName);
-struct miqt_array QSslSocket_SupportedProtocols();
+struct miqt_array /* of int */  QSslSocket_SupportedProtocols();
 bool QSslSocket_IsProtocolSupported(int protocol);
-struct miqt_array QSslSocket_ImplementedClasses();
+struct miqt_array /* of int */  QSslSocket_ImplementedClasses();
 bool QSslSocket_IsClassImplemented(int cl);
-struct miqt_array QSslSocket_SupportedFeatures();
+struct miqt_array /* of int */  QSslSocket_SupportedFeatures();
 bool QSslSocket_IsFeatureSupported(int feat);
-void QSslSocket_IgnoreSslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */ errors);
+void QSslSocket_IgnoreSslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */  errors);
 void QSslSocket_ContinueInterruptedHandshake(QSslSocket* self);
 void QSslSocket_StartClientEncryption(QSslSocket* self);
 void QSslSocket_StartServerEncryption(QSslSocket* self);
@@ -116,7 +117,7 @@ void QSslSocket_Encrypted(QSslSocket* self);
 void QSslSocket_connect_Encrypted(QSslSocket* self, intptr_t slot);
 void QSslSocket_PeerVerifyError(QSslSocket* self, QSslError* error);
 void QSslSocket_connect_PeerVerifyError(QSslSocket* self, intptr_t slot);
-void QSslSocket_SslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */ errors);
+void QSslSocket_SslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */  errors);
 void QSslSocket_connect_SslErrors(QSslSocket* self, intptr_t slot);
 void QSslSocket_ModeChanged(QSslSocket* self, int newMode);
 void QSslSocket_connect_ModeChanged(QSslSocket* self, intptr_t slot);
@@ -151,11 +152,11 @@ bool QSslSocket_WaitForEncrypted1(QSslSocket* self, int msecs);
 bool QSslSocket_WaitForReadyRead1(QSslSocket* self, int msecs);
 bool QSslSocket_WaitForBytesWritten1(QSslSocket* self, int msecs);
 bool QSslSocket_WaitForDisconnected1(QSslSocket* self, int msecs);
-struct miqt_array QSslSocket_SupportedProtocols1(struct miqt_string backendName);
+struct miqt_array /* of int */  QSslSocket_SupportedProtocols1(struct miqt_string backendName);
 bool QSslSocket_IsProtocolSupported2(int protocol, struct miqt_string backendName);
-struct miqt_array QSslSocket_ImplementedClasses1(struct miqt_string backendName);
+struct miqt_array /* of int */  QSslSocket_ImplementedClasses1(struct miqt_string backendName);
 bool QSslSocket_IsClassImplemented2(int cl, struct miqt_string backendName);
-struct miqt_array QSslSocket_SupportedFeatures1(struct miqt_string backendName);
+struct miqt_array /* of int */  QSslSocket_SupportedFeatures1(struct miqt_string backendName);
 bool QSslSocket_IsFeatureSupported2(int feat, struct miqt_string backendName);
 void QSslSocket_Delete(QSslSocket* self);
 

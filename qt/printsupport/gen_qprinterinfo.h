@@ -1,5 +1,6 @@
-#ifndef GEN_QPRINTERINFO_H
-#define GEN_QPRINTERINFO_H
+#pragma once
+#ifndef MIQT_QT_PRINTSUPPORT_GEN_QPRINTERINFO_H
+#define MIQT_QT_PRINTSUPPORT_GEN_QPRINTERINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,19 +36,20 @@ bool QPrinterInfo_IsNull(const QPrinterInfo* self);
 bool QPrinterInfo_IsDefault(const QPrinterInfo* self);
 bool QPrinterInfo_IsRemote(const QPrinterInfo* self);
 int QPrinterInfo_State(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_SupportedPageSizes(const QPrinterInfo* self);
+struct miqt_array /* of QPageSize* */  QPrinterInfo_SupportedPageSizes(const QPrinterInfo* self);
 QPageSize* QPrinterInfo_DefaultPageSize(const QPrinterInfo* self);
 bool QPrinterInfo_SupportsCustomPageSizes(const QPrinterInfo* self);
 QPageSize* QPrinterInfo_MinimumPhysicalPageSize(const QPrinterInfo* self);
 QPageSize* QPrinterInfo_MaximumPhysicalPageSize(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_SupportedPaperSizes(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_SupportedResolutions(const QPrinterInfo* self);
+struct miqt_array /* of int */  QPrinterInfo_SupportedPaperSizes(const QPrinterInfo* self);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*   */  QPrinterInfo_SupportedSizesWithNames(const QPrinterInfo* self);
+struct miqt_array /* of int */  QPrinterInfo_SupportedResolutions(const QPrinterInfo* self);
 int QPrinterInfo_DefaultDuplexMode(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_SupportedDuplexModes(const QPrinterInfo* self);
+struct miqt_array /* of int */  QPrinterInfo_SupportedDuplexModes(const QPrinterInfo* self);
 int QPrinterInfo_DefaultColorMode(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_SupportedColorModes(const QPrinterInfo* self);
-struct miqt_array QPrinterInfo_AvailablePrinterNames();
-struct miqt_array QPrinterInfo_AvailablePrinters();
+struct miqt_array /* of int */  QPrinterInfo_SupportedColorModes(const QPrinterInfo* self);
+struct miqt_array /* of struct miqt_string */  QPrinterInfo_AvailablePrinterNames();
+struct miqt_array /* of QPrinterInfo* */  QPrinterInfo_AvailablePrinters();
 struct miqt_string QPrinterInfo_DefaultPrinterName();
 QPrinterInfo* QPrinterInfo_DefaultPrinter();
 QPrinterInfo* QPrinterInfo_PrinterInfo(struct miqt_string printerName);

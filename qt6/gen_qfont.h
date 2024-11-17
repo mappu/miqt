@@ -1,5 +1,6 @@
-#ifndef GEN_QFONT_H
-#define GEN_QFONT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QFONT_H
+#define MIQT_QT6_GEN_QFONT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -23,20 +24,20 @@ typedef struct QPaintDevice QPaintDevice;
 
 QFont* QFont_new();
 QFont* QFont_new2(struct miqt_string family);
-QFont* QFont_new3(struct miqt_array /* of struct miqt_string */ families);
+QFont* QFont_new3(struct miqt_array /* of struct miqt_string */  families);
 QFont* QFont_new4(QFont* font, QPaintDevice* pd);
 QFont* QFont_new5(QFont* font);
 QFont* QFont_new6(struct miqt_string family, int pointSize);
 QFont* QFont_new7(struct miqt_string family, int pointSize, int weight);
 QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic);
-QFont* QFont_new9(struct miqt_array /* of struct miqt_string */ families, int pointSize);
-QFont* QFont_new10(struct miqt_array /* of struct miqt_string */ families, int pointSize, int weight);
-QFont* QFont_new11(struct miqt_array /* of struct miqt_string */ families, int pointSize, int weight, bool italic);
+QFont* QFont_new9(struct miqt_array /* of struct miqt_string */  families, int pointSize);
+QFont* QFont_new10(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight);
+QFont* QFont_new11(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight, bool italic);
 void QFont_Swap(QFont* self, QFont* other);
 struct miqt_string QFont_Family(const QFont* self);
 void QFont_SetFamily(QFont* self, struct miqt_string family);
-struct miqt_array QFont_Families(const QFont* self);
-void QFont_SetFamilies(QFont* self, struct miqt_array /* of struct miqt_string */ families);
+struct miqt_array /* of struct miqt_string */  QFont_Families(const QFont* self);
+void QFont_SetFamilies(QFont* self, struct miqt_array /* of struct miqt_string */  families);
 struct miqt_string QFont_StyleName(const QFont* self);
 void QFont_SetStyleName(QFont* self, struct miqt_string styleName);
 int QFont_PointSize(const QFont* self);
@@ -88,10 +89,10 @@ struct miqt_string QFont_Key(const QFont* self);
 struct miqt_string QFont_ToString(const QFont* self);
 bool QFont_FromString(QFont* self, struct miqt_string param1);
 struct miqt_string QFont_Substitute(struct miqt_string param1);
-struct miqt_array QFont_Substitutes(struct miqt_string param1);
-struct miqt_array QFont_Substitutions();
+struct miqt_array /* of struct miqt_string */  QFont_Substitutes(struct miqt_string param1);
+struct miqt_array /* of struct miqt_string */  QFont_Substitutions();
 void QFont_InsertSubstitution(struct miqt_string param1, struct miqt_string param2);
-void QFont_InsertSubstitutions(struct miqt_string param1, struct miqt_array /* of struct miqt_string */ param2);
+void QFont_InsertSubstitutions(struct miqt_string param1, struct miqt_array /* of struct miqt_string */  param2);
 void QFont_RemoveSubstitutions(struct miqt_string param1);
 void QFont_Initialize();
 void QFont_Cleanup();

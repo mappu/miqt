@@ -195,7 +195,7 @@ void QSslSocket_SetSslConfiguration(QSslSocket* self, QSslConfiguration* config)
 	self->setSslConfiguration(*config);
 }
 
-void QSslSocket_SetLocalCertificateChain(QSslSocket* self, struct miqt_array /* of QSslCertificate* */ localChain) {
+void QSslSocket_SetLocalCertificateChain(QSslSocket* self, struct miqt_array /* of QSslCertificate* */  localChain) {
 	QList<QSslCertificate> localChain_QList;
 	localChain_QList.reserve(localChain.len);
 	QSslCertificate** localChain_arr = static_cast<QSslCertificate**>(localChain.data);
@@ -205,7 +205,7 @@ void QSslSocket_SetLocalCertificateChain(QSslSocket* self, struct miqt_array /* 
 	self->setLocalCertificateChain(localChain_QList);
 }
 
-struct miqt_array QSslSocket_LocalCertificateChain(const QSslSocket* self) {
+struct miqt_array /* of QSslCertificate* */  QSslSocket_LocalCertificateChain(const QSslSocket* self) {
 	QList<QSslCertificate> _ret = self->localCertificateChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -235,7 +235,7 @@ QSslCertificate* QSslSocket_PeerCertificate(const QSslSocket* self) {
 	return new QSslCertificate(self->peerCertificate());
 }
 
-struct miqt_array QSslSocket_PeerCertificateChain(const QSslSocket* self) {
+struct miqt_array /* of QSslCertificate* */  QSslSocket_PeerCertificateChain(const QSslSocket* self) {
 	QList<QSslCertificate> _ret = self->peerCertificateChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -257,7 +257,7 @@ int QSslSocket_SessionProtocol(const QSslSocket* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QSslSocket_OcspResponses(const QSslSocket* self) {
+struct miqt_array /* of QOcspResponse* */  QSslSocket_OcspResponses(const QSslSocket* self) {
 	QVector<QOcspResponse> _ret = self->ocspResponses();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QOcspResponse** _arr = static_cast<QOcspResponse**>(malloc(sizeof(QOcspResponse*) * _ret.length()));
@@ -283,7 +283,7 @@ QSslKey* QSslSocket_PrivateKey(const QSslSocket* self) {
 	return new QSslKey(self->privateKey());
 }
 
-struct miqt_array QSslSocket_Ciphers(const QSslSocket* self) {
+struct miqt_array /* of QSslCipher* */  QSslSocket_Ciphers(const QSslSocket* self) {
 	QList<QSslCipher> _ret = self->ciphers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCipher** _arr = static_cast<QSslCipher**>(malloc(sizeof(QSslCipher*) * _ret.length()));
@@ -296,7 +296,7 @@ struct miqt_array QSslSocket_Ciphers(const QSslSocket* self) {
 	return _out;
 }
 
-void QSslSocket_SetCiphers(QSslSocket* self, struct miqt_array /* of QSslCipher* */ ciphers) {
+void QSslSocket_SetCiphers(QSslSocket* self, struct miqt_array /* of QSslCipher* */  ciphers) {
 	QList<QSslCipher> ciphers_QList;
 	ciphers_QList.reserve(ciphers.len);
 	QSslCipher** ciphers_arr = static_cast<QSslCipher**>(ciphers.data);
@@ -311,7 +311,7 @@ void QSslSocket_SetCiphersWithCiphers(QSslSocket* self, struct miqt_string ciphe
 	self->setCiphers(ciphers_QString);
 }
 
-void QSslSocket_SetDefaultCiphers(struct miqt_array /* of QSslCipher* */ ciphers) {
+void QSslSocket_SetDefaultCiphers(struct miqt_array /* of QSslCipher* */  ciphers) {
 	QList<QSslCipher> ciphers_QList;
 	ciphers_QList.reserve(ciphers.len);
 	QSslCipher** ciphers_arr = static_cast<QSslCipher**>(ciphers.data);
@@ -321,7 +321,7 @@ void QSslSocket_SetDefaultCiphers(struct miqt_array /* of QSslCipher* */ ciphers
 	QSslSocket::setDefaultCiphers(ciphers_QList);
 }
 
-struct miqt_array QSslSocket_DefaultCiphers() {
+struct miqt_array /* of QSslCipher* */  QSslSocket_DefaultCiphers() {
 	QList<QSslCipher> _ret = QSslSocket::defaultCiphers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCipher** _arr = static_cast<QSslCipher**>(malloc(sizeof(QSslCipher*) * _ret.length()));
@@ -334,7 +334,7 @@ struct miqt_array QSslSocket_DefaultCiphers() {
 	return _out;
 }
 
-struct miqt_array QSslSocket_SupportedCiphers() {
+struct miqt_array /* of QSslCipher* */  QSslSocket_SupportedCiphers() {
 	QList<QSslCipher> _ret = QSslSocket::supportedCiphers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCipher** _arr = static_cast<QSslCipher**>(malloc(sizeof(QSslCipher*) * _ret.length()));
@@ -356,7 +356,7 @@ void QSslSocket_AddCaCertificate(QSslSocket* self, QSslCertificate* certificate)
 	self->addCaCertificate(*certificate);
 }
 
-void QSslSocket_AddCaCertificatesWithCertificates(QSslSocket* self, struct miqt_array /* of QSslCertificate* */ certificates) {
+void QSslSocket_AddCaCertificatesWithCertificates(QSslSocket* self, struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -366,7 +366,7 @@ void QSslSocket_AddCaCertificatesWithCertificates(QSslSocket* self, struct miqt_
 	self->addCaCertificates(certificates_QList);
 }
 
-void QSslSocket_SetCaCertificates(QSslSocket* self, struct miqt_array /* of QSslCertificate* */ certificates) {
+void QSslSocket_SetCaCertificates(QSslSocket* self, struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -376,7 +376,7 @@ void QSslSocket_SetCaCertificates(QSslSocket* self, struct miqt_array /* of QSsl
 	self->setCaCertificates(certificates_QList);
 }
 
-struct miqt_array QSslSocket_CaCertificates(const QSslSocket* self) {
+struct miqt_array /* of QSslCertificate* */  QSslSocket_CaCertificates(const QSslSocket* self) {
 	QList<QSslCertificate> _ret = self->caCertificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -398,7 +398,7 @@ void QSslSocket_AddDefaultCaCertificate(QSslCertificate* certificate) {
 	QSslSocket::addDefaultCaCertificate(*certificate);
 }
 
-void QSslSocket_AddDefaultCaCertificatesWithCertificates(struct miqt_array /* of QSslCertificate* */ certificates) {
+void QSslSocket_AddDefaultCaCertificatesWithCertificates(struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -408,7 +408,7 @@ void QSslSocket_AddDefaultCaCertificatesWithCertificates(struct miqt_array /* of
 	QSslSocket::addDefaultCaCertificates(certificates_QList);
 }
 
-void QSslSocket_SetDefaultCaCertificates(struct miqt_array /* of QSslCertificate* */ certificates) {
+void QSslSocket_SetDefaultCaCertificates(struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -418,7 +418,7 @@ void QSslSocket_SetDefaultCaCertificates(struct miqt_array /* of QSslCertificate
 	QSslSocket::setDefaultCaCertificates(certificates_QList);
 }
 
-struct miqt_array QSslSocket_DefaultCaCertificates() {
+struct miqt_array /* of QSslCertificate* */  QSslSocket_DefaultCaCertificates() {
 	QList<QSslCertificate> _ret = QSslSocket::defaultCaCertificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -431,7 +431,7 @@ struct miqt_array QSslSocket_DefaultCaCertificates() {
 	return _out;
 }
 
-struct miqt_array QSslSocket_SystemCaCertificates() {
+struct miqt_array /* of QSslCertificate* */  QSslSocket_SystemCaCertificates() {
 	QList<QSslCertificate> _ret = QSslSocket::systemCaCertificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -464,7 +464,7 @@ bool QSslSocket_WaitForDisconnected(QSslSocket* self) {
 	return self->waitForDisconnected();
 }
 
-struct miqt_array QSslSocket_SslErrors(const QSslSocket* self) {
+struct miqt_array /* of QSslError* */  QSslSocket_SslErrors(const QSslSocket* self) {
 	QList<QSslError> _ret = self->sslErrors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.length()));
@@ -477,7 +477,7 @@ struct miqt_array QSslSocket_SslErrors(const QSslSocket* self) {
 	return _out;
 }
 
-struct miqt_array QSslSocket_SslHandshakeErrors(const QSslSocket* self) {
+struct miqt_array /* of QSslError* */  QSslSocket_SslHandshakeErrors(const QSslSocket* self) {
 	QList<QSslError> _ret = self->sslHandshakeErrors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.length()));
@@ -524,7 +524,7 @@ struct miqt_string QSslSocket_SslLibraryBuildVersionString() {
 	return _ms;
 }
 
-void QSslSocket_IgnoreSslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */ errors) {
+void QSslSocket_IgnoreSslErrors(QSslSocket* self, struct miqt_array /* of QSslError* */  errors) {
 	QList<QSslError> errors_QList;
 	errors_QList.reserve(errors.len);
 	QSslError** errors_arr = static_cast<QSslError**>(errors.data);
@@ -569,7 +569,7 @@ void QSslSocket_connect_PeerVerifyError(QSslSocket* self, intptr_t slot) {
 	});
 }
 
-void QSslSocket_SslErrorsWithErrors(QSslSocket* self, struct miqt_array /* of QSslError* */ errors) {
+void QSslSocket_SslErrorsWithErrors(QSslSocket* self, struct miqt_array /* of QSslError* */  errors) {
 	QList<QSslError> errors_QList;
 	errors_QList.reserve(errors.len);
 	QSslError** errors_arr = static_cast<QSslError**>(errors.data);
@@ -590,7 +590,7 @@ void QSslSocket_connect_SslErrorsWithErrors(QSslSocket* self, intptr_t slot) {
 		struct miqt_array errors_out;
 		errors_out.len = errors_ret.length();
 		errors_out.data = static_cast<void*>(errors_arr);
-		struct miqt_array sigval1 = errors_out;
+		struct miqt_array /* of QSslError* */  sigval1 = errors_out;
 		miqt_exec_callback_QSslSocket_SslErrorsWithErrors(slot, sigval1);
 	});
 }

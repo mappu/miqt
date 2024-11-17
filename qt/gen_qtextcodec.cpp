@@ -25,7 +25,7 @@ QTextCodec* QTextCodec_CodecForMib(int mib) {
 	return QTextCodec::codecForMib(static_cast<int>(mib));
 }
 
-struct miqt_array QTextCodec_AvailableCodecs() {
+struct miqt_array /* of struct miqt_string */  QTextCodec_AvailableCodecs() {
 	QList<QByteArray> _ret = QTextCodec::availableCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -43,7 +43,7 @@ struct miqt_array QTextCodec_AvailableCodecs() {
 	return _out;
 }
 
-struct miqt_array QTextCodec_AvailableMibs() {
+struct miqt_array /* of int */  QTextCodec_AvailableMibs() {
 	QList<int> _ret = QTextCodec::availableMibs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -163,7 +163,7 @@ struct miqt_string QTextCodec_Name(const QTextCodec* self) {
 	return _ms;
 }
 
-struct miqt_array QTextCodec_Aliases(const QTextCodec* self) {
+struct miqt_array /* of struct miqt_string */  QTextCodec_Aliases(const QTextCodec* self) {
 	QList<QByteArray> _ret = self->aliases();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

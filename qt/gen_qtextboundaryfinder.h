@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTBOUNDARYFINDER_H
-#define GEN_QTEXTBOUNDARYFINDER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTBOUNDARYFINDER_H
+#define MIQT_QT_GEN_QTEXTBOUNDARYFINDER_H
 
 #include <stdbool.h>
 #include <stddef.h>

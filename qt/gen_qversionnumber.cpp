@@ -11,7 +11,7 @@ QVersionNumber* QVersionNumber_new() {
 	return new QVersionNumber();
 }
 
-QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */ seg) {
+QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */  seg) {
 	QVector<int> seg_QList;
 	seg_QList.reserve(seg.len);
 	int* seg_arr = static_cast<int*>(seg.data);
@@ -57,7 +57,7 @@ QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self) {
 	return new QVersionNumber(self->normalized());
 }
 
-struct miqt_array QVersionNumber_Segments(const QVersionNumber* self) {
+struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* self) {
 	QVector<int> _ret = self->segments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

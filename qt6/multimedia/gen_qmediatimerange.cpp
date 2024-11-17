@@ -47,7 +47,7 @@ long long QMediaTimeRange_LatestTime(const QMediaTimeRange* self) {
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_array QMediaTimeRange_Intervals(const QMediaTimeRange* self) {
+struct miqt_array /* of QMediaTimeRange__Interval* */  QMediaTimeRange_Intervals(const QMediaTimeRange* self) {
 	QList<QMediaTimeRange::Interval> _ret = self->intervals();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaTimeRange__Interval** _arr = static_cast<QMediaTimeRange__Interval**>(malloc(sizeof(QMediaTimeRange__Interval*) * _ret.length()));

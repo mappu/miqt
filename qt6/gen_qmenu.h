@@ -1,5 +1,6 @@
-#ifndef GEN_QMENU_H
-#define GEN_QMENU_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMENU_H
+#define MIQT_QT6_GEN_QMENU_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -65,7 +66,7 @@ QAction* QMenu_ActiveAction(const QMenu* self);
 void QMenu_Popup(QMenu* self, QPoint* pos);
 QAction* QMenu_Exec(QMenu* self);
 QAction* QMenu_ExecWithPos(QMenu* self, QPoint* pos);
-QAction* QMenu_Exec2(struct miqt_array /* of QAction* */ actions, QPoint* pos);
+QAction* QMenu_Exec2(struct miqt_array /* of QAction* */  actions, QPoint* pos);
 QSize* QMenu_SizeHint(const QMenu* self);
 QRect* QMenu_ActionGeometry(const QMenu* self, QAction* param1);
 QAction* QMenu_ActionAt(const QMenu* self, QPoint* param1);
@@ -92,8 +93,8 @@ struct miqt_string QMenu_Tr2(const char* s, const char* c);
 struct miqt_string QMenu_Tr3(const char* s, const char* c, int n);
 void QMenu_Popup2(QMenu* self, QPoint* pos, QAction* at);
 QAction* QMenu_Exec22(QMenu* self, QPoint* pos, QAction* at);
-QAction* QMenu_Exec3(struct miqt_array /* of QAction* */ actions, QPoint* pos, QAction* at);
-QAction* QMenu_Exec4(struct miqt_array /* of QAction* */ actions, QPoint* pos, QAction* at, QWidget* parent);
+QAction* QMenu_Exec3(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at);
+QAction* QMenu_Exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent);
 void QMenu_Delete(QMenu* self);
 
 #ifdef __cplusplus

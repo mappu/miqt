@@ -285,6 +285,24 @@ func (this *QHostAddress) IsInSubnet(subnet *QHostAddress, netmask int) bool {
 	return (bool)(C.QHostAddress_IsInSubnet(this.h, subnet.cPointer(), (C.int)(netmask)))
 }
 
+func (this *QHostAddress) IsInSubnetWithSubnet(subnet struct {
+	First  QHostAddress
+	Second int
+}) bool {
+	subnet_First_CArray := (*[0xffff]*C.QHostAddress)(C.malloc(C.size_t(8)))
+	defer C.free(unsafe.Pointer(subnet_First_CArray))
+	subnet_Second_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
+	defer C.free(unsafe.Pointer(subnet_Second_CArray))
+	subnet_First_CArray[0] = subnet.First.cPointer()
+	subnet_Second_CArray[0] = (C.int)(subnet.Second)
+	subnet_pair := C.struct_miqt_map{
+		len:    1,
+		keys:   unsafe.Pointer(subnet_First_CArray),
+		values: unsafe.Pointer(subnet_Second_CArray),
+	}
+	return (bool)(C.QHostAddress_IsInSubnetWithSubnet(this.h, subnet_pair))
+}
+
 func (this *QHostAddress) IsLoopback() bool {
 	return (bool)(C.QHostAddress_IsLoopback(this.h))
 }
@@ -311,6 +329,30 @@ func (this *QHostAddress) IsMulticast() bool {
 
 func (this *QHostAddress) IsBroadcast() bool {
 	return (bool)(C.QHostAddress_IsBroadcast(this.h))
+}
+
+func QHostAddress_ParseSubnet(subnet string) struct {
+	First  QHostAddress
+	Second int
+} {
+	subnet_ms := C.struct_miqt_string{}
+	subnet_ms.data = C.CString(subnet)
+	subnet_ms.len = C.size_t(len(subnet))
+	defer C.free(unsafe.Pointer(subnet_ms.data))
+	var _mm C.struct_miqt_map = C.QHostAddress_ParseSubnet(subnet_ms)
+	_First_CArray := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_first_ret := _First_CArray[0]
+	_first_goptr := newQHostAddress(_first_ret)
+	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_entry_First := *_first_goptr
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  QHostAddress
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
 }
 
 func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__ConversionModeFlag) bool {

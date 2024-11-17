@@ -1,5 +1,6 @@
-#ifndef GEN_QFACTORYINTERFACE_H
-#define GEN_QFACTORYINTERFACE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFACTORYINTERFACE_H
+#define MIQT_QT_GEN_QFACTORYINTERFACE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -19,7 +20,7 @@ class QFactoryInterface;
 typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
-struct miqt_array QFactoryInterface_Keys(const QFactoryInterface* self);
+struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self);
 void QFactoryInterface_Delete(QFactoryInterface* self);
 
 #ifdef __cplusplus

@@ -112,7 +112,7 @@ void QObject_KillTimer(QObject* self, int id) {
 	self->killTimer(static_cast<int>(id));
 }
 
-struct miqt_array QObject_Children(const QObject* self) {
+struct miqt_array /* of QObject* */  QObject_Children(const QObject* self) {
 	const QObjectList& _ret = self->children();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
@@ -169,7 +169,7 @@ QVariant* QObject_Property(const QObject* self, const char* name) {
 	return new QVariant(self->property(name));
 }
 
-struct miqt_array QObject_DynamicPropertyNames(const QObject* self) {
+struct miqt_array /* of struct miqt_string */  QObject_DynamicPropertyNames(const QObject* self) {
 	QList<QByteArray> _ret = self->dynamicPropertyNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIADEVICES_H
-#define GEN_QMEDIADEVICES_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIADEVICES_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIADEVICES_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -32,9 +33,9 @@ QMediaDevices* QMediaDevices_new2(QObject* parent);
 QMetaObject* QMediaDevices_MetaObject(const QMediaDevices* self);
 void* QMediaDevices_Metacast(QMediaDevices* self, const char* param1);
 struct miqt_string QMediaDevices_Tr(const char* s);
-struct miqt_array QMediaDevices_AudioInputs();
-struct miqt_array QMediaDevices_AudioOutputs();
-struct miqt_array QMediaDevices_VideoInputs();
+struct miqt_array /* of QAudioDevice* */  QMediaDevices_AudioInputs();
+struct miqt_array /* of QAudioDevice* */  QMediaDevices_AudioOutputs();
+struct miqt_array /* of QCameraDevice* */  QMediaDevices_VideoInputs();
 QAudioDevice* QMediaDevices_DefaultAudioInput();
 QAudioDevice* QMediaDevices_DefaultAudioOutput();
 QCameraDevice* QMediaDevices_DefaultVideoInput();

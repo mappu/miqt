@@ -65,7 +65,7 @@ bool QAbstractPrintDialog_IsOptionEnabled(const QAbstractPrintDialog* self, int 
 	return self->isOptionEnabled(static_cast<QAbstractPrintDialog::PrintDialogOption>(option));
 }
 
-void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */ tabs) {
+void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */  tabs) {
 	QList<QWidget *> tabs_QList;
 	tabs_QList.reserve(tabs.len);
 	QWidget** tabs_arr = static_cast<QWidget**>(tabs.data);

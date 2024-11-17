@@ -1,5 +1,6 @@
-#ifndef GEN_QITEMEDITORFACTORY_H
-#define GEN_QITEMEDITORFACTORY_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QITEMEDITORFACTORY_H
+#define MIQT_QT6_GEN_QITEMEDITORFACTORY_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -47,7 +47,7 @@ void QAudioRoleControl_SetAudioRole(QAudioRoleControl* self, int role) {
 	self->setAudioRole(static_cast<QAudio::Role>(role));
 }
 
-struct miqt_array QAudioRoleControl_SupportedAudioRoles(const QAudioRoleControl* self) {
+struct miqt_array /* of int */  QAudioRoleControl_SupportedAudioRoles(const QAudioRoleControl* self) {
 	QList<QAudio::Role> _ret = self->supportedAudioRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

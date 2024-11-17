@@ -156,7 +156,7 @@ void QVideoFrame_SetEndTime(QVideoFrame* self, long long time) {
 	self->setEndTime(static_cast<qint64>(time));
 }
 
-struct miqt_map QVideoFrame_AvailableMetaData(const QVideoFrame* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVideoFrame_AvailableMetaData(const QVideoFrame* self) {
 	QVariantMap _ret = self->availableMetaData();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));

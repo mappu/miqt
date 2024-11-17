@@ -1,5 +1,6 @@
-#ifndef GEN_QRAWFONT_H
-#define GEN_QRAWFONT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QRAWFONT_H
+#define MIQT_QT6_GEN_QRAWFONT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -50,9 +51,9 @@ struct miqt_string QRawFont_FamilyName(const QRawFont* self);
 struct miqt_string QRawFont_StyleName(const QRawFont* self);
 int QRawFont_Style(const QRawFont* self);
 int QRawFont_Weight(const QRawFont* self);
-struct miqt_array QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string text);
-struct miqt_array QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */ glyphIndexes);
-struct miqt_array QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */ glyphIndexes, int layoutFlags);
+struct miqt_array /* of unsigned int */  QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string text);
+struct miqt_array /* of QPointF* */  QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes);
+struct miqt_array /* of QPointF* */  QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes, int layoutFlags);
 bool QRawFont_GlyphIndexesForChars(const QRawFont* self, QChar* chars, int numChars, unsigned int* glyphIndexes, int* numGlyphs);
 bool QRawFont_AdvancesForGlyphIndexes3(const QRawFont* self, const unsigned int* glyphIndexes, QPointF* advances, int numGlyphs);
 bool QRawFont_AdvancesForGlyphIndexes4(const QRawFont* self, const unsigned int* glyphIndexes, QPointF* advances, int numGlyphs, int layoutFlags);
@@ -76,7 +77,7 @@ void QRawFont_LoadFromFile(QRawFont* self, struct miqt_string fileName, double p
 void QRawFont_LoadFromData(QRawFont* self, struct miqt_string fontData, double pixelSize, int hintingPreference);
 bool QRawFont_SupportsCharacter(const QRawFont* self, unsigned int ucs4);
 bool QRawFont_SupportsCharacterWithCharacter(const QRawFont* self, QChar* character);
-struct miqt_array QRawFont_SupportedWritingSystems(const QRawFont* self);
+struct miqt_array /* of int */  QRawFont_SupportedWritingSystems(const QRawFont* self);
 struct miqt_string QRawFont_FontTable(const QRawFont* self, const char* tagName);
 QRawFont* QRawFont_FromFont(QFont* font);
 QImage* QRawFont_AlphaMapForGlyph2(const QRawFont* self, unsigned int glyphIndex, int antialiasingType);

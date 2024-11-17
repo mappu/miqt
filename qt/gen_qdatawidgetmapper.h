@@ -1,5 +1,6 @@
-#ifndef GEN_QDATAWIDGETMAPPER_H
-#define GEN_QDATAWIDGETMAPPER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QDATAWIDGETMAPPER_H
+#define MIQT_QT_GEN_QDATAWIDGETMAPPER_H
 
 #include <stdbool.h>
 #include <stddef.h>

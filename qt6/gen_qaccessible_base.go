@@ -292,6 +292,23 @@ func QAccessible_Cleanup() {
 	C.QAccessible_Cleanup()
 }
 
+func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType QAccessible__TextBoundaryType) struct {
+	First  int
+	Second int
+} {
+	var _mm C.struct_miqt_map = C.QAccessible_QAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
 	C.QAccessible_Delete(this.h)

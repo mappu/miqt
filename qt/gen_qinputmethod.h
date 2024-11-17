@@ -1,5 +1,6 @@
-#ifndef GEN_QINPUTMETHOD_H
-#define GEN_QINPUTMETHOD_H
+#pragma once
+#ifndef MIQT_QT_GEN_QINPUTMETHOD_H
+#define MIQT_QT_GEN_QINPUTMETHOD_H
 
 #include <stdbool.h>
 #include <stddef.h>

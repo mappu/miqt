@@ -1,5 +1,6 @@
-#ifndef GEN_QVARIANT_H
-#define GEN_QVARIANT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QVARIANT_H
+#define MIQT_QT_GEN_QVARIANT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -116,13 +117,13 @@ QVariant* QVariant_new14(const char* str);
 QVariant* QVariant_new15(struct miqt_string bytearray);
 QVariant* QVariant_new16(QBitArray* bitarray);
 QVariant* QVariant_new17(struct miqt_string stringVal);
-QVariant* QVariant_new18(struct miqt_array /* of struct miqt_string */ stringlist);
+QVariant* QVariant_new18(struct miqt_array /* of struct miqt_string */  stringlist);
 QVariant* QVariant_new19(QChar* qchar);
 QVariant* QVariant_new20(QDate* date);
 QVariant* QVariant_new21(QTime* time);
 QVariant* QVariant_new22(QDateTime* datetime);
-QVariant* QVariant_new23(struct miqt_map mapVal);
-QVariant* QVariant_new24(struct miqt_map hash);
+QVariant* QVariant_new23(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
+QVariant* QVariant_new24(struct miqt_map /* of struct miqt_string to QVariant* */  hash);
 QVariant* QVariant_new25(QSize* size);
 QVariant* QVariant_new26(QSizeF* size);
 QVariant* QVariant_new27(QPoint* pt);
@@ -166,13 +167,13 @@ double QVariant_ToReal(const QVariant* self);
 struct miqt_string QVariant_ToByteArray(const QVariant* self);
 QBitArray* QVariant_ToBitArray(const QVariant* self);
 struct miqt_string QVariant_ToString(const QVariant* self);
-struct miqt_array QVariant_ToStringList(const QVariant* self);
+struct miqt_array /* of struct miqt_string */  QVariant_ToStringList(const QVariant* self);
 QChar* QVariant_ToChar(const QVariant* self);
 QDate* QVariant_ToDate(const QVariant* self);
 QTime* QVariant_ToTime(const QVariant* self);
 QDateTime* QVariant_ToDateTime(const QVariant* self);
-struct miqt_map QVariant_ToMap(const QVariant* self);
-struct miqt_map QVariant_ToHash(const QVariant* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToMap(const QVariant* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToHash(const QVariant* self);
 QPoint* QVariant_ToPoint(const QVariant* self);
 QPointF* QVariant_ToPointF(const QVariant* self);
 QRect* QVariant_ToRect(const QVariant* self);

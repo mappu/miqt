@@ -1,5 +1,6 @@
-#ifndef GEN_QFLOAT16_H
-#define GEN_QFLOAT16_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFLOAT16_H
+#define MIQT_QT_GEN_QFLOAT16_H
 
 #include <stdbool.h>
 #include <stddef.h>

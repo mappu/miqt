@@ -58,7 +58,7 @@ bool QIconEngine_Write(const QIconEngine* self, QDataStream* out) {
 	return self->write(*out);
 }
 
-struct miqt_array QIconEngine_AvailableSizes(const QIconEngine* self) {
+struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes(const QIconEngine* self) {
 	QList<QSize> _ret = self->availableSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -94,7 +94,7 @@ void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data) {
 	self->virtual_hook(static_cast<int>(id), data);
 }
 
-struct miqt_array QIconEngine_AvailableSizes1(const QIconEngine* self, int mode) {
+struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes1(const QIconEngine* self, int mode) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -107,7 +107,7 @@ struct miqt_array QIconEngine_AvailableSizes1(const QIconEngine* self, int mode)
 	return _out;
 }
 
-struct miqt_array QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state) {
+struct miqt_array /* of QSize* */  QIconEngine_AvailableSizes2(const QIconEngine* self, int mode, int state) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));

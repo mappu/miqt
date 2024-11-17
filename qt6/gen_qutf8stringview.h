@@ -1,5 +1,6 @@
-#ifndef GEN_QUTF8STRINGVIEW_H
-#define GEN_QUTF8STRINGVIEW_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QUTF8STRINGVIEW_H
+#define MIQT_QT6_GEN_QUTF8STRINGVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>

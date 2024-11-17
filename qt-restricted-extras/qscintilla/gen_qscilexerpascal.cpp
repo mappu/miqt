@@ -56,7 +56,7 @@ const char* QsciLexerPascal_Lexer(const QsciLexerPascal* self) {
 	return (const char*) self->lexer();
 }
 
-struct miqt_array QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self) {
+struct miqt_array /* of struct miqt_string */  QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self) {
 	QStringList _ret = self->autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

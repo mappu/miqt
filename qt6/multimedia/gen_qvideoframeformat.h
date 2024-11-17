@@ -1,5 +1,6 @@
-#ifndef GEN_QVIDEOFRAMEFORMAT_H
-#define GEN_QVIDEOFRAMEFORMAT_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QVIDEOFRAMEFORMAT_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QVIDEOFRAMEFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>

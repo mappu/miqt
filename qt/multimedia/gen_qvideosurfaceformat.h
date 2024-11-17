@@ -1,5 +1,6 @@
-#ifndef GEN_QVIDEOSURFACEFORMAT_H
-#define GEN_QVIDEOSURFACEFORMAT_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QVIDEOSURFACEFORMAT_H
+#define MIQT_QT_MULTIMEDIA_GEN_QVIDEOSURFACEFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -56,7 +57,7 @@ void QVideoSurfaceFormat_SetYCbCrColorSpace(QVideoSurfaceFormat* self, int color
 bool QVideoSurfaceFormat_IsMirrored(const QVideoSurfaceFormat* self);
 void QVideoSurfaceFormat_SetMirrored(QVideoSurfaceFormat* self, bool mirrored);
 QSize* QVideoSurfaceFormat_SizeHint(const QVideoSurfaceFormat* self);
-struct miqt_array QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self);
+struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self);
 QVariant* QVideoSurfaceFormat_Property(const QVideoSurfaceFormat* self, const char* name);
 void QVideoSurfaceFormat_SetProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value);
 void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self);

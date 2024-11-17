@@ -24,7 +24,7 @@ QTreeWidgetItem* QTreeWidgetItem_new() {
 	return new QTreeWidgetItem();
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */ strings) {
+QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -39,7 +39,7 @@ QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview) {
 	return new QTreeWidgetItem(treeview);
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */ strings) {
+QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -58,7 +58,7 @@ QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent) {
 	return new QTreeWidgetItem(parent);
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */ strings) {
+QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -81,7 +81,7 @@ QTreeWidgetItem* QTreeWidgetItem_new10(int typeVal) {
 	return new QTreeWidgetItem(static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */ strings, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -96,7 +96,7 @@ QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int typeVal) {
 	return new QTreeWidgetItem(treeview, static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */ strings, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -115,7 +115,7 @@ QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int typeVal) {
 	return new QTreeWidgetItem(parent, static_cast<int>(typeVal));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */ strings, int typeVal) {
+QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int typeVal) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -393,7 +393,7 @@ QTreeWidgetItem* QTreeWidgetItem_TakeChild(QTreeWidgetItem* self, int index) {
 	return self->takeChild(static_cast<int>(index));
 }
 
-void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array /* of QTreeWidgetItem* */ children) {
+void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array /* of QTreeWidgetItem* */  children) {
 	QList<QTreeWidgetItem *> children_QList;
 	children_QList.reserve(children.len);
 	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children.data);
@@ -403,7 +403,7 @@ void QTreeWidgetItem_AddChildren(QTreeWidgetItem* self, struct miqt_array /* of 
 	self->addChildren(children_QList);
 }
 
-void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array /* of QTreeWidgetItem* */ children) {
+void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miqt_array /* of QTreeWidgetItem* */  children) {
 	QList<QTreeWidgetItem *> children_QList;
 	children_QList.reserve(children.len);
 	QTreeWidgetItem** children_arr = static_cast<QTreeWidgetItem**>(children.data);
@@ -413,7 +413,7 @@ void QTreeWidgetItem_InsertChildren(QTreeWidgetItem* self, int index, struct miq
 	self->insertChildren(static_cast<int>(index), children_QList);
 }
 
-struct miqt_array QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidgetItem_TakeChildren(QTreeWidgetItem* self) {
 	QList<QTreeWidgetItem *> _ret = self->takeChildren();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
@@ -512,7 +512,7 @@ int QTreeWidget_IndexOfTopLevelItem(const QTreeWidget* self, QTreeWidgetItem* it
 	return self->indexOfTopLevelItem(item);
 }
 
-void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array /* of QTreeWidgetItem* */ items) {
+void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_array /* of QTreeWidgetItem* */  items) {
 	QList<QTreeWidgetItem *> items_QList;
 	items_QList.reserve(items.len);
 	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items.data);
@@ -522,7 +522,7 @@ void QTreeWidget_InsertTopLevelItems(QTreeWidget* self, int index, struct miqt_a
 	self->insertTopLevelItems(static_cast<int>(index), items_QList);
 }
 
-void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array /* of QTreeWidgetItem* */ items) {
+void QTreeWidget_AddTopLevelItems(QTreeWidget* self, struct miqt_array /* of QTreeWidgetItem* */  items) {
 	QList<QTreeWidgetItem *> items_QList;
 	items_QList.reserve(items.len);
 	QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(items.data);
@@ -540,7 +540,7 @@ void QTreeWidget_SetHeaderItem(QTreeWidget* self, QTreeWidgetItem* item) {
 	self->setHeaderItem(item);
 }
 
-void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array /* of struct miqt_string */ labels) {
+void QTreeWidget_SetHeaderLabels(QTreeWidget* self, struct miqt_array /* of struct miqt_string */  labels) {
 	QStringList labels_QList;
 	labels_QList.reserve(labels.len);
 	struct miqt_string* labels_arr = static_cast<struct miqt_string*>(labels.data);
@@ -632,7 +632,7 @@ void QTreeWidget_SetItemSelected(QTreeWidget* self, QTreeWidgetItem* item, bool 
 	self->setItemSelected(item, selectVal);
 }
 
-struct miqt_array QTreeWidget_SelectedItems(const QTreeWidget* self) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_SelectedItems(const QTreeWidget* self) {
 	QList<QTreeWidgetItem *> _ret = self->selectedItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
@@ -645,7 +645,7 @@ struct miqt_array QTreeWidget_SelectedItems(const QTreeWidget* self) {
 	return _out;
 }
 
-struct miqt_array QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string text, int flags) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_FindItems(const QTreeWidget* self, struct miqt_string text, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -887,7 +887,7 @@ bool QTreeWidget_IsPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 	return self->isPersistentEditorOpen(item, static_cast<int>(column));
 }
 
-struct miqt_array QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_FindItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory

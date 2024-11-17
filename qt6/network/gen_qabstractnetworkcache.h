@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTNETWORKCACHE_H
-#define GEN_QABSTRACTNETWORKCACHE_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QABSTRACTNETWORKCACHE_H
+#define MIQT_QT6_NETWORK_GEN_QABSTRACTNETWORKCACHE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,14 +41,16 @@ bool QNetworkCacheMetaData_OperatorNotEqual(const QNetworkCacheMetaData* self, Q
 bool QNetworkCacheMetaData_IsValid(const QNetworkCacheMetaData* self);
 QUrl* QNetworkCacheMetaData_Url(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetUrl(QNetworkCacheMetaData* self, QUrl* url);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_RawHeaders(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_SetRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers);
 QDateTime* QNetworkCacheMetaData_LastModified(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetLastModified(QNetworkCacheMetaData* self, QDateTime* dateTime);
 QDateTime* QNetworkCacheMetaData_ExpirationDate(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetExpirationDate(QNetworkCacheMetaData* self, QDateTime* dateTime);
 bool QNetworkCacheMetaData_SaveToDisk(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetSaveToDisk(QNetworkCacheMetaData* self, bool allow);
-struct miqt_map QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map attributes);
+struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
 void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self);
 
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self);

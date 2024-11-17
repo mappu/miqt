@@ -24,7 +24,7 @@ void QJsonArray_OperatorAssign(QJsonArray* self, QJsonArray* other) {
 	self->operator=(*other);
 }
 
-QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */ list) {
+QJsonArray* QJsonArray_FromStringList(struct miqt_array /* of struct miqt_string */  list) {
 	QStringList list_QList;
 	list_QList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);

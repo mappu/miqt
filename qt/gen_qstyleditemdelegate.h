@@ -1,5 +1,6 @@
-#ifndef GEN_QSTYLEDITEMDELEGATE_H
-#define GEN_QSTYLEDITEMDELEGATE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTYLEDITEMDELEGATE_H
+#define MIQT_QT_GEN_QSTYLEDITEMDELEGATE_H
 
 #include <stdbool.h>
 #include <stddef.h>

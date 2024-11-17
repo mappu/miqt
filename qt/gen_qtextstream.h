@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTSTREAM_H
-#define GEN_QTEXTSTREAM_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTSTREAM_H
+#define MIQT_QT_GEN_QTEXTSTREAM_H
 
 #include <stdbool.h>
 #include <stddef.h>

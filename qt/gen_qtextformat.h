@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTFORMAT_H
-#define GEN_QTEXTFORMAT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTFORMAT_H
+#define MIQT_QT_GEN_QTEXTFORMAT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -84,9 +85,9 @@ QColor* QTextFormat_ColorProperty(const QTextFormat* self, int propertyId);
 QPen* QTextFormat_PenProperty(const QTextFormat* self, int propertyId);
 QBrush* QTextFormat_BrushProperty(const QTextFormat* self, int propertyId);
 QTextLength* QTextFormat_LengthProperty(const QTextFormat* self, int propertyId);
-struct miqt_array QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId);
-void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array /* of QTextLength* */ lengths);
-struct miqt_map QTextFormat_Properties(const QTextFormat* self);
+struct miqt_array /* of QTextLength* */  QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId);
+void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array /* of QTextLength* */  lengths);
+struct miqt_map /* of int to QVariant* */  QTextFormat_Properties(const QTextFormat* self);
 int QTextFormat_PropertyCount(const QTextFormat* self);
 void QTextFormat_SetObjectType(QTextFormat* self, int typeVal);
 int QTextFormat_ObjectType(const QTextFormat* self);
@@ -124,7 +125,7 @@ void QTextCharFormat_SetFontWithFont(QTextCharFormat* self, QFont* font);
 QFont* QTextCharFormat_Font(const QTextCharFormat* self);
 void QTextCharFormat_SetFontFamily(QTextCharFormat* self, struct miqt_string family);
 struct miqt_string QTextCharFormat_FontFamily(const QTextCharFormat* self);
-void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */ families);
+void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */  families);
 QVariant* QTextCharFormat_FontFamilies(const QTextCharFormat* self);
 void QTextCharFormat_SetFontStyleName(QTextCharFormat* self, struct miqt_string styleName);
 QVariant* QTextCharFormat_FontStyleName(const QTextCharFormat* self);
@@ -176,8 +177,8 @@ void QTextCharFormat_SetAnchorHref(QTextCharFormat* self, struct miqt_string val
 struct miqt_string QTextCharFormat_AnchorHref(const QTextCharFormat* self);
 void QTextCharFormat_SetAnchorName(QTextCharFormat* self, struct miqt_string name);
 struct miqt_string QTextCharFormat_AnchorName(const QTextCharFormat* self);
-void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */ names);
-struct miqt_array QTextCharFormat_AnchorNames(const QTextCharFormat* self);
+void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */  names);
+struct miqt_array /* of struct miqt_string */  QTextCharFormat_AnchorNames(const QTextCharFormat* self);
 void QTextCharFormat_SetTableCellRowSpan(QTextCharFormat* self, int tableCellRowSpan);
 int QTextCharFormat_TableCellRowSpan(const QTextCharFormat* self);
 void QTextCharFormat_SetTableCellColumnSpan(QTextCharFormat* self, int tableCellColumnSpan);
@@ -212,8 +213,8 @@ void QTextBlockFormat_SetNonBreakableLines(QTextBlockFormat* self, bool b);
 bool QTextBlockFormat_NonBreakableLines(const QTextBlockFormat* self);
 void QTextBlockFormat_SetPageBreakPolicy(QTextBlockFormat* self, int flags);
 int QTextBlockFormat_PageBreakPolicy(const QTextBlockFormat* self);
-void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array /* of QTextOption__Tab* */ tabs);
-struct miqt_array QTextBlockFormat_TabPositions(const QTextBlockFormat* self);
+void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array /* of QTextOption__Tab* */  tabs);
+struct miqt_array /* of QTextOption__Tab* */  QTextBlockFormat_TabPositions(const QTextBlockFormat* self);
 void QTextBlockFormat_SetMarker(QTextBlockFormat* self, int marker);
 int QTextBlockFormat_Marker(const QTextBlockFormat* self);
 void QTextBlockFormat_Delete(QTextBlockFormat* self);
@@ -281,8 +282,8 @@ QTextTableFormat* QTextTableFormat_new();
 bool QTextTableFormat_IsValid(const QTextTableFormat* self);
 int QTextTableFormat_Columns(const QTextTableFormat* self);
 void QTextTableFormat_SetColumns(QTextTableFormat* self, int columns);
-void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array /* of QTextLength* */ constraints);
-struct miqt_array QTextTableFormat_ColumnWidthConstraints(const QTextTableFormat* self);
+void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array /* of QTextLength* */  constraints);
+struct miqt_array /* of QTextLength* */  QTextTableFormat_ColumnWidthConstraints(const QTextTableFormat* self);
 void QTextTableFormat_ClearColumnWidthConstraints(QTextTableFormat* self);
 double QTextTableFormat_CellSpacing(const QTextTableFormat* self);
 void QTextTableFormat_SetCellSpacing(QTextTableFormat* self, double spacing);

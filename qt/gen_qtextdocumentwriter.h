@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTDOCUMENTWRITER_H
-#define GEN_QTEXTDOCUMENTWRITER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTDOCUMENTWRITER_H
+#define MIQT_QT_GEN_QTEXTDOCUMENTWRITER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -43,7 +44,7 @@ bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* documen
 bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment);
 void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec);
 QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self);
-struct miqt_array QTextDocumentWriter_SupportedDocumentFormats();
+struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocumentFormats();
 void QTextDocumentWriter_Delete(QTextDocumentWriter* self);
 
 #ifdef __cplusplus

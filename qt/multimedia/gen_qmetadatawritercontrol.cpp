@@ -57,7 +57,7 @@ void QMetaDataWriterControl_SetMetaData(QMetaDataWriterControl* self, struct miq
 	self->setMetaData(key_QString, *value);
 }
 
-struct miqt_array QMetaDataWriterControl_AvailableMetaData(const QMetaDataWriterControl* self) {
+struct miqt_array /* of struct miqt_string */  QMetaDataWriterControl_AvailableMetaData(const QMetaDataWriterControl* self) {
 	QStringList _ret = self->availableMetaData();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

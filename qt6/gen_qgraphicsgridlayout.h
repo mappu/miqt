@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSGRIDLAYOUT_H
-#define GEN_QGRAPHICSGRIDLAYOUT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSGRIDLAYOUT_H
+#define MIQT_QT6_GEN_QGRAPHICSGRIDLAYOUT_H
 
 #include <stdbool.h>
 #include <stddef.h>

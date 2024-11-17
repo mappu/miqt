@@ -1,5 +1,6 @@
-#ifndef GEN_QSCROLLAREA_H
-#define GEN_QSCROLLAREA_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSCROLLAREA_H
+#define MIQT_QT6_GEN_QSCROLLAREA_H
 
 #include <stdbool.h>
 #include <stddef.h>

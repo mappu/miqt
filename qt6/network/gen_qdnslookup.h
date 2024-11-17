@@ -1,5 +1,6 @@
-#ifndef GEN_QDNSLOOKUP_H
-#define GEN_QDNSLOOKUP_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QDNSLOOKUP_H
+#define MIQT_QT6_NETWORK_GEN_QDNSLOOKUP_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -83,7 +84,7 @@ void QDnsTextRecord_OperatorAssign(QDnsTextRecord* self, QDnsTextRecord* other);
 void QDnsTextRecord_Swap(QDnsTextRecord* self, QDnsTextRecord* other);
 struct miqt_string QDnsTextRecord_Name(const QDnsTextRecord* self);
 unsigned int QDnsTextRecord_TimeToLive(const QDnsTextRecord* self);
-struct miqt_array QDnsTextRecord_Values(const QDnsTextRecord* self);
+struct miqt_array /* of struct miqt_string */  QDnsTextRecord_Values(const QDnsTextRecord* self);
 void QDnsTextRecord_Delete(QDnsTextRecord* self);
 
 QDnsLookup* QDnsLookup_new();
@@ -104,13 +105,13 @@ int QDnsLookup_Type(const QDnsLookup* self);
 void QDnsLookup_SetType(QDnsLookup* self, int typeVal);
 QHostAddress* QDnsLookup_Nameserver(const QDnsLookup* self);
 void QDnsLookup_SetNameserver(QDnsLookup* self, QHostAddress* nameserver);
-struct miqt_array QDnsLookup_CanonicalNameRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_HostAddressRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_MailExchangeRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_NameServerRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_PointerRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_ServiceRecords(const QDnsLookup* self);
-struct miqt_array QDnsLookup_TextRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_CanonicalNameRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsHostAddressRecord* */  QDnsLookup_HostAddressRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsMailExchangeRecord* */  QDnsLookup_MailExchangeRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_NameServerRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsDomainNameRecord* */  QDnsLookup_PointerRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsServiceRecord* */  QDnsLookup_ServiceRecords(const QDnsLookup* self);
+struct miqt_array /* of QDnsTextRecord* */  QDnsLookup_TextRecords(const QDnsLookup* self);
 void QDnsLookup_Abort(QDnsLookup* self);
 void QDnsLookup_Lookup(QDnsLookup* self);
 void QDnsLookup_Finished(QDnsLookup* self);

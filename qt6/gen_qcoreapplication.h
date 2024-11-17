@@ -1,5 +1,6 @@
-#ifndef GEN_QCOREAPPLICATION_H
-#define GEN_QCOREAPPLICATION_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCOREAPPLICATION_H
+#define MIQT_QT6_GEN_QCOREAPPLICATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,7 +37,7 @@ QCoreApplication* QCoreApplication_new2(int* argc, char** argv, int param3);
 QMetaObject* QCoreApplication_MetaObject(const QCoreApplication* self);
 void* QCoreApplication_Metacast(QCoreApplication* self, const char* param1);
 struct miqt_string QCoreApplication_Tr(const char* s);
-struct miqt_array QCoreApplication_Arguments();
+struct miqt_array /* of struct miqt_string */  QCoreApplication_Arguments();
 void QCoreApplication_SetAttribute(int attribute);
 bool QCoreApplication_TestAttribute(int attribute);
 void QCoreApplication_SetOrganizationDomain(struct miqt_string orgDomain);
@@ -65,8 +66,8 @@ bool QCoreApplication_ClosingDown();
 struct miqt_string QCoreApplication_ApplicationDirPath();
 struct miqt_string QCoreApplication_ApplicationFilePath();
 long long QCoreApplication_ApplicationPid();
-void QCoreApplication_SetLibraryPaths(struct miqt_array /* of struct miqt_string */ libraryPaths);
-struct miqt_array QCoreApplication_LibraryPaths();
+void QCoreApplication_SetLibraryPaths(struct miqt_array /* of struct miqt_string */  libraryPaths);
+struct miqt_array /* of struct miqt_string */  QCoreApplication_LibraryPaths();
 void QCoreApplication_AddLibraryPath(struct miqt_string param1);
 void QCoreApplication_RemoveLibraryPath(struct miqt_string param1);
 bool QCoreApplication_InstallTranslator(QTranslator* messageFile);

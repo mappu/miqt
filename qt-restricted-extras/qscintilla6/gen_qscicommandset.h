@@ -1,5 +1,6 @@
-#ifndef GEN_QSCICOMMANDSET_H
-#define GEN_QSCICOMMANDSET_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCICOMMANDSET_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCICOMMANDSET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -25,7 +26,7 @@ typedef struct QsciCommandSet QsciCommandSet;
 
 bool QsciCommandSet_ReadSettings(QsciCommandSet* self, QSettings* qs);
 bool QsciCommandSet_WriteSettings(QsciCommandSet* self, QSettings* qs);
-struct miqt_array QsciCommandSet_Commands(QsciCommandSet* self);
+struct miqt_array /* of QsciCommand* */  QsciCommandSet_Commands(QsciCommandSet* self);
 void QsciCommandSet_ClearKeys(QsciCommandSet* self);
 void QsciCommandSet_ClearAlternateKeys(QsciCommandSet* self);
 QsciCommand* QsciCommandSet_BoundTo(const QsciCommandSet* self, int key);

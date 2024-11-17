@@ -1,5 +1,6 @@
-#ifndef GEN_QHOSTADDRESS_H
-#define GEN_QHOSTADDRESS_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QHOSTADDRESS_H
+#define MIQT_QT6_NETWORK_GEN_QHOSTADDRESS_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -53,6 +54,7 @@ bool QHostAddress_OperatorNotEqualWithAddress(const QHostAddress* self, int addr
 bool QHostAddress_IsNull(const QHostAddress* self);
 void QHostAddress_Clear(QHostAddress* self);
 bool QHostAddress_IsInSubnet(const QHostAddress* self, QHostAddress* subnet, int netmask);
+bool QHostAddress_IsInSubnetWithSubnet(const QHostAddress* self, struct miqt_map /* tuple of QHostAddress* and int */  subnet);
 bool QHostAddress_IsLoopback(const QHostAddress* self);
 bool QHostAddress_IsGlobal(const QHostAddress* self);
 bool QHostAddress_IsLinkLocal(const QHostAddress* self);
@@ -60,6 +62,7 @@ bool QHostAddress_IsSiteLocal(const QHostAddress* self);
 bool QHostAddress_IsUniqueLocalUnicast(const QHostAddress* self);
 bool QHostAddress_IsMulticast(const QHostAddress* self);
 bool QHostAddress_IsBroadcast(const QHostAddress* self);
+struct miqt_map /* tuple of QHostAddress* and int */  QHostAddress_ParseSubnet(struct miqt_string subnet);
 unsigned int QHostAddress_ToIPv4Address1(const QHostAddress* self, bool* ok);
 bool QHostAddress_IsEqual2(const QHostAddress* self, QHostAddress* address, int mode);
 void QHostAddress_Delete(QHostAddress* self);

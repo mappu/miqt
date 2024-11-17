@@ -1,5 +1,6 @@
-#ifndef GEN_QIMAGEREADER_H
-#define GEN_QIMAGEREADER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QIMAGEREADER_H
+#define MIQT_QT_GEN_QIMAGEREADER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -50,7 +51,7 @@ void QImageReader_SetFileName(QImageReader* self, struct miqt_string fileName);
 struct miqt_string QImageReader_FileName(const QImageReader* self);
 QSize* QImageReader_Size(const QImageReader* self);
 int QImageReader_ImageFormat(const QImageReader* self);
-struct miqt_array QImageReader_TextKeys(const QImageReader* self);
+struct miqt_array /* of struct miqt_string */  QImageReader_TextKeys(const QImageReader* self);
 struct miqt_string QImageReader_Text(const QImageReader* self, struct miqt_string key);
 void QImageReader_SetClipRect(QImageReader* self, QRect* rect);
 QRect* QImageReader_ClipRect(const QImageReader* self);
@@ -69,7 +70,7 @@ bool QImageReader_AutoTransform(const QImageReader* self);
 void QImageReader_SetGamma(QImageReader* self, float gamma);
 float QImageReader_Gamma(const QImageReader* self);
 struct miqt_string QImageReader_SubType(const QImageReader* self);
-struct miqt_array QImageReader_SupportedSubTypes(const QImageReader* self);
+struct miqt_array /* of struct miqt_string */  QImageReader_SupportedSubTypes(const QImageReader* self);
 bool QImageReader_CanRead(const QImageReader* self);
 QImage* QImageReader_Read(QImageReader* self);
 bool QImageReader_ReadWithImage(QImageReader* self, QImage* image);
@@ -85,9 +86,9 @@ struct miqt_string QImageReader_ErrorString(const QImageReader* self);
 bool QImageReader_SupportsOption(const QImageReader* self, int option);
 struct miqt_string QImageReader_ImageFormatWithFileName(struct miqt_string fileName);
 struct miqt_string QImageReader_ImageFormatWithDevice(QIODevice* device);
-struct miqt_array QImageReader_SupportedImageFormats();
-struct miqt_array QImageReader_SupportedMimeTypes();
-struct miqt_array QImageReader_ImageFormatsForMimeType(struct miqt_string mimeType);
+struct miqt_array /* of struct miqt_string */  QImageReader_SupportedImageFormats();
+struct miqt_array /* of struct miqt_string */  QImageReader_SupportedMimeTypes();
+struct miqt_array /* of struct miqt_string */  QImageReader_ImageFormatsForMimeType(struct miqt_string mimeType);
 struct miqt_string QImageReader_Tr2(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageReader_Tr3(const char* sourceText, const char* disambiguation, int n);
 struct miqt_string QImageReader_TrUtf82(const char* sourceText, const char* disambiguation);

@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIATIMERANGE_H
-#define GEN_QMEDIATIMERANGE_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QMEDIATIMERANGE_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QMEDIATIMERANGE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ void QMediaTimeRange_Detach(QMediaTimeRange* self);
 void QMediaTimeRange_OperatorAssignWithQMediaTimeRangeInterval(QMediaTimeRange* self, QMediaTimeRange__Interval* param1);
 long long QMediaTimeRange_EarliestTime(const QMediaTimeRange* self);
 long long QMediaTimeRange_LatestTime(const QMediaTimeRange* self);
-struct miqt_array QMediaTimeRange_Intervals(const QMediaTimeRange* self);
+struct miqt_array /* of QMediaTimeRange__Interval* */  QMediaTimeRange_Intervals(const QMediaTimeRange* self);
 bool QMediaTimeRange_IsEmpty(const QMediaTimeRange* self);
 bool QMediaTimeRange_IsContinuous(const QMediaTimeRange* self);
 bool QMediaTimeRange_Contains(const QMediaTimeRange* self, long long time);

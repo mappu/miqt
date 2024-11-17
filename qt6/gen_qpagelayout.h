@@ -1,5 +1,6 @@
-#ifndef GEN_QPAGELAYOUT_H
-#define GEN_QPAGELAYOUT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPAGELAYOUT_H
+#define MIQT_QT6_GEN_QPAGELAYOUT_H
 
 #include <stdbool.h>
 #include <stddef.h>

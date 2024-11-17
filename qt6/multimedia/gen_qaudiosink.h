@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOSINK_H
-#define GEN_QAUDIOSINK_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QAUDIOSINK_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QAUDIOSINK_H
 
 #include <stdbool.h>
 #include <stddef.h>

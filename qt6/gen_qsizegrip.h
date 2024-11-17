@@ -1,5 +1,6 @@
-#ifndef GEN_QSIZEGRIP_H
-#define GEN_QSIZEGRIP_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSIZEGRIP_H
+#define MIQT_QT6_GEN_QSIZEGRIP_H
 
 #include <stdbool.h>
 #include <stddef.h>

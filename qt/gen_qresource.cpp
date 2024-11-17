@@ -101,7 +101,7 @@ void QResource_AddSearchPath(struct miqt_string path) {
 	QResource::addSearchPath(path_QString);
 }
 
-struct miqt_array QResource_SearchPaths() {
+struct miqt_array /* of struct miqt_string */  QResource_SearchPaths() {
 	QStringList _ret = QResource::searchPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

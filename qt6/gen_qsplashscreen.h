@@ -1,5 +1,6 @@
-#ifndef GEN_QSPLASHSCREEN_H
-#define GEN_QSPLASHSCREEN_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSPLASHSCREEN_H
+#define MIQT_QT6_GEN_QSPLASHSCREEN_H
 
 #include <stdbool.h>
 #include <stddef.h>

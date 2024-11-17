@@ -66,7 +66,7 @@ QVariant* QAbstractProxyModel_HeaderData(const QAbstractProxyModel* self, int se
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation)));
 }
 
-struct miqt_map QAbstractProxyModel_ItemData(const QAbstractProxyModel* self, QModelIndex* index) {
+struct miqt_map /* of int to QVariant* */  QAbstractProxyModel_ItemData(const QAbstractProxyModel* self, QModelIndex* index) {
 	QMap<int, QVariant> _ret = self->itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
@@ -93,7 +93,7 @@ bool QAbstractProxyModel_SetData(QAbstractProxyModel* self, QModelIndex* index, 
 	return self->setData(*index, *value);
 }
 
-bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* index, struct miqt_map roles) {
+bool QAbstractProxyModel_SetItemData(QAbstractProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
@@ -139,7 +139,7 @@ QModelIndex* QAbstractProxyModel_Sibling(const QAbstractProxyModel* self, int ro
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes) {
+QMimeData* QAbstractProxyModel_MimeData(const QAbstractProxyModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -157,7 +157,7 @@ bool QAbstractProxyModel_DropMimeData(QAbstractProxyModel* self, QMimeData* data
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-struct miqt_array QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self) {
+struct miqt_array /* of struct miqt_string */  QAbstractProxyModel_MimeTypes(const QAbstractProxyModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -187,7 +187,7 @@ int QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_map QAbstractProxyModel_RoleNames(const QAbstractProxyModel* self) {
+struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_RoleNames(const QAbstractProxyModel* self) {
 	QHash<int, QByteArray> _ret = self->roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));

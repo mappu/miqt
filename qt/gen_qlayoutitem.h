@@ -1,5 +1,6 @@
-#ifndef GEN_QLAYOUTITEM_H
-#define GEN_QLAYOUTITEM_H
+#pragma once
+#ifndef MIQT_QT_GEN_QLAYOUTITEM_H
+#define MIQT_QT_GEN_QLAYOUTITEM_H
 
 #include <stdbool.h>
 #include <stddef.h>

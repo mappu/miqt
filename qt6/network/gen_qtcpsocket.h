@@ -1,5 +1,6 @@
-#ifndef GEN_QTCPSOCKET_H
-#define GEN_QTCPSOCKET_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QTCPSOCKET_H
+#define MIQT_QT6_NETWORK_GEN_QTCPSOCKET_H
 
 #include <stdbool.h>
 #include <stddef.h>

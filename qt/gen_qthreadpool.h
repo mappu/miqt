@@ -1,5 +1,6 @@
-#ifndef GEN_QTHREADPOOL_H
-#define GEN_QTHREADPOOL_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTHREADPOOL_H
+#define MIQT_QT_GEN_QTHREADPOOL_H
 
 #include <stdbool.h>
 #include <stddef.h>

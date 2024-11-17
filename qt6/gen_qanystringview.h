@@ -1,5 +1,6 @@
-#ifndef GEN_QANYSTRINGVIEW_H
-#define GEN_QANYSTRINGVIEW_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QANYSTRINGVIEW_H
+#define MIQT_QT6_GEN_QANYSTRINGVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>

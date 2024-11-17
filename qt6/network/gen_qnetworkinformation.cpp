@@ -77,7 +77,7 @@ bool QNetworkInformation_LoadWithFeatures(int features) {
 	return QNetworkInformation::load(static_cast<QNetworkInformation::Features>(features));
 }
 
-struct miqt_array QNetworkInformation_AvailableBackends() {
+struct miqt_array /* of struct miqt_string */  QNetworkInformation_AvailableBackends() {
 	QStringList _ret = QNetworkInformation::availableBackends();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

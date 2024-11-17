@@ -1,5 +1,6 @@
-#ifndef GEN_QREGULAREXPRESSION_H
-#define GEN_QREGULAREXPRESSION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QREGULAREXPRESSION_H
+#define MIQT_QT_GEN_QREGULAREXPRESSION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -37,7 +38,7 @@ bool QRegularExpression_IsValid(const QRegularExpression* self);
 int QRegularExpression_PatternErrorOffset(const QRegularExpression* self);
 struct miqt_string QRegularExpression_ErrorString(const QRegularExpression* self);
 int QRegularExpression_CaptureCount(const QRegularExpression* self);
-struct miqt_array QRegularExpression_NamedCaptureGroups(const QRegularExpression* self);
+struct miqt_array /* of struct miqt_string */  QRegularExpression_NamedCaptureGroups(const QRegularExpression* self);
 QRegularExpressionMatch* QRegularExpression_Match(const QRegularExpression* self, struct miqt_string subject);
 QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch(const QRegularExpression* self, struct miqt_string subject);
 void QRegularExpression_Optimize(const QRegularExpression* self);
@@ -67,7 +68,7 @@ bool QRegularExpressionMatch_IsValid(const QRegularExpressionMatch* self);
 int QRegularExpressionMatch_LastCapturedIndex(const QRegularExpressionMatch* self);
 struct miqt_string QRegularExpressionMatch_Captured(const QRegularExpressionMatch* self);
 struct miqt_string QRegularExpressionMatch_CapturedWithName(const QRegularExpressionMatch* self, struct miqt_string name);
-struct miqt_array QRegularExpressionMatch_CapturedTexts(const QRegularExpressionMatch* self);
+struct miqt_array /* of struct miqt_string */  QRegularExpressionMatch_CapturedTexts(const QRegularExpressionMatch* self);
 int QRegularExpressionMatch_CapturedStart(const QRegularExpressionMatch* self);
 int QRegularExpressionMatch_CapturedLength(const QRegularExpressionMatch* self);
 int QRegularExpressionMatch_CapturedEnd(const QRegularExpressionMatch* self);

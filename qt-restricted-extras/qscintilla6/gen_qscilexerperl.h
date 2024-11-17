@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERPERL_H
-#define GEN_QSCILEXERPERL_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERPERL_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA6_GEN_QSCILEXERPERL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -34,7 +35,7 @@ void* QsciLexerPerl_Metacast(QsciLexerPerl* self, const char* param1);
 struct miqt_string QsciLexerPerl_Tr(const char* s);
 const char* QsciLexerPerl_Language(const QsciLexerPerl* self);
 const char* QsciLexerPerl_Lexer(const QsciLexerPerl* self);
-struct miqt_array QsciLexerPerl_AutoCompletionWordSeparators(const QsciLexerPerl* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerPerl_AutoCompletionWordSeparators(const QsciLexerPerl* self);
 const char* QsciLexerPerl_BlockEnd(const QsciLexerPerl* self);
 const char* QsciLexerPerl_BlockStart(const QsciLexerPerl* self);
 int QsciLexerPerl_BraceStyle(const QsciLexerPerl* self);

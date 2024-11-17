@@ -1,5 +1,6 @@
-#ifndef GEN_QCONCATENATETABLESPROXYMODEL_H
-#define GEN_QCONCATENATETABLESPROXYMODEL_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCONCATENATETABLESPROXYMODEL_H
+#define MIQT_QT6_GEN_QCONCATENATETABLESPROXYMODEL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -38,23 +39,23 @@ QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new2(QObject* parent)
 QMetaObject* QConcatenateTablesProxyModel_MetaObject(const QConcatenateTablesProxyModel* self);
 void* QConcatenateTablesProxyModel_Metacast(QConcatenateTablesProxyModel* self, const char* param1);
 struct miqt_string QConcatenateTablesProxyModel_Tr(const char* s);
-struct miqt_array QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);
+struct miqt_array /* of QAbstractItemModel* */  QConcatenateTablesProxyModel_SourceModels(const QConcatenateTablesProxyModel* self);
 void QConcatenateTablesProxyModel_AddSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 void QConcatenateTablesProxyModel_RemoveSourceModel(QConcatenateTablesProxyModel* self, QAbstractItemModel* sourceModel);
 QModelIndex* QConcatenateTablesProxyModel_MapFromSource(const QConcatenateTablesProxyModel* self, QModelIndex* sourceIndex);
 QModelIndex* QConcatenateTablesProxyModel_MapToSource(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex);
 QVariant* QConcatenateTablesProxyModel_Data(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 bool QConcatenateTablesProxyModel_SetData(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value);
-struct miqt_map QConcatenateTablesProxyModel_ItemData(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex);
-bool QConcatenateTablesProxyModel_SetItemData(QConcatenateTablesProxyModel* self, QModelIndex* index, struct miqt_map roles);
+struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_ItemData(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex);
+bool QConcatenateTablesProxyModel_SetItemData(QConcatenateTablesProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 int QConcatenateTablesProxyModel_Flags(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 QModelIndex* QConcatenateTablesProxyModel_Index(const QConcatenateTablesProxyModel* self, int row, int column);
 QModelIndex* QConcatenateTablesProxyModel_Parent(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 int QConcatenateTablesProxyModel_RowCount(const QConcatenateTablesProxyModel* self);
 QVariant* QConcatenateTablesProxyModel_HeaderData(const QConcatenateTablesProxyModel* self, int section, int orientation);
 int QConcatenateTablesProxyModel_ColumnCount(const QConcatenateTablesProxyModel* self);
-struct miqt_array QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
-QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of QModelIndex* */ indexes);
+struct miqt_array /* of struct miqt_string */  QConcatenateTablesProxyModel_MimeTypes(const QConcatenateTablesProxyModel* self);
+QMimeData* QConcatenateTablesProxyModel_MimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of QModelIndex* */  indexes);
 bool QConcatenateTablesProxyModel_CanDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QConcatenateTablesProxyModel_DropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 QSize* QConcatenateTablesProxyModel_Span(const QConcatenateTablesProxyModel* self, QModelIndex* index);

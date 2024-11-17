@@ -1,5 +1,6 @@
-#ifndef GEN_QCOMMANDLINKBUTTON_H
-#define GEN_QCOMMANDLINKBUTTON_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCOMMANDLINKBUTTON_H
+#define MIQT_QT6_GEN_QCOMMANDLINKBUTTON_H
 
 #include <stdbool.h>
 #include <stddef.h>

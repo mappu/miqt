@@ -1,5 +1,6 @@
-#ifndef GEN_QLIBRARYINFO_H
-#define GEN_QLIBRARYINFO_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QLIBRARYINFO_H
+#define MIQT_QT6_GEN_QLIBRARYINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -26,7 +27,7 @@ bool QLibraryInfo_IsDebugBuild();
 QVersionNumber* QLibraryInfo_Version();
 struct miqt_string QLibraryInfo_Path(int p);
 struct miqt_string QLibraryInfo_Location(int location);
-struct miqt_array QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName);
+struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName);
 void QLibraryInfo_Delete(QLibraryInfo* self);
 
 #ifdef __cplusplus

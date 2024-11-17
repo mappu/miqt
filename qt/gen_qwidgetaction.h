@@ -1,5 +1,6 @@
-#ifndef GEN_QWIDGETACTION_H
-#define GEN_QWIDGETACTION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QWIDGETACTION_H
+#define MIQT_QT_GEN_QWIDGETACTION_H
 
 #include <stdbool.h>
 #include <stddef.h>

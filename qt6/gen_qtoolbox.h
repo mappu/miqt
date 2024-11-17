@@ -1,5 +1,6 @@
-#ifndef GEN_QTOOLBOX_H
-#define GEN_QTOOLBOX_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTOOLBOX_H
+#define MIQT_QT6_GEN_QTOOLBOX_H
 
 #include <stdbool.h>
 #include <stddef.h>

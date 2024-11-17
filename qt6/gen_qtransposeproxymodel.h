@@ -1,5 +1,6 @@
-#ifndef GEN_QTRANSPOSEPROXYMODEL_H
-#define GEN_QTRANSPOSEPROXYMODEL_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTRANSPOSEPROXYMODEL_H
+#define MIQT_QT6_GEN_QTRANSPOSEPROXYMODEL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -41,9 +42,9 @@ int QTransposeProxyModel_RowCount(const QTransposeProxyModel* self);
 int QTransposeProxyModel_ColumnCount(const QTransposeProxyModel* self);
 QVariant* QTransposeProxyModel_HeaderData(const QTransposeProxyModel* self, int section, int orientation);
 bool QTransposeProxyModel_SetHeaderData(QTransposeProxyModel* self, int section, int orientation, QVariant* value);
-bool QTransposeProxyModel_SetItemData(QTransposeProxyModel* self, QModelIndex* index, struct miqt_map roles);
+bool QTransposeProxyModel_SetItemData(QTransposeProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 QSize* QTransposeProxyModel_Span(const QTransposeProxyModel* self, QModelIndex* index);
-struct miqt_map QTransposeProxyModel_ItemData(const QTransposeProxyModel* self, QModelIndex* index);
+struct miqt_map /* of int to QVariant* */  QTransposeProxyModel_ItemData(const QTransposeProxyModel* self, QModelIndex* index);
 QModelIndex* QTransposeProxyModel_MapFromSource(const QTransposeProxyModel* self, QModelIndex* sourceIndex);
 QModelIndex* QTransposeProxyModel_MapToSource(const QTransposeProxyModel* self, QModelIndex* proxyIndex);
 QModelIndex* QTransposeProxyModel_Parent(const QTransposeProxyModel* self, QModelIndex* index);

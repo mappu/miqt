@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKINFORMATION_H
-#define GEN_QNETWORKINFORMATION_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKINFORMATION_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKINFORMATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -34,7 +35,7 @@ int QNetworkInformation_SupportedFeatures(const QNetworkInformation* self);
 bool QNetworkInformation_LoadDefaultBackend();
 bool QNetworkInformation_LoadBackendByFeatures(int features);
 bool QNetworkInformation_LoadWithFeatures(int features);
-struct miqt_array QNetworkInformation_AvailableBackends();
+struct miqt_array /* of struct miqt_string */  QNetworkInformation_AvailableBackends();
 QNetworkInformation* QNetworkInformation_Instance();
 void QNetworkInformation_ReachabilityChanged(QNetworkInformation* self, int newReachability);
 void QNetworkInformation_connect_ReachabilityChanged(QNetworkInformation* self, intptr_t slot);

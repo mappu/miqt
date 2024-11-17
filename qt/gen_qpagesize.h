@@ -1,5 +1,6 @@
-#ifndef GEN_QPAGESIZE_H
-#define GEN_QPAGESIZE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPAGESIZE_H
+#define MIQT_QT_GEN_QPAGESIZE_H
 
 #include <stdbool.h>
 #include <stddef.h>

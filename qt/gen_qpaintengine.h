@@ -1,5 +1,6 @@
-#ifndef GEN_QPAINTENGINE_H
-#define GEN_QPAINTENGINE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QPAINTENGINE_H
+#define MIQT_QT_GEN_QPAINTENGINE_H
 
 #include <stdbool.h>
 #include <stddef.h>

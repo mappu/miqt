@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLCIPHER_H
-#define GEN_QSSLCIPHER_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QSSLCIPHER_H
+#define MIQT_QT_NETWORK_GEN_QSSLCIPHER_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXER_H
-#define GEN_QSCILEXER_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXER_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ const char* QsciLexer_Lexer(const QsciLexer* self);
 int QsciLexer_LexerId(const QsciLexer* self);
 QsciAbstractAPIs* QsciLexer_Apis(const QsciLexer* self);
 const char* QsciLexer_AutoCompletionFillups(const QsciLexer* self);
-struct miqt_array QsciLexer_AutoCompletionWordSeparators(const QsciLexer* self);
+struct miqt_array /* of struct miqt_string */  QsciLexer_AutoCompletionWordSeparators(const QsciLexer* self);
 int QsciLexer_AutoIndentStyle(QsciLexer* self);
 const char* QsciLexer_BlockEnd(const QsciLexer* self);
 int QsciLexer_BlockLookback(const QsciLexer* self);

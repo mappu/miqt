@@ -1,5 +1,6 @@
-#ifndef GEN_QSHORTCUT_H
-#define GEN_QSHORTCUT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSHORTCUT_H
+#define MIQT_QT6_GEN_QSHORTCUT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,8 +41,8 @@ struct miqt_string QShortcut_Tr(const char* s);
 void QShortcut_SetKey(QShortcut* self, QKeySequence* key);
 QKeySequence* QShortcut_Key(const QShortcut* self);
 void QShortcut_SetKeys(QShortcut* self, int key);
-void QShortcut_SetKeysWithKeys(QShortcut* self, struct miqt_array /* of QKeySequence* */ keys);
-struct miqt_array QShortcut_Keys(const QShortcut* self);
+void QShortcut_SetKeysWithKeys(QShortcut* self, struct miqt_array /* of QKeySequence* */  keys);
+struct miqt_array /* of QKeySequence* */  QShortcut_Keys(const QShortcut* self);
 void QShortcut_SetEnabled(QShortcut* self, bool enable);
 bool QShortcut_IsEnabled(const QShortcut* self);
 void QShortcut_SetContext(QShortcut* self, int context);

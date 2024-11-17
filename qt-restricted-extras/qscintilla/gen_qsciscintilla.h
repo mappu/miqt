@@ -1,5 +1,6 @@
-#ifndef GEN_QSCISCINTILLA_H
-#define GEN_QSCISCINTILLA_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCISCINTILLA_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCISCINTILLA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -55,7 +56,7 @@ QMetaObject* QsciScintilla_MetaObject(const QsciScintilla* self);
 void* QsciScintilla_Metacast(QsciScintilla* self, const char* param1);
 struct miqt_string QsciScintilla_Tr(const char* s);
 struct miqt_string QsciScintilla_TrUtf8(const char* s);
-struct miqt_array QsciScintilla_ApiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start);
+struct miqt_array /* of struct miqt_string */  QsciScintilla_ApiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start);
 void QsciScintilla_Annotate(QsciScintilla* self, int line, struct miqt_string text, int style);
 void QsciScintilla_Annotate2(QsciScintilla* self, int line, struct miqt_string text, QsciStyle* style);
 void QsciScintilla_Annotate3(QsciScintilla* self, int line, QsciStyledText* text);
@@ -84,7 +85,7 @@ void QsciScintilla_ClearFolds(QsciScintilla* self);
 void QsciScintilla_ClearIndicatorRange(QsciScintilla* self, int lineFrom, int indexFrom, int lineTo, int indexTo, int indicatorNumber);
 void QsciScintilla_ClearRegisteredImages(QsciScintilla* self);
 QColor* QsciScintilla_Color(const QsciScintilla* self);
-struct miqt_array QsciScintilla_ContractedFolds(const QsciScintilla* self);
+struct miqt_array /* of int */  QsciScintilla_ContractedFolds(const QsciScintilla* self);
 void QsciScintilla_ConvertEols(QsciScintilla* self, int mode);
 QMenu* QsciScintilla_CreateStandardContextMenu(QsciScintilla* self);
 QsciDocument* QsciScintilla_Document(const QsciScintilla* self);
@@ -164,14 +165,14 @@ void QsciScintilla_SetFoldMarginColors(QsciScintilla* self, QColor* fore, QColor
 void QsciScintilla_SetAnnotationDisplay(QsciScintilla* self, int display);
 void QsciScintilla_SetAutoCompletionFillupsEnabled(QsciScintilla* self, bool enabled);
 void QsciScintilla_SetAutoCompletionFillups(QsciScintilla* self, const char* fillups);
-void QsciScintilla_SetAutoCompletionWordSeparators(QsciScintilla* self, struct miqt_array /* of struct miqt_string */ separators);
+void QsciScintilla_SetAutoCompletionWordSeparators(QsciScintilla* self, struct miqt_array /* of struct miqt_string */  separators);
 void QsciScintilla_SetCallTipsBackgroundColor(QsciScintilla* self, QColor* col);
 void QsciScintilla_SetCallTipsForegroundColor(QsciScintilla* self, QColor* col);
 void QsciScintilla_SetCallTipsHighlightColor(QsciScintilla* self, QColor* col);
 void QsciScintilla_SetCallTipsPosition(QsciScintilla* self, int position);
 void QsciScintilla_SetCallTipsStyle(QsciScintilla* self, int style);
 void QsciScintilla_SetCallTipsVisible(QsciScintilla* self, int nr);
-void QsciScintilla_SetContractedFolds(QsciScintilla* self, struct miqt_array /* of int */ folds);
+void QsciScintilla_SetContractedFolds(QsciScintilla* self, struct miqt_array /* of int */  folds);
 void QsciScintilla_SetDocument(QsciScintilla* self, QsciDocument* document);
 void QsciScintilla_AddEdgeColumn(QsciScintilla* self, int colnr, QColor* col);
 void QsciScintilla_ClearEdgeColumns(QsciScintilla* self);
@@ -220,7 +221,7 @@ void QsciScintilla_SetWhitespaceBackgroundColor(QsciScintilla* self, QColor* col
 void QsciScintilla_SetWhitespaceForegroundColor(QsciScintilla* self, QColor* col);
 void QsciScintilla_SetWhitespaceSize(QsciScintilla* self, int size);
 void QsciScintilla_SetWrapIndentMode(QsciScintilla* self, int mode);
-void QsciScintilla_ShowUserList(QsciScintilla* self, int id, struct miqt_array /* of struct miqt_string */ list);
+void QsciScintilla_ShowUserList(QsciScintilla* self, int id, struct miqt_array /* of struct miqt_string */  list);
 QsciCommandSet* QsciScintilla_StandardCommands(const QsciScintilla* self);
 int QsciScintilla_TabDrawMode(const QsciScintilla* self);
 bool QsciScintilla_TabIndents(const QsciScintilla* self);

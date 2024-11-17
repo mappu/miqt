@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAPLAYER_H
-#define GEN_QMEDIAPLAYER_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIAPLAYER_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIAPLAYER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -45,11 +46,11 @@ void* QMediaPlayer_Metacast(QMediaPlayer* self, const char* param1);
 struct miqt_string QMediaPlayer_Tr(const char* s);
 struct miqt_string QMediaPlayer_TrUtf8(const char* s);
 int QMediaPlayer_HasSupport(struct miqt_string mimeType);
-struct miqt_array QMediaPlayer_SupportedMimeTypes();
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes();
 void QMediaPlayer_SetVideoOutput(QMediaPlayer* self, QVideoWidget* videoOutput);
 void QMediaPlayer_SetVideoOutputWithVideoOutput(QMediaPlayer* self, QGraphicsVideoItem* videoOutput);
 void QMediaPlayer_SetVideoOutputWithSurface(QMediaPlayer* self, QAbstractVideoSurface* surface);
-void QMediaPlayer_SetVideoOutputWithSurfaces(QMediaPlayer* self, struct miqt_array /* of QAbstractVideoSurface* */ surfaces);
+void QMediaPlayer_SetVideoOutputWithSurfaces(QMediaPlayer* self, struct miqt_array /* of QAbstractVideoSurface* */  surfaces);
 QMediaContent* QMediaPlayer_Media(const QMediaPlayer* self);
 QIODevice* QMediaPlayer_MediaStream(const QMediaPlayer* self);
 QMediaPlaylist* QMediaPlayer_Playlist(const QMediaPlayer* self);
@@ -71,10 +72,10 @@ QNetworkConfiguration* QMediaPlayer_CurrentNetworkConfiguration(const QMediaPlay
 int QMediaPlayer_Availability(const QMediaPlayer* self);
 int QMediaPlayer_AudioRole(const QMediaPlayer* self);
 void QMediaPlayer_SetAudioRole(QMediaPlayer* self, int audioRole);
-struct miqt_array QMediaPlayer_SupportedAudioRoles(const QMediaPlayer* self);
+struct miqt_array /* of int */  QMediaPlayer_SupportedAudioRoles(const QMediaPlayer* self);
 struct miqt_string QMediaPlayer_CustomAudioRole(const QMediaPlayer* self);
 void QMediaPlayer_SetCustomAudioRole(QMediaPlayer* self, struct miqt_string audioRole);
-struct miqt_array QMediaPlayer_SupportedCustomAudioRoles(const QMediaPlayer* self);
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedCustomAudioRoles(const QMediaPlayer* self);
 void QMediaPlayer_Play(QMediaPlayer* self);
 void QMediaPlayer_Pause(QMediaPlayer* self);
 void QMediaPlayer_Stop(QMediaPlayer* self);
@@ -84,7 +85,7 @@ void QMediaPlayer_SetMuted(QMediaPlayer* self, bool muted);
 void QMediaPlayer_SetPlaybackRate(QMediaPlayer* self, double rate);
 void QMediaPlayer_SetMedia(QMediaPlayer* self, QMediaContent* media);
 void QMediaPlayer_SetPlaylist(QMediaPlayer* self, QMediaPlaylist* playlist);
-void QMediaPlayer_SetNetworkConfigurations(QMediaPlayer* self, struct miqt_array /* of QNetworkConfiguration* */ configurations);
+void QMediaPlayer_SetNetworkConfigurations(QMediaPlayer* self, struct miqt_array /* of QNetworkConfiguration* */  configurations);
 void QMediaPlayer_MediaChanged(QMediaPlayer* self, QMediaContent* media);
 void QMediaPlayer_connect_MediaChanged(QMediaPlayer* self, intptr_t slot);
 void QMediaPlayer_CurrentMediaChanged(QMediaPlayer* self, QMediaContent* media);
@@ -125,9 +126,9 @@ struct miqt_string QMediaPlayer_Tr2(const char* s, const char* c);
 struct miqt_string QMediaPlayer_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaPlayer_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaPlayer_TrUtf83(const char* s, const char* c, int n);
-int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs);
-int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs, int flags);
-struct miqt_array QMediaPlayer_SupportedMimeTypes1(int flags);
+int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
+int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags);
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes1(int flags);
 void QMediaPlayer_SetMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice* stream);
 void QMediaPlayer_Delete(QMediaPlayer* self);
 

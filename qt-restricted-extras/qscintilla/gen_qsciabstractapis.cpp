@@ -41,7 +41,7 @@ QsciLexer* QsciAbstractAPIs_Lexer(const QsciAbstractAPIs* self) {
 	return self->lexer();
 }
 
-void QsciAbstractAPIs_UpdateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */ context, struct miqt_array /* of struct miqt_string */ list) {
+void QsciAbstractAPIs_UpdateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
 	QStringList context_QList;
 	context_QList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
@@ -64,7 +64,7 @@ void QsciAbstractAPIs_AutoCompletionSelected(QsciAbstractAPIs* self, struct miqt
 	self->autoCompletionSelected(selection_QString);
 }
 
-struct miqt_array QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */ context, int commas, int style, struct miqt_array /* of int */ shifts) {
+struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
 	QStringList context_QList;
 	context_QList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);

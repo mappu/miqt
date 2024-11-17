@@ -1,5 +1,6 @@
-#ifndef GEN_QCBORSTREAMREADER_H
-#define GEN_QCBORSTREAMREADER_H
+#pragma once
+#ifndef MIQT_QT6_CBOR_GEN_QCBORSTREAMREADER_H
+#define MIQT_QT6_CBOR_GEN_QCBORSTREAMREADER_H
 
 #include <stdbool.h>
 #include <stddef.h>

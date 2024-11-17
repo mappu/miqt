@@ -1,5 +1,6 @@
-#ifndef GEN_QAPPLICATION_H
-#define GEN_QAPPLICATION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QAPPLICATION_H
+#define MIQT_QT_GEN_QAPPLICATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -64,8 +65,8 @@ void QApplication_SetFont(QFont* param1);
 QFontMetrics* QApplication_FontMetrics();
 void QApplication_SetWindowIcon(QIcon* icon);
 QIcon* QApplication_WindowIcon();
-struct miqt_array QApplication_AllWidgets();
-struct miqt_array QApplication_TopLevelWidgets();
+struct miqt_array /* of QWidget* */  QApplication_AllWidgets();
+struct miqt_array /* of QWidget* */  QApplication_TopLevelWidgets();
 QDesktopWidget* QApplication_Desktop();
 QWidget* QApplication_ActivePopupWidget();
 QWidget* QApplication_ActiveModalWidget();

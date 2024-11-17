@@ -63,7 +63,7 @@ QMimeType* QMediaFormat_MimeType(const QMediaFormat* self) {
 	return new QMimeType(self->mimeType());
 }
 
-struct miqt_array QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m) {
+struct miqt_array /* of int */  QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m) {
 	QList<QMediaFormat::FileFormat> _ret = self->supportedFileFormats(static_cast<QMediaFormat::ConversionMode>(m));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -77,7 +77,7 @@ struct miqt_array QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m) {
 	return _out;
 }
 
-struct miqt_array QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m) {
+struct miqt_array /* of int */  QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m) {
 	QList<QMediaFormat::VideoCodec> _ret = self->supportedVideoCodecs(static_cast<QMediaFormat::ConversionMode>(m));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -91,7 +91,7 @@ struct miqt_array QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m) {
 	return _out;
 }
 
-struct miqt_array QMediaFormat_SupportedAudioCodecs(QMediaFormat* self, int m) {
+struct miqt_array /* of int */  QMediaFormat_SupportedAudioCodecs(QMediaFormat* self, int m) {
 	QList<QMediaFormat::AudioCodec> _ret = self->supportedAudioCodecs(static_cast<QMediaFormat::ConversionMode>(m));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

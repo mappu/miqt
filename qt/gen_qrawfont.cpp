@@ -94,7 +94,7 @@ int QRawFont_Weight(const QRawFont* self) {
 	return self->weight();
 }
 
-struct miqt_array QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string text) {
+struct miqt_array /* of unsigned int */  QRawFont_GlyphIndexesForString(const QRawFont* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QVector<quint32> _ret = self->glyphIndexesForString(text_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -108,7 +108,7 @@ struct miqt_array QRawFont_GlyphIndexesForString(const QRawFont* self, struct mi
 	return _out;
 }
 
-struct miqt_array QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */ glyphIndexes) {
+struct miqt_array /* of QPointF* */  QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
 	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
@@ -127,7 +127,7 @@ struct miqt_array QRawFont_AdvancesForGlyphIndexes(const QRawFont* self, struct 
 	return _out;
 }
 
-struct miqt_array QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */ glyphIndexes, int layoutFlags) {
+struct miqt_array /* of QPointF* */  QRawFont_AdvancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes, int layoutFlags) {
 	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
@@ -252,7 +252,7 @@ bool QRawFont_SupportsCharacterWithCharacter(const QRawFont* self, QChar* charac
 	return self->supportsCharacter(*character);
 }
 
-struct miqt_array QRawFont_SupportedWritingSystems(const QRawFont* self) {
+struct miqt_array /* of int */  QRawFont_SupportedWritingSystems(const QRawFont* self) {
 	QList<QFontDatabase::WritingSystem> _ret = self->supportedWritingSystems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

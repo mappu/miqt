@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTITEMDELEGATE_H
-#define GEN_QABSTRACTITEMDELEGATE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QABSTRACTITEMDELEGATE_H
+#define MIQT_QT_GEN_QABSTRACTITEMDELEGATE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -55,7 +56,7 @@ void QAbstractItemDelegate_UpdateEditorGeometry(const QAbstractItemDelegate* sel
 bool QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_string QAbstractItemDelegate_ElidedText(QFontMetrics* fontMetrics, int width, int mode, struct miqt_string text);
 bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
-struct miqt_array QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self);
+struct miqt_array /* of int */  QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self);
 void QAbstractItemDelegate_CommitData(QAbstractItemDelegate* self, QWidget* editor);
 void QAbstractItemDelegate_connect_CommitData(QAbstractItemDelegate* self, intptr_t slot);
 void QAbstractItemDelegate_CloseEditor(QAbstractItemDelegate* self, QWidget* editor);

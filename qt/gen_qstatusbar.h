@@ -1,5 +1,6 @@
-#ifndef GEN_QSTATUSBAR_H
-#define GEN_QSTATUSBAR_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTATUSBAR_H
+#define MIQT_QT_GEN_QSTATUSBAR_H
 
 #include <stdbool.h>
 #include <stddef.h>

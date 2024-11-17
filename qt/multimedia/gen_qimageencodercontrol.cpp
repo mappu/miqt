@@ -40,7 +40,7 @@ struct miqt_string QImageEncoderControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QImageEncoderControl_SupportedImageCodecs(const QImageEncoderControl* self) {
+struct miqt_array /* of struct miqt_string */  QImageEncoderControl_SupportedImageCodecs(const QImageEncoderControl* self) {
 	QStringList _ret = self->supportedImageCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -72,7 +72,7 @@ struct miqt_string QImageEncoderControl_ImageCodecDescription(const QImageEncode
 	return _ms;
 }
 
-struct miqt_array QImageEncoderControl_SupportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QImageEncoderControl_SupportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -137,7 +137,7 @@ struct miqt_string QImageEncoderControl_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-struct miqt_array QImageEncoderControl_SupportedResolutions2(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of QSize* */  QImageEncoderControl_SupportedResolutions2(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));

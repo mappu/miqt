@@ -1,5 +1,6 @@
-#ifndef GEN_QACCESSIBLE_BASE_H
-#define GEN_QACCESSIBLE_BASE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QACCESSIBLE_BASE_H
+#define MIQT_QT6_GEN_QACCESSIBLE_BASE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -28,6 +29,7 @@ class QAccessible__State;
 class QAccessibleEvent;
 class QAccessibleInterface;
 class QObject;
+class QTextCursor;
 #else
 typedef struct QAccessible QAccessible;
 typedef struct QAccessible__ActivationObserver QAccessible__ActivationObserver;
@@ -35,6 +37,7 @@ typedef struct QAccessible__State QAccessible__State;
 typedef struct QAccessibleEvent QAccessibleEvent;
 typedef struct QAccessibleInterface QAccessibleInterface;
 typedef struct QObject QObject;
+typedef struct QTextCursor QTextCursor;
 #endif
 
 void QAccessible_InstallActivationObserver(QAccessible__ActivationObserver* param1);
@@ -49,6 +52,7 @@ bool QAccessible_IsActive();
 void QAccessible_SetActive(bool active);
 void QAccessible_SetRootObject(QObject* object);
 void QAccessible_Cleanup();
+struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType);
 void QAccessible_Delete(QAccessible* self);
 
 QAccessible__State* QAccessible__State_new();

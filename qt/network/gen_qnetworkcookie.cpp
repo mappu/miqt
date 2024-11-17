@@ -150,7 +150,7 @@ void QNetworkCookie_Normalize(QNetworkCookie* self, QUrl* url) {
 	self->normalize(*url);
 }
 
-struct miqt_array QNetworkCookie_ParseCookies(struct miqt_string cookieString) {
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct miqt_string cookieString) {
 	QByteArray cookieString_QByteArray(cookieString.data, cookieString.len);
 	QList<QNetworkCookie> _ret = QNetworkCookie::parseCookies(cookieString_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory

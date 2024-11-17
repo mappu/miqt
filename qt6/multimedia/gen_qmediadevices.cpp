@@ -38,7 +38,7 @@ struct miqt_string QMediaDevices_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QMediaDevices_AudioInputs() {
+struct miqt_array /* of QAudioDevice* */  QMediaDevices_AudioInputs() {
 	QList<QAudioDevice> _ret = QMediaDevices::audioInputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.length()));
@@ -51,7 +51,7 @@ struct miqt_array QMediaDevices_AudioInputs() {
 	return _out;
 }
 
-struct miqt_array QMediaDevices_AudioOutputs() {
+struct miqt_array /* of QAudioDevice* */  QMediaDevices_AudioOutputs() {
 	QList<QAudioDevice> _ret = QMediaDevices::audioOutputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.length()));
@@ -64,7 +64,7 @@ struct miqt_array QMediaDevices_AudioOutputs() {
 	return _out;
 }
 
-struct miqt_array QMediaDevices_VideoInputs() {
+struct miqt_array /* of QCameraDevice* */  QMediaDevices_VideoInputs() {
 	QList<QCameraDevice> _ret = QMediaDevices::videoInputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraDevice** _arr = static_cast<QCameraDevice**>(malloc(sizeof(QCameraDevice*) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QCOMMONSTYLE_H
-#define GEN_QCOMMONSTYLE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCOMMONSTYLE_H
+#define MIQT_QT_GEN_QCOMMONSTYLE_H
 
 #include <stdbool.h>
 #include <stddef.h>

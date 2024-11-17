@@ -28,7 +28,7 @@ void QMediaMetaData_Remove(QMediaMetaData* self, int k) {
 	self->remove(static_cast<QMediaMetaData::Key>(k));
 }
 
-struct miqt_array QMediaMetaData_Keys(const QMediaMetaData* self) {
+struct miqt_array /* of int */  QMediaMetaData_Keys(const QMediaMetaData* self) {
 	QList<QMediaMetaData::Key> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

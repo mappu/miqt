@@ -325,15 +325,15 @@ func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
 }
 
 func (this *QMatrix4x4) Data() *float32 {
-	return (*float32)(C.QMatrix4x4_Data(this.h))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_Data(this.h)))
 }
 
 func (this *QMatrix4x4) Data2() *float32 {
-	return (*float32)(C.QMatrix4x4_Data2(this.h))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_Data2(this.h)))
 }
 
 func (this *QMatrix4x4) ConstData() *float32 {
-	return (*float32)(C.QMatrix4x4_ConstData(this.h))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_ConstData(this.h)))
 }
 
 func (this *QMatrix4x4) Optimize() {

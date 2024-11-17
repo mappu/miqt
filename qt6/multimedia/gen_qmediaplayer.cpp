@@ -42,7 +42,7 @@ struct miqt_string QMediaPlayer_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QMediaPlayer_AudioTracks(const QMediaPlayer* self) {
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_AudioTracks(const QMediaPlayer* self) {
 	QList<QMediaMetaData> _ret = self->audioTracks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaMetaData** _arr = static_cast<QMediaMetaData**>(malloc(sizeof(QMediaMetaData*) * _ret.length()));
@@ -55,7 +55,7 @@ struct miqt_array QMediaPlayer_AudioTracks(const QMediaPlayer* self) {
 	return _out;
 }
 
-struct miqt_array QMediaPlayer_VideoTracks(const QMediaPlayer* self) {
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_VideoTracks(const QMediaPlayer* self) {
 	QList<QMediaMetaData> _ret = self->videoTracks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaMetaData** _arr = static_cast<QMediaMetaData**>(malloc(sizeof(QMediaMetaData*) * _ret.length()));
@@ -68,7 +68,7 @@ struct miqt_array QMediaPlayer_VideoTracks(const QMediaPlayer* self) {
 	return _out;
 }
 
-struct miqt_array QMediaPlayer_SubtitleTracks(const QMediaPlayer* self) {
+struct miqt_array /* of QMediaMetaData* */  QMediaPlayer_SubtitleTracks(const QMediaPlayer* self) {
 	QList<QMediaMetaData> _ret = self->subtitleTracks();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaMetaData** _arr = static_cast<QMediaMetaData**>(malloc(sizeof(QMediaMetaData*) * _ret.length()));

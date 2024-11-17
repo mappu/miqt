@@ -1,5 +1,6 @@
-#ifndef GEN_QCLIPBOARD_H
-#define GEN_QCLIPBOARD_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCLIPBOARD_H
+#define MIQT_QT_GEN_QCLIPBOARD_H
 
 #include <stdbool.h>
 #include <stddef.h>

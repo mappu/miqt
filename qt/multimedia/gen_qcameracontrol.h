@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERACONTROL_H
-#define GEN_QCAMERACONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERACONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERACONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>

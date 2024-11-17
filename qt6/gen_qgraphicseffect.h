@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSEFFECT_H
-#define GEN_QGRAPHICSEFFECT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSEFFECT_H
+#define MIQT_QT6_GEN_QGRAPHICSEFFECT_H
 
 #include <stdbool.h>
 #include <stddef.h>

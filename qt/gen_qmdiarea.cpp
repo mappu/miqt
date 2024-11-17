@@ -66,7 +66,7 @@ QMdiSubWindow* QMdiArea_ActiveSubWindow(const QMdiArea* self) {
 	return self->activeSubWindow();
 }
 
-struct miqt_array QMdiArea_SubWindowList(const QMdiArea* self) {
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_SubWindowList(const QMdiArea* self) {
 	QList<QMdiSubWindow *> _ret = self->subWindowList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** _arr = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * _ret.length()));
@@ -246,7 +246,7 @@ struct miqt_string QMdiArea_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array QMdiArea_SubWindowList1(const QMdiArea* self, int order) {
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_SubWindowList1(const QMdiArea* self, int order) {
 	QList<QMdiSubWindow *> _ret = self->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** _arr = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * _ret.length()));

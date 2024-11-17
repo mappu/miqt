@@ -74,7 +74,7 @@ void QCameraFocusControl_SetCustomFocusPoint(QCameraFocusControl* self, QPointF*
 	self->setCustomFocusPoint(*point);
 }
 
-struct miqt_array QCameraFocusControl_FocusZones(const QCameraFocusControl* self) {
+struct miqt_array /* of QCameraFocusZone* */  QCameraFocusControl_FocusZones(const QCameraFocusControl* self) {
 	QCameraFocusZoneList _ret = self->focusZones();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraFocusZone** _arr = static_cast<QCameraFocusZone**>(malloc(sizeof(QCameraFocusZone*) * _ret.length()));

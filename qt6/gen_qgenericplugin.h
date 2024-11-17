@@ -1,5 +1,6 @@
-#ifndef GEN_QGENERICPLUGIN_H
-#define GEN_QGENERICPLUGIN_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGENERICPLUGIN_H
+#define MIQT_QT6_GEN_QGENERICPLUGIN_H
 
 #include <stdbool.h>
 #include <stddef.h>

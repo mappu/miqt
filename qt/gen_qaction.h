@@ -1,5 +1,6 @@
-#ifndef GEN_QACTION_H
-#define GEN_QACTION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QACTION_H
+#define MIQT_QT_GEN_QACTION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -71,9 +72,9 @@ void QAction_SetSeparator(QAction* self, bool b);
 bool QAction_IsSeparator(const QAction* self);
 void QAction_SetShortcut(QAction* self, QKeySequence* shortcut);
 QKeySequence* QAction_Shortcut(const QAction* self);
-void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */ shortcuts);
+void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */  shortcuts);
 void QAction_SetShortcutsWithShortcuts(QAction* self, int shortcuts);
-struct miqt_array QAction_Shortcuts(const QAction* self);
+struct miqt_array /* of QKeySequence* */  QAction_Shortcuts(const QAction* self);
 void QAction_SetShortcutContext(QAction* self, int context);
 int QAction_ShortcutContext(const QAction* self);
 void QAction_SetAutoRepeat(QAction* self, bool autoRepeat);
@@ -96,8 +97,8 @@ bool QAction_IsIconVisibleInMenu(const QAction* self);
 void QAction_SetShortcutVisibleInContextMenu(QAction* self, bool show);
 bool QAction_IsShortcutVisibleInContextMenu(const QAction* self);
 QWidget* QAction_ParentWidget(const QAction* self);
-struct miqt_array QAction_AssociatedWidgets(const QAction* self);
-struct miqt_array QAction_AssociatedGraphicsWidgets(const QAction* self);
+struct miqt_array /* of QWidget* */  QAction_AssociatedWidgets(const QAction* self);
+struct miqt_array /* of QGraphicsWidget* */  QAction_AssociatedGraphicsWidgets(const QAction* self);
 void QAction_Trigger(QAction* self);
 void QAction_Hover(QAction* self);
 void QAction_SetChecked(QAction* self, bool checked);

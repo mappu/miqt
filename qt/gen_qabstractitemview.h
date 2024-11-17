@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTITEMVIEW_H
-#define GEN_QABSTRACTITEMVIEW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QABSTRACTITEMVIEW_H
+#define MIQT_QT_GEN_QABSTRACTITEMVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>

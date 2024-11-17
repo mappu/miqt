@@ -100,6 +100,22 @@ func (this *QArrayData) DetachCapacity(newSize int64) int64 {
 	return (int64)(C.QArrayData_DetachCapacity(this.h, (C.ptrdiff_t)(newSize)))
 }
 
+func QArrayData_ReallocateUnaligned(data *QArrayData, dataPointer unsafe.Pointer, objectSize int64, newCapacity int64, option QArrayData__AllocationOption) struct {
+	First  *QArrayData
+	Second unsafe.Pointer
+} {
+	var _mm C.struct_miqt_map = C.QArrayData_ReallocateUnaligned(data.cPointer(), dataPointer, (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(newCapacity), (C.int)(option))
+	_First_CArray := (*[0xffff]*C.QArrayData)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]unsafe.Pointer)(unsafe.Pointer(_mm.values))
+	_entry_First := UnsafeNewQArrayData(unsafe.Pointer(_First_CArray[0]))
+	_entry_Second := (unsafe.Pointer)(_Second_CArray[0])
+
+	return struct {
+		First  *QArrayData
+		Second unsafe.Pointer
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 func QArrayData_Deallocate(data *QArrayData, objectSize int64, alignment int64) {
 	C.QArrayData_Deallocate(data.cPointer(), (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(alignment))
 }

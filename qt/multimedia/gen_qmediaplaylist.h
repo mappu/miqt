@@ -1,5 +1,6 @@
-#ifndef GEN_QMEDIAPLAYLIST_H
-#define GEN_QMEDIAPLAYLIST_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QMEDIAPLAYLIST_H
+#define MIQT_QT_MULTIMEDIA_GEN_QMEDIAPLAYLIST_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -51,9 +52,9 @@ int QMediaPlaylist_MediaCount(const QMediaPlaylist* self);
 bool QMediaPlaylist_IsEmpty(const QMediaPlaylist* self);
 bool QMediaPlaylist_IsReadOnly(const QMediaPlaylist* self);
 bool QMediaPlaylist_AddMedia(QMediaPlaylist* self, QMediaContent* content);
-bool QMediaPlaylist_AddMediaWithItems(QMediaPlaylist* self, struct miqt_array /* of QMediaContent* */ items);
+bool QMediaPlaylist_AddMediaWithItems(QMediaPlaylist* self, struct miqt_array /* of QMediaContent* */  items);
 bool QMediaPlaylist_InsertMedia(QMediaPlaylist* self, int index, QMediaContent* content);
-bool QMediaPlaylist_InsertMedia2(QMediaPlaylist* self, int index, struct miqt_array /* of QMediaContent* */ items);
+bool QMediaPlaylist_InsertMedia2(QMediaPlaylist* self, int index, struct miqt_array /* of QMediaContent* */  items);
 bool QMediaPlaylist_MoveMedia(QMediaPlaylist* self, int from, int to);
 bool QMediaPlaylist_RemoveMedia(QMediaPlaylist* self, int pos);
 bool QMediaPlaylist_RemoveMedia2(QMediaPlaylist* self, int start, int end);

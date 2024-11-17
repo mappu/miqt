@@ -309,7 +309,7 @@ struct miqt_string QDtls_DtlsErrorString(const QDtls* self) {
 	return _ms;
 }
 
-struct miqt_array QDtls_PeerVerificationErrors(const QDtls* self) {
+struct miqt_array /* of QSslError* */  QDtls_PeerVerificationErrors(const QDtls* self) {
 	QVector<QSslError> _ret = self->peerVerificationErrors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.length()));
@@ -322,7 +322,7 @@ struct miqt_array QDtls_PeerVerificationErrors(const QDtls* self) {
 	return _out;
 }
 
-void QDtls_IgnoreVerificationErrors(QDtls* self, struct miqt_array /* of QSslError* */ errorsToIgnore) {
+void QDtls_IgnoreVerificationErrors(QDtls* self, struct miqt_array /* of QSslError* */  errorsToIgnore) {
 	QVector<QSslError> errorsToIgnore_QList;
 	errorsToIgnore_QList.reserve(errorsToIgnore.len);
 	QSslError** errorsToIgnore_arr = static_cast<QSslError**>(errorsToIgnore.data);

@@ -1,5 +1,6 @@
-#ifndef GEN_QIODEVICEBASE_H
-#define GEN_QIODEVICEBASE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QIODEVICEBASE_H
+#define MIQT_QT6_GEN_QIODEVICEBASE_H
 
 #include <stdbool.h>
 #include <stddef.h>

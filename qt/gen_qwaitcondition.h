@@ -1,5 +1,6 @@
-#ifndef GEN_QWAITCONDITION_H
-#define GEN_QWAITCONDITION_H
+#pragma once
+#ifndef MIQT_QT_GEN_QWAITCONDITION_H
+#define MIQT_QT_GEN_QWAITCONDITION_H
 
 #include <stdbool.h>
 #include <stddef.h>

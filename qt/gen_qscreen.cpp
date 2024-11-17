@@ -147,7 +147,7 @@ QRect* QScreen_AvailableGeometry(const QScreen* self) {
 	return new QRect(self->availableGeometry());
 }
 
-struct miqt_array QScreen_VirtualSiblings(const QScreen* self) {
+struct miqt_array /* of QScreen* */  QScreen_VirtualSiblings(const QScreen* self) {
 	QList<QScreen *> _ret = self->virtualSiblings();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));

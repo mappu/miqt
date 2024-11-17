@@ -1,5 +1,6 @@
-#ifndef GEN_QSESSIONMANAGER_H
-#define GEN_QSESSIONMANAGER_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSESSIONMANAGER_H
+#define MIQT_QT6_GEN_QSESSIONMANAGER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -32,12 +33,12 @@ void QSessionManager_Release(QSessionManager* self);
 void QSessionManager_Cancel(QSessionManager* self);
 void QSessionManager_SetRestartHint(QSessionManager* self, int restartHint);
 int QSessionManager_RestartHint(const QSessionManager* self);
-void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array /* of struct miqt_string */ restartCommand);
-struct miqt_array QSessionManager_RestartCommand(const QSessionManager* self);
-void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array /* of struct miqt_string */ discardCommand);
-struct miqt_array QSessionManager_DiscardCommand(const QSessionManager* self);
+void QSessionManager_SetRestartCommand(QSessionManager* self, struct miqt_array /* of struct miqt_string */  restartCommand);
+struct miqt_array /* of struct miqt_string */  QSessionManager_RestartCommand(const QSessionManager* self);
+void QSessionManager_SetDiscardCommand(QSessionManager* self, struct miqt_array /* of struct miqt_string */  discardCommand);
+struct miqt_array /* of struct miqt_string */  QSessionManager_DiscardCommand(const QSessionManager* self);
 void QSessionManager_SetManagerProperty(QSessionManager* self, struct miqt_string name, struct miqt_string value);
-void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string name, struct miqt_array /* of struct miqt_string */ value);
+void QSessionManager_SetManagerProperty2(QSessionManager* self, struct miqt_string name, struct miqt_array /* of struct miqt_string */  value);
 bool QSessionManager_IsPhase2(const QSessionManager* self);
 void QSessionManager_RequestPhase2(QSessionManager* self);
 struct miqt_string QSessionManager_Tr2(const char* s, const char* c);

@@ -1,5 +1,6 @@
-#ifndef GEN_QNAMESPACE_H
-#define GEN_QNAMESPACE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QNAMESPACE_H
+#define MIQT_QT_GEN_QNAMESPACE_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QVALIDATOR_H
-#define GEN_QVALIDATOR_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QVALIDATOR_H
+#define MIQT_QT6_GEN_QVALIDATOR_H
 
 #include <stdbool.h>
 #include <stddef.h>

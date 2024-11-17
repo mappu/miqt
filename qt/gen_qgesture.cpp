@@ -736,7 +736,7 @@ void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self) {
 	delete self;
 }
 
-QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */ gestures) {
+QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures) {
 	QList<QGesture *> gestures_QList;
 	gestures_QList.reserve(gestures.len);
 	QGesture** gestures_arr = static_cast<QGesture**>(gestures.data);
@@ -750,7 +750,7 @@ QGestureEvent* QGestureEvent_new2(QGestureEvent* param1) {
 	return new QGestureEvent(*param1);
 }
 
-struct miqt_array QGestureEvent_Gestures(const QGestureEvent* self) {
+struct miqt_array /* of QGesture* */  QGestureEvent_Gestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->gestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
@@ -767,7 +767,7 @@ QGesture* QGestureEvent_Gesture(const QGestureEvent* self, int typeVal) {
 	return self->gesture(static_cast<Qt::GestureType>(typeVal));
 }
 
-struct miqt_array QGestureEvent_ActiveGestures(const QGestureEvent* self) {
+struct miqt_array /* of QGesture* */  QGestureEvent_ActiveGestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->activeGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
@@ -780,7 +780,7 @@ struct miqt_array QGestureEvent_ActiveGestures(const QGestureEvent* self) {
 	return _out;
 }
 
-struct miqt_array QGestureEvent_CanceledGestures(const QGestureEvent* self) {
+struct miqt_array /* of QGesture* */  QGestureEvent_CanceledGestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->canceledGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));

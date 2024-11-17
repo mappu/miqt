@@ -1,5 +1,6 @@
-#ifndef GEN_QLINEEDIT_H
-#define GEN_QLINEEDIT_H
+#pragma once
+#ifndef MIQT_QT_GEN_QLINEEDIT_H
+#define MIQT_QT_GEN_QLINEEDIT_H
 
 #include <stdbool.h>
 #include <stddef.h>

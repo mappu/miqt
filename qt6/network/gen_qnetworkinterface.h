@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKINTERFACE_H
-#define GEN_QNETWORKINTERFACE_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKINTERFACE_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKINTERFACE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -62,13 +63,13 @@ struct miqt_string QNetworkInterface_HumanReadableName(const QNetworkInterface* 
 int QNetworkInterface_Flags(const QNetworkInterface* self);
 int QNetworkInterface_Type(const QNetworkInterface* self);
 struct miqt_string QNetworkInterface_HardwareAddress(const QNetworkInterface* self);
-struct miqt_array QNetworkInterface_AddressEntries(const QNetworkInterface* self);
+struct miqt_array /* of QNetworkAddressEntry* */  QNetworkInterface_AddressEntries(const QNetworkInterface* self);
 int QNetworkInterface_InterfaceIndexFromName(struct miqt_string name);
 QNetworkInterface* QNetworkInterface_InterfaceFromName(struct miqt_string name);
 QNetworkInterface* QNetworkInterface_InterfaceFromIndex(int index);
 struct miqt_string QNetworkInterface_InterfaceNameFromIndex(int index);
-struct miqt_array QNetworkInterface_AllInterfaces();
-struct miqt_array QNetworkInterface_AllAddresses();
+struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_AllInterfaces();
+struct miqt_array /* of QHostAddress* */  QNetworkInterface_AllAddresses();
 void QNetworkInterface_Delete(QNetworkInterface* self);
 
 #ifdef __cplusplus

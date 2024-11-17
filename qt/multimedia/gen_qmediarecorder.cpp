@@ -118,7 +118,7 @@ double QMediaRecorder_Volume(const QMediaRecorder* self) {
 	return static_cast<double>(_ret);
 }
 
-struct miqt_array QMediaRecorder_SupportedContainers(const QMediaRecorder* self) {
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedContainers(const QMediaRecorder* self) {
 	QStringList _ret = self->supportedContainers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -150,7 +150,7 @@ struct miqt_string QMediaRecorder_ContainerDescription(const QMediaRecorder* sel
 	return _ms;
 }
 
-struct miqt_array QMediaRecorder_SupportedAudioCodecs(const QMediaRecorder* self) {
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedAudioCodecs(const QMediaRecorder* self) {
 	QStringList _ret = self->supportedAudioCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -182,7 +182,7 @@ struct miqt_string QMediaRecorder_AudioCodecDescription(const QMediaRecorder* se
 	return _ms;
 }
 
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates(const QMediaRecorder* self) {
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates(const QMediaRecorder* self) {
 	QList<int> _ret = self->supportedAudioSampleRates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -195,7 +195,7 @@ struct miqt_array QMediaRecorder_SupportedAudioSampleRates(const QMediaRecorder*
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedVideoCodecs(const QMediaRecorder* self) {
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_SupportedVideoCodecs(const QMediaRecorder* self) {
 	QStringList _ret = self->supportedVideoCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -227,7 +227,7 @@ struct miqt_string QMediaRecorder_VideoCodecDescription(const QMediaRecorder* se
 	return _ms;
 }
 
-struct miqt_array QMediaRecorder_SupportedResolutions(const QMediaRecorder* self) {
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions(const QMediaRecorder* self) {
 	QList<QSize> _ret = self->supportedResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -240,7 +240,7 @@ struct miqt_array QMediaRecorder_SupportedResolutions(const QMediaRecorder* self
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedFrameRates(const QMediaRecorder* self) {
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates(const QMediaRecorder* self) {
 	QList<qreal> _ret = self->supportedFrameRates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -307,7 +307,7 @@ void QMediaRecorder_SetMetaData(QMediaRecorder* self, struct miqt_string key, QV
 	self->setMetaData(key_QString, *value);
 }
 
-struct miqt_array QMediaRecorder_AvailableMetaData(const QMediaRecorder* self) {
+struct miqt_array /* of struct miqt_string */  QMediaRecorder_AvailableMetaData(const QMediaRecorder* self) {
 	QStringList _ret = self->availableMetaData();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -552,7 +552,7 @@ struct miqt_string QMediaRecorder_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates1(const QMediaRecorder* self, QAudioEncoderSettings* settings) {
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates1(const QMediaRecorder* self, QAudioEncoderSettings* settings) {
 	QList<int> _ret = self->supportedAudioSampleRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -565,7 +565,7 @@ struct miqt_array QMediaRecorder_SupportedAudioSampleRates1(const QMediaRecorder
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedAudioSampleRates2(const QMediaRecorder* self, QAudioEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of int */  QMediaRecorder_SupportedAudioSampleRates2(const QMediaRecorder* self, QAudioEncoderSettings* settings, bool* continuous) {
 	QList<int> _ret = self->supportedAudioSampleRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -578,7 +578,7 @@ struct miqt_array QMediaRecorder_SupportedAudioSampleRates2(const QMediaRecorder
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedResolutions1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -591,7 +591,7 @@ struct miqt_array QMediaRecorder_SupportedResolutions1(const QMediaRecorder* sel
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedResolutions2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of QSize* */  QMediaRecorder_SupportedResolutions2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -604,7 +604,7 @@ struct miqt_array QMediaRecorder_SupportedResolutions2(const QMediaRecorder* sel
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedFrameRates1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -617,7 +617,7 @@ struct miqt_array QMediaRecorder_SupportedFrameRates1(const QMediaRecorder* self
 	return _out;
 }
 
-struct miqt_array QMediaRecorder_SupportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of double */  QMediaRecorder_SupportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));

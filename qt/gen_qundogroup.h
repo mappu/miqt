@@ -1,5 +1,6 @@
-#ifndef GEN_QUNDOGROUP_H
-#define GEN_QUNDOGROUP_H
+#pragma once
+#ifndef MIQT_QT_GEN_QUNDOGROUP_H
+#define MIQT_QT_GEN_QUNDOGROUP_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ struct miqt_string QUndoGroup_Tr(const char* s);
 struct miqt_string QUndoGroup_TrUtf8(const char* s);
 void QUndoGroup_AddStack(QUndoGroup* self, QUndoStack* stack);
 void QUndoGroup_RemoveStack(QUndoGroup* self, QUndoStack* stack);
-struct miqt_array QUndoGroup_Stacks(const QUndoGroup* self);
+struct miqt_array /* of QUndoStack* */  QUndoGroup_Stacks(const QUndoGroup* self);
 QUndoStack* QUndoGroup_ActiveStack(const QUndoGroup* self);
 QAction* QUndoGroup_CreateUndoAction(const QUndoGroup* self, QObject* parent);
 QAction* QUndoGroup_CreateRedoAction(const QUndoGroup* self, QObject* parent);

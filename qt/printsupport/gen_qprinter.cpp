@@ -275,7 +275,7 @@ int QPrinter_Duplex(const QPrinter* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array QPrinter_SupportedResolutions(const QPrinter* self) {
+struct miqt_array /* of int */  QPrinter_SupportedResolutions(const QPrinter* self) {
 	QList<int> _ret = self->supportedResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

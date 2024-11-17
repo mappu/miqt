@@ -1,5 +1,6 @@
-#ifndef GEN_QPROGRESSDIALOG_H
-#define GEN_QPROGRESSDIALOG_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPROGRESSDIALOG_H
+#define MIQT_QT6_GEN_QPROGRESSDIALOG_H
 
 #include <stdbool.h>
 #include <stddef.h>

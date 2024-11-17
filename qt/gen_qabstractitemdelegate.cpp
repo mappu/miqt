@@ -96,7 +96,7 @@ bool QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate* self, QHelpEvent* ev
 	return self->helpEvent(event, view, *option, *index);
 }
 
-struct miqt_array QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self) {
+struct miqt_array /* of int */  QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate* self) {
 	QVector<int> _ret = self->paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));

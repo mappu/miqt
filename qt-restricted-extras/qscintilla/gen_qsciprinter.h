@@ -1,5 +1,6 @@
-#ifndef GEN_QSCIPRINTER_H
-#define GEN_QSCIPRINTER_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCIPRINTER_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCIPRINTER_H
 
 #include <stdbool.h>
 #include <stddef.h>

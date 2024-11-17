@@ -1,5 +1,6 @@
-#ifndef GEN_QCOLOR_H
-#define GEN_QCOLOR_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCOLOR_H
+#define MIQT_QT_GEN_QCOLOR_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -39,7 +40,7 @@ bool QColor_IsValid(const QColor* self);
 struct miqt_string QColor_Name(const QColor* self);
 struct miqt_string QColor_NameWithFormat(const QColor* self, int format);
 void QColor_SetNamedColor(QColor* self, struct miqt_string name);
-struct miqt_array QColor_ColorNames();
+struct miqt_array /* of struct miqt_string */  QColor_ColorNames();
 int QColor_Spec(const QColor* self);
 int QColor_Alpha(const QColor* self);
 void QColor_SetAlpha(QColor* self, int alpha);

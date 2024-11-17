@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTEDIT_H
-#define GEN_QTEXTEDIT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTEXTEDIT_H
+#define MIQT_QT6_GEN_QTEXTEDIT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -117,8 +118,8 @@ int QTextEdit_CursorWidth(const QTextEdit* self);
 void QTextEdit_SetCursorWidth(QTextEdit* self, int width);
 bool QTextEdit_AcceptRichText(const QTextEdit* self);
 void QTextEdit_SetAcceptRichText(QTextEdit* self, bool accept);
-void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */ selections);
-struct miqt_array QTextEdit_ExtraSelections(const QTextEdit* self);
+void QTextEdit_SetExtraSelections(QTextEdit* self, struct miqt_array /* of QTextEdit__ExtraSelection* */  selections);
+struct miqt_array /* of QTextEdit__ExtraSelection* */  QTextEdit_ExtraSelections(const QTextEdit* self);
 void QTextEdit_MoveCursor(QTextEdit* self, int operation);
 bool QTextEdit_CanPaste(const QTextEdit* self);
 void QTextEdit_Print(const QTextEdit* self, QPagedPaintDevice* printer);

@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKCOOKIEJAR_H
-#define GEN_QNETWORKCOOKIEJAR_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKCOOKIEJAR_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKCOOKIEJAR_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -33,8 +34,8 @@ QMetaObject* QNetworkCookieJar_MetaObject(const QNetworkCookieJar* self);
 void* QNetworkCookieJar_Metacast(QNetworkCookieJar* self, const char* param1);
 struct miqt_string QNetworkCookieJar_Tr(const char* s);
 struct miqt_string QNetworkCookieJar_TrUtf8(const char* s);
-struct miqt_array QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar* self, QUrl* url);
-bool QNetworkCookieJar_SetCookiesFromUrl(QNetworkCookieJar* self, struct miqt_array /* of QNetworkCookie* */ cookieList, QUrl* url);
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar* self, QUrl* url);
+bool QNetworkCookieJar_SetCookiesFromUrl(QNetworkCookieJar* self, struct miqt_array /* of QNetworkCookie* */  cookieList, QUrl* url);
 bool QNetworkCookieJar_InsertCookie(QNetworkCookieJar* self, QNetworkCookie* cookie);
 bool QNetworkCookieJar_UpdateCookie(QNetworkCookieJar* self, QNetworkCookie* cookie);
 bool QNetworkCookieJar_DeleteCookie(QNetworkCookieJar* self, QNetworkCookie* cookie);

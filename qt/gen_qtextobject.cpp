@@ -264,7 +264,7 @@ void QTextFrame_SetLayoutData(QTextFrame* self, QTextFrameLayoutData* data) {
 	self->setLayoutData(data);
 }
 
-struct miqt_array QTextFrame_ChildFrames(const QTextFrame* self) {
+struct miqt_array /* of QTextFrame* */  QTextFrame_ChildFrames(const QTextFrame* self) {
 	QList<QTextFrame *> _ret = self->childFrames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextFrame** _arr = static_cast<QTextFrame**>(malloc(sizeof(QTextFrame*) * _ret.length()));
@@ -425,7 +425,7 @@ struct miqt_string QTextBlock_Text(const QTextBlock* self) {
 	return _ms;
 }
 
-struct miqt_array QTextBlock_TextFormats(const QTextBlock* self) {
+struct miqt_array /* of QTextLayout__FormatRange* */  QTextBlock_TextFormats(const QTextBlock* self) {
 	QVector<QTextLayout::FormatRange> _ret = self->textFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextLayout__FormatRange** _arr = static_cast<QTextLayout__FormatRange**>(malloc(sizeof(QTextLayout__FormatRange*) * _ret.length()));
@@ -577,7 +577,7 @@ struct miqt_string QTextFragment_Text(const QTextFragment* self) {
 	return _ms;
 }
 
-struct miqt_array QTextFragment_GlyphRuns(const QTextFragment* self) {
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns(const QTextFragment* self) {
 	QList<QGlyphRun> _ret = self->glyphRuns();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
@@ -590,7 +590,7 @@ struct miqt_array QTextFragment_GlyphRuns(const QTextFragment* self) {
 	return _out;
 }
 
-struct miqt_array QTextFragment_GlyphRuns1(const QTextFragment* self, int from) {
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns1(const QTextFragment* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
@@ -603,7 +603,7 @@ struct miqt_array QTextFragment_GlyphRuns1(const QTextFragment* self, int from) 
 	return _out;
 }
 
-struct miqt_array QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length) {
+struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from), static_cast<int>(length));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QGESTURERECOGNIZER_H
-#define GEN_QGESTURERECOGNIZER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QGESTURERECOGNIZER_H
+#define MIQT_QT_GEN_QGESTURERECOGNIZER_H
 
 #include <stdbool.h>
 #include <stddef.h>

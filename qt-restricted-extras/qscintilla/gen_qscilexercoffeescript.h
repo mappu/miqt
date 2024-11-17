@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERCOFFEESCRIPT_H
-#define GEN_QSCILEXERCOFFEESCRIPT_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERCOFFEESCRIPT_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERCOFFEESCRIPT_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ struct miqt_string QsciLexerCoffeeScript_Tr(const char* s);
 struct miqt_string QsciLexerCoffeeScript_TrUtf8(const char* s);
 const char* QsciLexerCoffeeScript_Language(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_Lexer(const QsciLexerCoffeeScript* self);
-struct miqt_array QsciLexerCoffeeScript_AutoCompletionWordSeparators(const QsciLexerCoffeeScript* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerCoffeeScript_AutoCompletionWordSeparators(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockEnd(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockStart(const QsciLexerCoffeeScript* self);
 const char* QsciLexerCoffeeScript_BlockStartKeyword(const QsciLexerCoffeeScript* self);

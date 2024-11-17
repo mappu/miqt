@@ -1,5 +1,6 @@
-#ifndef GEN_QPAUSEANIMATION_H
-#define GEN_QPAUSEANIMATION_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPAUSEANIMATION_H
+#define MIQT_QT6_GEN_QPAUSEANIMATION_H
 
 #include <stdbool.h>
 #include <stddef.h>

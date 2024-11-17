@@ -90,7 +90,7 @@ int QAudioDevice_MaximumChannelCount(const QAudioDevice* self) {
 	return self->maximumChannelCount();
 }
 
-struct miqt_array QAudioDevice_SupportedSampleFormats(const QAudioDevice* self) {
+struct miqt_array /* of uint16_t */  QAudioDevice_SupportedSampleFormats(const QAudioDevice* self) {
 	QList<QAudioFormat::SampleFormat> _ret = self->supportedSampleFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	uint16_t* _arr = static_cast<uint16_t*>(malloc(sizeof(uint16_t) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QSCROLLER_H
-#define GEN_QSCROLLER_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSCROLLER_H
+#define MIQT_QT_GEN_QSCROLLER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -39,7 +40,7 @@ QScroller* QScroller_ScrollerWithTarget(QObject* target);
 int QScroller_GrabGesture(QObject* target);
 int QScroller_GrabbedGesture(QObject* target);
 void QScroller_UngrabGesture(QObject* target);
-struct miqt_array QScroller_ActiveScrollers();
+struct miqt_array /* of QScroller* */  QScroller_ActiveScrollers();
 QObject* QScroller_Target(const QScroller* self);
 int QScroller_State(const QScroller* self);
 bool QScroller_HandleInput(QScroller* self, int input, QPointF* position);
@@ -48,9 +49,9 @@ QPointF* QScroller_Velocity(const QScroller* self);
 QPointF* QScroller_FinalPosition(const QScroller* self);
 QPointF* QScroller_PixelPerMeter(const QScroller* self);
 QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self);
-void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */ positions);
+void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */  positions);
 void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval);
-void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */ positions);
+void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */  positions);
 void QScroller_SetSnapPositionsY2(QScroller* self, double first, double interval);
 void QScroller_SetScrollerProperties(QScroller* self, QScrollerProperties* prop);
 void QScroller_ScrollTo(QScroller* self, QPointF* pos);

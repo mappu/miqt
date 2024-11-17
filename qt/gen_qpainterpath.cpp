@@ -398,7 +398,7 @@ void QPainterPathStroker_SetDashPattern(QPainterPathStroker* self, int dashPatte
 	self->setDashPattern(static_cast<Qt::PenStyle>(dashPattern));
 }
 
-void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array /* of double */ dashPattern) {
+void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self, struct miqt_array /* of double */  dashPattern) {
 	QVector<qreal> dashPattern_QList;
 	dashPattern_QList.reserve(dashPattern.len);
 	double* dashPattern_arr = static_cast<double*>(dashPattern.data);
@@ -408,7 +408,7 @@ void QPainterPathStroker_SetDashPatternWithDashPattern(QPainterPathStroker* self
 	self->setDashPattern(dashPattern_QList);
 }
 
-struct miqt_array QPainterPathStroker_DashPattern(const QPainterPathStroker* self) {
+struct miqt_array /* of double */  QPainterPathStroker_DashPattern(const QPainterPathStroker* self) {
 	QVector<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));

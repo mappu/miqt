@@ -1,5 +1,6 @@
-#ifndef GEN_QSHAREDMEMORY_H
-#define GEN_QSHAREDMEMORY_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSHAREDMEMORY_H
+#define MIQT_QT_GEN_QSHAREDMEMORY_H
 
 #include <stdbool.h>
 #include <stddef.h>

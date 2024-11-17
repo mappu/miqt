@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLSERVER_H
-#define GEN_QSSLSERVER_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QSSLSERVER_H
+#define MIQT_QT6_NETWORK_GEN_QSSLSERVER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ void QSslServer_SetSslConfiguration(QSslServer* self, QSslConfiguration* sslConf
 QSslConfiguration* QSslServer_SslConfiguration(const QSslServer* self);
 void QSslServer_SetHandshakeTimeout(QSslServer* self, int timeout);
 int QSslServer_HandshakeTimeout(const QSslServer* self);
-void QSslServer_SslErrors(QSslServer* self, QSslSocket* socket, struct miqt_array /* of QSslError* */ errors);
+void QSslServer_SslErrors(QSslServer* self, QSslSocket* socket, struct miqt_array /* of QSslError* */  errors);
 void QSslServer_connect_SslErrors(QSslServer* self, intptr_t slot);
 void QSslServer_PeerVerifyError(QSslServer* self, QSslSocket* socket, QSslError* error);
 void QSslServer_connect_PeerVerifyError(QSslServer* self, intptr_t slot);

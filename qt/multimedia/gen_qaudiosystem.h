@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOSYSTEM_H
-#define GEN_QAUDIOSYSTEM_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIOSYSTEM_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIOSYSTEM_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,12 +37,12 @@ struct miqt_string QAbstractAudioDeviceInfo_TrUtf8(const char* s);
 QAudioFormat* QAbstractAudioDeviceInfo_PreferredFormat(const QAbstractAudioDeviceInfo* self);
 bool QAbstractAudioDeviceInfo_IsFormatSupported(const QAbstractAudioDeviceInfo* self, QAudioFormat* format);
 struct miqt_string QAbstractAudioDeviceInfo_DeviceName(const QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedCodecs(QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedSampleRates(QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedChannelCounts(QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedSampleSizes(QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedByteOrders(QAbstractAudioDeviceInfo* self);
-struct miqt_array QAbstractAudioDeviceInfo_SupportedSampleTypes(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of struct miqt_string */  QAbstractAudioDeviceInfo_SupportedCodecs(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAbstractAudioDeviceInfo_SupportedSampleRates(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAbstractAudioDeviceInfo_SupportedChannelCounts(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAbstractAudioDeviceInfo_SupportedSampleSizes(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAbstractAudioDeviceInfo_SupportedByteOrders(QAbstractAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAbstractAudioDeviceInfo_SupportedSampleTypes(QAbstractAudioDeviceInfo* self);
 struct miqt_string QAbstractAudioDeviceInfo_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractAudioDeviceInfo_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractAudioDeviceInfo_TrUtf82(const char* s, const char* c);

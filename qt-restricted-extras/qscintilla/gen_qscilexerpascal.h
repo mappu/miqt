@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERPASCAL_H
-#define GEN_QSCILEXERPASCAL_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERPASCAL_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERPASCAL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ struct miqt_string QsciLexerPascal_Tr(const char* s);
 struct miqt_string QsciLexerPascal_TrUtf8(const char* s);
 const char* QsciLexerPascal_Language(const QsciLexerPascal* self);
 const char* QsciLexerPascal_Lexer(const QsciLexerPascal* self);
-struct miqt_array QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerPascal_AutoCompletionWordSeparators(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockEnd(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockStart(const QsciLexerPascal* self);
 const char* QsciLexerPascal_BlockStartKeyword(const QsciLexerPascal* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QBITARRAY_H
-#define GEN_QBITARRAY_H
+#pragma once
+#ifndef MIQT_QT_GEN_QBITARRAY_H
+#define MIQT_QT_GEN_QBITARRAY_H
 
 #include <stdbool.h>
 #include <stddef.h>

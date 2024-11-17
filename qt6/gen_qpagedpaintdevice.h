@@ -1,5 +1,6 @@
-#ifndef GEN_QPAGEDPAINTDEVICE_H
-#define GEN_QPAGEDPAINTDEVICE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPAGEDPAINTDEVICE_H
+#define MIQT_QT6_GEN_QPAGEDPAINTDEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>

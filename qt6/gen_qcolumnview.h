@@ -1,5 +1,6 @@
-#ifndef GEN_QCOLUMNVIEW_H
-#define GEN_QCOLUMNVIEW_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QCOLUMNVIEW_H
+#define MIQT_QT6_GEN_QCOLUMNVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -54,8 +55,8 @@ void QColumnView_SetResizeGripsVisible(QColumnView* self, bool visible);
 bool QColumnView_ResizeGripsVisible(const QColumnView* self);
 QWidget* QColumnView_PreviewWidget(const QColumnView* self);
 void QColumnView_SetPreviewWidget(QColumnView* self, QWidget* widget);
-void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array /* of int */ list);
-struct miqt_array QColumnView_ColumnWidths(const QColumnView* self);
+void QColumnView_SetColumnWidths(QColumnView* self, struct miqt_array /* of int */  list);
+struct miqt_array /* of int */  QColumnView_ColumnWidths(const QColumnView* self);
 struct miqt_string QColumnView_Tr2(const char* s, const char* c);
 struct miqt_string QColumnView_Tr3(const char* s, const char* c, int n);
 void QColumnView_ScrollTo2(QColumnView* self, QModelIndex* index, int hint);

@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIORECORDER_H
-#define GEN_QAUDIORECORDER_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QAUDIORECORDER_H
+#define MIQT_QT_MULTIMEDIA_GEN_QAUDIORECORDER_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -29,7 +30,7 @@ QMetaObject* QAudioRecorder_MetaObject(const QAudioRecorder* self);
 void* QAudioRecorder_Metacast(QAudioRecorder* self, const char* param1);
 struct miqt_string QAudioRecorder_Tr(const char* s);
 struct miqt_string QAudioRecorder_TrUtf8(const char* s);
-struct miqt_array QAudioRecorder_AudioInputs(const QAudioRecorder* self);
+struct miqt_array /* of struct miqt_string */  QAudioRecorder_AudioInputs(const QAudioRecorder* self);
 struct miqt_string QAudioRecorder_DefaultAudioInput(const QAudioRecorder* self);
 struct miqt_string QAudioRecorder_AudioInputDescription(const QAudioRecorder* self, struct miqt_string name);
 struct miqt_string QAudioRecorder_AudioInput(const QAudioRecorder* self);

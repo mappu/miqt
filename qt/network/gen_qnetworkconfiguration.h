@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKCONFIGURATION_H
-#define GEN_QNETWORKCONFIGURATION_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QNETWORKCONFIGURATION_H
+#define MIQT_QT_NETWORK_GEN_QNETWORKCONFIGURATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -33,7 +34,7 @@ int QNetworkConfiguration_BearerTypeFamily(const QNetworkConfiguration* self);
 struct miqt_string QNetworkConfiguration_BearerTypeName(const QNetworkConfiguration* self);
 struct miqt_string QNetworkConfiguration_Identifier(const QNetworkConfiguration* self);
 bool QNetworkConfiguration_IsRoamingAvailable(const QNetworkConfiguration* self);
-struct miqt_array QNetworkConfiguration_Children(const QNetworkConfiguration* self);
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfiguration_Children(const QNetworkConfiguration* self);
 struct miqt_string QNetworkConfiguration_Name(const QNetworkConfiguration* self);
 bool QNetworkConfiguration_IsValid(const QNetworkConfiguration* self);
 int QNetworkConfiguration_ConnectTimeout(const QNetworkConfiguration* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKDATAGRAM_H
-#define GEN_QNETWORKDATAGRAM_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKDATAGRAM_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKDATAGRAM_H
 
 #include <stdbool.h>
 #include <stddef.h>

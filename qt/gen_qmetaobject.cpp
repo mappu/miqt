@@ -59,7 +59,7 @@ void QMetaMethod_GetParameterTypes(const QMetaMethod* self, int* types) {
 	self->getParameterTypes(static_cast<int*>(types));
 }
 
-struct miqt_array QMetaMethod_ParameterTypes(const QMetaMethod* self) {
+struct miqt_array /* of struct miqt_string */  QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -77,7 +77,7 @@ struct miqt_array QMetaMethod_ParameterTypes(const QMetaMethod* self) {
 	return _out;
 }
 
-struct miqt_array QMetaMethod_ParameterNames(const QMetaMethod* self) {
+struct miqt_array /* of struct miqt_string */  QMetaMethod_ParameterNames(const QMetaMethod* self) {
 	QList<QByteArray> _ret = self->parameterNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

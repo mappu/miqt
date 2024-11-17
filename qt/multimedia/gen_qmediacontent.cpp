@@ -24,7 +24,7 @@ QMediaContent* QMediaContent_new4(QMediaResource* contentResource) {
 	return new QMediaContent(*contentResource);
 }
 
-QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */ resources) {
+QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources) {
 	QMediaResourceList resources_QList;
 	resources_QList.reserve(resources.len);
 	QMediaResource** resources_arr = static_cast<QMediaResource**>(resources.data);
@@ -82,7 +82,7 @@ QMediaResource* QMediaContent_CanonicalResource(const QMediaContent* self) {
 	return new QMediaResource(self->canonicalResource());
 }
 
-struct miqt_array QMediaContent_Resources(const QMediaContent* self) {
+struct miqt_array /* of QMediaResource* */  QMediaContent_Resources(const QMediaContent* self) {
 	QMediaResourceList _ret = self->resources();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaResource** _arr = static_cast<QMediaResource**>(malloc(sizeof(QMediaResource*) * _ret.length()));

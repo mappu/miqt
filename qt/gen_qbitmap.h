@@ -1,5 +1,6 @@
-#ifndef GEN_QBITMAP_H
-#define GEN_QBITMAP_H
+#pragma once
+#ifndef MIQT_QT_GEN_QBITMAP_H
+#define MIQT_QT_GEN_QBITMAP_H
 
 #include <stdbool.h>
 #include <stddef.h>

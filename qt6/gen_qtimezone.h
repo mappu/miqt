@@ -1,5 +1,6 @@
-#ifndef GEN_QTIMEZONE_H
-#define GEN_QTIMEZONE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTIMEZONE_H
+#define MIQT_QT6_GEN_QTIMEZONE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -57,19 +58,19 @@ QTimeZone__OffsetData* QTimeZone_OffsetData(const QTimeZone* self, QDateTime* fo
 bool QTimeZone_HasTransitions(const QTimeZone* self);
 QTimeZone__OffsetData* QTimeZone_NextTransition(const QTimeZone* self, QDateTime* afterDateTime);
 QTimeZone__OffsetData* QTimeZone_PreviousTransition(const QTimeZone* self, QDateTime* beforeDateTime);
-struct miqt_array QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime);
+struct miqt_array /* of QTimeZone__OffsetData* */  QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime);
 struct miqt_string QTimeZone_SystemTimeZoneId();
 QTimeZone* QTimeZone_SystemTimeZone();
 QTimeZone* QTimeZone_Utc();
 bool QTimeZone_IsTimeZoneIdAvailable(struct miqt_string ianaId);
-struct miqt_array QTimeZone_AvailableTimeZoneIds();
-struct miqt_array QTimeZone_AvailableTimeZoneIdsWithTerritory(uint16_t territory);
-struct miqt_array QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds);
+struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIds();
+struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIdsWithTerritory(uint16_t territory);
+struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds);
 struct miqt_string QTimeZone_IanaIdToWindowsId(struct miqt_string ianaId);
 struct miqt_string QTimeZone_WindowsIdToDefaultIanaId(struct miqt_string windowsId);
 struct miqt_string QTimeZone_WindowsIdToDefaultIanaId2(struct miqt_string windowsId, uint16_t territory);
-struct miqt_array QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId);
-struct miqt_array QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, uint16_t territory);
+struct miqt_array /* of struct miqt_string */  QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId);
+struct miqt_array /* of struct miqt_string */  QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, uint16_t territory);
 struct miqt_string QTimeZone_DisplayName2(const QTimeZone* self, QDateTime* atDateTime, int nameType);
 struct miqt_string QTimeZone_DisplayName3(const QTimeZone* self, QDateTime* atDateTime, int nameType, QLocale* locale);
 struct miqt_string QTimeZone_DisplayName22(const QTimeZone* self, int timeType, int nameType);

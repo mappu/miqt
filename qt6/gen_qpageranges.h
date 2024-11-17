@@ -1,5 +1,6 @@
-#ifndef GEN_QPAGERANGES_H
-#define GEN_QPAGERANGES_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPAGERANGES_H
+#define MIQT_QT6_GEN_QPAGERANGES_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,7 +32,7 @@ void QPageRanges_OperatorAssign(QPageRanges* self, QPageRanges* other);
 void QPageRanges_Swap(QPageRanges* self, QPageRanges* other);
 void QPageRanges_AddPage(QPageRanges* self, int pageNumber);
 void QPageRanges_AddRange(QPageRanges* self, int from, int to);
-struct miqt_array QPageRanges_ToRangeList(const QPageRanges* self);
+struct miqt_array /* of QPageRanges__Range* */  QPageRanges_ToRangeList(const QPageRanges* self);
 void QPageRanges_Clear(QPageRanges* self);
 struct miqt_string QPageRanges_ToString(const QPageRanges* self);
 QPageRanges* QPageRanges_FromString(struct miqt_string ranges);

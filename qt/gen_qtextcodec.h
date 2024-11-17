@@ -1,5 +1,6 @@
-#ifndef GEN_QTEXTCODEC_H
-#define GEN_QTEXTCODEC_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTEXTCODEC_H
+#define MIQT_QT_GEN_QTEXTCODEC_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,8 +37,8 @@ typedef struct QTextEncoder QTextEncoder;
 QTextCodec* QTextCodec_CodecForName(struct miqt_string name);
 QTextCodec* QTextCodec_CodecForNameWithName(const char* name);
 QTextCodec* QTextCodec_CodecForMib(int mib);
-struct miqt_array QTextCodec_AvailableCodecs();
-struct miqt_array QTextCodec_AvailableMibs();
+struct miqt_array /* of struct miqt_string */  QTextCodec_AvailableCodecs();
+struct miqt_array /* of int */  QTextCodec_AvailableMibs();
 QTextCodec* QTextCodec_CodecForLocale();
 void QTextCodec_SetCodecForLocale(QTextCodec* c);
 QTextCodec* QTextCodec_CodecForHtml(struct miqt_string ba);
@@ -54,7 +55,7 @@ struct miqt_string QTextCodec_FromUnicode2(const QTextCodec* self, QChar* in, in
 QTextDecoder* QTextCodec_MakeDecoder(const QTextCodec* self);
 QTextEncoder* QTextCodec_MakeEncoder(const QTextCodec* self);
 struct miqt_string QTextCodec_Name(const QTextCodec* self);
-struct miqt_array QTextCodec_Aliases(const QTextCodec* self);
+struct miqt_array /* of struct miqt_string */  QTextCodec_Aliases(const QTextCodec* self);
 int QTextCodec_MibEnum(const QTextCodec* self);
 struct miqt_string QTextCodec_ToUnicode3(const QTextCodec* self, const char* in, int length, QTextCodec__ConverterState* state);
 struct miqt_string QTextCodec_FromUnicode3(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state);

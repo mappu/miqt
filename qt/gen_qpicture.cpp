@@ -97,7 +97,7 @@ const char* QPicture_PictureFormat(struct miqt_string fileName) {
 	return (const char*) QPicture::pictureFormat(fileName_QString);
 }
 
-struct miqt_array QPicture_InputFormats() {
+struct miqt_array /* of struct miqt_string */  QPicture_InputFormats() {
 	QList<QByteArray> _ret = QPicture::inputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -115,7 +115,7 @@ struct miqt_array QPicture_InputFormats() {
 	return _out;
 }
 
-struct miqt_array QPicture_OutputFormats() {
+struct miqt_array /* of struct miqt_string */  QPicture_OutputFormats() {
 	QList<QByteArray> _ret = QPicture::outputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -133,7 +133,7 @@ struct miqt_array QPicture_OutputFormats() {
 	return _out;
 }
 
-struct miqt_array QPicture_InputFormatList() {
+struct miqt_array /* of struct miqt_string */  QPicture_InputFormatList() {
 	QStringList _ret = QPicture::inputFormatList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -153,7 +153,7 @@ struct miqt_array QPicture_InputFormatList() {
 	return _out;
 }
 
-struct miqt_array QPicture_OutputFormatList() {
+struct miqt_array /* of struct miqt_string */  QPicture_OutputFormatList() {
 	QStringList _ret = QPicture::outputFormatList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -329,7 +329,7 @@ struct miqt_string QPictureIO_PictureFormatWithQIODevice(QIODevice* param1) {
 	return _ms;
 }
 
-struct miqt_array QPictureIO_InputFormats() {
+struct miqt_array /* of struct miqt_string */  QPictureIO_InputFormats() {
 	QList<QByteArray> _ret = QPictureIO::inputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -347,7 +347,7 @@ struct miqt_array QPictureIO_InputFormats() {
 	return _out;
 }
 
-struct miqt_array QPictureIO_OutputFormats() {
+struct miqt_array /* of struct miqt_string */  QPictureIO_OutputFormats() {
 	QList<QByteArray> _ret = QPictureIO::outputFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

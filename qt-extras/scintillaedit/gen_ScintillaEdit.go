@@ -5831,6 +5831,25 @@ func (this *ScintillaEdit) TextReturner(message int, wParam uintptr) []byte {
 	return _ret
 }
 
+func (this *ScintillaEdit) FindText(flags int, text string, cpMin int, cpMax int) struct {
+	First  int
+	Second int
+} {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _mm C.struct_miqt_map = C.ScintillaEdit_FindText(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
 	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetTextRange(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -5844,6 +5863,25 @@ func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
 	C.ScintillaEdit_SetDoc(this.h, pdoc_.cPointer())
+}
+
+func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax int) struct {
+	First  int
+	Second int
+} {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	var _mm C.struct_miqt_map = C.ScintillaEdit_FindText2(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
 }
 
 func (this *ScintillaEdit) TextRange(start int, end int) []byte {

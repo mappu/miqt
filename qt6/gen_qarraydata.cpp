@@ -41,6 +41,20 @@ ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize) {
 	return static_cast<ptrdiff_t>(_ret);
 }
 
+struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option) {
+	QPair<QArrayData *, void *> _ret = QArrayData::reallocateUnaligned(data, dataPointer, (qsizetype)(objectSize), (qsizetype)(newCapacity), static_cast<QArrayData::AllocationOption>(option));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	QArrayData** _first_arr = static_cast<QArrayData**>(malloc(sizeof(QArrayData*)));
+	void** _second_arr = static_cast<void**>(malloc(sizeof(void*)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
 void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment) {
 	QArrayData::deallocate(data, (qsizetype)(objectSize), (qsizetype)(alignment));
 }

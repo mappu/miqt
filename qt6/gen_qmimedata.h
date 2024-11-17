@@ -1,5 +1,6 @@
-#ifndef GEN_QMIMEDATA_H
-#define GEN_QMIMEDATA_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMIMEDATA_H
+#define MIQT_QT6_GEN_QMIMEDATA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,8 +32,8 @@ QMimeData* QMimeData_new();
 QMetaObject* QMimeData_MetaObject(const QMimeData* self);
 void* QMimeData_Metacast(QMimeData* self, const char* param1);
 struct miqt_string QMimeData_Tr(const char* s);
-struct miqt_array QMimeData_Urls(const QMimeData* self);
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */ urls);
+struct miqt_array /* of QUrl* */  QMimeData_Urls(const QMimeData* self);
+void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */  urls);
 bool QMimeData_HasUrls(const QMimeData* self);
 struct miqt_string QMimeData_Text(const QMimeData* self);
 void QMimeData_SetText(QMimeData* self, struct miqt_string text);
@@ -50,7 +51,7 @@ struct miqt_string QMimeData_Data(const QMimeData* self, struct miqt_string mime
 void QMimeData_SetData(QMimeData* self, struct miqt_string mimetype, struct miqt_string data);
 void QMimeData_RemoveFormat(QMimeData* self, struct miqt_string mimetype);
 bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string mimetype);
-struct miqt_array QMimeData_Formats(const QMimeData* self);
+struct miqt_array /* of struct miqt_string */  QMimeData_Formats(const QMimeData* self);
 void QMimeData_Clear(QMimeData* self);
 struct miqt_string QMimeData_Tr2(const char* s, const char* c);
 struct miqt_string QMimeData_Tr3(const char* s, const char* c, int n);

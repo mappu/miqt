@@ -1,5 +1,6 @@
-#ifndef GEN_QMDIAREA_H
-#define GEN_QMDIAREA_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QMDIAREA_H
+#define MIQT_QT6_GEN_QMDIAREA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -38,7 +39,7 @@ QSize* QMdiArea_SizeHint(const QMdiArea* self);
 QSize* QMdiArea_MinimumSizeHint(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_CurrentSubWindow(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_ActiveSubWindow(const QMdiArea* self);
-struct miqt_array QMdiArea_SubWindowList(const QMdiArea* self);
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_SubWindowList(const QMdiArea* self);
 QMdiSubWindow* QMdiArea_AddSubWindow(QMdiArea* self, QWidget* widget);
 void QMdiArea_RemoveSubWindow(QMdiArea* self, QWidget* widget);
 QBrush* QMdiArea_Background(const QMdiArea* self);
@@ -70,7 +71,7 @@ void QMdiArea_ActivateNextSubWindow(QMdiArea* self);
 void QMdiArea_ActivatePreviousSubWindow(QMdiArea* self);
 struct miqt_string QMdiArea_Tr2(const char* s, const char* c);
 struct miqt_string QMdiArea_Tr3(const char* s, const char* c, int n);
-struct miqt_array QMdiArea_SubWindowList1(const QMdiArea* self, int order);
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_SubWindowList1(const QMdiArea* self, int order);
 QMdiSubWindow* QMdiArea_AddSubWindow2(QMdiArea* self, QWidget* widget, int flags);
 void QMdiArea_SetOption2(QMdiArea* self, int option, bool on);
 void QMdiArea_Delete(QMdiArea* self);

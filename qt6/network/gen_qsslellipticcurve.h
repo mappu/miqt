@@ -1,5 +1,6 @@
-#ifndef GEN_QSSLELLIPTICCURVE_H
-#define GEN_QSSLELLIPTICCURVE_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QSSLELLIPTICCURVE_H
+#define MIQT_QT6_NETWORK_GEN_QSSLELLIPTICCURVE_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -178,7 +178,7 @@ struct miqt_string QNetworkInterface_HardwareAddress(const QNetworkInterface* se
 	return _ms;
 }
 
-struct miqt_array QNetworkInterface_AddressEntries(const QNetworkInterface* self) {
+struct miqt_array /* of QNetworkAddressEntry* */  QNetworkInterface_AddressEntries(const QNetworkInterface* self) {
 	QList<QNetworkAddressEntry> _ret = self->addressEntries();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkAddressEntry** _arr = static_cast<QNetworkAddressEntry**>(malloc(sizeof(QNetworkAddressEntry*) * _ret.length()));
@@ -216,7 +216,7 @@ struct miqt_string QNetworkInterface_InterfaceNameFromIndex(int index) {
 	return _ms;
 }
 
-struct miqt_array QNetworkInterface_AllInterfaces() {
+struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_AllInterfaces() {
 	QList<QNetworkInterface> _ret = QNetworkInterface::allInterfaces();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkInterface** _arr = static_cast<QNetworkInterface**>(malloc(sizeof(QNetworkInterface*) * _ret.length()));
@@ -229,7 +229,7 @@ struct miqt_array QNetworkInterface_AllInterfaces() {
 	return _out;
 }
 
-struct miqt_array QNetworkInterface_AllAddresses() {
+struct miqt_array /* of QHostAddress* */  QNetworkInterface_AllAddresses() {
 	QList<QHostAddress> _ret = QNetworkInterface::allAddresses();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.length()));

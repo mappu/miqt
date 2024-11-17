@@ -6,6 +6,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QGradient__QGradientData
 #include <QImage>
 #include <QLinearGradient>
+#include <QList>
 #include <QMatrix>
 #include <QPixmap>
 #include <QPointF>
@@ -192,6 +193,44 @@ int QGradient_Spread(const QGradient* self) {
 
 void QGradient_SetColorAt(QGradient* self, double pos, QColor* color) {
 	self->setColorAt(static_cast<qreal>(pos), *color);
+}
+
+void QGradient_SetStops(QGradient* self, struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  stops) {
+	QGradientStops stops_QList;
+	stops_QList.reserve(stops.len);
+	struct miqt_map /* tuple of double and QColor* */ * stops_arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(stops.data);
+	for(size_t i = 0; i < stops.len; ++i) {
+		QPair<double, QColor> stops_arr_i_QPair;
+		double* stops_arr_i_first_arr = static_cast<double*>(stops_arr[i].keys);
+		QColor** stops_arr_i_second_arr = static_cast<QColor**>(stops_arr[i].values);
+		stops_arr_i_QPair.first = static_cast<double>(stops_arr_i_first_arr[0]);
+		stops_arr_i_QPair.second = *(stops_arr_i_second_arr[0]);
+		stops_QList.push_back(stops_arr_i_QPair);
+	}
+	self->setStops(stops_QList);
+}
+
+struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  QGradient_Stops(const QGradient* self) {
+	QGradientStops _ret = self->stops();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_map /* tuple of double and QColor* */ * _arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QColor* */ ) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QPair<double, QColor> _vv_ret = _ret[i];
+		// Convert QPair<> from C++ memory to manually-managed C memory
+		double* _vv_first_arr = static_cast<double*>(malloc(sizeof(double)));
+		QColor** _vv_second_arr = static_cast<QColor**>(malloc(sizeof(QColor*)));
+		_vv_first_arr[0] = _vv_ret.first;
+		_vv_second_arr[0] = new QColor(_vv_ret.second);
+		struct miqt_map _vv_out;
+		_vv_out.len = 1;
+		_vv_out.keys = static_cast<void*>(_vv_first_arr);
+		_vv_out.values = static_cast<void*>(_vv_second_arr);
+		_arr[i] = _vv_out;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 int QGradient_CoordinateMode(const QGradient* self) {

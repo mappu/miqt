@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERPO_H
-#define GEN_QSCILEXERPO_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERPO_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERPO_H
 
 #include <stdbool.h>
 #include <stddef.h>

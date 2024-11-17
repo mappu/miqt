@@ -108,6 +108,20 @@ QDeadlineTimer* QDeadlineTimer_OperatorMinusAssign(QDeadlineTimer* self, long lo
 	return &_ret;
 }
 
+struct miqt_map /* tuple of long long and unsigned int */  QDeadlineTimer_QData(const QDeadlineTimer* self) {
+	QPair<qint64, unsigned int> _ret = self->_q_data();
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	long long* _first_arr = static_cast<long long*>(malloc(sizeof(long long)));
+	unsigned int* _second_arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int)));
+	_first_arr[0] = _ret.first;
+	_second_arr[0] = _ret.second;
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
 void QDeadlineTimer_OperatorAssign(QDeadlineTimer* self, QDeadlineTimer* param1) {
 	self->operator=(*param1);
 }

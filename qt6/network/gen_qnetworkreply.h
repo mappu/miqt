@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKREPLY_H
-#define GEN_QNETWORKREPLY_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKREPLY_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKREPLY_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -53,12 +54,13 @@ bool QNetworkReply_IsRunning(const QNetworkReply* self);
 QUrl* QNetworkReply_Url(const QNetworkReply* self);
 QVariant* QNetworkReply_Header(const QNetworkReply* self, int header);
 bool QNetworkReply_HasRawHeader(const QNetworkReply* self, struct miqt_string headerName);
-struct miqt_array QNetworkReply_RawHeaderList(const QNetworkReply* self);
+struct miqt_array /* of struct miqt_string */  QNetworkReply_RawHeaderList(const QNetworkReply* self);
 struct miqt_string QNetworkReply_RawHeader(const QNetworkReply* self, struct miqt_string headerName);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkReply_RawHeaderPairs(const QNetworkReply* self);
 QVariant* QNetworkReply_Attribute(const QNetworkReply* self, int code);
 QSslConfiguration* QNetworkReply_SslConfiguration(const QNetworkReply* self);
 void QNetworkReply_SetSslConfiguration(QNetworkReply* self, QSslConfiguration* configuration);
-void QNetworkReply_IgnoreSslErrors(QNetworkReply* self, struct miqt_array /* of QSslError* */ errors);
+void QNetworkReply_IgnoreSslErrors(QNetworkReply* self, struct miqt_array /* of QSslError* */  errors);
 void QNetworkReply_Abort(QNetworkReply* self);
 void QNetworkReply_IgnoreSslErrors2(QNetworkReply* self);
 void QNetworkReply_SocketStartedConnecting(QNetworkReply* self);
@@ -73,7 +75,7 @@ void QNetworkReply_ErrorOccurred(QNetworkReply* self, int param1);
 void QNetworkReply_connect_ErrorOccurred(QNetworkReply* self, intptr_t slot);
 void QNetworkReply_Encrypted(QNetworkReply* self);
 void QNetworkReply_connect_Encrypted(QNetworkReply* self, intptr_t slot);
-void QNetworkReply_SslErrors(QNetworkReply* self, struct miqt_array /* of QSslError* */ errors);
+void QNetworkReply_SslErrors(QNetworkReply* self, struct miqt_array /* of QSslError* */  errors);
 void QNetworkReply_connect_SslErrors(QNetworkReply* self, intptr_t slot);
 void QNetworkReply_PreSharedKeyAuthenticationRequired(QNetworkReply* self, QSslPreSharedKeyAuthenticator* authenticator);
 void QNetworkReply_connect_PreSharedKeyAuthenticationRequired(QNetworkReply* self, intptr_t slot);

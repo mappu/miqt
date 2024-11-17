@@ -391,7 +391,7 @@ struct miqt_string QUrl_ToAce(struct miqt_string domain) {
 	return _ms;
 }
 
-struct miqt_array QUrl_IdnWhitelist() {
+struct miqt_array /* of struct miqt_string */  QUrl_IdnWhitelist() {
 	QStringList _ret = QUrl::idnWhitelist();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -411,7 +411,7 @@ struct miqt_array QUrl_IdnWhitelist() {
 	return _out;
 }
 
-struct miqt_array QUrl_ToStringList(struct miqt_array /* of QUrl* */ uris) {
+struct miqt_array /* of struct miqt_string */  QUrl_ToStringList(struct miqt_array /* of QUrl* */  uris) {
 	QList<QUrl> uris_QList;
 	uris_QList.reserve(uris.len);
 	QUrl** uris_arr = static_cast<QUrl**>(uris.data);
@@ -437,7 +437,7 @@ struct miqt_array QUrl_ToStringList(struct miqt_array /* of QUrl* */ uris) {
 	return _out;
 }
 
-struct miqt_array QUrl_FromStringList(struct miqt_array /* of struct miqt_string */ uris) {
+struct miqt_array /* of QUrl* */  QUrl_FromStringList(struct miqt_array /* of struct miqt_string */  uris) {
 	QStringList uris_QList;
 	uris_QList.reserve(uris.len);
 	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);
@@ -457,7 +457,7 @@ struct miqt_array QUrl_FromStringList(struct miqt_array /* of struct miqt_string
 	return _out;
 }
 
-void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */ idnWhitelist) {
+void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */  idnWhitelist) {
 	QStringList idnWhitelist_QList;
 	idnWhitelist_QList.reserve(idnWhitelist.len);
 	struct miqt_string* idnWhitelist_arr = static_cast<struct miqt_string*>(idnWhitelist.data);
@@ -678,7 +678,7 @@ struct miqt_string QUrl_ToAce2(struct miqt_string domain, unsigned int options) 
 	return _ms;
 }
 
-struct miqt_array QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */ uris, int mode) {
+struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode) {
 	QStringList uris_QList;
 	uris_QList.reserve(uris.len);
 	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);

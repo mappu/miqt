@@ -65,7 +65,7 @@ struct miqt_string QStringView_ToLocal8Bit(const QStringView* self) {
 	return _ms;
 }
 
-struct miqt_array QStringView_ToUcs4(const QStringView* self) {
+struct miqt_array /* of unsigned int */  QStringView_ToUcs4(const QStringView* self) {
 	QVector<uint> _ret = self->toUcs4();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));

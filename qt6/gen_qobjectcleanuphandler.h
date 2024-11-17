@@ -1,5 +1,6 @@
-#ifndef GEN_QOBJECTCLEANUPHANDLER_H
-#define GEN_QOBJECTCLEANUPHANDLER_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QOBJECTCLEANUPHANDLER_H
+#define MIQT_QT6_GEN_QOBJECTCLEANUPHANDLER_H
 
 #include <stdbool.h>
 #include <stddef.h>

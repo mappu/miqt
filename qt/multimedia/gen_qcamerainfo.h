@@ -1,5 +1,6 @@
-#ifndef GEN_QCAMERAINFO_H
-#define GEN_QCAMERAINFO_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QCAMERAINFO_H
+#define MIQT_QT_MULTIMEDIA_GEN_QCAMERAINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -36,8 +37,8 @@ struct miqt_string QCameraInfo_Description(const QCameraInfo* self);
 int QCameraInfo_Position(const QCameraInfo* self);
 int QCameraInfo_Orientation(const QCameraInfo* self);
 QCameraInfo* QCameraInfo_DefaultCamera();
-struct miqt_array QCameraInfo_AvailableCameras();
-struct miqt_array QCameraInfo_AvailableCameras1(int position);
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras();
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int position);
 void QCameraInfo_Delete(QCameraInfo* self);
 
 #ifdef __cplusplus

@@ -325,7 +325,7 @@ void QTextDocument_AddResource(QTextDocument* self, int typeVal, QUrl* name, QVa
 	self->addResource(static_cast<int>(typeVal), *name, *resource);
 }
 
-struct miqt_array QTextDocument_AllFormats(const QTextDocument* self) {
+struct miqt_array /* of QTextFormat* */  QTextDocument_AllFormats(const QTextDocument* self) {
 	QVector<QTextFormat> _ret = self->allFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextFormat** _arr = static_cast<QTextFormat**>(malloc(sizeof(QTextFormat*) * _ret.length()));

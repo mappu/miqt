@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOLISTENER_H
-#define GEN_QAUDIOLISTENER_H
+#pragma once
+#ifndef MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOLISTENER_H
+#define MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOLISTENER_H
 
 #include <stdbool.h>
 #include <stddef.h>

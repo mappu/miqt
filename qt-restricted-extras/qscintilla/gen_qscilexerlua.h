@@ -1,5 +1,6 @@
-#ifndef GEN_QSCILEXERLUA_H
-#define GEN_QSCILEXERLUA_H
+#pragma once
+#ifndef MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERLUA_H
+#define MIQT_QT_RESTRICTED_EXTRAS_QSCINTILLA_GEN_QSCILEXERLUA_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -35,7 +36,7 @@ struct miqt_string QsciLexerLua_Tr(const char* s);
 struct miqt_string QsciLexerLua_TrUtf8(const char* s);
 const char* QsciLexerLua_Language(const QsciLexerLua* self);
 const char* QsciLexerLua_Lexer(const QsciLexerLua* self);
-struct miqt_array QsciLexerLua_AutoCompletionWordSeparators(const QsciLexerLua* self);
+struct miqt_array /* of struct miqt_string */  QsciLexerLua_AutoCompletionWordSeparators(const QsciLexerLua* self);
 const char* QsciLexerLua_BlockStart(const QsciLexerLua* self);
 int QsciLexerLua_BraceStyle(const QsciLexerLua* self);
 QColor* QsciLexerLua_DefaultColor(const QsciLexerLua* self, int style);

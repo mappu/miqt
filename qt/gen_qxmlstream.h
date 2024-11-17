@@ -1,5 +1,6 @@
-#ifndef GEN_QXMLSTREAM_H
-#define GEN_QXMLSTREAM_H
+#pragma once
+#ifndef MIQT_QT_GEN_QXMLSTREAM_H
+#define MIQT_QT_GEN_QXMLSTREAM_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -122,11 +123,11 @@ long long QXmlStreamReader_LineNumber(const QXmlStreamReader* self);
 long long QXmlStreamReader_ColumnNumber(const QXmlStreamReader* self);
 long long QXmlStreamReader_CharacterOffset(const QXmlStreamReader* self);
 struct miqt_string QXmlStreamReader_ReadElementText(QXmlStreamReader* self);
-struct miqt_array QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self);
+struct miqt_array /* of QXmlStreamNamespaceDeclaration* */  QXmlStreamReader_NamespaceDeclarations(const QXmlStreamReader* self);
 void QXmlStreamReader_AddExtraNamespaceDeclaration(QXmlStreamReader* self, QXmlStreamNamespaceDeclaration* extraNamespaceDeclaraction);
-void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array /* of QXmlStreamNamespaceDeclaration* */ extraNamespaceDeclaractions);
-struct miqt_array QXmlStreamReader_NotationDeclarations(const QXmlStreamReader* self);
-struct miqt_array QXmlStreamReader_EntityDeclarations(const QXmlStreamReader* self);
+void QXmlStreamReader_AddExtraNamespaceDeclarations(QXmlStreamReader* self, struct miqt_array /* of QXmlStreamNamespaceDeclaration* */  extraNamespaceDeclaractions);
+struct miqt_array /* of QXmlStreamNotationDeclaration* */  QXmlStreamReader_NotationDeclarations(const QXmlStreamReader* self);
+struct miqt_array /* of QXmlStreamEntityDeclaration* */  QXmlStreamReader_EntityDeclarations(const QXmlStreamReader* self);
 int QXmlStreamReader_EntityExpansionLimit(const QXmlStreamReader* self);
 void QXmlStreamReader_SetEntityExpansionLimit(QXmlStreamReader* self, int limit);
 void QXmlStreamReader_RaiseError(QXmlStreamReader* self);

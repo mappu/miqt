@@ -219,7 +219,7 @@ void QMainWindow_TabifyDockWidget(QMainWindow* self, QDockWidget* first, QDockWi
 	self->tabifyDockWidget(first, second);
 }
 
-struct miqt_array QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget) {
+struct miqt_array /* of QDockWidget* */  QMainWindow_TabifiedDockWidgets(const QMainWindow* self, QDockWidget* dockwidget) {
 	QList<QDockWidget *> _ret = self->tabifiedDockWidgets(dockwidget);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QDockWidget** _arr = static_cast<QDockWidget**>(malloc(sizeof(QDockWidget*) * _ret.length()));
@@ -245,7 +245,7 @@ int QMainWindow_DockWidgetArea(const QMainWindow* self, QDockWidget* dockwidget)
 	return static_cast<int>(_ret);
 }
 
-void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array /* of QDockWidget* */ docks, struct miqt_array /* of int */ sizes, int orientation) {
+void QMainWindow_ResizeDocks(QMainWindow* self, struct miqt_array /* of QDockWidget* */  docks, struct miqt_array /* of int */  sizes, int orientation) {
 	QList<QDockWidget *> docks_QList;
 	docks_QList.reserve(docks.len);
 	QDockWidget** docks_arr = static_cast<QDockWidget**>(docks.data);

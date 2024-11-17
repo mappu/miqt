@@ -1,5 +1,6 @@
-#ifndef GEN_QFONTCOMBOBOX_H
-#define GEN_QFONTCOMBOBOX_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFONTCOMBOBOX_H
+#define MIQT_QT_GEN_QFONTCOMBOBOX_H
 
 #include <stdbool.h>
 #include <stddef.h>

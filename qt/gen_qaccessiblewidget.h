@@ -1,5 +1,6 @@
-#ifndef GEN_QACCESSIBLEWIDGET_H
-#define GEN_QACCESSIBLEWIDGET_H
+#pragma once
+#ifndef MIQT_QT_GEN_QACCESSIBLEWIDGET_H
+#define MIQT_QT_GEN_QACCESSIBLEWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -42,6 +43,7 @@ bool QAccessibleWidget_IsValid(const QAccessibleWidget* self);
 QWindow* QAccessibleWidget_Window(const QAccessibleWidget* self);
 int QAccessibleWidget_ChildCount(const QAccessibleWidget* self);
 int QAccessibleWidget_IndexOfChild(const QAccessibleWidget* self, QAccessibleInterface* child);
+struct miqt_array /* of struct miqt_map  tuple of QAccessibleInterface* and int   */  QAccessibleWidget_Relations(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_FocusChild(const QAccessibleWidget* self);
 QRect* QAccessibleWidget_Rect(const QAccessibleWidget* self);
 QAccessibleInterface* QAccessibleWidget_Parent(const QAccessibleWidget* self);
@@ -52,9 +54,10 @@ QAccessible__State* QAccessibleWidget_State(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_ForegroundColor(const QAccessibleWidget* self);
 QColor* QAccessibleWidget_BackgroundColor(const QAccessibleWidget* self);
 void* QAccessibleWidget_InterfaceCast(QAccessibleWidget* self, int t);
-struct miqt_array QAccessibleWidget_ActionNames(const QAccessibleWidget* self);
+struct miqt_array /* of struct miqt_string */  QAccessibleWidget_ActionNames(const QAccessibleWidget* self);
 void QAccessibleWidget_DoAction(QAccessibleWidget* self, struct miqt_string actionName);
-struct miqt_array QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName);
+struct miqt_array /* of struct miqt_string */  QAccessibleWidget_KeyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName);
+struct miqt_array /* of struct miqt_map  tuple of QAccessibleInterface* and int   */  QAccessibleWidget_Relations1(const QAccessibleWidget* self, int match);
 
 #ifdef __cplusplus
 } /* extern C */

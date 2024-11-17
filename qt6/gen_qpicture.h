@@ -1,5 +1,6 @@
-#ifndef GEN_QPICTURE_H
-#define GEN_QPICTURE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QPICTURE_H
+#define MIQT_QT6_GEN_QPICTURE_H
 
 #include <stdbool.h>
 #include <stddef.h>

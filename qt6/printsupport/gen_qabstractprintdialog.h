@@ -1,5 +1,6 @@
-#ifndef GEN_QABSTRACTPRINTDIALOG_H
-#define GEN_QABSTRACTPRINTDIALOG_H
+#pragma once
+#ifndef MIQT_QT6_PRINTSUPPORT_GEN_QABSTRACTPRINTDIALOG_H
+#define MIQT_QT6_PRINTSUPPORT_GEN_QABSTRACTPRINTDIALOG_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -30,7 +31,7 @@ QAbstractPrintDialog* QAbstractPrintDialog_new2(QPrinter* printer, QWidget* pare
 QMetaObject* QAbstractPrintDialog_MetaObject(const QAbstractPrintDialog* self);
 void* QAbstractPrintDialog_Metacast(QAbstractPrintDialog* self, const char* param1);
 struct miqt_string QAbstractPrintDialog_Tr(const char* s);
-void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */ tabs);
+void QAbstractPrintDialog_SetOptionTabs(QAbstractPrintDialog* self, struct miqt_array /* of QWidget* */  tabs);
 void QAbstractPrintDialog_SetPrintRange(QAbstractPrintDialog* self, int rangeVal);
 int QAbstractPrintDialog_PrintRange(const QAbstractPrintDialog* self);
 void QAbstractPrintDialog_SetMinMax(QAbstractPrintDialog* self, int min, int max);

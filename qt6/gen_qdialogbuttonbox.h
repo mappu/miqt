@@ -1,5 +1,6 @@
-#ifndef GEN_QDIALOGBUTTONBOX_H
-#define GEN_QDIALOGBUTTONBOX_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QDIALOGBUTTONBOX_H
+#define MIQT_QT6_GEN_QDIALOGBUTTONBOX_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -45,7 +46,7 @@ QPushButton* QDialogButtonBox_AddButton2(QDialogButtonBox* self, struct miqt_str
 QPushButton* QDialogButtonBox_AddButtonWithButton(QDialogButtonBox* self, int button);
 void QDialogButtonBox_RemoveButton(QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_Clear(QDialogButtonBox* self);
-struct miqt_array QDialogButtonBox_Buttons(const QDialogButtonBox* self);
+struct miqt_array /* of QAbstractButton* */  QDialogButtonBox_Buttons(const QDialogButtonBox* self);
 int QDialogButtonBox_ButtonRole(const QDialogButtonBox* self, QAbstractButton* button);
 void QDialogButtonBox_SetStandardButtons(QDialogButtonBox* self, int buttons);
 int QDialogButtonBox_StandardButtons(const QDialogButtonBox* self);

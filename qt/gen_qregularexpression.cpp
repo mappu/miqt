@@ -83,7 +83,7 @@ int QRegularExpression_CaptureCount(const QRegularExpression* self) {
 	return self->captureCount();
 }
 
-struct miqt_array QRegularExpression_NamedCaptureGroups(const QRegularExpression* self) {
+struct miqt_array /* of struct miqt_string */  QRegularExpression_NamedCaptureGroups(const QRegularExpression* self) {
 	QStringList _ret = self->namedCaptureGroups();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -264,7 +264,7 @@ struct miqt_string QRegularExpressionMatch_CapturedWithName(const QRegularExpres
 	return _ms;
 }
 
-struct miqt_array QRegularExpressionMatch_CapturedTexts(const QRegularExpressionMatch* self) {
+struct miqt_array /* of struct miqt_string */  QRegularExpressionMatch_CapturedTexts(const QRegularExpressionMatch* self) {
 	QStringList _ret = self->capturedTexts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

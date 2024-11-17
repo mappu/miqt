@@ -1,5 +1,6 @@
-#ifndef GEN_QACCESSIBLEOBJECT_H
-#define GEN_QACCESSIBLEOBJECT_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QACCESSIBLEOBJECT_H
+#define MIQT_QT6_GEN_QACCESSIBLEOBJECT_H
 
 #include <stdbool.h>
 #include <stddef.h>

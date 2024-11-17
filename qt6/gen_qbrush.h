@@ -1,5 +1,6 @@
-#ifndef GEN_QBRUSH_H
-#define GEN_QBRUSH_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QBRUSH_H
+#define MIQT_QT6_GEN_QBRUSH_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -88,6 +89,8 @@ int QGradient_Type(const QGradient* self);
 void QGradient_SetSpread(QGradient* self, int spread);
 int QGradient_Spread(const QGradient* self);
 void QGradient_SetColorAt(QGradient* self, double pos, QColor* color);
+void QGradient_SetStops(QGradient* self, struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  stops);
+struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  QGradient_Stops(const QGradient* self);
 int QGradient_CoordinateMode(const QGradient* self);
 void QGradient_SetCoordinateMode(QGradient* self, int mode);
 int QGradient_InterpolationMode(const QGradient* self);

@@ -1,5 +1,6 @@
-#ifndef GEN_QREGEXP_H
-#define GEN_QREGEXP_H
+#pragma once
+#ifndef MIQT_QT_GEN_QREGEXP_H
+#define MIQT_QT_GEN_QREGEXP_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -43,8 +44,8 @@ int QRegExp_IndexIn(const QRegExp* self, struct miqt_string str);
 int QRegExp_LastIndexIn(const QRegExp* self, struct miqt_string str);
 int QRegExp_MatchedLength(const QRegExp* self);
 int QRegExp_CaptureCount(const QRegExp* self);
-struct miqt_array QRegExp_CapturedTexts(const QRegExp* self);
-struct miqt_array QRegExp_CapturedTexts2(QRegExp* self);
+struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts(const QRegExp* self);
+struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts2(QRegExp* self);
 struct miqt_string QRegExp_Cap(const QRegExp* self);
 struct miqt_string QRegExp_Cap2(QRegExp* self);
 int QRegExp_Pos(const QRegExp* self);

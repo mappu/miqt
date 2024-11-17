@@ -111,7 +111,7 @@ QImage* QImage_ConvertToFormat(const QImage* self, int f) {
 	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f)));
 }
 
-QImage* QImage_ConvertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */ colorTable) {
+QImage* QImage_ConvertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable) {
 	QList<QRgb> colorTable_QList;
 	colorTable_QList.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
@@ -272,7 +272,7 @@ void QImage_SetPixelColor2(QImage* self, QPoint* pt, QColor* c) {
 	self->setPixelColor(*pt, *c);
 }
 
-struct miqt_array QImage_ColorTable(const QImage* self) {
+struct miqt_array /* of unsigned int */  QImage_ColorTable(const QImage* self) {
 	QList<QRgb> _ret = self->colorTable();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
@@ -285,7 +285,7 @@ struct miqt_array QImage_ColorTable(const QImage* self) {
 	return _out;
 }
 
-void QImage_SetColorTable(QImage* self, struct miqt_array /* of unsigned int */ colors) {
+void QImage_SetColorTable(QImage* self, struct miqt_array /* of unsigned int */  colors) {
 	QList<QRgb> colors_QList;
 	colors_QList.reserve(colors.len);
 	unsigned int* colors_arr = static_cast<unsigned int*>(colors.data);
@@ -485,7 +485,7 @@ void QImage_SetOffset(QImage* self, QPoint* offset) {
 	self->setOffset(*offset);
 }
 
-struct miqt_array QImage_TextKeys(const QImage* self) {
+struct miqt_array /* of struct miqt_string */  QImage_TextKeys(const QImage* self) {
 	QStringList _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -543,7 +543,7 @@ QImage* QImage_ConvertToFormat22(const QImage* self, int f, int flags) {
 	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-QImage* QImage_ConvertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */ colorTable, int flags) {
+QImage* QImage_ConvertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags) {
 	QList<QRgb> colorTable_QList;
 	colorTable_QList.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);

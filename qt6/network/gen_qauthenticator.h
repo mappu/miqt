@@ -1,5 +1,6 @@
-#ifndef GEN_QAUTHENTICATOR_H
-#define GEN_QAUTHENTICATOR_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QAUTHENTICATOR_H
+#define MIQT_QT6_NETWORK_GEN_QAUTHENTICATOR_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -33,7 +34,7 @@ void QAuthenticator_SetPassword(QAuthenticator* self, struct miqt_string passwor
 struct miqt_string QAuthenticator_Realm(const QAuthenticator* self);
 void QAuthenticator_SetRealm(QAuthenticator* self, struct miqt_string realm);
 QVariant* QAuthenticator_Option(const QAuthenticator* self, struct miqt_string opt);
-struct miqt_map QAuthenticator_Options(const QAuthenticator* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options(const QAuthenticator* self);
 void QAuthenticator_SetOption(QAuthenticator* self, struct miqt_string opt, QVariant* value);
 bool QAuthenticator_IsNull(const QAuthenticator* self);
 void QAuthenticator_Detach(QAuthenticator* self);

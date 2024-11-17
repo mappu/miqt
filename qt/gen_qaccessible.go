@@ -302,6 +302,23 @@ func QAccessible_Cleanup() {
 	C.QAccessible_Cleanup()
 }
 
+func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType QAccessible__TextBoundaryType) struct {
+	First  int
+	Second int
+} {
+	var _mm C.struct_miqt_map = C.QAccessible_QAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
+	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
+	_entry_First := (int)(_First_CArray[0])
+
+	_entry_Second := (int)(_Second_CArray[0])
+
+	return struct {
+		First  int
+		Second int
+	}{First: _entry_First, Second: _entry_Second}
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
 	C.QAccessible_Delete(this.h)
@@ -355,6 +372,31 @@ func (this *QAccessibleInterface) Object() *QObject {
 
 func (this *QAccessibleInterface) Window() *QWindow {
 	return UnsafeNewQWindow(unsafe.Pointer(C.QAccessibleInterface_Window(this.h)))
+}
+
+func (this *QAccessibleInterface) Relations() []struct {
+	First  *QAccessibleInterface
+	Second QAccessible__RelationFlag
+} {
+	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations(this.h)
+	_ret := make([]struct {
+		First  *QAccessibleInterface
+		Second QAccessible__RelationFlag
+	}, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _vv_mm C.struct_miqt_map = _outCast[i]
+		_vv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_vv_mm.keys))
+		_vv_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_vv_mm.values))
+		_vv_entry_First := UnsafeNewQAccessibleInterface(unsafe.Pointer(_vv_First_CArray[0]))
+		_vv_entry_Second := (QAccessible__RelationFlag)(_vv_Second_CArray[0])
+
+		_ret[i] = struct {
+			First  *QAccessibleInterface
+			Second QAccessible__RelationFlag
+		}{First: _vv_entry_First, Second: _vv_entry_Second}
+	}
+	return _ret
 }
 
 func (this *QAccessibleInterface) FocusChild() *QAccessibleInterface {
@@ -462,6 +504,31 @@ func (this *QAccessibleInterface) VirtualHook(id int, data unsafe.Pointer) {
 
 func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceType) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1)))
+}
+
+func (this *QAccessibleInterface) Relations1(match QAccessible__RelationFlag) []struct {
+	First  *QAccessibleInterface
+	Second QAccessible__RelationFlag
+} {
+	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations1(this.h, (C.int)(match))
+	_ret := make([]struct {
+		First  *QAccessibleInterface
+		Second QAccessible__RelationFlag
+	}, int(_ma.len))
+	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		var _vv_mm C.struct_miqt_map = _outCast[i]
+		_vv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_vv_mm.keys))
+		_vv_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_vv_mm.values))
+		_vv_entry_First := UnsafeNewQAccessibleInterface(unsafe.Pointer(_vv_First_CArray[0]))
+		_vv_entry_Second := (QAccessible__RelationFlag)(_vv_Second_CArray[0])
+
+		_ret[i] = struct {
+			First  *QAccessibleInterface
+			Second QAccessible__RelationFlag
+		}{First: _vv_entry_First, Second: _vv_entry_Second}
+	}
+	return _ret
 }
 
 type QAccessibleTextInterface struct {

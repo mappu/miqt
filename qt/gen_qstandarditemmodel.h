@@ -1,5 +1,6 @@
-#ifndef GEN_QSTANDARDITEMMODEL_H
-#define GEN_QSTANDARDITEMMODEL_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTANDARDITEMMODEL_H
+#define MIQT_QT_GEN_QSTANDARDITEMMODEL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -110,23 +111,23 @@ bool QStandardItem_HasChildren(const QStandardItem* self);
 QStandardItem* QStandardItem_Child(const QStandardItem* self, int row);
 void QStandardItem_SetChild(QStandardItem* self, int row, int column, QStandardItem* item);
 void QStandardItem_SetChild2(QStandardItem* self, int row, QStandardItem* item);
-void QStandardItem_InsertRow(QStandardItem* self, int row, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItem_InsertColumn(QStandardItem* self, int column, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItem_InsertRows(QStandardItem* self, int row, struct miqt_array /* of QStandardItem* */ items);
+void QStandardItem_InsertRow(QStandardItem* self, int row, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItem_InsertColumn(QStandardItem* self, int column, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItem_InsertRows(QStandardItem* self, int row, struct miqt_array /* of QStandardItem* */  items);
 void QStandardItem_InsertRows2(QStandardItem* self, int row, int count);
 void QStandardItem_InsertColumns(QStandardItem* self, int column, int count);
 void QStandardItem_RemoveRow(QStandardItem* self, int row);
 void QStandardItem_RemoveColumn(QStandardItem* self, int column);
 void QStandardItem_RemoveRows(QStandardItem* self, int row, int count);
 void QStandardItem_RemoveColumns(QStandardItem* self, int column, int count);
-void QStandardItem_AppendRow(QStandardItem* self, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItem_AppendRows(QStandardItem* self, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItem_AppendColumn(QStandardItem* self, struct miqt_array /* of QStandardItem* */ items);
+void QStandardItem_AppendRow(QStandardItem* self, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItem_AppendRows(QStandardItem* self, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItem_AppendColumn(QStandardItem* self, struct miqt_array /* of QStandardItem* */  items);
 void QStandardItem_InsertRow2(QStandardItem* self, int row, QStandardItem* item);
 void QStandardItem_AppendRowWithItem(QStandardItem* self, QStandardItem* item);
 QStandardItem* QStandardItem_TakeChild(QStandardItem* self, int row);
-struct miqt_array QStandardItem_TakeRow(QStandardItem* self, int row);
-struct miqt_array QStandardItem_TakeColumn(QStandardItem* self, int column);
+struct miqt_array /* of QStandardItem* */  QStandardItem_TakeRow(QStandardItem* self, int row);
+struct miqt_array /* of QStandardItem* */  QStandardItem_TakeColumn(QStandardItem* self, int column);
 void QStandardItem_SortChildren(QStandardItem* self, int column);
 QStandardItem* QStandardItem_Clone(const QStandardItem* self);
 int QStandardItem_Type(const QStandardItem* self);
@@ -148,7 +149,7 @@ QMetaObject* QStandardItemModel_MetaObject(const QStandardItemModel* self);
 void* QStandardItemModel_Metacast(QStandardItemModel* self, const char* param1);
 struct miqt_string QStandardItemModel_Tr(const char* s);
 struct miqt_string QStandardItemModel_TrUtf8(const char* s);
-void QStandardItemModel_SetItemRoleNames(QStandardItemModel* self, struct miqt_map roleNames);
+void QStandardItemModel_SetItemRoleNames(QStandardItemModel* self, struct miqt_map /* of int to struct miqt_string */  roleNames);
 QModelIndex* QStandardItemModel_Index(const QStandardItemModel* self, int row, int column);
 QModelIndex* QStandardItemModel_Parent(const QStandardItemModel* self, QModelIndex* child);
 int QStandardItemModel_RowCount(const QStandardItemModel* self);
@@ -166,8 +167,8 @@ bool QStandardItemModel_RemoveRows(QStandardItemModel* self, int row, int count)
 bool QStandardItemModel_RemoveColumns(QStandardItemModel* self, int column, int count);
 int QStandardItemModel_Flags(const QStandardItemModel* self, QModelIndex* index);
 int QStandardItemModel_SupportedDropActions(const QStandardItemModel* self);
-struct miqt_map QStandardItemModel_ItemData(const QStandardItemModel* self, QModelIndex* index);
-bool QStandardItemModel_SetItemData(QStandardItemModel* self, QModelIndex* index, struct miqt_map roles);
+struct miqt_map /* of int to QVariant* */  QStandardItemModel_ItemData(const QStandardItemModel* self, QModelIndex* index);
+bool QStandardItemModel_SetItemData(QStandardItemModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 void QStandardItemModel_Clear(QStandardItemModel* self);
 void QStandardItemModel_Sort(QStandardItemModel* self, int column);
 QStandardItem* QStandardItemModel_ItemFromIndex(const QStandardItemModel* self, QModelIndex* index);
@@ -180,30 +181,30 @@ QStandardItem* QStandardItemModel_HorizontalHeaderItem(const QStandardItemModel*
 void QStandardItemModel_SetHorizontalHeaderItem(QStandardItemModel* self, int column, QStandardItem* item);
 QStandardItem* QStandardItemModel_VerticalHeaderItem(const QStandardItemModel* self, int row);
 void QStandardItemModel_SetVerticalHeaderItem(QStandardItemModel* self, int row, QStandardItem* item);
-void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array /* of struct miqt_string */ labels);
-void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array /* of struct miqt_string */ labels);
+void QStandardItemModel_SetHorizontalHeaderLabels(QStandardItemModel* self, struct miqt_array /* of struct miqt_string */  labels);
+void QStandardItemModel_SetVerticalHeaderLabels(QStandardItemModel* self, struct miqt_array /* of struct miqt_string */  labels);
 void QStandardItemModel_SetRowCount(QStandardItemModel* self, int rows);
 void QStandardItemModel_SetColumnCount(QStandardItemModel* self, int columns);
-void QStandardItemModel_AppendRow(QStandardItemModel* self, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItemModel_AppendColumn(QStandardItemModel* self, struct miqt_array /* of QStandardItem* */ items);
+void QStandardItemModel_AppendRow(QStandardItemModel* self, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItemModel_AppendColumn(QStandardItemModel* self, struct miqt_array /* of QStandardItem* */  items);
 void QStandardItemModel_AppendRowWithItem(QStandardItemModel* self, QStandardItem* item);
-void QStandardItemModel_InsertRow(QStandardItemModel* self, int row, struct miqt_array /* of QStandardItem* */ items);
-void QStandardItemModel_InsertColumn(QStandardItemModel* self, int column, struct miqt_array /* of QStandardItem* */ items);
+void QStandardItemModel_InsertRow(QStandardItemModel* self, int row, struct miqt_array /* of QStandardItem* */  items);
+void QStandardItemModel_InsertColumn(QStandardItemModel* self, int column, struct miqt_array /* of QStandardItem* */  items);
 void QStandardItemModel_InsertRow2(QStandardItemModel* self, int row, QStandardItem* item);
 bool QStandardItemModel_InsertRowWithRow(QStandardItemModel* self, int row);
 bool QStandardItemModel_InsertColumnWithColumn(QStandardItemModel* self, int column);
 QStandardItem* QStandardItemModel_TakeItem(QStandardItemModel* self, int row);
-struct miqt_array QStandardItemModel_TakeRow(QStandardItemModel* self, int row);
-struct miqt_array QStandardItemModel_TakeColumn(QStandardItemModel* self, int column);
+struct miqt_array /* of QStandardItem* */  QStandardItemModel_TakeRow(QStandardItemModel* self, int row);
+struct miqt_array /* of QStandardItem* */  QStandardItemModel_TakeColumn(QStandardItemModel* self, int column);
 QStandardItem* QStandardItemModel_TakeHorizontalHeaderItem(QStandardItemModel* self, int column);
 QStandardItem* QStandardItemModel_TakeVerticalHeaderItem(QStandardItemModel* self, int row);
 QStandardItem* QStandardItemModel_ItemPrototype(const QStandardItemModel* self);
 void QStandardItemModel_SetItemPrototype(QStandardItemModel* self, QStandardItem* item);
-struct miqt_array QStandardItemModel_FindItems(const QStandardItemModel* self, struct miqt_string text);
+struct miqt_array /* of QStandardItem* */  QStandardItemModel_FindItems(const QStandardItemModel* self, struct miqt_string text);
 int QStandardItemModel_SortRole(const QStandardItemModel* self);
 void QStandardItemModel_SetSortRole(QStandardItemModel* self, int role);
-struct miqt_array QStandardItemModel_MimeTypes(const QStandardItemModel* self);
-QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array /* of QModelIndex* */ indexes);
+struct miqt_array /* of struct miqt_string */  QStandardItemModel_MimeTypes(const QStandardItemModel* self);
+QMimeData* QStandardItemModel_MimeData(const QStandardItemModel* self, struct miqt_array /* of QModelIndex* */  indexes);
 bool QStandardItemModel_DropMimeData(QStandardItemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 void QStandardItemModel_ItemChanged(QStandardItemModel* self, QStandardItem* item);
 void QStandardItemModel_connect_ItemChanged(QStandardItemModel* self, intptr_t slot);
@@ -228,8 +229,8 @@ QStandardItem* QStandardItemModel_Item2(const QStandardItemModel* self, int row,
 bool QStandardItemModel_InsertRow22(QStandardItemModel* self, int row, QModelIndex* parent);
 bool QStandardItemModel_InsertColumn2(QStandardItemModel* self, int column, QModelIndex* parent);
 QStandardItem* QStandardItemModel_TakeItem2(QStandardItemModel* self, int row, int column);
-struct miqt_array QStandardItemModel_FindItems2(const QStandardItemModel* self, struct miqt_string text, int flags);
-struct miqt_array QStandardItemModel_FindItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column);
+struct miqt_array /* of QStandardItem* */  QStandardItemModel_FindItems2(const QStandardItemModel* self, struct miqt_string text, int flags);
+struct miqt_array /* of QStandardItem* */  QStandardItemModel_FindItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column);
 void QStandardItemModel_Delete(QStandardItemModel* self);
 
 #ifdef __cplusplus

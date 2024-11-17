@@ -1,5 +1,6 @@
-#ifndef GEN_QCRYPTOGRAPHICHASH_H
-#define GEN_QCRYPTOGRAPHICHASH_H
+#pragma once
+#ifndef MIQT_QT_GEN_QCRYPTOGRAPHICHASH_H
+#define MIQT_QT_GEN_QCRYPTOGRAPHICHASH_H
 
 #include <stdbool.h>
 #include <stddef.h>

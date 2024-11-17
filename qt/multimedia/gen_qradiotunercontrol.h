@@ -1,5 +1,6 @@
-#ifndef GEN_QRADIOTUNERCONTROL_H
-#define GEN_QRADIOTUNERCONTROL_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QRADIOTUNERCONTROL_H
+#define MIQT_QT_MULTIMEDIA_GEN_QRADIOTUNERCONTROL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,6 +32,7 @@ void QRadioTunerControl_SetBand(QRadioTunerControl* self, int b);
 bool QRadioTunerControl_IsBandSupported(const QRadioTunerControl* self, int b);
 int QRadioTunerControl_Frequency(const QRadioTunerControl* self);
 int QRadioTunerControl_FrequencyStep(const QRadioTunerControl* self, int b);
+struct miqt_map /* tuple of int and int */  QRadioTunerControl_FrequencyRange(const QRadioTunerControl* self, int b);
 void QRadioTunerControl_SetFrequency(QRadioTunerControl* self, int frequency);
 bool QRadioTunerControl_IsStereo(const QRadioTunerControl* self);
 int QRadioTunerControl_StereoMode(const QRadioTunerControl* self);

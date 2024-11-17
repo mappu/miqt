@@ -77,7 +77,7 @@ QCameraInfo* QCameraInfo_DefaultCamera() {
 	return new QCameraInfo(QCameraInfo::defaultCamera());
 }
 
-struct miqt_array QCameraInfo_AvailableCameras() {
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras() {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));
@@ -90,7 +90,7 @@ struct miqt_array QCameraInfo_AvailableCameras() {
 	return _out;
 }
 
-struct miqt_array QCameraInfo_AvailableCameras1(int position) {
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int position) {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras(static_cast<QCamera::Position>(position));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));

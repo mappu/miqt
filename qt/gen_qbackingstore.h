@@ -1,5 +1,6 @@
-#ifndef GEN_QBACKINGSTORE_H
-#define GEN_QBACKINGSTORE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QBACKINGSTORE_H
+#define MIQT_QT_GEN_QBACKINGSTORE_H
 
 #include <stdbool.h>
 #include <stddef.h>

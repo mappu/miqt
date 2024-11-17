@@ -39,7 +39,7 @@ struct miqt_string QMediaNetworkAccessControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QMediaNetworkAccessControl_SetConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */ configuration) {
+void QMediaNetworkAccessControl_SetConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */  configuration) {
 	QList<QNetworkConfiguration> configuration_QList;
 	configuration_QList.reserve(configuration.len);
 	QNetworkConfiguration** configuration_arr = static_cast<QNetworkConfiguration**>(configuration.data);

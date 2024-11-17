@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSITEMANIMATION_H
-#define GEN_QGRAPHICSITEMANIMATION_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSITEMANIMATION_H
+#define MIQT_QT6_GEN_QGRAPHICSITEMANIMATION_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -41,18 +42,23 @@ void QGraphicsItemAnimation_SetItem(QGraphicsItemAnimation* self, QGraphicsItem*
 QTimeLine* QGraphicsItemAnimation_TimeLine(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetTimeLine(QGraphicsItemAnimation* self, QTimeLine* timeLine);
 QPointF* QGraphicsItemAnimation_PosAt(const QGraphicsItemAnimation* self, double step);
+struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_PosList(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetPosAt(QGraphicsItemAnimation* self, double step, QPointF* pos);
 QTransform* QGraphicsItemAnimation_TransformAt(const QGraphicsItemAnimation* self, double step);
 double QGraphicsItemAnimation_RotationAt(const QGraphicsItemAnimation* self, double step);
+struct miqt_array /* of struct miqt_map  tuple of double and double   */  QGraphicsItemAnimation_RotationList(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetRotationAt(QGraphicsItemAnimation* self, double step, double angle);
 double QGraphicsItemAnimation_XTranslationAt(const QGraphicsItemAnimation* self, double step);
 double QGraphicsItemAnimation_YTranslationAt(const QGraphicsItemAnimation* self, double step);
+struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_TranslationList(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetTranslationAt(QGraphicsItemAnimation* self, double step, double dx, double dy);
 double QGraphicsItemAnimation_VerticalScaleAt(const QGraphicsItemAnimation* self, double step);
 double QGraphicsItemAnimation_HorizontalScaleAt(const QGraphicsItemAnimation* self, double step);
+struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_ScaleList(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetScaleAt(QGraphicsItemAnimation* self, double step, double sx, double sy);
 double QGraphicsItemAnimation_VerticalShearAt(const QGraphicsItemAnimation* self, double step);
 double QGraphicsItemAnimation_HorizontalShearAt(const QGraphicsItemAnimation* self, double step);
+struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_ShearList(const QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetShearAt(QGraphicsItemAnimation* self, double step, double sh, double sv);
 void QGraphicsItemAnimation_Clear(QGraphicsItemAnimation* self);
 void QGraphicsItemAnimation_SetStep(QGraphicsItemAnimation* self, double x);

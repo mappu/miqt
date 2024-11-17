@@ -1,5 +1,6 @@
-#ifndef GEN_QANIMATIONGROUP_H
-#define GEN_QANIMATIONGROUP_H
+#pragma once
+#ifndef MIQT_QT_GEN_QANIMATIONGROUP_H
+#define MIQT_QT_GEN_QANIMATIONGROUP_H
 
 #include <stdbool.h>
 #include <stddef.h>

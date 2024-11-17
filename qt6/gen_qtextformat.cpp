@@ -161,7 +161,7 @@ QTextLength* QTextFormat_LengthProperty(const QTextFormat* self, int propertyId)
 	return new QTextLength(self->lengthProperty(static_cast<int>(propertyId)));
 }
 
-struct miqt_array QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId) {
+struct miqt_array /* of QTextLength* */  QTextFormat_LengthVectorProperty(const QTextFormat* self, int propertyId) {
 	QList<QTextLength> _ret = self->lengthVectorProperty(static_cast<int>(propertyId));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength*) * _ret.length()));
@@ -174,7 +174,7 @@ struct miqt_array QTextFormat_LengthVectorProperty(const QTextFormat* self, int 
 	return _out;
 }
 
-void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array /* of QTextLength* */ lengths) {
+void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_array /* of QTextLength* */  lengths) {
 	QList<QTextLength> lengths_QList;
 	lengths_QList.reserve(lengths.len);
 	QTextLength** lengths_arr = static_cast<QTextLength**>(lengths.data);
@@ -184,7 +184,7 @@ void QTextFormat_SetProperty2(QTextFormat* self, int propertyId, struct miqt_arr
 	self->setProperty(static_cast<int>(propertyId), lengths_QList);
 }
 
-struct miqt_map QTextFormat_Properties(const QTextFormat* self) {
+struct miqt_map /* of int to QVariant* */  QTextFormat_Properties(const QTextFormat* self) {
 	QMap<int, QVariant> _ret = self->properties();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
@@ -351,7 +351,7 @@ struct miqt_string QTextCharFormat_FontFamily(const QTextCharFormat* self) {
 	return _ms;
 }
 
-void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */ families) {
+void QTextCharFormat_SetFontFamilies(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */  families) {
 	QStringList families_QList;
 	families_QList.reserve(families.len);
 	struct miqt_string* families_arr = static_cast<struct miqt_string*>(families.data);
@@ -612,7 +612,7 @@ struct miqt_string QTextCharFormat_AnchorHref(const QTextCharFormat* self) {
 	return _ms;
 }
 
-void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */ names) {
+void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array /* of struct miqt_string */  names) {
 	QStringList names_QList;
 	names_QList.reserve(names.len);
 	struct miqt_string* names_arr = static_cast<struct miqt_string*>(names.data);
@@ -623,7 +623,7 @@ void QTextCharFormat_SetAnchorNames(QTextCharFormat* self, struct miqt_array /* 
 	self->setAnchorNames(names_QList);
 }
 
-struct miqt_array QTextCharFormat_AnchorNames(const QTextCharFormat* self) {
+struct miqt_array /* of struct miqt_string */  QTextCharFormat_AnchorNames(const QTextCharFormat* self) {
 	QStringList _ret = self->anchorNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -788,7 +788,7 @@ int QTextBlockFormat_PageBreakPolicy(const QTextBlockFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array /* of QTextOption__Tab* */ tabs) {
+void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array /* of QTextOption__Tab* */  tabs) {
 	QList<QTextOption::Tab> tabs_QList;
 	tabs_QList.reserve(tabs.len);
 	QTextOption__Tab** tabs_arr = static_cast<QTextOption__Tab**>(tabs.data);
@@ -798,7 +798,7 @@ void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array 
 	self->setTabPositions(tabs_QList);
 }
 
-struct miqt_array QTextBlockFormat_TabPositions(const QTextBlockFormat* self) {
+struct miqt_array /* of QTextOption__Tab* */  QTextBlockFormat_TabPositions(const QTextBlockFormat* self) {
 	QList<QTextOption::Tab> _ret = self->tabPositions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.length()));
@@ -1101,7 +1101,7 @@ void QTextTableFormat_SetColumns(QTextTableFormat* self, int columns) {
 	self->setColumns(static_cast<int>(columns));
 }
 
-void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array /* of QTextLength* */ constraints) {
+void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct miqt_array /* of QTextLength* */  constraints) {
 	QList<QTextLength> constraints_QList;
 	constraints_QList.reserve(constraints.len);
 	QTextLength** constraints_arr = static_cast<QTextLength**>(constraints.data);
@@ -1111,7 +1111,7 @@ void QTextTableFormat_SetColumnWidthConstraints(QTextTableFormat* self, struct m
 	self->setColumnWidthConstraints(constraints_QList);
 }
 
-struct miqt_array QTextTableFormat_ColumnWidthConstraints(const QTextTableFormat* self) {
+struct miqt_array /* of QTextLength* */  QTextTableFormat_ColumnWidthConstraints(const QTextTableFormat* self) {
 	QList<QTextLength> _ret = self->columnWidthConstraints();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextLength** _arr = static_cast<QTextLength**>(malloc(sizeof(QTextLength*) * _ret.length()));

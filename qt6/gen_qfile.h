@@ -1,5 +1,6 @@
-#ifndef GEN_QFILE_H
-#define GEN_QFILE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QFILE_H
+#define MIQT_QT6_GEN_QFILE_H
 
 #include <stdbool.h>
 #include <stddef.h>

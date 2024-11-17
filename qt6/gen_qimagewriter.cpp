@@ -109,7 +109,7 @@ struct miqt_string QImageWriter_SubType(const QImageWriter* self) {
 	return _ms;
 }
 
-struct miqt_array QImageWriter_SupportedSubTypes(const QImageWriter* self) {
+struct miqt_array /* of struct miqt_string */  QImageWriter_SupportedSubTypes(const QImageWriter* self) {
 	QList<QByteArray> _ret = self->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -186,7 +186,7 @@ bool QImageWriter_SupportsOption(const QImageWriter* self, int option) {
 	return self->supportsOption(static_cast<QImageIOHandler::ImageOption>(option));
 }
 
-struct miqt_array QImageWriter_SupportedImageFormats() {
+struct miqt_array /* of struct miqt_string */  QImageWriter_SupportedImageFormats() {
 	QList<QByteArray> _ret = QImageWriter::supportedImageFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -204,7 +204,7 @@ struct miqt_array QImageWriter_SupportedImageFormats() {
 	return _out;
 }
 
-struct miqt_array QImageWriter_SupportedMimeTypes() {
+struct miqt_array /* of struct miqt_string */  QImageWriter_SupportedMimeTypes() {
 	QList<QByteArray> _ret = QImageWriter::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -222,7 +222,7 @@ struct miqt_array QImageWriter_SupportedMimeTypes() {
 	return _out;
 }
 
-struct miqt_array QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType) {
+struct miqt_array /* of struct miqt_string */  QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType) {
 	QByteArray mimeType_QByteArray(mimeType.data, mimeType.len);
 	QList<QByteArray> _ret = QImageWriter::imageFormatsForMimeType(mimeType_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory

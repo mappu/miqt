@@ -1,5 +1,6 @@
-#ifndef GEN_QCBORVALUE_H
-#define GEN_QCBORVALUE_H
+#pragma once
+#ifndef MIQT_QT6_CBOR_GEN_QCBORVALUE_H
+#define MIQT_QT6_CBOR_GEN_QCBORVALUE_H
 
 #include <stdbool.h>
 #include <stddef.h>

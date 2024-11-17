@@ -1,5 +1,6 @@
-#ifndef GEN_QSYSTEMSEMAPHORE_H
-#define GEN_QSYSTEMSEMAPHORE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QSYSTEMSEMAPHORE_H
+#define MIQT_QT6_GEN_QSYSTEMSEMAPHORE_H
 
 #include <stdbool.h>
 #include <stddef.h>

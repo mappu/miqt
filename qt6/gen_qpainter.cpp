@@ -361,7 +361,7 @@ void QPainter_DrawLines(QPainter* self, QLineF* lines, int lineCount) {
 	self->drawLines(lines, static_cast<int>(lineCount));
 }
 
-void QPainter_DrawLinesWithLines(QPainter* self, struct miqt_array /* of QLineF* */ lines) {
+void QPainter_DrawLinesWithLines(QPainter* self, struct miqt_array /* of QLineF* */  lines) {
 	QList<QLineF> lines_QList;
 	lines_QList.reserve(lines.len);
 	QLineF** lines_arr = static_cast<QLineF**>(lines.data);
@@ -375,7 +375,7 @@ void QPainter_DrawLines2(QPainter* self, QPointF* pointPairs, int lineCount) {
 	self->drawLines(pointPairs, static_cast<int>(lineCount));
 }
 
-void QPainter_DrawLinesWithPointPairs(QPainter* self, struct miqt_array /* of QPointF* */ pointPairs) {
+void QPainter_DrawLinesWithPointPairs(QPainter* self, struct miqt_array /* of QPointF* */  pointPairs) {
 	QList<QPointF> pointPairs_QList;
 	pointPairs_QList.reserve(pointPairs.len);
 	QPointF** pointPairs_arr = static_cast<QPointF**>(pointPairs.data);
@@ -389,7 +389,7 @@ void QPainter_DrawLines3(QPainter* self, QLine* lines, int lineCount) {
 	self->drawLines(lines, static_cast<int>(lineCount));
 }
 
-void QPainter_DrawLines4(QPainter* self, struct miqt_array /* of QLine* */ lines) {
+void QPainter_DrawLines4(QPainter* self, struct miqt_array /* of QLine* */  lines) {
 	QList<QLine> lines_QList;
 	lines_QList.reserve(lines.len);
 	QLine** lines_arr = static_cast<QLine**>(lines.data);
@@ -403,7 +403,7 @@ void QPainter_DrawLines5(QPainter* self, QPoint* pointPairs, int lineCount) {
 	self->drawLines(pointPairs, static_cast<int>(lineCount));
 }
 
-void QPainter_DrawLines6(QPainter* self, struct miqt_array /* of QPoint* */ pointPairs) {
+void QPainter_DrawLines6(QPainter* self, struct miqt_array /* of QPoint* */  pointPairs) {
 	QList<QPoint> pointPairs_QList;
 	pointPairs_QList.reserve(pointPairs.len);
 	QPoint** pointPairs_arr = static_cast<QPoint**>(pointPairs.data);
@@ -429,7 +429,7 @@ void QPainter_DrawRects(QPainter* self, QRectF* rects, int rectCount) {
 	self->drawRects(rects, static_cast<int>(rectCount));
 }
 
-void QPainter_DrawRectsWithRectangles(QPainter* self, struct miqt_array /* of QRectF* */ rectangles) {
+void QPainter_DrawRectsWithRectangles(QPainter* self, struct miqt_array /* of QRectF* */  rectangles) {
 	QList<QRectF> rectangles_QList;
 	rectangles_QList.reserve(rectangles.len);
 	QRectF** rectangles_arr = static_cast<QRectF**>(rectangles.data);
@@ -443,7 +443,7 @@ void QPainter_DrawRects2(QPainter* self, QRect* rects, int rectCount) {
 	self->drawRects(rects, static_cast<int>(rectCount));
 }
 
-void QPainter_DrawRects3(QPainter* self, struct miqt_array /* of QRect* */ rectangles) {
+void QPainter_DrawRects3(QPainter* self, struct miqt_array /* of QRect* */  rectangles) {
 	QList<QRect> rectangles_QList;
 	rectangles_QList.reserve(rectangles.len);
 	QRect** rectangles_arr = static_cast<QRect**>(rectangles.data);

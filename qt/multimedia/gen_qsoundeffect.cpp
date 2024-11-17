@@ -57,7 +57,7 @@ struct miqt_string QSoundEffect_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QSoundEffect_SupportedMimeTypes() {
+struct miqt_array /* of struct miqt_string */  QSoundEffect_SupportedMimeTypes() {
 	QStringList _ret = QSoundEffect::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

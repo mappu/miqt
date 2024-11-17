@@ -42,7 +42,7 @@ struct miqt_string QLibraryInfo_Location(int location) {
 	return _ms;
 }
 
-struct miqt_array QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName) {
+struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName) {
 	QString platformName_QString = QString::fromUtf8(platformName.data, platformName.len);
 	QStringList _ret = QLibraryInfo::platformPluginArguments(platformName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory

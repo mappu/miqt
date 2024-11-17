@@ -1,5 +1,6 @@
-#ifndef GEN_QOBJECTDEFS_H
-#define GEN_QOBJECTDEFS_H
+#pragma once
+#ifndef MIQT_QT_GEN_QOBJECTDEFS_H
+#define MIQT_QT_GEN_QOBJECTDEFS_H
 
 #include <stdbool.h>
 #include <stddef.h>

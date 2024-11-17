@@ -88,7 +88,7 @@ QFontMetrics* QApplication_FontMetrics() {
 	return new QFontMetrics(QApplication::fontMetrics());
 }
 
-struct miqt_array QApplication_AllWidgets() {
+struct miqt_array /* of QWidget* */  QApplication_AllWidgets() {
 	QWidgetList _ret = QApplication::allWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
@@ -101,7 +101,7 @@ struct miqt_array QApplication_AllWidgets() {
 	return _out;
 }
 
-struct miqt_array QApplication_TopLevelWidgets() {
+struct miqt_array /* of QWidget* */  QApplication_TopLevelWidgets() {
 	QWidgetList _ret = QApplication::topLevelWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));

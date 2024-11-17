@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOENGINE_H
-#define GEN_QAUDIOENGINE_H
+#pragma once
+#ifndef MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOENGINE_H
+#define MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOENGINE_H
 
 #include <stdbool.h>
 #include <stddef.h>

@@ -1,5 +1,6 @@
-#ifndef GEN_QSTORAGEINFO_H
-#define GEN_QSTORAGEINFO_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTORAGEINFO_H
+#define MIQT_QT_GEN_QSTORAGEINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -45,7 +46,7 @@ bool QStorageInfo_IsReadOnly(const QStorageInfo* self);
 bool QStorageInfo_IsReady(const QStorageInfo* self);
 bool QStorageInfo_IsValid(const QStorageInfo* self);
 void QStorageInfo_Refresh(QStorageInfo* self);
-struct miqt_array QStorageInfo_MountedVolumes();
+struct miqt_array /* of QStorageInfo* */  QStorageInfo_MountedVolumes();
 QStorageInfo* QStorageInfo_Root();
 void QStorageInfo_Delete(QStorageInfo* self);
 

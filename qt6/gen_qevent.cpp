@@ -116,7 +116,7 @@ QPointerEvent* QPointerEvent_new2(int typeVal, QPointingDevice* dev, int modifie
 	return new QPointerEvent(static_cast<QEvent::Type>(typeVal), dev, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QPointerEvent* QPointerEvent_new3(int typeVal, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */ points) {
+QPointerEvent* QPointerEvent_new3(int typeVal, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */  points) {
 	QList<QEventPoint> points_QList;
 	points_QList.reserve(points.len);
 	QEventPoint** points_arr = static_cast<QEventPoint**>(points.data);
@@ -154,7 +154,7 @@ QEventPoint* QPointerEvent_Point(QPointerEvent* self, ptrdiff_t i) {
 	return &_ret;
 }
 
-struct miqt_array QPointerEvent_Points(const QPointerEvent* self) {
+struct miqt_array /* of QEventPoint* */  QPointerEvent_Points(const QPointerEvent* self) {
 	const QList<QEventPoint>& _ret = self->points();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QEventPoint** _arr = static_cast<QEventPoint**>(malloc(sizeof(QEventPoint*) * _ret.length()));
@@ -1015,7 +1015,7 @@ QInputMethodEvent* QInputMethodEvent_new() {
 	return new QInputMethodEvent();
 }
 
-QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */ attributes) {
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes) {
 	QString preeditText_QString = QString::fromUtf8(preeditText.data, preeditText.len);
 	QList<QInputMethodEvent::Attribute> attributes_QList;
 	attributes_QList.reserve(attributes.len);
@@ -1035,7 +1035,7 @@ void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_stri
 	self->setCommitString(commitString_QString);
 }
 
-struct miqt_array QInputMethodEvent_Attributes(const QInputMethodEvent* self) {
+struct miqt_array /* of QInputMethodEvent__Attribute* */  QInputMethodEvent_Attributes(const QInputMethodEvent* self) {
 	const QList<QInputMethodEvent::Attribute>& _ret = self->attributes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QInputMethodEvent__Attribute** _arr = static_cast<QInputMethodEvent__Attribute**>(malloc(sizeof(QInputMethodEvent__Attribute*) * _ret.length()));
@@ -1491,7 +1491,7 @@ QTouchEvent* QTouchEvent_new4(int eventType, QPointingDevice* device, int modifi
 	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */ touchPoints) {
+QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */  touchPoints) {
 	QList<QEventPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QEventPoint** touchPoints_arr = static_cast<QEventPoint**>(touchPoints.data);
@@ -1501,7 +1501,7 @@ QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifi
 	return new QTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), touchPoints_QList);
 }
 
-QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */ touchPoints) {
+QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints) {
 	QList<QEventPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QEventPoint** touchPoints_arr = static_cast<QEventPoint**>(touchPoints.data);
@@ -1524,7 +1524,7 @@ uint8_t QTouchEvent_TouchPointStates(const QTouchEvent* self) {
 	return static_cast<uint8_t>(_ret);
 }
 
-struct miqt_array QTouchEvent_TouchPoints(const QTouchEvent* self) {
+struct miqt_array /* of QEventPoint* */  QTouchEvent_TouchPoints(const QTouchEvent* self) {
 	const QList<QEventPoint>& _ret = self->touchPoints();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QEventPoint** _arr = static_cast<QEventPoint**>(malloc(sizeof(QEventPoint*) * _ret.length()));

@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIODEVICE_H
-#define GEN_QAUDIODEVICE_H
+#pragma once
+#ifndef MIQT_QT6_MULTIMEDIA_GEN_QAUDIODEVICE_H
+#define MIQT_QT6_MULTIMEDIA_GEN_QAUDIODEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -40,7 +41,7 @@ int QAudioDevice_MinimumSampleRate(const QAudioDevice* self);
 int QAudioDevice_MaximumSampleRate(const QAudioDevice* self);
 int QAudioDevice_MinimumChannelCount(const QAudioDevice* self);
 int QAudioDevice_MaximumChannelCount(const QAudioDevice* self);
-struct miqt_array QAudioDevice_SupportedSampleFormats(const QAudioDevice* self);
+struct miqt_array /* of uint16_t */  QAudioDevice_SupportedSampleFormats(const QAudioDevice* self);
 uint32_t QAudioDevice_ChannelConfiguration(const QAudioDevice* self);
 void QAudioDevice_Delete(QAudioDevice* self);
 

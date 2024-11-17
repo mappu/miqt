@@ -1,5 +1,6 @@
-#ifndef GEN_QLOCALSOCKET_H
-#define GEN_QLOCALSOCKET_H
+#pragma once
+#ifndef MIQT_QT_NETWORK_GEN_QLOCALSOCKET_H
+#define MIQT_QT_NETWORK_GEN_QLOCALSOCKET_H
 
 #include <stdbool.h>
 #include <stddef.h>

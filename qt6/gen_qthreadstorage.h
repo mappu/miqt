@@ -1,5 +1,6 @@
-#ifndef GEN_QTHREADSTORAGE_H
-#define GEN_QTHREADSTORAGE_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTHREADSTORAGE_H
+#define MIQT_QT6_GEN_QTHREADSTORAGE_H
 
 #include <stdbool.h>
 #include <stddef.h>

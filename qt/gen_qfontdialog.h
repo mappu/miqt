@@ -1,5 +1,6 @@
-#ifndef GEN_QFONTDIALOG_H
-#define GEN_QFONTDIALOG_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFONTDIALOG_H
+#define MIQT_QT_GEN_QFONTDIALOG_H
 
 #include <stdbool.h>
 #include <stddef.h>

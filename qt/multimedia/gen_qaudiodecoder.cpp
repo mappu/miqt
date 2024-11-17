@@ -289,7 +289,7 @@ struct miqt_string QAudioDecoder_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */ codecs) {
+int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);

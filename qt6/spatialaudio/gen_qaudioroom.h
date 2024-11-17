@@ -1,5 +1,6 @@
-#ifndef GEN_QAUDIOROOM_H
-#define GEN_QAUDIOROOM_H
+#pragma once
+#ifndef MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOROOM_H
+#define MIQT_QT6_SPATIALAUDIO_GEN_QAUDIOROOM_H
 
 #include <stdbool.h>
 #include <stddef.h>

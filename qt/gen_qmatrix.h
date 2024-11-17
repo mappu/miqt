@@ -1,5 +1,6 @@
-#ifndef GEN_QMATRIX_H
-#define GEN_QMATRIX_H
+#pragma once
+#ifndef MIQT_QT_GEN_QMATRIX_H
+#define MIQT_QT_GEN_QMATRIX_H
 
 #include <stdbool.h>
 #include <stddef.h>

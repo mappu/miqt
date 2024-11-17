@@ -1,5 +1,6 @@
-#ifndef GEN_QGRAPHICSWIDGET_H
-#define GEN_QGRAPHICSWIDGET_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QGRAPHICSWIDGET_H
+#define MIQT_QT6_GEN_QGRAPHICSWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -99,11 +100,11 @@ void QGraphicsWidget_ReleaseShortcut(QGraphicsWidget* self, int id);
 void QGraphicsWidget_SetShortcutEnabled(QGraphicsWidget* self, int id);
 void QGraphicsWidget_SetShortcutAutoRepeat(QGraphicsWidget* self, int id);
 void QGraphicsWidget_AddAction(QGraphicsWidget* self, QAction* action);
-void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */ actions);
-void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */ actions);
+void QGraphicsWidget_AddActions(QGraphicsWidget* self, struct miqt_array /* of QAction* */  actions);
+void QGraphicsWidget_InsertActions(QGraphicsWidget* self, QAction* before, struct miqt_array /* of QAction* */  actions);
 void QGraphicsWidget_InsertAction(QGraphicsWidget* self, QAction* before, QAction* action);
 void QGraphicsWidget_RemoveAction(QGraphicsWidget* self, QAction* action);
-struct miqt_array QGraphicsWidget_Actions(const QGraphicsWidget* self);
+struct miqt_array /* of QAction* */  QGraphicsWidget_Actions(const QGraphicsWidget* self);
 void QGraphicsWidget_SetAttribute(QGraphicsWidget* self, int attribute);
 bool QGraphicsWidget_TestAttribute(const QGraphicsWidget* self, int attribute);
 int QGraphicsWidget_Type(const QGraphicsWidget* self);

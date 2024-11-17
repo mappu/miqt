@@ -44,6 +44,30 @@ QWindow* QAccessibleInterface_Window(const QAccessibleInterface* self) {
 	return self->window();
 }
 
+struct miqt_array /* of struct miqt_map  tuple of QAccessibleInterface* and int   */  QAccessibleInterface_Relations(const QAccessibleInterface* self) {
+	QList<QPair<QAccessibleInterface *, QAccessible::Relation>> _ret = self->relations();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_map /* tuple of QAccessibleInterface* and int */ * _arr = static_cast<struct miqt_map /* tuple of QAccessibleInterface* and int */ *>(malloc(sizeof(struct miqt_map /* tuple of QAccessibleInterface* and int */ ) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QPair<QAccessibleInterface*, QFlags<QAccessible::RelationFlag>> _lv_ret = _ret[i];
+		// Convert QPair<> from C++ memory to manually-managed C memory
+		QAccessibleInterface** _lv_first_arr = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*)));
+		int* _lv_second_arr = static_cast<int*>(malloc(sizeof(int)));
+		_lv_first_arr[0] = _lv_ret.first;
+		QFlags<QAccessible::RelationFlag> _lv_second_ret = _lv_ret.second;
+		_lv_second_arr[0] = static_cast<int>(_lv_second_ret);
+		struct miqt_map _lv_out;
+		_lv_out.len = 1;
+		_lv_out.keys = static_cast<void*>(_lv_first_arr);
+		_lv_out.values = static_cast<void*>(_lv_second_arr);
+		_arr[i] = _lv_out;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+}
+
 QAccessibleInterface* QAccessibleInterface_FocusChild(const QAccessibleInterface* self) {
 	return self->focusChild();
 }
@@ -143,6 +167,30 @@ void QAccessibleInterface_VirtualHook(QAccessibleInterface* self, int id, void* 
 
 void* QAccessibleInterface_InterfaceCast(QAccessibleInterface* self, int param1) {
 	return self->interface_cast(static_cast<QAccessible::InterfaceType>(param1));
+}
+
+struct miqt_array /* of struct miqt_map  tuple of QAccessibleInterface* and int   */  QAccessibleInterface_Relations1(const QAccessibleInterface* self, int match) {
+	QList<QPair<QAccessibleInterface *, QAccessible::Relation>> _ret = self->relations(static_cast<QAccessible::Relation>(match));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_map /* tuple of QAccessibleInterface* and int */ * _arr = static_cast<struct miqt_map /* tuple of QAccessibleInterface* and int */ *>(malloc(sizeof(struct miqt_map /* tuple of QAccessibleInterface* and int */ ) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QPair<QAccessibleInterface*, QFlags<QAccessible::RelationFlag>> _lv_ret = _ret[i];
+		// Convert QPair<> from C++ memory to manually-managed C memory
+		QAccessibleInterface** _lv_first_arr = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*)));
+		int* _lv_second_arr = static_cast<int*>(malloc(sizeof(int)));
+		_lv_first_arr[0] = _lv_ret.first;
+		QFlags<QAccessible::RelationFlag> _lv_second_ret = _lv_ret.second;
+		_lv_second_arr[0] = static_cast<int>(_lv_second_ret);
+		struct miqt_map _lv_out;
+		_lv_out.len = 1;
+		_lv_out.keys = static_cast<void*>(_lv_first_arr);
+		_lv_out.values = static_cast<void*>(_lv_second_arr);
+		_arr[i] = _lv_out;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QAccessibleTextInterface_Selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
@@ -306,7 +354,7 @@ bool QAccessibleTableCellInterface_IsSelected(const QAccessibleTableCellInterfac
 	return self->isSelected();
 }
 
-struct miqt_array QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessibleTableCellInterface* self) {
+struct miqt_array /* of QAccessibleInterface* */  QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessibleTableCellInterface* self) {
 	QList<QAccessibleInterface *> _ret = self->columnHeaderCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** _arr = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * _ret.length()));
@@ -319,7 +367,7 @@ struct miqt_array QAccessibleTableCellInterface_ColumnHeaderCells(const QAccessi
 	return _out;
 }
 
-struct miqt_array QAccessibleTableCellInterface_RowHeaderCells(const QAccessibleTableCellInterface* self) {
+struct miqt_array /* of QAccessibleInterface* */  QAccessibleTableCellInterface_RowHeaderCells(const QAccessibleTableCellInterface* self) {
 	QList<QAccessibleInterface *> _ret = self->rowHeaderCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** _arr = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * _ret.length()));
@@ -376,7 +424,7 @@ int QAccessibleTableInterface_SelectedCellCount(const QAccessibleTableInterface*
 	return self->selectedCellCount();
 }
 
-struct miqt_array QAccessibleTableInterface_SelectedCells(const QAccessibleTableInterface* self) {
+struct miqt_array /* of QAccessibleInterface* */  QAccessibleTableInterface_SelectedCells(const QAccessibleTableInterface* self) {
 	QList<QAccessibleInterface *> _ret = self->selectedCells();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAccessibleInterface** _arr = static_cast<QAccessibleInterface**>(malloc(sizeof(QAccessibleInterface*) * _ret.length()));
@@ -427,7 +475,7 @@ int QAccessibleTableInterface_RowCount(const QAccessibleTableInterface* self) {
 	return self->rowCount();
 }
 
-struct miqt_array QAccessibleTableInterface_SelectedColumns(const QAccessibleTableInterface* self) {
+struct miqt_array /* of int */  QAccessibleTableInterface_SelectedColumns(const QAccessibleTableInterface* self) {
 	QList<int> _ret = self->selectedColumns();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -440,7 +488,7 @@ struct miqt_array QAccessibleTableInterface_SelectedColumns(const QAccessibleTab
 	return _out;
 }
 
-struct miqt_array QAccessibleTableInterface_SelectedRows(const QAccessibleTableInterface* self) {
+struct miqt_array /* of int */  QAccessibleTableInterface_SelectedRows(const QAccessibleTableInterface* self) {
 	QList<int> _ret = self->selectedRows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -496,7 +544,7 @@ struct miqt_string QAccessibleActionInterface_Tr(const char* sourceText) {
 	return _ms;
 }
 
-struct miqt_array QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self) {
+struct miqt_array /* of struct miqt_string */  QAccessibleActionInterface_ActionNames(const QAccessibleActionInterface* self) {
 	QStringList _ret = self->actionNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -545,7 +593,7 @@ void QAccessibleActionInterface_DoAction(QAccessibleActionInterface* self, struc
 	self->doAction(actionName_QString);
 }
 
-struct miqt_array QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, struct miqt_string actionName) {
+struct miqt_array /* of struct miqt_string */  QAccessibleActionInterface_KeyBindingsForAction(const QAccessibleActionInterface* self, struct miqt_string actionName) {
 	QString actionName_QString = QString::fromUtf8(actionName.data, actionName.len);
 	QStringList _ret = self->keyBindingsForAction(actionName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory

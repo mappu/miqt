@@ -1,5 +1,6 @@
-#ifndef GEN_QTOUCHDEVICE_H
-#define GEN_QTOUCHDEVICE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QTOUCHDEVICE_H
+#define MIQT_QT_GEN_QTOUCHDEVICE_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -20,7 +21,7 @@ typedef struct QTouchDevice QTouchDevice;
 #endif
 
 QTouchDevice* QTouchDevice_new();
-struct miqt_array QTouchDevice_Devices();
+struct miqt_array /* of QTouchDevice* */  QTouchDevice_Devices();
 struct miqt_string QTouchDevice_Name(const QTouchDevice* self);
 int QTouchDevice_Type(const QTouchDevice* self);
 int QTouchDevice_Capabilities(const QTouchDevice* self);

@@ -78,7 +78,7 @@ func (this *QAbstractVideoBuffer) MapMode() QAbstractVideoBuffer__MapMode {
 }
 
 func (this *QAbstractVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
-	return (*byte)(C.QAbstractVideoBuffer_Map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine))))
+	return (*byte)(unsafe.Pointer(C.QAbstractVideoBuffer_Map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
 }
 
 func (this *QAbstractVideoBuffer) Unmap() {
@@ -137,7 +137,7 @@ func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer) *QAbstractPlanarVideo
 }
 
 func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
-	return (*byte)(C.QAbstractPlanarVideoBuffer_Map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine))))
+	return (*byte)(unsafe.Pointer(C.QAbstractPlanarVideoBuffer_Map(this.h, (C.int)(mode), (*C.int)(unsafe.Pointer(numBytes)), (*C.int)(unsafe.Pointer(bytesPerLine)))))
 }
 
 // Delete this object from C++ memory.

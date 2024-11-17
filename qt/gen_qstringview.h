@@ -1,5 +1,6 @@
-#ifndef GEN_QSTRINGVIEW_H
-#define GEN_QSTRINGVIEW_H
+#pragma once
+#ifndef MIQT_QT_GEN_QSTRINGVIEW_H
+#define MIQT_QT_GEN_QSTRINGVIEW_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -31,7 +32,7 @@ QChar* QStringView_OperatorSubscript(const QStringView* self, ptrdiff_t n);
 struct miqt_string QStringView_ToLatin1(const QStringView* self);
 struct miqt_string QStringView_ToUtf8(const QStringView* self);
 struct miqt_string QStringView_ToLocal8Bit(const QStringView* self);
-struct miqt_array QStringView_ToUcs4(const QStringView* self);
+struct miqt_array /* of unsigned int */  QStringView_ToUcs4(const QStringView* self);
 QChar* QStringView_At(const QStringView* self, ptrdiff_t n);
 void QStringView_Truncate(QStringView* self, ptrdiff_t n);
 void QStringView_Chop(QStringView* self, ptrdiff_t n);

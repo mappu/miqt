@@ -1,5 +1,6 @@
-#ifndef GEN_QTESTSUPPORT_GUI_H
-#define GEN_QTESTSUPPORT_GUI_H
+#pragma once
+#ifndef MIQT_QT6_GEN_QTESTSUPPORT_GUI_H
+#define MIQT_QT6_GEN_QTESTSUPPORT_GUI_H
 
 #include <stdbool.h>
 #include <stddef.h>

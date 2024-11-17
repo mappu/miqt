@@ -47,7 +47,7 @@ struct miqt_string QAudioRecorder_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAudioRecorder_AudioInputs(const QAudioRecorder* self) {
+struct miqt_array /* of struct miqt_string */  QAudioRecorder_AudioInputs(const QAudioRecorder* self) {
 	QStringList _ret = self->audioInputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

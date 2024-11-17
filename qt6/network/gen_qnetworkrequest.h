@@ -1,5 +1,6 @@
-#ifndef GEN_QNETWORKREQUEST_H
-#define GEN_QNETWORKREQUEST_H
+#pragma once
+#ifndef MIQT_QT6_NETWORK_GEN_QNETWORKREQUEST_H
+#define MIQT_QT6_NETWORK_GEN_QNETWORKREQUEST_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -43,7 +44,7 @@ void QNetworkRequest_SetUrl(QNetworkRequest* self, QUrl* url);
 QVariant* QNetworkRequest_Header(const QNetworkRequest* self, int header);
 void QNetworkRequest_SetHeader(QNetworkRequest* self, int header, QVariant* value);
 bool QNetworkRequest_HasRawHeader(const QNetworkRequest* self, struct miqt_string headerName);
-struct miqt_array QNetworkRequest_RawHeaderList(const QNetworkRequest* self);
+struct miqt_array /* of struct miqt_string */  QNetworkRequest_RawHeaderList(const QNetworkRequest* self);
 struct miqt_string QNetworkRequest_RawHeader(const QNetworkRequest* self, struct miqt_string headerName);
 void QNetworkRequest_SetRawHeader(QNetworkRequest* self, struct miqt_string headerName, struct miqt_string value);
 QVariant* QNetworkRequest_Attribute(const QNetworkRequest* self, int code);

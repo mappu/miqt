@@ -1,5 +1,6 @@
-#ifndef GEN_QCBORSTREAMWRITER_H
-#define GEN_QCBORSTREAMWRITER_H
+#pragma once
+#ifndef MIQT_QT_CBOR_GEN_QCBORSTREAMWRITER_H
+#define MIQT_QT_CBOR_GEN_QCBORSTREAMWRITER_H
 
 #include <stdbool.h>
 #include <stddef.h>

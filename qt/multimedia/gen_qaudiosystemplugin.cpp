@@ -13,7 +13,7 @@
 #include "gen_qaudiosystemplugin.h"
 #include "_cgo_export.h"
 
-struct miqt_array QAudioSystemFactoryInterface_AvailableDevices(const QAudioSystemFactoryInterface* self, int param1) {
+struct miqt_array /* of struct miqt_string */  QAudioSystemFactoryInterface_AvailableDevices(const QAudioSystemFactoryInterface* self, int param1) {
 	QList<QByteArray> _ret = self->availableDevices(static_cast<QAudio::Mode>(param1));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -84,7 +84,7 @@ struct miqt_string QAudioSystemPlugin_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array QAudioSystemPlugin_AvailableDevices(const QAudioSystemPlugin* self, int param1) {
+struct miqt_array /* of struct miqt_string */  QAudioSystemPlugin_AvailableDevices(const QAudioSystemPlugin* self, int param1) {
 	QList<QByteArray> _ret = self->availableDevices(static_cast<QAudio::Mode>(param1));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

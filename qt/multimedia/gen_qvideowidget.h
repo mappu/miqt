@@ -1,5 +1,6 @@
-#ifndef GEN_QVIDEOWIDGET_H
-#define GEN_QVIDEOWIDGET_H
+#pragma once
+#ifndef MIQT_QT_MULTIMEDIA_GEN_QVIDEOWIDGET_H
+#define MIQT_QT_MULTIMEDIA_GEN_QVIDEOWIDGET_H
 
 #include <stdbool.h>
 #include <stddef.h>

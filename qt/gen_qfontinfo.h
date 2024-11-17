@@ -1,5 +1,6 @@
-#ifndef GEN_QFONTINFO_H
-#define GEN_QFONTINFO_H
+#pragma once
+#ifndef MIQT_QT_GEN_QFONTINFO_H
+#define MIQT_QT_GEN_QFONTINFO_H
 
 #include <stdbool.h>
 #include <stddef.h>

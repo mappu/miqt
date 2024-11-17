@@ -1,5 +1,6 @@
-#ifndef GEN_QJSONVALUE_H
-#define GEN_QJSONVALUE_H
+#pragma once
+#ifndef MIQT_QT_GEN_QJSONVALUE_H
+#define MIQT_QT_GEN_QJSONVALUE_H
 
 #include <stdbool.h>
 #include <stddef.h>

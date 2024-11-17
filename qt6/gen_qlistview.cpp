@@ -194,7 +194,7 @@ void QListView_SetRootIndex(QListView* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-void QListView_IndexesMoved(QListView* self, struct miqt_array /* of QModelIndex* */ indexes) {
+void QListView_IndexesMoved(QListView* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -215,7 +215,7 @@ void QListView_connect_IndexesMoved(QListView* self, intptr_t slot) {
 		struct miqt_array indexes_out;
 		indexes_out.len = indexes_ret.length();
 		indexes_out.data = static_cast<void*>(indexes_arr);
-		struct miqt_array sigval1 = indexes_out;
+		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 		miqt_exec_callback_QListView_IndexesMoved(slot, sigval1);
 	});
 }

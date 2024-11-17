@@ -1,5 +1,6 @@
-#ifndef GEN_QCBORMAP_H
-#define GEN_QCBORMAP_H
+#pragma once
+#ifndef MIQT_QT_CBOR_GEN_QCBORMAP_H
+#define MIQT_QT_CBOR_GEN_QCBORMAP_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -47,7 +48,7 @@ QCborValue* QCborMap_ToCborValue(const QCborMap* self);
 ptrdiff_t QCborMap_Size(const QCborMap* self);
 bool QCborMap_IsEmpty(const QCborMap* self);
 void QCborMap_Clear(QCborMap* self);
-struct miqt_array QCborMap_Keys(const QCborMap* self);
+struct miqt_array /* of QCborValue* */  QCborMap_Keys(const QCborMap* self);
 QCborValue* QCborMap_Value(const QCborMap* self, long long key);
 QCborValue* QCborMap_Value2(const QCborMap* self, struct miqt_string key);
 QCborValue* QCborMap_Value3(const QCborMap* self, QCborValue* key);
@@ -95,17 +96,19 @@ QCborMap__ConstIterator* QCborMap_Find7(const QCborMap* self, QCborValue* key);
 QCborMap__Iterator* QCborMap_Insert(QCborMap* self, long long key, QCborValue* value_);
 QCborMap__Iterator* QCborMap_Insert3(QCborMap* self, struct miqt_string key, QCborValue* value_);
 QCborMap__Iterator* QCborMap_Insert4(QCborMap* self, QCborValue* key, QCborValue* value_);
-QCborMap* QCborMap_FromVariantMap(struct miqt_map mapVal);
-QCborMap* QCborMap_FromVariantHash(struct miqt_map hash);
+QCborMap__Iterator* QCborMap_InsertWithQCborMapvalueType(QCborMap* self, struct miqt_map /* tuple of QCborValue* and QCborValue* */  v);
+QCborMap* QCborMap_FromVariantMap(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
+QCborMap* QCborMap_FromVariantHash(struct miqt_map /* of struct miqt_string to QVariant* */  hash);
 QCborMap* QCborMap_FromJsonObject(QJsonObject* o);
-struct miqt_map QCborMap_ToVariantMap(const QCborMap* self);
-struct miqt_map QCborMap_ToVariantHash(const QCborMap* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QCborMap_ToVariantMap(const QCborMap* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QCborMap_ToVariantHash(const QCborMap* self);
 QJsonObject* QCborMap_ToJsonObject(const QCborMap* self);
 void QCborMap_Delete(QCborMap* self);
 
 QCborMap__Iterator* QCborMap__Iterator_new();
 QCborMap__Iterator* QCborMap__Iterator_new2(QCborMap__Iterator* param1);
 void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Iterator* other);
+struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__Iterator_OperatorMultiply(const QCborMap__Iterator* self);
 QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator* self);
 QCborValue* QCborMap__Iterator_Key(const QCborMap__Iterator* self);
 QCborValueRef* QCborMap__Iterator_Value(const QCborMap__Iterator* self);
@@ -135,6 +138,7 @@ void QCborMap__Iterator_Delete(QCborMap__Iterator* self);
 QCborMap__ConstIterator* QCborMap__ConstIterator_new();
 QCborMap__ConstIterator* QCborMap__ConstIterator_new2(QCborMap__ConstIterator* param1);
 void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCborMap__ConstIterator* other);
+struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__ConstIterator_OperatorMultiply(const QCborMap__ConstIterator* self);
 QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self);
 QCborValue* QCborMap__ConstIterator_Key(const QCborMap__ConstIterator* self);
 QCborValueRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self);

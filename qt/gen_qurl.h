@@ -1,5 +1,6 @@
-#ifndef GEN_QURL_H
-#define GEN_QURL_H
+#pragma once
+#ifndef MIQT_QT_GEN_QURL_H
+#define MIQT_QT_GEN_QURL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -82,10 +83,10 @@ struct miqt_string QUrl_FromPercentEncoding(struct miqt_string param1);
 struct miqt_string QUrl_ToPercentEncoding(struct miqt_string param1);
 struct miqt_string QUrl_FromAce(struct miqt_string param1);
 struct miqt_string QUrl_ToAce(struct miqt_string param1);
-struct miqt_array QUrl_IdnWhitelist();
-struct miqt_array QUrl_ToStringList(struct miqt_array /* of QUrl* */ uris);
-struct miqt_array QUrl_FromStringList(struct miqt_array /* of struct miqt_string */ uris);
-void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */ idnWhitelist);
+struct miqt_array /* of struct miqt_string */  QUrl_IdnWhitelist();
+struct miqt_array /* of struct miqt_string */  QUrl_ToStringList(struct miqt_array /* of QUrl* */  uris);
+struct miqt_array /* of QUrl* */  QUrl_FromStringList(struct miqt_array /* of struct miqt_string */  uris);
+void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */  idnWhitelist);
 void QUrl_SetUrl2(QUrl* self, struct miqt_string url, int mode);
 QUrl* QUrl_FromEncoded2(struct miqt_string url, int mode);
 QUrl* QUrl_FromUserInput3(struct miqt_string userInput, struct miqt_string workingDirectory, int options);
@@ -110,7 +111,7 @@ struct miqt_string QUrl_Fragment1(const QUrl* self, int options);
 void QUrl_SetFragment2(QUrl* self, struct miqt_string fragment, int mode);
 struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miqt_string exclude);
 struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include);
-struct miqt_array QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */ uris, int mode);
+struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode);
 void QUrl_Delete(QUrl* self);
 
 #ifdef __cplusplus

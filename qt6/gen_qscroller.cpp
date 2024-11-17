@@ -57,7 +57,7 @@ void QScroller_UngrabGesture(QObject* target) {
 	QScroller::ungrabGesture(target);
 }
 
-struct miqt_array QScroller_ActiveScrollers() {
+struct miqt_array /* of QScroller* */  QScroller_ActiveScrollers() {
 	QList<QScroller *> _ret = QScroller::activeScrollers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.length()));
@@ -103,7 +103,7 @@ QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self) {
 	return new QScrollerProperties(self->scrollerProperties());
 }
 
-void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */ positions) {
+void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */  positions) {
 	QList<qreal> positions_QList;
 	positions_QList.reserve(positions.len);
 	double* positions_arr = static_cast<double*>(positions.data);
@@ -117,7 +117,7 @@ void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval
 	self->setSnapPositionsX(static_cast<qreal>(first), static_cast<qreal>(interval));
 }
 
-void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */ positions) {
+void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */  positions) {
 	QList<qreal> positions_QList;
 	positions_QList.reserve(positions.len);
 	double* positions_arr = static_cast<double*>(positions.data);
