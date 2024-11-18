@@ -272,6 +272,12 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 			tmp = append(tmp, "argc, &argv[0]")
 
+			// Additional quirk for QApplication constructor: bind to OS thread
+			gfs.imports["runtime"] = struct{}{}
+			preamble += "\n"
+			preamble += "runtime.LockOSThread() // Prevent Go from migrating the main Qt thread\n"
+			preamble += "\n"
+
 		} else if skipNext {
 			// Skip this parameter, already handled
 			skipNext = false
