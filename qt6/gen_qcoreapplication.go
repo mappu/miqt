@@ -59,6 +59,9 @@ func NewQCoreApplication(args []string) *QCoreApplication {
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
+
+	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
+
 	ret := C.QCoreApplication_new(argc, &argv[0])
 	return newQCoreApplication(ret)
 }
@@ -72,6 +75,9 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
+
+	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
+
 	ret := C.QCoreApplication_new2(argc, &argv[0], (C.int)(param3))
 	return newQCoreApplication(ret)
 }

@@ -53,6 +53,9 @@ func NewQGuiApplication(args []string) *QGuiApplication {
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
+
+	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
+
 	ret := C.QGuiApplication_new(argc, &argv[0])
 	return newQGuiApplication(ret)
 }
@@ -66,6 +69,9 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 	for i := range args {
 		argv[i] = C.CString(args[i])
 	}
+
+	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
+
 	ret := C.QGuiApplication_new2(argc, &argv[0], (C.int)(param3))
 	return newQGuiApplication(ret)
 }
