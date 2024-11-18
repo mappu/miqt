@@ -430,6 +430,10 @@ func (this *QCborArray__Iterator) OperatorMinusGreater() *QCborValueRef {
 	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusGreater(this.h)))
 }
 
+func (this *QCborArray__Iterator) OperatorMinusGreater2() *QCborValueConstRef {
+	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborArray__Iterator_OperatorMinusGreater2(this.h)))
+}
+
 func (this *QCborArray__Iterator) OperatorSubscript(j int64) *QCborValueRef {
 	_ret := C.QCborArray__Iterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j))
 	_goptr := newQCborValueRef(_ret)
@@ -592,20 +596,20 @@ func (this *QCborArray__ConstIterator) OperatorAssign(other *QCborArray__ConstIt
 	C.QCborArray__ConstIterator_OperatorAssign(this.h, other.cPointer())
 }
 
-func (this *QCborArray__ConstIterator) OperatorMultiply() *QCborValueRef {
+func (this *QCborArray__ConstIterator) OperatorMultiply() *QCborValueConstRef {
 	_ret := C.QCborArray__ConstIterator_OperatorMultiply(this.h)
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueConstRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QCborArray__ConstIterator) OperatorMinusGreater() *QCborValueRef {
-	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)))
+func (this *QCborArray__ConstIterator) OperatorMinusGreater() *QCborValueConstRef {
+	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborArray__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
-func (this *QCborArray__ConstIterator) OperatorSubscript(j int64) *QCborValueRef {
+func (this *QCborArray__ConstIterator) OperatorSubscript(j int64) *QCborValueConstRef {
 	_ret := C.QCborArray__ConstIterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j))
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueConstRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -147,7 +147,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/cbor",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+			"/usr/include/x86_64-linux-gnu/qt6/QtCore",
 		},
 		func(fullpath string) bool {
 			// Only include the same json, xml, cbor files excluded above
@@ -155,7 +155,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 			return strings.HasPrefix(fname, "qcbor")
 		},
 		clangBin,
-		pkgConfigCflags("Qt6Core"),
+		"--std=c++20 "+pkgConfigCflags("Qt6Core"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
