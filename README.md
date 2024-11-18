@@ -89,6 +89,8 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 
 - When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
 
+The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
+
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
 ### Q6. Can I use Qt Designer and the Qt Resource system?
