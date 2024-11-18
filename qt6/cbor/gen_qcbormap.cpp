@@ -2,6 +2,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborMap__ConstIterator
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborMap__Iterator
 #include <QCborValue>
+#include <QCborValueConstRef>
 #include <QCborValueRef>
 #include <QJsonObject>
 #include <QList>
@@ -48,7 +49,7 @@ void QCborMap_Clear(QCborMap* self) {
 }
 
 struct miqt_array /* of QCborValue* */  QCborMap_Keys(const QCborMap* self) {
-	QVector<QCborValue> _ret = self->keys();
+	QList<QCborValue> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCborValue** _arr = static_cast<QCborValue**>(malloc(sizeof(QCborValue*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -364,12 +365,12 @@ void QCborMap__Iterator_OperatorAssign(QCborMap__Iterator* self, QCborMap__Itera
 	self->operator=(*other);
 }
 
-struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__Iterator_OperatorMultiply(const QCborMap__Iterator* self) {
+struct miqt_map /* tuple of QCborValueConstRef* and QCborValueRef* */  QCborMap__Iterator_OperatorMultiply(const QCborMap__Iterator* self) {
 	QCborMap::Iterator::value_type _ret = self->operator*();
 	// Convert QPair<> from C++ memory to manually-managed C memory
-	QCborValueRef** _first_arr = static_cast<QCborValueRef**>(malloc(sizeof(QCborValueRef*)));
+	QCborValueConstRef** _first_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
 	QCborValueRef** _second_arr = static_cast<QCborValueRef**>(malloc(sizeof(QCborValueRef*)));
-	_first_arr[0] = new QCborValueRef(_ret.first);
+	_first_arr[0] = new QCborValueConstRef(_ret.first);
 	_second_arr[0] = new QCborValueRef(_ret.second);
 	struct miqt_map _out;
 	_out.len = 1;
@@ -378,8 +379,26 @@ struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__Iter
 	return _out;
 }
 
-QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(const QCborMap__Iterator* self) {
+struct miqt_map /* tuple of QCborValueConstRef* and QCborValueRef* */  QCborMap__Iterator_OperatorSubscript(const QCborMap__Iterator* self, ptrdiff_t j) {
+	QCborMap::Iterator::value_type _ret = self->operator[]((qsizetype)(j));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	QCborValueConstRef** _first_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
+	QCborValueRef** _second_arr = static_cast<QCborValueRef**>(malloc(sizeof(QCborValueRef*)));
+	_first_arr[0] = new QCborValueConstRef(_ret.first);
+	_second_arr[0] = new QCborValueRef(_ret.second);
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
+QCborValueRef* QCborMap__Iterator_OperatorMinusGreater(QCborMap__Iterator* self) {
 	return self->operator->();
+}
+
+QCborValueConstRef* QCborMap__Iterator_OperatorMinusGreater2(const QCborMap__Iterator* self) {
+	return (QCborValueConstRef*) self->operator->();
 }
 
 QCborValue* QCborMap__Iterator_Key(const QCborMap__Iterator* self) {
@@ -499,13 +518,13 @@ void QCborMap__ConstIterator_OperatorAssign(QCborMap__ConstIterator* self, QCbor
 	self->operator=(*other);
 }
 
-struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__ConstIterator_OperatorMultiply(const QCborMap__ConstIterator* self) {
+struct miqt_map /* tuple of QCborValueConstRef* and QCborValueConstRef* */  QCborMap__ConstIterator_OperatorMultiply(const QCborMap__ConstIterator* self) {
 	QCborMap::ConstIterator::value_type _ret = self->operator*();
 	// Convert QPair<> from C++ memory to manually-managed C memory
-	QCborValueRef** _first_arr = static_cast<QCborValueRef**>(malloc(sizeof(QCborValueRef*)));
-	QCborValueRef** _second_arr = static_cast<QCborValueRef**>(malloc(sizeof(QCborValueRef*)));
-	_first_arr[0] = new QCborValueRef(_ret.first);
-	_second_arr[0] = new QCborValueRef(_ret.second);
+	QCborValueConstRef** _first_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
+	QCborValueConstRef** _second_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
+	_first_arr[0] = new QCborValueConstRef(_ret.first);
+	_second_arr[0] = new QCborValueConstRef(_ret.second);
 	struct miqt_map _out;
 	_out.len = 1;
 	_out.keys = static_cast<void*>(_first_arr);
@@ -513,16 +532,30 @@ struct miqt_map /* tuple of QCborValueRef* and QCborValueRef* */  QCborMap__Cons
 	return _out;
 }
 
-QCborValueRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self) {
-	return (QCborValueRef*) self->operator->();
+struct miqt_map /* tuple of QCborValueConstRef* and QCborValueConstRef* */  QCborMap__ConstIterator_OperatorSubscript(const QCborMap__ConstIterator* self, ptrdiff_t j) {
+	QCborMap::ConstIterator::value_type _ret = self->operator[]((qsizetype)(j));
+	// Convert QPair<> from C++ memory to manually-managed C memory
+	QCborValueConstRef** _first_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
+	QCborValueConstRef** _second_arr = static_cast<QCborValueConstRef**>(malloc(sizeof(QCborValueConstRef*)));
+	_first_arr[0] = new QCborValueConstRef(_ret.first);
+	_second_arr[0] = new QCborValueConstRef(_ret.second);
+	struct miqt_map _out;
+	_out.len = 1;
+	_out.keys = static_cast<void*>(_first_arr);
+	_out.values = static_cast<void*>(_second_arr);
+	return _out;
+}
+
+QCborValueConstRef* QCborMap__ConstIterator_OperatorMinusGreater(const QCborMap__ConstIterator* self) {
+	return (QCborValueConstRef*) self->operator->();
 }
 
 QCborValue* QCborMap__ConstIterator_Key(const QCborMap__ConstIterator* self) {
 	return new QCborValue(self->key());
 }
 
-QCborValueRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self) {
-	return new QCborValueRef(self->value());
+QCborValueConstRef* QCborMap__ConstIterator_Value(const QCborMap__ConstIterator* self) {
+	return new QCborValueConstRef(self->value());
 }
 
 bool QCborMap__ConstIterator_OperatorEqual(const QCborMap__ConstIterator* self, QCborMap__Iterator* o) {

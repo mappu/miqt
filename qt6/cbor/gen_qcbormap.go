@@ -87,10 +87,10 @@ func (this *QCborMap) Keys() []QCborValue {
 	_ret := make([]QCborValue, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCborValue)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQCborValue(_vv_ret)
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_lv_ret := _outCast[i]
+		_lv_goptr := newQCborValue(_lv_ret)
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
 	}
 	return _ret
 }
@@ -618,14 +618,14 @@ func (this *QCborMap__Iterator) OperatorAssign(other *QCborMap__Iterator) {
 }
 
 func (this *QCborMap__Iterator) OperatorMultiply() struct {
-	First  QCborValueRef
+	First  QCborValueConstRef
 	Second QCborValueRef
 } {
 	var _mm C.struct_miqt_map = C.QCborMap__Iterator_OperatorMultiply(this.h)
-	_First_CArray := (*[0xffff]*C.QCborValueRef)(unsafe.Pointer(_mm.keys))
+	_First_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]*C.QCborValueRef)(unsafe.Pointer(_mm.values))
 	_first_ret := _First_CArray[0]
-	_first_goptr := newQCborValueRef(_first_ret)
+	_first_goptr := newQCborValueConstRef(_first_ret)
 	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_First := *_first_goptr
 
@@ -635,13 +635,40 @@ func (this *QCborMap__Iterator) OperatorMultiply() struct {
 	_entry_Second := *_second_goptr
 
 	return struct {
-		First  QCborValueRef
+		First  QCborValueConstRef
+		Second QCborValueRef
+	}{First: _entry_First, Second: _entry_Second}
+}
+
+func (this *QCborMap__Iterator) OperatorSubscript(j int64) struct {
+	First  QCborValueConstRef
+	Second QCborValueRef
+} {
+	var _mm C.struct_miqt_map = C.QCborMap__Iterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j))
+	_First_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]*C.QCborValueRef)(unsafe.Pointer(_mm.values))
+	_first_ret := _First_CArray[0]
+	_first_goptr := newQCborValueConstRef(_first_ret)
+	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_entry_First := *_first_goptr
+
+	_second_ret := _Second_CArray[0]
+	_second_goptr := newQCborValueRef(_second_ret)
+	_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_entry_Second := *_second_goptr
+
+	return struct {
+		First  QCborValueConstRef
 		Second QCborValueRef
 	}{First: _entry_First, Second: _entry_Second}
 }
 
 func (this *QCborMap__Iterator) OperatorMinusGreater() *QCborValueRef {
 	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater(this.h)))
+}
+
+func (this *QCborMap__Iterator) OperatorMinusGreater2() *QCborValueConstRef {
+	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborMap__Iterator_OperatorMinusGreater2(this.h)))
 }
 
 func (this *QCborMap__Iterator) Key() *QCborValue {
@@ -814,30 +841,53 @@ func (this *QCborMap__ConstIterator) OperatorAssign(other *QCborMap__ConstIterat
 }
 
 func (this *QCborMap__ConstIterator) OperatorMultiply() struct {
-	First  QCborValueRef
-	Second QCborValueRef
+	First  QCborValueConstRef
+	Second QCborValueConstRef
 } {
 	var _mm C.struct_miqt_map = C.QCborMap__ConstIterator_OperatorMultiply(this.h)
-	_First_CArray := (*[0xffff]*C.QCborValueRef)(unsafe.Pointer(_mm.keys))
-	_Second_CArray := (*[0xffff]*C.QCborValueRef)(unsafe.Pointer(_mm.values))
+	_First_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.values))
 	_first_ret := _First_CArray[0]
-	_first_goptr := newQCborValueRef(_first_ret)
+	_first_goptr := newQCborValueConstRef(_first_ret)
 	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_First := *_first_goptr
 
 	_second_ret := _Second_CArray[0]
-	_second_goptr := newQCborValueRef(_second_ret)
+	_second_goptr := newQCborValueConstRef(_second_ret)
 	_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_entry_Second := *_second_goptr
 
 	return struct {
-		First  QCborValueRef
-		Second QCborValueRef
+		First  QCborValueConstRef
+		Second QCborValueConstRef
 	}{First: _entry_First, Second: _entry_Second}
 }
 
-func (this *QCborMap__ConstIterator) OperatorMinusGreater() *QCborValueRef {
-	return UnsafeNewQCborValueRef(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
+func (this *QCborMap__ConstIterator) OperatorSubscript(j int64) struct {
+	First  QCborValueConstRef
+	Second QCborValueConstRef
+} {
+	var _mm C.struct_miqt_map = C.QCborMap__ConstIterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j))
+	_First_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.keys))
+	_Second_CArray := (*[0xffff]*C.QCborValueConstRef)(unsafe.Pointer(_mm.values))
+	_first_ret := _First_CArray[0]
+	_first_goptr := newQCborValueConstRef(_first_ret)
+	_first_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_entry_First := *_first_goptr
+
+	_second_ret := _Second_CArray[0]
+	_second_goptr := newQCborValueConstRef(_second_ret)
+	_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_entry_Second := *_second_goptr
+
+	return struct {
+		First  QCborValueConstRef
+		Second QCborValueConstRef
+	}{First: _entry_First, Second: _entry_Second}
+}
+
+func (this *QCborMap__ConstIterator) OperatorMinusGreater() *QCborValueConstRef {
+	return UnsafeNewQCborValueConstRef(unsafe.Pointer(C.QCborMap__ConstIterator_OperatorMinusGreater(this.h)))
 }
 
 func (this *QCborMap__ConstIterator) Key() *QCborValue {
@@ -847,9 +897,9 @@ func (this *QCborMap__ConstIterator) Key() *QCborValue {
 	return _goptr
 }
 
-func (this *QCborMap__ConstIterator) Value() *QCborValueRef {
+func (this *QCborMap__ConstIterator) Value() *QCborValueConstRef {
 	_ret := C.QCborMap__ConstIterator_Value(this.h)
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueConstRef(_ret)
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
