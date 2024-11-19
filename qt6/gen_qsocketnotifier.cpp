@@ -364,9 +364,10 @@ void QSocketDescriptor_new2(QSocketDescriptor* param1, QSocketDescriptor** outpt
 void QSocketDescriptor_new3(int descriptor, QSocketDescriptor** outptr_QSocketDescriptor) {
 #ifndef Q_OS_LINUX
 	return;
-#endif
+#else
 	QSocketDescriptor* ret = new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
 	*outptr_QSocketDescriptor = ret;
+#endif
 }
 
 bool QSocketDescriptor_IsValid(const QSocketDescriptor* self) {

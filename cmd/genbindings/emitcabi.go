@@ -979,7 +979,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 				ret.WriteString(
 					"#ifndef Q_OS_LINUX\n" +
 						"\treturn;\n" +
-						"#endif\n",
+						"#else\n",
 				)
 			}
 
@@ -990,6 +990,12 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			)
 			for _, baseClass := range c.AllInherits() {
 				ret.WriteString("\t*outptr_" + cabiClassName(baseClass) + " = static_cast<" + baseClass + "*>(ret);\n")
+			}
+
+			if ctor.LinuxOnly {
+				ret.WriteString(
+					"#endif\n",
+				)
 			}
 
 			ret.WriteString(
