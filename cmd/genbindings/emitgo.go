@@ -892,13 +892,7 @@ import "C"
 
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
-			returnTypeDecl := m.ReturnType.RenderTypeGo(&gfs)
-			if returnTypeDecl == "void" {
-				returnTypeDecl = ""
-			}
-			if m.ReturnType.QtClassType() && m.ReturnType.ParameterType != "QString" && m.ReturnType.ParameterType != "QByteArray" && !(m.ReturnType.Pointer || m.ReturnType.ByRef) {
-				returnTypeDecl = "*" + returnTypeDecl
-			}
+			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
 
 			rvalue := `C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)`
 
@@ -969,58 +963,87 @@ import "C"
 			gfs.imports["unsafe"] = struct{}{}
 			gfs.imports["runtime/cgo"] = struct{}{}
 
-			var cgoNamedParams []string
-			var paramNames []string
-			conversion := ""
+			// Add a package-private function to call the C++ base class method
+			// QWidget_virtualbase_PaintEvent
 
-			if len(m.Parameters) > 0 {
-				conversion = "// Convert all CABI parameters to Go parameters\n"
-			}
-			for i, pp := range m.Parameters {
-				cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+			{
+				preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
-				paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
-				conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
-			}
+				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
 
-			cabiReturnType := m.ReturnType.parameterTypeCgo()
-			if cabiReturnType == "C.void" {
-				cabiReturnType = ""
-			}
+				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
 
-			goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
-			if !m.ReturnType.Void() {
-				goCbType += " " + m.ReturnType.RenderTypeGo(&gfs)
+				ret.WriteString(`
+				func (this *` + goClassName + `) callVirtualBase_` + m.SafeMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+					` + preamble + `
+					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+goClassName+`_virtualbase_`+m.SafeMethodName()+`(`+forwarding+`)`) + `
+				}
+			`)
+
 			}
 
-			ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
+			// Add a function to set the virtual override handle
+			// It must be possible to call the base class version, so pass
+			// that a as a 'super' callback as an extra parameter
+
+			{
+
+				var cgoNamedParams []string
+				var paramNames []string = []string{"(&" + goClassName + "{h: self}).callVirtualBase_" + m.SafeMethodName()}
+				conversion := ""
+
+				if len(m.Parameters) > 0 {
+					conversion = "// Convert all CABI parameters to Go parameters\n"
+				}
+				for i, pp := range m.Parameters {
+					cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+
+					paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
+					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
+				}
+
+				cabiReturnType := m.ReturnType.parameterTypeCgo()
+				if cabiReturnType == "C.void" {
+					cabiReturnType = ""
+				}
+
+				superCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+
+				goCbType := `func(super ` + superCbType
+				if len(m.Parameters) > 0 {
+					goCbType += `, ` + gfs.emitParametersGo(m.Parameters)
+				}
+				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
 					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				
 				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
-				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
+				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(self *C.` + goClassName + `, cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
 					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
 				
 			`)
-			ret.WriteString(conversion + "\n")
-			if cabiReturnType == "" {
-				ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
-			} else {
-				ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
-				virtualRetP := m.ReturnType // copy
-				virtualRetP.ParameterName = "virtualReturn"
-				binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
-				ret.WriteString(binding + "\n")
-				ret.WriteString("return " + rvalue + "\n")
-			}
-			ret.WriteString(`
+				ret.WriteString(conversion + "\n")
+				if cabiReturnType == "" {
+					ret.WriteString(`gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+				} else {
+					ret.WriteString(`virtualReturn := gofunc(` + strings.Join(paramNames, `, `) + " )\n")
+					virtualRetP := m.ReturnType // copy
+					virtualRetP.ParameterName = "virtualReturn"
+					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+					ret.WriteString(binding + "\n")
+					ret.WriteString("return " + rvalue + "\n")
+				}
+				ret.WriteString(`
 				}
 			`)
 
-			// TODO add package-private function to call the C++ base class method
+			}
+
 		}
 
 		if c.CanDelete {

@@ -858,18 +858,11 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 						returnTransformP, returnTransformF = emitCABI2CppForwarding(returnParam, "\t\t")
 					}
 
-					paramArgs := []string{"handle__" + m.SafeMethodName()}
-
-					var signalCode string
-
-					for i, p := range m.Parameters {
-						signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.ParameterName)
-						paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
-					}
+					handleVarname := "handle__" + m.SafeMethodName()
 
 					ret.WriteString(
 						"\t// cgo.Handle value for overwritten implementation\n" +
-							"\tintptr_t handle__" + m.SafeMethodName() + " = 0;\n" +
+							"\tintptr_t " + handleVarname + " = 0;\n" +
 							"\n",
 					)
 
@@ -878,9 +871,10 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 					ret.WriteString(
 						"\t// Subclass to allow providing a Go implementation\n" +
-							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + "override {\n" +
-							"\t\tif (handle__" + m.SafeMethodName() + " == 0) {\n",
+							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + "override {\n",
 					)
+
+					ret.WriteString("\t\tif (" + handleVarname + " == 0) {\n")
 					if m.IsPureVirtual {
 						if m.ReturnType.Void() {
 							ret.WriteString("\t\t\treturn; // Pure virtual, there is no base we can call\n")
@@ -894,9 +888,29 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 							ret.WriteString("\t\t\treturn;\n")
 						}
 					}
+					ret.WriteString("\t\t}\n")
+
+					paramArgs := []string{}
+					if m.IsConst {
+						// We're calling a Cgo-exported function, but Cgo can't
+						// describe a const pointer to a custom class, unless
+						// it's a primitive or wrapped in a typedef.
+						// Just strip the const_cast away
+						paramArgs = append(paramArgs, "const_cast<"+overriddenClassName+"*>(this)")
+					} else {
+						paramArgs = append(paramArgs, "this")
+					}
+					paramArgs = append(paramArgs, handleVarname)
+
+					var signalCode string
+
+					for i, p := range m.Parameters {
+						signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.ParameterName)
+						paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
+					}
+
 					ret.WriteString(
-						"\t\t}\n" +
-							"\t\t\n" +
+						"\t\t\n" +
 							signalCode + "\n" +
 							"\t\t" + maybeReturn2 + "miqt_exec_callback_" + methodPrefixName + "_" + m.SafeMethodName() + "(" + strings.Join(paramArgs, `, `) + ");\n" +
 							returnTransformP + "\n" +
@@ -946,38 +960,39 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		for i, ctor := range c.Ctors {
 
+			// The returned ctor needs to return a C++ pointer for not just the
+			// class itself, but also all of the inherited base classes
+			// That's because C++ virtual inheritance shifts the pointer; we
+			// need all the base pointers to call base methods from CGO
+			// Supply them all as out-parameters so we only need one roundtrip
+
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
+			ret.WriteString(
+				"void " + methodPrefixName + "_new" + maybeSuffix(i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
+			)
+
 			if ctor.LinuxOnly {
-
-				ret.WriteString(fmt.Sprintf(
-					"%s* %s_new%s(%s) {\n"+
-						"#ifdef Q_OS_LINUX\n"+
-						"%s"+
-						"\treturn new %s(%s);\n"+
-						"#else\n"+
-						"\treturn nullptr;\n"+
-						"#endif\n"+
-						"}\n"+
-						"\n",
-					methodPrefixName, methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, ""),
-					preamble,
-					cppClassName, forwarding,
-				))
-
-			} else {
-				ret.WriteString(fmt.Sprintf(
-					"%s* %s_new%s(%s) {\n"+
-						"%s"+
-						"\treturn new %s(%s);\n"+
-						"}\n"+
-						"\n",
-					methodPrefixName, methodPrefixName, maybeSuffix(i), emitParametersCabi(ctor, ""),
-					preamble,
-					cppClassName, forwarding,
-				))
-
+				ret.WriteString(
+					"#ifndef Q_OS_LINUX\n" +
+						"\treturn;\n" +
+						"#endif\n",
+				)
 			}
+
+			ret.WriteString(
+				preamble +
+					"\t" + cppClassName + "* ret = new " + cppClassName + "(" + forwarding + ");\n" + // Subclass class name
+					"\t*outptr_" + cabiClassName(c.ClassName) + " = ret;\n", // Original class name
+			)
+			for _, baseClass := range c.AllInherits() {
+				ret.WriteString("\t*outptr_" + baseClass + " = static_cast<" + baseClass + "*>(ret);\n")
+			}
+
+			ret.WriteString(
+				"}\n" +
+					"\n",
+			)
 
 		}
 
@@ -1088,13 +1103,15 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		// Virtual override helpers
 		for _, m := range virtualMethods {
 
-			// Virtual methods:
-			// 1. Allow overriding
+			// Virtual methods: Allow overriding
 			// (Never use a const self*)
+			// The pointer that we are passed is the base type, not the subclassed
+			// type. First cast the void* to the base type, and only then,
+			// upclass it
 
 			ret.WriteString(
 				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(void* self, intptr_t slot) {` + "\n" +
-					"\t( (" + cppClassName + "*)(self) )->handle__" + m.SafeMethodName() + " = slot;\n" +
+					"\tdynamic_cast<" + cppClassName + "*>( (" + cabiClassName(c.ClassName) + "*)(self) )->handle__" + m.SafeMethodName() + " = slot;\n" +
 					"}\n" +
 					"\n",
 			)

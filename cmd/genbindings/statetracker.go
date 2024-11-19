@@ -2,7 +2,7 @@ package main
 
 type lookupResultClass struct {
 	PackageName string
-	Class       *CppClass
+	Class       CppClass
 }
 
 type lookupResultTypedef struct {
@@ -28,8 +28,8 @@ func flushKnownTypes() {
 }
 
 func addKnownTypes(packageName string, parsed *CppParsedHeader) {
-	for i, c := range parsed.Classes {
-		KnownClassnames[c.ClassName] = lookupResultClass{packageName, &parsed.Classes[i] /* reference */}
+	for _, c := range parsed.Classes {
+		KnownClassnames[c.ClassName] = lookupResultClass{packageName, c /* copy */}
 	}
 	for _, td := range parsed.Typedefs {
 		KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, td /* copy */}

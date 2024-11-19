@@ -187,6 +187,11 @@ func AllowSignal(mm CppMethod) bool {
 }
 
 func AllowVirtual(mm CppMethod) bool {
+
+	if mm.MethodName == "metaObject" || mm.MethodName == "qt_metacast" {
+		return false
+	}
+
 	return true // AllowSignal(mm)
 }
 
