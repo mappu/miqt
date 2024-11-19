@@ -46,3 +46,11 @@ func slice_to_set[T comparable](list []T) map[T]struct{} {
 	}
 	return ret
 }
+
+func slice_copy[T comparable](input []T) []T {
+	ret := make([]T, len(input))
+	for i, elem := range input {
+		ret[i] = elem
+	}
+	return ret
+}
