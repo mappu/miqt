@@ -759,14 +759,14 @@ func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
 	plist := slice_copy(ctor.Parameters) // semi-shallow copy
 
 	plist = append(plist, CppParameter{
-		ParameterName: cabiClassName("outptr_" + c.ClassName),
+		ParameterName: cabiClassName("outptr_" + cabiClassName(c.ClassName)),
 		ParameterType: c.ClassName,
 		Pointer:       true,
 		PointerCount:  2,
 	})
 	for _, baseClass := range c.AllInherits() {
 		plist = append(plist, CppParameter{
-			ParameterName: cabiClassName("outptr_" + baseClass),
+			ParameterName: cabiClassName("outptr_" + cabiClassName(baseClass)),
 			ParameterType: baseClass,
 			Pointer:       true,
 			PointerCount:  2,
@@ -986,7 +986,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					"\t*outptr_" + cabiClassName(c.ClassName) + " = ret;\n", // Original class name
 			)
 			for _, baseClass := range c.AllInherits() {
-				ret.WriteString("\t*outptr_" + baseClass + " = static_cast<" + baseClass + "*>(ret);\n")
+				ret.WriteString("\t*outptr_" + cabiClassName(baseClass) + " = static_cast<" + baseClass + "*>(ret);\n")
 			}
 
 			ret.WriteString(

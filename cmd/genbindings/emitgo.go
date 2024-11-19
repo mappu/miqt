@@ -862,7 +862,7 @@ import "C"
 			ret.WriteString(`var outptr_` + cabiClassName(c.ClassName) + ` *C.` + goClassName + " = nil\n")
 			outptrs = append(outptrs, "outptr_"+cabiClassName(c.ClassName))
 			for _, baseClass := range c.AllInherits() {
-				ret.WriteString(`var outptr_` + cabiClassName(baseClass) + ` *C.` + baseClass + " = nil\n")
+				ret.WriteString(`var outptr_` + cabiClassName(baseClass) + ` *C.` + cabiClassName(baseClass) + " = nil\n")
 				outptrs = append(outptrs, "outptr_"+cabiClassName(baseClass))
 			}
 
