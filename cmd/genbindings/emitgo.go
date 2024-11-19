@@ -13,7 +13,7 @@ import (
 func goReservedWord(s string) bool {
 	switch s {
 	case "default", "const", "func", "var", "type", "len", "new", "copy", "import", "range", "string", "map", "int", "select",
-		"ret": // not a language-reserved word, but a binding-reserved word
+		"super", "ret": // not language-reserved words, but a binding-reserved words
 		return true
 	default:
 		return false
@@ -152,6 +152,20 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	}
 
 	return ret // ignore const
+}
+
+func (p CppParameter) renderReturnTypeGo(gfs *goFileState) string {
+	ret := p.RenderTypeGo(gfs)
+	if ret == "void" {
+		ret = ""
+	}
+
+	if p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && !(p.Pointer || p.ByRef) {
+		// FIXME normalize this part
+		ret = "*" + ret
+	}
+
+	return ret
 }
 
 func (p CppParameter) parameterTypeCgo() string {
@@ -702,6 +716,8 @@ import "C"
 	for _, c := range src.Classes {
 
 		goClassName := cabiClassName(c.ClassName)
+
+		// Type definition
 
 		ret.WriteString(`
 		type ` + goClassName + ` struct {

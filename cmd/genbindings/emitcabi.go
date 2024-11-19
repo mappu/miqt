@@ -35,6 +35,9 @@ func (p CppParameter) RenderTypeCabi() string {
 		return "struct miqt_map " + cppComment("tuple of "+inner1.RenderTypeCabi()+" and "+inner2.RenderTypeCabi())
 
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
+		if p.PointerCount > 1 {
+			return cabiClassName(p.ParameterType) + strings.Repeat("*", p.PointerCount)
+		}
 		return cabiClassName(p.ParameterType) + "*"
 
 	} else if p.QtClassType() && !p.Pointer {
