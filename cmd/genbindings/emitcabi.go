@@ -733,7 +733,7 @@ extern "C" {
 
 		// delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", methodPrefixName, methodPrefixName))
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self, bool isSubclass);\n", methodPrefixName, methodPrefixName))
 		}
 
 		ret.WriteString("\n")
@@ -1133,13 +1133,16 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 
 		// Delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf(
-				"void %s_Delete(%s* self) {\n"+
-					"\tdelete self;\n"+
-					"}\n"+
+			ret.WriteString(
+				"void " + methodPrefixName + "_Delete(" + methodPrefixName + "* self, bool isSubclass) {\n" +
+					"\tif (isSubclass) {\n" +
+					"\t\tdelete dynamic_cast<" + cppClassName + "*>( self );\n" +
+					"\t} else {\n" +
+					"\t\tdelete self;\n" +
+					"\t}\n" +
+					"}\n" +
 					"\n",
-				methodPrefixName, methodPrefixName,
-			))
+			)
 		}
 	}
 

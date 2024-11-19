@@ -730,6 +730,7 @@ import "C"
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
+			isSubclass bool
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -1028,7 +1029,7 @@ import "C"
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + goClassName + `_Delete(this.h)
+				C.` + goClassName + `_Delete(this.h, C.bool(this.isSubclass))
 			}
 				
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
